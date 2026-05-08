@@ -22,22 +22,402 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface CapacityConfig {
+  /** Required. The number of vCPUs to provision for the cluster. Minimum: 3. */
+  vcpuCount?: string;
+  /** Required. The memory to provision for the cluster in bytes. The CPU:memory ratio (vCPU:GiB) must be between 1:1 and 1:8. Minimum: 3221225472 (3 GiB). */
+  memoryBytes?: string;
+}
+
+export const CapacityConfig: Schema.Schema<CapacityConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vcpuCount: Schema.optional(Schema.String),
+    memoryBytes: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CapacityConfig" });
+
+export interface PauseConnectorRequest {}
+
+export const PauseConnectorRequest: Schema.Schema<PauseConnectorRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "PauseConnectorRequest",
+  });
+
+export interface TaskRetryPolicy {
+  /** Optional. The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay. */
+  minimumBackoff?: string;
+  /** Optional. If true, task retry is disabled. */
+  taskRetryDisabled?: boolean;
+  /** Optional. The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay. */
+  maximumBackoff?: string;
+}
+
+export const TaskRetryPolicy: Schema.Schema<TaskRetryPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minimumBackoff: Schema.optional(Schema.String),
+    taskRetryDisabled: Schema.optional(Schema.Boolean),
+    maximumBackoff: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TaskRetryPolicy" });
+
+export interface Connector {
+  /** Output only. The current state of the connector. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "UNASSIGNED"
+    | "RUNNING"
+    | "PAUSED"
+    | "FAILED"
+    | "RESTARTING"
+    | "STOPPED"
+    | (string & {});
+  /** Optional. Restarts the individual tasks of a Connector. */
+  taskRestartPolicy?: TaskRetryPolicy;
+  /** Identifier. The name of the connector. Structured like: projects/{project}/locations/{location}/connectClusters/{connect_cluster}/connectors/{connector} */
+  name?: string;
+  /** Optional. Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`. */
+  configs?: Record<string, string>;
+}
+
+export const Connector: Schema.Schema<Connector> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    taskRestartPolicy: Schema.optional(TaskRetryPolicy),
+    name: Schema.optional(Schema.String),
+    configs: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "Connector" });
+
+export interface NetworkConfig {
+  /** Required. Name of the VPC subnet in which to create Private Service Connect (PSC) endpoints for the Kafka brokers and bootstrap address. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id} The subnet must be located in the same region as the Kafka cluster. The project may differ. Multiple subnets from the same parent network must not be specified. */
+  subnet?: string;
+}
+
+export const NetworkConfig: Schema.Schema<NetworkConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subnet: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NetworkConfig" });
+
+export interface Location {
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: Record<string, string>;
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
+}
+
+export const Location: Schema.Schema<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    locationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Location" });
+
+export interface ListLocationsResponse {
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: ReadonlyArray<Location>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+}
+
+export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Location)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocationsResponse" });
+
+export interface StopConnectorRequest {}
+
+export const StopConnectorRequest: Schema.Schema<StopConnectorRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "StopConnectorRequest",
+  });
+
+export interface CheckCompatibilityResponse {
+  /** The compatibility check result. If true, the schema is compatible with the resource. */
+  is_compatible?: boolean;
+  /** Failure reasons if verbose = true. */
+  messages?: ReadonlyArray<string>;
+}
+
+export const CheckCompatibilityResponse: Schema.Schema<CheckCompatibilityResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    is_compatible: Schema.optional(Schema.Boolean),
+    messages: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CheckCompatibilityResponse" });
+
+export interface AccessConfig {
+  /** Required. Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka cluster. Minimum of 1 network is required. Maximum 10 networks can be specified. */
+  networkConfigs?: ReadonlyArray<NetworkConfig>;
+}
+
+export const AccessConfig: Schema.Schema<AccessConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkConfigs: Schema.optional(Schema.Array(NetworkConfig)),
+  }).annotate({ identifier: "AccessConfig" });
+
+export interface SchemaReference {
+  /** Required. The subject of the reference. */
+  subject?: string;
+  /** Required. The name of the reference. */
+  name?: string;
+  /** Required. The version of the reference. */
+  version?: number;
+}
+
+export const SchemaReference: Schema.Schema<SchemaReference> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subject: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "SchemaReference" });
+
+export interface CheckCompatibilityRequest {
+  /** Required. The schema payload */
+  schema?: string;
+  /** Optional. The schema references used by the schema. */
+  references?: ReadonlyArray<SchemaReference>;
+  /** Optional. If true, the response will contain the compatibility check result with reasons for failed checks. The default is false. */
+  verbose?: boolean;
+  /** Optional. The schema type of the schema. */
+  schemaType?:
+    | "SCHEMA_TYPE_UNSPECIFIED"
+    | "AVRO"
+    | "JSON"
+    | "PROTOBUF"
+    | (string & {});
+}
+
+export const CheckCompatibilityRequest: Schema.Schema<CheckCompatibilityRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schema: Schema.optional(Schema.String),
+    references: Schema.optional(Schema.Array(SchemaReference)),
+    verbose: Schema.optional(Schema.Boolean),
+    schemaType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CheckCompatibilityRequest" });
+
+export interface AclEntry {
+  /** Required. The principal. Specified as Google Cloud account, with the Kafka StandardAuthorizer prefix "User:". For example: "User:test-kafka-client@test-project.iam.gserviceaccount.com". Can be the wildcard "User:*" to refer to all users. */
+  principal?: string;
+  /** Required. The operation type. Allowed values are (case insensitive): ALL, READ, WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS, ALTER_CONFIGS, and IDEMPOTENT_WRITE. See https://kafka.apache.org/documentation/#operations_resources_and_protocols for valid combinations of resource_type and operation for different Kafka API requests. */
+  operation?: string;
+  /** Required. The permission type. Accepted values are (case insensitive): ALLOW, DENY. */
+  permissionType?: string;
+  /** Required. The host. Must be set to "*" for Managed Service for Apache Kafka. */
+  host?: string;
+}
+
+export const AclEntry: Schema.Schema<AclEntry> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    principal: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+    permissionType: Schema.optional(Schema.String),
+    host: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AclEntry" });
+
+export interface ConnectNetworkConfig {
+  /** Required. VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id} It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses). */
+  primarySubnet?: string;
+  /** Optional. Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog */
+  dnsDomainNames?: ReadonlyArray<string>;
+  /** Optional. Deprecated: Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information. */
+  additionalSubnets?: ReadonlyArray<string>;
+}
+
+export const ConnectNetworkConfig: Schema.Schema<ConnectNetworkConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    primarySubnet: Schema.optional(Schema.String),
+    dnsDomainNames: Schema.optional(Schema.Array(Schema.String)),
+    additionalSubnets: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ConnectNetworkConfig" });
+
+export interface ConnectAccessConfig {
+  /** Required. Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka Connect cluster. Minimum of 1 network is required. Maximum 10 networks can be specified. */
+  networkConfigs?: ReadonlyArray<ConnectNetworkConfig>;
+}
+
+export const ConnectAccessConfig: Schema.Schema<ConnectAccessConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkConfigs: Schema.optional(Schema.Array(ConnectNetworkConfig)),
+  }).annotate({ identifier: "ConnectAccessConfig" });
+
+export interface ConnectGcpConfig {
+  /** Optional. Secrets to load into workers. Exact SecretVersions from Secret Manager must be provided -- aliases are not supported. Up to 32 secrets may be loaded into one cluster. Format: projects//secrets//versions/ */
+  secretPaths?: ReadonlyArray<string>;
+  /** Required. Access configuration for the Kafka Connect cluster. */
+  accessConfig?: ConnectAccessConfig;
+}
+
+export const ConnectGcpConfig: Schema.Schema<ConnectGcpConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secretPaths: Schema.optional(Schema.Array(Schema.String)),
+    accessConfig: Schema.optional(ConnectAccessConfig),
+  }).annotate({ identifier: "ConnectGcpConfig" });
+
+export interface ConsumerPartitionMetadata {
+  /** Required. The current offset for this partition, or 0 if no offset has been committed. */
+  offset?: string;
+  /** Optional. The associated metadata for this partition, or empty if it does not exist. */
+  metadata?: string;
+}
+
+export const ConsumerPartitionMetadata: Schema.Schema<ConsumerPartitionMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offset: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConsumerPartitionMetadata" });
+
+export interface ConsumerTopicMetadata {
+  /** Optional. Metadata for this consumer group and topic for all partition indexes it has metadata for. */
+  partitions?: Record<string, ConsumerPartitionMetadata>;
+}
+
+export const ConsumerTopicMetadata: Schema.Schema<ConsumerTopicMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partitions: Schema.optional(
+      Schema.Record(Schema.String, ConsumerPartitionMetadata),
+    ),
+  }).annotate({ identifier: "ConsumerTopicMetadata" });
+
+export interface ConsumerGroup {
+  /** Identifier. The name of the consumer group. The `consumer_group` segment is used when connecting directly to the cluster. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/consumerGroups/{consumer_group} */
+  name?: string;
+  /** Optional. Metadata for this consumer group for all topics it has metadata for. The key of the map is a topic name, structured like: projects/{project}/locations/{location}/clusters/{cluster}/topics/{topic} */
+  topics?: Record<string, ConsumerTopicMetadata>;
+}
+
+export const ConsumerGroup: Schema.Schema<ConsumerGroup> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    topics: Schema.optional(
+      Schema.Record(Schema.String, ConsumerTopicMetadata),
+    ),
+  }).annotate({ identifier: "ConsumerGroup" });
+
+export interface CreateVersionRequest {
+  /** Required. The schema payload */
+  schema?: string;
+  /** Optional. The schema references used by the schema. */
+  references?: ReadonlyArray<SchemaReference>;
+  /** Optional. The schema ID of the schema. If not specified, the schema ID will be generated by the server. If the schema ID is specified, it must not be used by an existing schema that is different from the schema to be created. */
+  id?: number;
+  /** Optional. The version to create. It is optional. If not specified, the version will be created with the max version ID of the subject increased by 1. If the version ID is specified, it will be used as the new version ID and must not be used by an existing version of the subject. */
+  version?: number;
+  /** Optional. If true, the schema will be normalized before being stored. The default is false. */
+  normalize?: boolean;
+  /** Optional. The type of the schema. It is optional. If not specified, the schema type will be AVRO. */
+  schemaType?:
+    | "SCHEMA_TYPE_UNSPECIFIED"
+    | "AVRO"
+    | "JSON"
+    | "PROTOBUF"
+    | (string & {});
+}
+
+export const CreateVersionRequest: Schema.Schema<CreateVersionRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schema: Schema.optional(Schema.String),
+    references: Schema.optional(Schema.Array(SchemaReference)),
+    id: Schema.optional(Schema.Number),
+    version: Schema.optional(Schema.Number),
+    normalize: Schema.optional(Schema.Boolean),
+    schemaType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateVersionRequest" });
+
+export interface OperationMetadata {
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+}
+
+export const OperationMetadata: Schema.Schema<OperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    statusMessage: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadata" });
+
+export interface CancelOperationRequest {}
+
+export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelOperationRequest",
+  });
+
+export interface Acl {
+  /** Output only. The ACL pattern type derived from the name. One of: LITERAL, PREFIXED. */
+  patternType?: string;
+  /** Optional. `etag` is used for concurrency control. An `etag` is returned in the response to `GetAcl` and `CreateAcl`. Callers are required to put that etag in the request to `UpdateAcl` to ensure that their change will be applied to the same version of the acl that exists in the Kafka Cluster. A terminal 'T' character in the etag indicates that the AclEntries were truncated; more entries for the Acl exist on the Kafka Cluster, but can't be returned in the Acl due to repeated field limits. */
+  etag?: string;
+  /** Output only. The ACL resource name derived from the name. For cluster resource_type, this is always "kafka-cluster". Can be the wildcard literal "*". */
+  resourceName?: string;
+  /** Identifier. The name for the acl. Represents a single Resource Pattern. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id} The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. `acl_id` is structured like one of the following: For acls on the cluster: `cluster` For acls on a single resource within the cluster: `topic/{resource_name}` `consumerGroup/{resource_name}` `transactionalId/{resource_name}` For acls on all resources that match a prefix: `topicPrefixed/{resource_name}` `consumerGroupPrefixed/{resource_name}` `transactionalIdPrefixed/{resource_name}` For acls on all resources of a given type (i.e. the wildcard literal "*"): `allTopics` (represents `topic/*`) `allConsumerGroups` (represents `consumerGroup/*`) `allTransactionalIds` (represents `transactionalId/*`) */
+  name?: string;
+  /** Required. The ACL entries that apply to the resource pattern. The maximum number of allowed entries 100. */
+  aclEntries?: ReadonlyArray<AclEntry>;
+  /** Output only. The ACL resource type derived from the name. One of: CLUSTER, TOPIC, GROUP, TRANSACTIONAL_ID. */
+  resourceType?: string;
+}
+
+export const Acl: Schema.Schema<Acl> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    patternType: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    resourceName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    aclEntries: Schema.optional(Schema.Array(AclEntry)),
+    resourceType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Acl" });
+
+export interface ListAclsResponse {
+  /** The list of acls in the requested parent. The order of the acls is unspecified. */
+  acls?: ReadonlyArray<Acl>;
+  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
+  nextPageToken?: string;
+}
+
+export const ListAclsResponse: Schema.Schema<ListAclsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    acls: Schema.optional(Schema.Array(Acl)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAclsResponse" });
+
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: ReadonlyArray<Record<string, unknown>>;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
 }
 
-export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  code: Schema.optional(Schema.Number),
-  message: Schema.optional(Schema.String),
-  details: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-}).annotate({ identifier: "Status" });
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.Number),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -52,104 +432,21 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  done: Schema.optional(Schema.Boolean),
-  error: Schema.optional(Status),
-  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-}).annotate({ identifier: "Operation" });
-
-export interface ListOperationsResponse {
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: ReadonlyArray<Operation>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: ReadonlyArray<string>;
-}
-
-export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    operations: Schema.optional(Schema.Array(Operation)),
-    nextPageToken: Schema.optional(Schema.String),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  },
-).annotate({ identifier: "ListOperationsResponse" });
-
-export interface Empty {}
-
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
-
-export interface CancelOperationRequest {}
-
-export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "CancelOperationRequest" });
-
-export interface NetworkConfig {
-  /** Required. Name of the VPC subnet in which to create Private Service Connect (PSC) endpoints for the Kafka brokers and bootstrap address. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id} The subnet must be located in the same region as the Kafka cluster. The project may differ. Multiple subnets from the same parent network must not be specified. */
-  subnet?: string;
-}
-
-export const NetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  subnet: Schema.optional(Schema.String),
-}).annotate({ identifier: "NetworkConfig" });
-
-export interface AccessConfig {
-  /** Required. Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka cluster. Minimum of 1 network is required. Maximum 10 networks can be specified. */
-  networkConfigs?: ReadonlyArray<NetworkConfig>;
-}
-
-export const AccessConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  networkConfigs: Schema.optional(Schema.Array(NetworkConfig)),
-}).annotate({ identifier: "AccessConfig" });
-
-export interface GcpConfig {
-  /** Required. Access configuration for the Kafka cluster. */
-  accessConfig?: AccessConfig;
-  /** Optional. Immutable. The Cloud KMS Key name to use for encryption. The key must be located in the same region as the cluster and cannot be changed. Structured like: projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}. */
-  kmsKey?: string;
-}
-
-export const GcpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accessConfig: Schema.optional(AccessConfig),
-  kmsKey: Schema.optional(Schema.String),
-}).annotate({ identifier: "GcpConfig" });
-
-export interface CapacityConfig {
-  /** Required. The number of vCPUs to provision for the cluster. Minimum: 3. */
-  vcpuCount?: string;
-  /** Required. The memory to provision for the cluster in bytes. The CPU:memory ratio (vCPU:GiB) must be between 1:1 and 1:8. Minimum: 3221225472 (3 GiB). */
-  memoryBytes?: string;
-}
-
-export const CapacityConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  vcpuCount: Schema.optional(Schema.String),
-  memoryBytes: Schema.optional(Schema.String),
-}).annotate({ identifier: "CapacityConfig" });
-
-export interface RebalanceConfig {
-  /** Optional. The rebalance behavior for the cluster. When not specified, defaults to `NO_REBALANCE`. */
-  mode?:
-    | "MODE_UNSPECIFIED"
-    | "NO_REBALANCE"
-    | "AUTO_REBALANCE_ON_SCALE_UP"
-    | (string & {});
-}
-
-export const RebalanceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  mode: Schema.optional(Schema.String),
-}).annotate({ identifier: "RebalanceConfig" });
+export const Operation: Schema.Schema<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(Status),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Operation" });
 
 export interface CertificateAuthorityServiceConfig {
   /** Required. The name of the CA pool to pull CA certificates from. Structured like: projects/{project}/locations/{location}/caPools/{ca_pool}. The CA pool does not need to be in the same project or location as the Kafka cluster. */
   caPool?: string;
 }
 
-export const CertificateAuthorityServiceConfig =
+export const CertificateAuthorityServiceConfig: Schema.Schema<CertificateAuthorityServiceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     caPool: Schema.optional(Schema.String),
   }).annotate({ identifier: "CertificateAuthorityServiceConfig" });
@@ -159,325 +456,26 @@ export interface TrustConfig {
   casConfigs?: ReadonlyArray<CertificateAuthorityServiceConfig>;
 }
 
-export const TrustConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  casConfigs: Schema.optional(Schema.Array(CertificateAuthorityServiceConfig)),
-}).annotate({ identifier: "TrustConfig" });
-
-export interface TlsConfig {
-  /** Optional. The configuration of the broker truststore. If specified, clients can use mTLS for authentication. */
-  trustConfig?: TrustConfig;
-  /** Optional. A list of rules for mapping from SSL principal names to short names. These are applied in order by Kafka. Refer to the Apache Kafka documentation for `ssl.principal.mapping.rules` for the precise formatting details and syntax. Example: "RULE:^CN=(.*?),OU=ServiceUsers.*$/$1@example.com/,DEFAULT" This is a static Kafka broker configuration. Setting or modifying this field will trigger a rolling restart of the Kafka brokers to apply the change. An empty string means no rules are applied (Kafka default). */
-  sslPrincipalMappingRules?: string;
-}
-
-export const TlsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  trustConfig: Schema.optional(TrustConfig),
-  sslPrincipalMappingRules: Schema.optional(Schema.String),
-}).annotate({ identifier: "TlsConfig" });
-
-export interface UpdateOptions {
-  /** Optional. If true, allows an update operation that increases the total vCPU and/or memory allocation of the cluster to significantly decrease the per-broker vCPU and/or memory allocation. This can result in reduced performance and availability. By default, the update operation will fail if an upscale request results in a vCPU or memory allocation for the brokers that is smaller than 90% of the current broker size. */
-  allowBrokerDownscaleOnClusterUpscale?: boolean;
-}
-
-export const UpdateOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  allowBrokerDownscaleOnClusterUpscale: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "UpdateOptions" });
-
-export interface BrokerDetails {
-  /** Output only. The index of the broker. */
-  brokerIndex?: string;
-  /** Output only. The node id of the broker. */
-  nodeId?: string;
-  /** Output only. The rack of the broker. */
-  rack?: string;
-}
-
-export const BrokerDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  brokerIndex: Schema.optional(Schema.String),
-  nodeId: Schema.optional(Schema.String),
-  rack: Schema.optional(Schema.String),
-}).annotate({ identifier: "BrokerDetails" });
-
-export interface Cluster {
-  /** Required. Configuration properties for a Kafka cluster deployed to Google Cloud Platform. */
-  gcpConfig?: GcpConfig;
-  /** Identifier. The name of the cluster. Structured like: projects/{project_number}/locations/{location}/clusters/{cluster_id} */
-  name?: string;
-  /** Output only. The time when the cluster was created. */
-  createTime?: string;
-  /** Output only. The time when the cluster was last updated. */
-  updateTime?: string;
-  /** Optional. Labels as key value pairs. */
-  labels?: Record<string, string>;
-  /** Required. Capacity configuration for the Kafka cluster. */
-  capacityConfig?: CapacityConfig;
-  /** Optional. Rebalance configuration for the Kafka cluster. */
-  rebalanceConfig?: RebalanceConfig;
-  /** Output only. The current state of the cluster. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "ACTIVE"
-    | "DELETING"
-    | "UPDATING"
-    | (string & {});
-  /** Output only. Reserved for future use. */
-  satisfiesPzi?: boolean;
-  /** Output only. Reserved for future use. */
-  satisfiesPzs?: boolean;
-  /** Optional. TLS configuration for the Kafka cluster. */
-  tlsConfig?: TlsConfig;
-  /** Optional. UpdateOptions represents options that control how updates to the cluster are applied. */
-  updateOptions?: UpdateOptions;
-  /** Output only. Only populated when FULL view is requested. The Kafka version of the cluster. */
-  kafkaVersion?: string;
-  /** Output only. Only populated when FULL view is requested. Details of each broker in the cluster. */
-  brokerDetails?: ReadonlyArray<BrokerDetails>;
-}
-
-export const Cluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  gcpConfig: Schema.optional(GcpConfig),
-  name: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  capacityConfig: Schema.optional(CapacityConfig),
-  rebalanceConfig: Schema.optional(RebalanceConfig),
-  state: Schema.optional(Schema.String),
-  satisfiesPzi: Schema.optional(Schema.Boolean),
-  satisfiesPzs: Schema.optional(Schema.Boolean),
-  tlsConfig: Schema.optional(TlsConfig),
-  updateOptions: Schema.optional(UpdateOptions),
-  kafkaVersion: Schema.optional(Schema.String),
-  brokerDetails: Schema.optional(Schema.Array(BrokerDetails)),
-}).annotate({ identifier: "Cluster" });
-
-export interface ListClustersResponse {
-  /** The list of Clusters in the requested parent. */
-  clusters?: ReadonlyArray<Cluster>;
-  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
-  nextPageToken?: string;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-}
-
-export const ListClustersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  clusters: Schema.optional(Schema.Array(Cluster)),
-  nextPageToken: Schema.optional(Schema.String),
-  unreachable: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "ListClustersResponse" });
-
-export interface Topic {
-  /** Identifier. The name of the topic. The `topic` segment is used when connecting directly to the cluster. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/topics/{topic} */
-  name?: string;
-  /** Required. The number of partitions this topic has. The partition count can only be increased, not decreased. Please note that if partitions are increased for a topic that has a key, the partitioning logic or the ordering of the messages will be affected. */
-  partitionCount?: number;
-  /** Required. Immutable. The number of replicas of each partition. A replication factor of 3 is recommended for high availability. */
-  replicationFactor?: number;
-  /** Optional. Configurations for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy`, `compression.type`. */
-  configs?: Record<string, string>;
-}
-
-export const Topic = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  partitionCount: Schema.optional(Schema.Number),
-  replicationFactor: Schema.optional(Schema.Number),
-  configs: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-}).annotate({ identifier: "Topic" });
-
-export interface ListTopicsResponse {
-  /** The list of topics in the requested parent. The order of the topics is unspecified. */
-  topics?: ReadonlyArray<Topic>;
-  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
-  nextPageToken?: string;
-}
-
-export const ListTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  topics: Schema.optional(Schema.Array(Topic)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListTopicsResponse" });
-
-export interface ConsumerPartitionMetadata {
-  /** Required. The current offset for this partition, or 0 if no offset has been committed. */
-  offset?: string;
-  /** Optional. The associated metadata for this partition, or empty if it does not exist. */
-  metadata?: string;
-}
-
-export const ConsumerPartitionMetadata =
+export const TrustConfig: Schema.Schema<TrustConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    offset: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ConsumerPartitionMetadata" });
-
-export interface ConsumerTopicMetadata {
-  /** Optional. Metadata for this consumer group and topic for all partition indexes it has metadata for. */
-  partitions?: Record<string, ConsumerPartitionMetadata>;
-}
-
-export const ConsumerTopicMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  partitions: Schema.optional(
-    Schema.Record(Schema.String, ConsumerPartitionMetadata),
-  ),
-}).annotate({ identifier: "ConsumerTopicMetadata" });
-
-export interface ConsumerGroup {
-  /** Identifier. The name of the consumer group. The `consumer_group` segment is used when connecting directly to the cluster. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/consumerGroups/{consumer_group} */
-  name?: string;
-  /** Optional. Metadata for this consumer group for all topics it has metadata for. The key of the map is a topic name, structured like: projects/{project}/locations/{location}/clusters/{cluster}/topics/{topic} */
-  topics?: Record<string, ConsumerTopicMetadata>;
-}
-
-export const ConsumerGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  topics: Schema.optional(Schema.Record(Schema.String, ConsumerTopicMetadata)),
-}).annotate({ identifier: "ConsumerGroup" });
-
-export interface ListConsumerGroupsResponse {
-  /** The list of consumer group in the requested parent. The order of the consumer groups is unspecified. */
-  consumerGroups?: ReadonlyArray<ConsumerGroup>;
-  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
-  nextPageToken?: string;
-}
-
-export const ListConsumerGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    consumerGroups: Schema.optional(Schema.Array(ConsumerGroup)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListConsumerGroupsResponse" });
-
-export interface AclEntry {
-  /** Required. The principal. Specified as Google Cloud account, with the Kafka StandardAuthorizer prefix "User:". For example: "User:test-kafka-client@test-project.iam.gserviceaccount.com". Can be the wildcard "User:*" to refer to all users. */
-  principal?: string;
-  /** Required. The permission type. Accepted values are (case insensitive): ALLOW, DENY. */
-  permissionType?: string;
-  /** Required. The operation type. Allowed values are (case insensitive): ALL, READ, WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS, ALTER_CONFIGS, and IDEMPOTENT_WRITE. See https://kafka.apache.org/documentation/#operations_resources_and_protocols for valid combinations of resource_type and operation for different Kafka API requests. */
-  operation?: string;
-  /** Required. The host. Must be set to "*" for Managed Service for Apache Kafka. */
-  host?: string;
-}
-
-export const AclEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  principal: Schema.optional(Schema.String),
-  permissionType: Schema.optional(Schema.String),
-  operation: Schema.optional(Schema.String),
-  host: Schema.optional(Schema.String),
-}).annotate({ identifier: "AclEntry" });
-
-export interface Acl {
-  /** Identifier. The name for the acl. Represents a single Resource Pattern. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id} The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. `acl_id` is structured like one of the following: For acls on the cluster: `cluster` For acls on a single resource within the cluster: `topic/{resource_name}` `consumerGroup/{resource_name}` `transactionalId/{resource_name}` For acls on all resources that match a prefix: `topicPrefixed/{resource_name}` `consumerGroupPrefixed/{resource_name}` `transactionalIdPrefixed/{resource_name}` For acls on all resources of a given type (i.e. the wildcard literal "*"): `allTopics` (represents `topic/*`) `allConsumerGroups` (represents `consumerGroup/*`) `allTransactionalIds` (represents `transactionalId/*`) */
-  name?: string;
-  /** Required. The ACL entries that apply to the resource pattern. The maximum number of allowed entries 100. */
-  aclEntries?: ReadonlyArray<AclEntry>;
-  /** Optional. `etag` is used for concurrency control. An `etag` is returned in the response to `GetAcl` and `CreateAcl`. Callers are required to put that etag in the request to `UpdateAcl` to ensure that their change will be applied to the same version of the acl that exists in the Kafka Cluster. A terminal 'T' character in the etag indicates that the AclEntries were truncated; more entries for the Acl exist on the Kafka Cluster, but can't be returned in the Acl due to repeated field limits. */
-  etag?: string;
-  /** Output only. The ACL resource type derived from the name. One of: CLUSTER, TOPIC, GROUP, TRANSACTIONAL_ID. */
-  resourceType?: string;
-  /** Output only. The ACL resource name derived from the name. For cluster resource_type, this is always "kafka-cluster". Can be the wildcard literal "*". */
-  resourceName?: string;
-  /** Output only. The ACL pattern type derived from the name. One of: LITERAL, PREFIXED. */
-  patternType?: string;
-}
-
-export const Acl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  aclEntries: Schema.optional(Schema.Array(AclEntry)),
-  etag: Schema.optional(Schema.String),
-  resourceType: Schema.optional(Schema.String),
-  resourceName: Schema.optional(Schema.String),
-  patternType: Schema.optional(Schema.String),
-}).annotate({ identifier: "Acl" });
-
-export interface ListAclsResponse {
-  /** The list of acls in the requested parent. The order of the acls is unspecified. */
-  acls?: ReadonlyArray<Acl>;
-  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
-  nextPageToken?: string;
-}
-
-export const ListAclsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  acls: Schema.optional(Schema.Array(Acl)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListAclsResponse" });
-
-export interface AddAclEntryResponse {
-  /** The updated acl. */
-  acl?: Acl;
-  /** Whether the acl was created as a result of adding the acl entry. */
-  aclCreated?: boolean;
-}
-
-export const AddAclEntryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  acl: Schema.optional(Acl),
-  aclCreated: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "AddAclEntryResponse" });
-
-export interface RemoveAclEntryResponse {
-  /** The updated acl. Returned if the removed acl entry was not the last entry in the acl. */
-  acl?: Acl;
-  /** Returned with value true if the removed acl entry was the last entry in the acl, resulting in acl deletion. */
-  aclDeleted?: boolean;
-}
-
-export const RemoveAclEntryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    acl: Schema.optional(Acl),
-    aclDeleted: Schema.optional(Schema.Boolean),
-  },
-).annotate({ identifier: "RemoveAclEntryResponse" });
-
-export interface ConnectNetworkConfig {
-  /** Required. VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id} It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses). */
-  primarySubnet?: string;
-  /** Optional. Deprecated: Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information. */
-  additionalSubnets?: ReadonlyArray<string>;
-  /** Optional. Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog */
-  dnsDomainNames?: ReadonlyArray<string>;
-}
-
-export const ConnectNetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  primarySubnet: Schema.optional(Schema.String),
-  additionalSubnets: Schema.optional(Schema.Array(Schema.String)),
-  dnsDomainNames: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "ConnectNetworkConfig" });
-
-export interface ConnectAccessConfig {
-  /** Required. Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka Connect cluster. Minimum of 1 network is required. Maximum 10 networks can be specified. */
-  networkConfigs?: ReadonlyArray<ConnectNetworkConfig>;
-}
-
-export const ConnectAccessConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  networkConfigs: Schema.optional(Schema.Array(ConnectNetworkConfig)),
-}).annotate({ identifier: "ConnectAccessConfig" });
-
-export interface ConnectGcpConfig {
-  /** Required. Access configuration for the Kafka Connect cluster. */
-  accessConfig?: ConnectAccessConfig;
-  /** Optional. Secrets to load into workers. Exact SecretVersions from Secret Manager must be provided -- aliases are not supported. Up to 32 secrets may be loaded into one cluster. Format: projects//secrets//versions/ */
-  secretPaths?: ReadonlyArray<string>;
-}
-
-export const ConnectGcpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accessConfig: Schema.optional(ConnectAccessConfig),
-  secretPaths: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "ConnectGcpConfig" });
+    casConfigs: Schema.optional(
+      Schema.Array(CertificateAuthorityServiceConfig),
+    ),
+  }).annotate({ identifier: "TrustConfig" });
 
 export interface ConnectCluster {
   /** Required. Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform. */
   gcpConfig?: ConnectGcpConfig;
-  /** Identifier. The name of the Kafka Connect cluster. Structured like: projects/{project_number}/locations/{location}/connectClusters/{connect_cluster_id} */
-  name?: string;
-  /** Required. Immutable. The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: projects/{project}/locations/{location}/clusters/{cluster} */
-  kafkaCluster?: string;
   /** Output only. The time when the cluster was created. */
   createTime?: string;
-  /** Output only. The time when the cluster was last updated. */
-  updateTime?: string;
-  /** Optional. Labels as key value pairs. */
-  labels?: Record<string, string>;
+  /** Identifier. The name of the Kafka Connect cluster. Structured like: projects/{project_number}/locations/{location}/connectClusters/{connect_cluster_id} */
+  name?: string;
   /** Required. Capacity configuration for the Kafka Connect cluster. */
   capacityConfig?: CapacityConfig;
+  /** Optional. Reserved for future use. This field is meant for worker config overrides, but is unsupported for now. */
+  config?: Record<string, string>;
+  /** Output only. The time when the cluster was last updated. */
+  updateTime?: string;
   /** Output only. The current state of the Kafka Connect cluster. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -486,27 +484,30 @@ export interface ConnectCluster {
     | "DELETING"
     | "DETACHED"
     | (string & {});
-  /** Optional. Configurations for the worker that are overridden from the defaults. The key of the map is a Kafka Connect worker property name, for example: `exactly.once.source.support`. */
-  config?: Record<string, string>;
-  /** Output only. Reserved for future use. */
-  satisfiesPzi?: boolean;
+  /** Optional. Labels as key value pairs. */
+  labels?: Record<string, string>;
   /** Output only. Reserved for future use. */
   satisfiesPzs?: boolean;
+  /** Required. Immutable. The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: projects/{project}/locations/{location}/clusters/{cluster} */
+  kafkaCluster?: string;
+  /** Output only. Reserved for future use. */
+  satisfiesPzi?: boolean;
 }
 
-export const ConnectCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  gcpConfig: Schema.optional(ConnectGcpConfig),
-  name: Schema.optional(Schema.String),
-  kafkaCluster: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  capacityConfig: Schema.optional(CapacityConfig),
-  state: Schema.optional(Schema.String),
-  config: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  satisfiesPzi: Schema.optional(Schema.Boolean),
-  satisfiesPzs: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "ConnectCluster" });
+export const ConnectCluster: Schema.Schema<ConnectCluster> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcpConfig: Schema.optional(ConnectGcpConfig),
+    createTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    capacityConfig: Schema.optional(CapacityConfig),
+    config: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    updateTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    kafkaCluster: Schema.optional(Schema.String),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ConnectCluster" });
 
 export interface ListConnectClustersResponse {
   /** The list of Connect clusters in the requested parent. */
@@ -517,151 +518,19 @@ export interface ListConnectClustersResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListConnectClustersResponse =
+export const ListConnectClustersResponse: Schema.Schema<ListConnectClustersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectClusters: Schema.optional(Schema.Array(ConnectCluster)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ListConnectClustersResponse" });
 
-export interface TaskRetryPolicy {
-  /** Optional. The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay. */
-  minimumBackoff?: string;
-  /** Optional. The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay. */
-  maximumBackoff?: string;
-  /** Optional. If true, task retry is disabled. */
-  taskRetryDisabled?: boolean;
-}
-
-export const TaskRetryPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  minimumBackoff: Schema.optional(Schema.String),
-  maximumBackoff: Schema.optional(Schema.String),
-  taskRetryDisabled: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "TaskRetryPolicy" });
-
-export interface Connector {
-  /** Optional. Restarts the individual tasks of a Connector. */
-  taskRestartPolicy?: TaskRetryPolicy;
-  /** Identifier. The name of the connector. Structured like: projects/{project}/locations/{location}/connectClusters/{connect_cluster}/connectors/{connector} */
-  name?: string;
-  /** Optional. Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`. */
-  configs?: Record<string, string>;
-  /** Output only. The current state of the connector. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "UNASSIGNED"
-    | "RUNNING"
-    | "PAUSED"
-    | "FAILED"
-    | "RESTARTING"
-    | "STOPPED"
-    | (string & {});
-}
-
-export const Connector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  taskRestartPolicy: Schema.optional(TaskRetryPolicy),
-  name: Schema.optional(Schema.String),
-  configs: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  state: Schema.optional(Schema.String),
-}).annotate({ identifier: "Connector" });
-
-export interface ListConnectorsResponse {
-  /** The list of connectors in the requested parent. */
-  connectors?: ReadonlyArray<Connector>;
-  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
-  nextPageToken?: string;
-}
-
-export const ListConnectorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    connectors: Schema.optional(Schema.Array(Connector)),
-    nextPageToken: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "ListConnectorsResponse" });
-
-export interface PauseConnectorRequest {}
-
-export const PauseConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "PauseConnectorRequest" });
-
 export interface PauseConnectorResponse {}
 
-export const PauseConnectorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "PauseConnectorResponse" });
-
-export interface ResumeConnectorRequest {}
-
-export const ResumeConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "ResumeConnectorRequest" });
-
-export interface ResumeConnectorResponse {}
-
-export const ResumeConnectorResponse =
+export const PauseConnectorResponse: Schema.Schema<PauseConnectorResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "ResumeConnectorResponse",
+    identifier: "PauseConnectorResponse",
   });
-
-export interface RestartConnectorRequest {}
-
-export const RestartConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "RestartConnectorRequest",
-  });
-
-export interface RestartConnectorResponse {}
-
-export const RestartConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "RestartConnectorResponse",
-  });
-
-export interface StopConnectorRequest {}
-
-export const StopConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "StopConnectorRequest" });
-
-export interface StopConnectorResponse {}
-
-export const StopConnectorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "StopConnectorResponse" });
-
-export interface Location {
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: Record<string, string>;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
-}
-
-export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  locationId: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-}).annotate({ identifier: "Location" });
-
-export interface ListLocationsResponse {
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: ReadonlyArray<Location>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-}
-
-export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  locations: Schema.optional(Schema.Array(Location)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface SchemaRegistry {
   /** Identifier. The name of the schema registry instance. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` The instance name {schema_registry} can contain the following: * Up to 255 characters. * Letters (uppercase or lowercase), numbers, and underscores. */
@@ -670,33 +539,321 @@ export interface SchemaRegistry {
   contexts?: ReadonlyArray<string>;
 }
 
-export const SchemaRegistry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  contexts: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "SchemaRegistry" });
+export const SchemaRegistry: Schema.Schema<SchemaRegistry> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    contexts: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "SchemaRegistry" });
 
-export interface ListSchemaRegistriesResponse {
-  /** The schema registry instances. */
-  schemaRegistries?: ReadonlyArray<SchemaRegistry>;
+export interface ListOperationsResponse {
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: ReadonlyArray<Operation>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: ReadonlyArray<string>;
 }
 
-export const ListSchemaRegistriesResponse =
+export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    schemaRegistries: Schema.optional(Schema.Array(SchemaRegistry)),
-  }).annotate({ identifier: "ListSchemaRegistriesResponse" });
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListOperationsResponse" });
 
-export interface CreateSchemaRegistryRequest {
-  /** Required. The schema registry instance ID to use for this schema registry. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (-). The maximum length is 63 characters. The ID must not start with a number. */
-  schemaRegistryId?: string;
-  /** Required. The schema registry instance to create. The name field is ignored. */
-  schemaRegistry?: SchemaRegistry;
+export interface ResumeConnectorResponse {}
+
+export const ResumeConnectorResponse: Schema.Schema<ResumeConnectorResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "ResumeConnectorResponse",
+  });
+
+export interface UpdateOptions {
+  /** Optional. If true, allows an update operation that increases the total vCPU and/or memory allocation of the cluster to significantly decrease the per-broker vCPU and/or memory allocation. This can result in reduced performance and availability. By default, the update operation will fail if an upscale request results in a vCPU or memory allocation for the brokers that is smaller than 90% of the current broker size. */
+  allowBrokerDownscaleOnClusterUpscale?: boolean;
 }
 
-export const CreateSchemaRegistryRequest =
+export const UpdateOptions: Schema.Schema<UpdateOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    schemaRegistryId: Schema.optional(Schema.String),
-    schemaRegistry: Schema.optional(SchemaRegistry),
-  }).annotate({ identifier: "CreateSchemaRegistryRequest" });
+    allowBrokerDownscaleOnClusterUpscale: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "UpdateOptions" });
+
+export interface RebalanceConfig {
+  /** Optional. The rebalance behavior for the cluster. When not specified, defaults to `NO_REBALANCE`. */
+  mode?:
+    | "MODE_UNSPECIFIED"
+    | "NO_REBALANCE"
+    | "AUTO_REBALANCE_ON_SCALE_UP"
+    | (string & {});
+}
+
+export const RebalanceConfig: Schema.Schema<RebalanceConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RebalanceConfig" });
+
+export interface CreateVersionResponse {
+  /** The unique identifier of the schema created. */
+  id?: number;
+}
+
+export const CreateVersionResponse: Schema.Schema<CreateVersionResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "CreateVersionResponse" });
+
+export interface Topic {
+  /** Required. The number of partitions this topic has. The partition count can only be increased, not decreased. Please note that if partitions are increased for a topic that has a key, the partitioning logic or the ordering of the messages will be affected. */
+  partitionCount?: number;
+  /** Required. Immutable. The number of replicas of each partition. A replication factor of 3 is recommended for high availability. */
+  replicationFactor?: number;
+  /** Identifier. The name of the topic. The `topic` segment is used when connecting directly to the cluster. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/topics/{topic} */
+  name?: string;
+  /** Optional. Configurations for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy`, `compression.type`. */
+  configs?: Record<string, string>;
+}
+
+export const Topic: Schema.Schema<Topic> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partitionCount: Schema.optional(Schema.Number),
+    replicationFactor: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    configs: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "Topic" });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface GcpConfig {
+  /** Required. Access configuration for the Kafka cluster. */
+  accessConfig?: AccessConfig;
+  /** Optional. Immutable. The Cloud KMS Key name to use for encryption. The key must be located in the same region as the cluster and cannot be changed. Structured like: projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}. */
+  kmsKey?: string;
+}
+
+export const GcpConfig: Schema.Schema<GcpConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessConfig: Schema.optional(AccessConfig),
+    kmsKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GcpConfig" });
+
+export interface BrokerDetails {
+  /** Output only. The index of the broker. */
+  brokerIndex?: string;
+  /** Output only. The node id of the broker. */
+  nodeId?: string;
+  /** Output only. The rack of the broker. */
+  rack?: string;
+}
+
+export const BrokerDetails: Schema.Schema<BrokerDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    brokerIndex: Schema.optional(Schema.String),
+    nodeId: Schema.optional(Schema.String),
+    rack: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BrokerDetails" });
+
+export interface TlsConfig {
+  /** Optional. A list of rules for mapping from SSL principal names to short names. These are applied in order by Kafka. Refer to the Apache Kafka documentation for `ssl.principal.mapping.rules` for the precise formatting details and syntax. Example: "RULE:^CN=(.*?),OU=ServiceUsers.*$/$1@example.com/,DEFAULT" This is a static Kafka broker configuration. Setting or modifying this field will trigger a rolling restart of the Kafka brokers to apply the change. An empty string means no rules are applied (Kafka default). */
+  sslPrincipalMappingRules?: string;
+  /** Optional. The configuration of the broker truststore. If specified, clients can use mTLS for authentication. */
+  trustConfig?: TrustConfig;
+}
+
+export const TlsConfig: Schema.Schema<TlsConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sslPrincipalMappingRules: Schema.optional(Schema.String),
+    trustConfig: Schema.optional(TrustConfig),
+  }).annotate({ identifier: "TlsConfig" });
+
+export interface Cluster {
+  /** Output only. Only populated when FULL view is requested. The Kafka version of the cluster. */
+  kafkaVersion?: string;
+  /** Required. Configuration properties for a Kafka cluster deployed to Google Cloud Platform. */
+  gcpConfig?: GcpConfig;
+  /** Output only. The time when the cluster was created. */
+  createTime?: string;
+  /** Optional. UpdateOptions represents options that control how updates to the cluster are applied. */
+  updateOptions?: UpdateOptions;
+  /** Identifier. The name of the cluster. Structured like: projects/{project_number}/locations/{location}/clusters/{cluster_id} */
+  name?: string;
+  /** Required. Capacity configuration for the Kafka cluster. */
+  capacityConfig?: CapacityConfig;
+  /** Optional. Labels as key value pairs. */
+  labels?: Record<string, string>;
+  /** Output only. Reserved for future use. */
+  satisfiesPzs?: boolean;
+  /** Output only. Only populated when FULL view is requested. Details of each broker in the cluster. */
+  brokerDetails?: ReadonlyArray<BrokerDetails>;
+  /** Output only. The time when the cluster was last updated. */
+  updateTime?: string;
+  /** Output only. The current state of the cluster. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "ACTIVE"
+    | "DELETING"
+    | "UPDATING"
+    | (string & {});
+  /** Output only. Reserved for future use. */
+  satisfiesPzi?: boolean;
+  /** Optional. TLS configuration for the Kafka cluster. */
+  tlsConfig?: TlsConfig;
+  /** Optional. Rebalance configuration for the Kafka cluster. */
+  rebalanceConfig?: RebalanceConfig;
+}
+
+export const Cluster: Schema.Schema<Cluster> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kafkaVersion: Schema.optional(Schema.String),
+    gcpConfig: Schema.optional(GcpConfig),
+    createTime: Schema.optional(Schema.String),
+    updateOptions: Schema.optional(UpdateOptions),
+    name: Schema.optional(Schema.String),
+    capacityConfig: Schema.optional(CapacityConfig),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    brokerDetails: Schema.optional(Schema.Array(BrokerDetails)),
+    updateTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    tlsConfig: Schema.optional(TlsConfig),
+    rebalanceConfig: Schema.optional(RebalanceConfig),
+  }).annotate({ identifier: "Cluster" });
+
+export interface ResumeConnectorRequest {}
+
+export const ResumeConnectorRequest: Schema.Schema<ResumeConnectorRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "ResumeConnectorRequest",
+  });
+
+export interface SchemaVersion {
+  /** Required. The subject of the version. */
+  subject?: string;
+  /** Optional. The schema type of the schema. */
+  schemaType?:
+    | "SCHEMA_TYPE_UNSPECIFIED"
+    | "AVRO"
+    | "JSON"
+    | "PROTOBUF"
+    | (string & {});
+  /** Required. The version ID */
+  version?: number;
+  /** Required. The schema ID. */
+  id?: number;
+  /** Optional. The schema references used by the schema. */
+  references?: ReadonlyArray<SchemaReference>;
+  /** Required. The schema payload. */
+  schema?: string;
+}
+
+export const SchemaVersion: Schema.Schema<SchemaVersion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subject: Schema.optional(Schema.String),
+    schemaType: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.Number),
+    id: Schema.optional(Schema.Number),
+    references: Schema.optional(Schema.Array(SchemaReference)),
+    schema: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SchemaVersion" });
+
+export interface UpdateSchemaModeRequest {
+  /** Required. The mode type. */
+  mode?: "NONE" | "READONLY" | "READWRITE" | "IMPORT" | (string & {});
+}
+
+export const UpdateSchemaModeRequest: Schema.Schema<UpdateSchemaModeRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateSchemaModeRequest" });
+
+export interface RemoveAclEntryResponse {
+  /** The updated acl. Returned if the removed acl entry was not the last entry in the acl. */
+  acl?: Acl;
+  /** Returned with value true if the removed acl entry was the last entry in the acl, resulting in acl deletion. */
+  aclDeleted?: boolean;
+}
+
+export const RemoveAclEntryResponse: Schema.Schema<RemoveAclEntryResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    acl: Schema.optional(Acl),
+    aclDeleted: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "RemoveAclEntryResponse" });
+
+export interface ListConsumerGroupsResponse {
+  /** The list of consumer group in the requested parent. The order of the consumer groups is unspecified. */
+  consumerGroups?: ReadonlyArray<ConsumerGroup>;
+  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
+  nextPageToken?: string;
+}
+
+export const ListConsumerGroupsResponse: Schema.Schema<ListConsumerGroupsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consumerGroups: Schema.optional(Schema.Array(ConsumerGroup)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListConsumerGroupsResponse" });
+
+export interface AddAclEntryResponse {
+  /** The updated acl. */
+  acl?: Acl;
+  /** Whether the acl was created as a result of adding the acl entry. */
+  aclCreated?: boolean;
+}
+
+export const AddAclEntryResponse: Schema.Schema<AddAclEntryResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    acl: Schema.optional(Acl),
+    aclCreated: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AddAclEntryResponse" });
+
+export interface ListClustersResponse {
+  /** The list of Clusters in the requested parent. */
+  clusters?: ReadonlyArray<Cluster>;
+  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+}
+
+export const ListClustersResponse: Schema.Schema<ListClustersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusters: Schema.optional(Schema.Array(Cluster)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListClustersResponse" });
+
+export interface StopConnectorResponse {}
+
+export const StopConnectorResponse: Schema.Schema<StopConnectorResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "StopConnectorResponse",
+  });
+
+export interface Managedkafka_Schema {
+  /** Optional. The schema references used by the schema. */
+  references?: ReadonlyArray<SchemaReference>;
+  /** The schema payload. */
+  schema?: string;
+  /** Optional. The schema type of the schema. */
+  schemaType?:
+    | "SCHEMA_TYPE_UNSPECIFIED"
+    | "AVRO"
+    | "JSON"
+    | "PROTOBUF"
+    | (string & {});
+}
+
+export const Managedkafka_Schema: Schema.Schema<Managedkafka_Schema> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    references: Schema.optional(Schema.Array(SchemaReference)),
+    schema: Schema.optional(Schema.String),
+    schemaType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Managedkafka_Schema" });
 
 export interface Context {
   /** Identifier. The name of the context. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}` The context name {context} can contain the following: * Up to 255 characters. * Allowed characters: letters (uppercase or lowercase), numbers, and the following special characters: `.`, `-`, `_`, `+`, `%`, and `~`. */
@@ -705,217 +862,22 @@ export interface Context {
   subjects?: ReadonlyArray<string>;
 }
 
-export const Context = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  subjects: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "Context" });
-
-export interface HttpBody {
-  /** The HTTP Content-Type header value specifying the content type of the body. */
-  contentType?: string;
-  /** The HTTP request/response body as raw binary. */
-  data?: string;
-  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: ReadonlyArray<Record<string, unknown>>;
-}
-
-export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  contentType: Schema.optional(Schema.String),
-  data: Schema.optional(Schema.String),
-  extensions: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-}).annotate({ identifier: "HttpBody" });
-
-export interface SchemaReference {
-  /** Required. The name of the reference. */
-  name?: string;
-  /** Required. The subject of the reference. */
-  subject?: string;
-  /** Required. The version of the reference. */
-  version?: number;
-}
-
-export const SchemaReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  subject: Schema.optional(Schema.String),
-  version: Schema.optional(Schema.Number),
-}).annotate({ identifier: "SchemaReference" });
-
-export interface Managedkafka_Schema {
-  /** Optional. The schema type of the schema. */
-  schemaType?:
-    | "SCHEMA_TYPE_UNSPECIFIED"
-    | "AVRO"
-    | "JSON"
-    | "PROTOBUF"
-    | (string & {});
-  /** The schema payload. */
-  schema?: string;
-  /** Optional. The schema references used by the schema. */
-  references?: ReadonlyArray<SchemaReference>;
-}
-
-export const Managedkafka_Schema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  schemaType: Schema.optional(Schema.String),
-  schema: Schema.optional(Schema.String),
-  references: Schema.optional(Schema.Array(SchemaReference)),
-}).annotate({ identifier: "Managedkafka_Schema" });
-
-export interface LookupVersionRequest {
-  /** Optional. The schema type of the schema. */
-  schemaType?:
-    | "SCHEMA_TYPE_UNSPECIFIED"
-    | "AVRO"
-    | "JSON"
-    | "PROTOBUF"
-    | (string & {});
-  /** Required. The schema payload */
-  schema?: string;
-  /** Optional. The schema references used by the schema. */
-  references?: ReadonlyArray<SchemaReference>;
-  /** Optional. If true, the schema will be normalized before being looked up. The default is false. */
-  normalize?: boolean;
-  /** Optional. If true, soft-deleted versions will be included in lookup, no matter if the subject is active or soft-deleted. If false, soft-deleted versions will be excluded. The default is false. */
-  deleted?: boolean;
-}
-
-export const LookupVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  schemaType: Schema.optional(Schema.String),
-  schema: Schema.optional(Schema.String),
-  references: Schema.optional(Schema.Array(SchemaReference)),
-  normalize: Schema.optional(Schema.Boolean),
-  deleted: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "LookupVersionRequest" });
-
-export interface SchemaVersion {
-  /** Required. The subject of the version. */
-  subject?: string;
-  /** Required. The version ID */
-  version?: number;
-  /** Required. The schema ID. */
-  id?: number;
-  /** Optional. The schema type of the schema. */
-  schemaType?:
-    | "SCHEMA_TYPE_UNSPECIFIED"
-    | "AVRO"
-    | "JSON"
-    | "PROTOBUF"
-    | (string & {});
-  /** Required. The schema payload. */
-  schema?: string;
-  /** Optional. The schema references used by the schema. */
-  references?: ReadonlyArray<SchemaReference>;
-}
-
-export const SchemaVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  subject: Schema.optional(Schema.String),
-  version: Schema.optional(Schema.Number),
-  id: Schema.optional(Schema.Number),
-  schemaType: Schema.optional(Schema.String),
-  schema: Schema.optional(Schema.String),
-  references: Schema.optional(Schema.Array(SchemaReference)),
-}).annotate({ identifier: "SchemaVersion" });
-
-export interface CreateVersionRequest {
-  /** Optional. The version to create. It is optional. If not specified, the version will be created with the max version ID of the subject increased by 1. If the version ID is specified, it will be used as the new version ID and must not be used by an existing version of the subject. */
-  version?: number;
-  /** Optional. The schema ID of the schema. If not specified, the schema ID will be generated by the server. If the schema ID is specified, it must not be used by an existing schema that is different from the schema to be created. */
-  id?: number;
-  /** Optional. The type of the schema. It is optional. If not specified, the schema type will be AVRO. */
-  schemaType?:
-    | "SCHEMA_TYPE_UNSPECIFIED"
-    | "AVRO"
-    | "JSON"
-    | "PROTOBUF"
-    | (string & {});
-  /** Required. The schema payload */
-  schema?: string;
-  /** Optional. The schema references used by the schema. */
-  references?: ReadonlyArray<SchemaReference>;
-  /** Optional. If true, the schema will be normalized before being stored. The default is false. */
-  normalize?: boolean;
-}
-
-export const CreateVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  version: Schema.optional(Schema.Number),
-  id: Schema.optional(Schema.Number),
-  schemaType: Schema.optional(Schema.String),
-  schema: Schema.optional(Schema.String),
-  references: Schema.optional(Schema.Array(SchemaReference)),
-  normalize: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "CreateVersionRequest" });
-
-export interface CreateVersionResponse {
-  /** The unique identifier of the schema created. */
-  id?: number;
-}
-
-export const CreateVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.Number),
-}).annotate({ identifier: "CreateVersionResponse" });
-
-export interface CheckCompatibilityRequest {
-  /** Optional. The schema type of the schema. */
-  schemaType?:
-    | "SCHEMA_TYPE_UNSPECIFIED"
-    | "AVRO"
-    | "JSON"
-    | "PROTOBUF"
-    | (string & {});
-  /** Required. The schema payload */
-  schema?: string;
-  /** Optional. The schema references used by the schema. */
-  references?: ReadonlyArray<SchemaReference>;
-  /** Optional. If true, the response will contain the compatibility check result with reasons for failed checks. The default is false. */
-  verbose?: boolean;
-}
-
-export const CheckCompatibilityRequest =
+export const Context: Schema.Schema<Context> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    schemaType: Schema.optional(Schema.String),
-    schema: Schema.optional(Schema.String),
-    references: Schema.optional(Schema.Array(SchemaReference)),
-    verbose: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "CheckCompatibilityRequest" });
+    name: Schema.optional(Schema.String),
+    subjects: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "Context" });
 
-export interface CheckCompatibilityResponse {
-  /** The compatibility check result. If true, the schema is compatible with the resource. */
-  is_compatible?: boolean;
-  /** Failure reasons if verbose = true. */
-  messages?: ReadonlyArray<string>;
-}
+export interface RestartConnectorResponse {}
 
-export const CheckCompatibilityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    is_compatible: Schema.optional(Schema.Boolean),
-    messages: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "CheckCompatibilityResponse" });
-
-export interface SchemaConfig {
-  /** Required. The compatibility type of the schema. The default value is BACKWARD. If unset in a SchemaSubject-level SchemaConfig, defaults to the global value. If unset in a SchemaRegistry-level SchemaConfig, reverts to the default value. */
-  compatibility?:
-    | "NONE"
-    | "BACKWARD"
-    | "BACKWARD_TRANSITIVE"
-    | "FORWARD"
-    | "FORWARD_TRANSITIVE"
-    | "FULL"
-    | "FULL_TRANSITIVE"
-    | (string & {});
-  /** Optional. If true, the schema will be normalized before being stored or looked up. The default is false. If unset in a SchemaSubject-level SchemaConfig, the global value will be used. If unset in a SchemaRegistry-level SchemaConfig, reverts to the default value. */
-  normalize?: boolean;
-  /** Optional. The subject to which this subject is an alias of. Only applicable for subject config. */
-  alias?: string;
-}
-
-export const SchemaConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  compatibility: Schema.optional(Schema.String),
-  normalize: Schema.optional(Schema.Boolean),
-  alias: Schema.optional(Schema.String),
-}).annotate({ identifier: "SchemaConfig" });
+export const RestartConnectorResponse: Schema.Schema<RestartConnectorResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "RestartConnectorResponse",
+  });
 
 export interface UpdateSchemaConfigRequest {
+  /** Optional. If true, the schema will be normalized before being stored or looked up. The default is false. Cannot be unset for a SchemaRegistry-level SchemaConfig. If unset on a SchemaSubject-level SchemaConfig, removes the normalize field for the SchemaConfig. */
+  normalize?: boolean;
   /** Required. The compatibility type of the schemas. Cannot be unset for a SchemaRegistry-level SchemaConfig. If unset on a SchemaSubject-level SchemaConfig, removes the compatibility field for the SchemaConfig. */
   compatibility?:
     | "NONE"
@@ -926,14 +888,12 @@ export interface UpdateSchemaConfigRequest {
     | "FULL"
     | "FULL_TRANSITIVE"
     | (string & {});
-  /** Optional. If true, the schema will be normalized before being stored or looked up. The default is false. Cannot be unset for a SchemaRegistry-level SchemaConfig. If unset on a SchemaSubject-level SchemaConfig, removes the normalize field for the SchemaConfig. */
-  normalize?: boolean;
 }
 
-export const UpdateSchemaConfigRequest =
+export const UpdateSchemaConfigRequest: Schema.Schema<UpdateSchemaConfigRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    compatibility: Schema.optional(Schema.String),
     normalize: Schema.optional(Schema.Boolean),
+    compatibility: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpdateSchemaConfigRequest" });
 
 export interface SchemaMode {
@@ -941,46 +901,135 @@ export interface SchemaMode {
   mode?: "NONE" | "READONLY" | "READWRITE" | "IMPORT" | (string & {});
 }
 
-export const SchemaMode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  mode: Schema.optional(Schema.String),
-}).annotate({ identifier: "SchemaMode" });
-
-export interface UpdateSchemaModeRequest {
-  /** Required. The mode type. */
-  mode?: "NONE" | "READONLY" | "READWRITE" | "IMPORT" | (string & {});
-}
-
-export const UpdateSchemaModeRequest =
+export const SchemaMode: Schema.Schema<SchemaMode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mode: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UpdateSchemaModeRequest" });
+  }).annotate({ identifier: "SchemaMode" });
 
-export interface OperationMetadata {
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
+export interface ListSchemaRegistriesResponse {
+  /** The schema registry instances. */
+  schemaRegistries?: ReadonlyArray<SchemaRegistry>;
 }
 
-export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  createTime: Schema.optional(Schema.String),
-  endTime: Schema.optional(Schema.String),
-  target: Schema.optional(Schema.String),
-  verb: Schema.optional(Schema.String),
-  statusMessage: Schema.optional(Schema.String),
-  requestedCancellation: Schema.optional(Schema.Boolean),
-  apiVersion: Schema.optional(Schema.String),
-}).annotate({ identifier: "OperationMetadata" });
+export const ListSchemaRegistriesResponse: Schema.Schema<ListSchemaRegistriesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaRegistries: Schema.optional(Schema.Array(SchemaRegistry)),
+  }).annotate({ identifier: "ListSchemaRegistriesResponse" });
+
+export interface HttpBody {
+  /** The HTTP Content-Type header value specifying the content type of the body. */
+  contentType?: string;
+  /** The HTTP request/response body as raw binary. */
+  data?: string;
+  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
+  extensions?: ReadonlyArray<Record<string, unknown>>;
+}
+
+export const HttpBody: Schema.Schema<HttpBody> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentType: Schema.optional(Schema.String),
+    data: Schema.optional(Schema.String),
+    extensions: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "HttpBody" });
+
+export interface RestartConnectorRequest {}
+
+export const RestartConnectorRequest: Schema.Schema<RestartConnectorRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "RestartConnectorRequest",
+  });
+
+export interface LookupVersionRequest {
+  /** Optional. The schema references used by the schema. */
+  references?: ReadonlyArray<SchemaReference>;
+  /** Optional. If true, soft-deleted versions will be included in lookup, no matter if the subject is active or soft-deleted. If false, soft-deleted versions will be excluded. The default is false. */
+  deleted?: boolean;
+  /** Required. The schema payload */
+  schema?: string;
+  /** Optional. The schema type of the schema. */
+  schemaType?:
+    | "SCHEMA_TYPE_UNSPECIFIED"
+    | "AVRO"
+    | "JSON"
+    | "PROTOBUF"
+    | (string & {});
+  /** Optional. If true, the schema will be normalized before being looked up. The default is false. */
+  normalize?: boolean;
+}
+
+export const LookupVersionRequest: Schema.Schema<LookupVersionRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    references: Schema.optional(Schema.Array(SchemaReference)),
+    deleted: Schema.optional(Schema.Boolean),
+    schema: Schema.optional(Schema.String),
+    schemaType: Schema.optional(Schema.String),
+    normalize: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "LookupVersionRequest" });
+
+export interface CreateSchemaRegistryRequest {
+  /** Required. The schema registry instance ID to use for this schema registry. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (-). The maximum length is 63 characters. The ID must not start with a number. */
+  schemaRegistryId?: string;
+  /** Required. The schema registry instance to create. The name field is ignored. */
+  schemaRegistry?: SchemaRegistry;
+}
+
+export const CreateSchemaRegistryRequest: Schema.Schema<CreateSchemaRegistryRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaRegistryId: Schema.optional(Schema.String),
+    schemaRegistry: Schema.optional(SchemaRegistry),
+  }).annotate({ identifier: "CreateSchemaRegistryRequest" });
+
+export interface SchemaConfig {
+  /** Optional. If true, the schema will be normalized before being stored or looked up. The default is false. If unset in a SchemaSubject-level SchemaConfig, the global value will be used. If unset in a SchemaRegistry-level SchemaConfig, reverts to the default value. */
+  normalize?: boolean;
+  /** Optional. The subject to which this subject is an alias of. Only applicable for subject config. */
+  alias?: string;
+  /** Required. The compatibility type of the schema. The default value is BACKWARD. If unset in a SchemaSubject-level SchemaConfig, defaults to the global value. If unset in a SchemaRegistry-level SchemaConfig, reverts to the default value. */
+  compatibility?:
+    | "NONE"
+    | "BACKWARD"
+    | "BACKWARD_TRANSITIVE"
+    | "FORWARD"
+    | "FORWARD_TRANSITIVE"
+    | "FULL"
+    | "FULL_TRANSITIVE"
+    | (string & {});
+}
+
+export const SchemaConfig: Schema.Schema<SchemaConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    normalize: Schema.optional(Schema.Boolean),
+    alias: Schema.optional(Schema.String),
+    compatibility: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SchemaConfig" });
+
+export interface ListTopicsResponse {
+  /** The list of topics in the requested parent. The order of the topics is unspecified. */
+  topics?: ReadonlyArray<Topic>;
+  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
+  nextPageToken?: string;
+}
+
+export const ListTopicsResponse: Schema.Schema<ListTopicsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    topics: Schema.optional(Schema.Array(Topic)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTopicsResponse" });
+
+export interface ListConnectorsResponse {
+  /** The list of connectors in the requested parent. */
+  connectors?: ReadonlyArray<Connector>;
+  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
+  nextPageToken?: string;
+}
+
+export const ListConnectorsResponse: Schema.Schema<ListConnectorsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectors: Schema.optional(Schema.Array(Connector)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListConnectorsResponse" });
 
 // ==========================================================================
 // Errors
@@ -1037,23 +1086,23 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 
 export interface ListProjectsLocationsRequest {
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
   /** The resource that owns the locations collection, if applicable. */
   name: string;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
-  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
 }
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
@@ -1069,7 +1118,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
-/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -1116,58 +1165,6 @@ export const getProjectsLocations: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface ListProjectsLocationsOperationsRequest {
-  /** The name of the operation's parent resource. */
-  name: string;
-  /** The standard list filter. */
-  filter?: string;
-  /** The standard list page size. */
-  pageSize?: number;
-  /** The standard list page token. */
-  pageToken?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
-}
-
-export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("returnPartialSuccess"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
-
-export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
-export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
-
-export type ListProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
-export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
-  ListProjectsLocationsOperationsRequest,
-  ListProjectsLocationsOperationsResponse,
-  ListProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
@@ -1200,6 +1197,58 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsOperationsRequest {
+  /** The standard list page token. */
+  pageToken?: string;
+  /** The standard list page size. */
+  pageSize?: number;
+  /** The name of the operation's parent resource. */
+  name: string;
+  /** The standard list filter. */
+  filter?: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
+}
+
+export const ListProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+
+export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
+export const ListProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
+export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
+  ListProjectsLocationsOperationsRequest,
+  ListProjectsLocationsOperationsResponse,
+  ListProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -1277,26 +1326,71 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface PatchProjectsLocationsClustersRequest {
+  /** Required. Field mask is used to specify the fields to be overwritten in the cluster resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. The mask is required and a value of * will update all fields. */
+  updateMask?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID to avoid duplication of requests. If a request times out or fails, retrying with the same ID allows the server to recognize the previous attempt. For at least 60 minutes, the server ignores duplicate requests bearing the same ID. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID within 60 minutes of the last request, the server checks if an original operation with the same request ID was received. If so, the server ignores the second request. The request ID must be a valid UUID. A zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Identifier. The name of the cluster. Structured like: projects/{project_number}/locations/{location}/clusters/{cluster_id} */
+  name: string;
+  /** Request body */
+  body?: Cluster;
+}
+
+export const PatchProjectsLocationsClustersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Cluster).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsClustersRequest>;
+
+export type PatchProjectsLocationsClustersResponse = Operation;
+export const PatchProjectsLocationsClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the properties of a single cluster. */
+export const patchProjectsLocationsClusters: API.OperationMethod<
+  PatchProjectsLocationsClustersRequest,
+  PatchProjectsLocationsClustersResponse,
+  PatchProjectsLocationsClustersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsClustersRequest,
+  output: PatchProjectsLocationsClustersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ListProjectsLocationsClustersRequest {
-  /** Required. The parent location whose clusters are to be listed. Structured like `projects/{project}/locations/{location}`. */
-  parent: string;
   /** Optional. The maximum number of clusters to return. The service may return fewer than this value. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
-  /** Optional. A page token, received from a previous `ListClusters` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListClusters` must match the call that provided the page token. */
-  pageToken?: string;
   /** Optional. Filter expression for the result. */
   filter?: string;
   /** Optional. Order by fields for the result. */
   orderBy?: string;
+  /** Required. The parent location whose clusters are to be listed. Structured like `projects/{project}/locations/{location}`. */
+  parent: string;
+  /** Optional. A page token, received from a previous `ListClusters` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListClusters` must match the call that provided the page token. */
+  pageToken?: string;
 }
 
 export const ListProjectsLocationsClustersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/clusters" }),
     svc,
@@ -1327,21 +1421,60 @@ export const listProjectsLocationsClusters: API.PaginatedOperationMethod<
   },
 }));
 
-export interface GetProjectsLocationsClustersRequest {
-  /** Required. The name of the cluster whose configuration to return. */
+export interface DeleteProjectsLocationsClustersRequest {
+  /** Required. The name of the cluster to delete. */
   name: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID to avoid duplication of requests. If a request times out or fails, retrying with the same ID allows the server to recognize the previous attempt. For at least 60 minutes, the server ignores duplicate requests bearing the same ID. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID within 60 minutes of the last request, the server checks if an original operation with the same request ID was received. If so, the server ignores the second request. The request ID must be a valid UUID. A zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+}
+
+export const DeleteProjectsLocationsClustersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsClustersRequest>;
+
+export type DeleteProjectsLocationsClustersResponse = Operation;
+export const DeleteProjectsLocationsClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a single cluster. */
+export const deleteProjectsLocationsClusters: API.OperationMethod<
+  DeleteProjectsLocationsClustersRequest,
+  DeleteProjectsLocationsClustersResponse,
+  DeleteProjectsLocationsClustersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsClustersRequest,
+  output: DeleteProjectsLocationsClustersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsClustersRequest {
   /** Optional. Specifies the view of the Cluster resource to be returned. Defaults to CLUSTER_VIEW_BASIC. See the ClusterView enum for possible values. */
   view?:
     | "CLUSTER_VIEW_UNSPECIFIED"
     | "CLUSTER_VIEW_BASIC"
     | "CLUSTER_VIEW_FULL"
     | (string & {});
+  /** Required. The name of the cluster whose configuration to return. */
+  name: string;
 }
 
 export const GetProjectsLocationsClustersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+    name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
@@ -1413,104 +1546,62 @@ export const createProjectsLocationsClusters: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchProjectsLocationsClustersRequest {
-  /** Identifier. The name of the cluster. Structured like: projects/{project_number}/locations/{location}/clusters/{cluster_id} */
+export interface PatchProjectsLocationsClustersTopicsRequest {
+  /** Identifier. The name of the topic. The `topic` segment is used when connecting directly to the cluster. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/topics/{topic} */
   name: string;
-  /** Required. Field mask is used to specify the fields to be overwritten in the cluster resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. The mask is required and a value of * will update all fields. */
+  /** Required. Field mask is used to specify the fields to be overwritten in the Topic resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. The mask is required and a value of * will update all fields. */
   updateMask?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID to avoid duplication of requests. If a request times out or fails, retrying with the same ID allows the server to recognize the previous attempt. For at least 60 minutes, the server ignores duplicate requests bearing the same ID. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID within 60 minutes of the last request, the server checks if an original operation with the same request ID was received. If so, the server ignores the second request. The request ID must be a valid UUID. A zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Request body */
-  body?: Cluster;
+  body?: Topic;
 }
 
-export const PatchProjectsLocationsClustersRequest =
+export const PatchProjectsLocationsClustersTopicsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    body: Schema.optional(Cluster).pipe(T.HttpBody()),
+    body: Schema.optional(Topic).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsClustersRequest>;
+  ) as unknown as Schema.Schema<PatchProjectsLocationsClustersTopicsRequest>;
 
-export type PatchProjectsLocationsClustersResponse = Operation;
-export const PatchProjectsLocationsClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type PatchProjectsLocationsClustersTopicsResponse = Topic;
+export const PatchProjectsLocationsClustersTopicsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Topic;
 
-export type PatchProjectsLocationsClustersError =
+export type PatchProjectsLocationsClustersTopicsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates the properties of a single cluster. */
-export const patchProjectsLocationsClusters: API.OperationMethod<
-  PatchProjectsLocationsClustersRequest,
-  PatchProjectsLocationsClustersResponse,
-  PatchProjectsLocationsClustersError,
+/** Updates the properties of a single topic. */
+export const patchProjectsLocationsClustersTopics: API.OperationMethod<
+  PatchProjectsLocationsClustersTopicsRequest,
+  PatchProjectsLocationsClustersTopicsResponse,
+  PatchProjectsLocationsClustersTopicsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsClustersRequest,
-  output: PatchProjectsLocationsClustersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsClustersRequest {
-  /** Required. The name of the cluster to delete. */
-  name: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID to avoid duplication of requests. If a request times out or fails, retrying with the same ID allows the server to recognize the previous attempt. For at least 60 minutes, the server ignores duplicate requests bearing the same ID. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID within 60 minutes of the last request, the server checks if an original operation with the same request ID was received. If so, the server ignores the second request. The request ID must be a valid UUID. A zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-}
-
-export const DeleteProjectsLocationsClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsClustersRequest>;
-
-export type DeleteProjectsLocationsClustersResponse = Operation;
-export const DeleteProjectsLocationsClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsClustersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a single cluster. */
-export const deleteProjectsLocationsClusters: API.OperationMethod<
-  DeleteProjectsLocationsClustersRequest,
-  DeleteProjectsLocationsClustersResponse,
-  DeleteProjectsLocationsClustersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsClustersRequest,
-  output: DeleteProjectsLocationsClustersResponse,
+  input: PatchProjectsLocationsClustersTopicsRequest,
+  output: PatchProjectsLocationsClustersTopicsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsClustersTopicsRequest {
   /** Required. The parent cluster whose topics are to be listed. Structured like `projects/{project}/locations/{location}/clusters/{cluster}`. */
   parent: string;
-  /** Optional. The maximum number of topics to return. The service may return fewer than this value. If unset or zero, all topics for the parent is returned. */
-  pageSize?: number;
   /** Optional. A page token, received from a previous `ListTopics` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopics` must match the call that provided the page token. */
   pageToken?: string;
+  /** Optional. The maximum number of topics to return. The service may return fewer than this value. If unset or zero, all topics for the parent is returned. */
+  pageSize?: number;
 }
 
 export const ListProjectsLocationsClustersTopicsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/topics" }),
     svc,
@@ -1539,6 +1630,42 @@ export const listProjectsLocationsClustersTopics: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
+}));
+
+export interface DeleteProjectsLocationsClustersTopicsRequest {
+  /** Required. The name of the topic to delete. `projects/{project}/locations/{location}/clusters/{cluster}/topics/{topic}`. */
+  name: string;
+}
+
+export const DeleteProjectsLocationsClustersTopicsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsClustersTopicsRequest>;
+
+export type DeleteProjectsLocationsClustersTopicsResponse = Empty;
+export const DeleteProjectsLocationsClustersTopicsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsClustersTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a single topic. */
+export const deleteProjectsLocationsClustersTopics: API.OperationMethod<
+  DeleteProjectsLocationsClustersTopicsRequest,
+  DeleteProjectsLocationsClustersTopicsResponse,
+  DeleteProjectsLocationsClustersTopicsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsClustersTopicsRequest,
+  output: DeleteProjectsLocationsClustersTopicsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsClustersTopicsRequest {
@@ -1615,139 +1742,6 @@ export const createProjectsLocationsClustersTopics: API.OperationMethod<
   input: CreateProjectsLocationsClustersTopicsRequest,
   output: CreateProjectsLocationsClustersTopicsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsLocationsClustersTopicsRequest {
-  /** Identifier. The name of the topic. The `topic` segment is used when connecting directly to the cluster. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/topics/{topic} */
-  name: string;
-  /** Required. Field mask is used to specify the fields to be overwritten in the Topic resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. The mask is required and a value of * will update all fields. */
-  updateMask?: string;
-  /** Request body */
-  body?: Topic;
-}
-
-export const PatchProjectsLocationsClustersTopicsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Topic).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsClustersTopicsRequest>;
-
-export type PatchProjectsLocationsClustersTopicsResponse = Topic;
-export const PatchProjectsLocationsClustersTopicsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Topic;
-
-export type PatchProjectsLocationsClustersTopicsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the properties of a single topic. */
-export const patchProjectsLocationsClustersTopics: API.OperationMethod<
-  PatchProjectsLocationsClustersTopicsRequest,
-  PatchProjectsLocationsClustersTopicsResponse,
-  PatchProjectsLocationsClustersTopicsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsClustersTopicsRequest,
-  output: PatchProjectsLocationsClustersTopicsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsClustersTopicsRequest {
-  /** Required. The name of the topic to delete. `projects/{project}/locations/{location}/clusters/{cluster}/topics/{topic}`. */
-  name: string;
-}
-
-export const DeleteProjectsLocationsClustersTopicsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsClustersTopicsRequest>;
-
-export type DeleteProjectsLocationsClustersTopicsResponse = Empty;
-export const DeleteProjectsLocationsClustersTopicsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsClustersTopicsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a single topic. */
-export const deleteProjectsLocationsClustersTopics: API.OperationMethod<
-  DeleteProjectsLocationsClustersTopicsRequest,
-  DeleteProjectsLocationsClustersTopicsResponse,
-  DeleteProjectsLocationsClustersTopicsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsClustersTopicsRequest,
-  output: DeleteProjectsLocationsClustersTopicsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsClustersConsumerGroupsRequest {
-  /** Required. The parent cluster whose consumer groups are to be listed. Structured like `projects/{project}/locations/{location}/clusters/{cluster}`. */
-  parent: string;
-  /** Optional. The maximum number of consumer groups to return. The service may return fewer than this value. If unset or zero, all consumer groups for the parent is returned. */
-  pageSize?: number;
-  /** Optional. A page token, received from a previous `ListConsumerGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConsumerGroups` must match the call that provided the page token. */
-  pageToken?: string;
-  /** Optional. Specifies the view (BASIC or FULL) of the ConsumerGroup resource to be returned in the response. Defaults to FULL view. */
-  view?:
-    | "CONSUMER_GROUP_VIEW_UNSPECIFIED"
-    | "CONSUMER_GROUP_VIEW_BASIC"
-    | "CONSUMER_GROUP_VIEW_FULL"
-    | (string & {});
-  /** Optional. Filter expression for the result. Only supports filtering by topic name as a key in the `topics` map. */
-  filter?: string;
-}
-
-export const ListProjectsLocationsClustersConsumerGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/consumerGroups" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsClustersConsumerGroupsRequest>;
-
-export type ListProjectsLocationsClustersConsumerGroupsResponse =
-  ListConsumerGroupsResponse;
-export const ListProjectsLocationsClustersConsumerGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListConsumerGroupsResponse;
-
-export type ListProjectsLocationsClustersConsumerGroupsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists the consumer groups in a given cluster. */
-export const listProjectsLocationsClustersConsumerGroups: API.PaginatedOperationMethod<
-  ListProjectsLocationsClustersConsumerGroupsRequest,
-  ListProjectsLocationsClustersConsumerGroupsResponse,
-  ListProjectsLocationsClustersConsumerGroupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsClustersConsumerGroupsRequest,
-  output: ListProjectsLocationsClustersConsumerGroupsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
 export interface GetProjectsLocationsClustersConsumerGroupsRequest {
@@ -1827,6 +1821,61 @@ export const patchProjectsLocationsClustersConsumerGroups: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface ListProjectsLocationsClustersConsumerGroupsRequest {
+  /** Optional. The maximum number of consumer groups to return. The service may return fewer than this value. If unset or zero, all consumer groups for the parent is returned. */
+  pageSize?: number;
+  /** Optional. Filter expression for the result. Only supports filtering by topic name as a key in the `topics` map. */
+  filter?: string;
+  /** Required. The parent cluster whose consumer groups are to be listed. Structured like `projects/{project}/locations/{location}/clusters/{cluster}`. */
+  parent: string;
+  /** Optional. A page token, received from a previous `ListConsumerGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConsumerGroups` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Specifies the view (BASIC or FULL) of the ConsumerGroup resource to be returned in the response. Defaults to FULL view. */
+  view?:
+    | "CONSUMER_GROUP_VIEW_UNSPECIFIED"
+    | "CONSUMER_GROUP_VIEW_BASIC"
+    | "CONSUMER_GROUP_VIEW_FULL"
+    | (string & {});
+}
+
+export const ListProjectsLocationsClustersConsumerGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/consumerGroups" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsClustersConsumerGroupsRequest>;
+
+export type ListProjectsLocationsClustersConsumerGroupsResponse =
+  ListConsumerGroupsResponse;
+export const ListProjectsLocationsClustersConsumerGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListConsumerGroupsResponse;
+
+export type ListProjectsLocationsClustersConsumerGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the consumer groups in a given cluster. */
+export const listProjectsLocationsClustersConsumerGroups: API.PaginatedOperationMethod<
+  ListProjectsLocationsClustersConsumerGroupsRequest,
+  ListProjectsLocationsClustersConsumerGroupsResponse,
+  ListProjectsLocationsClustersConsumerGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsClustersConsumerGroupsRequest,
+  output: ListProjectsLocationsClustersConsumerGroupsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
 export interface DeleteProjectsLocationsClustersConsumerGroupsRequest {
   /** Required. The name of the consumer group to delete. `projects/{project}/locations/{location}/clusters/{cluster}/consumerGroups/{consumerGroup}`. */
   name: string;
@@ -1863,123 +1912,43 @@ export const deleteProjectsLocationsClustersConsumerGroups: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsLocationsClustersAclsRequest {
-  /** Required. The parent cluster whose acls are to be listed. Structured like `projects/{project}/locations/{location}/clusters/{cluster}`. */
-  parent: string;
-  /** Optional. The maximum number of acls to return. The service may return fewer than this value. If unset or zero, all acls for the parent is returned. */
-  pageSize?: number;
-  /** Optional. A page token, received from a previous `ListAcls` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAcls` must match the call that provided the page token. */
-  pageToken?: string;
-}
-
-export const ListProjectsLocationsClustersAclsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/acls" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsClustersAclsRequest>;
-
-export type ListProjectsLocationsClustersAclsResponse = ListAclsResponse;
-export const ListProjectsLocationsClustersAclsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAclsResponse;
-
-export type ListProjectsLocationsClustersAclsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists the acls in a given cluster. */
-export const listProjectsLocationsClustersAcls: API.PaginatedOperationMethod<
-  ListProjectsLocationsClustersAclsRequest,
-  ListProjectsLocationsClustersAclsResponse,
-  ListProjectsLocationsClustersAclsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsClustersAclsRequest,
-  output: ListProjectsLocationsClustersAclsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsLocationsClustersAclsRequest {
-  /** Required. The name of the acl to return. Structured like: `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. See `Acl.name` for details. */
-  name: string;
-}
-
-export const GetProjectsLocationsClustersAclsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsClustersAclsRequest>;
-
-export type GetProjectsLocationsClustersAclsResponse = Acl;
-export const GetProjectsLocationsClustersAclsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Acl;
-
-export type GetProjectsLocationsClustersAclsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns the properties of a single acl. */
-export const getProjectsLocationsClustersAcls: API.OperationMethod<
-  GetProjectsLocationsClustersAclsRequest,
-  GetProjectsLocationsClustersAclsResponse,
-  GetProjectsLocationsClustersAclsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsClustersAclsRequest,
-  output: GetProjectsLocationsClustersAclsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateProjectsLocationsClustersAclsRequest {
-  /** Required. The parent cluster in which to create the acl. Structured like `projects/{project}/locations/{location}/clusters/{cluster}`. */
-  parent: string;
-  /** Required. The ID to use for the acl, which will become the final component of the acl's name. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. `acl_id` is structured like one of the following: For acls on the cluster: `cluster` For acls on a single resource within the cluster: `topic/{resource_name}` `consumerGroup/{resource_name}` `transactionalId/{resource_name}` For acls on all resources that match a prefix: `topicPrefixed/{resource_name}` `consumerGroupPrefixed/{resource_name}` `transactionalIdPrefixed/{resource_name}` For acls on all resources of a given type (i.e. the wildcard literal "*"): `allTopics` (represents `topic/*`) `allConsumerGroups` (represents `consumerGroup/*`) `allTransactionalIds` (represents `transactionalId/*`) */
-  aclId?: string;
+export interface AddAclEntryProjectsLocationsClustersAclsRequest {
+  /** Required. The name of the acl to add the acl entry to. Structured like: `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. See `Acl.name` for details. */
+  acl: string;
   /** Request body */
-  body?: Acl;
+  body?: AclEntry;
 }
 
-export const CreateProjectsLocationsClustersAclsRequest =
+export const AddAclEntryProjectsLocationsClustersAclsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    aclId: Schema.optional(Schema.String).pipe(T.HttpQuery("aclId")),
-    body: Schema.optional(Acl).pipe(T.HttpBody()),
+    acl: Schema.String.pipe(T.HttpPath("acl")),
+    body: Schema.optional(AclEntry).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/acls", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+acl}:addAclEntry", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsClustersAclsRequest>;
+  ) as unknown as Schema.Schema<AddAclEntryProjectsLocationsClustersAclsRequest>;
 
-export type CreateProjectsLocationsClustersAclsResponse = Acl;
-export const CreateProjectsLocationsClustersAclsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Acl;
+export type AddAclEntryProjectsLocationsClustersAclsResponse =
+  AddAclEntryResponse;
+export const AddAclEntryProjectsLocationsClustersAclsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AddAclEntryResponse;
 
-export type CreateProjectsLocationsClustersAclsError =
+export type AddAclEntryProjectsLocationsClustersAclsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a new acl in the given project, location, and cluster. */
-export const createProjectsLocationsClustersAcls: API.OperationMethod<
-  CreateProjectsLocationsClustersAclsRequest,
-  CreateProjectsLocationsClustersAclsResponse,
-  CreateProjectsLocationsClustersAclsError,
+/** Incremental update: Adds an acl entry to an acl. Creates the acl if it does not exist yet. */
+export const addAclEntryProjectsLocationsClustersAcls: API.OperationMethod<
+  AddAclEntryProjectsLocationsClustersAclsRequest,
+  AddAclEntryProjectsLocationsClustersAclsResponse,
+  AddAclEntryProjectsLocationsClustersAclsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsClustersAclsRequest,
-  output: CreateProjectsLocationsClustersAclsResponse,
+  input: AddAclEntryProjectsLocationsClustersAclsRequest,
+  output: AddAclEntryProjectsLocationsClustersAclsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -2025,82 +1994,6 @@ export const patchProjectsLocationsClustersAcls: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface DeleteProjectsLocationsClustersAclsRequest {
-  /** Required. The name of the acl to delete. Structured like: `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. See `Acl.name` for details. */
-  name: string;
-}
-
-export const DeleteProjectsLocationsClustersAclsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsClustersAclsRequest>;
-
-export type DeleteProjectsLocationsClustersAclsResponse = Empty;
-export const DeleteProjectsLocationsClustersAclsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsClustersAclsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes an acl. */
-export const deleteProjectsLocationsClustersAcls: API.OperationMethod<
-  DeleteProjectsLocationsClustersAclsRequest,
-  DeleteProjectsLocationsClustersAclsResponse,
-  DeleteProjectsLocationsClustersAclsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsClustersAclsRequest,
-  output: DeleteProjectsLocationsClustersAclsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface AddAclEntryProjectsLocationsClustersAclsRequest {
-  /** Required. The name of the acl to add the acl entry to. Structured like: `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. See `Acl.name` for details. */
-  acl: string;
-  /** Request body */
-  body?: AclEntry;
-}
-
-export const AddAclEntryProjectsLocationsClustersAclsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    acl: Schema.String.pipe(T.HttpPath("acl")),
-    body: Schema.optional(AclEntry).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+acl}:addAclEntry", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<AddAclEntryProjectsLocationsClustersAclsRequest>;
-
-export type AddAclEntryProjectsLocationsClustersAclsResponse =
-  AddAclEntryResponse;
-export const AddAclEntryProjectsLocationsClustersAclsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AddAclEntryResponse;
-
-export type AddAclEntryProjectsLocationsClustersAclsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Incremental update: Adds an acl entry to an acl. Creates the acl if it does not exist yet. */
-export const addAclEntryProjectsLocationsClustersAcls: API.OperationMethod<
-  AddAclEntryProjectsLocationsClustersAclsRequest,
-  AddAclEntryProjectsLocationsClustersAclsResponse,
-  AddAclEntryProjectsLocationsClustersAclsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: AddAclEntryProjectsLocationsClustersAclsRequest,
-  output: AddAclEntryProjectsLocationsClustersAclsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface RemoveAclEntryProjectsLocationsClustersAclsRequest {
   /** Required. The name of the acl to remove the acl entry from. Structured like: `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. See `Acl.name` for details. */
   acl: string;
@@ -2141,26 +2034,182 @@ export const removeAclEntryProjectsLocationsClustersAcls: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsLocationsConnectClustersRequest {
-  /** Required. The parent project/location whose Connect clusters are to be listed. Structured like `projects/{project}/locations/{location}`. */
+export interface ListProjectsLocationsClustersAclsRequest {
+  /** Optional. The maximum number of acls to return. The service may return fewer than this value. If unset or zero, all acls for the parent is returned. */
+  pageSize?: number;
+  /** Required. The parent cluster whose acls are to be listed. Structured like `projects/{project}/locations/{location}/clusters/{cluster}`. */
   parent: string;
+  /** Optional. A page token, received from a previous `ListAcls` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAcls` must match the call that provided the page token. */
+  pageToken?: string;
+}
+
+export const ListProjectsLocationsClustersAclsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/acls" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsClustersAclsRequest>;
+
+export type ListProjectsLocationsClustersAclsResponse = ListAclsResponse;
+export const ListProjectsLocationsClustersAclsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListAclsResponse;
+
+export type ListProjectsLocationsClustersAclsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the acls in a given cluster. */
+export const listProjectsLocationsClustersAcls: API.PaginatedOperationMethod<
+  ListProjectsLocationsClustersAclsRequest,
+  ListProjectsLocationsClustersAclsResponse,
+  ListProjectsLocationsClustersAclsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsClustersAclsRequest,
+  output: ListProjectsLocationsClustersAclsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteProjectsLocationsClustersAclsRequest {
+  /** Required. The name of the acl to delete. Structured like: `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. See `Acl.name` for details. */
+  name: string;
+}
+
+export const DeleteProjectsLocationsClustersAclsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsClustersAclsRequest>;
+
+export type DeleteProjectsLocationsClustersAclsResponse = Empty;
+export const DeleteProjectsLocationsClustersAclsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsClustersAclsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes an acl. */
+export const deleteProjectsLocationsClustersAcls: API.OperationMethod<
+  DeleteProjectsLocationsClustersAclsRequest,
+  DeleteProjectsLocationsClustersAclsResponse,
+  DeleteProjectsLocationsClustersAclsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsClustersAclsRequest,
+  output: DeleteProjectsLocationsClustersAclsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsLocationsClustersAclsRequest {
+  /** Required. The ID to use for the acl, which will become the final component of the acl's name. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. `acl_id` is structured like one of the following: For acls on the cluster: `cluster` For acls on a single resource within the cluster: `topic/{resource_name}` `consumerGroup/{resource_name}` `transactionalId/{resource_name}` For acls on all resources that match a prefix: `topicPrefixed/{resource_name}` `consumerGroupPrefixed/{resource_name}` `transactionalIdPrefixed/{resource_name}` For acls on all resources of a given type (i.e. the wildcard literal "*"): `allTopics` (represents `topic/*`) `allConsumerGroups` (represents `consumerGroup/*`) `allTransactionalIds` (represents `transactionalId/*`) */
+  aclId?: string;
+  /** Required. The parent cluster in which to create the acl. Structured like `projects/{project}/locations/{location}/clusters/{cluster}`. */
+  parent: string;
+  /** Request body */
+  body?: Acl;
+}
+
+export const CreateProjectsLocationsClustersAclsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aclId: Schema.optional(Schema.String).pipe(T.HttpQuery("aclId")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(Acl).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/acls", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsClustersAclsRequest>;
+
+export type CreateProjectsLocationsClustersAclsResponse = Acl;
+export const CreateProjectsLocationsClustersAclsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Acl;
+
+export type CreateProjectsLocationsClustersAclsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new acl in the given project, location, and cluster. */
+export const createProjectsLocationsClustersAcls: API.OperationMethod<
+  CreateProjectsLocationsClustersAclsRequest,
+  CreateProjectsLocationsClustersAclsResponse,
+  CreateProjectsLocationsClustersAclsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsClustersAclsRequest,
+  output: CreateProjectsLocationsClustersAclsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsClustersAclsRequest {
+  /** Required. The name of the acl to return. Structured like: `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. See `Acl.name` for details. */
+  name: string;
+}
+
+export const GetProjectsLocationsClustersAclsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsClustersAclsRequest>;
+
+export type GetProjectsLocationsClustersAclsResponse = Acl;
+export const GetProjectsLocationsClustersAclsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Acl;
+
+export type GetProjectsLocationsClustersAclsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns the properties of a single acl. */
+export const getProjectsLocationsClustersAcls: API.OperationMethod<
+  GetProjectsLocationsClustersAclsRequest,
+  GetProjectsLocationsClustersAclsResponse,
+  GetProjectsLocationsClustersAclsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsClustersAclsRequest,
+  output: GetProjectsLocationsClustersAclsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsConnectClustersRequest {
   /** Optional. The maximum number of Connect clusters to return. The service may return fewer than this value. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
-  /** Optional. A page token, received from a previous `ListConnectClusters` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnectClusters` must match the call that provided the page token. */
-  pageToken?: string;
   /** Optional. Filter expression for the result. */
   filter?: string;
   /** Optional. Order by fields for the result. */
   orderBy?: string;
+  /** Required. The parent project/location whose Connect clusters are to be listed. Structured like `projects/{project}/locations/{location}`. */
+  parent: string;
+  /** Optional. A page token, received from a previous `ListConnectClusters` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnectClusters` must match the call that provided the page token. */
+  pageToken?: string;
 }
 
 export const ListProjectsLocationsConnectClustersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/connectClusters" }),
     svc,
@@ -2190,136 +2239,6 @@ export const listProjectsLocationsConnectClusters: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
-}));
-
-export interface GetProjectsLocationsConnectClustersRequest {
-  /** Required. The name of the Kafka Connect cluster whose configuration to return. Structured like `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`. */
-  name: string;
-}
-
-export const GetProjectsLocationsConnectClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConnectClustersRequest>;
-
-export type GetProjectsLocationsConnectClustersResponse = ConnectCluster;
-export const GetProjectsLocationsConnectClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConnectCluster;
-
-export type GetProjectsLocationsConnectClustersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns the properties of a single Kafka Connect cluster. */
-export const getProjectsLocationsConnectClusters: API.OperationMethod<
-  GetProjectsLocationsConnectClustersRequest,
-  GetProjectsLocationsConnectClustersResponse,
-  GetProjectsLocationsConnectClustersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConnectClustersRequest,
-  output: GetProjectsLocationsConnectClustersResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateProjectsLocationsConnectClustersRequest {
-  /** Required. The parent project/location in which to create the Kafka Connect cluster. Structured like `projects/{project}/locations/{location}/`. */
-  parent: string;
-  /** Required. The ID to use for the Connect cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` to comply with RFC 1035. This value is structured like: `my-cluster-id`. */
-  connectClusterId?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID to avoid duplication of requests. If a request times out or fails, retrying with the same ID allows the server to recognize the previous attempt. For at least 60 minutes, the server ignores duplicate requests bearing the same ID. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID within 60 minutes of the last request, the server checks if an original operation with the same request ID was received. If so, the server ignores the second request. The request ID must be a valid UUID. A zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Request body */
-  body?: ConnectCluster;
-}
-
-export const CreateProjectsLocationsConnectClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    connectClusterId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("connectClusterId"),
-    ),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    body: Schema.optional(ConnectCluster).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}/connectClusters",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConnectClustersRequest>;
-
-export type CreateProjectsLocationsConnectClustersResponse = Operation;
-export const CreateProjectsLocationsConnectClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsLocationsConnectClustersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new Kafka Connect cluster in a given project and location. */
-export const createProjectsLocationsConnectClusters: API.OperationMethod<
-  CreateProjectsLocationsConnectClustersRequest,
-  CreateProjectsLocationsConnectClustersResponse,
-  CreateProjectsLocationsConnectClustersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsConnectClustersRequest,
-  output: CreateProjectsLocationsConnectClustersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsLocationsConnectClustersRequest {
-  /** Identifier. The name of the Kafka Connect cluster. Structured like: projects/{project_number}/locations/{location}/connectClusters/{connect_cluster_id} */
-  name: string;
-  /** Required. Field mask is used to specify the fields to be overwritten in the cluster resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. The mask is required and a value of * will update all fields. */
-  updateMask?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID to avoid duplication of requests. If a request times out or fails, retrying with the same ID allows the server to recognize the previous attempt. For at least 60 minutes, the server ignores duplicate requests bearing the same ID. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID within 60 minutes of the last request, the server checks if an original operation with the same request ID was received. If so, the server ignores the second request. The request ID must be a valid UUID. A zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Request body */
-  body?: ConnectCluster;
-}
-
-export const PatchProjectsLocationsConnectClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    body: Schema.optional(ConnectCluster).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsConnectClustersRequest>;
-
-export type PatchProjectsLocationsConnectClustersResponse = Operation;
-export const PatchProjectsLocationsConnectClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsLocationsConnectClustersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the properties of a single Kafka Connect cluster. */
-export const patchProjectsLocationsConnectClusters: API.OperationMethod<
-  PatchProjectsLocationsConnectClustersRequest,
-  PatchProjectsLocationsConnectClustersResponse,
-  PatchProjectsLocationsConnectClustersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsConnectClustersRequest,
-  output: PatchProjectsLocationsConnectClustersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsConnectClustersRequest {
@@ -2361,205 +2280,133 @@ export const deleteProjectsLocationsConnectClusters: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsLocationsConnectClustersConnectorsRequest {
-  /** Required. The parent Connect cluster whose connectors are to be listed. Structured like `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`. */
-  parent: string;
-  /** Optional. The maximum number of connectors to return. The service may return fewer than this value. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
-  /** Optional. A page token, received from a previous `ListConnectors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnectors` must match the call that provided the page token. */
-  pageToken?: string;
-}
-
-export const ListProjectsLocationsConnectClustersConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/connectors" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConnectClustersConnectorsRequest>;
-
-export type ListProjectsLocationsConnectClustersConnectorsResponse =
-  ListConnectorsResponse;
-export const ListProjectsLocationsConnectClustersConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListConnectorsResponse;
-
-export type ListProjectsLocationsConnectClustersConnectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists the connectors in a given Connect cluster. */
-export const listProjectsLocationsConnectClustersConnectors: API.PaginatedOperationMethod<
-  ListProjectsLocationsConnectClustersConnectorsRequest,
-  ListProjectsLocationsConnectClustersConnectorsResponse,
-  ListProjectsLocationsConnectClustersConnectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectClustersConnectorsRequest,
-  output: ListProjectsLocationsConnectClustersConnectorsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsLocationsConnectClustersConnectorsRequest {
-  /** Required. The name of the connector whose configuration to return. Structured like: projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector} */
+export interface GetProjectsLocationsConnectClustersRequest {
+  /** Required. The name of the Kafka Connect cluster whose configuration to return. Structured like `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`. */
   name: string;
 }
 
-export const GetProjectsLocationsConnectClustersConnectorsRequest =
+export const GetProjectsLocationsConnectClustersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConnectClustersConnectorsRequest>;
+  ) as unknown as Schema.Schema<GetProjectsLocationsConnectClustersRequest>;
 
-export type GetProjectsLocationsConnectClustersConnectorsResponse = Connector;
-export const GetProjectsLocationsConnectClustersConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Connector;
+export type GetProjectsLocationsConnectClustersResponse = ConnectCluster;
+export const GetProjectsLocationsConnectClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ConnectCluster;
 
-export type GetProjectsLocationsConnectClustersConnectorsError =
+export type GetProjectsLocationsConnectClustersError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Returns the properties of a single connector. */
-export const getProjectsLocationsConnectClustersConnectors: API.OperationMethod<
-  GetProjectsLocationsConnectClustersConnectorsRequest,
-  GetProjectsLocationsConnectClustersConnectorsResponse,
-  GetProjectsLocationsConnectClustersConnectorsError,
+/** Returns the properties of a single Kafka Connect cluster. */
+export const getProjectsLocationsConnectClusters: API.OperationMethod<
+  GetProjectsLocationsConnectClustersRequest,
+  GetProjectsLocationsConnectClustersResponse,
+  GetProjectsLocationsConnectClustersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConnectClustersConnectorsRequest,
-  output: GetProjectsLocationsConnectClustersConnectorsResponse,
+  input: GetProjectsLocationsConnectClustersRequest,
+  output: GetProjectsLocationsConnectClustersResponse,
   errors: [NotFound, Forbidden],
 }));
 
-export interface CreateProjectsLocationsConnectClustersConnectorsRequest {
-  /** Required. The parent Connect cluster in which to create the connector. Structured like `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`. */
+export interface CreateProjectsLocationsConnectClustersRequest {
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID to avoid duplication of requests. If a request times out or fails, retrying with the same ID allows the server to recognize the previous attempt. For at least 60 minutes, the server ignores duplicate requests bearing the same ID. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID within 60 minutes of the last request, the server checks if an original operation with the same request ID was received. If so, the server ignores the second request. The request ID must be a valid UUID. A zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Required. The parent project/location in which to create the Kafka Connect cluster. Structured like `projects/{project}/locations/{location}/`. */
   parent: string;
-  /** Required. The ID to use for the connector, which will become the final component of the connector's name. The ID must be 1-63 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` to comply with RFC 1035. This value is structured like: `my-connector-id`. */
-  connectorId?: string;
+  /** Required. The ID to use for the Connect cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` to comply with RFC 1035. This value is structured like: `my-cluster-id`. */
+  connectClusterId?: string;
   /** Request body */
-  body?: Connector;
+  body?: ConnectCluster;
 }
 
-export const CreateProjectsLocationsConnectClustersConnectorsRequest =
+export const CreateProjectsLocationsConnectClustersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    connectorId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("connectorId"),
+    connectClusterId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("connectClusterId"),
     ),
-    body: Schema.optional(Connector).pipe(T.HttpBody()),
+    body: Schema.optional(ConnectCluster).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/connectors", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/connectClusters",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConnectClustersConnectorsRequest>;
+  ) as unknown as Schema.Schema<CreateProjectsLocationsConnectClustersRequest>;
 
-export type CreateProjectsLocationsConnectClustersConnectorsResponse =
-  Connector;
-export const CreateProjectsLocationsConnectClustersConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Connector;
+export type CreateProjectsLocationsConnectClustersResponse = Operation;
+export const CreateProjectsLocationsConnectClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsConnectClustersConnectorsError =
+export type CreateProjectsLocationsConnectClustersError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a new connector in a given Connect cluster. */
-export const createProjectsLocationsConnectClustersConnectors: API.OperationMethod<
-  CreateProjectsLocationsConnectClustersConnectorsRequest,
-  CreateProjectsLocationsConnectClustersConnectorsResponse,
-  CreateProjectsLocationsConnectClustersConnectorsError,
+/** Creates a new Kafka Connect cluster in a given project and location. */
+export const createProjectsLocationsConnectClusters: API.OperationMethod<
+  CreateProjectsLocationsConnectClustersRequest,
+  CreateProjectsLocationsConnectClustersResponse,
+  CreateProjectsLocationsConnectClustersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsConnectClustersConnectorsRequest,
-  output: CreateProjectsLocationsConnectClustersConnectorsResponse,
+  input: CreateProjectsLocationsConnectClustersRequest,
+  output: CreateProjectsLocationsConnectClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchProjectsLocationsConnectClustersConnectorsRequest {
-  /** Identifier. The name of the connector. Structured like: projects/{project}/locations/{location}/connectClusters/{connect_cluster}/connectors/{connector} */
-  name: string;
+export interface PatchProjectsLocationsConnectClustersRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the cluster resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. The mask is required and a value of * will update all fields. */
   updateMask?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID to avoid duplication of requests. If a request times out or fails, retrying with the same ID allows the server to recognize the previous attempt. For at least 60 minutes, the server ignores duplicate requests bearing the same ID. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID within 60 minutes of the last request, the server checks if an original operation with the same request ID was received. If so, the server ignores the second request. The request ID must be a valid UUID. A zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Identifier. The name of the Kafka Connect cluster. Structured like: projects/{project_number}/locations/{location}/connectClusters/{connect_cluster_id} */
+  name: string;
   /** Request body */
-  body?: Connector;
+  body?: ConnectCluster;
 }
 
-export const PatchProjectsLocationsConnectClustersConnectorsRequest =
+export const PatchProjectsLocationsConnectClustersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Connector).pipe(T.HttpBody()),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(ConnectCluster).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsConnectClustersConnectorsRequest>;
+  ) as unknown as Schema.Schema<PatchProjectsLocationsConnectClustersRequest>;
 
-export type PatchProjectsLocationsConnectClustersConnectorsResponse = Connector;
-export const PatchProjectsLocationsConnectClustersConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Connector;
+export type PatchProjectsLocationsConnectClustersResponse = Operation;
+export const PatchProjectsLocationsConnectClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsConnectClustersConnectorsError =
+export type PatchProjectsLocationsConnectClustersError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates the properties of a connector. */
-export const patchProjectsLocationsConnectClustersConnectors: API.OperationMethod<
-  PatchProjectsLocationsConnectClustersConnectorsRequest,
-  PatchProjectsLocationsConnectClustersConnectorsResponse,
-  PatchProjectsLocationsConnectClustersConnectorsError,
+/** Updates the properties of a single Kafka Connect cluster. */
+export const patchProjectsLocationsConnectClusters: API.OperationMethod<
+  PatchProjectsLocationsConnectClustersRequest,
+  PatchProjectsLocationsConnectClustersResponse,
+  PatchProjectsLocationsConnectClustersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsConnectClustersConnectorsRequest,
-  output: PatchProjectsLocationsConnectClustersConnectorsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsConnectClustersConnectorsRequest {
-  /** Required. The name of the connector to delete. Structured like: projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector} */
-  name: string;
-}
-
-export const DeleteProjectsLocationsConnectClustersConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectClustersConnectorsRequest>;
-
-export type DeleteProjectsLocationsConnectClustersConnectorsResponse = Empty;
-export const DeleteProjectsLocationsConnectClustersConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsConnectClustersConnectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a connector. */
-export const deleteProjectsLocationsConnectClustersConnectors: API.OperationMethod<
-  DeleteProjectsLocationsConnectClustersConnectorsRequest,
-  DeleteProjectsLocationsConnectClustersConnectorsResponse,
-  DeleteProjectsLocationsConnectClustersConnectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsConnectClustersConnectorsRequest,
-  output: DeleteProjectsLocationsConnectClustersConnectorsResponse,
+  input: PatchProjectsLocationsConnectClustersRequest,
+  output: PatchProjectsLocationsConnectClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -2643,6 +2490,51 @@ export const resumeProjectsLocationsConnectClustersConnectors: API.OperationMeth
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface CreateProjectsLocationsConnectClustersConnectorsRequest {
+  /** Required. The parent Connect cluster in which to create the connector. Structured like `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`. */
+  parent: string;
+  /** Required. The ID to use for the connector, which will become the final component of the connector's name. The ID must be 1-63 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` to comply with RFC 1035. This value is structured like: `my-connector-id`. */
+  connectorId?: string;
+  /** Request body */
+  body?: Connector;
+}
+
+export const CreateProjectsLocationsConnectClustersConnectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    connectorId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("connectorId"),
+    ),
+    body: Schema.optional(Connector).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/connectors", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsConnectClustersConnectorsRequest>;
+
+export type CreateProjectsLocationsConnectClustersConnectorsResponse =
+  Connector;
+export const CreateProjectsLocationsConnectClustersConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Connector;
+
+export type CreateProjectsLocationsConnectClustersConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new connector in a given Connect cluster. */
+export const createProjectsLocationsConnectClustersConnectors: API.OperationMethod<
+  CreateProjectsLocationsConnectClustersConnectorsRequest,
+  CreateProjectsLocationsConnectClustersConnectorsResponse,
+  CreateProjectsLocationsConnectClustersConnectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsConnectClustersConnectorsRequest,
+  output: CreateProjectsLocationsConnectClustersConnectorsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface RestartProjectsLocationsConnectClustersConnectorsRequest {
   /** Required. The name of the connector to restart. Structured like: projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector} */
   name: string;
@@ -2683,6 +2575,48 @@ export const restartProjectsLocationsConnectClustersConnectors: API.OperationMet
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface PatchProjectsLocationsConnectClustersConnectorsRequest {
+  /** Identifier. The name of the connector. Structured like: projects/{project}/locations/{location}/connectClusters/{connect_cluster}/connectors/{connector} */
+  name: string;
+  /** Required. Field mask is used to specify the fields to be overwritten in the cluster resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. The mask is required and a value of * will update all fields. */
+  updateMask?: string;
+  /** Request body */
+  body?: Connector;
+}
+
+export const PatchProjectsLocationsConnectClustersConnectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(Connector).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsConnectClustersConnectorsRequest>;
+
+export type PatchProjectsLocationsConnectClustersConnectorsResponse = Connector;
+export const PatchProjectsLocationsConnectClustersConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Connector;
+
+export type PatchProjectsLocationsConnectClustersConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the properties of a connector. */
+export const patchProjectsLocationsConnectClustersConnectors: API.OperationMethod<
+  PatchProjectsLocationsConnectClustersConnectorsRequest,
+  PatchProjectsLocationsConnectClustersConnectorsResponse,
+  PatchProjectsLocationsConnectClustersConnectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsConnectClustersConnectorsRequest,
+  output: PatchProjectsLocationsConnectClustersConnectorsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface StopProjectsLocationsConnectClustersConnectorsRequest {
   /** Required. The name of the connector to stop. Structured like: projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector} */
   name: string;
@@ -2720,6 +2654,164 @@ export const stopProjectsLocationsConnectClustersConnectors: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopProjectsLocationsConnectClustersConnectorsRequest,
   output: StopProjectsLocationsConnectClustersConnectorsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsConnectClustersConnectorsRequest {
+  /** Required. The parent Connect cluster whose connectors are to be listed. Structured like `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`. */
+  parent: string;
+  /** Optional. A page token, received from a previous `ListConnectors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnectors` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. The maximum number of connectors to return. The service may return fewer than this value. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
+}
+
+export const ListProjectsLocationsConnectClustersConnectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/connectors" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsConnectClustersConnectorsRequest>;
+
+export type ListProjectsLocationsConnectClustersConnectorsResponse =
+  ListConnectorsResponse;
+export const ListProjectsLocationsConnectClustersConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListConnectorsResponse;
+
+export type ListProjectsLocationsConnectClustersConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the connectors in a given Connect cluster. */
+export const listProjectsLocationsConnectClustersConnectors: API.PaginatedOperationMethod<
+  ListProjectsLocationsConnectClustersConnectorsRequest,
+  ListProjectsLocationsConnectClustersConnectorsResponse,
+  ListProjectsLocationsConnectClustersConnectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsConnectClustersConnectorsRequest,
+  output: ListProjectsLocationsConnectClustersConnectorsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteProjectsLocationsConnectClustersConnectorsRequest {
+  /** Required. The name of the connector to delete. Structured like: projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector} */
+  name: string;
+}
+
+export const DeleteProjectsLocationsConnectClustersConnectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectClustersConnectorsRequest>;
+
+export type DeleteProjectsLocationsConnectClustersConnectorsResponse = Empty;
+export const DeleteProjectsLocationsConnectClustersConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsConnectClustersConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a connector. */
+export const deleteProjectsLocationsConnectClustersConnectors: API.OperationMethod<
+  DeleteProjectsLocationsConnectClustersConnectorsRequest,
+  DeleteProjectsLocationsConnectClustersConnectorsResponse,
+  DeleteProjectsLocationsConnectClustersConnectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsConnectClustersConnectorsRequest,
+  output: DeleteProjectsLocationsConnectClustersConnectorsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsConnectClustersConnectorsRequest {
+  /** Required. The name of the connector whose configuration to return. Structured like: projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector} */
+  name: string;
+}
+
+export const GetProjectsLocationsConnectClustersConnectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsConnectClustersConnectorsRequest>;
+
+export type GetProjectsLocationsConnectClustersConnectorsResponse = Connector;
+export const GetProjectsLocationsConnectClustersConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Connector;
+
+export type GetProjectsLocationsConnectClustersConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns the properties of a single connector. */
+export const getProjectsLocationsConnectClustersConnectors: API.OperationMethod<
+  GetProjectsLocationsConnectClustersConnectorsRequest,
+  GetProjectsLocationsConnectClustersConnectorsResponse,
+  GetProjectsLocationsConnectClustersConnectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsConnectClustersConnectorsRequest,
+  output: GetProjectsLocationsConnectClustersConnectorsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateProjectsLocationsSchemaRegistriesRequest {
+  /** Required. The parent whose schema registry instance is to be created. Structured like: `projects/{project}/locations/{location}` */
+  parent: string;
+  /** Request body */
+  body?: CreateSchemaRegistryRequest;
+}
+
+export const CreateProjectsLocationsSchemaRegistriesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(CreateSchemaRegistryRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/schemaRegistries",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsSchemaRegistriesRequest>;
+
+export type CreateProjectsLocationsSchemaRegistriesResponse = SchemaRegistry;
+export const CreateProjectsLocationsSchemaRegistriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SchemaRegistry;
+
+export type CreateProjectsLocationsSchemaRegistriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Create a schema registry instance. */
+export const createProjectsLocationsSchemaRegistries: API.OperationMethod<
+  CreateProjectsLocationsSchemaRegistriesRequest,
+  CreateProjectsLocationsSchemaRegistriesResponse,
+  CreateProjectsLocationsSchemaRegistriesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsSchemaRegistriesRequest,
+  output: CreateProjectsLocationsSchemaRegistriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -2799,49 +2891,6 @@ export const listProjectsLocationsSchemaRegistries: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface CreateProjectsLocationsSchemaRegistriesRequest {
-  /** Required. The parent whose schema registry instance is to be created. Structured like: `projects/{project}/locations/{location}` */
-  parent: string;
-  /** Request body */
-  body?: CreateSchemaRegistryRequest;
-}
-
-export const CreateProjectsLocationsSchemaRegistriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(CreateSchemaRegistryRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}/schemaRegistries",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSchemaRegistriesRequest>;
-
-export type CreateProjectsLocationsSchemaRegistriesResponse = SchemaRegistry;
-export const CreateProjectsLocationsSchemaRegistriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SchemaRegistry;
-
-export type CreateProjectsLocationsSchemaRegistriesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Create a schema registry instance. */
-export const createProjectsLocationsSchemaRegistries: API.OperationMethod<
-  CreateProjectsLocationsSchemaRegistriesRequest,
-  CreateProjectsLocationsSchemaRegistriesResponse,
-  CreateProjectsLocationsSchemaRegistriesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSchemaRegistriesRequest,
-  output: CreateProjectsLocationsSchemaRegistriesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface DeleteProjectsLocationsSchemaRegistriesRequest {
   /** Required. The name of the schema registry instance to delete. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` */
   name: string;
@@ -2876,6 +2925,818 @@ export const deleteProjectsLocationsSchemaRegistries: API.OperationMethod<
   input: DeleteProjectsLocationsSchemaRegistriesRequest,
   output: DeleteProjectsLocationsSchemaRegistriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsSchemaRegistriesSchemasRequest {
+  /** Required. The name of the schema to return. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` */
+  name: string;
+  /** Optional. Used to limit the search for the schema ID to a specific subject, otherwise the schema ID will be searched for in all subjects in the given specified context. */
+  subject?: string;
+}
+
+export const GetProjectsLocationsSchemaRegistriesSchemasRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    subject: Schema.optional(Schema.String).pipe(T.HttpQuery("subject")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsSchemaRegistriesSchemasRequest>;
+
+export type GetProjectsLocationsSchemaRegistriesSchemasResponse =
+  Managedkafka_Schema;
+export const GetProjectsLocationsSchemaRegistriesSchemasResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Managedkafka_Schema;
+
+export type GetProjectsLocationsSchemaRegistriesSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get the schema for the given schema id. */
+export const getProjectsLocationsSchemaRegistriesSchemas: API.OperationMethod<
+  GetProjectsLocationsSchemaRegistriesSchemasRequest,
+  GetProjectsLocationsSchemaRegistriesSchemasResponse,
+  GetProjectsLocationsSchemaRegistriesSchemasError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsSchemaRegistriesSchemasRequest,
+  output: GetProjectsLocationsSchemaRegistriesSchemasResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest {
+  /** Optional. Used to limit the search for the schema ID to a specific subject, otherwise the schema ID will be searched for in all subjects in the given specified context. */
+  subject?: string;
+  /** Required. The name of the schema to return. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` */
+  name: string;
+}
+
+export const GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subject: Schema.optional(Schema.String).pipe(T.HttpQuery("subject")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}/schema" }),
+    svc,
+  ) as unknown as Schema.Schema<GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest>;
+
+export type GetSchemaProjectsLocationsSchemaRegistriesSchemasResponse =
+  HttpBody;
+export const GetSchemaProjectsLocationsSchemaRegistriesSchemasResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type GetSchemaProjectsLocationsSchemaRegistriesSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get the schema string for the given schema id. The response will be the schema string. */
+export const getSchemaProjectsLocationsSchemaRegistriesSchemas: API.OperationMethod<
+  GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest,
+  GetSchemaProjectsLocationsSchemaRegistriesSchemasResponse,
+  GetSchemaProjectsLocationsSchemaRegistriesSchemasError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest,
+  output: GetSchemaProjectsLocationsSchemaRegistriesSchemasResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest {
+  /** Optional. The subject to filter the subjects by. */
+  subject?: string;
+  /** Required. The schema whose schema versions are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}` */
+  parent: string;
+  /** Optional. If true, the response will include soft-deleted versions of the schema, even if the subject is soft-deleted. The default is false. */
+  deleted?: boolean;
+}
+
+export const ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subject: Schema.optional(Schema.String).pipe(T.HttpQuery("subject")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest>;
+
+export type ListProjectsLocationsSchemaRegistriesSchemasVersionsResponse =
+  HttpBody;
+export const ListProjectsLocationsSchemaRegistriesSchemasVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type ListProjectsLocationsSchemaRegistriesSchemasVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** List the schema versions for the given schema id. The response will be an array of subject-version pairs as: [{"subject":"subject1", "version":1}, {"subject":"subject2", "version":2}]. */
+export const listProjectsLocationsSchemaRegistriesSchemasVersions: API.OperationMethod<
+  ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest,
+  ListProjectsLocationsSchemaRegistriesSchemasVersionsResponse,
+  ListProjectsLocationsSchemaRegistriesSchemasVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest,
+  output: ListProjectsLocationsSchemaRegistriesSchemasVersionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest {
+  /** Required. The schema resource whose associated subjects are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}` */
+  parent: string;
+  /** Optional. If true, the response will include soft-deleted subjects. The default is false. */
+  deleted?: boolean;
+  /** Optional. The subject to filter the subjects by. */
+  subject?: string;
+}
+
+export const ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
+    subject: Schema.optional(Schema.String).pipe(T.HttpQuery("subject")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/subjects" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest>;
+
+export type ListProjectsLocationsSchemaRegistriesSchemasSubjectsResponse =
+  HttpBody;
+export const ListProjectsLocationsSchemaRegistriesSchemasSubjectsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type ListProjectsLocationsSchemaRegistriesSchemasSubjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** List subjects which reference a particular schema id. The response will be an array of subject names. */
+export const listProjectsLocationsSchemaRegistriesSchemasSubjects: API.OperationMethod<
+  ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest,
+  ListProjectsLocationsSchemaRegistriesSchemasSubjectsResponse,
+  ListProjectsLocationsSchemaRegistriesSchemasSubjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest,
+  output: ListProjectsLocationsSchemaRegistriesSchemasSubjectsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsSchemaRegistriesSchemasTypesRequest {
+  /** Required. The parent schema registry whose schema types are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` */
+  parent: string;
+}
+
+export const ListProjectsLocationsSchemaRegistriesSchemasTypesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/schemas/types" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsSchemaRegistriesSchemasTypesRequest>;
+
+export type ListProjectsLocationsSchemaRegistriesSchemasTypesResponse =
+  HttpBody;
+export const ListProjectsLocationsSchemaRegistriesSchemasTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type ListProjectsLocationsSchemaRegistriesSchemasTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** List the supported schema types. The response will be an array of schema types. */
+export const listProjectsLocationsSchemaRegistriesSchemasTypes: API.OperationMethod<
+  ListProjectsLocationsSchemaRegistriesSchemasTypesRequest,
+  ListProjectsLocationsSchemaRegistriesSchemasTypesResponse,
+  ListProjectsLocationsSchemaRegistriesSchemasTypesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListProjectsLocationsSchemaRegistriesSchemasTypesRequest,
+  output: ListProjectsLocationsSchemaRegistriesSchemasTypesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsSchemaRegistriesSubjectsRequest {
+  /** Optional. The context to filter the subjects by, in the format of `:.{context}:`. If unset, all subjects in the registry are returned. Set to empty string or add as '?subjectPrefix=' at the end of this request to list subjects in the default context. */
+  subjectPrefix?: string;
+  /** Required. The parent schema registry/context whose subjects are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}` */
+  parent: string;
+  /** Optional. If true, the response will include soft-deleted subjects. The default is false. */
+  deleted?: boolean;
+}
+
+export const ListProjectsLocationsSchemaRegistriesSubjectsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subjectPrefix: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("subjectPrefix"),
+    ),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/subjects" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsSchemaRegistriesSubjectsRequest>;
+
+export type ListProjectsLocationsSchemaRegistriesSubjectsResponse = HttpBody;
+export const ListProjectsLocationsSchemaRegistriesSubjectsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type ListProjectsLocationsSchemaRegistriesSubjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** List subjects in the schema registry. The response will be an array of subject names. */
+export const listProjectsLocationsSchemaRegistriesSubjects: API.OperationMethod<
+  ListProjectsLocationsSchemaRegistriesSubjectsRequest,
+  ListProjectsLocationsSchemaRegistriesSubjectsResponse,
+  ListProjectsLocationsSchemaRegistriesSubjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListProjectsLocationsSchemaRegistriesSubjectsRequest,
+  output: ListProjectsLocationsSchemaRegistriesSubjectsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsSchemaRegistriesSubjectsRequest {
+  /** Required. The name of the subject to delete. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
+  name: string;
+  /** Optional. If true, the subject and all associated metadata including the schema ID will be deleted permanently. Otherwise, only the subject is soft-deleted. The default is false. Soft-deleted subjects can still be searched in ListSubjects API call with deleted=true query parameter. A soft-delete of a subject must be performed before a hard-delete. */
+  permanent?: boolean;
+}
+
+export const DeleteProjectsLocationsSchemaRegistriesSubjectsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    permanent: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("permanent")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsSchemaRegistriesSubjectsRequest>;
+
+export type DeleteProjectsLocationsSchemaRegistriesSubjectsResponse = HttpBody;
+export const DeleteProjectsLocationsSchemaRegistriesSubjectsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type DeleteProjectsLocationsSchemaRegistriesSubjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Delete a subject. The response will be an array of versions of the deleted subject. */
+export const deleteProjectsLocationsSchemaRegistriesSubjects: API.OperationMethod<
+  DeleteProjectsLocationsSchemaRegistriesSubjectsRequest,
+  DeleteProjectsLocationsSchemaRegistriesSubjectsResponse,
+  DeleteProjectsLocationsSchemaRegistriesSubjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsSchemaRegistriesSubjectsRequest,
+  output: DeleteProjectsLocationsSchemaRegistriesSubjectsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest {
+  /** Required. The subject to lookup the schema in. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
+  parent: string;
+  /** Request body */
+  body?: LookupVersionRequest;
+}
+
+export const LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(LookupVersionRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest>;
+
+export type LookupVersionProjectsLocationsSchemaRegistriesSubjectsResponse =
+  SchemaVersion;
+export const LookupVersionProjectsLocationsSchemaRegistriesSubjectsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SchemaVersion;
+
+export type LookupVersionProjectsLocationsSchemaRegistriesSubjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Lookup a schema under the specified subject. */
+export const lookupVersionProjectsLocationsSchemaRegistriesSubjects: API.OperationMethod<
+  LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest,
+  LookupVersionProjectsLocationsSchemaRegistriesSubjectsResponse,
+  LookupVersionProjectsLocationsSchemaRegistriesSubjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest,
+  output: LookupVersionProjectsLocationsSchemaRegistriesSubjectsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
+  /** Required. The subject whose versions are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
+  parent: string;
+  /** Optional. If true, the response will include soft-deleted versions of an active or soft-deleted subject. The default is false. */
+  deleted?: boolean;
+}
+
+export const ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
+
+export type ListProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
+  HttpBody;
+export const ListProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type ListProjectsLocationsSchemaRegistriesSubjectsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get all versions of a subject. The response will be an array of versions of the subject. */
+export const listProjectsLocationsSchemaRegistriesSubjectsVersions: API.OperationMethod<
+  ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
+  ListProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
+  ListProjectsLocationsSchemaRegistriesSubjectsVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
+  output: ListProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
+  /** Required. The name of the subject version to delete. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
+  name: string;
+  /** Optional. If true, both the version and the referenced schema ID will be permanently deleted. The default is false. If false, the version will be deleted but the schema ID will be retained. Soft-deleted versions can still be searched in ListVersions API call with deleted=true query parameter. A soft-delete of a version must be performed before a hard-delete. */
+  permanent?: boolean;
+}
+
+export const DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    permanent: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("permanent")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
+
+export type DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
+  HttpBody;
+export const DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Delete a version of a subject. The response will be the deleted version id. */
+export const deleteProjectsLocationsSchemaRegistriesSubjectsVersions: API.OperationMethod<
+  DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
+  DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
+  DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
+  output: DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
+  /** Optional. If true, no matter if the subject/version is soft-deleted or not, it returns the version details. If false, it returns NOT_FOUND error if the subject/version is soft-deleted. The default is false. */
+  deleted?: boolean;
+  /** Required. The name of the subject to return versions. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
+  name: string;
+}
+
+export const GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
+
+export type GetProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
+  SchemaVersion;
+export const GetProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SchemaVersion;
+
+export type GetProjectsLocationsSchemaRegistriesSubjectsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get a versioned schema (schema with subject/version) of a subject. */
+export const getProjectsLocationsSchemaRegistriesSubjectsVersions: API.OperationMethod<
+  GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
+  GetProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
+  GetProjectsLocationsSchemaRegistriesSubjectsVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
+  output: GetProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
+  /** Required. The subject to create the version for. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
+  parent: string;
+  /** Request body */
+  body?: CreateVersionRequest;
+}
+
+export const CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(CreateVersionRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/versions", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
+
+export type CreateProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
+  CreateVersionResponse;
+export const CreateProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ CreateVersionResponse;
+
+export type CreateProjectsLocationsSchemaRegistriesSubjectsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Register a new version under a given subject with the given schema. */
+export const createProjectsLocationsSchemaRegistriesSubjectsVersions: API.OperationMethod<
+  CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
+  CreateProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
+  CreateProjectsLocationsSchemaRegistriesSubjectsVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
+  output: CreateProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
+  /** Optional. If true, no matter if the subject/version is soft-deleted or not, it returns the version details. If false, it returns NOT_FOUND error if the subject/version is soft-deleted. The default is false. */
+  deleted?: boolean;
+  /** Required. The name of the subject to return versions. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
+  name: string;
+}
+
+export const GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}/schema" }),
+    svc,
+  ) as unknown as Schema.Schema<GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
+
+export type GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
+  HttpBody;
+export const GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get the schema string only for a version of a subject. The response will be the schema string. */
+export const getSchemaProjectsLocationsSchemaRegistriesSubjectsVersions: API.OperationMethod<
+  GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
+  GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
+  GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
+  output: GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest {
+  /** Required. The version to list referenced by. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
+  parent: string;
+}
+
+export const ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/referencedby" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest>;
+
+export type ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyResponse =
+  HttpBody;
+export const ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get a list of IDs of schemas that reference the schema with the given subject and version. */
+export const listProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedby: API.OperationMethod<
+  ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest,
+  ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyResponse,
+  ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input:
+    ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest,
+  output:
+    ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface UpdateProjectsLocationsSchemaRegistriesModeRequest {
+  /** Required. The resource name of the mode. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}: mode for a schema registry, or * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}: mode for a specific subject in a specific context */
+  name: string;
+  /** Request body */
+  body?: UpdateSchemaModeRequest;
+}
+
+export const UpdateProjectsLocationsSchemaRegistriesModeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(UpdateSchemaModeRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateProjectsLocationsSchemaRegistriesModeRequest>;
+
+export type UpdateProjectsLocationsSchemaRegistriesModeResponse = SchemaMode;
+export const UpdateProjectsLocationsSchemaRegistriesModeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SchemaMode;
+
+export type UpdateProjectsLocationsSchemaRegistriesModeError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Update mode at global level or for a subject. */
+export const updateProjectsLocationsSchemaRegistriesMode: API.OperationMethod<
+  UpdateProjectsLocationsSchemaRegistriesModeRequest,
+  UpdateProjectsLocationsSchemaRegistriesModeResponse,
+  UpdateProjectsLocationsSchemaRegistriesModeError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateProjectsLocationsSchemaRegistriesModeRequest,
+  output: UpdateProjectsLocationsSchemaRegistriesModeResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsLocationsSchemaRegistriesModeRequest {
+  /** Required. The resource name of subject to delete the mode for. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject} * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject} */
+  name: string;
+}
+
+export const DeleteProjectsLocationsSchemaRegistriesModeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsSchemaRegistriesModeRequest>;
+
+export type DeleteProjectsLocationsSchemaRegistriesModeResponse = SchemaMode;
+export const DeleteProjectsLocationsSchemaRegistriesModeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SchemaMode;
+
+export type DeleteProjectsLocationsSchemaRegistriesModeError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Delete schema mode for a subject. */
+export const deleteProjectsLocationsSchemaRegistriesMode: API.OperationMethod<
+  DeleteProjectsLocationsSchemaRegistriesModeRequest,
+  DeleteProjectsLocationsSchemaRegistriesModeResponse,
+  DeleteProjectsLocationsSchemaRegistriesModeError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsSchemaRegistriesModeRequest,
+  output: DeleteProjectsLocationsSchemaRegistriesModeResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsSchemaRegistriesModeRequest {
+  /** Required. The resource name of the mode. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}: mode for a schema registry, or * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}: mode for a specific subject in a specific context */
+  name: string;
+}
+
+export const GetProjectsLocationsSchemaRegistriesModeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsSchemaRegistriesModeRequest>;
+
+export type GetProjectsLocationsSchemaRegistriesModeResponse = SchemaMode;
+export const GetProjectsLocationsSchemaRegistriesModeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SchemaMode;
+
+export type GetProjectsLocationsSchemaRegistriesModeError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get mode at global level or for a subject. */
+export const getProjectsLocationsSchemaRegistriesMode: API.OperationMethod<
+  GetProjectsLocationsSchemaRegistriesModeRequest,
+  GetProjectsLocationsSchemaRegistriesModeResponse,
+  GetProjectsLocationsSchemaRegistriesModeError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsSchemaRegistriesModeRequest,
+  output: GetProjectsLocationsSchemaRegistriesModeResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest {
+  /** Required. The name of the resource to check compatibility for. The format is either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/* /versions: Check compatibility with one or more versions of the specified subject. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/{subject}/versions/{version}: Check compatibility with a specific version of the subject. */
+  name: string;
+  /** Request body */
+  body?: CheckCompatibilityRequest;
+}
+
+export const CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(CheckCompatibilityRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest>;
+
+export type CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityResponse =
+  CheckCompatibilityResponse;
+export const CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityResponse =
+  /*@__PURE__*/ /*#__PURE__*/ CheckCompatibilityResponse;
+
+export type CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Check compatibility of a schema with all versions or a specific version of a subject. */
+export const checkCompatibilityProjectsLocationsSchemaRegistriesCompatibility: API.OperationMethod<
+  CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest,
+  CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityResponse,
+  CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input:
+    CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest,
+  output:
+    CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface UpdateProjectsLocationsSchemaRegistriesConfigRequest {
+  /** Required. The resource name to update the config for. It can be either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Update config at global level. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}: Update config for a specific subject. */
+  name: string;
+  /** Request body */
+  body?: UpdateSchemaConfigRequest;
+}
+
+export const UpdateProjectsLocationsSchemaRegistriesConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(UpdateSchemaConfigRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateProjectsLocationsSchemaRegistriesConfigRequest>;
+
+export type UpdateProjectsLocationsSchemaRegistriesConfigResponse =
+  SchemaConfig;
+export const UpdateProjectsLocationsSchemaRegistriesConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SchemaConfig;
+
+export type UpdateProjectsLocationsSchemaRegistriesConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Update config at global level or for a subject. Creates a SchemaSubject-level SchemaConfig if it does not exist. */
+export const updateProjectsLocationsSchemaRegistriesConfig: API.OperationMethod<
+  UpdateProjectsLocationsSchemaRegistriesConfigRequest,
+  UpdateProjectsLocationsSchemaRegistriesConfigResponse,
+  UpdateProjectsLocationsSchemaRegistriesConfigError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateProjectsLocationsSchemaRegistriesConfigRequest,
+  output: UpdateProjectsLocationsSchemaRegistriesConfigResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsLocationsSchemaRegistriesConfigRequest {
+  /** Required. The resource name of subject to delete the config for. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject} */
+  name: string;
+}
+
+export const DeleteProjectsLocationsSchemaRegistriesConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsSchemaRegistriesConfigRequest>;
+
+export type DeleteProjectsLocationsSchemaRegistriesConfigResponse =
+  SchemaConfig;
+export const DeleteProjectsLocationsSchemaRegistriesConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SchemaConfig;
+
+export type DeleteProjectsLocationsSchemaRegistriesConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Delete schema config for a subject. */
+export const deleteProjectsLocationsSchemaRegistriesConfig: API.OperationMethod<
+  DeleteProjectsLocationsSchemaRegistriesConfigRequest,
+  DeleteProjectsLocationsSchemaRegistriesConfigResponse,
+  DeleteProjectsLocationsSchemaRegistriesConfigError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsSchemaRegistriesConfigRequest,
+  output: DeleteProjectsLocationsSchemaRegistriesConfigResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsSchemaRegistriesConfigRequest {
+  /** Required. The resource name to get the config for. It can be either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Get config at global level. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}: Get config for a specific subject. */
+  name: string;
+  /** Optional. If true, the config will fall back to the config at the global level if no subject level config is found. */
+  defaultToGlobal?: boolean;
+}
+
+export const GetProjectsLocationsSchemaRegistriesConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    defaultToGlobal: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("defaultToGlobal"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsSchemaRegistriesConfigRequest>;
+
+export type GetProjectsLocationsSchemaRegistriesConfigResponse = SchemaConfig;
+export const GetProjectsLocationsSchemaRegistriesConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SchemaConfig;
+
+export type GetProjectsLocationsSchemaRegistriesConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get schema config at global level or for a subject. */
+export const getProjectsLocationsSchemaRegistriesConfig: API.OperationMethod<
+  GetProjectsLocationsSchemaRegistriesConfigRequest,
+  GetProjectsLocationsSchemaRegistriesConfigResponse,
+  GetProjectsLocationsSchemaRegistriesConfigError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsSchemaRegistriesConfigRequest,
+  output: GetProjectsLocationsSchemaRegistriesConfigResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsSchemaRegistriesContextsRequest {
@@ -2985,16 +3846,16 @@ export const getProjectsLocationsSchemaRegistriesContextsSchemas: API.OperationM
 }));
 
 export interface GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest {
-  /** Required. The name of the schema to return. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` */
-  name: string;
   /** Optional. Used to limit the search for the schema ID to a specific subject, otherwise the schema ID will be searched for in all subjects in the given specified context. */
   subject?: string;
+  /** Required. The name of the schema to return. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` */
+  name: string;
 }
 
 export const GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     subject: Schema.optional(Schema.String).pipe(T.HttpQuery("subject")),
+    name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/schema" }),
     svc,
@@ -3019,47 +3880,6 @@ export const getSchemaProjectsLocationsSchemaRegistriesContextsSchemas: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest,
   output: GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest {
-  /** Required. The schema whose schema versions are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}` */
-  parent: string;
-  /** Optional. The subject to filter the subjects by. */
-  subject?: string;
-  /** Optional. If true, the response will include soft-deleted versions of the schema, even if the subject is soft-deleted. The default is false. */
-  deleted?: boolean;
-}
-
-export const ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    subject: Schema.optional(Schema.String).pipe(T.HttpQuery("subject")),
-    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest>;
-
-export type ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsResponse =
-  HttpBody;
-export const ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** List the schema versions for the given schema id. The response will be an array of subject-version pairs as: [{"subject":"subject1", "version":1}, {"subject":"subject2", "version":2}]. */
-export const listProjectsLocationsSchemaRegistriesContextsSchemasVersions: API.OperationMethod<
-  ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest,
-  ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsResponse,
-  ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest,
-  output: ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsResponse,
   errors: [NotFound, Forbidden],
 }));
 
@@ -3101,17 +3921,17 @@ export const listProjectsLocationsSchemaRegistriesContextsSchemasTypes: API.Oper
 export interface ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsRequest {
   /** Required. The schema resource whose associated subjects are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}` */
   parent: string;
-  /** Optional. The subject to filter the subjects by. */
-  subject?: string;
   /** Optional. If true, the response will include soft-deleted subjects. The default is false. */
   deleted?: boolean;
+  /** Optional. The subject to filter the subjects by. */
+  subject?: string;
 }
 
 export const ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    subject: Schema.optional(Schema.String).pipe(T.HttpQuery("subject")),
     deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
+    subject: Schema.optional(Schema.String).pipe(T.HttpQuery("subject")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/subjects" }),
     svc,
@@ -3139,22 +3959,63 @@ export const listProjectsLocationsSchemaRegistriesContextsSchemasSubjects: API.O
   errors: [NotFound, Forbidden],
 }));
 
+export interface ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest {
+  /** Required. The schema whose schema versions are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}` */
+  parent: string;
+  /** Optional. If true, the response will include soft-deleted versions of the schema, even if the subject is soft-deleted. The default is false. */
+  deleted?: boolean;
+  /** Optional. The subject to filter the subjects by. */
+  subject?: string;
+}
+
+export const ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
+    subject: Schema.optional(Schema.String).pipe(T.HttpQuery("subject")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest>;
+
+export type ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsResponse =
+  HttpBody;
+export const ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** List the schema versions for the given schema id. The response will be an array of subject-version pairs as: [{"subject":"subject1", "version":1}, {"subject":"subject2", "version":2}]. */
+export const listProjectsLocationsSchemaRegistriesContextsSchemasVersions: API.OperationMethod<
+  ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest,
+  ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsResponse,
+  ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest,
+  output: ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface ListProjectsLocationsSchemaRegistriesContextsSubjectsRequest {
   /** Required. The parent schema registry/context whose subjects are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}` */
   parent: string;
-  /** Optional. The context to filter the subjects by, in the format of `:.{context}:`. If unset, all subjects in the registry are returned. Set to empty string or add as '?subjectPrefix=' at the end of this request to list subjects in the default context. */
-  subjectPrefix?: string;
   /** Optional. If true, the response will include soft-deleted subjects. The default is false. */
   deleted?: boolean;
+  /** Optional. The context to filter the subjects by, in the format of `:.{context}:`. If unset, all subjects in the registry are returned. Set to empty string or add as '?subjectPrefix=' at the end of this request to list subjects in the default context. */
+  subjectPrefix?: string;
 }
 
 export const ListProjectsLocationsSchemaRegistriesContextsSubjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
+    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
     subjectPrefix: Schema.optional(Schema.String).pipe(
       T.HttpQuery("subjectPrefix"),
     ),
-    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/subjects" }),
     svc,
@@ -3263,122 +4124,6 @@ export const lookupVersionProjectsLocationsSchemaRegistriesContextsSubjects: API
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest {
-  /** Required. The name of the subject to return versions. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
-  name: string;
-  /** Optional. If true, no matter if the subject/version is soft-deleted or not, it returns the version details. If false, it returns NOT_FOUND error if the subject/version is soft-deleted. The default is false. */
-  deleted?: boolean;
-}
-
-export const GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>;
-
-export type GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse =
-  SchemaVersion;
-export const GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SchemaVersion;
-
-export type GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get a versioned schema (schema with subject/version) of a subject. */
-export const getProjectsLocationsSchemaRegistriesContextsSubjectsVersions: API.OperationMethod<
-  GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
-  GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse,
-  GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
-  output: GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest {
-  /** Required. The name of the subject to return versions. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
-  name: string;
-  /** Optional. If true, no matter if the subject/version is soft-deleted or not, it returns the version details. If false, it returns NOT_FOUND error if the subject/version is soft-deleted. The default is false. */
-  deleted?: boolean;
-}
-
-export const GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/schema" }),
-    svc,
-  ) as unknown as Schema.Schema<GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>;
-
-export type GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse =
-  HttpBody;
-export const GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get the schema string only for a version of a subject. The response will be the schema string. */
-export const getSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersions: API.OperationMethod<
-  GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
-  GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse,
-  GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input:
-    GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
-  output:
-    GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest {
-  /** Required. The subject whose versions are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
-  parent: string;
-  /** Optional. If true, the response will include soft-deleted versions of an active or soft-deleted subject. The default is false. */
-  deleted?: boolean;
-}
-
-export const ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>;
-
-export type ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse =
-  HttpBody;
-export const ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get all versions of a subject. The response will be an array of versions of the subject. */
-export const listProjectsLocationsSchemaRegistriesContextsSubjectsVersions: API.OperationMethod<
-  ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
-  ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse,
-  ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
-  output: ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface CreateProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest {
   /** Required. The subject to create the version for. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
   parent: string;
@@ -3418,6 +4163,82 @@ export const createProjectsLocationsSchemaRegistriesContextsSubjectsVersions: AP
   output:
     CreateProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest {
+  /** Optional. If true, no matter if the subject/version is soft-deleted or not, it returns the version details. If false, it returns NOT_FOUND error if the subject/version is soft-deleted. The default is false. */
+  deleted?: boolean;
+  /** Required. The name of the subject to return versions. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
+  name: string;
+}
+
+export const GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>;
+
+export type GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse =
+  SchemaVersion;
+export const GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SchemaVersion;
+
+export type GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get a versioned schema (schema with subject/version) of a subject. */
+export const getProjectsLocationsSchemaRegistriesContextsSubjectsVersions: API.OperationMethod<
+  GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
+  GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse,
+  GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
+  output: GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest {
+  /** Required. The subject whose versions are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
+  parent: string;
+  /** Optional. If true, the response will include soft-deleted versions of an active or soft-deleted subject. The default is false. */
+  deleted?: boolean;
+}
+
+export const ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>;
+
+export type ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse =
+  HttpBody;
+export const ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get all versions of a subject. The response will be an array of versions of the subject. */
+export const listProjectsLocationsSchemaRegistriesContextsSubjectsVersions: API.OperationMethod<
+  ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
+  ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse,
+  ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
+  output: ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest {
@@ -3461,6 +4282,46 @@ export const deleteProjectsLocationsSchemaRegistriesContextsSubjectsVersions: AP
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest {
+  /** Required. The name of the subject to return versions. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
+  name: string;
+  /** Optional. If true, no matter if the subject/version is soft-deleted or not, it returns the version details. If false, it returns NOT_FOUND error if the subject/version is soft-deleted. The default is false. */
+  deleted?: boolean;
+}
+
+export const GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}/schema" }),
+    svc,
+  ) as unknown as Schema.Schema<GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>;
+
+export type GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse =
+  HttpBody;
+export const GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get the schema string only for a version of a subject. The response will be the schema string. */
+export const getSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersions: API.OperationMethod<
+  GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
+  GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse,
+  GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input:
+    GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
+  output:
+    GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyRequest {
   /** Required. The version to list referenced by. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
   parent: string;
@@ -3495,88 +4356,6 @@ export const listProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRefere
     ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyRequest,
   output:
     ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest {
-  /** Required. The name of the resource to check compatibility for. The format is either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/* /versions: Check compatibility with one or more versions of the specified subject. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/{subject}/versions/{version}: Check compatibility with a specific version of the subject. */
-  name: string;
-  /** Request body */
-  body?: CheckCompatibilityRequest;
-}
-
-export const CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(CheckCompatibilityRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest>;
-
-export type CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityResponse =
-  CheckCompatibilityResponse;
-export const CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CheckCompatibilityResponse;
-
-export type CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Check compatibility of a schema with all versions or a specific version of a subject. */
-export const checkCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibility: API.OperationMethod<
-  CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest,
-  CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityResponse,
-  CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input:
-    CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest,
-  output:
-    CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsSchemaRegistriesContextsConfigRequest {
-  /** Required. The resource name to get the config for. It can be either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Get config at global level. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}: Get config for a specific subject. */
-  name: string;
-  /** Optional. If true, the config will fall back to the config at the global level if no subject level config is found. */
-  defaultToGlobal?: boolean;
-}
-
-export const GetProjectsLocationsSchemaRegistriesContextsConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    defaultToGlobal: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("defaultToGlobal"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSchemaRegistriesContextsConfigRequest>;
-
-export type GetProjectsLocationsSchemaRegistriesContextsConfigResponse =
-  SchemaConfig;
-export const GetProjectsLocationsSchemaRegistriesContextsConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SchemaConfig;
-
-export type GetProjectsLocationsSchemaRegistriesContextsConfigError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get schema config at global level or for a subject. */
-export const getProjectsLocationsSchemaRegistriesContextsConfig: API.OperationMethod<
-  GetProjectsLocationsSchemaRegistriesContextsConfigRequest,
-  GetProjectsLocationsSchemaRegistriesContextsConfigResponse,
-  GetProjectsLocationsSchemaRegistriesContextsConfigError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSchemaRegistriesContextsConfigRequest,
-  output: GetProjectsLocationsSchemaRegistriesContextsConfigResponse,
   errors: [NotFound, Forbidden],
 }));
 
@@ -3655,6 +4434,46 @@ export const deleteProjectsLocationsSchemaRegistriesContextsConfig: API.Operatio
   input: DeleteProjectsLocationsSchemaRegistriesContextsConfigRequest,
   output: DeleteProjectsLocationsSchemaRegistriesContextsConfigResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsSchemaRegistriesContextsConfigRequest {
+  /** Required. The resource name to get the config for. It can be either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Get config at global level. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}: Get config for a specific subject. */
+  name: string;
+  /** Optional. If true, the config will fall back to the config at the global level if no subject level config is found. */
+  defaultToGlobal?: boolean;
+}
+
+export const GetProjectsLocationsSchemaRegistriesContextsConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    defaultToGlobal: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("defaultToGlobal"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsSchemaRegistriesContextsConfigRequest>;
+
+export type GetProjectsLocationsSchemaRegistriesContextsConfigResponse =
+  SchemaConfig;
+export const GetProjectsLocationsSchemaRegistriesContextsConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SchemaConfig;
+
+export type GetProjectsLocationsSchemaRegistriesContextsConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get schema config at global level or for a subject. */
+export const getProjectsLocationsSchemaRegistriesContextsConfig: API.OperationMethod<
+  GetProjectsLocationsSchemaRegistriesContextsConfigRequest,
+  GetProjectsLocationsSchemaRegistriesContextsConfigResponse,
+  GetProjectsLocationsSchemaRegistriesContextsConfigError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsSchemaRegistriesContextsConfigRequest,
+  output: GetProjectsLocationsSchemaRegistriesContextsConfigResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsSchemaRegistriesContextsModeRequest {
@@ -3769,573 +4588,28 @@ export const deleteProjectsLocationsSchemaRegistriesContextsMode: API.OperationM
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsSchemaRegistriesSchemasRequest {
-  /** Required. The name of the schema to return. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` */
-  name: string;
-  /** Optional. Used to limit the search for the schema ID to a specific subject, otherwise the schema ID will be searched for in all subjects in the given specified context. */
-  subject?: string;
-}
-
-export const GetProjectsLocationsSchemaRegistriesSchemasRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    subject: Schema.optional(Schema.String).pipe(T.HttpQuery("subject")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSchemaRegistriesSchemasRequest>;
-
-export type GetProjectsLocationsSchemaRegistriesSchemasResponse =
-  Managedkafka_Schema;
-export const GetProjectsLocationsSchemaRegistriesSchemasResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Managedkafka_Schema;
-
-export type GetProjectsLocationsSchemaRegistriesSchemasError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get the schema for the given schema id. */
-export const getProjectsLocationsSchemaRegistriesSchemas: API.OperationMethod<
-  GetProjectsLocationsSchemaRegistriesSchemasRequest,
-  GetProjectsLocationsSchemaRegistriesSchemasResponse,
-  GetProjectsLocationsSchemaRegistriesSchemasError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSchemaRegistriesSchemasRequest,
-  output: GetProjectsLocationsSchemaRegistriesSchemasResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest {
-  /** Required. The name of the schema to return. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` */
-  name: string;
-  /** Optional. Used to limit the search for the schema ID to a specific subject, otherwise the schema ID will be searched for in all subjects in the given specified context. */
-  subject?: string;
-}
-
-export const GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    subject: Schema.optional(Schema.String).pipe(T.HttpQuery("subject")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/schema" }),
-    svc,
-  ) as unknown as Schema.Schema<GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest>;
-
-export type GetSchemaProjectsLocationsSchemaRegistriesSchemasResponse =
-  HttpBody;
-export const GetSchemaProjectsLocationsSchemaRegistriesSchemasResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type GetSchemaProjectsLocationsSchemaRegistriesSchemasError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get the schema string for the given schema id. The response will be the schema string. */
-export const getSchemaProjectsLocationsSchemaRegistriesSchemas: API.OperationMethod<
-  GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest,
-  GetSchemaProjectsLocationsSchemaRegistriesSchemasResponse,
-  GetSchemaProjectsLocationsSchemaRegistriesSchemasError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest,
-  output: GetSchemaProjectsLocationsSchemaRegistriesSchemasResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest {
-  /** Required. The schema whose schema versions are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}` */
-  parent: string;
-  /** Optional. The subject to filter the subjects by. */
-  subject?: string;
-  /** Optional. If true, the response will include soft-deleted versions of the schema, even if the subject is soft-deleted. The default is false. */
-  deleted?: boolean;
-}
-
-export const ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    subject: Schema.optional(Schema.String).pipe(T.HttpQuery("subject")),
-    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest>;
-
-export type ListProjectsLocationsSchemaRegistriesSchemasVersionsResponse =
-  HttpBody;
-export const ListProjectsLocationsSchemaRegistriesSchemasVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type ListProjectsLocationsSchemaRegistriesSchemasVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** List the schema versions for the given schema id. The response will be an array of subject-version pairs as: [{"subject":"subject1", "version":1}, {"subject":"subject2", "version":2}]. */
-export const listProjectsLocationsSchemaRegistriesSchemasVersions: API.OperationMethod<
-  ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest,
-  ListProjectsLocationsSchemaRegistriesSchemasVersionsResponse,
-  ListProjectsLocationsSchemaRegistriesSchemasVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest,
-  output: ListProjectsLocationsSchemaRegistriesSchemasVersionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsSchemaRegistriesSchemasTypesRequest {
-  /** Required. The parent schema registry whose schema types are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` */
-  parent: string;
-}
-
-export const ListProjectsLocationsSchemaRegistriesSchemasTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/schemas/types" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSchemaRegistriesSchemasTypesRequest>;
-
-export type ListProjectsLocationsSchemaRegistriesSchemasTypesResponse =
-  HttpBody;
-export const ListProjectsLocationsSchemaRegistriesSchemasTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type ListProjectsLocationsSchemaRegistriesSchemasTypesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** List the supported schema types. The response will be an array of schema types. */
-export const listProjectsLocationsSchemaRegistriesSchemasTypes: API.OperationMethod<
-  ListProjectsLocationsSchemaRegistriesSchemasTypesRequest,
-  ListProjectsLocationsSchemaRegistriesSchemasTypesResponse,
-  ListProjectsLocationsSchemaRegistriesSchemasTypesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesSchemasTypesRequest,
-  output: ListProjectsLocationsSchemaRegistriesSchemasTypesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest {
-  /** Required. The schema resource whose associated subjects are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}` */
-  parent: string;
-  /** Optional. The subject to filter the subjects by. */
-  subject?: string;
-  /** Optional. If true, the response will include soft-deleted subjects. The default is false. */
-  deleted?: boolean;
-}
-
-export const ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    subject: Schema.optional(Schema.String).pipe(T.HttpQuery("subject")),
-    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/subjects" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest>;
-
-export type ListProjectsLocationsSchemaRegistriesSchemasSubjectsResponse =
-  HttpBody;
-export const ListProjectsLocationsSchemaRegistriesSchemasSubjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type ListProjectsLocationsSchemaRegistriesSchemasSubjectsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** List subjects which reference a particular schema id. The response will be an array of subject names. */
-export const listProjectsLocationsSchemaRegistriesSchemasSubjects: API.OperationMethod<
-  ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest,
-  ListProjectsLocationsSchemaRegistriesSchemasSubjectsResponse,
-  ListProjectsLocationsSchemaRegistriesSchemasSubjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest,
-  output: ListProjectsLocationsSchemaRegistriesSchemasSubjectsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsSchemaRegistriesSubjectsRequest {
-  /** Required. The parent schema registry/context whose subjects are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}` */
-  parent: string;
-  /** Optional. The context to filter the subjects by, in the format of `:.{context}:`. If unset, all subjects in the registry are returned. Set to empty string or add as '?subjectPrefix=' at the end of this request to list subjects in the default context. */
-  subjectPrefix?: string;
-  /** Optional. If true, the response will include soft-deleted subjects. The default is false. */
-  deleted?: boolean;
-}
-
-export const ListProjectsLocationsSchemaRegistriesSubjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    subjectPrefix: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("subjectPrefix"),
-    ),
-    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/subjects" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSchemaRegistriesSubjectsRequest>;
-
-export type ListProjectsLocationsSchemaRegistriesSubjectsResponse = HttpBody;
-export const ListProjectsLocationsSchemaRegistriesSubjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type ListProjectsLocationsSchemaRegistriesSubjectsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** List subjects in the schema registry. The response will be an array of subject names. */
-export const listProjectsLocationsSchemaRegistriesSubjects: API.OperationMethod<
-  ListProjectsLocationsSchemaRegistriesSubjectsRequest,
-  ListProjectsLocationsSchemaRegistriesSubjectsResponse,
-  ListProjectsLocationsSchemaRegistriesSubjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesSubjectsRequest,
-  output: ListProjectsLocationsSchemaRegistriesSubjectsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteProjectsLocationsSchemaRegistriesSubjectsRequest {
-  /** Required. The name of the subject to delete. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
-  name: string;
-  /** Optional. If true, the subject and all associated metadata including the schema ID will be deleted permanently. Otherwise, only the subject is soft-deleted. The default is false. Soft-deleted subjects can still be searched in ListSubjects API call with deleted=true query parameter. A soft-delete of a subject must be performed before a hard-delete. */
-  permanent?: boolean;
-}
-
-export const DeleteProjectsLocationsSchemaRegistriesSubjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    permanent: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("permanent")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSchemaRegistriesSubjectsRequest>;
-
-export type DeleteProjectsLocationsSchemaRegistriesSubjectsResponse = HttpBody;
-export const DeleteProjectsLocationsSchemaRegistriesSubjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type DeleteProjectsLocationsSchemaRegistriesSubjectsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Delete a subject. The response will be an array of versions of the deleted subject. */
-export const deleteProjectsLocationsSchemaRegistriesSubjects: API.OperationMethod<
-  DeleteProjectsLocationsSchemaRegistriesSubjectsRequest,
-  DeleteProjectsLocationsSchemaRegistriesSubjectsResponse,
-  DeleteProjectsLocationsSchemaRegistriesSubjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSchemaRegistriesSubjectsRequest,
-  output: DeleteProjectsLocationsSchemaRegistriesSubjectsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest {
-  /** Required. The subject to lookup the schema in. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
-  parent: string;
-  /** Request body */
-  body?: LookupVersionRequest;
-}
-
-export const LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(LookupVersionRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest>;
-
-export type LookupVersionProjectsLocationsSchemaRegistriesSubjectsResponse =
-  SchemaVersion;
-export const LookupVersionProjectsLocationsSchemaRegistriesSubjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SchemaVersion;
-
-export type LookupVersionProjectsLocationsSchemaRegistriesSubjectsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Lookup a schema under the specified subject. */
-export const lookupVersionProjectsLocationsSchemaRegistriesSubjects: API.OperationMethod<
-  LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest,
-  LookupVersionProjectsLocationsSchemaRegistriesSubjectsResponse,
-  LookupVersionProjectsLocationsSchemaRegistriesSubjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest,
-  output: LookupVersionProjectsLocationsSchemaRegistriesSubjectsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
-  /** Required. The name of the subject to return versions. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
-  name: string;
-  /** Optional. If true, no matter if the subject/version is soft-deleted or not, it returns the version details. If false, it returns NOT_FOUND error if the subject/version is soft-deleted. The default is false. */
-  deleted?: boolean;
-}
-
-export const GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
-
-export type GetProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
-  SchemaVersion;
-export const GetProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SchemaVersion;
-
-export type GetProjectsLocationsSchemaRegistriesSubjectsVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get a versioned schema (schema with subject/version) of a subject. */
-export const getProjectsLocationsSchemaRegistriesSubjectsVersions: API.OperationMethod<
-  GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
-  GetProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
-  GetProjectsLocationsSchemaRegistriesSubjectsVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
-  output: GetProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
-  /** Required. The name of the subject to return versions. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
-  name: string;
-  /** Optional. If true, no matter if the subject/version is soft-deleted or not, it returns the version details. If false, it returns NOT_FOUND error if the subject/version is soft-deleted. The default is false. */
-  deleted?: boolean;
-}
-
-export const GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/schema" }),
-    svc,
-  ) as unknown as Schema.Schema<GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
-
-export type GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
-  HttpBody;
-export const GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get the schema string only for a version of a subject. The response will be the schema string. */
-export const getSchemaProjectsLocationsSchemaRegistriesSubjectsVersions: API.OperationMethod<
-  GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
-  GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
-  GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
-  output: GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
-  /** Required. The subject whose versions are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
-  parent: string;
-  /** Optional. If true, the response will include soft-deleted versions of an active or soft-deleted subject. The default is false. */
-  deleted?: boolean;
-}
-
-export const ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    deleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deleted")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
-
-export type ListProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
-  HttpBody;
-export const ListProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type ListProjectsLocationsSchemaRegistriesSubjectsVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get all versions of a subject. The response will be an array of versions of the subject. */
-export const listProjectsLocationsSchemaRegistriesSubjectsVersions: API.OperationMethod<
-  ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
-  ListProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
-  ListProjectsLocationsSchemaRegistriesSubjectsVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
-  output: ListProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
-  /** Required. The subject to create the version for. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
-  parent: string;
-  /** Request body */
-  body?: CreateVersionRequest;
-}
-
-export const CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(CreateVersionRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/versions", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
-
-export type CreateProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
-  CreateVersionResponse;
-export const CreateProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CreateVersionResponse;
-
-export type CreateProjectsLocationsSchemaRegistriesSubjectsVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Register a new version under a given subject with the given schema. */
-export const createProjectsLocationsSchemaRegistriesSubjectsVersions: API.OperationMethod<
-  CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
-  CreateProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
-  CreateProjectsLocationsSchemaRegistriesSubjectsVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
-  output: CreateProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
-  /** Required. The name of the subject version to delete. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
-  name: string;
-  /** Optional. If true, both the version and the referenced schema ID will be permanently deleted. The default is false. If false, the version will be deleted but the schema ID will be retained. Soft-deleted versions can still be searched in ListVersions API call with deleted=true query parameter. A soft-delete of a version must be performed before a hard-delete. */
-  permanent?: boolean;
-}
-
-export const DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    permanent: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("permanent")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
-
-export type DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
-  HttpBody;
-export const DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Delete a version of a subject. The response will be the deleted version id. */
-export const deleteProjectsLocationsSchemaRegistriesSubjectsVersions: API.OperationMethod<
-  DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
-  DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
-  DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
-  output: DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest {
-  /** Required. The version to list referenced by. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
-  parent: string;
-}
-
-export const ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/referencedby" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest>;
-
-export type ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyResponse =
-  HttpBody;
-export const ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get a list of IDs of schemas that reference the schema with the given subject and version. */
-export const listProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedby: API.OperationMethod<
-  ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest,
-  ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyResponse,
-  ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input:
-    ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest,
-  output:
-    ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest {
+export interface CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest {
   /** Required. The name of the resource to check compatibility for. The format is either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/* /versions: Check compatibility with one or more versions of the specified subject. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/{subject}/versions/{version}: Check compatibility with a specific version of the subject. */
   name: string;
   /** Request body */
   body?: CheckCompatibilityRequest;
 }
 
-export const CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest =
+export const CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CheckCompatibilityRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest>;
+  ) as unknown as Schema.Schema<CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest>;
 
-export type CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityResponse =
+export type CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityResponse =
   CheckCompatibilityResponse;
-export const CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityResponse =
+export const CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityResponse =
   /*@__PURE__*/ /*#__PURE__*/ CheckCompatibilityResponse;
 
-export type CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityError =
+export type CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -4343,240 +4617,15 @@ export type CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityErro
   | Conflict;
 
 /** Check compatibility of a schema with all versions or a specific version of a subject. */
-export const checkCompatibilityProjectsLocationsSchemaRegistriesCompatibility: API.OperationMethod<
-  CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest,
-  CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityResponse,
-  CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityError,
+export const checkCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibility: API.OperationMethod<
+  CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest,
+  CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityResponse,
+  CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input:
-    CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest,
+    CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest,
   output:
-    CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsSchemaRegistriesConfigRequest {
-  /** Required. The resource name to get the config for. It can be either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Get config at global level. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}: Get config for a specific subject. */
-  name: string;
-  /** Optional. If true, the config will fall back to the config at the global level if no subject level config is found. */
-  defaultToGlobal?: boolean;
-}
-
-export const GetProjectsLocationsSchemaRegistriesConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    defaultToGlobal: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("defaultToGlobal"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSchemaRegistriesConfigRequest>;
-
-export type GetProjectsLocationsSchemaRegistriesConfigResponse = SchemaConfig;
-export const GetProjectsLocationsSchemaRegistriesConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SchemaConfig;
-
-export type GetProjectsLocationsSchemaRegistriesConfigError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get schema config at global level or for a subject. */
-export const getProjectsLocationsSchemaRegistriesConfig: API.OperationMethod<
-  GetProjectsLocationsSchemaRegistriesConfigRequest,
-  GetProjectsLocationsSchemaRegistriesConfigResponse,
-  GetProjectsLocationsSchemaRegistriesConfigError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSchemaRegistriesConfigRequest,
-  output: GetProjectsLocationsSchemaRegistriesConfigResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface UpdateProjectsLocationsSchemaRegistriesConfigRequest {
-  /** Required. The resource name to update the config for. It can be either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Update config at global level. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}: Update config for a specific subject. */
-  name: string;
-  /** Request body */
-  body?: UpdateSchemaConfigRequest;
-}
-
-export const UpdateProjectsLocationsSchemaRegistriesConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(UpdateSchemaConfigRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateProjectsLocationsSchemaRegistriesConfigRequest>;
-
-export type UpdateProjectsLocationsSchemaRegistriesConfigResponse =
-  SchemaConfig;
-export const UpdateProjectsLocationsSchemaRegistriesConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SchemaConfig;
-
-export type UpdateProjectsLocationsSchemaRegistriesConfigError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Update config at global level or for a subject. Creates a SchemaSubject-level SchemaConfig if it does not exist. */
-export const updateProjectsLocationsSchemaRegistriesConfig: API.OperationMethod<
-  UpdateProjectsLocationsSchemaRegistriesConfigRequest,
-  UpdateProjectsLocationsSchemaRegistriesConfigResponse,
-  UpdateProjectsLocationsSchemaRegistriesConfigError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateProjectsLocationsSchemaRegistriesConfigRequest,
-  output: UpdateProjectsLocationsSchemaRegistriesConfigResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsSchemaRegistriesConfigRequest {
-  /** Required. The resource name of subject to delete the config for. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject} */
-  name: string;
-}
-
-export const DeleteProjectsLocationsSchemaRegistriesConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSchemaRegistriesConfigRequest>;
-
-export type DeleteProjectsLocationsSchemaRegistriesConfigResponse =
-  SchemaConfig;
-export const DeleteProjectsLocationsSchemaRegistriesConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SchemaConfig;
-
-export type DeleteProjectsLocationsSchemaRegistriesConfigError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Delete schema config for a subject. */
-export const deleteProjectsLocationsSchemaRegistriesConfig: API.OperationMethod<
-  DeleteProjectsLocationsSchemaRegistriesConfigRequest,
-  DeleteProjectsLocationsSchemaRegistriesConfigResponse,
-  DeleteProjectsLocationsSchemaRegistriesConfigError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSchemaRegistriesConfigRequest,
-  output: DeleteProjectsLocationsSchemaRegistriesConfigResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsSchemaRegistriesModeRequest {
-  /** Required. The resource name of the mode. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}: mode for a schema registry, or * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}: mode for a specific subject in a specific context */
-  name: string;
-}
-
-export const GetProjectsLocationsSchemaRegistriesModeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSchemaRegistriesModeRequest>;
-
-export type GetProjectsLocationsSchemaRegistriesModeResponse = SchemaMode;
-export const GetProjectsLocationsSchemaRegistriesModeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SchemaMode;
-
-export type GetProjectsLocationsSchemaRegistriesModeError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get mode at global level or for a subject. */
-export const getProjectsLocationsSchemaRegistriesMode: API.OperationMethod<
-  GetProjectsLocationsSchemaRegistriesModeRequest,
-  GetProjectsLocationsSchemaRegistriesModeResponse,
-  GetProjectsLocationsSchemaRegistriesModeError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSchemaRegistriesModeRequest,
-  output: GetProjectsLocationsSchemaRegistriesModeResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface UpdateProjectsLocationsSchemaRegistriesModeRequest {
-  /** Required. The resource name of the mode. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}: mode for a schema registry, or * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}: mode for a specific subject in a specific context */
-  name: string;
-  /** Request body */
-  body?: UpdateSchemaModeRequest;
-}
-
-export const UpdateProjectsLocationsSchemaRegistriesModeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(UpdateSchemaModeRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateProjectsLocationsSchemaRegistriesModeRequest>;
-
-export type UpdateProjectsLocationsSchemaRegistriesModeResponse = SchemaMode;
-export const UpdateProjectsLocationsSchemaRegistriesModeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SchemaMode;
-
-export type UpdateProjectsLocationsSchemaRegistriesModeError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Update mode at global level or for a subject. */
-export const updateProjectsLocationsSchemaRegistriesMode: API.OperationMethod<
-  UpdateProjectsLocationsSchemaRegistriesModeRequest,
-  UpdateProjectsLocationsSchemaRegistriesModeResponse,
-  UpdateProjectsLocationsSchemaRegistriesModeError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateProjectsLocationsSchemaRegistriesModeRequest,
-  output: UpdateProjectsLocationsSchemaRegistriesModeResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsSchemaRegistriesModeRequest {
-  /** Required. The resource name of subject to delete the mode for. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject} * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject} */
-  name: string;
-}
-
-export const DeleteProjectsLocationsSchemaRegistriesModeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSchemaRegistriesModeRequest>;
-
-export type DeleteProjectsLocationsSchemaRegistriesModeResponse = SchemaMode;
-export const DeleteProjectsLocationsSchemaRegistriesModeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SchemaMode;
-
-export type DeleteProjectsLocationsSchemaRegistriesModeError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Delete schema mode for a subject. */
-export const deleteProjectsLocationsSchemaRegistriesMode: API.OperationMethod<
-  DeleteProjectsLocationsSchemaRegistriesModeRequest,
-  DeleteProjectsLocationsSchemaRegistriesModeResponse,
-  DeleteProjectsLocationsSchemaRegistriesModeError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSchemaRegistriesModeRequest,
-  output: DeleteProjectsLocationsSchemaRegistriesModeResponse,
+    CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

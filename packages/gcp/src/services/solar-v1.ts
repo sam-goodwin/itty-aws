@@ -22,6 +22,28 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface RoofSegmentSummary {
+  /** Angle of the roof segment relative to the theoretical ground plane. 0 = parallel to the ground, 90 = perpendicular to the ground. */
+  pitchDegrees?: number;
+  /** Compass direction the roof segment is pointing in. 0 = North, 90 = East, 180 = South. For a "flat" roof segment (`pitch_degrees` very near 0), azimuth is not well defined, so for consistency, we define it arbitrarily to be 0 (North). */
+  azimuthDegrees?: number;
+  /** How much sunlight energy this part of the layout captures over the course of a year, in DC kWh, assuming the panels described above. */
+  yearlyEnergyDcKwh?: number;
+  /** The total number of panels on this segment. */
+  panelsCount?: number;
+  /** Index in roof_segment_stats of the corresponding `RoofSegmentSizeAndSunshineStats`. */
+  segmentIndex?: number;
+}
+
+export const RoofSegmentSummary: Schema.Schema<RoofSegmentSummary> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pitchDegrees: Schema.optional(Schema.Number),
+    azimuthDegrees: Schema.optional(Schema.Number),
+    yearlyEnergyDcKwh: Schema.optional(Schema.Number),
+    panelsCount: Schema.optional(Schema.Number),
+    segmentIndex: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "RoofSegmentSummary" });
+
 export interface Money {
   /** The three-letter currency code defined in ISO 4217. */
   currencyCode?: string;
@@ -31,303 +53,74 @@ export interface Money {
   nanos?: number;
 }
 
-export const Money = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  currencyCode: Schema.optional(Schema.String),
-  units: Schema.optional(Schema.String),
-  nanos: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Money" });
-
-export interface SavingsOverTime {
-  /** Using the assumed discount rate, what is the present value of the cumulative 20-year savings? */
-  presentValueOfSavingsYear20?: Money;
-  /** Savings in the first year after panel installation. */
-  savingsYear1?: Money;
-  /** Savings in the first twenty years after panel installation. */
-  savingsYear20?: Money;
-  /** Indicates whether this scenario is financially viable. Will be false for scenarios with poor financial viability (e.g., money-losing). */
-  financiallyViable?: boolean;
-  /** Savings in the entire panel lifetime. */
-  savingsLifetime?: Money;
-  /** Using the assumed discount rate, what is the present value of the cumulative lifetime savings? */
-  presentValueOfSavingsLifetime?: Money;
-}
-
-export const SavingsOverTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  presentValueOfSavingsYear20: Schema.optional(Money),
-  savingsYear1: Schema.optional(Money),
-  savingsYear20: Schema.optional(Money),
-  financiallyViable: Schema.optional(Schema.Boolean),
-  savingsLifetime: Schema.optional(Money),
-  presentValueOfSavingsLifetime: Schema.optional(Money),
-}).annotate({ identifier: "SavingsOverTime" });
-
-export interface Solar_Date {
-  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
-  year?: number;
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  day?: number;
-  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
-  month?: number;
-}
-
-export const Solar_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  year: Schema.optional(Schema.Number),
-  day: Schema.optional(Schema.Number),
-  month: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Solar_Date" });
-
-export interface SizeAndSunshineStats {
-  /** Quantiles of the pointwise sunniness across the area. If there are N values here, this represents the (N-1)-iles. For example, if there are 5 values, then they would be the quartiles (min, 25%, 50%, 75%, max). Values are in annual kWh/kW like max_sunshine_hours_per_year. */
-  sunshineQuantiles?: ReadonlyArray<number>;
-  /** The area of the roof or roof segment, in m^2. This is the roof area (accounting for tilt), not the ground footprint area. */
-  areaMeters2?: number;
-  /** The ground footprint area covered by the roof or roof segment, in m^2. */
-  groundAreaMeters2?: number;
-}
-
-export const SizeAndSunshineStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sunshineQuantiles: Schema.optional(Schema.Array(Schema.Number)),
-  areaMeters2: Schema.optional(Schema.Number),
-  groundAreaMeters2: Schema.optional(Schema.Number),
-}).annotate({ identifier: "SizeAndSunshineStats" });
-
-export interface CashPurchaseSavings {
-  /** Initial cost after tax incentives: it's the amount that must be paid during first year. Contrast with `out_of_pocket_cost`, which is before tax incentives. */
-  upfrontCost?: Money;
-  /** The value of all tax rebates. */
-  rebateValue?: Money;
-  /** Initial cost before tax incentives: the amount that must be paid out-of-pocket. Contrast with `upfront_cost`, which is after tax incentives. */
-  outOfPocketCost?: Money;
-  /** How much is saved (or not) over the lifetime period. */
-  savings?: SavingsOverTime;
-  /** Number of years until payback occurs. A negative value means payback never occurs within the lifetime period. */
-  paybackYears?: number;
-}
-
-export const CashPurchaseSavings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  upfrontCost: Schema.optional(Money),
-  rebateValue: Schema.optional(Money),
-  outOfPocketCost: Schema.optional(Money),
-  savings: Schema.optional(SavingsOverTime),
-  paybackYears: Schema.optional(Schema.Number),
-}).annotate({ identifier: "CashPurchaseSavings" });
+export const Money: Schema.Schema<Money> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currencyCode: Schema.optional(Schema.String),
+    units: Schema.optional(Schema.String),
+    nanos: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Money" });
 
 export interface FinancialDetails {
-  /** Whether net metering is allowed. */
-  netMeteringAllowed?: boolean;
-  /** Amount of money available from federal incentives; this applies if the user buys (with or without a loan) the panels. */
-  federalIncentive?: Money;
-  /** The percentage (0-100) of solar electricity production we assumed was exported to the grid, based on the first quarter of production. This affects the calculations if net metering is not allowed. */
-  percentageExportedToGrid?: number;
-  /** Total cost of electricity the user would have paid over the lifetime period if they didn't install solar. */
-  costOfElectricityWithoutSolar?: Money;
-  /** How many AC kWh we think the solar panels will generate in their first year. */
-  initialAcKwhPerYear?: number;
-  /** Amount of money the user will receive from Solar Renewable Energy Credits over the panel lifetime; this applies if the user buys (with or without a loan) the panels. */
-  lifetimeSrecTotal?: Money;
   /** Utility bill for electricity not produced by solar, for the lifetime of the panels. */
   remainingLifetimeUtilityBill?: Money;
   /** Amount of money available from utility incentives; this applies if the user buys (with or without a loan) the panels. */
   utilityIncentive?: Money;
+  /** Amount of money the user will receive from Solar Renewable Energy Credits over the panel lifetime; this applies if the user buys (with or without a loan) the panels. */
+  lifetimeSrecTotal?: Money;
+  /** Whether net metering is allowed. */
+  netMeteringAllowed?: boolean;
+  /** Amount of money available from federal incentives; this applies if the user buys (with or without a loan) the panels. */
+  federalIncentive?: Money;
   /** Amount of money available from state incentives; this applies if the user buys (with or without a loan) the panels. */
   stateIncentive?: Money;
+  /** How many AC kWh we think the solar panels will generate in their first year. */
+  initialAcKwhPerYear?: number;
+  /** Total cost of electricity the user would have paid over the lifetime period if they didn't install solar. */
+  costOfElectricityWithoutSolar?: Money;
+  /** The percentage (0-100) of solar electricity production we assumed was exported to the grid, based on the first quarter of production. This affects the calculations if net metering is not allowed. */
+  percentageExportedToGrid?: number;
   /** Percentage (0-100) of the user's power supplied by solar. Valid for the first year but approximately correct for future years. */
   solarPercentage?: number;
 }
 
-export const FinancialDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  netMeteringAllowed: Schema.optional(Schema.Boolean),
-  federalIncentive: Schema.optional(Money),
-  percentageExportedToGrid: Schema.optional(Schema.Number),
-  costOfElectricityWithoutSolar: Schema.optional(Money),
-  initialAcKwhPerYear: Schema.optional(Schema.Number),
-  lifetimeSrecTotal: Schema.optional(Money),
-  remainingLifetimeUtilityBill: Schema.optional(Money),
-  utilityIncentive: Schema.optional(Money),
-  stateIncentive: Schema.optional(Money),
-  solarPercentage: Schema.optional(Schema.Number),
-}).annotate({ identifier: "FinancialDetails" });
-
-export interface RoofSegmentSummary {
-  /** Angle of the roof segment relative to the theoretical ground plane. 0 = parallel to the ground, 90 = perpendicular to the ground. */
-  pitchDegrees?: number;
-  /** Index in roof_segment_stats of the corresponding `RoofSegmentSizeAndSunshineStats`. */
-  segmentIndex?: number;
-  /** Compass direction the roof segment is pointing in. 0 = North, 90 = East, 180 = South. For a "flat" roof segment (`pitch_degrees` very near 0), azimuth is not well defined, so for consistency, we define it arbitrarily to be 0 (North). */
-  azimuthDegrees?: number;
-  /** How much sunlight energy this part of the layout captures over the course of a year, in DC kWh, assuming the panels described above. */
-  yearlyEnergyDcKwh?: number;
-  /** The total number of panels on this segment. */
-  panelsCount?: number;
-}
-
-export const RoofSegmentSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  pitchDegrees: Schema.optional(Schema.Number),
-  segmentIndex: Schema.optional(Schema.Number),
-  azimuthDegrees: Schema.optional(Schema.Number),
-  yearlyEnergyDcKwh: Schema.optional(Schema.Number),
-  panelsCount: Schema.optional(Schema.Number),
-}).annotate({ identifier: "RoofSegmentSummary" });
-
-export interface LeasingSavings {
-  /** Whether leases are supported in this juristiction by the financial calculation engine. If this field is false, then the values in this message should probably be ignored. This is independent of `leases_allowed`: in some areas leases are allowed, but under conditions that aren't handled by the financial models. */
-  leasesSupported?: boolean;
-  /** How much is saved (or not) over the lifetime period. */
-  savings?: SavingsOverTime;
-  /** Whether leases are allowed in this juristiction (leases are not allowed in some states). If this field is false, then the values in this message should probably be ignored. */
-  leasesAllowed?: boolean;
-  /** Estimated annual leasing cost. */
-  annualLeasingCost?: Money;
-}
-
-export const LeasingSavings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  leasesSupported: Schema.optional(Schema.Boolean),
-  savings: Schema.optional(SavingsOverTime),
-  leasesAllowed: Schema.optional(Schema.Boolean),
-  annualLeasingCost: Schema.optional(Money),
-}).annotate({ identifier: "LeasingSavings" });
-
-export interface DataLayers {
-  /** When the source imagery (from which all the other data are derived) in this region was taken. It is necessarily somewhat approximate, as the images may have been taken over more than one day. */
-  imageryDate?: Solar_Date;
-  /** When processing was completed on this imagery. */
-  imageryProcessedDate?: Solar_Date;
-  /** The URL for the building mask image: one bit per pixel saying whether that pixel is considered to be part of a rooftop or not. */
-  maskUrl?: string;
-  /** The URL for the annual flux map (annual sunlight on roofs) of the region. Values are kWh/kW/year. This is *unmasked flux*: flux is computed for every location, not just building rooftops. Invalid locations are stored as -9999: locations outside our coverage area will be invalid, and a few locations inside the coverage area, where we were unable to calculate flux, will also be invalid. */
-  annualFluxUrl?: string;
-  /** The URL for the monthly flux map (sunlight on roofs, broken down by month) of the region. Values are kWh/kW/year. The GeoTIFF pointed to by this URL will contain twelve bands, corresponding to January...December, in order. */
-  monthlyFluxUrl?: string;
-  /** The URL for an image of the DSM (Digital Surface Model) of the region. Values are in meters above EGM96 geoid (i.e., sea level). Invalid locations (where we don't have data) are stored as -9999. */
-  dsmUrl?: string;
-  /** The URL for an image of RGB data (aerial or satellite photo) of the region. */
-  rgbUrl?: string;
-  /** Twelve URLs for hourly shade, corresponding to January...December, in order. Each GeoTIFF will contain 24 bands, corresponding to the 24 hours of the day. Each pixel is a 32 bit integer, corresponding to the (up to) 31 days of that month; a 1 bit means that the corresponding location is able to see the sun at that day, of that hour, of that month. Invalid locations are stored as -9999 (since this is negative, it has bit 31 set, and no valid value could have bit 31 set as that would correspond to the 32nd day of the month). An example may be useful. If you want to know whether a point (at pixel location (x, y)) saw sun at 4pm on the 22nd of June you would: 1. fetch the sixth URL in this list (corresponding to June). 1. look up the 17th channel (corresponding to 4pm). 1. read the 32-bit value at (x, y). 1. read bit 21 of the value (corresponding to the 22nd of the month). 1. if that bit is a 1, then that spot saw the sun at 4pm 22 June. More formally: Given `month` (1-12), `day` (1...month max; February has 28 days) and `hour` (0-23), the shade/sun for that month/day/hour at a position `(x, y)` is the bit ``` (hourly_shade[month - 1])(x, y)[hour] & (1 << (day - 1)) ``` where `(x, y)` is spatial indexing, `[month - 1]` refers to fetching the `month - 1`st URL (indexing from zero), `[hour]` is indexing into the channels, and a final non-zero result means "sunny". There are no leap days, and DST doesn't exist (all days are 24 hours long; noon is always "standard time" noon). */
-  hourlyShadeUrls?: ReadonlyArray<string>;
-  /** The quality of the result's imagery. */
-  imageryQuality?:
-    | "IMAGERY_QUALITY_UNSPECIFIED"
-    | "HIGH"
-    | "MEDIUM"
-    | "LOW"
-    | "BASE"
-    | (string & {});
-}
-
-export const DataLayers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  imageryDate: Schema.optional(Solar_Date),
-  imageryProcessedDate: Schema.optional(Solar_Date),
-  maskUrl: Schema.optional(Schema.String),
-  annualFluxUrl: Schema.optional(Schema.String),
-  monthlyFluxUrl: Schema.optional(Schema.String),
-  dsmUrl: Schema.optional(Schema.String),
-  rgbUrl: Schema.optional(Schema.String),
-  hourlyShadeUrls: Schema.optional(Schema.Array(Schema.String)),
-  imageryQuality: Schema.optional(Schema.String),
-}).annotate({ identifier: "DataLayers" });
-
-export interface HttpBody {
-  /** The HTTP Content-Type header value specifying the content type of the body. */
-  contentType?: string;
-  /** The HTTP request/response body as raw binary. */
-  data?: string;
-  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: ReadonlyArray<Record<string, unknown>>;
-}
-
-export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  contentType: Schema.optional(Schema.String),
-  data: Schema.optional(Schema.String),
-  extensions: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-}).annotate({ identifier: "HttpBody" });
-
-export interface LatLng {
-  /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
-  latitude?: number;
-  /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
-  longitude?: number;
-}
-
-export const LatLng = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  latitude: Schema.optional(Schema.Number),
-  longitude: Schema.optional(Schema.Number),
-}).annotate({ identifier: "LatLng" });
-
-export interface LatLngBox {
-  /** The southwest corner of the box. */
-  sw?: LatLng;
-  /** The northeast corner of the box. */
-  ne?: LatLng;
-}
-
-export const LatLngBox = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sw: Schema.optional(LatLng),
-  ne: Schema.optional(LatLng),
-}).annotate({ identifier: "LatLngBox" });
-
-export interface RoofSegmentSizeAndSunshineStats {
-  /** Total size and sunlight quantiles for the roof segment. */
-  stats?: SizeAndSunshineStats;
-  /** Angle of the roof segment relative to the theoretical ground plane. 0 = parallel to the ground, 90 = perpendicular to the ground. */
-  pitchDegrees?: number;
-  /** A point near the center of the roof segment. */
-  center?: LatLng;
-  /** Compass direction the roof segment is pointing in. 0 = North, 90 = East, 180 = South. For a "flat" roof segment (`pitch_degrees` very near 0), azimuth is not well defined, so for consistency, we define it arbitrarily to be 0 (North). */
-  azimuthDegrees?: number;
-  /** The bounding box of the roof segment. */
-  boundingBox?: LatLngBox;
-  /** The height of the roof segment plane, in meters above sea level, at the point designated by `center`. Together with the pitch, azimuth, and center location, this fully defines the roof segment plane. */
-  planeHeightAtCenterMeters?: number;
-}
-
-export const RoofSegmentSizeAndSunshineStats =
+export const FinancialDetails: Schema.Schema<FinancialDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    stats: Schema.optional(SizeAndSunshineStats),
-    pitchDegrees: Schema.optional(Schema.Number),
-    center: Schema.optional(LatLng),
-    azimuthDegrees: Schema.optional(Schema.Number),
-    boundingBox: Schema.optional(LatLngBox),
-    planeHeightAtCenterMeters: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "RoofSegmentSizeAndSunshineStats" });
+    remainingLifetimeUtilityBill: Schema.optional(Money),
+    utilityIncentive: Schema.optional(Money),
+    lifetimeSrecTotal: Schema.optional(Money),
+    netMeteringAllowed: Schema.optional(Schema.Boolean),
+    federalIncentive: Schema.optional(Money),
+    stateIncentive: Schema.optional(Money),
+    initialAcKwhPerYear: Schema.optional(Schema.Number),
+    costOfElectricityWithoutSolar: Schema.optional(Money),
+    percentageExportedToGrid: Schema.optional(Schema.Number),
+    solarPercentage: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "FinancialDetails" });
 
-export interface SolarPanelConfig {
-  /** Total number of panels. Note that this is redundant to (the sum of) the corresponding fields in roof_segment_summaries. */
-  panelsCount?: number;
-  /** How much sunlight energy this layout captures over the course of a year, in DC kWh, assuming the panels described above. */
-  yearlyEnergyDcKwh?: number;
-  /** Information about the production of each roof segment that is carrying at least one panel in this layout. `roof_segment_summaries[i]` describes the i-th roof segment, including its size, expected production and orientation. */
-  roofSegmentSummaries?: ReadonlyArray<RoofSegmentSummary>;
+export interface SavingsOverTime {
+  /** Using the assumed discount rate, what is the present value of the cumulative lifetime savings? */
+  presentValueOfSavingsLifetime?: Money;
+  /** Savings in the first year after panel installation. */
+  savingsYear1?: Money;
+  /** Savings in the entire panel lifetime. */
+  savingsLifetime?: Money;
+  /** Indicates whether this scenario is financially viable. Will be false for scenarios with poor financial viability (e.g., money-losing). */
+  financiallyViable?: boolean;
+  /** Savings in the first twenty years after panel installation. */
+  savingsYear20?: Money;
+  /** Using the assumed discount rate, what is the present value of the cumulative 20-year savings? */
+  presentValueOfSavingsYear20?: Money;
 }
 
-export const SolarPanelConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  panelsCount: Schema.optional(Schema.Number),
-  yearlyEnergyDcKwh: Schema.optional(Schema.Number),
-  roofSegmentSummaries: Schema.optional(Schema.Array(RoofSegmentSummary)),
-}).annotate({ identifier: "SolarPanelConfig" });
-
-export interface SolarPanel {
-  /** The orientation of the panel. */
-  orientation?:
-    | "SOLAR_PANEL_ORIENTATION_UNSPECIFIED"
-    | "LANDSCAPE"
-    | "PORTRAIT"
-    | (string & {});
-  /** How much sunlight energy this layout captures over the course of a year, in DC kWh. */
-  yearlyEnergyDcKwh?: number;
-  /** The centre of the panel. */
-  center?: LatLng;
-  /** Index in roof_segment_stats of the `RoofSegmentSizeAndSunshineStats` which corresponds to the roof segment that this panel is placed on. */
-  segmentIndex?: number;
-}
-
-export const SolarPanel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  orientation: Schema.optional(Schema.String),
-  yearlyEnergyDcKwh: Schema.optional(Schema.Number),
-  center: Schema.optional(LatLng),
-  segmentIndex: Schema.optional(Schema.Number),
-}).annotate({ identifier: "SolarPanel" });
+export const SavingsOverTime: Schema.Schema<SavingsOverTime> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    presentValueOfSavingsLifetime: Schema.optional(Money),
+    savingsYear1: Schema.optional(Money),
+    savingsLifetime: Schema.optional(Money),
+    financiallyViable: Schema.optional(Schema.Boolean),
+    savingsYear20: Schema.optional(Money),
+    presentValueOfSavingsYear20: Schema.optional(Money),
+  }).annotate({ identifier: "SavingsOverTime" });
 
 export interface FinancedPurchaseSavings {
   /** Annual loan payments. */
@@ -340,7 +133,7 @@ export interface FinancedPurchaseSavings {
   savings?: SavingsOverTime;
 }
 
-export const FinancedPurchaseSavings =
+export const FinancedPurchaseSavings: Schema.Schema<FinancedPurchaseSavings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     annualLoanPayment: Schema.optional(Money),
     rebateValue: Schema.optional(Money),
@@ -348,97 +141,272 @@ export const FinancedPurchaseSavings =
     savings: Schema.optional(SavingsOverTime),
   }).annotate({ identifier: "FinancedPurchaseSavings" });
 
-export interface FinancialAnalysis {
-  /** Cost and benefit of buying the solar panels with cash. */
-  cashPurchaseSavings?: CashPurchaseSavings;
-  /** Cost and benefit of buying the solar panels by financing the purchase. */
-  financedPurchaseSavings?: FinancedPurchaseSavings;
-  /** Financial information that applies regardless of the financing method used. */
-  financialDetails?: FinancialDetails;
-  /** Index in solar_panel_configs of the optimum solar layout for this bill size. This can be -1 indicating that there is no layout. In this case, the remaining submessages will be omitted. */
-  panelConfigIndex?: number;
-  /** Cost and benefit of leasing the solar panels. */
-  leasingSavings?: LeasingSavings;
-  /** The monthly electric bill this analysis assumes. */
-  monthlyBill?: Money;
-  /** Whether this is the bill size selected to be the default bill for the area this building is in. Exactly one `FinancialAnalysis` in `BuildingSolarPotential` should have `default_bill` set. */
-  defaultBill?: boolean;
-  /** How much electricity the house uses in an average month, based on the bill size and the local electricity rates. */
-  averageKwhPerMonth?: number;
+export interface LeasingSavings {
+  /** Estimated annual leasing cost. */
+  annualLeasingCost?: Money;
+  /** How much is saved (or not) over the lifetime period. */
+  savings?: SavingsOverTime;
+  /** Whether leases are allowed in this juristiction (leases are not allowed in some states). If this field is false, then the values in this message should probably be ignored. */
+  leasesAllowed?: boolean;
+  /** Whether leases are supported in this juristiction by the financial calculation engine. If this field is false, then the values in this message should probably be ignored. This is independent of `leases_allowed`: in some areas leases are allowed, but under conditions that aren't handled by the financial models. */
+  leasesSupported?: boolean;
 }
 
-export const FinancialAnalysis = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  cashPurchaseSavings: Schema.optional(CashPurchaseSavings),
-  financedPurchaseSavings: Schema.optional(FinancedPurchaseSavings),
-  financialDetails: Schema.optional(FinancialDetails),
-  panelConfigIndex: Schema.optional(Schema.Number),
-  leasingSavings: Schema.optional(LeasingSavings),
-  monthlyBill: Schema.optional(Money),
-  defaultBill: Schema.optional(Schema.Boolean),
-  averageKwhPerMonth: Schema.optional(Schema.Number),
-}).annotate({ identifier: "FinancialAnalysis" });
+export const LeasingSavings: Schema.Schema<LeasingSavings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annualLeasingCost: Schema.optional(Money),
+    savings: Schema.optional(SavingsOverTime),
+    leasesAllowed: Schema.optional(Schema.Boolean),
+    leasesSupported: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "LeasingSavings" });
+
+export interface CashPurchaseSavings {
+  /** Initial cost after tax incentives: it's the amount that must be paid during first year. Contrast with `out_of_pocket_cost`, which is before tax incentives. */
+  upfrontCost?: Money;
+  /** The value of all tax rebates. */
+  rebateValue?: Money;
+  /** How much is saved (or not) over the lifetime period. */
+  savings?: SavingsOverTime;
+  /** Initial cost before tax incentives: the amount that must be paid out-of-pocket. Contrast with `upfront_cost`, which is after tax incentives. */
+  outOfPocketCost?: Money;
+  /** Number of years until payback occurs. A negative value means payback never occurs within the lifetime period. */
+  paybackYears?: number;
+}
+
+export const CashPurchaseSavings: Schema.Schema<CashPurchaseSavings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    upfrontCost: Schema.optional(Money),
+    rebateValue: Schema.optional(Money),
+    savings: Schema.optional(SavingsOverTime),
+    outOfPocketCost: Schema.optional(Money),
+    paybackYears: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "CashPurchaseSavings" });
+
+export interface FinancialAnalysis {
+  /** Whether this is the bill size selected to be the default bill for the area this building is in. Exactly one `FinancialAnalysis` in `BuildingSolarPotential` should have `default_bill` set. */
+  defaultBill?: boolean;
+  /** Financial information that applies regardless of the financing method used. */
+  financialDetails?: FinancialDetails;
+  /** Cost and benefit of buying the solar panels by financing the purchase. */
+  financedPurchaseSavings?: FinancedPurchaseSavings;
+  /** How much electricity the house uses in an average month, based on the bill size and the local electricity rates. */
+  averageKwhPerMonth?: number;
+  /** Index in solar_panel_configs of the optimum solar layout for this bill size. This can be -1 indicating that there is no layout. In this case, the remaining submessages will be omitted. */
+  panelConfigIndex?: number;
+  /** The monthly electric bill this analysis assumes. */
+  monthlyBill?: Money;
+  /** Cost and benefit of leasing the solar panels. */
+  leasingSavings?: LeasingSavings;
+  /** Cost and benefit of buying the solar panels with cash. */
+  cashPurchaseSavings?: CashPurchaseSavings;
+}
+
+export const FinancialAnalysis: Schema.Schema<FinancialAnalysis> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultBill: Schema.optional(Schema.Boolean),
+    financialDetails: Schema.optional(FinancialDetails),
+    financedPurchaseSavings: Schema.optional(FinancedPurchaseSavings),
+    averageKwhPerMonth: Schema.optional(Schema.Number),
+    panelConfigIndex: Schema.optional(Schema.Number),
+    monthlyBill: Schema.optional(Money),
+    leasingSavings: Schema.optional(LeasingSavings),
+    cashPurchaseSavings: Schema.optional(CashPurchaseSavings),
+  }).annotate({ identifier: "FinancialAnalysis" });
+
+export interface LatLng {
+  /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
+  latitude?: number;
+  /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
+  longitude?: number;
+}
+
+export const LatLng: Schema.Schema<LatLng> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latitude: Schema.optional(Schema.Number),
+    longitude: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "LatLng" });
+
+export interface Solar_Date {
+  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
+  month?: number;
+  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
+  year?: number;
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  day?: number;
+}
+
+export const Solar_Date: Schema.Schema<Solar_Date> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    month: Schema.optional(Schema.Number),
+    year: Schema.optional(Schema.Number),
+    day: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Solar_Date" });
+
+export interface BuildingInsightsDetectedArrays {
+  /** Indicates the detection status of solar arrays for this building. */
+  detectionStatus?:
+    | "DETECTION_STATUS_UNSPECIFIED"
+    | "DETECTION_STATUS_DATA_UNAVAILABLE"
+    | "DETECTION_STATUS_ARRAYS_DETECTED"
+    | "DETECTION_STATUS_NO_ARRAYS_DETECTED"
+    | (string & {});
+  /** The date indicating when the latest solar array data was captured. */
+  latestCaptureDate?: Solar_Date;
+}
+
+export const BuildingInsightsDetectedArrays: Schema.Schema<BuildingInsightsDetectedArrays> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    detectionStatus: Schema.optional(Schema.String),
+    latestCaptureDate: Schema.optional(Solar_Date),
+  }).annotate({ identifier: "BuildingInsightsDetectedArrays" });
+
+export interface LatLngBox {
+  /** The northeast corner of the box. */
+  ne?: LatLng;
+  /** The southwest corner of the box. */
+  sw?: LatLng;
+}
+
+export const LatLngBox: Schema.Schema<LatLngBox> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ne: Schema.optional(LatLng),
+    sw: Schema.optional(LatLng),
+  }).annotate({ identifier: "LatLngBox" });
+
+export interface SolarPanel {
+  /** The orientation of the panel. */
+  orientation?:
+    | "SOLAR_PANEL_ORIENTATION_UNSPECIFIED"
+    | "LANDSCAPE"
+    | "PORTRAIT"
+    | (string & {});
+  /** Index in roof_segment_stats of the `RoofSegmentSizeAndSunshineStats` which corresponds to the roof segment that this panel is placed on. */
+  segmentIndex?: number;
+  /** How much sunlight energy this layout captures over the course of a year, in DC kWh. */
+  yearlyEnergyDcKwh?: number;
+  /** The centre of the panel. */
+  center?: LatLng;
+}
+
+export const SolarPanel: Schema.Schema<SolarPanel> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orientation: Schema.optional(Schema.String),
+    segmentIndex: Schema.optional(Schema.Number),
+    yearlyEnergyDcKwh: Schema.optional(Schema.Number),
+    center: Schema.optional(LatLng),
+  }).annotate({ identifier: "SolarPanel" });
+
+export interface SolarPanelConfig {
+  /** How much sunlight energy this layout captures over the course of a year, in DC kWh, assuming the panels described above. */
+  yearlyEnergyDcKwh?: number;
+  /** Total number of panels. Note that this is redundant to (the sum of) the corresponding fields in roof_segment_summaries. */
+  panelsCount?: number;
+  /** Information about the production of each roof segment that is carrying at least one panel in this layout. `roof_segment_summaries[i]` describes the i-th roof segment, including its size, expected production and orientation. */
+  roofSegmentSummaries?: ReadonlyArray<RoofSegmentSummary>;
+}
+
+export const SolarPanelConfig: Schema.Schema<SolarPanelConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    yearlyEnergyDcKwh: Schema.optional(Schema.Number),
+    panelsCount: Schema.optional(Schema.Number),
+    roofSegmentSummaries: Schema.optional(Schema.Array(RoofSegmentSummary)),
+  }).annotate({ identifier: "SolarPanelConfig" });
+
+export interface SizeAndSunshineStats {
+  /** The ground footprint area covered by the roof or roof segment, in m^2. */
+  groundAreaMeters2?: number;
+  /** Quantiles of the pointwise sunniness across the area. If there are N values here, this represents the (N-1)-iles. For example, if there are 5 values, then they would be the quartiles (min, 25%, 50%, 75%, max). Values are in annual kWh/kW like max_sunshine_hours_per_year. */
+  sunshineQuantiles?: ReadonlyArray<number>;
+  /** The area of the roof or roof segment, in m^2. This is the roof area (accounting for tilt), not the ground footprint area. */
+  areaMeters2?: number;
+}
+
+export const SizeAndSunshineStats: Schema.Schema<SizeAndSunshineStats> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groundAreaMeters2: Schema.optional(Schema.Number),
+    sunshineQuantiles: Schema.optional(Schema.Array(Schema.Number)),
+    areaMeters2: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "SizeAndSunshineStats" });
+
+export interface RoofSegmentSizeAndSunshineStats {
+  /** Total size and sunlight quantiles for the roof segment. */
+  stats?: SizeAndSunshineStats;
+  /** The bounding box of the roof segment. */
+  boundingBox?: LatLngBox;
+  /** The height of the roof segment plane, in meters above sea level, at the point designated by `center`. Together with the pitch, azimuth, and center location, this fully defines the roof segment plane. */
+  planeHeightAtCenterMeters?: number;
+  /** Angle of the roof segment relative to the theoretical ground plane. 0 = parallel to the ground, 90 = perpendicular to the ground. */
+  pitchDegrees?: number;
+  /** A point near the center of the roof segment. */
+  center?: LatLng;
+  /** Compass direction the roof segment is pointing in. 0 = North, 90 = East, 180 = South. For a "flat" roof segment (`pitch_degrees` very near 0), azimuth is not well defined, so for consistency, we define it arbitrarily to be 0 (North). */
+  azimuthDegrees?: number;
+}
+
+export const RoofSegmentSizeAndSunshineStats: Schema.Schema<RoofSegmentSizeAndSunshineStats> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stats: Schema.optional(SizeAndSunshineStats),
+    boundingBox: Schema.optional(LatLngBox),
+    planeHeightAtCenterMeters: Schema.optional(Schema.Number),
+    pitchDegrees: Schema.optional(Schema.Number),
+    center: Schema.optional(LatLng),
+    azimuthDegrees: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "RoofSegmentSizeAndSunshineStats" });
 
 export interface SolarPotential {
-  /** Size and sunlight quantiles for the entire building, including parts of the roof that were not assigned to some roof segment. Because the orientations of these parts are not well characterised, the roof area estimate is unreliable, but the ground area estimate is reliable. It may be that a more reliable whole building roof area can be obtained by scaling the roof area from whole_roof_stats by the ratio of the ground areas of `building_stats` and `whole_roof_stats`. */
-  buildingStats?: SizeAndSunshineStats;
-  /** Total size and sunlight quantiles for the part of the roof that was assigned to some roof segment. Despite the name, this may not include the entire building. See building_stats. */
-  wholeRoofStats?: SizeAndSunshineStats;
-  /** Size and sunlight quantiles for each roof segment. */
-  roofSegmentStats?: ReadonlyArray<RoofSegmentSizeAndSunshineStats>;
-  /** Each SolarPanelConfig describes a different arrangement of solar panels on the roof. They are in order of increasing number of panels. The `SolarPanelConfig` with panels_count=N is based on the first N panels in the `solar_panels` list. This field is only populated if at least 4 panels can fit on a roof. */
-  solarPanelConfigs?: ReadonlyArray<SolarPanelConfig>;
-  /** Size of the maximum array - that is, the maximum number of panels that can fit on the roof. */
-  maxArrayPanelsCount?: number;
-  /** Maximum number of sunshine hours received per year, by any point on the roof. Sunshine hours are a measure of the total amount of insolation (energy) received per year. 1 sunshine hour = 1 kWh per kW (where kW refers to kW of capacity under Standard Testing Conditions). */
-  maxSunshineHoursPerYear?: number;
+  /** Each SolarPanel describes a single solar panel. They are listed in the order that the panel layout algorithm placed this. This is usually, though not always, in decreasing order of annual energy production. */
+  solarPanels?: ReadonlyArray<SolarPanel>;
   /** Height, in meters in portrait orientation, of the panel used in the calculations. */
   panelHeightMeters?: number;
   /** Size, in square meters, of the maximum array. */
   maxArrayAreaMeters2?: number;
-  /** Equivalent amount of CO2 produced per MWh of grid electricity. This is a measure of the carbon intensity of grid electricity displaced by solar electricity. */
-  carbonOffsetFactorKgPerMwh?: number;
-  /** The expected lifetime, in years, of the solar panels. This is used in the financial calculations. */
-  panelLifetimeYears?: number;
-  /** Capacity, in watts, of the panel used in the calculations. */
-  panelCapacityWatts?: number;
-  /** Each SolarPanel describes a single solar panel. They are listed in the order that the panel layout algorithm placed this. This is usually, though not always, in decreasing order of annual energy production. */
-  solarPanels?: ReadonlyArray<SolarPanel>;
   /** Width, in meters in portrait orientation, of the panel used in the calculations. */
   panelWidthMeters?: number;
+  /** Each SolarPanelConfig describes a different arrangement of solar panels on the roof. They are in order of increasing number of panels. The `SolarPanelConfig` with panels_count=N is based on the first N panels in the `solar_panels` list. This field is only populated if at least 4 panels can fit on a roof. */
+  solarPanelConfigs?: ReadonlyArray<SolarPanelConfig>;
+  /** Capacity, in watts, of the panel used in the calculations. */
+  panelCapacityWatts?: number;
+  /** Total size and sunlight quantiles for the part of the roof that was assigned to some roof segment. Despite the name, this may not include the entire building. See building_stats. */
+  wholeRoofStats?: SizeAndSunshineStats;
+  /** Maximum number of sunshine hours received per year, by any point on the roof. Sunshine hours are a measure of the total amount of insolation (energy) received per year. 1 sunshine hour = 1 kWh per kW (where kW refers to kW of capacity under Standard Testing Conditions). */
+  maxSunshineHoursPerYear?: number;
   /** A FinancialAnalysis gives the savings from going solar assuming a given monthly bill and a given electricity provider. They are in order of increasing order of monthly bill amount. This field will be empty for buildings in areas for which the Solar API does not have enough information to perform financial computations. */
   financialAnalyses?: ReadonlyArray<FinancialAnalysis>;
+  /** Equivalent amount of CO2 produced per MWh of grid electricity. This is a measure of the carbon intensity of grid electricity displaced by solar electricity. */
+  carbonOffsetFactorKgPerMwh?: number;
+  /** Size and sunlight quantiles for each roof segment. */
+  roofSegmentStats?: ReadonlyArray<RoofSegmentSizeAndSunshineStats>;
+  /** The expected lifetime, in years, of the solar panels. This is used in the financial calculations. */
+  panelLifetimeYears?: number;
+  /** Size of the maximum array - that is, the maximum number of panels that can fit on the roof. */
+  maxArrayPanelsCount?: number;
+  /** Size and sunlight quantiles for the entire building, including parts of the roof that were not assigned to some roof segment. Because the orientations of these parts are not well characterised, the roof area estimate is unreliable, but the ground area estimate is reliable. It may be that a more reliable whole building roof area can be obtained by scaling the roof area from whole_roof_stats by the ratio of the ground areas of `building_stats` and `whole_roof_stats`. */
+  buildingStats?: SizeAndSunshineStats;
 }
 
-export const SolarPotential = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  buildingStats: Schema.optional(SizeAndSunshineStats),
-  wholeRoofStats: Schema.optional(SizeAndSunshineStats),
-  roofSegmentStats: Schema.optional(
-    Schema.Array(RoofSegmentSizeAndSunshineStats),
-  ),
-  solarPanelConfigs: Schema.optional(Schema.Array(SolarPanelConfig)),
-  maxArrayPanelsCount: Schema.optional(Schema.Number),
-  maxSunshineHoursPerYear: Schema.optional(Schema.Number),
-  panelHeightMeters: Schema.optional(Schema.Number),
-  maxArrayAreaMeters2: Schema.optional(Schema.Number),
-  carbonOffsetFactorKgPerMwh: Schema.optional(Schema.Number),
-  panelLifetimeYears: Schema.optional(Schema.Number),
-  panelCapacityWatts: Schema.optional(Schema.Number),
-  solarPanels: Schema.optional(Schema.Array(SolarPanel)),
-  panelWidthMeters: Schema.optional(Schema.Number),
-  financialAnalyses: Schema.optional(Schema.Array(FinancialAnalysis)),
-}).annotate({ identifier: "SolarPotential" });
+export const SolarPotential: Schema.Schema<SolarPotential> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    solarPanels: Schema.optional(Schema.Array(SolarPanel)),
+    panelHeightMeters: Schema.optional(Schema.Number),
+    maxArrayAreaMeters2: Schema.optional(Schema.Number),
+    panelWidthMeters: Schema.optional(Schema.Number),
+    solarPanelConfigs: Schema.optional(Schema.Array(SolarPanelConfig)),
+    panelCapacityWatts: Schema.optional(Schema.Number),
+    wholeRoofStats: Schema.optional(SizeAndSunshineStats),
+    maxSunshineHoursPerYear: Schema.optional(Schema.Number),
+    financialAnalyses: Schema.optional(Schema.Array(FinancialAnalysis)),
+    carbonOffsetFactorKgPerMwh: Schema.optional(Schema.Number),
+    roofSegmentStats: Schema.optional(
+      Schema.Array(RoofSegmentSizeAndSunshineStats),
+    ),
+    panelLifetimeYears: Schema.optional(Schema.Number),
+    maxArrayPanelsCount: Schema.optional(Schema.Number),
+    buildingStats: Schema.optional(SizeAndSunshineStats),
+  }).annotate({ identifier: "SolarPotential" });
 
 export interface BuildingInsights {
-  /** Solar potential of the building. */
-  solarPotential?: SolarPotential;
-  /** A point near the center of the building. */
-  center?: LatLng;
-  /** Administrative area 1 (e.g., in the US, the state) that contains this building. For example, in the US, the abbreviation might be "MA" or "CA." */
-  administrativeArea?: string;
   /** Postal code (e.g., US zip code) this building is contained by. */
   postalCode?: string;
-  /** Region code for the country (or region) this building is in. */
-  regionCode?: string;
   /** The quality of the imagery used to compute the data for this building. */
   imageryQuality?:
     | "IMAGERY_QUALITY_UNSPECIFIED"
@@ -447,31 +415,101 @@ export interface BuildingInsights {
     | "LOW"
     | "BASE"
     | (string & {});
-  /** Date that the underlying imagery was acquired. This is approximate. */
-  imageryDate?: Solar_Date;
-  /** The resource name for the building, of the format `buildings/{place_id}`. */
-  name?: string;
-  /** When processing was completed on this imagery. */
-  imageryProcessedDate?: Solar_Date;
   /** The bounding box of the building. */
   boundingBox?: LatLngBox;
+  /** Date that the underlying imagery was acquired. This is approximate. */
+  imageryDate?: Solar_Date;
+  /** Region code for the country (or region) this building is in. */
+  regionCode?: string;
+  /** A point near the center of the building. */
+  center?: LatLng;
+  /** Administrative area 1 (e.g., in the US, the state) that contains this building. For example, in the US, the abbreviation might be "MA" or "CA." */
+  administrativeArea?: string;
+  /** Solar arrays detected on the building. This field is only populated if DETECTED_ARRAYS is included in the request's FindClosestBuildingInsightsRequest.additional_insights. */
+  detectedArrays?: BuildingInsightsDetectedArrays;
+  /** When processing was completed on this imagery. */
+  imageryProcessedDate?: Solar_Date;
+  /** The resource name for the building, of the format `buildings/{place_id}`. */
+  name?: string;
   /** Statistical area (e.g., US census tract) this building is in. */
   statisticalArea?: string;
+  /** Solar potential of the building. */
+  solarPotential?: SolarPotential;
 }
 
-export const BuildingInsights = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  solarPotential: Schema.optional(SolarPotential),
-  center: Schema.optional(LatLng),
-  administrativeArea: Schema.optional(Schema.String),
-  postalCode: Schema.optional(Schema.String),
-  regionCode: Schema.optional(Schema.String),
-  imageryQuality: Schema.optional(Schema.String),
-  imageryDate: Schema.optional(Solar_Date),
-  name: Schema.optional(Schema.String),
-  imageryProcessedDate: Schema.optional(Solar_Date),
-  boundingBox: Schema.optional(LatLngBox),
-  statisticalArea: Schema.optional(Schema.String),
-}).annotate({ identifier: "BuildingInsights" });
+export const BuildingInsights: Schema.Schema<BuildingInsights> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    postalCode: Schema.optional(Schema.String),
+    imageryQuality: Schema.optional(Schema.String),
+    boundingBox: Schema.optional(LatLngBox),
+    imageryDate: Schema.optional(Solar_Date),
+    regionCode: Schema.optional(Schema.String),
+    center: Schema.optional(LatLng),
+    administrativeArea: Schema.optional(Schema.String),
+    detectedArrays: Schema.optional(BuildingInsightsDetectedArrays),
+    imageryProcessedDate: Schema.optional(Solar_Date),
+    name: Schema.optional(Schema.String),
+    statisticalArea: Schema.optional(Schema.String),
+    solarPotential: Schema.optional(SolarPotential),
+  }).annotate({ identifier: "BuildingInsights" });
+
+export interface DataLayers {
+  /** Twelve URLs for hourly shade, corresponding to January...December, in order. Each GeoTIFF will contain 24 bands, corresponding to the 24 hours of the day. Each pixel is a 32 bit integer, corresponding to the (up to) 31 days of that month; a 1 bit means that the corresponding location is able to see the sun at that day, of that hour, of that month. Invalid locations are stored as -9999 (since this is negative, it has bit 31 set, and no valid value could have bit 31 set as that would correspond to the 32nd day of the month). An example may be useful. If you want to know whether a point (at pixel location (x, y)) saw sun at 4pm on the 22nd of June you would: 1. fetch the sixth URL in this list (corresponding to June). 1. look up the 17th channel (corresponding to 4pm). 1. read the 32-bit value at (x, y). 1. read bit 21 of the value (corresponding to the 22nd of the month). 1. if that bit is a 1, then that spot saw the sun at 4pm 22 June. More formally: Given `month` (1-12), `day` (1...month max; February has 28 days) and `hour` (0-23), the shade/sun for that month/day/hour at a position `(x, y)` is the bit ``` (hourly_shade[month - 1])(x, y)[hour] & (1 << (day - 1)) ``` where `(x, y)` is spatial indexing, `[month - 1]` refers to fetching the `month - 1`st URL (indexing from zero), `[hour]` is indexing into the channels, and a final non-zero result means "sunny". There are no leap days, and DST doesn't exist (all days are 24 hours long; noon is always "standard time" noon). */
+  hourlyShadeUrls?: ReadonlyArray<string>;
+  /** The URL for the annual flux map (annual sunlight on roofs) of the region. Values are kWh/kW/year. This is *unmasked flux*: flux is computed for every location, not just building rooftops. Invalid locations are stored as -9999: locations outside our coverage area will be invalid, and a few locations inside the coverage area, where we were unable to calculate flux, will also be invalid. */
+  annualFluxUrl?: string;
+  /** The URL for the monthly flux map (sunlight on roofs, broken down by month) of the region. Values are kWh/kW/year. The GeoTIFF pointed to by this URL will contain twelve bands, corresponding to January...December, in order. */
+  monthlyFluxUrl?: string;
+  /** When processing was completed on this imagery. */
+  imageryProcessedDate?: Solar_Date;
+  /** The URL for an image of RGB data (aerial or satellite photo) of the region. */
+  rgbUrl?: string;
+  /** When the source imagery (from which all the other data are derived) in this region was taken. It is necessarily somewhat approximate, as the images may have been taken over more than one day. */
+  imageryDate?: Solar_Date;
+  /** The URL for an image of the DSM (Digital Surface Model) of the region. Values are in meters above EGM96 geoid (i.e., sea level). Invalid locations (where we don't have data) are stored as -9999. */
+  dsmUrl?: string;
+  /** The URL for the building mask image: one bit per pixel saying whether that pixel is considered to be part of a rooftop or not. */
+  maskUrl?: string;
+  /** The quality of the result's imagery. */
+  imageryQuality?:
+    | "IMAGERY_QUALITY_UNSPECIFIED"
+    | "HIGH"
+    | "MEDIUM"
+    | "LOW"
+    | "BASE"
+    | (string & {});
+}
+
+export const DataLayers: Schema.Schema<DataLayers> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hourlyShadeUrls: Schema.optional(Schema.Array(Schema.String)),
+    annualFluxUrl: Schema.optional(Schema.String),
+    monthlyFluxUrl: Schema.optional(Schema.String),
+    imageryProcessedDate: Schema.optional(Solar_Date),
+    rgbUrl: Schema.optional(Schema.String),
+    imageryDate: Schema.optional(Solar_Date),
+    dsmUrl: Schema.optional(Schema.String),
+    maskUrl: Schema.optional(Schema.String),
+    imageryQuality: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DataLayers" });
+
+export interface HttpBody {
+  /** The HTTP Content-Type header value specifying the content type of the body. */
+  contentType?: string;
+  /** The HTTP request/response body as raw binary. */
+  data?: string;
+  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
+  extensions?: ReadonlyArray<Record<string, unknown>>;
+}
+
+export const HttpBody: Schema.Schema<HttpBody> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentType: Schema.optional(Schema.String),
+    data: Schema.optional(Schema.String),
+    extensions: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "HttpBody" });
 
 // ==========================================================================
 // Errors
@@ -505,15 +543,6 @@ T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
 // ==========================================================================
 
 export interface FindClosestBuildingInsightsRequest {
-  /** Optional. Specifies the pre-GA experiments to enable. Requests using this field are classified as a pre-GA offering under the [Google Maps Platform Service Specific Terms](https://cloud.google.com/maps-platform/terms/maps-service-terms). See [launch stage descriptions](https://cloud.google.com/maps-platform/terms/launch-stages) for more details. */
-  experiments?:
-    | "EXPERIMENT_UNSPECIFIED"
-    | "EXPANDED_COVERAGE"
-    | (string & {})[];
-  /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
-  "location.latitude"?: number;
-  /** Optional. Whether to require exact quality of the imagery. If set to false, the `required_quality` field is interpreted as the minimum required quality, such that HIGH quality imagery may be returned when `required_quality` is set to MEDIUM. If set to true, `required_quality` is interpreted as the exact required quality and only `MEDIUM` quality imagery is returned if `required_quality` is set to `MEDIUM`. */
-  exactQualityRequired?: boolean;
   /** Optional. The minimum quality level allowed in the results. No result with lower quality than this will be returned. Not specifying this is equivalent to restricting to HIGH quality only. */
   requiredQuality?:
     | "IMAGERY_QUALITY_UNSPECIFIED"
@@ -522,26 +551,43 @@ export interface FindClosestBuildingInsightsRequest {
     | "LOW"
     | "BASE"
     | (string & {});
+  /** Optional. Whether to require exact quality of the imagery. If set to false, the `required_quality` field is interpreted as the minimum required quality, such that HIGH quality imagery may be returned when `required_quality` is set to MEDIUM. If set to true, `required_quality` is interpreted as the exact required quality and only `MEDIUM` quality imagery is returned if `required_quality` is set to `MEDIUM`. */
+  exactQualityRequired?: boolean;
+  /** Optional. A list of additional_insights to be included in the response. */
+  additionalInsights?:
+    | "ADDITIONAL_INSIGHTS_UNSPECIFIED"
+    | "DETECTED_ARRAYS"
+    | (string & {})[];
+  /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
+  "location.latitude"?: number;
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
   "location.longitude"?: number;
+  /** Optional. Specifies the pre-GA experiments to enable. Requests using this field are classified as a pre-GA offering under the [Google Maps Platform Service Specific Terms](https://cloud.google.com/maps-platform/terms/maps-service-terms). See [launch stage descriptions](https://cloud.google.com/maps-platform/terms/launch-stages) for more details. */
+  experiments?:
+    | "EXPERIMENT_UNSPECIFIED"
+    | "EXPANDED_COVERAGE"
+    | (string & {})[];
 }
 
 export const FindClosestBuildingInsightsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    experiments: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("experiments"),
-    ),
-    "location.latitude": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("location.latitude"),
+    requiredQuality: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("requiredQuality"),
     ),
     exactQualityRequired: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("exactQualityRequired"),
     ),
-    requiredQuality: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("requiredQuality"),
+    additionalInsights: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("additionalInsights"),
+    ),
+    "location.latitude": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("location.latitude"),
     ),
     "location.longitude": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("location.longitude"),
+    ),
+    experiments: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("experiments"),
     ),
   }).pipe(
     T.Http({ method: "GET", path: "v1/buildingInsights:findClosest" }),
@@ -566,6 +612,86 @@ export const findClosestBuildingInsights: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FindClosestBuildingInsightsRequest,
   output: FindClosestBuildingInsightsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetDataLayersRequest {
+  /** Optional. The desired subset of the data to return. */
+  view?:
+    | "DATA_LAYER_VIEW_UNSPECIFIED"
+    | "DSM_LAYER"
+    | "IMAGERY_LAYERS"
+    | "IMAGERY_AND_ANNUAL_FLUX_LAYERS"
+    | "IMAGERY_AND_ALL_FLUX_LAYERS"
+    | "FULL_LAYERS"
+    | (string & {});
+  /** Optional. The minimum quality level allowed in the results. No result with lower quality than this will be returned. Not specifying this is equivalent to restricting to HIGH quality only. */
+  requiredQuality?:
+    | "IMAGERY_QUALITY_UNSPECIFIED"
+    | "HIGH"
+    | "MEDIUM"
+    | "LOW"
+    | "BASE"
+    | (string & {});
+  /** Optional. Whether to require exact quality of the imagery. If set to false, the `required_quality` field is interpreted as the minimum required quality, such that HIGH quality imagery may be returned when `required_quality` is set to MEDIUM. If set to true, `required_quality` is interpreted as the exact required quality and only `MEDIUM` quality imagery is returned if `required_quality` is set to `MEDIUM`. */
+  exactQualityRequired?: boolean;
+  /** Required. The radius, in meters, defining the region surrounding that centre point for which data should be returned. The limitations on this value are: * Any value up to 100m can always be specified. * Values over 100m can be specified, as long as `radius_meters` <= `pixel_size_meters * 1000`. * However, for values over 175m, the `DataLayerView` in the request must not include monthly flux or hourly shade. */
+  radiusMeters?: number;
+  /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
+  "location.latitude"?: number;
+  /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
+  "location.longitude"?: number;
+  /** Optional. Specifies the pre-GA experiments to enable. Requests using this field are classified as a pre-GA offering under the [Google Maps Platform Service Specific Terms](https://cloud.google.com/maps-platform/terms/maps-service-terms). See [launch stage descriptions]( https://cloud.google.com/maps-platform/terms/launch-stages) for more details. */
+  experiments?:
+    | "EXPERIMENT_UNSPECIFIED"
+    | "EXPANDED_COVERAGE"
+    | (string & {})[];
+  /** Optional. The minimum scale, in meters per pixel, of the data to return. Values of 0.1 (the default, if this field is not set explicitly), 0.25, 0.5, and 1.0 are supported. Imagery components whose normal resolution is less than `pixel_size_meters` will be returned at the resolution specified by `pixel_size_meters`; imagery components whose normal resolution is equal to or greater than `pixel_size_meters` will be returned at that normal resolution. */
+  pixelSizeMeters?: number;
+}
+
+export const GetDataLayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+  requiredQuality: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("requiredQuality"),
+  ),
+  exactQualityRequired: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("exactQualityRequired"),
+  ),
+  radiusMeters: Schema.optional(Schema.Number).pipe(
+    T.HttpQuery("radiusMeters"),
+  ),
+  "location.latitude": Schema.optional(Schema.Number).pipe(
+    T.HttpQuery("location.latitude"),
+  ),
+  "location.longitude": Schema.optional(Schema.Number).pipe(
+    T.HttpQuery("location.longitude"),
+  ),
+  experiments: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("experiments"),
+  ),
+  pixelSizeMeters: Schema.optional(Schema.Number).pipe(
+    T.HttpQuery("pixelSizeMeters"),
+  ),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/dataLayers:get" }),
+  svc,
+) as unknown as Schema.Schema<GetDataLayersRequest>;
+
+export type GetDataLayersResponse = DataLayers;
+export const GetDataLayersResponse = /*@__PURE__*/ /*#__PURE__*/ DataLayers;
+
+export type GetDataLayersError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets solar information for a region surrounding a location. Returns an error with code `NOT_FOUND` if the location is outside the coverage area. */
+export const getDataLayers: API.OperationMethod<
+  GetDataLayersRequest,
+  GetDataLayersResponse,
+  GetDataLayersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetDataLayersRequest,
+  output: GetDataLayersResponse,
   errors: [NotFound, Forbidden],
 }));
 
@@ -595,85 +721,5 @@ export const getGeoTiff: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGeoTiffRequest,
   output: GetGeoTiffResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetDataLayersRequest {
-  /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
-  "location.longitude"?: number;
-  /** Required. The radius, in meters, defining the region surrounding that centre point for which data should be returned. The limitations on this value are: * Any value up to 100m can always be specified. * Values over 100m can be specified, as long as `radius_meters` <= `pixel_size_meters * 1000`. * However, for values over 175m, the `DataLayerView` in the request must not include monthly flux or hourly shade. */
-  radiusMeters?: number;
-  /** Optional. The desired subset of the data to return. */
-  view?:
-    | "DATA_LAYER_VIEW_UNSPECIFIED"
-    | "DSM_LAYER"
-    | "IMAGERY_LAYERS"
-    | "IMAGERY_AND_ANNUAL_FLUX_LAYERS"
-    | "IMAGERY_AND_ALL_FLUX_LAYERS"
-    | "FULL_LAYERS"
-    | (string & {});
-  /** Optional. The minimum quality level allowed in the results. No result with lower quality than this will be returned. Not specifying this is equivalent to restricting to HIGH quality only. */
-  requiredQuality?:
-    | "IMAGERY_QUALITY_UNSPECIFIED"
-    | "HIGH"
-    | "MEDIUM"
-    | "LOW"
-    | "BASE"
-    | (string & {});
-  /** Optional. Whether to require exact quality of the imagery. If set to false, the `required_quality` field is interpreted as the minimum required quality, such that HIGH quality imagery may be returned when `required_quality` is set to MEDIUM. If set to true, `required_quality` is interpreted as the exact required quality and only `MEDIUM` quality imagery is returned if `required_quality` is set to `MEDIUM`. */
-  exactQualityRequired?: boolean;
-  /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
-  "location.latitude"?: number;
-  /** Optional. The minimum scale, in meters per pixel, of the data to return. Values of 0.1 (the default, if this field is not set explicitly), 0.25, 0.5, and 1.0 are supported. Imagery components whose normal resolution is less than `pixel_size_meters` will be returned at the resolution specified by `pixel_size_meters`; imagery components whose normal resolution is equal to or greater than `pixel_size_meters` will be returned at that normal resolution. */
-  pixelSizeMeters?: number;
-  /** Optional. Specifies the pre-GA experiments to enable. Requests using this field are classified as a pre-GA offering under the [Google Maps Platform Service Specific Terms](https://cloud.google.com/maps-platform/terms/maps-service-terms). See [launch stage descriptions]( https://cloud.google.com/maps-platform/terms/launch-stages) for more details. */
-  experiments?:
-    | "EXPERIMENT_UNSPECIFIED"
-    | "EXPANDED_COVERAGE"
-    | (string & {})[];
-}
-
-export const GetDataLayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "location.longitude": Schema.optional(Schema.Number).pipe(
-    T.HttpQuery("location.longitude"),
-  ),
-  radiusMeters: Schema.optional(Schema.Number).pipe(
-    T.HttpQuery("radiusMeters"),
-  ),
-  view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-  requiredQuality: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("requiredQuality"),
-  ),
-  exactQualityRequired: Schema.optional(Schema.Boolean).pipe(
-    T.HttpQuery("exactQualityRequired"),
-  ),
-  "location.latitude": Schema.optional(Schema.Number).pipe(
-    T.HttpQuery("location.latitude"),
-  ),
-  pixelSizeMeters: Schema.optional(Schema.Number).pipe(
-    T.HttpQuery("pixelSizeMeters"),
-  ),
-  experiments: Schema.optional(Schema.Array(Schema.String)).pipe(
-    T.HttpQuery("experiments"),
-  ),
-}).pipe(
-  T.Http({ method: "GET", path: "v1/dataLayers:get" }),
-  svc,
-) as unknown as Schema.Schema<GetDataLayersRequest>;
-
-export type GetDataLayersResponse = DataLayers;
-export const GetDataLayersResponse = /*@__PURE__*/ /*#__PURE__*/ DataLayers;
-
-export type GetDataLayersError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets solar information for a region surrounding a location. Returns an error with code `NOT_FOUND` if the location is outside the coverage area. */
-export const getDataLayers: API.OperationMethod<
-  GetDataLayersRequest,
-  GetDataLayersResponse,
-  GetDataLayersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetDataLayersRequest,
-  output: GetDataLayersResponse,
   errors: [NotFound, Forbidden],
 }));

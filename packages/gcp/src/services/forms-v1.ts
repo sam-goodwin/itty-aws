@@ -22,9 +22,103 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface TextItem {}
+
+export const TextItem: Schema.Schema<TextItem> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "TextItem",
+  });
+
+export interface CloudPubsubTopic {
+  /** Required. A fully qualified Pub/Sub topic name to publish the events to. This topic must be owned by the calling project and already exist in Pub/Sub. */
+  topicName?: string;
+}
+
+export const CloudPubsubTopic: Schema.Schema<CloudPubsubTopic> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    topicName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudPubsubTopic" });
+
+export interface WatchTarget {
+  /** A Pub/Sub topic. To receive notifications, the topic must grant publish privileges to the Forms service account `serviceAccount:forms-notifications@system.gserviceaccount.com`. Only the project that owns a topic may create a watch with it. Pub/Sub delivery guarantees should be considered. */
+  topic?: CloudPubsubTopic;
+}
+
+export const WatchTarget: Schema.Schema<WatchTarget> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    topic: Schema.optional(CloudPubsubTopic),
+  }).annotate({ identifier: "WatchTarget" });
+
+export interface Watch {
+  /** Output only. Timestamp for when this will expire. Each watches.renew call resets this to seven days in the future. */
+  expireTime?: string;
+  /** Output only. The ID of this watch. See notes on CreateWatchRequest.watch_id. */
+  id?: string;
+  /** Required. Which event type to watch for. */
+  eventType?: "EVENT_TYPE_UNSPECIFIED" | "SCHEMA" | "RESPONSES" | (string & {});
+  /** Output only. The most recent error type for an attempted delivery. To begin watching the form again a call can be made to watches.renew which also clears this error information. */
+  errorType?:
+    | "ERROR_TYPE_UNSPECIFIED"
+    | "PROJECT_NOT_AUTHORIZED"
+    | "NO_USER_ACCESS"
+    | "OTHER_ERRORS"
+    | (string & {});
+  /** Output only. The current state of the watch. Additional details about suspended watches can be found by checking the `error_type`. */
+  state?: "STATE_UNSPECIFIED" | "ACTIVE" | "SUSPENDED" | (string & {});
+  /** Output only. Timestamp of when this was created. */
+  createTime?: string;
+  /** Required. Where to send the notification. */
+  target?: WatchTarget;
+}
+
+export const Watch: Schema.Schema<Watch> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expireTime: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    eventType: Schema.optional(Schema.String),
+    errorType: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    target: Schema.optional(WatchTarget),
+  }).annotate({ identifier: "Watch" });
+
+export interface FileUploadAnswer {
+  /** Output only. The ID of the Google Drive file. */
+  fileId?: string;
+  /** Output only. The MIME type of the file, as stored in Google Drive on upload. */
+  mimeType?: string;
+  /** Output only. The file name, as stored in Google Drive on upload. */
+  fileName?: string;
+}
+
+export const FileUploadAnswer: Schema.Schema<FileUploadAnswer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fileId: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+    fileName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FileUploadAnswer" });
+
+export interface FileUploadAnswers {
+  /** Output only. All submitted files for a FileUpload question. */
+  answers?: ReadonlyArray<FileUploadAnswer>;
+}
+
+export const FileUploadAnswers: Schema.Schema<FileUploadAnswers> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answers: Schema.optional(Schema.Array(FileUploadAnswer)),
+  }).annotate({ identifier: "FileUploadAnswers" });
+
+export interface RowQuestion {
+  /** Required. The title for the single row in the QuestionGroupItem. */
+  title?: string;
+}
+
+export const RowQuestion: Schema.Schema<RowQuestion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RowQuestion" });
+
 export interface MediaProperties {
-  /** The width of the media in pixels. When the media is displayed, it is scaled to the smaller of this value or the width of the displayed form. The original aspect ratio of the media is preserved. If a width is not specified when the media is added to the form, it is set to the width of the media source. Width must be between 0 and 740, inclusive. Setting width to 0 or unspecified is only permitted when updating the media source. */
-  width?: number;
   /** Position of the media. */
   alignment?:
     | "ALIGNMENT_UNSPECIFIED"
@@ -32,57 +126,181 @@ export interface MediaProperties {
     | "RIGHT"
     | "CENTER"
     | (string & {});
+  /** The width of the media in pixels. When the media is displayed, it is scaled to the smaller of this value or the width of the displayed form. The original aspect ratio of the media is preserved. If a width is not specified when the media is added to the form, it is set to the width of the media source. Width must be between 0 and 740, inclusive. Setting width to 0 or unspecified is only permitted when updating the media source. */
+  width?: number;
 }
 
-export const MediaProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  width: Schema.optional(Schema.Number),
-  alignment: Schema.optional(Schema.String),
-}).annotate({ identifier: "MediaProperties" });
-
-export interface Location {
-  /** The index of an item in the form. This must be in the range [0..*N*), where *N* is the number of items in the form. */
-  index?: number;
-}
-
-export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  index: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Location" });
-
-export interface TextItem {}
-
-export const TextItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "TextItem",
-});
-
-export interface PageBreakItem {}
-
-export const PageBreakItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "PageBreakItem" });
+export const MediaProperties: Schema.Schema<MediaProperties> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alignment: Schema.optional(Schema.String),
+    width: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "MediaProperties" });
 
 export interface Image {
-  /** A description of the image that is shown on hover and read by screenreaders. */
-  altText?: string;
-  /** Output only. A URI from which you can download the image; this is valid only for a limited time. */
-  contentUri?: string;
   /** Input only. The source URI is the URI used to insert the image. The source URI can be empty when fetched. */
   sourceUri?: string;
+  /** Output only. A URI from which you can download the image; this is valid only for a limited time. */
+  contentUri?: string;
+  /** A description of the image that is shown on hover and read by screenreaders. */
+  altText?: string;
   /** Properties of an image. */
   properties?: MediaProperties;
 }
 
-export const Image = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  altText: Schema.optional(Schema.String),
-  contentUri: Schema.optional(Schema.String),
-  sourceUri: Schema.optional(Schema.String),
-  properties: Schema.optional(MediaProperties),
-}).annotate({ identifier: "Image" });
+export const Image: Schema.Schema<Image> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceUri: Schema.optional(Schema.String),
+    contentUri: Schema.optional(Schema.String),
+    altText: Schema.optional(Schema.String),
+    properties: Schema.optional(MediaProperties),
+  }).annotate({ identifier: "Image" });
+
+export interface TextQuestion {
+  /** Whether the question is a paragraph question or not. If not, the question is a short text question. */
+  paragraph?: boolean;
+}
+
+export const TextQuestion: Schema.Schema<TextQuestion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    paragraph: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "TextQuestion" });
+
+export interface RatingQuestion {
+  /** Required. The rating scale level of the rating question. */
+  ratingScaleLevel?: number;
+  /** Required. The icon type to use for the rating. */
+  iconType?:
+    | "RATING_ICON_TYPE_UNSPECIFIED"
+    | "STAR"
+    | "HEART"
+    | "THUMB_UP"
+    | (string & {});
+}
+
+export const RatingQuestion: Schema.Schema<RatingQuestion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ratingScaleLevel: Schema.optional(Schema.Number),
+    iconType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RatingQuestion" });
+
+export interface DateQuestion {
+  /** Whether to include the time as part of the question. */
+  includeTime?: boolean;
+  /** Whether to include the year as part of the question. */
+  includeYear?: boolean;
+}
+
+export const DateQuestion: Schema.Schema<DateQuestion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includeTime: Schema.optional(Schema.Boolean),
+    includeYear: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DateQuestion" });
+
+export interface TimeQuestion {
+  /** `true` if the question is about an elapsed time. Otherwise it is about a time of day. */
+  duration?: boolean;
+}
+
+export const TimeQuestion: Schema.Schema<TimeQuestion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duration: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "TimeQuestion" });
+
+export interface TextLink {
+  /** Required. Display text for the URI. */
+  displayText?: string;
+  /** Required. The URI. */
+  uri?: string;
+}
+
+export const TextLink: Schema.Schema<TextLink> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayText: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TextLink" });
+
+export interface VideoLink {
+  /** The URI of a YouTube video. */
+  youtubeUri?: string;
+  /** Required. The display text for the link. */
+  displayText?: string;
+}
+
+export const VideoLink: Schema.Schema<VideoLink> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    youtubeUri: Schema.optional(Schema.String),
+    displayText: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VideoLink" });
+
+export interface ExtraMaterial {
+  /** Text feedback. */
+  link?: TextLink;
+  /** Video feedback. */
+  video?: VideoLink;
+}
+
+export const ExtraMaterial: Schema.Schema<ExtraMaterial> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    link: Schema.optional(TextLink),
+    video: Schema.optional(VideoLink),
+  }).annotate({ identifier: "ExtraMaterial" });
+
+export interface Feedback {
+  /** Required. The main text of the feedback. */
+  text?: string;
+  /** Additional information provided as part of the feedback, often used to point the respondent to more reading and resources. */
+  material?: ReadonlyArray<ExtraMaterial>;
+}
+
+export const Feedback: Schema.Schema<Feedback> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    material: Schema.optional(Schema.Array(ExtraMaterial)),
+  }).annotate({ identifier: "Feedback" });
+
+export interface CorrectAnswer {
+  /** Required. The correct answer value. See the documentation for TextAnswer.value for details on how various value types are formatted. */
+  value?: string;
+}
+
+export const CorrectAnswer: Schema.Schema<CorrectAnswer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CorrectAnswer" });
+
+export interface CorrectAnswers {
+  /** A list of correct answers. A quiz response can be automatically graded based on these answers. For single-valued questions, a response is marked correct if it matches any value in this list (in other words, multiple correct answers are possible). For multiple-valued (`CHECKBOX`) questions, a response is marked correct if it contains exactly the values in this list. */
+  answers?: ReadonlyArray<CorrectAnswer>;
+}
+
+export const CorrectAnswers: Schema.Schema<CorrectAnswers> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answers: Schema.optional(Schema.Array(CorrectAnswer)),
+  }).annotate({ identifier: "CorrectAnswers" });
+
+export interface Grading {
+  /** The feedback displayed for incorrect responses. This feedback can only be set for multiple choice questions that have correct answers provided. */
+  whenWrong?: Feedback;
+  /** Required. The maximum number of points a respondent can automatically get for a correct answer. This must not be negative. */
+  pointValue?: number;
+  /** Required. The answer key for the question. Responses are automatically graded based on this field. */
+  correctAnswers?: CorrectAnswers;
+  /** The feedback displayed for all answers. This is commonly used for short answer questions when a quiz owner wants to quickly give respondents some sense of whether they answered the question correctly before they've had a chance to officially grade the response. General feedback cannot be set for automatically graded multiple choice questions. */
+  generalFeedback?: Feedback;
+  /** The feedback displayed for correct responses. This feedback can only be set for multiple choice questions that have correct answers provided. */
+  whenRight?: Feedback;
+}
+
+export const Grading: Schema.Schema<Grading> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    whenWrong: Schema.optional(Feedback),
+    pointValue: Schema.optional(Schema.Number),
+    correctAnswers: Schema.optional(CorrectAnswers),
+    generalFeedback: Schema.optional(Feedback),
+    whenRight: Schema.optional(Feedback),
+  }).annotate({ identifier: "Grading" });
 
 export interface Option {
-  /** Item ID of section header to go to. */
-  goToSectionId?: string;
-  /** Whether the option is "other". Currently only applies to `RADIO` and `CHECKBOX` choice types, but is not allowed in a QuestionGroupItem. */
-  isOther?: boolean;
   /** Section navigation type. */
   goToAction?:
     | "GO_TO_ACTION_UNSPECIFIED"
@@ -94,21 +312,26 @@ export interface Option {
   value?: string;
   /** Display image as an option. */
   image?: Image;
+  /** Whether the option is "other". Currently only applies to `RADIO` and `CHECKBOX` choice types, but is not allowed in a QuestionGroupItem. */
+  isOther?: boolean;
+  /** Item ID of section header to go to. */
+  goToSectionId?: string;
 }
 
-export const Option = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  goToSectionId: Schema.optional(Schema.String),
-  isOther: Schema.optional(Schema.Boolean),
-  goToAction: Schema.optional(Schema.String),
-  value: Schema.optional(Schema.String),
-  image: Schema.optional(Image),
-}).annotate({ identifier: "Option" });
+export const Option: Schema.Schema<Option> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    goToAction: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    image: Schema.optional(Image),
+    isOther: Schema.optional(Schema.Boolean),
+    goToSectionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Option" });
 
 export interface ChoiceQuestion {
-  /** Required. List of options that a respondent must choose from. */
-  options?: ReadonlyArray<Option>;
   /** Whether the options should be displayed in random order for different instances of the quiz. This is often used to prevent cheating by respondents who might be looking at another respondent's screen, or to address bias in a survey that might be introduced by always putting the same options first or last. */
   shuffle?: boolean;
+  /** Required. List of options that a respondent must choose from. */
+  options?: ReadonlyArray<Option>;
   /** Required. The type of choice question. */
   type?:
     | "CHOICE_TYPE_UNSPECIFIED"
@@ -118,163 +341,35 @@ export interface ChoiceQuestion {
     | (string & {});
 }
 
-export const ChoiceQuestion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  options: Schema.optional(Schema.Array(Option)),
-  shuffle: Schema.optional(Schema.Boolean),
-  type: Schema.optional(Schema.String),
-}).annotate({ identifier: "ChoiceQuestion" });
-
-export interface Grid {
-  /** If `true`, the questions are randomly ordered. In other words, the rows appear in a different order for every respondent. */
-  shuffleQuestions?: boolean;
-  /** Required. The choices shared by each question in the grid. In other words, the values of the columns. Only `CHECK_BOX` and `RADIO` choices are allowed. */
-  columns?: ChoiceQuestion;
-}
-
-export const Grid = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  shuffleQuestions: Schema.optional(Schema.Boolean),
-  columns: Schema.optional(ChoiceQuestion),
-}).annotate({ identifier: "Grid" });
-
-export interface RowQuestion {
-  /** Required. The title for the single row in the QuestionGroupItem. */
-  title?: string;
-}
-
-export const RowQuestion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  title: Schema.optional(Schema.String),
-}).annotate({ identifier: "RowQuestion" });
-
-export interface TextLink {
-  /** Required. The URI. */
-  uri?: string;
-  /** Required. Display text for the URI. */
-  displayText?: string;
-}
-
-export const TextLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  uri: Schema.optional(Schema.String),
-  displayText: Schema.optional(Schema.String),
-}).annotate({ identifier: "TextLink" });
-
-export interface VideoLink {
-  /** The URI of a YouTube video. */
-  youtubeUri?: string;
-  /** Required. The display text for the link. */
-  displayText?: string;
-}
-
-export const VideoLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  youtubeUri: Schema.optional(Schema.String),
-  displayText: Schema.optional(Schema.String),
-}).annotate({ identifier: "VideoLink" });
-
-export interface ExtraMaterial {
-  /** Text feedback. */
-  link?: TextLink;
-  /** Video feedback. */
-  video?: VideoLink;
-}
-
-export const ExtraMaterial = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  link: Schema.optional(TextLink),
-  video: Schema.optional(VideoLink),
-}).annotate({ identifier: "ExtraMaterial" });
-
-export interface Feedback {
-  /** Required. The main text of the feedback. */
-  text?: string;
-  /** Additional information provided as part of the feedback, often used to point the respondent to more reading and resources. */
-  material?: ReadonlyArray<ExtraMaterial>;
-}
-
-export const Feedback = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  text: Schema.optional(Schema.String),
-  material: Schema.optional(Schema.Array(ExtraMaterial)),
-}).annotate({ identifier: "Feedback" });
-
-export interface CorrectAnswer {
-  /** Required. The correct answer value. See the documentation for TextAnswer.value for details on how various value types are formatted. */
-  value?: string;
-}
-
-export const CorrectAnswer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(Schema.String),
-}).annotate({ identifier: "CorrectAnswer" });
-
-export interface CorrectAnswers {
-  /** A list of correct answers. A quiz response can be automatically graded based on these answers. For single-valued questions, a response is marked correct if it matches any value in this list (in other words, multiple correct answers are possible). For multiple-valued (`CHECKBOX`) questions, a response is marked correct if it contains exactly the values in this list. */
-  answers?: ReadonlyArray<CorrectAnswer>;
-}
-
-export const CorrectAnswers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  answers: Schema.optional(Schema.Array(CorrectAnswer)),
-}).annotate({ identifier: "CorrectAnswers" });
-
-export interface Grading {
-  /** The feedback displayed for all answers. This is commonly used for short answer questions when a quiz owner wants to quickly give respondents some sense of whether they answered the question correctly before they've had a chance to officially grade the response. General feedback cannot be set for automatically graded multiple choice questions. */
-  generalFeedback?: Feedback;
-  /** Required. The answer key for the question. Responses are automatically graded based on this field. */
-  correctAnswers?: CorrectAnswers;
-  /** The feedback displayed for correct responses. This feedback can only be set for multiple choice questions that have correct answers provided. */
-  whenRight?: Feedback;
-  /** Required. The maximum number of points a respondent can automatically get for a correct answer. This must not be negative. */
-  pointValue?: number;
-  /** The feedback displayed for incorrect responses. This feedback can only be set for multiple choice questions that have correct answers provided. */
-  whenWrong?: Feedback;
-}
-
-export const Grading = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  generalFeedback: Schema.optional(Feedback),
-  correctAnswers: Schema.optional(CorrectAnswers),
-  whenRight: Schema.optional(Feedback),
-  pointValue: Schema.optional(Schema.Number),
-  whenWrong: Schema.optional(Feedback),
-}).annotate({ identifier: "Grading" });
-
-export interface TimeQuestion {
-  /** `true` if the question is about an elapsed time. Otherwise it is about a time of day. */
-  duration?: boolean;
-}
-
-export const TimeQuestion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  duration: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "TimeQuestion" });
-
-export interface TextQuestion {
-  /** Whether the question is a paragraph question or not. If not, the question is a short text question. */
-  paragraph?: boolean;
-}
-
-export const TextQuestion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  paragraph: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "TextQuestion" });
+export const ChoiceQuestion: Schema.Schema<ChoiceQuestion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    shuffle: Schema.optional(Schema.Boolean),
+    options: Schema.optional(Schema.Array(Option)),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ChoiceQuestion" });
 
 export interface ScaleQuestion {
-  /** Required. The highest possible value for the scale. */
-  high?: number;
   /** The label to display describing the lowest point on the scale. */
   lowLabel?: string;
-  /** Required. The lowest possible value for the scale. */
-  low?: number;
+  /** Required. The highest possible value for the scale. */
+  high?: number;
   /** The label to display describing the highest point on the scale. */
   highLabel?: string;
+  /** Required. The lowest possible value for the scale. */
+  low?: number;
 }
 
-export const ScaleQuestion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  high: Schema.optional(Schema.Number),
-  lowLabel: Schema.optional(Schema.String),
-  low: Schema.optional(Schema.Number),
-  highLabel: Schema.optional(Schema.String),
-}).annotate({ identifier: "ScaleQuestion" });
+export const ScaleQuestion: Schema.Schema<ScaleQuestion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lowLabel: Schema.optional(Schema.String),
+    high: Schema.optional(Schema.Number),
+    highLabel: Schema.optional(Schema.String),
+    low: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ScaleQuestion" });
 
 export interface FileUploadQuestion {
   /** Required. The ID of the Drive folder where uploaded files are stored. */
   folderId?: string;
-  /** Maximum number of files that can be uploaded for this question in a single response. */
-  maxFiles?: number;
-  /** Maximum number of bytes allowed for any single file uploaded to this question. */
-  maxFileSize?: string;
   /** File types accepted by this question. */
   types?: ReadonlyArray<
     | "FILE_TYPE_UNSPECIFIED"
@@ -289,109 +384,121 @@ export interface FileUploadQuestion {
     | "AUDIO"
     | (string & {})
   >;
+  /** Maximum number of bytes allowed for any single file uploaded to this question. */
+  maxFileSize?: string;
+  /** Maximum number of files that can be uploaded for this question in a single response. */
+  maxFiles?: number;
 }
 
-export const FileUploadQuestion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  folderId: Schema.optional(Schema.String),
-  maxFiles: Schema.optional(Schema.Number),
-  maxFileSize: Schema.optional(Schema.String),
-  types: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "FileUploadQuestion" });
-
-export interface RatingQuestion {
-  /** Required. The icon type to use for the rating. */
-  iconType?:
-    | "RATING_ICON_TYPE_UNSPECIFIED"
-    | "STAR"
-    | "HEART"
-    | "THUMB_UP"
-    | (string & {});
-  /** Required. The rating scale level of the rating question. */
-  ratingScaleLevel?: number;
-}
-
-export const RatingQuestion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  iconType: Schema.optional(Schema.String),
-  ratingScaleLevel: Schema.optional(Schema.Number),
-}).annotate({ identifier: "RatingQuestion" });
-
-export interface DateQuestion {
-  /** Whether to include the time as part of the question. */
-  includeTime?: boolean;
-  /** Whether to include the year as part of the question. */
-  includeYear?: boolean;
-}
-
-export const DateQuestion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  includeTime: Schema.optional(Schema.Boolean),
-  includeYear: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "DateQuestion" });
+export const FileUploadQuestion: Schema.Schema<FileUploadQuestion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    folderId: Schema.optional(Schema.String),
+    types: Schema.optional(Schema.Array(Schema.String)),
+    maxFileSize: Schema.optional(Schema.String),
+    maxFiles: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "FileUploadQuestion" });
 
 export interface Question {
-  /** A row of a QuestionGroupItem. */
-  rowQuestion?: RowQuestion;
-  /** Grading setup for the question. */
-  grading?: Grading;
-  /** A respondent can enter a time. */
-  timeQuestion?: TimeQuestion;
-  /** Read only. The question ID. On creation, it can be provided but the ID must not be already used in the form. If not provided, a new ID is assigned. */
-  questionId?: string;
   /** A respondent can enter a free text response. */
   textQuestion?: TextQuestion;
-  /** Whether the question must be answered in order for a respondent to submit their response. */
-  required?: boolean;
-  /** A respondent can choose a number from a range. */
-  scaleQuestion?: ScaleQuestion;
-  /** A respondent can choose from a pre-defined set of options. */
-  choiceQuestion?: ChoiceQuestion;
-  /** A respondent can upload one or more files. */
-  fileUploadQuestion?: FileUploadQuestion;
   /** A respondent can choose a rating from a pre-defined set of icons. */
   ratingQuestion?: RatingQuestion;
   /** A respondent can enter a date. */
   dateQuestion?: DateQuestion;
+  /** A respondent can enter a time. */
+  timeQuestion?: TimeQuestion;
+  /** Read only. The question ID. On creation, it can be provided but the ID must not be already used in the form. If not provided, a new ID is assigned. */
+  questionId?: string;
+  /** Grading setup for the question. */
+  grading?: Grading;
+  /** A respondent can choose from a pre-defined set of options. */
+  choiceQuestion?: ChoiceQuestion;
+  /** A row of a QuestionGroupItem. */
+  rowQuestion?: RowQuestion;
+  /** A respondent can choose a number from a range. */
+  scaleQuestion?: ScaleQuestion;
+  /** A respondent can upload one or more files. */
+  fileUploadQuestion?: FileUploadQuestion;
+  /** Whether the question must be answered in order for a respondent to submit their response. */
+  required?: boolean;
 }
 
-export const Question = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  rowQuestion: Schema.optional(RowQuestion),
-  grading: Schema.optional(Grading),
-  timeQuestion: Schema.optional(TimeQuestion),
-  questionId: Schema.optional(Schema.String),
-  textQuestion: Schema.optional(TextQuestion),
-  required: Schema.optional(Schema.Boolean),
-  scaleQuestion: Schema.optional(ScaleQuestion),
-  choiceQuestion: Schema.optional(ChoiceQuestion),
-  fileUploadQuestion: Schema.optional(FileUploadQuestion),
-  ratingQuestion: Schema.optional(RatingQuestion),
-  dateQuestion: Schema.optional(DateQuestion),
-}).annotate({ identifier: "Question" });
+export const Question: Schema.Schema<Question> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textQuestion: Schema.optional(TextQuestion),
+    ratingQuestion: Schema.optional(RatingQuestion),
+    dateQuestion: Schema.optional(DateQuestion),
+    timeQuestion: Schema.optional(TimeQuestion),
+    questionId: Schema.optional(Schema.String),
+    grading: Schema.optional(Grading),
+    choiceQuestion: Schema.optional(ChoiceQuestion),
+    rowQuestion: Schema.optional(RowQuestion),
+    scaleQuestion: Schema.optional(ScaleQuestion),
+    fileUploadQuestion: Schema.optional(FileUploadQuestion),
+    required: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "Question" });
+
+export interface QuestionItem {
+  /** The image displayed within the question. */
+  image?: Image;
+  /** Required. The displayed question. */
+  question?: Question;
+}
+
+export const QuestionItem: Schema.Schema<QuestionItem> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    image: Schema.optional(Image),
+    question: Schema.optional(Question),
+  }).annotate({ identifier: "QuestionItem" });
+
+export interface Grid {
+  /** Required. The choices shared by each question in the grid. In other words, the values of the columns. Only `CHECK_BOX` and `RADIO` choices are allowed. */
+  columns?: ChoiceQuestion;
+  /** If `true`, the questions are randomly ordered. In other words, the rows appear in a different order for every respondent. */
+  shuffleQuestions?: boolean;
+}
+
+export const Grid: Schema.Schema<Grid> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columns: Schema.optional(ChoiceQuestion),
+    shuffleQuestions: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "Grid" });
 
 export interface QuestionGroupItem {
-  /** The question group is a grid with rows of multiple choice questions that share the same options. When `grid` is set, all questions in the group must be of kind `row`. */
-  grid?: Grid;
-  /** The image displayed within the question group above the specific questions. */
-  image?: Image;
   /** Required. A list of questions that belong in this question group. A question must only belong to one group. The `kind` of the group may affect what types of questions are allowed. */
   questions?: ReadonlyArray<Question>;
+  /** The image displayed within the question group above the specific questions. */
+  image?: Image;
+  /** The question group is a grid with rows of multiple choice questions that share the same options. When `grid` is set, all questions in the group must be of kind `row`. */
+  grid?: Grid;
 }
 
-export const QuestionGroupItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  grid: Schema.optional(Grid),
-  image: Schema.optional(Image),
-  questions: Schema.optional(Schema.Array(Question)),
-}).annotate({ identifier: "QuestionGroupItem" });
+export const QuestionGroupItem: Schema.Schema<QuestionGroupItem> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    questions: Schema.optional(Schema.Array(Question)),
+    image: Schema.optional(Image),
+    grid: Schema.optional(Grid),
+  }).annotate({ identifier: "QuestionGroupItem" });
+
+export interface PageBreakItem {}
+
+export const PageBreakItem: Schema.Schema<PageBreakItem> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "PageBreakItem",
+  });
 
 export interface Video {
-  /** Properties of a video. */
-  properties?: MediaProperties;
   /** Required. A YouTube URI. */
   youtubeUri?: string;
+  /** Properties of a video. */
+  properties?: MediaProperties;
 }
 
-export const Video = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  properties: Schema.optional(MediaProperties),
-  youtubeUri: Schema.optional(Schema.String),
-}).annotate({ identifier: "Video" });
+export const Video: Schema.Schema<Video> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    youtubeUri: Schema.optional(Schema.String),
+    properties: Schema.optional(MediaProperties),
+  }).annotate({ identifier: "Video" });
 
 export interface VideoItem {
   /** Required. The video displayed in the item. */
@@ -400,259 +507,88 @@ export interface VideoItem {
   caption?: string;
 }
 
-export const VideoItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  video: Schema.optional(Video),
-  caption: Schema.optional(Schema.String),
-}).annotate({ identifier: "VideoItem" });
-
-export interface QuestionItem {
-  /** Required. The displayed question. */
-  question?: Question;
-  /** The image displayed within the question. */
-  image?: Image;
-}
-
-export const QuestionItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  question: Schema.optional(Question),
-  image: Schema.optional(Image),
-}).annotate({ identifier: "QuestionItem" });
+export const VideoItem: Schema.Schema<VideoItem> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    video: Schema.optional(Video),
+    caption: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VideoItem" });
 
 export interface ImageItem {
   /** Required. The image displayed in the item. */
   image?: Image;
 }
 
-export const ImageItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  image: Schema.optional(Image),
-}).annotate({ identifier: "ImageItem" });
+export const ImageItem: Schema.Schema<ImageItem> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    image: Schema.optional(Image),
+  }).annotate({ identifier: "ImageItem" });
 
 export interface Item {
-  /** The description of the item. */
-  description?: string;
-  /** Displays a title and description on the page. */
-  textItem?: TextItem;
-  /** Starts a new page with a title. */
-  pageBreakItem?: PageBreakItem;
-  /** The item ID. On creation, it can be provided but the ID must not be already used in the form. If not provided, a new ID is assigned. */
-  itemId?: string;
-  /** Poses one or more questions to the user with a single major prompt. */
-  questionGroupItem?: QuestionGroupItem;
-  /** Displays a video on the page. */
-  videoItem?: VideoItem;
   /** Poses a question to the user. */
   questionItem?: QuestionItem;
-  /** Displays an image on the page. */
-  imageItem?: ImageItem;
+  /** Displays a title and description on the page. */
+  textItem?: TextItem;
+  /** Poses one or more questions to the user with a single major prompt. */
+  questionGroupItem?: QuestionGroupItem;
+  /** Starts a new page with a title. */
+  pageBreakItem?: PageBreakItem;
   /** The title of the item. */
   title?: string;
+  /** Displays a video on the page. */
+  videoItem?: VideoItem;
+  /** Displays an image on the page. */
+  imageItem?: ImageItem;
+  /** The item ID. On creation, it can be provided but the ID must not be already used in the form. If not provided, a new ID is assigned. */
+  itemId?: string;
+  /** The description of the item. */
+  description?: string;
 }
 
-export const Item = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  description: Schema.optional(Schema.String),
-  textItem: Schema.optional(TextItem),
-  pageBreakItem: Schema.optional(PageBreakItem),
-  itemId: Schema.optional(Schema.String),
-  questionGroupItem: Schema.optional(QuestionGroupItem),
-  videoItem: Schema.optional(VideoItem),
-  questionItem: Schema.optional(QuestionItem),
-  imageItem: Schema.optional(ImageItem),
-  title: Schema.optional(Schema.String),
-}).annotate({ identifier: "Item" });
+export const Item: Schema.Schema<Item> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    questionItem: Schema.optional(QuestionItem),
+    textItem: Schema.optional(TextItem),
+    questionGroupItem: Schema.optional(QuestionGroupItem),
+    pageBreakItem: Schema.optional(PageBreakItem),
+    title: Schema.optional(Schema.String),
+    videoItem: Schema.optional(VideoItem),
+    imageItem: Schema.optional(ImageItem),
+    itemId: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Item" });
+
+export interface Location {
+  /** The index of an item in the form. This must be in the range [0..*N*), where *N* is the number of items in the form. */
+  index?: number;
+}
+
+export const Location: Schema.Schema<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    index: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Location" });
 
 export interface CreateItemRequest {
-  /** Required. Where to place the new item. */
-  location?: Location;
   /** Required. The item to create. */
   item?: Item;
+  /** Required. Where to place the new item. */
+  location?: Location;
 }
 
-export const CreateItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.optional(Location),
-  item: Schema.optional(Item),
-}).annotate({ identifier: "CreateItemRequest" });
-
-export interface CloudPubsubTopic {
-  /** Required. A fully qualified Pub/Sub topic name to publish the events to. This topic must be owned by the calling project and already exist in Pub/Sub. */
-  topicName?: string;
-}
-
-export const CloudPubsubTopic = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  topicName: Schema.optional(Schema.String),
-}).annotate({ identifier: "CloudPubsubTopic" });
-
-export interface WatchTarget {
-  /** A Pub/Sub topic. To receive notifications, the topic must grant publish privileges to the Forms service account `serviceAccount:forms-notifications@system.gserviceaccount.com`. Only the project that owns a topic may create a watch with it. Pub/Sub delivery guarantees should be considered. */
-  topic?: CloudPubsubTopic;
-}
-
-export const WatchTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  topic: Schema.optional(CloudPubsubTopic),
-}).annotate({ identifier: "WatchTarget" });
-
-export interface Watch {
-  /** Output only. The ID of this watch. See notes on CreateWatchRequest.watch_id. */
-  id?: string;
-  /** Output only. The most recent error type for an attempted delivery. To begin watching the form again a call can be made to watches.renew which also clears this error information. */
-  errorType?:
-    | "ERROR_TYPE_UNSPECIFIED"
-    | "PROJECT_NOT_AUTHORIZED"
-    | "NO_USER_ACCESS"
-    | "OTHER_ERRORS"
-    | (string & {});
-  /** Required. Where to send the notification. */
-  target?: WatchTarget;
-  /** Output only. The current state of the watch. Additional details about suspended watches can be found by checking the `error_type`. */
-  state?: "STATE_UNSPECIFIED" | "ACTIVE" | "SUSPENDED" | (string & {});
-  /** Required. Which event type to watch for. */
-  eventType?: "EVENT_TYPE_UNSPECIFIED" | "SCHEMA" | "RESPONSES" | (string & {});
-  /** Output only. Timestamp of when this was created. */
-  createTime?: string;
-  /** Output only. Timestamp for when this will expire. Each watches.renew call resets this to seven days in the future. */
-  expireTime?: string;
-}
-
-export const Watch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.String),
-  errorType: Schema.optional(Schema.String),
-  target: Schema.optional(WatchTarget),
-  state: Schema.optional(Schema.String),
-  eventType: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  expireTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "Watch" });
-
-export interface PublishState {
-  /** Required. Whether the form accepts responses. If `is_published` is set to `false`, this field is forced to `false`. */
-  isAcceptingResponses?: boolean;
-  /** Required. Whether the form is published and visible to others. */
-  isPublished?: boolean;
-}
-
-export const PublishState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  isAcceptingResponses: Schema.optional(Schema.Boolean),
-  isPublished: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "PublishState" });
-
-export interface PublishSettings {
-  /** Optional. The publishing state of a form. When updating `publish_state`, both `is_published` and `is_accepting_responses` must be set. However, setting `is_accepting_responses` to `true` and `is_published` to `false` isn't supported and returns an error. */
-  publishState?: PublishState;
-}
-
-export const PublishSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  publishState: Schema.optional(PublishState),
-}).annotate({ identifier: "PublishSettings" });
-
-export interface SetPublishSettingsResponse {
-  /** Required. The ID of the Form. This is same as the Form.form_id field. */
-  formId?: string;
-  /** The publish settings of the form. */
-  publishSettings?: PublishSettings;
-}
-
-export const SetPublishSettingsResponse =
+export const CreateItemRequest: Schema.Schema<CreateItemRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    formId: Schema.optional(Schema.String),
-    publishSettings: Schema.optional(PublishSettings),
-  }).annotate({ identifier: "SetPublishSettingsResponse" });
-
-export interface Info {
-  /** The description of the form. */
-  description?: string;
-  /** Output only. The title of the document which is visible in Drive. If Info.title is empty, `document_title` may appear in its place in the Google Forms UI and be visible to responders. `document_title` can be set on create, but cannot be modified by a batchUpdate request. Please use the [Google Drive API](https://developers.google.com/drive/api/v3/reference/files/update) if you need to programmatically update `document_title`. */
-  documentTitle?: string;
-  /** Required. The title of the form which is visible to responders. */
-  title?: string;
-}
-
-export const Info = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  description: Schema.optional(Schema.String),
-  documentTitle: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-}).annotate({ identifier: "Info" });
-
-export interface UpdateFormInfoRequest {
-  /** The info to update. */
-  info?: Info;
-  /** Required. Only values named in this mask are changed. At least one field must be specified. The root `info` is implied and should not be specified. A single `"*"` can be used as short-hand for updating every field. */
-  updateMask?: string;
-}
-
-export const UpdateFormInfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  info: Schema.optional(Info),
-  updateMask: Schema.optional(Schema.String),
-}).annotate({ identifier: "UpdateFormInfoRequest" });
-
-export interface WriteControl {
-  /** The revision ID of the form that the write request is applied to. If this is not the latest revision of the form, the request is not processed and returns a 400 bad request error. */
-  requiredRevisionId?: string;
-  /** The target revision ID of the form that the write request is applied to. If changes have occurred after this revision, the changes in this update request are transformed against those changes. This results in a new revision of the form that incorporates both the changes in the request and the intervening changes, with the server resolving conflicting changes. The target revision ID may only be used to write to recent versions of a form. If the target revision is too far behind the latest revision, the request is not processed and returns a 400 (Bad Request Error). The request may be retried after reading the latest version of the form. In most cases a target revision ID remains valid for several minutes after it is read, but for frequently-edited forms this window may be shorter. */
-  targetRevisionId?: string;
-}
-
-export const WriteControl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  requiredRevisionId: Schema.optional(Schema.String),
-  targetRevisionId: Schema.optional(Schema.String),
-}).annotate({ identifier: "WriteControl" });
-
-export interface TextAnswer {
-  /** Output only. The answer value. Formatting used for different kinds of question: * ChoiceQuestion * `RADIO` or `DROP_DOWN`: A single string corresponding to the option that was selected. * `CHECKBOX`: Multiple strings corresponding to each option that was selected. * TextQuestion: The text that the user entered. * ScaleQuestion: A string containing the number that was selected. * DateQuestion * Without time or year: MM-DD e.g. "05-19" * With year: YYYY-MM-DD e.g. "1986-05-19" * With time: MM-DD HH:MM e.g. "05-19 14:51" * With year and time: YYYY-MM-DD HH:MM e.g. "1986-05-19 14:51" * TimeQuestion: String with time or duration in HH:MM format e.g. "14:51" * RowQuestion within QuestionGroupItem: The answer for each row of a QuestionGroupItem is represented as a separate Answer. Each will contain one string for `RADIO`-type choices or multiple strings for `CHECKBOX` choices. */
-  value?: string;
-}
-
-export const TextAnswer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(Schema.String),
-}).annotate({ identifier: "TextAnswer" });
-
-export interface TextAnswers {
-  /** Output only. Answers to a question. For multiple-value ChoiceQuestions, each answer is a separate value. */
-  answers?: ReadonlyArray<TextAnswer>;
-}
-
-export const TextAnswers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  answers: Schema.optional(Schema.Array(TextAnswer)),
-}).annotate({ identifier: "TextAnswers" });
+    item: Schema.optional(Item),
+    location: Schema.optional(Location),
+  }).annotate({ identifier: "CreateItemRequest" });
 
 export interface DeleteItemRequest {
   /** Required. The location of the item to delete. */
   location?: Location;
 }
 
-export const DeleteItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.optional(Location),
-}).annotate({ identifier: "DeleteItemRequest" });
-
-export interface QuizSettings {
-  /** Whether this form is a quiz or not. When true, responses are graded based on question Grading. Upon setting to false, all question Grading is deleted. */
-  isQuiz?: boolean;
-}
-
-export const QuizSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  isQuiz: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "QuizSettings" });
-
-export interface ListWatchesResponse {
-  /** The returned watches. */
-  watches?: ReadonlyArray<Watch>;
-}
-
-export const ListWatchesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  watches: Schema.optional(Schema.Array(Watch)),
-}).annotate({ identifier: "ListWatchesResponse" });
-
-export interface UpdateItemRequest {
-  /** Required. The location identifying the item to update. */
-  location?: Location;
-  /** Required. New values for the item. Note that item and question IDs are used if they are provided (and are in the field mask). If an ID is blank (and in the field mask) a new ID is generated. This means you can modify an item by getting the form via forms.get, modifying your local copy of that item to be how you want it, and using UpdateItemRequest to write it back, with the IDs being the same (or not in the field mask). */
-  item?: Item;
-  /** Required. Only values named in this mask are changed. */
-  updateMask?: string;
-}
-
-export const UpdateItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.optional(Location),
-  item: Schema.optional(Item),
-  updateMask: Schema.optional(Schema.String),
-}).annotate({ identifier: "UpdateItemRequest" });
+export const DeleteItemRequest: Schema.Schema<DeleteItemRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Location),
+  }).annotate({ identifier: "DeleteItemRequest" });
 
 export interface MoveItemRequest {
   /** Required. The location of the item to move. */
@@ -661,10 +597,66 @@ export interface MoveItemRequest {
   newLocation?: Location;
 }
 
-export const MoveItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  originalLocation: Schema.optional(Location),
-  newLocation: Schema.optional(Location),
-}).annotate({ identifier: "MoveItemRequest" });
+export const MoveItemRequest: Schema.Schema<MoveItemRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalLocation: Schema.optional(Location),
+    newLocation: Schema.optional(Location),
+  }).annotate({ identifier: "MoveItemRequest" });
+
+export interface UpdateItemRequest {
+  /** Required. New values for the item. Note that item and question IDs are used if they are provided (and are in the field mask). If an ID is blank (and in the field mask) a new ID is generated. This means you can modify an item by getting the form via forms.get, modifying your local copy of that item to be how you want it, and using UpdateItemRequest to write it back, with the IDs being the same (or not in the field mask). */
+  item?: Item;
+  /** Required. The location identifying the item to update. */
+  location?: Location;
+  /** Required. Only values named in this mask are changed. */
+  updateMask?: string;
+}
+
+export const UpdateItemRequest: Schema.Schema<UpdateItemRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    item: Schema.optional(Item),
+    location: Schema.optional(Location),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateItemRequest" });
+
+export interface Info {
+  /** Output only. The title of the document which is visible in Drive. If Info.title is empty, `document_title` may appear in its place in the Google Forms UI and be visible to responders. `document_title` can be set on create, but cannot be modified by a batchUpdate request. Please use the [Google Drive API](https://developers.google.com/drive/api/v3/reference/files/update) if you need to programmatically update `document_title`. */
+  documentTitle?: string;
+  /** The description of the form. */
+  description?: string;
+  /** Required. The title of the form which is visible to responders. */
+  title?: string;
+}
+
+export const Info: Schema.Schema<Info> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentTitle: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Info" });
+
+export interface UpdateFormInfoRequest {
+  /** The info to update. */
+  info?: Info;
+  /** Required. Only values named in this mask are changed. At least one field must be specified. The root `info` is implied and should not be specified. A single `"*"` can be used as short-hand for updating every field. */
+  updateMask?: string;
+}
+
+export const UpdateFormInfoRequest: Schema.Schema<UpdateFormInfoRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    info: Schema.optional(Info),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateFormInfoRequest" });
+
+export interface QuizSettings {
+  /** Whether this form is a quiz or not. When true, responses are graded based on question Grading. Upon setting to false, all question Grading is deleted. */
+  isQuiz?: boolean;
+}
+
+export const QuizSettings: Schema.Schema<QuizSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isQuiz: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "QuizSettings" });
 
 export interface FormSettings {
   /** Settings related to quiz forms and grading. */
@@ -678,46 +670,206 @@ export interface FormSettings {
     | (string & {});
 }
 
-export const FormSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  quizSettings: Schema.optional(QuizSettings),
-  emailCollectionType: Schema.optional(Schema.String),
-}).annotate({ identifier: "FormSettings" });
+export const FormSettings: Schema.Schema<FormSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quizSettings: Schema.optional(QuizSettings),
+    emailCollectionType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FormSettings" });
 
 export interface UpdateSettingsRequest {
-  /** Required. The settings to update with. */
-  settings?: FormSettings;
   /** Required. Only values named in this mask are changed. At least one field must be specified. The root `settings` is implied and should not be specified. A single `"*"` can be used as short-hand for updating every field. */
   updateMask?: string;
+  /** Required. The settings to update with. */
+  settings?: FormSettings;
 }
 
-export const UpdateSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  settings: Schema.optional(FormSettings),
-  updateMask: Schema.optional(Schema.String),
-}).annotate({ identifier: "UpdateSettingsRequest" });
+export const UpdateSettingsRequest: Schema.Schema<UpdateSettingsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String),
+    settings: Schema.optional(FormSettings),
+  }).annotate({ identifier: "UpdateSettingsRequest" });
 
 export interface Request {
-  /** Update Form's Info. */
-  updateFormInfo?: UpdateFormInfoRequest;
   /** Create a new item. */
   createItem?: CreateItemRequest;
-  /** Update an item. */
-  updateItem?: UpdateItemRequest;
   /** Delete an item. */
   deleteItem?: DeleteItemRequest;
   /** Move an item to a specified location. */
   moveItem?: MoveItemRequest;
+  /** Update an item. */
+  updateItem?: UpdateItemRequest;
+  /** Update Form's Info. */
+  updateFormInfo?: UpdateFormInfoRequest;
   /** Updates the Form's settings. */
   updateSettings?: UpdateSettingsRequest;
 }
 
-export const Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  updateFormInfo: Schema.optional(UpdateFormInfoRequest),
-  createItem: Schema.optional(CreateItemRequest),
-  updateItem: Schema.optional(UpdateItemRequest),
-  deleteItem: Schema.optional(DeleteItemRequest),
-  moveItem: Schema.optional(MoveItemRequest),
-  updateSettings: Schema.optional(UpdateSettingsRequest),
-}).annotate({ identifier: "Request" });
+export const Request: Schema.Schema<Request> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createItem: Schema.optional(CreateItemRequest),
+    deleteItem: Schema.optional(DeleteItemRequest),
+    moveItem: Schema.optional(MoveItemRequest),
+    updateItem: Schema.optional(UpdateItemRequest),
+    updateFormInfo: Schema.optional(UpdateFormInfoRequest),
+    updateSettings: Schema.optional(UpdateSettingsRequest),
+  }).annotate({ identifier: "Request" });
+
+export interface Grade {
+  /** Output only. The numeric score awarded for the answer. */
+  score?: number;
+  /** Output only. Whether the question was answered correctly or not. A zero-point score is not enough to infer incorrectness, since a correctly answered question could be worth zero points. */
+  correct?: boolean;
+  /** Output only. Additional feedback given for an answer. */
+  feedback?: Feedback;
+}
+
+export const Grade: Schema.Schema<Grade> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    score: Schema.optional(Schema.Number),
+    correct: Schema.optional(Schema.Boolean),
+    feedback: Schema.optional(Feedback),
+  }).annotate({ identifier: "Grade" });
+
+export interface TextAnswer {
+  /** Output only. The answer value. Formatting used for different kinds of question: * ChoiceQuestion * `RADIO` or `DROP_DOWN`: A single string corresponding to the option that was selected. * `CHECKBOX`: Multiple strings corresponding to each option that was selected. * TextQuestion: The text that the user entered. * ScaleQuestion: A string containing the number that was selected. * DateQuestion * Without time or year: MM-DD e.g. "05-19" * With year: YYYY-MM-DD e.g. "1986-05-19" * With time: MM-DD HH:MM e.g. "05-19 14:51" * With year and time: YYYY-MM-DD HH:MM e.g. "1986-05-19 14:51" * TimeQuestion: String with time or duration in HH:MM format e.g. "14:51" * RowQuestion within QuestionGroupItem: The answer for each row of a QuestionGroupItem is represented as a separate Answer. Each will contain one string for `RADIO`-type choices or multiple strings for `CHECKBOX` choices. */
+  value?: string;
+}
+
+export const TextAnswer: Schema.Schema<TextAnswer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TextAnswer" });
+
+export interface TextAnswers {
+  /** Output only. Answers to a question. For multiple-value ChoiceQuestions, each answer is a separate value. */
+  answers?: ReadonlyArray<TextAnswer>;
+}
+
+export const TextAnswers: Schema.Schema<TextAnswers> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answers: Schema.optional(Schema.Array(TextAnswer)),
+  }).annotate({ identifier: "TextAnswers" });
+
+export interface Answer {
+  /** Output only. The question's ID. See also Question.question_id. */
+  questionId?: string;
+  /** Output only. The grade for the answer if the form was a quiz. */
+  grade?: Grade;
+  /** Output only. The answers to a file upload question. */
+  fileUploadAnswers?: FileUploadAnswers;
+  /** Output only. The specific answers as text. */
+  textAnswers?: TextAnswers;
+}
+
+export const Answer: Schema.Schema<Answer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    questionId: Schema.optional(Schema.String),
+    grade: Schema.optional(Grade),
+    fileUploadAnswers: Schema.optional(FileUploadAnswers),
+    textAnswers: Schema.optional(TextAnswers),
+  }).annotate({ identifier: "Answer" });
+
+export interface FormResponse {
+  /** Output only. The form ID. */
+  formId?: string;
+  /** Output only. Timestamp for the most recent time the response was submitted. Does not track changes to grades. */
+  lastSubmittedTime?: string;
+  /** Output only. The email address (if collected) for the respondent. */
+  respondentEmail?: string;
+  /** Output only. Timestamp for the first time the response was submitted. */
+  createTime?: string;
+  /** Output only. The response ID. */
+  responseId?: string;
+  /** Output only. The total number of points the respondent received for their submission Only set if the form was a quiz and the response was graded. This includes points automatically awarded via autograding adjusted by any manual corrections entered by the form owner. */
+  totalScore?: number;
+  /** Output only. The actual answers to the questions, keyed by question_id. */
+  answers?: Record<string, Answer>;
+}
+
+export const FormResponse: Schema.Schema<FormResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    formId: Schema.optional(Schema.String),
+    lastSubmittedTime: Schema.optional(Schema.String),
+    respondentEmail: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    responseId: Schema.optional(Schema.String),
+    totalScore: Schema.optional(Schema.Number),
+    answers: Schema.optional(Schema.Record(Schema.String, Answer)),
+  }).annotate({ identifier: "FormResponse" });
+
+export interface WriteControl {
+  /** The revision ID of the form that the write request is applied to. If this is not the latest revision of the form, the request is not processed and returns a 400 bad request error. */
+  requiredRevisionId?: string;
+  /** The target revision ID of the form that the write request is applied to. If changes have occurred after this revision, the changes in this update request are transformed against those changes. This results in a new revision of the form that incorporates both the changes in the request and the intervening changes, with the server resolving conflicting changes. The target revision ID may only be used to write to recent versions of a form. If the target revision is too far behind the latest revision, the request is not processed and returns a 400 (Bad Request Error). The request may be retried after reading the latest version of the form. In most cases a target revision ID remains valid for several minutes after it is read, but for frequently-edited forms this window may be shorter. */
+  targetRevisionId?: string;
+}
+
+export const WriteControl: Schema.Schema<WriteControl> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requiredRevisionId: Schema.optional(Schema.String),
+    targetRevisionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WriteControl" });
+
+export interface RenewWatchRequest {}
+
+export const RenewWatchRequest: Schema.Schema<RenewWatchRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "RenewWatchRequest",
+  });
+
+export interface PublishState {
+  /** Required. Whether the form is published and visible to others. */
+  isPublished?: boolean;
+  /** Required. Whether the form accepts responses. If `is_published` is set to `false`, this field is forced to `false`. */
+  isAcceptingResponses?: boolean;
+}
+
+export const PublishState: Schema.Schema<PublishState> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isPublished: Schema.optional(Schema.Boolean),
+    isAcceptingResponses: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "PublishState" });
+
+export interface PublishSettings {
+  /** Optional. The publishing state of a form. When updating `publish_state`, both `is_published` and `is_accepting_responses` must be set. However, setting `is_accepting_responses` to `true` and `is_published` to `false` isn't supported and returns an error. */
+  publishState?: PublishState;
+}
+
+export const PublishSettings: Schema.Schema<PublishSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publishState: Schema.optional(PublishState),
+  }).annotate({ identifier: "PublishSettings" });
+
+export interface Form {
+  /** Required. The title and description of the form. */
+  info?: Info;
+  /** Required. A list of the form's items, which can include section headers, questions, embedded media, etc. */
+  items?: ReadonlyArray<Item>;
+  /** Output only. The ID of the linked Google Sheet which is accumulating responses from this Form (if such a Sheet exists). */
+  linkedSheetId?: string;
+  /** The form's settings. This must be updated with UpdateSettingsRequest; it is ignored during CreateForm and UpdateFormInfoRequest. */
+  settings?: FormSettings;
+  /** Output only. The form URI to share with responders. This opens a page that allows the user to submit responses but not edit the questions. For forms that have publish_settings value set, this is the published form URI. */
+  responderUri?: string;
+  /** Output only. The publishing settings for a form. This field isn't set for legacy forms because they don't have the publish_settings field. All newly created forms support publish settings. Forms with publish_settings value set can call SetPublishSettings API to publish or unpublish the form. */
+  publishSettings?: PublishSettings;
+  /** Output only. The form ID. */
+  formId?: string;
+  /** Output only. The revision ID of the form. Used in the WriteControl in update requests to identify the revision on which the changes are based. The format of the revision ID may change over time, so it should be treated opaquely. A returned revision ID is only guaranteed to be valid for 24 hours after it has been returned and cannot be shared across users. If the revision ID is unchanged between calls, then the form *content* has not changed. Conversely, a changed ID (for the same form and user) usually means the form *content* has been updated; however, a changed ID can also be due to internal factors such as ID format changes. Form content excludes form metadata, including: * sharing settings (who has access to the form) * publish_settings (if the form supports publishing and if it is published) */
+  revisionId?: string;
+}
+
+export const Form: Schema.Schema<Form> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    info: Schema.optional(Info),
+    items: Schema.optional(Schema.Array(Item)),
+    linkedSheetId: Schema.optional(Schema.String),
+    settings: Schema.optional(FormSettings),
+    responderUri: Schema.optional(Schema.String),
+    publishSettings: Schema.optional(PublishSettings),
+    formId: Schema.optional(Schema.String),
+    revisionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Form" });
 
 export interface CreateItemResponse {
   /** The ID of the created item. */
@@ -726,168 +878,44 @@ export interface CreateItemResponse {
   questionId?: ReadonlyArray<string>;
 }
 
-export const CreateItemResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  itemId: Schema.optional(Schema.String),
-  questionId: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "CreateItemResponse" });
+export const CreateItemResponse: Schema.Schema<CreateItemResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    itemId: Schema.optional(Schema.String),
+    questionId: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CreateItemResponse" });
 
 export interface Response {
   /** The result of creating an item. */
   createItem?: CreateItemResponse;
 }
 
-export const Response = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  createItem: Schema.optional(CreateItemResponse),
-}).annotate({ identifier: "Response" });
-
-export interface RenewWatchRequest {}
-
-export const RenewWatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "RenewWatchRequest" });
-
-export interface Grade {
-  /** Output only. Whether the question was answered correctly or not. A zero-point score is not enough to infer incorrectness, since a correctly answered question could be worth zero points. */
-  correct?: boolean;
-  /** Output only. Additional feedback given for an answer. */
-  feedback?: Feedback;
-  /** Output only. The numeric score awarded for the answer. */
-  score?: number;
-}
-
-export const Grade = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  correct: Schema.optional(Schema.Boolean),
-  feedback: Schema.optional(Feedback),
-  score: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Grade" });
-
-export interface FileUploadAnswer {
-  /** Output only. The MIME type of the file, as stored in Google Drive on upload. */
-  mimeType?: string;
-  /** Output only. The ID of the Google Drive file. */
-  fileId?: string;
-  /** Output only. The file name, as stored in Google Drive on upload. */
-  fileName?: string;
-}
-
-export const FileUploadAnswer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  mimeType: Schema.optional(Schema.String),
-  fileId: Schema.optional(Schema.String),
-  fileName: Schema.optional(Schema.String),
-}).annotate({ identifier: "FileUploadAnswer" });
-
-export interface FileUploadAnswers {
-  /** Output only. All submitted files for a FileUpload question. */
-  answers?: ReadonlyArray<FileUploadAnswer>;
-}
-
-export const FileUploadAnswers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  answers: Schema.optional(Schema.Array(FileUploadAnswer)),
-}).annotate({ identifier: "FileUploadAnswers" });
-
-export interface Answer {
-  /** Output only. The specific answers as text. */
-  textAnswers?: TextAnswers;
-  /** Output only. The question's ID. See also Question.question_id. */
-  questionId?: string;
-  /** Output only. The answers to a file upload question. */
-  fileUploadAnswers?: FileUploadAnswers;
-  /** Output only. The grade for the answer if the form was a quiz. */
-  grade?: Grade;
-}
-
-export const Answer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  textAnswers: Schema.optional(TextAnswers),
-  questionId: Schema.optional(Schema.String),
-  fileUploadAnswers: Schema.optional(FileUploadAnswers),
-  grade: Schema.optional(Grade),
-}).annotate({ identifier: "Answer" });
-
-export interface FormResponse {
-  /** Output only. The form ID. */
-  formId?: string;
-  /** Output only. Timestamp for the most recent time the response was submitted. Does not track changes to grades. */
-  lastSubmittedTime?: string;
-  /** Output only. The response ID. */
-  responseId?: string;
-  /** Output only. The actual answers to the questions, keyed by question_id. */
-  answers?: Record<string, Answer>;
-  /** Output only. Timestamp for the first time the response was submitted. */
-  createTime?: string;
-  /** Output only. The email address (if collected) for the respondent. */
-  respondentEmail?: string;
-  /** Output only. The total number of points the respondent received for their submission Only set if the form was a quiz and the response was graded. This includes points automatically awarded via autograding adjusted by any manual corrections entered by the form owner. */
-  totalScore?: number;
-}
-
-export const FormResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  formId: Schema.optional(Schema.String),
-  lastSubmittedTime: Schema.optional(Schema.String),
-  responseId: Schema.optional(Schema.String),
-  answers: Schema.optional(Schema.Record(Schema.String, Answer)),
-  createTime: Schema.optional(Schema.String),
-  respondentEmail: Schema.optional(Schema.String),
-  totalScore: Schema.optional(Schema.Number),
-}).annotate({ identifier: "FormResponse" });
-
-export interface SetPublishSettingsRequest {
-  /** Required. The desired publish settings to apply to the form. */
-  publishSettings?: PublishSettings;
-  /** Optional. The `publish_settings` fields to update. This field mask accepts the following values: * `publish_state`: Updates or replaces all `publish_state` settings. * `"*"`: Updates or replaces all `publish_settings` fields. */
-  updateMask?: string;
-}
-
-export const SetPublishSettingsRequest =
+export const Response: Schema.Schema<Response> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    publishSettings: Schema.optional(PublishSettings),
-    updateMask: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SetPublishSettingsRequest" });
-
-export interface Form {
-  /** Output only. The form URI to share with responders. This opens a page that allows the user to submit responses but not edit the questions. For forms that have publish_settings value set, this is the published form URI. */
-  responderUri?: string;
-  /** The form's settings. This must be updated with UpdateSettingsRequest; it is ignored during CreateForm and UpdateFormInfoRequest. */
-  settings?: FormSettings;
-  /** Output only. The revision ID of the form. Used in the WriteControl in update requests to identify the revision on which the changes are based. The format of the revision ID may change over time, so it should be treated opaquely. A returned revision ID is only guaranteed to be valid for 24 hours after it has been returned and cannot be shared across users. If the revision ID is unchanged between calls, then the form *content* has not changed. Conversely, a changed ID (for the same form and user) usually means the form *content* has been updated; however, a changed ID can also be due to internal factors such as ID format changes. Form content excludes form metadata, including: * sharing settings (who has access to the form) * publish_settings (if the form supports publishing and if it is published) */
-  revisionId?: string;
-  /** Output only. The publishing settings for a form. This field isn't set for legacy forms because they don't have the publish_settings field. All newly created forms support publish settings. Forms with publish_settings value set can call SetPublishSettings API to publish or unpublish the form. */
-  publishSettings?: PublishSettings;
-  /** Output only. The form ID. */
-  formId?: string;
-  /** Output only. The ID of the linked Google Sheet which is accumulating responses from this Form (if such a Sheet exists). */
-  linkedSheetId?: string;
-  /** Required. The title and description of the form. */
-  info?: Info;
-  /** Required. A list of the form's items, which can include section headers, questions, embedded media, etc. */
-  items?: ReadonlyArray<Item>;
-}
-
-export const Form = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  responderUri: Schema.optional(Schema.String),
-  settings: Schema.optional(FormSettings),
-  revisionId: Schema.optional(Schema.String),
-  publishSettings: Schema.optional(PublishSettings),
-  formId: Schema.optional(Schema.String),
-  linkedSheetId: Schema.optional(Schema.String),
-  info: Schema.optional(Info),
-  items: Schema.optional(Schema.Array(Item)),
-}).annotate({ identifier: "Form" });
+    createItem: Schema.optional(CreateItemResponse),
+  }).annotate({ identifier: "Response" });
 
 export interface BatchUpdateFormResponse {
-  /** The updated write control after applying the request. */
-  writeControl?: WriteControl;
   /** Based on the bool request field `include_form_in_response`, a form with all applied mutations/updates is returned or not. This may be later than the revision ID created by these changes. */
   form?: Form;
   /** The reply of the updates. This maps 1:1 with the update requests, although replies to some requests may be empty. */
   replies?: ReadonlyArray<Response>;
+  /** The updated write control after applying the request. */
+  writeControl?: WriteControl;
 }
 
-export const BatchUpdateFormResponse =
+export const BatchUpdateFormResponse: Schema.Schema<BatchUpdateFormResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    writeControl: Schema.optional(WriteControl),
     form: Schema.optional(Form),
     replies: Schema.optional(Schema.Array(Response)),
+    writeControl: Schema.optional(WriteControl),
   }).annotate({ identifier: "BatchUpdateFormResponse" });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
 
 export interface ListFormResponsesResponse {
   /** The returned form responses. Note: The `formId` field is not returned in the `FormResponse` object for list requests. */
@@ -896,28 +924,11 @@ export interface ListFormResponsesResponse {
   nextPageToken?: string;
 }
 
-export const ListFormResponsesResponse =
+export const ListFormResponsesResponse: Schema.Schema<ListFormResponsesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responses: Schema.optional(Schema.Array(FormResponse)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListFormResponsesResponse" });
-
-export interface BatchUpdateFormRequest {
-  /** Required. The update requests of this batch. */
-  requests?: ReadonlyArray<Request>;
-  /** Provides control over how write requests are executed. */
-  writeControl?: WriteControl;
-  /** Whether to return an updated version of the model in the response. */
-  includeFormInResponse?: boolean;
-}
-
-export const BatchUpdateFormRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    requests: Schema.optional(Schema.Array(Request)),
-    writeControl: Schema.optional(WriteControl),
-    includeFormInResponse: Schema.optional(Schema.Boolean),
-  },
-).annotate({ identifier: "BatchUpdateFormRequest" });
 
 export interface CreateWatchRequest {
   /** Required. The watch object. No ID should be set on this object; use `watch_id` instead. */
@@ -926,16 +937,63 @@ export interface CreateWatchRequest {
   watchId?: string;
 }
 
-export const CreateWatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  watch: Schema.optional(Watch),
-  watchId: Schema.optional(Schema.String),
-}).annotate({ identifier: "CreateWatchRequest" });
+export const CreateWatchRequest: Schema.Schema<CreateWatchRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    watch: Schema.optional(Watch),
+    watchId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateWatchRequest" });
 
-export interface Empty {}
+export interface ListWatchesResponse {
+  /** The returned watches. */
+  watches?: ReadonlyArray<Watch>;
+}
 
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
+export const ListWatchesResponse: Schema.Schema<ListWatchesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    watches: Schema.optional(Schema.Array(Watch)),
+  }).annotate({ identifier: "ListWatchesResponse" });
+
+export interface SetPublishSettingsResponse {
+  /** Required. The ID of the Form. This is same as the Form.form_id field. */
+  formId?: string;
+  /** The publish settings of the form. */
+  publishSettings?: PublishSettings;
+}
+
+export const SetPublishSettingsResponse: Schema.Schema<SetPublishSettingsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    formId: Schema.optional(Schema.String),
+    publishSettings: Schema.optional(PublishSettings),
+  }).annotate({ identifier: "SetPublishSettingsResponse" });
+
+export interface BatchUpdateFormRequest {
+  /** Whether to return an updated version of the model in the response. */
+  includeFormInResponse?: boolean;
+  /** Provides control over how write requests are executed. */
+  writeControl?: WriteControl;
+  /** Required. The update requests of this batch. */
+  requests?: ReadonlyArray<Request>;
+}
+
+export const BatchUpdateFormRequest: Schema.Schema<BatchUpdateFormRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includeFormInResponse: Schema.optional(Schema.Boolean),
+    writeControl: Schema.optional(WriteControl),
+    requests: Schema.optional(Schema.Array(Request)),
+  }).annotate({ identifier: "BatchUpdateFormRequest" });
+
+export interface SetPublishSettingsRequest {
+  /** Required. The desired publish settings to apply to the form. */
+  publishSettings?: PublishSettings;
+  /** Optional. The `publish_settings` fields to update. This field mask accepts the following values: * `publish_state`: Updates or replaces all `publish_state` settings. * `"*"`: Updates or replaces all `publish_settings` fields. */
+  updateMask?: string;
+}
+
+export const SetPublishSettingsRequest: Schema.Schema<SetPublishSettingsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publishSettings: Schema.optional(PublishSettings),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetPublishSettingsRequest" });
 
 // ==========================================================================
 // Errors
@@ -990,6 +1048,86 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 // Operations
 // ==========================================================================
+
+export interface SetPublishSettingsFormsRequest {
+  /** Required. The ID of the form. You can get the id from Form.form_id field. */
+  formId: string;
+  /** Request body */
+  body?: SetPublishSettingsRequest;
+}
+
+export const SetPublishSettingsFormsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    formId: Schema.String.pipe(T.HttpPath("formId")),
+    body: Schema.optional(SetPublishSettingsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/forms/{formId}:setPublishSettings",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetPublishSettingsFormsRequest>;
+
+export type SetPublishSettingsFormsResponse = SetPublishSettingsResponse;
+export const SetPublishSettingsFormsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SetPublishSettingsResponse;
+
+export type SetPublishSettingsFormsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the publish settings of a form. Legacy forms aren't supported because they don't have the `publish_settings` field. */
+export const setPublishSettingsForms: API.OperationMethod<
+  SetPublishSettingsFormsRequest,
+  SetPublishSettingsFormsResponse,
+  SetPublishSettingsFormsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetPublishSettingsFormsRequest,
+  output: SetPublishSettingsFormsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateFormsRequest {
+  /** Optional. Whether the form is unpublished. If set to `true`, the form doesn't accept responses. If set to `false` or unset, the form is published and accepts responses. */
+  unpublished?: boolean;
+  /** Request body */
+  body?: Form;
+}
+
+export const CreateFormsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unpublished: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("unpublished")),
+  body: Schema.optional(Form).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v1/forms", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<CreateFormsRequest>;
+
+export type CreateFormsResponse = Form;
+export const CreateFormsResponse = /*@__PURE__*/ /*#__PURE__*/ Form;
+
+export type CreateFormsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Create a new form using the title given in the provided form message in the request. *Important:* Only the form.info.title and form.info.document_title fields are copied to the new form. All other fields including the form description, items and settings are disallowed. To create a new form and add items, you must first call forms.create to create an empty form with a title and (optional) document title, and then call forms.update to add the items. */
+export const createForms: API.OperationMethod<
+  CreateFormsRequest,
+  CreateFormsResponse,
+  CreateFormsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateFormsRequest,
+  output: CreateFormsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
 
 export interface GetFormsRequest {
   /** Required. The form ID. */
@@ -1061,164 +1199,6 @@ export const batchUpdateForms: API.OperationMethod<
   input: BatchUpdateFormsRequest,
   output: BatchUpdateFormsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateFormsRequest {
-  /** Optional. Whether the form is unpublished. If set to `true`, the form doesn't accept responses. If set to `false` or unset, the form is published and accepts responses. */
-  unpublished?: boolean;
-  /** Request body */
-  body?: Form;
-}
-
-export const CreateFormsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  unpublished: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("unpublished")),
-  body: Schema.optional(Form).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({ method: "POST", path: "v1/forms", hasBody: true }),
-  svc,
-) as unknown as Schema.Schema<CreateFormsRequest>;
-
-export type CreateFormsResponse = Form;
-export const CreateFormsResponse = /*@__PURE__*/ /*#__PURE__*/ Form;
-
-export type CreateFormsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Create a new form using the title given in the provided form message in the request. *Important:* Only the form.info.title and form.info.document_title fields are copied to the new form. All other fields including the form description, items and settings are disallowed. To create a new form and add items, you must first call forms.create to create an empty form with a title and (optional) document title, and then call forms.update to add the items. */
-export const createForms: API.OperationMethod<
-  CreateFormsRequest,
-  CreateFormsResponse,
-  CreateFormsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateFormsRequest,
-  output: CreateFormsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetPublishSettingsFormsRequest {
-  /** Required. The ID of the form. You can get the id from Form.form_id field. */
-  formId: string;
-  /** Request body */
-  body?: SetPublishSettingsRequest;
-}
-
-export const SetPublishSettingsFormsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    formId: Schema.String.pipe(T.HttpPath("formId")),
-    body: Schema.optional(SetPublishSettingsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/forms/{formId}:setPublishSettings",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetPublishSettingsFormsRequest>;
-
-export type SetPublishSettingsFormsResponse = SetPublishSettingsResponse;
-export const SetPublishSettingsFormsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SetPublishSettingsResponse;
-
-export type SetPublishSettingsFormsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the publish settings of a form. Legacy forms aren't supported because they don't have the `publish_settings` field. */
-export const setPublishSettingsForms: API.OperationMethod<
-  SetPublishSettingsFormsRequest,
-  SetPublishSettingsFormsResponse,
-  SetPublishSettingsFormsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetPublishSettingsFormsRequest,
-  output: SetPublishSettingsFormsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetFormsResponsesRequest {
-  /** Required. The form ID. */
-  formId: string;
-  /** Required. The response ID within the form. */
-  responseId: string;
-}
-
-export const GetFormsResponsesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    formId: Schema.String.pipe(T.HttpPath("formId")),
-    responseId: Schema.String.pipe(T.HttpPath("responseId")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/forms/{formId}/responses/{responseId}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetFormsResponsesRequest>;
-
-export type GetFormsResponsesResponse = FormResponse;
-export const GetFormsResponsesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FormResponse;
-
-export type GetFormsResponsesError = DefaultErrors | NotFound | Forbidden;
-
-/** Get one response from the form. */
-export const getFormsResponses: API.OperationMethod<
-  GetFormsResponsesRequest,
-  GetFormsResponsesResponse,
-  GetFormsResponsesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetFormsResponsesRequest,
-  output: GetFormsResponsesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListFormsResponsesRequest {
-  /** Which form responses to return. Currently, the only supported filters are: * timestamp > *N* which means to get all form responses submitted after (but not at) timestamp *N*. * timestamp >= *N* which means to get all form responses submitted at and after timestamp *N*. For both supported filters, timestamp must be formatted in RFC3339 UTC "Zulu" format. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z". */
-  filter?: string;
-  /** The maximum number of responses to return. The service may return fewer than this value. If unspecified or zero, at most 5000 responses are returned. */
-  pageSize?: number;
-  /** Required. ID of the Form whose responses to list. */
-  formId: string;
-  /** A page token returned by a previous list response. If this field is set, the form and the values of the filter must be the same as for the original request. */
-  pageToken?: string;
-}
-
-export const ListFormsResponsesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    formId: Schema.String.pipe(T.HttpPath("formId")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/forms/{formId}/responses" }),
-    svc,
-  ) as unknown as Schema.Schema<ListFormsResponsesRequest>;
-
-export type ListFormsResponsesResponse = ListFormResponsesResponse;
-export const ListFormsResponsesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListFormResponsesResponse;
-
-export type ListFormsResponsesError = DefaultErrors | NotFound | Forbidden;
-
-/** List a form's responses. */
-export const listFormsResponses: API.PaginatedOperationMethod<
-  ListFormsResponsesRequest,
-  ListFormsResponsesResponse,
-  ListFormsResponsesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListFormsResponsesRequest,
-  output: ListFormsResponsesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
 export interface CreateFormsWatchesRequest {
@@ -1375,4 +1355,82 @@ export const deleteFormsWatches: API.OperationMethod<
   input: DeleteFormsWatchesRequest,
   output: DeleteFormsWatchesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetFormsResponsesRequest {
+  /** Required. The response ID within the form. */
+  responseId: string;
+  /** Required. The form ID. */
+  formId: string;
+}
+
+export const GetFormsResponsesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responseId: Schema.String.pipe(T.HttpPath("responseId")),
+    formId: Schema.String.pipe(T.HttpPath("formId")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/forms/{formId}/responses/{responseId}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetFormsResponsesRequest>;
+
+export type GetFormsResponsesResponse = FormResponse;
+export const GetFormsResponsesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ FormResponse;
+
+export type GetFormsResponsesError = DefaultErrors | NotFound | Forbidden;
+
+/** Get one response from the form. */
+export const getFormsResponses: API.OperationMethod<
+  GetFormsResponsesRequest,
+  GetFormsResponsesResponse,
+  GetFormsResponsesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetFormsResponsesRequest,
+  output: GetFormsResponsesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListFormsResponsesRequest {
+  /** The maximum number of responses to return. The service may return fewer than this value. If unspecified or zero, at most 5000 responses are returned. */
+  pageSize?: number;
+  /** A page token returned by a previous list response. If this field is set, the form and the values of the filter must be the same as for the original request. */
+  pageToken?: string;
+  /** Which form responses to return. Currently, the only supported filters are: * timestamp > *N* which means to get all form responses submitted after (but not at) timestamp *N*. * timestamp >= *N* which means to get all form responses submitted at and after timestamp *N*. For both supported filters, timestamp must be formatted in RFC3339 UTC "Zulu" format. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z". */
+  filter?: string;
+  /** Required. ID of the Form whose responses to list. */
+  formId: string;
+}
+
+export const ListFormsResponsesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    formId: Schema.String.pipe(T.HttpPath("formId")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/forms/{formId}/responses" }),
+    svc,
+  ) as unknown as Schema.Schema<ListFormsResponsesRequest>;
+
+export type ListFormsResponsesResponse = ListFormResponsesResponse;
+export const ListFormsResponsesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListFormResponsesResponse;
+
+export type ListFormsResponsesError = DefaultErrors | NotFound | Forbidden;
+
+/** List a form's responses. */
+export const listFormsResponses: API.PaginatedOperationMethod<
+  ListFormsResponsesRequest,
+  ListFormsResponsesResponse,
+  ListFormsResponsesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListFormsResponsesRequest,
+  output: ListFormsResponsesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));

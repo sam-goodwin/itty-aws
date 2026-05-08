@@ -23,60 +23,63 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface Tag {
+  /** A time value of the tag. */
+  timeValue?: string;
+  /** A string value of the tag. */
+  stringValue?: string;
   /** Required. Key for the tag. */
   key?: string;
   /** A boolean value of the tag. */
   booleanValue?: boolean;
-  /** A string value of the tag. */
-  stringValue?: string;
   /** A signed 64-bit integer value of the tag. */
   int64Value?: string;
-  /** A time value of the tag. */
-  timeValue?: string;
 }
 
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  key: Schema.optional(Schema.String),
-  booleanValue: Schema.optional(Schema.Boolean),
-  stringValue: Schema.optional(Schema.String),
-  int64Value: Schema.optional(Schema.String),
-  timeValue: Schema.optional(Schema.String),
-}).annotate({ identifier: "Tag" });
+export const Tag: Schema.Schema<Tag> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeValue: Schema.optional(Schema.String),
+    stringValue: Schema.optional(Schema.String),
+    key: Schema.optional(Schema.String),
+    booleanValue: Schema.optional(Schema.Boolean),
+    int64Value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Tag" });
 
 export interface CreateOrUpdateTagsRequest {
   /** Tags to be inserted or updated. */
   tags?: ReadonlyArray<Tag>;
 }
 
-export const CreateOrUpdateTagsRequest =
+export const CreateOrUpdateTagsRequest: Schema.Schema<CreateOrUpdateTagsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Tag)),
   }).annotate({ identifier: "CreateOrUpdateTagsRequest" });
-
-export interface CreateOrUpdateTagsResponse {
-  /** All requested tags are returned, including pre-existing ones. */
-  tags?: ReadonlyArray<Tag>;
-}
-
-export const CreateOrUpdateTagsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Array(Tag)),
-  }).annotate({ identifier: "CreateOrUpdateTagsResponse" });
-
-export interface VerifyTokenResponse {}
-
-export const VerifyTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "VerifyTokenResponse" });
 
 export interface VerifyTokenRequest {
   /** Required. Persona represented by the token. Format: personas/{persona} */
   persona?: string;
 }
 
-export const VerifyTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  persona: Schema.optional(Schema.String),
-}).annotate({ identifier: "VerifyTokenRequest" });
+export const VerifyTokenRequest: Schema.Schema<VerifyTokenRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    persona: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VerifyTokenRequest" });
+
+export interface VerifyTokenResponse {}
+
+export const VerifyTokenResponse: Schema.Schema<VerifyTokenResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "VerifyTokenResponse",
+  });
+
+export interface CreateOrUpdateTagsResponse {
+  /** All requested tags are returned, including pre-existing ones. */
+  tags?: ReadonlyArray<Tag>;
+}
+
+export const CreateOrUpdateTagsResponse: Schema.Schema<CreateOrUpdateTagsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Array(Tag)),
+  }).annotate({ identifier: "CreateOrUpdateTagsResponse" });
 
 // ==========================================================================
 // Errors

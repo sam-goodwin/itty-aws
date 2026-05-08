@@ -22,72 +22,115 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface GoogleCloudCommonOperationMetadata {
-  /** Output only. Human-readable status of the operation, if any. */
-  statusDetail?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
-  cancelRequested?: boolean;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-}
-
-export const GoogleCloudCommonOperationMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    statusDetail: Schema.optional(Schema.String),
-    cancelRequested: Schema.optional(Schema.Boolean),
-    endTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-    apiVersion: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudCommonOperationMetadata" });
-
 export interface GoogleTypeExpr {
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
 }
 
-export const GoogleTypeExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  expression: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-}).annotate({ identifier: "GoogleTypeExpr" });
+export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleTypeExpr" });
 
 export interface GoogleIamV2DenyRule {
-  /** Specifies the permissions that this rule excludes from the set of denied permissions given by `denied_permissions`. If a permission appears in `denied_permissions` _and_ in `exception_permissions` then it will _not_ be denied. The excluded permissions can be specified using the same syntax as `denied_permissions`. */
-  exceptionPermissions?: ReadonlyArray<string>;
-  /** The identities that are prevented from using one or more permissions on Google Cloud resources. This field can contain the following values: * `principal://goog/subject/{email_id}`: A specific Google Account. Includes Gmail, Cloud Identity, and Google Workspace user accounts. For example, `principal://goog/subject/alice@example.com`. * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`: A Google Cloud service account. For example, `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`. * `principalSet://goog/group/{group_id}`: A Google group. For example, `principalSet://goog/group/admins@example.com`. * `principalSet://goog/public:all`: A special identifier that represents any principal that is on the internet, even if they do not have a Google Account or are not logged in. * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the principals associated with the specified Google Workspace or Cloud Identity customer ID. For example, `principalSet://goog/cloudIdentityCustomerId/C01Abc35`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `principalSet://cloudresourcemanager.googleapis.com/[projects|folders|organizations]/{project_number|folder_number|org_number}/type/ServiceAccount`: All service accounts grouped under a resource (project, folder, or organization). * `principalSet://cloudresourcemanager.googleapis.com/[projects|folders|organizations]/{project_number|folder_number|org_number}/type/ServiceAgent`: All service agents grouped under a resource (project, folder, or organization). * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific Google Account that was deleted recently. For example, `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If the Google Account is recovered, this identifier reverts to the standard identifier for a Google Account. * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group that was deleted recently. For example, `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`. If the Google group is restored, this identifier reverts to the standard identifier for a Google group. * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`: A Google Cloud service account that was deleted recently. For example, `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`. If the service account is undeleted, this identifier reverts to the standard identifier for a service account. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  deniedPrincipals?: ReadonlyArray<string>;
   /** The permissions that are explicitly denied by this rule. Each permission uses the format `{service_fqdn}/{resource}.{verb}`, where `{service_fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`. */
   deniedPermissions?: ReadonlyArray<string>;
-  /** The identities that are excluded from the deny rule, even if they are listed in the `denied_principals`. For example, you could add a Google group to the `denied_principals`, then exclude specific users who belong to that group. This field can contain the same values as the `denied_principals` field, excluding `principalSet://goog/public:all`, which represents all users on the internet. */
-  exceptionPrincipals?: ReadonlyArray<string>;
+  /** Specifies the permissions that this rule excludes from the set of denied permissions given by `denied_permissions`. If a permission appears in `denied_permissions` _and_ in `exception_permissions` then it will _not_ be denied. The excluded permissions can be specified using the same syntax as `denied_permissions`. */
+  exceptionPermissions?: ReadonlyArray<string>;
   /** The condition that determines whether this deny rule applies to a request. If the condition expression evaluates to `true`, then the deny rule is applied; otherwise, the deny rule is not applied. Each deny rule is evaluated independently. If this deny rule does not apply to a request, other deny rules might still apply. The condition can use CEL functions that evaluate [resource tags](https://cloud.google.com/iam/help/conditions/resource-tags). Other functions and operators are not supported. */
   denialCondition?: GoogleTypeExpr;
+  /** The identities that are excluded from the deny rule, even if they are listed in the `denied_principals`. For example, you could add a Google group to the `denied_principals`, then exclude specific users who belong to that group. This field can contain the same values as the `denied_principals` field, excluding `principalSet://goog/public:all`, which represents all users on the internet. */
+  exceptionPrincipals?: ReadonlyArray<string>;
+  /** The identities that are prevented from using one or more permissions on Google Cloud resources. This field can contain the following values: * `principal://goog/subject/{email_id}`: A specific Google Account. Includes Gmail, Cloud Identity, and Google Workspace user accounts. For example, `principal://goog/subject/alice@example.com`. * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`: A Google Cloud service account. For example, `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`. * `principalSet://goog/group/{group_id}`: A Google group. For example, `principalSet://goog/group/admins@example.com`. * `principalSet://goog/public:all`: A special identifier that represents any principal that is on the internet, even if they do not have a Google Account or are not logged in. * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the principals associated with the specified Google Workspace or Cloud Identity customer ID. For example, `principalSet://goog/cloudIdentityCustomerId/C01Abc35`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `principalSet://cloudresourcemanager.googleapis.com/[projects|folders|organizations]/{project_number|folder_number|org_number}/type/ServiceAccount`: All service accounts grouped under a resource (project, folder, or organization). * `principalSet://cloudresourcemanager.googleapis.com/[projects|folders|organizations]/{project_number|folder_number|org_number}/type/ServiceAgent`: All service agents grouped under a resource (project, folder, or organization). * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific Google Account that was deleted recently. For example, `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If the Google Account is recovered, this identifier reverts to the standard identifier for a Google Account. * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group that was deleted recently. For example, `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`. If the Google group is restored, this identifier reverts to the standard identifier for a Google group. * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`: A Google Cloud service account that was deleted recently. For example, `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`. If the service account is undeleted, this identifier reverts to the standard identifier for a service account. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
+  deniedPrincipals?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV2DenyRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  exceptionPermissions: Schema.optional(Schema.Array(Schema.String)),
-  deniedPrincipals: Schema.optional(Schema.Array(Schema.String)),
-  deniedPermissions: Schema.optional(Schema.Array(Schema.String)),
-  exceptionPrincipals: Schema.optional(Schema.Array(Schema.String)),
-  denialCondition: Schema.optional(GoogleTypeExpr),
-}).annotate({ identifier: "GoogleIamV2DenyRule" });
+export const GoogleIamV2DenyRule: Schema.Schema<GoogleIamV2DenyRule> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deniedPermissions: Schema.optional(Schema.Array(Schema.String)),
+    exceptionPermissions: Schema.optional(Schema.Array(Schema.String)),
+    denialCondition: Schema.optional(GoogleTypeExpr),
+    exceptionPrincipals: Schema.optional(Schema.Array(Schema.String)),
+    deniedPrincipals: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV2DenyRule" });
+
+export interface GoogleIamV1BindingDelta {
+  /** A single identity requesting access for a Google Cloud resource. Follows the same format of Binding.members. Required */
+  member?: string;
+  /** Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. Required */
+  role?: string;
+  /** The action that was performed on a Binding. Required */
+  action?: "ACTION_UNSPECIFIED" | "ADD" | "REMOVE" | (string & {});
+  /** The condition that is associated with this binding. */
+  condition?: GoogleTypeExpr;
+}
+
+export const GoogleIamV1BindingDelta: Schema.Schema<GoogleIamV1BindingDelta> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    member: Schema.optional(Schema.String),
+    role: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    condition: Schema.optional(GoogleTypeExpr),
+  }).annotate({ identifier: "GoogleIamV1BindingDelta" });
+
+export interface GoogleIamV1PolicyDelta {
+  /** The delta for Bindings between two policies. */
+  bindingDeltas?: ReadonlyArray<GoogleIamV1BindingDelta>;
+}
+
+export const GoogleIamV1PolicyDelta: Schema.Schema<GoogleIamV1PolicyDelta> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bindingDeltas: Schema.optional(Schema.Array(GoogleIamV1BindingDelta)),
+  }).annotate({ identifier: "GoogleIamV1PolicyDelta" });
+
+export interface GoogleRpcStatus {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
+}
+
+export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "GoogleRpcStatus" });
+
+export interface GoogleLongrunningOperation {
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: GoogleRpcStatus;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+}
+
+export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(GoogleRpcStatus),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleIamAdminV1AuditDataPermissionDelta {
   /** Removed permissions. */
@@ -96,7 +139,7 @@ export interface GoogleIamAdminV1AuditDataPermissionDelta {
   addedPermissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamAdminV1AuditDataPermissionDelta =
+export const GoogleIamAdminV1AuditDataPermissionDelta: Schema.Schema<GoogleIamAdminV1AuditDataPermissionDelta> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     removedPermissions: Schema.optional(Schema.Array(Schema.String)),
     addedPermissions: Schema.optional(Schema.Array(Schema.String)),
@@ -107,10 +150,66 @@ export interface GoogleIamAdminV1AuditData {
   permissionDelta?: GoogleIamAdminV1AuditDataPermissionDelta;
 }
 
-export const GoogleIamAdminV1AuditData =
+export const GoogleIamAdminV1AuditData: Schema.Schema<GoogleIamAdminV1AuditData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissionDelta: Schema.optional(GoogleIamAdminV1AuditDataPermissionDelta),
   }).annotate({ identifier: "GoogleIamAdminV1AuditData" });
+
+export interface GoogleIamV3mainOperationMetadata {
+  /** Output only. Server-defined resource path for the target of the */
+  target?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+}
+
+export const GoogleIamV3mainOperationMetadata: Schema.Schema<GoogleIamV3mainOperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV3mainOperationMetadata" });
+
+export interface GoogleIamV3OperationMetadata {
+  /** Output only. Server-defined resource path for the target of the */
+  target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+}
+
+export const GoogleIamV3OperationMetadata: Schema.Schema<GoogleIamV3OperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleIamV3OperationMetadata" });
 
 export interface GoogleIamV2PolicyRule {
   /** A rule for a deny policy. */
@@ -119,50 +218,142 @@ export interface GoogleIamV2PolicyRule {
   description?: string;
 }
 
-export const GoogleIamV2PolicyRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  denyRule: Schema.optional(GoogleIamV2DenyRule),
-  description: Schema.optional(Schema.String),
-}).annotate({ identifier: "GoogleIamV2PolicyRule" });
-
-export interface GoogleIamV1BindingDelta {
-  /** Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. Required */
-  role?: string;
-  /** The action that was performed on a Binding. Required */
-  action?: "ACTION_UNSPECIFIED" | "ADD" | "REMOVE" | (string & {});
-  /** A single identity requesting access for a Google Cloud resource. Follows the same format of Binding.members. Required */
-  member?: string;
-  /** The condition that is associated with this binding. */
-  condition?: GoogleTypeExpr;
-}
-
-export const GoogleIamV1BindingDelta =
+export const GoogleIamV2PolicyRule: Schema.Schema<GoogleIamV2PolicyRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    role: Schema.optional(Schema.String),
-    action: Schema.optional(Schema.String),
-    member: Schema.optional(Schema.String),
-    condition: Schema.optional(GoogleTypeExpr),
-  }).annotate({ identifier: "GoogleIamV1BindingDelta" });
+    denyRule: Schema.optional(GoogleIamV2DenyRule),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV2PolicyRule" });
 
-export interface GoogleIamV1PolicyDelta {
-  /** The delta for Bindings between two policies. */
-  bindingDeltas?: ReadonlyArray<GoogleIamV1BindingDelta>;
+export interface GoogleIamV2Policy {
+  /** Output only. The time when the `Policy` was created. */
+  createTime?: string;
+  /** Output only. The time when the `Policy` was deleted. Empty if the policy is not deleted. */
+  deleteTime?: string;
+  /** Output only. The kind of the `Policy`. Always contains the value `DenyPolicy`. */
+  kind?: string;
+  /** Immutable. The globally unique ID of the `Policy`. Assigned automatically when the `Policy` is created. */
+  uid?: string;
+  /** Output only. The time when the `Policy` was last updated. */
+  updateTime?: string;
+  /** A list of rules that specify the behavior of the `Policy`. All of the rules should be of the `kind` specified in the `Policy`. */
+  rules?: ReadonlyArray<GoogleIamV2PolicyRule>;
+  /** A user-specified description of the `Policy`. This value can be up to 63 characters. */
+  displayName?: string;
+  /** Immutable. The resource name of the `Policy`, which must be unique. Format: `policies/{attachment_point}/denypolicies/{policy_id}` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-deny-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, requests can use the alphanumeric or the numeric ID. Responses always contain the numeric ID. */
+  name?: string;
+  /** An opaque tag that identifies the current version of the `Policy`. IAM uses this value to help manage concurrent updates, so they do not cause one update to be overwritten by another. If this field is present in a CreatePolicyRequest, the value is ignored. */
+  etag?: string;
+  /** A key-value map to store arbitrary metadata for the `Policy`. Keys can be up to 63 characters. Values can be up to 255 characters. */
+  annotations?: Record<string, string>;
 }
 
-export const GoogleIamV1PolicyDelta = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    bindingDeltas: Schema.optional(Schema.Array(GoogleIamV1BindingDelta)),
-  },
-).annotate({ identifier: "GoogleIamV1PolicyDelta" });
+export const GoogleIamV2Policy: Schema.Schema<GoogleIamV2Policy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    rules: Schema.optional(Schema.Array(GoogleIamV2PolicyRule)),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "GoogleIamV2Policy" });
+
+export interface GoogleIamV3betaOperationMetadata {
+  /** Output only. Server-defined resource path for the target of the */
+  target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+}
+
+export const GoogleIamV3betaOperationMetadata: Schema.Schema<GoogleIamV3betaOperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleIamV3betaOperationMetadata" });
+
+export interface GoogleCloudCommonOperationMetadata {
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
+  cancelRequested?: boolean;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusDetail?: string;
+}
+
+export const GoogleCloudCommonOperationMetadata: Schema.Schema<GoogleCloudCommonOperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersion: Schema.optional(Schema.String),
+    cancelRequested: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    statusDetail: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudCommonOperationMetadata" });
 
 export interface GoogleIamV1LoggingAuditData {
   /** Policy delta between the original policy and the newly set policy. */
   policyDelta?: GoogleIamV1PolicyDelta;
 }
 
-export const GoogleIamV1LoggingAuditData =
+export const GoogleIamV1LoggingAuditData: Schema.Schema<GoogleIamV1LoggingAuditData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyDelta: Schema.optional(GoogleIamV1PolicyDelta),
   }).annotate({ identifier: "GoogleIamV1LoggingAuditData" });
+
+export interface GoogleIamV3alphaOperationMetadata {
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+  /** Output only. Server-defined resource path for the target of the */
+  target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+}
+
+export const GoogleIamV3alphaOperationMetadata: Schema.Schema<GoogleIamV3alphaOperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV3alphaOperationMetadata" });
 
 export interface CloudControl2SharedOperationsReconciliationOperationMetadata {
   /** DEPRECATED. Use exclusive_action instead. */
@@ -175,150 +366,13 @@ export interface CloudControl2SharedOperationsReconciliationOperationMetadata {
     | (string & {});
 }
 
-export const CloudControl2SharedOperationsReconciliationOperationMetadata =
+export const CloudControl2SharedOperationsReconciliationOperationMetadata: Schema.Schema<CloudControl2SharedOperationsReconciliationOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleteResource: Schema.optional(Schema.Boolean),
     exclusiveAction: Schema.optional(Schema.String),
   }).annotate({
     identifier: "CloudControl2SharedOperationsReconciliationOperationMetadata",
   });
-
-export interface GoogleIamV2Policy {
-  /** Immutable. The resource name of the `Policy`, which must be unique. Format: `policies/{attachment_point}/denypolicies/{policy_id}` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-deny-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, requests can use the alphanumeric or the numeric ID. Responses always contain the numeric ID. */
-  name?: string;
-  /** A user-specified description of the `Policy`. This value can be up to 63 characters. */
-  displayName?: string;
-  /** Output only. The time when the `Policy` was deleted. Empty if the policy is not deleted. */
-  deleteTime?: string;
-  /** A list of rules that specify the behavior of the `Policy`. All of the rules should be of the `kind` specified in the `Policy`. */
-  rules?: ReadonlyArray<GoogleIamV2PolicyRule>;
-  /** An opaque tag that identifies the current version of the `Policy`. IAM uses this value to help manage concurrent updates, so they do not cause one update to be overwritten by another. If this field is present in a CreatePolicyRequest, the value is ignored. */
-  etag?: string;
-  /** Output only. The time when the `Policy` was created. */
-  createTime?: string;
-  /** Immutable. The globally unique ID of the `Policy`. Assigned automatically when the `Policy` is created. */
-  uid?: string;
-  /** Output only. The kind of the `Policy`. Always contains the value `DenyPolicy`. */
-  kind?: string;
-  /** A key-value map to store arbitrary metadata for the `Policy`. Keys can be up to 63 characters. Values can be up to 255 characters. */
-  annotations?: Record<string, string>;
-  /** Output only. The time when the `Policy` was last updated. */
-  updateTime?: string;
-}
-
-export const GoogleIamV2Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  deleteTime: Schema.optional(Schema.String),
-  rules: Schema.optional(Schema.Array(GoogleIamV2PolicyRule)),
-  etag: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  uid: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  updateTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "GoogleIamV2Policy" });
-
-export interface GoogleIamV1betaWorkloadIdentityPoolOperationMetadata {}
-
-export const GoogleIamV1betaWorkloadIdentityPoolOperationMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleIamV1betaWorkloadIdentityPoolOperationMetadata",
-  });
-
-export interface GoogleIamV3alphaOperationMetadata {
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. Server-defined resource path for the target of the */
-  target?: string;
-}
-
-export const GoogleIamV3alphaOperationMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    statusMessage: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    createTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-    apiVersion: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleIamV3alphaOperationMetadata" });
-
-export interface GoogleIamV2PolicyOperationMetadata {
-  /** Timestamp when the `google.longrunning.Operation` was created. */
-  createTime?: string;
-}
-
-export const GoogleIamV2PolicyOperationMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    createTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleIamV2PolicyOperationMetadata" });
-
-export interface GoogleIamV3mainOperationMetadata {
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. Server-defined resource path for the target of the */
-  target?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-}
-
-export const GoogleIamV3mainOperationMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    createTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-    apiVersion: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleIamV3mainOperationMetadata" });
-
-export interface GoogleIamV3OperationMetadata {
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. Server-defined resource path for the target of the */
-  target?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-}
-
-export const GoogleIamV3OperationMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    createTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-    apiVersion: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleIamV3OperationMetadata" });
 
 export interface GoogleIamV2ListPoliciesResponse {
   /** A page token that you can use in a ListPoliciesRequest to retrieve the next page. If this field is omitted, there are no additional pages. */
@@ -327,78 +381,28 @@ export interface GoogleIamV2ListPoliciesResponse {
   policies?: ReadonlyArray<GoogleIamV2Policy>;
 }
 
-export const GoogleIamV2ListPoliciesResponse =
+export const GoogleIamV2ListPoliciesResponse: Schema.Schema<GoogleIamV2ListPoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     policies: Schema.optional(Schema.Array(GoogleIamV2Policy)),
   }).annotate({ identifier: "GoogleIamV2ListPoliciesResponse" });
 
-export interface GoogleRpcStatus {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
-}
-
-export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  code: Schema.optional(Schema.Number),
-  message: Schema.optional(Schema.String),
-  details: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-}).annotate({ identifier: "GoogleRpcStatus" });
-
-export interface GoogleLongrunningOperation {
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: GoogleRpcStatus;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-}
-
-export const GoogleLongrunningOperation =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    error: Schema.optional(GoogleRpcStatus),
-    name: Schema.optional(Schema.String),
-    done: Schema.optional(Schema.Boolean),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  }).annotate({ identifier: "GoogleLongrunningOperation" });
-
-export interface GoogleIamV3betaOperationMetadata {
-  /** Output only. Server-defined resource path for the target of the */
-  target?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. The time the operation was created. */
+export interface GoogleIamV2PolicyOperationMetadata {
+  /** Timestamp when the `google.longrunning.Operation` was created. */
   createTime?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
 }
 
-export const GoogleIamV3betaOperationMetadata =
+export const GoogleIamV2PolicyOperationMetadata: Schema.Schema<GoogleIamV2PolicyOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    target: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-    apiVersion: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    endTime: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleIamV3betaOperationMetadata" });
+  }).annotate({ identifier: "GoogleIamV2PolicyOperationMetadata" });
+
+export interface GoogleIamV1betaWorkloadIdentityPoolOperationMetadata {}
+
+export const GoogleIamV1betaWorkloadIdentityPoolOperationMetadata: Schema.Schema<GoogleIamV1betaWorkloadIdentityPoolOperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleIamV1betaWorkloadIdentityPoolOperationMetadata",
+  });
 
 // ==========================================================================
 // Errors
@@ -454,48 +458,6 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface CreatePolicyPoliciesRequest {
-  /** Required. The resource that the policy is attached to, along with the kind of policy to create. Format: `policies/{attachment_point}/denypolicies` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies`. For organizations and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the numeric ID. */
-  parent: string;
-  /** The ID to use for this policy, which will become the final component of the policy's resource name. The ID must contain 3 to 63 characters. It can contain lowercase letters and numbers, as well as dashes (`-`) and periods (`.`). The first character must be a lowercase letter. */
-  policyId?: string;
-  /** Request body */
-  body?: GoogleIamV2Policy;
-}
-
-export const CreatePolicyPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    policyId: Schema.optional(Schema.String).pipe(T.HttpQuery("policyId")),
-    body: Schema.optional(GoogleIamV2Policy).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v2/{+parent}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreatePolicyPoliciesRequest>;
-
-export type CreatePolicyPoliciesResponse = GoogleLongrunningOperation;
-export const CreatePolicyPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type CreatePolicyPoliciesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a policy. */
-export const createPolicyPolicies: API.OperationMethod<
-  CreatePolicyPoliciesRequest,
-  CreatePolicyPoliciesResponse,
-  CreatePolicyPoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreatePolicyPoliciesRequest,
-  output: CreatePolicyPoliciesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface DeletePoliciesRequest {
   /** Required. The resource name of the policy to delete. Format: `policies/{attachment_point}/denypolicies/{policy_id}` Use the URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the numeric ID. */
   name: string;
@@ -532,47 +494,6 @@ export const deletePolicies: API.OperationMethod<
   input: DeletePoliciesRequest,
   output: DeletePoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListPoliciesPoliciesRequest {
-  /** A page token received in a ListPoliciesResponse. Provide this token to retrieve the next page. */
-  pageToken?: string;
-  /** Required. The resource that the policy is attached to, along with the kind of policy to list. Format: `policies/{attachment_point}/denypolicies` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies`. For organizations and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the numeric ID. */
-  parent: string;
-  /** The maximum number of policies to return. IAM ignores this value and uses the value 1000. */
-  pageSize?: number;
-}
-
-export const ListPoliciesPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}" }),
-    svc,
-  ) as unknown as Schema.Schema<ListPoliciesPoliciesRequest>;
-
-export type ListPoliciesPoliciesResponse = GoogleIamV2ListPoliciesResponse;
-export const ListPoliciesPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV2ListPoliciesResponse;
-
-export type ListPoliciesPoliciesError = DefaultErrors | NotFound | Forbidden;
-
-/** Retrieves the policies of the specified kind that are attached to a resource. The response lists only policy metadata. In particular, policy rules are omitted. */
-export const listPoliciesPolicies: API.PaginatedOperationMethod<
-  ListPoliciesPoliciesRequest,
-  ListPoliciesPoliciesResponse,
-  ListPoliciesPoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListPoliciesPoliciesRequest,
-  output: ListPoliciesPoliciesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
 export interface UpdatePoliciesRequest {
@@ -641,6 +562,89 @@ export const getPolicies: API.OperationMethod<
   input: GetPoliciesRequest,
   output: GetPoliciesResponse,
   errors: [NotFound, Forbidden],
+}));
+
+export interface CreatePolicyPoliciesRequest {
+  /** Required. The resource that the policy is attached to, along with the kind of policy to create. Format: `policies/{attachment_point}/denypolicies` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies`. For organizations and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the numeric ID. */
+  parent: string;
+  /** The ID to use for this policy, which will become the final component of the policy's resource name. The ID must contain 3 to 63 characters. It can contain lowercase letters and numbers, as well as dashes (`-`) and periods (`.`). The first character must be a lowercase letter. */
+  policyId?: string;
+  /** Request body */
+  body?: GoogleIamV2Policy;
+}
+
+export const CreatePolicyPoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    policyId: Schema.optional(Schema.String).pipe(T.HttpQuery("policyId")),
+    body: Schema.optional(GoogleIamV2Policy).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v2/{+parent}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreatePolicyPoliciesRequest>;
+
+export type CreatePolicyPoliciesResponse = GoogleLongrunningOperation;
+export const CreatePolicyPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type CreatePolicyPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a policy. */
+export const createPolicyPolicies: API.OperationMethod<
+  CreatePolicyPoliciesRequest,
+  CreatePolicyPoliciesResponse,
+  CreatePolicyPoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreatePolicyPoliciesRequest,
+  output: CreatePolicyPoliciesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListPoliciesPoliciesRequest {
+  /** The maximum number of policies to return. IAM ignores this value and uses the value 1000. */
+  pageSize?: number;
+  /** A page token received in a ListPoliciesResponse. Provide this token to retrieve the next page. */
+  pageToken?: string;
+  /** Required. The resource that the policy is attached to, along with the kind of policy to list. Format: `policies/{attachment_point}/denypolicies` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies`. For organizations and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the numeric ID. */
+  parent: string;
+}
+
+export const ListPoliciesPoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+parent}" }),
+    svc,
+  ) as unknown as Schema.Schema<ListPoliciesPoliciesRequest>;
+
+export type ListPoliciesPoliciesResponse = GoogleIamV2ListPoliciesResponse;
+export const ListPoliciesPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV2ListPoliciesResponse;
+
+export type ListPoliciesPoliciesError = DefaultErrors | NotFound | Forbidden;
+
+/** Retrieves the policies of the specified kind that are attached to a resource. The response lists only policy metadata. In particular, policy rules are omitted. */
+export const listPoliciesPolicies: API.PaginatedOperationMethod<
+  ListPoliciesPoliciesRequest,
+  ListPoliciesPoliciesResponse,
+  ListPoliciesPoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListPoliciesPoliciesRequest,
+  output: ListPoliciesPoliciesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface GetPoliciesOperationsRequest {

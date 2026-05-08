@@ -31,13 +31,14 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  code: Schema.optional(Schema.Number),
-  message: Schema.optional(Schema.String),
-  details: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-}).annotate({ identifier: "Status" });
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -52,13 +53,14 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  done: Schema.optional(Schema.Boolean),
-  error: Schema.optional(Status),
-  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-}).annotate({ identifier: "Operation" });
+export const Operation: Schema.Schema<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(Status),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -69,25 +71,26 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
-  },
-).annotate({ identifier: "ListOperationsResponse" });
+  }).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "CancelOperationRequest" });
+export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelOperationRequest",
+  });
 
 export interface GitSource {
   /** Optional. Repository URL. Example: 'https://github.com/kubernetes/examples.git' */
@@ -98,20 +101,22 @@ export interface GitSource {
   ref?: string;
 }
 
-export const GitSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  repo: Schema.optional(Schema.String),
-  directory: Schema.optional(Schema.String),
-  ref: Schema.optional(Schema.String),
-}).annotate({ identifier: "GitSource" });
+export const GitSource: Schema.Schema<GitSource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repo: Schema.optional(Schema.String),
+    directory: Schema.optional(Schema.String),
+    ref: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GitSource" });
 
 export interface TerraformVariable {
   /** Optional. Input variable value. */
   inputValue?: unknown;
 }
 
-export const TerraformVariable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  inputValue: Schema.optional(Schema.Unknown),
-}).annotate({ identifier: "TerraformVariable" });
+export const TerraformVariable: Schema.Schema<TerraformVariable> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputValue: Schema.optional(Schema.Unknown),
+  }).annotate({ identifier: "TerraformVariable" });
 
 export interface DeploymentSource {
   /** Required. The resource name of the source Deployment to import the output from. Format: projects/{project}/locations/{location}/deployments/{deployment} The source deployment must be in the same project and location. */
@@ -120,19 +125,21 @@ export interface DeploymentSource {
   outputName?: string;
 }
 
-export const DeploymentSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  deployment: Schema.optional(Schema.String),
-  outputName: Schema.optional(Schema.String),
-}).annotate({ identifier: "DeploymentSource" });
+export const DeploymentSource: Schema.Schema<DeploymentSource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployment: Schema.optional(Schema.String),
+    outputName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeploymentSource" });
 
 export interface ExternalValueSource {
   /** A source from a Deployment. */
   deploymentSource?: DeploymentSource;
 }
 
-export const ExternalValueSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  deploymentSource: Schema.optional(DeploymentSource),
-}).annotate({ identifier: "ExternalValueSource" });
+export const ExternalValueSource: Schema.Schema<ExternalValueSource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deploymentSource: Schema.optional(DeploymentSource),
+  }).annotate({ identifier: "ExternalValueSource" });
 
 export interface TerraformBlueprint {
   /** URI of an object in Google Cloud Storage. Format: `gs://{bucket}/{object}` URI may also specify an object version for zipped objects. Format: `gs://{bucket}/{object}#{version}` */
@@ -145,14 +152,17 @@ export interface TerraformBlueprint {
   externalValues?: Record<string, ExternalValueSource>;
 }
 
-export const TerraformBlueprint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  gcsSource: Schema.optional(Schema.String),
-  gitSource: Schema.optional(GitSource),
-  inputValues: Schema.optional(Schema.Record(Schema.String, TerraformVariable)),
-  externalValues: Schema.optional(
-    Schema.Record(Schema.String, ExternalValueSource),
-  ),
-}).annotate({ identifier: "TerraformBlueprint" });
+export const TerraformBlueprint: Schema.Schema<TerraformBlueprint> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsSource: Schema.optional(Schema.String),
+    gitSource: Schema.optional(GitSource),
+    inputValues: Schema.optional(
+      Schema.Record(Schema.String, TerraformVariable),
+    ),
+    externalValues: Schema.optional(
+      Schema.Record(Schema.String, ExternalValueSource),
+    ),
+  }).annotate({ identifier: "TerraformBlueprint" });
 
 export interface TerraformOutput {
   /** Identifies whether Terraform has set this output as a potential sensitive value. */
@@ -161,10 +171,11 @@ export interface TerraformOutput {
   value?: unknown;
 }
 
-export const TerraformOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sensitive: Schema.optional(Schema.Boolean),
-  value: Schema.optional(Schema.Unknown),
-}).annotate({ identifier: "TerraformOutput" });
+export const TerraformOutput: Schema.Schema<TerraformOutput> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sensitive: Schema.optional(Schema.Boolean),
+    value: Schema.optional(Schema.Unknown),
+  }).annotate({ identifier: "TerraformOutput" });
 
 export interface ApplyResults {
   /** Location of a blueprint copy and other manifests in Google Cloud Storage. Format: `gs://{bucket}/{object}` */
@@ -175,11 +186,12 @@ export interface ApplyResults {
   outputs?: Record<string, TerraformOutput>;
 }
 
-export const ApplyResults = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  content: Schema.optional(Schema.String),
-  artifacts: Schema.optional(Schema.String),
-  outputs: Schema.optional(Schema.Record(Schema.String, TerraformOutput)),
-}).annotate({ identifier: "ApplyResults" });
+export const ApplyResults: Schema.Schema<ApplyResults> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+    artifacts: Schema.optional(Schema.String),
+    outputs: Schema.optional(Schema.Record(Schema.String, TerraformOutput)),
+  }).annotate({ identifier: "ApplyResults" });
 
 export interface TerraformError {
   /** Address of the resource associated with the error, e.g. `google_compute_network.vpc_network`. */
@@ -192,12 +204,13 @@ export interface TerraformError {
   error?: Status;
 }
 
-export const TerraformError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceAddress: Schema.optional(Schema.String),
-  httpResponseCode: Schema.optional(Schema.Number),
-  errorDescription: Schema.optional(Schema.String),
-  error: Schema.optional(Status),
-}).annotate({ identifier: "TerraformError" });
+export const TerraformError: Schema.Schema<TerraformError> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceAddress: Schema.optional(Schema.String),
+    httpResponseCode: Schema.optional(Schema.Number),
+    errorDescription: Schema.optional(Schema.String),
+    error: Schema.optional(Status),
+  }).annotate({ identifier: "TerraformError" });
 
 export interface ProviderConfig {
   /** Optional. ProviderSource specifies the source type of the provider. */
@@ -207,9 +220,10 @@ export interface ProviderConfig {
     | (string & {});
 }
 
-export const ProviderConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sourceType: Schema.optional(Schema.String),
-}).annotate({ identifier: "ProviderConfig" });
+export const ProviderConfig: Schema.Schema<ProviderConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProviderConfig" });
 
 export interface Deployment {
   /** A blueprint described using Terraform's HashiCorp Configuration Language as a root module. */
@@ -292,32 +306,33 @@ export interface Deployment {
   providerConfig?: ProviderConfig;
 }
 
-export const Deployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  terraformBlueprint: Schema.optional(TerraformBlueprint),
-  name: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  state: Schema.optional(Schema.String),
-  latestRevision: Schema.optional(Schema.String),
-  stateDetail: Schema.optional(Schema.String),
-  errorCode: Schema.optional(Schema.String),
-  deleteResults: Schema.optional(ApplyResults),
-  deleteBuild: Schema.optional(Schema.String),
-  deleteLogs: Schema.optional(Schema.String),
-  tfErrors: Schema.optional(Schema.Array(TerraformError)),
-  errorLogs: Schema.optional(Schema.String),
-  artifactsGcsBucket: Schema.optional(Schema.String),
-  serviceAccount: Schema.optional(Schema.String),
-  importExistingResources: Schema.optional(Schema.Boolean),
-  workerPool: Schema.optional(Schema.String),
-  lockState: Schema.optional(Schema.String),
-  tfVersionConstraint: Schema.optional(Schema.String),
-  tfVersion: Schema.optional(Schema.String),
-  quotaValidation: Schema.optional(Schema.String),
-  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  providerConfig: Schema.optional(ProviderConfig),
-}).annotate({ identifier: "Deployment" });
+export const Deployment: Schema.Schema<Deployment> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    terraformBlueprint: Schema.optional(TerraformBlueprint),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    state: Schema.optional(Schema.String),
+    latestRevision: Schema.optional(Schema.String),
+    stateDetail: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.String),
+    deleteResults: Schema.optional(ApplyResults),
+    deleteBuild: Schema.optional(Schema.String),
+    deleteLogs: Schema.optional(Schema.String),
+    tfErrors: Schema.optional(Schema.Array(TerraformError)),
+    errorLogs: Schema.optional(Schema.String),
+    artifactsGcsBucket: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    importExistingResources: Schema.optional(Schema.Boolean),
+    workerPool: Schema.optional(Schema.String),
+    lockState: Schema.optional(Schema.String),
+    tfVersionConstraint: Schema.optional(Schema.String),
+    tfVersion: Schema.optional(Schema.String),
+    quotaValidation: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    providerConfig: Schema.optional(ProviderConfig),
+  }).annotate({ identifier: "Deployment" });
 
 export interface ListDeploymentsResponse {
   /** List of Deployments. */
@@ -328,7 +343,7 @@ export interface ListDeploymentsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListDeploymentsResponse =
+export const ListDeploymentsResponse: Schema.Schema<ListDeploymentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deployments: Schema.optional(Schema.Array(Deployment)),
     nextPageToken: Schema.optional(Schema.String),
@@ -401,29 +416,30 @@ export interface Revision {
   providerConfig?: ProviderConfig;
 }
 
-export const Revision = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  terraformBlueprint: Schema.optional(TerraformBlueprint),
-  name: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  action: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  applyResults: Schema.optional(ApplyResults),
-  stateDetail: Schema.optional(Schema.String),
-  errorCode: Schema.optional(Schema.String),
-  build: Schema.optional(Schema.String),
-  logs: Schema.optional(Schema.String),
-  tfErrors: Schema.optional(Schema.Array(TerraformError)),
-  errorLogs: Schema.optional(Schema.String),
-  serviceAccount: Schema.optional(Schema.String),
-  importExistingResources: Schema.optional(Schema.Boolean),
-  workerPool: Schema.optional(Schema.String),
-  tfVersionConstraint: Schema.optional(Schema.String),
-  tfVersion: Schema.optional(Schema.String),
-  quotaValidationResults: Schema.optional(Schema.String),
-  quotaValidation: Schema.optional(Schema.String),
-  providerConfig: Schema.optional(ProviderConfig),
-}).annotate({ identifier: "Revision" });
+export const Revision: Schema.Schema<Revision> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    terraformBlueprint: Schema.optional(TerraformBlueprint),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    applyResults: Schema.optional(ApplyResults),
+    stateDetail: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.String),
+    build: Schema.optional(Schema.String),
+    logs: Schema.optional(Schema.String),
+    tfErrors: Schema.optional(Schema.Array(TerraformError)),
+    errorLogs: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    importExistingResources: Schema.optional(Schema.Boolean),
+    workerPool: Schema.optional(Schema.String),
+    tfVersionConstraint: Schema.optional(Schema.String),
+    tfVersion: Schema.optional(Schema.String),
+    quotaValidationResults: Schema.optional(Schema.String),
+    quotaValidation: Schema.optional(Schema.String),
+    providerConfig: Schema.optional(ProviderConfig),
+  }).annotate({ identifier: "Revision" });
 
 export interface ListRevisionsResponse {
   /** List of Revisions. */
@@ -434,11 +450,12 @@ export interface ListRevisionsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListRevisionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  revisions: Schema.optional(Schema.Array(Revision)),
-  nextPageToken: Schema.optional(Schema.String),
-  unreachable: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "ListRevisionsResponse" });
+export const ListRevisionsResponse: Schema.Schema<ListRevisionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisions: Schema.optional(Schema.Array(Revision)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListRevisionsResponse" });
 
 export interface ResourceTerraformInfo {
   /** TF resource address that uniquely identifies this resource within this deployment. */
@@ -449,20 +466,22 @@ export interface ResourceTerraformInfo {
   id?: string;
 }
 
-export const ResourceTerraformInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  address: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-}).annotate({ identifier: "ResourceTerraformInfo" });
+export const ResourceTerraformInfo: Schema.Schema<ResourceTerraformInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    address: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResourceTerraformInfo" });
 
 export interface ResourceCAIInfo {
   /** CAI resource name in the format following https://cloud.google.com/apis/design/resource_names#full_resource_name */
   fullResourceName?: string;
 }
 
-export const ResourceCAIInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  fullResourceName: Schema.optional(Schema.String),
-}).annotate({ identifier: "ResourceCAIInfo" });
+export const ResourceCAIInfo: Schema.Schema<ResourceCAIInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fullResourceName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResourceCAIInfo" });
 
 export interface Resource {
   /** Output only. Resource name. Format: `projects/{project}/locations/{location}/deployments/{deployment}/revisions/{revision}/resources/{resource}` */
@@ -490,13 +509,14 @@ export interface Resource {
     | (string & {});
 }
 
-export const Resource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  terraformInfo: Schema.optional(ResourceTerraformInfo),
-  caiAssets: Schema.optional(Schema.Record(Schema.String, ResourceCAIInfo)),
-  intent: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-}).annotate({ identifier: "Resource" });
+export const Resource: Schema.Schema<Resource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    terraformInfo: Schema.optional(ResourceTerraformInfo),
+    caiAssets: Schema.optional(Schema.Record(Schema.String, ResourceCAIInfo)),
+    intent: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Resource" });
 
 export interface ListResourcesResponse {
   /** List of Resources. */
@@ -507,18 +527,19 @@ export interface ListResourcesResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resources: Schema.optional(Schema.Array(Resource)),
-  nextPageToken: Schema.optional(Schema.String),
-  unreachable: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "ListResourcesResponse" });
+export const ListResourcesResponse: Schema.Schema<ListResourcesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resources: Schema.optional(Schema.Array(Resource)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListResourcesResponse" });
 
 export interface ExportDeploymentStatefileRequest {
   /** Optional. If this flag is set to true, the exported deployment state file will be the draft state. This will enable the draft file to be validated before copying it over to the working state on unlock. */
   draft?: boolean;
 }
 
-export const ExportDeploymentStatefileRequest =
+export const ExportDeploymentStatefileRequest: Schema.Schema<ExportDeploymentStatefileRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     draft: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ExportDeploymentStatefileRequest" });
@@ -528,13 +549,14 @@ export interface Statefile {
   signedUri?: string;
 }
 
-export const Statefile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  signedUri: Schema.optional(Schema.String),
-}).annotate({ identifier: "Statefile" });
+export const Statefile: Schema.Schema<Statefile> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    signedUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Statefile" });
 
 export interface ExportRevisionStatefileRequest {}
 
-export const ExportRevisionStatefileRequest =
+export const ExportRevisionStatefileRequest: Schema.Schema<ExportRevisionStatefileRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExportRevisionStatefileRequest",
   });
@@ -544,35 +566,34 @@ export interface ImportStatefileRequest {
   lockId?: string;
 }
 
-export const ImportStatefileRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const ImportStatefileRequest: Schema.Schema<ImportStatefileRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lockId: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "ImportStatefileRequest" });
+  }).annotate({ identifier: "ImportStatefileRequest" });
 
 export interface DeleteStatefileRequest {
   /** Required. Lock ID of the lock file to verify that the user who is deleting the state file previously locked the Deployment. */
   lockId?: string;
 }
 
-export const DeleteStatefileRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const DeleteStatefileRequest: Schema.Schema<DeleteStatefileRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lockId: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "DeleteStatefileRequest" });
+  }).annotate({ identifier: "DeleteStatefileRequest" });
 
 export interface LockDeploymentRequest {}
 
-export const LockDeploymentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "LockDeploymentRequest" });
+export const LockDeploymentRequest: Schema.Schema<LockDeploymentRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "LockDeploymentRequest",
+  });
 
 export interface UnlockDeploymentRequest {
   /** Required. Lock ID of the lock file to be unlocked. */
   lockId?: string;
 }
 
-export const UnlockDeploymentRequest =
+export const UnlockDeploymentRequest: Schema.Schema<UnlockDeploymentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lockId: Schema.optional(Schema.String),
   }).annotate({ identifier: "UnlockDeploymentRequest" });
@@ -592,14 +613,15 @@ export interface LockInfo {
   createTime?: string;
 }
 
-export const LockInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  lockId: Schema.optional(Schema.String),
-  operation: Schema.optional(Schema.String),
-  info: Schema.optional(Schema.String),
-  who: Schema.optional(Schema.String),
-  version: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "LockInfo" });
+export const LockInfo: Schema.Schema<LockInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lockId: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+    info: Schema.optional(Schema.String),
+    who: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LockInfo" });
 
 export interface PreviewArtifacts {
   /** Output only. Location of a blueprint copy and other content in Google Cloud Storage. Format: `gs://{bucket}/{object}` */
@@ -608,10 +630,11 @@ export interface PreviewArtifacts {
   artifacts?: string;
 }
 
-export const PreviewArtifacts = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  content: Schema.optional(Schema.String),
-  artifacts: Schema.optional(Schema.String),
-}).annotate({ identifier: "PreviewArtifacts" });
+export const PreviewArtifacts: Schema.Schema<PreviewArtifacts> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+    artifacts: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PreviewArtifacts" });
 
 export interface Preview {
   /** The terraform blueprint to preview. */
@@ -680,29 +703,30 @@ export interface Preview {
   providerConfig?: ProviderConfig;
 }
 
-export const Preview = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  terraformBlueprint: Schema.optional(TerraformBlueprint),
-  name: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  state: Schema.optional(Schema.String),
-  deployment: Schema.optional(Schema.String),
-  previewMode: Schema.optional(Schema.String),
-  serviceAccount: Schema.optional(Schema.String),
-  artifactsGcsBucket: Schema.optional(Schema.String),
-  workerPool: Schema.optional(Schema.String),
-  errorCode: Schema.optional(Schema.String),
-  errorStatus: Schema.optional(Status),
-  build: Schema.optional(Schema.String),
-  tfErrors: Schema.optional(Schema.Array(TerraformError)),
-  errorLogs: Schema.optional(Schema.String),
-  previewArtifacts: Schema.optional(PreviewArtifacts),
-  logs: Schema.optional(Schema.String),
-  tfVersion: Schema.optional(Schema.String),
-  tfVersionConstraint: Schema.optional(Schema.String),
-  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  providerConfig: Schema.optional(ProviderConfig),
-}).annotate({ identifier: "Preview" });
+export const Preview: Schema.Schema<Preview> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    terraformBlueprint: Schema.optional(TerraformBlueprint),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    state: Schema.optional(Schema.String),
+    deployment: Schema.optional(Schema.String),
+    previewMode: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    artifactsGcsBucket: Schema.optional(Schema.String),
+    workerPool: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.String),
+    errorStatus: Schema.optional(Status),
+    build: Schema.optional(Schema.String),
+    tfErrors: Schema.optional(Schema.Array(TerraformError)),
+    errorLogs: Schema.optional(Schema.String),
+    previewArtifacts: Schema.optional(PreviewArtifacts),
+    logs: Schema.optional(Schema.String),
+    tfVersion: Schema.optional(Schema.String),
+    tfVersionConstraint: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    providerConfig: Schema.optional(ProviderConfig),
+  }).annotate({ identifier: "Preview" });
 
 export interface ListPreviewsResponse {
   /** List of Previews. */
@@ -713,15 +737,16 @@ export interface ListPreviewsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListPreviewsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  previews: Schema.optional(Schema.Array(Preview)),
-  nextPageToken: Schema.optional(Schema.String),
-  unreachable: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "ListPreviewsResponse" });
+export const ListPreviewsResponse: Schema.Schema<ListPreviewsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    previews: Schema.optional(Schema.Array(Preview)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListPreviewsResponse" });
 
 export interface ExportPreviewResultRequest {}
 
-export const ExportPreviewResultRequest =
+export const ExportPreviewResultRequest: Schema.Schema<ExportPreviewResultRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExportPreviewResultRequest",
   });
@@ -733,17 +758,18 @@ export interface PreviewResult {
   jsonSignedUri?: string;
 }
 
-export const PreviewResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  binarySignedUri: Schema.optional(Schema.String),
-  jsonSignedUri: Schema.optional(Schema.String),
-}).annotate({ identifier: "PreviewResult" });
+export const PreviewResult: Schema.Schema<PreviewResult> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    binarySignedUri: Schema.optional(Schema.String),
+    jsonSignedUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PreviewResult" });
 
 export interface ExportPreviewResultResponse {
   /** Output only. Signed URLs for accessing the plan files. */
   result?: PreviewResult;
 }
 
-export const ExportPreviewResultResponse =
+export const ExportPreviewResultResponse: Schema.Schema<ExportPreviewResultResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(PreviewResult),
   }).annotate({ identifier: "ExportPreviewResultResponse" });
@@ -766,13 +792,14 @@ export interface TerraformVersion {
   obsoleteTime?: string;
 }
 
-export const TerraformVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  supportTime: Schema.optional(Schema.String),
-  deprecateTime: Schema.optional(Schema.String),
-  obsoleteTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "TerraformVersion" });
+export const TerraformVersion: Schema.Schema<TerraformVersion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    supportTime: Schema.optional(Schema.String),
+    deprecateTime: Schema.optional(Schema.String),
+    obsoleteTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TerraformVersion" });
 
 export interface ListTerraformVersionsResponse {
   /** List of TerraformVersions. */
@@ -783,7 +810,7 @@ export interface ListTerraformVersionsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListTerraformVersionsResponse =
+export const ListTerraformVersionsResponse: Schema.Schema<ListTerraformVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     terraformVersions: Schema.optional(Schema.Array(TerraformVersion)),
     nextPageToken: Schema.optional(Schema.String),
@@ -803,7 +830,7 @@ export interface ResourceChangeTerraformInfo {
   actions?: ReadonlyArray<string>;
 }
 
-export const ResourceChangeTerraformInfo =
+export const ResourceChangeTerraformInfo: Schema.Schema<ResourceChangeTerraformInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -825,13 +852,14 @@ export interface PropertyChange {
   after?: unknown;
 }
 
-export const PropertyChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  path: Schema.optional(Schema.String),
-  beforeSensitivePaths: Schema.optional(Schema.Array(Schema.String)),
-  before: Schema.optional(Schema.Unknown),
-  afterSensitivePaths: Schema.optional(Schema.Array(Schema.String)),
-  after: Schema.optional(Schema.Unknown),
-}).annotate({ identifier: "PropertyChange" });
+export const PropertyChange: Schema.Schema<PropertyChange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    path: Schema.optional(Schema.String),
+    beforeSensitivePaths: Schema.optional(Schema.Array(Schema.String)),
+    before: Schema.optional(Schema.Unknown),
+    afterSensitivePaths: Schema.optional(Schema.Array(Schema.String)),
+    after: Schema.optional(Schema.Unknown),
+  }).annotate({ identifier: "PropertyChange" });
 
 export interface ResourceChange {
   /** Identifier. The name of the resource change. Format: 'projects/{project_id}/locations/{location}/previews/{preview}/resourceChanges/{resource_change}'. */
@@ -851,12 +879,13 @@ export interface ResourceChange {
   propertyChanges?: ReadonlyArray<PropertyChange>;
 }
 
-export const ResourceChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  terraformInfo: Schema.optional(ResourceChangeTerraformInfo),
-  intent: Schema.optional(Schema.String),
-  propertyChanges: Schema.optional(Schema.Array(PropertyChange)),
-}).annotate({ identifier: "ResourceChange" });
+export const ResourceChange: Schema.Schema<ResourceChange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    terraformInfo: Schema.optional(ResourceChangeTerraformInfo),
+    intent: Schema.optional(Schema.String),
+    propertyChanges: Schema.optional(Schema.Array(PropertyChange)),
+  }).annotate({ identifier: "ResourceChange" });
 
 export interface ListResourceChangesResponse {
   /** List of ResourceChanges. */
@@ -867,7 +896,7 @@ export interface ListResourceChangesResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListResourceChangesResponse =
+export const ListResourceChangesResponse: Schema.Schema<ListResourceChangesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceChanges: Schema.optional(Schema.Array(ResourceChange)),
     nextPageToken: Schema.optional(Schema.String),
@@ -885,7 +914,7 @@ export interface ResourceDriftTerraformInfo {
   provider?: string;
 }
 
-export const ResourceDriftTerraformInfo =
+export const ResourceDriftTerraformInfo: Schema.Schema<ResourceDriftTerraformInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -906,13 +935,14 @@ export interface PropertyDrift {
   after?: unknown;
 }
 
-export const PropertyDrift = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  path: Schema.optional(Schema.String),
-  beforeSensitivePaths: Schema.optional(Schema.Array(Schema.String)),
-  before: Schema.optional(Schema.Unknown),
-  afterSensitivePaths: Schema.optional(Schema.Array(Schema.String)),
-  after: Schema.optional(Schema.Unknown),
-}).annotate({ identifier: "PropertyDrift" });
+export const PropertyDrift: Schema.Schema<PropertyDrift> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    path: Schema.optional(Schema.String),
+    beforeSensitivePaths: Schema.optional(Schema.Array(Schema.String)),
+    before: Schema.optional(Schema.Unknown),
+    afterSensitivePaths: Schema.optional(Schema.Array(Schema.String)),
+    after: Schema.optional(Schema.Unknown),
+  }).annotate({ identifier: "PropertyDrift" });
 
 export interface ResourceDrift {
   /** Identifier. The name of the resource drift. Format: 'projects/{project_id}/locations/{location}/previews/{preview}/resourceDrifts/{resource_drift}'. */
@@ -923,11 +953,12 @@ export interface ResourceDrift {
   propertyDrifts?: ReadonlyArray<PropertyDrift>;
 }
 
-export const ResourceDrift = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  terraformInfo: Schema.optional(ResourceDriftTerraformInfo),
-  propertyDrifts: Schema.optional(Schema.Array(PropertyDrift)),
-}).annotate({ identifier: "ResourceDrift" });
+export const ResourceDrift: Schema.Schema<ResourceDrift> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    terraformInfo: Schema.optional(ResourceDriftTerraformInfo),
+    propertyDrifts: Schema.optional(Schema.Array(PropertyDrift)),
+  }).annotate({ identifier: "ResourceDrift" });
 
 export interface ListResourceDriftsResponse {
   /** List of ResourceDrifts. */
@@ -938,7 +969,7 @@ export interface ListResourceDriftsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListResourceDriftsResponse =
+export const ListResourceDriftsResponse: Schema.Schema<ListResourceDriftsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceDrifts: Schema.optional(Schema.Array(ResourceDrift)),
     nextPageToken: Schema.optional(Schema.String),
@@ -954,11 +985,12 @@ export interface AutoMigrationConfig {
   autoMigrationEnabled?: boolean;
 }
 
-export const AutoMigrationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  autoMigrationEnabled: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "AutoMigrationConfig" });
+export const AutoMigrationConfig: Schema.Schema<AutoMigrationConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    autoMigrationEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AutoMigrationConfig" });
 
 export interface DeploymentUnit {
   /** The id of the deployment unit. Must be unique within the deployment group. */
@@ -969,11 +1001,12 @@ export interface DeploymentUnit {
   dependencies?: ReadonlyArray<string>;
 }
 
-export const DeploymentUnit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.String),
-  deployment: Schema.optional(Schema.String),
-  dependencies: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "DeploymentUnit" });
+export const DeploymentUnit: Schema.Schema<DeploymentUnit> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    deployment: Schema.optional(Schema.String),
+    dependencies: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "DeploymentUnit" });
 
 export interface DeploymentGroup {
   /** Identifier. The name of the deployment group. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
@@ -1017,19 +1050,20 @@ export interface DeploymentGroup {
   provisioningError?: Status;
 }
 
-export const DeploymentGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  state: Schema.optional(Schema.String),
-  stateDescription: Schema.optional(Schema.String),
-  deploymentUnits: Schema.optional(Schema.Array(DeploymentUnit)),
-  provisioningState: Schema.optional(Schema.String),
-  provisioningStateDescription: Schema.optional(Schema.String),
-  provisioningError: Schema.optional(Status),
-}).annotate({ identifier: "DeploymentGroup" });
+export const DeploymentGroup: Schema.Schema<DeploymentGroup> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    state: Schema.optional(Schema.String),
+    stateDescription: Schema.optional(Schema.String),
+    deploymentUnits: Schema.optional(Schema.Array(DeploymentUnit)),
+    provisioningState: Schema.optional(Schema.String),
+    provisioningStateDescription: Schema.optional(Schema.String),
+    provisioningError: Schema.optional(Status),
+  }).annotate({ identifier: "DeploymentGroup" });
 
 export interface ListDeploymentGroupsResponse {
   /** The deployment groups from the specified collection. */
@@ -1040,7 +1074,7 @@ export interface ListDeploymentGroupsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListDeploymentGroupsResponse =
+export const ListDeploymentGroupsResponse: Schema.Schema<ListDeploymentGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentGroups: Schema.optional(Schema.Array(DeploymentGroup)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1054,17 +1088,18 @@ export interface DeploymentSpec {
   deployment?: Deployment;
 }
 
-export const DeploymentSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  deploymentId: Schema.optional(Schema.String),
-  deployment: Schema.optional(Deployment),
-}).annotate({ identifier: "DeploymentSpec" });
+export const DeploymentSpec: Schema.Schema<DeploymentSpec> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deploymentId: Schema.optional(Schema.String),
+    deployment: Schema.optional(Deployment),
+  }).annotate({ identifier: "DeploymentSpec" });
 
 export interface ProvisionDeploymentGroupRequest {
   /** Optional. The deployment specs of the deployment units to be created within the same project and location of the deployment group. The key is the unit ID, and the value is the `DeploymentSpec`. Provisioning will fail if a `deployment_spec` has a `deployment_id` that matches an existing deployment in the same project and location. If an existing deployment was part of the last successful revision but is no longer in the current DeploymentGroup's `deployment_units`, it will be recreated if included in `deployment_specs`. */
   deploymentSpecs?: Record<string, DeploymentSpec>;
 }
 
-export const ProvisionDeploymentGroupRequest =
+export const ProvisionDeploymentGroupRequest: Schema.Schema<ProvisionDeploymentGroupRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentSpecs: Schema.optional(
       Schema.Record(Schema.String, DeploymentSpec),
@@ -1082,7 +1117,7 @@ export interface DeprovisionDeploymentGroupRequest {
     | (string & {});
 }
 
-export const DeprovisionDeploymentGroupRequest =
+export const DeprovisionDeploymentGroupRequest: Schema.Schema<DeprovisionDeploymentGroupRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean),
     deletePolicy: Schema.optional(Schema.String),
@@ -1099,7 +1134,7 @@ export interface DeploymentGroupRevision {
   alternativeIds?: ReadonlyArray<string>;
 }
 
-export const DeploymentGroupRevision =
+export const DeploymentGroupRevision: Schema.Schema<DeploymentGroupRevision> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     snapshot: Schema.optional(DeploymentGroup),
@@ -1116,7 +1151,7 @@ export interface ListDeploymentGroupRevisionsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListDeploymentGroupRevisionsResponse =
+export const ListDeploymentGroupRevisionsResponse: Schema.Schema<ListDeploymentGroupRevisionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentGroupRevisions: Schema.optional(
       Schema.Array(DeploymentGroupRevision),
@@ -1138,13 +1173,14 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  locationId: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-}).annotate({ identifier: "Location" });
+export const Location: Schema.Schema<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    locationId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1153,10 +1189,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  locations: Schema.optional(Schema.Array(Location)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListLocationsResponse" });
+export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Location)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocationsResponse" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -1169,12 +1206,13 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  expression: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-}).annotate({ identifier: "Expr" });
+export const Expr: Schema.Schema<Expr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expression: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -1185,11 +1223,12 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  role: Schema.optional(Schema.String),
-  members: Schema.optional(Schema.Array(Schema.String)),
-  condition: Schema.optional(Expr),
-}).annotate({ identifier: "Binding" });
+export const Binding: Schema.Schema<Binding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    role: Schema.optional(Schema.String),
+    members: Schema.optional(Schema.Array(Schema.String)),
+    condition: Schema.optional(Expr),
+  }).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -1203,10 +1242,11 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  logType: Schema.optional(Schema.String),
-  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "AuditLogConfig" });
+export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logType: Schema.optional(Schema.String),
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -1215,10 +1255,11 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  service: Schema.optional(Schema.String),
-  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-}).annotate({ identifier: "AuditConfig" });
+export const AuditConfig: Schema.Schema<AuditConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+    auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+  }).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1231,12 +1272,13 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  version: Schema.optional(Schema.Number),
-  bindings: Schema.optional(Schema.Array(Binding)),
-  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-  etag: Schema.optional(Schema.String),
-}).annotate({ identifier: "Policy" });
+export const Policy: Schema.Schema<Policy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.Number),
+    bindings: Schema.optional(Schema.Array(Binding)),
+    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -1245,17 +1287,18 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  policy: Schema.optional(Policy),
-  updateMask: Schema.optional(Schema.String),
-}).annotate({ identifier: "SetIamPolicyRequest" });
+export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest =
+export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -1265,7 +1308,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse =
+export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -1295,7 +1338,7 @@ export interface DeploymentOperationMetadata {
   logs?: string;
 }
 
-export const DeploymentOperationMetadata =
+export const DeploymentOperationMetadata: Schema.Schema<DeploymentOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     step: Schema.optional(Schema.String),
     applyResults: Schema.optional(ApplyResults),
@@ -1326,7 +1369,7 @@ export interface PreviewOperationMetadata {
   build?: string;
 }
 
-export const PreviewOperationMetadata =
+export const PreviewOperationMetadata: Schema.Schema<PreviewOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     step: Schema.optional(Schema.String),
     previewArtifacts: Schema.optional(PreviewArtifacts),
@@ -1361,7 +1404,7 @@ export interface DeploymentOperationSummary {
   artifacts?: string;
 }
 
-export const DeploymentOperationSummary =
+export const DeploymentOperationSummary: Schema.Schema<DeploymentOperationSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentStep: Schema.optional(Schema.String),
     build: Schema.optional(Schema.String),
@@ -1405,8 +1448,8 @@ export interface DeploymentUnitProgress {
     | (string & {});
 }
 
-export const DeploymentUnitProgress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const DeploymentUnitProgress: Schema.Schema<DeploymentUnitProgress> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unitId: Schema.optional(Schema.String),
     deployment: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -1414,8 +1457,7 @@ export const DeploymentUnitProgress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     deploymentOperationSummary: Schema.optional(DeploymentOperationSummary),
     error: Schema.optional(Status),
     intent: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "DeploymentUnitProgress" });
+  }).annotate({ identifier: "DeploymentUnitProgress" });
 
 export interface ProvisionDeploymentGroupOperationMetadata {
   /** Output only. The current step of the deployment group operation. */
@@ -1433,7 +1475,7 @@ export interface ProvisionDeploymentGroupOperationMetadata {
   deploymentUnitProgresses?: ReadonlyArray<DeploymentUnitProgress>;
 }
 
-export const ProvisionDeploymentGroupOperationMetadata =
+export const ProvisionDeploymentGroupOperationMetadata: Schema.Schema<ProvisionDeploymentGroupOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     step: Schema.optional(Schema.String),
     deploymentUnitProgresses: Schema.optional(
@@ -1464,20 +1506,21 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  deploymentMetadata: Schema.optional(DeploymentOperationMetadata),
-  previewMetadata: Schema.optional(PreviewOperationMetadata),
-  provisionDeploymentGroupMetadata: Schema.optional(
-    ProvisionDeploymentGroupOperationMetadata,
-  ),
-  createTime: Schema.optional(Schema.String),
-  endTime: Schema.optional(Schema.String),
-  target: Schema.optional(Schema.String),
-  verb: Schema.optional(Schema.String),
-  statusMessage: Schema.optional(Schema.String),
-  requestedCancellation: Schema.optional(Schema.Boolean),
-  apiVersion: Schema.optional(Schema.String),
-}).annotate({ identifier: "OperationMetadata" });
+export const OperationMetadata: Schema.Schema<OperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deploymentMetadata: Schema.optional(DeploymentOperationMetadata),
+    previewMetadata: Schema.optional(PreviewOperationMetadata),
+    provisionDeploymentGroupMetadata: Schema.optional(
+      ProvisionDeploymentGroupOperationMetadata,
+    ),
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadata" });
 
 // ==========================================================================
 // Errors
@@ -1619,7 +1662,7 @@ export interface ListProjectsLocationsRequest {
   pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
-  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
 }
 
@@ -1643,7 +1686,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
-/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,

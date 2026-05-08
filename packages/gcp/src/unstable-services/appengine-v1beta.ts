@@ -22,42 +22,527 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface FirewallRule {
-  /** IP address or range, defined using CIDR notation, of requests that this rule applies to. You can use the wildcard character "*" to match all IPs equivalent to "0/0" and "::/0" together. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. Truncation will be silently performed on addresses which are not properly truncated. For example, 1.2.3.4/24 is accepted as the same address as 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 is accepted as the same address as 2001:db8::/32. */
-  sourceRange?: string;
-  /** An optional string description of this rule. This field has a maximum length of 400 characters. */
-  description?: string;
-  priority?: number;
-  /** The action to take on matched requests. */
-  action?: "UNSPECIFIED_ACTION" | "ALLOW" | "DENY" | (string & {});
+export interface ManualScaling {
+  /** Number of instances to assign to the service at the start. This number can later be altered by using the Modules API (https://cloud.google.com/appengine/docs/python/modules/functions) set_num_instances() function. */
+  instances?: number;
 }
 
-export const FirewallRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sourceRange: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  priority: Schema.optional(Schema.Number),
-  action: Schema.optional(Schema.String),
-}).annotate({ identifier: "FirewallRule" });
+export const ManualScaling: Schema.Schema<ManualScaling> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instances: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ManualScaling" });
 
-export interface BatchUpdateIngressRulesResponse {
-  /** The full list of ingress FirewallRules for this application. */
+export interface Volume {
+  /** Volume size in gigabytes. */
+  sizeGb?: number;
+  /** Unique name for the volume. */
+  name?: string;
+  /** Underlying volume type, e.g. 'tmpfs'. */
+  volumeType?: string;
+}
+
+export const Volume: Schema.Schema<Volume> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sizeGb: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    volumeType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Volume" });
+
+export interface VpcAccessConnector {
+  /** The egress setting for the connector, controlling what traffic is diverted through it. */
+  egressSetting?:
+    | "EGRESS_SETTING_UNSPECIFIED"
+    | "ALL_TRAFFIC"
+    | "PRIVATE_IP_RANGES"
+    | (string & {});
+  /** Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1. */
+  name?: string;
+}
+
+export const VpcAccessConnector: Schema.Schema<VpcAccessConnector> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    egressSetting: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VpcAccessConnector" });
+
+export interface TrafficSplit {
+  /** Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits. */
+  allocations?: Record<string, number>;
+  /** Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed. */
+  shardBy?: "UNSPECIFIED" | "COOKIE" | "IP" | "RANDOM" | (string & {});
+}
+
+export const TrafficSplit: Schema.Schema<TrafficSplit> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allocations: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
+    shardBy: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TrafficSplit" });
+
+export interface CertificateRawData {
+  /** Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly */
+  privateKey?: string;
+  /** PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE----- */
+  publicCertificate?: string;
+}
+
+export const CertificateRawData: Schema.Schema<CertificateRawData> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateKey: Schema.optional(Schema.String),
+    publicCertificate: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CertificateRawData" });
+
+export interface DiskUtilization {
+  /** Target bytes written per second. */
+  targetWriteBytesPerSecond?: number;
+  /** Target ops read per seconds. */
+  targetReadOpsPerSecond?: number;
+  /** Target ops written per second. */
+  targetWriteOpsPerSecond?: number;
+  /** Target bytes read per second. */
+  targetReadBytesPerSecond?: number;
+}
+
+export const DiskUtilization: Schema.Schema<DiskUtilization> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetWriteBytesPerSecond: Schema.optional(Schema.Number),
+    targetReadOpsPerSecond: Schema.optional(Schema.Number),
+    targetWriteOpsPerSecond: Schema.optional(Schema.Number),
+    targetReadBytesPerSecond: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DiskUtilization" });
+
+export interface NetworkUtilization {
+  /** Target packets sent per second. */
+  targetSentPacketsPerSecond?: number;
+  /** Target packets received per second. */
+  targetReceivedPacketsPerSecond?: number;
+  /** Target bytes sent per second. */
+  targetSentBytesPerSecond?: number;
+  /** Target bytes received per second. */
+  targetReceivedBytesPerSecond?: number;
+}
+
+export const NetworkUtilization: Schema.Schema<NetworkUtilization> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetSentPacketsPerSecond: Schema.optional(Schema.Number),
+    targetReceivedPacketsPerSecond: Schema.optional(Schema.Number),
+    targetSentBytesPerSecond: Schema.optional(Schema.Number),
+    targetReceivedBytesPerSecond: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "NetworkUtilization" });
+
+export interface CpuUtilization {
+  /** Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1. */
+  targetUtilization?: number;
+  /** Period of time over which CPU utilization is calculated. */
+  aggregationWindowLength?: string;
+}
+
+export const CpuUtilization: Schema.Schema<CpuUtilization> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetUtilization: Schema.optional(Schema.Number),
+    aggregationWindowLength: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CpuUtilization" });
+
+export interface StandardSchedulerSettings {
+  /** Target throughput utilization ratio to maintain when scaling */
+  targetThroughputUtilization?: number;
+  /** Target CPU utilization ratio to maintain when scaling. */
+  targetCpuUtilization?: number;
+  /** Minimum number of instances to run for this version. Set to zero to disable min_instances configuration. */
+  minInstances?: number;
+  /** Maximum number of instances to run for this version. Set to 2147483647 to disable max_instances configuration. */
+  maxInstances?: number;
+}
+
+export const StandardSchedulerSettings: Schema.Schema<StandardSchedulerSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetThroughputUtilization: Schema.optional(Schema.Number),
+    targetCpuUtilization: Schema.optional(Schema.Number),
+    minInstances: Schema.optional(Schema.Number),
+    maxInstances: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "StandardSchedulerSettings" });
+
+export interface RequestUtilization {
+  /** Target requests per second. */
+  targetRequestCountPerSecond?: number;
+  /** Target number of concurrent requests. */
+  targetConcurrentRequests?: number;
+}
+
+export const RequestUtilization: Schema.Schema<RequestUtilization> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetRequestCountPerSecond: Schema.optional(Schema.Number),
+    targetConcurrentRequests: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "RequestUtilization" });
+
+export interface CustomMetric {
+  /** The name of the metric. */
+  metricName?: string;
+  /** Allows filtering on the metric's fields. */
+  filter?: string;
+  /** The type of the metric. Must be a string representing a Stackdriver metric type e.g. GAGUE, DELTA_PER_SECOND, etc. */
+  targetType?: string;
+  /** The target value for the metric. */
+  targetUtilization?: number;
+  /** May be used instead of target_utilization when an instance can handle a specific amount of work/resources and the metric value is equal to the current amount of work remaining. The autoscaler will try to keep the number of instances equal to the metric value divided by single_instance_assignment. */
+  singleInstanceAssignment?: number;
+}
+
+export const CustomMetric: Schema.Schema<CustomMetric> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metricName: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+    targetType: Schema.optional(Schema.String),
+    targetUtilization: Schema.optional(Schema.Number),
+    singleInstanceAssignment: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "CustomMetric" });
+
+export interface AutomaticScaling {
+  /** Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service. */
+  minIdleInstances?: number;
+  /** The time period that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. Only applicable in the App Engine flexible environment. */
+  coolDownPeriod?: string;
+  /** Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it. */
+  maxPendingLatency?: string;
+  /** Maximum number of instances that should be started to handle requests for this version. */
+  maxTotalInstances?: number;
+  /** Target scaling by disk usage. */
+  diskUtilization?: DiskUtilization;
+  /** Target scaling by network usage. */
+  networkUtilization?: NetworkUtilization;
+  /** Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it. */
+  minPendingLatency?: string;
+  /** Target scaling by CPU usage. */
+  cpuUtilization?: CpuUtilization;
+  /** Maximum number of idle instances that should be maintained for this version. */
+  maxIdleInstances?: number;
+  /** Scheduler settings for standard environment. */
+  standardSchedulerSettings?: StandardSchedulerSettings;
+  /** Target scaling by request utilization. */
+  requestUtilization?: RequestUtilization;
+  /** Minimum number of running instances that should be maintained for this version. */
+  minTotalInstances?: number;
+  /** Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.Defaults to a runtime-specific value. */
+  maxConcurrentRequests?: number;
+  /** Target scaling by user-provided metrics. Only applicable in the App Engine flexible environment. */
+  customMetrics?: ReadonlyArray<CustomMetric>;
+}
+
+export const AutomaticScaling: Schema.Schema<AutomaticScaling> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minIdleInstances: Schema.optional(Schema.Number),
+    coolDownPeriod: Schema.optional(Schema.String),
+    maxPendingLatency: Schema.optional(Schema.String),
+    maxTotalInstances: Schema.optional(Schema.Number),
+    diskUtilization: Schema.optional(DiskUtilization),
+    networkUtilization: Schema.optional(NetworkUtilization),
+    minPendingLatency: Schema.optional(Schema.String),
+    cpuUtilization: Schema.optional(CpuUtilization),
+    maxIdleInstances: Schema.optional(Schema.Number),
+    standardSchedulerSettings: Schema.optional(StandardSchedulerSettings),
+    requestUtilization: Schema.optional(RequestUtilization),
+    minTotalInstances: Schema.optional(Schema.Number),
+    maxConcurrentRequests: Schema.optional(Schema.Number),
+    customMetrics: Schema.optional(Schema.Array(CustomMetric)),
+  }).annotate({ identifier: "AutomaticScaling" });
+
+export interface BuildInfo {
+  /** The Google Cloud Build id. Example: "f966068f-08b2-42c8-bdfe-74137dff2bf9" */
+  cloudBuildId?: string;
+}
+
+export const BuildInfo: Schema.Schema<BuildInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudBuildId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BuildInfo" });
+
+export interface Location {
+  /** Resource name for the location, which may vary between implementations. For example: "projects/example-project/locations/us-east1" */
+  name?: string;
+  /** The canonical id for this location. For example: "us-east1". */
+  locationId?: string;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: Record<string, string>;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+}
+
+export const Location: Schema.Schema<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    locationId: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Location" });
+
+export interface FirewallRule {
+  priority?: number;
+  /** IP address or range, defined using CIDR notation, of requests that this rule applies to. You can use the wildcard character "*" to match all IPs equivalent to "0/0" and "::/0" together. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. Truncation will be silently performed on addresses which are not properly truncated. For example, 1.2.3.4/24 is accepted as the same address as 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 is accepted as the same address as 2001:db8::/32. */
+  sourceRange?: string;
+  /** The action to take on matched requests. */
+  action?: "UNSPECIFIED_ACTION" | "ALLOW" | "DENY" | (string & {});
+  /** An optional string description of this rule. This field has a maximum length of 400 characters. */
+  description?: string;
+}
+
+export const FirewallRule: Schema.Schema<FirewallRule> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    priority: Schema.optional(Schema.Number),
+    sourceRange: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FirewallRule" });
+
+export interface BatchUpdateIngressRulesRequest {
+  /** A list of FirewallRules to replace the existing set. */
   ingressRules?: ReadonlyArray<FirewallRule>;
 }
 
-export const BatchUpdateIngressRulesResponse =
+export const BatchUpdateIngressRulesRequest: Schema.Schema<BatchUpdateIngressRulesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ingressRules: Schema.optional(Schema.Array(FirewallRule)),
-  }).annotate({ identifier: "BatchUpdateIngressRulesResponse" });
+  }).annotate({ identifier: "BatchUpdateIngressRulesRequest" });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface Reasons {
+  dataGovernance?:
+    | "DATA_GOVERNANCE_UNKNOWN_REASON"
+    | "DATA_GOVERNANCE_CONTROL_PLANE_SYNC"
+    | "HIDE"
+    | "UNHIDE"
+    | "PURGE"
+    | (string & {});
+  abuse?:
+    | "ABUSE_UNKNOWN_REASON"
+    | "ABUSE_CONTROL_PLANE_SYNC"
+    | "SUSPEND"
+    | "REINSTATE"
+    | (string & {});
+  /** Consumer Container denotes if the service is active within a project or not. This information could be used to clean up resources in case service in DISABLED_FULL i.e. Service is inactive > 30 days. */
+  serviceActivation?:
+    | "SERVICE_ACTIVATION_STATUS_UNSPECIFIED"
+    | "SERVICE_ACTIVATION_ENABLED"
+    | "SERVICE_ACTIVATION_DISABLED"
+    | "SERVICE_ACTIVATION_DISABLED_FULL"
+    | "SERVICE_ACTIVATION_UNKNOWN_REASON"
+    | (string & {});
+  serviceManagement?:
+    | "SERVICE_MANAGEMENT_UNKNOWN_REASON"
+    | "SERVICE_MANAGEMENT_CONTROL_PLANE_SYNC"
+    | "ACTIVATION"
+    | "PREPARE_DEACTIVATION"
+    | "ABORT_DEACTIVATION"
+    | "COMMIT_DEACTIVATION"
+    | (string & {});
+  billing?:
+    | "BILLING_UNKNOWN_REASON"
+    | "BILLING_CONTROL_PLANE_SYNC"
+    | "PROBATION"
+    | "CLOSE"
+    | "OPEN"
+    | (string & {});
+}
+
+export const Reasons: Schema.Schema<Reasons> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataGovernance: Schema.optional(Schema.String),
+    abuse: Schema.optional(Schema.String),
+    serviceActivation: Schema.optional(Schema.String),
+    serviceManagement: Schema.optional(Schema.String),
+    billing: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Reasons" });
+
+export interface ContainerState {
+  /** The previous and current reasons for a container state will be sent for a container event. CLHs that need to know the signal that caused the container event to trigger (edges) as opposed to just knowing the state can act upon differences in the previous and current reasons.Reasons will be provided for every system: service management, data governance, abuse, and billing.If this is a CCFE-triggered event used for reconciliation then the current reasons will be set to their *_CONTROL_PLANE_SYNC state. The previous reasons will contain the last known set of non-unknown non-control_plane_sync reasons for the state. */
+  previousReasons?: Reasons;
+  /** The current state of the container. This state is the culmination of all of the opinions from external systems that CCFE knows about of the container. */
+  state?: "UNKNOWN_STATE" | "ON" | "OFF" | "DELETED" | (string & {});
+  currentReasons?: Reasons;
+}
+
+export const ContainerState: Schema.Schema<ContainerState> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    previousReasons: Schema.optional(Reasons),
+    state: Schema.optional(Schema.String),
+    currentReasons: Schema.optional(Reasons),
+  }).annotate({ identifier: "ContainerState" });
+
+export interface GceTag {
+  /** The administrative_tag name. */
+  tag?: string;
+  /** The parents(s) of the tag. Eg. projects/123, folders/456 It usually contains only one parent. But, in some corner cases, it can contain multiple parents. Currently, organizations are not supported. */
+  parent?: ReadonlyArray<string>;
+}
+
+export const GceTag: Schema.Schema<GceTag> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tag: Schema.optional(Schema.String),
+    parent: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GceTag" });
+
+export interface ProjectsMetadata {
+  /** The consumer project number. */
+  consumerProjectNumber?: string;
+  /** DEPRECATED: Indicates whether the GCE project is in the DEPROVISIONING state. This field is a temporary workaround (see b/475310865) to allow GCE extensions to bypass certain checks during deprovisioning. It will be replaced by a permanent solution in the future. */
+  isGceProjectDeprovisioning?: boolean;
+  /** The consumer project id. */
+  consumerProjectId?: string;
+  /** The GCE tags associated with the consumer project and those inherited due to their ancestry, if any. Not supported by CCFE. */
+  gceTag?: ReadonlyArray<GceTag>;
+  /** The tenant project id. */
+  tenantProjectId?: string;
+  /** The CCFE state of the consumer project. It is the same state that is communicated to the CLH during project events. Notice that this field is not set in the DB, it is only set in this proto when communicated to CLH in the side channel. */
+  consumerProjectState?:
+    | "UNKNOWN_STATE"
+    | "ON"
+    | "OFF"
+    | "DELETED"
+    | (string & {});
+  /** The producer project number. */
+  producerProjectNumber?: string;
+  /** The service account authorized to operate on the consumer project. Note: CCFE only propagates P4SA with default tag to CLH. */
+  p4ServiceAccount?: string;
+  /** The tenant project number. */
+  tenantProjectNumber?: string;
+  /** The producer project id. */
+  producerProjectId?: string;
+}
+
+export const ProjectsMetadata: Schema.Schema<ProjectsMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consumerProjectNumber: Schema.optional(Schema.String),
+    isGceProjectDeprovisioning: Schema.optional(Schema.Boolean),
+    consumerProjectId: Schema.optional(Schema.String),
+    gceTag: Schema.optional(Schema.Array(GceTag)),
+    tenantProjectId: Schema.optional(Schema.String),
+    consumerProjectState: Schema.optional(Schema.String),
+    producerProjectNumber: Schema.optional(Schema.String),
+    p4ServiceAccount: Schema.optional(Schema.String),
+    tenantProjectNumber: Schema.optional(Schema.String),
+    producerProjectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProjectsMetadata" });
+
+export interface ProjectEvent {
+  /** Phase indicates when in the container event propagation this event is being communicated. Events are sent before and after the per-resource events are propagated. required */
+  phase?:
+    | "CONTAINER_EVENT_PHASE_UNSPECIFIED"
+    | "BEFORE_RESOURCE_HANDLING"
+    | "AFTER_RESOURCE_HANDLING"
+    | (string & {});
+  /** The state of the organization that led to this event. */
+  state?: ContainerState;
+  /** The projects metadata for this project. required */
+  projectMetadata?: ProjectsMetadata;
+  /** The unique ID for this project event. CLHs can use this value to dedup repeated calls. required */
+  eventId?: string;
+}
+
+export const ProjectEvent: Schema.Schema<ProjectEvent> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phase: Schema.optional(Schema.String),
+    state: Schema.optional(ContainerState),
+    projectMetadata: Schema.optional(ProjectsMetadata),
+    eventId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProjectEvent" });
+
+export interface Resources {
+  /** Disk size (GB) needed. */
+  diskGb?: number;
+  /** User specified volumes. */
+  volumes?: ReadonlyArray<Volume>;
+  /** The name of the encryption key that is stored in Google Cloud KMS. Only should be used by Cloud Composer to encrypt the vm disk */
+  kmsKeyReference?: string;
+  /** Memory (GB) needed. */
+  memoryGb?: number;
+  /** Number of CPU cores needed. */
+  cpu?: number;
+}
+
+export const Resources: Schema.Schema<Resources> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    diskGb: Schema.optional(Schema.Number),
+    volumes: Schema.optional(Schema.Array(Volume)),
+    kmsKeyReference: Schema.optional(Schema.String),
+    memoryGb: Schema.optional(Schema.Number),
+    cpu: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Resources" });
+
+export interface HealthCheck {
+  /** Number of consecutive successful health checks required before receiving traffic. */
+  healthyThreshold?: number;
+  /** Whether to explicitly disable health checks for this instance. */
+  disableHealthCheck?: boolean;
+  /** Host header to send when performing an HTTP health check. Example: "myapp.appspot.com" */
+  host?: string;
+  /** Number of consecutive failed health checks required before removing traffic. */
+  unhealthyThreshold?: number;
+  /** Time before the health check is considered failed. */
+  timeout?: string;
+  /** Interval between health checks. */
+  checkInterval?: string;
+  /** Number of consecutive failed health checks required before an instance is restarted. */
+  restartThreshold?: number;
+}
+
+export const HealthCheck: Schema.Schema<HealthCheck> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    healthyThreshold: Schema.optional(Schema.Number),
+    disableHealthCheck: Schema.optional(Schema.Boolean),
+    host: Schema.optional(Schema.String),
+    unhealthyThreshold: Schema.optional(Schema.Number),
+    timeout: Schema.optional(Schema.String),
+    checkInterval: Schema.optional(Schema.String),
+    restartThreshold: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "HealthCheck" });
+
+export interface IdentityAwareProxy {
+  /** OAuth2 client ID to use for the authentication flow. */
+  oauth2ClientId?: string;
+  /** OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly */
+  oauth2ClientSecret?: string;
+  /** Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty. */
+  enabled?: boolean;
+  /** Output only. Hex-encoded SHA-256 hash of the client secret.@OutputOnly */
+  oauth2ClientSecretSha256?: string;
+}
+
+export const IdentityAwareProxy: Schema.Schema<IdentityAwareProxy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oauth2ClientId: Schema.optional(Schema.String),
+    oauth2ClientSecret: Schema.optional(Schema.String),
+    enabled: Schema.optional(Schema.Boolean),
+    oauth2ClientSecretSha256: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IdentityAwareProxy" });
+
+export interface DebugInstanceRequest {
+  /** Public SSH key to add to the instance. Examples: [USERNAME]:ssh-rsa [KEY_VALUE] [USERNAME] [USERNAME]:ssh-rsa [KEY_VALUE] google-ssh {"userName":"[USERNAME]","expireOn":"[EXPIRE_TIME]"}For more information, see Adding and Removing SSH Keys (https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys). */
+  sshKey?: string;
+}
+
+export const DebugInstanceRequest: Schema.Schema<DebugInstanceRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sshKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DebugInstanceRequest" });
 
 export interface Instance {
-  /** Output only. Virtual machine ID of this instance. Only applicable for instances in App Engine flexible environment. */
-  vmId?: string;
-  /** Output only. Time that this instance was started.@OutputOnly */
-  startTime?: string;
-  /** Output only. App Engine release this instance is running on. */
-  appEngineRelease?: string;
-  /** Output only. Number of errors since this instance was started. */
-  errors?: number;
+  /** Output only. Whether this instance is in debug mode. Only applicable for instances in App Engine flexible environment. */
+  vmDebugEnabled?: boolean;
+  /** Output only. Number of requests since this instance was started. */
+  requests?: number;
+  /** Output only. Total memory in use (bytes). */
+  memoryUsage?: string;
+  /** Output only. The IP address of this instance. Only applicable for instances in App Engine flexible environment. */
+  vmIp?: string;
+  /** Output only. Full path to the Instance resource in the API. Example: apps/myapp/services/default/versions/v1/instances/instance-1. */
+  name?: string;
   /** Output only. Average queries per second (QPS) over the last minute. */
   qps?: number;
   /** Output only. The liveness health check of this instance. Only applicable for instances in App Engine flexible environment. */
@@ -69,49 +554,48 @@ export interface Instance {
     | "DRAINING"
     | "TIMEOUT"
     | (string & {});
-  /** Output only. Zone where the virtual machine is located. Only applicable for instances in App Engine flexible environment. */
-  vmZoneName?: string;
-  /** Output only. Whether this instance is in debug mode. Only applicable for instances in App Engine flexible environment. */
-  vmDebugEnabled?: boolean;
-  /** Output only. Average latency (ms) over the last minute. */
-  averageLatency?: number;
-  /** Output only. Total memory in use (bytes). */
-  memoryUsage?: string;
-  /** Output only. Status of the virtual machine where this instance lives. Only applicable for instances in App Engine flexible environment. */
-  vmStatus?: string;
-  /** Output only. Relative name of the instance within the version. Example: instance-1. */
-  id?: string;
-  /** Output only. Number of requests since this instance was started. */
-  requests?: number;
-  /** Output only. The IP address of this instance. Only applicable for instances in App Engine flexible environment. */
-  vmIp?: string;
   /** Output only. Availability of the instance. */
   availability?: "UNSPECIFIED" | "RESIDENT" | "DYNAMIC" | (string & {});
+  /** Output only. Relative name of the instance within the version. Example: instance-1. */
+  id?: string;
+  /** Output only. Number of errors since this instance was started. */
+  errors?: number;
   /** Output only. Name of the virtual machine where this instance lives. Only applicable for instances in App Engine flexible environment. */
   vmName?: string;
-  /** Output only. Full path to the Instance resource in the API. Example: apps/myapp/services/default/versions/v1/instances/instance-1. */
-  name?: string;
+  /** Output only. Time that this instance was started.@OutputOnly */
+  startTime?: string;
+  /** Output only. Virtual machine ID of this instance. Only applicable for instances in App Engine flexible environment. */
+  vmId?: string;
+  /** Output only. Status of the virtual machine where this instance lives. Only applicable for instances in App Engine flexible environment. */
+  vmStatus?: string;
+  /** Output only. Average latency (ms) over the last minute. */
+  averageLatency?: number;
+  /** Output only. App Engine release this instance is running on. */
+  appEngineRelease?: string;
+  /** Output only. Zone where the virtual machine is located. Only applicable for instances in App Engine flexible environment. */
+  vmZoneName?: string;
 }
 
-export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  vmId: Schema.optional(Schema.String),
-  startTime: Schema.optional(Schema.String),
-  appEngineRelease: Schema.optional(Schema.String),
-  errors: Schema.optional(Schema.Number),
-  qps: Schema.optional(Schema.Number),
-  vmLiveness: Schema.optional(Schema.String),
-  vmZoneName: Schema.optional(Schema.String),
-  vmDebugEnabled: Schema.optional(Schema.Boolean),
-  averageLatency: Schema.optional(Schema.Number),
-  memoryUsage: Schema.optional(Schema.String),
-  vmStatus: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  requests: Schema.optional(Schema.Number),
-  vmIp: Schema.optional(Schema.String),
-  availability: Schema.optional(Schema.String),
-  vmName: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "Instance" });
+export const Instance: Schema.Schema<Instance> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmDebugEnabled: Schema.optional(Schema.Boolean),
+    requests: Schema.optional(Schema.Number),
+    memoryUsage: Schema.optional(Schema.String),
+    vmIp: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    qps: Schema.optional(Schema.Number),
+    vmLiveness: Schema.optional(Schema.String),
+    availability: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    errors: Schema.optional(Schema.Number),
+    vmName: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    vmId: Schema.optional(Schema.String),
+    vmStatus: Schema.optional(Schema.String),
+    averageLatency: Schema.optional(Schema.Number),
+    appEngineRelease: Schema.optional(Schema.String),
+    vmZoneName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Instance" });
 
 export interface ListInstancesResponse {
   /** The instances belonging to the requested version. */
@@ -120,94 +604,102 @@ export interface ListInstancesResponse {
   nextPageToken?: string;
 }
 
-export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  instances: Schema.optional(Schema.Array(Instance)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListInstancesResponse" });
+export const ListInstancesResponse: Schema.Schema<ListInstancesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instances: Schema.optional(Schema.Array(Instance)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListInstancesResponse" });
 
-export interface GceTag {
-  /** The administrative_tag name. */
-  tag?: string;
-  /** The parents(s) of the tag. Eg. projects/123, folders/456 It usually contains only one parent. But, in some corner cases, it can contain multiple parents. Currently, organizations are not supported. */
-  parent?: ReadonlyArray<string>;
+export interface ListLocationsResponse {
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: ReadonlyArray<Location>;
 }
 
-export const GceTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tag: Schema.optional(Schema.String),
-  parent: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "GceTag" });
+export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    locations: Schema.optional(Schema.Array(Location)),
+  }).annotate({ identifier: "ListLocationsResponse" });
 
-export interface Location {
-  /** Resource name for the location, which may vary between implementations. For example: "projects/example-project/locations/us-east1" */
+export interface CreateVersionMetadataV1Beta {
+  /** The Cloud Build ID if one was created as part of the version create. @OutputOnly */
+  cloudBuildId?: string;
+}
+
+export const CreateVersionMetadataV1Beta: Schema.Schema<CreateVersionMetadataV1Beta> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudBuildId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateVersionMetadataV1Beta" });
+
+export interface AuthorizedDomain {
+  /** Full path to the AuthorizedDomain resource in the API. Example: apps/myapp/authorizedDomains/example.com.@OutputOnly */
   name?: string;
-  /** The canonical id for this location. For example: "us-east1". */
-  locationId?: string;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  /** Fully qualified domain name of the domain authorized for use. Example: example.com. */
+  id?: string;
+}
+
+export const AuthorizedDomain: Schema.Schema<AuthorizedDomain> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AuthorizedDomain" });
+
+export interface ManagedCertificate {
+  /** Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly */
+  lastRenewalTime?: string;
+  /** Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly */
+  status?:
+    | "MANAGEMENT_STATUS_UNSPECIFIED"
+    | "OK"
+    | "PENDING"
+    | "FAILED_RETRYING_NOT_VISIBLE"
+    | "FAILED_PERMANENT"
+    | "FAILED_RETRYING_CAA_FORBIDDEN"
+    | "FAILED_RETRYING_CAA_CHECKING"
+    | (string & {});
+}
+
+export const ManagedCertificate: Schema.Schema<ManagedCertificate> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastRenewalTime: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedCertificate" });
+
+export interface AuthorizedCertificate {
+  /** The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate. */
   displayName?: string;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: Record<string, string>;
-}
-
-export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  locationId: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-}).annotate({ identifier: "Location" });
-
-export interface Volume {
-  /** Unique name for the volume. */
+  /** Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the lifecycle of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this certificate is manually administered by the user, this field will be empty.@OutputOnly */
+  managedCertificate?: ManagedCertificate;
+  /** Aggregate count of the domain mappings with this certificate mapped. This count includes domain mappings on applications for which the user does not have VIEWER permissions.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly */
+  domainMappingsCount?: number;
+  /** Output only. Full path to the AuthorizedCertificate resource in the API. Example: apps/myapp/authorizedCertificates/12345.@OutputOnly */
   name?: string;
-  /** Underlying volume type, e.g. 'tmpfs'. */
-  volumeType?: string;
-  /** Volume size in gigabytes. */
-  sizeGb?: number;
+  /** Output only. The full paths to user visible Domain Mapping resources that have this certificate mapped. Example: apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the user does not have VIEWER permissions on all of the applications that have this certificate mapped. See domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly */
+  visibleDomainMappings?: ReadonlyArray<string>;
+  /** The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority. */
+  certificateRawData?: CertificateRawData;
+  /** The time when this certificate expires. To update the renewal time on this certificate, upload an SSL certificate with a different expiration time using AuthorizedCertificates.UpdateAuthorizedCertificate.@OutputOnly */
+  expireTime?: string;
+  /** Output only. Relative name of the certificate. This is a unique value autogenerated on AuthorizedCertificate resource creation. Example: 12345.@OutputOnly */
+  id?: string;
+  /** Output only. Topmost applicable domains of this certificate. This certificate applies to these domains and their subdomains. Example: example.com.@OutputOnly */
+  domainNames?: ReadonlyArray<string>;
 }
 
-export const Volume = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  volumeType: Schema.optional(Schema.String),
-  sizeGb: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Volume" });
-
-export interface DebugInstanceRequest {
-  /** Public SSH key to add to the instance. Examples: [USERNAME]:ssh-rsa [KEY_VALUE] [USERNAME] [USERNAME]:ssh-rsa [KEY_VALUE] google-ssh {"userName":"[USERNAME]","expireOn":"[EXPIRE_TIME]"}For more information, see Adding and Removing SSH Keys (https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys). */
-  sshKey?: string;
-}
-
-export const DebugInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sshKey: Schema.optional(Schema.String),
-}).annotate({ identifier: "DebugInstanceRequest" });
-
-export interface ReadinessCheck {
-  /** Time before the check is considered failed. */
-  timeout?: string;
-  /** The request path. */
-  path?: string;
-  /** A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to serve traffic. */
-  appStartTimeout?: string;
-  /** Number of consecutive failed checks required before removing traffic. */
-  failureThreshold?: number;
-  /** Number of consecutive successful checks required before receiving traffic. */
-  successThreshold?: number;
-  /** Interval between health checks. */
-  checkInterval?: string;
-  /** Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com" */
-  host?: string;
-}
-
-export const ReadinessCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  timeout: Schema.optional(Schema.String),
-  path: Schema.optional(Schema.String),
-  appStartTimeout: Schema.optional(Schema.String),
-  failureThreshold: Schema.optional(Schema.Number),
-  successThreshold: Schema.optional(Schema.Number),
-  checkInterval: Schema.optional(Schema.String),
-  host: Schema.optional(Schema.String),
-}).annotate({ identifier: "ReadinessCheck" });
+export const AuthorizedCertificate: Schema.Schema<AuthorizedCertificate> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    managedCertificate: Schema.optional(ManagedCertificate),
+    domainMappingsCount: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    visibleDomainMappings: Schema.optional(Schema.Array(Schema.String)),
+    certificateRawData: Schema.optional(CertificateRawData),
+    expireTime: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    domainNames: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AuthorizedCertificate" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -218,380 +710,353 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  code: Schema.optional(Schema.Number),
-  message: Schema.optional(Schema.String),
-  details: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-}).annotate({ identifier: "Status" });
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "Status" });
 
-export interface Operation {
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available. */
-  done?: boolean;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse. */
-  response?: Record<string, unknown>;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should be a resource name ending with operations/{unique_id}. */
-  name?: string;
+export interface VpcNetworkInterface {
+  /** Optional. The VPC network that the App Engine resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. Could be either a short name or a full path. e.g. {VPC_NETWORK} or projects/{HOST_PROJECT_ID}/global/networks/{VPC_NETWORK} */
+  network?: string;
+  /** Optional. The VPC subnetwork that the App Engine resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. Could be either a short name or a full path. e.g. {SUBNET_NAME} or projects/{HOST_PROJECT_ID}/regions/{REGION}/subnetworks/{SUBNET_NAME} */
+  subnet?: string;
+  /** Optional. The network tags that will be applied to this App Engine resource. */
+  tags?: ReadonlyArray<string>;
 }
 
-export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  error: Schema.optional(Status),
-  done: Schema.optional(Schema.Boolean),
-  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "Operation" });
+export const VpcNetworkInterface: Schema.Schema<VpcNetworkInterface> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    network: Schema.optional(Schema.String),
+    subnet: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "VpcNetworkInterface" });
 
-export interface ListOperationsResponse {
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-  /** Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: ReadonlyArray<string>;
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: ReadonlyArray<Operation>;
-}
-
-export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    nextPageToken: Schema.optional(Schema.String),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    operations: Schema.optional(Schema.Array(Operation)),
-  },
-).annotate({ identifier: "ListOperationsResponse" });
-
-export interface ApiEndpointHandler {
-  /** Path to the script from the application root directory. */
-  scriptPath?: string;
-}
-
-export const ApiEndpointHandler = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  scriptPath: Schema.optional(Schema.String),
-}).annotate({ identifier: "ApiEndpointHandler" });
-
-export interface StaticFilesHandler {
-  /** HTTP headers to use for all responses from these URLs. */
-  httpHeaders?: Record<string, string>;
-  /** Whether this handler should match the request if the file referenced by the handler does not exist. */
-  requireMatchingFile?: boolean;
-  /** Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern. */
-  path?: string;
-  /** Regular expression that matches the file paths for all files that should be referenced by this handler. */
-  uploadPathRegex?: string;
-  /** MIME type used to serve all files served by this handler.Defaults to file-specific MIME types, which are derived from each file's filename extension. */
-  mimeType?: string;
-  /** Time a static file served by this handler should be cached by web proxies and browsers. */
-  expiration?: string;
-  /** Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas. */
-  applicationReadable?: boolean;
-}
-
-export const StaticFilesHandler = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  httpHeaders: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  requireMatchingFile: Schema.optional(Schema.Boolean),
-  path: Schema.optional(Schema.String),
-  uploadPathRegex: Schema.optional(Schema.String),
-  mimeType: Schema.optional(Schema.String),
-  expiration: Schema.optional(Schema.String),
-  applicationReadable: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "StaticFilesHandler" });
-
-export interface Network {
-  /** Enable session affinity. Only applicable in the App Engine flexible environment. */
-  sessionAffinity?: boolean;
-  /** Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.If a subnetwork name is specified, a network name will also be required unless it is for the default network. If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range. If the network that the instance is being created in is an auto Subnet Mode Network, then only network name should be specified (not the subnetwork_name) and the IP address is created from the IPCidrRange of the subnetwork that exists in that zone for that network. If the network that the instance is being created in is a custom Subnet Mode Network, then the subnetwork_name must be specified and the IP address is created from the IPCidrRange of the subnetwork.If specified, the subnetwork must exist in the same region as the App Engine flexible environment application. */
-  subnetworkName?: string;
-  /** Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment. */
-  instanceTag?: string;
-  /** Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.Defaults to default. */
-  name?: string;
-  /** The IP mode for instances. Only applicable in the App Engine flexible environment. */
-  instanceIpMode?:
-    | "INSTANCE_IP_MODE_UNSPECIFIED"
-    | "EXTERNAL"
-    | "INTERNAL"
+export interface VpcAccess {
+  /** The Direct VPC configuration. Currently only single network interface is supported. */
+  networkInterfaces?: ReadonlyArray<VpcNetworkInterface>;
+  /** The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it. */
+  vpcEgress?:
+    | "VPC_EGRESS_UNSPECIFIED"
+    | "ALL_TRAFFIC"
+    | "PRIVATE_IP_RANGES"
     | (string & {});
-  /** List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable in the App Engine flexible environment. */
-  forwardedPorts?: ReadonlyArray<string>;
 }
 
-export const Network = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sessionAffinity: Schema.optional(Schema.Boolean),
-  subnetworkName: Schema.optional(Schema.String),
-  instanceTag: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  instanceIpMode: Schema.optional(Schema.String),
-  forwardedPorts: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "Network" });
+export const VpcAccess: Schema.Schema<VpcAccess> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkInterfaces: Schema.optional(Schema.Array(VpcNetworkInterface)),
+    vpcEgress: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VpcAccess" });
+
+export interface GoogleAppengineV1betaLocationMetadata {
+  /** Output only. Search API (https://cloud.google.com/appengine/docs/standard/python/search) is available in the given location. */
+  searchApiAvailable?: boolean;
+  /** App Engine standard environment is available in the given location.@OutputOnly */
+  standardEnvironmentAvailable?: boolean;
+  /** App Engine flexible environment is available in the given location.@OutputOnly */
+  flexibleEnvironmentAvailable?: boolean;
+}
+
+export const GoogleAppengineV1betaLocationMetadata: Schema.Schema<GoogleAppengineV1betaLocationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    searchApiAvailable: Schema.optional(Schema.Boolean),
+    standardEnvironmentAvailable: Schema.optional(Schema.Boolean),
+    flexibleEnvironmentAvailable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleAppengineV1betaLocationMetadata" });
+
+export interface ZipInfo {
+  /** URL of the zip file to deploy from. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'. */
+  sourceUrl?: string;
+  /** An estimate of the number of files in a zip for a zip deployment. If set, must be greater than or equal to the actual number of files. Used for optimizing performance; if not provided, deployment may be slow. */
+  filesCount?: number;
+}
+
+export const ZipInfo: Schema.Schema<ZipInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceUrl: Schema.optional(Schema.String),
+    filesCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ZipInfo" });
+
+export interface CloudBuildOptions {
+  /** Path to the yaml file used in deployment, used to determine runtime configuration details.Required for flexible environment builds.See https://cloud.google.com/appengine/docs/standard/python/config/appref for more details. */
+  appYamlPath?: string;
+  /** The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes. */
+  cloudBuildTimeout?: string;
+}
+
+export const CloudBuildOptions: Schema.Schema<CloudBuildOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appYamlPath: Schema.optional(Schema.String),
+    cloudBuildTimeout: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudBuildOptions" });
+
+export interface RepairApplicationRequest {}
+
+export const RepairApplicationRequest: Schema.Schema<RepairApplicationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "RepairApplicationRequest",
+  });
 
 export interface EndpointsApiService {
-  /** Enable or disable trace sampling. By default, this is set to false for enabled. */
-  disableTraceSampling?: boolean;
   /** Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".By default, the rollout strategy for Endpoints is RolloutStrategy.FIXED. This means that Endpoints starts up with a particular configuration ID. When a new configuration is rolled out, Endpoints must be given the new configuration ID. The config_id field is used to give the configuration ID and is required in this case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED. When using this, Endpoints fetches the latest configuration and does not need the configuration ID. In this case, config_id must be omitted. */
   configId?: string;
+  /** Endpoints service name which is the name of the "service" resource in the Service Management API. For example "myapi.endpoints.myproject.cloud.goog" */
+  name?: string;
   /** Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted. */
   rolloutStrategy?:
     | "UNSPECIFIED_ROLLOUT_STRATEGY"
     | "FIXED"
     | "MANAGED"
     | (string & {});
-  /** Endpoints service name which is the name of the "service" resource in the Service Management API. For example "myapi.endpoints.myproject.cloud.goog" */
-  name?: string;
+  /** Enable or disable trace sampling. By default, this is set to false for enabled. */
+  disableTraceSampling?: boolean;
 }
 
-export const EndpointsApiService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  disableTraceSampling: Schema.optional(Schema.Boolean),
-  configId: Schema.optional(Schema.String),
-  rolloutStrategy: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "EndpointsApiService" });
-
-export interface CpuUtilization {
-  /** Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1. */
-  targetUtilization?: number;
-  /** Period of time over which CPU utilization is calculated. */
-  aggregationWindowLength?: string;
-}
-
-export const CpuUtilization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  targetUtilization: Schema.optional(Schema.Number),
-  aggregationWindowLength: Schema.optional(Schema.String),
-}).annotate({ identifier: "CpuUtilization" });
-
-export interface RequestUtilization {
-  /** Target requests per second. */
-  targetRequestCountPerSecond?: number;
-  /** Target number of concurrent requests. */
-  targetConcurrentRequests?: number;
-}
-
-export const RequestUtilization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  targetRequestCountPerSecond: Schema.optional(Schema.Number),
-  targetConcurrentRequests: Schema.optional(Schema.Number),
-}).annotate({ identifier: "RequestUtilization" });
-
-export interface NetworkUtilization {
-  /** Target packets sent per second. */
-  targetSentPacketsPerSecond?: number;
-  /** Target bytes received per second. */
-  targetReceivedBytesPerSecond?: number;
-  /** Target packets received per second. */
-  targetReceivedPacketsPerSecond?: number;
-  /** Target bytes sent per second. */
-  targetSentBytesPerSecond?: number;
-}
-
-export const NetworkUtilization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  targetSentPacketsPerSecond: Schema.optional(Schema.Number),
-  targetReceivedBytesPerSecond: Schema.optional(Schema.Number),
-  targetReceivedPacketsPerSecond: Schema.optional(Schema.Number),
-  targetSentBytesPerSecond: Schema.optional(Schema.Number),
-}).annotate({ identifier: "NetworkUtilization" });
-
-export interface DiskUtilization {
-  /** Target bytes written per second. */
-  targetWriteBytesPerSecond?: number;
-  /** Target ops written per second. */
-  targetWriteOpsPerSecond?: number;
-  /** Target bytes read per second. */
-  targetReadBytesPerSecond?: number;
-  /** Target ops read per seconds. */
-  targetReadOpsPerSecond?: number;
-}
-
-export const DiskUtilization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  targetWriteBytesPerSecond: Schema.optional(Schema.Number),
-  targetWriteOpsPerSecond: Schema.optional(Schema.Number),
-  targetReadBytesPerSecond: Schema.optional(Schema.Number),
-  targetReadOpsPerSecond: Schema.optional(Schema.Number),
-}).annotate({ identifier: "DiskUtilization" });
-
-export interface StandardSchedulerSettings {
-  /** Target CPU utilization ratio to maintain when scaling. */
-  targetCpuUtilization?: number;
-  /** Minimum number of instances to run for this version. Set to zero to disable min_instances configuration. */
-  minInstances?: number;
-  /** Maximum number of instances to run for this version. Set to 2147483647 to disable max_instances configuration. */
-  maxInstances?: number;
-  /** Target throughput utilization ratio to maintain when scaling */
-  targetThroughputUtilization?: number;
-}
-
-export const StandardSchedulerSettings =
+export const EndpointsApiService: Schema.Schema<EndpointsApiService> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    targetCpuUtilization: Schema.optional(Schema.Number),
-    minInstances: Schema.optional(Schema.Number),
-    maxInstances: Schema.optional(Schema.Number),
-    targetThroughputUtilization: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "StandardSchedulerSettings" });
-
-export interface CustomMetric {
-  /** Allows filtering on the metric's fields. */
-  filter?: string;
-  /** May be used instead of target_utilization when an instance can handle a specific amount of work/resources and the metric value is equal to the current amount of work remaining. The autoscaler will try to keep the number of instances equal to the metric value divided by single_instance_assignment. */
-  singleInstanceAssignment?: number;
-  /** The type of the metric. Must be a string representing a Stackdriver metric type e.g. GAGUE, DELTA_PER_SECOND, etc. */
-  targetType?: string;
-  /** The target value for the metric. */
-  targetUtilization?: number;
-  /** The name of the metric. */
-  metricName?: string;
-}
-
-export const CustomMetric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  filter: Schema.optional(Schema.String),
-  singleInstanceAssignment: Schema.optional(Schema.Number),
-  targetType: Schema.optional(Schema.String),
-  targetUtilization: Schema.optional(Schema.Number),
-  metricName: Schema.optional(Schema.String),
-}).annotate({ identifier: "CustomMetric" });
-
-export interface AutomaticScaling {
-  /** The time period that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. Only applicable in the App Engine flexible environment. */
-  coolDownPeriod?: string;
-  /** Target scaling by CPU usage. */
-  cpuUtilization?: CpuUtilization;
-  /** Target scaling by request utilization. */
-  requestUtilization?: RequestUtilization;
-  /** Target scaling by network usage. */
-  networkUtilization?: NetworkUtilization;
-  /** Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it. */
-  minPendingLatency?: string;
-  /** Maximum number of idle instances that should be maintained for this version. */
-  maxIdleInstances?: number;
-  /** Minimum number of running instances that should be maintained for this version. */
-  minTotalInstances?: number;
-  /** Target scaling by disk usage. */
-  diskUtilization?: DiskUtilization;
-  /** Maximum number of instances that should be started to handle requests for this version. */
-  maxTotalInstances?: number;
-  /** Scheduler settings for standard environment. */
-  standardSchedulerSettings?: StandardSchedulerSettings;
-  /** Target scaling by user-provided metrics. Only applicable in the App Engine flexible environment. */
-  customMetrics?: ReadonlyArray<CustomMetric>;
-  /** Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service. */
-  minIdleInstances?: number;
-  /** Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.Defaults to a runtime-specific value. */
-  maxConcurrentRequests?: number;
-  /** Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it. */
-  maxPendingLatency?: string;
-}
-
-export const AutomaticScaling = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  coolDownPeriod: Schema.optional(Schema.String),
-  cpuUtilization: Schema.optional(CpuUtilization),
-  requestUtilization: Schema.optional(RequestUtilization),
-  networkUtilization: Schema.optional(NetworkUtilization),
-  minPendingLatency: Schema.optional(Schema.String),
-  maxIdleInstances: Schema.optional(Schema.Number),
-  minTotalInstances: Schema.optional(Schema.Number),
-  diskUtilization: Schema.optional(DiskUtilization),
-  maxTotalInstances: Schema.optional(Schema.Number),
-  standardSchedulerSettings: Schema.optional(StandardSchedulerSettings),
-  customMetrics: Schema.optional(Schema.Array(CustomMetric)),
-  minIdleInstances: Schema.optional(Schema.Number),
-  maxConcurrentRequests: Schema.optional(Schema.Number),
-  maxPendingLatency: Schema.optional(Schema.String),
-}).annotate({ identifier: "AutomaticScaling" });
-
-export interface ApiConfigHandler {
-  /** Action to take when users access resources that require authentication. Defaults to redirect. */
-  authFailAction?:
-    | "AUTH_FAIL_ACTION_UNSPECIFIED"
-    | "AUTH_FAIL_ACTION_REDIRECT"
-    | "AUTH_FAIL_ACTION_UNAUTHORIZED"
-    | (string & {});
-  /** Level of login required to access this resource. Defaults to optional. */
-  login?:
-    | "LOGIN_UNSPECIFIED"
-    | "LOGIN_OPTIONAL"
-    | "LOGIN_ADMIN"
-    | "LOGIN_REQUIRED"
-    | (string & {});
-  /** Security (HTTPS) enforcement for this URL. */
-  securityLevel?:
-    | "SECURE_UNSPECIFIED"
-    | "SECURE_DEFAULT"
-    | "SECURE_NEVER"
-    | "SECURE_OPTIONAL"
-    | "SECURE_ALWAYS"
-    | (string & {});
-  /** Path to the script from the application root directory. */
-  script?: string;
-  /** URL to serve the endpoint at. */
-  url?: string;
-}
-
-export const ApiConfigHandler = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  authFailAction: Schema.optional(Schema.String),
-  login: Schema.optional(Schema.String),
-  securityLevel: Schema.optional(Schema.String),
-  script: Schema.optional(Schema.String),
-  url: Schema.optional(Schema.String),
-}).annotate({ identifier: "ApiConfigHandler" });
+    configId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    rolloutStrategy: Schema.optional(Schema.String),
+    disableTraceSampling: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "EndpointsApiService" });
 
 export interface Library {
-  /** Version of the library to select, or "latest". */
-  version?: string;
   /** Name of the library. Example: "django". */
   name?: string;
+  /** Version of the library to select, or "latest". */
+  version?: string;
 }
 
-export const Library = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  version: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "Library" });
+export const Library: Schema.Schema<Library> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Library" });
+
+export interface ErrorHandler {
+  /** Error condition this handler applies to. */
+  errorCode?:
+    | "ERROR_CODE_UNSPECIFIED"
+    | "ERROR_CODE_DEFAULT"
+    | "ERROR_CODE_OVER_QUOTA"
+    | "ERROR_CODE_DOS_API_DENIAL"
+    | "ERROR_CODE_TIMEOUT"
+    | (string & {});
+  /** MIME type of file. Defaults to text/html. */
+  mimeType?: string;
+  /** Static file content to be served for this error. */
+  staticFile?: string;
+}
+
+export const ErrorHandler: Schema.Schema<ErrorHandler> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorCode: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+    staticFile: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ErrorHandler" });
+
+export interface ListAuthorizedCertificatesResponse {
+  /** The SSL certificates the user is authorized to administer. */
+  certificates?: ReadonlyArray<AuthorizedCertificate>;
+  /** Continuation token for fetching the next page of results. */
+  nextPageToken?: string;
+}
+
+export const ListAuthorizedCertificatesResponse: Schema.Schema<ListAuthorizedCertificatesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificates: Schema.optional(Schema.Array(AuthorizedCertificate)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAuthorizedCertificatesResponse" });
+
+export interface FileInfo {
+  /** URL source to use to fetch this file. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'. */
+  sourceUrl?: string;
+  /** The SHA1 hash of the file, in hex. */
+  sha1Sum?: string;
+  /** The MIME type of the file.Defaults to the value from Google Cloud Storage. */
+  mimeType?: string;
+}
+
+export const FileInfo: Schema.Schema<FileInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceUrl: Schema.optional(Schema.String),
+    sha1Sum: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FileInfo" });
 
 export interface Entrypoint {
   /** The format should be a shell command that can be fed to bash -c. */
   shell?: string;
 }
 
-export const Entrypoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  shell: Schema.optional(Schema.String),
-}).annotate({ identifier: "Entrypoint" });
+export const Entrypoint: Schema.Schema<Entrypoint> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    shell: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Entrypoint" });
 
-export interface BasicScaling {
-  /** Duration of time after the last request that an instance must wait before the instance is shut down. */
-  idleTimeout?: string;
-  /** Maximum number of instances to create for this version. */
-  maxInstances?: number;
+export interface LivenessCheck {
+  /** Host header to send when performing a HTTP Liveness check. Example: "myapp.appspot.com" */
+  host?: string;
+  /** Number of consecutive successful checks required before considering the VM healthy. */
+  successThreshold?: number;
+  /** Number of consecutive failed checks required before considering the VM unhealthy. */
+  failureThreshold?: number;
+  /** The initial delay before starting to execute the checks. */
+  initialDelay?: string;
+  /** The request path. */
+  path?: string;
+  /** Time before the check is considered failed. */
+  timeout?: string;
+  /** Interval between health checks. */
+  checkInterval?: string;
 }
 
-export const BasicScaling = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  idleTimeout: Schema.optional(Schema.String),
-  maxInstances: Schema.optional(Schema.Number),
-}).annotate({ identifier: "BasicScaling" });
+export const LivenessCheck: Schema.Schema<LivenessCheck> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    host: Schema.optional(Schema.String),
+    successThreshold: Schema.optional(Schema.Number),
+    failureThreshold: Schema.optional(Schema.Number),
+    initialDelay: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+    timeout: Schema.optional(Schema.String),
+    checkInterval: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LivenessCheck" });
 
-export interface ManualScaling {
-  /** Number of instances to assign to the service at the start. This number can later be altered by using the Modules API (https://cloud.google.com/appengine/docs/python/modules/functions) set_num_instances() function. */
-  instances?: number;
+export interface Network {
+  /** Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.If a subnetwork name is specified, a network name will also be required unless it is for the default network. If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range. If the network that the instance is being created in is an auto Subnet Mode Network, then only network name should be specified (not the subnetwork_name) and the IP address is created from the IPCidrRange of the subnetwork that exists in that zone for that network. If the network that the instance is being created in is a custom Subnet Mode Network, then the subnetwork_name must be specified and the IP address is created from the IPCidrRange of the subnetwork.If specified, the subnetwork must exist in the same region as the App Engine flexible environment application. */
+  subnetworkName?: string;
+  /** The IP mode for instances. Only applicable in the App Engine flexible environment. */
+  instanceIpMode?:
+    | "INSTANCE_IP_MODE_UNSPECIFIED"
+    | "EXTERNAL"
+    | "INTERNAL"
+    | (string & {});
+  /** Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.Defaults to default. */
+  name?: string;
+  /** Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment. */
+  instanceTag?: string;
+  /** Enable session affinity. Only applicable in the App Engine flexible environment. */
+  sessionAffinity?: boolean;
+  /** List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable in the App Engine flexible environment. */
+  forwardedPorts?: ReadonlyArray<string>;
 }
 
-export const ManualScaling = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  instances: Schema.optional(Schema.Number),
-}).annotate({ identifier: "ManualScaling" });
+export const Network: Schema.Schema<Network> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subnetworkName: Schema.optional(Schema.String),
+    instanceIpMode: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    instanceTag: Schema.optional(Schema.String),
+    sessionAffinity: Schema.optional(Schema.Boolean),
+    forwardedPorts: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "Network" });
+
+export interface FlexibleRuntimeSettings {
+  /** The runtime version of an App Engine flexible application. */
+  runtimeVersion?: string;
+  /** The operating system of the application runtime. */
+  operatingSystem?: string;
+}
+
+export const FlexibleRuntimeSettings: Schema.Schema<FlexibleRuntimeSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    runtimeVersion: Schema.optional(Schema.String),
+    operatingSystem: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FlexibleRuntimeSettings" });
+
+export interface ReadinessCheck {
+  /** Interval between health checks. */
+  checkInterval?: string;
+  /** The request path. */
+  path?: string;
+  /** Time before the check is considered failed. */
+  timeout?: string;
+  /** Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com" */
+  host?: string;
+  /** Number of consecutive successful checks required before receiving traffic. */
+  successThreshold?: number;
+  /** A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to serve traffic. */
+  appStartTimeout?: string;
+  /** Number of consecutive failed checks required before removing traffic. */
+  failureThreshold?: number;
+}
+
+export const ReadinessCheck: Schema.Schema<ReadinessCheck> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    checkInterval: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+    timeout: Schema.optional(Schema.String),
+    host: Schema.optional(Schema.String),
+    successThreshold: Schema.optional(Schema.Number),
+    appStartTimeout: Schema.optional(Schema.String),
+    failureThreshold: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ReadinessCheck" });
+
+export interface StaticFilesHandler {
+  /** HTTP headers to use for all responses from these URLs. */
+  httpHeaders?: Record<string, string>;
+  /** MIME type used to serve all files served by this handler.Defaults to file-specific MIME types, which are derived from each file's filename extension. */
+  mimeType?: string;
+  /** Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas. */
+  applicationReadable?: boolean;
+  /** Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern. */
+  path?: string;
+  /** Time a static file served by this handler should be cached by web proxies and browsers. */
+  expiration?: string;
+  /** Regular expression that matches the file paths for all files that should be referenced by this handler. */
+  uploadPathRegex?: string;
+  /** Whether this handler should match the request if the file referenced by the handler does not exist. */
+  requireMatchingFile?: boolean;
+}
+
+export const StaticFilesHandler: Schema.Schema<StaticFilesHandler> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    httpHeaders: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    mimeType: Schema.optional(Schema.String),
+    applicationReadable: Schema.optional(Schema.Boolean),
+    path: Schema.optional(Schema.String),
+    expiration: Schema.optional(Schema.String),
+    uploadPathRegex: Schema.optional(Schema.String),
+    requireMatchingFile: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "StaticFilesHandler" });
 
 export interface ScriptHandler {
   /** Path to the script from the application root directory. */
   scriptPath?: string;
 }
 
-export const ScriptHandler = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  scriptPath: Schema.optional(Schema.String),
-}).annotate({ identifier: "ScriptHandler" });
+export const ScriptHandler: Schema.Schema<ScriptHandler> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scriptPath: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ScriptHandler" });
+
+export interface ApiEndpointHandler {
+  /** Path to the script from the application root directory. */
+  scriptPath?: string;
+}
+
+export const ApiEndpointHandler: Schema.Schema<ApiEndpointHandler> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scriptPath: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApiEndpointHandler" });
 
 export interface UrlMap {
-  /** Executes a script to handle the requests that match this URL pattern. Only the auto value is supported for Node.js in the App Engine standard environment, for example "script": "auto". */
-  script?: ScriptHandler;
-  /** URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path. */
-  urlRegex?: string;
   /** Returns the contents of a file, such as an image, as the response. */
   staticFiles?: StaticFilesHandler;
+  /** URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path. */
+  urlRegex?: string;
+  /** Action to take when users access resources that require authentication. Defaults to redirect. */
+  authFailAction?:
+    | "AUTH_FAIL_ACTION_UNSPECIFIED"
+    | "AUTH_FAIL_ACTION_REDIRECT"
+    | "AUTH_FAIL_ACTION_UNAUTHORIZED"
+    | (string & {});
+  /** Executes a script to handle the requests that match this URL pattern. Only the auto value is supported for Node.js in the App Engine standard environment, for example "script": "auto". */
+  script?: ScriptHandler;
   /** Uses API Endpoints to handle requests. */
   apiEndpoint?: ApiEndpointHandler;
   /** Security (HTTPS) enforcement for this URL. */
@@ -609,12 +1074,6 @@ export interface UrlMap {
     | "LOGIN_ADMIN"
     | "LOGIN_REQUIRED"
     | (string & {});
-  /** Action to take when users access resources that require authentication. Defaults to redirect. */
-  authFailAction?:
-    | "AUTH_FAIL_ACTION_UNSPECIFIED"
-    | "AUTH_FAIL_ACTION_REDIRECT"
-    | "AUTH_FAIL_ACTION_UNAUTHORIZED"
-    | (string & {});
   /** 30x code to use when performing redirects for the secure field. Defaults to 302. */
   redirectHttpResponseCode?:
     | "REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED"
@@ -625,335 +1084,149 @@ export interface UrlMap {
     | (string & {});
 }
 
-export const UrlMap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  script: Schema.optional(ScriptHandler),
-  urlRegex: Schema.optional(Schema.String),
-  staticFiles: Schema.optional(StaticFilesHandler),
-  apiEndpoint: Schema.optional(ApiEndpointHandler),
-  securityLevel: Schema.optional(Schema.String),
-  login: Schema.optional(Schema.String),
-  authFailAction: Schema.optional(Schema.String),
-  redirectHttpResponseCode: Schema.optional(Schema.String),
-}).annotate({ identifier: "UrlMap" });
-
-export interface VpcAccessConnector {
-  /** Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1. */
-  name?: string;
-  /** The egress setting for the connector, controlling what traffic is diverted through it. */
-  egressSetting?:
-    | "EGRESS_SETTING_UNSPECIFIED"
-    | "ALL_TRAFFIC"
-    | "PRIVATE_IP_RANGES"
-    | (string & {});
-}
-
-export const VpcAccessConnector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  egressSetting: Schema.optional(Schema.String),
-}).annotate({ identifier: "VpcAccessConnector" });
-
-export interface FlexibleRuntimeSettings {
-  /** The operating system of the application runtime. */
-  operatingSystem?: string;
-  /** The runtime version of an App Engine flexible application. */
-  runtimeVersion?: string;
-}
-
-export const FlexibleRuntimeSettings =
+export const UrlMap: Schema.Schema<UrlMap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    operatingSystem: Schema.optional(Schema.String),
-    runtimeVersion: Schema.optional(Schema.String),
-  }).annotate({ identifier: "FlexibleRuntimeSettings" });
-
-export interface VpcNetworkInterface {
-  /** Optional. The network tags that will be applied to this App Engine resource. */
-  tags?: ReadonlyArray<string>;
-  /** Optional. The VPC network that the App Engine resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. Could be either a short name or a full path. e.g. {VPC_NETWORK} or projects/{HOST_PROJECT_ID}/global/networks/{VPC_NETWORK} */
-  network?: string;
-  /** Optional. The VPC subnetwork that the App Engine resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. Could be either a short name or a full path. e.g. {SUBNET_NAME} or projects/{HOST_PROJECT_ID}/regions/{REGION}/subnetworks/{SUBNET_NAME} */
-  subnet?: string;
-}
-
-export const VpcNetworkInterface = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Array(Schema.String)),
-  network: Schema.optional(Schema.String),
-  subnet: Schema.optional(Schema.String),
-}).annotate({ identifier: "VpcNetworkInterface" });
-
-export interface VpcAccess {
-  /** The Direct VPC configuration. Currently only single network interface is supported. */
-  networkInterfaces?: ReadonlyArray<VpcNetworkInterface>;
-  /** The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it. */
-  vpcEgress?:
-    | "VPC_EGRESS_UNSPECIFIED"
-    | "ALL_TRAFFIC"
-    | "PRIVATE_IP_RANGES"
-    | (string & {});
-}
-
-export const VpcAccess = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  networkInterfaces: Schema.optional(Schema.Array(VpcNetworkInterface)),
-  vpcEgress: Schema.optional(Schema.String),
-}).annotate({ identifier: "VpcAccess" });
-
-export interface Resources {
-  /** Memory (GB) needed. */
-  memoryGb?: number;
-  /** User specified volumes. */
-  volumes?: ReadonlyArray<Volume>;
-  /** Disk size (GB) needed. */
-  diskGb?: number;
-  /** The name of the encryption key that is stored in Google Cloud KMS. Only should be used by Cloud Composer to encrypt the vm disk */
-  kmsKeyReference?: string;
-  /** Number of CPU cores needed. */
-  cpu?: number;
-}
-
-export const Resources = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  memoryGb: Schema.optional(Schema.Number),
-  volumes: Schema.optional(Schema.Array(Volume)),
-  diskGb: Schema.optional(Schema.Number),
-  kmsKeyReference: Schema.optional(Schema.String),
-  cpu: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Resources" });
-
-export interface LivenessCheck {
-  /** The request path. */
-  path?: string;
-  /** Number of consecutive failed checks required before considering the VM unhealthy. */
-  failureThreshold?: number;
-  /** Number of consecutive successful checks required before considering the VM healthy. */
-  successThreshold?: number;
-  /** Interval between health checks. */
-  checkInterval?: string;
-  /** Time before the check is considered failed. */
-  timeout?: string;
-  /** The initial delay before starting to execute the checks. */
-  initialDelay?: string;
-  /** Host header to send when performing a HTTP Liveness check. Example: "myapp.appspot.com" */
-  host?: string;
-}
-
-export const LivenessCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  path: Schema.optional(Schema.String),
-  failureThreshold: Schema.optional(Schema.Number),
-  successThreshold: Schema.optional(Schema.Number),
-  checkInterval: Schema.optional(Schema.String),
-  timeout: Schema.optional(Schema.String),
-  initialDelay: Schema.optional(Schema.String),
-  host: Schema.optional(Schema.String),
-}).annotate({ identifier: "LivenessCheck" });
+    staticFiles: Schema.optional(StaticFilesHandler),
+    urlRegex: Schema.optional(Schema.String),
+    authFailAction: Schema.optional(Schema.String),
+    script: Schema.optional(ScriptHandler),
+    apiEndpoint: Schema.optional(ApiEndpointHandler),
+    securityLevel: Schema.optional(Schema.String),
+    login: Schema.optional(Schema.String),
+    redirectHttpResponseCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UrlMap" });
 
 export interface ContainerInfo {
   /** URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest. Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest" */
   image?: string;
 }
 
-export const ContainerInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  image: Schema.optional(Schema.String),
-}).annotate({ identifier: "ContainerInfo" });
-
-export interface BuildInfo {
-  /** The Google Cloud Build id. Example: "f966068f-08b2-42c8-bdfe-74137dff2bf9" */
-  cloudBuildId?: string;
-}
-
-export const BuildInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  cloudBuildId: Schema.optional(Schema.String),
-}).annotate({ identifier: "BuildInfo" });
-
-export interface FileInfo {
-  /** URL source to use to fetch this file. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'. */
-  sourceUrl?: string;
-  /** The SHA1 hash of the file, in hex. */
-  sha1Sum?: string;
-  /** The MIME type of the file.Defaults to the value from Google Cloud Storage. */
-  mimeType?: string;
-}
-
-export const FileInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sourceUrl: Schema.optional(Schema.String),
-  sha1Sum: Schema.optional(Schema.String),
-  mimeType: Schema.optional(Schema.String),
-}).annotate({ identifier: "FileInfo" });
-
-export interface ZipInfo {
-  /** URL of the zip file to deploy from. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'. */
-  sourceUrl?: string;
-  /** An estimate of the number of files in a zip for a zip deployment. If set, must be greater than or equal to the actual number of files. Used for optimizing performance; if not provided, deployment may be slow. */
-  filesCount?: number;
-}
-
-export const ZipInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sourceUrl: Schema.optional(Schema.String),
-  filesCount: Schema.optional(Schema.Number),
-}).annotate({ identifier: "ZipInfo" });
-
-export interface CloudBuildOptions {
-  /** Path to the yaml file used in deployment, used to determine runtime configuration details.Required for flexible environment builds.See https://cloud.google.com/appengine/docs/standard/python/config/appref for more details. */
-  appYamlPath?: string;
-  /** The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes. */
-  cloudBuildTimeout?: string;
-}
-
-export const CloudBuildOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  appYamlPath: Schema.optional(Schema.String),
-  cloudBuildTimeout: Schema.optional(Schema.String),
-}).annotate({ identifier: "CloudBuildOptions" });
+export const ContainerInfo: Schema.Schema<ContainerInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    image: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ContainerInfo" });
 
 export interface Deployment {
   /** The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment. */
   container?: ContainerInfo;
-  /** Google Cloud Build build information. Only applicable for instances running in the App Engine flexible environment. */
-  build?: BuildInfo;
-  /** Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call. */
-  files?: Record<string, FileInfo>;
-  /** The zip file for this deployment, if this is a zip deployment. */
-  zip?: ZipInfo;
   /** Options for any Google Cloud Build builds created as a part of this deployment.These options will only be used if a new build is created, such as when deploying to the App Engine flexible environment using files or zip. */
   cloudBuildOptions?: CloudBuildOptions;
+  /** The zip file for this deployment, if this is a zip deployment. */
+  zip?: ZipInfo;
+  /** Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call. */
+  files?: Record<string, FileInfo>;
+  /** Google Cloud Build build information. Only applicable for instances running in the App Engine flexible environment. */
+  build?: BuildInfo;
 }
 
-export const Deployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  container: Schema.optional(ContainerInfo),
-  build: Schema.optional(BuildInfo),
-  files: Schema.optional(Schema.Record(Schema.String, FileInfo)),
-  zip: Schema.optional(ZipInfo),
-  cloudBuildOptions: Schema.optional(CloudBuildOptions),
-}).annotate({ identifier: "Deployment" });
+export const Deployment: Schema.Schema<Deployment> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    container: Schema.optional(ContainerInfo),
+    cloudBuildOptions: Schema.optional(CloudBuildOptions),
+    zip: Schema.optional(ZipInfo),
+    files: Schema.optional(Schema.Record(Schema.String, FileInfo)),
+    build: Schema.optional(BuildInfo),
+  }).annotate({ identifier: "Deployment" });
 
-export interface ErrorHandler {
-  /** Static file content to be served for this error. */
-  staticFile?: string;
-  /** Error condition this handler applies to. */
-  errorCode?:
-    | "ERROR_CODE_UNSPECIFIED"
-    | "ERROR_CODE_DEFAULT"
-    | "ERROR_CODE_OVER_QUOTA"
-    | "ERROR_CODE_DOS_API_DENIAL"
-    | "ERROR_CODE_TIMEOUT"
+export interface ApiConfigHandler {
+  /** Action to take when users access resources that require authentication. Defaults to redirect. */
+  authFailAction?:
+    | "AUTH_FAIL_ACTION_UNSPECIFIED"
+    | "AUTH_FAIL_ACTION_REDIRECT"
+    | "AUTH_FAIL_ACTION_UNAUTHORIZED"
     | (string & {});
-  /** MIME type of file. Defaults to text/html. */
-  mimeType?: string;
+  /** URL to serve the endpoint at. */
+  url?: string;
+  /** Level of login required to access this resource. Defaults to optional. */
+  login?:
+    | "LOGIN_UNSPECIFIED"
+    | "LOGIN_OPTIONAL"
+    | "LOGIN_ADMIN"
+    | "LOGIN_REQUIRED"
+    | (string & {});
+  /** Security (HTTPS) enforcement for this URL. */
+  securityLevel?:
+    | "SECURE_UNSPECIFIED"
+    | "SECURE_DEFAULT"
+    | "SECURE_NEVER"
+    | "SECURE_OPTIONAL"
+    | "SECURE_ALWAYS"
+    | (string & {});
+  /** Path to the script from the application root directory. */
+  script?: string;
 }
 
-export const ErrorHandler = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  staticFile: Schema.optional(Schema.String),
-  errorCode: Schema.optional(Schema.String),
-  mimeType: Schema.optional(Schema.String),
-}).annotate({ identifier: "ErrorHandler" });
+export const ApiConfigHandler: Schema.Schema<ApiConfigHandler> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authFailAction: Schema.optional(Schema.String),
+    url: Schema.optional(Schema.String),
+    login: Schema.optional(Schema.String),
+    securityLevel: Schema.optional(Schema.String),
+    script: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApiConfigHandler" });
 
-export interface HealthCheck {
-  /** Number of consecutive failed health checks required before an instance is restarted. */
-  restartThreshold?: number;
-  /** Number of consecutive successful health checks required before receiving traffic. */
-  healthyThreshold?: number;
-  /** Number of consecutive failed health checks required before removing traffic. */
-  unhealthyThreshold?: number;
-  /** Host header to send when performing an HTTP health check. Example: "myapp.appspot.com" */
-  host?: string;
-  /** Interval between health checks. */
-  checkInterval?: string;
-  /** Whether to explicitly disable health checks for this instance. */
-  disableHealthCheck?: boolean;
-  /** Time before the health check is considered failed. */
-  timeout?: string;
+export interface BasicScaling {
+  /** Duration of time after the last request that an instance must wait before the instance is shut down. */
+  idleTimeout?: string;
+  /** Maximum number of instances to create for this version. */
+  maxInstances?: number;
 }
 
-export const HealthCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  restartThreshold: Schema.optional(Schema.Number),
-  healthyThreshold: Schema.optional(Schema.Number),
-  unhealthyThreshold: Schema.optional(Schema.Number),
-  host: Schema.optional(Schema.String),
-  checkInterval: Schema.optional(Schema.String),
-  disableHealthCheck: Schema.optional(Schema.Boolean),
-  timeout: Schema.optional(Schema.String),
-}).annotate({ identifier: "HealthCheck" });
+export const BasicScaling: Schema.Schema<BasicScaling> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    idleTimeout: Schema.optional(Schema.String),
+    maxInstances: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "BasicScaling" });
 
 export interface Version {
-  /** Extra network settings. Only applicable in the App Engine flexible environment. */
-  network?: Network;
-  /** Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app. */
-  endpointsApiService?: EndpointsApiService;
-  /** The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag. */
-  serviceAccount?: string;
-  /** The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated. */
-  zones?: ReadonlyArray<string>;
-  /** App Engine execution environment for this version.Defaults to standard. */
-  env?: string;
-  /** Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic. */
-  automaticScaling?: AutomaticScaling;
-  /** The channel of the runtime to use. Only available for some runtimes. Defaults to the default channel. */
-  runtimeChannel?: string;
-  /** Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest */
-  generatedCustomerMetadata?: Record<string, unknown>;
-  /** Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set. */
-  apiConfig?: ApiConfigHandler;
+  /** Output only. Email address of the user who created this version.@OutputOnly */
+  createdBy?: string;
+  /** Output only. Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly */
+  diskUsageBytes?: string;
   /** Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set. */
   libraries?: ReadonlyArray<Library>;
   /** The entrypoint for the application. */
   entrypoint?: Entrypoint;
-  /** A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity. */
-  basicScaling?: BasicScaling;
-  /** A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends". */
-  manualScaling?: ManualScaling;
-  /** An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set. */
-  handlers?: ReadonlyArray<UrlMap>;
-  /** Output only. Email address of the user who created this version.@OutputOnly */
-  createdBy?: string;
-  /** Enables VPC connectivity for standard apps. */
-  vpcAccessConnector?: VpcAccessConnector;
-  /** Before an application can receive email or XMPP messages, the application must be configured to enable the service. */
-  inboundServices?: ReadonlyArray<
-    | "INBOUND_SERVICE_UNSPECIFIED"
-    | "INBOUND_SERVICE_MAIL"
-    | "INBOUND_SERVICE_MAIL_BOUNCE"
-    | "INBOUND_SERVICE_XMPP_ERROR"
-    | "INBOUND_SERVICE_XMPP_MESSAGE"
-    | "INBOUND_SERVICE_XMPP_SUBSCRIBE"
-    | "INBOUND_SERVICE_XMPP_PRESENCE"
-    | "INBOUND_SERVICE_CHANNEL_PRESENCE"
-    | "INBOUND_SERVICE_WARMUP"
-    | (string & {})
-  >;
-  /** Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set. */
-  nobuildFilesRegex?: string;
-  /** Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-". */
-  id?: string;
-  /** Metadata settings that are supplied to this version to enable beta runtime features. */
-  betaSettings?: Record<string, string>;
-  /** Settings for App Engine flexible runtimes. */
-  flexibleRuntimeSettings?: FlexibleRuntimeSettings;
-  /** Environment variables available to the build environment.Only returned in GET requests if view=FULL is set. */
-  buildEnvVariables?: Record<string, string>;
-  /** Allows App Engine second generation runtimes to access the legacy bundled services. */
-  appEngineApis?: boolean;
-  /** Enables VPC access connectivity for standard apps. */
-  vpcAccess?: VpcAccess;
-  /** Whether multiple requests can be dispatched to this version at once. */
-  threadsafe?: boolean;
-  /** Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set. */
-  defaultExpiration?: string;
-  /** Machine resources for this version. Only applicable in the App Engine flexible environment. */
-  resources?: Resources;
+  /** Environment variables available to the application.Only returned in GET requests if view=FULL is set. */
+  envVariables?: Record<string, string>;
+  /** The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated. */
+  zones?: ReadonlyArray<string>;
+  /** Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest */
+  generatedCustomerMetadata?: Record<string, unknown>;
+  /** Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app. */
+  endpointsApiService?: EndpointsApiService;
+  /** Output only. Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly */
+  versionUrl?: string;
   /** Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING. */
   servingStatus?:
     | "SERVING_STATUS_UNSPECIFIED"
     | "SERVING"
     | "STOPPED"
     | (string & {});
-  /** The path or name of the app's main executable. */
-  runtimeMainExecutablePath?: string;
-  /** Time that this version was created.@OutputOnly */
-  createTime?: string;
   /** Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances */
   livenessCheck?: LivenessCheck;
-  /** The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref */
-  runtimeApiVersion?: string;
-  /** Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set. */
-  deployment?: Deployment;
+  /** Desired runtime. Example: python27. */
+  runtime?: string;
+  /** Time that this version was created.@OutputOnly */
+  createTime?: string;
+  /** Enables VPC access connectivity for standard apps. */
+  vpcAccess?: VpcAccess;
+  /** Whether multiple requests can be dispatched to this version at once. */
+  threadsafe?: boolean;
   /** Whether to deploy this version in a container on a virtual machine. */
   vm?: boolean;
+  /** Allows App Engine second generation runtimes to access the legacy bundled services. */
+  appEngineApis?: boolean;
+  /** Extra network settings. Only applicable in the App Engine flexible environment. */
+  network?: Network;
+  /** Settings for App Engine flexible runtimes. */
+  flexibleRuntimeSettings?: FlexibleRuntimeSettings;
+  /** Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set. */
+  defaultExpiration?: string;
+  /** Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic. */
+  automaticScaling?: AutomaticScaling;
+  /** The channel of the runtime to use. Only available for some runtimes. Defaults to the default channel. */
+  runtimeChannel?: string;
   /** List of specific App Engine Bundled Services that are enabled for this Version. */
   appEngineBundledServices?: ReadonlyArray<
     | "BUNDLED_SERVICE_TYPE_UNSPECIFIED"
@@ -974,235 +1247,205 @@ export interface Version {
     | "BUNDLED_SERVICE_TYPE_USERS"
     | (string & {})
   >;
-  /** Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation. */
-  readinessCheck?: ReadinessCheck;
-  /** Desired runtime. Example: python27. */
-  runtime?: string;
-  /** Output only. Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly */
-  diskUsageBytes?: string;
-  /** Output only. Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly */
-  name?: string;
-  /** Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set. */
-  errorHandlers?: ReadonlyArray<ErrorHandler>;
-  /** Environment variables available to the application.Only returned in GET requests if view=FULL is set. */
-  envVariables?: Record<string, string>;
-  /** Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment. */
-  healthCheck?: HealthCheck;
-  /** Output only. Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly */
-  versionUrl?: string;
+  /** Metadata settings that are supplied to this version to enable beta runtime features. */
+  betaSettings?: Record<string, string>;
+  /** The path or name of the app's main executable. */
+  runtimeMainExecutablePath?: string;
+  /** Enables VPC connectivity for standard apps. */
+  vpcAccessConnector?: VpcAccessConnector;
   /** Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling. */
   instanceClass?: string;
-}
-
-export const Version = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  network: Schema.optional(Network),
-  endpointsApiService: Schema.optional(EndpointsApiService),
-  serviceAccount: Schema.optional(Schema.String),
-  zones: Schema.optional(Schema.Array(Schema.String)),
-  env: Schema.optional(Schema.String),
-  automaticScaling: Schema.optional(AutomaticScaling),
-  runtimeChannel: Schema.optional(Schema.String),
-  generatedCustomerMetadata: Schema.optional(
-    Schema.Record(Schema.String, Schema.Unknown),
-  ),
-  apiConfig: Schema.optional(ApiConfigHandler),
-  libraries: Schema.optional(Schema.Array(Library)),
-  entrypoint: Schema.optional(Entrypoint),
-  basicScaling: Schema.optional(BasicScaling),
-  manualScaling: Schema.optional(ManualScaling),
-  handlers: Schema.optional(Schema.Array(UrlMap)),
-  createdBy: Schema.optional(Schema.String),
-  vpcAccessConnector: Schema.optional(VpcAccessConnector),
-  inboundServices: Schema.optional(Schema.Array(Schema.String)),
-  nobuildFilesRegex: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  betaSettings: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  flexibleRuntimeSettings: Schema.optional(FlexibleRuntimeSettings),
-  buildEnvVariables: Schema.optional(
-    Schema.Record(Schema.String, Schema.String),
-  ),
-  appEngineApis: Schema.optional(Schema.Boolean),
-  vpcAccess: Schema.optional(VpcAccess),
-  threadsafe: Schema.optional(Schema.Boolean),
-  defaultExpiration: Schema.optional(Schema.String),
-  resources: Schema.optional(Resources),
-  servingStatus: Schema.optional(Schema.String),
-  runtimeMainExecutablePath: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  livenessCheck: Schema.optional(LivenessCheck),
-  runtimeApiVersion: Schema.optional(Schema.String),
-  deployment: Schema.optional(Deployment),
-  vm: Schema.optional(Schema.Boolean),
-  appEngineBundledServices: Schema.optional(Schema.Array(Schema.String)),
-  readinessCheck: Schema.optional(ReadinessCheck),
-  runtime: Schema.optional(Schema.String),
-  diskUsageBytes: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  errorHandlers: Schema.optional(Schema.Array(ErrorHandler)),
-  envVariables: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  healthCheck: Schema.optional(HealthCheck),
-  versionUrl: Schema.optional(Schema.String),
-  instanceClass: Schema.optional(Schema.String),
-}).annotate({ identifier: "Version" });
-
-export interface SslSettings {
-  /** ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345. */
-  certificateId?: string;
-  /** Output only. ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly */
-  pendingManagedCertificateId?: string;
-  /** SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain. */
-  sslManagementType?: "AUTOMATIC" | "MANUAL" | (string & {});
-}
-
-export const SslSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  certificateId: Schema.optional(Schema.String),
-  pendingManagedCertificateId: Schema.optional(Schema.String),
-  sslManagementType: Schema.optional(Schema.String),
-}).annotate({ identifier: "SslSettings" });
-
-export interface ResourceRecord {
-  /** Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'. */
+  /** Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation. */
+  readinessCheck?: ReadinessCheck;
+  /** Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set. */
+  nobuildFilesRegex?: string;
+  /** App Engine execution environment for this version.Defaults to standard. */
+  env?: string;
+  /** Output only. Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly */
   name?: string;
-  /** Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1). */
-  rrdata?: string;
-  /** Resource record type. Example: AAAA. */
-  type?: "A" | "AAAA" | "CNAME" | (string & {});
-}
-
-export const ResourceRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  rrdata: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-}).annotate({ identifier: "ResourceRecord" });
-
-export interface DomainMapping {
-  /** SSL configuration for this domain. If unconfigured, this domain will not serve with SSL. */
-  sslSettings?: SslSettings;
-  /** Output only. The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly */
-  resourceRecords?: ReadonlyArray<ResourceRecord>;
-  /** Output only. Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly */
-  name?: string;
-  /** Relative name of the domain serving the application. Example: example.com. */
+  /** Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment. */
+  healthCheck?: HealthCheck;
+  /** Before an application can receive email or XMPP messages, the application must be configured to enable the service. */
+  inboundServices?: ReadonlyArray<
+    | "INBOUND_SERVICE_UNSPECIFIED"
+    | "INBOUND_SERVICE_MAIL"
+    | "INBOUND_SERVICE_MAIL_BOUNCE"
+    | "INBOUND_SERVICE_XMPP_ERROR"
+    | "INBOUND_SERVICE_XMPP_MESSAGE"
+    | "INBOUND_SERVICE_XMPP_SUBSCRIBE"
+    | "INBOUND_SERVICE_XMPP_PRESENCE"
+    | "INBOUND_SERVICE_CHANNEL_PRESENCE"
+    | "INBOUND_SERVICE_WARMUP"
+    | (string & {})
+  >;
+  /** The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref */
+  runtimeApiVersion?: string;
+  /** An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set. */
+  handlers?: ReadonlyArray<UrlMap>;
+  /** Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set. */
+  deployment?: Deployment;
+  /** Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set. */
+  apiConfig?: ApiConfigHandler;
+  /** Machine resources for this version. Only applicable in the App Engine flexible environment. */
+  resources?: Resources;
+  /** Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-". */
   id?: string;
+  /** The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag. */
+  serviceAccount?: string;
+  /** Environment variables available to the build environment.Only returned in GET requests if view=FULL is set. */
+  buildEnvVariables?: Record<string, string>;
+  /** A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends". */
+  manualScaling?: ManualScaling;
+  /** Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set. */
+  errorHandlers?: ReadonlyArray<ErrorHandler>;
+  /** A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity. */
+  basicScaling?: BasicScaling;
 }
 
-export const DomainMapping = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sslSettings: Schema.optional(SslSettings),
-  resourceRecords: Schema.optional(Schema.Array(ResourceRecord)),
-  name: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-}).annotate({ identifier: "DomainMapping" });
+export const Version: Schema.Schema<Version> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdBy: Schema.optional(Schema.String),
+    diskUsageBytes: Schema.optional(Schema.String),
+    libraries: Schema.optional(Schema.Array(Library)),
+    entrypoint: Schema.optional(Entrypoint),
+    envVariables: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    generatedCustomerMetadata: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    endpointsApiService: Schema.optional(EndpointsApiService),
+    versionUrl: Schema.optional(Schema.String),
+    servingStatus: Schema.optional(Schema.String),
+    livenessCheck: Schema.optional(LivenessCheck),
+    runtime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    vpcAccess: Schema.optional(VpcAccess),
+    threadsafe: Schema.optional(Schema.Boolean),
+    vm: Schema.optional(Schema.Boolean),
+    appEngineApis: Schema.optional(Schema.Boolean),
+    network: Schema.optional(Network),
+    flexibleRuntimeSettings: Schema.optional(FlexibleRuntimeSettings),
+    defaultExpiration: Schema.optional(Schema.String),
+    automaticScaling: Schema.optional(AutomaticScaling),
+    runtimeChannel: Schema.optional(Schema.String),
+    appEngineBundledServices: Schema.optional(Schema.Array(Schema.String)),
+    betaSettings: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    runtimeMainExecutablePath: Schema.optional(Schema.String),
+    vpcAccessConnector: Schema.optional(VpcAccessConnector),
+    instanceClass: Schema.optional(Schema.String),
+    readinessCheck: Schema.optional(ReadinessCheck),
+    nobuildFilesRegex: Schema.optional(Schema.String),
+    env: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    healthCheck: Schema.optional(HealthCheck),
+    inboundServices: Schema.optional(Schema.Array(Schema.String)),
+    runtimeApiVersion: Schema.optional(Schema.String),
+    handlers: Schema.optional(Schema.Array(UrlMap)),
+    deployment: Schema.optional(Deployment),
+    apiConfig: Schema.optional(ApiConfigHandler),
+    resources: Schema.optional(Resources),
+    id: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    buildEnvVariables: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    manualScaling: Schema.optional(ManualScaling),
+    errorHandlers: Schema.optional(Schema.Array(ErrorHandler)),
+    basicScaling: Schema.optional(BasicScaling),
+  }).annotate({ identifier: "Version" });
 
-export interface CertificateRawData {
-  /** PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE----- */
-  publicCertificate?: string;
-  /** Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly */
-  privateKey?: string;
-}
-
-export const CertificateRawData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  publicCertificate: Schema.optional(Schema.String),
-  privateKey: Schema.optional(Schema.String),
-}).annotate({ identifier: "CertificateRawData" });
-
-export interface ManagedCertificate {
-  /** Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly */
-  status?:
-    | "MANAGEMENT_STATUS_UNSPECIFIED"
-    | "OK"
-    | "PENDING"
-    | "FAILED_RETRYING_NOT_VISIBLE"
-    | "FAILED_PERMANENT"
-    | "FAILED_RETRYING_CAA_FORBIDDEN"
-    | "FAILED_RETRYING_CAA_CHECKING"
-    | (string & {});
-  /** Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly */
-  lastRenewalTime?: string;
-}
-
-export const ManagedCertificate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  status: Schema.optional(Schema.String),
-  lastRenewalTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "ManagedCertificate" });
-
-export interface AuthorizedCertificate {
-  /** The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority. */
-  certificateRawData?: CertificateRawData;
-  /** Output only. Topmost applicable domains of this certificate. This certificate applies to these domains and their subdomains. Example: example.com.@OutputOnly */
-  domainNames?: ReadonlyArray<string>;
-  /** Output only. Full path to the AuthorizedCertificate resource in the API. Example: apps/myapp/authorizedCertificates/12345.@OutputOnly */
-  name?: string;
-  /** The time when this certificate expires. To update the renewal time on this certificate, upload an SSL certificate with a different expiration time using AuthorizedCertificates.UpdateAuthorizedCertificate.@OutputOnly */
-  expireTime?: string;
-  /** Output only. Relative name of the certificate. This is a unique value autogenerated on AuthorizedCertificate resource creation. Example: 12345.@OutputOnly */
-  id?: string;
-  /** Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the lifecycle of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this certificate is manually administered by the user, this field will be empty.@OutputOnly */
-  managedCertificate?: ManagedCertificate;
-  /** Aggregate count of the domain mappings with this certificate mapped. This count includes domain mappings on applications for which the user does not have VIEWER permissions.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly */
-  domainMappingsCount?: number;
-  /** The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate. */
-  displayName?: string;
-  /** Output only. The full paths to user visible Domain Mapping resources that have this certificate mapped. Example: apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the user does not have VIEWER permissions on all of the applications that have this certificate mapped. See domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly */
-  visibleDomainMappings?: ReadonlyArray<string>;
-}
-
-export const AuthorizedCertificate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  certificateRawData: Schema.optional(CertificateRawData),
-  domainNames: Schema.optional(Schema.Array(Schema.String)),
-  name: Schema.optional(Schema.String),
-  expireTime: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  managedCertificate: Schema.optional(ManagedCertificate),
-  domainMappingsCount: Schema.optional(Schema.Number),
-  displayName: Schema.optional(Schema.String),
-  visibleDomainMappings: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "AuthorizedCertificate" });
-
-export interface ListAuthorizedCertificatesResponse {
-  /** The SSL certificates the user is authorized to administer. */
-  certificates?: ReadonlyArray<AuthorizedCertificate>;
+export interface ListVersionsResponse {
+  /** The versions belonging to the requested service. */
+  versions?: ReadonlyArray<Version>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
 
-export const ListAuthorizedCertificatesResponse =
+export const ListVersionsResponse: Schema.Schema<ListVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    certificates: Schema.optional(Schema.Array(AuthorizedCertificate)),
+    versions: Schema.optional(Schema.Array(Version)),
     nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListAuthorizedCertificatesResponse" });
+  }).annotate({ identifier: "ListVersionsResponse" });
 
-export interface Empty {}
-
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
-
-export interface UrlDispatchRule {
-  /** Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".Defaults to matching all domains: "*". */
-  domain?: string;
-  /** Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.The sum of the lengths of the domain and path may not exceed 100 characters. */
-  path?: string;
-  /** Resource ID of a service in this application that should serve the matched request. The service must already exist. Example: default. */
-  service?: string;
+export interface CreateVersionMetadataV1Alpha {
+  /** The Cloud Build ID if one was created as part of the version create. @OutputOnly */
+  cloudBuildId?: string;
 }
 
-export const UrlDispatchRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  domain: Schema.optional(Schema.String),
-  path: Schema.optional(Schema.String),
-  service: Schema.optional(Schema.String),
-}).annotate({ identifier: "UrlDispatchRule" });
+export const CreateVersionMetadataV1Alpha: Schema.Schema<CreateVersionMetadataV1Alpha> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudBuildId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateVersionMetadataV1Alpha" });
 
-export interface TrafficSplit {
-  /** Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed. */
-  shardBy?: "UNSPECIFIED" | "COOKIE" | "IP" | "RANDOM" | (string & {});
-  /** Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits. */
-  allocations?: Record<string, number>;
+export interface CreateVersionMetadataV1 {
+  /** The Cloud Build ID if one was created as part of the version create. @OutputOnly */
+  cloudBuildId?: string;
 }
 
-export const TrafficSplit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  shardBy: Schema.optional(Schema.String),
-  allocations: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
-}).annotate({ identifier: "TrafficSplit" });
+export const CreateVersionMetadataV1: Schema.Schema<CreateVersionMetadataV1> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudBuildId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateVersionMetadataV1" });
+
+export interface OperationMetadataV1 {
+  /** Ephemeral message that may change every time the operation is polled. @OutputOnly */
+  ephemeralMessage?: string;
+  createVersionMetadata?: CreateVersionMetadataV1;
+  /** API method that initiated this operation. Example: google.appengine.v1.Versions.CreateVersion.@OutputOnly */
+  method?: string;
+  /** User who requested this operation.@OutputOnly */
+  user?: string;
+  /** Time that this operation was created.@OutputOnly */
+  insertTime?: string;
+  /** Time that this operation completed.@OutputOnly */
+  endTime?: string;
+  /** Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly */
+  target?: string;
+  /** Durable messages that persist on every operation poll. @OutputOnly */
+  warning?: ReadonlyArray<string>;
+}
+
+export const OperationMetadataV1: Schema.Schema<OperationMetadataV1> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ephemeralMessage: Schema.optional(Schema.String),
+    createVersionMetadata: Schema.optional(CreateVersionMetadataV1),
+    method: Schema.optional(Schema.String),
+    user: Schema.optional(Schema.String),
+    insertTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    warning: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "OperationMetadataV1" });
+
+export interface OperationMetadataV1Beta {
+  /** Ephemeral message that may change every time the operation is polled. @OutputOnly */
+  ephemeralMessage?: string;
+  createVersionMetadata?: CreateVersionMetadataV1Beta;
+  /** API method that initiated this operation. Example: google.appengine.v1beta.Versions.CreateVersion.@OutputOnly */
+  method?: string;
+  /** User who requested this operation.@OutputOnly */
+  user?: string;
+  /** Time that this operation was created.@OutputOnly */
+  insertTime?: string;
+  /** Time that this operation completed.@OutputOnly */
+  endTime?: string;
+  /** Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly */
+  target?: string;
+  /** Durable messages that persist on every operation poll. @OutputOnly */
+  warning?: ReadonlyArray<string>;
+}
+
+export const OperationMetadataV1Beta: Schema.Schema<OperationMetadataV1Beta> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ephemeralMessage: Schema.optional(Schema.String),
+    createVersionMetadata: Schema.optional(CreateVersionMetadataV1Beta),
+    method: Schema.optional(Schema.String),
+    user: Schema.optional(Schema.String),
+    insertTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    warning: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "OperationMetadataV1Beta" });
 
 export interface NetworkSettings {
   /** The ingress settings for version or service. */
@@ -1214,191 +1457,37 @@ export interface NetworkSettings {
     | (string & {});
 }
 
-export const NetworkSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  ingressTrafficAllowed: Schema.optional(Schema.String),
-}).annotate({ identifier: "NetworkSettings" });
+export const NetworkSettings: Schema.Schema<NetworkSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ingressTrafficAllowed: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NetworkSettings" });
 
 export interface Service {
-  /** Output only. Full path to the Service resource in the API. Example: apps/myapp/services/default.@OutputOnly */
-  name?: string;
   /** Mapping that defines fractional HTTP traffic diversion to different versions within the service. */
   split?: TrafficSplit;
   /** Ingress settings for this service. Will apply to all versions. */
   networkSettings?: NetworkSettings;
   /** Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetServiceRequest */
   generatedCustomerMetadata?: Record<string, unknown>;
+  /** Output only. Full path to the Service resource in the API. Example: apps/myapp/services/default.@OutputOnly */
+  name?: string;
   /** Output only. Relative name of the service within the application. Example: default.@OutputOnly */
   id?: string;
   /** A set of labels to apply to this service. Labels are key/value pairs that describe the service and all resources that belong to it (e.g., versions). The labels can be used to search and group resources, and are propagated to the usage and billing reports, enabling fine-grain analysis of costs. An example of using labels is to tag resources belonging to different environments (e.g., "env=prod", "env=qa"). Label keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, dashes, and international characters. Label keys must start with a lowercase letter or an international character. Each service can have at most 32 labels. */
   labels?: Record<string, string>;
 }
 
-export const Service = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  split: Schema.optional(TrafficSplit),
-  networkSettings: Schema.optional(NetworkSettings),
-  generatedCustomerMetadata: Schema.optional(
-    Schema.Record(Schema.String, Schema.Unknown),
-  ),
-  id: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-}).annotate({ identifier: "Service" });
-
-export interface FeatureSettings {
-  /** Boolean value indicating if split health checks should be used instead of the legacy health checks. At an app.yaml level, this means defaulting to 'readiness_check' and 'liveness_check' values instead of 'health_check' ones. Once the legacy 'health_check' behavior is deprecated, and this value is always true, this setting can be removed. */
-  splitHealthChecks?: boolean;
-  /** If true, use Container-Optimized OS (https://cloud.google.com/container-optimized-os/) base image for VMs, rather than a base Debian image. */
-  useContainerOptimizedOs?: boolean;
-}
-
-export const FeatureSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  splitHealthChecks: Schema.optional(Schema.Boolean),
-  useContainerOptimizedOs: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "FeatureSettings" });
-
-export interface IdentityAwareProxy {
-  /** OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly */
-  oauth2ClientSecret?: string;
-  /** Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty. */
-  enabled?: boolean;
-  /** OAuth2 client ID to use for the authentication flow. */
-  oauth2ClientId?: string;
-  /** Output only. Hex-encoded SHA-256 hash of the client secret.@OutputOnly */
-  oauth2ClientSecretSha256?: string;
-}
-
-export const IdentityAwareProxy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  oauth2ClientSecret: Schema.optional(Schema.String),
-  enabled: Schema.optional(Schema.Boolean),
-  oauth2ClientId: Schema.optional(Schema.String),
-  oauth2ClientSecretSha256: Schema.optional(Schema.String),
-}).annotate({ identifier: "IdentityAwareProxy" });
-
-export interface Application {
-  /** Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp. */
-  id?: string;
-  /** Output only. The Google Container Registry domain used for storing managed build docker images for this application. */
-  gcrDomain?: string;
-  /** The feature specific settings to be used in the application. */
-  featureSettings?: FeatureSettings;
-  name?: string;
-  /** The SSL policy that will be applied to the application. If set to Modern it will restrict traffic with TLS < 1.2 and allow only Modern Ciphers suite */
-  sslPolicy?: "SSL_POLICY_UNSPECIFIED" | "DEFAULT" | "MODERN" | (string & {});
-  /** Output only. Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly */
-  codeBucket?: string;
-  /** Output only. Hostname used to reach this application, as resolved by App Engine.@OutputOnly */
-  defaultHostname?: string;
-  /** Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations). */
-  locationId?: string;
-  /** HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported. */
-  dispatchRules?: ReadonlyArray<UrlDispatchRule>;
-  /** Cookie expiration policy for this application. */
-  defaultCookieExpiration?: string;
-  iap?: IdentityAwareProxy;
-  /** Serving status of this application. */
-  servingStatus?:
-    | "UNSPECIFIED"
-    | "SERVING"
-    | "USER_DISABLED"
-    | "SYSTEM_DISABLED"
-    | (string & {});
-  /** The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one. */
-  serviceAccount?: string;
-  /** Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account. */
-  authDomain?: string;
-  /** The type of the Cloud Firestore or Cloud Datastore database associated with this application. */
-  databaseType?:
-    | "DATABASE_TYPE_UNSPECIFIED"
-    | "CLOUD_DATASTORE"
-    | "CLOUD_FIRESTORE"
-    | "CLOUD_DATASTORE_COMPATIBILITY"
-    | (string & {});
-  /** Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest */
-  generatedCustomerMetadata?: Record<string, unknown>;
-  /** Output only. Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly */
-  defaultBucket?: string;
-}
-
-export const Application = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.String),
-  gcrDomain: Schema.optional(Schema.String),
-  featureSettings: Schema.optional(FeatureSettings),
-  name: Schema.optional(Schema.String),
-  sslPolicy: Schema.optional(Schema.String),
-  codeBucket: Schema.optional(Schema.String),
-  defaultHostname: Schema.optional(Schema.String),
-  locationId: Schema.optional(Schema.String),
-  dispatchRules: Schema.optional(Schema.Array(UrlDispatchRule)),
-  defaultCookieExpiration: Schema.optional(Schema.String),
-  iap: Schema.optional(IdentityAwareProxy),
-  servingStatus: Schema.optional(Schema.String),
-  serviceAccount: Schema.optional(Schema.String),
-  authDomain: Schema.optional(Schema.String),
-  databaseType: Schema.optional(Schema.String),
-  generatedCustomerMetadata: Schema.optional(
-    Schema.Record(Schema.String, Schema.Unknown),
-  ),
-  defaultBucket: Schema.optional(Schema.String),
-}).annotate({ identifier: "Application" });
-
-export interface Reasons {
-  abuse?:
-    | "ABUSE_UNKNOWN_REASON"
-    | "ABUSE_CONTROL_PLANE_SYNC"
-    | "SUSPEND"
-    | "REINSTATE"
-    | (string & {});
-  /** Consumer Container denotes if the service is active within a project or not. This information could be used to clean up resources in case service in DISABLED_FULL i.e. Service is inactive > 30 days. */
-  serviceActivation?:
-    | "SERVICE_ACTIVATION_STATUS_UNSPECIFIED"
-    | "SERVICE_ACTIVATION_ENABLED"
-    | "SERVICE_ACTIVATION_DISABLED"
-    | "SERVICE_ACTIVATION_DISABLED_FULL"
-    | "SERVICE_ACTIVATION_UNKNOWN_REASON"
-    | (string & {});
-  dataGovernance?:
-    | "DATA_GOVERNANCE_UNKNOWN_REASON"
-    | "DATA_GOVERNANCE_CONTROL_PLANE_SYNC"
-    | "HIDE"
-    | "UNHIDE"
-    | "PURGE"
-    | (string & {});
-  billing?:
-    | "BILLING_UNKNOWN_REASON"
-    | "BILLING_CONTROL_PLANE_SYNC"
-    | "PROBATION"
-    | "CLOSE"
-    | "OPEN"
-    | (string & {});
-  serviceManagement?:
-    | "SERVICE_MANAGEMENT_UNKNOWN_REASON"
-    | "SERVICE_MANAGEMENT_CONTROL_PLANE_SYNC"
-    | "ACTIVATION"
-    | "PREPARE_DEACTIVATION"
-    | "ABORT_DEACTIVATION"
-    | "COMMIT_DEACTIVATION"
-    | (string & {});
-}
-
-export const Reasons = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  abuse: Schema.optional(Schema.String),
-  serviceActivation: Schema.optional(Schema.String),
-  dataGovernance: Schema.optional(Schema.String),
-  billing: Schema.optional(Schema.String),
-  serviceManagement: Schema.optional(Schema.String),
-}).annotate({ identifier: "Reasons" });
-
-export interface ListLocationsResponse {
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: ReadonlyArray<Location>;
-}
-
-export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  nextPageToken: Schema.optional(Schema.String),
-  locations: Schema.optional(Schema.Array(Location)),
-}).annotate({ identifier: "ListLocationsResponse" });
+export const Service: Schema.Schema<Service> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    split: Schema.optional(TrafficSplit),
+    networkSettings: Schema.optional(NetworkSettings),
+    generatedCustomerMetadata: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    name: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "Service" });
 
 export interface ListServicesResponse {
   /** The services belonging to the requested application. */
@@ -1407,225 +1496,37 @@ export interface ListServicesResponse {
   nextPageToken?: string;
 }
 
-export const ListServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  services: Schema.optional(Schema.Array(Service)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListServicesResponse" });
-
-export interface RepairApplicationRequest {}
-
-export const RepairApplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "RepairApplicationRequest",
-  });
-
-export interface ListVersionsResponse {
-  /** The versions belonging to the requested service. */
-  versions?: ReadonlyArray<Version>;
-  /** Continuation token for fetching the next page of results. */
-  nextPageToken?: string;
-}
-
-export const ListVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  versions: Schema.optional(Schema.Array(Version)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListVersionsResponse" });
-
-export interface CreateVersionMetadataV1Beta {
-  /** The Cloud Build ID if one was created as part of the version create. @OutputOnly */
-  cloudBuildId?: string;
-}
-
-export const CreateVersionMetadataV1Beta =
+export const ListServicesResponse: Schema.Schema<ListServicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cloudBuildId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CreateVersionMetadataV1Beta" });
+    services: Schema.optional(Schema.Array(Service)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListServicesResponse" });
 
-export interface CreateVersionMetadataV1 {
-  /** The Cloud Build ID if one was created as part of the version create. @OutputOnly */
-  cloudBuildId?: string;
-}
-
-export const CreateVersionMetadataV1 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cloudBuildId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CreateVersionMetadataV1" });
-
-export interface OperationMetadataV1 {
-  /** Ephemeral message that may change every time the operation is polled. @OutputOnly */
-  ephemeralMessage?: string;
-  /** Time that this operation was created.@OutputOnly */
-  insertTime?: string;
-  /** Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly */
-  target?: string;
-  createVersionMetadata?: CreateVersionMetadataV1;
-  /** API method that initiated this operation. Example: google.appengine.v1.Versions.CreateVersion.@OutputOnly */
-  method?: string;
-  /** Durable messages that persist on every operation poll. @OutputOnly */
-  warning?: ReadonlyArray<string>;
-  /** Time that this operation completed.@OutputOnly */
-  endTime?: string;
-  /** User who requested this operation.@OutputOnly */
-  user?: string;
-}
-
-export const OperationMetadataV1 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  ephemeralMessage: Schema.optional(Schema.String),
-  insertTime: Schema.optional(Schema.String),
-  target: Schema.optional(Schema.String),
-  createVersionMetadata: Schema.optional(CreateVersionMetadataV1),
-  method: Schema.optional(Schema.String),
-  warning: Schema.optional(Schema.Array(Schema.String)),
-  endTime: Schema.optional(Schema.String),
-  user: Schema.optional(Schema.String),
-}).annotate({ identifier: "OperationMetadataV1" });
-
-export interface OperationMetadataV1Beta {
-  /** Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly */
-  target?: string;
-  createVersionMetadata?: CreateVersionMetadataV1Beta;
-  /** Time that this operation was created.@OutputOnly */
-  insertTime?: string;
-  /** Ephemeral message that may change every time the operation is polled. @OutputOnly */
-  ephemeralMessage?: string;
-  /** User who requested this operation.@OutputOnly */
-  user?: string;
-  /** Time that this operation completed.@OutputOnly */
-  endTime?: string;
-  /** API method that initiated this operation. Example: google.appengine.v1beta.Versions.CreateVersion.@OutputOnly */
-  method?: string;
-  /** Durable messages that persist on every operation poll. @OutputOnly */
-  warning?: ReadonlyArray<string>;
-}
-
-export const OperationMetadataV1Beta =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    target: Schema.optional(Schema.String),
-    createVersionMetadata: Schema.optional(CreateVersionMetadataV1Beta),
-    insertTime: Schema.optional(Schema.String),
-    ephemeralMessage: Schema.optional(Schema.String),
-    user: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    method: Schema.optional(Schema.String),
-    warning: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "OperationMetadataV1Beta" });
-
-export interface ProjectsMetadata {
-  /** The consumer project id. */
-  consumerProjectId?: string;
-  /** The producer project number. */
-  producerProjectNumber?: string;
-  /** The tenant project number. */
-  tenantProjectNumber?: string;
-  /** The service account authorized to operate on the consumer project. Note: CCFE only propagates P4SA with default tag to CLH. */
-  p4ServiceAccount?: string;
-  /** The CCFE state of the consumer project. It is the same state that is communicated to the CLH during project events. Notice that this field is not set in the DB, it is only set in this proto when communicated to CLH in the side channel. */
-  consumerProjectState?:
-    | "UNKNOWN_STATE"
-    | "ON"
-    | "OFF"
-    | "DELETED"
-    | (string & {});
-  /** The GCE tags associated with the consumer project and those inherited due to their ancestry, if any. Not supported by CCFE. */
-  gceTag?: ReadonlyArray<GceTag>;
-  /** The consumer project number. */
-  consumerProjectNumber?: string;
-  /** The producer project id. */
-  producerProjectId?: string;
-  /** DEPRECATED: Indicates whether the GCE project is in the DEPROVISIONING state. This field is a temporary workaround (see b/475310865) to allow GCE extensions to bypass certain checks during deprovisioning. It will be replaced by a permanent solution in the future. */
-  isGceProjectDeprovisioning?: boolean;
-  /** The tenant project id. */
-  tenantProjectId?: string;
-}
-
-export const ProjectsMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  consumerProjectId: Schema.optional(Schema.String),
-  producerProjectNumber: Schema.optional(Schema.String),
-  tenantProjectNumber: Schema.optional(Schema.String),
-  p4ServiceAccount: Schema.optional(Schema.String),
-  consumerProjectState: Schema.optional(Schema.String),
-  gceTag: Schema.optional(Schema.Array(GceTag)),
-  consumerProjectNumber: Schema.optional(Schema.String),
-  producerProjectId: Schema.optional(Schema.String),
-  isGceProjectDeprovisioning: Schema.optional(Schema.Boolean),
-  tenantProjectId: Schema.optional(Schema.String),
-}).annotate({ identifier: "ProjectsMetadata" });
-
-export interface ContainerState {
-  /** The current state of the container. This state is the culmination of all of the opinions from external systems that CCFE knows about of the container. */
-  state?: "UNKNOWN_STATE" | "ON" | "OFF" | "DELETED" | (string & {});
-  /** The previous and current reasons for a container state will be sent for a container event. CLHs that need to know the signal that caused the container event to trigger (edges) as opposed to just knowing the state can act upon differences in the previous and current reasons.Reasons will be provided for every system: service management, data governance, abuse, and billing.If this is a CCFE-triggered event used for reconciliation then the current reasons will be set to their *_CONTROL_PLANE_SYNC state. The previous reasons will contain the last known set of non-unknown non-control_plane_sync reasons for the state. */
-  previousReasons?: Reasons;
-  currentReasons?: Reasons;
-}
-
-export const ContainerState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  state: Schema.optional(Schema.String),
-  previousReasons: Schema.optional(Reasons),
-  currentReasons: Schema.optional(Reasons),
-}).annotate({ identifier: "ContainerState" });
-
-export interface ProjectEvent {
-  /** The projects metadata for this project. required */
-  projectMetadata?: ProjectsMetadata;
-  /** The state of the organization that led to this event. */
-  state?: ContainerState;
-  /** The unique ID for this project event. CLHs can use this value to dedup repeated calls. required */
-  eventId?: string;
-  /** Phase indicates when in the container event propagation this event is being communicated. Events are sent before and after the per-resource events are propagated. required */
-  phase?:
-    | "CONTAINER_EVENT_PHASE_UNSPECIFIED"
-    | "BEFORE_RESOURCE_HANDLING"
-    | "AFTER_RESOURCE_HANDLING"
-    | (string & {});
-}
-
-export const ProjectEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  projectMetadata: Schema.optional(ProjectsMetadata),
-  state: Schema.optional(ContainerState),
-  eventId: Schema.optional(Schema.String),
-  phase: Schema.optional(Schema.String),
-}).annotate({ identifier: "ProjectEvent" });
-
-export interface GoogleAppengineV1betaLocationMetadata {
+export interface LocationMetadata {
+  /** App Engine standard environment is available in the given location.@OutputOnly */
+  standardEnvironmentAvailable?: boolean;
   /** App Engine flexible environment is available in the given location.@OutputOnly */
   flexibleEnvironmentAvailable?: boolean;
   /** Output only. Search API (https://cloud.google.com/appengine/docs/standard/python/search) is available in the given location. */
   searchApiAvailable?: boolean;
-  /** App Engine standard environment is available in the given location.@OutputOnly */
-  standardEnvironmentAvailable?: boolean;
 }
 
-export const GoogleAppengineV1betaLocationMetadata =
+export const LocationMetadata: Schema.Schema<LocationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    standardEnvironmentAvailable: Schema.optional(Schema.Boolean),
     flexibleEnvironmentAvailable: Schema.optional(Schema.Boolean),
     searchApiAvailable: Schema.optional(Schema.Boolean),
-    standardEnvironmentAvailable: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "GoogleAppengineV1betaLocationMetadata" });
+  }).annotate({ identifier: "LocationMetadata" });
 
 export interface ExportAppImageRequest {
   /** Optional. The full resource name of the AR repository to export to. Format: projects/{project}/locations/{location}/repositories/{repository} If not specified, defaults to projects/{project}/locations/{location}/repositories/gae-standard in the same region as the app. The default repository will be created if it does not exist. */
   destinationRepository?: string;
 }
 
-export const ExportAppImageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  destinationRepository: Schema.optional(Schema.String),
-}).annotate({ identifier: "ExportAppImageRequest" });
-
-export interface Appengine_Date {
-  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
-  month?: number;
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  day?: number;
-  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
-  year?: number;
-}
-
-export const Appengine_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  month: Schema.optional(Schema.Number),
-  day: Schema.optional(Schema.Number),
-  year: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Appengine_Date" });
+export const ExportAppImageRequest: Schema.Schema<ExportAppImageRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationRepository: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExportAppImageRequest" });
 
 export interface ListIngressRulesResponse {
   /** The ingress FirewallRules for this application. */
@@ -1634,15 +1535,302 @@ export interface ListIngressRulesResponse {
   nextPageToken?: string;
 }
 
-export const ListIngressRulesResponse =
+export const ListIngressRulesResponse: Schema.Schema<ListIngressRulesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ingressRules: Schema.optional(Schema.Array(FirewallRule)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListIngressRulesResponse" });
 
+export interface SslSettings {
+  /** ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345. */
+  certificateId?: string;
+  /** SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain. */
+  sslManagementType?: "AUTOMATIC" | "MANUAL" | (string & {});
+  /** Output only. ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly */
+  pendingManagedCertificateId?: string;
+}
+
+export const SslSettings: Schema.Schema<SslSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificateId: Schema.optional(Schema.String),
+    sslManagementType: Schema.optional(Schema.String),
+    pendingManagedCertificateId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SslSettings" });
+
+export interface Appengine_Date {
+  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
+  year?: number;
+  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
+  month?: number;
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  day?: number;
+}
+
+export const Appengine_Date: Schema.Schema<Appengine_Date> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    year: Schema.optional(Schema.Number),
+    month: Schema.optional(Schema.Number),
+    day: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Appengine_Date" });
+
+export interface Operation {
+  /** If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available. */
+  done?: boolean;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse. */
+  response?: Record<string, unknown>;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should be a resource name ending with operations/{unique_id}. */
+  name?: string;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+}
+
+export const Operation: Schema.Schema<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    done: Schema.optional(Schema.Boolean),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    error: Schema.optional(Status),
+  }).annotate({ identifier: "Operation" });
+
+export interface ListOperationsResponse {
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: ReadonlyArray<Operation>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+  /** Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: ReadonlyArray<string>;
+}
+
+export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListOperationsResponse" });
+
+export interface ResourceEvent {
+  /** The unique ID for this per-resource event. CLHs can use this value to dedup repeated calls. required */
+  eventId?: string;
+  /** The name of the resource for which this event is. required */
+  name?: string;
+  /** The state of the project that led to this event. */
+  state?: ContainerState;
+}
+
+export const ResourceEvent: Schema.Schema<ResourceEvent> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(ContainerState),
+  }).annotate({ identifier: "ResourceEvent" });
+
+export interface ResourceRecord {
+  /** Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1). */
+  rrdata?: string;
+  /** Resource record type. Example: AAAA. */
+  type?: "A" | "AAAA" | "CNAME" | (string & {});
+  /** Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'. */
+  name?: string;
+}
+
+export const ResourceRecord: Schema.Schema<ResourceRecord> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rrdata: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResourceRecord" });
+
+export interface DomainMapping {
+  /** Output only. Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly */
+  name?: string;
+  /** Relative name of the domain serving the application. Example: example.com. */
+  id?: string;
+  /** SSL configuration for this domain. If unconfigured, this domain will not serve with SSL. */
+  sslSettings?: SslSettings;
+  /** Output only. The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly */
+  resourceRecords?: ReadonlyArray<ResourceRecord>;
+}
+
+export const DomainMapping: Schema.Schema<DomainMapping> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    sslSettings: Schema.optional(SslSettings),
+    resourceRecords: Schema.optional(Schema.Array(ResourceRecord)),
+  }).annotate({ identifier: "DomainMapping" });
+
+export interface FeatureSettings {
+  /** Boolean value indicating if split health checks should be used instead of the legacy health checks. At an app.yaml level, this means defaulting to 'readiness_check' and 'liveness_check' values instead of 'health_check' ones. Once the legacy 'health_check' behavior is deprecated, and this value is always true, this setting can be removed. */
+  splitHealthChecks?: boolean;
+  /** If true, use Container-Optimized OS (https://cloud.google.com/container-optimized-os/) base image for VMs, rather than a base Debian image. */
+  useContainerOptimizedOs?: boolean;
+}
+
+export const FeatureSettings: Schema.Schema<FeatureSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    splitHealthChecks: Schema.optional(Schema.Boolean),
+    useContainerOptimizedOs: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "FeatureSettings" });
+
+export interface UrlDispatchRule {
+  /** Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".Defaults to matching all domains: "*". */
+  domain?: string;
+  /** Resource ID of a service in this application that should serve the matched request. The service must already exist. Example: default. */
+  service?: string;
+  /** Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.The sum of the lengths of the domain and path may not exceed 100 characters. */
+  path?: string;
+}
+
+export const UrlDispatchRule: Schema.Schema<UrlDispatchRule> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domain: Schema.optional(Schema.String),
+    service: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UrlDispatchRule" });
+
+export interface Application {
+  /** Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations). */
+  locationId?: string;
+  /** Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp. */
+  id?: string;
+  /** The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one. */
+  serviceAccount?: string;
+  /** Serving status of this application. */
+  servingStatus?:
+    | "UNSPECIFIED"
+    | "SERVING"
+    | "USER_DISABLED"
+    | "SYSTEM_DISABLED"
+    | (string & {});
+  /** Output only. The Google Container Registry domain used for storing managed build docker images for this application. */
+  gcrDomain?: string;
+  /** Cookie expiration policy for this application. */
+  defaultCookieExpiration?: string;
+  /** The feature specific settings to be used in the application. */
+  featureSettings?: FeatureSettings;
+  /** The type of the Cloud Firestore or Cloud Datastore database associated with this application. */
+  databaseType?:
+    | "DATABASE_TYPE_UNSPECIFIED"
+    | "CLOUD_DATASTORE"
+    | "CLOUD_FIRESTORE"
+    | "CLOUD_DATASTORE_COMPATIBILITY"
+    | (string & {});
+  iap?: IdentityAwareProxy;
+  /** Output only. Hostname used to reach this application, as resolved by App Engine.@OutputOnly */
+  defaultHostname?: string;
+  /** The SSL policy that will be applied to the application. If set to Modern it will restrict traffic with TLS < 1.2 and allow only Modern Ciphers suite */
+  sslPolicy?: "SSL_POLICY_UNSPECIFIED" | "DEFAULT" | "MODERN" | (string & {});
+  /** Output only. Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly */
+  defaultBucket?: string;
+  /** Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account. */
+  authDomain?: string;
+  name?: string;
+  /** HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported. */
+  dispatchRules?: ReadonlyArray<UrlDispatchRule>;
+  /** Output only. Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly */
+  codeBucket?: string;
+  /** Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest */
+  generatedCustomerMetadata?: Record<string, unknown>;
+}
+
+export const Application: Schema.Schema<Application> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationId: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    servingStatus: Schema.optional(Schema.String),
+    gcrDomain: Schema.optional(Schema.String),
+    defaultCookieExpiration: Schema.optional(Schema.String),
+    featureSettings: Schema.optional(FeatureSettings),
+    databaseType: Schema.optional(Schema.String),
+    iap: Schema.optional(IdentityAwareProxy),
+    defaultHostname: Schema.optional(Schema.String),
+    sslPolicy: Schema.optional(Schema.String),
+    defaultBucket: Schema.optional(Schema.String),
+    authDomain: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    dispatchRules: Schema.optional(Schema.Array(UrlDispatchRule)),
+    codeBucket: Schema.optional(Schema.String),
+    generatedCustomerMetadata: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+  }).annotate({ identifier: "Application" });
+
+export interface BatchUpdateIngressRulesResponse {
+  /** The full list of ingress FirewallRules for this application. */
+  ingressRules?: ReadonlyArray<FirewallRule>;
+}
+
+export const BatchUpdateIngressRulesResponse: Schema.Schema<BatchUpdateIngressRulesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ingressRules: Schema.optional(Schema.Array(FirewallRule)),
+  }).annotate({ identifier: "BatchUpdateIngressRulesResponse" });
+
+export interface OperationMetadataV1Alpha {
+  /** Time that this operation was created.@OutputOnly */
+  insertTime?: string;
+  /** Time that this operation completed.@OutputOnly */
+  endTime?: string;
+  /** Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly */
+  target?: string;
+  /** Durable messages that persist on every operation poll. @OutputOnly */
+  warning?: ReadonlyArray<string>;
+  /** Ephemeral message that may change every time the operation is polled. @OutputOnly */
+  ephemeralMessage?: string;
+  createVersionMetadata?: CreateVersionMetadataV1Alpha;
+  /** API method that initiated this operation. Example: google.appengine.v1alpha.Versions.CreateVersion.@OutputOnly */
+  method?: string;
+  /** User who requested this operation.@OutputOnly */
+  user?: string;
+}
+
+export const OperationMetadataV1Alpha: Schema.Schema<OperationMetadataV1Alpha> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    insertTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    warning: Schema.optional(Schema.Array(Schema.String)),
+    ephemeralMessage: Schema.optional(Schema.String),
+    createVersionMetadata: Schema.optional(CreateVersionMetadataV1Alpha),
+    method: Schema.optional(Schema.String),
+    user: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadataV1Alpha" });
+
+export interface ListDomainMappingsResponse {
+  /** The domain mappings for the application. */
+  domainMappings?: ReadonlyArray<DomainMapping>;
+  /** Continuation token for fetching the next page of results. */
+  nextPageToken?: string;
+}
+
+export const ListDomainMappingsResponse: Schema.Schema<ListDomainMappingsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domainMappings: Schema.optional(Schema.Array(DomainMapping)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDomainMappingsResponse" });
+
 export interface Runtime {
+  /** User-friendly display name, e.g. 'Node.js 12', etc. */
+  displayName?: string;
+  /** Date when Runtime is end of support. */
+  endOfSupportDate?: Appengine_Date;
+  /** Supported operating systems for the runtime, e.g., 'ubuntu22', etc. */
+  supportedOperatingSystems?: ReadonlyArray<string>;
+  /** Date when Runtime is decommissioned. */
+  decommissionedDate?: Appengine_Date;
   /** The name of the runtime, e.g., 'go113', 'nodejs12', etc. */
   name?: string;
+  /** The environment of the runtime. */
+  environment?:
+    | "ENVIRONMENT_UNSPECIFIED"
+    | "STANDARD"
+    | "FLEXIBLE"
+    | (string & {});
+  /** Warning messages, e.g., a deprecation warning. */
+  warnings?: ReadonlyArray<string>;
   /** The stage of life this runtime is in, e.g., BETA, GA, etc. */
   stage?:
     | "RUNTIME_STAGE_UNSPECIFIED"
@@ -1654,37 +1842,22 @@ export interface Runtime {
     | "DECOMMISSIONED"
     | "END_OF_SUPPORT"
     | (string & {});
-  /** Supported operating systems for the runtime, e.g., 'ubuntu22', etc. */
-  supportedOperatingSystems?: ReadonlyArray<string>;
-  /** User-friendly display name, e.g. 'Node.js 12', etc. */
-  displayName?: string;
-  /** Date when Runtime is decommissioned. */
-  decommissionedDate?: Appengine_Date;
-  /** Warning messages, e.g., a deprecation warning. */
-  warnings?: ReadonlyArray<string>;
-  /** The environment of the runtime. */
-  environment?:
-    | "ENVIRONMENT_UNSPECIFIED"
-    | "STANDARD"
-    | "FLEXIBLE"
-    | (string & {});
   /** Date when Runtime is deprecated. */
   deprecationDate?: Appengine_Date;
-  /** Date when Runtime is end of support. */
-  endOfSupportDate?: Appengine_Date;
 }
 
-export const Runtime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  stage: Schema.optional(Schema.String),
-  supportedOperatingSystems: Schema.optional(Schema.Array(Schema.String)),
-  displayName: Schema.optional(Schema.String),
-  decommissionedDate: Schema.optional(Appengine_Date),
-  warnings: Schema.optional(Schema.Array(Schema.String)),
-  environment: Schema.optional(Schema.String),
-  deprecationDate: Schema.optional(Appengine_Date),
-  endOfSupportDate: Schema.optional(Appengine_Date),
-}).annotate({ identifier: "Runtime" });
+export const Runtime: Schema.Schema<Runtime> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    endOfSupportDate: Schema.optional(Appengine_Date),
+    supportedOperatingSystems: Schema.optional(Schema.Array(Schema.String)),
+    decommissionedDate: Schema.optional(Appengine_Date),
+    name: Schema.optional(Schema.String),
+    environment: Schema.optional(Schema.String),
+    warnings: Schema.optional(Schema.Array(Schema.String)),
+    stage: Schema.optional(Schema.String),
+    deprecationDate: Schema.optional(Appengine_Date),
+  }).annotate({ identifier: "Runtime" });
 
 export interface ListRuntimesResponse {
   /** Continuation token for fetching the next page of results. */
@@ -1693,128 +1866,24 @@ export interface ListRuntimesResponse {
   runtimes?: ReadonlyArray<Runtime>;
 }
 
-export const ListRuntimesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  nextPageToken: Schema.optional(Schema.String),
-  runtimes: Schema.optional(Schema.Array(Runtime)),
-}).annotate({ identifier: "ListRuntimesResponse" });
-
-export interface BatchUpdateIngressRulesRequest {
-  /** A list of FirewallRules to replace the existing set. */
-  ingressRules?: ReadonlyArray<FirewallRule>;
-}
-
-export const BatchUpdateIngressRulesRequest =
+export const ListRuntimesResponse: Schema.Schema<ListRuntimesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ingressRules: Schema.optional(Schema.Array(FirewallRule)),
-  }).annotate({ identifier: "BatchUpdateIngressRulesRequest" });
-
-export interface AuthorizedDomain {
-  /** Full path to the AuthorizedDomain resource in the API. Example: apps/myapp/authorizedDomains/example.com.@OutputOnly */
-  name?: string;
-  /** Fully qualified domain name of the domain authorized for use. Example: example.com. */
-  id?: string;
-}
-
-export const AuthorizedDomain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-}).annotate({ identifier: "AuthorizedDomain" });
-
-export interface CreateVersionMetadataV1Alpha {
-  /** The Cloud Build ID if one was created as part of the version create. @OutputOnly */
-  cloudBuildId?: string;
-}
-
-export const CreateVersionMetadataV1Alpha =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cloudBuildId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CreateVersionMetadataV1Alpha" });
-
-export interface OperationMetadataV1Alpha {
-  /** Time that this operation completed.@OutputOnly */
-  endTime?: string;
-  /** API method that initiated this operation. Example: google.appengine.v1alpha.Versions.CreateVersion.@OutputOnly */
-  method?: string;
-  /** Durable messages that persist on every operation poll. @OutputOnly */
-  warning?: ReadonlyArray<string>;
-  /** User who requested this operation.@OutputOnly */
-  user?: string;
-  /** Time that this operation was created.@OutputOnly */
-  insertTime?: string;
-  /** Ephemeral message that may change every time the operation is polled. @OutputOnly */
-  ephemeralMessage?: string;
-  /** Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly */
-  target?: string;
-  createVersionMetadata?: CreateVersionMetadataV1Alpha;
-}
-
-export const OperationMetadataV1Alpha =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endTime: Schema.optional(Schema.String),
-    method: Schema.optional(Schema.String),
-    warning: Schema.optional(Schema.Array(Schema.String)),
-    user: Schema.optional(Schema.String),
-    insertTime: Schema.optional(Schema.String),
-    ephemeralMessage: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    createVersionMetadata: Schema.optional(CreateVersionMetadataV1Alpha),
-  }).annotate({ identifier: "OperationMetadataV1Alpha" });
-
-export interface LocationMetadata {
-  /** App Engine flexible environment is available in the given location.@OutputOnly */
-  flexibleEnvironmentAvailable?: boolean;
-  /** App Engine standard environment is available in the given location.@OutputOnly */
-  standardEnvironmentAvailable?: boolean;
-  /** Output only. Search API (https://cloud.google.com/appengine/docs/standard/python/search) is available in the given location. */
-  searchApiAvailable?: boolean;
-}
-
-export const LocationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  flexibleEnvironmentAvailable: Schema.optional(Schema.Boolean),
-  standardEnvironmentAvailable: Schema.optional(Schema.Boolean),
-  searchApiAvailable: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "LocationMetadata" });
-
-export interface ResourceEvent {
-  /** The state of the project that led to this event. */
-  state?: ContainerState;
-  /** The name of the resource for which this event is. required */
-  name?: string;
-  /** The unique ID for this per-resource event. CLHs can use this value to dedup repeated calls. required */
-  eventId?: string;
-}
-
-export const ResourceEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  state: Schema.optional(ContainerState),
-  name: Schema.optional(Schema.String),
-  eventId: Schema.optional(Schema.String),
-}).annotate({ identifier: "ResourceEvent" });
+    nextPageToken: Schema.optional(Schema.String),
+    runtimes: Schema.optional(Schema.Array(Runtime)),
+  }).annotate({ identifier: "ListRuntimesResponse" });
 
 export interface ListAuthorizedDomainsResponse {
-  /** Continuation token for fetching the next page of results. */
-  nextPageToken?: string;
   /** The authorized domains belonging to the user. */
   domains?: ReadonlyArray<AuthorizedDomain>;
-}
-
-export const ListAuthorizedDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    domains: Schema.optional(Schema.Array(AuthorizedDomain)),
-  }).annotate({ identifier: "ListAuthorizedDomainsResponse" });
-
-export interface ListDomainMappingsResponse {
-  /** The domain mappings for the application. */
-  domainMappings?: ReadonlyArray<DomainMapping>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
 
-export const ListDomainMappingsResponse =
+export const ListAuthorizedDomainsResponse: Schema.Schema<ListAuthorizedDomainsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    domainMappings: Schema.optional(Schema.Array(DomainMapping)),
+    domains: Schema.optional(Schema.Array(AuthorizedDomain)),
     nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListDomainMappingsResponse" });
+  }).annotate({ identifier: "ListAuthorizedDomainsResponse" });
 
 // ==========================================================================
 // Errors
@@ -1870,6 +1939,55 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
+export interface ListProjectsLocationsRequest {
+  /** Part of `name`. The resource that owns the locations collection, if applicable. */
+  projectsId: string;
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: string[];
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). */
+  filter?: string;
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
+  /** A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
+}
+
+export const ListProjectsLocationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
+    extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("extraLocationTypes"),
+    ),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/projects/{projectsId}/locations" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+
+export type ListProjectsLocationsResponse = ListLocationsResponse;
+export const ListProjectsLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
+
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
+export const listProjectsLocations: API.PaginatedOperationMethod<
+  ListProjectsLocationsRequest,
+  ListProjectsLocationsResponse,
+  ListProjectsLocationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsRequest,
+  output: ListProjectsLocationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
 export interface GetProjectsLocationsRequest {
   /** Part of `name`. Resource name for the location. */
   projectsId: string;
@@ -1907,80 +2025,31 @@ export const getProjectsLocations: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface ListProjectsLocationsRequest {
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). */
-  filter?: string;
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
-  /** Part of `name`. The resource that owns the locations collection, if applicable. */
-  projectsId: string;
-  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: string[];
-  /** A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
-}
-
-export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
-    extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("extraLocationTypes"),
-    ),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/projects/{projectsId}/locations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
-
-export type ListProjectsLocationsResponse = ListLocationsResponse;
-export const ListProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
-
-export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
-export const listProjectsLocations: API.PaginatedOperationMethod<
-  ListProjectsLocationsRequest,
-  ListProjectsLocationsResponse,
-  ListProjectsLocationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListProjectsLocationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface ListProjectsLocationsOperationsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   locationsId: string;
+  /** Part of `name`. The name of the operation's parent resource. */
+  projectsId: string;
+  /** The standard list page size. */
+  pageSize?: number;
   /** The standard list page token. */
   pageToken?: string;
   /** When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
-  /** Part of `name`. The name of the operation's parent resource. */
-  projectsId: string;
   /** The standard list filter. */
   filter?: string;
-  /** The standard list page size. */
-  pageSize?: number;
 }
 
 export const ListProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("returnPartialSuccess"),
     ),
-    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2017,17 +2086,17 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 export interface GetProjectsLocationsOperationsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   operationsId: string;
-  /** Part of `name`. The name of the operation resource. */
-  projectsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   locationsId: string;
+  /** Part of `name`. The name of the operation resource. */
+  projectsId: string;
 }
 
 export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationsId: Schema.String.pipe(T.HttpPath("operationsId")),
-    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
     locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2060,10 +2129,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 export interface PatchProjectsLocationsApplicationsRequest {
   /** Part of `name`. Required. Name of the Application resource to update. Example: apps/myapp. */
   projectsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  locationsId: string;
   /** Required. Standard field mask for the set of fields to be updated. */
   updateMask?: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  locationsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   applicationsId: string;
   /** Request body */
@@ -2073,8 +2142,8 @@ export interface PatchProjectsLocationsApplicationsRequest {
 export const PatchProjectsLocationsApplicationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
-    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
     applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
     body: Schema.optional(Application).pipe(T.HttpBody()),
   }).pipe(
@@ -2109,33 +2178,403 @@ export const patchProjectsLocationsApplications: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchProjectsLocationsApplicationsServicesRequest {
+export interface ListProjectsLocationsApplicationsAuthorizedDomainsRequest {
+  /** Part of `parent`. See documentation of `projectsId`. */
+  applicationsId: string;
+  /** Maximum results to return per page. */
+  pageSize?: number;
+  /** Continuation token for fetching the next page of results. */
+  pageToken?: string;
+  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
+  projectsId: string;
+  /** Part of `parent`. See documentation of `projectsId`. */
+  locationsId: string;
+}
+
+export const ListProjectsLocationsApplicationsAuthorizedDomainsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
+    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedDomains",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsApplicationsAuthorizedDomainsRequest>;
+
+export type ListProjectsLocationsApplicationsAuthorizedDomainsResponse =
+  ListAuthorizedDomainsResponse;
+export const ListProjectsLocationsApplicationsAuthorizedDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListAuthorizedDomainsResponse;
+
+export type ListProjectsLocationsApplicationsAuthorizedDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists all domains the user is authorized to administer. */
+export const listProjectsLocationsApplicationsAuthorizedDomains: API.PaginatedOperationMethod<
+  ListProjectsLocationsApplicationsAuthorizedDomainsRequest,
+  ListProjectsLocationsApplicationsAuthorizedDomainsResponse,
+  ListProjectsLocationsApplicationsAuthorizedDomainsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsApplicationsAuthorizedDomainsRequest,
+  output: ListProjectsLocationsApplicationsAuthorizedDomainsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest {
+  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
+  projectsId: string;
+  /** Part of `parent`. See documentation of `projectsId`. */
+  locationsId: string;
+  /** Part of `parent`. See documentation of `projectsId`. */
+  applicationsId: string;
+  /** Request body */
+  body?: AuthorizedCertificate;
+}
+
+export const CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
+    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
+    body: Schema.optional(AuthorizedCertificate).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
+
+export type CreateProjectsLocationsApplicationsAuthorizedCertificatesResponse =
+  AuthorizedCertificate;
+export const CreateProjectsLocationsApplicationsAuthorizedCertificatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AuthorizedCertificate;
+
+export type CreateProjectsLocationsApplicationsAuthorizedCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Uploads the specified SSL certificate. */
+export const createProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
+  CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest,
+  CreateProjectsLocationsApplicationsAuthorizedCertificatesResponse,
+  CreateProjectsLocationsApplicationsAuthorizedCertificatesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest,
+  output: CreateProjectsLocationsApplicationsAuthorizedCertificatesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest {
+  /** Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields. */
+  updateMask?: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  applicationsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  authorizedCertificatesId: string;
+  /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. */
+  projectsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  locationsId: string;
+  /** Request body */
+  body?: AuthorizedCertificate;
+}
+
+export const PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
+    authorizedCertificatesId: Schema.String.pipe(
+      T.HttpPath("authorizedCertificatesId"),
+    ),
+    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
+    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+    body: Schema.optional(AuthorizedCertificate).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
+
+export type PatchProjectsLocationsApplicationsAuthorizedCertificatesResponse =
+  AuthorizedCertificate;
+export const PatchProjectsLocationsApplicationsAuthorizedCertificatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AuthorizedCertificate;
+
+export type PatchProjectsLocationsApplicationsAuthorizedCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the specified SSL certificate. To renew a certificate and maintain its existing domain mappings, update certificate_data with a new certificate. The new certificate must be applicable to the same domains as the original certificate. The certificate display_name may also be updated. */
+export const patchProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
+  PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest,
+  PatchProjectsLocationsApplicationsAuthorizedCertificatesResponse,
+  PatchProjectsLocationsApplicationsAuthorizedCertificatesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest,
+  output: PatchProjectsLocationsApplicationsAuthorizedCertificatesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsApplicationsAuthorizedCertificatesRequest {
+  /** Part of `name`. See documentation of `projectsId`. */
+  applicationsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  authorizedCertificatesId: string;
+  /** Controls the set of fields returned in the GET response. */
+  view?: "BASIC_CERTIFICATE" | "FULL_CERTIFICATE" | (string & {});
+  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345. */
+  projectsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  locationsId: string;
+}
+
+export const GetProjectsLocationsApplicationsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
+    authorizedCertificatesId: Schema.String.pipe(
+      T.HttpPath("authorizedCertificatesId"),
+    ),
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
+    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
+
+export type GetProjectsLocationsApplicationsAuthorizedCertificatesResponse =
+  AuthorizedCertificate;
+export const GetProjectsLocationsApplicationsAuthorizedCertificatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AuthorizedCertificate;
+
+export type GetProjectsLocationsApplicationsAuthorizedCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the specified SSL certificate. */
+export const getProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
+  GetProjectsLocationsApplicationsAuthorizedCertificatesRequest,
+  GetProjectsLocationsApplicationsAuthorizedCertificatesResponse,
+  GetProjectsLocationsApplicationsAuthorizedCertificatesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsApplicationsAuthorizedCertificatesRequest,
+  output: GetProjectsLocationsApplicationsAuthorizedCertificatesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest {
+  /** Part of `name`. See documentation of `projectsId`. */
+  locationsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  applicationsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  authorizedCertificatesId: string;
+  /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345. */
+  projectsId: string;
+}
+
+export const DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
+    authorizedCertificatesId: Schema.String.pipe(
+      T.HttpPath("authorizedCertificatesId"),
+    ),
+    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
+
+export type DeleteProjectsLocationsApplicationsAuthorizedCertificatesResponse =
+  Empty;
+export const DeleteProjectsLocationsApplicationsAuthorizedCertificatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsApplicationsAuthorizedCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes the specified SSL certificate. */
+export const deleteProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
+  DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest,
+  DeleteProjectsLocationsApplicationsAuthorizedCertificatesResponse,
+  DeleteProjectsLocationsApplicationsAuthorizedCertificatesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest,
+  output: DeleteProjectsLocationsApplicationsAuthorizedCertificatesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsApplicationsAuthorizedCertificatesRequest {
+  /** Part of `parent`. See documentation of `projectsId`. */
+  applicationsId: string;
+  /** Maximum results to return per page. */
+  pageSize?: number;
+  /** Continuation token for fetching the next page of results. */
+  pageToken?: string;
+  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
+  projectsId: string;
+  /** Controls the set of fields returned in the LIST response. */
+  view?: "BASIC_CERTIFICATE" | "FULL_CERTIFICATE" | (string & {});
+  /** Part of `parent`. See documentation of `projectsId`. */
+  locationsId: string;
+}
+
+export const ListProjectsLocationsApplicationsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
+
+export type ListProjectsLocationsApplicationsAuthorizedCertificatesResponse =
+  ListAuthorizedCertificatesResponse;
+export const ListProjectsLocationsApplicationsAuthorizedCertificatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListAuthorizedCertificatesResponse;
+
+export type ListProjectsLocationsApplicationsAuthorizedCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists all SSL certificates the user is authorized to administer. */
+export const listProjectsLocationsApplicationsAuthorizedCertificates: API.PaginatedOperationMethod<
+  ListProjectsLocationsApplicationsAuthorizedCertificatesRequest,
+  ListProjectsLocationsApplicationsAuthorizedCertificatesResponse,
+  ListProjectsLocationsApplicationsAuthorizedCertificatesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsApplicationsAuthorizedCertificatesRequest,
+  output: ListProjectsLocationsApplicationsAuthorizedCertificatesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteProjectsLocationsApplicationsServicesRequest {
+  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default. */
+  projectsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  locationsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   servicesId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   applicationsId: string;
+}
+
+export const DeleteProjectsLocationsApplicationsServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
+    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsApplicationsServicesRequest>;
+
+export type DeleteProjectsLocationsApplicationsServicesResponse = Operation;
+export const DeleteProjectsLocationsApplicationsServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsApplicationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes the specified service and all enclosed versions. */
+export const deleteProjectsLocationsApplicationsServices: API.OperationMethod<
+  DeleteProjectsLocationsApplicationsServicesRequest,
+  DeleteProjectsLocationsApplicationsServicesResponse,
+  DeleteProjectsLocationsApplicationsServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsApplicationsServicesRequest,
+  output: DeleteProjectsLocationsApplicationsServicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsLocationsApplicationsServicesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
-  locationsId: string;
+  applicationsId: string;
   /** Required. Standard field mask for the set of fields to be updated. */
   updateMask?: string;
-  /** Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#InboundServiceType) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#AutomaticScaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services#ShardBy) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic). */
-  migrateTraffic?: boolean;
+  /** Part of `name`. See documentation of `projectsId`. */
+  locationsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  servicesId: string;
   /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default. */
   projectsId: string;
+  /** Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#InboundServiceType) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#AutomaticScaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services#ShardBy) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic). */
+  migrateTraffic?: boolean;
   /** Request body */
   body?: Service;
 }
 
 export const PatchProjectsLocationsApplicationsServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
     applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
-    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
     migrateTraffic: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("migrateTraffic"),
     ),
-    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
     body: Schema.optional(Service).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -2169,79 +2608,31 @@ export const patchProjectsLocationsApplicationsServices: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface DeleteProjectsLocationsApplicationsServicesRequest {
+export interface PatchProjectsLocationsApplicationsServicesVersionsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
-  applicationsId: string;
+  locationsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   servicesId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  locationsId: string;
-  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default. */
-  projectsId: string;
-}
-
-export const DeleteProjectsLocationsApplicationsServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
-    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
-    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApplicationsServicesRequest>;
-
-export type DeleteProjectsLocationsApplicationsServicesResponse = Operation;
-export const DeleteProjectsLocationsApplicationsServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsApplicationsServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes the specified service and all enclosed versions. */
-export const deleteProjectsLocationsApplicationsServices: API.OperationMethod<
-  DeleteProjectsLocationsApplicationsServicesRequest,
-  DeleteProjectsLocationsApplicationsServicesResponse,
-  DeleteProjectsLocationsApplicationsServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApplicationsServicesRequest,
-  output: DeleteProjectsLocationsApplicationsServicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsLocationsApplicationsServicesVersionsRequest {
   /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default/versions/1. */
   projectsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  locationsId: string;
-  /** Standard field mask for the set of fields to be updated. */
-  updateMask?: string;
   /** Part of `name`. See documentation of `projectsId`. */
   applicationsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   versionsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  servicesId: string;
+  /** Standard field mask for the set of fields to be updated. */
+  updateMask?: string;
   /** Request body */
   body?: Version;
 }
 
 export const PatchProjectsLocationsApplicationsServicesVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
     locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
     applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
     versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Version).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -2277,24 +2668,24 @@ export const patchProjectsLocationsApplicationsServicesVersions: API.OperationMe
 }));
 
 export interface DeleteProjectsLocationsApplicationsServicesVersionsRequest {
+  /** Part of `name`. See documentation of `projectsId`. */
+  versionsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  applicationsId: string;
   /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1. */
   projectsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   locationsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  applicationsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  versionsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   servicesId: string;
 }
 
 export const DeleteProjectsLocationsApplicationsServicesVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
+    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
     projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
     locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
-    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
-    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
     servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
   }).pipe(
     T.Http({
@@ -2329,27 +2720,27 @@ export const deleteProjectsLocationsApplicationsServicesVersions: API.OperationM
 }));
 
 export interface ExportAppImageProjectsLocationsApplicationsServicesVersionsRequest {
-  /** Part of `name`. Required. Name of the App Engine version resource. Format: apps/{app}/services/{service}/versions/{version} */
-  projectsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  locationsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  servicesId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   applicationsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   versionsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  locationsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  servicesId: string;
+  /** Part of `name`. Required. Name of the App Engine version resource. Format: apps/{app}/services/{service}/versions/{version} */
+  projectsId: string;
   /** Request body */
   body?: ExportAppImageRequest;
 }
 
 export const ExportAppImageProjectsLocationsApplicationsServicesVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
-    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
     applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
     versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
+    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
     body: Schema.optional(ExportAppImageRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -2386,27 +2777,27 @@ export const exportAppImageProjectsLocationsApplicationsServicesVersions: API.Op
 
 export interface DeleteProjectsLocationsApplicationsServicesVersionsInstancesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
-  applicationsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
   versionsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
-  servicesId: string;
+  applicationsId: string;
+  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. */
+  projectsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  instancesId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   locationsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
-  instancesId: string;
-  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. */
-  projectsId: string;
+  servicesId: string;
 }
 
 export const DeleteProjectsLocationsApplicationsServicesVersionsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
     versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
-    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
-    instancesId: Schema.String.pipe(T.HttpPath("instancesId")),
+    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
     projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
+    instancesId: Schema.String.pipe(T.HttpPath("instancesId")),
+    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2440,30 +2831,30 @@ export const deleteProjectsLocationsApplicationsServicesVersionsInstances: API.O
 }));
 
 export interface DebugProjectsLocationsApplicationsServicesVersionsInstancesRequest {
+  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. */
+  projectsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  instancesId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   locationsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   servicesId: string;
   /** Part of `name`. See documentation of `projectsId`. */
-  applicationsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
   versionsId: string;
-  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. */
-  projectsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
-  instancesId: string;
+  applicationsId: string;
   /** Request body */
   body?: DebugInstanceRequest;
 }
 
 export const DebugProjectsLocationsApplicationsServicesVersionsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
-    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
-    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
     projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
     instancesId: Schema.String.pipe(T.HttpPath("instancesId")),
+    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
+    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
     body: Schema.optional(DebugInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -2498,283 +2889,15 @@ export const debugProjectsLocationsApplicationsServicesVersionsInstances: API.Op
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest {
-  /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. */
-  projectsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  applicationsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  authorizedCertificatesId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  locationsId: string;
-  /** Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields. */
-  updateMask?: string;
-  /** Request body */
-  body?: AuthorizedCertificate;
-}
-
-export const PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
-    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
-    authorizedCertificatesId: Schema.String.pipe(
-      T.HttpPath("authorizedCertificatesId"),
-    ),
-    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(AuthorizedCertificate).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
-
-export type PatchProjectsLocationsApplicationsAuthorizedCertificatesResponse =
-  AuthorizedCertificate;
-export const PatchProjectsLocationsApplicationsAuthorizedCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AuthorizedCertificate;
-
-export type PatchProjectsLocationsApplicationsAuthorizedCertificatesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the specified SSL certificate. To renew a certificate and maintain its existing domain mappings, update certificate_data with a new certificate. The new certificate must be applicable to the same domains as the original certificate. The certificate display_name may also be updated. */
-export const patchProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
-  PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest,
-  PatchProjectsLocationsApplicationsAuthorizedCertificatesResponse,
-  PatchProjectsLocationsApplicationsAuthorizedCertificatesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest,
-  output: PatchProjectsLocationsApplicationsAuthorizedCertificatesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest {
-  /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345. */
-  projectsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  locationsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  applicationsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  authorizedCertificatesId: string;
-}
-
-export const DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
-    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
-    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
-    authorizedCertificatesId: Schema.String.pipe(
-      T.HttpPath("authorizedCertificatesId"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
-
-export type DeleteProjectsLocationsApplicationsAuthorizedCertificatesResponse =
-  Empty;
-export const DeleteProjectsLocationsApplicationsAuthorizedCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsApplicationsAuthorizedCertificatesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes the specified SSL certificate. */
-export const deleteProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
-  DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest,
-  DeleteProjectsLocationsApplicationsAuthorizedCertificatesResponse,
-  DeleteProjectsLocationsApplicationsAuthorizedCertificatesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest,
-  output: DeleteProjectsLocationsApplicationsAuthorizedCertificatesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsApplicationsAuthorizedCertificatesRequest {
-  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
-  projectsId: string;
-  /** Maximum results to return per page. */
-  pageSize?: number;
-  /** Part of `parent`. See documentation of `projectsId`. */
-  locationsId: string;
-  /** Continuation token for fetching the next page of results. */
-  pageToken?: string;
-  /** Part of `parent`. See documentation of `projectsId`. */
-  applicationsId: string;
-  /** Controls the set of fields returned in the LIST response. */
-  view?: "BASIC_CERTIFICATE" | "FULL_CERTIFICATE" | (string & {});
-}
-
-export const ListProjectsLocationsApplicationsAuthorizedCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
-
-export type ListProjectsLocationsApplicationsAuthorizedCertificatesResponse =
-  ListAuthorizedCertificatesResponse;
-export const ListProjectsLocationsApplicationsAuthorizedCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAuthorizedCertificatesResponse;
-
-export type ListProjectsLocationsApplicationsAuthorizedCertificatesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists all SSL certificates the user is authorized to administer. */
-export const listProjectsLocationsApplicationsAuthorizedCertificates: API.PaginatedOperationMethod<
-  ListProjectsLocationsApplicationsAuthorizedCertificatesRequest,
-  ListProjectsLocationsApplicationsAuthorizedCertificatesResponse,
-  ListProjectsLocationsApplicationsAuthorizedCertificatesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApplicationsAuthorizedCertificatesRequest,
-  output: ListProjectsLocationsApplicationsAuthorizedCertificatesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsLocationsApplicationsAuthorizedCertificatesRequest {
-  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345. */
-  projectsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  locationsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  applicationsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  authorizedCertificatesId: string;
-  /** Controls the set of fields returned in the GET response. */
-  view?: "BASIC_CERTIFICATE" | "FULL_CERTIFICATE" | (string & {});
-}
-
-export const GetProjectsLocationsApplicationsAuthorizedCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
-    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
-    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
-    authorizedCertificatesId: Schema.String.pipe(
-      T.HttpPath("authorizedCertificatesId"),
-    ),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
-
-export type GetProjectsLocationsApplicationsAuthorizedCertificatesResponse =
-  AuthorizedCertificate;
-export const GetProjectsLocationsApplicationsAuthorizedCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AuthorizedCertificate;
-
-export type GetProjectsLocationsApplicationsAuthorizedCertificatesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the specified SSL certificate. */
-export const getProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
-  GetProjectsLocationsApplicationsAuthorizedCertificatesRequest,
-  GetProjectsLocationsApplicationsAuthorizedCertificatesResponse,
-  GetProjectsLocationsApplicationsAuthorizedCertificatesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApplicationsAuthorizedCertificatesRequest,
-  output: GetProjectsLocationsApplicationsAuthorizedCertificatesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest {
-  /** Part of `parent`. See documentation of `projectsId`. */
-  applicationsId: string;
-  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
-  projectsId: string;
-  /** Part of `parent`. See documentation of `projectsId`. */
-  locationsId: string;
-  /** Request body */
-  body?: AuthorizedCertificate;
-}
-
-export const CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
-    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
-    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
-    body: Schema.optional(AuthorizedCertificate).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
-
-export type CreateProjectsLocationsApplicationsAuthorizedCertificatesResponse =
-  AuthorizedCertificate;
-export const CreateProjectsLocationsApplicationsAuthorizedCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AuthorizedCertificate;
-
-export type CreateProjectsLocationsApplicationsAuthorizedCertificatesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Uploads the specified SSL certificate. */
-export const createProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
-  CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest,
-  CreateProjectsLocationsApplicationsAuthorizedCertificatesResponse,
-  CreateProjectsLocationsApplicationsAuthorizedCertificatesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest,
-  output: CreateProjectsLocationsApplicationsAuthorizedCertificatesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface ListProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `parent`. See documentation of `projectsId`. */
   applicationsId: string;
-  /** Part of `parent`. See documentation of `projectsId`. */
-  locationsId: string;
-  /** Continuation token for fetching the next page of results. */
-  pageToken?: string;
   /** Maximum results to return per page. */
   pageSize?: number;
+  /** Continuation token for fetching the next page of results. */
+  pageToken?: string;
+  /** Part of `parent`. See documentation of `projectsId`. */
+  locationsId: string;
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
   projectsId: string;
 }
@@ -2782,9 +2905,9 @@ export interface ListProjectsLocationsApplicationsDomainMappingsRequest {
 export const ListProjectsLocationsApplicationsDomainMappingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
-    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
     projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
   }).pipe(
     T.Http({
@@ -2823,20 +2946,20 @@ export const listProjectsLocationsApplicationsDomainMappings: API.PaginatedOpera
 export interface GetProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   applicationsId: string;
-  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. */
-  projectsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  domainMappingsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   locationsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  domainMappingsId: string;
+  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. */
+  projectsId: string;
 }
 
 export const GetProjectsLocationsApplicationsDomainMappingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
-    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
-    domainMappingsId: Schema.String.pipe(T.HttpPath("domainMappingsId")),
     locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+    domainMappingsId: Schema.String.pipe(T.HttpPath("domainMappingsId")),
+    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2867,9 +2990,60 @@ export const getProjectsLocationsApplicationsDomainMappings: API.OperationMethod
   errors: [NotFound, Forbidden],
 }));
 
+export interface DeleteProjectsLocationsApplicationsDomainMappingsRequest {
+  /** Part of `name`. See documentation of `projectsId`. */
+  domainMappingsId: string;
+  /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com. */
+  projectsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  applicationsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  locationsId: string;
+}
+
+export const DeleteProjectsLocationsApplicationsDomainMappingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domainMappingsId: Schema.String.pipe(T.HttpPath("domainMappingsId")),
+    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
+    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
+    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsApplicationsDomainMappingsRequest>;
+
+export type DeleteProjectsLocationsApplicationsDomainMappingsResponse =
+  Operation;
+export const DeleteProjectsLocationsApplicationsDomainMappingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsApplicationsDomainMappingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource. */
+export const deleteProjectsLocationsApplicationsDomainMappings: API.OperationMethod<
+  DeleteProjectsLocationsApplicationsDomainMappingsRequest,
+  DeleteProjectsLocationsApplicationsDomainMappingsResponse,
+  DeleteProjectsLocationsApplicationsDomainMappingsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsApplicationsDomainMappingsRequest,
+  output: DeleteProjectsLocationsApplicationsDomainMappingsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface CreateProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
   projectsId: string;
+  /** Part of `parent`. See documentation of `projectsId`. */
+  applicationsId: string;
   /** Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected. */
   overrideStrategy?:
     | "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY"
@@ -2878,8 +3052,6 @@ export interface CreateProjectsLocationsApplicationsDomainMappingsRequest {
     | (string & {});
   /** Part of `parent`. See documentation of `projectsId`. */
   locationsId: string;
-  /** Part of `parent`. See documentation of `projectsId`. */
-  applicationsId: string;
   /** Request body */
   body?: DomainMapping;
 }
@@ -2887,11 +3059,11 @@ export interface CreateProjectsLocationsApplicationsDomainMappingsRequest {
 export const CreateProjectsLocationsApplicationsDomainMappingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
+    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
     overrideStrategy: Schema.optional(Schema.String).pipe(
       T.HttpQuery("overrideStrategy"),
     ),
     locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
-    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
     body: Schema.optional(DomainMapping).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -2927,14 +3099,14 @@ export const createProjectsLocationsApplicationsDomainMappings: API.OperationMet
 }));
 
 export interface PatchProjectsLocationsApplicationsDomainMappingsRequest {
+  /** Part of `name`. See documentation of `projectsId`. */
+  locationsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  domainMappingsId: string;
   /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/domainMappings/example.com. */
   projectsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
-  domainMappingsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
   applicationsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  locationsId: string;
   /** Required. Standard field mask for the set of fields to be updated. */
   updateMask?: string;
   /** Request body */
@@ -2943,10 +3115,10 @@ export interface PatchProjectsLocationsApplicationsDomainMappingsRequest {
 
 export const PatchProjectsLocationsApplicationsDomainMappingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
-    domainMappingsId: Schema.String.pipe(T.HttpPath("domainMappingsId")),
-    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
     locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+    domainMappingsId: Schema.String.pipe(T.HttpPath("domainMappingsId")),
+    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
+    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(DomainMapping).pipe(T.HttpBody()),
   }).pipe(
@@ -2982,125 +3154,103 @@ export const patchProjectsLocationsApplicationsDomainMappings: API.OperationMeth
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface DeleteProjectsLocationsApplicationsDomainMappingsRequest {
-  /** Part of `name`. See documentation of `projectsId`. */
-  locationsId: string;
-  /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com. */
-  projectsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  domainMappingsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  applicationsId: string;
+export interface RepairAppsRequest {
+  /** Part of `name`. Required. Name of the application to repair. Example: apps/myapp */
+  appsId: string;
+  /** Request body */
+  body?: RepairApplicationRequest;
 }
 
-export const DeleteProjectsLocationsApplicationsDomainMappingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
-    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
-    domainMappingsId: Schema.String.pipe(T.HttpPath("domainMappingsId")),
-    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApplicationsDomainMappingsRequest>;
+export const RepairAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appsId: Schema.String.pipe(T.HttpPath("appsId")),
+  body: Schema.optional(RepairApplicationRequest).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "v1beta/apps/{appsId}:repair",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<RepairAppsRequest>;
 
-export type DeleteProjectsLocationsApplicationsDomainMappingsResponse =
-  Operation;
-export const DeleteProjectsLocationsApplicationsDomainMappingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type RepairAppsResponse = Operation;
+export const RepairAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsApplicationsDomainMappingsError =
+export type RepairAppsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource. */
-export const deleteProjectsLocationsApplicationsDomainMappings: API.OperationMethod<
-  DeleteProjectsLocationsApplicationsDomainMappingsRequest,
-  DeleteProjectsLocationsApplicationsDomainMappingsResponse,
-  DeleteProjectsLocationsApplicationsDomainMappingsError,
+/** Recreates the required App Engine features for the specified App Engine application, for example a Cloud Storage bucket or App Engine service account. Use this method if you receive an error message about a missing feature, for example, Error retrieving the App Engine service account. If you have deleted your App Engine service account, this will not be able to recreate it. Instead, you should attempt to use the IAM undelete API if possible at https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/undelete?apix_params=%7B"name"%3A"projects%2F-%2FserviceAccounts%2Funique_id"%2C"resource"%3A%7B%7D%7D . If the deletion was recent, the numeric ID can be found in the Cloud Console Activity Log. */
+export const repairApps: API.OperationMethod<
+  RepairAppsRequest,
+  RepairAppsResponse,
+  RepairAppsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApplicationsDomainMappingsRequest,
-  output: DeleteProjectsLocationsApplicationsDomainMappingsResponse,
+  input: RepairAppsRequest,
+  output: RepairAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsLocationsApplicationsAuthorizedDomainsRequest {
-  /** Part of `parent`. See documentation of `projectsId`. */
-  applicationsId: string;
-  /** Continuation token for fetching the next page of results. */
-  pageToken?: string;
-  /** Part of `parent`. See documentation of `projectsId`. */
-  locationsId: string;
-  /** Maximum results to return per page. */
-  pageSize?: number;
+export interface ListRuntimesAppsRequest {
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
-  projectsId: string;
+  appsId: string;
+  /** Optional. The environment of the Application. */
+  environment?:
+    | "ENVIRONMENT_UNSPECIFIED"
+    | "STANDARD"
+    | "FLEXIBLE"
+    | (string & {});
 }
 
-export const ListProjectsLocationsApplicationsAuthorizedDomainsRequest =
+export const ListRuntimesAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    applicationsId: Schema.String.pipe(T.HttpPath("applicationsId")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    projectsId: Schema.String.pipe(T.HttpPath("projectsId")),
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    environment: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("environment"),
+    ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedDomains",
-    }),
+    T.Http({ method: "GET", path: "v1beta/apps/{appsId}:listRuntimes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsApplicationsAuthorizedDomainsRequest>;
+  ) as unknown as Schema.Schema<ListRuntimesAppsRequest>;
 
-export type ListProjectsLocationsApplicationsAuthorizedDomainsResponse =
-  ListAuthorizedDomainsResponse;
-export const ListProjectsLocationsApplicationsAuthorizedDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAuthorizedDomainsResponse;
+export type ListRuntimesAppsResponse = ListRuntimesResponse;
+export const ListRuntimesAppsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListRuntimesResponse;
 
-export type ListProjectsLocationsApplicationsAuthorizedDomainsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+export type ListRuntimesAppsError = DefaultErrors | NotFound | Forbidden;
 
-/** Lists all domains the user is authorized to administer. */
-export const listProjectsLocationsApplicationsAuthorizedDomains: API.PaginatedOperationMethod<
-  ListProjectsLocationsApplicationsAuthorizedDomainsRequest,
-  ListProjectsLocationsApplicationsAuthorizedDomainsResponse,
-  ListProjectsLocationsApplicationsAuthorizedDomainsError,
+/** Lists all the available runtimes for the application. */
+export const listRuntimesApps: API.OperationMethod<
+  ListRuntimesAppsRequest,
+  ListRuntimesAppsResponse,
+  ListRuntimesAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApplicationsAuthorizedDomainsRequest,
-  output: ListProjectsLocationsApplicationsAuthorizedDomainsResponse,
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListRuntimesAppsRequest,
+  output: ListRuntimesAppsResponse,
   errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
 export interface GetAppsRequest {
+  /** Part of `name`. Required. Name of the Application resource to get. Example: apps/myapp. */
+  appsId: string;
   /** Optional. Options to include extra data */
   includeExtraData?:
     | "INCLUDE_EXTRA_DATA_UNSPECIFIED"
     | "INCLUDE_EXTRA_DATA_NONE"
     | "INCLUDE_GOOGLE_GENERATED_METADATA"
     | (string & {});
-  /** Part of `name`. Required. Name of the Application resource to get. Example: apps/myapp. */
-  appsId: string;
 }
 
 export const GetAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appsId: Schema.String.pipe(T.HttpPath("appsId")),
   includeExtraData: Schema.optional(Schema.String).pipe(
     T.HttpQuery("includeExtraData"),
   ),
-  appsId: Schema.String.pipe(T.HttpPath("appsId")),
 }).pipe(
   T.Http({ method: "GET", path: "v1beta/apps/{appsId}" }),
   svc,
@@ -3157,59 +3307,18 @@ export const createApps: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface RepairAppsRequest {
-  /** Part of `name`. Required. Name of the application to repair. Example: apps/myapp */
-  appsId: string;
-  /** Request body */
-  body?: RepairApplicationRequest;
-}
-
-export const RepairAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  appsId: Schema.String.pipe(T.HttpPath("appsId")),
-  body: Schema.optional(RepairApplicationRequest).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "v1beta/apps/{appsId}:repair",
-    hasBody: true,
-  }),
-  svc,
-) as unknown as Schema.Schema<RepairAppsRequest>;
-
-export type RepairAppsResponse = Operation;
-export const RepairAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type RepairAppsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Recreates the required App Engine features for the specified App Engine application, for example a Cloud Storage bucket or App Engine service account. Use this method if you receive an error message about a missing feature, for example, Error retrieving the App Engine service account. If you have deleted your App Engine service account, this will not be able to recreate it. Instead, you should attempt to use the IAM undelete API if possible at https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/undelete?apix_params=%7B"name"%3A"projects%2F-%2FserviceAccounts%2Funique_id"%2C"resource"%3A%7B%7D%7D . If the deletion was recent, the numeric ID can be found in the Cloud Console Activity Log. */
-export const repairApps: API.OperationMethod<
-  RepairAppsRequest,
-  RepairAppsResponse,
-  RepairAppsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RepairAppsRequest,
-  output: RepairAppsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface PatchAppsRequest {
-  /** Required. Standard field mask for the set of fields to be updated. */
-  updateMask?: string;
   /** Part of `name`. Required. Name of the Application resource to update. Example: apps/myapp. */
   appsId: string;
+  /** Required. Standard field mask for the set of fields to be updated. */
+  updateMask?: string;
   /** Request body */
   body?: Application;
 }
 
 export const PatchAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   appsId: Schema.String.pipe(T.HttpPath("appsId")),
+  updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Application).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "PATCH", path: "v1beta/apps/{appsId}", hasBody: true }),
@@ -3238,140 +3347,48 @@ export const patchApps: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListRuntimesAppsRequest {
-  /** Optional. The environment of the Application. */
-  environment?:
-    | "ENVIRONMENT_UNSPECIFIED"
-    | "STANDARD"
-    | "FLEXIBLE"
-    | (string & {});
-  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
-  appsId: string;
-}
-
-export const ListRuntimesAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    environment: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("environment"),
-    ),
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/apps/{appsId}:listRuntimes" }),
-    svc,
-  ) as unknown as Schema.Schema<ListRuntimesAppsRequest>;
-
-export type ListRuntimesAppsResponse = ListRuntimesResponse;
-export const ListRuntimesAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListRuntimesResponse;
-
-export type ListRuntimesAppsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists all the available runtimes for the application. */
-export const listRuntimesApps: API.OperationMethod<
-  ListRuntimesAppsRequest,
-  ListRuntimesAppsResponse,
-  ListRuntimesAppsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListRuntimesAppsRequest,
-  output: ListRuntimesAppsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListAppsAuthorizedCertificatesRequest {
-  /** Continuation token for fetching the next page of results. */
-  pageToken?: string;
+export interface ListAppsAuthorizedDomainsRequest {
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
   appsId: string;
   /** Maximum results to return per page. */
   pageSize?: number;
-  /** Controls the set of fields returned in the LIST response. */
-  view?: "BASIC_CERTIFICATE" | "FULL_CERTIFICATE" | (string & {});
+  /** Continuation token for fetching the next page of results. */
+  pageToken?: string;
 }
 
-export const ListAppsAuthorizedCertificatesRequest =
+export const ListAppsAuthorizedDomainsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     appsId: Schema.String.pipe(T.HttpPath("appsId")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/apps/{appsId}/authorizedCertificates",
-    }),
+    T.Http({ method: "GET", path: "v1beta/apps/{appsId}/authorizedDomains" }),
     svc,
-  ) as unknown as Schema.Schema<ListAppsAuthorizedCertificatesRequest>;
+  ) as unknown as Schema.Schema<ListAppsAuthorizedDomainsRequest>;
 
-export type ListAppsAuthorizedCertificatesResponse =
-  ListAuthorizedCertificatesResponse;
-export const ListAppsAuthorizedCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAuthorizedCertificatesResponse;
+export type ListAppsAuthorizedDomainsResponse = ListAuthorizedDomainsResponse;
+export const ListAppsAuthorizedDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListAuthorizedDomainsResponse;
 
-export type ListAppsAuthorizedCertificatesError =
+export type ListAppsAuthorizedDomainsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Lists all SSL certificates the user is authorized to administer. */
-export const listAppsAuthorizedCertificates: API.PaginatedOperationMethod<
-  ListAppsAuthorizedCertificatesRequest,
-  ListAppsAuthorizedCertificatesResponse,
-  ListAppsAuthorizedCertificatesError,
+/** Lists all domains the user is authorized to administer. */
+export const listAppsAuthorizedDomains: API.PaginatedOperationMethod<
+  ListAppsAuthorizedDomainsRequest,
+  ListAppsAuthorizedDomainsResponse,
+  ListAppsAuthorizedDomainsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListAppsAuthorizedCertificatesRequest,
-  output: ListAppsAuthorizedCertificatesResponse,
+  input: ListAppsAuthorizedDomainsRequest,
+  output: ListAppsAuthorizedDomainsResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
-}));
-
-export interface GetAppsAuthorizedCertificatesRequest {
-  /** Part of `name`. See documentation of `appsId`. */
-  authorizedCertificatesId: string;
-  /** Controls the set of fields returned in the GET response. */
-  view?: "BASIC_CERTIFICATE" | "FULL_CERTIFICATE" | (string & {});
-  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345. */
-  appsId: string;
-}
-
-export const GetAppsAuthorizedCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    authorizedCertificatesId: Schema.String.pipe(
-      T.HttpPath("authorizedCertificatesId"),
-    ),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetAppsAuthorizedCertificatesRequest>;
-
-export type GetAppsAuthorizedCertificatesResponse = AuthorizedCertificate;
-export const GetAppsAuthorizedCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AuthorizedCertificate;
-
-export type GetAppsAuthorizedCertificatesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the specified SSL certificate. */
-export const getAppsAuthorizedCertificates: API.OperationMethod<
-  GetAppsAuthorizedCertificatesRequest,
-  GetAppsAuthorizedCertificatesResponse,
-  GetAppsAuthorizedCertificatesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAppsAuthorizedCertificatesRequest,
-  output: GetAppsAuthorizedCertificatesResponse,
-  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAppsAuthorizedCertificatesRequest {
@@ -3418,23 +3435,23 @@ export const createAppsAuthorizedCertificates: API.OperationMethod<
 }));
 
 export interface PatchAppsAuthorizedCertificatesRequest {
-  /** Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields. */
-  updateMask?: string;
   /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. */
   appsId: string;
   /** Part of `name`. See documentation of `appsId`. */
   authorizedCertificatesId: string;
+  /** Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields. */
+  updateMask?: string;
   /** Request body */
   body?: AuthorizedCertificate;
 }
 
 export const PatchAppsAuthorizedCertificatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     appsId: Schema.String.pipe(T.HttpPath("appsId")),
     authorizedCertificatesId: Schema.String.pipe(
       T.HttpPath("authorizedCertificatesId"),
     ),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AuthorizedCertificate).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -3466,6 +3483,51 @@ export const patchAppsAuthorizedCertificates: API.OperationMethod<
   input: PatchAppsAuthorizedCertificatesRequest,
   output: PatchAppsAuthorizedCertificatesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetAppsAuthorizedCertificatesRequest {
+  /** Controls the set of fields returned in the GET response. */
+  view?: "BASIC_CERTIFICATE" | "FULL_CERTIFICATE" | (string & {});
+  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345. */
+  appsId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  authorizedCertificatesId: string;
+}
+
+export const GetAppsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    authorizedCertificatesId: Schema.String.pipe(
+      T.HttpPath("authorizedCertificatesId"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetAppsAuthorizedCertificatesRequest>;
+
+export type GetAppsAuthorizedCertificatesResponse = AuthorizedCertificate;
+export const GetAppsAuthorizedCertificatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AuthorizedCertificate;
+
+export type GetAppsAuthorizedCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the specified SSL certificate. */
+export const getAppsAuthorizedCertificates: API.OperationMethod<
+  GetAppsAuthorizedCertificatesRequest,
+  GetAppsAuthorizedCertificatesResponse,
+  GetAppsAuthorizedCertificatesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAppsAuthorizedCertificatesRequest,
+  output: GetAppsAuthorizedCertificatesResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAppsAuthorizedCertificatesRequest {
@@ -3509,6 +3571,275 @@ export const deleteAppsAuthorizedCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAppsAuthorizedCertificatesRequest,
   output: DeleteAppsAuthorizedCertificatesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListAppsAuthorizedCertificatesRequest {
+  /** Controls the set of fields returned in the LIST response. */
+  view?: "BASIC_CERTIFICATE" | "FULL_CERTIFICATE" | (string & {});
+  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
+  appsId: string;
+  /** Maximum results to return per page. */
+  pageSize?: number;
+  /** Continuation token for fetching the next page of results. */
+  pageToken?: string;
+}
+
+export const ListAppsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta/apps/{appsId}/authorizedCertificates",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListAppsAuthorizedCertificatesRequest>;
+
+export type ListAppsAuthorizedCertificatesResponse =
+  ListAuthorizedCertificatesResponse;
+export const ListAppsAuthorizedCertificatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListAuthorizedCertificatesResponse;
+
+export type ListAppsAuthorizedCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists all SSL certificates the user is authorized to administer. */
+export const listAppsAuthorizedCertificates: API.PaginatedOperationMethod<
+  ListAppsAuthorizedCertificatesRequest,
+  ListAppsAuthorizedCertificatesResponse,
+  ListAppsAuthorizedCertificatesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAppsAuthorizedCertificatesRequest,
+  output: ListAppsAuthorizedCertificatesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface BatchUpdateAppsFirewallIngressRulesRequest {
+  /** Part of `name`. Name of the Firewall collection to set. Example: apps/myapp/firewall/ingressRules. */
+  appsId: string;
+  /** Request body */
+  body?: BatchUpdateIngressRulesRequest;
+}
+
+export const BatchUpdateAppsFirewallIngressRulesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    body: Schema.optional(BatchUpdateIngressRulesRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta/apps/{appsId}/firewall/ingressRules:batchUpdate",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<BatchUpdateAppsFirewallIngressRulesRequest>;
+
+export type BatchUpdateAppsFirewallIngressRulesResponse =
+  BatchUpdateIngressRulesResponse;
+export const BatchUpdateAppsFirewallIngressRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BatchUpdateIngressRulesResponse;
+
+export type BatchUpdateAppsFirewallIngressRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Replaces the entire firewall ruleset in one bulk operation. This overrides and replaces the rules of an existing firewall with the new rules.If the final rule does not match traffic with the '*' wildcard IP range, then an "allow all" rule is explicitly added to the end of the list. */
+export const batchUpdateAppsFirewallIngressRules: API.OperationMethod<
+  BatchUpdateAppsFirewallIngressRulesRequest,
+  BatchUpdateAppsFirewallIngressRulesResponse,
+  BatchUpdateAppsFirewallIngressRulesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchUpdateAppsFirewallIngressRulesRequest,
+  output: BatchUpdateAppsFirewallIngressRulesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateAppsFirewallIngressRulesRequest {
+  /** Part of `parent`. Required. Name of the parent Firewall collection in which to create a new rule. Example: apps/myapp/firewall/ingressRules. */
+  appsId: string;
+  /** Request body */
+  body?: FirewallRule;
+}
+
+export const CreateAppsFirewallIngressRulesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    body: Schema.optional(FirewallRule).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta/apps/{appsId}/firewall/ingressRules",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateAppsFirewallIngressRulesRequest>;
+
+export type CreateAppsFirewallIngressRulesResponse = FirewallRule;
+export const CreateAppsFirewallIngressRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ FirewallRule;
+
+export type CreateAppsFirewallIngressRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a firewall rule for the application. */
+export const createAppsFirewallIngressRules: API.OperationMethod<
+  CreateAppsFirewallIngressRulesRequest,
+  CreateAppsFirewallIngressRulesResponse,
+  CreateAppsFirewallIngressRulesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateAppsFirewallIngressRulesRequest,
+  output: CreateAppsFirewallIngressRulesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchAppsFirewallIngressRulesRequest {
+  /** Part of `name`. Name of the Firewall resource to update. Example: apps/myapp/firewall/ingressRules/100. */
+  appsId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  ingressRulesId: string;
+  /** Standard field mask for the set of fields to be updated. */
+  updateMask?: string;
+  /** Request body */
+  body?: FirewallRule;
+}
+
+export const PatchAppsFirewallIngressRulesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    ingressRulesId: Schema.String.pipe(T.HttpPath("ingressRulesId")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(FirewallRule).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchAppsFirewallIngressRulesRequest>;
+
+export type PatchAppsFirewallIngressRulesResponse = FirewallRule;
+export const PatchAppsFirewallIngressRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ FirewallRule;
+
+export type PatchAppsFirewallIngressRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the specified firewall rule. */
+export const patchAppsFirewallIngressRules: API.OperationMethod<
+  PatchAppsFirewallIngressRulesRequest,
+  PatchAppsFirewallIngressRulesResponse,
+  PatchAppsFirewallIngressRulesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchAppsFirewallIngressRulesRequest,
+  output: PatchAppsFirewallIngressRulesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetAppsFirewallIngressRulesRequest {
+  /** Part of `name`. See documentation of `appsId`. */
+  ingressRulesId: string;
+  /** Part of `name`. Name of the Firewall resource to retrieve. Example: apps/myapp/firewall/ingressRules/100. */
+  appsId: string;
+}
+
+export const GetAppsFirewallIngressRulesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ingressRulesId: Schema.String.pipe(T.HttpPath("ingressRulesId")),
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetAppsFirewallIngressRulesRequest>;
+
+export type GetAppsFirewallIngressRulesResponse = FirewallRule;
+export const GetAppsFirewallIngressRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ FirewallRule;
+
+export type GetAppsFirewallIngressRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the specified firewall rule. */
+export const getAppsFirewallIngressRules: API.OperationMethod<
+  GetAppsFirewallIngressRulesRequest,
+  GetAppsFirewallIngressRulesResponse,
+  GetAppsFirewallIngressRulesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAppsFirewallIngressRulesRequest,
+  output: GetAppsFirewallIngressRulesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteAppsFirewallIngressRulesRequest {
+  /** Part of `name`. Name of the Firewall resource to delete. Example: apps/myapp/firewall/ingressRules/100. */
+  appsId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  ingressRulesId: string;
+}
+
+export const DeleteAppsFirewallIngressRulesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    ingressRulesId: Schema.String.pipe(T.HttpPath("ingressRulesId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteAppsFirewallIngressRulesRequest>;
+
+export type DeleteAppsFirewallIngressRulesResponse = Empty;
+export const DeleteAppsFirewallIngressRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteAppsFirewallIngressRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes the specified firewall rule. */
+export const deleteAppsFirewallIngressRules: API.OperationMethod<
+  DeleteAppsFirewallIngressRulesRequest,
+  DeleteAppsFirewallIngressRulesResponse,
+  DeleteAppsFirewallIngressRulesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAppsFirewallIngressRulesRequest,
+  output: DeleteAppsFirewallIngressRulesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -3564,350 +3895,763 @@ export const listAppsFirewallIngressRules: API.PaginatedOperationMethod<
   },
 }));
 
-export interface CreateAppsFirewallIngressRulesRequest {
-  /** Part of `parent`. Required. Name of the parent Firewall collection in which to create a new rule. Example: apps/myapp/firewall/ingressRules. */
+export interface ListAppsLocationsRequest {
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
+  /** A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). */
+  filter?: string;
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: string[];
+  /** Part of `name`. The resource that owns the locations collection, if applicable. */
   appsId: string;
-  /** Request body */
-  body?: FirewallRule;
 }
 
-export const CreateAppsFirewallIngressRulesRequest =
+export const ListAppsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("extraLocationTypes"),
+    ),
     appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    body: Schema.optional(FirewallRule).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/apps/{appsId}/locations" }),
+    svc,
+  ) as unknown as Schema.Schema<ListAppsLocationsRequest>;
+
+export type ListAppsLocationsResponse = ListLocationsResponse;
+export const ListAppsLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
+
+export type ListAppsLocationsError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
+export const listAppsLocations: API.PaginatedOperationMethod<
+  ListAppsLocationsRequest,
+  ListAppsLocationsResponse,
+  ListAppsLocationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAppsLocationsRequest,
+  output: ListAppsLocationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetAppsLocationsRequest {
+  /** Part of `name`. See documentation of `appsId`. */
+  locationsId: string;
+  /** Part of `name`. Resource name for the location. */
+  appsId: string;
+}
+
+export const GetAppsLocationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
   }).pipe(
     T.Http({
-      method: "POST",
-      path: "v1beta/apps/{appsId}/firewall/ingressRules",
-      hasBody: true,
+      method: "GET",
+      path: "v1beta/apps/{appsId}/locations/{locationsId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAppsFirewallIngressRulesRequest>;
+  ) as unknown as Schema.Schema<GetAppsLocationsRequest>;
 
-export type CreateAppsFirewallIngressRulesResponse = FirewallRule;
-export const CreateAppsFirewallIngressRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FirewallRule;
+export type GetAppsLocationsResponse = Location;
+export const GetAppsLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type CreateAppsFirewallIngressRulesError =
+export type GetAppsLocationsError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets information about a location. */
+export const getAppsLocations: API.OperationMethod<
+  GetAppsLocationsRequest,
+  GetAppsLocationsResponse,
+  GetAppsLocationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAppsLocationsRequest,
+  output: GetAppsLocationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListAppsServicesRequest {
+  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
+  appsId: string;
+  /** Maximum results to return per page. */
+  pageSize?: number;
+  /** Continuation token for fetching the next page of results. */
+  pageToken?: string;
+}
+
+export const ListAppsServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/apps/{appsId}/services" }),
+    svc,
+  ) as unknown as Schema.Schema<ListAppsServicesRequest>;
+
+export type ListAppsServicesResponse = ListServicesResponse;
+export const ListAppsServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListServicesResponse;
+
+export type ListAppsServicesError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists all the services in the application. */
+export const listAppsServices: API.PaginatedOperationMethod<
+  ListAppsServicesRequest,
+  ListAppsServicesResponse,
+  ListAppsServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAppsServicesRequest,
+  output: ListAppsServicesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetAppsServicesRequest {
+  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default. */
+  appsId: string;
+  /** Optional. Options to include extra data */
+  includeExtraData?:
+    | "INCLUDE_EXTRA_DATA_UNSPECIFIED"
+    | "INCLUDE_EXTRA_DATA_NONE"
+    | "INCLUDE_GOOGLE_GENERATED_METADATA"
+    | (string & {});
+  /** Part of `name`. See documentation of `appsId`. */
+  servicesId: string;
+}
+
+export const GetAppsServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    includeExtraData: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("includeExtraData"),
+    ),
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+  },
+).pipe(
+  T.Http({ method: "GET", path: "v1beta/apps/{appsId}/services/{servicesId}" }),
+  svc,
+) as unknown as Schema.Schema<GetAppsServicesRequest>;
+
+export type GetAppsServicesResponse = Service;
+export const GetAppsServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Service;
+
+export type GetAppsServicesError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets the current configuration of the specified service. */
+export const getAppsServices: API.OperationMethod<
+  GetAppsServicesRequest,
+  GetAppsServicesResponse,
+  GetAppsServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAppsServicesRequest,
+  output: GetAppsServicesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteAppsServicesRequest {
+  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default. */
+  appsId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  servicesId: string;
+}
+
+export const DeleteAppsServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1beta/apps/{appsId}/services/{servicesId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteAppsServicesRequest>;
+
+export type DeleteAppsServicesResponse = Operation;
+export const DeleteAppsServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteAppsServicesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a firewall rule for the application. */
-export const createAppsFirewallIngressRules: API.OperationMethod<
-  CreateAppsFirewallIngressRulesRequest,
-  CreateAppsFirewallIngressRulesResponse,
-  CreateAppsFirewallIngressRulesError,
+/** Deletes the specified service and all enclosed versions. */
+export const deleteAppsServices: API.OperationMethod<
+  DeleteAppsServicesRequest,
+  DeleteAppsServicesResponse,
+  DeleteAppsServicesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateAppsFirewallIngressRulesRequest,
-  output: CreateAppsFirewallIngressRulesResponse,
+  input: DeleteAppsServicesRequest,
+  output: DeleteAppsServicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetAppsFirewallIngressRulesRequest {
-  /** Part of `name`. See documentation of `appsId`. */
-  ingressRulesId: string;
-  /** Part of `name`. Name of the Firewall resource to retrieve. Example: apps/myapp/firewall/ingressRules/100. */
+export interface PatchAppsServicesRequest {
+  /** Required. Standard field mask for the set of fields to be updated. */
+  updateMask?: string;
+  /** Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#InboundServiceType) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#AutomaticScaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services#ShardBy) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic). */
+  migrateTraffic?: boolean;
+  /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default. */
   appsId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  servicesId: string;
+  /** Request body */
+  body?: Service;
 }
 
-export const GetAppsFirewallIngressRulesRequest =
+export const PatchAppsServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ingressRulesId: Schema.String.pipe(T.HttpPath("ingressRulesId")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    migrateTraffic: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("migrateTraffic"),
+    ),
     appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+    body: Schema.optional(Service).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1beta/apps/{appsId}/services/{servicesId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchAppsServicesRequest>;
+
+export type PatchAppsServicesResponse = Operation;
+export const PatchAppsServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchAppsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the configuration of the specified service. */
+export const patchAppsServices: API.OperationMethod<
+  PatchAppsServicesRequest,
+  PatchAppsServicesResponse,
+  PatchAppsServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchAppsServicesRequest,
+  output: PatchAppsServicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListAppsServicesVersionsRequest {
+  /** Maximum results to return per page. */
+  pageSize?: number;
+  /** Continuation token for fetching the next page of results. */
+  pageToken?: string;
+  /** Controls the set of fields returned in the List response. */
+  view?: "BASIC" | "FULL" | (string & {});
+  /** Part of `parent`. Required. Name of the parent Service resource. Example: apps/myapp/services/default. */
+  appsId: string;
+  /** Part of `parent`. See documentation of `appsId`. */
+  servicesId: string;
+}
+
+export const ListAppsServicesVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}",
+      path: "v1beta/apps/{appsId}/services/{servicesId}/versions",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAppsFirewallIngressRulesRequest>;
+  ) as unknown as Schema.Schema<ListAppsServicesVersionsRequest>;
 
-export type GetAppsFirewallIngressRulesResponse = FirewallRule;
-export const GetAppsFirewallIngressRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FirewallRule;
+export type ListAppsServicesVersionsResponse = ListVersionsResponse;
+export const ListAppsServicesVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListVersionsResponse;
 
-export type GetAppsFirewallIngressRulesError =
+export type ListAppsServicesVersionsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Gets the specified firewall rule. */
-export const getAppsFirewallIngressRules: API.OperationMethod<
-  GetAppsFirewallIngressRulesRequest,
-  GetAppsFirewallIngressRulesResponse,
-  GetAppsFirewallIngressRulesError,
+/** Lists the versions of a service. */
+export const listAppsServicesVersions: API.PaginatedOperationMethod<
+  ListAppsServicesVersionsRequest,
+  ListAppsServicesVersionsResponse,
+  ListAppsServicesVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAppsFirewallIngressRulesRequest,
-  output: GetAppsFirewallIngressRulesResponse,
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAppsServicesVersionsRequest,
+  output: ListAppsServicesVersionsResponse,
   errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
-export interface PatchAppsFirewallIngressRulesRequest {
+export interface ExportAppImageAppsServicesVersionsRequest {
   /** Part of `name`. See documentation of `appsId`. */
-  ingressRulesId: string;
-  /** Part of `name`. Name of the Firewall resource to update. Example: apps/myapp/firewall/ingressRules/100. */
+  versionsId: string;
+  /** Part of `name`. Required. Name of the App Engine version resource. Format: apps/{app}/services/{service}/versions/{version} */
   appsId: string;
-  /** Standard field mask for the set of fields to be updated. */
-  updateMask?: string;
-  /** Request body */
-  body?: FirewallRule;
-}
-
-export const PatchAppsFirewallIngressRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ingressRulesId: Schema.String.pipe(T.HttpPath("ingressRulesId")),
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(FirewallRule).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchAppsFirewallIngressRulesRequest>;
-
-export type PatchAppsFirewallIngressRulesResponse = FirewallRule;
-export const PatchAppsFirewallIngressRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FirewallRule;
-
-export type PatchAppsFirewallIngressRulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the specified firewall rule. */
-export const patchAppsFirewallIngressRules: API.OperationMethod<
-  PatchAppsFirewallIngressRulesRequest,
-  PatchAppsFirewallIngressRulesResponse,
-  PatchAppsFirewallIngressRulesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchAppsFirewallIngressRulesRequest,
-  output: PatchAppsFirewallIngressRulesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteAppsFirewallIngressRulesRequest {
   /** Part of `name`. See documentation of `appsId`. */
-  ingressRulesId: string;
-  /** Part of `name`. Name of the Firewall resource to delete. Example: apps/myapp/firewall/ingressRules/100. */
-  appsId: string;
-}
-
-export const DeleteAppsFirewallIngressRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ingressRulesId: Schema.String.pipe(T.HttpPath("ingressRulesId")),
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteAppsFirewallIngressRulesRequest>;
-
-export type DeleteAppsFirewallIngressRulesResponse = Empty;
-export const DeleteAppsFirewallIngressRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteAppsFirewallIngressRulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes the specified firewall rule. */
-export const deleteAppsFirewallIngressRules: API.OperationMethod<
-  DeleteAppsFirewallIngressRulesRequest,
-  DeleteAppsFirewallIngressRulesResponse,
-  DeleteAppsFirewallIngressRulesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteAppsFirewallIngressRulesRequest,
-  output: DeleteAppsFirewallIngressRulesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface BatchUpdateAppsFirewallIngressRulesRequest {
-  /** Part of `name`. Name of the Firewall collection to set. Example: apps/myapp/firewall/ingressRules. */
-  appsId: string;
+  servicesId: string;
   /** Request body */
-  body?: BatchUpdateIngressRulesRequest;
+  body?: ExportAppImageRequest;
 }
 
-export const BatchUpdateAppsFirewallIngressRulesRequest =
+export const ExportAppImageAppsServicesVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
     appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    body: Schema.optional(BatchUpdateIngressRulesRequest).pipe(T.HttpBody()),
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+    body: Schema.optional(ExportAppImageRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/apps/{appsId}/firewall/ingressRules:batchUpdate",
+      path: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}:exportAppImage",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateAppsFirewallIngressRulesRequest>;
+  ) as unknown as Schema.Schema<ExportAppImageAppsServicesVersionsRequest>;
 
-export type BatchUpdateAppsFirewallIngressRulesResponse =
-  BatchUpdateIngressRulesResponse;
-export const BatchUpdateAppsFirewallIngressRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchUpdateIngressRulesResponse;
-
-export type BatchUpdateAppsFirewallIngressRulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Replaces the entire firewall ruleset in one bulk operation. This overrides and replaces the rules of an existing firewall with the new rules.If the final rule does not match traffic with the '*' wildcard IP range, then an "allow all" rule is explicitly added to the end of the list. */
-export const batchUpdateAppsFirewallIngressRules: API.OperationMethod<
-  BatchUpdateAppsFirewallIngressRulesRequest,
-  BatchUpdateAppsFirewallIngressRulesResponse,
-  BatchUpdateAppsFirewallIngressRulesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: BatchUpdateAppsFirewallIngressRulesRequest,
-  output: BatchUpdateAppsFirewallIngressRulesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchAppsDomainMappingsRequest {
-  /** Required. Standard field mask for the set of fields to be updated. */
-  updateMask?: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  domainMappingsId: string;
-  /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/domainMappings/example.com. */
-  appsId: string;
-  /** Request body */
-  body?: DomainMapping;
-}
-
-export const PatchAppsDomainMappingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    domainMappingsId: Schema.String.pipe(T.HttpPath("domainMappingsId")),
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    body: Schema.optional(DomainMapping).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/apps/{appsId}/domainMappings/{domainMappingsId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchAppsDomainMappingsRequest>;
-
-export type PatchAppsDomainMappingsResponse = Operation;
-export const PatchAppsDomainMappingsResponse =
+export type ExportAppImageAppsServicesVersionsResponse = Operation;
+export const ExportAppImageAppsServicesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchAppsDomainMappingsError =
+export type ExportAppImageAppsServicesVersionsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer the associated domain in order to update a DomainMapping resource. */
-export const patchAppsDomainMappings: API.OperationMethod<
-  PatchAppsDomainMappingsRequest,
-  PatchAppsDomainMappingsResponse,
-  PatchAppsDomainMappingsError,
+/** Exports a user image to Artifact Registry. */
+export const exportAppImageAppsServicesVersions: API.OperationMethod<
+  ExportAppImageAppsServicesVersionsRequest,
+  ExportAppImageAppsServicesVersionsResponse,
+  ExportAppImageAppsServicesVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchAppsDomainMappingsRequest,
-  output: PatchAppsDomainMappingsResponse,
+  input: ExportAppImageAppsServicesVersionsRequest,
+  output: ExportAppImageAppsServicesVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface DeleteAppsDomainMappingsRequest {
-  /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com. */
-  appsId: string;
+export interface GetAppsServicesVersionsRequest {
   /** Part of `name`. See documentation of `appsId`. */
-  domainMappingsId: string;
+  servicesId: string;
+  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1. */
+  appsId: string;
+  /** Optional. Options to include extra data */
+  includeExtraData?:
+    | "INCLUDE_EXTRA_DATA_UNSPECIFIED"
+    | "INCLUDE_EXTRA_DATA_NONE"
+    | "INCLUDE_GOOGLE_GENERATED_METADATA"
+    | (string & {});
+  /** Controls the set of fields returned in the Get response. */
+  view?: "BASIC" | "FULL" | (string & {});
+  /** Part of `name`. See documentation of `appsId`. */
+  versionsId: string;
 }
 
-export const DeleteAppsDomainMappingsRequest =
+export const GetAppsServicesVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
     appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    domainMappingsId: Schema.String.pipe(T.HttpPath("domainMappingsId")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/apps/{appsId}/domainMappings/{domainMappingsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteAppsDomainMappingsRequest>;
-
-export type DeleteAppsDomainMappingsResponse = Operation;
-export const DeleteAppsDomainMappingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteAppsDomainMappingsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource. */
-export const deleteAppsDomainMappings: API.OperationMethod<
-  DeleteAppsDomainMappingsRequest,
-  DeleteAppsDomainMappingsResponse,
-  DeleteAppsDomainMappingsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteAppsDomainMappingsRequest,
-  output: DeleteAppsDomainMappingsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetAppsDomainMappingsRequest {
-  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. */
-  appsId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  domainMappingsId: string;
-}
-
-export const GetAppsDomainMappingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    domainMappingsId: Schema.String.pipe(T.HttpPath("domainMappingsId")),
+    includeExtraData: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("includeExtraData"),
+    ),
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta/apps/{appsId}/domainMappings/{domainMappingsId}",
+      path: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAppsDomainMappingsRequest>;
+  ) as unknown as Schema.Schema<GetAppsServicesVersionsRequest>;
 
-export type GetAppsDomainMappingsResponse = DomainMapping;
-export const GetAppsDomainMappingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DomainMapping;
+export type GetAppsServicesVersionsResponse = Version;
+export const GetAppsServicesVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Version;
 
-export type GetAppsDomainMappingsError = DefaultErrors | NotFound | Forbidden;
+export type GetAppsServicesVersionsError = DefaultErrors | NotFound | Forbidden;
 
-/** Gets the specified domain mapping. */
-export const getAppsDomainMappings: API.OperationMethod<
-  GetAppsDomainMappingsRequest,
-  GetAppsDomainMappingsResponse,
-  GetAppsDomainMappingsError,
+/** Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource. */
+export const getAppsServicesVersions: API.OperationMethod<
+  GetAppsServicesVersionsRequest,
+  GetAppsServicesVersionsResponse,
+  GetAppsServicesVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAppsDomainMappingsRequest,
-  output: GetAppsDomainMappingsResponse,
+  input: GetAppsServicesVersionsRequest,
+  output: GetAppsServicesVersionsResponse,
   errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteAppsServicesVersionsRequest {
+  /** Part of `name`. See documentation of `appsId`. */
+  servicesId: string;
+  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1. */
+  appsId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  versionsId: string;
+}
+
+export const DeleteAppsServicesVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteAppsServicesVersionsRequest>;
+
+export type DeleteAppsServicesVersionsResponse = Operation;
+export const DeleteAppsServicesVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteAppsServicesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes an existing Version resource. */
+export const deleteAppsServicesVersions: API.OperationMethod<
+  DeleteAppsServicesVersionsRequest,
+  DeleteAppsServicesVersionsResponse,
+  DeleteAppsServicesVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAppsServicesVersionsRequest,
+  output: DeleteAppsServicesVersionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateAppsServicesVersionsRequest {
+  /** Part of `parent`. See documentation of `appsId`. */
+  servicesId: string;
+  /** Part of `parent`. Required. Name of the parent resource to create this version under. Example: apps/myapp/services/default. */
+  appsId: string;
+  /** Request body */
+  body?: Version;
+}
+
+export const CreateAppsServicesVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    body: Schema.optional(Version).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta/apps/{appsId}/services/{servicesId}/versions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateAppsServicesVersionsRequest>;
+
+export type CreateAppsServicesVersionsResponse = Operation;
+export const CreateAppsServicesVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateAppsServicesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deploys code and resource files to a new version. */
+export const createAppsServicesVersions: API.OperationMethod<
+  CreateAppsServicesVersionsRequest,
+  CreateAppsServicesVersionsResponse,
+  CreateAppsServicesVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateAppsServicesVersionsRequest,
+  output: CreateAppsServicesVersionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchAppsServicesVersionsRequest {
+  /** Part of `name`. See documentation of `appsId`. */
+  versionsId: string;
+  /** Standard field mask for the set of fields to be updated. */
+  updateMask?: string;
+  /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default/versions/1. */
+  appsId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  servicesId: string;
+  /** Request body */
+  body?: Version;
+}
+
+export const PatchAppsServicesVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+    body: Schema.optional(Version).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchAppsServicesVersionsRequest>;
+
+export type PatchAppsServicesVersionsResponse = Operation;
+export const PatchAppsServicesVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchAppsServicesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the specified Version resource. You can specify the following fields depending on the App Engine environment and type of scaling that the version resource uses:Standard environment instance_class (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.instance_class)automatic scaling in the standard environment: automatic_scaling.min_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automaticScaling.standard_scheduler_settings.max_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.min_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_cpu_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_throughput_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings)basic scaling or manual scaling in the standard environment: serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.serving_status) manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#manualscaling)Flexible environment serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.serving_status)automatic scaling in the flexible environment: automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cool_down_period_sec (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling)manual scaling in the flexible environment: manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#manualscaling) */
+export const patchAppsServicesVersions: API.OperationMethod<
+  PatchAppsServicesVersionsRequest,
+  PatchAppsServicesVersionsResponse,
+  PatchAppsServicesVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchAppsServicesVersionsRequest,
+  output: PatchAppsServicesVersionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListAppsServicesVersionsInstancesRequest {
+  /** Part of `parent`. See documentation of `appsId`. */
+  versionsId: string;
+  /** Maximum results to return per page. */
+  pageSize?: number;
+  /** Continuation token for fetching the next page of results. */
+  pageToken?: string;
+  /** Part of `parent`. See documentation of `appsId`. */
+  servicesId: string;
+  /** Part of `parent`. Required. Name of the parent Version resource. Example: apps/myapp/services/default/versions/v1. */
+  appsId: string;
+}
+
+export const ListAppsServicesVersionsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListAppsServicesVersionsInstancesRequest>;
+
+export type ListAppsServicesVersionsInstancesResponse = ListInstancesResponse;
+export const ListAppsServicesVersionsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListInstancesResponse;
+
+export type ListAppsServicesVersionsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the instances of a version.Tip: To aggregate details about instances over time, see the Stackdriver Monitoring API (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). */
+export const listAppsServicesVersionsInstances: API.PaginatedOperationMethod<
+  ListAppsServicesVersionsInstancesRequest,
+  ListAppsServicesVersionsInstancesResponse,
+  ListAppsServicesVersionsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAppsServicesVersionsInstancesRequest,
+  output: ListAppsServicesVersionsInstancesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DebugAppsServicesVersionsInstancesRequest {
+  /** Part of `name`. See documentation of `appsId`. */
+  instancesId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  versionsId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  servicesId: string;
+  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. */
+  appsId: string;
+  /** Request body */
+  body?: DebugInstanceRequest;
+}
+
+export const DebugAppsServicesVersionsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instancesId: Schema.String.pipe(T.HttpPath("instancesId")),
+    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    body: Schema.optional(DebugInstanceRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DebugAppsServicesVersionsInstancesRequest>;
+
+export type DebugAppsServicesVersionsInstancesResponse = Operation;
+export const DebugAppsServicesVersionsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DebugAppsServicesVersionsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Enables debugging on a VM instance. This allows you to use the SSH command to connect to the virtual machine where the instance lives. While in "debug mode", the instance continues to serve live traffic. You should delete the instance when you are done debugging and then allow the system to take over and determine if another instance should be started.Only applicable for instances in App Engine flexible environment. */
+export const debugAppsServicesVersionsInstances: API.OperationMethod<
+  DebugAppsServicesVersionsInstancesRequest,
+  DebugAppsServicesVersionsInstancesResponse,
+  DebugAppsServicesVersionsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DebugAppsServicesVersionsInstancesRequest,
+  output: DebugAppsServicesVersionsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetAppsServicesVersionsInstancesRequest {
+  /** Part of `name`. See documentation of `appsId`. */
+  instancesId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  versionsId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  servicesId: string;
+  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. */
+  appsId: string;
+}
+
+export const GetAppsServicesVersionsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instancesId: Schema.String.pipe(T.HttpPath("instancesId")),
+    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetAppsServicesVersionsInstancesRequest>;
+
+export type GetAppsServicesVersionsInstancesResponse = Instance;
+export const GetAppsServicesVersionsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Instance;
+
+export type GetAppsServicesVersionsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets instance information. */
+export const getAppsServicesVersionsInstances: API.OperationMethod<
+  GetAppsServicesVersionsInstancesRequest,
+  GetAppsServicesVersionsInstancesResponse,
+  GetAppsServicesVersionsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAppsServicesVersionsInstancesRequest,
+  output: GetAppsServicesVersionsInstancesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteAppsServicesVersionsInstancesRequest {
+  /** Part of `name`. See documentation of `appsId`. */
+  servicesId: string;
+  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. */
+  appsId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  instancesId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  versionsId: string;
+}
+
+export const DeleteAppsServicesVersionsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    instancesId: Schema.String.pipe(T.HttpPath("instancesId")),
+    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteAppsServicesVersionsInstancesRequest>;
+
+export type DeleteAppsServicesVersionsInstancesResponse = Operation;
+export const DeleteAppsServicesVersionsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteAppsServicesVersionsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Stops a running instance.The instance might be automatically recreated based on the scaling settings of the version. For more information, see "How Instances are Managed" (standard environment (https://cloud.google.com/appengine/docs/standard/python/how-instances-are-managed) | flexible environment (https://cloud.google.com/appengine/docs/flexible/python/how-instances-are-managed)).To ensure that instances are not re-created and avoid getting billed, you can stop all instances within the target version by changing the serving status of the version to STOPPED with the apps.services.versions.patch (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions/patch) method. */
+export const deleteAppsServicesVersionsInstances: API.OperationMethod<
+  DeleteAppsServicesVersionsInstancesRequest,
+  DeleteAppsServicesVersionsInstancesResponse,
+  DeleteAppsServicesVersionsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAppsServicesVersionsInstancesRequest,
+  output: DeleteAppsServicesVersionsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAppsDomainMappingsRequest {
@@ -3962,20 +4706,148 @@ export const createAppsDomainMappings: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface PatchAppsDomainMappingsRequest {
+  /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/domainMappings/example.com. */
+  appsId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  domainMappingsId: string;
+  /** Required. Standard field mask for the set of fields to be updated. */
+  updateMask?: string;
+  /** Request body */
+  body?: DomainMapping;
+}
+
+export const PatchAppsDomainMappingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    domainMappingsId: Schema.String.pipe(T.HttpPath("domainMappingsId")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(DomainMapping).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1beta/apps/{appsId}/domainMappings/{domainMappingsId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchAppsDomainMappingsRequest>;
+
+export type PatchAppsDomainMappingsResponse = Operation;
+export const PatchAppsDomainMappingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchAppsDomainMappingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer the associated domain in order to update a DomainMapping resource. */
+export const patchAppsDomainMappings: API.OperationMethod<
+  PatchAppsDomainMappingsRequest,
+  PatchAppsDomainMappingsResponse,
+  PatchAppsDomainMappingsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchAppsDomainMappingsRequest,
+  output: PatchAppsDomainMappingsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetAppsDomainMappingsRequest {
+  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. */
+  appsId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  domainMappingsId: string;
+}
+
+export const GetAppsDomainMappingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    domainMappingsId: Schema.String.pipe(T.HttpPath("domainMappingsId")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta/apps/{appsId}/domainMappings/{domainMappingsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetAppsDomainMappingsRequest>;
+
+export type GetAppsDomainMappingsResponse = DomainMapping;
+export const GetAppsDomainMappingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ DomainMapping;
+
+export type GetAppsDomainMappingsError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets the specified domain mapping. */
+export const getAppsDomainMappings: API.OperationMethod<
+  GetAppsDomainMappingsRequest,
+  GetAppsDomainMappingsResponse,
+  GetAppsDomainMappingsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAppsDomainMappingsRequest,
+  output: GetAppsDomainMappingsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteAppsDomainMappingsRequest {
+  /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com. */
+  appsId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  domainMappingsId: string;
+}
+
+export const DeleteAppsDomainMappingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appsId: Schema.String.pipe(T.HttpPath("appsId")),
+    domainMappingsId: Schema.String.pipe(T.HttpPath("domainMappingsId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1beta/apps/{appsId}/domainMappings/{domainMappingsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteAppsDomainMappingsRequest>;
+
+export type DeleteAppsDomainMappingsResponse = Operation;
+export const DeleteAppsDomainMappingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteAppsDomainMappingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource. */
+export const deleteAppsDomainMappings: API.OperationMethod<
+  DeleteAppsDomainMappingsRequest,
+  DeleteAppsDomainMappingsResponse,
+  DeleteAppsDomainMappingsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAppsDomainMappingsRequest,
+  output: DeleteAppsDomainMappingsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ListAppsDomainMappingsRequest {
-  /** Continuation token for fetching the next page of results. */
-  pageToken?: string;
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
   appsId: string;
   /** Maximum results to return per page. */
   pageSize?: number;
+  /** Continuation token for fetching the next page of results. */
+  pageToken?: string;
 }
 
 export const ListAppsDomainMappingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     appsId: Schema.String.pipe(T.HttpPath("appsId")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/apps/{appsId}/domainMappings" }),
     svc,
@@ -4003,57 +4875,13 @@ export const listAppsDomainMappings: API.PaginatedOperationMethod<
   },
 }));
 
-export interface ListAppsAuthorizedDomainsRequest {
-  /** Continuation token for fetching the next page of results. */
-  pageToken?: string;
-  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
-  appsId: string;
-  /** Maximum results to return per page. */
-  pageSize?: number;
-}
-
-export const ListAppsAuthorizedDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/apps/{appsId}/authorizedDomains" }),
-    svc,
-  ) as unknown as Schema.Schema<ListAppsAuthorizedDomainsRequest>;
-
-export type ListAppsAuthorizedDomainsResponse = ListAuthorizedDomainsResponse;
-export const ListAppsAuthorizedDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAuthorizedDomainsResponse;
-
-export type ListAppsAuthorizedDomainsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists all domains the user is authorized to administer. */
-export const listAppsAuthorizedDomains: API.PaginatedOperationMethod<
-  ListAppsAuthorizedDomainsRequest,
-  ListAppsAuthorizedDomainsResponse,
-  ListAppsAuthorizedDomainsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListAppsAuthorizedDomainsRequest,
-  output: ListAppsAuthorizedDomainsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface ListAppsOperationsRequest {
   /** Part of `name`. The name of the operation's parent resource. */
   appsId: string;
-  /** The standard list page size. */
-  pageSize?: number;
   /** The standard list filter. */
   filter?: string;
+  /** The standard list page size. */
+  pageSize?: number;
   /** The standard list page token. */
   pageToken?: string;
   /** When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. */
@@ -4063,8 +4891,8 @@ export interface ListAppsOperationsRequest {
 export const ListAppsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("returnPartialSuccess"),
@@ -4129,764 +4957,5 @@ export const getAppsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppsOperationsRequest,
   output: GetAppsOperationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface PatchAppsServicesRequest {
-  /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default. */
-  appsId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  servicesId: string;
-  /** Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#InboundServiceType) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#AutomaticScaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services#ShardBy) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic). */
-  migrateTraffic?: boolean;
-  /** Required. Standard field mask for the set of fields to be updated. */
-  updateMask?: string;
-  /** Request body */
-  body?: Service;
-}
-
-export const PatchAppsServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
-    migrateTraffic: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("migrateTraffic"),
-    ),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Service).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/apps/{appsId}/services/{servicesId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchAppsServicesRequest>;
-
-export type PatchAppsServicesResponse = Operation;
-export const PatchAppsServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchAppsServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the configuration of the specified service. */
-export const patchAppsServices: API.OperationMethod<
-  PatchAppsServicesRequest,
-  PatchAppsServicesResponse,
-  PatchAppsServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchAppsServicesRequest,
-  output: PatchAppsServicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteAppsServicesRequest {
-  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default. */
-  appsId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  servicesId: string;
-}
-
-export const DeleteAppsServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/apps/{appsId}/services/{servicesId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteAppsServicesRequest>;
-
-export type DeleteAppsServicesResponse = Operation;
-export const DeleteAppsServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteAppsServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes the specified service and all enclosed versions. */
-export const deleteAppsServices: API.OperationMethod<
-  DeleteAppsServicesRequest,
-  DeleteAppsServicesResponse,
-  DeleteAppsServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteAppsServicesRequest,
-  output: DeleteAppsServicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListAppsServicesRequest {
-  /** Continuation token for fetching the next page of results. */
-  pageToken?: string;
-  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
-  appsId: string;
-  /** Maximum results to return per page. */
-  pageSize?: number;
-}
-
-export const ListAppsServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/apps/{appsId}/services" }),
-    svc,
-  ) as unknown as Schema.Schema<ListAppsServicesRequest>;
-
-export type ListAppsServicesResponse = ListServicesResponse;
-export const ListAppsServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListServicesResponse;
-
-export type ListAppsServicesError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists all the services in the application. */
-export const listAppsServices: API.PaginatedOperationMethod<
-  ListAppsServicesRequest,
-  ListAppsServicesResponse,
-  ListAppsServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListAppsServicesRequest,
-  output: ListAppsServicesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetAppsServicesRequest {
-  /** Optional. Options to include extra data */
-  includeExtraData?:
-    | "INCLUDE_EXTRA_DATA_UNSPECIFIED"
-    | "INCLUDE_EXTRA_DATA_NONE"
-    | "INCLUDE_GOOGLE_GENERATED_METADATA"
-    | (string & {});
-  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default. */
-  appsId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  servicesId: string;
-}
-
-export const GetAppsServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    includeExtraData: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("includeExtraData"),
-    ),
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
-  },
-).pipe(
-  T.Http({ method: "GET", path: "v1beta/apps/{appsId}/services/{servicesId}" }),
-  svc,
-) as unknown as Schema.Schema<GetAppsServicesRequest>;
-
-export type GetAppsServicesResponse = Service;
-export const GetAppsServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Service;
-
-export type GetAppsServicesError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets the current configuration of the specified service. */
-export const getAppsServices: API.OperationMethod<
-  GetAppsServicesRequest,
-  GetAppsServicesResponse,
-  GetAppsServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAppsServicesRequest,
-  output: GetAppsServicesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListAppsServicesVersionsRequest {
-  /** Part of `parent`. Required. Name of the parent Service resource. Example: apps/myapp/services/default. */
-  appsId: string;
-  /** Maximum results to return per page. */
-  pageSize?: number;
-  /** Continuation token for fetching the next page of results. */
-  pageToken?: string;
-  /** Controls the set of fields returned in the List response. */
-  view?: "BASIC" | "FULL" | (string & {});
-  /** Part of `parent`. See documentation of `appsId`. */
-  servicesId: string;
-}
-
-export const ListAppsServicesVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/apps/{appsId}/services/{servicesId}/versions",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListAppsServicesVersionsRequest>;
-
-export type ListAppsServicesVersionsResponse = ListVersionsResponse;
-export const ListAppsServicesVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVersionsResponse;
-
-export type ListAppsServicesVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists the versions of a service. */
-export const listAppsServicesVersions: API.PaginatedOperationMethod<
-  ListAppsServicesVersionsRequest,
-  ListAppsServicesVersionsResponse,
-  ListAppsServicesVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListAppsServicesVersionsRequest,
-  output: ListAppsServicesVersionsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetAppsServicesVersionsRequest {
-  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1. */
-  appsId: string;
-  /** Optional. Options to include extra data */
-  includeExtraData?:
-    | "INCLUDE_EXTRA_DATA_UNSPECIFIED"
-    | "INCLUDE_EXTRA_DATA_NONE"
-    | "INCLUDE_GOOGLE_GENERATED_METADATA"
-    | (string & {});
-  /** Part of `name`. See documentation of `appsId`. */
-  versionsId: string;
-  /** Controls the set of fields returned in the Get response. */
-  view?: "BASIC" | "FULL" | (string & {});
-  /** Part of `name`. See documentation of `appsId`. */
-  servicesId: string;
-}
-
-export const GetAppsServicesVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    includeExtraData: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("includeExtraData"),
-    ),
-    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetAppsServicesVersionsRequest>;
-
-export type GetAppsServicesVersionsResponse = Version;
-export const GetAppsServicesVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Version;
-
-export type GetAppsServicesVersionsError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource. */
-export const getAppsServicesVersions: API.OperationMethod<
-  GetAppsServicesVersionsRequest,
-  GetAppsServicesVersionsResponse,
-  GetAppsServicesVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAppsServicesVersionsRequest,
-  output: GetAppsServicesVersionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateAppsServicesVersionsRequest {
-  /** Part of `parent`. Required. Name of the parent resource to create this version under. Example: apps/myapp/services/default. */
-  appsId: string;
-  /** Part of `parent`. See documentation of `appsId`. */
-  servicesId: string;
-  /** Request body */
-  body?: Version;
-}
-
-export const CreateAppsServicesVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
-    body: Schema.optional(Version).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/apps/{appsId}/services/{servicesId}/versions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateAppsServicesVersionsRequest>;
-
-export type CreateAppsServicesVersionsResponse = Operation;
-export const CreateAppsServicesVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateAppsServicesVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deploys code and resource files to a new version. */
-export const createAppsServicesVersions: API.OperationMethod<
-  CreateAppsServicesVersionsRequest,
-  CreateAppsServicesVersionsResponse,
-  CreateAppsServicesVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateAppsServicesVersionsRequest,
-  output: CreateAppsServicesVersionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ExportAppImageAppsServicesVersionsRequest {
-  /** Part of `name`. Required. Name of the App Engine version resource. Format: apps/{app}/services/{service}/versions/{version} */
-  appsId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  servicesId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  versionsId: string;
-  /** Request body */
-  body?: ExportAppImageRequest;
-}
-
-export const ExportAppImageAppsServicesVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
-    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
-    body: Schema.optional(ExportAppImageRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}:exportAppImage",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ExportAppImageAppsServicesVersionsRequest>;
-
-export type ExportAppImageAppsServicesVersionsResponse = Operation;
-export const ExportAppImageAppsServicesVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type ExportAppImageAppsServicesVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Exports a user image to Artifact Registry. */
-export const exportAppImageAppsServicesVersions: API.OperationMethod<
-  ExportAppImageAppsServicesVersionsRequest,
-  ExportAppImageAppsServicesVersionsResponse,
-  ExportAppImageAppsServicesVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ExportAppImageAppsServicesVersionsRequest,
-  output: ExportAppImageAppsServicesVersionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchAppsServicesVersionsRequest {
-  /** Standard field mask for the set of fields to be updated. */
-  updateMask?: string;
-  /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default/versions/1. */
-  appsId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  servicesId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  versionsId: string;
-  /** Request body */
-  body?: Version;
-}
-
-export const PatchAppsServicesVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
-    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
-    body: Schema.optional(Version).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchAppsServicesVersionsRequest>;
-
-export type PatchAppsServicesVersionsResponse = Operation;
-export const PatchAppsServicesVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchAppsServicesVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the specified Version resource. You can specify the following fields depending on the App Engine environment and type of scaling that the version resource uses:Standard environment instance_class (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.instance_class)automatic scaling in the standard environment: automatic_scaling.min_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automaticScaling.standard_scheduler_settings.max_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.min_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_cpu_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_throughput_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings)basic scaling or manual scaling in the standard environment: serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.serving_status) manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#manualscaling)Flexible environment serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.serving_status)automatic scaling in the flexible environment: automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cool_down_period_sec (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling)manual scaling in the flexible environment: manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#manualscaling) */
-export const patchAppsServicesVersions: API.OperationMethod<
-  PatchAppsServicesVersionsRequest,
-  PatchAppsServicesVersionsResponse,
-  PatchAppsServicesVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchAppsServicesVersionsRequest,
-  output: PatchAppsServicesVersionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteAppsServicesVersionsRequest {
-  /** Part of `name`. See documentation of `appsId`. */
-  versionsId: string;
-  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1. */
-  appsId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  servicesId: string;
-}
-
-export const DeleteAppsServicesVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteAppsServicesVersionsRequest>;
-
-export type DeleteAppsServicesVersionsResponse = Operation;
-export const DeleteAppsServicesVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteAppsServicesVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes an existing Version resource. */
-export const deleteAppsServicesVersions: API.OperationMethod<
-  DeleteAppsServicesVersionsRequest,
-  DeleteAppsServicesVersionsResponse,
-  DeleteAppsServicesVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteAppsServicesVersionsRequest,
-  output: DeleteAppsServicesVersionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListAppsServicesVersionsInstancesRequest {
-  /** Part of `parent`. Required. Name of the parent Version resource. Example: apps/myapp/services/default/versions/v1. */
-  appsId: string;
-  /** Maximum results to return per page. */
-  pageSize?: number;
-  /** Continuation token for fetching the next page of results. */
-  pageToken?: string;
-  /** Part of `parent`. See documentation of `appsId`. */
-  versionsId: string;
-  /** Part of `parent`. See documentation of `appsId`. */
-  servicesId: string;
-}
-
-export const ListAppsServicesVersionsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListAppsServicesVersionsInstancesRequest>;
-
-export type ListAppsServicesVersionsInstancesResponse = ListInstancesResponse;
-export const ListAppsServicesVersionsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListInstancesResponse;
-
-export type ListAppsServicesVersionsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists the instances of a version.Tip: To aggregate details about instances over time, see the Stackdriver Monitoring API (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). */
-export const listAppsServicesVersionsInstances: API.PaginatedOperationMethod<
-  ListAppsServicesVersionsInstancesRequest,
-  ListAppsServicesVersionsInstancesResponse,
-  ListAppsServicesVersionsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListAppsServicesVersionsInstancesRequest,
-  output: ListAppsServicesVersionsInstancesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetAppsServicesVersionsInstancesRequest {
-  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. */
-  appsId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  servicesId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  versionsId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  instancesId: string;
-}
-
-export const GetAppsServicesVersionsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
-    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
-    instancesId: Schema.String.pipe(T.HttpPath("instancesId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetAppsServicesVersionsInstancesRequest>;
-
-export type GetAppsServicesVersionsInstancesResponse = Instance;
-export const GetAppsServicesVersionsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Instance;
-
-export type GetAppsServicesVersionsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets instance information. */
-export const getAppsServicesVersionsInstances: API.OperationMethod<
-  GetAppsServicesVersionsInstancesRequest,
-  GetAppsServicesVersionsInstancesResponse,
-  GetAppsServicesVersionsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAppsServicesVersionsInstancesRequest,
-  output: GetAppsServicesVersionsInstancesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteAppsServicesVersionsInstancesRequest {
-  /** Part of `name`. See documentation of `appsId`. */
-  versionsId: string;
-  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. */
-  appsId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  servicesId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  instancesId: string;
-}
-
-export const DeleteAppsServicesVersionsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
-    instancesId: Schema.String.pipe(T.HttpPath("instancesId")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteAppsServicesVersionsInstancesRequest>;
-
-export type DeleteAppsServicesVersionsInstancesResponse = Operation;
-export const DeleteAppsServicesVersionsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteAppsServicesVersionsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Stops a running instance.The instance might be automatically recreated based on the scaling settings of the version. For more information, see "How Instances are Managed" (standard environment (https://cloud.google.com/appengine/docs/standard/python/how-instances-are-managed) | flexible environment (https://cloud.google.com/appengine/docs/flexible/python/how-instances-are-managed)).To ensure that instances are not re-created and avoid getting billed, you can stop all instances within the target version by changing the serving status of the version to STOPPED with the apps.services.versions.patch (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions/patch) method. */
-export const deleteAppsServicesVersionsInstances: API.OperationMethod<
-  DeleteAppsServicesVersionsInstancesRequest,
-  DeleteAppsServicesVersionsInstancesResponse,
-  DeleteAppsServicesVersionsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteAppsServicesVersionsInstancesRequest,
-  output: DeleteAppsServicesVersionsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DebugAppsServicesVersionsInstancesRequest {
-  /** Part of `name`. See documentation of `appsId`. */
-  instancesId: string;
-  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. */
-  appsId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  servicesId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  versionsId: string;
-  /** Request body */
-  body?: DebugInstanceRequest;
-}
-
-export const DebugAppsServicesVersionsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    instancesId: Schema.String.pipe(T.HttpPath("instancesId")),
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    servicesId: Schema.String.pipe(T.HttpPath("servicesId")),
-    versionsId: Schema.String.pipe(T.HttpPath("versionsId")),
-    body: Schema.optional(DebugInstanceRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DebugAppsServicesVersionsInstancesRequest>;
-
-export type DebugAppsServicesVersionsInstancesResponse = Operation;
-export const DebugAppsServicesVersionsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DebugAppsServicesVersionsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Enables debugging on a VM instance. This allows you to use the SSH command to connect to the virtual machine where the instance lives. While in "debug mode", the instance continues to serve live traffic. You should delete the instance when you are done debugging and then allow the system to take over and determine if another instance should be started.Only applicable for instances in App Engine flexible environment. */
-export const debugAppsServicesVersionsInstances: API.OperationMethod<
-  DebugAppsServicesVersionsInstancesRequest,
-  DebugAppsServicesVersionsInstancesResponse,
-  DebugAppsServicesVersionsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DebugAppsServicesVersionsInstancesRequest,
-  output: DebugAppsServicesVersionsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListAppsLocationsRequest {
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). */
-  filter?: string;
-  /** Part of `name`. The resource that owns the locations collection, if applicable. */
-  appsId: string;
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
-  /** A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
-  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: string[];
-}
-
-export const ListAppsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("extraLocationTypes"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/apps/{appsId}/locations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListAppsLocationsRequest>;
-
-export type ListAppsLocationsResponse = ListLocationsResponse;
-export const ListAppsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
-
-export type ListAppsLocationsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
-export const listAppsLocations: API.PaginatedOperationMethod<
-  ListAppsLocationsRequest,
-  ListAppsLocationsResponse,
-  ListAppsLocationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListAppsLocationsRequest,
-  output: ListAppsLocationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetAppsLocationsRequest {
-  /** Part of `name`. See documentation of `appsId`. */
-  locationsId: string;
-  /** Part of `name`. Resource name for the location. */
-  appsId: string;
-}
-
-export const GetAppsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationsId: Schema.String.pipe(T.HttpPath("locationsId")),
-    appsId: Schema.String.pipe(T.HttpPath("appsId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/apps/{appsId}/locations/{locationsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetAppsLocationsRequest>;
-
-export type GetAppsLocationsResponse = Location;
-export const GetAppsLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Location;
-
-export type GetAppsLocationsError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets information about a location. */
-export const getAppsLocations: API.OperationMethod<
-  GetAppsLocationsRequest,
-  GetAppsLocationsResponse,
-  GetAppsLocationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAppsLocationsRequest,
-  output: GetAppsLocationsResponse,
   errors: [NotFound, Forbidden],
 }));

@@ -22,16 +22,62 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+}
+
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.Number),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Status" });
+
+export interface Operation {
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+}
+
+export const Operation: Schema.Schema<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    error: Schema.optional(Status),
+    done: Schema.optional(Schema.Boolean),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Operation" });
+
 export interface ManagementSettings {
-  /** Output only. The actual renewal method for this `Registration`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL`, the actual `renewal_method` can be equal to `RENEWAL_DISABLED`—for example, when there are problems with the billing account or reported domain abuse. In such cases, check the `issues` field on the `Registration`. After the problem is resolved, the `renewal_method` is automatically updated to `preferred_renewal_method` in a few hours. */
-  renewalMethod?:
+  /** Output only. The actual transfer lock state for this `Registration`. */
+  effectiveTransferLockState?:
+    | "TRANSFER_LOCK_STATE_UNSPECIFIED"
+    | "UNLOCKED"
+    | "LOCKED"
+    | (string & {});
+  /** Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, the actual `renewalMethod` is treated as if it were set to `AUTOMATIC_RENEWAL`. You cannot use `RENEWAL_DISABLED` during resource creation, and you can update the renewal status only when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL`, the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of problems with the billing account or reported domain abuse. In such cases, check the `issues` field on the `Registration`. After the problem is resolved, the `renewal_method` is automatically updated to `preferred_renewal_method` in a few hours. */
+  preferredRenewalMethod?:
     | "RENEWAL_METHOD_UNSPECIFIED"
     | "AUTOMATIC_RENEWAL"
     | "MANUAL_RENEWAL"
     | "RENEWAL_DISABLED"
     | (string & {});
-  /** Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, the actual `renewalMethod` is treated as if it were set to `AUTOMATIC_RENEWAL`. You cannot use `RENEWAL_DISABLED` during resource creation, and you can update the renewal status only when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL`, the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of problems with the billing account or reported domain abuse. In such cases, check the `issues` field on the `Registration`. After the problem is resolved, the `renewal_method` is automatically updated to `preferred_renewal_method` in a few hours. */
-  preferredRenewalMethod?:
+  /** Output only. The actual renewal method for this `Registration`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL`, the actual `renewal_method` can be equal to `RENEWAL_DISABLED`—for example, when there are problems with the billing account or reported domain abuse. In such cases, check the `issues` field on the `Registration`. After the problem is resolved, the `renewal_method` is automatically updated to `preferred_renewal_method` in a few hours. */
+  renewalMethod?:
     | "RENEWAL_METHOD_UNSPECIFIED"
     | "AUTOMATIC_RENEWAL"
     | "MANUAL_RENEWAL"
@@ -43,437 +89,37 @@ export interface ManagementSettings {
     | "UNLOCKED"
     | "LOCKED"
     | (string & {});
-  /** Output only. The actual transfer lock state for this `Registration`. */
-  effectiveTransferLockState?:
-    | "TRANSFER_LOCK_STATE_UNSPECIFIED"
-    | "UNLOCKED"
-    | "LOCKED"
-    | (string & {});
 }
 
-export const ManagementSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  renewalMethod: Schema.optional(Schema.String),
-  preferredRenewalMethod: Schema.optional(Schema.String),
-  transferLockState: Schema.optional(Schema.String),
-  effectiveTransferLockState: Schema.optional(Schema.String),
-}).annotate({ identifier: "ManagementSettings" });
-
-export interface LoadBalancerTarget {
-  /** The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer. */
-  loadBalancerType?:
-    | "NONE"
-    | "GLOBAL_L7ILB"
-    | "REGIONAL_L4ILB"
-    | "REGIONAL_L7ILB"
-    | (string & {});
-  /** The fully qualified URL of the network that the load balancer is attached to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`. */
-  networkUrl?: string;
-  /** The region in which the load balancer is located. */
-  region?: string;
-  /** The frontend IP address of the load balancer to health check. */
-  ipAddress?: string;
-  /** The protocol of the load balancer to health check. */
-  ipProtocol?: "UNDEFINED" | "TCP" | "UDP" | (string & {});
-  /** The project ID in which the load balancer is located. */
-  project?: string;
-  /** The configured port of the load balancer. */
-  port?: string;
-}
-
-export const LoadBalancerTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  loadBalancerType: Schema.optional(Schema.String),
-  networkUrl: Schema.optional(Schema.String),
-  region: Schema.optional(Schema.String),
-  ipAddress: Schema.optional(Schema.String),
-  ipProtocol: Schema.optional(Schema.String),
-  project: Schema.optional(Schema.String),
-  port: Schema.optional(Schema.String),
-}).annotate({ identifier: "LoadBalancerTarget" });
-
-export interface HealthCheckTargets {
-  /** Configuration for internal load balancers to be health checked. */
-  internalLoadBalancer?: ReadonlyArray<LoadBalancerTarget>;
-  /** The Internet IP addresses to be health checked. The format matches the format of ResourceRecordSet.rrdata as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) */
-  externalEndpoints?: ReadonlyArray<string>;
-}
-
-export const HealthCheckTargets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  internalLoadBalancer: Schema.optional(Schema.Array(LoadBalancerTarget)),
-  externalEndpoints: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "HealthCheckTargets" });
-
-export interface GeoPolicyItem {
-  rrdata?: ReadonlyArray<string>;
-  /** DNSSEC generated signatures for all the `rrdata` within this item. When using health-checked targets for DNSSEC-enabled zones, you can only use at most one health-checked IP address per item. */
-  signatureRrdata?: ReadonlyArray<string>;
-  /** For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with `rrdata` within this item. */
-  healthCheckedTargets?: HealthCheckTargets;
-  /** The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc. */
-  location?: string;
-}
-
-export const GeoPolicyItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  rrdata: Schema.optional(Schema.Array(Schema.String)),
-  signatureRrdata: Schema.optional(Schema.Array(Schema.String)),
-  healthCheckedTargets: Schema.optional(HealthCheckTargets),
-  location: Schema.optional(Schema.String),
-}).annotate({ identifier: "GeoPolicyItem" });
-
-export interface GeoPolicy {
-  /** The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead. */
-  item?: ReadonlyArray<GeoPolicyItem>;
-  /** Without fencing, if health check fails for all configured items in the current geo bucket, we failover to the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy, we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even when all targets are unhealthy. */
-  enableFencing?: boolean;
-}
-
-export const GeoPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  item: Schema.optional(Schema.Array(GeoPolicyItem)),
-  enableFencing: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "GeoPolicy" });
-
-export interface PrimaryBackupPolicy {
-  /** Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to `BACKUP`, this policy essentially becomes a geo routing policy. */
-  backupGeoTargets?: GeoPolicy;
-  /** Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the `backup_geo_targets`. */
-  primaryTargets?: HealthCheckTargets;
-  /** When serving state is `PRIMARY`, this field provides the option of sending a small percentage of the traffic to the backup targets. */
-  trickleTraffic?: number;
-}
-
-export const PrimaryBackupPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  backupGeoTargets: Schema.optional(GeoPolicy),
-  primaryTargets: Schema.optional(HealthCheckTargets),
-  trickleTraffic: Schema.optional(Schema.Number),
-}).annotate({ identifier: "PrimaryBackupPolicy" });
-
-export interface EmailForwarding {
-  /** Target email that receives emails sent to the `alias`. */
-  targetEmailAddress?: string;
-  /** An alias recipient email that forwards emails to the `target_email_address`. For example, `admin@example.com` or `*@example.com` (wildcard alias forwards all the emails under the registered domain). */
-  alias?: string;
-}
-
-export const EmailForwarding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  targetEmailAddress: Schema.optional(Schema.String),
-  alias: Schema.optional(Schema.String),
-}).annotate({ identifier: "EmailForwarding" });
-
-export interface AuditLogConfig {
-  /** The log type that this config enables. */
-  logType?:
-    | "LOG_TYPE_UNSPECIFIED"
-    | "ADMIN_READ"
-    | "DATA_WRITE"
-    | "DATA_READ"
-    | (string & {});
-  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: ReadonlyArray<string>;
-}
-
-export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  logType: Schema.optional(Schema.String),
-  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "AuditLogConfig" });
-
-export interface AuditConfig {
-  /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
-  service?: string;
-  /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
-}
-
-export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  service: Schema.optional(Schema.String),
-  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-}).annotate({ identifier: "AuditConfig" });
-
-export interface InitiatePushTransferRequest {
-  /** Required. The Tag of the new registrar. Can be found at [List of registrars](https://nominet.uk/registrar-list/). */
-  tag?: string;
-}
-
-export const InitiatePushTransferRequest =
+export const ManagementSettings: Schema.Schema<ManagementSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tag: Schema.optional(Schema.String),
-  }).annotate({ identifier: "InitiatePushTransferRequest" });
-
-export interface OperationMetadata {
-  /** Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** The time the operation was created. */
-  createTime?: string;
-  /** API version used to start the operation. */
-  apiVersion?: string;
-  /** Human-readable status of the operation, if any. */
-  statusDetail?: string;
-  /** The time the operation finished running. */
-  endTime?: string;
-  /** Name of the verb executed by the operation. */
-  verb?: string;
-}
-
-export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  target: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  apiVersion: Schema.optional(Schema.String),
-  statusDetail: Schema.optional(Schema.String),
-  endTime: Schema.optional(Schema.String),
-  verb: Schema.optional(Schema.String),
-}).annotate({ identifier: "OperationMetadata" });
-
-export interface WrrPolicyItem {
-  rrdata?: ReadonlyArray<string>;
-  /** The weight corresponding to this `WrrPolicyItem` object. When multiple `WrrPolicyItem` objects are configured, the probability of returning an `WrrPolicyItem` object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative. */
-  weight?: number;
-  /** DNSSEC generated signatures for all the `rrdata` within this item. When using health-checked targets for DNSSEC-enabled zones, you can only use at most one health-checked IP address per item. */
-  signatureRrdata?: ReadonlyArray<string>;
-  /** Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of `rrdata` or `health_checked_targets` can be set. */
-  healthCheckedTargets?: HealthCheckTargets;
-}
-
-export const WrrPolicyItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  rrdata: Schema.optional(Schema.Array(Schema.String)),
-  weight: Schema.optional(Schema.Number),
-  signatureRrdata: Schema.optional(Schema.Array(Schema.String)),
-  healthCheckedTargets: Schema.optional(HealthCheckTargets),
-}).annotate({ identifier: "WrrPolicyItem" });
-
-export interface WrrPolicy {
-  item?: ReadonlyArray<WrrPolicyItem>;
-}
-
-export const WrrPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  item: Schema.optional(Schema.Array(WrrPolicyItem)),
-}).annotate({ identifier: "WrrPolicy" });
-
-export interface Money {
-  /** The three-letter currency code defined in ISO 4217. */
-  currencyCode?: string;
-  /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
-  units?: string;
-  /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
-  nanos?: number;
-}
-
-export const Money = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  currencyCode: Schema.optional(Schema.String),
-  units: Schema.optional(Schema.String),
-  nanos: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Money" });
-
-export interface Domain {
-  /** The domain name. Unicode domain names are expressed in Punycode format. */
-  domainName?: string;
-  /** The state of this domain as a `Registration` resource. */
-  resourceState?:
-    | "RESOURCE_STATE_UNSPECIFIED"
-    | "IMPORTABLE"
-    | "UNSUPPORTED"
-    | "SUSPENDED"
-    | "EXPIRED"
-    | "DELETED"
-    | (string & {});
-  /** Price to renew the domain for one year. Only set when `resource_state` is `IMPORTABLE`. */
-  yearlyPrice?: Money;
-}
-
-export const Domain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  domainName: Schema.optional(Schema.String),
-  resourceState: Schema.optional(Schema.String),
-  yearlyPrice: Schema.optional(Money),
-}).annotate({ identifier: "Domain" });
-
-export interface Expr {
-  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
-  title?: string;
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
-  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
-  location?: string;
-}
-
-export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  title: Schema.optional(Schema.String),
-  expression: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-}).annotate({ identifier: "Expr" });
-
-export interface Binding {
-  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
-  role?: string;
-  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: ReadonlyArray<string>;
-  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  condition?: Expr;
-}
-
-export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  role: Schema.optional(Schema.String),
-  members: Schema.optional(Schema.Array(Schema.String)),
-  condition: Schema.optional(Expr),
-}).annotate({ identifier: "Binding" });
-
-export interface Policy {
-  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  version?: number;
-  /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: ReadonlyArray<AuditConfig>;
-  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: ReadonlyArray<Binding>;
-  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
-  etag?: string;
-}
-
-export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  version: Schema.optional(Schema.Number),
-  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-  bindings: Schema.optional(Schema.Array(Binding)),
-  etag: Schema.optional(Schema.String),
-}).annotate({ identifier: "Policy" });
-
-export interface RRSetRoutingPolicy {
-  geo?: GeoPolicy;
-  primaryBackup?: PrimaryBackupPolicy;
-  wrr?: WrrPolicy;
-  /** The fully qualified URL of the HealthCheck to use for this RRSetRoutingPolicy. Format this URL like `https://www.googleapis.com/compute/v1/projects/{project}/global/healthChecks/{healthCheck}`. https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks */
-  healthCheck?: string;
-  wrrPolicy?: WrrPolicy;
-  geoPolicy?: GeoPolicy;
-}
-
-export const RRSetRoutingPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  geo: Schema.optional(GeoPolicy),
-  primaryBackup: Schema.optional(PrimaryBackupPolicy),
-  wrr: Schema.optional(WrrPolicy),
-  healthCheck: Schema.optional(Schema.String),
-  wrrPolicy: Schema.optional(WrrPolicy),
-  geoPolicy: Schema.optional(GeoPolicy),
-}).annotate({ identifier: "RRSetRoutingPolicy" });
-
-export interface ResourceRecordSet {
-  /** For example, www.example.com. */
-  name?: string;
-  /** As defined in RFC 4034 (section 3.2). */
-  signatureRrdata?: ReadonlyArray<string>;
-  /** As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples. */
-  rrdata?: ReadonlyArray<string>;
-  /** Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid `ResourceRecordSet` contains only `rrdata` (for static resolution) or a `routing_policy` (for dynamic resolution). */
-  routingPolicy?: RRSetRoutingPolicy;
-  /** The identifier of a supported record type. See the list of Supported DNS record types. */
-  type?: string;
-  /** Number of seconds that this `ResourceRecordSet` can be cached by resolvers. */
-  ttl?: number;
-}
-
-export const ResourceRecordSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  signatureRrdata: Schema.optional(Schema.Array(Schema.String)),
-  rrdata: Schema.optional(Schema.Array(Schema.String)),
-  routingPolicy: Schema.optional(RRSetRoutingPolicy),
-  type: Schema.optional(Schema.String),
-  ttl: Schema.optional(Schema.Number),
-}).annotate({ identifier: "ResourceRecordSet" });
-
-export interface RetrieveGoogleDomainsDnsRecordsResponse {
-  /** When present, there are more results to retrieve. Set `page_token` to this value on a subsequent call to get the next page of results. */
-  nextPageToken?: string;
-  /** The resource record set resources (DNS Zone records). */
-  rrset?: ReadonlyArray<ResourceRecordSet>;
-}
-
-export const RetrieveGoogleDomainsDnsRecordsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    rrset: Schema.optional(Schema.Array(ResourceRecordSet)),
-  }).annotate({ identifier: "RetrieveGoogleDomainsDnsRecordsResponse" });
-
-export interface ResetAuthorizationCodeRequest {}
-
-export const ResetAuthorizationCodeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "ResetAuthorizationCodeRequest",
-  });
-
-export interface DomainForwarding {
-  /** The target of the domain forwarding, i.e. the path to redirect the `subdomain` to. */
-  targetUri?: string;
-  /** The PEM-encoded certificate chain. */
-  pemCertificate?: string;
-  /** If true, forwards the path after the domain name to the same path at the new address. */
-  pathForwarding?: boolean;
-  /** If true, the forwarding works also over HTTPS. */
-  sslEnabled?: boolean;
-  /** The subdomain of the registered domain that is being forwarded. E.g. `www.example.com`, `example.com` (i.e. the registered domain itself) or `*.example.com` (i.e. all subdomains). */
-  subdomain?: string;
-  /** The redirect type. */
-  redirectType?:
-    | "REDIRECT_TYPE_UNSPECIFIED"
-    | "TEMPORARY"
-    | "PERMANENT"
-    | (string & {});
-}
-
-export const DomainForwarding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  targetUri: Schema.optional(Schema.String),
-  pemCertificate: Schema.optional(Schema.String),
-  pathForwarding: Schema.optional(Schema.Boolean),
-  sslEnabled: Schema.optional(Schema.Boolean),
-  subdomain: Schema.optional(Schema.String),
-  redirectType: Schema.optional(Schema.String),
-}).annotate({ identifier: "DomainForwarding" });
-
-export interface RetrieveGoogleDomainsForwardingConfigResponse {
-  /** The list of domain forwarding configurations. A forwarding configuration might not work correctly if the required DNS records are not present in the domain's authoritative DNS zone. */
-  domainForwardings?: ReadonlyArray<DomainForwarding>;
-  /** The list of email forwarding configurations. A forwarding configuration might not work correctly if the required DNS records are not present in the domain's authoritative DNS zone. */
-  emailForwardings?: ReadonlyArray<EmailForwarding>;
-}
-
-export const RetrieveGoogleDomainsForwardingConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    domainForwardings: Schema.optional(Schema.Array(DomainForwarding)),
-    emailForwardings: Schema.optional(Schema.Array(EmailForwarding)),
-  }).annotate({ identifier: "RetrieveGoogleDomainsForwardingConfigResponse" });
+    effectiveTransferLockState: Schema.optional(Schema.String),
+    preferredRenewalMethod: Schema.optional(Schema.String),
+    renewalMethod: Schema.optional(Schema.String),
+    transferLockState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagementSettings" });
 
 export interface GlueRecord {
-  /** Required. Domain name of the host in Punycode format. */
-  hostName?: string;
-  /** List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set. */
-  ipv6Addresses?: ReadonlyArray<string>;
   /** List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set. */
   ipv4Addresses?: ReadonlyArray<string>;
+  /** List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set. */
+  ipv6Addresses?: ReadonlyArray<string>;
+  /** Required. Domain name of the host in Punycode format. */
+  hostName?: string;
 }
 
-export const GlueRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  hostName: Schema.optional(Schema.String),
-  ipv6Addresses: Schema.optional(Schema.Array(Schema.String)),
-  ipv4Addresses: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "GlueRecord" });
-
-export interface TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsRequest =
+export const GlueRecord: Schema.Schema<GlueRecord> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsRequest" });
-
-export interface TestIamPermissionsResponse {
-  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsResponse" });
+    ipv4Addresses: Schema.optional(Schema.Array(Schema.String)),
+    ipv6Addresses: Schema.optional(Schema.Array(Schema.String)),
+    hostName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GlueRecord" });
 
 export interface DsRecord {
+  /** The key tag of the record. Must be set in range 0 -- 65535. */
+  keyTag?: number;
+  /** The digest generated from the referenced DNSKEY. */
+  digest?: string;
   /** The algorithm used to generate the referenced DNSKEY. */
   algorithm?:
     | "ALGORITHM_UNSPECIFIED"
@@ -503,37 +149,15 @@ export interface DsRecord {
     | "GOST3411"
     | "SHA384"
     | (string & {});
-  /** The digest generated from the referenced DNSKEY. */
-  digest?: string;
-  /** The key tag of the record. Must be set in range 0 -- 65535. */
-  keyTag?: number;
 }
 
-export const DsRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  algorithm: Schema.optional(Schema.String),
-  digestType: Schema.optional(Schema.String),
-  digest: Schema.optional(Schema.String),
-  keyTag: Schema.optional(Schema.Number),
-}).annotate({ identifier: "DsRecord" });
-
-export interface GoogleDomainsDns {
-  /** Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC. */
-  dsState?:
-    | "DS_STATE_UNSPECIFIED"
-    | "DS_RECORDS_UNPUBLISHED"
-    | "DS_RECORDS_PUBLISHED"
-    | (string & {});
-  /** Output only. The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty. */
-  dsRecords?: ReadonlyArray<DsRecord>;
-  /** Output only. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. This field is automatically populated with the name servers assigned to the Google Domains DNS zone. */
-  nameServers?: ReadonlyArray<string>;
-}
-
-export const GoogleDomainsDns = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  dsState: Schema.optional(Schema.String),
-  dsRecords: Schema.optional(Schema.Array(DsRecord)),
-  nameServers: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "GoogleDomainsDns" });
+export const DsRecord: Schema.Schema<DsRecord> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyTag: Schema.optional(Schema.Number),
+    digest: Schema.optional(Schema.String),
+    algorithm: Schema.optional(Schema.String),
+    digestType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DsRecord" });
 
 export interface CustomDns {
   /** Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. */
@@ -542,89 +166,111 @@ export interface CustomDns {
   dsRecords?: ReadonlyArray<DsRecord>;
 }
 
-export const CustomDns = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  nameServers: Schema.optional(Schema.Array(Schema.String)),
-  dsRecords: Schema.optional(Schema.Array(DsRecord)),
-}).annotate({ identifier: "CustomDns" });
+export const CustomDns: Schema.Schema<CustomDns> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nameServers: Schema.optional(Schema.Array(Schema.String)),
+    dsRecords: Schema.optional(Schema.Array(DsRecord)),
+  }).annotate({ identifier: "CustomDns" });
+
+export interface GoogleDomainsDns {
+  /** Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC. */
+  dsState?:
+    | "DS_STATE_UNSPECIFIED"
+    | "DS_RECORDS_UNPUBLISHED"
+    | "DS_RECORDS_PUBLISHED"
+    | (string & {});
+  /** Output only. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. This field is automatically populated with the name servers assigned to the Google Domains DNS zone. */
+  nameServers?: ReadonlyArray<string>;
+  /** Output only. The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty. */
+  dsRecords?: ReadonlyArray<DsRecord>;
+}
+
+export const GoogleDomainsDns: Schema.Schema<GoogleDomainsDns> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dsState: Schema.optional(Schema.String),
+    nameServers: Schema.optional(Schema.Array(Schema.String)),
+    dsRecords: Schema.optional(Schema.Array(DsRecord)),
+  }).annotate({ identifier: "GoogleDomainsDns" });
 
 export interface DnsSettings {
-  /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The free DNS zone provided by [Google Domains](https://domains.google/). */
-  googleDomainsDns?: GoogleDomainsDns;
   /** The list of glue records for this `Registration`. Commonly empty. */
   glueRecords?: ReadonlyArray<GlueRecord>;
   /** An arbitrary DNS provider identified by its name servers. */
   customDns?: CustomDns;
+  /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The free DNS zone provided by [Google Domains](https://domains.google/). */
+  googleDomainsDns?: GoogleDomainsDns;
   /** Output only. Indicates if this `Registration` has configured one of the following deprecated Google Domains DNS features: * Domain forwarding (HTTP `301` and `302` response status codes), * Email forwarding. See https://cloud.google.com/domains/docs/deprecations/feature-deprecations for more details. If any of these features is enabled call the `RetrieveGoogleDomainsForwardingConfig` method to get details about the feature's configuration. A forwarding configuration might not work correctly if required DNS records are not present in the domain's authoritative DNS Zone. */
   googleDomainsRedirectsDataAvailable?: boolean;
 }
 
-export const DnsSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  googleDomainsDns: Schema.optional(GoogleDomainsDns),
-  glueRecords: Schema.optional(Schema.Array(GlueRecord)),
-  customDns: Schema.optional(CustomDns),
-  googleDomainsRedirectsDataAvailable: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "DnsSettings" });
+export const DnsSettings: Schema.Schema<DnsSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    glueRecords: Schema.optional(Schema.Array(GlueRecord)),
+    customDns: Schema.optional(CustomDns),
+    googleDomainsDns: Schema.optional(GoogleDomainsDns),
+    googleDomainsRedirectsDataAvailable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DnsSettings" });
 
 export interface PostalAddress {
-  /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
-  postalCode?: string;
-  /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
-  recipients?: ReadonlyArray<string>;
-  /** Optional. Generally refers to the city or town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave `locality` empty and use `address_lines`. */
-  locality?: string;
-  /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
-  revision?: number;
-  /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. */
-  sublocality?: string;
-  /** Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
-  regionCode?: string;
-  /** Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en". */
-  languageCode?: string;
-  /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
-  addressLines?: ReadonlyArray<string>;
-  /** Optional. The name of the organization at the address. */
-  organization?: string;
   /** Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (for example, "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (Côte d'Ivoire). */
   sortingCode?: string;
+  /** Optional. Generally refers to the city or town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave `locality` empty and use `address_lines`. */
+  locality?: string;
+  /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. */
+  sublocality?: string;
+  /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
+  addressLines?: ReadonlyArray<string>;
   /** Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated. */
   administrativeArea?: string;
+  /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
+  revision?: number;
+  /** Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
+  regionCode?: string;
+  /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
+  recipients?: ReadonlyArray<string>;
+  /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
+  postalCode?: string;
+  /** Optional. The name of the organization at the address. */
+  organization?: string;
+  /** Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en". */
+  languageCode?: string;
 }
 
-export const PostalAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  postalCode: Schema.optional(Schema.String),
-  recipients: Schema.optional(Schema.Array(Schema.String)),
-  locality: Schema.optional(Schema.String),
-  revision: Schema.optional(Schema.Number),
-  sublocality: Schema.optional(Schema.String),
-  regionCode: Schema.optional(Schema.String),
-  languageCode: Schema.optional(Schema.String),
-  addressLines: Schema.optional(Schema.Array(Schema.String)),
-  organization: Schema.optional(Schema.String),
-  sortingCode: Schema.optional(Schema.String),
-  administrativeArea: Schema.optional(Schema.String),
-}).annotate({ identifier: "PostalAddress" });
+export const PostalAddress: Schema.Schema<PostalAddress> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sortingCode: Schema.optional(Schema.String),
+    locality: Schema.optional(Schema.String),
+    sublocality: Schema.optional(Schema.String),
+    addressLines: Schema.optional(Schema.Array(Schema.String)),
+    administrativeArea: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.Number),
+    regionCode: Schema.optional(Schema.String),
+    recipients: Schema.optional(Schema.Array(Schema.String)),
+    postalCode: Schema.optional(Schema.String),
+    organization: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PostalAddress" });
 
 export interface Contact {
-  /** Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`. */
-  phoneNumber?: string;
   /** Required. Postal address of the contact. */
   postalAddress?: PostalAddress;
-  /** Required. Email address of the contact. */
-  email?: string;
   /** Fax number of the contact in international format. For example, `"+1-800-555-0123"`. */
   faxNumber?: string;
+  /** Required. Email address of the contact. */
+  email?: string;
+  /** Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`. */
+  phoneNumber?: string;
 }
 
-export const Contact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  phoneNumber: Schema.optional(Schema.String),
-  postalAddress: Schema.optional(PostalAddress),
-  email: Schema.optional(Schema.String),
-  faxNumber: Schema.optional(Schema.String),
-}).annotate({ identifier: "Contact" });
+export const Contact: Schema.Schema<Contact> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    postalAddress: Schema.optional(PostalAddress),
+    faxNumber: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    phoneNumber: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Contact" });
 
 export interface ContactSettings {
-  /** Required. The administrative contact for the `Registration`. */
-  adminContact?: Contact;
   /** Required. The technical contact for the `Registration`. */
   technicalContact?: Contact;
   /** Required. Privacy setting for the contacts associated with the `Registration`. */
@@ -634,26 +280,33 @@ export interface ContactSettings {
     | "PRIVATE_CONTACT_DATA"
     | "REDACTED_CONTACT_DATA"
     | (string & {});
+  /** Required. The administrative contact for the `Registration`. */
+  adminContact?: Contact;
   /** Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant receives an email confirmation that they must complete within 15 days to avoid domain suspension.* */
   registrantContact?: Contact;
 }
 
-export const ContactSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  adminContact: Schema.optional(Contact),
-  technicalContact: Schema.optional(Contact),
-  privacy: Schema.optional(Schema.String),
-  registrantContact: Schema.optional(Contact),
-}).annotate({ identifier: "ContactSettings" });
+export const ContactSettings: Schema.Schema<ContactSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    technicalContact: Schema.optional(Contact),
+    privacy: Schema.optional(Schema.String),
+    adminContact: Schema.optional(Contact),
+    registrantContact: Schema.optional(Contact),
+  }).annotate({ identifier: "ContactSettings" });
 
 export interface Registration {
   /** Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method. */
   managementSettings?: ManagementSettings;
-  /** Output only. Name of the `Registration` resource, in the format `projects/* /locations/* /registrations/`. */
-  name?: string;
-  /** Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method. */
-  dnsSettings?: DnsSettings;
   /** Set of labels associated with the `Registration`. */
   labels?: Record<string, string>;
+  /** Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method. */
+  dnsSettings?: DnsSettings;
+  /** Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method. */
+  contactSettings?: ContactSettings;
+  /** Output only. The creation timestamp of the `Registration` resource. */
+  createTime?: string;
+  /** Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format. */
+  domainName?: string;
   /** Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state. */
   registerFailureReason?:
     | "REGISTER_FAILURE_REASON_UNSPECIFIED"
@@ -661,20 +314,30 @@ export interface Registration {
     | "DOMAIN_NOT_AVAILABLE"
     | "INVALID_CONTACTS"
     | (string & {});
-  /** Output only. Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive. */
-  pendingContactSettings?: ContactSettings;
-  /** Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method. */
-  contactSettings?: ContactSettings;
-  /** Output only. Set of options for the `contact_settings.privacy` field that this `Registration` supports. */
-  supportedPrivacy?: ReadonlyArray<
-    | "CONTACT_PRIVACY_UNSPECIFIED"
-    | "PUBLIC_CONTACT_DATA"
-    | "PRIVATE_CONTACT_DATA"
-    | "REDACTED_CONTACT_DATA"
+  /** Output only. The state of the `Registration` */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "REGISTRATION_PENDING"
+    | "REGISTRATION_FAILED"
+    | "TRANSFER_PENDING"
+    | "TRANSFER_FAILED"
+    | "IMPORT_PENDING"
+    | "ACTIVE"
+    | "SUSPENDED"
+    | "EXPORTED"
+    | "EXPIRED"
+    | (string & {});
+  /** Output only. Name of the `Registration` resource, in the format `projects/* /locations/* /registrations/`. */
+  name?: string;
+  /** Output only. Special properties of the domain. */
+  domainProperties?: ReadonlyArray<
+    | "DOMAIN_PROPERTY_UNSPECIFIED"
+    | "TRANSFER_LOCK_UNSUPPORTED_BY_REGISTRY"
+    | "REQUIRE_PUSH_TRANSFER"
     | (string & {})
   >;
-  /** Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format. */
-  domainName?: string;
+  /** Output only. Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive. */
+  pendingContactSettings?: ContactSettings;
   /** Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state. */
   transferFailureReason?:
     | "TRANSFER_FAILURE_REASON_UNSPECIFIED"
@@ -701,84 +364,7 @@ export interface Registration {
     | "AUTO_RENEWAL_UPDATE_NOT_EFFECTIVE"
     | (string & {})
   >;
-  /** Output only. Special properties of the domain. */
-  domainProperties?: ReadonlyArray<
-    | "DOMAIN_PROPERTY_UNSPECIFIED"
-    | "TRANSFER_LOCK_UNSUPPORTED_BY_REGISTRY"
-    | "REQUIRE_PUSH_TRANSFER"
-    | (string & {})
-  >;
-  /** Output only. The creation timestamp of the `Registration` resource. */
-  createTime?: string;
-  /** Output only. The state of the `Registration` */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "REGISTRATION_PENDING"
-    | "REGISTRATION_FAILED"
-    | "TRANSFER_PENDING"
-    | "TRANSFER_FAILED"
-    | "IMPORT_PENDING"
-    | "ACTIVE"
-    | "SUSPENDED"
-    | "EXPORTED"
-    | "EXPIRED"
-    | (string & {});
-}
-
-export const Registration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  managementSettings: Schema.optional(ManagementSettings),
-  name: Schema.optional(Schema.String),
-  dnsSettings: Schema.optional(DnsSettings),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  registerFailureReason: Schema.optional(Schema.String),
-  pendingContactSettings: Schema.optional(ContactSettings),
-  contactSettings: Schema.optional(ContactSettings),
-  supportedPrivacy: Schema.optional(Schema.Array(Schema.String)),
-  domainName: Schema.optional(Schema.String),
-  transferFailureReason: Schema.optional(Schema.String),
-  expireTime: Schema.optional(Schema.String),
-  issues: Schema.optional(Schema.Array(Schema.String)),
-  domainProperties: Schema.optional(Schema.Array(Schema.String)),
-  createTime: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-}).annotate({ identifier: "Registration" });
-
-export interface AuthorizationCode {
-  /** The Authorization Code in ASCII. It can be used to transfer the domain to or from another registrar. */
-  code?: string;
-}
-
-export const AuthorizationCode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  code: Schema.optional(Schema.String),
-}).annotate({ identifier: "AuthorizationCode" });
-
-export interface TransferDomainRequest {
-  /** Required. Acknowledgement of the price to transfer or renew the domain for one year. Call `RetrieveTransferParameters` to obtain the price, which you must acknowledge. */
-  yearlyPrice?: Money;
-  /** Required. The complete `Registration` resource to be created. You can leave `registration.dns_settings` unset to import the domain's current DNS configuration from its current registrar. Use this option only if you are sure that the domain's current DNS service does not cease upon transfer, as is often the case for DNS services provided for free by the registrar. */
-  registration?: Registration;
-  /** Validate the request without actually transferring the domain. */
-  validateOnly?: boolean;
-  /** The list of contact notices that you acknowledge. The notices needed here depend on the values specified in `registration.contact_settings`. */
-  contactNotices?: ReadonlyArray<
-    | "CONTACT_NOTICE_UNSPECIFIED"
-    | "PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT"
-    | (string & {})
-  >;
-  /** The domain's transfer authorization code. You can obtain this from the domain's current registrar. */
-  authorizationCode?: AuthorizationCode;
-}
-
-export const TransferDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  yearlyPrice: Schema.optional(Money),
-  registration: Schema.optional(Registration),
-  validateOnly: Schema.optional(Schema.Boolean),
-  contactNotices: Schema.optional(Schema.Array(Schema.String)),
-  authorizationCode: Schema.optional(AuthorizationCode),
-}).annotate({ identifier: "TransferDomainRequest" });
-
-export interface TransferParameters {
-  /** Contact privacy options that the domain supports. */
+  /** Output only. Set of options for the `contact_settings.privacy` field that this `Registration` supports. */
   supportedPrivacy?: ReadonlyArray<
     | "CONTACT_PRIVACY_UNSPECIFIED"
     | "PUBLIC_CONTACT_DATA"
@@ -786,260 +372,26 @@ export interface TransferParameters {
     | "REDACTED_CONTACT_DATA"
     | (string & {})
   >;
-  /** The name servers that currently store the configuration of the domain. */
-  nameServers?: ReadonlyArray<string>;
-  /** The domain name. Unicode domain names are expressed in Punycode format. */
-  domainName?: string;
-  /** The URL of the registrar that currently manages the domain. */
-  currentRegistrarUri?: string;
-  /** Price to transfer or renew the domain for one year. */
-  yearlyPrice?: Money;
-  /** The registrar that currently manages the domain. */
-  currentRegistrar?: string;
-  /** Indicates whether the domain is protected by a transfer lock. For a transfer to succeed, this must show `UNLOCKED`. To unlock a domain, go to its current registrar. */
-  transferLockState?:
-    | "TRANSFER_LOCK_STATE_UNSPECIFIED"
-    | "UNLOCKED"
-    | "LOCKED"
-    | (string & {});
 }
 
-export const TransferParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  supportedPrivacy: Schema.optional(Schema.Array(Schema.String)),
-  nameServers: Schema.optional(Schema.Array(Schema.String)),
-  domainName: Schema.optional(Schema.String),
-  currentRegistrarUri: Schema.optional(Schema.String),
-  yearlyPrice: Schema.optional(Money),
-  currentRegistrar: Schema.optional(Schema.String),
-  transferLockState: Schema.optional(Schema.String),
-}).annotate({ identifier: "TransferParameters" });
-
-export interface RetrieveTransferParametersResponse {
-  /** Parameters to use when calling the `TransferDomain` method. */
-  transferParameters?: TransferParameters;
-}
-
-export const RetrieveTransferParametersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    transferParameters: Schema.optional(TransferParameters),
-  }).annotate({ identifier: "RetrieveTransferParametersResponse" });
-
-export interface ConfigureContactSettingsRequest {
-  /** Validate the request without actually updating the contact settings. */
-  validateOnly?: boolean;
-  /** Fields of the `ContactSettings` to update. */
-  contactSettings?: ContactSettings;
-  /** Required. The field mask describing which fields to update as a comma-separated list. For example, if only the registrant contact is being updated, the `update_mask` is `"registrant_contact"`. */
-  updateMask?: string;
-  /** The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `contact_settings`. */
-  contactNotices?: ReadonlyArray<
-    | "CONTACT_NOTICE_UNSPECIFIED"
-    | "PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT"
-    | (string & {})
-  >;
-}
-
-export const ConfigureContactSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    validateOnly: Schema.optional(Schema.Boolean),
-    contactSettings: Schema.optional(ContactSettings),
-    updateMask: Schema.optional(Schema.String),
-    contactNotices: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ConfigureContactSettingsRequest" });
-
-export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
-}
-
-export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  code: Schema.optional(Schema.Number),
-  message: Schema.optional(Schema.String),
-  details: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-}).annotate({ identifier: "Status" });
-
-export interface Operation {
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-}
-
-export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  error: Schema.optional(Status),
-  done: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "Operation" });
-
-export interface ListOperationsResponse {
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: ReadonlyArray<string>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: ReadonlyArray<Operation>;
-}
-
-export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    nextPageToken: Schema.optional(Schema.String),
-    operations: Schema.optional(Schema.Array(Operation)),
-  },
-).annotate({ identifier: "ListOperationsResponse" });
-
-export interface Location {
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: Record<string, string>;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
-}
-
-export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  locationId: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  displayName: Schema.optional(Schema.String),
-}).annotate({ identifier: "Location" });
-
-export interface ConfigureManagementSettingsRequest {
-  /** Fields of the `ManagementSettings` to update. */
-  managementSettings?: ManagementSettings;
-  /** Required. The field mask describing which fields to update as a comma-separated list. For example, if only the transfer lock is being updated, the `update_mask` is `"transfer_lock_state"`. */
-  updateMask?: string;
-}
-
-export const ConfigureManagementSettingsRequest =
+export const Registration: Schema.Schema<Registration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementSettings: Schema.optional(ManagementSettings),
-    updateMask: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ConfigureManagementSettingsRequest" });
-
-export interface RetrieveImportableDomainsResponse {
-  /** A list of domains that the calling user manages in Google Domains. */
-  domains?: ReadonlyArray<Domain>;
-  /** When present, there are more results to retrieve. Set `page_token` to this value on a subsequent call to get the next page of results. */
-  nextPageToken?: string;
-}
-
-export const RetrieveImportableDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    domains: Schema.optional(Schema.Array(Domain)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RetrieveImportableDomainsResponse" });
-
-export interface RegisterParameters {
-  /** Price to register or renew the domain for one year. */
-  yearlyPrice?: Money;
-  /** Indicates whether the domain is available for registration. This value is accurate when obtained by calling `RetrieveRegisterParameters`, but is approximate when obtained by calling `SearchDomains`. */
-  availability?:
-    | "AVAILABILITY_UNSPECIFIED"
-    | "AVAILABLE"
-    | "UNAVAILABLE"
-    | "UNSUPPORTED"
-    | "UNKNOWN"
-    | (string & {});
-  /** The domain name. Unicode domain names are expressed in Punycode format. */
-  domainName?: string;
-  /** Notices about special properties of the domain. */
-  domainNotices?: ReadonlyArray<
-    "DOMAIN_NOTICE_UNSPECIFIED" | "HSTS_PRELOADED" | (string & {})
-  >;
-  /** Contact privacy options that the domain supports. */
-  supportedPrivacy?: ReadonlyArray<
-    | "CONTACT_PRIVACY_UNSPECIFIED"
-    | "PUBLIC_CONTACT_DATA"
-    | "PRIVATE_CONTACT_DATA"
-    | "REDACTED_CONTACT_DATA"
-    | (string & {})
-  >;
-}
-
-export const RegisterParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  yearlyPrice: Schema.optional(Money),
-  availability: Schema.optional(Schema.String),
-  domainName: Schema.optional(Schema.String),
-  domainNotices: Schema.optional(Schema.Array(Schema.String)),
-  supportedPrivacy: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "RegisterParameters" });
-
-export interface RetrieveRegisterParametersResponse {
-  /** Parameters to use when calling the `RegisterDomain` method. */
-  registerParameters?: RegisterParameters;
-}
-
-export const RetrieveRegisterParametersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    registerParameters: Schema.optional(RegisterParameters),
-  }).annotate({ identifier: "RetrieveRegisterParametersResponse" });
-
-export interface ConfigureDnsSettingsRequest {
-  /** Validate the request without actually updating the DNS settings. */
-  validateOnly?: boolean;
-  /** Fields of the `DnsSettings` to update. */
-  dnsSettings?: DnsSettings;
-  /** Required. The field mask describing which fields to update as a comma-separated list. For example, if only the name servers are being updated for an existing Custom DNS configuration, the `update_mask` is `"custom_dns.name_servers"`. When changing the DNS provider from one type to another, pass the new provider's field name as part of the field mask. For example, when changing from a Google Domains DNS configuration to a Custom DNS configuration, the `update_mask` is `"custom_dns"`. // */
-  updateMask?: string;
-}
-
-export const ConfigureDnsSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    validateOnly: Schema.optional(Schema.Boolean),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     dnsSettings: Schema.optional(DnsSettings),
-    updateMask: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ConfigureDnsSettingsRequest" });
-
-export interface SetIamPolicyRequest {
-  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
-  policy?: Policy;
-  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
-  updateMask?: string;
-}
-
-export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  policy: Schema.optional(Policy),
-  updateMask: Schema.optional(Schema.String),
-}).annotate({ identifier: "SetIamPolicyRequest" });
-
-export interface ImportDomainRequest {
-  /** Required. The domain name. Unicode domain names must be expressed in Punycode format. */
-  domainName?: string;
-  /** Set of labels associated with the `Registration`. */
-  labels?: Record<string, string>;
-}
-
-export const ImportDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  domainName: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-}).annotate({ identifier: "ImportDomainRequest" });
-
-export interface ExportRegistrationRequest {}
-
-export const ExportRegistrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "ExportRegistrationRequest",
-  });
+    contactSettings: Schema.optional(ContactSettings),
+    createTime: Schema.optional(Schema.String),
+    domainName: Schema.optional(Schema.String),
+    registerFailureReason: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    domainProperties: Schema.optional(Schema.Array(Schema.String)),
+    pendingContactSettings: Schema.optional(ContactSettings),
+    transferFailureReason: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    issues: Schema.optional(Schema.Array(Schema.String)),
+    supportedPrivacy: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "Registration" });
 
 export interface ListRegistrationsResponse {
   /** A list of `Registration`s. */
@@ -1048,11 +400,750 @@ export interface ListRegistrationsResponse {
   nextPageToken?: string;
 }
 
-export const ListRegistrationsResponse =
+export const ListRegistrationsResponse: Schema.Schema<ListRegistrationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     registrations: Schema.optional(Schema.Array(Registration)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListRegistrationsResponse" });
+
+export interface TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
+
+export interface LoadBalancerTarget {
+  /** The configured port of the load balancer. */
+  port?: string;
+  /** The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer. */
+  loadBalancerType?:
+    | "NONE"
+    | "GLOBAL_L7ILB"
+    | "REGIONAL_L4ILB"
+    | "REGIONAL_L7ILB"
+    | (string & {});
+  /** The fully qualified URL of the network that the load balancer is attached to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`. */
+  networkUrl?: string;
+  /** The protocol of the load balancer to health check. */
+  ipProtocol?: "UNDEFINED" | "TCP" | "UDP" | (string & {});
+  /** The project ID in which the load balancer is located. */
+  project?: string;
+  /** The frontend IP address of the load balancer to health check. */
+  ipAddress?: string;
+  /** The region in which the load balancer is located. */
+  region?: string;
+}
+
+export const LoadBalancerTarget: Schema.Schema<LoadBalancerTarget> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    port: Schema.optional(Schema.String),
+    loadBalancerType: Schema.optional(Schema.String),
+    networkUrl: Schema.optional(Schema.String),
+    ipProtocol: Schema.optional(Schema.String),
+    project: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LoadBalancerTarget" });
+
+export interface HealthCheckTargets {
+  /** Configuration for internal load balancers to be health checked. */
+  internalLoadBalancer?: ReadonlyArray<LoadBalancerTarget>;
+  /** The Internet IP addresses to be health checked. The format matches the format of ResourceRecordSet.rrdata as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) */
+  externalEndpoints?: ReadonlyArray<string>;
+}
+
+export const HealthCheckTargets: Schema.Schema<HealthCheckTargets> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    internalLoadBalancer: Schema.optional(Schema.Array(LoadBalancerTarget)),
+    externalEndpoints: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "HealthCheckTargets" });
+
+export interface GeoPolicyItem {
+  rrdata?: ReadonlyArray<string>;
+  /** DNSSEC generated signatures for all the `rrdata` within this item. When using health-checked targets for DNSSEC-enabled zones, you can only use at most one health-checked IP address per item. */
+  signatureRrdata?: ReadonlyArray<string>;
+  /** For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with `rrdata` within this item. */
+  healthCheckedTargets?: HealthCheckTargets;
+  /** The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc. */
+  location?: string;
+}
+
+export const GeoPolicyItem: Schema.Schema<GeoPolicyItem> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rrdata: Schema.optional(Schema.Array(Schema.String)),
+    signatureRrdata: Schema.optional(Schema.Array(Schema.String)),
+    healthCheckedTargets: Schema.optional(HealthCheckTargets),
+    location: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GeoPolicyItem" });
+
+export interface GeoPolicy {
+  /** The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead. */
+  item?: ReadonlyArray<GeoPolicyItem>;
+  /** Without fencing, if health check fails for all configured items in the current geo bucket, we failover to the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy, we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even when all targets are unhealthy. */
+  enableFencing?: boolean;
+}
+
+export const GeoPolicy: Schema.Schema<GeoPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    item: Schema.optional(Schema.Array(GeoPolicyItem)),
+    enableFencing: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GeoPolicy" });
+
+export interface Money {
+  /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
+  units?: string;
+  /** The three-letter currency code defined in ISO 4217. */
+  currencyCode?: string;
+  /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
+  nanos?: number;
+}
+
+export const Money: Schema.Schema<Money> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    units: Schema.optional(Schema.String),
+    currencyCode: Schema.optional(Schema.String),
+    nanos: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Money" });
+
+export interface Domain {
+  /** The state of this domain as a `Registration` resource. */
+  resourceState?:
+    | "RESOURCE_STATE_UNSPECIFIED"
+    | "IMPORTABLE"
+    | "UNSUPPORTED"
+    | "SUSPENDED"
+    | "EXPIRED"
+    | "DELETED"
+    | (string & {});
+  /** The domain name. Unicode domain names are expressed in Punycode format. */
+  domainName?: string;
+  /** Price to renew the domain for one year. Only set when `resource_state` is `IMPORTABLE`. */
+  yearlyPrice?: Money;
+}
+
+export const Domain: Schema.Schema<Domain> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceState: Schema.optional(Schema.String),
+    domainName: Schema.optional(Schema.String),
+    yearlyPrice: Schema.optional(Money),
+  }).annotate({ identifier: "Domain" });
+
+export interface OperationMetadata {
+  /** Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Name of the verb executed by the operation. */
+  verb?: string;
+  /** Human-readable status of the operation, if any. */
+  statusDetail?: string;
+  /** API version used to start the operation. */
+  apiVersion?: string;
+  /** The time the operation was created. */
+  createTime?: string;
+  /** The time the operation finished running. */
+  endTime?: string;
+}
+
+export const OperationMetadata: Schema.Schema<OperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    statusDetail: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadata" });
+
+export interface WrrPolicyItem {
+  /** The weight corresponding to this `WrrPolicyItem` object. When multiple `WrrPolicyItem` objects are configured, the probability of returning an `WrrPolicyItem` object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative. */
+  weight?: number;
+  rrdata?: ReadonlyArray<string>;
+  /** DNSSEC generated signatures for all the `rrdata` within this item. When using health-checked targets for DNSSEC-enabled zones, you can only use at most one health-checked IP address per item. */
+  signatureRrdata?: ReadonlyArray<string>;
+  /** Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of `rrdata` or `health_checked_targets` can be set. */
+  healthCheckedTargets?: HealthCheckTargets;
+}
+
+export const WrrPolicyItem: Schema.Schema<WrrPolicyItem> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    weight: Schema.optional(Schema.Number),
+    rrdata: Schema.optional(Schema.Array(Schema.String)),
+    signatureRrdata: Schema.optional(Schema.Array(Schema.String)),
+    healthCheckedTargets: Schema.optional(HealthCheckTargets),
+  }).annotate({ identifier: "WrrPolicyItem" });
+
+export interface WrrPolicy {
+  item?: ReadonlyArray<WrrPolicyItem>;
+}
+
+export const WrrPolicy: Schema.Schema<WrrPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    item: Schema.optional(Schema.Array(WrrPolicyItem)),
+  }).annotate({ identifier: "WrrPolicy" });
+
+export interface PrimaryBackupPolicy {
+  /** Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to `BACKUP`, this policy essentially becomes a geo routing policy. */
+  backupGeoTargets?: GeoPolicy;
+  /** Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the `backup_geo_targets`. */
+  primaryTargets?: HealthCheckTargets;
+  /** When serving state is `PRIMARY`, this field provides the option of sending a small percentage of the traffic to the backup targets. */
+  trickleTraffic?: number;
+}
+
+export const PrimaryBackupPolicy: Schema.Schema<PrimaryBackupPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupGeoTargets: Schema.optional(GeoPolicy),
+    primaryTargets: Schema.optional(HealthCheckTargets),
+    trickleTraffic: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "PrimaryBackupPolicy" });
+
+export interface RRSetRoutingPolicy {
+  wrr?: WrrPolicy;
+  /** The fully qualified URL of the HealthCheck to use for this RRSetRoutingPolicy. Format this URL like `https://www.googleapis.com/compute/v1/projects/{project}/global/healthChecks/{healthCheck}`. https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks */
+  healthCheck?: string;
+  geo?: GeoPolicy;
+  primaryBackup?: PrimaryBackupPolicy;
+  geoPolicy?: GeoPolicy;
+  wrrPolicy?: WrrPolicy;
+}
+
+export const RRSetRoutingPolicy: Schema.Schema<RRSetRoutingPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    wrr: Schema.optional(WrrPolicy),
+    healthCheck: Schema.optional(Schema.String),
+    geo: Schema.optional(GeoPolicy),
+    primaryBackup: Schema.optional(PrimaryBackupPolicy),
+    geoPolicy: Schema.optional(GeoPolicy),
+    wrrPolicy: Schema.optional(WrrPolicy),
+  }).annotate({ identifier: "RRSetRoutingPolicy" });
+
+export interface Expr {
+  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
+  location?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
+  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
+  title?: string;
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
+}
+
+export const Expr: Schema.Schema<Expr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Expr" });
+
+export interface TransferParameters {
+  /** Indicates whether the domain is protected by a transfer lock. For a transfer to succeed, this must show `UNLOCKED`. To unlock a domain, go to its current registrar. */
+  transferLockState?:
+    | "TRANSFER_LOCK_STATE_UNSPECIFIED"
+    | "UNLOCKED"
+    | "LOCKED"
+    | (string & {});
+  /** Contact privacy options that the domain supports. */
+  supportedPrivacy?: ReadonlyArray<
+    | "CONTACT_PRIVACY_UNSPECIFIED"
+    | "PUBLIC_CONTACT_DATA"
+    | "PRIVATE_CONTACT_DATA"
+    | "REDACTED_CONTACT_DATA"
+    | (string & {})
+  >;
+  /** The domain name. Unicode domain names are expressed in Punycode format. */
+  domainName?: string;
+  /** The URL of the registrar that currently manages the domain. */
+  currentRegistrarUri?: string;
+  /** Price to transfer or renew the domain for one year. */
+  yearlyPrice?: Money;
+  /** The name servers that currently store the configuration of the domain. */
+  nameServers?: ReadonlyArray<string>;
+  /** The registrar that currently manages the domain. */
+  currentRegistrar?: string;
+}
+
+export const TransferParameters: Schema.Schema<TransferParameters> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transferLockState: Schema.optional(Schema.String),
+    supportedPrivacy: Schema.optional(Schema.Array(Schema.String)),
+    domainName: Schema.optional(Schema.String),
+    currentRegistrarUri: Schema.optional(Schema.String),
+    yearlyPrice: Schema.optional(Money),
+    nameServers: Schema.optional(Schema.Array(Schema.String)),
+    currentRegistrar: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TransferParameters" });
+
+export interface RetrieveTransferParametersResponse {
+  /** Parameters to use when calling the `TransferDomain` method. */
+  transferParameters?: TransferParameters;
+}
+
+export const RetrieveTransferParametersResponse: Schema.Schema<RetrieveTransferParametersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transferParameters: Schema.optional(TransferParameters),
+  }).annotate({ identifier: "RetrieveTransferParametersResponse" });
+
+export interface RegisterParameters {
+  /** Indicates whether the domain is available for registration. This value is accurate when obtained by calling `RetrieveRegisterParameters`, but is approximate when obtained by calling `SearchDomains`. */
+  availability?:
+    | "AVAILABILITY_UNSPECIFIED"
+    | "AVAILABLE"
+    | "UNAVAILABLE"
+    | "UNSUPPORTED"
+    | "UNKNOWN"
+    | (string & {});
+  /** Notices about special properties of the domain. */
+  domainNotices?: ReadonlyArray<
+    "DOMAIN_NOTICE_UNSPECIFIED" | "HSTS_PRELOADED" | (string & {})
+  >;
+  /** Price to register or renew the domain for one year. */
+  yearlyPrice?: Money;
+  /** Contact privacy options that the domain supports. */
+  supportedPrivacy?: ReadonlyArray<
+    | "CONTACT_PRIVACY_UNSPECIFIED"
+    | "PUBLIC_CONTACT_DATA"
+    | "PRIVATE_CONTACT_DATA"
+    | "REDACTED_CONTACT_DATA"
+    | (string & {})
+  >;
+  /** The domain name. Unicode domain names are expressed in Punycode format. */
+  domainName?: string;
+}
+
+export const RegisterParameters: Schema.Schema<RegisterParameters> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    availability: Schema.optional(Schema.String),
+    domainNotices: Schema.optional(Schema.Array(Schema.String)),
+    yearlyPrice: Schema.optional(Money),
+    supportedPrivacy: Schema.optional(Schema.Array(Schema.String)),
+    domainName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RegisterParameters" });
+
+export interface SearchDomainsResponse {
+  /** Results of the domain name search. */
+  registerParameters?: ReadonlyArray<RegisterParameters>;
+}
+
+export const SearchDomainsResponse: Schema.Schema<SearchDomainsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registerParameters: Schema.optional(Schema.Array(RegisterParameters)),
+  }).annotate({ identifier: "SearchDomainsResponse" });
+
+export interface ResourceRecordSet {
+  /** As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples. */
+  rrdata?: ReadonlyArray<string>;
+  /** As defined in RFC 4034 (section 3.2). */
+  signatureRrdata?: ReadonlyArray<string>;
+  /** For example, www.example.com. */
+  name?: string;
+  /** Number of seconds that this `ResourceRecordSet` can be cached by resolvers. */
+  ttl?: number;
+  /** The identifier of a supported record type. See the list of Supported DNS record types. */
+  type?: string;
+  /** Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid `ResourceRecordSet` contains only `rrdata` (for static resolution) or a `routing_policy` (for dynamic resolution). */
+  routingPolicy?: RRSetRoutingPolicy;
+}
+
+export const ResourceRecordSet: Schema.Schema<ResourceRecordSet> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rrdata: Schema.optional(Schema.Array(Schema.String)),
+    signatureRrdata: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.String),
+    ttl: Schema.optional(Schema.Number),
+    type: Schema.optional(Schema.String),
+    routingPolicy: Schema.optional(RRSetRoutingPolicy),
+  }).annotate({ identifier: "ResourceRecordSet" });
+
+export interface RetrieveGoogleDomainsDnsRecordsResponse {
+  /** The resource record set resources (DNS Zone records). */
+  rrset?: ReadonlyArray<ResourceRecordSet>;
+  /** When present, there are more results to retrieve. Set `page_token` to this value on a subsequent call to get the next page of results. */
+  nextPageToken?: string;
+}
+
+export const RetrieveGoogleDomainsDnsRecordsResponse: Schema.Schema<RetrieveGoogleDomainsDnsRecordsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rrset: Schema.optional(Schema.Array(ResourceRecordSet)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RetrieveGoogleDomainsDnsRecordsResponse" });
+
+export interface Location {
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: Record<string, string>;
+}
+
+export const Location: Schema.Schema<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "Location" });
+
+export interface Binding {
+  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
+  role?: string;
+  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
+  members?: ReadonlyArray<string>;
+  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  condition?: Expr;
+}
+
+export const Binding: Schema.Schema<Binding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    role: Schema.optional(Schema.String),
+    members: Schema.optional(Schema.Array(Schema.String)),
+    condition: Schema.optional(Expr),
+  }).annotate({ identifier: "Binding" });
+
+export interface TestIamPermissionsResponse {
+  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
+
+export interface ImportDomainRequest {
+  /** Set of labels associated with the `Registration`. */
+  labels?: Record<string, string>;
+  /** Required. The domain name. Unicode domain names must be expressed in Punycode format. */
+  domainName?: string;
+}
+
+export const ImportDomainRequest: Schema.Schema<ImportDomainRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    domainName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ImportDomainRequest" });
+
+export interface ConfigureContactSettingsRequest {
+  /** Required. The field mask describing which fields to update as a comma-separated list. For example, if only the registrant contact is being updated, the `update_mask` is `"registrant_contact"`. */
+  updateMask?: string;
+  /** The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `contact_settings`. */
+  contactNotices?: ReadonlyArray<
+    | "CONTACT_NOTICE_UNSPECIFIED"
+    | "PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT"
+    | (string & {})
+  >;
+  /** Fields of the `ContactSettings` to update. */
+  contactSettings?: ContactSettings;
+  /** Validate the request without actually updating the contact settings. */
+  validateOnly?: boolean;
+}
+
+export const ConfigureContactSettingsRequest: Schema.Schema<ConfigureContactSettingsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String),
+    contactNotices: Schema.optional(Schema.Array(Schema.String)),
+    contactSettings: Schema.optional(ContactSettings),
+    validateOnly: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ConfigureContactSettingsRequest" });
+
+export interface ResetAuthorizationCodeRequest {}
+
+export const ResetAuthorizationCodeRequest: Schema.Schema<ResetAuthorizationCodeRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "ResetAuthorizationCodeRequest",
+  });
+
+export interface EmailForwarding {
+  /** An alias recipient email that forwards emails to the `target_email_address`. For example, `admin@example.com` or `*@example.com` (wildcard alias forwards all the emails under the registered domain). */
+  alias?: string;
+  /** Target email that receives emails sent to the `alias`. */
+  targetEmailAddress?: string;
+}
+
+export const EmailForwarding: Schema.Schema<EmailForwarding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alias: Schema.optional(Schema.String),
+    targetEmailAddress: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EmailForwarding" });
+
+export interface ConfigureDnsSettingsRequest {
+  /** Fields of the `DnsSettings` to update. */
+  dnsSettings?: DnsSettings;
+  /** Validate the request without actually updating the DNS settings. */
+  validateOnly?: boolean;
+  /** Required. The field mask describing which fields to update as a comma-separated list. For example, if only the name servers are being updated for an existing Custom DNS configuration, the `update_mask` is `"custom_dns.name_servers"`. When changing the DNS provider from one type to another, pass the new provider's field name as part of the field mask. For example, when changing from a Google Domains DNS configuration to a Custom DNS configuration, the `update_mask` is `"custom_dns"`. // */
+  updateMask?: string;
+}
+
+export const ConfigureDnsSettingsRequest: Schema.Schema<ConfigureDnsSettingsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dnsSettings: Schema.optional(DnsSettings),
+    validateOnly: Schema.optional(Schema.Boolean),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigureDnsSettingsRequest" });
+
+export interface RegisterDomainRequest {
+  /** Required. The complete `Registration` resource to be created. */
+  registration?: Registration;
+  /** The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`. */
+  contactNotices?: ReadonlyArray<
+    | "CONTACT_NOTICE_UNSPECIFIED"
+    | "PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT"
+    | (string & {})
+  >;
+  /** When true, only validation is performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation */
+  validateOnly?: boolean;
+  /** Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls. */
+  yearlyPrice?: Money;
+  /** The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement. */
+  domainNotices?: ReadonlyArray<
+    "DOMAIN_NOTICE_UNSPECIFIED" | "HSTS_PRELOADED" | (string & {})
+  >;
+}
+
+export const RegisterDomainRequest: Schema.Schema<RegisterDomainRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registration: Schema.optional(Registration),
+    contactNotices: Schema.optional(Schema.Array(Schema.String)),
+    validateOnly: Schema.optional(Schema.Boolean),
+    yearlyPrice: Schema.optional(Money),
+    domainNotices: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "RegisterDomainRequest" });
+
+export interface ConfigureManagementSettingsRequest {
+  /** Optional. If set, validates the request without actually updating the management settings. */
+  validateOnly?: boolean;
+  /** Required. The field mask describing which fields to update as a comma-separated list. For example, if only the transfer lock is being updated, the `update_mask` is `"transfer_lock_state"`. */
+  updateMask?: string;
+  /** Fields of the `ManagementSettings` to update. */
+  managementSettings?: ManagementSettings;
+}
+
+export const ConfigureManagementSettingsRequest: Schema.Schema<ConfigureManagementSettingsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateOnly: Schema.optional(Schema.Boolean),
+    updateMask: Schema.optional(Schema.String),
+    managementSettings: Schema.optional(ManagementSettings),
+  }).annotate({ identifier: "ConfigureManagementSettingsRequest" });
+
+export interface AuthorizationCode {
+  /** The Authorization Code in ASCII. It can be used to transfer the domain to or from another registrar. */
+  code?: string;
+}
+
+export const AuthorizationCode: Schema.Schema<AuthorizationCode> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AuthorizationCode" });
+
+export interface TransferDomainRequest {
+  /** Validate the request without actually transferring the domain. */
+  validateOnly?: boolean;
+  /** The list of contact notices that you acknowledge. The notices needed here depend on the values specified in `registration.contact_settings`. */
+  contactNotices?: ReadonlyArray<
+    | "CONTACT_NOTICE_UNSPECIFIED"
+    | "PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT"
+    | (string & {})
+  >;
+  /** Required. Acknowledgement of the price to transfer or renew the domain for one year. Call `RetrieveTransferParameters` to obtain the price, which you must acknowledge. */
+  yearlyPrice?: Money;
+  /** The domain's transfer authorization code. You can obtain this from the domain's current registrar. */
+  authorizationCode?: AuthorizationCode;
+  /** Required. The complete `Registration` resource to be created. You can leave `registration.dns_settings` unset to import the domain's current DNS configuration from its current registrar. Use this option only if you are sure that the domain's current DNS service does not cease upon transfer, as is often the case for DNS services provided for free by the registrar. */
+  registration?: Registration;
+}
+
+export const TransferDomainRequest: Schema.Schema<TransferDomainRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateOnly: Schema.optional(Schema.Boolean),
+    contactNotices: Schema.optional(Schema.Array(Schema.String)),
+    yearlyPrice: Schema.optional(Money),
+    authorizationCode: Schema.optional(AuthorizationCode),
+    registration: Schema.optional(Registration),
+  }).annotate({ identifier: "TransferDomainRequest" });
+
+export interface AuditLogConfig {
+  /** The log type that this config enables. */
+  logType?:
+    | "LOG_TYPE_UNSPECIFIED"
+    | "ADMIN_READ"
+    | "DATA_WRITE"
+    | "DATA_READ"
+    | (string & {});
+  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
+  exemptedMembers?: ReadonlyArray<string>;
+}
+
+export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logType: Schema.optional(Schema.String),
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AuditLogConfig" });
+
+export interface AuditConfig {
+  /** The configuration for logging of each type of permission. */
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
+  /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
+  service?: string;
+}
+
+export const AuditConfig: Schema.Schema<AuditConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+    service: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AuditConfig" });
+
+export interface Policy {
+  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  version?: number;
+  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
+  etag?: string;
+  /** Specifies cloud audit logging configuration for this policy. */
+  auditConfigs?: ReadonlyArray<AuditConfig>;
+  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
+  bindings?: ReadonlyArray<Binding>;
+}
+
+export const Policy: Schema.Schema<Policy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.Number),
+    etag: Schema.optional(Schema.String),
+    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+    bindings: Schema.optional(Schema.Array(Binding)),
+  }).annotate({ identifier: "Policy" });
+
+export interface SetIamPolicyRequest {
+  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
+  updateMask?: string;
+  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
+  policy?: Policy;
+}
+
+export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String),
+    policy: Schema.optional(Policy),
+  }).annotate({ identifier: "SetIamPolicyRequest" });
+
+export interface RetrieveRegisterParametersResponse {
+  /** Parameters to use when calling the `RegisterDomain` method. */
+  registerParameters?: RegisterParameters;
+}
+
+export const RetrieveRegisterParametersResponse: Schema.Schema<RetrieveRegisterParametersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registerParameters: Schema.optional(RegisterParameters),
+  }).annotate({ identifier: "RetrieveRegisterParametersResponse" });
+
+export interface ExportRegistrationRequest {}
+
+export const ExportRegistrationRequest: Schema.Schema<ExportRegistrationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "ExportRegistrationRequest",
+  });
+
+export interface ListOperationsResponse {
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: ReadonlyArray<string>;
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: ReadonlyArray<Operation>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+}
+
+export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListOperationsResponse" });
+
+export interface RenewDomainRequest {
+  /** Required. Acknowledgement of the price to renew the domain for one year. To get the price, see [Cloud Domains pricing](https://cloud.google.com/domains/pricing). If not provided, the expected price is returned in the error message. */
+  yearlyPrice?: Money;
+  /** Optional. When true, only validation is performed, without actually renewing the domain. For more information, see [Request validation](https://cloud.google.com/apis/design/design_patterns#request_validation) */
+  validateOnly?: boolean;
+}
+
+export const RenewDomainRequest: Schema.Schema<RenewDomainRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    yearlyPrice: Schema.optional(Money),
+    validateOnly: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "RenewDomainRequest" });
+
+export interface DomainForwarding {
+  /** If true, forwards the path after the domain name to the same path at the new address. */
+  pathForwarding?: boolean;
+  /** The PEM-encoded certificate chain. */
+  pemCertificate?: string;
+  /** The redirect type. */
+  redirectType?:
+    | "REDIRECT_TYPE_UNSPECIFIED"
+    | "TEMPORARY"
+    | "PERMANENT"
+    | (string & {});
+  /** If true, the forwarding works also over HTTPS. */
+  sslEnabled?: boolean;
+  /** The target of the domain forwarding, i.e. the path to redirect the `subdomain` to. */
+  targetUri?: string;
+  /** The subdomain of the registered domain that is being forwarded. E.g. `www.example.com`, `example.com` (i.e. the registered domain itself) or `*.example.com` (i.e. all subdomains). */
+  subdomain?: string;
+}
+
+export const DomainForwarding: Schema.Schema<DomainForwarding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pathForwarding: Schema.optional(Schema.Boolean),
+    pemCertificate: Schema.optional(Schema.String),
+    redirectType: Schema.optional(Schema.String),
+    sslEnabled: Schema.optional(Schema.Boolean),
+    targetUri: Schema.optional(Schema.String),
+    subdomain: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DomainForwarding" });
+
+export interface RetrieveImportableDomainsResponse {
+  /** A list of domains that the calling user manages in Google Domains. */
+  domains?: ReadonlyArray<Domain>;
+  /** When present, there are more results to retrieve. Set `page_token` to this value on a subsequent call to get the next page of results. */
+  nextPageToken?: string;
+}
+
+export const RetrieveImportableDomainsResponse: Schema.Schema<RetrieveImportableDomainsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domains: Schema.optional(Schema.Array(Domain)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RetrieveImportableDomainsResponse" });
+
+export interface RetrieveGoogleDomainsForwardingConfigResponse {
+  /** The list of email forwarding configurations. A forwarding configuration might not work correctly if the required DNS records are not present in the domain's authoritative DNS zone. */
+  emailForwardings?: ReadonlyArray<EmailForwarding>;
+  /** The list of domain forwarding configurations. A forwarding configuration might not work correctly if the required DNS records are not present in the domain's authoritative DNS zone. */
+  domainForwardings?: ReadonlyArray<DomainForwarding>;
+}
+
+export const RetrieveGoogleDomainsForwardingConfigResponse: Schema.Schema<RetrieveGoogleDomainsForwardingConfigResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    emailForwardings: Schema.optional(Schema.Array(EmailForwarding)),
+    domainForwardings: Schema.optional(Schema.Array(DomainForwarding)),
+  }).annotate({ identifier: "RetrieveGoogleDomainsForwardingConfigResponse" });
+
+export interface InitiatePushTransferRequest {
+  /** Required. The Tag of the new registrar. Can be found at [List of registrars](https://nominet.uk/registrar-list/). */
+  tag?: string;
+}
+
+export const InitiatePushTransferRequest: Schema.Schema<InitiatePushTransferRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InitiatePushTransferRequest" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1061,58 +1152,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  locations: Schema.optional(Schema.Array(Location)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListLocationsResponse" });
-
-export interface RenewDomainRequest {
-  /** Optional. When true, only validation is performed, without actually renewing the domain. For more information, see [Request validation](https://cloud.google.com/apis/design/design_patterns#request_validation) */
-  validateOnly?: boolean;
-  /** Required. Acknowledgement of the price to renew the domain for one year. To get the price, see [Cloud Domains pricing](https://cloud.google.com/domains/pricing). If not provided, the expected price is returned in the error message. */
-  yearlyPrice?: Money;
-}
-
-export const RenewDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  validateOnly: Schema.optional(Schema.Boolean),
-  yearlyPrice: Schema.optional(Money),
-}).annotate({ identifier: "RenewDomainRequest" });
-
-export interface RegisterDomainRequest {
-  /** Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls. */
-  yearlyPrice?: Money;
-  /** Required. The complete `Registration` resource to be created. */
-  registration?: Registration;
-  /** When true, only validation is performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation */
-  validateOnly?: boolean;
-  /** The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement. */
-  domainNotices?: ReadonlyArray<
-    "DOMAIN_NOTICE_UNSPECIFIED" | "HSTS_PRELOADED" | (string & {})
-  >;
-  /** The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`. */
-  contactNotices?: ReadonlyArray<
-    | "CONTACT_NOTICE_UNSPECIFIED"
-    | "PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT"
-    | (string & {})
-  >;
-}
-
-export const RegisterDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  yearlyPrice: Schema.optional(Money),
-  registration: Schema.optional(Registration),
-  validateOnly: Schema.optional(Schema.Boolean),
-  domainNotices: Schema.optional(Schema.Array(Schema.String)),
-  contactNotices: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "RegisterDomainRequest" });
-
-export interface SearchDomainsResponse {
-  /** Results of the domain name search. */
-  registerParameters?: ReadonlyArray<RegisterParameters>;
-}
-
-export const SearchDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  registerParameters: Schema.optional(Schema.Array(RegisterParameters)),
-}).annotate({ identifier: "SearchDomainsResponse" });
+export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Location)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocationsResponse" });
 
 // ==========================================================================
 // Errors
@@ -1169,27 +1213,27 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 
 export interface ListProjectsLocationsRequest {
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
-  filter?: string;
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
-  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: string[];
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
+  filter?: string;
   /** The resource that owns the locations collection, if applicable. */
   name: string;
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: string[];
 }
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
     ),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
@@ -1201,7 +1245,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -1249,27 +1293,27 @@ export const getProjectsLocations: API.OperationMethod<
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
+  /** The standard list filter. */
+  filter?: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
+  /** The standard list page size. */
+  pageSize?: number;
   /** The standard list page token. */
   pageToken?: string;
   /** The name of the operation's parent resource. */
   name: string;
-  /** The standard list filter. */
-  filter?: string;
-  /** The standard list page size. */
-  pageSize?: number;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
 }
 
 export const ListProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("returnPartialSuccess"),
     ),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
@@ -1334,195 +1378,95 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface GetProjectsLocationsRegistrationsRequest {
-  /** Required. The name of the `Registration` to get, in the format `projects/* /locations/* /registrations/*`. */
-  name: string;
-}
-
-export const GetProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRegistrationsRequest>;
-
-export type GetProjectsLocationsRegistrationsResponse = Registration;
-export const GetProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Registration;
-
-export type GetProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the details of a `Registration` resource. */
-export const getProjectsLocationsRegistrations: API.OperationMethod<
-  GetProjectsLocationsRegistrationsRequest,
-  GetProjectsLocationsRegistrationsResponse,
-  GetProjectsLocationsRegistrationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRegistrationsRequest,
-  output: GetProjectsLocationsRegistrationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetIamPolicyProjectsLocationsRegistrationsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+export interface SetIamPolicyProjectsLocationsRegistrationsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
+  /** Request body */
+  body?: SetIamPolicyRequest;
 }
 
-export const GetIamPolicyProjectsLocationsRegistrationsRequest =
+export const SetIamPolicyProjectsLocationsRegistrationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsRegistrationsRequest>;
-
-export type GetIamPolicyProjectsLocationsRegistrationsResponse = Policy;
-export const GetIamPolicyProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsRegistrations: API.OperationMethod<
-  GetIamPolicyProjectsLocationsRegistrationsRequest,
-  GetIamPolicyProjectsLocationsRegistrationsResponse,
-  GetIamPolicyProjectsLocationsRegistrationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsRegistrationsRequest,
-  output: GetIamPolicyProjectsLocationsRegistrationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteProjectsLocationsRegistrationsRequest {
-  /** Required. The name of the `Registration` to delete, in the format `projects/* /locations/* /registrations/*`. */
-  name: string;
-}
-
-export const DeleteProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRegistrationsRequest>;
-
-export type DeleteProjectsLocationsRegistrationsResponse = Operation;
-export const DeleteProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a `Registration` resource. This method works on any `Registration` resource using [Subscription or Commitment billing](/domains/pricing#billing-models), provided that the resource was created at least 1 day in the past. When an active registration is successfully deleted, you can continue to use the domain in [Google Domains](https://domains.google/) until it expires. The calling user becomes the domain's sole owner in Google Domains, and permissions for the domain are subsequently managed there. The domain does not renew automatically unless the new owner sets up billing in Google Domains. After January 2024 you will only be able to delete `Registration` resources when `state` is one of: `EXPORTED`, `EXPIRED`,`REGISTRATION_FAILED` or `TRANSFER_FAILED`. See [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) for more details. */
-export const deleteProjectsLocationsRegistrations: API.OperationMethod<
-  DeleteProjectsLocationsRegistrationsRequest,
-  DeleteProjectsLocationsRegistrationsResponse,
-  DeleteProjectsLocationsRegistrationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsRegistrationsRequest,
-  output: DeleteProjectsLocationsRegistrationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest {
-  /** Required. The name of the `Registration` whose authorization code is being retrieved, in the format `projects/* /locations/* /registrations/*`. */
-  registration: string;
-}
-
-export const RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    registration: Schema.String.pipe(T.HttpPath("registration")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{+registration}:retrieveAuthorizationCode",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest>;
-
-export type RetrieveAuthorizationCodeProjectsLocationsRegistrationsResponse =
-  AuthorizationCode;
-export const RetrieveAuthorizationCodeProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AuthorizationCode;
-
-export type RetrieveAuthorizationCodeProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the authorization code of the `Registration` for the purpose of transferring the domain to another registrar. You can call this method only after 60 days have elapsed since the initial domain registration. Domains that have the `REQUIRE_PUSH_TRANSFER` property in the list of `domain_properties` don't support authorization codes and must use the `InitiatePushTransfer` method to initiate the process to transfer the domain to a different registrar. */
-export const retrieveAuthorizationCodeProjectsLocationsRegistrations: API.OperationMethod<
-  RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest,
-  RetrieveAuthorizationCodeProjectsLocationsRegistrationsResponse,
-  RetrieveAuthorizationCodeProjectsLocationsRegistrationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest,
-  output: RetrieveAuthorizationCodeProjectsLocationsRegistrationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ResetAuthorizationCodeProjectsLocationsRegistrationsRequest {
-  /** Required. The name of the `Registration` whose authorization code is being reset, in the format `projects/* /locations/* /registrations/*`. */
-  registration: string;
-  /** Request body */
-  body?: ResetAuthorizationCodeRequest;
-}
-
-export const ResetAuthorizationCodeProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    registration: Schema.String.pipe(T.HttpPath("registration")),
-    body: Schema.optional(ResetAuthorizationCodeRequest).pipe(T.HttpBody()),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{+registration}:resetAuthorizationCode",
+      path: "v1/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResetAuthorizationCodeProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsRegistrationsRequest>;
 
-export type ResetAuthorizationCodeProjectsLocationsRegistrationsResponse =
-  AuthorizationCode;
-export const ResetAuthorizationCodeProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AuthorizationCode;
+export type SetIamPolicyProjectsLocationsRegistrationsResponse = Policy;
+export const SetIamPolicyProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type ResetAuthorizationCodeProjectsLocationsRegistrationsError =
+export type SetIamPolicyProjectsLocationsRegistrationsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Resets the authorization code of the `Registration` to a new random string. You can call this method only after 60 days have elapsed since the initial domain registration. Domains that have the `REQUIRE_PUSH_TRANSFER` property in the list of `domain_properties` don't support authorization codes and must use the `InitiatePushTransfer` method to initiate the process to transfer the domain to a different registrar. */
-export const resetAuthorizationCodeProjectsLocationsRegistrations: API.OperationMethod<
-  ResetAuthorizationCodeProjectsLocationsRegistrationsRequest,
-  ResetAuthorizationCodeProjectsLocationsRegistrationsResponse,
-  ResetAuthorizationCodeProjectsLocationsRegistrationsError,
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsRegistrations: API.OperationMethod<
+  SetIamPolicyProjectsLocationsRegistrationsRequest,
+  SetIamPolicyProjectsLocationsRegistrationsResponse,
+  SetIamPolicyProjectsLocationsRegistrationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ResetAuthorizationCodeProjectsLocationsRegistrationsRequest,
-  output: ResetAuthorizationCodeProjectsLocationsRegistrationsResponse,
+  input: SetIamPolicyProjectsLocationsRegistrationsRequest,
+  output: SetIamPolicyProjectsLocationsRegistrationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsRegistrationsRequest {
+  /** Maximum number of results to return. */
+  pageSize?: number;
+  /** When set to the `next_page_token` from a prior response, provides the next page of results. */
+  pageToken?: string;
+  /** Required. The project and location from which to list `Registration`s, specified in the format `projects/* /locations/*`. */
+  parent: string;
+  /** Filter expression to restrict the `Registration`s returned. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, a boolean, or an enum value. The comparison operator should be one of =, !=, >, <, >=, <=, or : for prefix or wildcard matches. For example, to filter to a specific domain name, use an expression like `domainName="example.com"`. You can also check for the existence of a field; for example, to find domains using custom DNS settings, use an expression like `dnsSettings.customDns:*`. You can also create compound filters by combining expressions with the `AND` and `OR` operators. For example, to find domains that are suspended or have specific issues flagged, use an expression like `(state=SUSPENDED) OR (issue:*)`. */
+  filter?: string;
+}
+
+export const ListProjectsLocationsRegistrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/registrations" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsRegistrationsRequest>;
+
+export type ListProjectsLocationsRegistrationsResponse =
+  ListRegistrationsResponse;
+export const ListProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListRegistrationsResponse;
+
+export type ListProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the `Registration` resources in a project. */
+export const listProjectsLocationsRegistrations: API.PaginatedOperationMethod<
+  ListProjectsLocationsRegistrationsRequest,
+  ListProjectsLocationsRegistrationsResponse,
+  ListProjectsLocationsRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsRegistrationsRequest,
+  output: ListProjectsLocationsRegistrationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface ConfigureContactSettingsProjectsLocationsRegistrationsRequest {
@@ -1569,50 +1513,346 @@ export const configureContactSettingsProjectsLocationsRegistrations: API.Operati
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ConfigureManagementSettingsProjectsLocationsRegistrationsRequest {
-  /** Required. The name of the `Registration` whose management settings are being updated, in the format `projects/* /locations/* /registrations/*`. */
-  registration: string;
-  /** Request body */
-  body?: ConfigureManagementSettingsRequest;
+export interface RetrieveRegisterParametersProjectsLocationsRegistrationsRequest {
+  /** Required. The domain name. Unicode domain names must be expressed in Punycode format. */
+  domainName?: string;
+  /** Required. The location. Must be in the format `projects/* /locations/*`. */
+  location: string;
 }
 
-export const ConfigureManagementSettingsProjectsLocationsRegistrationsRequest =
+export const RetrieveRegisterParametersProjectsLocationsRegistrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domainName: Schema.optional(Schema.String).pipe(T.HttpQuery("domainName")),
+    location: Schema.String.pipe(T.HttpPath("location")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/{+location}/registrations:retrieveRegisterParameters",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<RetrieveRegisterParametersProjectsLocationsRegistrationsRequest>;
+
+export type RetrieveRegisterParametersProjectsLocationsRegistrationsResponse =
+  RetrieveRegisterParametersResponse;
+export const RetrieveRegisterParametersProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ RetrieveRegisterParametersResponse;
+
+export type RetrieveRegisterParametersProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets parameters needed to register a new domain name, including price and up-to-date availability. Use the returned values to call `RegisterDomain`. */
+export const retrieveRegisterParametersProjectsLocationsRegistrations: API.OperationMethod<
+  RetrieveRegisterParametersProjectsLocationsRegistrationsRequest,
+  RetrieveRegisterParametersProjectsLocationsRegistrationsResponse,
+  RetrieveRegisterParametersProjectsLocationsRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RetrieveRegisterParametersProjectsLocationsRegistrationsRequest,
+  output: RetrieveRegisterParametersProjectsLocationsRegistrationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest {
+  /** Required. The name of the `Registration` whose Google Domains forwarding configuration details are being retrieved, in the format `projects/* /locations/* /registrations/*`. */
+  registration: string;
+}
+
+export const RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     registration: Schema.String.pipe(T.HttpPath("registration")),
-    body: Schema.optional(ConfigureManagementSettingsRequest).pipe(
-      T.HttpBody(),
-    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/{+registration}:retrieveGoogleDomainsForwardingConfig",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest>;
+
+export type RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsResponse =
+  RetrieveGoogleDomainsForwardingConfigResponse;
+export const RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ RetrieveGoogleDomainsForwardingConfigResponse;
+
+export type RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the deprecated domain and email forwarding configurations you set up in the deprecated Google Domains UI. The configuration is present only for domains with the `google_domains_redirects_data_available` set to `true` in the `Registration`'s `dns_settings`. A forwarding configuration might not work correctly if required DNS records are not present in the domain's authoritative DNS Zone. */
+export const retrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrations: API.OperationMethod<
+  RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest,
+  RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsResponse,
+  RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input:
+    RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest,
+  output:
+    RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface TestIamPermissionsProjectsLocationsRegistrationsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsRegistrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{+registration}:configureManagementSettings",
+      path: "v1/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ConfigureManagementSettingsProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsRegistrationsRequest>;
 
-export type ConfigureManagementSettingsProjectsLocationsRegistrationsResponse =
-  Operation;
-export const ConfigureManagementSettingsProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type TestIamPermissionsProjectsLocationsRegistrationsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type ConfigureManagementSettingsProjectsLocationsRegistrationsError =
+export type TestIamPermissionsProjectsLocationsRegistrationsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates a `Registration`'s management settings. */
-export const configureManagementSettingsProjectsLocationsRegistrations: API.OperationMethod<
-  ConfigureManagementSettingsProjectsLocationsRegistrationsRequest,
-  ConfigureManagementSettingsProjectsLocationsRegistrationsResponse,
-  ConfigureManagementSettingsProjectsLocationsRegistrationsError,
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsRegistrations: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsRegistrationsRequest,
+  TestIamPermissionsProjectsLocationsRegistrationsResponse,
+  TestIamPermissionsProjectsLocationsRegistrationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ConfigureManagementSettingsProjectsLocationsRegistrationsRequest,
-  output: ConfigureManagementSettingsProjectsLocationsRegistrationsResponse,
+  input: TestIamPermissionsProjectsLocationsRegistrationsRequest,
+  output: TestIamPermissionsProjectsLocationsRegistrationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SearchDomainsProjectsLocationsRegistrationsRequest {
+  /** Required. The location. Must be in the format `projects/* /locations/*`. */
+  location: string;
+  /** Required. String used to search for available domain names. */
+  query?: string;
+}
+
+export const SearchDomainsProjectsLocationsRegistrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.String.pipe(T.HttpPath("location")),
+    query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/{+location}/registrations:searchDomains",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SearchDomainsProjectsLocationsRegistrationsRequest>;
+
+export type SearchDomainsProjectsLocationsRegistrationsResponse =
+  SearchDomainsResponse;
+export const SearchDomainsProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SearchDomainsResponse;
+
+export type SearchDomainsProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Searches for available domain names similar to the provided query. Availability results from this method are approximate; call `RetrieveRegisterParameters` on a domain before registering to confirm availability. */
+export const searchDomainsProjectsLocationsRegistrations: API.OperationMethod<
+  SearchDomainsProjectsLocationsRegistrationsRequest,
+  SearchDomainsProjectsLocationsRegistrationsResponse,
+  SearchDomainsProjectsLocationsRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SearchDomainsProjectsLocationsRegistrationsRequest,
+  output: SearchDomainsProjectsLocationsRegistrationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest {
+  /** Required. The name of the `Registration` whose Google Domains DNS records details you are retrieving, in the format `projects/* /locations/* /registrations/*`. */
+  registration: string;
+  /** Optional. Maximum number of results to return. */
+  pageSize?: number;
+  /** Optional. When set to the `next_page_token` from a prior response, provides the next page of results. */
+  pageToken?: string;
+}
+
+export const RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registration: Schema.String.pipe(T.HttpPath("registration")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/{+registration}:retrieveGoogleDomainsDnsRecords",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest>;
+
+export type RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsResponse =
+  RetrieveGoogleDomainsDnsRecordsResponse;
+export const RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ RetrieveGoogleDomainsDnsRecordsResponse;
+
+export type RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the DNS records from the Google Domains DNS zone for domains that use the deprecated `google_domains_dns` in the `Registration`'s `dns_settings`. */
+export const retrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrations: API.PaginatedOperationMethod<
+  RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest,
+  RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsResponse,
+  RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest,
+  output: RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteProjectsLocationsRegistrationsRequest {
+  /** Required. The name of the `Registration` to delete, in the format `projects/* /locations/* /registrations/*`. */
+  name: string;
+}
+
+export const DeleteProjectsLocationsRegistrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsRegistrationsRequest>;
+
+export type DeleteProjectsLocationsRegistrationsResponse = Operation;
+export const DeleteProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a `Registration` resource. This method works on any `Registration` resource using [Subscription or Commitment billing](/domains/pricing#billing-models), provided that the resource was created at least 1 day in the past. When an active registration is successfully deleted, you can continue to use the domain in [Google Domains](https://domains.google/) until it expires. The calling user becomes the domain's sole owner in Google Domains, and permissions for the domain are subsequently managed there. The domain does not renew automatically unless the new owner sets up billing in Google Domains. After January 2024 you will only be able to delete `Registration` resources when `state` is one of: `EXPORTED`, `EXPIRED`,`REGISTRATION_FAILED` or `TRANSFER_FAILED`. See [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) for more details. */
+export const deleteProjectsLocationsRegistrations: API.OperationMethod<
+  DeleteProjectsLocationsRegistrationsRequest,
+  DeleteProjectsLocationsRegistrationsResponse,
+  DeleteProjectsLocationsRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsRegistrationsRequest,
+  output: DeleteProjectsLocationsRegistrationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ResetAuthorizationCodeProjectsLocationsRegistrationsRequest {
+  /** Required. The name of the `Registration` whose authorization code is being reset, in the format `projects/* /locations/* /registrations/*`. */
+  registration: string;
+  /** Request body */
+  body?: ResetAuthorizationCodeRequest;
+}
+
+export const ResetAuthorizationCodeProjectsLocationsRegistrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registration: Schema.String.pipe(T.HttpPath("registration")),
+    body: Schema.optional(ResetAuthorizationCodeRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+registration}:resetAuthorizationCode",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ResetAuthorizationCodeProjectsLocationsRegistrationsRequest>;
+
+export type ResetAuthorizationCodeProjectsLocationsRegistrationsResponse =
+  AuthorizationCode;
+export const ResetAuthorizationCodeProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AuthorizationCode;
+
+export type ResetAuthorizationCodeProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Resets the authorization code of the `Registration` to a new random string. You can call this method only after 60 days have elapsed since the initial domain registration. Domains that have the `REQUIRE_PUSH_TRANSFER` property in the list of `domain_properties` don't support authorization codes and must use the `InitiatePushTransfer` method to initiate the process to transfer the domain to a different registrar. */
+export const resetAuthorizationCodeProjectsLocationsRegistrations: API.OperationMethod<
+  ResetAuthorizationCodeProjectsLocationsRegistrationsRequest,
+  ResetAuthorizationCodeProjectsLocationsRegistrationsResponse,
+  ResetAuthorizationCodeProjectsLocationsRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ResetAuthorizationCodeProjectsLocationsRegistrationsRequest,
+  output: ResetAuthorizationCodeProjectsLocationsRegistrationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface RetrieveImportableDomainsProjectsLocationsRegistrationsRequest {
+  /** When set to the `next_page_token` from a prior response, provides the next page of results. */
+  pageToken?: string;
+  /** Required. The location. Must be in the format `projects/* /locations/*`. */
+  location: string;
+  /** Maximum number of results to return. */
+  pageSize?: number;
+}
+
+export const RetrieveImportableDomainsProjectsLocationsRegistrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    location: Schema.String.pipe(T.HttpPath("location")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/{+location}/registrations:retrieveImportableDomains",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<RetrieveImportableDomainsProjectsLocationsRegistrationsRequest>;
+
+export type RetrieveImportableDomainsProjectsLocationsRegistrationsResponse =
+  RetrieveImportableDomainsResponse;
+export const RetrieveImportableDomainsProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ RetrieveImportableDomainsResponse;
+
+export type RetrieveImportableDomainsProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Lists domain names from [Google Domains](https://domains.google/) that can be imported to Cloud Domains using the `ImportDomain` method. Since individual users can own domains in Google Domains, the list of domains returned depends on the individual user making the call. Domains already managed by Cloud Domains are not returned. */
+export const retrieveImportableDomainsProjectsLocationsRegistrations: API.PaginatedOperationMethod<
+  RetrieveImportableDomainsProjectsLocationsRegistrationsRequest,
+  RetrieveImportableDomainsProjectsLocationsRegistrationsResponse,
+  RetrieveImportableDomainsProjectsLocationsRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: RetrieveImportableDomainsProjectsLocationsRegistrationsRequest,
+  output: RetrieveImportableDomainsProjectsLocationsRegistrationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface ConfigureDnsSettingsProjectsLocationsRegistrationsRequest {
@@ -1657,437 +1897,6 @@ export const configureDnsSettingsProjectsLocationsRegistrations: API.OperationMe
   input: ConfigureDnsSettingsProjectsLocationsRegistrationsRequest,
   output: ConfigureDnsSettingsProjectsLocationsRegistrationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface RetrieveRegisterParametersProjectsLocationsRegistrationsRequest {
-  /** Required. The location. Must be in the format `projects/* /locations/*`. */
-  location: string;
-  /** Required. The domain name. Unicode domain names must be expressed in Punycode format. */
-  domainName?: string;
-}
-
-export const RetrieveRegisterParametersProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String.pipe(T.HttpPath("location")),
-    domainName: Schema.optional(Schema.String).pipe(T.HttpQuery("domainName")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{+location}/registrations:retrieveRegisterParameters",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RetrieveRegisterParametersProjectsLocationsRegistrationsRequest>;
-
-export type RetrieveRegisterParametersProjectsLocationsRegistrationsResponse =
-  RetrieveRegisterParametersResponse;
-export const RetrieveRegisterParametersProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RetrieveRegisterParametersResponse;
-
-export type RetrieveRegisterParametersProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets parameters needed to register a new domain name, including price and up-to-date availability. Use the returned values to call `RegisterDomain`. */
-export const retrieveRegisterParametersProjectsLocationsRegistrations: API.OperationMethod<
-  RetrieveRegisterParametersProjectsLocationsRegistrationsRequest,
-  RetrieveRegisterParametersProjectsLocationsRegistrationsResponse,
-  RetrieveRegisterParametersProjectsLocationsRegistrationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RetrieveRegisterParametersProjectsLocationsRegistrationsRequest,
-  output: RetrieveRegisterParametersProjectsLocationsRegistrationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface InitiatePushTransferProjectsLocationsRegistrationsRequest {
-  /** Required. The name of the `Registration` for which the push transfer is initiated, in the format `projects/* /locations/* /registrations/*`. */
-  registration: string;
-  /** Request body */
-  body?: InitiatePushTransferRequest;
-}
-
-export const InitiatePushTransferProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    registration: Schema.String.pipe(T.HttpPath("registration")),
-    body: Schema.optional(InitiatePushTransferRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+registration}:initiatePushTransfer",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<InitiatePushTransferProjectsLocationsRegistrationsRequest>;
-
-export type InitiatePushTransferProjectsLocationsRegistrationsResponse =
-  Operation;
-export const InitiatePushTransferProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type InitiatePushTransferProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Initiates the `Push Transfer` process to transfer the domain to another registrar. The process might complete instantly or might require confirmation or additional work. Check the emails sent to the email address of the registrant. The process is aborted after a timeout if it's not completed. This method is only supported for domains that have the `REQUIRE_PUSH_TRANSFER` property in the list of `domain_properties`. The domain must also be unlocked before it can be transferred to a different registrar. For more information, see [Transfer a registered domain to another registrar](https://cloud.google.com/domains/docs/transfer-domain-to-another-registrar). */
-export const initiatePushTransferProjectsLocationsRegistrations: API.OperationMethod<
-  InitiatePushTransferProjectsLocationsRegistrationsRequest,
-  InitiatePushTransferProjectsLocationsRegistrationsResponse,
-  InitiatePushTransferProjectsLocationsRegistrationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: InitiatePushTransferProjectsLocationsRegistrationsRequest,
-  output: InitiatePushTransferProjectsLocationsRegistrationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ExportProjectsLocationsRegistrationsRequest {
-  /** Required. The name of the `Registration` to export, in the format `projects/* /locations/* /registrations/*`. */
-  name: string;
-  /** Request body */
-  body?: ExportRegistrationRequest;
-}
-
-export const ExportProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(ExportRegistrationRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:export", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<ExportProjectsLocationsRegistrationsRequest>;
-
-export type ExportProjectsLocationsRegistrationsResponse = Operation;
-export const ExportProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type ExportProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Exports a `Registration` resource, such that it is no longer managed by Cloud Domains. When an active domain is successfully exported, you can continue to use the domain in [Google Domains](https://domains.google/) until it expires. The calling user becomes the domain's sole owner in Google Domains, and permissions for the domain are subsequently managed there. The domain does not renew automatically unless the new owner sets up billing in Google Domains. */
-export const exportProjectsLocationsRegistrations: API.OperationMethod<
-  ExportProjectsLocationsRegistrationsRequest,
-  ExportProjectsLocationsRegistrationsResponse,
-  ExportProjectsLocationsRegistrationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ExportProjectsLocationsRegistrationsRequest,
-  output: ExportProjectsLocationsRegistrationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsRegistrationsRequest {
-  /** Maximum number of results to return. */
-  pageSize?: number;
-  /** Required. The project and location from which to list `Registration`s, specified in the format `projects/* /locations/*`. */
-  parent: string;
-  /** When set to the `next_page_token` from a prior response, provides the next page of results. */
-  pageToken?: string;
-  /** Filter expression to restrict the `Registration`s returned. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, a boolean, or an enum value. The comparison operator should be one of =, !=, >, <, >=, <=, or : for prefix or wildcard matches. For example, to filter to a specific domain name, use an expression like `domainName="example.com"`. You can also check for the existence of a field; for example, to find domains using custom DNS settings, use an expression like `dnsSettings.customDns:*`. You can also create compound filters by combining expressions with the `AND` and `OR` operators. For example, to find domains that are suspended or have specific issues flagged, use an expression like `(state=SUSPENDED) OR (issue:*)`. */
-  filter?: string;
-}
-
-export const ListProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/registrations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRegistrationsRequest>;
-
-export type ListProjectsLocationsRegistrationsResponse =
-  ListRegistrationsResponse;
-export const ListProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListRegistrationsResponse;
-
-export type ListProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists the `Registration` resources in a project. */
-export const listProjectsLocationsRegistrations: API.PaginatedOperationMethod<
-  ListProjectsLocationsRegistrationsRequest,
-  ListProjectsLocationsRegistrationsResponse,
-  ListProjectsLocationsRegistrationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRegistrationsRequest,
-  output: ListProjectsLocationsRegistrationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface RegisterProjectsLocationsRegistrationsRequest {
-  /** Required. The parent resource of the `Registration`. Must be in the format `projects/* /locations/*`. */
-  parent: string;
-  /** Request body */
-  body?: RegisterDomainRequest;
-}
-
-export const RegisterProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(RegisterDomainRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}/registrations:register",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RegisterProjectsLocationsRegistrationsRequest>;
-
-export type RegisterProjectsLocationsRegistrationsResponse = Operation;
-export const RegisterProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type RegisterProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Registers a new domain name and creates a corresponding `Registration` resource. Call `RetrieveRegisterParameters` first to check availability of the domain name and determine parameters like price that are needed to build a call to this method. A successful call creates a `Registration` resource in state `REGISTRATION_PENDING`, which resolves to `ACTIVE` within 1-2 minutes, indicating that the domain was successfully registered. If the resource ends up in state `REGISTRATION_FAILED`, it indicates that the domain was not registered successfully, and you can safely delete the resource and retry registration. */
-export const registerProjectsLocationsRegistrations: API.OperationMethod<
-  RegisterProjectsLocationsRegistrationsRequest,
-  RegisterProjectsLocationsRegistrationsResponse,
-  RegisterProjectsLocationsRegistrationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RegisterProjectsLocationsRegistrationsRequest,
-  output: RegisterProjectsLocationsRegistrationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface RenewDomainProjectsLocationsRegistrationsRequest {
-  /** Required. The name of the `Registration` whish is being renewed, in the format `projects/* /locations/* /registrations/*`. */
-  registration: string;
-  /** Request body */
-  body?: RenewDomainRequest;
-}
-
-export const RenewDomainProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    registration: Schema.String.pipe(T.HttpPath("registration")),
-    body: Schema.optional(RenewDomainRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+registration}:renewDomain",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RenewDomainProjectsLocationsRegistrationsRequest>;
-
-export type RenewDomainProjectsLocationsRegistrationsResponse = Operation;
-export const RenewDomainProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type RenewDomainProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Renews a recently expired domain. This method can only be called on domains that expired in the previous 30 days. After the renewal, the new expiration time of the domain is one year after the old expiration time and you are charged a `yearly_price` for the renewal. */
-export const renewDomainProjectsLocationsRegistrations: API.OperationMethod<
-  RenewDomainProjectsLocationsRegistrationsRequest,
-  RenewDomainProjectsLocationsRegistrationsResponse,
-  RenewDomainProjectsLocationsRegistrationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RenewDomainProjectsLocationsRegistrationsRequest,
-  output: RenewDomainProjectsLocationsRegistrationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyProjectsLocationsRegistrationsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsRegistrationsRequest>;
-
-export type SetIamPolicyProjectsLocationsRegistrationsResponse = Policy;
-export const SetIamPolicyProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsRegistrations: API.OperationMethod<
-  SetIamPolicyProjectsLocationsRegistrationsRequest,
-  SetIamPolicyProjectsLocationsRegistrationsResponse,
-  SetIamPolicyProjectsLocationsRegistrationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsRegistrationsRequest,
-  output: SetIamPolicyProjectsLocationsRegistrationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SearchDomainsProjectsLocationsRegistrationsRequest {
-  /** Required. String used to search for available domain names. */
-  query?: string;
-  /** Required. The location. Must be in the format `projects/* /locations/*`. */
-  location: string;
-}
-
-export const SearchDomainsProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
-    location: Schema.String.pipe(T.HttpPath("location")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{+location}/registrations:searchDomains",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SearchDomainsProjectsLocationsRegistrationsRequest>;
-
-export type SearchDomainsProjectsLocationsRegistrationsResponse =
-  SearchDomainsResponse;
-export const SearchDomainsProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SearchDomainsResponse;
-
-export type SearchDomainsProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Searches for available domain names similar to the provided query. Availability results from this method are approximate; call `RetrieveRegisterParameters` on a domain before registering to confirm availability. */
-export const searchDomainsProjectsLocationsRegistrations: API.OperationMethod<
-  SearchDomainsProjectsLocationsRegistrationsRequest,
-  SearchDomainsProjectsLocationsRegistrationsResponse,
-  SearchDomainsProjectsLocationsRegistrationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SearchDomainsProjectsLocationsRegistrationsRequest,
-  output: SearchDomainsProjectsLocationsRegistrationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface RetrieveTransferParametersProjectsLocationsRegistrationsRequest {
-  /** Required. The domain name. Unicode domain names must be expressed in Punycode format. */
-  domainName?: string;
-  /** Required. The location. Must be in the format `projects/* /locations/*`. */
-  location: string;
-}
-
-export const RetrieveTransferParametersProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    domainName: Schema.optional(Schema.String).pipe(T.HttpQuery("domainName")),
-    location: Schema.String.pipe(T.HttpPath("location")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{+location}/registrations:retrieveTransferParameters",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RetrieveTransferParametersProjectsLocationsRegistrationsRequest>;
-
-export type RetrieveTransferParametersProjectsLocationsRegistrationsResponse =
-  RetrieveTransferParametersResponse;
-export const RetrieveTransferParametersProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RetrieveTransferParametersResponse;
-
-export type RetrieveTransferParametersProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Gets parameters needed to transfer a domain name from another registrar to Cloud Domains. For domains already managed by [Google Domains](https://domains.google/), use `ImportDomain` instead. Use the returned values to call `TransferDomain`. */
-export const retrieveTransferParametersProjectsLocationsRegistrations: API.OperationMethod<
-  RetrieveTransferParametersProjectsLocationsRegistrationsRequest,
-  RetrieveTransferParametersProjectsLocationsRegistrationsResponse,
-  RetrieveTransferParametersProjectsLocationsRegistrationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RetrieveTransferParametersProjectsLocationsRegistrationsRequest,
-  output: RetrieveTransferParametersProjectsLocationsRegistrationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface RetrieveImportableDomainsProjectsLocationsRegistrationsRequest {
-  /** Maximum number of results to return. */
-  pageSize?: number;
-  /** When set to the `next_page_token` from a prior response, provides the next page of results. */
-  pageToken?: string;
-  /** Required. The location. Must be in the format `projects/* /locations/*`. */
-  location: string;
-}
-
-export const RetrieveImportableDomainsProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    location: Schema.String.pipe(T.HttpPath("location")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{+location}/registrations:retrieveImportableDomains",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RetrieveImportableDomainsProjectsLocationsRegistrationsRequest>;
-
-export type RetrieveImportableDomainsProjectsLocationsRegistrationsResponse =
-  RetrieveImportableDomainsResponse;
-export const RetrieveImportableDomainsProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RetrieveImportableDomainsResponse;
-
-export type RetrieveImportableDomainsProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Lists domain names from [Google Domains](https://domains.google/) that can be imported to Cloud Domains using the `ImportDomain` method. Since individual users can own domains in Google Domains, the list of domains returned depends on the individual user making the call. Domains already managed by Cloud Domains are not returned. */
-export const retrieveImportableDomainsProjectsLocationsRegistrations: API.PaginatedOperationMethod<
-  RetrieveImportableDomainsProjectsLocationsRegistrationsRequest,
-  RetrieveImportableDomainsProjectsLocationsRegistrationsResponse,
-  RetrieveImportableDomainsProjectsLocationsRegistrationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: RetrieveImportableDomainsProjectsLocationsRegistrationsRequest,
-  output: RetrieveImportableDomainsProjectsLocationsRegistrationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
 export interface PatchProjectsLocationsRegistrationsRequest {
@@ -2175,48 +1984,260 @@ export const transferProjectsLocationsRegistrations: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface TestIamPermissionsProjectsLocationsRegistrationsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+export interface GetIamPolicyProjectsLocationsRegistrationsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
 }
 
-export const TestIamPermissionsProjectsLocationsRegistrationsRequest =
+export const GetIamPolicyProjectsLocationsRegistrationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsRegistrationsRequest>;
+
+export type GetIamPolicyProjectsLocationsRegistrationsResponse = Policy;
+export const GetIamPolicyProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsRegistrations: API.OperationMethod<
+  GetIamPolicyProjectsLocationsRegistrationsRequest,
+  GetIamPolicyProjectsLocationsRegistrationsResponse,
+  GetIamPolicyProjectsLocationsRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsRegistrationsRequest,
+  output: GetIamPolicyProjectsLocationsRegistrationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface RegisterProjectsLocationsRegistrationsRequest {
+  /** Required. The parent resource of the `Registration`. Must be in the format `projects/* /locations/*`. */
+  parent: string;
+  /** Request body */
+  body?: RegisterDomainRequest;
+}
+
+export const RegisterProjectsLocationsRegistrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(RegisterDomainRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
+      path: "v1/{+parent}/registrations:register",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Schema<RegisterProjectsLocationsRegistrationsRequest>;
 
-export type TestIamPermissionsProjectsLocationsRegistrationsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+export type RegisterProjectsLocationsRegistrationsResponse = Operation;
+export const RegisterProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type TestIamPermissionsProjectsLocationsRegistrationsError =
+export type RegisterProjectsLocationsRegistrationsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsRegistrations: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsRegistrationsRequest,
-  TestIamPermissionsProjectsLocationsRegistrationsResponse,
-  TestIamPermissionsProjectsLocationsRegistrationsError,
+/** Registers a new domain name and creates a corresponding `Registration` resource. Call `RetrieveRegisterParameters` first to check availability of the domain name and determine parameters like price that are needed to build a call to this method. A successful call creates a `Registration` resource in state `REGISTRATION_PENDING`, which resolves to `ACTIVE` within 1-2 minutes, indicating that the domain was successfully registered. If the resource ends up in state `REGISTRATION_FAILED`, it indicates that the domain was not registered successfully, and you can safely delete the resource and retry registration. */
+export const registerProjectsLocationsRegistrations: API.OperationMethod<
+  RegisterProjectsLocationsRegistrationsRequest,
+  RegisterProjectsLocationsRegistrationsResponse,
+  RegisterProjectsLocationsRegistrationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsRegistrationsRequest,
-  output: TestIamPermissionsProjectsLocationsRegistrationsResponse,
+  input: RegisterProjectsLocationsRegistrationsRequest,
+  output: RegisterProjectsLocationsRegistrationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ConfigureManagementSettingsProjectsLocationsRegistrationsRequest {
+  /** Required. The name of the `Registration` whose management settings are being updated, in the format `projects/* /locations/* /registrations/*`. */
+  registration: string;
+  /** Request body */
+  body?: ConfigureManagementSettingsRequest;
+}
+
+export const ConfigureManagementSettingsProjectsLocationsRegistrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registration: Schema.String.pipe(T.HttpPath("registration")),
+    body: Schema.optional(ConfigureManagementSettingsRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+registration}:configureManagementSettings",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ConfigureManagementSettingsProjectsLocationsRegistrationsRequest>;
+
+export type ConfigureManagementSettingsProjectsLocationsRegistrationsResponse =
+  Operation;
+export const ConfigureManagementSettingsProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type ConfigureManagementSettingsProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a `Registration`'s management settings. */
+export const configureManagementSettingsProjectsLocationsRegistrations: API.OperationMethod<
+  ConfigureManagementSettingsProjectsLocationsRegistrationsRequest,
+  ConfigureManagementSettingsProjectsLocationsRegistrationsResponse,
+  ConfigureManagementSettingsProjectsLocationsRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ConfigureManagementSettingsProjectsLocationsRegistrationsRequest,
+  output: ConfigureManagementSettingsProjectsLocationsRegistrationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface RenewDomainProjectsLocationsRegistrationsRequest {
+  /** Required. The name of the `Registration` whish is being renewed, in the format `projects/* /locations/* /registrations/*`. */
+  registration: string;
+  /** Request body */
+  body?: RenewDomainRequest;
+}
+
+export const RenewDomainProjectsLocationsRegistrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registration: Schema.String.pipe(T.HttpPath("registration")),
+    body: Schema.optional(RenewDomainRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+registration}:renewDomain",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<RenewDomainProjectsLocationsRegistrationsRequest>;
+
+export type RenewDomainProjectsLocationsRegistrationsResponse = Operation;
+export const RenewDomainProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type RenewDomainProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Renews a recently expired domain. This method can only be called on domains that expired in the previous 30 days. After the renewal, the new expiration time of the domain is one year after the old expiration time and you are charged a `yearly_price` for the renewal. */
+export const renewDomainProjectsLocationsRegistrations: API.OperationMethod<
+  RenewDomainProjectsLocationsRegistrationsRequest,
+  RenewDomainProjectsLocationsRegistrationsResponse,
+  RenewDomainProjectsLocationsRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RenewDomainProjectsLocationsRegistrationsRequest,
+  output: RenewDomainProjectsLocationsRegistrationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface InitiatePushTransferProjectsLocationsRegistrationsRequest {
+  /** Required. The name of the `Registration` for which the push transfer is initiated, in the format `projects/* /locations/* /registrations/*`. */
+  registration: string;
+  /** Request body */
+  body?: InitiatePushTransferRequest;
+}
+
+export const InitiatePushTransferProjectsLocationsRegistrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registration: Schema.String.pipe(T.HttpPath("registration")),
+    body: Schema.optional(InitiatePushTransferRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+registration}:initiatePushTransfer",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<InitiatePushTransferProjectsLocationsRegistrationsRequest>;
+
+export type InitiatePushTransferProjectsLocationsRegistrationsResponse =
+  Operation;
+export const InitiatePushTransferProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type InitiatePushTransferProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Initiates the `Push Transfer` process to transfer the domain to another registrar. The process might complete instantly or might require confirmation or additional work. Check the emails sent to the email address of the registrant. The process is aborted after a timeout if it's not completed. This method is only supported for domains that have the `REQUIRE_PUSH_TRANSFER` property in the list of `domain_properties`. The domain must also be unlocked before it can be transferred to a different registrar. For more information, see [Transfer a registered domain to another registrar](https://cloud.google.com/domains/docs/transfer-domain-to-another-registrar). */
+export const initiatePushTransferProjectsLocationsRegistrations: API.OperationMethod<
+  InitiatePushTransferProjectsLocationsRegistrationsRequest,
+  InitiatePushTransferProjectsLocationsRegistrationsResponse,
+  InitiatePushTransferProjectsLocationsRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: InitiatePushTransferProjectsLocationsRegistrationsRequest,
+  output: InitiatePushTransferProjectsLocationsRegistrationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface RetrieveTransferParametersProjectsLocationsRegistrationsRequest {
+  /** Required. The location. Must be in the format `projects/* /locations/*`. */
+  location: string;
+  /** Required. The domain name. Unicode domain names must be expressed in Punycode format. */
+  domainName?: string;
+}
+
+export const RetrieveTransferParametersProjectsLocationsRegistrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.String.pipe(T.HttpPath("location")),
+    domainName: Schema.optional(Schema.String).pipe(T.HttpQuery("domainName")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/{+location}/registrations:retrieveTransferParameters",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<RetrieveTransferParametersProjectsLocationsRegistrationsRequest>;
+
+export type RetrieveTransferParametersProjectsLocationsRegistrationsResponse =
+  RetrieveTransferParametersResponse;
+export const RetrieveTransferParametersProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ RetrieveTransferParametersResponse;
+
+export type RetrieveTransferParametersProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Gets parameters needed to transfer a domain name from another registrar to Cloud Domains. For domains already managed by [Google Domains](https://domains.google/), use `ImportDomain` instead. Use the returned values to call `TransferDomain`. */
+export const retrieveTransferParametersProjectsLocationsRegistrations: API.OperationMethod<
+  RetrieveTransferParametersProjectsLocationsRegistrationsRequest,
+  RetrieveTransferParametersProjectsLocationsRegistrationsResponse,
+  RetrieveTransferParametersProjectsLocationsRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RetrieveTransferParametersProjectsLocationsRegistrationsRequest,
+  output: RetrieveTransferParametersProjectsLocationsRegistrationsResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ImportProjectsLocationsRegistrationsRequest {
@@ -2262,90 +2283,113 @@ export const importProjectsLocationsRegistrations: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest {
-  /** Required. The name of the `Registration` whose Google Domains DNS records details you are retrieving, in the format `projects/* /locations/* /registrations/*`. */
-  registration: string;
-  /** Optional. Maximum number of results to return. */
-  pageSize?: number;
-  /** Optional. When set to the `next_page_token` from a prior response, provides the next page of results. */
-  pageToken?: string;
+export interface GetProjectsLocationsRegistrationsRequest {
+  /** Required. The name of the `Registration` to get, in the format `projects/* /locations/* /registrations/*`. */
+  name: string;
 }
 
-export const RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest =
+export const GetProjectsLocationsRegistrationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    registration: Schema.String.pipe(T.HttpPath("registration")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{+registration}:retrieveGoogleDomainsDnsRecords",
-    }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Schema<GetProjectsLocationsRegistrationsRequest>;
 
-export type RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsResponse =
-  RetrieveGoogleDomainsDnsRecordsResponse;
-export const RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RetrieveGoogleDomainsDnsRecordsResponse;
+export type GetProjectsLocationsRegistrationsResponse = Registration;
+export const GetProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Registration;
 
-export type RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsError =
+export type GetProjectsLocationsRegistrationsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Lists the DNS records from the Google Domains DNS zone for domains that use the deprecated `google_domains_dns` in the `Registration`'s `dns_settings`. */
-export const retrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrations: API.PaginatedOperationMethod<
-  RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest,
-  RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsResponse,
-  RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest,
-  output: RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest {
-  /** Required. The name of the `Registration` whose Google Domains forwarding configuration details are being retrieved, in the format `projects/* /locations/* /registrations/*`. */
-  registration: string;
-}
-
-export const RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    registration: Schema.String.pipe(T.HttpPath("registration")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{+registration}:retrieveGoogleDomainsForwardingConfig",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest>;
-
-export type RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsResponse =
-  RetrieveGoogleDomainsForwardingConfigResponse;
-export const RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RetrieveGoogleDomainsForwardingConfigResponse;
-
-export type RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists the deprecated domain and email forwarding configurations you set up in the deprecated Google Domains UI. The configuration is present only for domains with the `google_domains_redirects_data_available` set to `true` in the `Registration`'s `dns_settings`. A forwarding configuration might not work correctly if required DNS records are not present in the domain's authoritative DNS Zone. */
-export const retrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrations: API.OperationMethod<
-  RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest,
-  RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsResponse,
-  RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsError,
+/** Gets the details of a `Registration` resource. */
+export const getProjectsLocationsRegistrations: API.OperationMethod<
+  GetProjectsLocationsRegistrationsRequest,
+  GetProjectsLocationsRegistrationsResponse,
+  GetProjectsLocationsRegistrationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input:
-    RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest,
-  output:
-    RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsResponse,
+  input: GetProjectsLocationsRegistrationsRequest,
+  output: GetProjectsLocationsRegistrationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ExportProjectsLocationsRegistrationsRequest {
+  /** Required. The name of the `Registration` to export, in the format `projects/* /locations/* /registrations/*`. */
+  name: string;
+  /** Request body */
+  body?: ExportRegistrationRequest;
+}
+
+export const ExportProjectsLocationsRegistrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(ExportRegistrationRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:export", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<ExportProjectsLocationsRegistrationsRequest>;
+
+export type ExportProjectsLocationsRegistrationsResponse = Operation;
+export const ExportProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type ExportProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Exports a `Registration` resource, such that it is no longer managed by Cloud Domains. When an active domain is successfully exported, you can continue to use the domain in [Google Domains](https://domains.google/) until it expires. The calling user becomes the domain's sole owner in Google Domains, and permissions for the domain are subsequently managed there. The domain does not renew automatically unless the new owner sets up billing in Google Domains. */
+export const exportProjectsLocationsRegistrations: API.OperationMethod<
+  ExportProjectsLocationsRegistrationsRequest,
+  ExportProjectsLocationsRegistrationsResponse,
+  ExportProjectsLocationsRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ExportProjectsLocationsRegistrationsRequest,
+  output: ExportProjectsLocationsRegistrationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest {
+  /** Required. The name of the `Registration` whose authorization code is being retrieved, in the format `projects/* /locations/* /registrations/*`. */
+  registration: string;
+}
+
+export const RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registration: Schema.String.pipe(T.HttpPath("registration")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/{+registration}:retrieveAuthorizationCode",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest>;
+
+export type RetrieveAuthorizationCodeProjectsLocationsRegistrationsResponse =
+  AuthorizationCode;
+export const RetrieveAuthorizationCodeProjectsLocationsRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AuthorizationCode;
+
+export type RetrieveAuthorizationCodeProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the authorization code of the `Registration` for the purpose of transferring the domain to another registrar. You can call this method only after 60 days have elapsed since the initial domain registration. Domains that have the `REQUIRE_PUSH_TRANSFER` property in the list of `domain_properties` don't support authorization codes and must use the `InitiatePushTransfer` method to initiate the process to transfer the domain to a different registrar. */
+export const retrieveAuthorizationCodeProjectsLocationsRegistrations: API.OperationMethod<
+  RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest,
+  RetrieveAuthorizationCodeProjectsLocationsRegistrationsResponse,
+  RetrieveAuthorizationCodeProjectsLocationsRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest,
+  output: RetrieveAuthorizationCodeProjectsLocationsRegistrationsResponse,
   errors: [NotFound, Forbidden],
 }));

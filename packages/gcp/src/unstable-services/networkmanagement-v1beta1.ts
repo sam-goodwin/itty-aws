@@ -35,13 +35,14 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  locationId: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-}).annotate({ identifier: "Location" });
+export const Location: Schema.Schema<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    locationId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -50,10 +51,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  locations: Schema.optional(Schema.Array(Location)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListLocationsResponse" });
+export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Location)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocationsResponse" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -64,13 +66,14 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  code: Schema.optional(Schema.Number),
-  message: Schema.optional(Schema.String),
-  details: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-}).annotate({ identifier: "Status" });
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -85,13 +88,14 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  done: Schema.optional(Schema.Boolean),
-  error: Schema.optional(Status),
-  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-}).annotate({ identifier: "Operation" });
+export const Operation: Schema.Schema<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(Status),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -102,41 +106,43 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
-  },
-).annotate({ identifier: "ListOperationsResponse" });
+  }).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "CancelOperationRequest" });
+export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelOperationRequest",
+  });
 
 export interface CloudFunctionEndpoint {
   /** A [Cloud Function](https://cloud.google.com/functions) name. */
   uri?: string;
 }
 
-export const CloudFunctionEndpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  uri: Schema.optional(Schema.String),
-}).annotate({ identifier: "CloudFunctionEndpoint" });
+export const CloudFunctionEndpoint: Schema.Schema<CloudFunctionEndpoint> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudFunctionEndpoint" });
 
 export interface AppEngineVersionEndpoint {
   /** An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name. */
   uri?: string;
 }
 
-export const AppEngineVersionEndpoint =
+export const AppEngineVersionEndpoint: Schema.Schema<AppEngineVersionEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "AppEngineVersionEndpoint" });
@@ -148,7 +154,7 @@ export interface CloudRunRevisionEndpoint {
   serviceUri?: string;
 }
 
-export const CloudRunRevisionEndpoint =
+export const CloudRunRevisionEndpoint: Schema.Schema<CloudRunRevisionEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     serviceUri: Schema.optional(Schema.String),
@@ -199,6 +205,10 @@ export interface Endpoint {
   redisCluster?: string;
   /** A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI. */
   gkePod?: string;
+  /** A [DMS Private Connection](https://docs.cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.privateConnections) name format: projects/{project}/locations/{location}/privateConnections/{privateConnection}. */
+  dmsPrivateConnection?: string;
+  /** A [Datastream Private Connection](https://docs.cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.privateConnections) name format: projects/{project}/locations/{location}/privateConnections/{privateConnection}. */
+  datastreamPrivateConnection?: string;
   /** A [Cloud Function](https://cloud.google.com/functions). Applicable only to source endpoint. */
   cloudFunction?: CloudFunctionEndpoint;
   /** An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions). Applicable only to source endpoint. */
@@ -218,27 +228,30 @@ export interface Endpoint {
   projectId?: string;
 }
 
-export const Endpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  ipAddress: Schema.optional(Schema.String),
-  port: Schema.optional(Schema.Number),
-  instance: Schema.optional(Schema.String),
-  forwardingRule: Schema.optional(Schema.String),
-  forwardingRuleTarget: Schema.optional(Schema.String),
-  loadBalancerId: Schema.optional(Schema.String),
-  loadBalancerType: Schema.optional(Schema.String),
-  gkeMasterCluster: Schema.optional(Schema.String),
-  fqdn: Schema.optional(Schema.String),
-  cloudSqlInstance: Schema.optional(Schema.String),
-  redisInstance: Schema.optional(Schema.String),
-  redisCluster: Schema.optional(Schema.String),
-  gkePod: Schema.optional(Schema.String),
-  cloudFunction: Schema.optional(CloudFunctionEndpoint),
-  appEngineVersion: Schema.optional(AppEngineVersionEndpoint),
-  cloudRunRevision: Schema.optional(CloudRunRevisionEndpoint),
-  network: Schema.optional(Schema.String),
-  networkType: Schema.optional(Schema.String),
-  projectId: Schema.optional(Schema.String),
-}).annotate({ identifier: "Endpoint" });
+export const Endpoint: Schema.Schema<Endpoint> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipAddress: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.Number),
+    instance: Schema.optional(Schema.String),
+    forwardingRule: Schema.optional(Schema.String),
+    forwardingRuleTarget: Schema.optional(Schema.String),
+    loadBalancerId: Schema.optional(Schema.String),
+    loadBalancerType: Schema.optional(Schema.String),
+    gkeMasterCluster: Schema.optional(Schema.String),
+    fqdn: Schema.optional(Schema.String),
+    cloudSqlInstance: Schema.optional(Schema.String),
+    redisInstance: Schema.optional(Schema.String),
+    redisCluster: Schema.optional(Schema.String),
+    gkePod: Schema.optional(Schema.String),
+    dmsPrivateConnection: Schema.optional(Schema.String),
+    datastreamPrivateConnection: Schema.optional(Schema.String),
+    cloudFunction: Schema.optional(CloudFunctionEndpoint),
+    appEngineVersion: Schema.optional(AppEngineVersionEndpoint),
+    cloudRunRevision: Schema.optional(CloudRunRevisionEndpoint),
+    network: Schema.optional(Schema.String),
+    networkType: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Endpoint" });
 
 export interface EndpointInfo {
   /** Source IP address. */
@@ -259,16 +272,17 @@ export interface EndpointInfo {
   sourceAgentUri?: string;
 }
 
-export const EndpointInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sourceIp: Schema.optional(Schema.String),
-  destinationIp: Schema.optional(Schema.String),
-  protocol: Schema.optional(Schema.String),
-  sourcePort: Schema.optional(Schema.Number),
-  destinationPort: Schema.optional(Schema.Number),
-  sourceNetworkUri: Schema.optional(Schema.String),
-  destinationNetworkUri: Schema.optional(Schema.String),
-  sourceAgentUri: Schema.optional(Schema.String),
-}).annotate({ identifier: "EndpointInfo" });
+export const EndpointInfo: Schema.Schema<EndpointInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceIp: Schema.optional(Schema.String),
+    destinationIp: Schema.optional(Schema.String),
+    protocol: Schema.optional(Schema.String),
+    sourcePort: Schema.optional(Schema.Number),
+    destinationPort: Schema.optional(Schema.Number),
+    sourceNetworkUri: Schema.optional(Schema.String),
+    destinationNetworkUri: Schema.optional(Schema.String),
+    sourceAgentUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EndpointInfo" });
 
 export interface InstanceInfo {
   /** Name of a Compute Engine instance. */
@@ -295,19 +309,20 @@ export interface InstanceInfo {
   status?: "STATUS_UNSPECIFIED" | "RUNNING" | "NOT_RUNNING" | (string & {});
 }
 
-export const InstanceInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  interface: Schema.optional(Schema.String),
-  networkUri: Schema.optional(Schema.String),
-  internalIp: Schema.optional(Schema.String),
-  externalIp: Schema.optional(Schema.String),
-  networkTags: Schema.optional(Schema.Array(Schema.String)),
-  serviceAccount: Schema.optional(Schema.String),
-  pscNetworkAttachmentUri: Schema.optional(Schema.String),
-  running: Schema.optional(Schema.Boolean),
-  status: Schema.optional(Schema.String),
-}).annotate({ identifier: "InstanceInfo" });
+export const InstanceInfo: Schema.Schema<InstanceInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    interface: Schema.optional(Schema.String),
+    networkUri: Schema.optional(Schema.String),
+    internalIp: Schema.optional(Schema.String),
+    externalIp: Schema.optional(Schema.String),
+    networkTags: Schema.optional(Schema.Array(Schema.String)),
+    serviceAccount: Schema.optional(Schema.String),
+    pscNetworkAttachmentUri: Schema.optional(Schema.String),
+    running: Schema.optional(Schema.Boolean),
+    status: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InstanceInfo" });
 
 export interface FirewallInfo {
   /** The display name of the firewall rule. This field might be empty for firewall policy rules. */
@@ -355,21 +370,22 @@ export interface FirewallInfo {
     | (string & {});
 }
 
-export const FirewallInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  direction: Schema.optional(Schema.String),
-  action: Schema.optional(Schema.String),
-  priority: Schema.optional(Schema.Number),
-  networkUri: Schema.optional(Schema.String),
-  targetTags: Schema.optional(Schema.Array(Schema.String)),
-  targetServiceAccounts: Schema.optional(Schema.Array(Schema.String)),
-  policy: Schema.optional(Schema.String),
-  policyUri: Schema.optional(Schema.String),
-  firewallRuleType: Schema.optional(Schema.String),
-  policyPriority: Schema.optional(Schema.Number),
-  targetType: Schema.optional(Schema.String),
-}).annotate({ identifier: "FirewallInfo" });
+export const FirewallInfo: Schema.Schema<FirewallInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    direction: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    priority: Schema.optional(Schema.Number),
+    networkUri: Schema.optional(Schema.String),
+    targetTags: Schema.optional(Schema.Array(Schema.String)),
+    targetServiceAccounts: Schema.optional(Schema.Array(Schema.String)),
+    policy: Schema.optional(Schema.String),
+    policyUri: Schema.optional(Schema.String),
+    firewallRuleType: Schema.optional(Schema.String),
+    policyPriority: Schema.optional(Schema.Number),
+    targetType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FirewallInfo" });
 
 export interface RouteInfo {
   /** Type of route. */
@@ -411,7 +427,7 @@ export interface RouteInfo {
   displayName?: string;
   /** URI of a route. SUBNET, STATIC, PEERING_SUBNET (only for peering network) and POLICY_BASED routes only. */
   uri?: string;
-  /** Region of the route. DYNAMIC, PEERING_DYNAMIC, POLICY_BASED and ADVERTISED routes only. If set for POLICY_BASED route, this is a region of VLAN attachments for Cloud Interconnect the route applies to. */
+  /** Region of the route. DYNAMIC, PEERING_DYNAMIC, POLICY_BASED and ADVERTISED routes only. If set for POLICY_BASED route, this is a region of VLAN attachments for Cloud Interconnect the route applies to. If set to "all" for POLICY_BASED route, the route applies to VLAN attachments of Cloud Interconnect in all regions. */
   region?: string;
   /** Destination IP range of the route. */
   destIpRange?: string;
@@ -451,32 +467,33 @@ export interface RouteInfo {
   nccHubRouteUri?: string;
 }
 
-export const RouteInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  routeType: Schema.optional(Schema.String),
-  nextHopType: Schema.optional(Schema.String),
-  routeScope: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  region: Schema.optional(Schema.String),
-  destIpRange: Schema.optional(Schema.String),
-  nextHop: Schema.optional(Schema.String),
-  networkUri: Schema.optional(Schema.String),
-  priority: Schema.optional(Schema.Number),
-  instanceTags: Schema.optional(Schema.Array(Schema.String)),
-  srcIpRange: Schema.optional(Schema.String),
-  destPortRanges: Schema.optional(Schema.Array(Schema.String)),
-  srcPortRanges: Schema.optional(Schema.Array(Schema.String)),
-  protocols: Schema.optional(Schema.Array(Schema.String)),
-  nccHubUri: Schema.optional(Schema.String),
-  nccSpokeUri: Schema.optional(Schema.String),
-  advertisedRouteSourceRouterUri: Schema.optional(Schema.String),
-  advertisedRouteNextHopUri: Schema.optional(Schema.String),
-  nextHopUri: Schema.optional(Schema.String),
-  nextHopNetworkUri: Schema.optional(Schema.String),
-  originatingRouteUri: Schema.optional(Schema.String),
-  originatingRouteDisplayName: Schema.optional(Schema.String),
-  nccHubRouteUri: Schema.optional(Schema.String),
-}).annotate({ identifier: "RouteInfo" });
+export const RouteInfo: Schema.Schema<RouteInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    routeType: Schema.optional(Schema.String),
+    nextHopType: Schema.optional(Schema.String),
+    routeScope: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+    destIpRange: Schema.optional(Schema.String),
+    nextHop: Schema.optional(Schema.String),
+    networkUri: Schema.optional(Schema.String),
+    priority: Schema.optional(Schema.Number),
+    instanceTags: Schema.optional(Schema.Array(Schema.String)),
+    srcIpRange: Schema.optional(Schema.String),
+    destPortRanges: Schema.optional(Schema.Array(Schema.String)),
+    srcPortRanges: Schema.optional(Schema.Array(Schema.String)),
+    protocols: Schema.optional(Schema.Array(Schema.String)),
+    nccHubUri: Schema.optional(Schema.String),
+    nccSpokeUri: Schema.optional(Schema.String),
+    advertisedRouteSourceRouterUri: Schema.optional(Schema.String),
+    advertisedRouteNextHopUri: Schema.optional(Schema.String),
+    nextHopUri: Schema.optional(Schema.String),
+    nextHopNetworkUri: Schema.optional(Schema.String),
+    originatingRouteUri: Schema.optional(Schema.String),
+    originatingRouteDisplayName: Schema.optional(Schema.String),
+    nccHubRouteUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RouteInfo" });
 
 export interface GoogleServiceInfo {
   /** Source IP address. */
@@ -494,10 +511,11 @@ export interface GoogleServiceInfo {
     | (string & {});
 }
 
-export const GoogleServiceInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sourceIp: Schema.optional(Schema.String),
-  googleServiceType: Schema.optional(Schema.String),
-}).annotate({ identifier: "GoogleServiceInfo" });
+export const GoogleServiceInfo: Schema.Schema<GoogleServiceInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceIp: Schema.optional(Schema.String),
+    googleServiceType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleServiceInfo" });
 
 export interface ForwardingRuleInfo {
   /** Name of the forwarding rule. */
@@ -524,19 +542,20 @@ export interface ForwardingRuleInfo {
   pscGoogleApiTarget?: string;
 }
 
-export const ForwardingRuleInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  matchedProtocol: Schema.optional(Schema.String),
-  matchedPortRange: Schema.optional(Schema.String),
-  vip: Schema.optional(Schema.String),
-  target: Schema.optional(Schema.String),
-  networkUri: Schema.optional(Schema.String),
-  region: Schema.optional(Schema.String),
-  loadBalancerName: Schema.optional(Schema.String),
-  pscServiceAttachmentUri: Schema.optional(Schema.String),
-  pscGoogleApiTarget: Schema.optional(Schema.String),
-}).annotate({ identifier: "ForwardingRuleInfo" });
+export const ForwardingRuleInfo: Schema.Schema<ForwardingRuleInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    matchedProtocol: Schema.optional(Schema.String),
+    matchedPortRange: Schema.optional(Schema.String),
+    vip: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    networkUri: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+    loadBalancerName: Schema.optional(Schema.String),
+    pscServiceAttachmentUri: Schema.optional(Schema.String),
+    pscGoogleApiTarget: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ForwardingRuleInfo" });
 
 export interface HybridSubnetInfo {
   /** Name of a hybrid subnet. */
@@ -547,11 +566,12 @@ export interface HybridSubnetInfo {
   region?: string;
 }
 
-export const HybridSubnetInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  region: Schema.optional(Schema.String),
-}).annotate({ identifier: "HybridSubnetInfo" });
+export const HybridSubnetInfo: Schema.Schema<HybridSubnetInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HybridSubnetInfo" });
 
 export interface VpnGatewayInfo {
   /** Name of a VPN gateway. */
@@ -568,14 +588,15 @@ export interface VpnGatewayInfo {
   region?: string;
 }
 
-export const VpnGatewayInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  networkUri: Schema.optional(Schema.String),
-  ipAddress: Schema.optional(Schema.String),
-  vpnTunnelUri: Schema.optional(Schema.String),
-  region: Schema.optional(Schema.String),
-}).annotate({ identifier: "VpnGatewayInfo" });
+export const VpnGatewayInfo: Schema.Schema<VpnGatewayInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    networkUri: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+    vpnTunnelUri: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VpnGatewayInfo" });
 
 export interface VpnTunnelInfo {
   /** Name of a VPN tunnel. */
@@ -603,17 +624,18 @@ export interface VpnTunnelInfo {
     | (string & {});
 }
 
-export const VpnTunnelInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  sourceGateway: Schema.optional(Schema.String),
-  remoteGateway: Schema.optional(Schema.String),
-  remoteGatewayIp: Schema.optional(Schema.String),
-  sourceGatewayIp: Schema.optional(Schema.String),
-  networkUri: Schema.optional(Schema.String),
-  region: Schema.optional(Schema.String),
-  routingType: Schema.optional(Schema.String),
-}).annotate({ identifier: "VpnTunnelInfo" });
+export const VpnTunnelInfo: Schema.Schema<VpnTunnelInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    sourceGateway: Schema.optional(Schema.String),
+    remoteGateway: Schema.optional(Schema.String),
+    remoteGatewayIp: Schema.optional(Schema.String),
+    sourceGatewayIp: Schema.optional(Schema.String),
+    networkUri: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+    routingType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VpnTunnelInfo" });
 
 export interface InterconnectAttachmentInfo {
   /** Name of an Interconnect attachment. */
@@ -638,7 +660,7 @@ export interface InterconnectAttachmentInfo {
   l2AttachmentMatchedIpAddress?: string;
 }
 
-export const InterconnectAttachmentInfo =
+export const InterconnectAttachmentInfo: Schema.Schema<InterconnectAttachmentInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -658,11 +680,12 @@ export interface VpcConnectorInfo {
   location?: string;
 }
 
-export const VpcConnectorInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-}).annotate({ identifier: "VpcConnectorInfo" });
+export const VpcConnectorInfo: Schema.Schema<VpcConnectorInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VpcConnectorInfo" });
 
 export interface DirectVpcEgressConnectionInfo {
   /** URI of direct access network. */
@@ -677,7 +700,7 @@ export interface DirectVpcEgressConnectionInfo {
   region?: string;
 }
 
-export const DirectVpcEgressConnectionInfo =
+export const DirectVpcEgressConnectionInfo: Schema.Schema<DirectVpcEgressConnectionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkUri: Schema.optional(Schema.String),
     subnetworkUri: Schema.optional(Schema.String),
@@ -691,7 +714,7 @@ export interface ServerlessExternalConnectionInfo {
   selectedIpAddress?: string;
 }
 
-export const ServerlessExternalConnectionInfo =
+export const ServerlessExternalConnectionInfo: Schema.Schema<ServerlessExternalConnectionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selectedIpAddress: Schema.optional(Schema.String),
   }).annotate({ identifier: "ServerlessExternalConnectionInfo" });
@@ -738,14 +761,15 @@ export interface DeliverInfo {
     | (string & {});
 }
 
-export const DeliverInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  target: Schema.optional(Schema.String),
-  resourceUri: Schema.optional(Schema.String),
-  ipAddress: Schema.optional(Schema.String),
-  storageBucket: Schema.optional(Schema.String),
-  pscGoogleApiTarget: Schema.optional(Schema.String),
-  googleServiceType: Schema.optional(Schema.String),
-}).annotate({ identifier: "DeliverInfo" });
+export const DeliverInfo: Schema.Schema<DeliverInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    target: Schema.optional(Schema.String),
+    resourceUri: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+    storageBucket: Schema.optional(Schema.String),
+    pscGoogleApiTarget: Schema.optional(Schema.String),
+    googleServiceType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeliverInfo" });
 
 export interface ForwardInfo {
   /** Target type where this packet is forwarded to. */
@@ -768,11 +792,12 @@ export interface ForwardInfo {
   ipAddress?: string;
 }
 
-export const ForwardInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  target: Schema.optional(Schema.String),
-  resourceUri: Schema.optional(Schema.String),
-  ipAddress: Schema.optional(Schema.String),
-}).annotate({ identifier: "ForwardInfo" });
+export const ForwardInfo: Schema.Schema<ForwardInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    target: Schema.optional(Schema.String),
+    resourceUri: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ForwardInfo" });
 
 export interface AbortInfo {
   /** Causes that the analysis is aborted. */
@@ -821,6 +846,7 @@ export interface AbortInfo {
     | "NO_SERVERLESS_IP_RANGES"
     | "IP_VERSION_PROTOCOL_MISMATCH"
     | "GKE_POD_UNKNOWN_ENDPOINT_LOCATION"
+    | "RESPONSE_TOO_LARGE"
     | (string & {});
   /** URI of the resource that caused the abort. */
   resourceUri?: string;
@@ -830,12 +856,13 @@ export interface AbortInfo {
   projectsMissingPermission?: ReadonlyArray<string>;
 }
 
-export const AbortInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  cause: Schema.optional(Schema.String),
-  resourceUri: Schema.optional(Schema.String),
-  ipAddress: Schema.optional(Schema.String),
-  projectsMissingPermission: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "AbortInfo" });
+export const AbortInfo: Schema.Schema<AbortInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cause: Schema.optional(Schema.String),
+    resourceUri: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+    projectsMissingPermission: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AbortInfo" });
 
 export interface DropInfo {
   /** Cause that the packet is dropped. */
@@ -945,6 +972,7 @@ export interface DropInfo {
     | "HYBRID_SUBNET_NO_ROUTE"
     | "GKE_NETWORK_POLICY"
     | "NO_VALID_ROUTE_FROM_GOOGLE_MANAGED_NETWORK_TO_DESTINATION"
+    | "PRIVATE_CONNECTION_NO_RUNNING_INSTANCE"
     | (string & {});
   /** URI of the resource that caused the drop. */
   resourceUri?: string;
@@ -960,15 +988,16 @@ export interface DropInfo {
   destinationGeolocationCode?: string;
 }
 
-export const DropInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  cause: Schema.optional(Schema.String),
-  resourceUri: Schema.optional(Schema.String),
-  sourceIp: Schema.optional(Schema.String),
-  destinationIp: Schema.optional(Schema.String),
-  region: Schema.optional(Schema.String),
-  sourceGeolocationCode: Schema.optional(Schema.String),
-  destinationGeolocationCode: Schema.optional(Schema.String),
-}).annotate({ identifier: "DropInfo" });
+export const DropInfo: Schema.Schema<DropInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cause: Schema.optional(Schema.String),
+    resourceUri: Schema.optional(Schema.String),
+    sourceIp: Schema.optional(Schema.String),
+    destinationIp: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+    sourceGeolocationCode: Schema.optional(Schema.String),
+    destinationGeolocationCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DropInfo" });
 
 export interface LoadBalancerBackend {
   /** Name of a Compute Engine instance or network endpoint. */
@@ -987,17 +1016,18 @@ export interface LoadBalancerBackend {
   healthCheckBlockingFirewallRules?: ReadonlyArray<string>;
 }
 
-export const LoadBalancerBackend = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  healthCheckFirewallState: Schema.optional(Schema.String),
-  healthCheckAllowingFirewallRules: Schema.optional(
-    Schema.Array(Schema.String),
-  ),
-  healthCheckBlockingFirewallRules: Schema.optional(
-    Schema.Array(Schema.String),
-  ),
-}).annotate({ identifier: "LoadBalancerBackend" });
+export const LoadBalancerBackend: Schema.Schema<LoadBalancerBackend> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    healthCheckFirewallState: Schema.optional(Schema.String),
+    healthCheckAllowingFirewallRules: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    healthCheckBlockingFirewallRules: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+  }).annotate({ identifier: "LoadBalancerBackend" });
 
 export interface LoadBalancerInfo {
   /** Type of the load balancer. */
@@ -1024,13 +1054,14 @@ export interface LoadBalancerInfo {
   backendUri?: string;
 }
 
-export const LoadBalancerInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  loadBalancerType: Schema.optional(Schema.String),
-  healthCheckUri: Schema.optional(Schema.String),
-  backends: Schema.optional(Schema.Array(LoadBalancerBackend)),
-  backendType: Schema.optional(Schema.String),
-  backendUri: Schema.optional(Schema.String),
-}).annotate({ identifier: "LoadBalancerInfo" });
+export const LoadBalancerInfo: Schema.Schema<LoadBalancerInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    loadBalancerType: Schema.optional(Schema.String),
+    healthCheckUri: Schema.optional(Schema.String),
+    backends: Schema.optional(Schema.Array(LoadBalancerBackend)),
+    backendType: Schema.optional(Schema.String),
+    backendUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LoadBalancerInfo" });
 
 export interface NetworkInfo {
   /** Name of a Compute Engine network. */
@@ -1045,13 +1076,14 @@ export interface NetworkInfo {
   region?: string;
 }
 
-export const NetworkInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  matchedSubnetUri: Schema.optional(Schema.String),
-  matchedIpRange: Schema.optional(Schema.String),
-  region: Schema.optional(Schema.String),
-}).annotate({ identifier: "NetworkInfo" });
+export const NetworkInfo: Schema.Schema<NetworkInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    matchedSubnetUri: Schema.optional(Schema.String),
+    matchedIpRange: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NetworkInfo" });
 
 export interface GKEMasterInfo {
   /** URI of a GKE cluster. */
@@ -1066,13 +1098,14 @@ export interface GKEMasterInfo {
   dnsEndpoint?: string;
 }
 
-export const GKEMasterInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  clusterUri: Schema.optional(Schema.String),
-  clusterNetworkUri: Schema.optional(Schema.String),
-  internalIp: Schema.optional(Schema.String),
-  externalIp: Schema.optional(Schema.String),
-  dnsEndpoint: Schema.optional(Schema.String),
-}).annotate({ identifier: "GKEMasterInfo" });
+export const GKEMasterInfo: Schema.Schema<GKEMasterInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusterUri: Schema.optional(Schema.String),
+    clusterNetworkUri: Schema.optional(Schema.String),
+    internalIp: Schema.optional(Schema.String),
+    externalIp: Schema.optional(Schema.String),
+    dnsEndpoint: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GKEMasterInfo" });
 
 export interface GkePodInfo {
   /** URI of a GKE Pod. For Pods in regional Clusters, the URI format is: `projects/{project}/locations/{location}/clusters/{cluster}/k8s/namespaces/{namespace}/pods/{pod}` For Pods in zonal Clusters, the URI format is: `projects/{project}/zones/{zone}/clusters/{cluster}/k8s/namespaces/{namespace}/pods/{pod}` */
@@ -1083,11 +1116,12 @@ export interface GkePodInfo {
   networkUri?: string;
 }
 
-export const GkePodInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  podUri: Schema.optional(Schema.String),
-  ipAddress: Schema.optional(Schema.String),
-  networkUri: Schema.optional(Schema.String),
-}).annotate({ identifier: "GkePodInfo" });
+export const GkePodInfo: Schema.Schema<GkePodInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    podUri: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+    networkUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GkePodInfo" });
 
 export interface IpMasqueradingSkippedInfo {
   /** Reason why IP masquerading was not applied. */
@@ -1105,7 +1139,7 @@ export interface IpMasqueradingSkippedInfo {
   nonMasqueradeRange?: string;
 }
 
-export const IpMasqueradingSkippedInfo =
+export const IpMasqueradingSkippedInfo: Schema.Schema<IpMasqueradingSkippedInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     nonMasqueradeRange: Schema.optional(Schema.String),
@@ -1122,12 +1156,13 @@ export interface GkeNetworkPolicyInfo {
   action?: string;
 }
 
-export const GkeNetworkPolicyInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  direction: Schema.optional(Schema.String),
-  action: Schema.optional(Schema.String),
-}).annotate({ identifier: "GkeNetworkPolicyInfo" });
+export const GkeNetworkPolicyInfo: Schema.Schema<GkeNetworkPolicyInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    direction: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GkeNetworkPolicyInfo" });
 
 export interface GkeNetworkPolicySkippedInfo {
   /** Reason why Network Policy evaluation was skipped. */
@@ -1141,7 +1176,7 @@ export interface GkeNetworkPolicySkippedInfo {
     | (string & {});
 }
 
-export const GkeNetworkPolicySkippedInfo =
+export const GkeNetworkPolicySkippedInfo: Schema.Schema<GkeNetworkPolicySkippedInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
   }).annotate({ identifier: "GkeNetworkPolicySkippedInfo" });
@@ -1161,14 +1196,15 @@ export interface CloudSQLInstanceInfo {
   region?: string;
 }
 
-export const CloudSQLInstanceInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  networkUri: Schema.optional(Schema.String),
-  internalIp: Schema.optional(Schema.String),
-  externalIp: Schema.optional(Schema.String),
-  region: Schema.optional(Schema.String),
-}).annotate({ identifier: "CloudSQLInstanceInfo" });
+export const CloudSQLInstanceInfo: Schema.Schema<CloudSQLInstanceInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    networkUri: Schema.optional(Schema.String),
+    internalIp: Schema.optional(Schema.String),
+    externalIp: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudSQLInstanceInfo" });
 
 export interface RedisInstanceInfo {
   /** Name of a Cloud Redis Instance. */
@@ -1185,14 +1221,15 @@ export interface RedisInstanceInfo {
   region?: string;
 }
 
-export const RedisInstanceInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  networkUri: Schema.optional(Schema.String),
-  primaryEndpointIp: Schema.optional(Schema.String),
-  readEndpointIp: Schema.optional(Schema.String),
-  region: Schema.optional(Schema.String),
-}).annotate({ identifier: "RedisInstanceInfo" });
+export const RedisInstanceInfo: Schema.Schema<RedisInstanceInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    networkUri: Schema.optional(Schema.String),
+    primaryEndpointIp: Schema.optional(Schema.String),
+    readEndpointIp: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RedisInstanceInfo" });
 
 export interface RedisClusterInfo {
   /** Name of a Redis Cluster. */
@@ -1209,14 +1246,15 @@ export interface RedisClusterInfo {
   location?: string;
 }
 
-export const RedisClusterInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  networkUri: Schema.optional(Schema.String),
-  discoveryEndpointIpAddress: Schema.optional(Schema.String),
-  secondaryEndpointIpAddress: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-}).annotate({ identifier: "RedisClusterInfo" });
+export const RedisClusterInfo: Schema.Schema<RedisClusterInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    networkUri: Schema.optional(Schema.String),
+    discoveryEndpointIpAddress: Schema.optional(Schema.String),
+    secondaryEndpointIpAddress: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RedisClusterInfo" });
 
 export interface CloudFunctionInfo {
   /** Name of a Cloud Function. */
@@ -1229,12 +1267,13 @@ export interface CloudFunctionInfo {
   versionId?: string;
 }
 
-export const CloudFunctionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-  versionId: Schema.optional(Schema.String),
-}).annotate({ identifier: "CloudFunctionInfo" });
+export const CloudFunctionInfo: Schema.Schema<CloudFunctionInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    versionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudFunctionInfo" });
 
 export interface AppEngineVersionInfo {
   /** Name of an App Engine version. */
@@ -1247,12 +1286,13 @@ export interface AppEngineVersionInfo {
   environment?: string;
 }
 
-export const AppEngineVersionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  runtime: Schema.optional(Schema.String),
-  environment: Schema.optional(Schema.String),
-}).annotate({ identifier: "AppEngineVersionInfo" });
+export const AppEngineVersionInfo: Schema.Schema<AppEngineVersionInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    runtime: Schema.optional(Schema.String),
+    environment: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AppEngineVersionInfo" });
 
 export interface CloudRunRevisionInfo {
   /** Name of a Cloud Run revision. */
@@ -1265,12 +1305,13 @@ export interface CloudRunRevisionInfo {
   serviceUri?: string;
 }
 
-export const CloudRunRevisionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-  serviceUri: Schema.optional(Schema.String),
-}).annotate({ identifier: "CloudRunRevisionInfo" });
+export const CloudRunRevisionInfo: Schema.Schema<CloudRunRevisionInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    serviceUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudRunRevisionInfo" });
 
 export interface NatInfo {
   /** Type of NAT. */
@@ -1317,22 +1358,23 @@ export interface NatInfo {
     | (string & {});
 }
 
-export const NatInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  type: Schema.optional(Schema.String),
-  protocol: Schema.optional(Schema.String),
-  networkUri: Schema.optional(Schema.String),
-  oldSourceIp: Schema.optional(Schema.String),
-  newSourceIp: Schema.optional(Schema.String),
-  oldDestinationIp: Schema.optional(Schema.String),
-  newDestinationIp: Schema.optional(Schema.String),
-  oldSourcePort: Schema.optional(Schema.Number),
-  newSourcePort: Schema.optional(Schema.Number),
-  oldDestinationPort: Schema.optional(Schema.Number),
-  newDestinationPort: Schema.optional(Schema.Number),
-  routerUri: Schema.optional(Schema.String),
-  natGatewayName: Schema.optional(Schema.String),
-  cloudNatGatewayType: Schema.optional(Schema.String),
-}).annotate({ identifier: "NatInfo" });
+export const NatInfo: Schema.Schema<NatInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    protocol: Schema.optional(Schema.String),
+    networkUri: Schema.optional(Schema.String),
+    oldSourceIp: Schema.optional(Schema.String),
+    newSourceIp: Schema.optional(Schema.String),
+    oldDestinationIp: Schema.optional(Schema.String),
+    newDestinationIp: Schema.optional(Schema.String),
+    oldSourcePort: Schema.optional(Schema.Number),
+    newSourcePort: Schema.optional(Schema.Number),
+    oldDestinationPort: Schema.optional(Schema.Number),
+    newDestinationPort: Schema.optional(Schema.Number),
+    routerUri: Schema.optional(Schema.String),
+    natGatewayName: Schema.optional(Schema.String),
+    cloudNatGatewayType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NatInfo" });
 
 export interface ProxyConnectionInfo {
   /** IP protocol in string format, for example: "TCP", "UDP", "ICMP". */
@@ -1359,19 +1401,20 @@ export interface ProxyConnectionInfo {
   networkUri?: string;
 }
 
-export const ProxyConnectionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  protocol: Schema.optional(Schema.String),
-  oldSourceIp: Schema.optional(Schema.String),
-  newSourceIp: Schema.optional(Schema.String),
-  oldDestinationIp: Schema.optional(Schema.String),
-  newDestinationIp: Schema.optional(Schema.String),
-  oldSourcePort: Schema.optional(Schema.Number),
-  newSourcePort: Schema.optional(Schema.Number),
-  oldDestinationPort: Schema.optional(Schema.Number),
-  newDestinationPort: Schema.optional(Schema.Number),
-  subnetUri: Schema.optional(Schema.String),
-  networkUri: Schema.optional(Schema.String),
-}).annotate({ identifier: "ProxyConnectionInfo" });
+export const ProxyConnectionInfo: Schema.Schema<ProxyConnectionInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protocol: Schema.optional(Schema.String),
+    oldSourceIp: Schema.optional(Schema.String),
+    newSourceIp: Schema.optional(Schema.String),
+    oldDestinationIp: Schema.optional(Schema.String),
+    newDestinationIp: Schema.optional(Schema.String),
+    oldSourcePort: Schema.optional(Schema.Number),
+    newSourcePort: Schema.optional(Schema.Number),
+    oldDestinationPort: Schema.optional(Schema.Number),
+    newDestinationPort: Schema.optional(Schema.Number),
+    subnetUri: Schema.optional(Schema.String),
+    networkUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProxyConnectionInfo" });
 
 export interface LoadBalancerBackendInfo {
   /** Display name of the backend. For example, it might be an instance name for the instance group backends, or an IP address and port for zonal network endpoint group backends. */
@@ -1402,7 +1445,7 @@ export interface LoadBalancerBackendInfo {
     | (string & {});
 }
 
-export const LoadBalancerBackendInfo =
+export const LoadBalancerBackendInfo: Schema.Schema<LoadBalancerBackendInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     instanceUri: Schema.optional(Schema.String),
@@ -1421,28 +1464,40 @@ export interface StorageBucketInfo {
   bucket?: string;
 }
 
-export const StorageBucketInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  bucket: Schema.optional(Schema.String),
-}).annotate({ identifier: "StorageBucketInfo" });
+export const StorageBucketInfo: Schema.Schema<StorageBucketInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucket: Schema.optional(Schema.String),
+  }).annotate({ identifier: "StorageBucketInfo" });
 
 export interface ServerlessNegInfo {
   /** URI of the serverless network endpoint group. */
   negUri?: string;
 }
 
-export const ServerlessNegInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  negUri: Schema.optional(Schema.String),
-}).annotate({ identifier: "ServerlessNegInfo" });
+export const ServerlessNegInfo: Schema.Schema<ServerlessNegInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    negUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ServerlessNegInfo" });
 
 export interface NgfwPacketInspectionInfo {
   /** URI of the security profile group associated with this firewall packet inspection. */
   securityProfileGroupUri?: string;
 }
 
-export const NgfwPacketInspectionInfo =
+export const NgfwPacketInspectionInfo: Schema.Schema<NgfwPacketInspectionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityProfileGroupUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "NgfwPacketInspectionInfo" });
+
+export interface PrivateConnectionInfo {
+  /** URI of the Private Connection in format "projects/{project_id}/locations/{location}/privateConnections/{private_connection_id}" */
+  uri?: string;
+}
+
+export const PrivateConnectionInfo: Schema.Schema<PrivateConnectionInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PrivateConnectionInfo" });
 
 export interface Step {
   /** A description of the step. Usually this is a summary of the state. */
@@ -1465,6 +1520,8 @@ export interface Step {
     | "START_FROM_STORAGE_BUCKET"
     | "START_FROM_PSC_PUBLISHED_SERVICE"
     | "START_FROM_SERVERLESS_NEG"
+    | "START_FROM_DMS_PRIVATE_CONNECTION"
+    | "START_FROM_DATASTREAM_PRIVATE_CONNECTION"
     | "APPLY_INGRESS_FIREWALL_RULE"
     | "APPLY_EGRESS_FIREWALL_RULE"
     | "APPLY_ROUTE"
@@ -1572,52 +1629,59 @@ export interface Step {
   serverlessNeg?: ServerlessNegInfo;
   /** Display information of a layer 7 packet inspection by the firewall. */
   ngfwPacketInspection?: NgfwPacketInspectionInfo;
+  /** Display information of a DMS Private Connection. */
+  dmsPrivateConnection?: PrivateConnectionInfo;
+  /** Display information of a Datastream Private Connection. */
+  datastreamPrivateConnection?: PrivateConnectionInfo;
 }
 
-export const Step = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  description: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  causesDrop: Schema.optional(Schema.Boolean),
-  projectId: Schema.optional(Schema.String),
-  instance: Schema.optional(InstanceInfo),
-  firewall: Schema.optional(FirewallInfo),
-  route: Schema.optional(RouteInfo),
-  endpoint: Schema.optional(EndpointInfo),
-  googleService: Schema.optional(GoogleServiceInfo),
-  forwardingRule: Schema.optional(ForwardingRuleInfo),
-  hybridSubnet: Schema.optional(HybridSubnetInfo),
-  vpnGateway: Schema.optional(VpnGatewayInfo),
-  vpnTunnel: Schema.optional(VpnTunnelInfo),
-  interconnectAttachment: Schema.optional(InterconnectAttachmentInfo),
-  vpcConnector: Schema.optional(VpcConnectorInfo),
-  directVpcEgressConnection: Schema.optional(DirectVpcEgressConnectionInfo),
-  serverlessExternalConnection: Schema.optional(
-    ServerlessExternalConnectionInfo,
-  ),
-  deliver: Schema.optional(DeliverInfo),
-  forward: Schema.optional(ForwardInfo),
-  abort: Schema.optional(AbortInfo),
-  drop: Schema.optional(DropInfo),
-  loadBalancer: Schema.optional(LoadBalancerInfo),
-  network: Schema.optional(NetworkInfo),
-  gkeMaster: Schema.optional(GKEMasterInfo),
-  gkePod: Schema.optional(GkePodInfo),
-  ipMasqueradingSkipped: Schema.optional(IpMasqueradingSkippedInfo),
-  gkeNetworkPolicy: Schema.optional(GkeNetworkPolicyInfo),
-  gkeNetworkPolicySkipped: Schema.optional(GkeNetworkPolicySkippedInfo),
-  cloudSqlInstance: Schema.optional(CloudSQLInstanceInfo),
-  redisInstance: Schema.optional(RedisInstanceInfo),
-  redisCluster: Schema.optional(RedisClusterInfo),
-  cloudFunction: Schema.optional(CloudFunctionInfo),
-  appEngineVersion: Schema.optional(AppEngineVersionInfo),
-  cloudRunRevision: Schema.optional(CloudRunRevisionInfo),
-  nat: Schema.optional(NatInfo),
-  proxyConnection: Schema.optional(ProxyConnectionInfo),
-  loadBalancerBackendInfo: Schema.optional(LoadBalancerBackendInfo),
-  storageBucket: Schema.optional(StorageBucketInfo),
-  serverlessNeg: Schema.optional(ServerlessNegInfo),
-  ngfwPacketInspection: Schema.optional(NgfwPacketInspectionInfo),
-}).annotate({ identifier: "Step" });
+export const Step: Schema.Schema<Step> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    causesDrop: Schema.optional(Schema.Boolean),
+    projectId: Schema.optional(Schema.String),
+    instance: Schema.optional(InstanceInfo),
+    firewall: Schema.optional(FirewallInfo),
+    route: Schema.optional(RouteInfo),
+    endpoint: Schema.optional(EndpointInfo),
+    googleService: Schema.optional(GoogleServiceInfo),
+    forwardingRule: Schema.optional(ForwardingRuleInfo),
+    hybridSubnet: Schema.optional(HybridSubnetInfo),
+    vpnGateway: Schema.optional(VpnGatewayInfo),
+    vpnTunnel: Schema.optional(VpnTunnelInfo),
+    interconnectAttachment: Schema.optional(InterconnectAttachmentInfo),
+    vpcConnector: Schema.optional(VpcConnectorInfo),
+    directVpcEgressConnection: Schema.optional(DirectVpcEgressConnectionInfo),
+    serverlessExternalConnection: Schema.optional(
+      ServerlessExternalConnectionInfo,
+    ),
+    deliver: Schema.optional(DeliverInfo),
+    forward: Schema.optional(ForwardInfo),
+    abort: Schema.optional(AbortInfo),
+    drop: Schema.optional(DropInfo),
+    loadBalancer: Schema.optional(LoadBalancerInfo),
+    network: Schema.optional(NetworkInfo),
+    gkeMaster: Schema.optional(GKEMasterInfo),
+    gkePod: Schema.optional(GkePodInfo),
+    ipMasqueradingSkipped: Schema.optional(IpMasqueradingSkippedInfo),
+    gkeNetworkPolicy: Schema.optional(GkeNetworkPolicyInfo),
+    gkeNetworkPolicySkipped: Schema.optional(GkeNetworkPolicySkippedInfo),
+    cloudSqlInstance: Schema.optional(CloudSQLInstanceInfo),
+    redisInstance: Schema.optional(RedisInstanceInfo),
+    redisCluster: Schema.optional(RedisClusterInfo),
+    cloudFunction: Schema.optional(CloudFunctionInfo),
+    appEngineVersion: Schema.optional(AppEngineVersionInfo),
+    cloudRunRevision: Schema.optional(CloudRunRevisionInfo),
+    nat: Schema.optional(NatInfo),
+    proxyConnection: Schema.optional(ProxyConnectionInfo),
+    loadBalancerBackendInfo: Schema.optional(LoadBalancerBackendInfo),
+    storageBucket: Schema.optional(StorageBucketInfo),
+    serverlessNeg: Schema.optional(ServerlessNegInfo),
+    ngfwPacketInspection: Schema.optional(NgfwPacketInspectionInfo),
+    dmsPrivateConnection: Schema.optional(PrivateConnectionInfo),
+    datastreamPrivateConnection: Schema.optional(PrivateConnectionInfo),
+  }).annotate({ identifier: "Step" });
 
 export interface Trace {
   /** Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces. */
@@ -1628,11 +1692,12 @@ export interface Trace {
   forwardTraceId?: number;
 }
 
-export const Trace = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  endpointInfo: Schema.optional(EndpointInfo),
-  steps: Schema.optional(Schema.Array(Step)),
-  forwardTraceId: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Trace" });
+export const Trace: Schema.Schema<Trace> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpointInfo: Schema.optional(EndpointInfo),
+    steps: Schema.optional(Schema.Array(Step)),
+    forwardTraceId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Trace" });
 
 export interface ReachabilityDetails {
   /** The overall result of the test's configuration analysis. */
@@ -1651,12 +1716,13 @@ export interface ReachabilityDetails {
   traces?: ReadonlyArray<Trace>;
 }
 
-export const ReachabilityDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.optional(Schema.String),
-  verifyTime: Schema.optional(Schema.String),
-  error: Schema.optional(Status),
-  traces: Schema.optional(Schema.Array(Trace)),
-}).annotate({ identifier: "ReachabilityDetails" });
+export const ReachabilityDetails: Schema.Schema<ReachabilityDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(Schema.String),
+    verifyTime: Schema.optional(Schema.String),
+    error: Schema.optional(Status),
+    traces: Schema.optional(Schema.Array(Trace)),
+  }).annotate({ identifier: "ReachabilityDetails" });
 
 export interface LatencyPercentile {
   /** Percentage of samples this data point applies to. */
@@ -1665,28 +1731,31 @@ export interface LatencyPercentile {
   latencyMicros?: string;
 }
 
-export const LatencyPercentile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  percent: Schema.optional(Schema.Number),
-  latencyMicros: Schema.optional(Schema.String),
-}).annotate({ identifier: "LatencyPercentile" });
+export const LatencyPercentile: Schema.Schema<LatencyPercentile> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    percent: Schema.optional(Schema.Number),
+    latencyMicros: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LatencyPercentile" });
 
 export interface LatencyDistribution {
   /** Representative latency percentiles. */
   latencyPercentiles?: ReadonlyArray<LatencyPercentile>;
 }
 
-export const LatencyDistribution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  latencyPercentiles: Schema.optional(Schema.Array(LatencyPercentile)),
-}).annotate({ identifier: "LatencyDistribution" });
+export const LatencyDistribution: Schema.Schema<LatencyDistribution> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latencyPercentiles: Schema.optional(Schema.Array(LatencyPercentile)),
+  }).annotate({ identifier: "LatencyDistribution" });
 
 export interface EdgeLocation {
   /** Name of the metropolitan area. */
   metropolitanArea?: string;
 }
 
-export const EdgeLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  metropolitanArea: Schema.optional(Schema.String),
-}).annotate({ identifier: "EdgeLocation" });
+export const EdgeLocation: Schema.Schema<EdgeLocation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metropolitanArea: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EdgeLocation" });
 
 export interface SingleEdgeResponse {
   /** The overall result of active probing for this egress device. */
@@ -1709,14 +1778,15 @@ export interface SingleEdgeResponse {
   destinationRouter?: string;
 }
 
-export const SingleEdgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.optional(Schema.String),
-  sentProbeCount: Schema.optional(Schema.Number),
-  successfulProbeCount: Schema.optional(Schema.Number),
-  probingLatency: Schema.optional(LatencyDistribution),
-  destinationEgressLocation: Schema.optional(EdgeLocation),
-  destinationRouter: Schema.optional(Schema.String),
-}).annotate({ identifier: "SingleEdgeResponse" });
+export const SingleEdgeResponse: Schema.Schema<SingleEdgeResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(Schema.String),
+    sentProbeCount: Schema.optional(Schema.Number),
+    successfulProbeCount: Schema.optional(Schema.Number),
+    probingLatency: Schema.optional(LatencyDistribution),
+    destinationEgressLocation: Schema.optional(EdgeLocation),
+    destinationRouter: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SingleEdgeResponse" });
 
 export interface ProbingDetails {
   /** The overall result of active probing. */
@@ -1753,19 +1823,20 @@ export interface ProbingDetails {
   probedAllDevices?: boolean;
 }
 
-export const ProbingDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.optional(Schema.String),
-  verifyTime: Schema.optional(Schema.String),
-  error: Schema.optional(Status),
-  abortCause: Schema.optional(Schema.String),
-  sentProbeCount: Schema.optional(Schema.Number),
-  successfulProbeCount: Schema.optional(Schema.Number),
-  endpointInfo: Schema.optional(EndpointInfo),
-  probingLatency: Schema.optional(LatencyDistribution),
-  destinationEgressLocation: Schema.optional(EdgeLocation),
-  edgeResponses: Schema.optional(Schema.Array(SingleEdgeResponse)),
-  probedAllDevices: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "ProbingDetails" });
+export const ProbingDetails: Schema.Schema<ProbingDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(Schema.String),
+    verifyTime: Schema.optional(Schema.String),
+    error: Schema.optional(Status),
+    abortCause: Schema.optional(Schema.String),
+    sentProbeCount: Schema.optional(Schema.Number),
+    successfulProbeCount: Schema.optional(Schema.Number),
+    endpointInfo: Schema.optional(EndpointInfo),
+    probingLatency: Schema.optional(LatencyDistribution),
+    destinationEgressLocation: Schema.optional(EdgeLocation),
+    edgeResponses: Schema.optional(Schema.Array(SingleEdgeResponse)),
+    probedAllDevices: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ProbingDetails" });
 
 export interface ConnectivityTest {
   /** Identifier. Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test}` */
@@ -1800,23 +1871,24 @@ export interface ConnectivityTest {
   bypassFirewallChecks?: boolean;
 }
 
-export const ConnectivityTest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  source: Schema.optional(Endpoint),
-  destination: Schema.optional(Endpoint),
-  protocol: Schema.optional(Schema.String),
-  relatedProjects: Schema.optional(Schema.Array(Schema.String)),
-  displayName: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  reachabilityDetails: Schema.optional(ReachabilityDetails),
-  probingDetails: Schema.optional(ProbingDetails),
-  roundTrip: Schema.optional(Schema.Boolean),
-  returnReachabilityDetails: Schema.optional(ReachabilityDetails),
-  bypassFirewallChecks: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "ConnectivityTest" });
+export const ConnectivityTest: Schema.Schema<ConnectivityTest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    source: Schema.optional(Endpoint),
+    destination: Schema.optional(Endpoint),
+    protocol: Schema.optional(Schema.String),
+    relatedProjects: Schema.optional(Schema.Array(Schema.String)),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    reachabilityDetails: Schema.optional(ReachabilityDetails),
+    probingDetails: Schema.optional(ProbingDetails),
+    roundTrip: Schema.optional(Schema.Boolean),
+    returnReachabilityDetails: Schema.optional(ReachabilityDetails),
+    bypassFirewallChecks: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ConnectivityTest" });
 
 export interface ListConnectivityTestsResponse {
   /** List of Connectivity Tests. */
@@ -1827,7 +1899,7 @@ export interface ListConnectivityTestsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListConnectivityTestsResponse =
+export const ListConnectivityTestsResponse: Schema.Schema<ListConnectivityTestsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(ConnectivityTest)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1836,7 +1908,7 @@ export const ListConnectivityTestsResponse =
 
 export interface RerunConnectivityTestRequest {}
 
-export const RerunConnectivityTestRequest =
+export const RerunConnectivityTestRequest: Schema.Schema<RerunConnectivityTestRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RerunConnectivityTestRequest",
   });
@@ -1899,25 +1971,26 @@ export interface VpcFlowLogsConfig {
   updateTime?: string;
 }
 
-export const VpcFlowLogsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  aggregationInterval: Schema.optional(Schema.String),
-  flowSampling: Schema.optional(Schema.Number),
-  metadata: Schema.optional(Schema.String),
-  metadataFields: Schema.optional(Schema.Array(Schema.String)),
-  filterExpr: Schema.optional(Schema.String),
-  crossProjectMetadata: Schema.optional(Schema.String),
-  targetResourceState: Schema.optional(Schema.String),
-  network: Schema.optional(Schema.String),
-  subnet: Schema.optional(Schema.String),
-  interconnectAttachment: Schema.optional(Schema.String),
-  vpnTunnel: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "VpcFlowLogsConfig" });
+export const VpcFlowLogsConfig: Schema.Schema<VpcFlowLogsConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    aggregationInterval: Schema.optional(Schema.String),
+    flowSampling: Schema.optional(Schema.Number),
+    metadata: Schema.optional(Schema.String),
+    metadataFields: Schema.optional(Schema.Array(Schema.String)),
+    filterExpr: Schema.optional(Schema.String),
+    crossProjectMetadata: Schema.optional(Schema.String),
+    targetResourceState: Schema.optional(Schema.String),
+    network: Schema.optional(Schema.String),
+    subnet: Schema.optional(Schema.String),
+    interconnectAttachment: Schema.optional(Schema.String),
+    vpnTunnel: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VpcFlowLogsConfig" });
 
 export interface ListVpcFlowLogsConfigsResponse {
   /** List of VPC Flow Log configurations. */
@@ -1928,7 +2001,7 @@ export interface ListVpcFlowLogsConfigsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListVpcFlowLogsConfigsResponse =
+export const ListVpcFlowLogsConfigsResponse: Schema.Schema<ListVpcFlowLogsConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vpcFlowLogsConfigs: Schema.optional(Schema.Array(VpcFlowLogsConfig)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1944,7 +2017,7 @@ export interface QueryOrgVpcFlowLogsConfigsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const QueryOrgVpcFlowLogsConfigsResponse =
+export const QueryOrgVpcFlowLogsConfigsResponse: Schema.Schema<QueryOrgVpcFlowLogsConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vpcFlowLogsConfigs: Schema.optional(Schema.Array(VpcFlowLogsConfig)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2005,7 +2078,7 @@ export interface EffectiveVpcFlowLogsConfig {
     | (string & {});
 }
 
-export const EffectiveVpcFlowLogsConfig =
+export const EffectiveVpcFlowLogsConfig: Schema.Schema<EffectiveVpcFlowLogsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -2031,7 +2104,7 @@ export interface ShowEffectiveFlowLogsConfigsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ShowEffectiveFlowLogsConfigsResponse =
+export const ShowEffectiveFlowLogsConfigsResponse: Schema.Schema<ShowEffectiveFlowLogsConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     effectiveFlowLogsConfigs: Schema.optional(
       Schema.Array(EffectiveVpcFlowLogsConfig),
@@ -2051,12 +2124,13 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  expression: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-}).annotate({ identifier: "Expr" });
+export const Expr: Schema.Schema<Expr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expression: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -2067,11 +2141,12 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  role: Schema.optional(Schema.String),
-  members: Schema.optional(Schema.Array(Schema.String)),
-  condition: Schema.optional(Expr),
-}).annotate({ identifier: "Binding" });
+export const Binding: Schema.Schema<Binding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    role: Schema.optional(Schema.String),
+    members: Schema.optional(Schema.Array(Schema.String)),
+    condition: Schema.optional(Expr),
+  }).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -2085,10 +2160,11 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  logType: Schema.optional(Schema.String),
-  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "AuditLogConfig" });
+export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logType: Schema.optional(Schema.String),
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -2097,10 +2173,11 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  service: Schema.optional(Schema.String),
-  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-}).annotate({ identifier: "AuditConfig" });
+export const AuditConfig: Schema.Schema<AuditConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+    auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+  }).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -2113,12 +2190,13 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  version: Schema.optional(Schema.Number),
-  bindings: Schema.optional(Schema.Array(Binding)),
-  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-  etag: Schema.optional(Schema.String),
-}).annotate({ identifier: "Policy" });
+export const Policy: Schema.Schema<Policy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.Number),
+    bindings: Schema.optional(Schema.Array(Binding)),
+    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -2127,17 +2205,18 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  policy: Schema.optional(Policy),
-  updateMask: Schema.optional(Schema.String),
-}).annotate({ identifier: "SetIamPolicyRequest" });
+export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest =
+export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -2147,7 +2226,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse =
+export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -2169,15 +2248,16 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  createTime: Schema.optional(Schema.String),
-  endTime: Schema.optional(Schema.String),
-  target: Schema.optional(Schema.String),
-  verb: Schema.optional(Schema.String),
-  statusDetail: Schema.optional(Schema.String),
-  cancelRequested: Schema.optional(Schema.Boolean),
-  apiVersion: Schema.optional(Schema.String),
-}).annotate({ identifier: "OperationMetadata" });
+export const OperationMetadata: Schema.Schema<OperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    statusDetail: Schema.optional(Schema.String),
+    cancelRequested: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadata" });
 
 // ==========================================================================
 // Errors
@@ -2242,7 +2322,7 @@ export interface ListProjectsLocationsRequest {
   pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
-  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
 }
 
@@ -2266,7 +2346,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
-/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -3178,7 +3258,7 @@ export interface ListOrganizationsLocationsRequest {
   pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
-  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
 }
 
@@ -3205,7 +3285,7 @@ export type ListOrganizationsLocationsError =
   | NotFound
   | Forbidden;
 
-/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listOrganizationsLocations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsRequest,
   ListOrganizationsLocationsResponse,

@@ -35,13 +35,14 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  locationId: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-}).annotate({ identifier: "Location" });
+export const Location: Schema.Schema<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    locationId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -50,10 +51,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  locations: Schema.optional(Schema.Array(Location)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListLocationsResponse" });
+export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Location)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocationsResponse" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -64,13 +66,14 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  code: Schema.optional(Schema.Number),
-  message: Schema.optional(Schema.String),
-  details: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-}).annotate({ identifier: "Status" });
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -85,13 +88,14 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  done: Schema.optional(Schema.Boolean),
-  error: Schema.optional(Status),
-  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-}).annotate({ identifier: "Operation" });
+export const Operation: Schema.Schema<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(Status),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -102,25 +106,26 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
-  },
-).annotate({ identifier: "ListOperationsResponse" });
+  }).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "CancelOperationRequest" });
+export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelOperationRequest",
+  });
 
 export interface NodeConfig {
   /** Required. Number of cpus per Memcached node. */
@@ -129,10 +134,11 @@ export interface NodeConfig {
   memorySizeMb?: number;
 }
 
-export const NodeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  cpuCount: Schema.optional(Schema.Number),
-  memorySizeMb: Schema.optional(Schema.Number),
-}).annotate({ identifier: "NodeConfig" });
+export const NodeConfig: Schema.Schema<NodeConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cpuCount: Schema.optional(Schema.Number),
+    memorySizeMb: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "NodeConfig" });
 
 export interface MemcacheParameters {
   /** Output only. The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes. */
@@ -141,10 +147,11 @@ export interface MemcacheParameters {
   params?: Record<string, string>;
 }
 
-export const MemcacheParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.String),
-  params: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-}).annotate({ identifier: "MemcacheParameters" });
+export const MemcacheParameters: Schema.Schema<MemcacheParameters> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    params: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "MemcacheParameters" });
 
 export interface Node {
   /** Output only. Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name. */
@@ -175,16 +182,17 @@ export interface Node {
   memcacheFullVersion?: string;
 }
 
-export const Node = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  nodeId: Schema.optional(Schema.String),
-  zone: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  host: Schema.optional(Schema.String),
-  port: Schema.optional(Schema.Number),
-  parameters: Schema.optional(MemcacheParameters),
-  memcacheVersion: Schema.optional(Schema.String),
-  memcacheFullVersion: Schema.optional(Schema.String),
-}).annotate({ identifier: "Node" });
+export const Node: Schema.Schema<Node> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodeId: Schema.optional(Schema.String),
+    zone: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    host: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.Number),
+    parameters: Schema.optional(MemcacheParameters),
+    memcacheVersion: Schema.optional(Schema.String),
+    memcacheFullVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Node" });
 
 export interface InstanceMessage {
   /** A code that correspond to one type of user-facing message. */
@@ -193,10 +201,11 @@ export interface InstanceMessage {
   message?: string;
 }
 
-export const InstanceMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  code: Schema.optional(Schema.String),
-  message: Schema.optional(Schema.String),
-}).annotate({ identifier: "InstanceMessage" });
+export const InstanceMessage: Schema.Schema<InstanceMessage> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InstanceMessage" });
 
 export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
@@ -209,12 +218,13 @@ export interface TimeOfDay {
   nanos?: number;
 }
 
-export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  hours: Schema.optional(Schema.Number),
-  minutes: Schema.optional(Schema.Number),
-  seconds: Schema.optional(Schema.Number),
-  nanos: Schema.optional(Schema.Number),
-}).annotate({ identifier: "TimeOfDay" });
+export const TimeOfDay: Schema.Schema<TimeOfDay> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hours: Schema.optional(Schema.Number),
+    minutes: Schema.optional(Schema.Number),
+    seconds: Schema.optional(Schema.Number),
+    nanos: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "TimeOfDay" });
 
 export interface WeeklyMaintenanceWindow {
   /** Required. Allows to define schedule that runs specified day of the week. */
@@ -234,7 +244,7 @@ export interface WeeklyMaintenanceWindow {
   duration?: string;
 }
 
-export const WeeklyMaintenanceWindow =
+export const WeeklyMaintenanceWindow: Schema.Schema<WeeklyMaintenanceWindow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.String),
     startTime: Schema.optional(TimeOfDay),
@@ -252,7 +262,7 @@ export interface GoogleCloudMemcacheV1MaintenancePolicy {
   weeklyMaintenanceWindow?: ReadonlyArray<WeeklyMaintenanceWindow>;
 }
 
-export const GoogleCloudMemcacheV1MaintenancePolicy =
+export const GoogleCloudMemcacheV1MaintenancePolicy: Schema.Schema<GoogleCloudMemcacheV1MaintenancePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -271,11 +281,12 @@ export interface MaintenanceSchedule {
   scheduleDeadlineTime?: string;
 }
 
-export const MaintenanceSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  startTime: Schema.optional(Schema.String),
-  endTime: Schema.optional(Schema.String),
-  scheduleDeadlineTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "MaintenanceSchedule" });
+export const MaintenanceSchedule: Schema.Schema<MaintenanceSchedule> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    scheduleDeadlineTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MaintenanceSchedule" });
 
 export interface Instance {
   /** Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details. */
@@ -340,32 +351,33 @@ export interface Instance {
   availableMaintenanceVersions?: ReadonlyArray<string>;
 }
 
-export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  authorizedNetwork: Schema.optional(Schema.String),
-  zones: Schema.optional(Schema.Array(Schema.String)),
-  nodeCount: Schema.optional(Schema.Number),
-  nodeConfig: Schema.optional(NodeConfig),
-  memcacheVersion: Schema.optional(Schema.String),
-  parameters: Schema.optional(MemcacheParameters),
-  memcacheNodes: Schema.optional(Schema.Array(Node)),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  memcacheFullVersion: Schema.optional(Schema.String),
-  instanceMessages: Schema.optional(Schema.Array(InstanceMessage)),
-  discoveryEndpoint: Schema.optional(Schema.String),
-  maintenancePolicy: Schema.optional(GoogleCloudMemcacheV1MaintenancePolicy),
-  maintenanceSchedule: Schema.optional(MaintenanceSchedule),
-  reservedIpRangeId: Schema.optional(Schema.Array(Schema.String)),
-  satisfiesPzs: Schema.optional(Schema.Boolean),
-  satisfiesPzi: Schema.optional(Schema.Boolean),
-  maintenanceVersion: Schema.optional(Schema.String),
-  effectiveMaintenanceVersion: Schema.optional(Schema.String),
-  availableMaintenanceVersions: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "Instance" });
+export const Instance: Schema.Schema<Instance> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    authorizedNetwork: Schema.optional(Schema.String),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    nodeCount: Schema.optional(Schema.Number),
+    nodeConfig: Schema.optional(NodeConfig),
+    memcacheVersion: Schema.optional(Schema.String),
+    parameters: Schema.optional(MemcacheParameters),
+    memcacheNodes: Schema.optional(Schema.Array(Node)),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    memcacheFullVersion: Schema.optional(Schema.String),
+    instanceMessages: Schema.optional(Schema.Array(InstanceMessage)),
+    discoveryEndpoint: Schema.optional(Schema.String),
+    maintenancePolicy: Schema.optional(GoogleCloudMemcacheV1MaintenancePolicy),
+    maintenanceSchedule: Schema.optional(MaintenanceSchedule),
+    reservedIpRangeId: Schema.optional(Schema.Array(Schema.String)),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    maintenanceVersion: Schema.optional(Schema.String),
+    effectiveMaintenanceVersion: Schema.optional(Schema.String),
+    availableMaintenanceVersions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "Instance" });
 
 export interface ListInstancesResponse {
   /** A list of Memcached instances in the project in the specified location, or across all locations. If the `location_id` in the parent field of the request is "-", all regions available to the project are queried, and the results aggregated. */
@@ -376,11 +388,12 @@ export interface ListInstancesResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  instances: Schema.optional(Schema.Array(Instance)),
-  nextPageToken: Schema.optional(Schema.String),
-  unreachable: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "ListInstancesResponse" });
+export const ListInstancesResponse: Schema.Schema<ListInstancesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instances: Schema.optional(Schema.Array(Instance)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListInstancesResponse" });
 
 export interface UpdateParametersRequest {
   /** Required. Mask of fields to update. */
@@ -389,7 +402,7 @@ export interface UpdateParametersRequest {
   parameters?: MemcacheParameters;
 }
 
-export const UpdateParametersRequest =
+export const UpdateParametersRequest: Schema.Schema<UpdateParametersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     parameters: Schema.optional(MemcacheParameters),
@@ -402,12 +415,11 @@ export interface ApplyParametersRequest {
   applyAll?: boolean;
 }
 
-export const ApplyParametersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const ApplyParametersRequest: Schema.Schema<ApplyParametersRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeIds: Schema.optional(Schema.Array(Schema.String)),
     applyAll: Schema.optional(Schema.Boolean),
-  },
-).annotate({ identifier: "ApplyParametersRequest" });
+  }).annotate({ identifier: "ApplyParametersRequest" });
 
 export interface RescheduleMaintenanceRequest {
   /** Required. If reschedule type is SPECIFIC_TIME, must set up schedule_time as well. */
@@ -421,7 +433,7 @@ export interface RescheduleMaintenanceRequest {
   scheduleTime?: string;
 }
 
-export const RescheduleMaintenanceRequest =
+export const RescheduleMaintenanceRequest: Schema.Schema<RescheduleMaintenanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rescheduleType: Schema.optional(Schema.String),
     scheduleTime: Schema.optional(Schema.String),
@@ -436,7 +448,7 @@ export interface GoogleCloudMemcacheV1UpgradeInstanceRequest {
     | (string & {});
 }
 
-export const GoogleCloudMemcacheV1UpgradeInstanceRequest =
+export const GoogleCloudMemcacheV1UpgradeInstanceRequest: Schema.Schema<GoogleCloudMemcacheV1UpgradeInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memcacheVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudMemcacheV1UpgradeInstanceRequest" });
@@ -452,12 +464,13 @@ export interface SetTagsRequest {
   etag?: string;
 }
 
-export const SetTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  requestId: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-}).annotate({ identifier: "SetTagsRequest" });
+export const SetTagsRequest: Schema.Schema<SetTagsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    requestId: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetTagsRequest" });
 
 export interface SetTagsResponse {
   /** Required. The full resource name of the service resource. */
@@ -468,11 +481,12 @@ export interface SetTagsResponse {
   etag?: string;
 }
 
-export const SetTagsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  etag: Schema.optional(Schema.String),
-}).annotate({ identifier: "SetTagsResponse" });
+export const SetTagsResponse: Schema.Schema<SetTagsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetTagsResponse" });
 
 export interface GetTagsResponse {
   /** Required. The full resource name of the service resource. */
@@ -483,15 +497,16 @@ export interface GetTagsResponse {
   etag?: string;
 }
 
-export const GetTagsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  etag: Schema.optional(Schema.String),
-}).annotate({ identifier: "GetTagsResponse" });
+export const GetTagsResponse: Schema.Schema<GetTagsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetTagsResponse" });
 
 export interface GoogleCloudMemcacheV1ZoneMetadata {}
 
-export const GoogleCloudMemcacheV1ZoneMetadata =
+export const GoogleCloudMemcacheV1ZoneMetadata: Schema.Schema<GoogleCloudMemcacheV1ZoneMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudMemcacheV1ZoneMetadata",
   });
@@ -501,7 +516,7 @@ export interface GoogleCloudMemcacheV1LocationMetadata {
   availableZones?: Record<string, GoogleCloudMemcacheV1ZoneMetadata>;
 }
 
-export const GoogleCloudMemcacheV1LocationMetadata =
+export const GoogleCloudMemcacheV1LocationMetadata: Schema.Schema<GoogleCloudMemcacheV1LocationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availableZones: Schema.optional(
       Schema.Record(Schema.String, GoogleCloudMemcacheV1ZoneMetadata),
@@ -510,18 +525,20 @@ export const GoogleCloudMemcacheV1LocationMetadata =
 
 export interface ZoneMetadata {}
 
-export const ZoneMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "ZoneMetadata" });
+export const ZoneMetadata: Schema.Schema<ZoneMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "ZoneMetadata",
+  });
 
 export interface LocationMetadata {
   /** Output only. The set of available zones in the location. The map is keyed by the lowercase ID of each zone, as defined by GCE. These keys can be specified in the `zones` field when creating a Memcached instance. */
   availableZones?: Record<string, ZoneMetadata>;
 }
 
-export const LocationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  availableZones: Schema.optional(Schema.Record(Schema.String, ZoneMetadata)),
-}).annotate({ identifier: "LocationMetadata" });
+export const LocationMetadata: Schema.Schema<LocationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    availableZones: Schema.optional(Schema.Record(Schema.String, ZoneMetadata)),
+  }).annotate({ identifier: "LocationMetadata" });
 
 export interface OperationMetadata {
   /** Output only. Time when the operation was created. */
@@ -540,15 +557,16 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  createTime: Schema.optional(Schema.String),
-  endTime: Schema.optional(Schema.String),
-  target: Schema.optional(Schema.String),
-  verb: Schema.optional(Schema.String),
-  statusDetail: Schema.optional(Schema.String),
-  cancelRequested: Schema.optional(Schema.Boolean),
-  apiVersion: Schema.optional(Schema.String),
-}).annotate({ identifier: "OperationMetadata" });
+export const OperationMetadata: Schema.Schema<OperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    statusDetail: Schema.optional(Schema.String),
+    cancelRequested: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadata" });
 
 export interface GoogleCloudMemcacheV1OperationMetadata {
   /** Output only. Time when the operation was created. */
@@ -567,7 +585,7 @@ export interface GoogleCloudMemcacheV1OperationMetadata {
   apiVersion?: string;
 }
 
-export const GoogleCloudMemcacheV1OperationMetadata =
+export const GoogleCloudMemcacheV1OperationMetadata: Schema.Schema<GoogleCloudMemcacheV1OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -583,9 +601,10 @@ export interface GetTagsRequest {
   name?: string;
 }
 
-export const GetTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "GetTagsRequest" });
+export const GetTagsRequest: Schema.Schema<GetTagsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetTagsRequest" });
 
 export interface GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
   /** Type of the resource. This can be either a GCP resource or a custom one (e.g. another cloud provider's VM). For GCP compute resources use singular form of the names listed in GCP compute API documentation (https://cloud.google.com/compute/docs/reference/rest/v1/), prefixed with 'compute-', for example: 'compute-instance', 'compute-disk', 'compute-autoscaler'. */
@@ -594,7 +613,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResou
   resourceUrl?: string;
 }
 
-export const GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource =
+export const GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceType: Schema.optional(Schema.String),
     resourceUrl: Schema.optional(Schema.String),
@@ -610,7 +629,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
   reason?: string;
 }
 
-export const GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility =
+export const GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eligible: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
@@ -626,7 +645,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibi
   >;
 }
 
-export const GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility =
+export const GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eligibilities: Schema.optional(
       Schema.Record(
@@ -648,7 +667,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata 
   perSliEligibility?: GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility;
 }
 
-export const GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata =
+export const GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeId: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -669,7 +688,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   perSliEligibility?: GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility;
 }
 
-export const GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata =
+export const GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tier: Schema.optional(Schema.String),
     nodes: Schema.optional(
@@ -697,7 +716,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSched
   scheduleDeadlineTime?: string;
 }
 
-export const GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule =
+export const GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -716,10 +735,11 @@ export interface DailyCycle {
   duration?: string;
 }
 
-export const DailyCycle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  startTime: Schema.optional(TimeOfDay),
-  duration: Schema.optional(Schema.String),
-}).annotate({ identifier: "DailyCycle" });
+export const DailyCycle: Schema.Schema<DailyCycle> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(TimeOfDay),
+    duration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DailyCycle" });
 
 export interface Schedule {
   /** Allows to define schedule that runs specified day of the week. */
@@ -739,20 +759,22 @@ export interface Schedule {
   duration?: string;
 }
 
-export const Schedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  day: Schema.optional(Schema.String),
-  startTime: Schema.optional(TimeOfDay),
-  duration: Schema.optional(Schema.String),
-}).annotate({ identifier: "Schedule" });
+export const Schedule: Schema.Schema<Schedule> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    day: Schema.optional(Schema.String),
+    startTime: Schema.optional(TimeOfDay),
+    duration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Schedule" });
 
 export interface WeeklyCycle {
   /** User can specify multiple windows in a week. Minimum of 1 window. */
   schedule?: ReadonlyArray<Schedule>;
 }
 
-export const WeeklyCycle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  schedule: Schema.optional(Schema.Array(Schedule)),
-}).annotate({ identifier: "WeeklyCycle" });
+export const WeeklyCycle: Schema.Schema<WeeklyCycle> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schedule: Schema.optional(Schema.Array(Schedule)),
+  }).annotate({ identifier: "WeeklyCycle" });
 
 export interface MaintenanceWindow {
   /** Daily cycle. */
@@ -761,10 +783,11 @@ export interface MaintenanceWindow {
   weeklyCycle?: WeeklyCycle;
 }
 
-export const MaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  dailyCycle: Schema.optional(DailyCycle),
-  weeklyCycle: Schema.optional(WeeklyCycle),
-}).annotate({ identifier: "MaintenanceWindow" });
+export const MaintenanceWindow: Schema.Schema<MaintenanceWindow> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dailyCycle: Schema.optional(DailyCycle),
+    weeklyCycle: Schema.optional(WeeklyCycle),
+  }).annotate({ identifier: "MaintenanceWindow" });
 
 export interface Memcache_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -775,11 +798,12 @@ export interface Memcache_Date {
   day?: number;
 }
 
-export const Memcache_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  year: Schema.optional(Schema.Number),
-  month: Schema.optional(Schema.Number),
-  day: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Memcache_Date" });
+export const Memcache_Date: Schema.Schema<Memcache_Date> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    year: Schema.optional(Schema.Number),
+    month: Schema.optional(Schema.Number),
+    day: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Memcache_Date" });
 
 export interface DenyMaintenancePeriod {
   /** Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year. Allows recurring deny periods each year. Date matching this period will have to be the same or after the start. */
@@ -790,11 +814,12 @@ export interface DenyMaintenancePeriod {
   time?: TimeOfDay;
 }
 
-export const DenyMaintenancePeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  startDate: Schema.optional(Memcache_Date),
-  endDate: Schema.optional(Memcache_Date),
-  time: Schema.optional(TimeOfDay),
-}).annotate({ identifier: "DenyMaintenancePeriod" });
+export const DenyMaintenancePeriod: Schema.Schema<DenyMaintenancePeriod> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startDate: Schema.optional(Memcache_Date),
+    endDate: Schema.optional(Memcache_Date),
+    time: Schema.optional(TimeOfDay),
+  }).annotate({ identifier: "DenyMaintenancePeriod" });
 
 export interface UpdatePolicy {
   /** Optional. Maintenance window that is applied to resources covered by this policy. */
@@ -812,11 +837,14 @@ export interface UpdatePolicy {
   denyMaintenancePeriods?: ReadonlyArray<DenyMaintenancePeriod>;
 }
 
-export const UpdatePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  window: Schema.optional(MaintenanceWindow),
-  channel: Schema.optional(Schema.String),
-  denyMaintenancePeriods: Schema.optional(Schema.Array(DenyMaintenancePeriod)),
-}).annotate({ identifier: "UpdatePolicy" });
+export const UpdatePolicy: Schema.Schema<UpdatePolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    window: Schema.optional(MaintenanceWindow),
+    channel: Schema.optional(Schema.String),
+    denyMaintenancePeriods: Schema.optional(
+      Schema.Array(DenyMaintenancePeriod),
+    ),
+  }).annotate({ identifier: "UpdatePolicy" });
 
 export interface MaintenancePolicy {
   /** Required. MaintenancePolicy name using the form: `projects/{project_id}/locations/{location_id}/maintenancePolicies/{maintenance_policy_id}` where {project_id} refers to a GCP consumer project ID, {location_id} refers to a GCP region/zone, {maintenance_policy_id} must be 1-63 characters long and match the regular expression `[a-z0-9]([-a-z0-9]*[a-z0-9])?`. */
@@ -835,15 +863,16 @@ export interface MaintenancePolicy {
   updatePolicy?: UpdatePolicy;
 }
 
-export const MaintenancePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  state: Schema.optional(Schema.String),
-  updatePolicy: Schema.optional(UpdatePolicy),
-}).annotate({ identifier: "MaintenancePolicy" });
+export const MaintenancePolicy: Schema.Schema<MaintenancePolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    state: Schema.optional(Schema.String),
+    updatePolicy: Schema.optional(UpdatePolicy),
+  }).annotate({ identifier: "MaintenancePolicy" });
 
 export interface GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
   /** Optional. Exclude instance from maintenance. When true, rollout service will not attempt maintenance on the instance. Rollout service will include the instance in reported rollout progress as not attempted. */
@@ -854,7 +883,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSetti
   isRollback?: boolean;
 }
 
-export const GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings =
+export const GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exclude: Schema.optional(Schema.Boolean),
     maintenancePolicies: Schema.optional(
@@ -871,7 +900,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1NotificationPara
   values?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter =
+export const GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -932,7 +961,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   consumerProjectNumber?: string;
 }
 
-export const GoogleCloudSaasacceleratorManagementProvidersV1Instance =
+export const GoogleCloudSaasacceleratorManagementProvidersV1Instance: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1Instance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),

@@ -47,24 +47,25 @@ export interface BucketAccessControl {
   selfLink?: string;
 }
 
-export const BucketAccessControl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  bucket: Schema.optional(Schema.String),
-  domain: Schema.optional(Schema.String),
-  email: Schema.optional(Schema.String),
-  entity: Schema.optional(Schema.String),
-  entityId: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  projectTeam: Schema.optional(
-    Schema.Struct({
-      projectNumber: Schema.optional(Schema.String),
-      team: Schema.optional(Schema.String),
-    }),
-  ),
-  role: Schema.optional(Schema.String),
-  selfLink: Schema.optional(Schema.String),
-}).annotate({ identifier: "BucketAccessControl" });
+export const BucketAccessControl: Schema.Schema<BucketAccessControl> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucket: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    entity: Schema.optional(Schema.String),
+    entityId: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    projectTeam: Schema.optional(
+      Schema.Struct({
+        projectNumber: Schema.optional(Schema.String),
+        team: Schema.optional(Schema.String),
+      }),
+    ),
+    role: Schema.optional(Schema.String),
+    selfLink: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BucketAccessControl" });
 
 export interface ObjectAccessControl {
   /** The name of the bucket. */
@@ -95,26 +96,27 @@ export interface ObjectAccessControl {
   selfLink?: string;
 }
 
-export const ObjectAccessControl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  bucket: Schema.optional(Schema.String),
-  domain: Schema.optional(Schema.String),
-  email: Schema.optional(Schema.String),
-  entity: Schema.optional(Schema.String),
-  entityId: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-  generation: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  object: Schema.optional(Schema.String),
-  projectTeam: Schema.optional(
-    Schema.Struct({
-      projectNumber: Schema.optional(Schema.String),
-      team: Schema.optional(Schema.String),
-    }),
-  ),
-  role: Schema.optional(Schema.String),
-  selfLink: Schema.optional(Schema.String),
-}).annotate({ identifier: "ObjectAccessControl" });
+export const ObjectAccessControl: Schema.Schema<ObjectAccessControl> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucket: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    entity: Schema.optional(Schema.String),
+    entityId: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    generation: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    object: Schema.optional(Schema.String),
+    projectTeam: Schema.optional(
+      Schema.Struct({
+        projectNumber: Schema.optional(Schema.String),
+        team: Schema.optional(Schema.String),
+      }),
+    ),
+    role: Schema.optional(Schema.String),
+    selfLink: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ObjectAccessControl" });
 
 export interface Bucket {
   /** Access controls on the bucket. */
@@ -257,190 +259,191 @@ export interface Bucket {
   satisfiesPZI?: boolean;
 }
 
-export const Bucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  acl: Schema.optional(Schema.Array(BucketAccessControl)),
-  billing: Schema.optional(
-    Schema.Struct({ requesterPays: Schema.optional(Schema.Boolean) }),
-  ),
-  cors: Schema.optional(
-    Schema.Array(
+export const Bucket: Schema.Schema<Bucket> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    acl: Schema.optional(Schema.Array(BucketAccessControl)),
+    billing: Schema.optional(
+      Schema.Struct({ requesterPays: Schema.optional(Schema.Boolean) }),
+    ),
+    cors: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          maxAgeSeconds: Schema.optional(Schema.Number),
+          method: Schema.optional(Schema.Array(Schema.String)),
+          origin: Schema.optional(Schema.Array(Schema.String)),
+          responseHeader: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+    ),
+    customPlacementConfig: Schema.optional(
       Schema.Struct({
-        maxAgeSeconds: Schema.optional(Schema.Number),
-        method: Schema.optional(Schema.Array(Schema.String)),
-        origin: Schema.optional(Schema.Array(Schema.String)),
-        responseHeader: Schema.optional(Schema.Array(Schema.String)),
+        dataLocations: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  ),
-  customPlacementConfig: Schema.optional(
-    Schema.Struct({
-      dataLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ),
-  defaultEventBasedHold: Schema.optional(Schema.Boolean),
-  defaultObjectAcl: Schema.optional(Schema.Array(ObjectAccessControl)),
-  encryption: Schema.optional(
-    Schema.Struct({
-      defaultKmsKeyName: Schema.optional(Schema.String),
-      googleManagedEncryptionEnforcementConfig: Schema.optional(
-        Schema.Struct({
-          restrictionMode: Schema.optional(Schema.String),
-          effectiveTime: Schema.optional(Schema.String),
-        }),
-      ),
-      customerManagedEncryptionEnforcementConfig: Schema.optional(
-        Schema.Struct({
-          restrictionMode: Schema.optional(Schema.String),
-          effectiveTime: Schema.optional(Schema.String),
-        }),
-      ),
-      customerSuppliedEncryptionEnforcementConfig: Schema.optional(
-        Schema.Struct({
-          restrictionMode: Schema.optional(Schema.String),
-          effectiveTime: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
-  etag: Schema.optional(Schema.String),
-  hierarchicalNamespace: Schema.optional(
-    Schema.Struct({ enabled: Schema.optional(Schema.Boolean) }),
-  ),
-  iamConfiguration: Schema.optional(
-    Schema.Struct({
-      bucketPolicyOnly: Schema.optional(
-        Schema.Struct({
-          enabled: Schema.optional(Schema.Boolean),
-          lockedTime: Schema.optional(Schema.String),
-        }),
-      ),
-      uniformBucketLevelAccess: Schema.optional(
-        Schema.Struct({
-          enabled: Schema.optional(Schema.Boolean),
-          lockedTime: Schema.optional(Schema.String),
-        }),
-      ),
-      publicAccessPrevention: Schema.optional(Schema.String),
-    }),
-  ),
-  id: Schema.optional(Schema.String),
-  ipFilter: Schema.optional(
-    Schema.Struct({
-      mode: Schema.optional(Schema.String),
-      publicNetworkSource: Schema.optional(
-        Schema.Struct({
-          allowedIpCidrRanges: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      vpcNetworkSources: Schema.optional(
-        Schema.Array(
+    defaultEventBasedHold: Schema.optional(Schema.Boolean),
+    defaultObjectAcl: Schema.optional(Schema.Array(ObjectAccessControl)),
+    encryption: Schema.optional(
+      Schema.Struct({
+        defaultKmsKeyName: Schema.optional(Schema.String),
+        googleManagedEncryptionEnforcementConfig: Schema.optional(
           Schema.Struct({
-            network: Schema.optional(Schema.String),
+            restrictionMode: Schema.optional(Schema.String),
+            effectiveTime: Schema.optional(Schema.String),
+          }),
+        ),
+        customerManagedEncryptionEnforcementConfig: Schema.optional(
+          Schema.Struct({
+            restrictionMode: Schema.optional(Schema.String),
+            effectiveTime: Schema.optional(Schema.String),
+          }),
+        ),
+        customerSuppliedEncryptionEnforcementConfig: Schema.optional(
+          Schema.Struct({
+            restrictionMode: Schema.optional(Schema.String),
+            effectiveTime: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    hierarchicalNamespace: Schema.optional(
+      Schema.Struct({ enabled: Schema.optional(Schema.Boolean) }),
+    ),
+    iamConfiguration: Schema.optional(
+      Schema.Struct({
+        bucketPolicyOnly: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            lockedTime: Schema.optional(Schema.String),
+          }),
+        ),
+        uniformBucketLevelAccess: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.optional(Schema.Boolean),
+            lockedTime: Schema.optional(Schema.String),
+          }),
+        ),
+        publicAccessPrevention: Schema.optional(Schema.String),
+      }),
+    ),
+    id: Schema.optional(Schema.String),
+    ipFilter: Schema.optional(
+      Schema.Struct({
+        mode: Schema.optional(Schema.String),
+        publicNetworkSource: Schema.optional(
+          Schema.Struct({
             allowedIpCidrRanges: Schema.optional(Schema.Array(Schema.String)),
           }),
         ),
-      ),
-      allowCrossOrgVpcs: Schema.optional(Schema.Boolean),
-      allowAllServiceAgentAccess: Schema.optional(Schema.Boolean),
-    }),
-  ),
-  kind: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  lifecycle: Schema.optional(
-    Schema.Struct({
-      rule: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            action: Schema.optional(
-              Schema.Struct({
-                storageClass: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-              }),
-            ),
-            condition: Schema.optional(
-              Schema.Struct({
-                age: Schema.optional(Schema.Number),
-                createdBefore: Schema.optional(Schema.String),
-                customTimeBefore: Schema.optional(Schema.String),
-                daysSinceCustomTime: Schema.optional(Schema.Number),
-                daysSinceNoncurrentTime: Schema.optional(Schema.Number),
-                isLive: Schema.optional(Schema.Boolean),
-                matchesPattern: Schema.optional(Schema.String),
-                matchesPrefix: Schema.optional(Schema.Array(Schema.String)),
-                matchesSuffix: Schema.optional(Schema.Array(Schema.String)),
-                matchesStorageClass: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                noncurrentTimeBefore: Schema.optional(Schema.String),
-                numNewerVersions: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
+        vpcNetworkSources: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              network: Schema.optional(Schema.String),
+              allowedIpCidrRanges: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
         ),
-      ),
-    }),
-  ),
-  autoclass: Schema.optional(
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      toggleTime: Schema.optional(Schema.String),
-      terminalStorageClass: Schema.optional(Schema.String),
-      terminalStorageClassUpdateTime: Schema.optional(Schema.String),
-    }),
-  ),
-  location: Schema.optional(Schema.String),
-  locationType: Schema.optional(Schema.String),
-  logging: Schema.optional(
-    Schema.Struct({
-      logBucket: Schema.optional(Schema.String),
-      logObjectPrefix: Schema.optional(Schema.String),
-    }),
-  ),
-  generation: Schema.optional(Schema.String),
-  metageneration: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  owner: Schema.optional(
-    Schema.Struct({
-      entity: Schema.optional(Schema.String),
-      entityId: Schema.optional(Schema.String),
-    }),
-  ),
-  projectNumber: Schema.optional(Schema.String),
-  retentionPolicy: Schema.optional(
-    Schema.Struct({
-      effectiveTime: Schema.optional(Schema.String),
-      isLocked: Schema.optional(Schema.Boolean),
-      retentionPeriod: Schema.optional(Schema.String),
-    }),
-  ),
-  objectRetention: Schema.optional(
-    Schema.Struct({ mode: Schema.optional(Schema.String) }),
-  ),
-  rpo: Schema.optional(Schema.String),
-  selfLink: Schema.optional(Schema.String),
-  softDeletePolicy: Schema.optional(
-    Schema.Struct({
-      retentionDurationSeconds: Schema.optional(Schema.String),
-      effectiveTime: Schema.optional(Schema.String),
-    }),
-  ),
-  storageClass: Schema.optional(Schema.String),
-  timeCreated: Schema.optional(Schema.String),
-  updated: Schema.optional(Schema.String),
-  softDeleteTime: Schema.optional(Schema.String),
-  hardDeleteTime: Schema.optional(Schema.String),
-  versioning: Schema.optional(
-    Schema.Struct({ enabled: Schema.optional(Schema.Boolean) }),
-  ),
-  website: Schema.optional(
-    Schema.Struct({
-      mainPageSuffix: Schema.optional(Schema.String),
-      notFoundPage: Schema.optional(Schema.String),
-    }),
-  ),
-  satisfiesPZS: Schema.optional(Schema.Boolean),
-  satisfiesPZI: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "Bucket" });
+        allowCrossOrgVpcs: Schema.optional(Schema.Boolean),
+        allowAllServiceAgentAccess: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    kind: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    lifecycle: Schema.optional(
+      Schema.Struct({
+        rule: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              action: Schema.optional(
+                Schema.Struct({
+                  storageClass: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                }),
+              ),
+              condition: Schema.optional(
+                Schema.Struct({
+                  age: Schema.optional(Schema.Number),
+                  createdBefore: Schema.optional(Schema.String),
+                  customTimeBefore: Schema.optional(Schema.String),
+                  daysSinceCustomTime: Schema.optional(Schema.Number),
+                  daysSinceNoncurrentTime: Schema.optional(Schema.Number),
+                  isLive: Schema.optional(Schema.Boolean),
+                  matchesPattern: Schema.optional(Schema.String),
+                  matchesPrefix: Schema.optional(Schema.Array(Schema.String)),
+                  matchesSuffix: Schema.optional(Schema.Array(Schema.String)),
+                  matchesStorageClass: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                  noncurrentTimeBefore: Schema.optional(Schema.String),
+                  numNewerVersions: Schema.optional(Schema.Number),
+                }),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    autoclass: Schema.optional(
+      Schema.Struct({
+        enabled: Schema.optional(Schema.Boolean),
+        toggleTime: Schema.optional(Schema.String),
+        terminalStorageClass: Schema.optional(Schema.String),
+        terminalStorageClassUpdateTime: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    locationType: Schema.optional(Schema.String),
+    logging: Schema.optional(
+      Schema.Struct({
+        logBucket: Schema.optional(Schema.String),
+        logObjectPrefix: Schema.optional(Schema.String),
+      }),
+    ),
+    generation: Schema.optional(Schema.String),
+    metageneration: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    owner: Schema.optional(
+      Schema.Struct({
+        entity: Schema.optional(Schema.String),
+        entityId: Schema.optional(Schema.String),
+      }),
+    ),
+    projectNumber: Schema.optional(Schema.String),
+    retentionPolicy: Schema.optional(
+      Schema.Struct({
+        effectiveTime: Schema.optional(Schema.String),
+        isLocked: Schema.optional(Schema.Boolean),
+        retentionPeriod: Schema.optional(Schema.String),
+      }),
+    ),
+    objectRetention: Schema.optional(
+      Schema.Struct({ mode: Schema.optional(Schema.String) }),
+    ),
+    rpo: Schema.optional(Schema.String),
+    selfLink: Schema.optional(Schema.String),
+    softDeletePolicy: Schema.optional(
+      Schema.Struct({
+        retentionDurationSeconds: Schema.optional(Schema.String),
+        effectiveTime: Schema.optional(Schema.String),
+      }),
+    ),
+    storageClass: Schema.optional(Schema.String),
+    timeCreated: Schema.optional(Schema.String),
+    updated: Schema.optional(Schema.String),
+    softDeleteTime: Schema.optional(Schema.String),
+    hardDeleteTime: Schema.optional(Schema.String),
+    versioning: Schema.optional(
+      Schema.Struct({ enabled: Schema.optional(Schema.Boolean) }),
+    ),
+    website: Schema.optional(
+      Schema.Struct({
+        mainPageSuffix: Schema.optional(Schema.String),
+        notFoundPage: Schema.optional(Schema.String),
+      }),
+    ),
+    satisfiesPZS: Schema.optional(Schema.Boolean),
+    satisfiesPZI: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "Bucket" });
 
 export interface AdvanceRelocateBucketOperationRequest {
   /** Specifies the duration after which the relocation will revert to the sync stage if the relocation hasn't succeeded. Optional, if not supplied, a default value of 12h will be used. */
@@ -449,7 +452,7 @@ export interface AdvanceRelocateBucketOperationRequest {
   expireTime?: string;
 }
 
-export const AdvanceRelocateBucketOperationRequest =
+export const AdvanceRelocateBucketOperationRequest: Schema.Schema<AdvanceRelocateBucketOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ttl: Schema.optional(Schema.String),
     expireTime: Schema.optional(Schema.String),
@@ -484,21 +487,22 @@ export interface AnywhereCache {
   ingestOnWrite?: boolean;
 }
 
-export const AnywhereCache = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  selfLink: Schema.optional(Schema.String),
-  bucket: Schema.optional(Schema.String),
-  anywhereCacheId: Schema.optional(Schema.String),
-  zone: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  ttl: Schema.optional(Schema.String),
-  admissionPolicy: Schema.optional(Schema.String),
-  pendingUpdate: Schema.optional(Schema.Boolean),
-  ingestOnWrite: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "AnywhereCache" });
+export const AnywhereCache: Schema.Schema<AnywhereCache> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    selfLink: Schema.optional(Schema.String),
+    bucket: Schema.optional(Schema.String),
+    anywhereCacheId: Schema.optional(Schema.String),
+    zone: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    ttl: Schema.optional(Schema.String),
+    admissionPolicy: Schema.optional(Schema.String),
+    pendingUpdate: Schema.optional(Schema.Boolean),
+    ingestOnWrite: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AnywhereCache" });
 
 export interface AnywhereCaches {
   /** The kind of item this is. For lists of Anywhere Caches, this is always storage#anywhereCaches. */
@@ -509,11 +513,12 @@ export interface AnywhereCaches {
   items?: ReadonlyArray<AnywhereCache>;
 }
 
-export const AnywhereCaches = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  nextPageToken: Schema.optional(Schema.String),
-  items: Schema.optional(Schema.Array(AnywhereCache)),
-}).annotate({ identifier: "AnywhereCaches" });
+export const AnywhereCaches: Schema.Schema<AnywhereCaches> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    items: Schema.optional(Schema.Array(AnywhereCache)),
+  }).annotate({ identifier: "AnywhereCaches" });
 
 export interface BucketAccessControls {
   /** The list of items. */
@@ -522,10 +527,11 @@ export interface BucketAccessControls {
   kind?: string;
 }
 
-export const BucketAccessControls = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  items: Schema.optional(Schema.Array(BucketAccessControl)),
-  kind: Schema.optional(Schema.String),
-}).annotate({ identifier: "BucketAccessControls" });
+export const BucketAccessControls: Schema.Schema<BucketAccessControls> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(Schema.Array(BucketAccessControl)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BucketAccessControls" });
 
 export interface BucketStorageLayout {
   /** The name of the bucket. */
@@ -542,20 +548,21 @@ export interface BucketStorageLayout {
   locationType?: string;
 }
 
-export const BucketStorageLayout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  bucket: Schema.optional(Schema.String),
-  customPlacementConfig: Schema.optional(
-    Schema.Struct({
-      dataLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ),
-  hierarchicalNamespace: Schema.optional(
-    Schema.Struct({ enabled: Schema.optional(Schema.Boolean) }),
-  ),
-  kind: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-  locationType: Schema.optional(Schema.String),
-}).annotate({ identifier: "BucketStorageLayout" });
+export const BucketStorageLayout: Schema.Schema<BucketStorageLayout> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucket: Schema.optional(Schema.String),
+    customPlacementConfig: Schema.optional(
+      Schema.Struct({
+        dataLocations: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    hierarchicalNamespace: Schema.optional(
+      Schema.Struct({ enabled: Schema.optional(Schema.Boolean) }),
+    ),
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    locationType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BucketStorageLayout" });
 
 export interface Buckets {
   /** The list of items. */
@@ -568,12 +575,13 @@ export interface Buckets {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const Buckets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  items: Schema.optional(Schema.Array(Bucket)),
-  kind: Schema.optional(Schema.String),
-  nextPageToken: Schema.optional(Schema.String),
-  unreachable: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "Buckets" });
+export const Buckets: Schema.Schema<Buckets> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(Schema.Array(Bucket)),
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "Buckets" });
 
 export interface Channel {
   /** The address where notifications are delivered for this channel. */
@@ -598,18 +606,19 @@ export interface Channel {
   type?: string;
 }
 
-export const Channel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  address: Schema.optional(Schema.String),
-  expiration: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  params: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  payload: Schema.optional(Schema.Boolean),
-  resourceId: Schema.optional(Schema.String),
-  resourceUri: Schema.optional(Schema.String),
-  token: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-}).annotate({ identifier: "Channel" });
+export const Channel: Schema.Schema<Channel> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    address: Schema.optional(Schema.String),
+    expiration: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    params: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    payload: Schema.optional(Schema.Boolean),
+    resourceId: Schema.optional(Schema.String),
+    resourceUri: Schema.optional(Schema.String),
+    token: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Channel" });
 
 export interface ObjectCustomContextPayload {
   /** The value of the object context. */
@@ -620,7 +629,7 @@ export interface ObjectCustomContextPayload {
   updateTime?: string;
 }
 
-export const ObjectCustomContextPayload =
+export const ObjectCustomContextPayload: Schema.Schema<ObjectCustomContextPayload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -706,67 +715,68 @@ export interface Storage_Object {
   updated?: string;
 }
 
-export const Storage_Object = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  acl: Schema.optional(Schema.Array(ObjectAccessControl)),
-  bucket: Schema.optional(Schema.String),
-  cacheControl: Schema.optional(Schema.String),
-  componentCount: Schema.optional(Schema.Number),
-  contentDisposition: Schema.optional(Schema.String),
-  contentEncoding: Schema.optional(Schema.String),
-  contentLanguage: Schema.optional(Schema.String),
-  contentType: Schema.optional(Schema.String),
-  crc32c: Schema.optional(Schema.String),
-  customTime: Schema.optional(Schema.String),
-  customerEncryption: Schema.optional(
-    Schema.Struct({
-      encryptionAlgorithm: Schema.optional(Schema.String),
-      keySha256: Schema.optional(Schema.String),
-    }),
-  ),
-  etag: Schema.optional(Schema.String),
-  eventBasedHold: Schema.optional(Schema.Boolean),
-  generation: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  kmsKeyName: Schema.optional(Schema.String),
-  md5Hash: Schema.optional(Schema.String),
-  mediaLink: Schema.optional(Schema.String),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  contexts: Schema.optional(
-    Schema.Struct({
-      custom: Schema.optional(
-        Schema.Record(Schema.String, ObjectCustomContextPayload),
-      ),
-    }),
-  ),
-  restoreToken: Schema.optional(Schema.String),
-  metageneration: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  owner: Schema.optional(
-    Schema.Struct({
-      entity: Schema.optional(Schema.String),
-      entityId: Schema.optional(Schema.String),
-    }),
-  ),
-  retentionExpirationTime: Schema.optional(Schema.String),
-  retention: Schema.optional(
-    Schema.Struct({
-      retainUntilTime: Schema.optional(Schema.String),
-      mode: Schema.optional(Schema.String),
-    }),
-  ),
-  selfLink: Schema.optional(Schema.String),
-  size: Schema.optional(Schema.String),
-  storageClass: Schema.optional(Schema.String),
-  temporaryHold: Schema.optional(Schema.Boolean),
-  timeCreated: Schema.optional(Schema.String),
-  timeDeleted: Schema.optional(Schema.String),
-  timeFinalized: Schema.optional(Schema.String),
-  softDeleteTime: Schema.optional(Schema.String),
-  hardDeleteTime: Schema.optional(Schema.String),
-  timeStorageClassUpdated: Schema.optional(Schema.String),
-  updated: Schema.optional(Schema.String),
-}).annotate({ identifier: "Storage_Object" });
+export const Storage_Object: Schema.Schema<Storage_Object> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    acl: Schema.optional(Schema.Array(ObjectAccessControl)),
+    bucket: Schema.optional(Schema.String),
+    cacheControl: Schema.optional(Schema.String),
+    componentCount: Schema.optional(Schema.Number),
+    contentDisposition: Schema.optional(Schema.String),
+    contentEncoding: Schema.optional(Schema.String),
+    contentLanguage: Schema.optional(Schema.String),
+    contentType: Schema.optional(Schema.String),
+    crc32c: Schema.optional(Schema.String),
+    customTime: Schema.optional(Schema.String),
+    customerEncryption: Schema.optional(
+      Schema.Struct({
+        encryptionAlgorithm: Schema.optional(Schema.String),
+        keySha256: Schema.optional(Schema.String),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    eventBasedHold: Schema.optional(Schema.Boolean),
+    generation: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    kmsKeyName: Schema.optional(Schema.String),
+    md5Hash: Schema.optional(Schema.String),
+    mediaLink: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    contexts: Schema.optional(
+      Schema.Struct({
+        custom: Schema.optional(
+          Schema.Record(Schema.String, ObjectCustomContextPayload),
+        ),
+      }),
+    ),
+    restoreToken: Schema.optional(Schema.String),
+    metageneration: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    owner: Schema.optional(
+      Schema.Struct({
+        entity: Schema.optional(Schema.String),
+        entityId: Schema.optional(Schema.String),
+      }),
+    ),
+    retentionExpirationTime: Schema.optional(Schema.String),
+    retention: Schema.optional(
+      Schema.Struct({
+        retainUntilTime: Schema.optional(Schema.String),
+        mode: Schema.optional(Schema.String),
+      }),
+    ),
+    selfLink: Schema.optional(Schema.String),
+    size: Schema.optional(Schema.String),
+    storageClass: Schema.optional(Schema.String),
+    temporaryHold: Schema.optional(Schema.Boolean),
+    timeCreated: Schema.optional(Schema.String),
+    timeDeleted: Schema.optional(Schema.String),
+    timeFinalized: Schema.optional(Schema.String),
+    softDeleteTime: Schema.optional(Schema.String),
+    hardDeleteTime: Schema.optional(Schema.String),
+    timeStorageClassUpdated: Schema.optional(Schema.String),
+    updated: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Storage_Object" });
 
 export interface ComposeRequest {
   /** Properties of the resulting object. */
@@ -783,22 +793,25 @@ export interface ComposeRequest {
   deleteSourceObjects?: boolean;
 }
 
-export const ComposeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  destination: Schema.optional(Storage_Object),
-  kind: Schema.optional(Schema.String),
-  sourceObjects: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        generation: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        objectPreconditions: Schema.optional(
-          Schema.Struct({ ifGenerationMatch: Schema.optional(Schema.String) }),
-        ),
-      }),
+export const ComposeRequest: Schema.Schema<ComposeRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destination: Schema.optional(Storage_Object),
+    kind: Schema.optional(Schema.String),
+    sourceObjects: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          generation: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          objectPreconditions: Schema.optional(
+            Schema.Struct({
+              ifGenerationMatch: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
     ),
-  ),
-  deleteSourceObjects: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "ComposeRequest" });
+    deleteSourceObjects: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ComposeRequest" });
 
 export interface Folder {
   /** The name of the bucket containing this folder. */
@@ -821,19 +834,20 @@ export interface Folder {
   pendingRenameInfo?: { operationId?: string };
 }
 
-export const Folder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  bucket: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  metageneration: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  selfLink: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  pendingRenameInfo: Schema.optional(
-    Schema.Struct({ operationId: Schema.optional(Schema.String) }),
-  ),
-}).annotate({ identifier: "Folder" });
+export const Folder: Schema.Schema<Folder> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucket: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metageneration: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    selfLink: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    pendingRenameInfo: Schema.optional(
+      Schema.Struct({ operationId: Schema.optional(Schema.String) }),
+    ),
+  }).annotate({ identifier: "Folder" });
 
 export interface Folders {
   /** The list of items. */
@@ -844,11 +858,12 @@ export interface Folders {
   nextPageToken?: string;
 }
 
-export const Folders = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  items: Schema.optional(Schema.Array(Folder)),
-  kind: Schema.optional(Schema.String),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "Folders" });
+export const Folders: Schema.Schema<Folders> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(Schema.Array(Folder)),
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Folders" });
 
 export interface Expr {
   /** An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
@@ -861,12 +876,13 @@ export interface Expr {
   title?: string;
 }
 
-export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  description: Schema.optional(Schema.String),
-  expression: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-}).annotate({ identifier: "Expr" });
+export const Expr: Schema.Schema<Expr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Expr" });
 
 export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -877,13 +893,14 @@ export interface GoogleRpcStatus {
   message?: string;
 }
 
-export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  code: Schema.optional(Schema.Number),
-  details: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-  message: Schema.optional(Schema.String),
-}).annotate({ identifier: "GoogleRpcStatus" });
+export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.Number),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleLongrunningOperation {
   /** If the value is "false", it means the operation is still in progress. If "true", the operation is completed, and either "error" or "response" is available. */
@@ -902,7 +919,7 @@ export interface GoogleLongrunningOperation {
   kind?: string;
 }
 
-export const GoogleLongrunningOperation =
+export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     error: Schema.optional(GoogleRpcStatus),
@@ -922,7 +939,7 @@ export interface GoogleLongrunningListOperationsResponse {
   kind?: string;
 }
 
-export const GoogleLongrunningListOperationsResponse =
+export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
@@ -952,18 +969,19 @@ export interface HmacKeyMetadata {
   updated?: string;
 }
 
-export const HmacKeyMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accessId: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  projectId: Schema.optional(Schema.String),
-  selfLink: Schema.optional(Schema.String),
-  serviceAccountEmail: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  timeCreated: Schema.optional(Schema.String),
-  updated: Schema.optional(Schema.String),
-}).annotate({ identifier: "HmacKeyMetadata" });
+export const HmacKeyMetadata: Schema.Schema<HmacKeyMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessId: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    selfLink: Schema.optional(Schema.String),
+    serviceAccountEmail: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    timeCreated: Schema.optional(Schema.String),
+    updated: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HmacKeyMetadata" });
 
 export interface HmacKey {
   /** The kind of item this is. For HMAC keys, this is always storage#hmacKey. */
@@ -974,11 +992,12 @@ export interface HmacKey {
   secret?: string;
 }
 
-export const HmacKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  metadata: Schema.optional(HmacKeyMetadata),
-  secret: Schema.optional(Schema.String),
-}).annotate({ identifier: "HmacKey" });
+export const HmacKey: Schema.Schema<HmacKey> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(HmacKeyMetadata),
+    secret: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HmacKey" });
 
 export interface HmacKeysMetadata {
   /** The list of items. */
@@ -989,11 +1008,12 @@ export interface HmacKeysMetadata {
   nextPageToken?: string;
 }
 
-export const HmacKeysMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  items: Schema.optional(Schema.Array(HmacKeyMetadata)),
-  kind: Schema.optional(Schema.String),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "HmacKeysMetadata" });
+export const HmacKeysMetadata: Schema.Schema<HmacKeysMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(Schema.Array(HmacKeyMetadata)),
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HmacKeysMetadata" });
 
 export interface ManagedFolder {
   /** The name of the bucket containing this managed folder. */
@@ -1014,16 +1034,17 @@ export interface ManagedFolder {
   updateTime?: string;
 }
 
-export const ManagedFolder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  bucket: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  metageneration: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  selfLink: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "ManagedFolder" });
+export const ManagedFolder: Schema.Schema<ManagedFolder> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucket: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metageneration: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    selfLink: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedFolder" });
 
 export interface ManagedFolders {
   /** The list of items. */
@@ -1034,11 +1055,12 @@ export interface ManagedFolders {
   nextPageToken?: string;
 }
 
-export const ManagedFolders = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  items: Schema.optional(Schema.Array(ManagedFolder)),
-  kind: Schema.optional(Schema.String),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ManagedFolders" });
+export const ManagedFolders: Schema.Schema<ManagedFolders> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(Schema.Array(ManagedFolder)),
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedFolders" });
 
 export interface Notification {
   /** An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription. */
@@ -1061,19 +1083,20 @@ export interface Notification {
   topic?: string;
 }
 
-export const Notification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  custom_attributes: Schema.optional(
-    Schema.Record(Schema.String, Schema.String),
-  ),
-  etag: Schema.optional(Schema.String),
-  event_types: Schema.optional(Schema.Array(Schema.String)),
-  id: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  object_name_prefix: Schema.optional(Schema.String),
-  payload_format: Schema.optional(Schema.String),
-  selfLink: Schema.optional(Schema.String),
-  topic: Schema.optional(Schema.String),
-}).annotate({ identifier: "Notification" });
+export const Notification: Schema.Schema<Notification> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    custom_attributes: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    etag: Schema.optional(Schema.String),
+    event_types: Schema.optional(Schema.Array(Schema.String)),
+    id: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    object_name_prefix: Schema.optional(Schema.String),
+    payload_format: Schema.optional(Schema.String),
+    selfLink: Schema.optional(Schema.String),
+    topic: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Notification" });
 
 export interface Notifications {
   /** The list of items. */
@@ -1082,10 +1105,11 @@ export interface Notifications {
   kind?: string;
 }
 
-export const Notifications = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  items: Schema.optional(Schema.Array(Notification)),
-  kind: Schema.optional(Schema.String),
-}).annotate({ identifier: "Notifications" });
+export const Notifications: Schema.Schema<Notifications> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(Schema.Array(Notification)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Notifications" });
 
 export interface ObjectAccessControls {
   /** The list of items. */
@@ -1094,10 +1118,11 @@ export interface ObjectAccessControls {
   kind?: string;
 }
 
-export const ObjectAccessControls = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  items: Schema.optional(Schema.Array(ObjectAccessControl)),
-  kind: Schema.optional(Schema.String),
-}).annotate({ identifier: "ObjectAccessControls" });
+export const ObjectAccessControls: Schema.Schema<ObjectAccessControls> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(Schema.Array(ObjectAccessControl)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ObjectAccessControls" });
 
 export interface Objects {
   /** The list of items. */
@@ -1110,12 +1135,13 @@ export interface Objects {
   prefixes?: ReadonlyArray<string>;
 }
 
-export const Objects = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  items: Schema.optional(Schema.Array(Storage_Object)),
-  kind: Schema.optional(Schema.String),
-  nextPageToken: Schema.optional(Schema.String),
-  prefixes: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "Objects" });
+export const Objects: Schema.Schema<Objects> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(Schema.Array(Storage_Object)),
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    prefixes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "Objects" });
 
 export interface Policy {
   /** An association between a role, which comes with a set of permissions, and members who may assume that role. */
@@ -1134,21 +1160,22 @@ export interface Policy {
   version?: number;
 }
 
-export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  bindings: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        condition: Schema.optional(Expr),
-        members: Schema.optional(Schema.Array(Schema.String)),
-        role: Schema.optional(Schema.String),
-      }),
+export const Policy: Schema.Schema<Policy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bindings: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          condition: Schema.optional(Expr),
+          members: Schema.optional(Schema.Array(Schema.String)),
+          role: Schema.optional(Schema.String),
+        }),
+      ),
     ),
-  ),
-  etag: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  resourceId: Schema.optional(Schema.String),
-  version: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Policy" });
+    etag: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Policy" });
 
 export interface RelocateBucketRequest {
   /** The new location the bucket will be relocated to. */
@@ -1161,16 +1188,17 @@ export interface RelocateBucketRequest {
   destinationKmsKeyName?: string;
 }
 
-export const RelocateBucketRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  destinationLocation: Schema.optional(Schema.String),
-  destinationCustomPlacementConfig: Schema.optional(
-    Schema.Struct({
-      dataLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ),
-  validateOnly: Schema.optional(Schema.Boolean),
-  destinationKmsKeyName: Schema.optional(Schema.String),
-}).annotate({ identifier: "RelocateBucketRequest" });
+export const RelocateBucketRequest: Schema.Schema<RelocateBucketRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationLocation: Schema.optional(Schema.String),
+    destinationCustomPlacementConfig: Schema.optional(
+      Schema.Struct({
+        dataLocations: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    validateOnly: Schema.optional(Schema.Boolean),
+    destinationKmsKeyName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RelocateBucketRequest" });
 
 export interface RewriteResponse {
   /** true if the copy is finished; otherwise, false if the copy is in progress. This property is always present in the response. */
@@ -1187,14 +1215,15 @@ export interface RewriteResponse {
   totalBytesRewritten?: string;
 }
 
-export const RewriteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  done: Schema.optional(Schema.Boolean),
-  kind: Schema.optional(Schema.String),
-  objectSize: Schema.optional(Schema.String),
-  resource: Schema.optional(Storage_Object),
-  rewriteToken: Schema.optional(Schema.String),
-  totalBytesRewritten: Schema.optional(Schema.String),
-}).annotate({ identifier: "RewriteResponse" });
+export const RewriteResponse: Schema.Schema<RewriteResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    done: Schema.optional(Schema.Boolean),
+    kind: Schema.optional(Schema.String),
+    objectSize: Schema.optional(Schema.String),
+    resource: Schema.optional(Storage_Object),
+    rewriteToken: Schema.optional(Schema.String),
+    totalBytesRewritten: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RewriteResponse" });
 
 export interface ServiceAccount {
   /** The ID of the notification. */
@@ -1203,10 +1232,11 @@ export interface ServiceAccount {
   kind?: string;
 }
 
-export const ServiceAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  email_address: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-}).annotate({ identifier: "ServiceAccount" });
+export const ServiceAccount: Schema.Schema<ServiceAccount> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email_address: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ServiceAccount" });
 
 export interface TestIamPermissionsResponse {
   /** The kind of item this is. */
@@ -1215,7 +1245,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse =
+export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     permissions: Schema.optional(Schema.Array(Schema.String)),
@@ -1238,7 +1268,7 @@ export interface BulkRestoreObjectsRequest {
   createdBeforeTime?: string;
 }
 
-export const BulkRestoreObjectsRequest =
+export const BulkRestoreObjectsRequest: Schema.Schema<BulkRestoreObjectsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowOverwrite: Schema.optional(Schema.Boolean),
     softDeletedAfterTime: Schema.optional(Schema.String),

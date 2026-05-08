@@ -22,278 +22,66 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface Status {
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
-}
+export interface DeleteTagValueMetadata {}
 
-export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  message: Schema.optional(Schema.String),
-  code: Schema.optional(Schema.Number),
-  details: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-}).annotate({ identifier: "Status" });
-
-export interface Operation {
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-}
-
-export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  error: Schema.optional(Status),
-  name: Schema.optional(Schema.String),
-  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  done: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "Operation" });
-
-export interface DeleteTagBindingMetadata {}
-
-export const DeleteTagBindingMetadata =
+export const DeleteTagValueMetadata: Schema.Schema<DeleteTagValueMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DeleteTagBindingMetadata",
+    identifier: "DeleteTagValueMetadata",
   });
 
-export interface BooleanPolicy {
-  /** If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. Suppose you have a `Constraint` `constraints/compute.disableSerialPortAccess` with `constraint_default` set to `ALLOW`. A `Policy` for that `Constraint` exhibits the following behavior: - If the `Policy` at this resource has enforced set to `false`, serial port connection attempts will be allowed. - If the `Policy` at this resource has enforced set to `true`, serial port connection attempts will be refused. - If the `Policy` at this resource is `RestoreDefault`, serial port connection attempts will be allowed. - If no `Policy` is set at this resource or anywhere higher in the resource hierarchy, serial port connection attempts will be allowed. - If no `Policy` is set at this resource, but one exists higher in the resource hierarchy, the behavior is as if the`Policy` were set at this resource. The following examples demonstrate the different possible layerings: Example 1 (nearest `Constraint` wins): `organizations/foo` has a `Policy` with: {enforced: false} `projects/bar` has no `Policy` set. The constraint at `projects/bar` and `organizations/foo` will not be enforced. Example 2 (enforcement gets replaced): `organizations/foo` has a `Policy` with: {enforced: false} `projects/bar` has a `Policy` with: {enforced: true} The constraint at `organizations/foo` is not enforced. The constraint at `projects/bar` is enforced. Example 3 (RestoreDefault): `organizations/foo` has a `Policy` with: {enforced: true} `projects/bar` has a `Policy` with: {RestoreDefault: {}} The constraint at `organizations/foo` is enforced. The constraint at `projects/bar` is not enforced, because `constraint_default` for the `Constraint` is `ALLOW`. */
-  enforced?: boolean;
-}
-
-export const BooleanPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  enforced: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "BooleanPolicy" });
-
-export interface ListPolicy {
-  /** Determines the inheritance behavior for this `Policy`. By default, a `ListPolicy` set at a resource supersedes any `Policy` set anywhere up the resource hierarchy. However, if `inherit_from_parent` is set to `true`, then the values from the effective `Policy` of the parent resource are inherited, meaning the values set in this `Policy` are added to the values inherited up the hierarchy. Setting `Policy` hierarchies that inherit both allowed values and denied values isn't recommended in most circumstances to keep the configuration simple and understandable. However, it is possible to set a `Policy` with `allowed_values` set that inherits a `Policy` with `denied_values` set. In this case, the values that are allowed must be in `allowed_values` and not present in `denied_values`. For example, suppose you have a `Constraint` `constraints/serviceuser.services`, which has a `constraint_type` of `list_constraint`, and with `constraint_default` set to `ALLOW`. Suppose that at the Organization level, a `Policy` is applied that restricts the allowed API activations to {`E1`, `E2`}. Then, if a `Policy` is applied to a project below the Organization that has `inherit_from_parent` set to `false` and field all_values set to DENY, then an attempt to activate any API will be denied. The following examples demonstrate different possible layerings for `projects/bar` parented by `organizations/foo`: Example 1 (no inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values:"E2"} `projects/bar` has `inherit_from_parent` `false` and values: {allowed_values: "E3" allowed_values: "E4"} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are `E3`, and `E4`. Example 2 (inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values:"E2"} `projects/bar` has a `Policy` with values: {value: "E3" value: "E4" inherit_from_parent: true} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are `E1`, `E2`, `E3`, and `E4`. Example 3 (inheriting both allowed and denied values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {denied_values: "E1"} The accepted values at `organizations/foo` are `E1`, `E2`. The value accepted at `projects/bar` is `E2`. Example 4 (RestoreDefault): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values:"E2"} `projects/bar` has a `Policy` with values: {RestoreDefault: {}} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are either all or none depending on the value of `constraint_default` (if `ALLOW`, all; if `DENY`, none). Example 5 (no policy inherits parent policy): `organizations/foo` has no `Policy` set. `projects/bar` has no `Policy` set. The accepted values at both levels are either all or none depending on the value of `constraint_default` (if `ALLOW`, all; if `DENY`, none). Example 6 (ListConstraint allowing all): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: ALLOW} The accepted values at `organizations/foo` are `E1`, E2`. Any value is accepted at `projects/bar`. Example 7 (ListConstraint allowing none): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: DENY} The accepted values at `organizations/foo` are `E1`, E2`. No value is accepted at `projects/bar`. Example 10 (allowed and denied subtrees of Resource Manager hierarchy): Given the following resource hierarchy O1->{F1, F2}; F1->{P1}; F2->{P2, P3}, `organizations/foo` has a `Policy` with values: {allowed_values: "under:organizations/O1"} `projects/bar` has a `Policy` with: {allowed_values: "under:projects/P3"} {denied_values: "under:folders/F2"} The accepted values at `organizations/foo` are `organizations/O1`, `folders/F1`, `folders/F2`, `projects/P1`, `projects/P2`, `projects/P3`. The accepted values at `projects/bar` are `organizations/O1`, `folders/F1`, `projects/P1`. */
-  inheritFromParent?: boolean;
-  /** Optional. The Google Cloud Console will try to default to a configuration that matches the value specified in this `Policy`. If `suggested_value` is not set, it will inherit the value specified higher in the hierarchy, unless `inherit_from_parent` is `false`. */
-  suggestedValue?: string;
-  /** List of values denied at this resource. Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`. */
-  deniedValues?: ReadonlyArray<string>;
-  /** The policy all_values state. */
-  allValues?: "ALL_VALUES_UNSPECIFIED" | "ALLOW" | "DENY" | (string & {});
-  /** List of values allowed at this resource. Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`. */
-  allowedValues?: ReadonlyArray<string>;
-}
-
-export const ListPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  inheritFromParent: Schema.optional(Schema.Boolean),
-  suggestedValue: Schema.optional(Schema.String),
-  deniedValues: Schema.optional(Schema.Array(Schema.String)),
-  allValues: Schema.optional(Schema.String),
-  allowedValues: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "ListPolicy" });
-
-export interface RestoreDefault {}
-
-export const RestoreDefault = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "RestoreDefault" });
-
-export interface OrgPolicy {
-  /** An opaque tag indicating the current version of the `Policy`, used for concurrency control. When the `Policy` is returned from either a `GetPolicy` or a `ListOrgPolicy` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset. When the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value that was returned from a `GetOrgPolicy` request as part of a read-modify-write loop for concurrency control. Not setting the `etag`in a `SetOrgPolicy` request will result in an unconditional write of the `Policy`. */
-  etag?: string;
-  /** Version of the `Policy`. Default version is 0; */
-  version?: number;
-  /** The name of the `Constraint` the `Policy` is configuring, for example, `constraints/serviceuser.services`. A [list of available constraints](/resource-manager/docs/organization-policy/org-policy-constraints) is available. Immutable after creation. */
-  constraint?: string;
-  /** The time stamp the `Policy` was previously updated. This is set by the server, not specified by the caller, and represents the last time a call to `SetOrgPolicy` was made for that `Policy`. Any value set by the client will be ignored. */
-  updateTime?: string;
-  /** For boolean `Constraints`, whether to enforce the `Constraint` or not. */
-  booleanPolicy?: BooleanPolicy;
-  /** List of values either allowed or disallowed. */
-  listPolicy?: ListPolicy;
-  /** Restores the default behavior of the constraint; independent of `Constraint` type. */
-  restoreDefault?: RestoreDefault;
-}
-
-export const OrgPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  etag: Schema.optional(Schema.String),
-  version: Schema.optional(Schema.Number),
-  constraint: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  booleanPolicy: Schema.optional(BooleanPolicy),
-  listPolicy: Schema.optional(ListPolicy),
-  restoreDefault: Schema.optional(RestoreDefault),
-}).annotate({ identifier: "OrgPolicy" });
-
-export interface ListOrgPoliciesResponse {
-  /** Page token used to retrieve the next page. This is currently not used, but the server may at any point start supplying a valid token. */
-  nextPageToken?: string;
-  /** The `Policies` that are set on the resource. It will be empty if no `Policies` are set. */
-  policies?: ReadonlyArray<OrgPolicy>;
-}
-
-export const ListOrgPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    policies: Schema.optional(Schema.Array(OrgPolicy)),
-  }).annotate({ identifier: "ListOrgPoliciesResponse" });
-
-export interface OrganizationOwner {
-  /** The G Suite customer id used in the Directory API. */
-  directoryCustomerId?: string;
-}
-
-export const OrganizationOwner = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  directoryCustomerId: Schema.optional(Schema.String),
-}).annotate({ identifier: "OrganizationOwner" });
-
-export interface Organization {
-  /** Timestamp when the Organization was created. Assigned by the server. */
-  creationTime?: string;
-  /** A human-readable string that refers to the Organization in the Google Cloud console. This string is set by the server and cannot be changed. The string will be set to the primary domain (for example, "google.com") of the G Suite customer that owns the organization. */
-  displayName?: string;
-  /** The owner of this Organization. The owner should be specified on creation. Once set, it cannot be changed. This field is required. */
-  owner?: OrganizationOwner;
-  /** The organization's current lifecycle state. Assigned by the server. */
-  lifecycleState?:
-    | "LIFECYCLE_STATE_UNSPECIFIED"
-    | "ACTIVE"
-    | "DELETE_REQUESTED"
-    | (string & {});
-  /** Output only. The resource name of the organization. This is the organization's relative path in the API. Its format is "organizations/[organization_id]". For example, "organizations/1234". */
-  name?: string;
-}
-
-export const Organization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  creationTime: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  owner: Schema.optional(OrganizationOwner),
-  lifecycleState: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "Organization" });
-
-export interface CreateTagValueMetadata {}
-
-export const CreateTagValueMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "CreateTagValueMetadata" });
-
-export interface CreateProjectMetadata {
-  /** Creation time of the project creation workflow. */
-  createTime?: string;
-  /** True if the project can be retrieved using `GetProject`. No other operations on the project are guaranteed to work until the project creation is complete. */
-  gettable?: boolean;
-  /** True if the project creation process is complete. */
-  ready?: boolean;
-}
-
-export const CreateProjectMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  createTime: Schema.optional(Schema.String),
-  gettable: Schema.optional(Schema.Boolean),
-  ready: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "CreateProjectMetadata" });
-
-export interface FolderOperation {
+export interface CreateFolderMetadata {
   /** The display name of the folder. */
   displayName?: string;
-  /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
-  destinationParent?: string;
-  /** The type of this operation. */
-  operationType?:
-    | "OPERATION_TYPE_UNSPECIFIED"
-    | "CREATE"
-    | "MOVE"
-    | (string & {});
-  /** The resource name of the folder's parent. Only applicable when the operation_type is MOVE. */
-  sourceParent?: string;
+  /** The resource name of the folder or organization we are creating the folder under. */
+  parent?: string;
 }
 
-export const FolderOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  destinationParent: Schema.optional(Schema.String),
-  operationType: Schema.optional(Schema.String),
-  sourceParent: Schema.optional(Schema.String),
-}).annotate({ identifier: "FolderOperation" });
-
-export interface MoveProjectMetadata {}
-
-export const MoveProjectMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "MoveProjectMetadata" });
-
-export interface ListConstraint {
-  /** Optional. The Google Cloud Console will try to default to a configuration that matches the value specified in this `Constraint`. */
-  suggestedValue?: string;
-  /** Indicates whether subtrees of Cloud Resource Manager resource hierarchy can be used in `Policy.allowed_values` and `Policy.denied_values`. For example, `"under:folders/123"` would match any resource under the 'folders/123' folder. */
-  supportsUnder?: boolean;
-}
-
-export const ListConstraint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  suggestedValue: Schema.optional(Schema.String),
-  supportsUnder: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "ListConstraint" });
-
-export interface BooleanConstraint {}
-
-export const BooleanConstraint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "BooleanConstraint" });
-
-export interface Constraint {
-  /** Immutable value, required to globally be unique. For example, `constraints/serviceuser.services` */
-  name?: string;
-  /** Version of the `Constraint`. Default version is 0; */
-  version?: number;
-  /** Detailed description of what this `Constraint` controls as well as how and where it is enforced. Mutable. */
-  description?: string;
-  /** The evaluation behavior of this constraint in the absence of 'Policy'. */
-  constraintDefault?:
-    | "CONSTRAINT_DEFAULT_UNSPECIFIED"
-    | "ALLOW"
-    | "DENY"
-    | (string & {});
-  /** Defines this constraint as being a ListConstraint. */
-  listConstraint?: ListConstraint;
-  /** The human readable name. Mutable. */
-  displayName?: string;
-  /** Defines this constraint as being a BooleanConstraint. */
-  booleanConstraint?: BooleanConstraint;
-}
-
-export const Constraint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  version: Schema.optional(Schema.Number),
-  description: Schema.optional(Schema.String),
-  constraintDefault: Schema.optional(Schema.String),
-  listConstraint: Schema.optional(ListConstraint),
-  displayName: Schema.optional(Schema.String),
-  booleanConstraint: Schema.optional(BooleanConstraint),
-}).annotate({ identifier: "Constraint" });
-
-export interface ListAvailableOrgPolicyConstraintsResponse {
-  /** Page token used to retrieve the next page. This is currently not used. */
-  nextPageToken?: string;
-  /** The collection of constraints that are settable on the request resource. */
-  constraints?: ReadonlyArray<Constraint>;
-}
-
-export const ListAvailableOrgPolicyConstraintsResponse =
+export const CreateFolderMetadata: Schema.Schema<CreateFolderMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    constraints: Schema.optional(Schema.Array(Constraint)),
-  }).annotate({ identifier: "ListAvailableOrgPolicyConstraintsResponse" });
+    displayName: Schema.optional(Schema.String),
+    parent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateFolderMetadata" });
 
-export interface UndeleteProjectMetadata {}
+export interface GetOrgPolicyRequest {
+  /** Name of the `Constraint` to get the `Policy`. */
+  constraint?: string;
+}
 
-export const UndeleteProjectMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UndeleteProjectMetadata",
-  });
+export const GetOrgPolicyRequest: Schema.Schema<GetOrgPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    constraint: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetOrgPolicyRequest" });
+
+export interface ClearOrgPolicyRequest {
+  /** The current version, for concurrency control. Not sending an `etag` will cause the `Policy` to be cleared blindly. */
+  etag?: string;
+  /** Name of the `Constraint` of the `Policy` to clear. */
+  constraint?: string;
+}
+
+export const ClearOrgPolicyRequest: Schema.Schema<ClearOrgPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    constraint: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ClearOrgPolicyRequest" });
+
+export interface Status {
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+}
+
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Status" });
 
 export interface ResourceId {
   /** The resource type this id is for. At present, the valid types are: "organization", "folder", and "project". */
@@ -302,24 +90,15 @@ export interface ResourceId {
   id?: string;
 }
 
-export const ResourceId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  type: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-}).annotate({ identifier: "ResourceId" });
+export const ResourceId: Schema.Schema<ResourceId> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResourceId" });
 
 export interface Project {
-  /** Creation time. Read-only. */
-  createTime?: string;
-  /** The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation. */
-  projectId?: string;
-  /** The number uniquely identifying the project. Example: `415104041262` Read-only. */
-  projectNumber?: string;
-  /** An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. */
-  parent?: ResourceId;
-  /** The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write. */
-  name?: string;
-  /** Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview. */
-  tags?: Record<string, string>;
+  /** Output only. If this project is a Management Project, list of capabilities configured on the parent folder. Note, presence of any capability implies that this is a Management Project. Example: `folders/123/capabilities/app-management`. OUTPUT ONLY. */
+  configuredCapabilities?: ReadonlyArray<string>;
   /** The Project lifecycle state. Read-only. */
   lifecycleState?:
     | "LIFECYCLE_STATE_UNSPECIFIED"
@@ -327,95 +106,300 @@ export interface Project {
     | "DELETE_REQUESTED"
     | "DELETE_IN_PROGRESS"
     | (string & {});
+  /** Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview. */
+  tags?: Record<string, string>;
+  /** The number uniquely identifying the project. Example: `415104041262` Read-only. */
+  projectNumber?: string;
+  /** The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write. */
+  name?: string;
+  /** An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. */
+  parent?: ResourceId;
   /** The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z{0,62}. Label values must be between 0 and 63 characters long and must conform to the regular expression [a-z0-9_-]{0,63}. A label value can be empty. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: "environment" : "dev" Read-write. */
   labels?: Record<string, string>;
-  /** Output only. If this project is a Management Project, list of capabilities configured on the parent folder. Note, presence of any capability implies that this is a Management Project. Example: `folders/123/capabilities/app-management`. OUTPUT ONLY. */
-  configuredCapabilities?: ReadonlyArray<string>;
+  /** The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation. */
+  projectId?: string;
+  /** Creation time. Read-only. */
+  createTime?: string;
 }
 
-export const Project = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  createTime: Schema.optional(Schema.String),
-  projectId: Schema.optional(Schema.String),
-  projectNumber: Schema.optional(Schema.String),
-  parent: Schema.optional(ResourceId),
-  name: Schema.optional(Schema.String),
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  lifecycleState: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  configuredCapabilities: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "Project" });
+export const Project: Schema.Schema<Project> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configuredCapabilities: Schema.optional(Schema.Array(Schema.String)),
+    lifecycleState: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    projectNumber: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    parent: Schema.optional(ResourceId),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    projectId: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Project" });
+
+export interface DeleteFolderMetadata {}
+
+export const DeleteFolderMetadata: Schema.Schema<DeleteFolderMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeleteFolderMetadata",
+  });
 
 export interface ListProjectsResponse {
-  /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. Pagination tokens have a limited lifetime. */
-  nextPageToken?: string;
   /** The list of Projects that matched the list filter. This list can be paginated. */
   projects?: ReadonlyArray<Project>;
-}
-
-export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  nextPageToken: Schema.optional(Schema.String),
-  projects: Schema.optional(Schema.Array(Project)),
-}).annotate({ identifier: "ListProjectsResponse" });
-
-export interface GetAncestryRequest {}
-
-export const GetAncestryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "GetAncestryRequest" });
-
-export interface Lien {
-  /** A stable, user-visible/meaningful string identifying the origin of the Lien, intended to be inspected programmatically. Maximum length of 200 characters. Example: 'compute.googleapis.com' */
-  origin?: string;
-  /** The types of operations which should be blocked as a result of this Lien. Each value should correspond to an IAM permission. The server will validate the permissions against those for which Liens are supported. An empty list is meaningless and will be rejected. Example: ['resourcemanager.projects.delete'] */
-  restrictions?: ReadonlyArray<string>;
-  /** The creation time of this Lien. */
-  createTime?: string;
-  /** A system-generated unique identifier for this Lien. Example: `liens/1234abcd` */
-  name?: string;
-  /** Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum length of 200 characters. Example: 'Holds production API key' */
-  reason?: string;
-  /** A reference to the resource this Lien is attached to. The server will validate the parent against those for which Liens are supported. Example: `projects/1234` */
-  parent?: string;
-}
-
-export const Lien = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  origin: Schema.optional(Schema.String),
-  restrictions: Schema.optional(Schema.Array(Schema.String)),
-  createTime: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  reason: Schema.optional(Schema.String),
-  parent: Schema.optional(Schema.String),
-}).annotate({ identifier: "Lien" });
-
-export interface ListLiensResponse {
-  /** A list of Liens. */
-  liens?: ReadonlyArray<Lien>;
-  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. Pagination tokens have a limited lifetime. */
   nextPageToken?: string;
 }
 
-export const ListLiensResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  liens: Schema.optional(Schema.Array(Lien)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListLiensResponse" });
+export const ListProjectsResponse: Schema.Schema<ListProjectsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projects: Schema.optional(Schema.Array(Project)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListProjectsResponse" });
+
+export interface UndeleteProjectMetadata {}
+
+export const UndeleteProjectMetadata: Schema.Schema<UndeleteProjectMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UndeleteProjectMetadata",
+  });
+
+export interface MoveFolderMetadata {
+  /** The resource name of the folder or organization to move the folder to. */
+  destinationParent?: string;
+  /** The display name of the folder. */
+  displayName?: string;
+  /** The resource name of the folder's parent. */
+  sourceParent?: string;
+}
+
+export const MoveFolderMetadata: Schema.Schema<MoveFolderMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationParent: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    sourceParent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MoveFolderMetadata" });
+
+export interface BooleanPolicy {
+  /** If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. Suppose you have a `Constraint` `constraints/compute.disableSerialPortAccess` with `constraint_default` set to `ALLOW`. A `Policy` for that `Constraint` exhibits the following behavior: - If the `Policy` at this resource has enforced set to `false`, serial port connection attempts will be allowed. - If the `Policy` at this resource has enforced set to `true`, serial port connection attempts will be refused. - If the `Policy` at this resource is `RestoreDefault`, serial port connection attempts will be allowed. - If no `Policy` is set at this resource or anywhere higher in the resource hierarchy, serial port connection attempts will be allowed. - If no `Policy` is set at this resource, but one exists higher in the resource hierarchy, the behavior is as if the`Policy` were set at this resource. The following examples demonstrate the different possible layerings: Example 1 (nearest `Constraint` wins): `organizations/foo` has a `Policy` with: {enforced: false} `projects/bar` has no `Policy` set. The constraint at `projects/bar` and `organizations/foo` will not be enforced. Example 2 (enforcement gets replaced): `organizations/foo` has a `Policy` with: {enforced: false} `projects/bar` has a `Policy` with: {enforced: true} The constraint at `organizations/foo` is not enforced. The constraint at `projects/bar` is enforced. Example 3 (RestoreDefault): `organizations/foo` has a `Policy` with: {enforced: true} `projects/bar` has a `Policy` with: {RestoreDefault: {}} The constraint at `organizations/foo` is enforced. The constraint at `projects/bar` is not enforced, because `constraint_default` for the `Constraint` is `ALLOW`. */
+  enforced?: boolean;
+}
+
+export const BooleanPolicy: Schema.Schema<BooleanPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enforced: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BooleanPolicy" });
+
+export interface RestoreDefault {}
+
+export const RestoreDefault: Schema.Schema<RestoreDefault> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "RestoreDefault",
+  });
+
+export interface ListPolicy {
+  /** Optional. The Google Cloud Console will try to default to a configuration that matches the value specified in this `Policy`. If `suggested_value` is not set, it will inherit the value specified higher in the hierarchy, unless `inherit_from_parent` is `false`. */
+  suggestedValue?: string;
+  /** Determines the inheritance behavior for this `Policy`. By default, a `ListPolicy` set at a resource supersedes any `Policy` set anywhere up the resource hierarchy. However, if `inherit_from_parent` is set to `true`, then the values from the effective `Policy` of the parent resource are inherited, meaning the values set in this `Policy` are added to the values inherited up the hierarchy. Setting `Policy` hierarchies that inherit both allowed values and denied values isn't recommended in most circumstances to keep the configuration simple and understandable. However, it is possible to set a `Policy` with `allowed_values` set that inherits a `Policy` with `denied_values` set. In this case, the values that are allowed must be in `allowed_values` and not present in `denied_values`. For example, suppose you have a `Constraint` `constraints/serviceuser.services`, which has a `constraint_type` of `list_constraint`, and with `constraint_default` set to `ALLOW`. Suppose that at the Organization level, a `Policy` is applied that restricts the allowed API activations to {`E1`, `E2`}. Then, if a `Policy` is applied to a project below the Organization that has `inherit_from_parent` set to `false` and field all_values set to DENY, then an attempt to activate any API will be denied. The following examples demonstrate different possible layerings for `projects/bar` parented by `organizations/foo`: Example 1 (no inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values:"E2"} `projects/bar` has `inherit_from_parent` `false` and values: {allowed_values: "E3" allowed_values: "E4"} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are `E3`, and `E4`. Example 2 (inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values:"E2"} `projects/bar` has a `Policy` with values: {value: "E3" value: "E4" inherit_from_parent: true} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are `E1`, `E2`, `E3`, and `E4`. Example 3 (inheriting both allowed and denied values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {denied_values: "E1"} The accepted values at `organizations/foo` are `E1`, `E2`. The value accepted at `projects/bar` is `E2`. Example 4 (RestoreDefault): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values:"E2"} `projects/bar` has a `Policy` with values: {RestoreDefault: {}} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are either all or none depending on the value of `constraint_default` (if `ALLOW`, all; if `DENY`, none). Example 5 (no policy inherits parent policy): `organizations/foo` has no `Policy` set. `projects/bar` has no `Policy` set. The accepted values at both levels are either all or none depending on the value of `constraint_default` (if `ALLOW`, all; if `DENY`, none). Example 6 (ListConstraint allowing all): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: ALLOW} The accepted values at `organizations/foo` are `E1`, E2`. Any value is accepted at `projects/bar`. Example 7 (ListConstraint allowing none): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: DENY} The accepted values at `organizations/foo` are `E1`, E2`. No value is accepted at `projects/bar`. Example 10 (allowed and denied subtrees of Resource Manager hierarchy): Given the following resource hierarchy O1->{F1, F2}; F1->{P1}; F2->{P2, P3}, `organizations/foo` has a `Policy` with values: {allowed_values: "under:organizations/O1"} `projects/bar` has a `Policy` with: {allowed_values: "under:projects/P3"} {denied_values: "under:folders/F2"} The accepted values at `organizations/foo` are `organizations/O1`, `folders/F1`, `folders/F2`, `projects/P1`, `projects/P2`, `projects/P3`. The accepted values at `projects/bar` are `organizations/O1`, `folders/F1`, `projects/P1`. */
+  inheritFromParent?: boolean;
+  /** List of values denied at this resource. Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`. */
+  deniedValues?: ReadonlyArray<string>;
+  /** The policy all_values state. */
+  allValues?: "ALL_VALUES_UNSPECIFIED" | "ALLOW" | "DENY" | (string & {});
+  /** List of values allowed at this resource. Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`. */
+  allowedValues?: ReadonlyArray<string>;
+}
+
+export const ListPolicy: Schema.Schema<ListPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suggestedValue: Schema.optional(Schema.String),
+    inheritFromParent: Schema.optional(Schema.Boolean),
+    deniedValues: Schema.optional(Schema.Array(Schema.String)),
+    allValues: Schema.optional(Schema.String),
+    allowedValues: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListPolicy" });
+
+export interface OrgPolicy {
+  /** Version of the `Policy`. Default version is 0; */
+  version?: number;
+  /** The time stamp the `Policy` was previously updated. This is set by the server, not specified by the caller, and represents the last time a call to `SetOrgPolicy` was made for that `Policy`. Any value set by the client will be ignored. */
+  updateTime?: string;
+  /** An opaque tag indicating the current version of the `Policy`, used for concurrency control. When the `Policy` is returned from either a `GetPolicy` or a `ListOrgPolicy` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset. When the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value that was returned from a `GetOrgPolicy` request as part of a read-modify-write loop for concurrency control. Not setting the `etag`in a `SetOrgPolicy` request will result in an unconditional write of the `Policy`. */
+  etag?: string;
+  /** For boolean `Constraints`, whether to enforce the `Constraint` or not. */
+  booleanPolicy?: BooleanPolicy;
+  /** Restores the default behavior of the constraint; independent of `Constraint` type. */
+  restoreDefault?: RestoreDefault;
+  /** The name of the `Constraint` the `Policy` is configuring, for example, `constraints/serviceuser.services`. A [list of available constraints](/resource-manager/docs/organization-policy/org-policy-constraints) is available. Immutable after creation. */
+  constraint?: string;
+  /** List of values either allowed or disallowed. */
+  listPolicy?: ListPolicy;
+}
+
+export const OrgPolicy: Schema.Schema<OrgPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.Number),
+    updateTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    booleanPolicy: Schema.optional(BooleanPolicy),
+    restoreDefault: Schema.optional(RestoreDefault),
+    constraint: Schema.optional(Schema.String),
+    listPolicy: Schema.optional(ListPolicy),
+  }).annotate({ identifier: "OrgPolicy" });
+
+export interface SetOrgPolicyRequest {
+  /** `Policy` to set on the resource. */
+  policy?: OrgPolicy;
+}
+
+export const SetOrgPolicyRequest: Schema.Schema<SetOrgPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(OrgPolicy),
+  }).annotate({ identifier: "SetOrgPolicyRequest" });
+
+export interface UpdateProjectMetadata {}
+
+export const UpdateProjectMetadata: Schema.Schema<UpdateProjectMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UpdateProjectMetadata",
+  });
+
+export interface DeleteOrganizationMetadata {}
+
+export const DeleteOrganizationMetadata: Schema.Schema<DeleteOrganizationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeleteOrganizationMetadata",
+  });
+
+export interface ListOrgPoliciesResponse {
+  /** Page token used to retrieve the next page. This is currently not used, but the server may at any point start supplying a valid token. */
+  nextPageToken?: string;
+  /** The `Policies` that are set on the resource. It will be empty if no `Policies` are set. */
+  policies?: ReadonlyArray<OrgPolicy>;
+}
+
+export const ListOrgPoliciesResponse: Schema.Schema<ListOrgPoliciesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    policies: Schema.optional(Schema.Array(OrgPolicy)),
+  }).annotate({ identifier: "ListOrgPoliciesResponse" });
+
+export interface Expr {
+  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
+  title?: string;
+  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
+  location?: string;
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
+}
+
+export const Expr: Schema.Schema<Expr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Expr" });
+
+export interface UpdateTagValueMetadata {}
+
+export const UpdateTagValueMetadata: Schema.Schema<UpdateTagValueMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UpdateTagValueMetadata",
+  });
+
+export interface UpdateFolderMetadata {}
+
+export const UpdateFolderMetadata: Schema.Schema<UpdateFolderMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UpdateFolderMetadata",
+  });
+
+export interface CreateTagKeyMetadata {}
+
+export const CreateTagKeyMetadata: Schema.Schema<CreateTagKeyMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CreateTagKeyMetadata",
+  });
+
+export interface ListConstraint {
+  /** Indicates whether subtrees of Cloud Resource Manager resource hierarchy can be used in `Policy.allowed_values` and `Policy.denied_values`. For example, `"under:folders/123"` would match any resource under the 'folders/123' folder. */
+  supportsUnder?: boolean;
+  /** Optional. The Google Cloud Console will try to default to a configuration that matches the value specified in this `Constraint`. */
+  suggestedValue?: string;
+}
+
+export const ListConstraint: Schema.Schema<ListConstraint> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    supportsUnder: Schema.optional(Schema.Boolean),
+    suggestedValue: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListConstraint" });
+
+export interface ListOrgPoliciesRequest {
+  /** Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size. */
+  pageSize?: number;
+  /** Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field. */
+  pageToken?: string;
+}
+
+export const ListOrgPoliciesRequest: Schema.Schema<ListOrgPoliciesRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number),
+    pageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListOrgPoliciesRequest" });
 
 export interface Ancestor {
   /** Resource id of the ancestor. */
   resourceId?: ResourceId;
 }
 
-export const Ancestor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceId: Schema.optional(ResourceId),
-}).annotate({ identifier: "Ancestor" });
+export const Ancestor: Schema.Schema<Ancestor> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.optional(ResourceId),
+  }).annotate({ identifier: "Ancestor" });
 
 export interface GetAncestryResponse {
   /** Ancestors are ordered from bottom to top of the resource hierarchy. The first ancestor is the project itself, followed by the project's parent, etc.. */
   ancestor?: ReadonlyArray<Ancestor>;
 }
 
-export const GetAncestryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  ancestor: Schema.optional(Schema.Array(Ancestor)),
-}).annotate({ identifier: "GetAncestryResponse" });
+export const GetAncestryResponse: Schema.Schema<GetAncestryResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ancestor: Schema.optional(Schema.Array(Ancestor)),
+  }).annotate({ identifier: "GetAncestryResponse" });
+
+export interface CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
+  /** The type of this operation. */
+  operationType?:
+    | "OPERATION_TYPE_UNSPECIFIED"
+    | "CREATE"
+    | "MOVE"
+    | (string & {});
+  /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
+  destinationParent?: string;
+  /** The display name of the folder. */
+  displayName?: string;
+  /** The resource name of the folder's parent. Only applicable when the operation_type is MOVE. */
+  sourceParent?: string;
+}
+
+export const CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation: Schema.Schema<CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationType: Schema.optional(Schema.String),
+    destinationParent: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    sourceParent: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation",
+  });
+
+export interface MoveProjectMetadata {}
+
+export const MoveProjectMetadata: Schema.Schema<MoveProjectMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "MoveProjectMetadata",
+  });
 
 export interface ProjectCreationStatus {
   /** Creation time of the project creation workflow. */
@@ -426,199 +410,145 @@ export interface ProjectCreationStatus {
   ready?: boolean;
 }
 
-export const ProjectCreationStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  createTime: Schema.optional(Schema.String),
-  gettable: Schema.optional(Schema.Boolean),
-  ready: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "ProjectCreationStatus" });
-
-export interface DeleteProjectMetadata {}
-
-export const DeleteProjectMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "DeleteProjectMetadata" });
-
-export interface ListOrgPoliciesRequest {
-  /** Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field. */
-  pageToken?: string;
-  /** Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size. */
-  pageSize?: number;
-}
-
-export const ListOrgPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    pageToken: Schema.optional(Schema.String),
-    pageSize: Schema.optional(Schema.Number),
-  },
-).annotate({ identifier: "ListOrgPoliciesRequest" });
-
-export interface GetOrgPolicyRequest {
-  /** Name of the `Constraint` to get the `Policy`. */
-  constraint?: string;
-}
-
-export const GetOrgPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  constraint: Schema.optional(Schema.String),
-}).annotate({ identifier: "GetOrgPolicyRequest" });
+export const ProjectCreationStatus: Schema.Schema<ProjectCreationStatus> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    gettable: Schema.optional(Schema.Boolean),
+    ready: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ProjectCreationStatus" });
 
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  requestedPolicyVersion: Schema.optional(Schema.Number),
-}).annotate({ identifier: "GetPolicyOptions" });
+export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedPolicyVersion: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GetPolicyOptions" });
 
-export interface UndeleteOrganizationMetadata {}
+export interface GetIamPolicyRequest {
+  /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
+  options?: GetPolicyOptions;
+}
 
-export const UndeleteOrganizationMetadata =
+export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    options: Schema.optional(GetPolicyOptions),
+  }).annotate({ identifier: "GetIamPolicyRequest" });
+
+export interface Lien {
+  /** The types of operations which should be blocked as a result of this Lien. Each value should correspond to an IAM permission. The server will validate the permissions against those for which Liens are supported. An empty list is meaningless and will be rejected. Example: ['resourcemanager.projects.delete'] */
+  restrictions?: ReadonlyArray<string>;
+  /** A system-generated unique identifier for this Lien. Example: `liens/1234abcd` */
+  name?: string;
+  /** A reference to the resource this Lien is attached to. The server will validate the parent against those for which Liens are supported. Example: `projects/1234` */
+  parent?: string;
+  /** Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum length of 200 characters. Example: 'Holds production API key' */
+  reason?: string;
+  /** A stable, user-visible/meaningful string identifying the origin of the Lien, intended to be inspected programmatically. Maximum length of 200 characters. Example: 'compute.googleapis.com' */
+  origin?: string;
+  /** The creation time of this Lien. */
+  createTime?: string;
+}
+
+export const Lien: Schema.Schema<Lien> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    restrictions: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.String),
+    parent: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    origin: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Lien" });
+
+export interface ListLiensResponse {
+  /** A list of Liens. */
+  liens?: ReadonlyArray<Lien>;
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+}
+
+export const ListLiensResponse: Schema.Schema<ListLiensResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    liens: Schema.optional(Schema.Array(Lien)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLiensResponse" });
+
+export interface CreateProjectMetadata {
+  /** True if the project creation process is complete. */
+  ready?: boolean;
+  /** True if the project can be retrieved using `GetProject`. No other operations on the project are guaranteed to work until the project creation is complete. */
+  gettable?: boolean;
+  /** Creation time of the project creation workflow. */
+  createTime?: string;
+}
+
+export const CreateProjectMetadata: Schema.Schema<CreateProjectMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ready: Schema.optional(Schema.Boolean),
+    gettable: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateProjectMetadata" });
+
+export interface BooleanConstraint {}
+
+export const BooleanConstraint: Schema.Schema<BooleanConstraint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UndeleteOrganizationMetadata",
+    identifier: "BooleanConstraint",
   });
 
-export interface TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsRequest" });
-
-export interface UndeleteFolderMetadata {}
-
-export const UndeleteFolderMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "UndeleteFolderMetadata" });
-
-export interface MoveFolderMetadata {
-  /** The display name of the folder. */
+export interface Constraint {
+  /** Immutable value, required to globally be unique. For example, `constraints/serviceuser.services` */
+  name?: string;
+  /** The human readable name. Mutable. */
   displayName?: string;
-  /** The resource name of the folder or organization to move the folder to. */
-  destinationParent?: string;
-  /** The resource name of the folder's parent. */
-  sourceParent?: string;
-}
-
-export const MoveFolderMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  destinationParent: Schema.optional(Schema.String),
-  sourceParent: Schema.optional(Schema.String),
-}).annotate({ identifier: "MoveFolderMetadata" });
-
-export interface DeleteFolderMetadata {}
-
-export const DeleteFolderMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "DeleteFolderMetadata" });
-
-export interface DeleteOrganizationMetadata {}
-
-export const DeleteOrganizationMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DeleteOrganizationMetadata",
-  });
-
-export interface CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
-  /** The type of this operation. */
-  operationType?:
-    | "OPERATION_TYPE_UNSPECIFIED"
-    | "CREATE"
-    | "MOVE"
+  /** The evaluation behavior of this constraint in the absence of 'Policy'. */
+  constraintDefault?:
+    | "CONSTRAINT_DEFAULT_UNSPECIFIED"
+    | "ALLOW"
+    | "DENY"
     | (string & {});
-  /** The resource name of the folder's parent. Only applicable when the operation_type is MOVE. */
-  sourceParent?: string;
-  /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
-  destinationParent?: string;
-  /** The display name of the folder. */
-  displayName?: string;
-}
-
-export const CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    operationType: Schema.optional(Schema.String),
-    sourceParent: Schema.optional(Schema.String),
-    destinationParent: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation",
-  });
-
-export interface DeleteTagValueMetadata {}
-
-export const DeleteTagValueMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "DeleteTagValueMetadata" });
-
-export interface CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
-  /** The type of this operation. */
-  operationType?:
-    | "OPERATION_TYPE_UNSPECIFIED"
-    | "CREATE"
-    | "MOVE"
-    | (string & {});
-  /** The resource name of the folder's parent. Only applicable when the operation_type is MOVE. */
-  sourceParent?: string;
-  /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
-  destinationParent?: string;
-  /** The display name of the folder. */
-  displayName?: string;
-}
-
-export const CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    operationType: Schema.optional(Schema.String),
-    sourceParent: Schema.optional(Schema.String),
-    destinationParent: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation",
-  });
-
-export interface UpdateFolderMetadata {}
-
-export const UpdateFolderMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "UpdateFolderMetadata" });
-
-export interface Expr {
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
-  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
-  title?: string;
-  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
-  location?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  /** Version of the `Constraint`. Default version is 0; */
+  version?: number;
+  /** Detailed description of what this `Constraint` controls as well as how and where it is enforced. Mutable. */
   description?: string;
+  /** Defines this constraint as being a ListConstraint. */
+  listConstraint?: ListConstraint;
+  /** Defines this constraint as being a BooleanConstraint. */
+  booleanConstraint?: BooleanConstraint;
 }
 
-export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  expression: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-}).annotate({ identifier: "Expr" });
+export const Constraint: Schema.Schema<Constraint> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    constraintDefault: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.Number),
+    description: Schema.optional(Schema.String),
+    listConstraint: Schema.optional(ListConstraint),
+    booleanConstraint: Schema.optional(BooleanConstraint),
+  }).annotate({ identifier: "Constraint" });
 
 export interface Binding {
-  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
-  role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: ReadonlyArray<string>;
+  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
+  role?: string;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
 
-export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  role: Schema.optional(Schema.String),
-  members: Schema.optional(Schema.Array(Schema.String)),
-  condition: Schema.optional(Expr),
-}).annotate({ identifier: "Binding" });
+export const Binding: Schema.Schema<Binding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    members: Schema.optional(Schema.Array(Schema.String)),
+    role: Schema.optional(Schema.String),
+    condition: Schema.optional(Expr),
+  }).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
+  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
+  exemptedMembers?: ReadonlyArray<string>;
   /** The log type that this config enables. */
   logType?:
     | "LOG_TYPE_UNSPECIFIED"
@@ -626,14 +556,13 @@ export interface AuditLogConfig {
     | "DATA_WRITE"
     | "DATA_READ"
     | (string & {});
-  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  logType: Schema.optional(Schema.String),
-  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "AuditLogConfig" });
+export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+    logType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -642,28 +571,87 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  service: Schema.optional(Schema.String),
-  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-}).annotate({ identifier: "AuditConfig" });
+export const AuditConfig: Schema.Schema<AuditConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+    auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+  }).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
-  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
-  etag?: string;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: ReadonlyArray<Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: ReadonlyArray<AuditConfig>;
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
+  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
+  etag?: string;
 }
 
-export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  etag: Schema.optional(Schema.String),
-  bindings: Schema.optional(Schema.Array(Binding)),
-  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-  version: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Policy" });
+export const Policy: Schema.Schema<Policy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bindings: Schema.optional(Schema.Array(Binding)),
+    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+    version: Schema.optional(Schema.Number),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Policy" });
+
+export interface FolderOperation {
+  /** The display name of the folder. */
+  displayName?: string;
+  /** The resource name of the folder's parent. Only applicable when the operation_type is MOVE. */
+  sourceParent?: string;
+  /** The type of this operation. */
+  operationType?:
+    | "OPERATION_TYPE_UNSPECIFIED"
+    | "CREATE"
+    | "MOVE"
+    | (string & {});
+  /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
+  destinationParent?: string;
+}
+
+export const FolderOperation: Schema.Schema<FolderOperation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    sourceParent: Schema.optional(Schema.String),
+    operationType: Schema.optional(Schema.String),
+    destinationParent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FolderOperation" });
+
+export interface TestIamPermissionsResponse {
+  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
+
+export interface CreateTagValueMetadata {}
+
+export const CreateTagValueMetadata: Schema.Schema<CreateTagValueMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CreateTagValueMetadata",
+  });
+
+export interface DeleteTagKeyMetadata {}
+
+export const DeleteTagKeyMetadata: Schema.Schema<DeleteTagKeyMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeleteTagKeyMetadata",
+  });
+
+export interface OrganizationOwner {
+  /** The G Suite customer id used in the Directory API. */
+  directoryCustomerId?: string;
+}
+
+export const OrganizationOwner: Schema.Schema<OrganizationOwner> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    directoryCustomerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OrganizationOwner" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -672,72 +660,172 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  policy: Schema.optional(Policy),
-  updateMask: Schema.optional(Schema.String),
-}).annotate({ identifier: "SetIamPolicyRequest" });
+export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetIamPolicyRequest" });
 
-export interface UpdateTagKeyMetadata {}
-
-export const UpdateTagKeyMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "UpdateTagKeyMetadata" });
-
-export interface ClearOrgPolicyRequest {
-  /** Name of the `Constraint` of the `Policy` to clear. */
-  constraint?: string;
-  /** The current version, for concurrency control. Not sending an `etag` will cause the `Policy` to be cleared blindly. */
-  etag?: string;
+export interface CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
+  /** The display name of the folder. */
+  displayName?: string;
+  /** The resource name of the folder's parent. Only applicable when the operation_type is MOVE. */
+  sourceParent?: string;
+  /** The type of this operation. */
+  operationType?:
+    | "OPERATION_TYPE_UNSPECIFIED"
+    | "CREATE"
+    | "MOVE"
+    | (string & {});
+  /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
+  destinationParent?: string;
 }
 
-export const ClearOrgPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  constraint: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-}).annotate({ identifier: "ClearOrgPolicyRequest" });
+export const CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation: Schema.Schema<CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    sourceParent: Schema.optional(Schema.String),
+    operationType: Schema.optional(Schema.String),
+    destinationParent: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation",
+  });
 
-export interface GetIamPolicyRequest {
-  /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
-  options?: GetPolicyOptions;
-}
+export interface DeleteTagBindingMetadata {}
 
-export const GetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  options: Schema.optional(GetPolicyOptions),
-}).annotate({ identifier: "GetIamPolicyRequest" });
-
-export interface Empty {}
-
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
+export const DeleteTagBindingMetadata: Schema.Schema<DeleteTagBindingMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeleteTagBindingMetadata",
+  });
 
 export interface SearchOrganizationsRequest {
+  /** An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Organizations may be filtered by `owner.directoryCustomerId` or by `domain`, where the domain is a verified G Suite domain, for example: * Filter `owner.directorycustomerid:123456789` returns Organization resources with `owner.directory_customer_id` equal to `123456789`. * Filter `domain:google.com` returns Organization resources corresponding to the domain `google.com`. This field is optional. */
+  filter?: string;
   /** A pagination token returned from a previous call to `SearchOrganizations` that indicates from where listing should continue. This field is optional. */
   pageToken?: string;
   /** The maximum number of Organizations to return in the response. The server can return fewer organizations than requested. If unspecified, server picks an appropriate default. */
   pageSize?: number;
-  /** An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Organizations may be filtered by `owner.directoryCustomerId` or by `domain`, where the domain is a verified G Suite domain, for example: * Filter `owner.directorycustomerid:123456789` returns Organization resources with `owner.directory_customer_id` equal to `123456789`. * Filter `domain:google.com` returns Organization resources corresponding to the domain `google.com`. This field is optional. */
-  filter?: string;
 }
 
-export const SearchOrganizationsRequest =
+export const SearchOrganizationsRequest: Schema.Schema<SearchOrganizationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String),
     pageToken: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
-    filter: Schema.optional(Schema.String),
   }).annotate({ identifier: "SearchOrganizationsRequest" });
 
-export interface ListAvailableOrgPolicyConstraintsRequest {
-  /** Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size. */
-  pageSize?: number;
-  /** Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field. */
-  pageToken?: string;
+export interface DeleteProjectMetadata {}
+
+export const DeleteProjectMetadata: Schema.Schema<DeleteProjectMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeleteProjectMetadata",
+  });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface UndeleteOrganizationMetadata {}
+
+export const UndeleteOrganizationMetadata: Schema.Schema<UndeleteOrganizationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UndeleteOrganizationMetadata",
+  });
+
+export interface ListAvailableOrgPolicyConstraintsResponse {
+  /** The collection of constraints that are settable on the request resource. */
+  constraints?: ReadonlyArray<Constraint>;
+  /** Page token used to retrieve the next page. This is currently not used. */
+  nextPageToken?: string;
 }
 
-export const ListAvailableOrgPolicyConstraintsRequest =
+export const ListAvailableOrgPolicyConstraintsResponse: Schema.Schema<ListAvailableOrgPolicyConstraintsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number),
-    pageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListAvailableOrgPolicyConstraintsRequest" });
+    constraints: Schema.optional(Schema.Array(Constraint)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAvailableOrgPolicyConstraintsResponse" });
+
+export interface Operation {
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+}
+
+export const Operation: Schema.Schema<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(Status),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Operation" });
+
+export interface Organization {
+  /** Output only. The resource name of the organization. This is the organization's relative path in the API. Its format is "organizations/[organization_id]". For example, "organizations/1234". */
+  name?: string;
+  /** A human-readable string that refers to the Organization in the Google Cloud console. This string is set by the server and cannot be changed. The string will be set to the primary domain (for example, "google.com") of the G Suite customer that owns the organization. */
+  displayName?: string;
+  /** The owner of this Organization. The owner should be specified on creation. Once set, it cannot be changed. This field is required. */
+  owner?: OrganizationOwner;
+  /** Timestamp when the Organization was created. Assigned by the server. */
+  creationTime?: string;
+  /** The organization's current lifecycle state. Assigned by the server. */
+  lifecycleState?:
+    | "LIFECYCLE_STATE_UNSPECIFIED"
+    | "ACTIVE"
+    | "DELETE_REQUESTED"
+    | (string & {});
+}
+
+export const Organization: Schema.Schema<Organization> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    owner: Schema.optional(OrganizationOwner),
+    creationTime: Schema.optional(Schema.String),
+    lifecycleState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Organization" });
+
+export interface UndeleteProjectRequest {}
+
+export const UndeleteProjectRequest: Schema.Schema<UndeleteProjectRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UndeleteProjectRequest",
+  });
+
+export interface TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
+
+export interface SearchOrganizationsResponse {
+  /** A pagination token to be used to retrieve the next page of results. If the result is too large to fit within the page size specified in the request, this field will be set with a token that can be used to fetch the next page of results. If this field is empty, it indicates that this response contains the last page of results. */
+  nextPageToken?: string;
+  /** The list of Organizations that matched the search query, possibly paginated. */
+  organizations?: ReadonlyArray<Organization>;
+}
+
+export const SearchOrganizationsResponse: Schema.Schema<SearchOrganizationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    organizations: Schema.optional(Schema.Array(Organization)),
+  }).annotate({ identifier: "SearchOrganizationsResponse" });
 
 export interface FolderOperationError {
   /** The type of operation error experienced. */
@@ -756,100 +844,61 @@ export interface FolderOperationError {
     | (string & {});
 }
 
-export const FolderOperationError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  errorMessageId: Schema.optional(Schema.String),
-}).annotate({ identifier: "FolderOperationError" });
+export const FolderOperationError: Schema.Schema<FolderOperationError> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorMessageId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FolderOperationError" });
 
-export interface CreateTagKeyMetadata {}
+export interface UpdateTagKeyMetadata {}
 
-export const CreateTagKeyMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "CreateTagKeyMetadata" });
+export const UpdateTagKeyMetadata: Schema.Schema<UpdateTagKeyMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UpdateTagKeyMetadata",
+  });
 
-export interface UndeleteProjectRequest {}
+export interface UndeleteFolderMetadata {}
 
-export const UndeleteProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "UndeleteProjectRequest" });
+export const UndeleteFolderMetadata: Schema.Schema<UndeleteFolderMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UndeleteFolderMetadata",
+  });
+
+export interface GetAncestryRequest {}
+
+export const GetAncestryRequest: Schema.Schema<GetAncestryRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GetAncestryRequest",
+  });
 
 export interface GetEffectiveOrgPolicyRequest {
   /** The name of the `Constraint` to compute the effective `Policy`. */
   constraint?: string;
 }
 
-export const GetEffectiveOrgPolicyRequest =
+export const GetEffectiveOrgPolicyRequest: Schema.Schema<GetEffectiveOrgPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     constraint: Schema.optional(Schema.String),
   }).annotate({ identifier: "GetEffectiveOrgPolicyRequest" });
 
-export interface TestIamPermissionsResponse {
-  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsResponse" });
-
-export interface SearchOrganizationsResponse {
-  /** A pagination token to be used to retrieve the next page of results. If the result is too large to fit within the page size specified in the request, this field will be set with a token that can be used to fetch the next page of results. If this field is empty, it indicates that this response contains the last page of results. */
-  nextPageToken?: string;
-  /** The list of Organizations that matched the search query, possibly paginated. */
-  organizations?: ReadonlyArray<Organization>;
-}
-
-export const SearchOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    organizations: Schema.optional(Schema.Array(Organization)),
-  }).annotate({ identifier: "SearchOrganizationsResponse" });
-
-export interface DeleteTagKeyMetadata {}
-
-export const DeleteTagKeyMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "DeleteTagKeyMetadata" });
-
-export interface UpdateProjectMetadata {}
-
-export const UpdateProjectMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "UpdateProjectMetadata" });
-
-export interface CreateFolderMetadata {
-  /** The display name of the folder. */
-  displayName?: string;
-  /** The resource name of the folder or organization we are creating the folder under. */
-  parent?: string;
-}
-
-export const CreateFolderMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  parent: Schema.optional(Schema.String),
-}).annotate({ identifier: "CreateFolderMetadata" });
-
-export interface SetOrgPolicyRequest {
-  /** `Policy` to set on the resource. */
-  policy?: OrgPolicy;
-}
-
-export const SetOrgPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  policy: Schema.optional(OrgPolicy),
-}).annotate({ identifier: "SetOrgPolicyRequest" });
-
 export interface CreateTagBindingMetadata {}
 
-export const CreateTagBindingMetadata =
+export const CreateTagBindingMetadata: Schema.Schema<CreateTagBindingMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateTagBindingMetadata",
   });
 
-export interface UpdateTagValueMetadata {}
+export interface ListAvailableOrgPolicyConstraintsRequest {
+  /** Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size. */
+  pageSize?: number;
+  /** Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field. */
+  pageToken?: string;
+}
 
-export const UpdateTagValueMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "UpdateTagValueMetadata" });
+export const ListAvailableOrgPolicyConstraintsRequest: Schema.Schema<ListAvailableOrgPolicyConstraintsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number),
+    pageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAvailableOrgPolicyConstraintsRequest" });
 
 // ==========================================================================
 // Errors
@@ -905,151 +954,14 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface ListLiensRequest {
-  /** Required. The name of the resource to list all attached Liens. For example, `projects/1234`. (google.api.field_policy).resource_type annotation is not set since the parent depends on the meta api implementation. This field could be a project or other sub project resources. */
-  parent?: string;
-  /** The maximum number of items to return. This is a suggestion for the server. The server can return fewer liens than requested. If unspecified, server picks an appropriate default. */
-  pageSize?: number;
-  /** The `next_page_token` value returned from a previous List request, if any. */
-  pageToken?: string;
-}
-
-export const ListLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
-  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-}).pipe(
-  T.Http({ method: "GET", path: "v1/liens" }),
-  svc,
-) as unknown as Schema.Schema<ListLiensRequest>;
-
-export type ListLiensResponse_Op = ListLiensResponse;
-export const ListLiensResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListLiensResponse;
-
-export type ListLiensError = DefaultErrors | NotFound | Forbidden;
-
-/** List all Liens applied to the `parent` resource. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`. */
-export const listLiens: API.PaginatedOperationMethod<
-  ListLiensRequest,
-  ListLiensResponse_Op,
-  ListLiensError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListLiensRequest,
-  output: ListLiensResponse_Op,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetLiensRequest {
-  /** Required. The name/identifier of the Lien. */
-  name: string;
-}
-
-export const GetLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-}).pipe(
-  T.Http({ method: "GET", path: "v1/{+name}" }),
-  svc,
-) as unknown as Schema.Schema<GetLiensRequest>;
-
-export type GetLiensResponse = Lien;
-export const GetLiensResponse = /*@__PURE__*/ /*#__PURE__*/ Lien;
-
-export type GetLiensError = DefaultErrors | NotFound | Forbidden;
-
-/** Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get` */
-export const getLiens: API.OperationMethod<
-  GetLiensRequest,
-  GetLiensResponse,
-  GetLiensError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetLiensRequest,
-  output: GetLiensResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateLiensRequest {
-  /** Request body */
-  body?: Lien;
-}
-
-export const CreateLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  body: Schema.optional(Lien).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({ method: "POST", path: "v1/liens", hasBody: true }),
-  svc,
-) as unknown as Schema.Schema<CreateLiensRequest>;
-
-export type CreateLiensResponse = Lien;
-export const CreateLiensResponse = /*@__PURE__*/ /*#__PURE__*/ Lien;
-
-export type CreateLiensError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method will require permission on the `parent` resource. For example, applying to `projects/1234` requires permission `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which may be applied. */
-export const createLiens: API.OperationMethod<
-  CreateLiensRequest,
-  CreateLiensResponse,
-  CreateLiensError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateLiensRequest,
-  output: CreateLiensResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteLiensRequest {
-  /** Required. The name/identifier of the Lien to delete. */
-  name: string;
-}
-
-export const DeleteLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-}).pipe(
-  T.Http({ method: "DELETE", path: "v1/{+name}" }),
-  svc,
-) as unknown as Schema.Schema<DeleteLiensRequest>;
-
-export type DeleteLiensResponse = Empty;
-export const DeleteLiensResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteLiensError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Delete a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.updateLiens`. */
-export const deleteLiens: API.OperationMethod<
-  DeleteLiensRequest,
-  DeleteLiensResponse,
-  DeleteLiensError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteLiensRequest,
-  output: DeleteLiensResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListOrgPoliciesProjectsRequest {
+export interface ListOrgPoliciesFoldersRequest {
   /** Name of the resource to list Policies for. */
   resource: string;
   /** Request body */
   body?: ListOrgPoliciesRequest;
 }
 
-export const ListOrgPoliciesProjectsRequest =
+export const ListOrgPoliciesFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(ListOrgPoliciesRequest).pipe(T.HttpBody()),
@@ -1060,13 +972,13 @@ export const ListOrgPoliciesProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListOrgPoliciesProjectsRequest>;
+  ) as unknown as Schema.Schema<ListOrgPoliciesFoldersRequest>;
 
-export type ListOrgPoliciesProjectsResponse = ListOrgPoliciesResponse;
-export const ListOrgPoliciesProjectsResponse =
+export type ListOrgPoliciesFoldersResponse = ListOrgPoliciesResponse;
+export const ListOrgPoliciesFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOrgPoliciesResponse;
 
-export type ListOrgPoliciesProjectsError =
+export type ListOrgPoliciesFoldersError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -1074,25 +986,68 @@ export type ListOrgPoliciesProjectsError =
   | Conflict;
 
 /** Lists all the `Policies` set for a particular resource. */
-export const listOrgPoliciesProjects: API.OperationMethod<
-  ListOrgPoliciesProjectsRequest,
-  ListOrgPoliciesProjectsResponse,
-  ListOrgPoliciesProjectsError,
+export const listOrgPoliciesFolders: API.OperationMethod<
+  ListOrgPoliciesFoldersRequest,
+  ListOrgPoliciesFoldersResponse,
+  ListOrgPoliciesFoldersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListOrgPoliciesProjectsRequest,
-  output: ListOrgPoliciesProjectsResponse,
+  input: ListOrgPoliciesFoldersRequest,
+  output: ListOrgPoliciesFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface SetOrgPolicyProjectsRequest {
+export interface GetOrgPolicyFoldersRequest {
+  /** Name of the resource the `Policy` is set on. */
+  resource: string;
+  /** Request body */
+  body?: GetOrgPolicyRequest;
+}
+
+export const GetOrgPolicyFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(GetOrgPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:getOrgPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetOrgPolicyFoldersRequest>;
+
+export type GetOrgPolicyFoldersResponse = OrgPolicy;
+export const GetOrgPolicyFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
+
+export type GetOrgPolicyFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy` is returned with default values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to create or update a `Policy` during read-modify-write. */
+export const getOrgPolicyFolders: API.OperationMethod<
+  GetOrgPolicyFoldersRequest,
+  GetOrgPolicyFoldersResponse,
+  GetOrgPolicyFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetOrgPolicyFoldersRequest,
+  output: GetOrgPolicyFoldersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SetOrgPolicyFoldersRequest {
   /** Resource name of the resource to attach the `Policy`. */
   resource: string;
   /** Request body */
   body?: SetOrgPolicyRequest;
 }
 
-export const SetOrgPolicyProjectsRequest =
+export const SetOrgPolicyFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetOrgPolicyRequest).pipe(T.HttpBody()),
@@ -1103,13 +1058,13 @@ export const SetOrgPolicyProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetOrgPolicyProjectsRequest>;
+  ) as unknown as Schema.Schema<SetOrgPolicyFoldersRequest>;
 
-export type SetOrgPolicyProjectsResponse = OrgPolicy;
-export const SetOrgPolicyProjectsResponse =
+export type SetOrgPolicyFoldersResponse = OrgPolicy;
+export const SetOrgPolicyFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
 
-export type SetOrgPolicyProjectsError =
+export type SetOrgPolicyFoldersError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -1117,263 +1072,25 @@ export type SetOrgPolicyProjectsError =
   | Conflict;
 
 /** Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the resource if one does not exist. Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`. */
-export const setOrgPolicyProjects: API.OperationMethod<
-  SetOrgPolicyProjectsRequest,
-  SetOrgPolicyProjectsResponse,
-  SetOrgPolicyProjectsError,
+export const setOrgPolicyFolders: API.OperationMethod<
+  SetOrgPolicyFoldersRequest,
+  SetOrgPolicyFoldersResponse,
+  SetOrgPolicyFoldersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetOrgPolicyProjectsRequest,
-  output: SetOrgPolicyProjectsResponse,
+  input: SetOrgPolicyFoldersRequest,
+  output: SetOrgPolicyFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface TestIamPermissionsProjectsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsRequest>;
-
-export type TestIamPermissionsProjectsResponse = TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified Project. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names). There are no permissions required for making this API call. */
-export const testIamPermissionsProjects: API.OperationMethod<
-  TestIamPermissionsProjectsRequest,
-  TestIamPermissionsProjectsResponse,
-  TestIamPermissionsProjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsRequest,
-  output: TestIamPermissionsProjectsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsRequest {
-  /** Optional. The maximum number of Projects to return in the response. The server can return fewer Projects than requested. If unspecified, server picks an appropriate default. */
-  pageSize?: number;
-  /** Optional. A pagination token returned from a previous call to ListProjects that indicates from where listing should continue. */
-  pageToken?: string;
-  /** Optional. An expression for filtering the results of the request. Filter rules are case insensitive. If multiple fields are included in a filter query, the query will return results that match any of the fields. Some eligible fields for filtering are: + `name` + `id` + `labels.` (where *key* is the name of a label) + `parent.type` + `parent.id` + `lifecycleState` Some examples of filter queries: | Query | Description | |------------------|-----------------------------------------------------| | name:how* | The project's name starts with "how". | | name:Howl | The project's name is `Howl` or `howl`. | | name:HOWL | Equivalent to above. | | NAME:howl | Equivalent to above. | | labels.color:* | The project has the label `color`. | | labels.color:red | The project's label `color` has the value `red`. | | labels.color:red labels.size:big | The project's label `color` has the value `red` or its label `size` has the value `big`. | | lifecycleState:DELETE_REQUESTED | Only show projects that are pending deletion.| If no filter is specified, the call will return projects for which the user has the `resourcemanager.projects.get` permission. NOTE: To perform a by-parent query (eg., what projects are directly in a Folder), the caller must have the `resourcemanager.projects.list` permission on the parent and the filter must contain both a `parent.type` and a `parent.id` restriction (example: "parent.type:folder parent.id:123"). In this case an alternate search index is used which provides more consistent results. */
-  filter?: string;
-}
-
-export const ListProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-}).pipe(
-  T.Http({ method: "GET", path: "v1/projects" }),
-  svc,
-) as unknown as Schema.Schema<ListProjectsRequest>;
-
-export type ListProjectsResponse_Op = ListProjectsResponse;
-export const ListProjectsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListProjectsResponse;
-
-export type ListProjectsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists Projects that the caller has the `resourcemanager.projects.get` permission on and satisfy the specified filter. This method returns Projects in an unspecified order. This method is eventually consistent with project mutations; this means that a newly created project may not appear in the results or recent updates to an existing project may not be reflected in the results. To retrieve the latest state of a project, use the GetProject method. NOTE: If the request filter contains a `parent.type` and `parent.id` and the caller has the `resourcemanager.projects.list` permission on the parent, the results will be drawn from an alternate index which provides more consistent results. In future versions of this API, this List method will be split into List and Search to properly capture the behavioral difference. */
-export const listProjects: API.PaginatedOperationMethod<
-  ListProjectsRequest,
-  ListProjectsResponse_Op,
-  ListProjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsRequest,
-  output: ListProjectsResponse_Op,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface UndeleteProjectsRequest {
-  /** Required. The project ID (for example, `foo-bar-123`). */
-  projectId: string;
-  /** Request body */
-  body?: UndeleteProjectRequest;
-}
-
-export const UndeleteProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    body: Schema.optional(UndeleteProjectRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectId}:undelete",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UndeleteProjectsRequest>;
-
-export type UndeleteProjectsResponse = Empty;
-export const UndeleteProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type UndeleteProjectsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Restores the Project identified by the specified `project_id` (for example, `my-project-123`). You can only use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion starts, the Project cannot be restored. The caller must have undelete permissions for this Project. */
-export const undeleteProjects: API.OperationMethod<
-  UndeleteProjectsRequest,
-  UndeleteProjectsResponse,
-  UndeleteProjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UndeleteProjectsRequest,
-  output: UndeleteProjectsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsRequest {
-  /** The Project ID (for example, `foo-bar-123`). Required. */
-  projectId: string;
-}
-
-export const DeleteProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  projectId: Schema.String.pipe(T.HttpPath("projectId")),
-}).pipe(
-  T.Http({ method: "DELETE", path: "v1/projects/{projectId}" }),
-  svc,
-) as unknown as Schema.Schema<DeleteProjectsRequest>;
-
-export type DeleteProjectsResponse = Empty;
-export const DeleteProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Marks the Project identified by the specified `project_id` (for example, `my-project-123`) for deletion. This method will only affect the Project if it has a lifecycle state of ACTIVE. This method changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified time, at which point the Project is no longer accessible. Until the deletion completes, you can check the lifecycle state checked by retrieving the Project with GetProject, and the Project remains visible to ListProjects. However, you cannot update the project. After the deletion completes, the Project is not retrievable by the GetProject and ListProjects methods. The caller must have delete permissions for this Project. */
-export const deleteProjects: API.OperationMethod<
-  DeleteProjectsRequest,
-  DeleteProjectsResponse,
-  DeleteProjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsRequest,
-  output: DeleteProjectsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ClearOrgPolicyProjectsRequest {
-  /** Name of the resource for the `Policy` to clear. */
-  resource: string;
-  /** Request body */
-  body?: ClearOrgPolicyRequest;
-}
-
-export const ClearOrgPolicyProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(ClearOrgPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:clearOrgPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ClearOrgPolicyProjectsRequest>;
-
-export type ClearOrgPolicyProjectsResponse = Empty;
-export const ClearOrgPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type ClearOrgPolicyProjectsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Clears a `Policy` from a resource. */
-export const clearOrgPolicyProjects: API.OperationMethod<
-  ClearOrgPolicyProjectsRequest,
-  ClearOrgPolicyProjectsResponse,
-  ClearOrgPolicyProjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ClearOrgPolicyProjectsRequest,
-  output: ClearOrgPolicyProjectsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface UpdateProjectsRequest {
-  /** The project ID (for example, `my-project-123`). Required. */
-  projectId: string;
-  /** Request body */
-  body?: Project;
-}
-
-export const UpdateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  projectId: Schema.String.pipe(T.HttpPath("projectId")),
-  body: Schema.optional(Project).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({ method: "PUT", path: "v1/projects/{projectId}", hasBody: true }),
-  svc,
-) as unknown as Schema.Schema<UpdateProjectsRequest>;
-
-export type UpdateProjectsResponse = Project;
-export const UpdateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
-
-export type UpdateProjectsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the attributes of the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have modify permissions for this Project. */
-export const updateProjects: API.OperationMethod<
-  UpdateProjectsRequest,
-  UpdateProjectsResponse,
-  UpdateProjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateProjectsRequest,
-  output: UpdateProjectsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetEffectiveOrgPolicyProjectsRequest {
+export interface GetEffectiveOrgPolicyFoldersRequest {
   /** The name of the resource to start computing the effective `Policy`. */
   resource: string;
   /** Request body */
   body?: GetEffectiveOrgPolicyRequest;
 }
 
-export const GetEffectiveOrgPolicyProjectsRequest =
+export const GetEffectiveOrgPolicyFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetEffectiveOrgPolicyRequest).pipe(T.HttpBody()),
@@ -1384,13 +1101,13 @@ export const GetEffectiveOrgPolicyProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetEffectiveOrgPolicyProjectsRequest>;
+  ) as unknown as Schema.Schema<GetEffectiveOrgPolicyFoldersRequest>;
 
-export type GetEffectiveOrgPolicyProjectsResponse = OrgPolicy;
-export const GetEffectiveOrgPolicyProjectsResponse =
+export type GetEffectiveOrgPolicyFoldersResponse = OrgPolicy;
+export const GetEffectiveOrgPolicyFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
 
-export type GetEffectiveOrgPolicyProjectsError =
+export type GetEffectiveOrgPolicyFoldersError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -1398,25 +1115,67 @@ export type GetEffectiveOrgPolicyProjectsError =
   | Conflict;
 
 /** Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource hierarchy. The returned `Policy` will not have an `etag`set because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded. */
-export const getEffectiveOrgPolicyProjects: API.OperationMethod<
-  GetEffectiveOrgPolicyProjectsRequest,
-  GetEffectiveOrgPolicyProjectsResponse,
-  GetEffectiveOrgPolicyProjectsError,
+export const getEffectiveOrgPolicyFolders: API.OperationMethod<
+  GetEffectiveOrgPolicyFoldersRequest,
+  GetEffectiveOrgPolicyFoldersResponse,
+  GetEffectiveOrgPolicyFoldersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetEffectiveOrgPolicyProjectsRequest,
-  output: GetEffectiveOrgPolicyProjectsResponse,
+  input: GetEffectiveOrgPolicyFoldersRequest,
+  output: GetEffectiveOrgPolicyFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListAvailableOrgPolicyConstraintsProjectsRequest {
+export interface ClearOrgPolicyFoldersRequest {
+  /** Name of the resource for the `Policy` to clear. */
+  resource: string;
+  /** Request body */
+  body?: ClearOrgPolicyRequest;
+}
+
+export const ClearOrgPolicyFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(ClearOrgPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:clearOrgPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ClearOrgPolicyFoldersRequest>;
+
+export type ClearOrgPolicyFoldersResponse = Empty;
+export const ClearOrgPolicyFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type ClearOrgPolicyFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Clears a `Policy` from a resource. */
+export const clearOrgPolicyFolders: API.OperationMethod<
+  ClearOrgPolicyFoldersRequest,
+  ClearOrgPolicyFoldersResponse,
+  ClearOrgPolicyFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ClearOrgPolicyFoldersRequest,
+  output: ClearOrgPolicyFoldersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListAvailableOrgPolicyConstraintsFoldersRequest {
   /** Name of the resource to list `Constraints` for. */
   resource: string;
   /** Request body */
   body?: ListAvailableOrgPolicyConstraintsRequest;
 }
 
-export const ListAvailableOrgPolicyConstraintsProjectsRequest =
+export const ListAvailableOrgPolicyConstraintsFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(ListAvailableOrgPolicyConstraintsRequest).pipe(
@@ -1429,14 +1188,14 @@ export const ListAvailableOrgPolicyConstraintsProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAvailableOrgPolicyConstraintsProjectsRequest>;
+  ) as unknown as Schema.Schema<ListAvailableOrgPolicyConstraintsFoldersRequest>;
 
-export type ListAvailableOrgPolicyConstraintsProjectsResponse =
+export type ListAvailableOrgPolicyConstraintsFoldersResponse =
   ListAvailableOrgPolicyConstraintsResponse;
-export const ListAvailableOrgPolicyConstraintsProjectsResponse =
+export const ListAvailableOrgPolicyConstraintsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAvailableOrgPolicyConstraintsResponse;
 
-export type ListAvailableOrgPolicyConstraintsProjectsError =
+export type ListAvailableOrgPolicyConstraintsFoldersError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -1444,172 +1203,104 @@ export type ListAvailableOrgPolicyConstraintsProjectsError =
   | Conflict;
 
 /** Lists `Constraints` that could be applied on the specified resource. */
-export const listAvailableOrgPolicyConstraintsProjects: API.OperationMethod<
-  ListAvailableOrgPolicyConstraintsProjectsRequest,
-  ListAvailableOrgPolicyConstraintsProjectsResponse,
-  ListAvailableOrgPolicyConstraintsProjectsError,
+export const listAvailableOrgPolicyConstraintsFolders: API.OperationMethod<
+  ListAvailableOrgPolicyConstraintsFoldersRequest,
+  ListAvailableOrgPolicyConstraintsFoldersResponse,
+  ListAvailableOrgPolicyConstraintsFoldersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListAvailableOrgPolicyConstraintsProjectsRequest,
-  output: ListAvailableOrgPolicyConstraintsProjectsResponse,
+  input: ListAvailableOrgPolicyConstraintsFoldersRequest,
+  output: ListAvailableOrgPolicyConstraintsFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetIamPolicyProjectsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
+export interface SearchOrganizationsRequest_Op {
   /** Request body */
-  body?: GetIamPolicyRequest;
+  body?: SearchOrganizationsRequest;
 }
 
-export const GetIamPolicyProjectsRequest =
+export const SearchOrganizationsRequest_Op =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
+    body: Schema.optional(SearchOrganizationsRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{resource}:getIamPolicy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/organizations:search", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsRequest>;
+  ) as unknown as Schema.Schema<SearchOrganizationsRequest_Op>;
 
-export type GetIamPolicyProjectsResponse = Policy;
-export const GetIamPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
+export type SearchOrganizationsResponse_Op = SearchOrganizationsResponse;
+export const SearchOrganizationsResponse_Op =
+  /*@__PURE__*/ /*#__PURE__*/ SearchOrganizationsResponse;
 
-export type GetIamPolicyProjectsError =
+export type SearchOrganizationsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the project. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names). */
-export const getIamPolicyProjects: API.OperationMethod<
-  GetIamPolicyProjectsRequest,
-  GetIamPolicyProjectsResponse,
-  GetIamPolicyProjectsError,
+/** Searches Organization resources that are visible to the user and satisfy the specified filter. This method returns Organizations in an unspecified order. New Organizations do not necessarily appear at the end of the results. Search will only return organizations on which the user has the permission `resourcemanager.organizations.get` or has super admin privileges. */
+export const searchOrganizations: API.OperationMethod<
+  SearchOrganizationsRequest_Op,
+  SearchOrganizationsResponse_Op,
+  SearchOrganizationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsRequest,
-  output: GetIamPolicyProjectsResponse,
+  input: SearchOrganizationsRequest_Op,
+  output: SearchOrganizationsResponse_Op,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsRequest {
-  /** Required. The Project ID (for example, `my-project-123`). */
-  projectId: string;
-}
-
-export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  projectId: Schema.String.pipe(T.HttpPath("projectId")),
-}).pipe(
-  T.Http({ method: "GET", path: "v1/projects/{projectId}" }),
-  svc,
-) as unknown as Schema.Schema<GetProjectsRequest>;
-
-export type GetProjectsResponse = Project;
-export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
-
-export type GetProjectsError = DefaultErrors | NotFound | Forbidden;
-
-/** Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project. */
-export const getProjects: API.OperationMethod<
-  GetProjectsRequest,
-  GetProjectsResponse,
-  GetProjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsRequest,
-  output: GetProjectsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface SetIamPolicyProjectsRequest {
+export interface SetIamPolicyOrganizationsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
 
-export const SetIamPolicyProjectsRequest =
+export const SetIamPolicyOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{resource}:setIamPolicy",
+      path: "v1/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsRequest>;
+  ) as unknown as Schema.Schema<SetIamPolicyOrganizationsRequest>;
 
-export type SetIamPolicyProjectsResponse = Policy;
-export const SetIamPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
+export type SetIamPolicyOrganizationsResponse = Policy;
+export const SetIamPolicyOrganizationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsError =
+export type SetIamPolicyOrganizationsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Sets the IAM access control policy for the specified Project. CAUTION: This method will replace the existing policy, and cannot be used to append additional IAM settings. NOTE: Removing service accounts from policies or changing their roles can render services completely inoperable. It is important to understand how the service account is being used before removing or updating its roles. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names). The following constraints apply when using `setIamPolicy()`: + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization. For example, group@myownpersonaldomain.com could be added as an owner to a project in the myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service accounts can be made owners of a project directly without any restrictions. However, to be added as an owner, a user must be invited via Cloud Platform console and must accept the invitation. + A user cannot be granted the owner role using `setIamPolicy()`. The user must be granted the owner role using the Cloud Platform Console and must explicitly accept the invitation. + You can only grant ownership of a project to a member by using the Google Cloud console. Inviting a member will deliver an invitation email that they must accept. An invitation email is not generated if you are granting a role other than owner, or if both the member you are inviting and the project are part of your organization. + If the project is not part of an organization, there must be at least one owner who has accepted the Terms of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will fail. This restriction also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is rectified. If the project is part of an organization, you can remove all owners, potentially making the organization inaccessible. Authorization requires the Google IAM permission `resourcemanager.projects.setIamPolicy` on the project */
-export const setIamPolicyProjects: API.OperationMethod<
-  SetIamPolicyProjectsRequest,
-  SetIamPolicyProjectsResponse,
-  SetIamPolicyProjectsError,
+/** Sets the access control policy on an Organization resource. Replaces any existing policy. The `resource` field should be the organization's resource name, e.g. "organizations/123". Authorization requires the Google IAM permission `resourcemanager.organizations.setIamPolicy` on the specified organization */
+export const setIamPolicyOrganizations: API.OperationMethod<
+  SetIamPolicyOrganizationsRequest,
+  SetIamPolicyOrganizationsResponse,
+  SetIamPolicyOrganizationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsRequest,
-  output: SetIamPolicyProjectsResponse,
+  input: SetIamPolicyOrganizationsRequest,
+  output: SetIamPolicyOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface CreateProjectsRequest {
-  /** Request body */
-  body?: Project;
-}
-
-export const CreateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  body: Schema.optional(Project).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({ method: "POST", path: "v1/projects", hasBody: true }),
-  svc,
-) as unknown as Schema.Schema<CreateProjectsRequest>;
-
-export type CreateProjectsResponse = Operation;
-export const CreateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Request that a new Project be created. The result is an Operation which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking Operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. Authorization requires the Google IAM permission `resourcemanager.projects.create` on the specified parent for the new project. The parent is identified by a specified ResourceId, which must include both an ID and a type, such as organization. This method does not associate the new project with a billing account. You can set or update the billing account associated with a project using the [`projects.updateBillingInfo`] (/billing/reference/rest/v1/projects/updateBillingInfo) method. */
-export const createProjects: API.OperationMethod<
-  CreateProjectsRequest,
-  CreateProjectsResponse,
-  CreateProjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsRequest,
-  output: CreateProjectsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetOrgPolicyProjectsRequest {
+export interface GetOrgPolicyOrganizationsRequest {
   /** Name of the resource the `Policy` is set on. */
   resource: string;
   /** Request body */
   body?: GetOrgPolicyRequest;
 }
 
-export const GetOrgPolicyProjectsRequest =
+export const GetOrgPolicyOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetOrgPolicyRequest).pipe(T.HttpBody()),
@@ -1620,13 +1311,13 @@ export const GetOrgPolicyProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetOrgPolicyProjectsRequest>;
+  ) as unknown as Schema.Schema<GetOrgPolicyOrganizationsRequest>;
 
-export type GetOrgPolicyProjectsResponse = OrgPolicy;
-export const GetOrgPolicyProjectsResponse =
+export type GetOrgPolicyOrganizationsResponse = OrgPolicy;
+export const GetOrgPolicyOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
 
-export type GetOrgPolicyProjectsError =
+export type GetOrgPolicyOrganizationsError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -1634,129 +1325,57 @@ export type GetOrgPolicyProjectsError =
   | Conflict;
 
 /** Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy` is returned with default values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to create or update a `Policy` during read-modify-write. */
-export const getOrgPolicyProjects: API.OperationMethod<
-  GetOrgPolicyProjectsRequest,
-  GetOrgPolicyProjectsResponse,
-  GetOrgPolicyProjectsError,
+export const getOrgPolicyOrganizations: API.OperationMethod<
+  GetOrgPolicyOrganizationsRequest,
+  GetOrgPolicyOrganizationsResponse,
+  GetOrgPolicyOrganizationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOrgPolicyProjectsRequest,
-  output: GetOrgPolicyProjectsResponse,
+  input: GetOrgPolicyOrganizationsRequest,
+  output: GetOrgPolicyOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetAncestryProjectsRequest {
-  /** Required. The Project ID (for example, `my-project-123`). */
-  projectId: string;
-  /** Request body */
-  body?: GetAncestryRequest;
-}
-
-export const GetAncestryProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    body: Schema.optional(GetAncestryRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectId}:getAncestry",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetAncestryProjectsRequest>;
-
-export type GetAncestryProjectsResponse = GetAncestryResponse;
-export const GetAncestryProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GetAncestryResponse;
-
-export type GetAncestryProjectsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Gets a list of ancestors in the resource hierarchy for the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project. */
-export const getAncestryProjects: API.OperationMethod<
-  GetAncestryProjectsRequest,
-  GetAncestryProjectsResponse,
-  GetAncestryProjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAncestryProjectsRequest,
-  output: GetAncestryProjectsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
-}
-
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-}).pipe(
-  T.Http({ method: "GET", path: "v1/{+name}" }),
-  svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
-
-export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getOperations: API.OperationMethod<
-  GetOperationsRequest,
-  GetOperationsResponse,
-  GetOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOperationsRequest,
-  output: GetOperationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetIamPolicyOrganizationsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+export interface SetOrgPolicyOrganizationsRequest {
+  /** Resource name of the resource to attach the `Policy`. */
   resource: string;
   /** Request body */
-  body?: GetIamPolicyRequest;
+  body?: SetOrgPolicyRequest;
 }
 
-export const GetIamPolicyOrganizationsRequest =
+export const SetOrgPolicyOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
+    body: Schema.optional(SetOrgPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{+resource}:getIamPolicy",
+      path: "v1/{+resource}:setOrgPolicy",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyOrganizationsRequest>;
+  ) as unknown as Schema.Schema<SetOrgPolicyOrganizationsRequest>;
 
-export type GetIamPolicyOrganizationsResponse = Policy;
-export const GetIamPolicyOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export type SetOrgPolicyOrganizationsResponse = OrgPolicy;
+export const SetOrgPolicyOrganizationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
 
-export type GetIamPolicyOrganizationsError =
+export type SetOrgPolicyOrganizationsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Gets the access control policy for an Organization resource. May be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123". Authorization requires the Google IAM permission `resourcemanager.organizations.getIamPolicy` on the specified organization */
-export const getIamPolicyOrganizations: API.OperationMethod<
-  GetIamPolicyOrganizationsRequest,
-  GetIamPolicyOrganizationsResponse,
-  GetIamPolicyOrganizationsError,
+/** Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the resource if one does not exist. Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`. */
+export const setOrgPolicyOrganizations: API.OperationMethod<
+  SetOrgPolicyOrganizationsRequest,
+  SetOrgPolicyOrganizationsResponse,
+  SetOrgPolicyOrganizationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyOrganizationsRequest,
-  output: GetIamPolicyOrganizationsResponse,
+  input: SetOrgPolicyOrganizationsRequest,
+  output: SetOrgPolicyOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -1806,6 +1425,80 @@ export const listAvailableOrgPolicyConstraintsOrganizations: API.OperationMethod
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetIamPolicyOrganizationsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: GetIamPolicyRequest;
+}
+
+export const GetIamPolicyOrganizationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:getIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyOrganizationsRequest>;
+
+export type GetIamPolicyOrganizationsResponse = Policy;
+export const GetIamPolicyOrganizationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Gets the access control policy for an Organization resource. May be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123". Authorization requires the Google IAM permission `resourcemanager.organizations.getIamPolicy` on the specified organization */
+export const getIamPolicyOrganizations: API.OperationMethod<
+  GetIamPolicyOrganizationsRequest,
+  GetIamPolicyOrganizationsResponse,
+  GetIamPolicyOrganizationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyOrganizationsRequest,
+  output: GetIamPolicyOrganizationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetOrganizationsRequest {
+  /** The resource name of the Organization to fetch. This is the organization's relative path in the API, formatted as "organizations/[organizationId]". For example, "organizations/1234". */
+  name: string;
+}
+
+export const GetOrganizationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetOrganizationsRequest>;
+
+export type GetOrganizationsResponse = Organization;
+export const GetOrganizationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Organization;
+
+export type GetOrganizationsError = DefaultErrors | NotFound | Forbidden;
+
+/** Fetches an Organization resource identified by the specified resource name. */
+export const getOrganizations: API.OperationMethod<
+  GetOrganizationsRequest,
+  GetOrganizationsResponse,
+  GetOrganizationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetOrganizationsRequest,
+  output: GetOrganizationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface GetEffectiveOrgPolicyOrganizationsRequest {
   /** The name of the resource to start computing the effective `Policy`. */
   resource: string;
@@ -1849,46 +1542,46 @@ export const getEffectiveOrgPolicyOrganizations: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface SetOrgPolicyOrganizationsRequest {
-  /** Resource name of the resource to attach the `Policy`. */
+export interface ClearOrgPolicyOrganizationsRequest {
+  /** Name of the resource for the `Policy` to clear. */
   resource: string;
   /** Request body */
-  body?: SetOrgPolicyRequest;
+  body?: ClearOrgPolicyRequest;
 }
 
-export const SetOrgPolicyOrganizationsRequest =
+export const ClearOrgPolicyOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetOrgPolicyRequest).pipe(T.HttpBody()),
+    body: Schema.optional(ClearOrgPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{+resource}:setOrgPolicy",
+      path: "v1/{+resource}:clearOrgPolicy",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetOrgPolicyOrganizationsRequest>;
+  ) as unknown as Schema.Schema<ClearOrgPolicyOrganizationsRequest>;
 
-export type SetOrgPolicyOrganizationsResponse = OrgPolicy;
-export const SetOrgPolicyOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
+export type ClearOrgPolicyOrganizationsResponse = Empty;
+export const ClearOrgPolicyOrganizationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type SetOrgPolicyOrganizationsError =
+export type ClearOrgPolicyOrganizationsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the resource if one does not exist. Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`. */
-export const setOrgPolicyOrganizations: API.OperationMethod<
-  SetOrgPolicyOrganizationsRequest,
-  SetOrgPolicyOrganizationsResponse,
-  SetOrgPolicyOrganizationsError,
+/** Clears a `Policy` from a resource. */
+export const clearOrgPolicyOrganizations: API.OperationMethod<
+  ClearOrgPolicyOrganizationsRequest,
+  ClearOrgPolicyOrganizationsResponse,
+  ClearOrgPolicyOrganizationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetOrgPolicyOrganizationsRequest,
-  output: SetOrgPolicyOrganizationsResponse,
+  input: ClearOrgPolicyOrganizationsRequest,
+  output: ClearOrgPolicyOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -1979,14 +1672,223 @@ export const listOrgPoliciesOrganizations: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ClearOrgPolicyOrganizationsRequest {
+export interface GetLiensRequest {
+  /** Required. The name/identifier of the Lien. */
+  name: string;
+}
+
+export const GetLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetLiensRequest>;
+
+export type GetLiensResponse = Lien;
+export const GetLiensResponse = /*@__PURE__*/ /*#__PURE__*/ Lien;
+
+export type GetLiensError = DefaultErrors | NotFound | Forbidden;
+
+/** Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get` */
+export const getLiens: API.OperationMethod<
+  GetLiensRequest,
+  GetLiensResponse,
+  GetLiensError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetLiensRequest,
+  output: GetLiensResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteLiensRequest {
+  /** Required. The name/identifier of the Lien to delete. */
+  name: string;
+}
+
+export const DeleteLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "DELETE", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<DeleteLiensRequest>;
+
+export type DeleteLiensResponse = Empty;
+export const DeleteLiensResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteLiensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Delete a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.updateLiens`. */
+export const deleteLiens: API.OperationMethod<
+  DeleteLiensRequest,
+  DeleteLiensResponse,
+  DeleteLiensError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteLiensRequest,
+  output: DeleteLiensResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListLiensRequest {
+  /** The `next_page_token` value returned from a previous List request, if any. */
+  pageToken?: string;
+  /** Required. The name of the resource to list all attached Liens. For example, `projects/1234`. (google.api.field_policy).resource_type annotation is not set since the parent depends on the meta api implementation. This field could be a project or other sub project resources. */
+  parent?: string;
+  /** The maximum number of items to return. This is a suggestion for the server. The server can return fewer liens than requested. If unspecified, server picks an appropriate default. */
+  pageSize?: number;
+}
+
+export const ListLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/liens" }),
+  svc,
+) as unknown as Schema.Schema<ListLiensRequest>;
+
+export type ListLiensResponse_Op = ListLiensResponse;
+export const ListLiensResponse_Op =
+  /*@__PURE__*/ /*#__PURE__*/ ListLiensResponse;
+
+export type ListLiensError = DefaultErrors | NotFound | Forbidden;
+
+/** List all Liens applied to the `parent` resource. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`. */
+export const listLiens: API.PaginatedOperationMethod<
+  ListLiensRequest,
+  ListLiensResponse_Op,
+  ListLiensError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListLiensRequest,
+  output: ListLiensResponse_Op,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface CreateLiensRequest {
+  /** Request body */
+  body?: Lien;
+}
+
+export const CreateLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  body: Schema.optional(Lien).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v1/liens", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<CreateLiensRequest>;
+
+export type CreateLiensResponse = Lien;
+export const CreateLiensResponse = /*@__PURE__*/ /*#__PURE__*/ Lien;
+
+export type CreateLiensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method will require permission on the `parent` resource. For example, applying to `projects/1234` requires permission `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which may be applied. */
+export const createLiens: API.OperationMethod<
+  CreateLiensRequest,
+  CreateLiensResponse,
+  CreateLiensError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateLiensRequest,
+  output: CreateLiensResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsRequest {
+  /** Required. The Project ID (for example, `my-project-123`). */
+  projectId: string;
+}
+
+export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.String.pipe(T.HttpPath("projectId")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/projects/{projectId}" }),
+  svc,
+) as unknown as Schema.Schema<GetProjectsRequest>;
+
+export type GetProjectsResponse = Project;
+export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
+
+export type GetProjectsError = DefaultErrors | NotFound | Forbidden;
+
+/** Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project. */
+export const getProjects: API.OperationMethod<
+  GetProjectsRequest,
+  GetProjectsResponse,
+  GetProjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsRequest,
+  output: GetProjectsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetEffectiveOrgPolicyProjectsRequest {
+  /** The name of the resource to start computing the effective `Policy`. */
+  resource: string;
+  /** Request body */
+  body?: GetEffectiveOrgPolicyRequest;
+}
+
+export const GetEffectiveOrgPolicyProjectsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(GetEffectiveOrgPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:getEffectiveOrgPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetEffectiveOrgPolicyProjectsRequest>;
+
+export type GetEffectiveOrgPolicyProjectsResponse = OrgPolicy;
+export const GetEffectiveOrgPolicyProjectsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
+
+export type GetEffectiveOrgPolicyProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource hierarchy. The returned `Policy` will not have an `etag`set because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded. */
+export const getEffectiveOrgPolicyProjects: API.OperationMethod<
+  GetEffectiveOrgPolicyProjectsRequest,
+  GetEffectiveOrgPolicyProjectsResponse,
+  GetEffectiveOrgPolicyProjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetEffectiveOrgPolicyProjectsRequest,
+  output: GetEffectiveOrgPolicyProjectsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ClearOrgPolicyProjectsRequest {
   /** Name of the resource for the `Policy` to clear. */
   resource: string;
   /** Request body */
   body?: ClearOrgPolicyRequest;
 }
 
-export const ClearOrgPolicyOrganizationsRequest =
+export const ClearOrgPolicyProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(ClearOrgPolicyRequest).pipe(T.HttpBody()),
@@ -1997,13 +1899,12 @@ export const ClearOrgPolicyOrganizationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ClearOrgPolicyOrganizationsRequest>;
+  ) as unknown as Schema.Schema<ClearOrgPolicyProjectsRequest>;
 
-export type ClearOrgPolicyOrganizationsResponse = Empty;
-export const ClearOrgPolicyOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export type ClearOrgPolicyProjectsResponse = Empty;
+export const ClearOrgPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ClearOrgPolicyOrganizationsError =
+export type ClearOrgPolicyProjectsError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -2011,178 +1912,25 @@ export type ClearOrgPolicyOrganizationsError =
   | Conflict;
 
 /** Clears a `Policy` from a resource. */
-export const clearOrgPolicyOrganizations: API.OperationMethod<
-  ClearOrgPolicyOrganizationsRequest,
-  ClearOrgPolicyOrganizationsResponse,
-  ClearOrgPolicyOrganizationsError,
+export const clearOrgPolicyProjects: API.OperationMethod<
+  ClearOrgPolicyProjectsRequest,
+  ClearOrgPolicyProjectsResponse,
+  ClearOrgPolicyProjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ClearOrgPolicyOrganizationsRequest,
-  output: ClearOrgPolicyOrganizationsResponse,
+  input: ClearOrgPolicyProjectsRequest,
+  output: ClearOrgPolicyProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface SearchOrganizationsRequest_Op {
-  /** Request body */
-  body?: SearchOrganizationsRequest;
-}
-
-export const SearchOrganizationsRequest_Op =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    body: Schema.optional(SearchOrganizationsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/organizations:search", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<SearchOrganizationsRequest_Op>;
-
-export type SearchOrganizationsResponse_Op = SearchOrganizationsResponse;
-export const SearchOrganizationsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ SearchOrganizationsResponse;
-
-export type SearchOrganizationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Searches Organization resources that are visible to the user and satisfy the specified filter. This method returns Organizations in an unspecified order. New Organizations do not necessarily appear at the end of the results. Search will only return organizations on which the user has the permission `resourcemanager.organizations.get` or has super admin privileges. */
-export const searchOrganizations: API.OperationMethod<
-  SearchOrganizationsRequest_Op,
-  SearchOrganizationsResponse_Op,
-  SearchOrganizationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SearchOrganizationsRequest_Op,
-  output: SearchOrganizationsResponse_Op,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetOrgPolicyOrganizationsRequest {
-  /** Name of the resource the `Policy` is set on. */
-  resource: string;
-  /** Request body */
-  body?: GetOrgPolicyRequest;
-}
-
-export const GetOrgPolicyOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(GetOrgPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:getOrgPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetOrgPolicyOrganizationsRequest>;
-
-export type GetOrgPolicyOrganizationsResponse = OrgPolicy;
-export const GetOrgPolicyOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
-
-export type GetOrgPolicyOrganizationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy` is returned with default values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to create or update a `Policy` during read-modify-write. */
-export const getOrgPolicyOrganizations: API.OperationMethod<
-  GetOrgPolicyOrganizationsRequest,
-  GetOrgPolicyOrganizationsResponse,
-  GetOrgPolicyOrganizationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOrgPolicyOrganizationsRequest,
-  output: GetOrgPolicyOrganizationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyOrganizationsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyOrganizationsRequest>;
-
-export type SetIamPolicyOrganizationsResponse = Policy;
-export const SetIamPolicyOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyOrganizationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on an Organization resource. Replaces any existing policy. The `resource` field should be the organization's resource name, e.g. "organizations/123". Authorization requires the Google IAM permission `resourcemanager.organizations.setIamPolicy` on the specified organization */
-export const setIamPolicyOrganizations: API.OperationMethod<
-  SetIamPolicyOrganizationsRequest,
-  SetIamPolicyOrganizationsResponse,
-  SetIamPolicyOrganizationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyOrganizationsRequest,
-  output: SetIamPolicyOrganizationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetOrganizationsRequest {
-  /** The resource name of the Organization to fetch. This is the organization's relative path in the API, formatted as "organizations/[organizationId]". For example, "organizations/1234". */
-  name: string;
-}
-
-export const GetOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetOrganizationsRequest>;
-
-export type GetOrganizationsResponse = Organization;
-export const GetOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Organization;
-
-export type GetOrganizationsError = DefaultErrors | NotFound | Forbidden;
-
-/** Fetches an Organization resource identified by the specified resource name. */
-export const getOrganizations: API.OperationMethod<
-  GetOrganizationsRequest,
-  GetOrganizationsResponse,
-  GetOrganizationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOrganizationsRequest,
-  output: GetOrganizationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListAvailableOrgPolicyConstraintsFoldersRequest {
+export interface ListAvailableOrgPolicyConstraintsProjectsRequest {
   /** Name of the resource to list `Constraints` for. */
   resource: string;
   /** Request body */
   body?: ListAvailableOrgPolicyConstraintsRequest;
 }
 
-export const ListAvailableOrgPolicyConstraintsFoldersRequest =
+export const ListAvailableOrgPolicyConstraintsProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(ListAvailableOrgPolicyConstraintsRequest).pipe(
@@ -2195,14 +1943,14 @@ export const ListAvailableOrgPolicyConstraintsFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAvailableOrgPolicyConstraintsFoldersRequest>;
+  ) as unknown as Schema.Schema<ListAvailableOrgPolicyConstraintsProjectsRequest>;
 
-export type ListAvailableOrgPolicyConstraintsFoldersResponse =
+export type ListAvailableOrgPolicyConstraintsProjectsResponse =
   ListAvailableOrgPolicyConstraintsResponse;
-export const ListAvailableOrgPolicyConstraintsFoldersResponse =
+export const ListAvailableOrgPolicyConstraintsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAvailableOrgPolicyConstraintsResponse;
 
-export type ListAvailableOrgPolicyConstraintsFoldersError =
+export type ListAvailableOrgPolicyConstraintsProjectsError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -2210,25 +1958,135 @@ export type ListAvailableOrgPolicyConstraintsFoldersError =
   | Conflict;
 
 /** Lists `Constraints` that could be applied on the specified resource. */
-export const listAvailableOrgPolicyConstraintsFolders: API.OperationMethod<
-  ListAvailableOrgPolicyConstraintsFoldersRequest,
-  ListAvailableOrgPolicyConstraintsFoldersResponse,
-  ListAvailableOrgPolicyConstraintsFoldersError,
+export const listAvailableOrgPolicyConstraintsProjects: API.OperationMethod<
+  ListAvailableOrgPolicyConstraintsProjectsRequest,
+  ListAvailableOrgPolicyConstraintsProjectsResponse,
+  ListAvailableOrgPolicyConstraintsProjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListAvailableOrgPolicyConstraintsFoldersRequest,
-  output: ListAvailableOrgPolicyConstraintsFoldersResponse,
+  input: ListAvailableOrgPolicyConstraintsProjectsRequest,
+  output: ListAvailableOrgPolicyConstraintsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetOrgPolicyFoldersRequest {
+export interface DeleteProjectsRequest {
+  /** The Project ID (for example, `foo-bar-123`). Required. */
+  projectId: string;
+}
+
+export const DeleteProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.String.pipe(T.HttpPath("projectId")),
+}).pipe(
+  T.Http({ method: "DELETE", path: "v1/projects/{projectId}" }),
+  svc,
+) as unknown as Schema.Schema<DeleteProjectsRequest>;
+
+export type DeleteProjectsResponse = Empty;
+export const DeleteProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Marks the Project identified by the specified `project_id` (for example, `my-project-123`) for deletion. This method will only affect the Project if it has a lifecycle state of ACTIVE. This method changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified time, at which point the Project is no longer accessible. Until the deletion completes, you can check the lifecycle state checked by retrieving the Project with GetProject, and the Project remains visible to ListProjects. However, you cannot update the project. After the deletion completes, the Project is not retrievable by the GetProject and ListProjects methods. The caller must have delete permissions for this Project. */
+export const deleteProjects: API.OperationMethod<
+  DeleteProjectsRequest,
+  DeleteProjectsResponse,
+  DeleteProjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsRequest,
+  output: DeleteProjectsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: GetIamPolicyRequest;
+}
+
+export const GetIamPolicyProjectsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{resource}:getIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsRequest>;
+
+export type GetIamPolicyProjectsResponse = Policy;
+export const GetIamPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the project. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names). */
+export const getIamPolicyProjects: API.OperationMethod<
+  GetIamPolicyProjectsRequest,
+  GetIamPolicyProjectsResponse,
+  GetIamPolicyProjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsRequest,
+  output: GetIamPolicyProjectsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsRequest {
+  /** Request body */
+  body?: Project;
+}
+
+export const CreateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  body: Schema.optional(Project).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v1/projects", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<CreateProjectsRequest>;
+
+export type CreateProjectsResponse = Operation;
+export const CreateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Request that a new Project be created. The result is an Operation which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking Operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. Authorization requires the Google IAM permission `resourcemanager.projects.create` on the specified parent for the new project. The parent is identified by a specified ResourceId, which must include both an ID and a type, such as organization. This method does not associate the new project with a billing account. You can set or update the billing account associated with a project using the [`projects.updateBillingInfo`] (/billing/reference/rest/v1/projects/updateBillingInfo) method. */
+export const createProjects: API.OperationMethod<
+  CreateProjectsRequest,
+  CreateProjectsResponse,
+  CreateProjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsRequest,
+  output: CreateProjectsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetOrgPolicyProjectsRequest {
   /** Name of the resource the `Policy` is set on. */
   resource: string;
   /** Request body */
   body?: GetOrgPolicyRequest;
 }
 
-export const GetOrgPolicyFoldersRequest =
+export const GetOrgPolicyProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetOrgPolicyRequest).pipe(T.HttpBody()),
@@ -2239,13 +2097,13 @@ export const GetOrgPolicyFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetOrgPolicyFoldersRequest>;
+  ) as unknown as Schema.Schema<GetOrgPolicyProjectsRequest>;
 
-export type GetOrgPolicyFoldersResponse = OrgPolicy;
-export const GetOrgPolicyFoldersResponse =
+export type GetOrgPolicyProjectsResponse = OrgPolicy;
+export const GetOrgPolicyProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
 
-export type GetOrgPolicyFoldersError =
+export type GetOrgPolicyProjectsError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -2253,67 +2111,110 @@ export type GetOrgPolicyFoldersError =
   | Conflict;
 
 /** Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy` is returned with default values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to create or update a `Policy` during read-modify-write. */
-export const getOrgPolicyFolders: API.OperationMethod<
-  GetOrgPolicyFoldersRequest,
-  GetOrgPolicyFoldersResponse,
-  GetOrgPolicyFoldersError,
+export const getOrgPolicyProjects: API.OperationMethod<
+  GetOrgPolicyProjectsRequest,
+  GetOrgPolicyProjectsResponse,
+  GetOrgPolicyProjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOrgPolicyFoldersRequest,
-  output: GetOrgPolicyFoldersResponse,
+  input: GetOrgPolicyProjectsRequest,
+  output: GetOrgPolicyProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ClearOrgPolicyFoldersRequest {
-  /** Name of the resource for the `Policy` to clear. */
-  resource: string;
+export interface UndeleteProjectsRequest {
+  /** Required. The project ID (for example, `foo-bar-123`). */
+  projectId: string;
   /** Request body */
-  body?: ClearOrgPolicyRequest;
+  body?: UndeleteProjectRequest;
 }
 
-export const ClearOrgPolicyFoldersRequest =
+export const UndeleteProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(ClearOrgPolicyRequest).pipe(T.HttpBody()),
+    projectId: Schema.String.pipe(T.HttpPath("projectId")),
+    body: Schema.optional(UndeleteProjectRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{+resource}:clearOrgPolicy",
+      path: "v1/projects/{projectId}:undelete",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ClearOrgPolicyFoldersRequest>;
+  ) as unknown as Schema.Schema<UndeleteProjectsRequest>;
 
-export type ClearOrgPolicyFoldersResponse = Empty;
-export const ClearOrgPolicyFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export type UndeleteProjectsResponse = Empty;
+export const UndeleteProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ClearOrgPolicyFoldersError =
+export type UndeleteProjectsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Clears a `Policy` from a resource. */
-export const clearOrgPolicyFolders: API.OperationMethod<
-  ClearOrgPolicyFoldersRequest,
-  ClearOrgPolicyFoldersResponse,
-  ClearOrgPolicyFoldersError,
+/** Restores the Project identified by the specified `project_id` (for example, `my-project-123`). You can only use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion starts, the Project cannot be restored. The caller must have undelete permissions for this Project. */
+export const undeleteProjects: API.OperationMethod<
+  UndeleteProjectsRequest,
+  UndeleteProjectsResponse,
+  UndeleteProjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ClearOrgPolicyFoldersRequest,
-  output: ClearOrgPolicyFoldersResponse,
+  input: UndeleteProjectsRequest,
+  output: UndeleteProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListOrgPoliciesFoldersRequest {
+export interface GetAncestryProjectsRequest {
+  /** Required. The Project ID (for example, `my-project-123`). */
+  projectId: string;
+  /** Request body */
+  body?: GetAncestryRequest;
+}
+
+export const GetAncestryProjectsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.String.pipe(T.HttpPath("projectId")),
+    body: Schema.optional(GetAncestryRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectId}:getAncestry",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetAncestryProjectsRequest>;
+
+export type GetAncestryProjectsResponse = GetAncestryResponse;
+export const GetAncestryProjectsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GetAncestryResponse;
+
+export type GetAncestryProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Gets a list of ancestors in the resource hierarchy for the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project. */
+export const getAncestryProjects: API.OperationMethod<
+  GetAncestryProjectsRequest,
+  GetAncestryProjectsResponse,
+  GetAncestryProjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAncestryProjectsRequest,
+  output: GetAncestryProjectsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListOrgPoliciesProjectsRequest {
   /** Name of the resource to list Policies for. */
   resource: string;
   /** Request body */
   body?: ListOrgPoliciesRequest;
 }
 
-export const ListOrgPoliciesFoldersRequest =
+export const ListOrgPoliciesProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(ListOrgPoliciesRequest).pipe(T.HttpBody()),
@@ -2324,13 +2225,13 @@ export const ListOrgPoliciesFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListOrgPoliciesFoldersRequest>;
+  ) as unknown as Schema.Schema<ListOrgPoliciesProjectsRequest>;
 
-export type ListOrgPoliciesFoldersResponse = ListOrgPoliciesResponse;
-export const ListOrgPoliciesFoldersResponse =
+export type ListOrgPoliciesProjectsResponse = ListOrgPoliciesResponse;
+export const ListOrgPoliciesProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOrgPoliciesResponse;
 
-export type ListOrgPoliciesFoldersError =
+export type ListOrgPoliciesProjectsError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -2338,68 +2239,145 @@ export type ListOrgPoliciesFoldersError =
   | Conflict;
 
 /** Lists all the `Policies` set for a particular resource. */
-export const listOrgPoliciesFolders: API.OperationMethod<
-  ListOrgPoliciesFoldersRequest,
-  ListOrgPoliciesFoldersResponse,
-  ListOrgPoliciesFoldersError,
+export const listOrgPoliciesProjects: API.OperationMethod<
+  ListOrgPoliciesProjectsRequest,
+  ListOrgPoliciesProjectsResponse,
+  ListOrgPoliciesProjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListOrgPoliciesFoldersRequest,
-  output: ListOrgPoliciesFoldersResponse,
+  input: ListOrgPoliciesProjectsRequest,
+  output: ListOrgPoliciesProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetEffectiveOrgPolicyFoldersRequest {
-  /** The name of the resource to start computing the effective `Policy`. */
-  resource: string;
-  /** Request body */
-  body?: GetEffectiveOrgPolicyRequest;
+export interface ListProjectsRequest {
+  /** Optional. An expression for filtering the results of the request. Filter rules are case insensitive. If multiple fields are included in a filter query, the query will return results that match any of the fields. Some eligible fields for filtering are: + `name` + `id` + `labels.` (where *key* is the name of a label) + `parent.type` + `parent.id` + `lifecycleState` Some examples of filter queries: | Query | Description | |------------------|-----------------------------------------------------| | name:how* | The project's name starts with "how". | | name:Howl | The project's name is `Howl` or `howl`. | | name:HOWL | Equivalent to above. | | NAME:howl | Equivalent to above. | | labels.color:* | The project has the label `color`. | | labels.color:red | The project's label `color` has the value `red`. | | labels.color:red labels.size:big | The project's label `color` has the value `red` or its label `size` has the value `big`. | | lifecycleState:DELETE_REQUESTED | Only show projects that are pending deletion.| If no filter is specified, the call will return projects for which the user has the `resourcemanager.projects.get` permission. NOTE: To perform a by-parent query (eg., what projects are directly in a Folder), the caller must have the `resourcemanager.projects.list` permission on the parent and the filter must contain both a `parent.type` and a `parent.id` restriction (example: "parent.type:folder parent.id:123"). In this case an alternate search index is used which provides more consistent results. */
+  filter?: string;
+  /** Optional. A pagination token returned from a previous call to ListProjects that indicates from where listing should continue. */
+  pageToken?: string;
+  /** Optional. The maximum number of Projects to return in the response. The server can return fewer Projects than requested. If unspecified, server picks an appropriate default. */
+  pageSize?: number;
 }
 
-export const GetEffectiveOrgPolicyFoldersRequest =
+export const ListProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/projects" }),
+  svc,
+) as unknown as Schema.Schema<ListProjectsRequest>;
+
+export type ListProjectsResponse_Op = ListProjectsResponse;
+export const ListProjectsResponse_Op =
+  /*@__PURE__*/ /*#__PURE__*/ ListProjectsResponse;
+
+export type ListProjectsError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists Projects that the caller has the `resourcemanager.projects.get` permission on and satisfy the specified filter. This method returns Projects in an unspecified order. This method is eventually consistent with project mutations; this means that a newly created project may not appear in the results or recent updates to an existing project may not be reflected in the results. To retrieve the latest state of a project, use the GetProject method. NOTE: If the request filter contains a `parent.type` and `parent.id` and the caller has the `resourcemanager.projects.list` permission on the parent, the results will be drawn from an alternate index which provides more consistent results. In future versions of this API, this List method will be split into List and Search to properly capture the behavioral difference. */
+export const listProjects: API.PaginatedOperationMethod<
+  ListProjectsRequest,
+  ListProjectsResponse_Op,
+  ListProjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsRequest,
+  output: ListProjectsResponse_Op,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface TestIamPermissionsProjectsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(GetEffectiveOrgPolicyRequest).pipe(T.HttpBody()),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{+resource}:getEffectiveOrgPolicy",
+      path: "v1/projects/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetEffectiveOrgPolicyFoldersRequest>;
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsRequest>;
 
-export type GetEffectiveOrgPolicyFoldersResponse = OrgPolicy;
-export const GetEffectiveOrgPolicyFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
+export type TestIamPermissionsProjectsResponse = TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type GetEffectiveOrgPolicyFoldersError =
+export type TestIamPermissionsProjectsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource hierarchy. The returned `Policy` will not have an `etag`set because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded. */
-export const getEffectiveOrgPolicyFolders: API.OperationMethod<
-  GetEffectiveOrgPolicyFoldersRequest,
-  GetEffectiveOrgPolicyFoldersResponse,
-  GetEffectiveOrgPolicyFoldersError,
+/** Returns permissions that a caller has on the specified Project. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names). There are no permissions required for making this API call. */
+export const testIamPermissionsProjects: API.OperationMethod<
+  TestIamPermissionsProjectsRequest,
+  TestIamPermissionsProjectsResponse,
+  TestIamPermissionsProjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetEffectiveOrgPolicyFoldersRequest,
-  output: GetEffectiveOrgPolicyFoldersResponse,
+  input: TestIamPermissionsProjectsRequest,
+  output: TestIamPermissionsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface SetOrgPolicyFoldersRequest {
+export interface UpdateProjectsRequest {
+  /** The project ID (for example, `my-project-123`). Required. */
+  projectId: string;
+  /** Request body */
+  body?: Project;
+}
+
+export const UpdateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.String.pipe(T.HttpPath("projectId")),
+  body: Schema.optional(Project).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "PUT", path: "v1/projects/{projectId}", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<UpdateProjectsRequest>;
+
+export type UpdateProjectsResponse = Project;
+export const UpdateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
+
+export type UpdateProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the attributes of the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have modify permissions for this Project. */
+export const updateProjects: API.OperationMethod<
+  UpdateProjectsRequest,
+  UpdateProjectsResponse,
+  UpdateProjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateProjectsRequest,
+  output: UpdateProjectsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SetOrgPolicyProjectsRequest {
   /** Resource name of the resource to attach the `Policy`. */
   resource: string;
   /** Request body */
   body?: SetOrgPolicyRequest;
 }
 
-export const SetOrgPolicyFoldersRequest =
+export const SetOrgPolicyProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetOrgPolicyRequest).pipe(T.HttpBody()),
@@ -2410,13 +2388,13 @@ export const SetOrgPolicyFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetOrgPolicyFoldersRequest>;
+  ) as unknown as Schema.Schema<SetOrgPolicyProjectsRequest>;
 
-export type SetOrgPolicyFoldersResponse = OrgPolicy;
-export const SetOrgPolicyFoldersResponse =
+export type SetOrgPolicyProjectsResponse = OrgPolicy;
+export const SetOrgPolicyProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
 
-export type SetOrgPolicyFoldersError =
+export type SetOrgPolicyProjectsError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -2424,13 +2402,84 @@ export type SetOrgPolicyFoldersError =
   | Conflict;
 
 /** Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the resource if one does not exist. Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`. */
-export const setOrgPolicyFolders: API.OperationMethod<
-  SetOrgPolicyFoldersRequest,
-  SetOrgPolicyFoldersResponse,
-  SetOrgPolicyFoldersError,
+export const setOrgPolicyProjects: API.OperationMethod<
+  SetOrgPolicyProjectsRequest,
+  SetOrgPolicyProjectsResponse,
+  SetOrgPolicyProjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetOrgPolicyFoldersRequest,
-  output: SetOrgPolicyFoldersResponse,
+  input: SetOrgPolicyProjectsRequest,
+  output: SetOrgPolicyProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SetIamPolicyProjectsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsRequest>;
+
+export type SetIamPolicyProjectsResponse = Policy;
+export const SetIamPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the IAM access control policy for the specified Project. CAUTION: This method will replace the existing policy, and cannot be used to append additional IAM settings. NOTE: Removing service accounts from policies or changing their roles can render services completely inoperable. It is important to understand how the service account is being used before removing or updating its roles. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names). The following constraints apply when using `setIamPolicy()`: + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization. For example, group@myownpersonaldomain.com could be added as an owner to a project in the myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service accounts can be made owners of a project directly without any restrictions. However, to be added as an owner, a user must be invited via Cloud Platform console and must accept the invitation. + A user cannot be granted the owner role using `setIamPolicy()`. The user must be granted the owner role using the Cloud Platform Console and must explicitly accept the invitation. + You can only grant ownership of a project to a member by using the Google Cloud console. Inviting a member will deliver an invitation email that they must accept. An invitation email is not generated if you are granting a role other than owner, or if both the member you are inviting and the project are part of your organization. + If the project is not part of an organization, there must be at least one owner who has accepted the Terms of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will fail. This restriction also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is rectified. If the project is part of an organization, you can remove all owners, potentially making the organization inaccessible. Authorization requires the Google IAM permission `resourcemanager.projects.setIamPolicy` on the project */
+export const setIamPolicyProjects: API.OperationMethod<
+  SetIamPolicyProjectsRequest,
+  SetIamPolicyProjectsResponse,
+  SetIamPolicyProjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsRequest,
+  output: SetIamPolicyProjectsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
+}
+
+export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetOperationsRequest>;
+
+export type GetOperationsResponse = Operation;
+export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getOperations: API.OperationMethod<
+  GetOperationsRequest,
+  GetOperationsResponse,
+  GetOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetOperationsRequest,
+  output: GetOperationsResponse,
+  errors: [NotFound, Forbidden],
 }));

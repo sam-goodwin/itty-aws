@@ -35,13 +35,14 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  locationId: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-}).annotate({ identifier: "Location" });
+export const Location: Schema.Schema<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    locationId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -50,10 +51,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  locations: Schema.optional(Schema.Array(Location)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListLocationsResponse" });
+export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Location)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocationsResponse" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -64,13 +66,14 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  code: Schema.optional(Schema.Number),
-  message: Schema.optional(Schema.String),
-  details: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-}).annotate({ identifier: "Status" });
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -85,13 +88,14 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  done: Schema.optional(Schema.Boolean),
-  error: Schema.optional(Status),
-  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-}).annotate({ identifier: "Operation" });
+export const Operation: Schema.Schema<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(Status),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -102,25 +106,26 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
-  },
-).annotate({ identifier: "ListOperationsResponse" });
+  }).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "CancelOperationRequest" });
+export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelOperationRequest",
+  });
 
 export interface PubsubTarget {
   /** Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by Pub/Sub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job. */
@@ -131,11 +136,12 @@ export interface PubsubTarget {
   attributes?: Record<string, string>;
 }
 
-export const PubsubTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  topicName: Schema.optional(Schema.String),
-  data: Schema.optional(Schema.String),
-  attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-}).annotate({ identifier: "PubsubTarget" });
+export const PubsubTarget: Schema.Schema<PubsubTarget> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    topicName: Schema.optional(Schema.String),
+    data: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "PubsubTarget" });
 
 export interface AppEngineRouting {
   /** App service. By default, the job is sent to the service which is the default service when the job is attempted. */
@@ -148,12 +154,13 @@ export interface AppEngineRouting {
   host?: string;
 }
 
-export const AppEngineRouting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  service: Schema.optional(Schema.String),
-  version: Schema.optional(Schema.String),
-  instance: Schema.optional(Schema.String),
-  host: Schema.optional(Schema.String),
-}).annotate({ identifier: "AppEngineRouting" });
+export const AppEngineRouting: Schema.Schema<AppEngineRouting> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    instance: Schema.optional(Schema.String),
+    host: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AppEngineRouting" });
 
 export interface AppEngineHttpTarget {
   /** The HTTP method to use for the request. PATCH and OPTIONS are not permitted. */
@@ -177,13 +184,14 @@ export interface AppEngineHttpTarget {
   body?: string;
 }
 
-export const AppEngineHttpTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  httpMethod: Schema.optional(Schema.String),
-  appEngineRouting: Schema.optional(AppEngineRouting),
-  relativeUri: Schema.optional(Schema.String),
-  headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  body: Schema.optional(Schema.String),
-}).annotate({ identifier: "AppEngineHttpTarget" });
+export const AppEngineHttpTarget: Schema.Schema<AppEngineHttpTarget> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    httpMethod: Schema.optional(Schema.String),
+    appEngineRouting: Schema.optional(AppEngineRouting),
+    relativeUri: Schema.optional(Schema.String),
+    headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    body: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AppEngineHttpTarget" });
 
 export interface OAuthToken {
   /** [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the job. The caller must have iam.serviceAccounts.actAs permission for the service account. */
@@ -192,10 +200,11 @@ export interface OAuthToken {
   scope?: string;
 }
 
-export const OAuthToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  serviceAccountEmail: Schema.optional(Schema.String),
-  scope: Schema.optional(Schema.String),
-}).annotate({ identifier: "OAuthToken" });
+export const OAuthToken: Schema.Schema<OAuthToken> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccountEmail: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OAuthToken" });
 
 export interface OidcToken {
   /** [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the job. The caller must have iam.serviceAccounts.actAs permission for the service account. */
@@ -204,10 +213,11 @@ export interface OidcToken {
   audience?: string;
 }
 
-export const OidcToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  serviceAccountEmail: Schema.optional(Schema.String),
-  audience: Schema.optional(Schema.String),
-}).annotate({ identifier: "OidcToken" });
+export const OidcToken: Schema.Schema<OidcToken> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccountEmail: Schema.optional(Schema.String),
+    audience: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OidcToken" });
 
 export interface HttpTarget {
   /** Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. */
@@ -233,14 +243,15 @@ export interface HttpTarget {
   oidcToken?: OidcToken;
 }
 
-export const HttpTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  uri: Schema.optional(Schema.String),
-  httpMethod: Schema.optional(Schema.String),
-  headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  body: Schema.optional(Schema.String),
-  oauthToken: Schema.optional(OAuthToken),
-  oidcToken: Schema.optional(OidcToken),
-}).annotate({ identifier: "HttpTarget" });
+export const HttpTarget: Schema.Schema<HttpTarget> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    httpMethod: Schema.optional(Schema.String),
+    headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    body: Schema.optional(Schema.String),
+    oauthToken: Schema.optional(OAuthToken),
+    oidcToken: Schema.optional(OidcToken),
+  }).annotate({ identifier: "HttpTarget" });
 
 export interface RetryConfig {
   /** The number of attempts that the system will make to run a job using the exponential backoff procedure described by max_doublings. The default value of retry_count is zero. If retry_count is 0 (and if max_retry_duration is also 0), a job attempt won't be retried if it fails. Instead, Cloud Scheduler system will wait for the next scheduled execution time. Setting retry_count to 0 doesn't prevent failed jobs from running according to schedule after the failure. If retry_count is set to a non-zero number, Cloud Scheduler will retry the failed job, using exponential backoff, for retry_count times until the job succeeds or the number of retries is exhausted. Note that the next scheduled execution time might be skipped if the retries continue through that time. Values greater than 5 and negative values are not allowed. */
@@ -255,13 +266,14 @@ export interface RetryConfig {
   maxDoublings?: number;
 }
 
-export const RetryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  retryCount: Schema.optional(Schema.Number),
-  maxRetryDuration: Schema.optional(Schema.String),
-  minBackoffDuration: Schema.optional(Schema.String),
-  maxBackoffDuration: Schema.optional(Schema.String),
-  maxDoublings: Schema.optional(Schema.Number),
-}).annotate({ identifier: "RetryConfig" });
+export const RetryConfig: Schema.Schema<RetryConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    retryCount: Schema.optional(Schema.Number),
+    maxRetryDuration: Schema.optional(Schema.String),
+    minBackoffDuration: Schema.optional(Schema.String),
+    maxBackoffDuration: Schema.optional(Schema.String),
+    maxDoublings: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "RetryConfig" });
 
 export interface Job {
   /** Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling [locations.list](/scheduler/docs/reference/rest/v1/projects.locations/list). For more information, see [Cloud Scheduler locations](/scheduler/docs/locations). * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters. */
@@ -302,23 +314,24 @@ export interface Job {
   satisfiesPzs?: boolean;
 }
 
-export const Job = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  pubsubTarget: Schema.optional(PubsubTarget),
-  appEngineHttpTarget: Schema.optional(AppEngineHttpTarget),
-  httpTarget: Schema.optional(HttpTarget),
-  schedule: Schema.optional(Schema.String),
-  timeZone: Schema.optional(Schema.String),
-  userUpdateTime: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  status: Schema.optional(Status),
-  scheduleTime: Schema.optional(Schema.String),
-  lastAttemptTime: Schema.optional(Schema.String),
-  retryConfig: Schema.optional(RetryConfig),
-  attemptDeadline: Schema.optional(Schema.String),
-  satisfiesPzs: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "Job" });
+export const Job: Schema.Schema<Job> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    pubsubTarget: Schema.optional(PubsubTarget),
+    appEngineHttpTarget: Schema.optional(AppEngineHttpTarget),
+    httpTarget: Schema.optional(HttpTarget),
+    schedule: Schema.optional(Schema.String),
+    timeZone: Schema.optional(Schema.String),
+    userUpdateTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    status: Schema.optional(Status),
+    scheduleTime: Schema.optional(Schema.String),
+    lastAttemptTime: Schema.optional(Schema.String),
+    retryConfig: Schema.optional(RetryConfig),
+    attemptDeadline: Schema.optional(Schema.String),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "Job" });
 
 export interface ListJobsResponse {
   /** The list of jobs. */
@@ -327,28 +340,32 @@ export interface ListJobsResponse {
   nextPageToken?: string;
 }
 
-export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  jobs: Schema.optional(Schema.Array(Job)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListJobsResponse" });
+export const ListJobsResponse: Schema.Schema<ListJobsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobs: Schema.optional(Schema.Array(Job)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListJobsResponse" });
 
 export interface PauseJobRequest {}
 
-export const PauseJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "PauseJobRequest" });
+export const PauseJobRequest: Schema.Schema<PauseJobRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "PauseJobRequest",
+  });
 
 export interface ResumeJobRequest {}
 
-export const ResumeJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "ResumeJobRequest" });
+export const ResumeJobRequest: Schema.Schema<ResumeJobRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "ResumeJobRequest",
+  });
 
 export interface RunJobRequest {}
 
-export const RunJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "RunJobRequest" });
+export const RunJobRequest: Schema.Schema<RunJobRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "RunJobRequest",
+  });
 
 export interface CmekConfig {
   /** Identifier. The config resource name which includes the project and location and must end in 'cmekConfig', in the format projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig` */
@@ -357,10 +374,11 @@ export interface CmekConfig {
   kmsKeyName?: string;
 }
 
-export const CmekConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  kmsKeyName: Schema.optional(Schema.String),
-}).annotate({ identifier: "CmekConfig" });
+export const CmekConfig: Schema.Schema<CmekConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    kmsKeyName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CmekConfig" });
 
 export interface PubsubMessage {
   /** Optional. The message data field. If this field is empty, the message must contain at least one attribute. */
@@ -375,13 +393,14 @@ export interface PubsubMessage {
   orderingKey?: string;
 }
 
-export const PubsubMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.optional(Schema.String),
-  attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  messageId: Schema.optional(Schema.String),
-  publishTime: Schema.optional(Schema.String),
-  orderingKey: Schema.optional(Schema.String),
-}).annotate({ identifier: "PubsubMessage" });
+export const PubsubMessage: Schema.Schema<PubsubMessage> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    data: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    messageId: Schema.optional(Schema.String),
+    publishTime: Schema.optional(Schema.String),
+    orderingKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PubsubMessage" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -400,15 +419,16 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  createTime: Schema.optional(Schema.String),
-  endTime: Schema.optional(Schema.String),
-  target: Schema.optional(Schema.String),
-  verb: Schema.optional(Schema.String),
-  statusDetail: Schema.optional(Schema.String),
-  cancelRequested: Schema.optional(Schema.Boolean),
-  apiVersion: Schema.optional(Schema.String),
-}).annotate({ identifier: "OperationMetadata" });
+export const OperationMetadata: Schema.Schema<OperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    statusDetail: Schema.optional(Schema.String),
+    cancelRequested: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadata" });
 
 // ==========================================================================
 // Errors

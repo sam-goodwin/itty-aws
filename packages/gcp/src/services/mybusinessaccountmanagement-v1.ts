@@ -22,77 +22,76 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface TargetLocation {
-  /** The name of the location to which the user is invited. */
-  locationName?: string;
-  /** The address of the location to which the user is invited. */
-  address?: string;
-}
-
-export const TargetLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  locationName: Schema.optional(Schema.String),
-  address: Schema.optional(Schema.String),
-}).annotate({ identifier: "TargetLocation" });
-
 export interface PostalAddress {
-  /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
-  recipients?: ReadonlyArray<string>;
-  /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
-  postalCode?: string;
   /** Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (for example, "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (Côte d'Ivoire). */
   sortingCode?: string;
-  /** Optional. Generally refers to the city or town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave `locality` empty and use `address_lines`. */
-  locality?: string;
-  /** Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated. */
-  administrativeArea?: string;
-  /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
-  addressLines?: ReadonlyArray<string>;
-  /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
-  revision?: number;
   /** Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
   regionCode?: string;
   /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. */
   sublocality?: string;
+  /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
+  revision?: number;
+  /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
+  recipients?: ReadonlyArray<string>;
+  /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
+  postalCode?: string;
+  /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
+  addressLines?: ReadonlyArray<string>;
+  /** Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated. */
+  administrativeArea?: string;
+  /** Optional. Generally refers to the city or town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave `locality` empty and use `address_lines`. */
+  locality?: string;
   /** Optional. The name of the organization at the address. */
   organization?: string;
   /** Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en". */
   languageCode?: string;
 }
 
-export const PostalAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  recipients: Schema.optional(Schema.Array(Schema.String)),
-  postalCode: Schema.optional(Schema.String),
-  sortingCode: Schema.optional(Schema.String),
-  locality: Schema.optional(Schema.String),
-  administrativeArea: Schema.optional(Schema.String),
-  addressLines: Schema.optional(Schema.Array(Schema.String)),
-  revision: Schema.optional(Schema.Number),
-  regionCode: Schema.optional(Schema.String),
-  sublocality: Schema.optional(Schema.String),
-  organization: Schema.optional(Schema.String),
-  languageCode: Schema.optional(Schema.String),
-}).annotate({ identifier: "PostalAddress" });
+export const PostalAddress: Schema.Schema<PostalAddress> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sortingCode: Schema.optional(Schema.String),
+    regionCode: Schema.optional(Schema.String),
+    sublocality: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.Number),
+    recipients: Schema.optional(Schema.Array(Schema.String)),
+    postalCode: Schema.optional(Schema.String),
+    addressLines: Schema.optional(Schema.Array(Schema.String)),
+    administrativeArea: Schema.optional(Schema.String),
+    locality: Schema.optional(Schema.String),
+    organization: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PostalAddress" });
 
 export interface OrganizationInfo {
-  /** Output only. The postal address for the account. */
-  address?: PostalAddress;
   /** Output only. The contact number for the organization. */
   phoneNumber?: string;
   /** Output only. The registered domain for the account. */
   registeredDomain?: string;
+  /** Output only. The postal address for the account. */
+  address?: PostalAddress;
 }
 
-export const OrganizationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  address: Schema.optional(PostalAddress),
-  phoneNumber: Schema.optional(Schema.String),
-  registeredDomain: Schema.optional(Schema.String),
-}).annotate({ identifier: "OrganizationInfo" });
+export const OrganizationInfo: Schema.Schema<OrganizationInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phoneNumber: Schema.optional(Schema.String),
+    registeredDomain: Schema.optional(Schema.String),
+    address: Schema.optional(PostalAddress),
+  }).annotate({ identifier: "OrganizationInfo" });
+
+export interface TargetLocation {
+  /** The address of the location to which the user is invited. Not always populated. */
+  address?: string;
+  /** The name of the location to which the user is invited. */
+  locationName?: string;
+}
+
+export const TargetLocation: Schema.Schema<TargetLocation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    address: Schema.optional(Schema.String),
+    locationName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TargetLocation" });
 
 export interface Account {
-  /** Output only. Account reference number if provisioned. */
-  accountNumber?: string;
-  /** Required. The name of the account. For an account of type `PERSONAL`, this is the first and last name of the user account. */
-  accountName?: string;
   /** Output only. Additional info for an organization. This is populated only for an organization account. */
   organizationInfo?: OrganizationInfo;
   /** Required. Contains the type of account. Accounts of type PERSONAL and ORGANIZATION cannot be created using this API. */
@@ -103,6 +102,8 @@ export interface Account {
     | "USER_GROUP"
     | "ORGANIZATION"
     | (string & {});
+  /** Output only. Account reference number if provisioned. */
+  accountNumber?: string;
   /** Output only. Specifies the permission level the user has for this account. */
   permissionLevel?:
     | "PERMISSION_LEVEL_UNSPECIFIED"
@@ -135,30 +136,33 @@ export interface Account {
     | "UNVERIFIED"
     | "VERIFICATION_REQUESTED"
     | (string & {});
+  /** Required. The name of the account. For an account of type `PERSONAL`, this is the first and last name of the user account. */
+  accountName?: string;
 }
 
-export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountNumber: Schema.optional(Schema.String),
-  accountName: Schema.optional(Schema.String),
-  organizationInfo: Schema.optional(OrganizationInfo),
-  type: Schema.optional(Schema.String),
-  permissionLevel: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  vettedState: Schema.optional(Schema.String),
-  role: Schema.optional(Schema.String),
-  primaryOwner: Schema.optional(Schema.String),
-  verificationState: Schema.optional(Schema.String),
-}).annotate({ identifier: "Account" });
+export const Account: Schema.Schema<Account> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    organizationInfo: Schema.optional(OrganizationInfo),
+    type: Schema.optional(Schema.String),
+    accountNumber: Schema.optional(Schema.String),
+    permissionLevel: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    vettedState: Schema.optional(Schema.String),
+    role: Schema.optional(Schema.String),
+    primaryOwner: Schema.optional(Schema.String),
+    verificationState: Schema.optional(Schema.String),
+    accountName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Account" });
 
 export interface Invitation {
+  /** Required. The resource name for the invitation. `accounts/{account_id}/invitations/{invitation_id}`. */
+  name?: string;
   /** Output only. Specifies which target types should appear in the response. */
   targetType?:
     | "TARGET_TYPE_UNSPECIFIED"
     | "ACCOUNTS_ONLY"
     | "LOCATIONS_ONLY"
     | (string & {});
-  /** Required. The resource name for the invitation. `accounts/{account_id}/invitations/{invitation_id}`. */
-  name?: string;
   /** The target location this invitation is for. */
   targetLocation?: TargetLocation;
   /** The sparsely populated account this invitation is for. */
@@ -173,60 +177,32 @@ export interface Invitation {
     | (string & {});
 }
 
-export const Invitation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  targetType: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  targetLocation: Schema.optional(TargetLocation),
-  targetAccount: Schema.optional(Account),
-  role: Schema.optional(Schema.String),
-}).annotate({ identifier: "Invitation" });
+export const Invitation: Schema.Schema<Invitation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    targetType: Schema.optional(Schema.String),
+    targetLocation: Schema.optional(TargetLocation),
+    targetAccount: Schema.optional(Account),
+    role: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Invitation" });
 
 export interface ListInvitationsResponse {
   /** A collection of invitations that are pending for the account. The number of invitations listed here cannot exceed 1000. */
   invitations?: ReadonlyArray<Invitation>;
 }
 
-export const ListInvitationsResponse =
+export const ListInvitationsResponse: Schema.Schema<ListInvitationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invitations: Schema.optional(Schema.Array(Invitation)),
   }).annotate({ identifier: "ListInvitationsResponse" });
 
-export interface AcceptInvitationRequest {}
-
-export const AcceptInvitationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "AcceptInvitationRequest",
-  });
-
-export interface ListAccountsResponse {
-  /** If the number of accounts exceeds the requested page size, this field is populated with a token to fetch the next page of accounts on a subsequent call to `accounts.list`. If there are no more accounts, this field is not present in the response. */
-  nextPageToken?: string;
-  /** A collection of accounts to which the user has access. The personal account of the user doing the query will always be the first item of the result, unless it is filtered out. */
-  accounts?: ReadonlyArray<Account>;
-}
-
-export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  nextPageToken: Schema.optional(Schema.String),
-  accounts: Schema.optional(Schema.Array(Account)),
-}).annotate({ identifier: "ListAccountsResponse" });
-
-export interface Empty {}
-
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
-
-export interface TransferLocationRequest {
-  /** Required. Name of the account resource to transfer the location to (for example, "accounts/{account}"). */
-  destinationAccount?: string;
-}
-
-export const TransferLocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    destinationAccount: Schema.optional(Schema.String),
-  }).annotate({ identifier: "TransferLocationRequest" });
-
 export interface Admin {
+  /** Optional. The name of the admin. When making the initial invitation, this is the invitee's email address. On `GET` calls, the user's email address is returned if the invitation is still pending. Otherwise, it contains the user's first and last names. This field is only needed to be set during admin creation. */
+  admin?: string;
+  /** Immutable. The resource name. For account admins, this is in the form: `accounts/{account_id}/admins/{admin_id}` For location admins, this is in the form: `locations/{location_id}/admins/{admin_id}` This field will be ignored if set during admin creation. */
+  name?: string;
+  /** Immutable. The name of the Account resource that this Admin refers to. Used when calling locations.admins.create to invite a LocationGroup as an admin. If both this field and `admin` are set on `CREATE` requests, this field takes precedence and the email address in `admin` will be ignored. Format: `accounts/{account}`. */
+  account?: string;
   /** Required. Specifies the role that this admin uses with the specified Account or Location. */
   role?:
     | "ADMIN_ROLE_UNSPECIFIED"
@@ -237,48 +213,80 @@ export interface Admin {
     | (string & {});
   /** Output only. Indicates whether this admin has a pending invitation for the specified resource. */
   pendingInvitation?: boolean;
-  /** Immutable. The name of the Account resource that this Admin refers to. Used when calling locations.admins.create to invite a LocationGroup as an admin. If both this field and `admin` are set on `CREATE` requests, this field takes precedence and the email address in `admin` will be ignored. Format: `accounts/{account}`. */
-  account?: string;
-  /** Immutable. The resource name. For account admins, this is in the form: `accounts/{account_id}/admins/{admin_id}` For location admins, this is in the form: `locations/{location_id}/admins/{admin_id}` This field will be ignored if set during admin creation. */
-  name?: string;
-  /** Optional. The name of the admin. When making the initial invitation, this is the invitee's email address. On `GET` calls, the user's email address is returned if the invitation is still pending. Otherwise, it contains the user's first and last names. This field is only needed to be set during admin creation. */
-  admin?: string;
 }
 
-export const Admin = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  role: Schema.optional(Schema.String),
-  pendingInvitation: Schema.optional(Schema.Boolean),
-  account: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  admin: Schema.optional(Schema.String),
-}).annotate({ identifier: "Admin" });
-
-export interface DeclineInvitationRequest {}
-
-export const DeclineInvitationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DeclineInvitationRequest",
-  });
-
-export interface ListLocationAdminsResponse {
-  /** A collection of Admins. */
-  admins?: ReadonlyArray<Admin>;
-}
-
-export const ListLocationAdminsResponse =
+export const Admin: Schema.Schema<Admin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    admins: Schema.optional(Schema.Array(Admin)),
-  }).annotate({ identifier: "ListLocationAdminsResponse" });
+    admin: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    account: Schema.optional(Schema.String),
+    role: Schema.optional(Schema.String),
+    pendingInvitation: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "Admin" });
 
 export interface ListAccountAdminsResponse {
   /** A collection of Admin instances. */
   accountAdmins?: ReadonlyArray<Admin>;
 }
 
-export const ListAccountAdminsResponse =
+export const ListAccountAdminsResponse: Schema.Schema<ListAccountAdminsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountAdmins: Schema.optional(Schema.Array(Admin)),
   }).annotate({ identifier: "ListAccountAdminsResponse" });
+
+export interface ListLocationAdminsResponse {
+  /** A collection of Admins. */
+  admins?: ReadonlyArray<Admin>;
+}
+
+export const ListLocationAdminsResponse: Schema.Schema<ListLocationAdminsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    admins: Schema.optional(Schema.Array(Admin)),
+  }).annotate({ identifier: "ListLocationAdminsResponse" });
+
+export interface ListAccountsResponse {
+  /** A collection of accounts to which the user has access. The personal account of the user doing the query will always be the first item of the result, unless it is filtered out. */
+  accounts?: ReadonlyArray<Account>;
+  /** If the number of accounts exceeds the requested page size, this field is populated with a token to fetch the next page of accounts on a subsequent call to `accounts.list`. If there are no more accounts, this field is not present in the response. */
+  nextPageToken?: string;
+}
+
+export const ListAccountsResponse: Schema.Schema<ListAccountsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accounts: Schema.optional(Schema.Array(Account)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAccountsResponse" });
+
+export interface DeclineInvitationRequest {}
+
+export const DeclineInvitationRequest: Schema.Schema<DeclineInvitationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeclineInvitationRequest",
+  });
+
+export interface AcceptInvitationRequest {}
+
+export const AcceptInvitationRequest: Schema.Schema<AcceptInvitationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "AcceptInvitationRequest",
+  });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface TransferLocationRequest {
+  /** Required. Name of the account resource to transfer the location to (for example, "accounts/{account}"). */
+  destinationAccount?: string;
+}
+
+export const TransferLocationRequest: Schema.Schema<TransferLocationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationAccount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TransferLocationRequest" });
 
 // ==========================================================================
 // Errors
@@ -334,32 +342,186 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface GetAccountsRequest {
-  /** Required. The name of the account to fetch. */
+export interface TransferLocationsRequest {
+  /** Required. The name of the location to transfer. `locations/{location_id}`. */
+  name: string;
+  /** Request body */
+  body?: TransferLocationRequest;
+}
+
+export const TransferLocationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(TransferLocationRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:transfer", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<TransferLocationsRequest>;
+
+export type TransferLocationsResponse = Empty;
+export const TransferLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type TransferLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Moves a location from an account that the user owns to another account that the same user administers. The user must be an owner of the account the location is currently associated with and must also be at least a manager of the destination account. */
+export const transferLocations: API.OperationMethod<
+  TransferLocationsRequest,
+  TransferLocationsResponse,
+  TransferLocationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TransferLocationsRequest,
+  output: TransferLocationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateLocationsAdminsRequest {
+  /** Required. The resource name of the location this admin is created for. `locations/{location_id}/admins`. */
+  parent: string;
+  /** Request body */
+  body?: Admin;
+}
+
+export const CreateLocationsAdminsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(Admin).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/admins", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateLocationsAdminsRequest>;
+
+export type CreateLocationsAdminsResponse = Admin;
+export const CreateLocationsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Admin;
+
+export type CreateLocationsAdminsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Invites the specified user to become an administrator for the specified location. The invitee must accept the invitation in order to be granted access to the location. See AcceptInvitation to programmatically accept an invitation. */
+export const createLocationsAdmins: API.OperationMethod<
+  CreateLocationsAdminsRequest,
+  CreateLocationsAdminsResponse,
+  CreateLocationsAdminsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateLocationsAdminsRequest,
+  output: CreateLocationsAdminsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteLocationsAdminsRequest {
+  /** Required. The resource name of the admin to remove from the location. */
   name: string;
 }
 
-export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-}).pipe(
-  T.Http({ method: "GET", path: "v1/{+name}" }),
-  svc,
-) as unknown as Schema.Schema<GetAccountsRequest>;
+export const DeleteLocationsAdminsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteLocationsAdminsRequest>;
 
-export type GetAccountsResponse = Account;
-export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
+export type DeleteLocationsAdminsResponse = Empty;
+export const DeleteLocationsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
+export type DeleteLocationsAdminsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Gets the specified account. Returns `NOT_FOUND` if the account does not exist or if the caller does not have access rights to it. */
-export const getAccounts: API.OperationMethod<
-  GetAccountsRequest,
-  GetAccountsResponse,
-  GetAccountsError,
+/** Removes the specified admin as a manager of the specified location. */
+export const deleteLocationsAdmins: API.OperationMethod<
+  DeleteLocationsAdminsRequest,
+  DeleteLocationsAdminsResponse,
+  DeleteLocationsAdminsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAccountsRequest,
-  output: GetAccountsResponse,
+  input: DeleteLocationsAdminsRequest,
+  output: DeleteLocationsAdminsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchLocationsAdminsRequest {
+  /** Required. The specific fields that should be updated. The only editable field is role. */
+  updateMask?: string;
+  /** Immutable. The resource name. For account admins, this is in the form: `accounts/{account_id}/admins/{admin_id}` For location admins, this is in the form: `locations/{location_id}/admins/{admin_id}` This field will be ignored if set during admin creation. */
+  name: string;
+  /** Request body */
+  body?: Admin;
+}
+
+export const PatchLocationsAdminsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Admin).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchLocationsAdminsRequest>;
+
+export type PatchLocationsAdminsResponse = Admin;
+export const PatchLocationsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Admin;
+
+export type PatchLocationsAdminsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the Admin for the specified location. Only the AdminRole of the Admin can be updated. */
+export const patchLocationsAdmins: API.OperationMethod<
+  PatchLocationsAdminsRequest,
+  PatchLocationsAdminsResponse,
+  PatchLocationsAdminsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchLocationsAdminsRequest,
+  output: PatchLocationsAdminsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListLocationsAdminsRequest {
+  /** Required. The name of the location to list admins of. `locations/{location_id}/admins`. */
+  parent: string;
+}
+
+export const ListLocationsAdminsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/admins" }),
+    svc,
+  ) as unknown as Schema.Schema<ListLocationsAdminsRequest>;
+
+export type ListLocationsAdminsResponse = ListLocationAdminsResponse;
+export const ListLocationsAdminsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListLocationAdminsResponse;
+
+export type ListLocationsAdminsError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists all of the admins for the specified location. */
+export const listLocationsAdmins: API.OperationMethod<
+  ListLocationsAdminsRequest,
+  ListLocationsAdminsResponse,
+  ListLocationsAdminsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListLocationsAdminsRequest,
+  output: ListLocationsAdminsResponse,
   errors: [NotFound, Forbidden],
 }));
 
@@ -398,22 +560,22 @@ export const createAccounts: API.OperationMethod<
 }));
 
 export interface PatchAccountsRequest {
-  /** Optional. If true, the request is validated without actually updating the account. */
-  validateOnly?: boolean;
-  /** Required. The specific fields that should be updated. The only editable field is `accountName`. */
-  updateMask?: string;
   /** Immutable. The resource name, in the format `accounts/{account_id}`. */
   name: string;
+  /** Required. The specific fields that should be updated. The only editable field is `accountName`. */
+  updateMask?: string;
+  /** Optional. If true, the request is validated without actually updating the account. */
+  validateOnly?: boolean;
   /** Request body */
   body?: Account;
 }
 
 export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   validateOnly: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("validateOnly"),
   ),
-  updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-  name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(Account).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
@@ -443,22 +605,22 @@ export const patchAccounts: API.OperationMethod<
 }));
 
 export interface ListAccountsRequest {
+  /** Optional. How many accounts to fetch per page. The default and maximum is 20. */
+  pageSize?: number;
   /** Optional. If specified, the next page of accounts is retrieved. The `pageToken` is returned when a call to `accounts.list` returns more results than can fit into the requested page size. */
   pageToken?: string;
   /** Optional. The resource name of the account for which the list of directly accessible accounts is to be retrieved. This only makes sense for Organizations and User Groups. If empty, will return `ListAccounts` for the authenticated user. `accounts/{account_id}`. */
   parentAccount?: string;
-  /** Optional. How many accounts to fetch per page. The default and maximum is 20. */
-  pageSize?: number;
   /** Optional. A filter constraining the accounts to return. The response includes only entries that match the filter. If `filter` is empty, then no constraints are applied and all accounts (paginated) are retrieved for the requested account. For example, a request with the filter `type=USER_GROUP` will only return user groups. The `type` field is the only supported filter. */
   filter?: string;
 }
 
 export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   parentAccount: Schema.optional(Schema.String).pipe(
     T.HttpQuery("parentAccount"),
   ),
-  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/accounts" }),
@@ -487,151 +649,33 @@ export const listAccounts: API.PaginatedOperationMethod<
   },
 }));
 
-export interface AcceptAccountsInvitationsRequest {
-  /** Required. The name of the invitation that is being accepted. `accounts/{account_id}/invitations/{invitation_id}` */
+export interface GetAccountsRequest {
+  /** Required. The name of the account to fetch. */
   name: string;
-  /** Request body */
-  body?: AcceptInvitationRequest;
 }
 
-export const AcceptAccountsInvitationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(AcceptInvitationRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:accept", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<AcceptAccountsInvitationsRequest>;
+export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetAccountsRequest>;
 
-export type AcceptAccountsInvitationsResponse = Empty;
-export const AcceptAccountsInvitationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export type GetAccountsResponse = Account;
+export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type AcceptAccountsInvitationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
-/** Accepts the specified invitation. */
-export const acceptAccountsInvitations: API.OperationMethod<
-  AcceptAccountsInvitationsRequest,
-  AcceptAccountsInvitationsResponse,
-  AcceptAccountsInvitationsError,
+/** Gets the specified account. Returns `NOT_FOUND` if the account does not exist or if the caller does not have access rights to it. */
+export const getAccounts: API.OperationMethod<
+  GetAccountsRequest,
+  GetAccountsResponse,
+  GetAccountsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: AcceptAccountsInvitationsRequest,
-  output: AcceptAccountsInvitationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListAccountsInvitationsRequest {
-  /** Optional. Filtering the response is supported via the Invitation.target_type field. */
-  filter?: string;
-  /** Required. The name of the account from which the list of invitations is being retrieved. `accounts/{account_id}/invitations` */
-  parent: string;
-}
-
-export const ListAccountsInvitationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/invitations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListAccountsInvitationsRequest>;
-
-export type ListAccountsInvitationsResponse = ListInvitationsResponse;
-export const ListAccountsInvitationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListInvitationsResponse;
-
-export type ListAccountsInvitationsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists pending invitations for the specified account. */
-export const listAccountsInvitations: API.OperationMethod<
-  ListAccountsInvitationsRequest,
-  ListAccountsInvitationsResponse,
-  ListAccountsInvitationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListAccountsInvitationsRequest,
-  output: ListAccountsInvitationsResponse,
+  input: GetAccountsRequest,
+  output: GetAccountsResponse,
   errors: [NotFound, Forbidden],
-}));
-
-export interface DeclineAccountsInvitationsRequest {
-  /** Required. The name of the account invitation that is being declined. `accounts/{account_id}/invitations/{invitation_id}` */
-  name: string;
-  /** Request body */
-  body?: DeclineInvitationRequest;
-}
-
-export const DeclineAccountsInvitationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(DeclineInvitationRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:decline", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<DeclineAccountsInvitationsRequest>;
-
-export type DeclineAccountsInvitationsResponse = Empty;
-export const DeclineAccountsInvitationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeclineAccountsInvitationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Declines the specified invitation. */
-export const declineAccountsInvitations: API.OperationMethod<
-  DeclineAccountsInvitationsRequest,
-  DeclineAccountsInvitationsResponse,
-  DeclineAccountsInvitationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeclineAccountsInvitationsRequest,
-  output: DeclineAccountsInvitationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteAccountsAdminsRequest {
-  /** Required. The resource name of the admin to remove from the account. `accounts/{account_id}/admins/{admin_id}`. */
-  name: string;
-}
-
-export const DeleteAccountsAdminsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteAccountsAdminsRequest>;
-
-export type DeleteAccountsAdminsResponse = Empty;
-export const DeleteAccountsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteAccountsAdminsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Removes the specified admin from the specified account. */
-export const deleteAccountsAdmins: API.OperationMethod<
-  DeleteAccountsAdminsRequest,
-  DeleteAccountsAdminsResponse,
-  DeleteAccountsAdminsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteAccountsAdminsRequest,
-  output: DeleteAccountsAdminsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsAdminsRequest {
@@ -672,19 +716,54 @@ export const createAccountsAdmins: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchAccountsAdminsRequest {
-  /** Immutable. The resource name. For account admins, this is in the form: `accounts/{account_id}/admins/{admin_id}` For location admins, this is in the form: `locations/{location_id}/admins/{admin_id}` This field will be ignored if set during admin creation. */
+export interface DeleteAccountsAdminsRequest {
+  /** Required. The resource name of the admin to remove from the account. `accounts/{account_id}/admins/{admin_id}`. */
   name: string;
+}
+
+export const DeleteAccountsAdminsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteAccountsAdminsRequest>;
+
+export type DeleteAccountsAdminsResponse = Empty;
+export const DeleteAccountsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteAccountsAdminsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Removes the specified admin from the specified account. */
+export const deleteAccountsAdmins: API.OperationMethod<
+  DeleteAccountsAdminsRequest,
+  DeleteAccountsAdminsResponse,
+  DeleteAccountsAdminsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAccountsAdminsRequest,
+  output: DeleteAccountsAdminsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchAccountsAdminsRequest {
   /** Required. The specific fields that should be updated. The only editable field is role. */
   updateMask?: string;
+  /** Immutable. The resource name. For account admins, this is in the form: `accounts/{account_id}/admins/{admin_id}` For location admins, this is in the form: `locations/{location_id}/admins/{admin_id}` This field will be ignored if set during admin creation. */
+  name: string;
   /** Request body */
   body?: Admin;
 }
 
 export const PatchAccountsAdminsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Admin).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
@@ -744,185 +823,114 @@ export const listAccountsAdmins: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface TransferLocationsRequest {
-  /** Required. The name of the location to transfer. `locations/{location_id}`. */
-  name: string;
-  /** Request body */
-  body?: TransferLocationRequest;
-}
-
-export const TransferLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(TransferLocationRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:transfer", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<TransferLocationsRequest>;
-
-export type TransferLocationsResponse = Empty;
-export const TransferLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type TransferLocationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Moves a location from an account that the user owns to another account that the same user administers. The user must be an owner of the account the location is currently associated with and must also be at least a manager of the destination account. */
-export const transferLocations: API.OperationMethod<
-  TransferLocationsRequest,
-  TransferLocationsResponse,
-  TransferLocationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TransferLocationsRequest,
-  output: TransferLocationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteLocationsAdminsRequest {
-  /** Required. The resource name of the admin to remove from the location. */
-  name: string;
-}
-
-export const DeleteLocationsAdminsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteLocationsAdminsRequest>;
-
-export type DeleteLocationsAdminsResponse = Empty;
-export const DeleteLocationsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteLocationsAdminsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Removes the specified admin as a manager of the specified location. */
-export const deleteLocationsAdmins: API.OperationMethod<
-  DeleteLocationsAdminsRequest,
-  DeleteLocationsAdminsResponse,
-  DeleteLocationsAdminsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteLocationsAdminsRequest,
-  output: DeleteLocationsAdminsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateLocationsAdminsRequest {
-  /** Required. The resource name of the location this admin is created for. `locations/{location_id}/admins`. */
+export interface ListAccountsInvitationsRequest {
+  /** Required. The name of the account from which the list of invitations is being retrieved. `accounts/{account_id}/invitations` */
   parent: string;
-  /** Request body */
-  body?: Admin;
+  /** Optional. Filtering the response is supported via the Invitation.target_type field. */
+  filter?: string;
 }
 
-export const CreateLocationsAdminsRequest =
+export const ListAccountsInvitationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(Admin).pipe(T.HttpBody()),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/admins", hasBody: true }),
+    T.Http({ method: "GET", path: "v1/{+parent}/invitations" }),
     svc,
-  ) as unknown as Schema.Schema<CreateLocationsAdminsRequest>;
+  ) as unknown as Schema.Schema<ListAccountsInvitationsRequest>;
 
-export type CreateLocationsAdminsResponse = Admin;
-export const CreateLocationsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Admin;
+export type ListAccountsInvitationsResponse = ListInvitationsResponse;
+export const ListAccountsInvitationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListInvitationsResponse;
 
-export type CreateLocationsAdminsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+export type ListAccountsInvitationsError = DefaultErrors | NotFound | Forbidden;
 
-/** Invites the specified user to become an administrator for the specified location. The invitee must accept the invitation in order to be granted access to the location. See AcceptInvitation to programmatically accept an invitation. */
-export const createLocationsAdmins: API.OperationMethod<
-  CreateLocationsAdminsRequest,
-  CreateLocationsAdminsResponse,
-  CreateLocationsAdminsError,
+/** Lists pending invitations for the specified account. */
+export const listAccountsInvitations: API.OperationMethod<
+  ListAccountsInvitationsRequest,
+  ListAccountsInvitationsResponse,
+  ListAccountsInvitationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateLocationsAdminsRequest,
-  output: CreateLocationsAdminsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchLocationsAdminsRequest {
-  /** Immutable. The resource name. For account admins, this is in the form: `accounts/{account_id}/admins/{admin_id}` For location admins, this is in the form: `locations/{location_id}/admins/{admin_id}` This field will be ignored if set during admin creation. */
-  name: string;
-  /** Required. The specific fields that should be updated. The only editable field is role. */
-  updateMask?: string;
-  /** Request body */
-  body?: Admin;
-}
-
-export const PatchLocationsAdminsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Admin).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchLocationsAdminsRequest>;
-
-export type PatchLocationsAdminsResponse = Admin;
-export const PatchLocationsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Admin;
-
-export type PatchLocationsAdminsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the Admin for the specified location. Only the AdminRole of the Admin can be updated. */
-export const patchLocationsAdmins: API.OperationMethod<
-  PatchLocationsAdminsRequest,
-  PatchLocationsAdminsResponse,
-  PatchLocationsAdminsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchLocationsAdminsRequest,
-  output: PatchLocationsAdminsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListLocationsAdminsRequest {
-  /** Required. The name of the location to list admins of. `locations/{location_id}/admins`. */
-  parent: string;
-}
-
-export const ListLocationsAdminsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/admins" }),
-    svc,
-  ) as unknown as Schema.Schema<ListLocationsAdminsRequest>;
-
-export type ListLocationsAdminsResponse = ListLocationAdminsResponse;
-export const ListLocationsAdminsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationAdminsResponse;
-
-export type ListLocationsAdminsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists all of the admins for the specified location. */
-export const listLocationsAdmins: API.OperationMethod<
-  ListLocationsAdminsRequest,
-  ListLocationsAdminsResponse,
-  ListLocationsAdminsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListLocationsAdminsRequest,
-  output: ListLocationsAdminsResponse,
+  input: ListAccountsInvitationsRequest,
+  output: ListAccountsInvitationsResponse,
   errors: [NotFound, Forbidden],
+}));
+
+export interface AcceptAccountsInvitationsRequest {
+  /** Required. The name of the invitation that is being accepted. `accounts/{account_id}/invitations/{invitation_id}` */
+  name: string;
+  /** Request body */
+  body?: AcceptInvitationRequest;
+}
+
+export const AcceptAccountsInvitationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(AcceptInvitationRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:accept", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<AcceptAccountsInvitationsRequest>;
+
+export type AcceptAccountsInvitationsResponse = Empty;
+export const AcceptAccountsInvitationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type AcceptAccountsInvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Accepts the specified invitation. */
+export const acceptAccountsInvitations: API.OperationMethod<
+  AcceptAccountsInvitationsRequest,
+  AcceptAccountsInvitationsResponse,
+  AcceptAccountsInvitationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: AcceptAccountsInvitationsRequest,
+  output: AcceptAccountsInvitationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeclineAccountsInvitationsRequest {
+  /** Required. The name of the account invitation that is being declined. `accounts/{account_id}/invitations/{invitation_id}` */
+  name: string;
+  /** Request body */
+  body?: DeclineInvitationRequest;
+}
+
+export const DeclineAccountsInvitationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(DeclineInvitationRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:decline", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<DeclineAccountsInvitationsRequest>;
+
+export type DeclineAccountsInvitationsResponse = Empty;
+export const DeclineAccountsInvitationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeclineAccountsInvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Declines the specified invitation. */
+export const declineAccountsInvitations: API.OperationMethod<
+  DeclineAccountsInvitationsRequest,
+  DeclineAccountsInvitationsResponse,
+  DeclineAccountsInvitationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeclineAccountsInvitationsRequest,
+  output: DeclineAccountsInvitationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

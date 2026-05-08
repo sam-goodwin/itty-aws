@@ -23,14 +23,14 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface SiteSummaryResponse {
-  /** The name of the reviewed site, e.g. `google.com`. */
-  reviewedSite?: string;
   /** The time at which the site's status last changed. */
   lastChangeTime?: string;
-  /** The time at which [enforcement](https://support.google.com/webtools/answer/7538608) against the site began or will begin. Not set when the filter_status is OFF. */
-  enforcementTime?: string;
   /** A link to the full Abusive Experience Report for the site. Not set in ViolatingSitesResponse. Note that you must complete the [Search Console verification process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full report. */
   reportUrl?: string;
+  /** The name of the reviewed site, e.g. `google.com`. */
+  reviewedSite?: string;
+  /** The time at which [enforcement](https://support.google.com/webtools/answer/7538608) against the site began or will begin. Not set when the filter_status is OFF. */
+  enforcementTime?: string;
   /** The site's [enforcement status](https://support.google.com/webtools/answer/7538608). */
   filterStatus?:
     | "UNKNOWN"
@@ -45,26 +45,26 @@ export interface SiteSummaryResponse {
   underReview?: boolean;
 }
 
-export const SiteSummaryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  reviewedSite: Schema.optional(Schema.String),
-  lastChangeTime: Schema.optional(Schema.String),
-  enforcementTime: Schema.optional(Schema.String),
-  reportUrl: Schema.optional(Schema.String),
-  filterStatus: Schema.optional(Schema.String),
-  abusiveStatus: Schema.optional(Schema.String),
-  underReview: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "SiteSummaryResponse" });
+export const SiteSummaryResponse: Schema.Schema<SiteSummaryResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastChangeTime: Schema.optional(Schema.String),
+    reportUrl: Schema.optional(Schema.String),
+    reviewedSite: Schema.optional(Schema.String),
+    enforcementTime: Schema.optional(Schema.String),
+    filterStatus: Schema.optional(Schema.String),
+    abusiveStatus: Schema.optional(Schema.String),
+    underReview: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "SiteSummaryResponse" });
 
 export interface ViolatingSitesResponse {
   /** The list of violating sites. */
   violatingSites?: ReadonlyArray<SiteSummaryResponse>;
 }
 
-export const ViolatingSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const ViolatingSitesResponse: Schema.Schema<ViolatingSitesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     violatingSites: Schema.optional(Schema.Array(SiteSummaryResponse)),
-  },
-).annotate({ identifier: "ViolatingSitesResponse" });
+  }).annotate({ identifier: "ViolatingSitesResponse" });
 
 // ==========================================================================
 // Errors

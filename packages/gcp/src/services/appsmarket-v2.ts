@@ -23,55 +23,55 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface UserLicense {
-  /** The type of API resource. This is always `appsmarket#userLicense`. */
-  kind?: string;
   /** The ID of the user license. */
   id?: string;
-  /** The email address of the user. */
-  userId?: string;
-  /** (Deprecated) */
-  editionId?: string;
   /** The domain name of the user. */
   customerId?: string;
+  /** The ID of the application corresponding to the license query. */
+  applicationId?: string;
   /** The domain administrator has activated the application for this domain. */
   enabled?: boolean;
   /** The user's licensing status. One of: - `ACTIVE`: The user has a valid license and should be permitted to use the application. - `UNLICENSED`: The administrator of this user's domain never assigned a seat for the application to this user. - `EXPIRED`: The administrator assigned a seat to this user, but the license is expired. */
   state?: string;
-  /** The ID of the application corresponding to the license query. */
-  applicationId?: string;
+  /** (Deprecated) */
+  editionId?: string;
+  /** The email address of the user. */
+  userId?: string;
+  /** The type of API resource. This is always `appsmarket#userLicense`. */
+  kind?: string;
 }
 
-export const UserLicense = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  userId: Schema.optional(Schema.String),
-  editionId: Schema.optional(Schema.String),
-  customerId: Schema.optional(Schema.String),
-  enabled: Schema.optional(Schema.Boolean),
-  state: Schema.optional(Schema.String),
-  applicationId: Schema.optional(Schema.String),
-}).annotate({ identifier: "UserLicense" });
+export const UserLicense: Schema.Schema<UserLicense> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    customerId: Schema.optional(Schema.String),
+    applicationId: Schema.optional(Schema.String),
+    enabled: Schema.optional(Schema.Boolean),
+    state: Schema.optional(Schema.String),
+    editionId: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UserLicense" });
 
 export interface Editions {
+  /** (Deprecated) */
+  editionId?: string;
   /** (Deprecated) */
   seatCount?: number;
   /** (Deprecated) */
   assignedSeats?: number;
-  /** (Deprecated) */
-  editionId?: string;
 }
 
-export const Editions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  seatCount: Schema.optional(Schema.Number),
-  assignedSeats: Schema.optional(Schema.Number),
-  editionId: Schema.optional(Schema.String),
-}).annotate({ identifier: "Editions" });
+export const Editions: Schema.Schema<Editions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    editionId: Schema.optional(Schema.String),
+    seatCount: Schema.optional(Schema.Number),
+    assignedSeats: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Editions" });
 
 export interface CustomerLicense {
   /** The type of API resource. This is always `appsmarket#customerLicense`. */
   kind?: string;
-  /** The ID of the customer license. */
-  id?: string;
   /** The customer's license status. One of: - `ACTIVE`: The customer has a valid license. - `UNLICENSED`: There is no license. Either this customer has never installed your application or has deleted it. */
   state?: string;
   /** The ID of the application corresponding to this license query. */
@@ -80,16 +80,19 @@ export interface CustomerLicense {
   editions?: ReadonlyArray<Editions>;
   /** The domain name of the customer. */
   customerId?: string;
+  /** The ID of the customer license. */
+  id?: string;
 }
 
-export const CustomerLicense = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  applicationId: Schema.optional(Schema.String),
-  editions: Schema.optional(Schema.Array(Editions)),
-  customerId: Schema.optional(Schema.String),
-}).annotate({ identifier: "CustomerLicense" });
+export const CustomerLicense: Schema.Schema<CustomerLicense> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    applicationId: Schema.optional(Schema.String),
+    editions: Schema.optional(Schema.Array(Editions)),
+    customerId: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomerLicense" });
 
 // ==========================================================================
 // Errors

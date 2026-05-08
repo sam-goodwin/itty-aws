@@ -578,14 +578,22 @@ function generateSchema(
     lines.push(`}`);
     lines.push("");
 
-    // Generate Effect Schema — only use Schema.suspend for recursive types
+    // Generate Effect Schema. Always annotate the export with an
+    // explicit `Schema.Schema<Name>` type — without it, TS infers the
+    // full structural type and serializes it into the .d.ts, which
+    // breaks with TS7056 ("inferred type exceeds the maximum length
+    // the compiler will serialize") on very wide schemas (e.g.
+    // `searchads360-v23`'s `SearchAds360Row`, which has hundreds of
+    // optional cross-referenced fields). Annotating short-circuits
+    // serialization. Recursive schemas need `Schema.suspend` to break
+    // the cycle; non-recursive ones can use `Schema.Struct` directly.
     if (isRecursive) {
       lines.push(
         `export const ${name}: Schema.Schema<${name}> = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({`,
       );
     } else {
       lines.push(
-        `export const ${name} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+        `export const ${name}: Schema.Schema<${name}> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
       );
     }
     for (const [propName, propSchema] of Object.entries(schema.properties)) {
@@ -600,11 +608,21 @@ function generateSchema(
       }
     }
     if (isRecursive) {
+      // Recursive schemas need the double-cast: `Schema.suspend` returns
+      // a thunk that TS can't resolve back to `Schema.Schema<Name>`
+      // because of the `Name → Name` cycle.
       lines.push(
         `})).annotate({ identifier: ${JSON.stringify(name)} }) as any as Schema.Schema<${name}>;`,
       );
     } else {
-      lines.push(`}).annotate({ identifier: ${JSON.stringify(name)} });`);
+      // Non-recursive: the `Schema.Struct<Fields>` returned by Effect
+      // is structurally assignable to `Schema.Schema<Name>` (the
+      // generated `interface Name` mirrors the struct fields), so the
+      // explicit type annotation on `export const` is enough — no cast
+      // needed.
+      lines.push(
+        `}).annotate({ identifier: ${JSON.stringify(name)} });`,
+      );
     }
   } else if (schema.type === "object" && schema.additionalProperties) {
     // Map type

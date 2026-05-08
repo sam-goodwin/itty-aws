@@ -22,20 +22,19 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface DisableDatabaseInstanceRequest {}
-
-export const DisableDatabaseInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DisableDatabaseInstanceRequest",
-  });
-
 export interface DatabaseInstance {
   /** Output only. Output Only. The globally unique hostname of the database. */
   databaseUrl?: string;
-  /** Output only. The resource name of the project this instance belongs to. For example: `projects/{project-number}`. */
-  project?: string;
   /** The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. */
   name?: string;
+  /** Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted. */
+  type?:
+    | "DATABASE_INSTANCE_TYPE_UNSPECIFIED"
+    | "DEFAULT_DATABASE"
+    | "USER_DATABASE"
+    | (string & {});
+  /** Output only. The resource name of the project this instance belongs to. For example: `projects/{project-number}`. */
+  project?: string;
   /** Output only. The database's lifecycle state. Read-only. */
   state?:
     | "LIFECYCLE_STATE_UNSPECIFIED"
@@ -43,47 +42,49 @@ export interface DatabaseInstance {
     | "DISABLED"
     | "DELETED"
     | (string & {});
-  /** Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted. */
-  type?:
-    | "DATABASE_INSTANCE_TYPE_UNSPECIFIED"
-    | "DEFAULT_DATABASE"
-    | "USER_DATABASE"
-    | (string & {});
 }
 
-export const DatabaseInstance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  databaseUrl: Schema.optional(Schema.String),
-  project: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-}).annotate({ identifier: "DatabaseInstance" });
+export const DatabaseInstance: Schema.Schema<DatabaseInstance> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseUrl: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    project: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DatabaseInstance" });
+
+export interface ReenableDatabaseInstanceRequest {}
+
+export const ReenableDatabaseInstanceRequest: Schema.Schema<ReenableDatabaseInstanceRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "ReenableDatabaseInstanceRequest",
+  });
+
+export interface DisableDatabaseInstanceRequest {}
+
+export const DisableDatabaseInstanceRequest: Schema.Schema<DisableDatabaseInstanceRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DisableDatabaseInstanceRequest",
+  });
 
 export interface ListDatabaseInstancesResponse {
-  /** List of each DatabaseInstance that is in the parent Firebase project. */
-  instances?: ReadonlyArray<DatabaseInstance>;
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent call to `ListDatabaseInstances` to find the next group of database instances. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
+  /** List of each DatabaseInstance that is in the parent Firebase project. */
+  instances?: ReadonlyArray<DatabaseInstance>;
 }
 
-export const ListDatabaseInstancesResponse =
+export const ListDatabaseInstancesResponse: Schema.Schema<ListDatabaseInstancesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    instances: Schema.optional(Schema.Array(DatabaseInstance)),
     nextPageToken: Schema.optional(Schema.String),
+    instances: Schema.optional(Schema.Array(DatabaseInstance)),
   }).annotate({ identifier: "ListDatabaseInstancesResponse" });
 
 export interface UndeleteDatabaseInstanceRequest {}
 
-export const UndeleteDatabaseInstanceRequest =
+export const UndeleteDatabaseInstanceRequest: Schema.Schema<UndeleteDatabaseInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteDatabaseInstanceRequest",
-  });
-
-export interface ReenableDatabaseInstanceRequest {}
-
-export const ReenableDatabaseInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "ReenableDatabaseInstanceRequest",
   });
 
 // ==========================================================================
@@ -140,43 +141,88 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface DisableProjectsLocationsInstancesRequest {
-  /** Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}` */
+export interface GetProjectsLocationsInstancesRequest {
+  /** Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. `database-id` is a globally unique identifier across all parent collections. For convenience, this method allows you to supply `-` as a wildcard character in place of specific collections under `projects` and `locations`. The resulting wildcarding form of the method is: `projects/-/locations/-/instances/{database-id}`. */
   name: string;
-  /** Request body */
-  body?: DisableDatabaseInstanceRequest;
 }
 
-export const DisableProjectsLocationsInstancesRequest =
+export const GetProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(DisableDatabaseInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{+name}:disable", hasBody: true }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DisableProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Schema<GetProjectsLocationsInstancesRequest>;
 
-export type DisableProjectsLocationsInstancesResponse = DatabaseInstance;
-export const DisableProjectsLocationsInstancesResponse =
+export type GetProjectsLocationsInstancesResponse = DatabaseInstance;
+export const GetProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DatabaseInstance;
 
-export type DisableProjectsLocationsInstancesError =
+export type GetProjectsLocationsInstancesError =
   | DefaultErrors
   | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  | Forbidden;
 
-/** Disables a DatabaseInstance. The database can be re-enabled later using ReenableDatabaseInstance. When a database is disabled, all reads and writes are denied, including view access in the Firebase console. */
-export const disableProjectsLocationsInstances: API.OperationMethod<
-  DisableProjectsLocationsInstancesRequest,
-  DisableProjectsLocationsInstancesResponse,
-  DisableProjectsLocationsInstancesError,
+/** Gets the DatabaseInstance identified by the specified resource name. */
+export const getProjectsLocationsInstances: API.OperationMethod<
+  GetProjectsLocationsInstancesRequest,
+  GetProjectsLocationsInstancesResponse,
+  GetProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DisableProjectsLocationsInstancesRequest,
-  output: DisableProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+  input: GetProjectsLocationsInstancesRequest,
+  output: GetProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsInstancesRequest {
+  /** Required. The parent project for which to list database instances, in the form: `projects/{project-number}/locations/{location-id}` To list across all locations, use a parent in the form: `projects/{project-number}/locations/-` */
+  parent: string;
+  /** Token returned from a previous call to `ListDatabaseInstances` indicating where in the set of database instances to resume listing. */
+  pageToken?: string;
+  /** The maximum number of database instances to return in the response. The server may return fewer than this at its discretion. If no value is specified (or too large a value is specified), then the server will impose its own limit. */
+  pageSize?: number;
+  /** Indicate that DatabaseInstances in the `DELETED` state should also be returned. */
+  showDeleted?: boolean;
+}
+
+export const ListProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    showDeleted: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("showDeleted"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+parent}/instances" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsInstancesRequest>;
+
+export type ListProjectsLocationsInstancesResponse =
+  ListDatabaseInstancesResponse;
+export const ListProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListDatabaseInstancesResponse;
+
+export type ListProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists each DatabaseInstance associated with the specified parent project. The list items are returned in no particular order, but will be a consistent view of the database instances when additional requests are made with a `pageToken`. The resulting list contains instances in any STATE. The list results may be stale by a few seconds. Use GetDatabaseInstance for consistent reads. */
+export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
+  ListProjectsLocationsInstancesRequest,
+  ListProjectsLocationsInstancesResponse,
+  ListProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsInstancesRequest,
+  output: ListProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface UndeleteProjectsLocationsInstancesRequest {
@@ -215,93 +261,6 @@ export const undeleteProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsLocationsInstancesRequest,
   output: UndeleteProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsInstancesRequest {
-  /** Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}` */
-  name: string;
-}
-
-export const DeleteProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsInstancesRequest>;
-
-export type DeleteProjectsLocationsInstancesResponse = DatabaseInstance;
-export const DeleteProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DatabaseInstance;
-
-export type DeleteProjectsLocationsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Marks a DatabaseInstance to be deleted. The DatabaseInstance will be set to the DELETED state for 20 days, and will be purged within 30 days. The default database cannot be deleted. IDs for deleted database instances may never be recovered or re-used. The Database may only be deleted if it is already in a DISABLED state. */
-export const deleteProjectsLocationsInstances: API.OperationMethod<
-  DeleteProjectsLocationsInstancesRequest,
-  DeleteProjectsLocationsInstancesResponse,
-  DeleteProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsInstancesRequest,
-  output: DeleteProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsLocationsInstancesRequest {
-  /** Required. The parent project for which to create a database instance, in the form: `projects/{project-number}/locations/{location-id}`. */
-  parent: string;
-  /** When set to true, the request will be validated but not submitted. */
-  validateOnly?: boolean;
-  /** The globally unique identifier of the database instance. */
-  databaseId?: string;
-  /** Request body */
-  body?: DatabaseInstance;
-}
-
-export const CreateProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    validateOnly: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("validateOnly"),
-    ),
-    databaseId: Schema.optional(Schema.String).pipe(T.HttpQuery("databaseId")),
-    body: Schema.optional(DatabaseInstance).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/{+parent}/instances",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsInstancesRequest>;
-
-export type CreateProjectsLocationsInstancesResponse = DatabaseInstance;
-export const CreateProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DatabaseInstance;
-
-export type CreateProjectsLocationsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Requests that a new DatabaseInstance be created. The state of a successfully created DatabaseInstance is ACTIVE. Only available for projects on the Blaze plan. Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo. Note that it might take a few minutes for billing enablement state to propagate to Firebase systems. */
-export const createProjectsLocationsInstances: API.OperationMethod<
-  CreateProjectsLocationsInstancesRequest,
-  CreateProjectsLocationsInstancesResponse,
-  CreateProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsInstancesRequest,
-  output: CreateProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -344,86 +303,128 @@ export const reenableProjectsLocationsInstances: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsInstancesRequest {
-  /** Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. `database-id` is a globally unique identifier across all parent collections. For convenience, this method allows you to supply `-` as a wildcard character in place of specific collections under `projects` and `locations`. The resulting wildcarding form of the method is: `projects/-/locations/-/instances/{database-id}`. */
+export interface DeleteProjectsLocationsInstancesRequest {
+  /** Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}` */
   name: string;
 }
 
-export const GetProjectsLocationsInstancesRequest =
+export const DeleteProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+name}" }),
+    T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsInstancesRequest>;
 
-export type GetProjectsLocationsInstancesResponse = DatabaseInstance;
-export const GetProjectsLocationsInstancesResponse =
+export type DeleteProjectsLocationsInstancesResponse = DatabaseInstance;
+export const DeleteProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DatabaseInstance;
 
-export type GetProjectsLocationsInstancesError =
+export type DeleteProjectsLocationsInstancesError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Gets the DatabaseInstance identified by the specified resource name. */
-export const getProjectsLocationsInstances: API.OperationMethod<
-  GetProjectsLocationsInstancesRequest,
-  GetProjectsLocationsInstancesResponse,
-  GetProjectsLocationsInstancesError,
+/** Marks a DatabaseInstance to be deleted. The DatabaseInstance will be set to the DELETED state for 20 days, and will be purged within 30 days. The default database cannot be deleted. IDs for deleted database instances may never be recovered or re-used. The Database may only be deleted if it is already in a DISABLED state. */
+export const deleteProjectsLocationsInstances: API.OperationMethod<
+  DeleteProjectsLocationsInstancesRequest,
+  DeleteProjectsLocationsInstancesResponse,
+  DeleteProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsInstancesRequest,
-  output: GetProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden],
+  input: DeleteProjectsLocationsInstancesRequest,
+  output: DeleteProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsLocationsInstancesRequest {
-  /** Indicate that DatabaseInstances in the `DELETED` state should also be returned. */
-  showDeleted?: boolean;
-  /** The maximum number of database instances to return in the response. The server may return fewer than this at its discretion. If no value is specified (or too large a value is specified), then the server will impose its own limit. */
-  pageSize?: number;
-  /** Required. The parent project for which to list database instances, in the form: `projects/{project-number}/locations/{location-id}` To list across all locations, use a parent in the form: `projects/{project-number}/locations/-` */
+export interface CreateProjectsLocationsInstancesRequest {
+  /** Required. The parent project for which to create a database instance, in the form: `projects/{project-number}/locations/{location-id}`. */
   parent: string;
-  /** Token returned from a previous call to `ListDatabaseInstances` indicating where in the set of database instances to resume listing. */
-  pageToken?: string;
+  /** The globally unique identifier of the database instance. */
+  databaseId?: string;
+  /** When set to true, the request will be validated but not submitted. */
+  validateOnly?: boolean;
+  /** Request body */
+  body?: DatabaseInstance;
 }
 
-export const ListProjectsLocationsInstancesRequest =
+export const CreateProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    showDeleted: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("showDeleted"),
-    ),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    databaseId: Schema.optional(Schema.String).pipe(T.HttpQuery("databaseId")),
+    validateOnly: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("validateOnly"),
+    ),
+    body: Schema.optional(DatabaseInstance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+parent}/instances" }),
+    T.Http({
+      method: "POST",
+      path: "v1beta/{+parent}/instances",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Schema<CreateProjectsLocationsInstancesRequest>;
 
-export type ListProjectsLocationsInstancesResponse =
-  ListDatabaseInstancesResponse;
-export const ListProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDatabaseInstancesResponse;
+export type CreateProjectsLocationsInstancesResponse = DatabaseInstance;
+export const CreateProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ DatabaseInstance;
 
-export type ListProjectsLocationsInstancesError =
+export type CreateProjectsLocationsInstancesError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Lists each DatabaseInstance associated with the specified parent project. The list items are returned in no particular order, but will be a consistent view of the database instances when additional requests are made with a `pageToken`. The resulting list contains instances in any STATE. The list results may be stale by a few seconds. Use GetDatabaseInstance for consistent reads. */
-export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
-  ListProjectsLocationsInstancesRequest,
-  ListProjectsLocationsInstancesResponse,
-  ListProjectsLocationsInstancesError,
+/** Requests that a new DatabaseInstance be created. The state of a successfully created DatabaseInstance is ACTIVE. Only available for projects on the Blaze plan. Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo. Note that it might take a few minutes for billing enablement state to propagate to Firebase systems. */
+export const createProjectsLocationsInstances: API.OperationMethod<
+  CreateProjectsLocationsInstancesRequest,
+  CreateProjectsLocationsInstancesResponse,
+  CreateProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsInstancesRequest,
-  output: ListProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsInstancesRequest,
+  output: CreateProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DisableProjectsLocationsInstancesRequest {
+  /** Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}` */
+  name: string;
+  /** Request body */
+  body?: DisableDatabaseInstanceRequest;
+}
+
+export const DisableProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(DisableDatabaseInstanceRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1beta/{+name}:disable", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<DisableProjectsLocationsInstancesRequest>;
+
+export type DisableProjectsLocationsInstancesResponse = DatabaseInstance;
+export const DisableProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ DatabaseInstance;
+
+export type DisableProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Disables a DatabaseInstance. The database can be re-enabled later using ReenableDatabaseInstance. When a database is disabled, all reads and writes are denied, including view access in the Firebase console. */
+export const disableProjectsLocationsInstances: API.OperationMethod<
+  DisableProjectsLocationsInstancesRequest,
+  DisableProjectsLocationsInstancesResponse,
+  DisableProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DisableProjectsLocationsInstancesRequest,
+  output: DisableProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

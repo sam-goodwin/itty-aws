@@ -23,22 +23,23 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface EmissionsGramsPerPax {
-  /** Emissions for one passenger in economy class in grams. This field is always computed and populated, regardless of whether the aircraft has economy class seats or not. */
-  economy?: number;
   /** Emissions for one passenger in premium economy class in grams. This field is always computed and populated, regardless of whether the aircraft has premium economy class seats or not. */
   premiumEconomy?: number;
+  /** Emissions for one passenger in economy class in grams. This field is always computed and populated, regardless of whether the aircraft has economy class seats or not. */
+  economy?: number;
   /** Emissions for one passenger in first class in grams. This field is always computed and populated, regardless of whether the aircraft has first class seats or not. */
   first?: number;
   /** Emissions for one passenger in business class in grams. This field is always computed and populated, regardless of whether the aircraft has business class seats or not. */
   business?: number;
 }
 
-export const EmissionsGramsPerPax = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  economy: Schema.optional(Schema.Number),
-  premiumEconomy: Schema.optional(Schema.Number),
-  first: Schema.optional(Schema.Number),
-  business: Schema.optional(Schema.Number),
-}).annotate({ identifier: "EmissionsGramsPerPax" });
+export const EmissionsGramsPerPax: Schema.Schema<EmissionsGramsPerPax> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    premiumEconomy: Schema.optional(Schema.Number),
+    economy: Schema.optional(Schema.Number),
+    first: Schema.optional(Schema.Number),
+    business: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "EmissionsGramsPerPax" });
 
 export interface Market {
   /** Required. IATA airport code for flight origin, e.g. "LHR". */
@@ -47,10 +48,11 @@ export interface Market {
   destination?: string;
 }
 
-export const Market = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  origin: Schema.optional(Schema.String),
-  destination: Schema.optional(Schema.String),
-}).annotate({ identifier: "Market" });
+export const Market: Schema.Schema<Market> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    origin: Schema.optional(Schema.String),
+    destination: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Market" });
 
 export interface TypicalFlightEmissions {
   /** Optional. Typical flight emissions per passenger for requested market. Will not be present if a typical emissions could not be computed. For the list of reasons why typical flight emissions could not be computed, see [GitHub](https://github.com/google/travel-impact-model/blob/main/projects/typical_flight_emissions.md#step-7-validate-dataset). */
@@ -59,12 +61,45 @@ export interface TypicalFlightEmissions {
   market?: Market;
 }
 
-export const TypicalFlightEmissions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const TypicalFlightEmissions: Schema.Schema<TypicalFlightEmissions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emissionsGramsPerPax: Schema.optional(EmissionsGramsPerPax),
     market: Schema.optional(Market),
-  },
-).annotate({ identifier: "TypicalFlightEmissions" });
+  }).annotate({ identifier: "TypicalFlightEmissions" });
+
+export interface ModelVersion {
+  /** Minor versions: Changes to the model that, while being consistent across schema versions, change the model parameters or implementation. */
+  minor?: number;
+  /** Patch versions: Implementation changes meant to address bugs or inaccuracies in the model implementation. */
+  patch?: number;
+  /** Major versions: Major changes to methodology (e.g. adding new data sources to the model that lead to major output changes). Such changes will be infrequent and announced well in advance. Might involve API version changes, which will respect [Google Cloud API guidelines](https://cloud.google.com/endpoints/docs/openapi/versioning-an-api#backwards-incompatible) */
+  major?: number;
+  /** Dated versions: Model datasets are recreated with refreshed input data but no change to the algorithms regularly. */
+  dated?: string;
+}
+
+export const ModelVersion: Schema.Schema<ModelVersion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minor: Schema.optional(Schema.Number),
+    patch: Schema.optional(Schema.Number),
+    major: Schema.optional(Schema.Number),
+    dated: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ModelVersion" });
+
+export interface ComputeTypicalFlightEmissionsResponse {
+  /** Market's Typical Flight Emissions requested. */
+  typicalFlightEmissions?: ReadonlyArray<TypicalFlightEmissions>;
+  /** The model version under which typical flight emission estimates for all flights in this response were computed. */
+  modelVersion?: ModelVersion;
+}
+
+export const ComputeTypicalFlightEmissionsResponse: Schema.Schema<ComputeTypicalFlightEmissionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    typicalFlightEmissions: Schema.optional(
+      Schema.Array(TypicalFlightEmissions),
+    ),
+    modelVersion: Schema.optional(ModelVersion),
+  }).annotate({ identifier: "ComputeTypicalFlightEmissionsResponse" });
 
 export interface Travelimpactmodel_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -75,23 +110,46 @@ export interface Travelimpactmodel_Date {
   month?: number;
 }
 
-export const Travelimpactmodel_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const Travelimpactmodel_Date: Schema.Schema<Travelimpactmodel_Date> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
-  },
-).annotate({ identifier: "Travelimpactmodel_Date" });
+  }).annotate({ identifier: "Travelimpactmodel_Date" });
+
+export interface Flight {
+  /** Required. Date of the flight in the time zone of the origin airport. Must be a date in the present or future. */
+  departureDate?: Travelimpactmodel_Date;
+  /** Required. IATA carrier code, e.g. "AA". */
+  operatingCarrierCode?: string;
+  /** Required. Flight number, e.g. 324. */
+  flightNumber?: number;
+  /** Required. IATA airport code for flight origin, e.g. "LHR". */
+  origin?: string;
+  /** Required. IATA airport code for flight destination, e.g. "JFK". */
+  destination?: string;
+}
+
+export const Flight: Schema.Schema<Flight> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    departureDate: Schema.optional(Travelimpactmodel_Date),
+    operatingCarrierCode: Schema.optional(Schema.String),
+    flightNumber: Schema.optional(Schema.Number),
+    origin: Schema.optional(Schema.String),
+    destination: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Flight" });
+
+export interface ComputeFlightEmissionsRequest {
+  /** Required. Direct flights to return emission estimates for. */
+  flights?: ReadonlyArray<Flight>;
+}
+
+export const ComputeFlightEmissionsRequest: Schema.Schema<ComputeFlightEmissionsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flights: Schema.optional(Schema.Array(Flight)),
+  }).annotate({ identifier: "ComputeFlightEmissionsRequest" });
 
 export interface Scope3FlightSegment {
-  /** Optional. Up to 4-digit [flight number](https://en.wikipedia.org/wiki/Flight_number), e.g. `71`, from [1, 9999]. This is first used to match a specific flight if a flight number is specified alongside origin, destination, and carrier. If a flight number is not specified, we will first try to match the flight to a typical flight between the provided origin and destination airports. If that fails and/or origin & destination are not provided, we will use the distance-based emissions model based on the flight distance provided. */
-  flightNumber?: number;
-  /** Optional. Distance in kilometers, e.g. `2423`, from [1, 2.5e16) km. This is used to match a flight to distance-based emissions when origin and destination are not provided or there are no matching typical flights. */
-  distanceKm?: string;
-  /** Optional. 3-character [IATA airport code](https://www.iata.org/en/publications/directories/code-search/) for flight origin, e.g. `YVR`. This is used to match specific flight if provided alongside destination, carrier, and flight number. If there is no match, we will first try to match the flight to a typical flight between the provided origin and destination airports. Otherwise, we will use the distance-based emissions model if the flight distance is provided. */
-  origin?: string;
-  /** Required. Date of the flight in the time zone of the origin airport. Only year is required for typical flight and distance-based emissions models (month and day values are ignored and therefore, can be either omitted, set to 0, or set to a valid date for those cases). Correspondingly, if a specific date is not provided for TIM emissions, we will fallback to typical flight (or distance-based) emissions. */
-  departureDate?: Travelimpactmodel_Date;
   /** Required. The cabin class of the flight. */
   cabinClass?:
     | "CABIN_CLASS_UNSPECIFIED"
@@ -100,82 +158,101 @@ export interface Scope3FlightSegment {
     | "BUSINESS"
     | "FIRST"
     | (string & {});
+  /** Required. Date of the flight in the time zone of the origin airport. Only year is required for typical flight and distance-based emissions models (month and day values are ignored and therefore, can be either omitted, set to 0, or set to a valid date for those cases). Correspondingly, if a specific date is not provided for TIM emissions, we will fallback to typical flight (or distance-based) emissions. */
+  departureDate?: Travelimpactmodel_Date;
   /** Optional. 2-character [IATA carrier code](https://www.iata.org/en/publications/directories/code-search/), e.g. `KE`. This is required if specific flight matching is desired. Otherwise, this is unused for typical flight and distance-based emissions models. This could be both operating and marketing carrier code (i.e. codeshare is covered). */
   carrierCode?: string;
+  /** Optional. Distance in kilometers, e.g. `2423`, from [1, 2.5e16) km. This is used to match a flight to distance-based emissions when origin and destination are not provided or there are no matching typical flights. */
+  distanceKm?: string;
+  /** Optional. Up to 4-digit [flight number](https://en.wikipedia.org/wiki/Flight_number), e.g. `71`, from [1, 9999]. This is first used to match a specific flight if a flight number is specified alongside origin, destination, and carrier. If a flight number is not specified, we will first try to match the flight to a typical flight between the provided origin and destination airports. If that fails and/or origin & destination are not provided, we will use the distance-based emissions model based on the flight distance provided. */
+  flightNumber?: number;
+  /** Optional. 3-character [IATA airport code](https://www.iata.org/en/publications/directories/code-search/) for flight origin, e.g. `YVR`. This is used to match specific flight if provided alongside destination, carrier, and flight number. If there is no match, we will first try to match the flight to a typical flight between the provided origin and destination airports. Otherwise, we will use the distance-based emissions model if the flight distance is provided. */
+  origin?: string;
   /** Optional. 3-character [IATA airport code](https://www.iata.org/en/publications/directories/code-search/) for flight destination, e.g. `ICN`. This is used to match specific flight if provided alongside origin, carrier, and flight number. If there is no match, we will first try to match the flight to a typical flight between the provided origin and destination airports. Otherwise, we will use the distance-based emissions model if the flight distance is provided. */
   destination?: string;
 }
 
-export const Scope3FlightSegment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  flightNumber: Schema.optional(Schema.Number),
-  distanceKm: Schema.optional(Schema.String),
-  origin: Schema.optional(Schema.String),
-  departureDate: Schema.optional(Travelimpactmodel_Date),
-  cabinClass: Schema.optional(Schema.String),
-  carrierCode: Schema.optional(Schema.String),
-  destination: Schema.optional(Schema.String),
-}).annotate({ identifier: "Scope3FlightSegment" });
+export const Scope3FlightSegment: Schema.Schema<Scope3FlightSegment> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cabinClass: Schema.optional(Schema.String),
+    departureDate: Schema.optional(Travelimpactmodel_Date),
+    carrierCode: Schema.optional(Schema.String),
+    distanceKm: Schema.optional(Schema.String),
+    flightNumber: Schema.optional(Schema.Number),
+    origin: Schema.optional(Schema.String),
+    destination: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Scope3FlightSegment" });
 
-export interface ModelVersion {
-  /** Major versions: Major changes to methodology (e.g. adding new data sources to the model that lead to major output changes). Such changes will be infrequent and announced well in advance. Might involve API version changes, which will respect [Google Cloud API guidelines](https://cloud.google.com/endpoints/docs/openapi/versioning-an-api#backwards-incompatible) */
-  major?: number;
-  /** Dated versions: Model datasets are recreated with refreshed input data but no change to the algorithms regularly. */
-  dated?: string;
-  /** Minor versions: Changes to the model that, while being consistent across schema versions, change the model parameters or implementation. */
-  minor?: number;
-  /** Patch versions: Implementation changes meant to address bugs or inaccuracies in the model implementation. */
-  patch?: number;
+export interface ComputeTypicalFlightEmissionsRequest {
+  /** Required. Request the typical flight emissions estimates for this market pair. A maximum of 1000 markets can be requested. */
+  markets?: ReadonlyArray<Market>;
 }
 
-export const ModelVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  major: Schema.optional(Schema.Number),
-  dated: Schema.optional(Schema.String),
-  minor: Schema.optional(Schema.Number),
-  patch: Schema.optional(Schema.Number),
-}).annotate({ identifier: "ModelVersion" });
+export const ComputeTypicalFlightEmissionsRequest: Schema.Schema<ComputeTypicalFlightEmissionsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    markets: Schema.optional(Schema.Array(Market)),
+  }).annotate({ identifier: "ComputeTypicalFlightEmissionsRequest" });
+
+export interface Scope3FlightEmissions {
+  /** Identifier. Matches the flight identifiers in the request. */
+  flight?: Scope3FlightSegment;
+  /** Optional. The source of the emissions data. */
+  source?:
+    | "SCOPE3_DATA_TYPE_UNSPECIFIED"
+    | "TIM_EMISSIONS"
+    | "TYPICAL_FLIGHT_EMISSIONS"
+    | "DISTANCE_BASED_EMISSIONS"
+    | (string & {});
+  /** Optional. Total flight emissions (sum of well-to-tank and tank-to-wake) per passenger based on the requested info. This is the total emissions and unless you have specific reasons for using TTW or WTT emissions, you should use this number. */
+  wtwEmissionsGramsPerPax?: string;
+  /** Optional. Well-to-tank flight emissions per passenger based on the requested info. */
+  wttEmissionsGramsPerPax?: string;
+  /** Optional. Tank-to-wake flight emissions per passenger based on the requested info. */
+  ttwEmissionsGramsPerPax?: string;
+}
+
+export const Scope3FlightEmissions: Schema.Schema<Scope3FlightEmissions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flight: Schema.optional(Scope3FlightSegment),
+    source: Schema.optional(Schema.String),
+    wtwEmissionsGramsPerPax: Schema.optional(Schema.String),
+    wttEmissionsGramsPerPax: Schema.optional(Schema.String),
+    ttwEmissionsGramsPerPax: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Scope3FlightEmissions" });
+
+export interface ComputeScope3FlightEmissionsResponse {
+  /** List of flight segments with emission estimates. */
+  flightEmissions?: ReadonlyArray<Scope3FlightEmissions>;
+  /** The model version under which emission estimates for all flights in this response were computed. */
+  modelVersion?: ModelVersion;
+}
+
+export const ComputeScope3FlightEmissionsResponse: Schema.Schema<ComputeScope3FlightEmissionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flightEmissions: Schema.optional(Schema.Array(Scope3FlightEmissions)),
+    modelVersion: Schema.optional(ModelVersion),
+  }).annotate({ identifier: "ComputeScope3FlightEmissionsResponse" });
 
 export interface EasaLabelMetadata {
-  /** Sustainable Aviation Fuel (SAF) emissions discount percentage applied to the label. It is a percentage as a decimal. The values are in the interval [0,1]. For example, 0.0021 means 0.21%. This discount and reduction in emissions are reported by the EASA label but they are not included in the CO2e estimates distributed by this API. */
-  safDiscountPercentage?: number;
-  /** The date when the label expires. The label can be displayed until the end of this date. */
-  labelExpiryDate?: Travelimpactmodel_Date;
-  /** Version of the label. */
-  labelVersion?: string;
   /** The date when the label was issued. */
   labelIssueDate?: Travelimpactmodel_Date;
+  /** The date when the label expires. The label can be displayed until the end of this date. */
+  labelExpiryDate?: Travelimpactmodel_Date;
+  /** Sustainable Aviation Fuel (SAF) emissions discount percentage applied to the label. It is a percentage as a decimal. The values are in the interval [0,1]. For example, 0.0021 means 0.21%. This discount and reduction in emissions are reported by the EASA label but they are not included in the CO2e estimates distributed by this API. */
+  safDiscountPercentage?: number;
+  /** Version of the label. */
+  labelVersion?: string;
 }
 
-export const EasaLabelMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  safDiscountPercentage: Schema.optional(Schema.Number),
-  labelExpiryDate: Schema.optional(Travelimpactmodel_Date),
-  labelVersion: Schema.optional(Schema.String),
-  labelIssueDate: Schema.optional(Travelimpactmodel_Date),
-}).annotate({ identifier: "EasaLabelMetadata" });
-
-export interface Flight {
-  /** Required. Flight number, e.g. 324. */
-  flightNumber?: number;
-  /** Required. IATA airport code for flight origin, e.g. "LHR". */
-  origin?: string;
-  /** Required. Date of the flight in the time zone of the origin airport. Must be a date in the present or future. */
-  departureDate?: Travelimpactmodel_Date;
-  /** Required. IATA carrier code, e.g. "AA". */
-  operatingCarrierCode?: string;
-  /** Required. IATA airport code for flight destination, e.g. "JFK". */
-  destination?: string;
-}
-
-export const Flight = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  flightNumber: Schema.optional(Schema.Number),
-  origin: Schema.optional(Schema.String),
-  departureDate: Schema.optional(Travelimpactmodel_Date),
-  operatingCarrierCode: Schema.optional(Schema.String),
-  destination: Schema.optional(Schema.String),
-}).annotate({ identifier: "Flight" });
+export const EasaLabelMetadata: Schema.Schema<EasaLabelMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labelIssueDate: Schema.optional(Travelimpactmodel_Date),
+    labelExpiryDate: Schema.optional(Travelimpactmodel_Date),
+    safDiscountPercentage: Schema.optional(Schema.Number),
+    labelVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EasaLabelMetadata" });
 
 export interface FlightWithEmissions {
-  /** Optional. Per-passenger emission estimate numbers. Will not be present if emissions could not be computed. For the list of reasons why emissions could not be computed, see ComputeFlightEmissions. */
-  emissionsGramsPerPax?: EmissionsGramsPerPax;
   /** Optional. The significance of contrails warming impact compared to the total CO2e emissions impact. */
   contrailsImpactBucket?:
     | "CONTRAILS_IMPACT_UNSPECIFIED"
@@ -183,44 +260,24 @@ export interface FlightWithEmissions {
     | "CONTRAILS_IMPACT_MODERATE"
     | "CONTRAILS_IMPACT_SEVERE"
     | (string & {});
-  /** Optional. The source of the emissions data. */
-  source?: "SOURCE_UNSPECIFIED" | "TIM" | "EASA" | (string & {});
+  /** Optional. Per-passenger emission estimate numbers. Will not be present if emissions could not be computed. For the list of reasons why emissions could not be computed, see ComputeFlightEmissions. */
+  emissionsGramsPerPax?: EmissionsGramsPerPax;
   /** Optional. Metadata about the EASA Flight Emissions Label. Only set when the emissions data source is EASA. */
   easaLabelMetadata?: EasaLabelMetadata;
   /** Identifier. Matches the flight identifiers in the request. Note: all IATA codes are capitalized. */
   flight?: Flight;
+  /** Optional. The source of the emissions data. */
+  source?: "SOURCE_UNSPECIFIED" | "TIM" | "EASA" | (string & {});
 }
 
-export const FlightWithEmissions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  emissionsGramsPerPax: Schema.optional(EmissionsGramsPerPax),
-  contrailsImpactBucket: Schema.optional(Schema.String),
-  source: Schema.optional(Schema.String),
-  easaLabelMetadata: Schema.optional(EasaLabelMetadata),
-  flight: Schema.optional(Flight),
-}).annotate({ identifier: "FlightWithEmissions" });
-
-export interface ComputeFlightEmissionsResponse {
-  /** The model version under which emission estimates for all flights in this response were computed. */
-  modelVersion?: ModelVersion;
-  /** List of flight legs with emission estimates. */
-  flightEmissions?: ReadonlyArray<FlightWithEmissions>;
-}
-
-export const ComputeFlightEmissionsResponse =
+export const FlightWithEmissions: Schema.Schema<FlightWithEmissions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    modelVersion: Schema.optional(ModelVersion),
-    flightEmissions: Schema.optional(Schema.Array(FlightWithEmissions)),
-  }).annotate({ identifier: "ComputeFlightEmissionsResponse" });
-
-export interface ComputeTypicalFlightEmissionsRequest {
-  /** Required. Request the typical flight emissions estimates for this market pair. A maximum of 1000 markets can be requested. */
-  markets?: ReadonlyArray<Market>;
-}
-
-export const ComputeTypicalFlightEmissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    markets: Schema.optional(Schema.Array(Market)),
-  }).annotate({ identifier: "ComputeTypicalFlightEmissionsRequest" });
+    contrailsImpactBucket: Schema.optional(Schema.String),
+    emissionsGramsPerPax: Schema.optional(EmissionsGramsPerPax),
+    easaLabelMetadata: Schema.optional(EasaLabelMetadata),
+    flight: Schema.optional(Flight),
+    source: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FlightWithEmissions" });
 
 export interface ComputeScope3FlightEmissionsRequest {
   /** Required. Flights to return emission estimates for. */
@@ -229,75 +286,24 @@ export interface ComputeScope3FlightEmissionsRequest {
   modelVersion?: ModelVersion;
 }
 
-export const ComputeScope3FlightEmissionsRequest =
+export const ComputeScope3FlightEmissionsRequest: Schema.Schema<ComputeScope3FlightEmissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flights: Schema.optional(Schema.Array(Scope3FlightSegment)),
     modelVersion: Schema.optional(ModelVersion),
   }).annotate({ identifier: "ComputeScope3FlightEmissionsRequest" });
 
-export interface ComputeTypicalFlightEmissionsResponse {
-  /** Market's Typical Flight Emissions requested. */
-  typicalFlightEmissions?: ReadonlyArray<TypicalFlightEmissions>;
-  /** The model version under which typical flight emission estimates for all flights in this response were computed. */
-  modelVersion?: ModelVersion;
-}
-
-export const ComputeTypicalFlightEmissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    typicalFlightEmissions: Schema.optional(
-      Schema.Array(TypicalFlightEmissions),
-    ),
-    modelVersion: Schema.optional(ModelVersion),
-  }).annotate({ identifier: "ComputeTypicalFlightEmissionsResponse" });
-
-export interface Scope3FlightEmissions {
-  /** Optional. Well-to-tank flight emissions per passenger based on the requested info. */
-  wttEmissionsGramsPerPax?: string;
-  /** Optional. The source of the emissions data. */
-  source?:
-    | "SCOPE3_DATA_TYPE_UNSPECIFIED"
-    | "TIM_EMISSIONS"
-    | "TYPICAL_FLIGHT_EMISSIONS"
-    | "DISTANCE_BASED_EMISSIONS"
-    | (string & {});
-  /** Identifier. Matches the flight identifiers in the request. */
-  flight?: Scope3FlightSegment;
-  /** Optional. Tank-to-wake flight emissions per passenger based on the requested info. */
-  ttwEmissionsGramsPerPax?: string;
-  /** Optional. Total flight emissions (sum of well-to-tank and tank-to-wake) per passenger based on the requested info. This is the total emissions and unless you have specific reasons for using TTW or WTT emissions, you should use this number. */
-  wtwEmissionsGramsPerPax?: string;
-}
-
-export const Scope3FlightEmissions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  wttEmissionsGramsPerPax: Schema.optional(Schema.String),
-  source: Schema.optional(Schema.String),
-  flight: Schema.optional(Scope3FlightSegment),
-  ttwEmissionsGramsPerPax: Schema.optional(Schema.String),
-  wtwEmissionsGramsPerPax: Schema.optional(Schema.String),
-}).annotate({ identifier: "Scope3FlightEmissions" });
-
-export interface ComputeScope3FlightEmissionsResponse {
+export interface ComputeFlightEmissionsResponse {
+  /** List of flight legs with emission estimates. */
+  flightEmissions?: ReadonlyArray<FlightWithEmissions>;
   /** The model version under which emission estimates for all flights in this response were computed. */
   modelVersion?: ModelVersion;
-  /** List of flight segments with emission estimates. */
-  flightEmissions?: ReadonlyArray<Scope3FlightEmissions>;
 }
 
-export const ComputeScope3FlightEmissionsResponse =
+export const ComputeFlightEmissionsResponse: Schema.Schema<ComputeFlightEmissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flightEmissions: Schema.optional(Schema.Array(FlightWithEmissions)),
     modelVersion: Schema.optional(ModelVersion),
-    flightEmissions: Schema.optional(Schema.Array(Scope3FlightEmissions)),
-  }).annotate({ identifier: "ComputeScope3FlightEmissionsResponse" });
-
-export interface ComputeFlightEmissionsRequest {
-  /** Required. Direct flights to return emission estimates for. */
-  flights?: ReadonlyArray<Flight>;
-}
-
-export const ComputeFlightEmissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    flights: Schema.optional(Schema.Array(Flight)),
-  }).annotate({ identifier: "ComputeFlightEmissionsRequest" });
+  }).annotate({ identifier: "ComputeFlightEmissionsResponse" });
 
 // ==========================================================================
 // Errors
@@ -353,6 +359,47 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
+export interface ComputeFlightEmissionsFlightsRequest {
+  /** Request body */
+  body?: ComputeFlightEmissionsRequest;
+}
+
+export const ComputeFlightEmissionsFlightsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(ComputeFlightEmissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/flights:computeFlightEmissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ComputeFlightEmissionsFlightsRequest>;
+
+export type ComputeFlightEmissionsFlightsResponse =
+  ComputeFlightEmissionsResponse;
+export const ComputeFlightEmissionsFlightsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ComputeFlightEmissionsResponse;
+
+export type ComputeFlightEmissionsFlightsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Stateless method to retrieve emission estimates. Details on how emission estimates are computed are in [GitHub](https://github.com/google/travel-impact-model) The response will contain all entries that match the input flight legs, in the same order. If there are no estimates available for a certain flight leg, the response will return the flight leg object with empty emission fields. The request will still be considered successful. Reasons for missing emission estimates include: * The flight is unknown to the server. * The input flight leg is missing one or more identifiers. * The flight date is in the past. * The aircraft type is not supported by the model. * Missing seat configuration. The request can contain up to 1000 flight legs. If the request has more than 1000 direct flights, if will fail with an INVALID_ARGUMENT error. */
+export const computeFlightEmissionsFlights: API.OperationMethod<
+  ComputeFlightEmissionsFlightsRequest,
+  ComputeFlightEmissionsFlightsResponse,
+  ComputeFlightEmissionsFlightsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ComputeFlightEmissionsFlightsRequest,
+  output: ComputeFlightEmissionsFlightsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ComputeTypicalFlightEmissionsFlightsRequest {
   /** Request body */
   body?: ComputeTypicalFlightEmissionsRequest;
@@ -393,47 +440,6 @@ export const computeTypicalFlightEmissionsFlights: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ComputeTypicalFlightEmissionsFlightsRequest,
   output: ComputeTypicalFlightEmissionsFlightsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ComputeFlightEmissionsFlightsRequest {
-  /** Request body */
-  body?: ComputeFlightEmissionsRequest;
-}
-
-export const ComputeFlightEmissionsFlightsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    body: Schema.optional(ComputeFlightEmissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/flights:computeFlightEmissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ComputeFlightEmissionsFlightsRequest>;
-
-export type ComputeFlightEmissionsFlightsResponse =
-  ComputeFlightEmissionsResponse;
-export const ComputeFlightEmissionsFlightsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ComputeFlightEmissionsResponse;
-
-export type ComputeFlightEmissionsFlightsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Stateless method to retrieve emission estimates. Details on how emission estimates are computed are in [GitHub](https://github.com/google/travel-impact-model) The response will contain all entries that match the input flight legs, in the same order. If there are no estimates available for a certain flight leg, the response will return the flight leg object with empty emission fields. The request will still be considered successful. Reasons for missing emission estimates include: * The flight is unknown to the server. * The input flight leg is missing one or more identifiers. * The flight date is in the past. * The aircraft type is not supported by the model. * Missing seat configuration. The request can contain up to 1000 flight legs. If the request has more than 1000 direct flights, if will fail with an INVALID_ARGUMENT error. */
-export const computeFlightEmissionsFlights: API.OperationMethod<
-  ComputeFlightEmissionsFlightsRequest,
-  ComputeFlightEmissionsFlightsResponse,
-  ComputeFlightEmissionsFlightsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ComputeFlightEmissionsFlightsRequest,
-  output: ComputeFlightEmissionsFlightsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 

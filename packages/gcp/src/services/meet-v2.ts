@@ -22,177 +22,66 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface PhoneUser {
-  /** Output only. Partially redacted user's phone number when calling. */
-  displayName?: string;
-}
-
-export const PhoneUser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-}).annotate({ identifier: "PhoneUser" });
-
 export interface SignedinUser {
-  /** Output only. Unique ID for the user. Interoperable with Admin SDK API and People API. Format: `users/{user}` */
-  user?: string;
   /** Output only. For a personal device, it's the user's first name and last name. For a robot account, it's the administrator-specified device name. For example, "Altostrat Room". */
   displayName?: string;
+  /** Output only. Unique ID for the user. Interoperable with Admin SDK API and People API. Format: `users/{user}` */
+  user?: string;
 }
 
-export const SignedinUser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  user: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-}).annotate({ identifier: "SignedinUser" });
-
-export interface AnonymousUser {
-  /** Output only. User provided name when they join a conference anonymously. */
-  displayName?: string;
-}
-
-export const AnonymousUser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-}).annotate({ identifier: "AnonymousUser" });
-
-export interface Participant {
-  /** User calling from their phone. */
-  phoneUser?: PhoneUser;
-  /** Signed-in user. */
-  signedinUser?: SignedinUser;
-  /** Output only. Resource name of the participant. Format: `conferenceRecords/{conference_record}/participants/{participant}` */
-  name?: string;
-  /** Output only. Time when the participant first joined the meeting. */
-  earliestStartTime?: string;
-  /** Output only. Time when the participant left the meeting for the last time. This can be null if it's an active meeting. */
-  latestEndTime?: string;
-  /** Anonymous user. */
-  anonymousUser?: AnonymousUser;
-}
-
-export const Participant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  phoneUser: Schema.optional(PhoneUser),
-  signedinUser: Schema.optional(SignedinUser),
-  name: Schema.optional(Schema.String),
-  earliestStartTime: Schema.optional(Schema.String),
-  latestEndTime: Schema.optional(Schema.String),
-  anonymousUser: Schema.optional(AnonymousUser),
-}).annotate({ identifier: "Participant" });
-
-export interface ListParticipantsResponse {
-  /** List of participants in one page. */
-  participants?: ReadonlyArray<Participant>;
-  /** Token to be circulated back for further List call if current List doesn't include all the participants. Unset if all participants are returned. */
-  nextPageToken?: string;
-  /** Total, exact number of `participants`. By default, this field isn't included in the response. Set the field mask in [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters) to receive this field in the response. */
-  totalSize?: number;
-}
-
-export const ListParticipantsResponse =
+export const SignedinUser: Schema.Schema<SignedinUser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    participants: Schema.optional(Schema.Array(Participant)),
-    nextPageToken: Schema.optional(Schema.String),
-    totalSize: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "ListParticipantsResponse" });
+    displayName: Schema.optional(Schema.String),
+    user: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SignedinUser" });
 
-export interface SmartNotesConfig {
-  /** Defines whether to automatically generate a summary and recap of the meeting for all invitees in the organization when someone with the privilege to enable smart notes joins the meeting. */
-  autoSmartNotesGeneration?:
-    | "AUTO_GENERATION_TYPE_UNSPECIFIED"
-    | "ON"
-    | "OFF"
-    | (string & {});
-}
-
-export const SmartNotesConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  autoSmartNotesGeneration: Schema.optional(Schema.String),
-}).annotate({ identifier: "SmartNotesConfig" });
-
-export interface DriveDestination {
-  /** Output only. The `fileId` for the underlying MP4 file. For example, "1kuceFZohVoCh6FulBHxwy6I15Ogpc4hP". Use `$ GET https://www.googleapis.com/drive/v3/files/{$fileId}?alt=media` to download the blob. For more information, see https://developers.google.com/drive/api/v3/reference/files/get. */
-  file?: string;
-  /** Output only. Link used to play back the recording file in the browser. For example, `https://drive.google.com/file/d/{$fileId}/view`. */
-  exportUri?: string;
-}
-
-export const DriveDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  file: Schema.optional(Schema.String),
-  exportUri: Schema.optional(Schema.String),
-}).annotate({ identifier: "DriveDestination" });
-
-export interface Recording {
-  /** Output only. Current state. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "STARTED"
-    | "ENDED"
-    | "FILE_GENERATED"
-    | (string & {});
-  /** Output only. Timestamp when the recording ended. */
-  endTime?: string;
-  /** Output only. Resource name of the recording. Format: `conferenceRecords/{conference_record}/recordings/{recording}` where `{recording}` is a 1:1 mapping to each unique recording session during the conference. */
+export interface ConferenceRecord {
+  /** Identifier. Resource name of the conference record. Format: `conferenceRecords/{conference_record}` where `{conference_record}` is a unique ID for each instance of a call within a space. */
   name?: string;
-  /** Output only. Recording is saved to Google Drive as an MP4 file. The `drive_destination` includes the Drive `fileId` that can be used to download the file using the `files.get` method of the Drive API. */
-  driveDestination?: DriveDestination;
-  /** Output only. Timestamp when the recording started. */
+  /** Output only. Timestamp when the conference started. Always set. */
   startTime?: string;
-}
-
-export const Recording = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  state: Schema.optional(Schema.String),
-  endTime: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  driveDestination: Schema.optional(DriveDestination),
-  startTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "Recording" });
-
-export interface DocsDestination {
-  /** Output only. The document ID for the underlying Google Docs transcript file. For example, "1kuceFZohVoCh6FulBHxwy6I15Ogpc4hP". Use the `documents.get` method of the Google Docs API (https://developers.google.com/docs/api/reference/rest/v1/documents/get) to fetch the content. */
-  document?: string;
-  /** Output only. URI for the Google Docs transcript file. Use `https://docs.google.com/document/d/{$DocumentId}/view` to browse the transcript in the browser. */
-  exportUri?: string;
-}
-
-export const DocsDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  document: Schema.optional(Schema.String),
-  exportUri: Schema.optional(Schema.String),
-}).annotate({ identifier: "DocsDestination" });
-
-export interface Transcript {
-  /** Output only. Timestamp when the transcript started. */
-  startTime?: string;
-  /** Output only. Resource name of the transcript. Format: `conferenceRecords/{conference_record}/transcripts/{transcript}`, where `{transcript}` is a 1:1 mapping to each unique transcription session of the conference. */
-  name?: string;
-  /** Output only. Where the Google Docs transcript is saved. */
-  docsDestination?: DocsDestination;
-  /** Output only. Timestamp when the transcript stopped. */
+  /** Output only. Server enforced expiration time for when this conference record resource is deleted. The resource is deleted 30 days after the conference ends. */
+  expireTime?: string;
+  /** Output only. Timestamp when the conference ended. Set for past conferences. Unset if the conference is ongoing. */
   endTime?: string;
-  /** Output only. Current state. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "STARTED"
-    | "ENDED"
-    | "FILE_GENERATED"
-    | (string & {});
+  /** Output only. The space where the conference was held. */
+  space?: string;
 }
 
-export const Transcript = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  startTime: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  docsDestination: Schema.optional(DocsDestination),
-  endTime: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-}).annotate({ identifier: "Transcript" });
+export const ConferenceRecord: Schema.Schema<ConferenceRecord> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    space: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConferenceRecord" });
 
-export interface ListTranscriptsResponse {
-  /** List of transcripts in one page. */
-  transcripts?: ReadonlyArray<Transcript>;
-  /** Token to be circulated back for further List call if current List doesn't include all the transcripts. Unset if all transcripts are returned. */
+export interface ListConferenceRecordsResponse {
+  /** List of conferences in one page. */
+  conferenceRecords?: ReadonlyArray<ConferenceRecord>;
+  /** Token to be circulated back for further List call if current List does NOT include all the Conferences. Unset if all conferences have been returned. */
   nextPageToken?: string;
 }
 
-export const ListTranscriptsResponse =
+export const ListConferenceRecordsResponse: Schema.Schema<ListConferenceRecordsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    transcripts: Schema.optional(Schema.Array(Transcript)),
+    conferenceRecords: Schema.optional(Schema.Array(ConferenceRecord)),
     nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListTranscriptsResponse" });
+  }).annotate({ identifier: "ListConferenceRecordsResponse" });
+
+export interface GatewaySipAccess {
+  /** The Session Initiation Protocol (SIP) URI the conference can be reached through. The string is in one of these formats: * "sip:USER_ID@GATEWAY_ADDRESS" * "sips:USER_ID@GATEWAY_ADDRESS" where USER_ID is the 13-digit universal pin (with the future option to support using a Meet meeting code as well), and GATEWAY_ADDRESS is a valid address to be resolved using a DNS SRV lookup, or a dotted quad. */
+  uri?: string;
+  /** The permanent numeric code for manual entry on specially configured devices. */
+  sipAccessCode?: string;
+}
+
+export const GatewaySipAccess: Schema.Schema<GatewaySipAccess> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    sipAccessCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GatewaySipAccess" });
 
 export interface ModerationRestrictions {
   /** Defines who has permission to send reactions in the meeting space. */
@@ -201,14 +90,14 @@ export interface ModerationRestrictions {
     | "HOSTS_ONLY"
     | "NO_RESTRICTION"
     | (string & {});
-  /** Defines who has permission to share their screen in the meeting space. */
-  presentRestriction?:
+  /** Defines who has permission to send chat messages in the meeting space. */
+  chatRestriction?:
     | "RESTRICTION_TYPE_UNSPECIFIED"
     | "HOSTS_ONLY"
     | "NO_RESTRICTION"
     | (string & {});
-  /** Defines who has permission to send chat messages in the meeting space. */
-  chatRestriction?:
+  /** Defines who has permission to share their screen in the meeting space. */
+  presentRestriction?:
     | "RESTRICTION_TYPE_UNSPECIFIED"
     | "HOSTS_ONLY"
     | "NO_RESTRICTION"
@@ -221,14 +110,13 @@ export interface ModerationRestrictions {
     | (string & {});
 }
 
-export const ModerationRestrictions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const ModerationRestrictions: Schema.Schema<ModerationRestrictions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reactionRestriction: Schema.optional(Schema.String),
-    presentRestriction: Schema.optional(Schema.String),
     chatRestriction: Schema.optional(Schema.String),
+    presentRestriction: Schema.optional(Schema.String),
     defaultJoinAsViewerType: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "ModerationRestrictions" });
+  }).annotate({ identifier: "ModerationRestrictions" });
 
 export interface RecordingConfig {
   /** Defines whether a meeting space is automatically recorded when someone with the privilege to record joins the meeting. */
@@ -239,9 +127,10 @@ export interface RecordingConfig {
     | (string & {});
 }
 
-export const RecordingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  autoRecordingGeneration: Schema.optional(Schema.String),
-}).annotate({ identifier: "RecordingConfig" });
+export const RecordingConfig: Schema.Schema<RecordingConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoRecordingGeneration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RecordingConfig" });
 
 export interface TranscriptionConfig {
   /** Defines whether the content of a meeting is automatically transcribed when someone with the privilege to transcribe joins the meeting. */
@@ -252,28 +141,46 @@ export interface TranscriptionConfig {
     | (string & {});
 }
 
-export const TranscriptionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  autoTranscriptionGeneration: Schema.optional(Schema.String),
-}).annotate({ identifier: "TranscriptionConfig" });
+export const TranscriptionConfig: Schema.Schema<TranscriptionConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoTranscriptionGeneration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TranscriptionConfig" });
+
+export interface SmartNotesConfig {
+  /** Defines whether to automatically generate a summary and recap of the meeting for all invitees in the organization when someone with the privilege to enable smart notes joins the meeting. */
+  autoSmartNotesGeneration?:
+    | "AUTO_GENERATION_TYPE_UNSPECIFIED"
+    | "ON"
+    | "OFF"
+    | (string & {});
+}
+
+export const SmartNotesConfig: Schema.Schema<SmartNotesConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoSmartNotesGeneration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SmartNotesConfig" });
 
 export interface ArtifactConfig {
   /** Configuration for recording. */
   recordingConfig?: RecordingConfig;
-  /** Configuration for auto-smart-notes. */
-  smartNotesConfig?: SmartNotesConfig;
   /** Configuration for auto-transcript. */
   transcriptionConfig?: TranscriptionConfig;
+  /** Configuration for auto-smart-notes. */
+  smartNotesConfig?: SmartNotesConfig;
 }
 
-export const ArtifactConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  recordingConfig: Schema.optional(RecordingConfig),
-  smartNotesConfig: Schema.optional(SmartNotesConfig),
-  transcriptionConfig: Schema.optional(TranscriptionConfig),
-}).annotate({ identifier: "ArtifactConfig" });
+export const ArtifactConfig: Schema.Schema<ArtifactConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recordingConfig: Schema.optional(RecordingConfig),
+    transcriptionConfig: Schema.optional(TranscriptionConfig),
+    smartNotesConfig: Schema.optional(SmartNotesConfig),
+  }).annotate({ identifier: "ArtifactConfig" });
 
 export interface SpaceConfig {
-  /** The pre-configured moderation mode for the Meeting. Default: Controlled by the user's policies. */
-  moderation?: "MODERATION_UNSPECIFIED" | "OFF" | "ON" | (string & {});
+  /** When moderation.ON, these restrictions go into effect for the meeting. When moderation.OFF, will be reset to default ModerationRestrictions. */
+  moderationRestrictions?: ModerationRestrictions;
+  /** Configuration pertaining to the auto-generated artifacts that the meeting supports. */
+  artifactConfig?: ArtifactConfig;
   /** Access type of the meeting space that determines who can join without knocking. Default: The user's default access settings. Controlled by the user's admin for enterprise users or RESTRICTED. */
   accessType?:
     | "ACCESS_TYPE_UNSPECIFIED"
@@ -281,73 +188,156 @@ export interface SpaceConfig {
     | "TRUSTED"
     | "RESTRICTED"
     | (string & {});
-  /** Defines the entry points that can be used to join meetings hosted in this meeting space. Default: EntryPointAccess.ALL */
-  entryPointAccess?:
-    | "ENTRY_POINT_ACCESS_UNSPECIFIED"
-    | "ALL"
-    | "CREATOR_APP_ONLY"
-    | (string & {});
   /** Whether attendance report is enabled for the meeting space. */
   attendanceReportGenerationType?:
     | "ATTENDANCE_REPORT_GENERATION_TYPE_UNSPECIFIED"
     | "GENERATE_REPORT"
     | "DO_NOT_GENERATE"
     | (string & {});
-  /** When moderation.ON, these restrictions go into effect for the meeting. When moderation.OFF, will be reset to default ModerationRestrictions. */
-  moderationRestrictions?: ModerationRestrictions;
-  /** Configuration pertaining to the auto-generated artifacts that the meeting supports. */
-  artifactConfig?: ArtifactConfig;
+  /** Defines the entry points that can be used to join meetings hosted in this meeting space. Default: EntryPointAccess.ALL */
+  entryPointAccess?:
+    | "ENTRY_POINT_ACCESS_UNSPECIFIED"
+    | "ALL"
+    | "CREATOR_APP_ONLY"
+    | (string & {});
+  /** The pre-configured moderation mode for the Meeting. Default: Controlled by the user's policies. */
+  moderation?: "MODERATION_UNSPECIFIED" | "OFF" | "ON" | (string & {});
 }
 
-export const SpaceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  moderation: Schema.optional(Schema.String),
-  accessType: Schema.optional(Schema.String),
-  entryPointAccess: Schema.optional(Schema.String),
-  attendanceReportGenerationType: Schema.optional(Schema.String),
-  moderationRestrictions: Schema.optional(ModerationRestrictions),
-  artifactConfig: Schema.optional(ArtifactConfig),
-}).annotate({ identifier: "SpaceConfig" });
+export const SpaceConfig: Schema.Schema<SpaceConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    moderationRestrictions: Schema.optional(ModerationRestrictions),
+    artifactConfig: Schema.optional(ArtifactConfig),
+    accessType: Schema.optional(Schema.String),
+    attendanceReportGenerationType: Schema.optional(Schema.String),
+    entryPointAccess: Schema.optional(Schema.String),
+    moderation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SpaceConfig" });
 
-export interface TranscriptEntry {
-  /** Output only. Refers to the participant who speaks. */
-  participant?: string;
-  /** Output only. Timestamp when the transcript entry ended. */
-  endTime?: string;
-  /** Output only. The transcribed text of the participant's voice, at maximum 10K words. Note that the limit is subject to change. */
-  text?: string;
-  /** Output only. Timestamp when the transcript entry started. */
-  startTime?: string;
-  /** Output only. Resource name of the entry. Format: "conferenceRecords/{conference_record}/transcripts/{transcript}/entries/{entry}" */
-  name?: string;
-  /** Output only. Language of spoken text, such as "en-US". IETF BCP 47 syntax (https://tools.ietf.org/html/bcp47) */
+export interface PhoneAccess {
+  /** The phone number to dial for this meeting space in E.164 format. Full phone number with a leading '+' character. */
+  phoneNumber?: string;
+  /** The CLDR/ISO 3166 region code for the country associated with this phone access. To be parsed by the i18n RegionCode utility. Example: "SE" for Sweden. */
+  regionCode?: string;
+  /** The BCP 47/LDML language code for the language associated with this phone access. To be parsed by the i18n LanguageCode utility. Examples: "es-419" for Latin American Spanish, "fr-CA" for Canadian French. */
   languageCode?: string;
+  /** The PIN that users must enter after dialing the given number. The PIN consists of only decimal digits and the length may vary. */
+  pin?: string;
 }
 
-export const TranscriptEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  participant: Schema.optional(Schema.String),
-  endTime: Schema.optional(Schema.String),
-  text: Schema.optional(Schema.String),
-  startTime: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  languageCode: Schema.optional(Schema.String),
-}).annotate({ identifier: "TranscriptEntry" });
+export const PhoneAccess: Schema.Schema<PhoneAccess> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phoneNumber: Schema.optional(Schema.String),
+    regionCode: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    pin: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PhoneAccess" });
+
+export interface ActiveConference {
+  /** Output only. Reference to 'ConferenceRecord' resource. Format: `conferenceRecords/{conference_record}` where `{conference_record}` is a unique ID for each instance of a call within a space. */
+  conferenceRecord?: string;
+}
+
+export const ActiveConference: Schema.Schema<ActiveConference> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conferenceRecord: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ActiveConference" });
+
+export interface Space {
+  /** Immutable. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more information, see [How Meet identifies a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space). */
+  name?: string;
+  /** Output only. The SIP-based access methods that can be used to join the conference. Can be empty. */
+  gatewaySipAccess?: ReadonlyArray<GatewaySipAccess>;
+  /** Output only. Type friendly unique string used to join the meeting. Format: `[a-z]+-[a-z]+-[a-z]+`. For example, `abc-mnop-xyz`. The maximum length is 128 characters. Can only be used as an alias of the space name to get the space. */
+  meetingCode?: string;
+  /** Configuration pertaining to the meeting space. */
+  config?: SpaceConfig;
+  /** Output only. All regional phone access methods for this meeting space. Can be empty. */
+  phoneAccess?: ReadonlyArray<PhoneAccess>;
+  /** Output only. URI used to join meetings consisting of `https://meet.google.com/` followed by the `meeting_code`. For example, `https://meet.google.com/abc-mnop-xyz`. */
+  meetingUri?: string;
+  /** Active conference, if it exists. */
+  activeConference?: ActiveConference;
+}
+
+export const Space: Schema.Schema<Space> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    gatewaySipAccess: Schema.optional(Schema.Array(GatewaySipAccess)),
+    meetingCode: Schema.optional(Schema.String),
+    config: Schema.optional(SpaceConfig),
+    phoneAccess: Schema.optional(Schema.Array(PhoneAccess)),
+    meetingUri: Schema.optional(Schema.String),
+    activeConference: Schema.optional(ActiveConference),
+  }).annotate({ identifier: "Space" });
 
 export interface EndActiveConferenceRequest {}
 
-export const EndActiveConferenceRequest =
+export const EndActiveConferenceRequest: Schema.Schema<EndActiveConferenceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EndActiveConferenceRequest",
   });
 
-export interface SmartNote {
-  /** Output only. Timestamp when the smart notes started. */
-  startTime?: string;
-  /** Output only. Identifier. Resource name of the smart notes. Format: `conferenceRecords/{conference_record}/smartNotes/{smart_note}`, where `{smart_note}` is a 1:1 mapping to each unique smart notes session of the conference. */
-  name?: string;
-  /** Output only. Timestamp when the smart notes stopped. */
+export interface TranscriptEntry {
+  /** Output only. Refers to the participant who speaks. */
+  participant?: string;
+  /** Output only. The transcribed text of the participant's voice, at maximum 10K words. Note that the limit is subject to change. */
+  text?: string;
+  /** Output only. Language of spoken text, such as "en-US". IETF BCP 47 syntax (https://tools.ietf.org/html/bcp47) */
+  languageCode?: string;
+  /** Output only. Timestamp when the transcript entry ended. */
   endTime?: string;
-  /** Output only. The Google Doc destination where the smart notes are saved. */
-  docsDestination?: DocsDestination;
+  /** Output only. Resource name of the entry. Format: "conferenceRecords/{conference_record}/transcripts/{transcript}/entries/{entry}" */
+  name?: string;
+  /** Output only. Timestamp when the transcript entry started. */
+  startTime?: string;
+}
+
+export const TranscriptEntry: Schema.Schema<TranscriptEntry> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    participant: Schema.optional(Schema.String),
+    text: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TranscriptEntry" });
+
+export interface ListTranscriptEntriesResponse {
+  /** Token to be circulated back for further List call if current List doesn't include all the transcript entries. Unset if all entries are returned. */
+  nextPageToken?: string;
+  /** List of TranscriptEntries in one page. */
+  transcriptEntries?: ReadonlyArray<TranscriptEntry>;
+}
+
+export const ListTranscriptEntriesResponse: Schema.Schema<ListTranscriptEntriesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    transcriptEntries: Schema.optional(Schema.Array(TranscriptEntry)),
+  }).annotate({ identifier: "ListTranscriptEntriesResponse" });
+
+export interface DriveDestination {
+  /** Output only. The `fileId` for the underlying MP4 file. For example, "1kuceFZohVoCh6FulBHxwy6I15Ogpc4hP". Use `$ GET https://www.googleapis.com/drive/v3/files/{$fileId}?alt=media` to download the blob. For more information, see https://developers.google.com/drive/api/v3/reference/files/get. */
+  file?: string;
+  /** Output only. Link used to play back the recording file in the browser. For example, `https://drive.google.com/file/d/{$fileId}/view`. */
+  exportUri?: string;
+}
+
+export const DriveDestination: Schema.Schema<DriveDestination> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    file: Schema.optional(Schema.String),
+    exportUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DriveDestination" });
+
+export interface Recording {
+  /** Output only. Recording is saved to Google Drive as an MP4 file. The `drive_destination` includes the Drive `fileId` that can be used to download the file using the `files.get` method of the Drive API. */
+  driveDestination?: DriveDestination;
+  /** Output only. Timestamp when the recording ended. */
+  endTime?: string;
+  /** Output only. Resource name of the recording. Format: `conferenceRecords/{conference_record}/recordings/{recording}` where `{recording}` is a 1:1 mapping to each unique recording session during the conference. */
+  name?: string;
+  /** Output only. Timestamp when the recording started. */
+  startTime?: string;
   /** Output only. Current state. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -357,31 +347,149 @@ export interface SmartNote {
     | (string & {});
 }
 
-export const SmartNote = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  startTime: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  endTime: Schema.optional(Schema.String),
-  docsDestination: Schema.optional(DocsDestination),
-  state: Schema.optional(Schema.String),
-}).annotate({ identifier: "SmartNote" });
+export const Recording: Schema.Schema<Recording> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    driveDestination: Schema.optional(DriveDestination),
+    endTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Recording" });
 
-export interface PhoneAccess {
-  /** The phone number to dial for this meeting space in E.164 format. Full phone number with a leading '+' character. */
-  phoneNumber?: string;
-  /** The CLDR/ISO 3166 region code for the country associated with this phone access. To be parsed by the i18n RegionCode utility. Example: "SE" for Sweden. */
-  regionCode?: string;
-  /** The PIN that users must enter after dialing the given number. The PIN consists of only decimal digits and the length may vary. */
-  pin?: string;
-  /** The BCP 47/LDML language code for the language associated with this phone access. To be parsed by the i18n LanguageCode utility. Examples: "es-419" for Latin American Spanish, "fr-CA" for Canadian French. */
-  languageCode?: string;
+export interface AnonymousUser {
+  /** Output only. User provided name when they join a conference anonymously. */
+  displayName?: string;
 }
 
-export const PhoneAccess = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  phoneNumber: Schema.optional(Schema.String),
-  regionCode: Schema.optional(Schema.String),
-  pin: Schema.optional(Schema.String),
-  languageCode: Schema.optional(Schema.String),
-}).annotate({ identifier: "PhoneAccess" });
+export const AnonymousUser: Schema.Schema<AnonymousUser> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AnonymousUser" });
+
+export interface PhoneUser {
+  /** Output only. Partially redacted user's phone number when calling. */
+  displayName?: string;
+}
+
+export const PhoneUser: Schema.Schema<PhoneUser> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PhoneUser" });
+
+export interface Participant {
+  /** Anonymous user. */
+  anonymousUser?: AnonymousUser;
+  /** Output only. Time when the participant left the meeting for the last time. This can be null if it's an active meeting. */
+  latestEndTime?: string;
+  /** User calling from their phone. */
+  phoneUser?: PhoneUser;
+  /** Output only. Time when the participant first joined the meeting. */
+  earliestStartTime?: string;
+  /** Signed-in user. */
+  signedinUser?: SignedinUser;
+  /** Output only. Resource name of the participant. Format: `conferenceRecords/{conference_record}/participants/{participant}` */
+  name?: string;
+}
+
+export const Participant: Schema.Schema<Participant> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    anonymousUser: Schema.optional(AnonymousUser),
+    latestEndTime: Schema.optional(Schema.String),
+    phoneUser: Schema.optional(PhoneUser),
+    earliestStartTime: Schema.optional(Schema.String),
+    signedinUser: Schema.optional(SignedinUser),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Participant" });
+
+export interface DocsDestination {
+  /** Output only. The document ID for the underlying Google Docs transcript file. For example, "1kuceFZohVoCh6FulBHxwy6I15Ogpc4hP". Use the `documents.get` method of the Google Docs API (https://developers.google.com/docs/api/reference/rest/v1/documents/get) to fetch the content. */
+  document?: string;
+  /** Output only. URI for the Google Docs transcript file. Use `https://docs.google.com/document/d/{$DocumentId}/view` to browse the transcript in the browser. */
+  exportUri?: string;
+}
+
+export const DocsDestination: Schema.Schema<DocsDestination> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    document: Schema.optional(Schema.String),
+    exportUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DocsDestination" });
+
+export interface Transcript {
+  /** Output only. Timestamp when the transcript stopped. */
+  endTime?: string;
+  /** Output only. Where the Google Docs transcript is saved. */
+  docsDestination?: DocsDestination;
+  /** Output only. Resource name of the transcript. Format: `conferenceRecords/{conference_record}/transcripts/{transcript}`, where `{transcript}` is a 1:1 mapping to each unique transcription session of the conference. */
+  name?: string;
+  /** Output only. Timestamp when the transcript started. */
+  startTime?: string;
+  /** Output only. Current state. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "STARTED"
+    | "ENDED"
+    | "FILE_GENERATED"
+    | (string & {});
+}
+
+export const Transcript: Schema.Schema<Transcript> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    docsDestination: Schema.optional(DocsDestination),
+    name: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Transcript" });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface SmartNote {
+  /** Output only. The Google Doc destination where the smart notes are saved. */
+  docsDestination?: DocsDestination;
+  /** Output only. Identifier. Resource name of the smart notes. Format: `conferenceRecords/{conference_record}/smartNotes/{smart_note}`, where `{smart_note}` is a 1:1 mapping to each unique smart notes session of the conference. */
+  name?: string;
+  /** Output only. Timestamp when the smart notes started. */
+  startTime?: string;
+  /** Output only. Timestamp when the smart notes stopped. */
+  endTime?: string;
+  /** Output only. Current state. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "STARTED"
+    | "ENDED"
+    | "FILE_GENERATED"
+    | (string & {});
+}
+
+export const SmartNote: Schema.Schema<SmartNote> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    docsDestination: Schema.optional(DocsDestination),
+    name: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SmartNote" });
+
+export interface ParticipantSession {
+  /** Output only. Timestamp when the user session ends. Unset if the user session hasn’t ended. */
+  endTime?: string;
+  /** Identifier. Session id. */
+  name?: string;
+  /** Output only. Timestamp when the user session starts. */
+  startTime?: string;
+}
+
+export const ParticipantSession: Schema.Schema<ParticipantSession> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ParticipantSession" });
 
 export interface ListRecordingsResponse {
   /** List of recordings in one page. */
@@ -390,155 +498,66 @@ export interface ListRecordingsResponse {
   nextPageToken?: string;
 }
 
-export const ListRecordingsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const ListRecordingsResponse: Schema.Schema<ListRecordingsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordings: Schema.optional(Schema.Array(Recording)),
     nextPageToken: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "ListRecordingsResponse" });
-
-export interface Empty {}
-
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
-
-export interface ActiveConference {
-  /** Output only. Reference to 'ConferenceRecord' resource. Format: `conferenceRecords/{conference_record}` where `{conference_record}` is a unique ID for each instance of a call within a space. */
-  conferenceRecord?: string;
-}
-
-export const ActiveConference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  conferenceRecord: Schema.optional(Schema.String),
-}).annotate({ identifier: "ActiveConference" });
-
-export interface GatewaySipAccess {
-  /** The SIP URI the conference can be reached through. The string is on one of the formats: "sip:@" "sips:@" where currently is the 13-digit universal pin, and is a valid address to be resolved using a DNS SRV lookup, or a dotted quad. */
-  uri?: string;
-  /** Permanent numeric code for manual entry on specially configured devices. */
-  sipAccessCode?: string;
-}
-
-export const GatewaySipAccess = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  uri: Schema.optional(Schema.String),
-  sipAccessCode: Schema.optional(Schema.String),
-}).annotate({ identifier: "GatewaySipAccess" });
-
-export interface Space {
-  /** Immutable. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more information, see [How Meet identifies a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space). */
-  name?: string;
-  /** Output only. URI used to join meetings consisting of `https://meet.google.com/` followed by the `meeting_code`. For example, `https://meet.google.com/abc-mnop-xyz`. */
-  meetingUri?: string;
-  /** Output only. All regional phone access methods for this meeting space. Can be empty. */
-  phoneAccess?: ReadonlyArray<PhoneAccess>;
-  /** Configuration pertaining to the meeting space. */
-  config?: SpaceConfig;
-  /** Output only. Type friendly unique string used to join the meeting. Format: `[a-z]+-[a-z]+-[a-z]+`. For example, `abc-mnop-xyz`. The maximum length is 128 characters. Can only be used as an alias of the space name to get the space. */
-  meetingCode?: string;
-  /** Active conference, if it exists. */
-  activeConference?: ActiveConference;
-  /** Output only. The SIP based access methods that can be used to join the conference. Can be empty. */
-  gatewaySipAccess?: ReadonlyArray<GatewaySipAccess>;
-}
-
-export const Space = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  meetingUri: Schema.optional(Schema.String),
-  phoneAccess: Schema.optional(Schema.Array(PhoneAccess)),
-  config: Schema.optional(SpaceConfig),
-  meetingCode: Schema.optional(Schema.String),
-  activeConference: Schema.optional(ActiveConference),
-  gatewaySipAccess: Schema.optional(Schema.Array(GatewaySipAccess)),
-}).annotate({ identifier: "Space" });
-
-export interface ConferenceRecord {
-  /** Output only. Timestamp when the conference started. Always set. */
-  startTime?: string;
-  /** Output only. The space where the conference was held. */
-  space?: string;
-  /** Identifier. Resource name of the conference record. Format: `conferenceRecords/{conference_record}` where `{conference_record}` is a unique ID for each instance of a call within a space. */
-  name?: string;
-  /** Output only. Timestamp when the conference ended. Set for past conferences. Unset if the conference is ongoing. */
-  endTime?: string;
-  /** Output only. Server enforced expiration time for when this conference record resource is deleted. The resource is deleted 30 days after the conference ends. */
-  expireTime?: string;
-}
-
-export const ConferenceRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  startTime: Schema.optional(Schema.String),
-  space: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  endTime: Schema.optional(Schema.String),
-  expireTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "ConferenceRecord" });
-
-export interface ParticipantSession {
-  /** Output only. Timestamp when the user session ends. Unset if the user session hasn’t ended. */
-  endTime?: string;
-  /** Output only. Timestamp when the user session starts. */
-  startTime?: string;
-  /** Identifier. Session id. */
-  name?: string;
-}
-
-export const ParticipantSession = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  endTime: Schema.optional(Schema.String),
-  startTime: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "ParticipantSession" });
+  }).annotate({ identifier: "ListRecordingsResponse" });
 
 export interface ListParticipantSessionsResponse {
-  /** Token to be circulated back for further List call if current List doesn't include all the participants. Unset if all participants are returned. */
-  nextPageToken?: string;
   /** List of participants in one page. */
   participantSessions?: ReadonlyArray<ParticipantSession>;
+  /** Token to be circulated back for further List call if current List doesn't include all the participants. Unset if all participants are returned. */
+  nextPageToken?: string;
 }
 
-export const ListParticipantSessionsResponse =
+export const ListParticipantSessionsResponse: Schema.Schema<ListParticipantSessionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
     participantSessions: Schema.optional(Schema.Array(ParticipantSession)),
+    nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListParticipantSessionsResponse" });
 
-export interface ListTranscriptEntriesResponse {
-  /** Token to be circulated back for further List call if current List doesn't include all the transcript entries. Unset if all entries are returned. */
-  nextPageToken?: string;
-  /** List of TranscriptEntries in one page. */
-  transcriptEntries?: ReadonlyArray<TranscriptEntry>;
-}
-
-export const ListTranscriptEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    transcriptEntries: Schema.optional(Schema.Array(TranscriptEntry)),
-  }).annotate({ identifier: "ListTranscriptEntriesResponse" });
-
-export interface ListConferenceRecordsResponse {
-  /** Token to be circulated back for further List call if current List does NOT include all the Conferences. Unset if all conferences have been returned. */
-  nextPageToken?: string;
-  /** List of conferences in one page. */
-  conferenceRecords?: ReadonlyArray<ConferenceRecord>;
-}
-
-export const ListConferenceRecordsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    conferenceRecords: Schema.optional(Schema.Array(ConferenceRecord)),
-  }).annotate({ identifier: "ListConferenceRecordsResponse" });
-
 export interface ListSmartNotesResponse {
-  /** Token to be circulated back for further List call if current List doesn't include all the smart notes. Unset if all smart notes are returned. */
-  nextPageToken?: string;
   /** List of smart notes in one page. */
   smartNotes?: ReadonlyArray<SmartNote>;
+  /** Token to be circulated back for further List call if current List doesn't include all the smart notes. Unset if all smart notes are returned. */
+  nextPageToken?: string;
 }
 
-export const ListSmartNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    nextPageToken: Schema.optional(Schema.String),
+export const ListSmartNotesResponse: Schema.Schema<ListSmartNotesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     smartNotes: Schema.optional(Schema.Array(SmartNote)),
-  },
-).annotate({ identifier: "ListSmartNotesResponse" });
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSmartNotesResponse" });
+
+export interface ListParticipantsResponse {
+  /** List of participants in one page. */
+  participants?: ReadonlyArray<Participant>;
+  /** Total, exact number of `participants`. By default, this field isn't included in the response. Set the field mask in [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters) to receive this field in the response. */
+  totalSize?: number;
+  /** Token to be circulated back for further List call if current List doesn't include all the participants. Unset if all participants are returned. */
+  nextPageToken?: string;
+}
+
+export const ListParticipantsResponse: Schema.Schema<ListParticipantsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    participants: Schema.optional(Schema.Array(Participant)),
+    totalSize: Schema.optional(Schema.Number),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListParticipantsResponse" });
+
+export interface ListTranscriptsResponse {
+  /** Token to be circulated back for further List call if current List doesn't include all the transcripts. Unset if all transcripts are returned. */
+  nextPageToken?: string;
+  /** List of transcripts in one page. */
+  transcripts?: ReadonlyArray<Transcript>;
+}
+
+export const ListTranscriptsResponse: Schema.Schema<ListTranscriptsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    transcripts: Schema.optional(Schema.Array(Transcript)),
+  }).annotate({ identifier: "ListTranscriptsResponse" });
 
 // ==========================================================================
 // Errors
@@ -701,17 +720,17 @@ export const endActiveConferenceSpaces: API.OperationMethod<
 }));
 
 export interface PatchSpacesRequest {
-  /** Immutable. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more information, see [How Meet identifies a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space). */
-  name: string;
   /** Optional. Field mask used to specify the fields to be updated in the space. If update_mask isn't provided(not set, set with empty paths, or only has "" as paths), it defaults to update all fields provided with values in the request. Using "*" as update_mask will update all fields, including deleting fields not set in the request. */
   updateMask?: string;
+  /** Immutable. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more information, see [How Meet identifies a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space). */
+  name: string;
   /** Request body */
   body?: Space;
 }
 
 export const PatchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+  name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(Space).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
@@ -772,18 +791,18 @@ export const getConferenceRecords: API.OperationMethod<
 }));
 
 export interface ListConferenceRecordsRequest {
-  /** Optional. Maximum number of conference records to return. The service might return fewer than this value. If unspecified, at most 25 conference records are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
-  pageSize?: number;
   /** Optional. Page token returned from previous List Call. */
   pageToken?: string;
+  /** Optional. Maximum number of conference records to return. The service might return fewer than this value. If unspecified, at most 25 conference records are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
+  pageSize?: number;
   /** Optional. User specified filtering condition in [EBNF format](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). The following are the filterable fields: * `space.meeting_code` * `space.name` * `start_time` * `end_time` For example, consider the following filters: * `space.name = "spaces/NAME"` * `space.meeting_code = "abc-mnop-xyz"` * `start_time>="2024-01-01T00:00:00.000Z" AND start_time<="2024-01-02T00:00:00.000Z"` * `end_time IS NULL` */
   filter?: string;
 }
 
 export const ListConferenceRecordsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/conferenceRecords" }),
@@ -805,6 +824,84 @@ export const listConferenceRecords: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsRequest,
   output: ListConferenceRecordsResponse_Op,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetConferenceRecordsSmartNotesRequest {
+  /** Required. Resource name of the smart note. Format: conferenceRecords/{conference_record}/smartNotes/{smart_note} */
+  name: string;
+}
+
+export const GetConferenceRecordsSmartNotesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetConferenceRecordsSmartNotesRequest>;
+
+export type GetConferenceRecordsSmartNotesResponse = SmartNote;
+export const GetConferenceRecordsSmartNotesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SmartNote;
+
+export type GetConferenceRecordsSmartNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets smart notes by smart note ID. */
+export const getConferenceRecordsSmartNotes: API.OperationMethod<
+  GetConferenceRecordsSmartNotesRequest,
+  GetConferenceRecordsSmartNotesResponse,
+  GetConferenceRecordsSmartNotesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetConferenceRecordsSmartNotesRequest,
+  output: GetConferenceRecordsSmartNotesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListConferenceRecordsSmartNotesRequest {
+  /** Optional. Page token returned from previous List Call. */
+  pageToken?: string;
+  /** Required. Format: `conferenceRecords/{conference_record}` */
+  parent: string;
+  /** Optional. Maximum number of smart notes to return. The service might return fewer than this value. If unspecified, at most 10 smart notes are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
+  pageSize?: number;
+}
+
+export const ListConferenceRecordsSmartNotesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+parent}/smartNotes" }),
+    svc,
+  ) as unknown as Schema.Schema<ListConferenceRecordsSmartNotesRequest>;
+
+export type ListConferenceRecordsSmartNotesResponse = ListSmartNotesResponse;
+export const ListConferenceRecordsSmartNotesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListSmartNotesResponse;
+
+export type ListConferenceRecordsSmartNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the set of smart notes from the conference record. By default, ordered by start time and in ascending order. */
+export const listConferenceRecordsSmartNotes: API.PaginatedOperationMethod<
+  ListConferenceRecordsSmartNotesRequest,
+  ListConferenceRecordsSmartNotesResponse,
+  ListConferenceRecordsSmartNotesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListConferenceRecordsSmartNotesRequest,
+  output: ListConferenceRecordsSmartNotesResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -849,17 +946,17 @@ export const getConferenceRecordsRecordings: API.OperationMethod<
 export interface ListConferenceRecordsRecordingsRequest {
   /** Page token returned from previous List Call. */
   pageToken?: string;
-  /** Maximum number of recordings to return. The service might return fewer than this value. If unspecified, at most 10 recordings are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
-  pageSize?: number;
   /** Required. Format: `conferenceRecords/{conference_record}` */
   parent: string;
+  /** Maximum number of recordings to return. The service might return fewer than this value. If unspecified, at most 10 recordings are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
+  pageSize?: number;
 }
 
 export const ListConferenceRecordsRecordingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/recordings" }),
     svc,
@@ -883,171 +980,6 @@ export const listConferenceRecordsRecordings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsRecordingsRequest,
   output: ListConferenceRecordsRecordingsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetConferenceRecordsParticipantsRequest {
-  /** Required. Resource name of the participant. */
-  name: string;
-}
-
-export const GetConferenceRecordsParticipantsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetConferenceRecordsParticipantsRequest>;
-
-export type GetConferenceRecordsParticipantsResponse = Participant;
-export const GetConferenceRecordsParticipantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Participant;
-
-export type GetConferenceRecordsParticipantsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets a participant by participant ID. */
-export const getConferenceRecordsParticipants: API.OperationMethod<
-  GetConferenceRecordsParticipantsRequest,
-  GetConferenceRecordsParticipantsResponse,
-  GetConferenceRecordsParticipantsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetConferenceRecordsParticipantsRequest,
-  output: GetConferenceRecordsParticipantsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListConferenceRecordsParticipantsRequest {
-  /** Maximum number of participants to return. The service might return fewer than this value. If unspecified, at most 100 participants are returned. The maximum value is 250; values above 250 are coerced to 250. Maximum might change in the future. */
-  pageSize?: number;
-  /** Page token returned from previous List Call. */
-  pageToken?: string;
-  /** Optional. User specified filtering condition in [EBNF format](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). The following are the filterable fields: * `earliest_start_time` * `latest_end_time` For example, `latest_end_time IS NULL` returns active participants in the conference. */
-  filter?: string;
-  /** Required. Format: `conferenceRecords/{conference_record}` */
-  parent: string;
-}
-
-export const ListConferenceRecordsParticipantsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/participants" }),
-    svc,
-  ) as unknown as Schema.Schema<ListConferenceRecordsParticipantsRequest>;
-
-export type ListConferenceRecordsParticipantsResponse =
-  ListParticipantsResponse;
-export const ListConferenceRecordsParticipantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListParticipantsResponse;
-
-export type ListConferenceRecordsParticipantsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists the participants in a conference record. By default, ordered by join time and in descending order. This API supports `fields` as standard parameters like every other API. However, when the `fields` request parameter is omitted, this API defaults to `'participants/*, next_page_token'`. */
-export const listConferenceRecordsParticipants: API.PaginatedOperationMethod<
-  ListConferenceRecordsParticipantsRequest,
-  ListConferenceRecordsParticipantsResponse,
-  ListConferenceRecordsParticipantsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListConferenceRecordsParticipantsRequest,
-  output: ListConferenceRecordsParticipantsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetConferenceRecordsParticipantsParticipantSessionsRequest {
-  /** Required. Resource name of the participant. */
-  name: string;
-}
-
-export const GetConferenceRecordsParticipantsParticipantSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetConferenceRecordsParticipantsParticipantSessionsRequest>;
-
-export type GetConferenceRecordsParticipantsParticipantSessionsResponse =
-  ParticipantSession;
-export const GetConferenceRecordsParticipantsParticipantSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ParticipantSession;
-
-export type GetConferenceRecordsParticipantsParticipantSessionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets a participant session by participant session ID. */
-export const getConferenceRecordsParticipantsParticipantSessions: API.OperationMethod<
-  GetConferenceRecordsParticipantsParticipantSessionsRequest,
-  GetConferenceRecordsParticipantsParticipantSessionsResponse,
-  GetConferenceRecordsParticipantsParticipantSessionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetConferenceRecordsParticipantsParticipantSessionsRequest,
-  output: GetConferenceRecordsParticipantsParticipantSessionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListConferenceRecordsParticipantsParticipantSessionsRequest {
-  /** Required. Format: `conferenceRecords/{conference_record}/participants/{participant}` */
-  parent: string;
-  /** Optional. Page token returned from previous List Call. */
-  pageToken?: string;
-  /** Optional. User specified filtering condition in [EBNF format](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). The following are the filterable fields: * `start_time` * `end_time` For example, `end_time IS NULL` returns active participant sessions in the conference record. */
-  filter?: string;
-  /** Optional. Maximum number of participant sessions to return. The service might return fewer than this value. If unspecified, at most 100 participants are returned. The maximum value is 250; values above 250 are coerced to 250. Maximum might change in the future. */
-  pageSize?: number;
-}
-
-export const ListConferenceRecordsParticipantsParticipantSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/participantSessions" }),
-    svc,
-  ) as unknown as Schema.Schema<ListConferenceRecordsParticipantsParticipantSessionsRequest>;
-
-export type ListConferenceRecordsParticipantsParticipantSessionsResponse =
-  ListParticipantSessionsResponse;
-export const ListConferenceRecordsParticipantsParticipantSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListParticipantSessionsResponse;
-
-export type ListConferenceRecordsParticipantsParticipantSessionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists the participant sessions of a participant in a conference record. By default, ordered by join time and in descending order. This API supports `fields` as standard parameters like every other API. However, when the `fields` request parameter is omitted this API defaults to `'participantsessions/*, next_page_token'`. */
-export const listConferenceRecordsParticipantsParticipantSessions: API.PaginatedOperationMethod<
-  ListConferenceRecordsParticipantsParticipantSessionsRequest,
-  ListConferenceRecordsParticipantsParticipantSessionsResponse,
-  ListConferenceRecordsParticipantsParticipantSessionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListConferenceRecordsParticipantsParticipantSessionsRequest,
-  output: ListConferenceRecordsParticipantsParticipantSessionsResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -1170,17 +1102,17 @@ export const getConferenceRecordsTranscriptsEntries: API.OperationMethod<
 export interface ListConferenceRecordsTranscriptsEntriesRequest {
   /** Required. Format: `conferenceRecords/{conference_record}/transcripts/{transcript}` */
   parent: string;
-  /** Maximum number of entries to return. The service might return fewer than this value. If unspecified, at most 10 entries are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
-  pageSize?: number;
   /** Page token returned from previous List Call. */
   pageToken?: string;
+  /** Maximum number of entries to return. The service might return fewer than this value. If unspecified, at most 10 entries are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
+  pageSize?: number;
 }
 
 export const ListConferenceRecordsTranscriptsEntriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/entries" }),
     svc,
@@ -1212,77 +1144,164 @@ export const listConferenceRecordsTranscriptsEntries: API.PaginatedOperationMeth
   },
 }));
 
-export interface GetConferenceRecordsSmartNotesRequest {
-  /** Required. Resource name of the smart note. Format: conferenceRecords/{conference_record}/smartNotes/{smart_note} */
+export interface GetConferenceRecordsParticipantsRequest {
+  /** Required. Resource name of the participant. */
   name: string;
 }
 
-export const GetConferenceRecordsSmartNotesRequest =
+export const GetConferenceRecordsParticipantsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConferenceRecordsSmartNotesRequest>;
+  ) as unknown as Schema.Schema<GetConferenceRecordsParticipantsRequest>;
 
-export type GetConferenceRecordsSmartNotesResponse = SmartNote;
-export const GetConferenceRecordsSmartNotesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SmartNote;
+export type GetConferenceRecordsParticipantsResponse = Participant;
+export const GetConferenceRecordsParticipantsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Participant;
 
-export type GetConferenceRecordsSmartNotesError =
+export type GetConferenceRecordsParticipantsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Gets smart notes by smart note ID. */
-export const getConferenceRecordsSmartNotes: API.OperationMethod<
-  GetConferenceRecordsSmartNotesRequest,
-  GetConferenceRecordsSmartNotesResponse,
-  GetConferenceRecordsSmartNotesError,
+/** Gets a participant by participant ID. */
+export const getConferenceRecordsParticipants: API.OperationMethod<
+  GetConferenceRecordsParticipantsRequest,
+  GetConferenceRecordsParticipantsResponse,
+  GetConferenceRecordsParticipantsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetConferenceRecordsSmartNotesRequest,
-  output: GetConferenceRecordsSmartNotesResponse,
+  input: GetConferenceRecordsParticipantsRequest,
+  output: GetConferenceRecordsParticipantsResponse,
   errors: [NotFound, Forbidden],
 }));
 
-export interface ListConferenceRecordsSmartNotesRequest {
+export interface ListConferenceRecordsParticipantsRequest {
   /** Required. Format: `conferenceRecords/{conference_record}` */
   parent: string;
-  /** Optional. Maximum number of smart notes to return. The service might return fewer than this value. If unspecified, at most 10 smart notes are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
-  pageSize?: number;
-  /** Optional. Page token returned from previous List Call. */
+  /** Page token returned from previous List Call. */
   pageToken?: string;
+  /** Maximum number of participants to return. The service might return fewer than this value. If unspecified, at most 100 participants are returned. The maximum value is 250; values above 250 are coerced to 250. Maximum might change in the future. */
+  pageSize?: number;
+  /** Optional. User specified filtering condition in [EBNF format](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). The following are the filterable fields: * `earliest_start_time` * `latest_end_time` For example, `latest_end_time IS NULL` returns active participants in the conference. */
+  filter?: string;
 }
 
-export const ListConferenceRecordsSmartNotesRequest =
+export const ListConferenceRecordsParticipantsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/smartNotes" }),
+    T.Http({ method: "GET", path: "v2/{+parent}/participants" }),
     svc,
-  ) as unknown as Schema.Schema<ListConferenceRecordsSmartNotesRequest>;
+  ) as unknown as Schema.Schema<ListConferenceRecordsParticipantsRequest>;
 
-export type ListConferenceRecordsSmartNotesResponse = ListSmartNotesResponse;
-export const ListConferenceRecordsSmartNotesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSmartNotesResponse;
+export type ListConferenceRecordsParticipantsResponse =
+  ListParticipantsResponse;
+export const ListConferenceRecordsParticipantsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListParticipantsResponse;
 
-export type ListConferenceRecordsSmartNotesError =
+export type ListConferenceRecordsParticipantsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Lists the set of smart notes from the conference record. By default, ordered by start time and in ascending order. */
-export const listConferenceRecordsSmartNotes: API.PaginatedOperationMethod<
-  ListConferenceRecordsSmartNotesRequest,
-  ListConferenceRecordsSmartNotesResponse,
-  ListConferenceRecordsSmartNotesError,
+/** Lists the participants in a conference record. By default, ordered by join time and in descending order. This API supports `fields` as standard parameters like every other API. However, when the `fields` request parameter is omitted, this API defaults to `'participants/*, next_page_token'`. */
+export const listConferenceRecordsParticipants: API.PaginatedOperationMethod<
+  ListConferenceRecordsParticipantsRequest,
+  ListConferenceRecordsParticipantsResponse,
+  ListConferenceRecordsParticipantsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListConferenceRecordsSmartNotesRequest,
-  output: ListConferenceRecordsSmartNotesResponse,
+  input: ListConferenceRecordsParticipantsRequest,
+  output: ListConferenceRecordsParticipantsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetConferenceRecordsParticipantsParticipantSessionsRequest {
+  /** Required. Resource name of the participant. */
+  name: string;
+}
+
+export const GetConferenceRecordsParticipantsParticipantSessionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetConferenceRecordsParticipantsParticipantSessionsRequest>;
+
+export type GetConferenceRecordsParticipantsParticipantSessionsResponse =
+  ParticipantSession;
+export const GetConferenceRecordsParticipantsParticipantSessionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ParticipantSession;
+
+export type GetConferenceRecordsParticipantsParticipantSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets a participant session by participant session ID. */
+export const getConferenceRecordsParticipantsParticipantSessions: API.OperationMethod<
+  GetConferenceRecordsParticipantsParticipantSessionsRequest,
+  GetConferenceRecordsParticipantsParticipantSessionsResponse,
+  GetConferenceRecordsParticipantsParticipantSessionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetConferenceRecordsParticipantsParticipantSessionsRequest,
+  output: GetConferenceRecordsParticipantsParticipantSessionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListConferenceRecordsParticipantsParticipantSessionsRequest {
+  /** Optional. Page token returned from previous List Call. */
+  pageToken?: string;
+  /** Required. Format: `conferenceRecords/{conference_record}/participants/{participant}` */
+  parent: string;
+  /** Optional. Maximum number of participant sessions to return. The service might return fewer than this value. If unspecified, at most 100 participants are returned. The maximum value is 250; values above 250 are coerced to 250. Maximum might change in the future. */
+  pageSize?: number;
+  /** Optional. User specified filtering condition in [EBNF format](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). The following are the filterable fields: * `start_time` * `end_time` For example, `end_time IS NULL` returns active participant sessions in the conference record. */
+  filter?: string;
+}
+
+export const ListConferenceRecordsParticipantsParticipantSessionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+parent}/participantSessions" }),
+    svc,
+  ) as unknown as Schema.Schema<ListConferenceRecordsParticipantsParticipantSessionsRequest>;
+
+export type ListConferenceRecordsParticipantsParticipantSessionsResponse =
+  ListParticipantSessionsResponse;
+export const ListConferenceRecordsParticipantsParticipantSessionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListParticipantSessionsResponse;
+
+export type ListConferenceRecordsParticipantsParticipantSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the participant sessions of a participant in a conference record. By default, ordered by join time and in descending order. This API supports `fields` as standard parameters like every other API. However, when the `fields` request parameter is omitted this API defaults to `'participantsessions/*, next_page_token'`. */
+export const listConferenceRecordsParticipantsParticipantSessions: API.PaginatedOperationMethod<
+  ListConferenceRecordsParticipantsParticipantSessionsRequest,
+  ListConferenceRecordsParticipantsParticipantSessionsResponse,
+  ListConferenceRecordsParticipantsParticipantSessionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListConferenceRecordsParticipantsParticipantSessionsRequest,
+  output: ListConferenceRecordsParticipantsParticipantSessionsResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",

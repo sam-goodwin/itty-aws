@@ -23,6 +23,8 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface UrlNotification {
+  /** Creation timestamp for this notification. Users should _not_ specify it, the field is ignored at the request time. */
+  notifyTime?: string;
   /** The object of this notification. The URL must be owned by the publisher of this notification and, in case of `URL_UPDATED` notifications, it _must_ be crawlable by Google. */
   url?: string;
   /** The URL life cycle event that Google is being notified about. */
@@ -31,30 +33,29 @@ export interface UrlNotification {
     | "URL_UPDATED"
     | "URL_DELETED"
     | (string & {});
-  /** Creation timestamp for this notification. Users should _not_ specify it, the field is ignored at the request time. */
-  notifyTime?: string;
 }
 
-export const UrlNotification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  url: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  notifyTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "UrlNotification" });
+export const UrlNotification: Schema.Schema<UrlNotification> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    notifyTime: Schema.optional(Schema.String),
+    url: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UrlNotification" });
 
 export interface UrlNotificationMetadata {
   /** URL to which this metadata refers. */
   url?: string;
-  /** Latest notification received with type `URL_UPDATED`. */
-  latestUpdate?: UrlNotification;
   /** Latest notification received with type `URL_REMOVED`. */
   latestRemove?: UrlNotification;
+  /** Latest notification received with type `URL_UPDATED`. */
+  latestUpdate?: UrlNotification;
 }
 
-export const UrlNotificationMetadata =
+export const UrlNotificationMetadata: Schema.Schema<UrlNotificationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
-    latestUpdate: Schema.optional(UrlNotification),
     latestRemove: Schema.optional(UrlNotification),
+    latestUpdate: Schema.optional(UrlNotification),
   }).annotate({ identifier: "UrlNotificationMetadata" });
 
 export interface PublishUrlNotificationResponse {
@@ -62,7 +63,7 @@ export interface PublishUrlNotificationResponse {
   urlNotificationMetadata?: UrlNotificationMetadata;
 }
 
-export const PublishUrlNotificationResponse =
+export const PublishUrlNotificationResponse: Schema.Schema<PublishUrlNotificationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     urlNotificationMetadata: Schema.optional(UrlNotificationMetadata),
   }).annotate({ identifier: "PublishUrlNotificationResponse" });

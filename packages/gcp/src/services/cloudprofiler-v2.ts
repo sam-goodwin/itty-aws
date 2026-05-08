@@ -31,11 +31,12 @@ export interface Deployment {
   labels?: Record<string, string>;
 }
 
-export const Deployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  projectId: Schema.optional(Schema.String),
-  target: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-}).annotate({ identifier: "Deployment" });
+export const Deployment: Schema.Schema<Deployment> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "Deployment" });
 
 export interface CreateProfileRequest {
   /** Deployment details. */
@@ -54,14 +55,23 @@ export interface CreateProfileRequest {
   >;
 }
 
-export const CreateProfileRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  deployment: Schema.optional(Deployment),
-  profileType: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "CreateProfileRequest" });
+export const CreateProfileRequest: Schema.Schema<CreateProfileRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployment: Schema.optional(Deployment),
+    profileType: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CreateProfileRequest" });
 
 export interface Profile {
+  /** Input only. Profile bytes, as a gzip compressed serialized proto, the format is https://github.com/google/pprof/blob/master/proto/profile.proto. */
+  profileBytes?: string;
   /** Output only. Opaque, server-assigned, unique ID for this profile. */
   name?: string;
+  /** Output only. Start time for the profile. This output is only present in response from the ListProfiles method. */
+  startTime?: string;
+  /** Duration of the profiling session. Input (for the offline mode) or output (for the online mode). The field represents requested profiling duration. It may slightly differ from the effective profiling duration, which is recorded in the profile data, in case the profiling can't be stopped immediately (e.g. in case stopping the profiling is handled asynchronously). */
+  duration?: string;
+  /** Input only. Labels associated to this specific profile. These labels will get merged with the deployment labels for the final data set. See documentation on deployment labels for validation rules and limits. */
+  labels?: Record<string, string>;
   /** Type of profile. For offline mode, this must be specified when creating the profile. For online mode it is assigned and returned by the server. */
   profileType?:
     | "PROFILE_TYPE_UNSPECIFIED"
@@ -75,40 +85,34 @@ export interface Profile {
     | (string & {});
   /** Deployment this profile corresponds to. */
   deployment?: Deployment;
-  /** Duration of the profiling session. Input (for the offline mode) or output (for the online mode). The field represents requested profiling duration. It may slightly differ from the effective profiling duration, which is recorded in the profile data, in case the profiling can't be stopped immediately (e.g. in case stopping the profiling is handled asynchronously). */
-  duration?: string;
-  /** Input only. Profile bytes, as a gzip compressed serialized proto, the format is https://github.com/google/pprof/blob/master/proto/profile.proto. */
-  profileBytes?: string;
-  /** Input only. Labels associated to this specific profile. These labels will get merged with the deployment labels for the final data set. See documentation on deployment labels for validation rules and limits. */
-  labels?: Record<string, string>;
-  /** Output only. Start time for the profile. This output is only present in response from the ListProfiles method. */
-  startTime?: string;
 }
 
-export const Profile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  profileType: Schema.optional(Schema.String),
-  deployment: Schema.optional(Deployment),
-  duration: Schema.optional(Schema.String),
-  profileBytes: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  startTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "Profile" });
+export const Profile: Schema.Schema<Profile> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    profileBytes: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    duration: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    profileType: Schema.optional(Schema.String),
+    deployment: Schema.optional(Deployment),
+  }).annotate({ identifier: "Profile" });
 
 export interface ListProfilesResponse {
-  /** List of profiles fetched. */
-  profiles?: ReadonlyArray<Profile>;
   /** Token to receive the next page of results. This field maybe empty if there are no more profiles to fetch. */
   nextPageToken?: string;
   /** Number of profiles that were skipped in the current page since they were not able to be fetched successfully. This should typically be zero. A non-zero value may indicate a transient failure, in which case if the number is too high for your use case, the call may be retried. */
   skippedProfiles?: number;
+  /** List of profiles fetched. */
+  profiles?: ReadonlyArray<Profile>;
 }
 
-export const ListProfilesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  profiles: Schema.optional(Schema.Array(Profile)),
-  nextPageToken: Schema.optional(Schema.String),
-  skippedProfiles: Schema.optional(Schema.Number),
-}).annotate({ identifier: "ListProfilesResponse" });
+export const ListProfilesResponse: Schema.Schema<ListProfilesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    skippedProfiles: Schema.optional(Schema.Number),
+    profiles: Schema.optional(Schema.Array(Profile)),
+  }).annotate({ identifier: "ListProfilesResponse" });
 
 // ==========================================================================
 // Errors
@@ -164,6 +168,47 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
+export interface ListProjectsProfilesRequest {
+  /** Optional. The token to continue pagination and get profiles from a particular page. When paginating, all other parameters provided to `ListProfiles` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Required. The parent, which owns this collection of profiles. Format: projects/{user_project_id} */
+  parent: string;
+  /** Optional. The maximum number of items to return. Default page_size is 1000. Max limit is 1000. */
+  pageSize?: number;
+}
+
+export const ListProjectsProfilesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+parent}/profiles" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsProfilesRequest>;
+
+export type ListProjectsProfilesResponse = ListProfilesResponse;
+export const ListProjectsProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListProfilesResponse;
+
+export type ListProjectsProfilesError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists profiles which have been collected so far and for which the caller has permission to view. */
+export const listProjectsProfiles: API.PaginatedOperationMethod<
+  ListProjectsProfilesRequest,
+  ListProjectsProfilesResponse,
+  ListProjectsProfilesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsProfilesRequest,
+  output: ListProjectsProfilesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
 export interface CreateProjectsProfilesRequest {
   /** Parent project to create the profile in. */
   parent: string;
@@ -200,49 +245,6 @@ export const createProjectsProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsProfilesRequest,
   output: CreateProjectsProfilesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateOfflineProjectsProfilesRequest {
-  /** Parent project to create the profile in. */
-  parent: string;
-  /** Request body */
-  body?: Profile;
-}
-
-export const CreateOfflineProjectsProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(Profile).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+parent}/profiles:createOffline",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateOfflineProjectsProfilesRequest>;
-
-export type CreateOfflineProjectsProfilesResponse = Profile;
-export const CreateOfflineProjectsProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Profile;
-
-export type CreateOfflineProjectsProfilesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** CreateOfflineProfile creates a new profile resource in the offline mode. The client provides the profile to create along with the profile bytes, the server records it. _Direct use of this API is discouraged, please use a [supported profiler agent](https://cloud.google.com/profiler/docs/about-profiler#profiling_agent) instead for profile collection._ */
-export const createOfflineProjectsProfiles: API.OperationMethod<
-  CreateOfflineProjectsProfilesRequest,
-  CreateOfflineProjectsProfilesResponse,
-  CreateOfflineProjectsProfilesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateOfflineProjectsProfilesRequest,
-  output: CreateOfflineProjectsProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -288,43 +290,45 @@ export const patchProjectsProfiles: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsProfilesRequest {
-  /** Required. The parent, which owns this collection of profiles. Format: projects/{user_project_id} */
+export interface CreateOfflineProjectsProfilesRequest {
+  /** Parent project to create the profile in. */
   parent: string;
-  /** Optional. The maximum number of items to return. Default page_size is 1000. Max limit is 1000. */
-  pageSize?: number;
-  /** Optional. The token to continue pagination and get profiles from a particular page. When paginating, all other parameters provided to `ListProfiles` must match the call that provided the page token. */
-  pageToken?: string;
+  /** Request body */
+  body?: Profile;
 }
 
-export const ListProjectsProfilesRequest =
+export const CreateOfflineProjectsProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    body: Schema.optional(Profile).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/profiles" }),
+    T.Http({
+      method: "POST",
+      path: "v2/{+parent}/profiles:createOffline",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsProfilesRequest>;
+  ) as unknown as Schema.Schema<CreateOfflineProjectsProfilesRequest>;
 
-export type ListProjectsProfilesResponse = ListProfilesResponse;
-export const ListProjectsProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListProfilesResponse;
+export type CreateOfflineProjectsProfilesResponse = Profile;
+export const CreateOfflineProjectsProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Profile;
 
-export type ListProjectsProfilesError = DefaultErrors | NotFound | Forbidden;
+export type CreateOfflineProjectsProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Lists profiles which have been collected so far and for which the caller has permission to view. */
-export const listProjectsProfiles: API.PaginatedOperationMethod<
-  ListProjectsProfilesRequest,
-  ListProjectsProfilesResponse,
-  ListProjectsProfilesError,
+/** CreateOfflineProfile creates a new profile resource in the offline mode. The client provides the profile to create along with the profile bytes, the server records it. _Direct use of this API is discouraged, please use a [supported profiler agent](https://cloud.google.com/profiler/docs/about-profiler#profiling_agent) instead for profile collection._ */
+export const createOfflineProjectsProfiles: API.OperationMethod<
+  CreateOfflineProjectsProfilesRequest,
+  CreateOfflineProjectsProfilesResponse,
+  CreateOfflineProjectsProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsProfilesRequest,
-  output: ListProjectsProfilesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateOfflineProjectsProfilesRequest,
+  output: CreateOfflineProjectsProfilesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

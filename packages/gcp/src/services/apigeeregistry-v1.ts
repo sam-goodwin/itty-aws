@@ -23,22 +23,23 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface Expr {
-  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
-  title?: string;
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
+  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
+  title?: string;
 }
 
-export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  title: Schema.optional(Schema.String),
-  expression: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-}).annotate({ identifier: "Expr" });
+export const Expr: Schema.Schema<Expr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. */
@@ -49,256 +50,280 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  role: Schema.optional(Schema.String),
-  members: Schema.optional(Schema.Array(Schema.String)),
-  condition: Schema.optional(Expr),
-}).annotate({ identifier: "Binding" });
+export const Binding: Schema.Schema<Binding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    role: Schema.optional(Schema.String),
+    members: Schema.optional(Schema.Array(Schema.String)),
+    condition: Schema.optional(Expr),
+  }).annotate({ identifier: "Binding" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
-  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
-  etag?: string;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: ReadonlyArray<Binding>;
+  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
+  etag?: string;
 }
 
-export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  version: Schema.optional(Schema.Number),
-  etag: Schema.optional(Schema.String),
-  bindings: Schema.optional(Schema.Array(Binding)),
-}).annotate({ identifier: "Policy" });
-
-export interface SetIamPolicyRequest {
-  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
-  policy?: Policy;
-}
-
-export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  policy: Schema.optional(Policy),
-}).annotate({ identifier: "SetIamPolicyRequest" });
-
-export interface TestIamPermissionsResponse {
-  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsResponse =
+export const Policy: Schema.Schema<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsResponse" });
+    version: Schema.optional(Schema.Number),
+    bindings: Schema.optional(Schema.Array(Binding)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Policy" });
 
-export interface ApiSpec {
-  /** Resource name. */
-  name?: string;
-  /** Output only. The size of the spec file in bytes. If the spec is gzipped, this is the size of the uncompressed spec. */
-  sizeBytes?: number;
-  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed. */
-  labels?: Record<string, string>;
-  /** Output only. Last update timestamp: when the represented revision was last modified. */
-  revisionUpdateTime?: string;
-  /** Output only. Immutable. The revision ID of the spec. A new revision is committed whenever the spec contents are changed. The format is an 8-character hexadecimal string. */
-  revisionId?: string;
-  /** A possibly-hierarchical name used to refer to the spec from other specs. */
-  filename?: string;
-  /** Output only. Revision creation timestamp; when the represented revision was created. */
-  revisionCreateTime?: string;
-  /** Output only. A SHA-256 hash of the spec's contents. If the spec is gzipped, this is the hash of the uncompressed spec. */
-  hash?: string;
-  /** Input only. The contents of the spec. Provided by API callers when specs are created or updated. To access the contents of a spec, use GetApiSpecContents. */
-  contents?: string;
-  /** Output only. Creation timestamp; when the spec resource was created. */
+export interface OperationMetadata {
+  /** The time the operation finished running. */
+  endTime?: string;
+  /** Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  cancellationRequested?: boolean;
+  /** The time the operation was created. */
   createTime?: string;
-  /** The original source URI of the spec (if one exists). This is an external location that can be used for reference purposes but which may not be authoritative since this external resource may change after the spec is retrieved. */
-  sourceUri?: string;
-  /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
-  annotations?: Record<string, string>;
-  /** A detailed description. */
-  description?: string;
-  /** A style (format) descriptor for this spec that is specified as a [Media Type](https://en.wikipedia.org/wiki/Media_type). Possible values include `application/vnd.apigee.proto`, `application/vnd.apigee.openapi`, and `application/vnd.apigee.graphql`, with possible suffixes representing compression types. These hypothetical names are defined in the vendor tree defined in RFC6838 (https://tools.ietf.org/html/rfc6838) and are not final. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip"). */
-  mimeType?: string;
+  /** Name of the verb executed by the operation. */
+  verb?: string;
+  /** API version used to start the operation. */
+  apiVersion?: string;
 }
 
-export const ApiSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  sizeBytes: Schema.optional(Schema.Number),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  revisionUpdateTime: Schema.optional(Schema.String),
-  revisionId: Schema.optional(Schema.String),
-  filename: Schema.optional(Schema.String),
-  revisionCreateTime: Schema.optional(Schema.String),
-  hash: Schema.optional(Schema.String),
-  contents: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  sourceUri: Schema.optional(Schema.String),
-  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  description: Schema.optional(Schema.String),
-  mimeType: Schema.optional(Schema.String),
-}).annotate({ identifier: "ApiSpec" });
+export const OperationMetadata: Schema.Schema<OperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    cancellationRequested: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadata" });
 
-export interface ListApiSpecsResponse {
-  /** The specs from the specified publisher. */
-  apiSpecs?: ReadonlyArray<ApiSpec>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
+export interface CancelOperationRequest {}
+
+export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelOperationRequest",
+  });
+
+export interface RollbackApiSpecRequest {
+  /** Required. The revision ID to roll back to. It must be a revision of the same spec. Example: `c7cfa2a8` */
+  revisionId?: string;
 }
 
-export const ListApiSpecsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  apiSpecs: Schema.optional(Schema.Array(ApiSpec)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListApiSpecsResponse" });
+export const RollbackApiSpecRequest: Schema.Schema<RollbackApiSpecRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RollbackApiSpecRequest" });
 
 export interface Build {
   /** Output only. Path of the open source repository: github.com/apigee/registry. */
   repo?: string;
-  /** Output only. Commit ID of the latest commit in the build. */
-  commitId?: string;
   /** Output only. Commit time of the latest commit in the build. */
   commitTime?: string;
+  /** Output only. Commit ID of the latest commit in the build. */
+  commitId?: string;
 }
 
-export const Build = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  repo: Schema.optional(Schema.String),
-  commitId: Schema.optional(Schema.String),
-  commitTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "Build" });
-
-export interface Location {
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: Record<string, string>;
-}
-
-export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  locationId: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-}).annotate({ identifier: "Location" });
-
-export interface RollbackApiDeploymentRequest {
-  /** Required. The revision ID to roll back to. It must be a revision of the same deployment. Example: `c7cfa2a8` */
-  revisionId?: string;
-}
-
-export const RollbackApiDeploymentRequest =
+export const Build: Schema.Schema<Build> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    revisionId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RollbackApiDeploymentRequest" });
+    repo: Schema.optional(Schema.String),
+    commitTime: Schema.optional(Schema.String),
+    commitId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Build" });
 
-export interface Empty {}
+export interface TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: ReadonlyArray<string>;
+}
 
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
+export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
-export interface ApiDeployment {
-  /** Resource name. */
-  name?: string;
-  /** Output only. Last update timestamp: when the represented revision was last modified. */
-  revisionUpdateTime?: string;
-  /** Text briefly identifying the intended audience of the API. Changes to this value will not affect the revision. */
-  intendedAudience?: string;
-  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed. */
+export interface TagApiSpecRevisionRequest {
+  /** Required. The tag to apply. The tag should be at most 40 characters, and match `a-z{3,39}`. */
+  tag?: string;
+}
+
+export const TagApiSpecRevisionRequest: Schema.Schema<TagApiSpecRevisionRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TagApiSpecRevisionRequest" });
+
+export interface Artifact {
+  /** Output only. The size of the artifact in bytes. If the artifact is gzipped, this is the size of the uncompressed artifact. */
+  sizeBytes?: number;
+  /** Output only. Last update timestamp. */
+  updateTime?: string;
+  /** A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip"). */
+  mimeType?: string;
+  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "registry.googleapis.com/" and cannot be changed. */
   labels?: Record<string, string>;
-  /** Output only. Immutable. The revision ID of the deployment. A new revision is committed whenever the deployment contents are changed. The format is an 8-character hexadecimal string. */
-  revisionId?: string;
-  /** Output only. Revision creation timestamp; when the represented revision was created. */
-  revisionCreateTime?: string;
-  /** Output only. Creation timestamp; when the deployment resource was created. */
+  /** Output only. A SHA-256 hash of the artifact's contents. If the artifact is gzipped, this is the hash of the uncompressed artifact. */
+  hash?: string;
+  /** Input only. The contents of the artifact. Provided by API callers when artifacts are created or replaced. To access the contents of an artifact, use GetArtifactContents. */
+  contents?: string;
+  /** Output only. Creation timestamp. */
   createTime?: string;
-  /** Text briefly describing how to access the endpoint. Changes to this value will not affect the revision. */
-  accessGuidance?: string;
-  /** A detailed description. */
-  description?: string;
-  /** The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision. */
-  externalChannelUri?: string;
-  /** The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}` */
-  apiSpecRevision?: string;
   /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
   annotations?: Record<string, string>;
-  /** Human-meaningful name. */
-  displayName?: string;
-  /** The address where the deployment is serving. Changes to this value will update the revision. */
-  endpointUri?: string;
+  /** Resource name. */
+  name?: string;
 }
 
-export const ApiDeployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  revisionUpdateTime: Schema.optional(Schema.String),
-  intendedAudience: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  revisionId: Schema.optional(Schema.String),
-  revisionCreateTime: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  accessGuidance: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  externalChannelUri: Schema.optional(Schema.String),
-  apiSpecRevision: Schema.optional(Schema.String),
-  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  displayName: Schema.optional(Schema.String),
-  endpointUri: Schema.optional(Schema.String),
-}).annotate({ identifier: "ApiDeployment" });
+export const Artifact: Schema.Schema<Artifact> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sizeBytes: Schema.optional(Schema.Number),
+    updateTime: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    hash: Schema.optional(Schema.String),
+    contents: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Artifact" });
 
-export interface ListApiDeploymentsResponse {
-  /** The deployments from the specified publisher. */
-  apiDeployments?: ReadonlyArray<ApiDeployment>;
+export interface ListArtifactsResponse {
+  /** The artifacts from the specified publisher. */
+  artifacts?: ReadonlyArray<Artifact>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
 
-export const ListApiDeploymentsResponse =
+export const ListArtifactsResponse: Schema.Schema<ListArtifactsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    artifacts: Schema.optional(Schema.Array(Artifact)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListArtifactsResponse" });
+
+export interface ApiDeployment {
+  /** Resource name. */
+  name?: string;
+  /** The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}` */
+  apiSpecRevision?: string;
+  /** Text briefly identifying the intended audience of the API. Changes to this value will not affect the revision. */
+  intendedAudience?: string;
+  /** Output only. Last update timestamp: when the represented revision was last modified. */
+  revisionUpdateTime?: string;
+  /** Output only. Creation timestamp; when the deployment resource was created. */
+  createTime?: string;
+  /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
+  annotations?: Record<string, string>;
+  /** A detailed description. */
+  description?: string;
+  /** Output only. Immutable. The revision ID of the deployment. A new revision is committed whenever the deployment contents are changed. The format is an 8-character hexadecimal string. */
+  revisionId?: string;
+  /** Output only. Revision creation timestamp; when the represented revision was created. */
+  revisionCreateTime?: string;
+  /** The address where the deployment is serving. Changes to this value will update the revision. */
+  endpointUri?: string;
+  /** Human-meaningful name. */
+  displayName?: string;
+  /** Text briefly describing how to access the endpoint. Changes to this value will not affect the revision. */
+  accessGuidance?: string;
+  /** The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision. */
+  externalChannelUri?: string;
+  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed. */
+  labels?: Record<string, string>;
+}
+
+export const ApiDeployment: Schema.Schema<ApiDeployment> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    apiSpecRevision: Schema.optional(Schema.String),
+    intendedAudience: Schema.optional(Schema.String),
+    revisionUpdateTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    description: Schema.optional(Schema.String),
+    revisionId: Schema.optional(Schema.String),
+    revisionCreateTime: Schema.optional(Schema.String),
+    endpointUri: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    accessGuidance: Schema.optional(Schema.String),
+    externalChannelUri: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "ApiDeployment" });
+
+export interface ListApiDeploymentRevisionsResponse {
+  /** The revisions of the deployment. */
+  apiDeployments?: ReadonlyArray<ApiDeployment>;
+  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListApiDeploymentRevisionsResponse: Schema.Schema<ListApiDeploymentRevisionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiDeployments: Schema.optional(Schema.Array(ApiDeployment)),
     nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListApiDeploymentsResponse" });
+  }).annotate({ identifier: "ListApiDeploymentRevisionsResponse" });
+
+export interface Location {
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: Record<string, string>;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
+}
+
+export const Location: Schema.Schema<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    locationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Location" });
 
 export interface Status {
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
 }
 
-export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  details: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-  code: Schema.optional(Schema.Number),
-  message: Schema.optional(Schema.String),
-}).annotate({ identifier: "Status" });
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    code: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: Record<string, unknown>;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: Record<string, unknown>;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
 }
 
-export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  done: Schema.optional(Schema.Boolean),
-  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  error: Schema.optional(Status),
-}).annotate({ identifier: "Operation" });
+export const Operation: Schema.Schema<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    error: Schema.optional(Status),
+    done: Schema.optional(Schema.Boolean),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -307,77 +332,235 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "ListOperationsResponse" });
-
-export interface TagApiSpecRevisionRequest {
-  /** Required. The tag to apply. The tag should be at most 40 characters, and match `a-z{3,39}`. */
-  tag?: string;
-}
-
-export const TagApiSpecRevisionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tag: Schema.optional(Schema.String),
-  }).annotate({ identifier: "TagApiSpecRevisionRequest" });
+  }).annotate({ identifier: "ListOperationsResponse" });
 
 export interface ApiVersion {
   /** Resource name. */
   name?: string;
-  /** Output only. Creation timestamp. */
-  createTime?: string;
-  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed. */
-  labels?: Record<string, string>;
-  /** Output only. Last update timestamp. */
-  updateTime?: string;
-  /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
-  annotations?: Record<string, string>;
-  /** A detailed description. */
-  description?: string;
-  /** The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec} */
-  primarySpec?: string;
-  /** A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED". */
-  state?: string;
   /** Human-meaningful name. */
   displayName?: string;
+  /** Output only. Creation timestamp. */
+  createTime?: string;
+  /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
+  annotations?: Record<string, string>;
+  /** The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec} */
+  primarySpec?: string;
+  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed. */
+  labels?: Record<string, string>;
+  /** A detailed description. */
+  description?: string;
+  /** A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED". */
+  state?: string;
+  /** Output only. Last update timestamp. */
+  updateTime?: string;
 }
 
-export const ApiVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  updateTime: Schema.optional(Schema.String),
-  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  description: Schema.optional(Schema.String),
-  primarySpec: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-}).annotate({ identifier: "ApiVersion" });
+export const ApiVersion: Schema.Schema<ApiVersion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    primarySpec: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    description: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApiVersion" });
+
+export interface ListApiVersionsResponse {
+  /** The versions from the specified publisher. */
+  apiVersions?: ReadonlyArray<ApiVersion>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListApiVersionsResponse: Schema.Schema<ListApiVersionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersions: Schema.optional(Schema.Array(ApiVersion)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListApiVersionsResponse" });
+
+export interface SetIamPolicyRequest {
+  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
+  policy?: Policy;
+}
+
+export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+  }).annotate({ identifier: "SetIamPolicyRequest" });
+
+export interface ApiSpec {
+  /** A style (format) descriptor for this spec that is specified as a [Media Type](https://en.wikipedia.org/wiki/Media_type). Possible values include `application/vnd.apigee.proto`, `application/vnd.apigee.openapi`, and `application/vnd.apigee.graphql`, with possible suffixes representing compression types. These hypothetical names are defined in the vendor tree defined in RFC6838 (https://tools.ietf.org/html/rfc6838) and are not final. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip"). */
+  mimeType?: string;
+  /** Output only. The size of the spec file in bytes. If the spec is gzipped, this is the size of the uncompressed spec. */
+  sizeBytes?: number;
+  /** The original source URI of the spec (if one exists). This is an external location that can be used for reference purposes but which may not be authoritative since this external resource may change after the spec is retrieved. */
+  sourceUri?: string;
+  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed. */
+  labels?: Record<string, string>;
+  /** Output only. Creation timestamp; when the spec resource was created. */
+  createTime?: string;
+  /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
+  annotations?: Record<string, string>;
+  /** Input only. The contents of the spec. Provided by API callers when specs are created or updated. To access the contents of a spec, use GetApiSpecContents. */
+  contents?: string;
+  /** Resource name. */
+  name?: string;
+  /** Output only. Last update timestamp: when the represented revision was last modified. */
+  revisionUpdateTime?: string;
+  /** Output only. Immutable. The revision ID of the spec. A new revision is committed whenever the spec contents are changed. The format is an 8-character hexadecimal string. */
+  revisionId?: string;
+  /** Output only. Revision creation timestamp; when the represented revision was created. */
+  revisionCreateTime?: string;
+  /** A detailed description. */
+  description?: string;
+  /** Output only. A SHA-256 hash of the spec's contents. If the spec is gzipped, this is the hash of the uncompressed spec. */
+  hash?: string;
+  /** A possibly-hierarchical name used to refer to the spec from other specs. */
+  filename?: string;
+}
+
+export const ApiSpec: Schema.Schema<ApiSpec> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mimeType: Schema.optional(Schema.String),
+    sizeBytes: Schema.optional(Schema.Number),
+    sourceUri: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    contents: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    revisionUpdateTime: Schema.optional(Schema.String),
+    revisionId: Schema.optional(Schema.String),
+    revisionCreateTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    hash: Schema.optional(Schema.String),
+    filename: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApiSpec" });
+
+export interface ListApiSpecsResponse {
+  /** The specs from the specified publisher. */
+  apiSpecs?: ReadonlyArray<ApiSpec>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListApiSpecsResponse: Schema.Schema<ListApiSpecsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiSpecs: Schema.optional(Schema.Array(ApiSpec)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListApiSpecsResponse" });
+
+export interface Api {
+  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed. */
+  labels?: Record<string, string>;
+  /** A detailed description. */
+  description?: string;
+  /** The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}` */
+  recommendedDeployment?: string;
+  /** Output only. Last update timestamp. */
+  updateTime?: string;
+  /** Resource name. */
+  name?: string;
+  /** A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN". */
+  availability?: string;
+  /** The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}` */
+  recommendedVersion?: string;
+  /** Human-meaningful name. */
+  displayName?: string;
+  /** Output only. Creation timestamp. */
+  createTime?: string;
+  /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
+  annotations?: Record<string, string>;
+}
+
+export const Api: Schema.Schema<Api> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    description: Schema.optional(Schema.String),
+    recommendedDeployment: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    availability: Schema.optional(Schema.String),
+    recommendedVersion: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "Api" });
+
+export interface ListApisResponse {
+  /** The APIs from the specified publisher. */
+  apis?: ReadonlyArray<Api>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListApisResponse: Schema.Schema<ListApisResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apis: Schema.optional(Schema.Array(Api)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListApisResponse" });
+
+export interface ListApiSpecRevisionsResponse {
+  /** The revisions of the spec. */
+  apiSpecs?: ReadonlyArray<ApiSpec>;
+  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListApiSpecRevisionsResponse: Schema.Schema<ListApiSpecRevisionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiSpecs: Schema.optional(Schema.Array(ApiSpec)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListApiSpecRevisionsResponse" });
+
+export interface ListApiDeploymentsResponse {
+  /** The deployments from the specified publisher. */
+  apiDeployments?: ReadonlyArray<ApiDeployment>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListApiDeploymentsResponse: Schema.Schema<ListApiDeploymentsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiDeployments: Schema.optional(Schema.Array(ApiDeployment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListApiDeploymentsResponse" });
+
+export interface RollbackApiDeploymentRequest {
+  /** Required. The revision ID to roll back to. It must be a revision of the same deployment. Example: `c7cfa2a8` */
+  revisionId?: string;
+}
+
+export const RollbackApiDeploymentRequest: Schema.Schema<RollbackApiDeploymentRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RollbackApiDeploymentRequest" });
 
 export interface Config {
-  /** Output only. The GCP location where the Instance resides. */
-  location?: string;
   /** Required. The Customer Managed Encryption Key (CMEK) used for data encryption. The CMEK name should follow the format of `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`, where the `location` must match InstanceConfig.location. */
   cmekKeyName?: string;
+  /** Output only. The GCP location where the Instance resides. */
+  location?: string;
 }
 
-export const Config = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.optional(Schema.String),
-  cmekKeyName: Schema.optional(Schema.String),
-}).annotate({ identifier: "Config" });
+export const Config: Schema.Schema<Config> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cmekKeyName: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Config" });
 
 export interface Instance {
   /** Output only. Extra information of Instance.State if the state is `FAILED`. */
   stateMessage?: string;
-  /** Required. Config of the Instance. */
-  config?: Config;
   /** Format: `projects/* /locations/* /instance`. Currently only `locations/global` is supported. */
   name?: string;
-  /** Output only. Creation timestamp. */
-  createTime?: string;
   /** Output only. Build info of the Instance if it's in `ACTIVE` state. */
   build?: Build;
   /** Output only. The current state of the Instance. */
@@ -390,232 +573,31 @@ export interface Instance {
     | "DELETING"
     | "FAILED"
     | (string & {});
-  /** Output only. Last update timestamp. */
-  updateTime?: string;
-}
-
-export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  stateMessage: Schema.optional(Schema.String),
-  config: Schema.optional(Config),
-  name: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  build: Schema.optional(Build),
-  state: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "Instance" });
-
-export interface RollbackApiSpecRequest {
-  /** Required. The revision ID to roll back to. It must be a revision of the same spec. Example: `c7cfa2a8` */
-  revisionId?: string;
-}
-
-export const RollbackApiSpecRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    revisionId: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "RollbackApiSpecRequest" });
-
-export interface Artifact {
-  /** Resource name. */
-  name?: string;
+  /** Required. Config of the Instance. */
+  config?: Config;
   /** Output only. Creation timestamp. */
   createTime?: string;
-  /** Output only. A SHA-256 hash of the artifact's contents. If the artifact is gzipped, this is the hash of the uncompressed artifact. */
-  hash?: string;
-  /** Input only. The contents of the artifact. Provided by API callers when artifacts are created or replaced. To access the contents of an artifact, use GetArtifactContents. */
-  contents?: string;
   /** Output only. Last update timestamp. */
   updateTime?: string;
-  /** Output only. The size of the artifact in bytes. If the artifact is gzipped, this is the size of the uncompressed artifact. */
-  sizeBytes?: number;
-  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "registry.googleapis.com/" and cannot be changed. */
-  labels?: Record<string, string>;
-  /** A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip"). */
-  mimeType?: string;
-  /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
-  annotations?: Record<string, string>;
 }
 
-export const Artifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  hash: Schema.optional(Schema.String),
-  contents: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  sizeBytes: Schema.optional(Schema.Number),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  mimeType: Schema.optional(Schema.String),
-  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-}).annotate({ identifier: "Artifact" });
-
-export interface TagApiDeploymentRevisionRequest {
-  /** Required. The tag to apply. The tag should be at most 40 characters, and match `a-z{3,39}`. */
-  tag?: string;
-}
-
-export const TagApiDeploymentRevisionRequest =
+export const Instance: Schema.Schema<Instance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tag: Schema.optional(Schema.String),
-  }).annotate({ identifier: "TagApiDeploymentRevisionRequest" });
+    stateMessage: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    build: Schema.optional(Build),
+    state: Schema.optional(Schema.String),
+    config: Schema.optional(Config),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Instance" });
 
-export interface ListApiVersionsResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-  /** The versions from the specified publisher. */
-  apiVersions?: ReadonlyArray<ApiVersion>;
-}
+export interface Empty {}
 
-export const ListApiVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    apiVersions: Schema.optional(Schema.Array(ApiVersion)),
-  }).annotate({ identifier: "ListApiVersionsResponse" });
-
-export interface ListApiSpecRevisionsResponse {
-  /** The revisions of the spec. */
-  apiSpecs?: ReadonlyArray<ApiSpec>;
-  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListApiSpecRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiSpecs: Schema.optional(Schema.Array(ApiSpec)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListApiSpecRevisionsResponse" });
-
-export interface HttpBody {
-  /** The HTTP Content-Type header value specifying the content type of the body. */
-  contentType?: string;
-  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: ReadonlyArray<Record<string, unknown>>;
-  /** The HTTP request/response body as raw binary. */
-  data?: string;
-}
-
-export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  contentType: Schema.optional(Schema.String),
-  extensions: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-  data: Schema.optional(Schema.String),
-}).annotate({ identifier: "HttpBody" });
-
-export interface Api {
-  /** Resource name. */
-  name?: string;
-  /** Output only. Creation timestamp. */
-  createTime?: string;
-  /** A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN". */
-  availability?: string;
-  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed. */
-  labels?: Record<string, string>;
-  /** Output only. Last update timestamp. */
-  updateTime?: string;
-  /** The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}` */
-  recommendedDeployment?: string;
-  /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
-  annotations?: Record<string, string>;
-  /** A detailed description. */
-  description?: string;
-  /** The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}` */
-  recommendedVersion?: string;
-  /** Human-meaningful name. */
-  displayName?: string;
-}
-
-export const Api = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  availability: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  updateTime: Schema.optional(Schema.String),
-  recommendedDeployment: Schema.optional(Schema.String),
-  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  description: Schema.optional(Schema.String),
-  recommendedVersion: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-}).annotate({ identifier: "Api" });
-
-export interface ListApisResponse {
-  /** The APIs from the specified publisher. */
-  apis?: ReadonlyArray<Api>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListApisResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  apis: Schema.optional(Schema.Array(Api)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListApisResponse" });
-
-export interface ListArtifactsResponse {
-  /** The artifacts from the specified publisher. */
-  artifacts?: ReadonlyArray<Artifact>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListArtifactsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  artifacts: Schema.optional(Schema.Array(Artifact)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListArtifactsResponse" });
-
-export interface ListApiDeploymentRevisionsResponse {
-  /** The revisions of the deployment. */
-  apiDeployments?: ReadonlyArray<ApiDeployment>;
-  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListApiDeploymentRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiDeployments: Schema.optional(Schema.Array(ApiDeployment)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListApiDeploymentRevisionsResponse" });
-
-export interface CancelOperationRequest {}
-
-export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "CancelOperationRequest" });
-
-export interface TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsRequest" });
-
-export interface OperationMetadata {
-  /** The time the operation finished running. */
-  endTime?: string;
-  /** Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** API version used to start the operation. */
-  apiVersion?: string;
-  /** Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  cancellationRequested?: boolean;
-  /** Name of the verb executed by the operation. */
-  verb?: string;
-  /** The time the operation was created. */
-  createTime?: string;
-  /** Human-readable status of the operation, if any. */
-  statusMessage?: string;
-}
-
-export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  endTime: Schema.optional(Schema.String),
-  target: Schema.optional(Schema.String),
-  apiVersion: Schema.optional(Schema.String),
-  cancellationRequested: Schema.optional(Schema.Boolean),
-  verb: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  statusMessage: Schema.optional(Schema.String),
-}).annotate({ identifier: "OperationMetadata" });
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -624,10 +606,49 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  locations: Schema.optional(Schema.Array(Location)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListLocationsResponse" });
+export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Location)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocationsResponse" });
+
+export interface HttpBody {
+  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
+  extensions?: ReadonlyArray<Record<string, unknown>>;
+  /** The HTTP Content-Type header value specifying the content type of the body. */
+  contentType?: string;
+  /** The HTTP request/response body as raw binary. */
+  data?: string;
+}
+
+export const HttpBody: Schema.Schema<HttpBody> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extensions: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    contentType: Schema.optional(Schema.String),
+    data: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HttpBody" });
+
+export interface TestIamPermissionsResponse {
+  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
+
+export interface TagApiDeploymentRevisionRequest {
+  /** Required. The tag to apply. The tag should be at most 40 characters, and match `a-z{3,39}`. */
+  tag?: string;
+}
+
+export const TagApiDeploymentRevisionRequest: Schema.Schema<TagApiDeploymentRevisionRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TagApiDeploymentRevisionRequest" });
 
 // ==========================================================================
 // Errors
@@ -683,50 +704,6 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface ListProjectsLocationsRequest {
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
-  filter?: string;
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
-}
-
-export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/locations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
-
-export type ListProjectsLocationsResponse = ListLocationsResponse;
-export const ListProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
-
-export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists information about the supported locations for this service. */
-export const listProjectsLocations: API.PaginatedOperationMethod<
-  ListProjectsLocationsRequest,
-  ListProjectsLocationsResponse,
-  ListProjectsLocationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListProjectsLocationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
@@ -758,521 +735,48 @@ export const getProjectsLocations: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface CreateProjectsLocationsArtifactsRequest {
-  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
-  parent: string;
-  /** Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
-  artifactId?: string;
-  /** Request body */
-  body?: Artifact;
-}
-
-export const CreateProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    artifactId: Schema.optional(Schema.String).pipe(T.HttpQuery("artifactId")),
-    body: Schema.optional(Artifact).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/artifacts", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsArtifactsRequest>;
-
-export type CreateProjectsLocationsArtifactsResponse = Artifact;
-export const CreateProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
-
-export type CreateProjectsLocationsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a specified artifact. */
-export const createProjectsLocationsArtifacts: API.OperationMethod<
-  CreateProjectsLocationsArtifactsRequest,
-  CreateProjectsLocationsArtifactsResponse,
-  CreateProjectsLocationsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsArtifactsRequest,
-  output: CreateProjectsLocationsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface TestIamPermissionsProjectsLocationsArtifactsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsArtifactsRequest>;
-
-export type TestIamPermissionsProjectsLocationsArtifactsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsArtifacts: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsArtifactsRequest,
-  TestIamPermissionsProjectsLocationsArtifactsResponse,
-  TestIamPermissionsProjectsLocationsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsArtifactsRequest,
-  output: TestIamPermissionsProjectsLocationsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsArtifactsRequest {
-  /** Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*` */
-  name: string;
-}
-
-export const GetProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsArtifactsRequest>;
-
-export type GetProjectsLocationsArtifactsResponse = Artifact;
-export const GetProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
-
-export type GetProjectsLocationsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns a specified artifact. */
-export const getProjectsLocationsArtifacts: API.OperationMethod<
-  GetProjectsLocationsArtifactsRequest,
-  GetProjectsLocationsArtifactsResponse,
-  GetProjectsLocationsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsArtifactsRequest,
-  output: GetProjectsLocationsArtifactsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetContentsProjectsLocationsArtifactsRequest {
-  /** Required. The name of the artifact whose contents should be retrieved. Format: `{parent}/artifacts/*` */
-  name: string;
-}
-
-export const GetContentsProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
-    svc,
-  ) as unknown as Schema.Schema<GetContentsProjectsLocationsArtifactsRequest>;
-
-export type GetContentsProjectsLocationsArtifactsResponse = HttpBody;
-export const GetContentsProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type GetContentsProjectsLocationsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns the contents of a specified artifact. If artifacts are stored with GZip compression, the default behavior is to return the artifact uncompressed (the mime_type response field indicates the exact format returned). */
-export const getContentsProjectsLocationsArtifacts: API.OperationMethod<
-  GetContentsProjectsLocationsArtifactsRequest,
-  GetContentsProjectsLocationsArtifactsResponse,
-  GetContentsProjectsLocationsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetContentsProjectsLocationsArtifactsRequest,
-  output: GetContentsProjectsLocationsArtifactsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ReplaceArtifactProjectsLocationsArtifactsRequest {
-  /** Resource name. */
-  name: string;
-  /** Request body */
-  body?: Artifact;
-}
-
-export const ReplaceArtifactProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(Artifact).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<ReplaceArtifactProjectsLocationsArtifactsRequest>;
-
-export type ReplaceArtifactProjectsLocationsArtifactsResponse = Artifact;
-export const ReplaceArtifactProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
-
-export type ReplaceArtifactProjectsLocationsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Used to replace a specified artifact. */
-export const replaceArtifactProjectsLocationsArtifacts: API.OperationMethod<
-  ReplaceArtifactProjectsLocationsArtifactsRequest,
-  ReplaceArtifactProjectsLocationsArtifactsResponse,
-  ReplaceArtifactProjectsLocationsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ReplaceArtifactProjectsLocationsArtifactsRequest,
-  output: ReplaceArtifactProjectsLocationsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsLocationsArtifactsRequest {
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-}
-
-export const GetIamPolicyProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsArtifactsRequest>;
-
-export type GetIamPolicyProjectsLocationsArtifactsResponse = Policy;
-export const GetIamPolicyProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsArtifacts: API.OperationMethod<
-  GetIamPolicyProjectsLocationsArtifactsRequest,
-  GetIamPolicyProjectsLocationsArtifactsResponse,
-  GetIamPolicyProjectsLocationsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsArtifactsRequest,
-  output: GetIamPolicyProjectsLocationsArtifactsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsArtifactsRequest {
-  /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token. */
+export interface ListProjectsLocationsRequest {
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
-  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
-  parent: string;
-  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
-  orderBy?: string;
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
 }
 
-export const ListProjectsLocationsArtifactsRequest =
+export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/artifacts" }),
+    T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsArtifactsRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
-export type ListProjectsLocationsArtifactsResponse = ListArtifactsResponse;
-export const ListProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListArtifactsResponse;
+export type ListProjectsLocationsResponse = ListLocationsResponse;
+export const ListProjectsLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
-/** Returns matching artifacts. */
-export const listProjectsLocationsArtifacts: API.PaginatedOperationMethod<
-  ListProjectsLocationsArtifactsRequest,
-  ListProjectsLocationsArtifactsResponse,
-  ListProjectsLocationsArtifactsError,
+/** Lists information about the supported locations for this service. */
+export const listProjectsLocations: API.PaginatedOperationMethod<
+  ListProjectsLocationsRequest,
+  ListProjectsLocationsResponse,
+  ListProjectsLocationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsArtifactsRequest,
-  output: ListProjectsLocationsArtifactsResponse,
+  input: ListProjectsLocationsRequest,
+  output: ListProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
-}));
-
-export interface SetIamPolicyProjectsLocationsArtifactsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsArtifactsRequest>;
-
-export type SetIamPolicyProjectsLocationsArtifactsResponse = Policy;
-export const SetIamPolicyProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsArtifacts: API.OperationMethod<
-  SetIamPolicyProjectsLocationsArtifactsRequest,
-  SetIamPolicyProjectsLocationsArtifactsResponse,
-  SetIamPolicyProjectsLocationsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsArtifactsRequest,
-  output: SetIamPolicyProjectsLocationsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsArtifactsRequest {
-  /** Required. The name of the artifact to delete. Format: `{parent}/artifacts/*` */
-  name: string;
-}
-
-export const DeleteProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsArtifactsRequest>;
-
-export type DeleteProjectsLocationsArtifactsResponse = Empty;
-export const DeleteProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Removes a specified artifact. */
-export const deleteProjectsLocationsArtifacts: API.OperationMethod<
-  DeleteProjectsLocationsArtifactsRequest,
-  DeleteProjectsLocationsArtifactsResponse,
-  DeleteProjectsLocationsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsArtifactsRequest,
-  output: DeleteProjectsLocationsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsOperationsRequest {
-  /** The name of the operation's parent resource. */
-  name: string;
-  /** The standard list filter. */
-  filter?: string;
-  /** The standard list page token. */
-  pageToken?: string;
-  /** The standard list page size. */
-  pageSize?: number;
-}
-
-export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
-
-export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
-export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
-
-export type ListProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
-export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
-  ListProjectsLocationsOperationsRequest,
-  ListProjectsLocationsOperationsResponse,
-  ListProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsLocationsOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
-}
-
-export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
-
-export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type GetProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getProjectsLocationsOperations: API.OperationMethod<
-  GetProjectsLocationsOperationsRequest,
-  GetProjectsLocationsOperationsResponse,
-  GetProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: GetProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CancelProjectsLocationsOperationsRequest {
-  /** The name of the operation resource to be cancelled. */
-  name: string;
-  /** Request body */
-  body?: CancelOperationRequest;
-}
-
-export const CancelProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
-
-export type CancelProjectsLocationsOperationsResponse = Empty;
-export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type CancelProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-export const cancelProjectsLocationsOperations: API.OperationMethod<
-  CancelProjectsLocationsOperationsRequest,
-  CancelProjectsLocationsOperationsResponse,
-  CancelProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: CancelProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsOperationsRequest {
-  /** The name of the operation resource to be deleted. */
-  name: string;
-}
-
-export const DeleteProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
-
-export type DeleteProjectsLocationsOperationsResponse = Empty;
-export const DeleteProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
-export const deleteProjectsLocationsOperations: API.OperationMethod<
-  DeleteProjectsLocationsOperationsRequest,
-  DeleteProjectsLocationsOperationsResponse,
-  DeleteProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: DeleteProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsRuntimeRequest {
@@ -1401,6 +905,3807 @@ export const testIamPermissionsProjectsLocationsRuntime: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetProjectsLocationsArtifactsRequest {
+  /** Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*` */
+  name: string;
+}
+
+export const GetProjectsLocationsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsArtifactsRequest>;
+
+export type GetProjectsLocationsArtifactsResponse = Artifact;
+export const GetProjectsLocationsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+
+export type GetProjectsLocationsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns a specified artifact. */
+export const getProjectsLocationsArtifacts: API.OperationMethod<
+  GetProjectsLocationsArtifactsRequest,
+  GetProjectsLocationsArtifactsResponse,
+  GetProjectsLocationsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsArtifactsRequest,
+  output: GetProjectsLocationsArtifactsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsArtifactsRequest {
+  /** Required. The name of the artifact to delete. Format: `{parent}/artifacts/*` */
+  name: string;
+}
+
+export const DeleteProjectsLocationsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsArtifactsRequest>;
+
+export type DeleteProjectsLocationsArtifactsResponse = Empty;
+export const DeleteProjectsLocationsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Removes a specified artifact. */
+export const deleteProjectsLocationsArtifacts: API.OperationMethod<
+  DeleteProjectsLocationsArtifactsRequest,
+  DeleteProjectsLocationsArtifactsResponse,
+  DeleteProjectsLocationsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsArtifactsRequest,
+  output: DeleteProjectsLocationsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsArtifactsRequest {
+  /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
+  orderBy?: string;
+  /** A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
+  parent: string;
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
+  filter?: string;
+}
+
+export const ListProjectsLocationsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/artifacts" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsArtifactsRequest>;
+
+export type ListProjectsLocationsArtifactsResponse = ListArtifactsResponse;
+export const ListProjectsLocationsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListArtifactsResponse;
+
+export type ListProjectsLocationsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns matching artifacts. */
+export const listProjectsLocationsArtifacts: API.PaginatedOperationMethod<
+  ListProjectsLocationsArtifactsRequest,
+  ListProjectsLocationsArtifactsResponse,
+  ListProjectsLocationsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsArtifactsRequest,
+  output: ListProjectsLocationsArtifactsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface SetIamPolicyProjectsLocationsArtifactsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsArtifactsRequest>;
+
+export type SetIamPolicyProjectsLocationsArtifactsResponse = Policy;
+export const SetIamPolicyProjectsLocationsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsArtifacts: API.OperationMethod<
+  SetIamPolicyProjectsLocationsArtifactsRequest,
+  SetIamPolicyProjectsLocationsArtifactsResponse,
+  SetIamPolicyProjectsLocationsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsArtifactsRequest,
+  output: SetIamPolicyProjectsLocationsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsLocationsArtifactsRequest {
+  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
+  parent: string;
+  /** Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
+  artifactId?: string;
+  /** Request body */
+  body?: Artifact;
+}
+
+export const CreateProjectsLocationsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    artifactId: Schema.optional(Schema.String).pipe(T.HttpQuery("artifactId")),
+    body: Schema.optional(Artifact).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/artifacts", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsArtifactsRequest>;
+
+export type CreateProjectsLocationsArtifactsResponse = Artifact;
+export const CreateProjectsLocationsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+
+export type CreateProjectsLocationsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a specified artifact. */
+export const createProjectsLocationsArtifacts: API.OperationMethod<
+  CreateProjectsLocationsArtifactsRequest,
+  CreateProjectsLocationsArtifactsResponse,
+  CreateProjectsLocationsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsArtifactsRequest,
+  output: CreateProjectsLocationsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsLocationsArtifactsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsArtifactsRequest>;
+
+export type GetIamPolicyProjectsLocationsArtifactsResponse = Policy;
+export const GetIamPolicyProjectsLocationsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsArtifacts: API.OperationMethod<
+  GetIamPolicyProjectsLocationsArtifactsRequest,
+  GetIamPolicyProjectsLocationsArtifactsResponse,
+  GetIamPolicyProjectsLocationsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsArtifactsRequest,
+  output: GetIamPolicyProjectsLocationsArtifactsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetContentsProjectsLocationsArtifactsRequest {
+  /** Required. The name of the artifact whose contents should be retrieved. Format: `{parent}/artifacts/*` */
+  name: string;
+}
+
+export const GetContentsProjectsLocationsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
+    svc,
+  ) as unknown as Schema.Schema<GetContentsProjectsLocationsArtifactsRequest>;
+
+export type GetContentsProjectsLocationsArtifactsResponse = HttpBody;
+export const GetContentsProjectsLocationsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type GetContentsProjectsLocationsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns the contents of a specified artifact. If artifacts are stored with GZip compression, the default behavior is to return the artifact uncompressed (the mime_type response field indicates the exact format returned). */
+export const getContentsProjectsLocationsArtifacts: API.OperationMethod<
+  GetContentsProjectsLocationsArtifactsRequest,
+  GetContentsProjectsLocationsArtifactsResponse,
+  GetContentsProjectsLocationsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetContentsProjectsLocationsArtifactsRequest,
+  output: GetContentsProjectsLocationsArtifactsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ReplaceArtifactProjectsLocationsArtifactsRequest {
+  /** Resource name. */
+  name: string;
+  /** Request body */
+  body?: Artifact;
+}
+
+export const ReplaceArtifactProjectsLocationsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Artifact).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<ReplaceArtifactProjectsLocationsArtifactsRequest>;
+
+export type ReplaceArtifactProjectsLocationsArtifactsResponse = Artifact;
+export const ReplaceArtifactProjectsLocationsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+
+export type ReplaceArtifactProjectsLocationsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Used to replace a specified artifact. */
+export const replaceArtifactProjectsLocationsArtifacts: API.OperationMethod<
+  ReplaceArtifactProjectsLocationsArtifactsRequest,
+  ReplaceArtifactProjectsLocationsArtifactsResponse,
+  ReplaceArtifactProjectsLocationsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ReplaceArtifactProjectsLocationsArtifactsRequest,
+  output: ReplaceArtifactProjectsLocationsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsLocationsArtifactsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsArtifactsRequest>;
+
+export type TestIamPermissionsProjectsLocationsArtifactsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsArtifacts: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsArtifactsRequest,
+  TestIamPermissionsProjectsLocationsArtifactsResponse,
+  TestIamPermissionsProjectsLocationsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsArtifactsRequest,
+  output: TestIamPermissionsProjectsLocationsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsOperationsRequest {
+  /** The standard list page token. */
+  pageToken?: string;
+  /** The name of the operation's parent resource. */
+  name: string;
+  /** The standard list filter. */
+  filter?: string;
+  /** The standard list page size. */
+  pageSize?: number;
+}
+
+export const ListProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+
+export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
+export const ListProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
+export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
+  ListProjectsLocationsOperationsRequest,
+  ListProjectsLocationsOperationsResponse,
+  ListProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+
+export type GetProjectsLocationsOperationsResponse = Operation;
+export const GetProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getProjectsLocationsOperations: API.OperationMethod<
+  GetProjectsLocationsOperationsRequest,
+  GetProjectsLocationsOperationsResponse,
+  GetProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsOperationsRequest,
+  output: GetProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsOperationsRequest {
+  /** The name of the operation resource to be deleted. */
+  name: string;
+}
+
+export const DeleteProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+
+export type DeleteProjectsLocationsOperationsResponse = Empty;
+export const DeleteProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
+export const deleteProjectsLocationsOperations: API.OperationMethod<
+  DeleteProjectsLocationsOperationsRequest,
+  DeleteProjectsLocationsOperationsResponse,
+  DeleteProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsOperationsRequest,
+  output: DeleteProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CancelProjectsLocationsOperationsRequest {
+  /** The name of the operation resource to be cancelled. */
+  name: string;
+  /** Request body */
+  body?: CancelOperationRequest;
+}
+
+export const CancelProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+
+export type CancelProjectsLocationsOperationsResponse = Empty;
+export const CancelProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+export const cancelProjectsLocationsOperations: API.OperationMethod<
+  CancelProjectsLocationsOperationsRequest,
+  CancelProjectsLocationsOperationsResponse,
+  CancelProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelProjectsLocationsOperationsRequest,
+  output: CancelProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsApisRequest {
+  /** Required. The name of the API to retrieve. Format: `projects/* /locations/* /apis/*` */
+  name: string;
+}
+
+export const GetProjectsLocationsApisRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsApisRequest>;
+
+export type GetProjectsLocationsApisResponse = Api;
+export const GetProjectsLocationsApisResponse = /*@__PURE__*/ /*#__PURE__*/ Api;
+
+export type GetProjectsLocationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns a specified API. */
+export const getProjectsLocationsApis: API.OperationMethod<
+  GetProjectsLocationsApisRequest,
+  GetProjectsLocationsApisResponse,
+  GetProjectsLocationsApisError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsApisRequest,
+  output: GetProjectsLocationsApisResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsApisRequest {
+  /** Required. The name of the API to delete. Format: `projects/* /locations/* /apis/*` */
+  name: string;
+  /** If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.) */
+  force?: boolean;
+}
+
+export const DeleteProjectsLocationsApisRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisRequest>;
+
+export type DeleteProjectsLocationsApisResponse = Empty;
+export const DeleteProjectsLocationsApisResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Removes a specified API and all of the resources that it owns. */
+export const deleteProjectsLocationsApis: API.OperationMethod<
+  DeleteProjectsLocationsApisRequest,
+  DeleteProjectsLocationsApisResponse,
+  DeleteProjectsLocationsApisError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsApisRequest,
+  output: DeleteProjectsLocationsApisResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsLocationsApisRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsApisRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApisRequest>;
+
+export type TestIamPermissionsProjectsLocationsApisResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsApisResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsApis: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsApisRequest,
+  TestIamPermissionsProjectsLocationsApisResponse,
+  TestIamPermissionsProjectsLocationsApisError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsApisRequest,
+  output: TestIamPermissionsProjectsLocationsApisResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SetIamPolicyProjectsLocationsApisRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsApisRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApisRequest>;
+
+export type SetIamPolicyProjectsLocationsApisResponse = Policy;
+export const SetIamPolicyProjectsLocationsApisResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsApis: API.OperationMethod<
+  SetIamPolicyProjectsLocationsApisRequest,
+  SetIamPolicyProjectsLocationsApisResponse,
+  SetIamPolicyProjectsLocationsApisError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsApisRequest,
+  output: SetIamPolicyProjectsLocationsApisResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsApisRequest {
+  /** Required. The parent, which owns this collection of APIs. Format: `projects/* /locations/*` */
+  parent: string;
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
+  filter?: string;
+  /** The maximum number of APIs to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
+  orderBy?: string;
+  /** A page token, received from a previous `ListApis` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApis` must match the call that provided the page token. */
+  pageToken?: string;
+}
+
+export const ListProjectsLocationsApisRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/apis" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsApisRequest>;
+
+export type ListProjectsLocationsApisResponse = ListApisResponse;
+export const ListProjectsLocationsApisResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListApisResponse;
+
+export type ListProjectsLocationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns matching APIs. */
+export const listProjectsLocationsApis: API.PaginatedOperationMethod<
+  ListProjectsLocationsApisRequest,
+  ListProjectsLocationsApisResponse,
+  ListProjectsLocationsApisError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsApisRequest,
+  output: ListProjectsLocationsApisResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface CreateProjectsLocationsApisRequest {
+  /** Required. The parent, which owns this collection of APIs. Format: `projects/* /locations/*` */
+  parent: string;
+  /** Required. The ID to use for the API, which will become the final component of the API's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
+  apiId?: string;
+  /** Request body */
+  body?: Api;
+}
+
+export const CreateProjectsLocationsApisRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    apiId: Schema.optional(Schema.String).pipe(T.HttpQuery("apiId")),
+    body: Schema.optional(Api).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/apis", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsApisRequest>;
+
+export type CreateProjectsLocationsApisResponse = Api;
+export const CreateProjectsLocationsApisResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Api;
+
+export type CreateProjectsLocationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a specified API. */
+export const createProjectsLocationsApis: API.OperationMethod<
+  CreateProjectsLocationsApisRequest,
+  CreateProjectsLocationsApisResponse,
+  CreateProjectsLocationsApisError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsApisRequest,
+  output: CreateProjectsLocationsApisResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsLocationsApisRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsApisRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApisRequest>;
+
+export type GetIamPolicyProjectsLocationsApisResponse = Policy;
+export const GetIamPolicyProjectsLocationsApisResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsApis: API.OperationMethod<
+  GetIamPolicyProjectsLocationsApisRequest,
+  GetIamPolicyProjectsLocationsApisResponse,
+  GetIamPolicyProjectsLocationsApisError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsApisRequest,
+  output: GetIamPolicyProjectsLocationsApisResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface PatchProjectsLocationsApisRequest {
+  /** The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If an asterisk "*" is specified, all fields are updated, including fields that are unspecified/default in the request. */
+  updateMask?: string;
+  /** Resource name. */
+  name: string;
+  /** If set to true, and the API is not found, a new API will be created. In this situation, `update_mask` is ignored. */
+  allowMissing?: boolean;
+  /** Request body */
+  body?: Api;
+}
+
+export const PatchProjectsLocationsApisRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    allowMissing: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("allowMissing"),
+    ),
+    body: Schema.optional(Api).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsApisRequest>;
+
+export type PatchProjectsLocationsApisResponse = Api;
+export const PatchProjectsLocationsApisResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Api;
+
+export type PatchProjectsLocationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Used to modify a specified API. */
+export const patchProjectsLocationsApis: API.OperationMethod<
+  PatchProjectsLocationsApisRequest,
+  PatchProjectsLocationsApisResponse,
+  PatchProjectsLocationsApisError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsApisRequest,
+  output: PatchProjectsLocationsApisResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsLocationsApisDeploymentsRequest {
+  /** The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If an asterisk "*" is specified, all fields are updated, including fields that are unspecified/default in the request. */
+  updateMask?: string;
+  /** Resource name. */
+  name: string;
+  /** If set to true, and the deployment is not found, a new deployment will be created. In this situation, `update_mask` is ignored. */
+  allowMissing?: boolean;
+  /** Request body */
+  body?: ApiDeployment;
+}
+
+export const PatchProjectsLocationsApisDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    allowMissing: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("allowMissing"),
+    ),
+    body: Schema.optional(ApiDeployment).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsApisDeploymentsRequest>;
+
+export type PatchProjectsLocationsApisDeploymentsResponse = ApiDeployment;
+export const PatchProjectsLocationsApisDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
+
+export type PatchProjectsLocationsApisDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Used to modify a specified deployment. */
+export const patchProjectsLocationsApisDeployments: API.OperationMethod<
+  PatchProjectsLocationsApisDeploymentsRequest,
+  PatchProjectsLocationsApisDeploymentsResponse,
+  PatchProjectsLocationsApisDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsApisDeploymentsRequest,
+  output: PatchProjectsLocationsApisDeploymentsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsLocationsApisDeploymentsRequest {
+  /** Required. The parent, which owns this collection of deployments. Format: `projects/* /locations/* /apis/*` */
+  parent: string;
+  /** Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
+  apiDeploymentId?: string;
+  /** Request body */
+  body?: ApiDeployment;
+}
+
+export const CreateProjectsLocationsApisDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    apiDeploymentId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("apiDeploymentId"),
+    ),
+    body: Schema.optional(ApiDeployment).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/deployments", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsApisDeploymentsRequest>;
+
+export type CreateProjectsLocationsApisDeploymentsResponse = ApiDeployment;
+export const CreateProjectsLocationsApisDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
+
+export type CreateProjectsLocationsApisDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a specified deployment. */
+export const createProjectsLocationsApisDeployments: API.OperationMethod<
+  CreateProjectsLocationsApisDeploymentsRequest,
+  CreateProjectsLocationsApisDeploymentsResponse,
+  CreateProjectsLocationsApisDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsApisDeploymentsRequest,
+  output: CreateProjectsLocationsApisDeploymentsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsLocationsApisDeploymentsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsApisDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApisDeploymentsRequest>;
+
+export type GetIamPolicyProjectsLocationsApisDeploymentsResponse = Policy;
+export const GetIamPolicyProjectsLocationsApisDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsApisDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsApisDeployments: API.OperationMethod<
+  GetIamPolicyProjectsLocationsApisDeploymentsRequest,
+  GetIamPolicyProjectsLocationsApisDeploymentsResponse,
+  GetIamPolicyProjectsLocationsApisDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsApisDeploymentsRequest,
+  output: GetIamPolicyProjectsLocationsApisDeploymentsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface RollbackProjectsLocationsApisDeploymentsRequest {
+  /** Required. The deployment being rolled back. */
+  name: string;
+  /** Request body */
+  body?: RollbackApiDeploymentRequest;
+}
+
+export const RollbackProjectsLocationsApisDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(RollbackApiDeploymentRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:rollback", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<RollbackProjectsLocationsApisDeploymentsRequest>;
+
+export type RollbackProjectsLocationsApisDeploymentsResponse = ApiDeployment;
+export const RollbackProjectsLocationsApisDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
+
+export type RollbackProjectsLocationsApisDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the current revision to a specified prior revision. Note that this creates a new revision with a new revision ID. */
+export const rollbackProjectsLocationsApisDeployments: API.OperationMethod<
+  RollbackProjectsLocationsApisDeploymentsRequest,
+  RollbackProjectsLocationsApisDeploymentsResponse,
+  RollbackProjectsLocationsApisDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RollbackProjectsLocationsApisDeploymentsRequest,
+  output: RollbackProjectsLocationsApisDeploymentsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TagRevisionProjectsLocationsApisDeploymentsRequest {
+  /** Required. The name of the deployment to be tagged, including the revision ID is optional. If a revision is not specified, it will tag the latest revision. */
+  name: string;
+  /** Request body */
+  body?: TagApiDeploymentRevisionRequest;
+}
+
+export const TagRevisionProjectsLocationsApisDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(TagApiDeploymentRevisionRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:tagRevision", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<TagRevisionProjectsLocationsApisDeploymentsRequest>;
+
+export type TagRevisionProjectsLocationsApisDeploymentsResponse = ApiDeployment;
+export const TagRevisionProjectsLocationsApisDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
+
+export type TagRevisionProjectsLocationsApisDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Adds a tag to a specified revision of a deployment. */
+export const tagRevisionProjectsLocationsApisDeployments: API.OperationMethod<
+  TagRevisionProjectsLocationsApisDeploymentsRequest,
+  TagRevisionProjectsLocationsApisDeploymentsResponse,
+  TagRevisionProjectsLocationsApisDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TagRevisionProjectsLocationsApisDeploymentsRequest,
+  output: TagRevisionProjectsLocationsApisDeploymentsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsLocationsApisDeploymentsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsApisDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApisDeploymentsRequest>;
+
+export type TestIamPermissionsProjectsLocationsApisDeploymentsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsApisDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsApisDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsApisDeployments: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsApisDeploymentsRequest,
+  TestIamPermissionsProjectsLocationsApisDeploymentsResponse,
+  TestIamPermissionsProjectsLocationsApisDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsApisDeploymentsRequest,
+  output: TestIamPermissionsProjectsLocationsApisDeploymentsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteRevisionProjectsLocationsApisDeploymentsRequest {
+  /** Required. The name of the deployment revision to be deleted, with a revision ID explicitly included. Example: `projects/sample/locations/global/apis/petstore/deployments/prod@c7cfa2a8` */
+  name: string;
+}
+
+export const DeleteRevisionProjectsLocationsApisDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}:deleteRevision" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteRevisionProjectsLocationsApisDeploymentsRequest>;
+
+export type DeleteRevisionProjectsLocationsApisDeploymentsResponse =
+  ApiDeployment;
+export const DeleteRevisionProjectsLocationsApisDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
+
+export type DeleteRevisionProjectsLocationsApisDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a revision of a deployment. */
+export const deleteRevisionProjectsLocationsApisDeployments: API.OperationMethod<
+  DeleteRevisionProjectsLocationsApisDeploymentsRequest,
+  DeleteRevisionProjectsLocationsApisDeploymentsResponse,
+  DeleteRevisionProjectsLocationsApisDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteRevisionProjectsLocationsApisDeploymentsRequest,
+  output: DeleteRevisionProjectsLocationsApisDeploymentsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListRevisionsProjectsLocationsApisDeploymentsRequest {
+  /** The maximum number of revisions to return per page. */
+  pageSize?: number;
+  /** Required. The name of the deployment to list revisions for. */
+  name: string;
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
+  filter?: string;
+  /** The page token, received from a previous ListApiDeploymentRevisions call. Provide this to retrieve the subsequent page. */
+  pageToken?: string;
+}
+
+export const ListRevisionsProjectsLocationsApisDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}:listRevisions" }),
+    svc,
+  ) as unknown as Schema.Schema<ListRevisionsProjectsLocationsApisDeploymentsRequest>;
+
+export type ListRevisionsProjectsLocationsApisDeploymentsResponse =
+  ListApiDeploymentRevisionsResponse;
+export const ListRevisionsProjectsLocationsApisDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListApiDeploymentRevisionsResponse;
+
+export type ListRevisionsProjectsLocationsApisDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists all revisions of a deployment. Revisions are returned in descending order of revision creation time. */
+export const listRevisionsProjectsLocationsApisDeployments: API.PaginatedOperationMethod<
+  ListRevisionsProjectsLocationsApisDeploymentsRequest,
+  ListRevisionsProjectsLocationsApisDeploymentsResponse,
+  ListRevisionsProjectsLocationsApisDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListRevisionsProjectsLocationsApisDeploymentsRequest,
+  output: ListRevisionsProjectsLocationsApisDeploymentsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface SetIamPolicyProjectsLocationsApisDeploymentsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsApisDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApisDeploymentsRequest>;
+
+export type SetIamPolicyProjectsLocationsApisDeploymentsResponse = Policy;
+export const SetIamPolicyProjectsLocationsApisDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsApisDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsApisDeployments: API.OperationMethod<
+  SetIamPolicyProjectsLocationsApisDeploymentsRequest,
+  SetIamPolicyProjectsLocationsApisDeploymentsResponse,
+  SetIamPolicyProjectsLocationsApisDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsApisDeploymentsRequest,
+  output: SetIamPolicyProjectsLocationsApisDeploymentsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsApisDeploymentsRequest {
+  /** A page token, received from a previous `ListApiDeployments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiDeployments` must match the call that provided the page token. */
+  pageToken?: string;
+  /** The maximum number of deployments to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
+  orderBy?: string;
+  /** Required. The parent, which owns this collection of deployments. Format: `projects/* /locations/* /apis/*` */
+  parent: string;
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
+  filter?: string;
+}
+
+export const ListProjectsLocationsApisDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsApisDeploymentsRequest>;
+
+export type ListProjectsLocationsApisDeploymentsResponse =
+  ListApiDeploymentsResponse;
+export const ListProjectsLocationsApisDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListApiDeploymentsResponse;
+
+export type ListProjectsLocationsApisDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns matching deployments. */
+export const listProjectsLocationsApisDeployments: API.PaginatedOperationMethod<
+  ListProjectsLocationsApisDeploymentsRequest,
+  ListProjectsLocationsApisDeploymentsResponse,
+  ListProjectsLocationsApisDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsApisDeploymentsRequest,
+  output: ListProjectsLocationsApisDeploymentsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsApisDeploymentsRequest {
+  /** Required. The name of the deployment to retrieve. Format: `projects/* /locations/* /apis/* /deployments/*` */
+  name: string;
+}
+
+export const GetProjectsLocationsApisDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsApisDeploymentsRequest>;
+
+export type GetProjectsLocationsApisDeploymentsResponse = ApiDeployment;
+export const GetProjectsLocationsApisDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
+
+export type GetProjectsLocationsApisDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns a specified deployment. */
+export const getProjectsLocationsApisDeployments: API.OperationMethod<
+  GetProjectsLocationsApisDeploymentsRequest,
+  GetProjectsLocationsApisDeploymentsResponse,
+  GetProjectsLocationsApisDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsApisDeploymentsRequest,
+  output: GetProjectsLocationsApisDeploymentsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsApisDeploymentsRequest {
+  /** Required. The name of the deployment to delete. Format: `projects/* /locations/* /apis/* /deployments/*` */
+  name: string;
+  /** If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.) */
+  force?: boolean;
+}
+
+export const DeleteProjectsLocationsApisDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisDeploymentsRequest>;
+
+export type DeleteProjectsLocationsApisDeploymentsResponse = Empty;
+export const DeleteProjectsLocationsApisDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsApisDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Removes a specified deployment, all revisions, and all child resources (e.g., artifacts). */
+export const deleteProjectsLocationsApisDeployments: API.OperationMethod<
+  DeleteProjectsLocationsApisDeploymentsRequest,
+  DeleteProjectsLocationsApisDeploymentsResponse,
+  DeleteProjectsLocationsApisDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsApisDeploymentsRequest,
+  output: DeleteProjectsLocationsApisDeploymentsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetContentsProjectsLocationsApisDeploymentsArtifactsRequest {
+  /** Required. The name of the artifact whose contents should be retrieved. Format: `{parent}/artifacts/*` */
+  name: string;
+}
+
+export const GetContentsProjectsLocationsApisDeploymentsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
+    svc,
+  ) as unknown as Schema.Schema<GetContentsProjectsLocationsApisDeploymentsArtifactsRequest>;
+
+export type GetContentsProjectsLocationsApisDeploymentsArtifactsResponse =
+  HttpBody;
+export const GetContentsProjectsLocationsApisDeploymentsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type GetContentsProjectsLocationsApisDeploymentsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns the contents of a specified artifact. If artifacts are stored with GZip compression, the default behavior is to return the artifact uncompressed (the mime_type response field indicates the exact format returned). */
+export const getContentsProjectsLocationsApisDeploymentsArtifacts: API.OperationMethod<
+  GetContentsProjectsLocationsApisDeploymentsArtifactsRequest,
+  GetContentsProjectsLocationsApisDeploymentsArtifactsResponse,
+  GetContentsProjectsLocationsApisDeploymentsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetContentsProjectsLocationsApisDeploymentsArtifactsRequest,
+  output: GetContentsProjectsLocationsApisDeploymentsArtifactsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateProjectsLocationsApisDeploymentsArtifactsRequest {
+  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
+  parent: string;
+  /** Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
+  artifactId?: string;
+  /** Request body */
+  body?: Artifact;
+}
+
+export const CreateProjectsLocationsApisDeploymentsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    artifactId: Schema.optional(Schema.String).pipe(T.HttpQuery("artifactId")),
+    body: Schema.optional(Artifact).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/artifacts", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsApisDeploymentsArtifactsRequest>;
+
+export type CreateProjectsLocationsApisDeploymentsArtifactsResponse = Artifact;
+export const CreateProjectsLocationsApisDeploymentsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+
+export type CreateProjectsLocationsApisDeploymentsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a specified artifact. */
+export const createProjectsLocationsApisDeploymentsArtifacts: API.OperationMethod<
+  CreateProjectsLocationsApisDeploymentsArtifactsRequest,
+  CreateProjectsLocationsApisDeploymentsArtifactsResponse,
+  CreateProjectsLocationsApisDeploymentsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsApisDeploymentsArtifactsRequest,
+  output: CreateProjectsLocationsApisDeploymentsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsApisDeploymentsArtifactsRequest {
+  /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
+  orderBy?: string;
+  /** A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token. */
+  pageToken?: string;
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
+  filter?: string;
+  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
+  parent: string;
+}
+
+export const ListProjectsLocationsApisDeploymentsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/artifacts" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsApisDeploymentsArtifactsRequest>;
+
+export type ListProjectsLocationsApisDeploymentsArtifactsResponse =
+  ListArtifactsResponse;
+export const ListProjectsLocationsApisDeploymentsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListArtifactsResponse;
+
+export type ListProjectsLocationsApisDeploymentsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns matching artifacts. */
+export const listProjectsLocationsApisDeploymentsArtifacts: API.PaginatedOperationMethod<
+  ListProjectsLocationsApisDeploymentsArtifactsRequest,
+  ListProjectsLocationsApisDeploymentsArtifactsResponse,
+  ListProjectsLocationsApisDeploymentsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsApisDeploymentsArtifactsRequest,
+  output: ListProjectsLocationsApisDeploymentsArtifactsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest {
+  /** Resource name. */
+  name: string;
+  /** Request body */
+  body?: Artifact;
+}
+
+export const ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Artifact).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest>;
+
+export type ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsResponse =
+  Artifact;
+export const ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+
+export type ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Used to replace a specified artifact. */
+export const replaceArtifactProjectsLocationsApisDeploymentsArtifacts: API.OperationMethod<
+  ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest,
+  ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsResponse,
+  ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest,
+  output: ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsApisDeploymentsArtifactsRequest {
+  /** Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*` */
+  name: string;
+}
+
+export const GetProjectsLocationsApisDeploymentsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsApisDeploymentsArtifactsRequest>;
+
+export type GetProjectsLocationsApisDeploymentsArtifactsResponse = Artifact;
+export const GetProjectsLocationsApisDeploymentsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+
+export type GetProjectsLocationsApisDeploymentsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns a specified artifact. */
+export const getProjectsLocationsApisDeploymentsArtifacts: API.OperationMethod<
+  GetProjectsLocationsApisDeploymentsArtifactsRequest,
+  GetProjectsLocationsApisDeploymentsArtifactsResponse,
+  GetProjectsLocationsApisDeploymentsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsApisDeploymentsArtifactsRequest,
+  output: GetProjectsLocationsApisDeploymentsArtifactsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsApisDeploymentsArtifactsRequest {
+  /** Required. The name of the artifact to delete. Format: `{parent}/artifacts/*` */
+  name: string;
+}
+
+export const DeleteProjectsLocationsApisDeploymentsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisDeploymentsArtifactsRequest>;
+
+export type DeleteProjectsLocationsApisDeploymentsArtifactsResponse = Empty;
+export const DeleteProjectsLocationsApisDeploymentsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsApisDeploymentsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Removes a specified artifact. */
+export const deleteProjectsLocationsApisDeploymentsArtifacts: API.OperationMethod<
+  DeleteProjectsLocationsApisDeploymentsArtifactsRequest,
+  DeleteProjectsLocationsApisDeploymentsArtifactsResponse,
+  DeleteProjectsLocationsApisDeploymentsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsApisDeploymentsArtifactsRequest,
+  output: DeleteProjectsLocationsApisDeploymentsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetContentsProjectsLocationsApisArtifactsRequest {
+  /** Required. The name of the artifact whose contents should be retrieved. Format: `{parent}/artifacts/*` */
+  name: string;
+}
+
+export const GetContentsProjectsLocationsApisArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
+    svc,
+  ) as unknown as Schema.Schema<GetContentsProjectsLocationsApisArtifactsRequest>;
+
+export type GetContentsProjectsLocationsApisArtifactsResponse = HttpBody;
+export const GetContentsProjectsLocationsApisArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type GetContentsProjectsLocationsApisArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns the contents of a specified artifact. If artifacts are stored with GZip compression, the default behavior is to return the artifact uncompressed (the mime_type response field indicates the exact format returned). */
+export const getContentsProjectsLocationsApisArtifacts: API.OperationMethod<
+  GetContentsProjectsLocationsApisArtifactsRequest,
+  GetContentsProjectsLocationsApisArtifactsResponse,
+  GetContentsProjectsLocationsApisArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetContentsProjectsLocationsApisArtifactsRequest,
+  output: GetContentsProjectsLocationsApisArtifactsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateProjectsLocationsApisArtifactsRequest {
+  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
+  parent: string;
+  /** Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
+  artifactId?: string;
+  /** Request body */
+  body?: Artifact;
+}
+
+export const CreateProjectsLocationsApisArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    artifactId: Schema.optional(Schema.String).pipe(T.HttpQuery("artifactId")),
+    body: Schema.optional(Artifact).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/artifacts", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsApisArtifactsRequest>;
+
+export type CreateProjectsLocationsApisArtifactsResponse = Artifact;
+export const CreateProjectsLocationsApisArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+
+export type CreateProjectsLocationsApisArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a specified artifact. */
+export const createProjectsLocationsApisArtifacts: API.OperationMethod<
+  CreateProjectsLocationsApisArtifactsRequest,
+  CreateProjectsLocationsApisArtifactsResponse,
+  CreateProjectsLocationsApisArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsApisArtifactsRequest,
+  output: CreateProjectsLocationsApisArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsLocationsApisArtifactsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsApisArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApisArtifactsRequest>;
+
+export type GetIamPolicyProjectsLocationsApisArtifactsResponse = Policy;
+export const GetIamPolicyProjectsLocationsApisArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsApisArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsApisArtifacts: API.OperationMethod<
+  GetIamPolicyProjectsLocationsApisArtifactsRequest,
+  GetIamPolicyProjectsLocationsApisArtifactsResponse,
+  GetIamPolicyProjectsLocationsApisArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsApisArtifactsRequest,
+  output: GetIamPolicyProjectsLocationsApisArtifactsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ReplaceArtifactProjectsLocationsApisArtifactsRequest {
+  /** Resource name. */
+  name: string;
+  /** Request body */
+  body?: Artifact;
+}
+
+export const ReplaceArtifactProjectsLocationsApisArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Artifact).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<ReplaceArtifactProjectsLocationsApisArtifactsRequest>;
+
+export type ReplaceArtifactProjectsLocationsApisArtifactsResponse = Artifact;
+export const ReplaceArtifactProjectsLocationsApisArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+
+export type ReplaceArtifactProjectsLocationsApisArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Used to replace a specified artifact. */
+export const replaceArtifactProjectsLocationsApisArtifacts: API.OperationMethod<
+  ReplaceArtifactProjectsLocationsApisArtifactsRequest,
+  ReplaceArtifactProjectsLocationsApisArtifactsResponse,
+  ReplaceArtifactProjectsLocationsApisArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ReplaceArtifactProjectsLocationsApisArtifactsRequest,
+  output: ReplaceArtifactProjectsLocationsApisArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsLocationsApisArtifactsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsApisArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApisArtifactsRequest>;
+
+export type TestIamPermissionsProjectsLocationsApisArtifactsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsApisArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsApisArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsApisArtifacts: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsApisArtifactsRequest,
+  TestIamPermissionsProjectsLocationsApisArtifactsResponse,
+  TestIamPermissionsProjectsLocationsApisArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsApisArtifactsRequest,
+  output: TestIamPermissionsProjectsLocationsApisArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SetIamPolicyProjectsLocationsApisArtifactsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsApisArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApisArtifactsRequest>;
+
+export type SetIamPolicyProjectsLocationsApisArtifactsResponse = Policy;
+export const SetIamPolicyProjectsLocationsApisArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsApisArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsApisArtifacts: API.OperationMethod<
+  SetIamPolicyProjectsLocationsApisArtifactsRequest,
+  SetIamPolicyProjectsLocationsApisArtifactsResponse,
+  SetIamPolicyProjectsLocationsApisArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsApisArtifactsRequest,
+  output: SetIamPolicyProjectsLocationsApisArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsApisArtifactsRequest {
+  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
+  parent: string;
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
+  filter?: string;
+  /** A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token. */
+  pageToken?: string;
+  /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
+  orderBy?: string;
+}
+
+export const ListProjectsLocationsApisArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/artifacts" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsApisArtifactsRequest>;
+
+export type ListProjectsLocationsApisArtifactsResponse = ListArtifactsResponse;
+export const ListProjectsLocationsApisArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListArtifactsResponse;
+
+export type ListProjectsLocationsApisArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns matching artifacts. */
+export const listProjectsLocationsApisArtifacts: API.PaginatedOperationMethod<
+  ListProjectsLocationsApisArtifactsRequest,
+  ListProjectsLocationsApisArtifactsResponse,
+  ListProjectsLocationsApisArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsApisArtifactsRequest,
+  output: ListProjectsLocationsApisArtifactsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsApisArtifactsRequest {
+  /** Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*` */
+  name: string;
+}
+
+export const GetProjectsLocationsApisArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsApisArtifactsRequest>;
+
+export type GetProjectsLocationsApisArtifactsResponse = Artifact;
+export const GetProjectsLocationsApisArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+
+export type GetProjectsLocationsApisArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns a specified artifact. */
+export const getProjectsLocationsApisArtifacts: API.OperationMethod<
+  GetProjectsLocationsApisArtifactsRequest,
+  GetProjectsLocationsApisArtifactsResponse,
+  GetProjectsLocationsApisArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsApisArtifactsRequest,
+  output: GetProjectsLocationsApisArtifactsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsApisArtifactsRequest {
+  /** Required. The name of the artifact to delete. Format: `{parent}/artifacts/*` */
+  name: string;
+}
+
+export const DeleteProjectsLocationsApisArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisArtifactsRequest>;
+
+export type DeleteProjectsLocationsApisArtifactsResponse = Empty;
+export const DeleteProjectsLocationsApisArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsApisArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Removes a specified artifact. */
+export const deleteProjectsLocationsApisArtifacts: API.OperationMethod<
+  DeleteProjectsLocationsApisArtifactsRequest,
+  DeleteProjectsLocationsApisArtifactsResponse,
+  DeleteProjectsLocationsApisArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsApisArtifactsRequest,
+  output: DeleteProjectsLocationsApisArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsLocationsApisVersionsRequest {
+  /** Required. The parent, which owns this collection of versions. Format: `projects/* /locations/* /apis/*` */
+  parent: string;
+  /** Required. The ID to use for the version, which will become the final component of the version's resource name. This value should be 1-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
+  apiVersionId?: string;
+  /** Request body */
+  body?: ApiVersion;
+}
+
+export const CreateProjectsLocationsApisVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    apiVersionId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("apiVersionId"),
+    ),
+    body: Schema.optional(ApiVersion).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/versions", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsRequest>;
+
+export type CreateProjectsLocationsApisVersionsResponse = ApiVersion;
+export const CreateProjectsLocationsApisVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApiVersion;
+
+export type CreateProjectsLocationsApisVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a specified version. */
+export const createProjectsLocationsApisVersions: API.OperationMethod<
+  CreateProjectsLocationsApisVersionsRequest,
+  CreateProjectsLocationsApisVersionsResponse,
+  CreateProjectsLocationsApisVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsApisVersionsRequest,
+  output: CreateProjectsLocationsApisVersionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsLocationsApisVersionsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsApisVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApisVersionsRequest>;
+
+export type GetIamPolicyProjectsLocationsApisVersionsResponse = Policy;
+export const GetIamPolicyProjectsLocationsApisVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsApisVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsApisVersions: API.OperationMethod<
+  GetIamPolicyProjectsLocationsApisVersionsRequest,
+  GetIamPolicyProjectsLocationsApisVersionsResponse,
+  GetIamPolicyProjectsLocationsApisVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsApisVersionsRequest,
+  output: GetIamPolicyProjectsLocationsApisVersionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface PatchProjectsLocationsApisVersionsRequest {
+  /** The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If an asterisk "*" is specified, all fields are updated, including fields that are unspecified/default in the request. */
+  updateMask?: string;
+  /** Resource name. */
+  name: string;
+  /** If set to true, and the version is not found, a new version will be created. In this situation, `update_mask` is ignored. */
+  allowMissing?: boolean;
+  /** Request body */
+  body?: ApiVersion;
+}
+
+export const PatchProjectsLocationsApisVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    allowMissing: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("allowMissing"),
+    ),
+    body: Schema.optional(ApiVersion).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsApisVersionsRequest>;
+
+export type PatchProjectsLocationsApisVersionsResponse = ApiVersion;
+export const PatchProjectsLocationsApisVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApiVersion;
+
+export type PatchProjectsLocationsApisVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Used to modify a specified version. */
+export const patchProjectsLocationsApisVersions: API.OperationMethod<
+  PatchProjectsLocationsApisVersionsRequest,
+  PatchProjectsLocationsApisVersionsResponse,
+  PatchProjectsLocationsApisVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsApisVersionsRequest,
+  output: PatchProjectsLocationsApisVersionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsLocationsApisVersionsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsApisVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApisVersionsRequest>;
+
+export type TestIamPermissionsProjectsLocationsApisVersionsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsApisVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsApisVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsApisVersions: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsApisVersionsRequest,
+  TestIamPermissionsProjectsLocationsApisVersionsResponse,
+  TestIamPermissionsProjectsLocationsApisVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsApisVersionsRequest,
+  output: TestIamPermissionsProjectsLocationsApisVersionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsApisVersionsRequest {
+  /** Required. The name of the version to retrieve. Format: `projects/* /locations/* /apis/* /versions/*` */
+  name: string;
+}
+
+export const GetProjectsLocationsApisVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsRequest>;
+
+export type GetProjectsLocationsApisVersionsResponse = ApiVersion;
+export const GetProjectsLocationsApisVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApiVersion;
+
+export type GetProjectsLocationsApisVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns a specified version. */
+export const getProjectsLocationsApisVersions: API.OperationMethod<
+  GetProjectsLocationsApisVersionsRequest,
+  GetProjectsLocationsApisVersionsResponse,
+  GetProjectsLocationsApisVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsApisVersionsRequest,
+  output: GetProjectsLocationsApisVersionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsApisVersionsRequest {
+  /** Required. The name of the version to delete. Format: `projects/* /locations/* /apis/* /versions/*` */
+  name: string;
+  /** If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.) */
+  force?: boolean;
+}
+
+export const DeleteProjectsLocationsApisVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsRequest>;
+
+export type DeleteProjectsLocationsApisVersionsResponse = Empty;
+export const DeleteProjectsLocationsApisVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsApisVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Removes a specified version and all of the resources that it owns. */
+export const deleteProjectsLocationsApisVersions: API.OperationMethod<
+  DeleteProjectsLocationsApisVersionsRequest,
+  DeleteProjectsLocationsApisVersionsResponse,
+  DeleteProjectsLocationsApisVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsApisVersionsRequest,
+  output: DeleteProjectsLocationsApisVersionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsApisVersionsRequest {
+  /** A page token, received from a previous `ListApiVersions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiVersions` must match the call that provided the page token. */
+  pageToken?: string;
+  /** The maximum number of versions to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
+  orderBy?: string;
+  /** Required. The parent, which owns this collection of versions. Format: `projects/* /locations/* /apis/*` */
+  parent: string;
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
+  filter?: string;
+}
+
+export const ListProjectsLocationsApisVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsRequest>;
+
+export type ListProjectsLocationsApisVersionsResponse = ListApiVersionsResponse;
+export const ListProjectsLocationsApisVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListApiVersionsResponse;
+
+export type ListProjectsLocationsApisVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns matching versions. */
+export const listProjectsLocationsApisVersions: API.PaginatedOperationMethod<
+  ListProjectsLocationsApisVersionsRequest,
+  ListProjectsLocationsApisVersionsResponse,
+  ListProjectsLocationsApisVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsApisVersionsRequest,
+  output: ListProjectsLocationsApisVersionsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface SetIamPolicyProjectsLocationsApisVersionsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsApisVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApisVersionsRequest>;
+
+export type SetIamPolicyProjectsLocationsApisVersionsResponse = Policy;
+export const SetIamPolicyProjectsLocationsApisVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsApisVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsApisVersions: API.OperationMethod<
+  SetIamPolicyProjectsLocationsApisVersionsRequest,
+  SetIamPolicyProjectsLocationsApisVersionsResponse,
+  SetIamPolicyProjectsLocationsApisVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsApisVersionsRequest,
+  output: SetIamPolicyProjectsLocationsApisVersionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteRevisionProjectsLocationsApisVersionsSpecsRequest {
+  /** Required. The name of the spec revision to be deleted, with a revision ID explicitly included. Example: `projects/sample/locations/global/apis/petstore/versions/1.0.0/specs/openapi.yaml@c7cfa2a8` */
+  name: string;
+}
+
+export const DeleteRevisionProjectsLocationsApisVersionsSpecsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}:deleteRevision" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteRevisionProjectsLocationsApisVersionsSpecsRequest>;
+
+export type DeleteRevisionProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
+export const DeleteRevisionProjectsLocationsApisVersionsSpecsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
+
+export type DeleteRevisionProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a revision of a spec. */
+export const deleteRevisionProjectsLocationsApisVersionsSpecs: API.OperationMethod<
+  DeleteRevisionProjectsLocationsApisVersionsSpecsRequest,
+  DeleteRevisionProjectsLocationsApisVersionsSpecsResponse,
+  DeleteRevisionProjectsLocationsApisVersionsSpecsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteRevisionProjectsLocationsApisVersionsSpecsRequest,
+  output: DeleteRevisionProjectsLocationsApisVersionsSpecsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsApisVersionsSpecsRequest {
+  /** Required. The parent, which owns this collection of specs. Format: `projects/* /locations/* /apis/* /versions/*` */
+  parent: string;
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
+  filter?: string;
+  /** The maximum number of specs to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
+  orderBy?: string;
+  /** A page token, received from a previous `ListApiSpecs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiSpecs` must match the call that provided the page token. */
+  pageToken?: string;
+}
+
+export const ListProjectsLocationsApisVersionsSpecsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/specs" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsSpecsRequest>;
+
+export type ListProjectsLocationsApisVersionsSpecsResponse =
+  ListApiSpecsResponse;
+export const ListProjectsLocationsApisVersionsSpecsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListApiSpecsResponse;
+
+export type ListProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns matching specs. */
+export const listProjectsLocationsApisVersionsSpecs: API.PaginatedOperationMethod<
+  ListProjectsLocationsApisVersionsSpecsRequest,
+  ListProjectsLocationsApisVersionsSpecsResponse,
+  ListProjectsLocationsApisVersionsSpecsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsApisVersionsSpecsRequest,
+  output: ListProjectsLocationsApisVersionsSpecsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface SetIamPolicyProjectsLocationsApisVersionsSpecsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsApisVersionsSpecsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApisVersionsSpecsRequest>;
+
+export type SetIamPolicyProjectsLocationsApisVersionsSpecsResponse = Policy;
+export const SetIamPolicyProjectsLocationsApisVersionsSpecsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsApisVersionsSpecs: API.OperationMethod<
+  SetIamPolicyProjectsLocationsApisVersionsSpecsRequest,
+  SetIamPolicyProjectsLocationsApisVersionsSpecsResponse,
+  SetIamPolicyProjectsLocationsApisVersionsSpecsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsApisVersionsSpecsRequest,
+  output: SetIamPolicyProjectsLocationsApisVersionsSpecsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsLocationsApisVersionsSpecsRequest {
+  /** If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.) */
+  force?: boolean;
+  /** Required. The name of the spec to delete. Format: `projects/* /locations/* /apis/* /versions/* /specs/*` */
+  name: string;
+}
+
+export const DeleteProjectsLocationsApisVersionsSpecsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsSpecsRequest>;
+
+export type DeleteProjectsLocationsApisVersionsSpecsResponse = Empty;
+export const DeleteProjectsLocationsApisVersionsSpecsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Removes a specified spec, all revisions, and all child resources (e.g., artifacts). */
+export const deleteProjectsLocationsApisVersionsSpecs: API.OperationMethod<
+  DeleteProjectsLocationsApisVersionsSpecsRequest,
+  DeleteProjectsLocationsApisVersionsSpecsResponse,
+  DeleteProjectsLocationsApisVersionsSpecsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsApisVersionsSpecsRequest,
+  output: DeleteProjectsLocationsApisVersionsSpecsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsLocationsApisVersionsSpecsRequest {
+  /** The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If an asterisk "*" is specified, all fields are updated, including fields that are unspecified/default in the request. */
+  updateMask?: string;
+  /** Resource name. */
+  name: string;
+  /** If set to true, and the spec is not found, a new spec will be created. In this situation, `update_mask` is ignored. */
+  allowMissing?: boolean;
+  /** Request body */
+  body?: ApiSpec;
+}
+
+export const PatchProjectsLocationsApisVersionsSpecsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    allowMissing: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("allowMissing"),
+    ),
+    body: Schema.optional(ApiSpec).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsApisVersionsSpecsRequest>;
+
+export type PatchProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
+export const PatchProjectsLocationsApisVersionsSpecsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
+
+export type PatchProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Used to modify a specified spec. */
+export const patchProjectsLocationsApisVersionsSpecs: API.OperationMethod<
+  PatchProjectsLocationsApisVersionsSpecsRequest,
+  PatchProjectsLocationsApisVersionsSpecsResponse,
+  PatchProjectsLocationsApisVersionsSpecsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsApisVersionsSpecsRequest,
+  output: PatchProjectsLocationsApisVersionsSpecsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsLocationsApisVersionsSpecsRequest {
+  /** Required. The parent, which owns this collection of specs. Format: `projects/* /locations/* /apis/* /versions/*` */
+  parent: string;
+  /** Required. The ID to use for the spec, which will become the final component of the spec's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
+  apiSpecId?: string;
+  /** Request body */
+  body?: ApiSpec;
+}
+
+export const CreateProjectsLocationsApisVersionsSpecsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    apiSpecId: Schema.optional(Schema.String).pipe(T.HttpQuery("apiSpecId")),
+    body: Schema.optional(ApiSpec).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/specs", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsSpecsRequest>;
+
+export type CreateProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
+export const CreateProjectsLocationsApisVersionsSpecsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
+
+export type CreateProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a specified spec. */
+export const createProjectsLocationsApisVersionsSpecs: API.OperationMethod<
+  CreateProjectsLocationsApisVersionsSpecsRequest,
+  CreateProjectsLocationsApisVersionsSpecsResponse,
+  CreateProjectsLocationsApisVersionsSpecsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsApisVersionsSpecsRequest,
+  output: CreateProjectsLocationsApisVersionsSpecsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TagRevisionProjectsLocationsApisVersionsSpecsRequest {
+  /** Required. The name of the spec to be tagged, including the revision ID is optional. If a revision is not specified, it will tag the latest revision. */
+  name: string;
+  /** Request body */
+  body?: TagApiSpecRevisionRequest;
+}
+
+export const TagRevisionProjectsLocationsApisVersionsSpecsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(TagApiSpecRevisionRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:tagRevision", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<TagRevisionProjectsLocationsApisVersionsSpecsRequest>;
+
+export type TagRevisionProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
+export const TagRevisionProjectsLocationsApisVersionsSpecsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
+
+export type TagRevisionProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Adds a tag to a specified revision of a spec. */
+export const tagRevisionProjectsLocationsApisVersionsSpecs: API.OperationMethod<
+  TagRevisionProjectsLocationsApisVersionsSpecsRequest,
+  TagRevisionProjectsLocationsApisVersionsSpecsResponse,
+  TagRevisionProjectsLocationsApisVersionsSpecsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TagRevisionProjectsLocationsApisVersionsSpecsRequest,
+  output: TagRevisionProjectsLocationsApisVersionsSpecsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListRevisionsProjectsLocationsApisVersionsSpecsRequest {
+  /** The page token, received from a previous ListApiSpecRevisions call. Provide this to retrieve the subsequent page. */
+  pageToken?: string;
+  /** Required. The name of the spec to list revisions for. */
+  name: string;
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
+  filter?: string;
+  /** The maximum number of revisions to return per page. */
+  pageSize?: number;
+}
+
+export const ListRevisionsProjectsLocationsApisVersionsSpecsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}:listRevisions" }),
+    svc,
+  ) as unknown as Schema.Schema<ListRevisionsProjectsLocationsApisVersionsSpecsRequest>;
+
+export type ListRevisionsProjectsLocationsApisVersionsSpecsResponse =
+  ListApiSpecRevisionsResponse;
+export const ListRevisionsProjectsLocationsApisVersionsSpecsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListApiSpecRevisionsResponse;
+
+export type ListRevisionsProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists all revisions of a spec. Revisions are returned in descending order of revision creation time. */
+export const listRevisionsProjectsLocationsApisVersionsSpecs: API.PaginatedOperationMethod<
+  ListRevisionsProjectsLocationsApisVersionsSpecsRequest,
+  ListRevisionsProjectsLocationsApisVersionsSpecsResponse,
+  ListRevisionsProjectsLocationsApisVersionsSpecsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListRevisionsProjectsLocationsApisVersionsSpecsRequest,
+  output: ListRevisionsProjectsLocationsApisVersionsSpecsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsApisVersionsSpecsRequest {
+  /** Required. The name of the spec to retrieve. Format: `projects/* /locations/* /apis/* /versions/* /specs/*` */
+  name: string;
+}
+
+export const GetProjectsLocationsApisVersionsSpecsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsSpecsRequest>;
+
+export type GetProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
+export const GetProjectsLocationsApisVersionsSpecsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
+
+export type GetProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns a specified spec. */
+export const getProjectsLocationsApisVersionsSpecs: API.OperationMethod<
+  GetProjectsLocationsApisVersionsSpecsRequest,
+  GetProjectsLocationsApisVersionsSpecsResponse,
+  GetProjectsLocationsApisVersionsSpecsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsApisVersionsSpecsRequest,
+  output: GetProjectsLocationsApisVersionsSpecsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetContentsProjectsLocationsApisVersionsSpecsRequest {
+  /** Required. The name of the spec whose contents should be retrieved. Format: `projects/* /locations/* /apis/* /versions/* /specs/*` */
+  name: string;
+}
+
+export const GetContentsProjectsLocationsApisVersionsSpecsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
+    svc,
+  ) as unknown as Schema.Schema<GetContentsProjectsLocationsApisVersionsSpecsRequest>;
+
+export type GetContentsProjectsLocationsApisVersionsSpecsResponse = HttpBody;
+export const GetContentsProjectsLocationsApisVersionsSpecsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type GetContentsProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns the contents of a specified spec. If specs are stored with GZip compression, the default behavior is to return the spec uncompressed (the mime_type response field indicates the exact format returned). */
+export const getContentsProjectsLocationsApisVersionsSpecs: API.OperationMethod<
+  GetContentsProjectsLocationsApisVersionsSpecsRequest,
+  GetContentsProjectsLocationsApisVersionsSpecsResponse,
+  GetContentsProjectsLocationsApisVersionsSpecsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetContentsProjectsLocationsApisVersionsSpecsRequest,
+  output: GetContentsProjectsLocationsApisVersionsSpecsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetIamPolicyProjectsLocationsApisVersionsSpecsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsApisVersionsSpecsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApisVersionsSpecsRequest>;
+
+export type GetIamPolicyProjectsLocationsApisVersionsSpecsResponse = Policy;
+export const GetIamPolicyProjectsLocationsApisVersionsSpecsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsApisVersionsSpecs: API.OperationMethod<
+  GetIamPolicyProjectsLocationsApisVersionsSpecsRequest,
+  GetIamPolicyProjectsLocationsApisVersionsSpecsResponse,
+  GetIamPolicyProjectsLocationsApisVersionsSpecsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsApisVersionsSpecsRequest,
+  output: GetIamPolicyProjectsLocationsApisVersionsSpecsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface RollbackProjectsLocationsApisVersionsSpecsRequest {
+  /** Required. The spec being rolled back. */
+  name: string;
+  /** Request body */
+  body?: RollbackApiSpecRequest;
+}
+
+export const RollbackProjectsLocationsApisVersionsSpecsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(RollbackApiSpecRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:rollback", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<RollbackProjectsLocationsApisVersionsSpecsRequest>;
+
+export type RollbackProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
+export const RollbackProjectsLocationsApisVersionsSpecsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
+
+export type RollbackProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the current revision to a specified prior revision. Note that this creates a new revision with a new revision ID. */
+export const rollbackProjectsLocationsApisVersionsSpecs: API.OperationMethod<
+  RollbackProjectsLocationsApisVersionsSpecsRequest,
+  RollbackProjectsLocationsApisVersionsSpecsResponse,
+  RollbackProjectsLocationsApisVersionsSpecsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RollbackProjectsLocationsApisVersionsSpecsRequest,
+  output: RollbackProjectsLocationsApisVersionsSpecsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest>;
+
+export type TestIamPermissionsProjectsLocationsApisVersionsSpecsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsApisVersionsSpecsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsApisVersionsSpecs: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest,
+  TestIamPermissionsProjectsLocationsApisVersionsSpecsResponse,
+  TestIamPermissionsProjectsLocationsApisVersionsSpecsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest,
+  output: TestIamPermissionsProjectsLocationsApisVersionsSpecsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsApisVersionsSpecsArtifactsRequest {
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
+  filter?: string;
+  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
+  parent: string;
+  /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
+  orderBy?: string;
+  /** A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token. */
+  pageToken?: string;
+}
+
+export const ListProjectsLocationsApisVersionsSpecsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/artifacts" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsSpecsArtifactsRequest>;
+
+export type ListProjectsLocationsApisVersionsSpecsArtifactsResponse =
+  ListArtifactsResponse;
+export const ListProjectsLocationsApisVersionsSpecsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListArtifactsResponse;
+
+export type ListProjectsLocationsApisVersionsSpecsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns matching artifacts. */
+export const listProjectsLocationsApisVersionsSpecsArtifacts: API.PaginatedOperationMethod<
+  ListProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  ListProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  ListProjectsLocationsApisVersionsSpecsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  output: ListProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest>;
+
+export type SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse =
+  Policy;
+export const SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod<
+  SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  output: SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsApisVersionsSpecsArtifactsRequest {
+  /** Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*` */
+  name: string;
+}
+
+export const GetProjectsLocationsApisVersionsSpecsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsSpecsArtifactsRequest>;
+
+export type GetProjectsLocationsApisVersionsSpecsArtifactsResponse = Artifact;
+export const GetProjectsLocationsApisVersionsSpecsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+
+export type GetProjectsLocationsApisVersionsSpecsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns a specified artifact. */
+export const getProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod<
+  GetProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  GetProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  GetProjectsLocationsApisVersionsSpecsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  output: GetProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest {
+  /** Required. The name of the artifact to delete. Format: `{parent}/artifacts/*` */
+  name: string;
+}
+
+export const DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest>;
+
+export type DeleteProjectsLocationsApisVersionsSpecsArtifactsResponse = Empty;
+export const DeleteProjectsLocationsApisVersionsSpecsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsApisVersionsSpecsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Removes a specified artifact. */
+export const deleteProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod<
+  DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  DeleteProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  DeleteProjectsLocationsApisVersionsSpecsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  output: DeleteProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest {
+  /** Resource name. */
+  name: string;
+  /** Request body */
+  body?: Artifact;
+}
+
+export const ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Artifact).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest>;
+
+export type ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsResponse =
+  Artifact;
+export const ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+
+export type ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Used to replace a specified artifact. */
+export const replaceArtifactProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod<
+  ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  output: ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest>;
+
+export type TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  output: TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest {
+  /** Required. The name of the artifact whose contents should be retrieved. Format: `{parent}/artifacts/*` */
+  name: string;
+}
+
+export const GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
+    svc,
+  ) as unknown as Schema.Schema<GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest>;
+
+export type GetContentsProjectsLocationsApisVersionsSpecsArtifactsResponse =
+  HttpBody;
+export const GetContentsProjectsLocationsApisVersionsSpecsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type GetContentsProjectsLocationsApisVersionsSpecsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns the contents of a specified artifact. If artifacts are stored with GZip compression, the default behavior is to return the artifact uncompressed (the mime_type response field indicates the exact format returned). */
+export const getContentsProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod<
+  GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  GetContentsProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  GetContentsProjectsLocationsApisVersionsSpecsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  output: GetContentsProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateProjectsLocationsApisVersionsSpecsArtifactsRequest {
+  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
+  parent: string;
+  /** Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
+  artifactId?: string;
+  /** Request body */
+  body?: Artifact;
+}
+
+export const CreateProjectsLocationsApisVersionsSpecsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    artifactId: Schema.optional(Schema.String).pipe(T.HttpQuery("artifactId")),
+    body: Schema.optional(Artifact).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/artifacts", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsSpecsArtifactsRequest>;
+
+export type CreateProjectsLocationsApisVersionsSpecsArtifactsResponse =
+  Artifact;
+export const CreateProjectsLocationsApisVersionsSpecsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+
+export type CreateProjectsLocationsApisVersionsSpecsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a specified artifact. */
+export const createProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod<
+  CreateProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  CreateProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  CreateProjectsLocationsApisVersionsSpecsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  output: CreateProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest>;
+
+export type GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse =
+  Policy;
+export const GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod<
+  GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest,
+  output: GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsApisVersionsArtifactsRequest {
+  /** A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token. */
+  pageToken?: string;
+  /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
+  orderBy?: string;
+  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
+  parent: string;
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
+  filter?: string;
+}
+
+export const ListProjectsLocationsApisVersionsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/artifacts" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsArtifactsRequest>;
+
+export type ListProjectsLocationsApisVersionsArtifactsResponse =
+  ListArtifactsResponse;
+export const ListProjectsLocationsApisVersionsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListArtifactsResponse;
+
+export type ListProjectsLocationsApisVersionsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns matching artifacts. */
+export const listProjectsLocationsApisVersionsArtifacts: API.PaginatedOperationMethod<
+  ListProjectsLocationsApisVersionsArtifactsRequest,
+  ListProjectsLocationsApisVersionsArtifactsResponse,
+  ListProjectsLocationsApisVersionsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsApisVersionsArtifactsRequest,
+  output: ListProjectsLocationsApisVersionsArtifactsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest>;
+
+export type SetIamPolicyProjectsLocationsApisVersionsArtifactsResponse = Policy;
+export const SetIamPolicyProjectsLocationsApisVersionsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsApisVersionsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
+  SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest,
+  SetIamPolicyProjectsLocationsApisVersionsArtifactsResponse,
+  SetIamPolicyProjectsLocationsApisVersionsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest,
+  output: SetIamPolicyProjectsLocationsApisVersionsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsApisVersionsArtifactsRequest {
+  /** Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*` */
+  name: string;
+}
+
+export const GetProjectsLocationsApisVersionsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsArtifactsRequest>;
+
+export type GetProjectsLocationsApisVersionsArtifactsResponse = Artifact;
+export const GetProjectsLocationsApisVersionsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+
+export type GetProjectsLocationsApisVersionsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns a specified artifact. */
+export const getProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
+  GetProjectsLocationsApisVersionsArtifactsRequest,
+  GetProjectsLocationsApisVersionsArtifactsResponse,
+  GetProjectsLocationsApisVersionsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsApisVersionsArtifactsRequest,
+  output: GetProjectsLocationsApisVersionsArtifactsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsApisVersionsArtifactsRequest {
+  /** Required. The name of the artifact to delete. Format: `{parent}/artifacts/*` */
+  name: string;
+}
+
+export const DeleteProjectsLocationsApisVersionsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsArtifactsRequest>;
+
+export type DeleteProjectsLocationsApisVersionsArtifactsResponse = Empty;
+export const DeleteProjectsLocationsApisVersionsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsApisVersionsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Removes a specified artifact. */
+export const deleteProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
+  DeleteProjectsLocationsApisVersionsArtifactsRequest,
+  DeleteProjectsLocationsApisVersionsArtifactsResponse,
+  DeleteProjectsLocationsApisVersionsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsApisVersionsArtifactsRequest,
+  output: DeleteProjectsLocationsApisVersionsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetContentsProjectsLocationsApisVersionsArtifactsRequest {
+  /** Required. The name of the artifact whose contents should be retrieved. Format: `{parent}/artifacts/*` */
+  name: string;
+}
+
+export const GetContentsProjectsLocationsApisVersionsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
+    svc,
+  ) as unknown as Schema.Schema<GetContentsProjectsLocationsApisVersionsArtifactsRequest>;
+
+export type GetContentsProjectsLocationsApisVersionsArtifactsResponse =
+  HttpBody;
+export const GetContentsProjectsLocationsApisVersionsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+
+export type GetContentsProjectsLocationsApisVersionsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns the contents of a specified artifact. If artifacts are stored with GZip compression, the default behavior is to return the artifact uncompressed (the mime_type response field indicates the exact format returned). */
+export const getContentsProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
+  GetContentsProjectsLocationsApisVersionsArtifactsRequest,
+  GetContentsProjectsLocationsApisVersionsArtifactsResponse,
+  GetContentsProjectsLocationsApisVersionsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetContentsProjectsLocationsApisVersionsArtifactsRequest,
+  output: GetContentsProjectsLocationsApisVersionsArtifactsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateProjectsLocationsApisVersionsArtifactsRequest {
+  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
+  parent: string;
+  /** Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
+  artifactId?: string;
+  /** Request body */
+  body?: Artifact;
+}
+
+export const CreateProjectsLocationsApisVersionsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    artifactId: Schema.optional(Schema.String).pipe(T.HttpQuery("artifactId")),
+    body: Schema.optional(Artifact).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/artifacts", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsArtifactsRequest>;
+
+export type CreateProjectsLocationsApisVersionsArtifactsResponse = Artifact;
+export const CreateProjectsLocationsApisVersionsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+
+export type CreateProjectsLocationsApisVersionsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a specified artifact. */
+export const createProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
+  CreateProjectsLocationsApisVersionsArtifactsRequest,
+  CreateProjectsLocationsApisVersionsArtifactsResponse,
+  CreateProjectsLocationsApisVersionsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsApisVersionsArtifactsRequest,
+  output: CreateProjectsLocationsApisVersionsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest>;
+
+export type GetIamPolicyProjectsLocationsApisVersionsArtifactsResponse = Policy;
+export const GetIamPolicyProjectsLocationsApisVersionsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsApisVersionsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
+  GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest,
+  GetIamPolicyProjectsLocationsApisVersionsArtifactsResponse,
+  GetIamPolicyProjectsLocationsApisVersionsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest,
+  output: GetIamPolicyProjectsLocationsApisVersionsArtifactsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest {
+  /** Resource name. */
+  name: string;
+  /** Request body */
+  body?: Artifact;
+}
+
+export const ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Artifact).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest>;
+
+export type ReplaceArtifactProjectsLocationsApisVersionsArtifactsResponse =
+  Artifact;
+export const ReplaceArtifactProjectsLocationsApisVersionsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+
+export type ReplaceArtifactProjectsLocationsApisVersionsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Used to replace a specified artifact. */
+export const replaceArtifactProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
+  ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest,
+  ReplaceArtifactProjectsLocationsApisVersionsArtifactsResponse,
+  ReplaceArtifactProjectsLocationsApisVersionsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest,
+  output: ReplaceArtifactProjectsLocationsApisVersionsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest>;
+
+export type TestIamPermissionsProjectsLocationsApisVersionsArtifactsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsApisVersionsArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsApisVersionsArtifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest,
+  TestIamPermissionsProjectsLocationsApisVersionsArtifactsResponse,
+  TestIamPermissionsProjectsLocationsApisVersionsArtifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest,
+  output: TestIamPermissionsProjectsLocationsApisVersionsArtifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsLocationsInstancesRequest {
+  /** Required. Parent resource of the Instance, of the form: `projects/* /locations/*` */
+  parent: string;
+  /** Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource. */
+  instanceId?: string;
+  /** Request body */
+  body?: Instance;
+}
+
+export const CreateProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    instanceId: Schema.optional(Schema.String).pipe(T.HttpQuery("instanceId")),
+    body: Schema.optional(Instance).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/instances", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsInstancesRequest>;
+
+export type CreateProjectsLocationsInstancesResponse = Operation;
+export const CreateProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Provisions instance resources for the Registry. */
+export const createProjectsLocationsInstances: API.OperationMethod<
+  CreateProjectsLocationsInstancesRequest,
+  CreateProjectsLocationsInstancesResponse,
+  CreateProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsInstancesRequest,
+  output: CreateProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsLocationsInstancesRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsInstancesRequest>;
+
+export type GetIamPolicyProjectsLocationsInstancesResponse = Policy;
+export const GetIamPolicyProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsInstances: API.OperationMethod<
+  GetIamPolicyProjectsLocationsInstancesRequest,
+  GetIamPolicyProjectsLocationsInstancesResponse,
+  GetIamPolicyProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsInstancesRequest,
+  output: GetIamPolicyProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface TestIamPermissionsProjectsLocationsInstancesRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>;
+
+export type TestIamPermissionsProjectsLocationsInstancesResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsInstancesRequest,
+  TestIamPermissionsProjectsLocationsInstancesResponse,
+  TestIamPermissionsProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsInstancesRequest,
+  output: TestIamPermissionsProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsLocationsInstancesRequest {
+  /** Required. The name of the Instance to delete. Format: `projects/* /locations/* /instances/*`. */
+  name: string;
+}
+
+export const DeleteProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsInstancesRequest>;
+
+export type DeleteProjectsLocationsInstancesResponse = Operation;
+export const DeleteProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes the Registry instance. */
+export const deleteProjectsLocationsInstances: API.OperationMethod<
+  DeleteProjectsLocationsInstancesRequest,
+  DeleteProjectsLocationsInstancesResponse,
+  DeleteProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsInstancesRequest,
+  output: DeleteProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsInstancesRequest {
+  /** Required. The name of the Instance to retrieve. Format: `projects/* /locations/* /instances/*`. */
+  name: string;
+}
+
+export const GetProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsInstancesRequest>;
+
+export type GetProjectsLocationsInstancesResponse = Instance;
+export const GetProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Instance;
+
+export type GetProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets details of a single Instance. */
+export const getProjectsLocationsInstances: API.OperationMethod<
+  GetProjectsLocationsInstancesRequest,
+  GetProjectsLocationsInstancesResponse,
+  GetProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsInstancesRequest,
+  output: GetProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface SetIamPolicyProjectsLocationsInstancesRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsInstancesRequest>;
+
+export type SetIamPolicyProjectsLocationsInstancesResponse = Policy;
+export const SetIamPolicyProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
+  SetIamPolicyProjectsLocationsInstancesRequest,
+  SetIamPolicyProjectsLocationsInstancesResponse,
+  SetIamPolicyProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsInstancesRequest,
+  output: SetIamPolicyProjectsLocationsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface SetIamPolicyProjectsLocationsDocumentsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -1525,3288 +4830,4 @@ export const testIamPermissionsProjectsLocationsDocuments: API.OperationMethod<
   input: TestIamPermissionsProjectsLocationsDocumentsRequest,
   output: TestIamPermissionsProjectsLocationsDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyProjectsLocationsInstancesRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsInstancesRequest>;
-
-export type SetIamPolicyProjectsLocationsInstancesResponse = Policy;
-export const SetIamPolicyProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
-  SetIamPolicyProjectsLocationsInstancesRequest,
-  SetIamPolicyProjectsLocationsInstancesResponse,
-  SetIamPolicyProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsInstancesRequest,
-  output: SetIamPolicyProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsInstancesRequest {
-  /** Required. The name of the Instance to delete. Format: `projects/* /locations/* /instances/*`. */
-  name: string;
-}
-
-export const DeleteProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsInstancesRequest>;
-
-export type DeleteProjectsLocationsInstancesResponse = Operation;
-export const DeleteProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes the Registry instance. */
-export const deleteProjectsLocationsInstances: API.OperationMethod<
-  DeleteProjectsLocationsInstancesRequest,
-  DeleteProjectsLocationsInstancesResponse,
-  DeleteProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsInstancesRequest,
-  output: DeleteProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsLocationsInstancesRequest {
-  /** Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource. */
-  instanceId?: string;
-  /** Required. Parent resource of the Instance, of the form: `projects/* /locations/*` */
-  parent: string;
-  /** Request body */
-  body?: Instance;
-}
-
-export const CreateProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    instanceId: Schema.optional(Schema.String).pipe(T.HttpQuery("instanceId")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(Instance).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/instances", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsInstancesRequest>;
-
-export type CreateProjectsLocationsInstancesResponse = Operation;
-export const CreateProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsLocationsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Provisions instance resources for the Registry. */
-export const createProjectsLocationsInstances: API.OperationMethod<
-  CreateProjectsLocationsInstancesRequest,
-  CreateProjectsLocationsInstancesResponse,
-  CreateProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsInstancesRequest,
-  output: CreateProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsLocationsInstancesRequest {
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-}
-
-export const GetIamPolicyProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsInstancesRequest>;
-
-export type GetIamPolicyProjectsLocationsInstancesResponse = Policy;
-export const GetIamPolicyProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsInstances: API.OperationMethod<
-  GetIamPolicyProjectsLocationsInstancesRequest,
-  GetIamPolicyProjectsLocationsInstancesResponse,
-  GetIamPolicyProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsInstancesRequest,
-  output: GetIamPolicyProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface TestIamPermissionsProjectsLocationsInstancesRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>;
-
-export type TestIamPermissionsProjectsLocationsInstancesResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsInstancesRequest,
-  TestIamPermissionsProjectsLocationsInstancesResponse,
-  TestIamPermissionsProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsInstancesRequest,
-  output: TestIamPermissionsProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsInstancesRequest {
-  /** Required. The name of the Instance to retrieve. Format: `projects/* /locations/* /instances/*`. */
-  name: string;
-}
-
-export const GetProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInstancesRequest>;
-
-export type GetProjectsLocationsInstancesResponse = Instance;
-export const GetProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Instance;
-
-export type GetProjectsLocationsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets details of a single Instance. */
-export const getProjectsLocationsInstances: API.OperationMethod<
-  GetProjectsLocationsInstancesRequest,
-  GetProjectsLocationsInstancesResponse,
-  GetProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsInstancesRequest,
-  output: GetProjectsLocationsInstancesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface SetIamPolicyProjectsLocationsApisRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApisRequest>;
-
-export type SetIamPolicyProjectsLocationsApisResponse = Policy;
-export const SetIamPolicyProjectsLocationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsApisError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsApis: API.OperationMethod<
-  SetIamPolicyProjectsLocationsApisRequest,
-  SetIamPolicyProjectsLocationsApisResponse,
-  SetIamPolicyProjectsLocationsApisError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsApisRequest,
-  output: SetIamPolicyProjectsLocationsApisResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsApisRequest {
-  /** Required. The name of the API to delete. Format: `projects/* /locations/* /apis/*` */
-  name: string;
-  /** If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.) */
-  force?: boolean;
-}
-
-export const DeleteProjectsLocationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisRequest>;
-
-export type DeleteProjectsLocationsApisResponse = Empty;
-export const DeleteProjectsLocationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsApisError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Removes a specified API and all of the resources that it owns. */
-export const deleteProjectsLocationsApis: API.OperationMethod<
-  DeleteProjectsLocationsApisRequest,
-  DeleteProjectsLocationsApisResponse,
-  DeleteProjectsLocationsApisError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApisRequest,
-  output: DeleteProjectsLocationsApisResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsLocationsApisRequest {
-  /** Required. The parent, which owns this collection of APIs. Format: `projects/* /locations/*` */
-  parent: string;
-  /** Required. The ID to use for the API, which will become the final component of the API's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
-  apiId?: string;
-  /** Request body */
-  body?: Api;
-}
-
-export const CreateProjectsLocationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    apiId: Schema.optional(Schema.String).pipe(T.HttpQuery("apiId")),
-    body: Schema.optional(Api).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/apis", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsApisRequest>;
-
-export type CreateProjectsLocationsApisResponse = Api;
-export const CreateProjectsLocationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Api;
-
-export type CreateProjectsLocationsApisError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a specified API. */
-export const createProjectsLocationsApis: API.OperationMethod<
-  CreateProjectsLocationsApisRequest,
-  CreateProjectsLocationsApisResponse,
-  CreateProjectsLocationsApisError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApisRequest,
-  output: CreateProjectsLocationsApisResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsLocationsApisRequest {
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-}
-
-export const GetIamPolicyProjectsLocationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApisRequest>;
-
-export type GetIamPolicyProjectsLocationsApisResponse = Policy;
-export const GetIamPolicyProjectsLocationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsApisError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsApis: API.OperationMethod<
-  GetIamPolicyProjectsLocationsApisRequest,
-  GetIamPolicyProjectsLocationsApisResponse,
-  GetIamPolicyProjectsLocationsApisError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsApisRequest,
-  output: GetIamPolicyProjectsLocationsApisResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface TestIamPermissionsProjectsLocationsApisRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApisRequest>;
-
-export type TestIamPermissionsProjectsLocationsApisResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsApisError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsApis: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsApisRequest,
-  TestIamPermissionsProjectsLocationsApisResponse,
-  TestIamPermissionsProjectsLocationsApisError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsApisRequest,
-  output: TestIamPermissionsProjectsLocationsApisResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsApisRequest {
-  /** A page token, received from a previous `ListApis` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApis` must match the call that provided the page token. */
-  pageToken?: string;
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
-  filter?: string;
-  /** The maximum number of APIs to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** Required. The parent, which owns this collection of APIs. Format: `projects/* /locations/*` */
-  parent: string;
-  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
-  orderBy?: string;
-}
-
-export const ListProjectsLocationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/apis" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsApisRequest>;
-
-export type ListProjectsLocationsApisResponse = ListApisResponse;
-export const ListProjectsLocationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApisResponse;
-
-export type ListProjectsLocationsApisError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns matching APIs. */
-export const listProjectsLocationsApis: API.PaginatedOperationMethod<
-  ListProjectsLocationsApisRequest,
-  ListProjectsLocationsApisResponse,
-  ListProjectsLocationsApisError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApisRequest,
-  output: ListProjectsLocationsApisResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsLocationsApisRequest {
-  /** Required. The name of the API to retrieve. Format: `projects/* /locations/* /apis/*` */
-  name: string;
-}
-
-export const GetProjectsLocationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApisRequest>;
-
-export type GetProjectsLocationsApisResponse = Api;
-export const GetProjectsLocationsApisResponse = /*@__PURE__*/ /*#__PURE__*/ Api;
-
-export type GetProjectsLocationsApisError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns a specified API. */
-export const getProjectsLocationsApis: API.OperationMethod<
-  GetProjectsLocationsApisRequest,
-  GetProjectsLocationsApisResponse,
-  GetProjectsLocationsApisError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApisRequest,
-  output: GetProjectsLocationsApisResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface PatchProjectsLocationsApisRequest {
-  /** Resource name. */
-  name: string;
-  /** If set to true, and the API is not found, a new API will be created. In this situation, `update_mask` is ignored. */
-  allowMissing?: boolean;
-  /** The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If an asterisk "*" is specified, all fields are updated, including fields that are unspecified/default in the request. */
-  updateMask?: string;
-  /** Request body */
-  body?: Api;
-}
-
-export const PatchProjectsLocationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    allowMissing: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("allowMissing"),
-    ),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Api).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsApisRequest>;
-
-export type PatchProjectsLocationsApisResponse = Api;
-export const PatchProjectsLocationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Api;
-
-export type PatchProjectsLocationsApisError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Used to modify a specified API. */
-export const patchProjectsLocationsApis: API.OperationMethod<
-  PatchProjectsLocationsApisRequest,
-  PatchProjectsLocationsApisResponse,
-  PatchProjectsLocationsApisError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsApisRequest,
-  output: PatchProjectsLocationsApisResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyProjectsLocationsApisVersionsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsApisVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApisVersionsRequest>;
-
-export type SetIamPolicyProjectsLocationsApisVersionsResponse = Policy;
-export const SetIamPolicyProjectsLocationsApisVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsApisVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsApisVersions: API.OperationMethod<
-  SetIamPolicyProjectsLocationsApisVersionsRequest,
-  SetIamPolicyProjectsLocationsApisVersionsResponse,
-  SetIamPolicyProjectsLocationsApisVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsApisVersionsRequest,
-  output: SetIamPolicyProjectsLocationsApisVersionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsApisVersionsRequest {
-  /** Required. The name of the version to delete. Format: `projects/* /locations/* /apis/* /versions/*` */
-  name: string;
-  /** If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.) */
-  force?: boolean;
-}
-
-export const DeleteProjectsLocationsApisVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsRequest>;
-
-export type DeleteProjectsLocationsApisVersionsResponse = Empty;
-export const DeleteProjectsLocationsApisVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsApisVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Removes a specified version and all of the resources that it owns. */
-export const deleteProjectsLocationsApisVersions: API.OperationMethod<
-  DeleteProjectsLocationsApisVersionsRequest,
-  DeleteProjectsLocationsApisVersionsResponse,
-  DeleteProjectsLocationsApisVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApisVersionsRequest,
-  output: DeleteProjectsLocationsApisVersionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsApisVersionsRequest {
-  /** Required. The parent, which owns this collection of versions. Format: `projects/* /locations/* /apis/*` */
-  parent: string;
-  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
-  orderBy?: string;
-  /** A page token, received from a previous `ListApiVersions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiVersions` must match the call that provided the page token. */
-  pageToken?: string;
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
-  filter?: string;
-  /** The maximum number of versions to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-}
-
-export const ListProjectsLocationsApisVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsRequest>;
-
-export type ListProjectsLocationsApisVersionsResponse = ListApiVersionsResponse;
-export const ListProjectsLocationsApisVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApiVersionsResponse;
-
-export type ListProjectsLocationsApisVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns matching versions. */
-export const listProjectsLocationsApisVersions: API.PaginatedOperationMethod<
-  ListProjectsLocationsApisVersionsRequest,
-  ListProjectsLocationsApisVersionsResponse,
-  ListProjectsLocationsApisVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApisVersionsRequest,
-  output: ListProjectsLocationsApisVersionsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsLocationsApisVersionsRequest {
-  /** Required. The name of the version to retrieve. Format: `projects/* /locations/* /apis/* /versions/*` */
-  name: string;
-}
-
-export const GetProjectsLocationsApisVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsRequest>;
-
-export type GetProjectsLocationsApisVersionsResponse = ApiVersion;
-export const GetProjectsLocationsApisVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiVersion;
-
-export type GetProjectsLocationsApisVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns a specified version. */
-export const getProjectsLocationsApisVersions: API.OperationMethod<
-  GetProjectsLocationsApisVersionsRequest,
-  GetProjectsLocationsApisVersionsResponse,
-  GetProjectsLocationsApisVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApisVersionsRequest,
-  output: GetProjectsLocationsApisVersionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateProjectsLocationsApisVersionsRequest {
-  /** Required. The parent, which owns this collection of versions. Format: `projects/* /locations/* /apis/*` */
-  parent: string;
-  /** Required. The ID to use for the version, which will become the final component of the version's resource name. This value should be 1-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
-  apiVersionId?: string;
-  /** Request body */
-  body?: ApiVersion;
-}
-
-export const CreateProjectsLocationsApisVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    apiVersionId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("apiVersionId"),
-    ),
-    body: Schema.optional(ApiVersion).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/versions", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsRequest>;
-
-export type CreateProjectsLocationsApisVersionsResponse = ApiVersion;
-export const CreateProjectsLocationsApisVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiVersion;
-
-export type CreateProjectsLocationsApisVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a specified version. */
-export const createProjectsLocationsApisVersions: API.OperationMethod<
-  CreateProjectsLocationsApisVersionsRequest,
-  CreateProjectsLocationsApisVersionsResponse,
-  CreateProjectsLocationsApisVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApisVersionsRequest,
-  output: CreateProjectsLocationsApisVersionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsLocationsApisVersionsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsApisVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApisVersionsRequest>;
-
-export type GetIamPolicyProjectsLocationsApisVersionsResponse = Policy;
-export const GetIamPolicyProjectsLocationsApisVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsApisVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsApisVersions: API.OperationMethod<
-  GetIamPolicyProjectsLocationsApisVersionsRequest,
-  GetIamPolicyProjectsLocationsApisVersionsResponse,
-  GetIamPolicyProjectsLocationsApisVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsApisVersionsRequest,
-  output: GetIamPolicyProjectsLocationsApisVersionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface TestIamPermissionsProjectsLocationsApisVersionsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsApisVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApisVersionsRequest>;
-
-export type TestIamPermissionsProjectsLocationsApisVersionsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsApisVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsApisVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsApisVersions: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsApisVersionsRequest,
-  TestIamPermissionsProjectsLocationsApisVersionsResponse,
-  TestIamPermissionsProjectsLocationsApisVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsApisVersionsRequest,
-  output: TestIamPermissionsProjectsLocationsApisVersionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsLocationsApisVersionsRequest {
-  /** Resource name. */
-  name: string;
-  /** If set to true, and the version is not found, a new version will be created. In this situation, `update_mask` is ignored. */
-  allowMissing?: boolean;
-  /** The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If an asterisk "*" is specified, all fields are updated, including fields that are unspecified/default in the request. */
-  updateMask?: string;
-  /** Request body */
-  body?: ApiVersion;
-}
-
-export const PatchProjectsLocationsApisVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    allowMissing: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("allowMissing"),
-    ),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(ApiVersion).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsApisVersionsRequest>;
-
-export type PatchProjectsLocationsApisVersionsResponse = ApiVersion;
-export const PatchProjectsLocationsApisVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiVersion;
-
-export type PatchProjectsLocationsApisVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Used to modify a specified version. */
-export const patchProjectsLocationsApisVersions: API.OperationMethod<
-  PatchProjectsLocationsApisVersionsRequest,
-  PatchProjectsLocationsApisVersionsResponse,
-  PatchProjectsLocationsApisVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsApisVersionsRequest,
-  output: PatchProjectsLocationsApisVersionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyProjectsLocationsApisVersionsSpecsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApisVersionsSpecsRequest>;
-
-export type SetIamPolicyProjectsLocationsApisVersionsSpecsResponse = Policy;
-export const SetIamPolicyProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsApisVersionsSpecsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsApisVersionsSpecs: API.OperationMethod<
-  SetIamPolicyProjectsLocationsApisVersionsSpecsRequest,
-  SetIamPolicyProjectsLocationsApisVersionsSpecsResponse,
-  SetIamPolicyProjectsLocationsApisVersionsSpecsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsApisVersionsSpecsRequest,
-  output: SetIamPolicyProjectsLocationsApisVersionsSpecsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsApisVersionsSpecsRequest {
-  /** Required. The name of the spec to delete. Format: `projects/* /locations/* /apis/* /versions/* /specs/*` */
-  name: string;
-  /** If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.) */
-  force?: boolean;
-}
-
-export const DeleteProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsSpecsRequest>;
-
-export type DeleteProjectsLocationsApisVersionsSpecsResponse = Empty;
-export const DeleteProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsApisVersionsSpecsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Removes a specified spec, all revisions, and all child resources (e.g., artifacts). */
-export const deleteProjectsLocationsApisVersionsSpecs: API.OperationMethod<
-  DeleteProjectsLocationsApisVersionsSpecsRequest,
-  DeleteProjectsLocationsApisVersionsSpecsResponse,
-  DeleteProjectsLocationsApisVersionsSpecsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApisVersionsSpecsRequest,
-  output: DeleteProjectsLocationsApisVersionsSpecsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface RollbackProjectsLocationsApisVersionsSpecsRequest {
-  /** Required. The spec being rolled back. */
-  name: string;
-  /** Request body */
-  body?: RollbackApiSpecRequest;
-}
-
-export const RollbackProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(RollbackApiSpecRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:rollback", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<RollbackProjectsLocationsApisVersionsSpecsRequest>;
-
-export type RollbackProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
-export const RollbackProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
-
-export type RollbackProjectsLocationsApisVersionsSpecsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the current revision to a specified prior revision. Note that this creates a new revision with a new revision ID. */
-export const rollbackProjectsLocationsApisVersionsSpecs: API.OperationMethod<
-  RollbackProjectsLocationsApisVersionsSpecsRequest,
-  RollbackProjectsLocationsApisVersionsSpecsResponse,
-  RollbackProjectsLocationsApisVersionsSpecsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RollbackProjectsLocationsApisVersionsSpecsRequest,
-  output: RollbackProjectsLocationsApisVersionsSpecsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetContentsProjectsLocationsApisVersionsSpecsRequest {
-  /** Required. The name of the spec whose contents should be retrieved. Format: `projects/* /locations/* /apis/* /versions/* /specs/*` */
-  name: string;
-}
-
-export const GetContentsProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
-    svc,
-  ) as unknown as Schema.Schema<GetContentsProjectsLocationsApisVersionsSpecsRequest>;
-
-export type GetContentsProjectsLocationsApisVersionsSpecsResponse = HttpBody;
-export const GetContentsProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type GetContentsProjectsLocationsApisVersionsSpecsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns the contents of a specified spec. If specs are stored with GZip compression, the default behavior is to return the spec uncompressed (the mime_type response field indicates the exact format returned). */
-export const getContentsProjectsLocationsApisVersionsSpecs: API.OperationMethod<
-  GetContentsProjectsLocationsApisVersionsSpecsRequest,
-  GetContentsProjectsLocationsApisVersionsSpecsResponse,
-  GetContentsProjectsLocationsApisVersionsSpecsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetContentsProjectsLocationsApisVersionsSpecsRequest,
-  output: GetContentsProjectsLocationsApisVersionsSpecsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListRevisionsProjectsLocationsApisVersionsSpecsRequest {
-  /** The maximum number of revisions to return per page. */
-  pageSize?: number;
-  /** Required. The name of the spec to list revisions for. */
-  name: string;
-  /** The page token, received from a previous ListApiSpecRevisions call. Provide this to retrieve the subsequent page. */
-  pageToken?: string;
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
-  filter?: string;
-}
-
-export const ListRevisionsProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}:listRevisions" }),
-    svc,
-  ) as unknown as Schema.Schema<ListRevisionsProjectsLocationsApisVersionsSpecsRequest>;
-
-export type ListRevisionsProjectsLocationsApisVersionsSpecsResponse =
-  ListApiSpecRevisionsResponse;
-export const ListRevisionsProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApiSpecRevisionsResponse;
-
-export type ListRevisionsProjectsLocationsApisVersionsSpecsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists all revisions of a spec. Revisions are returned in descending order of revision creation time. */
-export const listRevisionsProjectsLocationsApisVersionsSpecs: API.PaginatedOperationMethod<
-  ListRevisionsProjectsLocationsApisVersionsSpecsRequest,
-  ListRevisionsProjectsLocationsApisVersionsSpecsResponse,
-  ListRevisionsProjectsLocationsApisVersionsSpecsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListRevisionsProjectsLocationsApisVersionsSpecsRequest,
-  output: ListRevisionsProjectsLocationsApisVersionsSpecsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface TagRevisionProjectsLocationsApisVersionsSpecsRequest {
-  /** Required. The name of the spec to be tagged, including the revision ID is optional. If a revision is not specified, it will tag the latest revision. */
-  name: string;
-  /** Request body */
-  body?: TagApiSpecRevisionRequest;
-}
-
-export const TagRevisionProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(TagApiSpecRevisionRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:tagRevision", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<TagRevisionProjectsLocationsApisVersionsSpecsRequest>;
-
-export type TagRevisionProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
-export const TagRevisionProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
-
-export type TagRevisionProjectsLocationsApisVersionsSpecsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Adds a tag to a specified revision of a spec. */
-export const tagRevisionProjectsLocationsApisVersionsSpecs: API.OperationMethod<
-  TagRevisionProjectsLocationsApisVersionsSpecsRequest,
-  TagRevisionProjectsLocationsApisVersionsSpecsResponse,
-  TagRevisionProjectsLocationsApisVersionsSpecsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TagRevisionProjectsLocationsApisVersionsSpecsRequest,
-  output: TagRevisionProjectsLocationsApisVersionsSpecsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsApisVersionsSpecsRequest {
-  /** Required. The parent, which owns this collection of specs. Format: `projects/* /locations/* /apis/* /versions/*` */
-  parent: string;
-  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
-  orderBy?: string;
-  /** The maximum number of specs to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** A page token, received from a previous `ListApiSpecs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiSpecs` must match the call that provided the page token. */
-  pageToken?: string;
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
-  filter?: string;
-}
-
-export const ListProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/specs" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsSpecsRequest>;
-
-export type ListProjectsLocationsApisVersionsSpecsResponse =
-  ListApiSpecsResponse;
-export const ListProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApiSpecsResponse;
-
-export type ListProjectsLocationsApisVersionsSpecsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns matching specs. */
-export const listProjectsLocationsApisVersionsSpecs: API.PaginatedOperationMethod<
-  ListProjectsLocationsApisVersionsSpecsRequest,
-  ListProjectsLocationsApisVersionsSpecsResponse,
-  ListProjectsLocationsApisVersionsSpecsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApisVersionsSpecsRequest,
-  output: ListProjectsLocationsApisVersionsSpecsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetIamPolicyProjectsLocationsApisVersionsSpecsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApisVersionsSpecsRequest>;
-
-export type GetIamPolicyProjectsLocationsApisVersionsSpecsResponse = Policy;
-export const GetIamPolicyProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsApisVersionsSpecsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsApisVersionsSpecs: API.OperationMethod<
-  GetIamPolicyProjectsLocationsApisVersionsSpecsRequest,
-  GetIamPolicyProjectsLocationsApisVersionsSpecsResponse,
-  GetIamPolicyProjectsLocationsApisVersionsSpecsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsApisVersionsSpecsRequest,
-  output: GetIamPolicyProjectsLocationsApisVersionsSpecsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteRevisionProjectsLocationsApisVersionsSpecsRequest {
-  /** Required. The name of the spec revision to be deleted, with a revision ID explicitly included. Example: `projects/sample/locations/global/apis/petstore/versions/1.0.0/specs/openapi.yaml@c7cfa2a8` */
-  name: string;
-}
-
-export const DeleteRevisionProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}:deleteRevision" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteRevisionProjectsLocationsApisVersionsSpecsRequest>;
-
-export type DeleteRevisionProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
-export const DeleteRevisionProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
-
-export type DeleteRevisionProjectsLocationsApisVersionsSpecsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a revision of a spec. */
-export const deleteRevisionProjectsLocationsApisVersionsSpecs: API.OperationMethod<
-  DeleteRevisionProjectsLocationsApisVersionsSpecsRequest,
-  DeleteRevisionProjectsLocationsApisVersionsSpecsResponse,
-  DeleteRevisionProjectsLocationsApisVersionsSpecsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteRevisionProjectsLocationsApisVersionsSpecsRequest,
-  output: DeleteRevisionProjectsLocationsApisVersionsSpecsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsApisVersionsSpecsRequest {
-  /** Required. The name of the spec to retrieve. Format: `projects/* /locations/* /apis/* /versions/* /specs/*` */
-  name: string;
-}
-
-export const GetProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsSpecsRequest>;
-
-export type GetProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
-export const GetProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
-
-export type GetProjectsLocationsApisVersionsSpecsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns a specified spec. */
-export const getProjectsLocationsApisVersionsSpecs: API.OperationMethod<
-  GetProjectsLocationsApisVersionsSpecsRequest,
-  GetProjectsLocationsApisVersionsSpecsResponse,
-  GetProjectsLocationsApisVersionsSpecsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApisVersionsSpecsRequest,
-  output: GetProjectsLocationsApisVersionsSpecsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateProjectsLocationsApisVersionsSpecsRequest {
-  /** Required. The ID to use for the spec, which will become the final component of the spec's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
-  apiSpecId?: string;
-  /** Required. The parent, which owns this collection of specs. Format: `projects/* /locations/* /apis/* /versions/*` */
-  parent: string;
-  /** Request body */
-  body?: ApiSpec;
-}
-
-export const CreateProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiSpecId: Schema.optional(Schema.String).pipe(T.HttpQuery("apiSpecId")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(ApiSpec).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/specs", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsSpecsRequest>;
-
-export type CreateProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
-export const CreateProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
-
-export type CreateProjectsLocationsApisVersionsSpecsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a specified spec. */
-export const createProjectsLocationsApisVersionsSpecs: API.OperationMethod<
-  CreateProjectsLocationsApisVersionsSpecsRequest,
-  CreateProjectsLocationsApisVersionsSpecsResponse,
-  CreateProjectsLocationsApisVersionsSpecsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApisVersionsSpecsRequest,
-  output: CreateProjectsLocationsApisVersionsSpecsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest>;
-
-export type TestIamPermissionsProjectsLocationsApisVersionsSpecsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsApisVersionsSpecsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsApisVersionsSpecs: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest,
-  TestIamPermissionsProjectsLocationsApisVersionsSpecsResponse,
-  TestIamPermissionsProjectsLocationsApisVersionsSpecsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest,
-  output: TestIamPermissionsProjectsLocationsApisVersionsSpecsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsLocationsApisVersionsSpecsRequest {
-  /** Resource name. */
-  name: string;
-  /** If set to true, and the spec is not found, a new spec will be created. In this situation, `update_mask` is ignored. */
-  allowMissing?: boolean;
-  /** The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If an asterisk "*" is specified, all fields are updated, including fields that are unspecified/default in the request. */
-  updateMask?: string;
-  /** Request body */
-  body?: ApiSpec;
-}
-
-export const PatchProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    allowMissing: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("allowMissing"),
-    ),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(ApiSpec).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsApisVersionsSpecsRequest>;
-
-export type PatchProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
-export const PatchProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
-
-export type PatchProjectsLocationsApisVersionsSpecsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Used to modify a specified spec. */
-export const patchProjectsLocationsApisVersionsSpecs: API.OperationMethod<
-  PatchProjectsLocationsApisVersionsSpecsRequest,
-  PatchProjectsLocationsApisVersionsSpecsResponse,
-  PatchProjectsLocationsApisVersionsSpecsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsApisVersionsSpecsRequest,
-  output: PatchProjectsLocationsApisVersionsSpecsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsLocationsApisVersionsSpecsArtifactsRequest {
-  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
-  parent: string;
-  /** Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
-  artifactId?: string;
-  /** Request body */
-  body?: Artifact;
-}
-
-export const CreateProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    artifactId: Schema.optional(Schema.String).pipe(T.HttpQuery("artifactId")),
-    body: Schema.optional(Artifact).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/artifacts", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
-export type CreateProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  Artifact;
-export const CreateProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
-
-export type CreateProjectsLocationsApisVersionsSpecsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a specified artifact. */
-export const createProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod<
-  CreateProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  CreateProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  CreateProjectsLocationsApisVersionsSpecsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: CreateProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
-export type TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsApisVersionsSpecsArtifactsRequest {
-  /** Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*` */
-  name: string;
-}
-
-export const GetProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
-export type GetProjectsLocationsApisVersionsSpecsArtifactsResponse = Artifact;
-export const GetProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
-
-export type GetProjectsLocationsApisVersionsSpecsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns a specified artifact. */
-export const getProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod<
-  GetProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  GetProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  GetProjectsLocationsApisVersionsSpecsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: GetProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest {
-  /** Required. The name of the artifact whose contents should be retrieved. Format: `{parent}/artifacts/*` */
-  name: string;
-}
-
-export const GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
-    svc,
-  ) as unknown as Schema.Schema<GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
-export type GetContentsProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  HttpBody;
-export const GetContentsProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type GetContentsProjectsLocationsApisVersionsSpecsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns the contents of a specified artifact. If artifacts are stored with GZip compression, the default behavior is to return the artifact uncompressed (the mime_type response field indicates the exact format returned). */
-export const getContentsProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod<
-  GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  GetContentsProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  GetContentsProjectsLocationsApisVersionsSpecsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: GetContentsProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest {
-  /** Resource name. */
-  name: string;
-  /** Request body */
-  body?: Artifact;
-}
-
-export const ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(Artifact).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
-export type ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  Artifact;
-export const ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
-
-export type ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Used to replace a specified artifact. */
-export const replaceArtifactProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod<
-  ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest {
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-}
-
-export const GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
-export type GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  Policy;
-export const GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod<
-  GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsApisVersionsSpecsArtifactsRequest {
-  /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token. */
-  pageToken?: string;
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
-  filter?: string;
-  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
-  parent: string;
-  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
-  orderBy?: string;
-}
-
-export const ListProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/artifacts" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
-export type ListProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  ListArtifactsResponse;
-export const ListProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListArtifactsResponse;
-
-export type ListProjectsLocationsApisVersionsSpecsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns matching artifacts. */
-export const listProjectsLocationsApisVersionsSpecsArtifacts: API.PaginatedOperationMethod<
-  ListProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  ListProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  ListProjectsLocationsApisVersionsSpecsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: ListProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
-export type SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  Policy;
-export const SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod<
-  SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest {
-  /** Required. The name of the artifact to delete. Format: `{parent}/artifacts/*` */
-  name: string;
-}
-
-export const DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
-export type DeleteProjectsLocationsApisVersionsSpecsArtifactsResponse = Empty;
-export const DeleteProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsApisVersionsSpecsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Removes a specified artifact. */
-export const deleteProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod<
-  DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  DeleteProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  DeleteProjectsLocationsApisVersionsSpecsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: DeleteProjectsLocationsApisVersionsSpecsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest {
-  /** Resource name. */
-  name: string;
-  /** Request body */
-  body?: Artifact;
-}
-
-export const ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(Artifact).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest>;
-
-export type ReplaceArtifactProjectsLocationsApisVersionsArtifactsResponse =
-  Artifact;
-export const ReplaceArtifactProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
-
-export type ReplaceArtifactProjectsLocationsApisVersionsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Used to replace a specified artifact. */
-export const replaceArtifactProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
-  ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest,
-  ReplaceArtifactProjectsLocationsApisVersionsArtifactsResponse,
-  ReplaceArtifactProjectsLocationsApisVersionsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest,
-  output: ReplaceArtifactProjectsLocationsApisVersionsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest>;
-
-export type GetIamPolicyProjectsLocationsApisVersionsArtifactsResponse = Policy;
-export const GetIamPolicyProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsApisVersionsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
-  GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest,
-  GetIamPolicyProjectsLocationsApisVersionsArtifactsResponse,
-  GetIamPolicyProjectsLocationsApisVersionsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest,
-  output: GetIamPolicyProjectsLocationsApisVersionsArtifactsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsApisVersionsArtifactsRequest {
-  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
-  parent: string;
-  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
-  orderBy?: string;
-  /** A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token. */
-  pageToken?: string;
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
-  filter?: string;
-  /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-}
-
-export const ListProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/artifacts" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsArtifactsRequest>;
-
-export type ListProjectsLocationsApisVersionsArtifactsResponse =
-  ListArtifactsResponse;
-export const ListProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListArtifactsResponse;
-
-export type ListProjectsLocationsApisVersionsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns matching artifacts. */
-export const listProjectsLocationsApisVersionsArtifacts: API.PaginatedOperationMethod<
-  ListProjectsLocationsApisVersionsArtifactsRequest,
-  ListProjectsLocationsApisVersionsArtifactsResponse,
-  ListProjectsLocationsApisVersionsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApisVersionsArtifactsRequest,
-  output: ListProjectsLocationsApisVersionsArtifactsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface DeleteProjectsLocationsApisVersionsArtifactsRequest {
-  /** Required. The name of the artifact to delete. Format: `{parent}/artifacts/*` */
-  name: string;
-}
-
-export const DeleteProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsArtifactsRequest>;
-
-export type DeleteProjectsLocationsApisVersionsArtifactsResponse = Empty;
-export const DeleteProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsApisVersionsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Removes a specified artifact. */
-export const deleteProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
-  DeleteProjectsLocationsApisVersionsArtifactsRequest,
-  DeleteProjectsLocationsApisVersionsArtifactsResponse,
-  DeleteProjectsLocationsApisVersionsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApisVersionsArtifactsRequest,
-  output: DeleteProjectsLocationsApisVersionsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest>;
-
-export type SetIamPolicyProjectsLocationsApisVersionsArtifactsResponse = Policy;
-export const SetIamPolicyProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsApisVersionsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
-  SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest,
-  SetIamPolicyProjectsLocationsApisVersionsArtifactsResponse,
-  SetIamPolicyProjectsLocationsApisVersionsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest,
-  output: SetIamPolicyProjectsLocationsApisVersionsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsLocationsApisVersionsArtifactsRequest {
-  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
-  parent: string;
-  /** Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
-  artifactId?: string;
-  /** Request body */
-  body?: Artifact;
-}
-
-export const CreateProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    artifactId: Schema.optional(Schema.String).pipe(T.HttpQuery("artifactId")),
-    body: Schema.optional(Artifact).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/artifacts", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsArtifactsRequest>;
-
-export type CreateProjectsLocationsApisVersionsArtifactsResponse = Artifact;
-export const CreateProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
-
-export type CreateProjectsLocationsApisVersionsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a specified artifact. */
-export const createProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
-  CreateProjectsLocationsApisVersionsArtifactsRequest,
-  CreateProjectsLocationsApisVersionsArtifactsResponse,
-  CreateProjectsLocationsApisVersionsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApisVersionsArtifactsRequest,
-  output: CreateProjectsLocationsApisVersionsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest>;
-
-export type TestIamPermissionsProjectsLocationsApisVersionsArtifactsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsApisVersionsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest,
-  TestIamPermissionsProjectsLocationsApisVersionsArtifactsResponse,
-  TestIamPermissionsProjectsLocationsApisVersionsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest,
-  output: TestIamPermissionsProjectsLocationsApisVersionsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsApisVersionsArtifactsRequest {
-  /** Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*` */
-  name: string;
-}
-
-export const GetProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsArtifactsRequest>;
-
-export type GetProjectsLocationsApisVersionsArtifactsResponse = Artifact;
-export const GetProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
-
-export type GetProjectsLocationsApisVersionsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns a specified artifact. */
-export const getProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
-  GetProjectsLocationsApisVersionsArtifactsRequest,
-  GetProjectsLocationsApisVersionsArtifactsResponse,
-  GetProjectsLocationsApisVersionsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApisVersionsArtifactsRequest,
-  output: GetProjectsLocationsApisVersionsArtifactsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetContentsProjectsLocationsApisVersionsArtifactsRequest {
-  /** Required. The name of the artifact whose contents should be retrieved. Format: `{parent}/artifacts/*` */
-  name: string;
-}
-
-export const GetContentsProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
-    svc,
-  ) as unknown as Schema.Schema<GetContentsProjectsLocationsApisVersionsArtifactsRequest>;
-
-export type GetContentsProjectsLocationsApisVersionsArtifactsResponse =
-  HttpBody;
-export const GetContentsProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type GetContentsProjectsLocationsApisVersionsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns the contents of a specified artifact. If artifacts are stored with GZip compression, the default behavior is to return the artifact uncompressed (the mime_type response field indicates the exact format returned). */
-export const getContentsProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
-  GetContentsProjectsLocationsApisVersionsArtifactsRequest,
-  GetContentsProjectsLocationsApisVersionsArtifactsResponse,
-  GetContentsProjectsLocationsApisVersionsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetContentsProjectsLocationsApisVersionsArtifactsRequest,
-  output: GetContentsProjectsLocationsApisVersionsArtifactsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteProjectsLocationsApisArtifactsRequest {
-  /** Required. The name of the artifact to delete. Format: `{parent}/artifacts/*` */
-  name: string;
-}
-
-export const DeleteProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisArtifactsRequest>;
-
-export type DeleteProjectsLocationsApisArtifactsResponse = Empty;
-export const DeleteProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsApisArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Removes a specified artifact. */
-export const deleteProjectsLocationsApisArtifacts: API.OperationMethod<
-  DeleteProjectsLocationsApisArtifactsRequest,
-  DeleteProjectsLocationsApisArtifactsResponse,
-  DeleteProjectsLocationsApisArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApisArtifactsRequest,
-  output: DeleteProjectsLocationsApisArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyProjectsLocationsApisArtifactsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApisArtifactsRequest>;
-
-export type SetIamPolicyProjectsLocationsApisArtifactsResponse = Policy;
-export const SetIamPolicyProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsApisArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsApisArtifacts: API.OperationMethod<
-  SetIamPolicyProjectsLocationsApisArtifactsRequest,
-  SetIamPolicyProjectsLocationsApisArtifactsResponse,
-  SetIamPolicyProjectsLocationsApisArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsApisArtifactsRequest,
-  output: SetIamPolicyProjectsLocationsApisArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ReplaceArtifactProjectsLocationsApisArtifactsRequest {
-  /** Resource name. */
-  name: string;
-  /** Request body */
-  body?: Artifact;
-}
-
-export const ReplaceArtifactProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(Artifact).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<ReplaceArtifactProjectsLocationsApisArtifactsRequest>;
-
-export type ReplaceArtifactProjectsLocationsApisArtifactsResponse = Artifact;
-export const ReplaceArtifactProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
-
-export type ReplaceArtifactProjectsLocationsApisArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Used to replace a specified artifact. */
-export const replaceArtifactProjectsLocationsApisArtifacts: API.OperationMethod<
-  ReplaceArtifactProjectsLocationsApisArtifactsRequest,
-  ReplaceArtifactProjectsLocationsApisArtifactsResponse,
-  ReplaceArtifactProjectsLocationsApisArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ReplaceArtifactProjectsLocationsApisArtifactsRequest,
-  output: ReplaceArtifactProjectsLocationsApisArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsLocationsApisArtifactsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApisArtifactsRequest>;
-
-export type GetIamPolicyProjectsLocationsApisArtifactsResponse = Policy;
-export const GetIamPolicyProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsApisArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsApisArtifacts: API.OperationMethod<
-  GetIamPolicyProjectsLocationsApisArtifactsRequest,
-  GetIamPolicyProjectsLocationsApisArtifactsResponse,
-  GetIamPolicyProjectsLocationsApisArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsApisArtifactsRequest,
-  output: GetIamPolicyProjectsLocationsApisArtifactsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsApisArtifactsRequest {
-  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
-  parent: string;
-  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
-  orderBy?: string;
-  /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token. */
-  pageToken?: string;
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
-  filter?: string;
-}
-
-export const ListProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/artifacts" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsApisArtifactsRequest>;
-
-export type ListProjectsLocationsApisArtifactsResponse = ListArtifactsResponse;
-export const ListProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListArtifactsResponse;
-
-export type ListProjectsLocationsApisArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns matching artifacts. */
-export const listProjectsLocationsApisArtifacts: API.PaginatedOperationMethod<
-  ListProjectsLocationsApisArtifactsRequest,
-  ListProjectsLocationsApisArtifactsResponse,
-  ListProjectsLocationsApisArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApisArtifactsRequest,
-  output: ListProjectsLocationsApisArtifactsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetContentsProjectsLocationsApisArtifactsRequest {
-  /** Required. The name of the artifact whose contents should be retrieved. Format: `{parent}/artifacts/*` */
-  name: string;
-}
-
-export const GetContentsProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
-    svc,
-  ) as unknown as Schema.Schema<GetContentsProjectsLocationsApisArtifactsRequest>;
-
-export type GetContentsProjectsLocationsApisArtifactsResponse = HttpBody;
-export const GetContentsProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type GetContentsProjectsLocationsApisArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns the contents of a specified artifact. If artifacts are stored with GZip compression, the default behavior is to return the artifact uncompressed (the mime_type response field indicates the exact format returned). */
-export const getContentsProjectsLocationsApisArtifacts: API.OperationMethod<
-  GetContentsProjectsLocationsApisArtifactsRequest,
-  GetContentsProjectsLocationsApisArtifactsResponse,
-  GetContentsProjectsLocationsApisArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetContentsProjectsLocationsApisArtifactsRequest,
-  output: GetContentsProjectsLocationsApisArtifactsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateProjectsLocationsApisArtifactsRequest {
-  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
-  parent: string;
-  /** Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
-  artifactId?: string;
-  /** Request body */
-  body?: Artifact;
-}
-
-export const CreateProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    artifactId: Schema.optional(Schema.String).pipe(T.HttpQuery("artifactId")),
-    body: Schema.optional(Artifact).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/artifacts", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsApisArtifactsRequest>;
-
-export type CreateProjectsLocationsApisArtifactsResponse = Artifact;
-export const CreateProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
-
-export type CreateProjectsLocationsApisArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a specified artifact. */
-export const createProjectsLocationsApisArtifacts: API.OperationMethod<
-  CreateProjectsLocationsApisArtifactsRequest,
-  CreateProjectsLocationsApisArtifactsResponse,
-  CreateProjectsLocationsApisArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApisArtifactsRequest,
-  output: CreateProjectsLocationsApisArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface TestIamPermissionsProjectsLocationsApisArtifactsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApisArtifactsRequest>;
-
-export type TestIamPermissionsProjectsLocationsApisArtifactsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsApisArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsApisArtifacts: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsApisArtifactsRequest,
-  TestIamPermissionsProjectsLocationsApisArtifactsResponse,
-  TestIamPermissionsProjectsLocationsApisArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsApisArtifactsRequest,
-  output: TestIamPermissionsProjectsLocationsApisArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsApisArtifactsRequest {
-  /** Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*` */
-  name: string;
-}
-
-export const GetProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApisArtifactsRequest>;
-
-export type GetProjectsLocationsApisArtifactsResponse = Artifact;
-export const GetProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
-
-export type GetProjectsLocationsApisArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns a specified artifact. */
-export const getProjectsLocationsApisArtifacts: API.OperationMethod<
-  GetProjectsLocationsApisArtifactsRequest,
-  GetProjectsLocationsApisArtifactsResponse,
-  GetProjectsLocationsApisArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApisArtifactsRequest,
-  output: GetProjectsLocationsApisArtifactsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface TagRevisionProjectsLocationsApisDeploymentsRequest {
-  /** Required. The name of the deployment to be tagged, including the revision ID is optional. If a revision is not specified, it will tag the latest revision. */
-  name: string;
-  /** Request body */
-  body?: TagApiDeploymentRevisionRequest;
-}
-
-export const TagRevisionProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(TagApiDeploymentRevisionRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:tagRevision", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<TagRevisionProjectsLocationsApisDeploymentsRequest>;
-
-export type TagRevisionProjectsLocationsApisDeploymentsResponse = ApiDeployment;
-export const TagRevisionProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
-
-export type TagRevisionProjectsLocationsApisDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Adds a tag to a specified revision of a deployment. */
-export const tagRevisionProjectsLocationsApisDeployments: API.OperationMethod<
-  TagRevisionProjectsLocationsApisDeploymentsRequest,
-  TagRevisionProjectsLocationsApisDeploymentsResponse,
-  TagRevisionProjectsLocationsApisDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TagRevisionProjectsLocationsApisDeploymentsRequest,
-  output: TagRevisionProjectsLocationsApisDeploymentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsApisDeploymentsRequest {
-  /** Required. The name of the deployment to delete. Format: `projects/* /locations/* /apis/* /deployments/*` */
-  name: string;
-  /** If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.) */
-  force?: boolean;
-}
-
-export const DeleteProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisDeploymentsRequest>;
-
-export type DeleteProjectsLocationsApisDeploymentsResponse = Empty;
-export const DeleteProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsApisDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Removes a specified deployment, all revisions, and all child resources (e.g., artifacts). */
-export const deleteProjectsLocationsApisDeployments: API.OperationMethod<
-  DeleteProjectsLocationsApisDeploymentsRequest,
-  DeleteProjectsLocationsApisDeploymentsResponse,
-  DeleteProjectsLocationsApisDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApisDeploymentsRequest,
-  output: DeleteProjectsLocationsApisDeploymentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListRevisionsProjectsLocationsApisDeploymentsRequest {
-  /** The maximum number of revisions to return per page. */
-  pageSize?: number;
-  /** The page token, received from a previous ListApiDeploymentRevisions call. Provide this to retrieve the subsequent page. */
-  pageToken?: string;
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
-  filter?: string;
-  /** Required. The name of the deployment to list revisions for. */
-  name: string;
-}
-
-export const ListRevisionsProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}:listRevisions" }),
-    svc,
-  ) as unknown as Schema.Schema<ListRevisionsProjectsLocationsApisDeploymentsRequest>;
-
-export type ListRevisionsProjectsLocationsApisDeploymentsResponse =
-  ListApiDeploymentRevisionsResponse;
-export const ListRevisionsProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApiDeploymentRevisionsResponse;
-
-export type ListRevisionsProjectsLocationsApisDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists all revisions of a deployment. Revisions are returned in descending order of revision creation time. */
-export const listRevisionsProjectsLocationsApisDeployments: API.PaginatedOperationMethod<
-  ListRevisionsProjectsLocationsApisDeploymentsRequest,
-  ListRevisionsProjectsLocationsApisDeploymentsResponse,
-  ListRevisionsProjectsLocationsApisDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListRevisionsProjectsLocationsApisDeploymentsRequest,
-  output: ListRevisionsProjectsLocationsApisDeploymentsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface SetIamPolicyProjectsLocationsApisDeploymentsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApisDeploymentsRequest>;
-
-export type SetIamPolicyProjectsLocationsApisDeploymentsResponse = Policy;
-export const SetIamPolicyProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsApisDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsApisDeployments: API.OperationMethod<
-  SetIamPolicyProjectsLocationsApisDeploymentsRequest,
-  SetIamPolicyProjectsLocationsApisDeploymentsResponse,
-  SetIamPolicyProjectsLocationsApisDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsApisDeploymentsRequest,
-  output: SetIamPolicyProjectsLocationsApisDeploymentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface RollbackProjectsLocationsApisDeploymentsRequest {
-  /** Required. The deployment being rolled back. */
-  name: string;
-  /** Request body */
-  body?: RollbackApiDeploymentRequest;
-}
-
-export const RollbackProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(RollbackApiDeploymentRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:rollback", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<RollbackProjectsLocationsApisDeploymentsRequest>;
-
-export type RollbackProjectsLocationsApisDeploymentsResponse = ApiDeployment;
-export const RollbackProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
-
-export type RollbackProjectsLocationsApisDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the current revision to a specified prior revision. Note that this creates a new revision with a new revision ID. */
-export const rollbackProjectsLocationsApisDeployments: API.OperationMethod<
-  RollbackProjectsLocationsApisDeploymentsRequest,
-  RollbackProjectsLocationsApisDeploymentsResponse,
-  RollbackProjectsLocationsApisDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RollbackProjectsLocationsApisDeploymentsRequest,
-  output: RollbackProjectsLocationsApisDeploymentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsLocationsApisDeploymentsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApisDeploymentsRequest>;
-
-export type GetIamPolicyProjectsLocationsApisDeploymentsResponse = Policy;
-export const GetIamPolicyProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsApisDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsApisDeployments: API.OperationMethod<
-  GetIamPolicyProjectsLocationsApisDeploymentsRequest,
-  GetIamPolicyProjectsLocationsApisDeploymentsResponse,
-  GetIamPolicyProjectsLocationsApisDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsApisDeploymentsRequest,
-  output: GetIamPolicyProjectsLocationsApisDeploymentsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsApisDeploymentsRequest {
-  /** Required. The parent, which owns this collection of deployments. Format: `projects/* /locations/* /apis/*` */
-  parent: string;
-  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
-  orderBy?: string;
-  /** A page token, received from a previous `ListApiDeployments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiDeployments` must match the call that provided the page token. */
-  pageToken?: string;
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
-  filter?: string;
-  /** The maximum number of deployments to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-}
-
-export const ListProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsApisDeploymentsRequest>;
-
-export type ListProjectsLocationsApisDeploymentsResponse =
-  ListApiDeploymentsResponse;
-export const ListProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApiDeploymentsResponse;
-
-export type ListProjectsLocationsApisDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns matching deployments. */
-export const listProjectsLocationsApisDeployments: API.PaginatedOperationMethod<
-  ListProjectsLocationsApisDeploymentsRequest,
-  ListProjectsLocationsApisDeploymentsResponse,
-  ListProjectsLocationsApisDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApisDeploymentsRequest,
-  output: ListProjectsLocationsApisDeploymentsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface DeleteRevisionProjectsLocationsApisDeploymentsRequest {
-  /** Required. The name of the deployment revision to be deleted, with a revision ID explicitly included. Example: `projects/sample/locations/global/apis/petstore/deployments/prod@c7cfa2a8` */
-  name: string;
-}
-
-export const DeleteRevisionProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}:deleteRevision" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteRevisionProjectsLocationsApisDeploymentsRequest>;
-
-export type DeleteRevisionProjectsLocationsApisDeploymentsResponse =
-  ApiDeployment;
-export const DeleteRevisionProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
-
-export type DeleteRevisionProjectsLocationsApisDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a revision of a deployment. */
-export const deleteRevisionProjectsLocationsApisDeployments: API.OperationMethod<
-  DeleteRevisionProjectsLocationsApisDeploymentsRequest,
-  DeleteRevisionProjectsLocationsApisDeploymentsResponse,
-  DeleteRevisionProjectsLocationsApisDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteRevisionProjectsLocationsApisDeploymentsRequest,
-  output: DeleteRevisionProjectsLocationsApisDeploymentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsLocationsApisDeploymentsRequest {
-  /** The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If an asterisk "*" is specified, all fields are updated, including fields that are unspecified/default in the request. */
-  updateMask?: string;
-  /** Resource name. */
-  name: string;
-  /** If set to true, and the deployment is not found, a new deployment will be created. In this situation, `update_mask` is ignored. */
-  allowMissing?: boolean;
-  /** Request body */
-  body?: ApiDeployment;
-}
-
-export const PatchProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    allowMissing: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("allowMissing"),
-    ),
-    body: Schema.optional(ApiDeployment).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsApisDeploymentsRequest>;
-
-export type PatchProjectsLocationsApisDeploymentsResponse = ApiDeployment;
-export const PatchProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
-
-export type PatchProjectsLocationsApisDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Used to modify a specified deployment. */
-export const patchProjectsLocationsApisDeployments: API.OperationMethod<
-  PatchProjectsLocationsApisDeploymentsRequest,
-  PatchProjectsLocationsApisDeploymentsResponse,
-  PatchProjectsLocationsApisDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsApisDeploymentsRequest,
-  output: PatchProjectsLocationsApisDeploymentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsLocationsApisDeploymentsRequest {
-  /** Required. The parent, which owns this collection of deployments. Format: `projects/* /locations/* /apis/*` */
-  parent: string;
-  /** Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
-  apiDeploymentId?: string;
-  /** Request body */
-  body?: ApiDeployment;
-}
-
-export const CreateProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    apiDeploymentId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("apiDeploymentId"),
-    ),
-    body: Schema.optional(ApiDeployment).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/deployments", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsApisDeploymentsRequest>;
-
-export type CreateProjectsLocationsApisDeploymentsResponse = ApiDeployment;
-export const CreateProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
-
-export type CreateProjectsLocationsApisDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a specified deployment. */
-export const createProjectsLocationsApisDeployments: API.OperationMethod<
-  CreateProjectsLocationsApisDeploymentsRequest,
-  CreateProjectsLocationsApisDeploymentsResponse,
-  CreateProjectsLocationsApisDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApisDeploymentsRequest,
-  output: CreateProjectsLocationsApisDeploymentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface TestIamPermissionsProjectsLocationsApisDeploymentsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApisDeploymentsRequest>;
-
-export type TestIamPermissionsProjectsLocationsApisDeploymentsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsApisDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsApisDeployments: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsApisDeploymentsRequest,
-  TestIamPermissionsProjectsLocationsApisDeploymentsResponse,
-  TestIamPermissionsProjectsLocationsApisDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsApisDeploymentsRequest,
-  output: TestIamPermissionsProjectsLocationsApisDeploymentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsApisDeploymentsRequest {
-  /** Required. The name of the deployment to retrieve. Format: `projects/* /locations/* /apis/* /deployments/*` */
-  name: string;
-}
-
-export const GetProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApisDeploymentsRequest>;
-
-export type GetProjectsLocationsApisDeploymentsResponse = ApiDeployment;
-export const GetProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
-
-export type GetProjectsLocationsApisDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns a specified deployment. */
-export const getProjectsLocationsApisDeployments: API.OperationMethod<
-  GetProjectsLocationsApisDeploymentsRequest,
-  GetProjectsLocationsApisDeploymentsResponse,
-  GetProjectsLocationsApisDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApisDeploymentsRequest,
-  output: GetProjectsLocationsApisDeploymentsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetContentsProjectsLocationsApisDeploymentsArtifactsRequest {
-  /** Required. The name of the artifact whose contents should be retrieved. Format: `{parent}/artifacts/*` */
-  name: string;
-}
-
-export const GetContentsProjectsLocationsApisDeploymentsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
-    svc,
-  ) as unknown as Schema.Schema<GetContentsProjectsLocationsApisDeploymentsArtifactsRequest>;
-
-export type GetContentsProjectsLocationsApisDeploymentsArtifactsResponse =
-  HttpBody;
-export const GetContentsProjectsLocationsApisDeploymentsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
-
-export type GetContentsProjectsLocationsApisDeploymentsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns the contents of a specified artifact. If artifacts are stored with GZip compression, the default behavior is to return the artifact uncompressed (the mime_type response field indicates the exact format returned). */
-export const getContentsProjectsLocationsApisDeploymentsArtifacts: API.OperationMethod<
-  GetContentsProjectsLocationsApisDeploymentsArtifactsRequest,
-  GetContentsProjectsLocationsApisDeploymentsArtifactsResponse,
-  GetContentsProjectsLocationsApisDeploymentsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetContentsProjectsLocationsApisDeploymentsArtifactsRequest,
-  output: GetContentsProjectsLocationsApisDeploymentsArtifactsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteProjectsLocationsApisDeploymentsArtifactsRequest {
-  /** Required. The name of the artifact to delete. Format: `{parent}/artifacts/*` */
-  name: string;
-}
-
-export const DeleteProjectsLocationsApisDeploymentsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisDeploymentsArtifactsRequest>;
-
-export type DeleteProjectsLocationsApisDeploymentsArtifactsResponse = Empty;
-export const DeleteProjectsLocationsApisDeploymentsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsApisDeploymentsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Removes a specified artifact. */
-export const deleteProjectsLocationsApisDeploymentsArtifacts: API.OperationMethod<
-  DeleteProjectsLocationsApisDeploymentsArtifactsRequest,
-  DeleteProjectsLocationsApisDeploymentsArtifactsResponse,
-  DeleteProjectsLocationsApisDeploymentsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApisDeploymentsArtifactsRequest,
-  output: DeleteProjectsLocationsApisDeploymentsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsLocationsApisDeploymentsArtifactsRequest {
-  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
-  parent: string;
-  /** Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
-  artifactId?: string;
-  /** Request body */
-  body?: Artifact;
-}
-
-export const CreateProjectsLocationsApisDeploymentsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    artifactId: Schema.optional(Schema.String).pipe(T.HttpQuery("artifactId")),
-    body: Schema.optional(Artifact).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/artifacts", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsApisDeploymentsArtifactsRequest>;
-
-export type CreateProjectsLocationsApisDeploymentsArtifactsResponse = Artifact;
-export const CreateProjectsLocationsApisDeploymentsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
-
-export type CreateProjectsLocationsApisDeploymentsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a specified artifact. */
-export const createProjectsLocationsApisDeploymentsArtifacts: API.OperationMethod<
-  CreateProjectsLocationsApisDeploymentsArtifactsRequest,
-  CreateProjectsLocationsApisDeploymentsArtifactsResponse,
-  CreateProjectsLocationsApisDeploymentsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApisDeploymentsArtifactsRequest,
-  output: CreateProjectsLocationsApisDeploymentsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest {
-  /** Resource name. */
-  name: string;
-  /** Request body */
-  body?: Artifact;
-}
-
-export const ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(Artifact).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest>;
-
-export type ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsResponse =
-  Artifact;
-export const ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
-
-export type ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Used to replace a specified artifact. */
-export const replaceArtifactProjectsLocationsApisDeploymentsArtifacts: API.OperationMethod<
-  ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest,
-  ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsResponse,
-  ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest,
-  output: ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsApisDeploymentsArtifactsRequest {
-  /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token. */
-  pageToken?: string;
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
-  filter?: string;
-  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
-  parent: string;
-  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
-  orderBy?: string;
-}
-
-export const ListProjectsLocationsApisDeploymentsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/artifacts" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsApisDeploymentsArtifactsRequest>;
-
-export type ListProjectsLocationsApisDeploymentsArtifactsResponse =
-  ListArtifactsResponse;
-export const ListProjectsLocationsApisDeploymentsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListArtifactsResponse;
-
-export type ListProjectsLocationsApisDeploymentsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns matching artifacts. */
-export const listProjectsLocationsApisDeploymentsArtifacts: API.PaginatedOperationMethod<
-  ListProjectsLocationsApisDeploymentsArtifactsRequest,
-  ListProjectsLocationsApisDeploymentsArtifactsResponse,
-  ListProjectsLocationsApisDeploymentsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApisDeploymentsArtifactsRequest,
-  output: ListProjectsLocationsApisDeploymentsArtifactsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsLocationsApisDeploymentsArtifactsRequest {
-  /** Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*` */
-  name: string;
-}
-
-export const GetProjectsLocationsApisDeploymentsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApisDeploymentsArtifactsRequest>;
-
-export type GetProjectsLocationsApisDeploymentsArtifactsResponse = Artifact;
-export const GetProjectsLocationsApisDeploymentsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
-
-export type GetProjectsLocationsApisDeploymentsArtifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns a specified artifact. */
-export const getProjectsLocationsApisDeploymentsArtifacts: API.OperationMethod<
-  GetProjectsLocationsApisDeploymentsArtifactsRequest,
-  GetProjectsLocationsApisDeploymentsArtifactsResponse,
-  GetProjectsLocationsApisDeploymentsArtifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApisDeploymentsArtifactsRequest,
-  output: GetProjectsLocationsApisDeploymentsArtifactsResponse,
-  errors: [NotFound, Forbidden],
 }));

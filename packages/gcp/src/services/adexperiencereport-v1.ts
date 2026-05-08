@@ -23,14 +23,6 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface PlatformSummary {
-  /** The site's regions on this platform. No longer populated, because there is no longer any semantic difference between sites in different regions. */
-  region?: ReadonlyArray<
-    "REGION_UNKNOWN" | "REGION_A" | "REGION_B" | "REGION_C" | (string & {})
-  >;
-  /** Whether the site is currently under review on this platform. */
-  underReview?: boolean;
-  /** The time at which the site's status last changed on this platform. */
-  lastChangeTime?: string;
   /** The site's Ad Experience Report status on this platform. */
   betterAdsStatus?:
     | "UNKNOWN"
@@ -38,6 +30,16 @@ export interface PlatformSummary {
     | "WARNING"
     | "FAILING"
     | (string & {});
+  /** A link to the full Ad Experience Report for the site on this platform.. Not set in ViolatingSitesResponse. Note that you must complete the [Search Console verification process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full report. */
+  reportUrl?: string;
+  /** The time at which the site's status last changed on this platform. */
+  lastChangeTime?: string;
+  /** The site's regions on this platform. No longer populated, because there is no longer any semantic difference between sites in different regions. */
+  region?: ReadonlyArray<
+    "REGION_UNKNOWN" | "REGION_A" | "REGION_B" | "REGION_C" | (string & {})
+  >;
+  /** Whether the site is currently under review on this platform. */
+  underReview?: boolean;
   /** The time at which [enforcement](https://support.google.com/webtools/answer/7308033) against the site began or will begin on this platform. Not set when the filter_status is OFF. */
   enforcementTime?: string;
   /** The site's [enforcement status](https://support.google.com/webtools/answer/7308033) on this platform. */
@@ -48,45 +50,44 @@ export interface PlatformSummary {
     | "PAUSED"
     | "PENDING"
     | (string & {});
-  /** A link to the full Ad Experience Report for the site on this platform.. Not set in ViolatingSitesResponse. Note that you must complete the [Search Console verification process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full report. */
-  reportUrl?: string;
 }
 
-export const PlatformSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  region: Schema.optional(Schema.Array(Schema.String)),
-  underReview: Schema.optional(Schema.Boolean),
-  lastChangeTime: Schema.optional(Schema.String),
-  betterAdsStatus: Schema.optional(Schema.String),
-  enforcementTime: Schema.optional(Schema.String),
-  filterStatus: Schema.optional(Schema.String),
-  reportUrl: Schema.optional(Schema.String),
-}).annotate({ identifier: "PlatformSummary" });
+export const PlatformSummary: Schema.Schema<PlatformSummary> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    betterAdsStatus: Schema.optional(Schema.String),
+    reportUrl: Schema.optional(Schema.String),
+    lastChangeTime: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.Array(Schema.String)),
+    underReview: Schema.optional(Schema.Boolean),
+    enforcementTime: Schema.optional(Schema.String),
+    filterStatus: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PlatformSummary" });
 
 export interface SiteSummaryResponse {
-  /** The site's Ad Experience Report summary on mobile. */
-  mobileSummary?: PlatformSummary;
-  /** The site's Ad Experience Report summary on desktop. */
-  desktopSummary?: PlatformSummary;
   /** The name of the reviewed site, e.g. `google.com`. */
   reviewedSite?: string;
+  /** The site's Ad Experience Report summary on desktop. */
+  desktopSummary?: PlatformSummary;
+  /** The site's Ad Experience Report summary on mobile. */
+  mobileSummary?: PlatformSummary;
 }
 
-export const SiteSummaryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  mobileSummary: Schema.optional(PlatformSummary),
-  desktopSummary: Schema.optional(PlatformSummary),
-  reviewedSite: Schema.optional(Schema.String),
-}).annotate({ identifier: "SiteSummaryResponse" });
+export const SiteSummaryResponse: Schema.Schema<SiteSummaryResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reviewedSite: Schema.optional(Schema.String),
+    desktopSummary: Schema.optional(PlatformSummary),
+    mobileSummary: Schema.optional(PlatformSummary),
+  }).annotate({ identifier: "SiteSummaryResponse" });
 
 export interface ViolatingSitesResponse {
   /** The list of violating sites. */
   violatingSites?: ReadonlyArray<SiteSummaryResponse>;
 }
 
-export const ViolatingSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const ViolatingSitesResponse: Schema.Schema<ViolatingSitesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     violatingSites: Schema.optional(Schema.Array(SiteSummaryResponse)),
-  },
-).annotate({ identifier: "ViolatingSitesResponse" });
+  }).annotate({ identifier: "ViolatingSitesResponse" });
 
 // ==========================================================================
 // Errors

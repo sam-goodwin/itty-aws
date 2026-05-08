@@ -31,194 +31,25 @@ export interface SavedColumn {
   type?: string;
 }
 
-export const SavedColumn = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  savedColumnName: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-}).annotate({ identifier: "SavedColumn" });
-
-export interface Availability {
-  /** The time by which all conversions have been uploaded, in epoch millis UTC. */
-  availabilityTimestamp?: string;
-  /** The numeric segmentation identifier (for example, DoubleClick Search Floodlight activity ID). */
-  segmentationId?: string;
-  /** The friendly segmentation identifier (for example, DoubleClick Search Floodlight activity name). */
-  segmentationName?: string;
-  /** Customer ID of a client account in the new Search Ads 360 experience. */
-  customerId?: string;
-  /** DS advertiser ID. */
-  advertiserId?: string;
-  /** DS agency ID. */
-  agencyId?: string;
-  /** The segmentation type that this availability is for (its default value is `FLOODLIGHT`). */
-  segmentationType?: string;
-}
-
-export const Availability = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  availabilityTimestamp: Schema.optional(Schema.String),
-  segmentationId: Schema.optional(Schema.String),
-  segmentationName: Schema.optional(Schema.String),
-  customerId: Schema.optional(Schema.String),
-  advertiserId: Schema.optional(Schema.String),
-  agencyId: Schema.optional(Schema.String),
-  segmentationType: Schema.optional(Schema.String),
-}).annotate({ identifier: "Availability" });
-
-export interface UpdateAvailabilityRequest {
-  /** The availabilities being requested. */
-  availabilities?: ReadonlyArray<Availability>;
-}
-
-export const UpdateAvailabilityRequest =
+export const SavedColumn: Schema.Schema<SavedColumn> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    availabilities: Schema.optional(Schema.Array(Availability)),
-  }).annotate({ identifier: "UpdateAvailabilityRequest" });
+    savedColumnName: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SavedColumn" });
 
-export interface IdMappingFile {}
-
-export const IdMappingFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "IdMappingFile" });
-
-export interface ReportApiColumnSpec {
-  /** Segments a report by a custom dimension. The report must be scoped to an advertiser or lower, and the custom dimension must already be set up in DoubleClick Search. The custom dimension name, which appears in DoubleClick Search, is case sensitive.\ If used in a conversion report, returns the value of the specified custom dimension for the given conversion, if set. This column does not segment the conversion report. */
-  customDimensionName?: string;
-  /** Inclusive day in YYYY-MM-DD format. When provided, this overrides the overall time range of the report for this column only. Must be provided together with `startDate`. */
-  endDate?: string;
-  /** Name of a saved column to include in the report. The report must be scoped at advertiser or lower, and this saved column must already be created in the DoubleClick Search UI. */
-  savedColumnName?: string;
-  /** Synchronous report only. Set to `true` to group by this column. Defaults to `false`. */
-  groupByColumn?: boolean;
-  /** Text used to identify this column in the report output; defaults to `columnName` or `savedColumnName` when not specified. This can be used to prevent collisions between DoubleClick Search columns and saved columns with the same name. */
-  headerText?: string;
-  /** The platform that is used to provide data for the custom dimension. Acceptable values are "floodlight". */
-  platformSource?: string;
-  /** Inclusive date in YYYY-MM-DD format. When provided, this overrides the overall time range of the report for this column only. Must be provided together with `endDate`. */
-  startDate?: string;
-  /** Name of a DoubleClick Search column to include in the report. */
-  columnName?: string;
-  /** Returns metrics only for a specific type of product activity. Accepted values are: - "`sold`": returns metrics only for products that were sold - "`advertised`": returns metrics only for products that were advertised in a Shopping campaign, and that might or might not have been sold */
-  productReportPerspective?: string;
-  /** Name of a custom metric to include in the report. The report must be scoped to an advertiser or lower, and the custom metric must already be set up in DoubleClick Search. The custom metric name, which appears in DoubleClick Search, is case sensitive. */
-  customMetricName?: string;
+export interface SavedColumnList {
+  /** The saved columns being requested. */
+  items?: ReadonlyArray<SavedColumn>;
+  /** Identifies this as a SavedColumnList resource. Value: the fixed string doubleclicksearch#savedColumnList. */
+  kind?: string;
 }
 
-export const ReportApiColumnSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  customDimensionName: Schema.optional(Schema.String),
-  endDate: Schema.optional(Schema.String),
-  savedColumnName: Schema.optional(Schema.String),
-  groupByColumn: Schema.optional(Schema.Boolean),
-  headerText: Schema.optional(Schema.String),
-  platformSource: Schema.optional(Schema.String),
-  startDate: Schema.optional(Schema.String),
-  columnName: Schema.optional(Schema.String),
-  productReportPerspective: Schema.optional(Schema.String),
-  customMetricName: Schema.optional(Schema.String),
-}).annotate({ identifier: "ReportApiColumnSpec" });
-
-export type ReportRow = Record<string, unknown>;
-export const ReportRow: Schema.Schema<ReportRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
-    Schema.String,
-    Schema.Unknown,
-  ) as any as Schema.Schema<ReportRow>;
-
-export interface ReportRequest {
-  /** Determines if removed entities should be included in the report. Defaults to `false`. Deprecated, please use `includeRemovedEntities` instead. */
-  includeDeletedEntities?: boolean;
-  /** A list of filters to be applied to the report.\ The maximum number of filters per request is 300. */
-  filters?: ReadonlyArray<{
-    operator?: string;
-    column?: ReportApiColumnSpec;
-    values?: ReadonlyArray<unknown>;
-  }>;
-  /** Determines the type of rows that are returned in the report. For example, if you specify `reportType: keyword`, each row in the report will contain data about a keyword. See the [Types of Reports](/search-ads/v2/report-types/) reference for the columns that are available for each type. */
-  reportType?: string;
-  /** Specifies the currency in which monetary will be returned. Possible values are: `usd`, `agency` (valid if the report is scoped to agency or lower), `advertiser` (valid if the report is scoped to * advertiser or lower), or `account` (valid if the report is scoped to engine account or lower). */
-  statisticsCurrency?: string;
-  /** The columns to include in the report. This includes both DoubleClick Search columns and saved columns. For DoubleClick Search columns, only the `columnName` parameter is required. For saved columns only the `savedColumnName` parameter is required. Both `columnName` and `savedColumnName` cannot be set in the same stanza.\ The maximum number of columns per request is 300. */
-  columns?: ReadonlyArray<ReportApiColumnSpec>;
-  /** Determines if removed entities should be included in the report. Defaults to `false`. */
-  includeRemovedEntities?: boolean;
-  /** Asynchronous report only. The maximum number of rows per report file. A large report is split into many files based on this field. Acceptable values are `1000000` to `100000000`, inclusive. */
-  maxRowsPerFile?: number;
-  /** Format that the report should be returned in. Currently `csv` or `tsv` is supported. */
-  downloadFormat?: string;
-  /** Synchronous report only. The maximum number of rows to return; additional rows are dropped. Acceptable values are `0` to `10000`, inclusive. Defaults to `10000`. */
-  rowCount?: number;
-  /** The reportScope is a set of IDs that are used to determine which subset of entities will be returned in the report. The full lineage of IDs from the lowest scoped level desired up through agency is required. */
-  reportScope?: {
-    engineAccountId?: string;
-    campaignId?: string;
-    keywordId?: string;
-    adGroupId?: string;
-    advertiserId?: string;
-    agencyId?: string;
-    adId?: string;
-  };
-  /** If metrics are requested in a report, this argument will be used to restrict the metrics to a specific time range. */
-  timeRange?: {
-    startDate?: string;
-    changedMetricsSinceTimestamp?: string;
-    changedAttributesSinceTimestamp?: string;
-    endDate?: string;
-  };
-  /** Synchronous report only. A list of columns and directions defining sorting to be performed on the report rows.\ The maximum number of orderings per request is 300. */
-  orderBy?: ReadonlyArray<{ column?: ReportApiColumnSpec; sortOrder?: string }>;
-  /** If `true`, the report would only be created if all the requested stat data are sourced from a single timezone. Defaults to `false`. */
-  verifySingleTimeZone?: boolean;
-  /** Synchronous report only. Zero-based index of the first row to return. Acceptable values are `0` to `50000`, inclusive. Defaults to `0`. */
-  startRow?: number;
-}
-
-export const ReportRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  includeDeletedEntities: Schema.optional(Schema.Boolean),
-  filters: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        operator: Schema.optional(Schema.String),
-        column: Schema.optional(ReportApiColumnSpec),
-        values: Schema.optional(Schema.Array(Schema.Unknown)),
-      }),
-    ),
-  ),
-  reportType: Schema.optional(Schema.String),
-  statisticsCurrency: Schema.optional(Schema.String),
-  columns: Schema.optional(Schema.Array(ReportApiColumnSpec)),
-  includeRemovedEntities: Schema.optional(Schema.Boolean),
-  maxRowsPerFile: Schema.optional(Schema.Number),
-  downloadFormat: Schema.optional(Schema.String),
-  rowCount: Schema.optional(Schema.Number),
-  reportScope: Schema.optional(
-    Schema.Struct({
-      engineAccountId: Schema.optional(Schema.String),
-      campaignId: Schema.optional(Schema.String),
-      keywordId: Schema.optional(Schema.String),
-      adGroupId: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      agencyId: Schema.optional(Schema.String),
-      adId: Schema.optional(Schema.String),
-    }),
-  ),
-  timeRange: Schema.optional(
-    Schema.Struct({
-      startDate: Schema.optional(Schema.String),
-      changedMetricsSinceTimestamp: Schema.optional(Schema.String),
-      changedAttributesSinceTimestamp: Schema.optional(Schema.String),
-      endDate: Schema.optional(Schema.String),
-    }),
-  ),
-  orderBy: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        column: Schema.optional(ReportApiColumnSpec),
-        sortOrder: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
-  verifySingleTimeZone: Schema.optional(Schema.Boolean),
-  startRow: Schema.optional(Schema.Number),
-}).annotate({ identifier: "ReportRequest" });
+export const SavedColumnList: Schema.Schema<SavedColumnList> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(Schema.Array(SavedColumn)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SavedColumnList" });
 
 export interface CustomMetric {
   /** Custom metric name. */
@@ -227,50 +58,11 @@ export interface CustomMetric {
   value?: number;
 }
 
-export const CustomMetric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  value: Schema.optional(Schema.Number),
-}).annotate({ identifier: "CustomMetric" });
-
-export interface Report {
-  /** Asynchronous report only. Id of the report. */
-  id?: string;
-  /** Asynchronous report only. Contains a list of generated report files once the report has successfully completed. */
-  files?: ReadonlyArray<{ byteCount?: string; url?: string }>;
-  /** The currency code of all monetary values produced in the report, including values that are set by users (e.g., keyword bid settings) and metrics (e.g., cost and revenue). The currency code of a report is determined by the `statisticsCurrency` field of the report request. */
-  statisticsCurrencyCode?: string;
-  /** If all statistics of the report are sourced from the same time zone, this would be it. Otherwise the field is unset. */
-  statisticsTimeZone?: string;
-  /** The number of report rows generated by the report, not including headers. */
-  rowCount?: number;
-  /** Synchronous report only. Generated report rows. */
-  rows?: ReadonlyArray<ReportRow>;
-  /** Asynchronous report only. True if and only if the report has completed successfully and the report files are ready to be downloaded. */
-  isReportReady?: boolean;
-  /** Identifies this as a Report resource. Value: the fixed string `doubleclicksearch#report`. */
-  kind?: string;
-  /** The request that created the report. Optional fields not specified in the original request are filled with default values. */
-  request?: ReportRequest;
-}
-
-export const Report = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.String),
-  files: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        byteCount: Schema.optional(Schema.String),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
-  statisticsCurrencyCode: Schema.optional(Schema.String),
-  statisticsTimeZone: Schema.optional(Schema.String),
-  rowCount: Schema.optional(Schema.Number),
-  rows: Schema.optional(Schema.Array(ReportRow)),
-  isReportReady: Schema.optional(Schema.Boolean),
-  kind: Schema.optional(Schema.String),
-  request: Schema.optional(ReportRequest),
-}).annotate({ identifier: "Report" });
+export const CustomMetric: Schema.Schema<CustomMetric> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "CustomMetric" });
 
 export interface CustomDimension {
   /** Custom dimension name. */
@@ -279,121 +71,123 @@ export interface CustomDimension {
   value?: string;
 }
 
-export const CustomDimension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  value: Schema.optional(Schema.String),
-}).annotate({ identifier: "CustomDimension" });
+export const CustomDimension: Schema.Schema<CustomDimension> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomDimension" });
 
 export interface Conversion {
-  /** Custom metrics for the conversion. */
-  customMetric?: ReadonlyArray<CustomMetric>;
-  /** DS product group ID. */
-  productGroupId?: string;
-  /** DS ad ID. */
-  adId?: string;
-  /** The type of the conversion, that is, either `ACTION` or `TRANSACTION`. An `ACTION` conversion is an action by the user that has no monetarily quantifiable value, while a `TRANSACTION` conversion is an action that does have a monetarily quantifiable value. Examples are email list signups (`ACTION`) versus ecommerce purchases (`TRANSACTION`). */
-  type?: string;
-  /** The time at which the conversion was last modified, in epoch millis UTC. */
-  conversionModifiedTimestamp?: string;
-  /** Available to advertisers only after contacting DoubleClick Search customer support. */
-  attributionModel?: string;
-  /** The country registered for the Merchant Center feed that contains the product. Use an ISO 3166 code to specify a country. */
-  productCountry?: string;
-  /** ID that DS generates and uses to uniquely identify the inventory account that contains the product. */
-  inventoryAccountId?: string;
-  /** The product ID (SKU). */
-  productId?: string;
-  /** The state of the conversion, that is, either `ACTIVE` or `REMOVED`. Note: state DELETED is deprecated. */
-  state?: string;
-  /** DS engine account ID. */
-  engineAccountId?: string;
-  /** The time at which the conversion took place, in epoch millis UTC. */
-  conversionTimestamp?: string;
-  /** The friendly segmentation identifier (for example, DoubleClick Search Floodlight activity name). */
-  segmentationName?: string;
-  /** DS click ID for the conversion. */
-  clickId?: string;
-  /** The numeric segmentation identifier (for example, DoubleClick Search Floodlight activity ID). */
-  segmentationId?: string;
-  /** The Floodlight order ID provided by the advertiser for the conversion. */
-  floodlightOrderId?: string;
-  /** Customer ID of a client account in the new Search Ads 360 experience. */
-  customerId?: string;
-  /** Custom dimensions for the conversion, which can be used to filter data in a report. */
-  customDimension?: ReadonlyArray<CustomDimension>;
-  /** DS advertiser ID. */
-  advertiserId?: string;
-  /** The revenue amount of this `TRANSACTION` conversion, in micros (value multiplied by 1000000, no decimal). For example, to specify a revenue value of "10" enter "10000000" (10 million) in your request. */
-  revenueMicros?: string;
-  /** For offline conversions, advertisers provide this ID. Advertisers can specify any ID that is meaningful to them. Each conversion in a request must specify a unique ID, and the combination of ID and timestamp must be unique amongst all conversions within the advertiser. For online conversions, DS copies the `dsConversionId` or `floodlightOrderId` into this property depending on the advertiser's Floodlight instructions. */
-  conversionId?: string;
-  /** The language registered for the Merchant Center feed that contains the product. Use an ISO 639 code to specify a language. */
-  productLanguage?: string;
-  /** The currency code for the conversion's revenue. Should be in ISO 4217 alphabetic (3-char) format. */
-  currencyCode?: string;
-  /** Represents consent for core platform services (CPS) preferences in settings. No default value. Acceptable values are: GRANTED: The desired consent status is to grant. Read the CPS preferences from GTE settings. DENIED: The desired consent status is to deny; CPS list is empty. */
-  adUserDataConsent?: "UNKNOWN" | "GRANTED" | "DENIED" | (string & {});
-  /** ID that DoubleClick Search generates for each conversion. */
-  dsConversionId?: string;
-  /** DS ad group ID. */
-  adGroupId?: string;
-  /** Available to advertisers only after contacting DoubleClick Search customer support. */
-  countMillis?: string;
-  /** The type of device on which the conversion occurred. */
-  deviceType?: string;
-  /** DS agency ID. */
-  agencyId?: string;
-  /** DS campaign ID. */
-  campaignId?: string;
-  /** Sales channel for the product. Acceptable values are: - "`local`": a physical store - "`online`": an online store */
-  channel?: string;
-  /** The quantity of this conversion, in millis. */
-  quantityMillis?: string;
-  /** DS criterion (keyword) ID. */
-  criterionId?: string;
   /** The ID of the local store for which the product was advertised. Applicable only when the channel is "`local`". */
   storeId?: string;
+  /** ID that DoubleClick Search generates for each conversion. */
+  dsConversionId?: string;
+  /** Custom metrics for the conversion. */
+  customMetric?: ReadonlyArray<CustomMetric>;
+  /** The language registered for the Merchant Center feed that contains the product. Use an ISO 639 code to specify a language. */
+  productLanguage?: string;
+  /** Custom dimensions for the conversion, which can be used to filter data in a report. */
+  customDimension?: ReadonlyArray<CustomDimension>;
+  /** The numeric segmentation identifier (for example, DoubleClick Search Floodlight activity ID). */
+  segmentationId?: string;
+  /** The time at which the conversion was last modified, in epoch millis UTC. */
+  conversionModifiedTimestamp?: string;
+  /** The type of device on which the conversion occurred. */
+  deviceType?: string;
+  /** For offline conversions, advertisers provide this ID. Advertisers can specify any ID that is meaningful to them. Each conversion in a request must specify a unique ID, and the combination of ID and timestamp must be unique amongst all conversions within the advertiser. For online conversions, DS copies the `dsConversionId` or `floodlightOrderId` into this property depending on the advertiser's Floodlight instructions. */
+  conversionId?: string;
+  /** DS ad group ID. */
+  adGroupId?: string;
+  /** The currency code for the conversion's revenue. Should be in ISO 4217 alphabetic (3-char) format. */
+  currencyCode?: string;
+  /** DS click ID for the conversion. */
+  clickId?: string;
+  /** The Floodlight order ID provided by the advertiser for the conversion. */
+  floodlightOrderId?: string;
+  /** Available to advertisers only after contacting DoubleClick Search customer support. */
+  countMillis?: string;
+  /** The type of the conversion, that is, either `ACTION` or `TRANSACTION`. An `ACTION` conversion is an action by the user that has no monetarily quantifiable value, while a `TRANSACTION` conversion is an action that does have a monetarily quantifiable value. Examples are email list signups (`ACTION`) versus ecommerce purchases (`TRANSACTION`). */
+  type?: string;
   /** The segmentation type of this conversion (for example, `FLOODLIGHT`). */
   segmentationType?: string;
+  /** Customer ID of a client account in the new Search Ads 360 experience. */
+  customerId?: string;
+  /** The revenue amount of this `TRANSACTION` conversion, in micros (value multiplied by 1000000, no decimal). For example, to specify a revenue value of "10" enter "10000000" (10 million) in your request. */
+  revenueMicros?: string;
+  /** DS ad ID. */
+  adId?: string;
+  /** The state of the conversion, that is, either `ACTIVE` or `REMOVED`. Note: state DELETED is deprecated. */
+  state?: string;
+  /** The time at which the conversion took place, in epoch millis UTC. */
+  conversionTimestamp?: string;
+  /** DS engine account ID. */
+  engineAccountId?: string;
+  /** DS product group ID. */
+  productGroupId?: string;
+  /** DS advertiser ID. */
+  advertiserId?: string;
+  /** DS criterion (keyword) ID. */
+  criterionId?: string;
+  /** The country registered for the Merchant Center feed that contains the product. Use an ISO 3166 code to specify a country. */
+  productCountry?: string;
+  /** DS campaign ID. */
+  campaignId?: string;
+  /** Available to advertisers only after contacting DoubleClick Search customer support. */
+  attributionModel?: string;
+  /** Sales channel for the product. Acceptable values are: - "`local`": a physical store - "`online`": an online store */
+  channel?: string;
+  /** DS agency ID. */
+  agencyId?: string;
+  /** The product ID (SKU). */
+  productId?: string;
+  /** The quantity of this conversion, in millis. */
+  quantityMillis?: string;
+  /** The friendly segmentation identifier (for example, DoubleClick Search Floodlight activity name). */
+  segmentationName?: string;
+  /** ID that DS generates and uses to uniquely identify the inventory account that contains the product. */
+  inventoryAccountId?: string;
+  /** Represents consent for core platform services (CPS) preferences in settings. No default value. Acceptable values are: GRANTED: The desired consent status is to grant. Read the CPS preferences from GTE settings. DENIED: The desired consent status is to deny; CPS list is empty. */
+  adUserDataConsent?: "UNKNOWN" | "GRANTED" | "DENIED" | (string & {});
 }
 
-export const Conversion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  customMetric: Schema.optional(Schema.Array(CustomMetric)),
-  productGroupId: Schema.optional(Schema.String),
-  adId: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  conversionModifiedTimestamp: Schema.optional(Schema.String),
-  attributionModel: Schema.optional(Schema.String),
-  productCountry: Schema.optional(Schema.String),
-  inventoryAccountId: Schema.optional(Schema.String),
-  productId: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  engineAccountId: Schema.optional(Schema.String),
-  conversionTimestamp: Schema.optional(Schema.String),
-  segmentationName: Schema.optional(Schema.String),
-  clickId: Schema.optional(Schema.String),
-  segmentationId: Schema.optional(Schema.String),
-  floodlightOrderId: Schema.optional(Schema.String),
-  customerId: Schema.optional(Schema.String),
-  customDimension: Schema.optional(Schema.Array(CustomDimension)),
-  advertiserId: Schema.optional(Schema.String),
-  revenueMicros: Schema.optional(Schema.String),
-  conversionId: Schema.optional(Schema.String),
-  productLanguage: Schema.optional(Schema.String),
-  currencyCode: Schema.optional(Schema.String),
-  adUserDataConsent: Schema.optional(Schema.String),
-  dsConversionId: Schema.optional(Schema.String),
-  adGroupId: Schema.optional(Schema.String),
-  countMillis: Schema.optional(Schema.String),
-  deviceType: Schema.optional(Schema.String),
-  agencyId: Schema.optional(Schema.String),
-  campaignId: Schema.optional(Schema.String),
-  channel: Schema.optional(Schema.String),
-  quantityMillis: Schema.optional(Schema.String),
-  criterionId: Schema.optional(Schema.String),
-  storeId: Schema.optional(Schema.String),
-  segmentationType: Schema.optional(Schema.String),
-}).annotate({ identifier: "Conversion" });
+export const Conversion: Schema.Schema<Conversion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storeId: Schema.optional(Schema.String),
+    dsConversionId: Schema.optional(Schema.String),
+    customMetric: Schema.optional(Schema.Array(CustomMetric)),
+    productLanguage: Schema.optional(Schema.String),
+    customDimension: Schema.optional(Schema.Array(CustomDimension)),
+    segmentationId: Schema.optional(Schema.String),
+    conversionModifiedTimestamp: Schema.optional(Schema.String),
+    deviceType: Schema.optional(Schema.String),
+    conversionId: Schema.optional(Schema.String),
+    adGroupId: Schema.optional(Schema.String),
+    currencyCode: Schema.optional(Schema.String),
+    clickId: Schema.optional(Schema.String),
+    floodlightOrderId: Schema.optional(Schema.String),
+    countMillis: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    segmentationType: Schema.optional(Schema.String),
+    customerId: Schema.optional(Schema.String),
+    revenueMicros: Schema.optional(Schema.String),
+    adId: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    conversionTimestamp: Schema.optional(Schema.String),
+    engineAccountId: Schema.optional(Schema.String),
+    productGroupId: Schema.optional(Schema.String),
+    advertiserId: Schema.optional(Schema.String),
+    criterionId: Schema.optional(Schema.String),
+    productCountry: Schema.optional(Schema.String),
+    campaignId: Schema.optional(Schema.String),
+    attributionModel: Schema.optional(Schema.String),
+    channel: Schema.optional(Schema.String),
+    agencyId: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    quantityMillis: Schema.optional(Schema.String),
+    segmentationName: Schema.optional(Schema.String),
+    inventoryAccountId: Schema.optional(Schema.String),
+    adUserDataConsent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Conversion" });
 
 export interface ConversionList {
   /** The conversions being requested. */
@@ -402,32 +196,249 @@ export interface ConversionList {
   kind?: string;
 }
 
-export const ConversionList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  conversion: Schema.optional(Schema.Array(Conversion)),
-  kind: Schema.optional(Schema.String),
-}).annotate({ identifier: "ConversionList" });
+export const ConversionList: Schema.Schema<ConversionList> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversion: Schema.optional(Schema.Array(Conversion)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConversionList" });
+
+export interface Availability {
+  /** The numeric segmentation identifier (for example, DoubleClick Search Floodlight activity ID). */
+  segmentationId?: string;
+  /** The friendly segmentation identifier (for example, DoubleClick Search Floodlight activity name). */
+  segmentationName?: string;
+  /** DS agency ID. */
+  agencyId?: string;
+  /** The segmentation type that this availability is for (its default value is `FLOODLIGHT`). */
+  segmentationType?: string;
+  /** DS advertiser ID. */
+  advertiserId?: string;
+  /** Customer ID of a client account in the new Search Ads 360 experience. */
+  customerId?: string;
+  /** The time by which all conversions have been uploaded, in epoch millis UTC. */
+  availabilityTimestamp?: string;
+}
+
+export const Availability: Schema.Schema<Availability> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    segmentationId: Schema.optional(Schema.String),
+    segmentationName: Schema.optional(Schema.String),
+    agencyId: Schema.optional(Schema.String),
+    segmentationType: Schema.optional(Schema.String),
+    advertiserId: Schema.optional(Schema.String),
+    customerId: Schema.optional(Schema.String),
+    availabilityTimestamp: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Availability" });
+
+export interface UpdateAvailabilityRequest {
+  /** The availabilities being requested. */
+  availabilities?: ReadonlyArray<Availability>;
+}
+
+export const UpdateAvailabilityRequest: Schema.Schema<UpdateAvailabilityRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    availabilities: Schema.optional(Schema.Array(Availability)),
+  }).annotate({ identifier: "UpdateAvailabilityRequest" });
+
+export interface ReportApiColumnSpec {
+  /** Inclusive date in YYYY-MM-DD format. When provided, this overrides the overall time range of the report for this column only. Must be provided together with `endDate`. */
+  startDate?: string;
+  /** Inclusive day in YYYY-MM-DD format. When provided, this overrides the overall time range of the report for this column only. Must be provided together with `startDate`. */
+  endDate?: string;
+  /** Text used to identify this column in the report output; defaults to `columnName` or `savedColumnName` when not specified. This can be used to prevent collisions between DoubleClick Search columns and saved columns with the same name. */
+  headerText?: string;
+  /** Synchronous report only. Set to `true` to group by this column. Defaults to `false`. */
+  groupByColumn?: boolean;
+  /** Name of a DoubleClick Search column to include in the report. */
+  columnName?: string;
+  /** Returns metrics only for a specific type of product activity. Accepted values are: - "`sold`": returns metrics only for products that were sold - "`advertised`": returns metrics only for products that were advertised in a Shopping campaign, and that might or might not have been sold */
+  productReportPerspective?: string;
+  /** Name of a saved column to include in the report. The report must be scoped at advertiser or lower, and this saved column must already be created in the DoubleClick Search UI. */
+  savedColumnName?: string;
+  /** Name of a custom metric to include in the report. The report must be scoped to an advertiser or lower, and the custom metric must already be set up in DoubleClick Search. The custom metric name, which appears in DoubleClick Search, is case sensitive. */
+  customMetricName?: string;
+  /** Segments a report by a custom dimension. The report must be scoped to an advertiser or lower, and the custom dimension must already be set up in DoubleClick Search. The custom dimension name, which appears in DoubleClick Search, is case sensitive.\ If used in a conversion report, returns the value of the specified custom dimension for the given conversion, if set. This column does not segment the conversion report. */
+  customDimensionName?: string;
+  /** The platform that is used to provide data for the custom dimension. Acceptable values are "floodlight". */
+  platformSource?: string;
+}
+
+export const ReportApiColumnSpec: Schema.Schema<ReportApiColumnSpec> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startDate: Schema.optional(Schema.String),
+    endDate: Schema.optional(Schema.String),
+    headerText: Schema.optional(Schema.String),
+    groupByColumn: Schema.optional(Schema.Boolean),
+    columnName: Schema.optional(Schema.String),
+    productReportPerspective: Schema.optional(Schema.String),
+    savedColumnName: Schema.optional(Schema.String),
+    customMetricName: Schema.optional(Schema.String),
+    customDimensionName: Schema.optional(Schema.String),
+    platformSource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReportApiColumnSpec" });
+
+export interface ReportRequest {
+  /** If `true`, the report would only be created if all the requested stat data are sourced from a single timezone. Defaults to `false`. */
+  verifySingleTimeZone?: boolean;
+  /** Asynchronous report only. The maximum number of rows per report file. A large report is split into many files based on this field. Acceptable values are `1000000` to `100000000`, inclusive. */
+  maxRowsPerFile?: number;
+  /** The columns to include in the report. This includes both DoubleClick Search columns and saved columns. For DoubleClick Search columns, only the `columnName` parameter is required. For saved columns only the `savedColumnName` parameter is required. Both `columnName` and `savedColumnName` cannot be set in the same stanza.\ The maximum number of columns per request is 300. */
+  columns?: ReadonlyArray<ReportApiColumnSpec>;
+  /** If metrics are requested in a report, this argument will be used to restrict the metrics to a specific time range. */
+  timeRange?: {
+    changedMetricsSinceTimestamp?: string;
+    changedAttributesSinceTimestamp?: string;
+    startDate?: string;
+    endDate?: string;
+  };
+  /** Determines if removed entities should be included in the report. Defaults to `false`. */
+  includeRemovedEntities?: boolean;
+  /** The reportScope is a set of IDs that are used to determine which subset of entities will be returned in the report. The full lineage of IDs from the lowest scoped level desired up through agency is required. */
+  reportScope?: {
+    adGroupId?: string;
+    adId?: string;
+    agencyId?: string;
+    engineAccountId?: string;
+    campaignId?: string;
+    advertiserId?: string;
+    keywordId?: string;
+  };
+  /** Specifies the currency in which monetary will be returned. Possible values are: `usd`, `agency` (valid if the report is scoped to agency or lower), `advertiser` (valid if the report is scoped to * advertiser or lower), or `account` (valid if the report is scoped to engine account or lower). */
+  statisticsCurrency?: string;
+  /** Synchronous report only. Zero-based index of the first row to return. Acceptable values are `0` to `50000`, inclusive. Defaults to `0`. */
+  startRow?: number;
+  /** Determines the type of rows that are returned in the report. For example, if you specify `reportType: keyword`, each row in the report will contain data about a keyword. See the [Types of Reports](/search-ads/v2/report-types/) reference for the columns that are available for each type. */
+  reportType?: string;
+  /** Format that the report should be returned in. Currently `csv` or `tsv` is supported. */
+  downloadFormat?: string;
+  /** Determines if removed entities should be included in the report. Defaults to `false`. Deprecated, please use `includeRemovedEntities` instead. */
+  includeDeletedEntities?: boolean;
+  /** A list of filters to be applied to the report.\ The maximum number of filters per request is 300. */
+  filters?: ReadonlyArray<{
+    column?: ReportApiColumnSpec;
+    operator?: string;
+    values?: ReadonlyArray<unknown>;
+  }>;
+  /** Synchronous report only. A list of columns and directions defining sorting to be performed on the report rows.\ The maximum number of orderings per request is 300. */
+  orderBy?: ReadonlyArray<{ column?: ReportApiColumnSpec; sortOrder?: string }>;
+  /** Synchronous report only. The maximum number of rows to return; additional rows are dropped. Acceptable values are `0` to `10000`, inclusive. Defaults to `10000`. */
+  rowCount?: number;
+}
+
+export const ReportRequest: Schema.Schema<ReportRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    verifySingleTimeZone: Schema.optional(Schema.Boolean),
+    maxRowsPerFile: Schema.optional(Schema.Number),
+    columns: Schema.optional(Schema.Array(ReportApiColumnSpec)),
+    timeRange: Schema.optional(
+      Schema.Struct({
+        changedMetricsSinceTimestamp: Schema.optional(Schema.String),
+        changedAttributesSinceTimestamp: Schema.optional(Schema.String),
+        startDate: Schema.optional(Schema.String),
+        endDate: Schema.optional(Schema.String),
+      }),
+    ),
+    includeRemovedEntities: Schema.optional(Schema.Boolean),
+    reportScope: Schema.optional(
+      Schema.Struct({
+        adGroupId: Schema.optional(Schema.String),
+        adId: Schema.optional(Schema.String),
+        agencyId: Schema.optional(Schema.String),
+        engineAccountId: Schema.optional(Schema.String),
+        campaignId: Schema.optional(Schema.String),
+        advertiserId: Schema.optional(Schema.String),
+        keywordId: Schema.optional(Schema.String),
+      }),
+    ),
+    statisticsCurrency: Schema.optional(Schema.String),
+    startRow: Schema.optional(Schema.Number),
+    reportType: Schema.optional(Schema.String),
+    downloadFormat: Schema.optional(Schema.String),
+    includeDeletedEntities: Schema.optional(Schema.Boolean),
+    filters: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          column: Schema.optional(ReportApiColumnSpec),
+          operator: Schema.optional(Schema.String),
+          values: Schema.optional(Schema.Array(Schema.Unknown)),
+        }),
+      ),
+    ),
+    orderBy: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          column: Schema.optional(ReportApiColumnSpec),
+          sortOrder: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    rowCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ReportRequest" });
+
+export type ReportRow = Record<string, unknown>;
+export const ReportRow: Schema.Schema<ReportRow> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+    Schema.String,
+    Schema.Unknown,
+  ) as any as Schema.Schema<ReportRow>;
+
+export interface Report {
+  /** Asynchronous report only. Id of the report. */
+  id?: string;
+  /** Synchronous report only. Generated report rows. */
+  rows?: ReadonlyArray<ReportRow>;
+  /** If all statistics of the report are sourced from the same time zone, this would be it. Otherwise the field is unset. */
+  statisticsTimeZone?: string;
+  /** The number of report rows generated by the report, not including headers. */
+  rowCount?: number;
+  /** Asynchronous report only. True if and only if the report has completed successfully and the report files are ready to be downloaded. */
+  isReportReady?: boolean;
+  /** Asynchronous report only. Contains a list of generated report files once the report has successfully completed. */
+  files?: ReadonlyArray<{ url?: string; byteCount?: string }>;
+  /** The currency code of all monetary values produced in the report, including values that are set by users (e.g., keyword bid settings) and metrics (e.g., cost and revenue). The currency code of a report is determined by the `statisticsCurrency` field of the report request. */
+  statisticsCurrencyCode?: string;
+  /** The request that created the report. Optional fields not specified in the original request are filled with default values. */
+  request?: ReportRequest;
+  /** Identifies this as a Report resource. Value: the fixed string `doubleclicksearch#report`. */
+  kind?: string;
+}
+
+export const Report: Schema.Schema<Report> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    rows: Schema.optional(Schema.Array(ReportRow)),
+    statisticsTimeZone: Schema.optional(Schema.String),
+    rowCount: Schema.optional(Schema.Number),
+    isReportReady: Schema.optional(Schema.Boolean),
+    files: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          url: Schema.optional(Schema.String),
+          byteCount: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    statisticsCurrencyCode: Schema.optional(Schema.String),
+    request: Schema.optional(ReportRequest),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Report" });
 
 export interface UpdateAvailabilityResponse {
   /** The availabilities being returned. */
   availabilities?: ReadonlyArray<Availability>;
 }
 
-export const UpdateAvailabilityResponse =
+export const UpdateAvailabilityResponse: Schema.Schema<UpdateAvailabilityResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availabilities: Schema.optional(Schema.Array(Availability)),
   }).annotate({ identifier: "UpdateAvailabilityResponse" });
 
-export interface SavedColumnList {
-  /** Identifies this as a SavedColumnList resource. Value: the fixed string doubleclicksearch#savedColumnList. */
-  kind?: string;
-  /** The saved columns being requested. */
-  items?: ReadonlyArray<SavedColumn>;
-}
+export interface IdMappingFile {}
 
-export const SavedColumnList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  items: Schema.optional(Schema.Array(SavedColumn)),
-}).annotate({ identifier: "SavedColumnList" });
+export const IdMappingFile: Schema.Schema<IdMappingFile> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "IdMappingFile",
+  });
 
 // ==========================================================================
 // Errors
@@ -483,42 +494,342 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface RequestReportsRequest {
+export interface UpdateConversionRequest {
   /** Request body */
-  body?: ReportRequest;
+  body?: ConversionList;
 }
 
-export const RequestReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  body: Schema.optional(ReportRequest).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "doubleclicksearch/v2/reports",
-    hasBody: true,
-  }),
-  svc,
-) as unknown as Schema.Schema<RequestReportsRequest>;
+export const UpdateConversionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(ConversionList).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "doubleclicksearch/v2/conversion",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateConversionRequest>;
 
-export type RequestReportsResponse = Report;
-export const RequestReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
+export type UpdateConversionResponse = ConversionList;
+export const UpdateConversionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ConversionList;
 
-export type RequestReportsError =
+export type UpdateConversionError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Inserts a report request into the reporting system. */
-export const requestReports: API.OperationMethod<
-  RequestReportsRequest,
-  RequestReportsResponse,
-  RequestReportsError,
+/** Updates a batch of conversions in DoubleClick Search. */
+export const updateConversion: API.OperationMethod<
+  UpdateConversionRequest,
+  UpdateConversionResponse,
+  UpdateConversionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RequestReportsRequest,
-  output: RequestReportsResponse,
+  input: UpdateConversionRequest,
+  output: UpdateConversionResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetByCustomerIdConversionRequest {
+  /** Numeric ID of the ad group. */
+  adGroupId?: string;
+  /** Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd. */
+  endDate: number;
+  /** First date (inclusive) on which to retrieve conversions. Format is yyyymmdd. */
+  startDate: number;
+  /** Numeric ID of the criterion. */
+  criterionId?: string;
+  /** Numeric ID of the engine account. */
+  engineAccountId?: string;
+  /** Customer ID of a client account in the new Search Ads 360 experience. */
+  customerId: string;
+  /** Numeric ID of the advertiser. */
+  advertiserId?: string;
+  /** Numeric ID of the ad. */
+  adId?: string;
+  /** Numeric ID of the agency. */
+  agencyId?: string;
+  /** The number of conversions to return per call. */
+  rowCount: number;
+  /** Numeric ID of the campaign. */
+  campaignId?: string;
+  /** The 0-based starting index for retrieving conversions results. */
+  startRow: number;
+}
+
+export const GetByCustomerIdConversionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adGroupId: Schema.optional(Schema.String).pipe(T.HttpQuery("adGroupId")),
+    endDate: Schema.Number.pipe(T.HttpQuery("endDate")),
+    startDate: Schema.Number.pipe(T.HttpQuery("startDate")),
+    criterionId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("criterionId"),
+    ),
+    engineAccountId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("engineAccountId"),
+    ),
+    customerId: Schema.String.pipe(T.HttpPath("customerId")),
+    advertiserId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("advertiserId"),
+    ),
+    adId: Schema.optional(Schema.String).pipe(T.HttpQuery("adId")),
+    agencyId: Schema.optional(Schema.String).pipe(T.HttpQuery("agencyId")),
+    rowCount: Schema.Number.pipe(T.HttpQuery("rowCount")),
+    campaignId: Schema.optional(Schema.String).pipe(T.HttpQuery("campaignId")),
+    startRow: Schema.Number.pipe(T.HttpQuery("startRow")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "doubleclicksearch/v2/customer/{customerId}/conversion",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetByCustomerIdConversionRequest>;
+
+export type GetByCustomerIdConversionResponse = ConversionList;
+export const GetByCustomerIdConversionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ConversionList;
+
+export type GetByCustomerIdConversionError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Retrieves a list of conversions from a DoubleClick Search engine account. */
+export const getByCustomerIdConversion: API.OperationMethod<
+  GetByCustomerIdConversionRequest,
+  GetByCustomerIdConversionResponse,
+  GetByCustomerIdConversionError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetByCustomerIdConversionRequest,
+  output: GetByCustomerIdConversionResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface InsertConversionRequest {
+  /** Request body */
+  body?: ConversionList;
+}
+
+export const InsertConversionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(ConversionList).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "doubleclicksearch/v2/conversion",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<InsertConversionRequest>;
+
+export type InsertConversionResponse = ConversionList;
+export const InsertConversionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ConversionList;
+
+export type InsertConversionError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Inserts a batch of new conversions into DoubleClick Search. */
+export const insertConversion: API.OperationMethod<
+  InsertConversionRequest,
+  InsertConversionResponse,
+  InsertConversionError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: InsertConversionRequest,
+  output: InsertConversionResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetConversionRequest {
+  /** Numeric ID of the advertiser. */
+  advertiserId: string;
+  /** Customer ID of a client account in the new Search Ads 360 experience. */
+  customerId?: string;
+  /** Numeric ID of the engine account. */
+  engineAccountId: string;
+  /** Numeric ID of the criterion. */
+  criterionId?: string;
+  /** Numeric ID of the ad group. */
+  adGroupId?: string;
+  /** Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd. */
+  endDate: number;
+  /** First date (inclusive) on which to retrieve conversions. Format is yyyymmdd. */
+  startDate: number;
+  /** Numeric ID of the campaign. */
+  campaignId?: string;
+  /** The 0-based starting index for retrieving conversions results. */
+  startRow: number;
+  /** Numeric ID of the agency. */
+  agencyId: string;
+  /** The number of conversions to return per call. */
+  rowCount: number;
+  /** Numeric ID of the ad. */
+  adId?: string;
+}
+
+export const GetConversionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  advertiserId: Schema.String.pipe(T.HttpPath("advertiserId")),
+  customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
+  engineAccountId: Schema.String.pipe(T.HttpPath("engineAccountId")),
+  criterionId: Schema.optional(Schema.String).pipe(T.HttpQuery("criterionId")),
+  adGroupId: Schema.optional(Schema.String).pipe(T.HttpQuery("adGroupId")),
+  endDate: Schema.Number.pipe(T.HttpQuery("endDate")),
+  startDate: Schema.Number.pipe(T.HttpQuery("startDate")),
+  campaignId: Schema.optional(Schema.String).pipe(T.HttpQuery("campaignId")),
+  startRow: Schema.Number.pipe(T.HttpQuery("startRow")),
+  agencyId: Schema.String.pipe(T.HttpPath("agencyId")),
+  rowCount: Schema.Number.pipe(T.HttpQuery("rowCount")),
+  adId: Schema.optional(Schema.String).pipe(T.HttpQuery("adId")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetConversionRequest>;
+
+export type GetConversionResponse = ConversionList;
+export const GetConversionResponse = /*@__PURE__*/ /*#__PURE__*/ ConversionList;
+
+export type GetConversionError = DefaultErrors | NotFound | Forbidden;
+
+/** Retrieves a list of conversions from a DoubleClick Search engine account. */
+export const getConversion: API.OperationMethod<
+  GetConversionRequest,
+  GetConversionResponse,
+  GetConversionError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetConversionRequest,
+  output: GetConversionResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface UpdateAvailabilityConversionRequest {
+  /** Request body */
+  body?: UpdateAvailabilityRequest;
+}
+
+export const UpdateAvailabilityConversionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(UpdateAvailabilityRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "doubleclicksearch/v2/conversion/updateAvailability",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateAvailabilityConversionRequest>;
+
+export type UpdateAvailabilityConversionResponse = UpdateAvailabilityResponse;
+export const UpdateAvailabilityConversionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ UpdateAvailabilityResponse;
+
+export type UpdateAvailabilityConversionError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the availabilities of a batch of floodlight activities in DoubleClick Search. */
+export const updateAvailabilityConversion: API.OperationMethod<
+  UpdateAvailabilityConversionRequest,
+  UpdateAvailabilityConversionResponse,
+  UpdateAvailabilityConversionError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateAvailabilityConversionRequest,
+  output: UpdateAvailabilityConversionResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GenerateReportsRequest {
+  /** Request body */
+  body?: ReportRequest;
+}
+
+export const GenerateReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    body: Schema.optional(ReportRequest).pipe(T.HttpBody()),
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "doubleclicksearch/v2/reports/generate",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<GenerateReportsRequest>;
+
+export type GenerateReportsResponse = Report;
+export const GenerateReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
+
+export type GenerateReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Generates and returns a report immediately. */
+export const generateReports: API.OperationMethod<
+  GenerateReportsRequest,
+  GenerateReportsResponse,
+  GenerateReportsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GenerateReportsRequest,
+  output: GenerateReportsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIdMappingFileReportsRequest {
+  /** Legacy SA360 advertiser ID. */
+  advertiserId: string;
+  /** Legacy SA360 agency ID. */
+  agencyId: string;
+}
+
+export const GetIdMappingFileReportsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    advertiserId: Schema.String.pipe(T.HttpPath("advertiserId")),
+    agencyId: Schema.String.pipe(T.HttpPath("agencyId")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/idmapping",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetIdMappingFileReportsRequest>;
+
+export type GetIdMappingFileReportsResponse = IdMappingFile;
+export const GetIdMappingFileReportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ IdMappingFile;
+
+export type GetIdMappingFileReportsError = DefaultErrors | NotFound | Forbidden;
+
+/** Downloads a csv file(encoded in UTF-8) that contains ID mappings between legacy SA360 and new SA360. The file includes all children entities of the given advertiser(e.g. engine accounts, campaigns, ad groups, etc.) that exist in both legacy SA360 and new SA360. */
+export const getIdMappingFileReports: API.OperationMethod<
+  GetIdMappingFileReportsRequest,
+  GetIdMappingFileReportsResponse,
+  GetIdMappingFileReportsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIdMappingFileReportsRequest,
+  output: GetIdMappingFileReportsResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetReportsRequest {
@@ -588,355 +899,55 @@ export const getFileReports: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface GenerateReportsRequest {
+export interface RequestReportsRequest {
   /** Request body */
   body?: ReportRequest;
 }
 
-export const GenerateReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    body: Schema.optional(ReportRequest).pipe(T.HttpBody()),
-  },
-).pipe(
+export const RequestReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  body: Schema.optional(ReportRequest).pipe(T.HttpBody()),
+}).pipe(
   T.Http({
     method: "POST",
-    path: "doubleclicksearch/v2/reports/generate",
+    path: "doubleclicksearch/v2/reports",
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<GenerateReportsRequest>;
+) as unknown as Schema.Schema<RequestReportsRequest>;
 
-export type GenerateReportsResponse = Report;
-export const GenerateReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
+export type RequestReportsResponse = Report;
+export const RequestReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
 
-export type GenerateReportsError =
+export type RequestReportsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Generates and returns a report immediately. */
-export const generateReports: API.OperationMethod<
-  GenerateReportsRequest,
-  GenerateReportsResponse,
-  GenerateReportsError,
+/** Inserts a report request into the reporting system. */
+export const requestReports: API.OperationMethod<
+  RequestReportsRequest,
+  RequestReportsResponse,
+  RequestReportsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GenerateReportsRequest,
-  output: GenerateReportsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIdMappingFileReportsRequest {
-  /** Legacy SA360 agency ID. */
-  agencyId: string;
-  /** Legacy SA360 advertiser ID. */
-  advertiserId: string;
-}
-
-export const GetIdMappingFileReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    agencyId: Schema.String.pipe(T.HttpPath("agencyId")),
-    advertiserId: Schema.String.pipe(T.HttpPath("advertiserId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/idmapping",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetIdMappingFileReportsRequest>;
-
-export type GetIdMappingFileReportsResponse = IdMappingFile;
-export const GetIdMappingFileReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ IdMappingFile;
-
-export type GetIdMappingFileReportsError = DefaultErrors | NotFound | Forbidden;
-
-/** Downloads a csv file(encoded in UTF-8) that contains ID mappings between legacy SA360 and new SA360. The file includes all children entities of the given advertiser(e.g. engine accounts, campaigns, ad groups, etc.) that exist in both legacy SA360 and new SA360. */
-export const getIdMappingFileReports: API.OperationMethod<
-  GetIdMappingFileReportsRequest,
-  GetIdMappingFileReportsResponse,
-  GetIdMappingFileReportsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIdMappingFileReportsRequest,
-  output: GetIdMappingFileReportsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface InsertConversionRequest {
-  /** Request body */
-  body?: ConversionList;
-}
-
-export const InsertConversionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    body: Schema.optional(ConversionList).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "doubleclicksearch/v2/conversion",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<InsertConversionRequest>;
-
-export type InsertConversionResponse = ConversionList;
-export const InsertConversionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConversionList;
-
-export type InsertConversionError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Inserts a batch of new conversions into DoubleClick Search. */
-export const insertConversion: API.OperationMethod<
-  InsertConversionRequest,
-  InsertConversionResponse,
-  InsertConversionError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: InsertConversionRequest,
-  output: InsertConversionResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface UpdateConversionRequest {
-  /** Request body */
-  body?: ConversionList;
-}
-
-export const UpdateConversionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    body: Schema.optional(ConversionList).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "doubleclicksearch/v2/conversion",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateConversionRequest>;
-
-export type UpdateConversionResponse = ConversionList;
-export const UpdateConversionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConversionList;
-
-export type UpdateConversionError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a batch of conversions in DoubleClick Search. */
-export const updateConversion: API.OperationMethod<
-  UpdateConversionRequest,
-  UpdateConversionResponse,
-  UpdateConversionError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateConversionRequest,
-  output: UpdateConversionResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetConversionRequest {
-  /** Numeric ID of the criterion. */
-  criterionId?: string;
-  /** Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd. */
-  endDate: number;
-  /** Numeric ID of the campaign. */
-  campaignId?: string;
-  /** The number of conversions to return per call. */
-  rowCount: number;
-  /** Numeric ID of the ad group. */
-  adGroupId?: string;
-  /** Numeric ID of the advertiser. */
-  advertiserId: string;
-  /** Numeric ID of the engine account. */
-  engineAccountId: string;
-  /** First date (inclusive) on which to retrieve conversions. Format is yyyymmdd. */
-  startDate: number;
-  /** The 0-based starting index for retrieving conversions results. */
-  startRow: number;
-  /** Customer ID of a client account in the new Search Ads 360 experience. */
-  customerId?: string;
-  /** Numeric ID of the ad. */
-  adId?: string;
-  /** Numeric ID of the agency. */
-  agencyId: string;
-}
-
-export const GetConversionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  criterionId: Schema.optional(Schema.String).pipe(T.HttpQuery("criterionId")),
-  endDate: Schema.Number.pipe(T.HttpQuery("endDate")),
-  campaignId: Schema.optional(Schema.String).pipe(T.HttpQuery("campaignId")),
-  rowCount: Schema.Number.pipe(T.HttpQuery("rowCount")),
-  adGroupId: Schema.optional(Schema.String).pipe(T.HttpQuery("adGroupId")),
-  advertiserId: Schema.String.pipe(T.HttpPath("advertiserId")),
-  engineAccountId: Schema.String.pipe(T.HttpPath("engineAccountId")),
-  startDate: Schema.Number.pipe(T.HttpQuery("startDate")),
-  startRow: Schema.Number.pipe(T.HttpQuery("startRow")),
-  customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
-  adId: Schema.optional(Schema.String).pipe(T.HttpQuery("adId")),
-  agencyId: Schema.String.pipe(T.HttpPath("agencyId")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion",
-  }),
-  svc,
-) as unknown as Schema.Schema<GetConversionRequest>;
-
-export type GetConversionResponse = ConversionList;
-export const GetConversionResponse = /*@__PURE__*/ /*#__PURE__*/ ConversionList;
-
-export type GetConversionError = DefaultErrors | NotFound | Forbidden;
-
-/** Retrieves a list of conversions from a DoubleClick Search engine account. */
-export const getConversion: API.OperationMethod<
-  GetConversionRequest,
-  GetConversionResponse,
-  GetConversionError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetConversionRequest,
-  output: GetConversionResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetByCustomerIdConversionRequest {
-  /** Numeric ID of the ad group. */
-  adGroupId?: string;
-  /** Numeric ID of the advertiser. */
-  advertiserId?: string;
-  /** Numeric ID of the engine account. */
-  engineAccountId?: string;
-  /** First date (inclusive) on which to retrieve conversions. Format is yyyymmdd. */
-  startDate: number;
-  /** Customer ID of a client account in the new Search Ads 360 experience. */
-  customerId: string;
-  /** The 0-based starting index for retrieving conversions results. */
-  startRow: number;
-  /** Numeric ID of the ad. */
-  adId?: string;
-  /** Numeric ID of the agency. */
-  agencyId?: string;
-  /** Numeric ID of the criterion. */
-  criterionId?: string;
-  /** Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd. */
-  endDate: number;
-  /** Numeric ID of the campaign. */
-  campaignId?: string;
-  /** The number of conversions to return per call. */
-  rowCount: number;
-}
-
-export const GetByCustomerIdConversionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    adGroupId: Schema.optional(Schema.String).pipe(T.HttpQuery("adGroupId")),
-    advertiserId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("advertiserId"),
-    ),
-    engineAccountId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("engineAccountId"),
-    ),
-    startDate: Schema.Number.pipe(T.HttpQuery("startDate")),
-    customerId: Schema.String.pipe(T.HttpPath("customerId")),
-    startRow: Schema.Number.pipe(T.HttpQuery("startRow")),
-    adId: Schema.optional(Schema.String).pipe(T.HttpQuery("adId")),
-    agencyId: Schema.optional(Schema.String).pipe(T.HttpQuery("agencyId")),
-    criterionId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("criterionId"),
-    ),
-    endDate: Schema.Number.pipe(T.HttpQuery("endDate")),
-    campaignId: Schema.optional(Schema.String).pipe(T.HttpQuery("campaignId")),
-    rowCount: Schema.Number.pipe(T.HttpQuery("rowCount")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "doubleclicksearch/v2/customer/{customerId}/conversion",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetByCustomerIdConversionRequest>;
-
-export type GetByCustomerIdConversionResponse = ConversionList;
-export const GetByCustomerIdConversionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConversionList;
-
-export type GetByCustomerIdConversionError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Retrieves a list of conversions from a DoubleClick Search engine account. */
-export const getByCustomerIdConversion: API.OperationMethod<
-  GetByCustomerIdConversionRequest,
-  GetByCustomerIdConversionResponse,
-  GetByCustomerIdConversionError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetByCustomerIdConversionRequest,
-  output: GetByCustomerIdConversionResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface UpdateAvailabilityConversionRequest {
-  /** Request body */
-  body?: UpdateAvailabilityRequest;
-}
-
-export const UpdateAvailabilityConversionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    body: Schema.optional(UpdateAvailabilityRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "doubleclicksearch/v2/conversion/updateAvailability",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateAvailabilityConversionRequest>;
-
-export type UpdateAvailabilityConversionResponse = UpdateAvailabilityResponse;
-export const UpdateAvailabilityConversionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UpdateAvailabilityResponse;
-
-export type UpdateAvailabilityConversionError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the availabilities of a batch of floodlight activities in DoubleClick Search. */
-export const updateAvailabilityConversion: API.OperationMethod<
-  UpdateAvailabilityConversionRequest,
-  UpdateAvailabilityConversionResponse,
-  UpdateAvailabilityConversionError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateAvailabilityConversionRequest,
-  output: UpdateAvailabilityConversionResponse,
+  input: RequestReportsRequest,
+  output: RequestReportsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSavedColumnsRequest {
-  /** DS ID of the agency. */
-  agencyId: string;
   /** DS ID of the advertiser. */
   advertiserId: string;
+  /** DS ID of the agency. */
+  agencyId: string;
 }
 
 export const ListSavedColumnsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    agencyId: Schema.String.pipe(T.HttpPath("agencyId")),
     advertiserId: Schema.String.pipe(T.HttpPath("advertiserId")),
+    agencyId: Schema.String.pipe(T.HttpPath("agencyId")),
   }).pipe(
     T.Http({
       method: "GET",

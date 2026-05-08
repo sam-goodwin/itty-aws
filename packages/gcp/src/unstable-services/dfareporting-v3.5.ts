@@ -22,89 +22,118 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface CreativeAssetId {
+  /** Name of the creative asset. This is a required field while inserting an asset. After insertion, this assetIdentifier is used to identify the uploaded asset. Characters in the name must be alphanumeric or one of the following: ".-_ ". Spaces are allowed. */
+  name?: string;
+  /** Type of asset to upload. This is a required field. FLASH and IMAGE are no longer supported for new uploads. All image assets should use HTML_IMAGE. */
+  type?:
+    | "IMAGE"
+    | "FLASH"
+    | "VIDEO"
+    | "HTML"
+    | "HTML_IMAGE"
+    | "AUDIO"
+    | (string & {});
+}
+
+export const CreativeAssetId: Schema.Schema<CreativeAssetId> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreativeAssetId" });
+
 export interface CreativeClickThroughUrl {
-  /** Custom click-through URL. Applicable if the landingPageId field is left unset. */
-  customClickThroughUrl?: string;
   /** Read-only convenience field representing the actual URL that will be used for this click-through. The URL is computed as follows: - If landingPageId is specified then that landing page's URL is assigned to this field. - Otherwise, the customClickThroughUrl is assigned to this field. */
   computedClickThroughUrl?: string;
   /** ID of the landing page for the click-through URL. */
   landingPageId?: string;
+  /** Custom click-through URL. Applicable if the landingPageId field is left unset. */
+  customClickThroughUrl?: string;
 }
 
-export const CreativeClickThroughUrl =
+export const CreativeClickThroughUrl: Schema.Schema<CreativeClickThroughUrl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customClickThroughUrl: Schema.optional(Schema.String),
     computedClickThroughUrl: Schema.optional(Schema.String),
     landingPageId: Schema.optional(Schema.String),
+    customClickThroughUrl: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreativeClickThroughUrl" });
 
-export interface OffsetPosition {
-  /** Offset distance from left side of an asset or a window. */
-  left?: number;
-  /** Offset distance from top side of an asset or a window. */
-  top?: number;
-}
-
-export const OffsetPosition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  left: Schema.optional(Schema.Number),
-  top: Schema.optional(Schema.Number),
-}).annotate({ identifier: "OffsetPosition" });
-
 export interface Size {
-  /** Width of this size. Acceptable values are 0 to 32767, inclusive. */
-  width?: number;
+  /** ID of this size. This is a read-only, auto-generated field. */
+  id?: string;
   /** IAB standard size. This is a read-only, auto-generated field. */
   iab?: boolean;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#size". */
   kind?: string;
-  /** ID of this size. This is a read-only, auto-generated field. */
-  id?: string;
   /** Height of this size. Acceptable values are 0 to 32767, inclusive. */
   height?: number;
+  /** Width of this size. Acceptable values are 0 to 32767, inclusive. */
+  width?: number;
 }
 
-export const Size = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  width: Schema.optional(Schema.Number),
-  iab: Schema.optional(Schema.Boolean),
-  kind: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  height: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Size" });
+export const Size: Schema.Schema<Size> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    iab: Schema.optional(Schema.Boolean),
+    kind: Schema.optional(Schema.String),
+    height: Schema.optional(Schema.Number),
+    width: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Size" });
+
+export interface OffsetPosition {
+  /** Offset distance from top side of an asset or a window. */
+  top?: number;
+  /** Offset distance from left side of an asset or a window. */
+  left?: number;
+}
+
+export const OffsetPosition: Schema.Schema<OffsetPosition> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    top: Schema.optional(Schema.Number),
+    left: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "OffsetPosition" });
 
 export interface PopupWindowProperties {
-  /** Whether to display the browser menu bar. */
-  showMenuBar?: boolean;
-  /** Upper-left corner coordinates of the popup window. Applicable if positionType is COORDINATES. */
-  offset?: OffsetPosition;
   /** Title of popup window. */
   title?: string;
-  /** Popup window position either centered or at specific coordinate. */
-  positionType?: "CENTER" | "COORDINATES" | (string & {});
-  /** Popup dimension for a creative. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA and all VPAID */
-  dimension?: Size;
   /** Whether to display the browser tool bar. */
   showToolBar?: boolean;
-  /** Whether to display the browser address bar. */
-  showAddressBar?: boolean;
+  /** Popup window position either centered or at specific coordinate. */
+  positionType?: "CENTER" | "COORDINATES" | (string & {});
   /** Whether to display the browser scroll bar. */
   showScrollBar?: boolean;
   /** Whether to display the browser status bar. */
   showStatusBar?: boolean;
+  /** Whether to display the browser menu bar. */
+  showMenuBar?: boolean;
+  /** Popup dimension for a creative. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA and all VPAID */
+  dimension?: Size;
+  /** Upper-left corner coordinates of the popup window. Applicable if positionType is COORDINATES. */
+  offset?: OffsetPosition;
+  /** Whether to display the browser address bar. */
+  showAddressBar?: boolean;
 }
 
-export const PopupWindowProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  showMenuBar: Schema.optional(Schema.Boolean),
-  offset: Schema.optional(OffsetPosition),
-  title: Schema.optional(Schema.String),
-  positionType: Schema.optional(Schema.String),
-  dimension: Schema.optional(Size),
-  showToolBar: Schema.optional(Schema.Boolean),
-  showAddressBar: Schema.optional(Schema.Boolean),
-  showScrollBar: Schema.optional(Schema.Boolean),
-  showStatusBar: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "PopupWindowProperties" });
+export const PopupWindowProperties: Schema.Schema<PopupWindowProperties> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    showToolBar: Schema.optional(Schema.Boolean),
+    positionType: Schema.optional(Schema.String),
+    showScrollBar: Schema.optional(Schema.Boolean),
+    showStatusBar: Schema.optional(Schema.Boolean),
+    showMenuBar: Schema.optional(Schema.Boolean),
+    dimension: Schema.optional(Size),
+    offset: Schema.optional(OffsetPosition),
+    showAddressBar: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "PopupWindowProperties" });
 
 export interface CreativeCustomEvent {
+  /** Type of the event. This is a read-only field. */
+  advertiserCustomEventType?:
+    | "ADVERTISER_EVENT_TIMER"
+    | "ADVERTISER_EVENT_EXIT"
+    | "ADVERTISER_EVENT_COUNTER"
+    | (string & {});
   /** Exit click-through URL for the event. This field is used only for exit events. */
   exitClickThroughUrl?: CreativeClickThroughUrl;
   /** Artwork type used by the creative.This is a read-only field. */
@@ -116,18 +145,6 @@ export interface CreativeCustomEvent {
     | (string & {});
   /** User-entered name for the event. */
   advertiserCustomEventName?: string;
-  /** Unique ID of this event used by Reporting and Data Transfer. This is a read-only field. */
-  advertiserCustomEventId?: string;
-  /** Video reporting ID, used to differentiate multiple videos in a single creative. This is a read-only field. */
-  videoReportingId?: string;
-  /** ID of this event. This is a required field and should not be modified after insertion. */
-  id?: string;
-  /** Type of the event. This is a read-only field. */
-  advertiserCustomEventType?:
-    | "ADVERTISER_EVENT_TIMER"
-    | "ADVERTISER_EVENT_EXIT"
-    | "ADVERTISER_EVENT_COUNTER"
-    | (string & {});
   /** Target type used by the event. */
   targetType?:
     | "TARGET_BLANK"
@@ -136,68 +153,49 @@ export interface CreativeCustomEvent {
     | "TARGET_PARENT"
     | "TARGET_POPUP"
     | (string & {});
-  /** Properties for rich media popup windows. This field is used only for exit events. */
-  popupWindowProperties?: PopupWindowProperties;
   /** Artwork label column, used to link events in Campaign Manager back to events in Studio. This is a required field and should not be modified after insertion. */
   artworkLabel?: string;
+  /** ID of this event. This is a required field and should not be modified after insertion. */
+  id?: string;
+  /** Video reporting ID, used to differentiate multiple videos in a single creative. This is a read-only field. */
+  videoReportingId?: string;
+  /** Properties for rich media popup windows. This field is used only for exit events. */
+  popupWindowProperties?: PopupWindowProperties;
+  /** Unique ID of this event used by Reporting and Data Transfer. This is a read-only field. */
+  advertiserCustomEventId?: string;
 }
 
-export const CreativeCustomEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  exitClickThroughUrl: Schema.optional(CreativeClickThroughUrl),
-  artworkType: Schema.optional(Schema.String),
-  advertiserCustomEventName: Schema.optional(Schema.String),
-  advertiserCustomEventId: Schema.optional(Schema.String),
-  videoReportingId: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  advertiserCustomEventType: Schema.optional(Schema.String),
-  targetType: Schema.optional(Schema.String),
-  popupWindowProperties: Schema.optional(PopupWindowProperties),
-  artworkLabel: Schema.optional(Schema.String),
-}).annotate({ identifier: "CreativeCustomEvent" });
+export const CreativeCustomEvent: Schema.Schema<CreativeCustomEvent> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    advertiserCustomEventType: Schema.optional(Schema.String),
+    exitClickThroughUrl: Schema.optional(CreativeClickThroughUrl),
+    artworkType: Schema.optional(Schema.String),
+    advertiserCustomEventName: Schema.optional(Schema.String),
+    targetType: Schema.optional(Schema.String),
+    artworkLabel: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    videoReportingId: Schema.optional(Schema.String),
+    popupWindowProperties: Schema.optional(PopupWindowProperties),
+    advertiserCustomEventId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreativeCustomEvent" });
 
 export interface ClickTag {
-  /** Advertiser event name associated with the click tag. This field is used by DISPLAY_IMAGE_GALLERY and HTML5_BANNER creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
-  eventName?: string;
-  /** Parameter value for the specified click tag. This field contains a click-through url. */
-  clickThroughUrl?: CreativeClickThroughUrl;
   /** Parameter name for the specified click tag. For DISPLAY_IMAGE_GALLERY creative assets, this field must match the value of the creative asset's creativeAssetId.name field. */
   name?: string;
+  /** Parameter value for the specified click tag. This field contains a click-through url. */
+  clickThroughUrl?: CreativeClickThroughUrl;
+  /** Advertiser event name associated with the click tag. This field is used by DISPLAY_IMAGE_GALLERY and HTML5_BANNER creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
+  eventName?: string;
 }
 
-export const ClickTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  eventName: Schema.optional(Schema.String),
-  clickThroughUrl: Schema.optional(CreativeClickThroughUrl),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "ClickTag" });
-
-export interface CreativeAssetId {
-  /** Type of asset to upload. This is a required field. FLASH and IMAGE are no longer supported for new uploads. All image assets should use HTML_IMAGE. */
-  type?:
-    | "IMAGE"
-    | "FLASH"
-    | "VIDEO"
-    | "HTML"
-    | "HTML_IMAGE"
-    | "AUDIO"
-    | (string & {});
-  /** Name of the creative asset. This is a required field while inserting an asset. After insertion, this assetIdentifier is used to identify the uploaded asset. Characters in the name must be alphanumeric or one of the following: ".-_ ". Spaces are allowed. */
-  name?: string;
-}
-
-export const CreativeAssetId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  type: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "CreativeAssetId" });
+export const ClickTag: Schema.Schema<ClickTag> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    clickThroughUrl: Schema.optional(CreativeClickThroughUrl),
+    eventName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ClickTag" });
 
 export interface DimensionValue {
-  /** The ID associated with the value if available. */
-  id?: string;
-  /** The name of the dimension. */
-  dimensionName?: string;
-  /** The value of the dimension. */
-  value?: string;
-  /** The eTag of this response for caching purposes. */
-  etag?: string;
   /** Determines how the 'value' field is matched when filtering. If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is allowed as a placeholder for variable length character sequences, and it can be escaped with a backslash. Note, only paid search dimensions ('dfa:paidSearch*') allow a matchType other than EXACT. */
   matchType?:
     | "EXACT"
@@ -205,60 +203,43 @@ export interface DimensionValue {
     | "CONTAINS"
     | "WILDCARD_EXPRESSION"
     | (string & {});
+  /** The ID associated with the value if available. */
+  id?: string;
   /** The kind of resource this is, in this case dfareporting#dimensionValue. */
   kind?: string;
+  /** The name of the dimension. */
+  dimensionName?: string;
+  /** The value of the dimension. */
+  value?: string;
+  /** The eTag of this response for caching purposes. */
+  etag?: string;
 }
 
-export const DimensionValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.String),
-  dimensionName: Schema.optional(Schema.String),
-  value: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-  matchType: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-}).annotate({ identifier: "DimensionValue" });
+export const DimensionValue: Schema.Schema<DimensionValue> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchType: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    dimensionName: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DimensionValue" });
 
 export interface CreativeAssetMetadata {
+  /** ID of the creative asset. This is a required field. */
+  assetIdentifier?: CreativeAssetId;
+  /** List of exit events configured for the asset. This is a read-only, auto-generated field and only applicable to a rich media asset. */
+  exitCustomEvents?: ReadonlyArray<CreativeCustomEvent>;
+  /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativeAssetMetadata". */
+  kind?: string;
+  /** Numeric ID of the asset. This is a read-only, auto-generated field. */
+  id?: string;
+  /** List of timer events configured for the asset. This is a read-only, auto-generated field and only applicable to a rich media asset. */
+  timerCustomEvents?: ReadonlyArray<CreativeCustomEvent>;
   /** List of counter events configured for the asset. This is a read-only, auto-generated field and only applicable to a rich media asset. */
   counterCustomEvents?: ReadonlyArray<CreativeCustomEvent>;
   /** List of detected click tags for assets. This is a read-only, auto-generated field. This field is empty for a rich media asset. */
   clickTags?: ReadonlyArray<ClickTag>;
-  /** True if the uploaded asset is a rich media asset. This is a read-only, auto-generated field. */
-  richMedia?: boolean;
-  /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativeAssetMetadata". */
-  kind?: string;
-  /** List of timer events configured for the asset. This is a read-only, auto-generated field and only applicable to a rich media asset. */
-  timerCustomEvents?: ReadonlyArray<CreativeCustomEvent>;
-  /** Rules validated during code generation that generated a warning. This is a read-only, auto-generated field. Possible values are: - "ADMOB_REFERENCED" - "ASSET_FORMAT_UNSUPPORTED_DCM" - "ASSET_INVALID" - "CLICK_TAG_HARD_CODED" - "CLICK_TAG_INVALID" - "CLICK_TAG_IN_GWD" - "CLICK_TAG_MISSING" - "CLICK_TAG_MORE_THAN_ONE" - "CLICK_TAG_NON_TOP_LEVEL" - "COMPONENT_UNSUPPORTED_DCM" - "ENABLER_UNSUPPORTED_METHOD_DCM" - "EXTERNAL_FILE_REFERENCED" - "FILE_DETAIL_EMPTY" - "FILE_TYPE_INVALID" - "GWD_PROPERTIES_INVALID" - "HTML5_FEATURE_UNSUPPORTED" - "LINKED_FILE_NOT_FOUND" - "MAX_FLASH_VERSION_11" - "MRAID_REFERENCED" - "NOT_SSL_COMPLIANT" - "ORPHANED_ASSET" - "PRIMARY_HTML_MISSING" - "SVG_INVALID" - "ZIP_INVALID" */
-  warnedValidationRules?: ReadonlyArray<
-    | "CLICK_TAG_NON_TOP_LEVEL"
-    | "CLICK_TAG_MISSING"
-    | "CLICK_TAG_MORE_THAN_ONE"
-    | "CLICK_TAG_INVALID"
-    | "ORPHANED_ASSET"
-    | "PRIMARY_HTML_MISSING"
-    | "EXTERNAL_FILE_REFERENCED"
-    | "MRAID_REFERENCED"
-    | "ADMOB_REFERENCED"
-    | "FILE_TYPE_INVALID"
-    | "ZIP_INVALID"
-    | "LINKED_FILE_NOT_FOUND"
-    | "MAX_FLASH_VERSION_11"
-    | "NOT_SSL_COMPLIANT"
-    | "FILE_DETAIL_EMPTY"
-    | "ASSET_INVALID"
-    | "GWD_PROPERTIES_INVALID"
-    | "ENABLER_UNSUPPORTED_METHOD_DCM"
-    | "ASSET_FORMAT_UNSUPPORTED_DCM"
-    | "COMPONENT_UNSUPPORTED_DCM"
-    | "HTML5_FEATURE_UNSUPPORTED"
-    | "CLICK_TAG_IN_GWD"
-    | "CLICK_TAG_HARD_CODED"
-    | "SVG_INVALID"
-    | "CLICK_TAG_IN_RICH_MEDIA"
-    | "MISSING_ENABLER_REFERENCE"
-    | (string & {})
-  >;
   /** List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field. */
   detectedFeatures?: ReadonlyArray<
     | "CSS_FONT_FACE"
@@ -329,29 +310,56 @@ export interface CreativeAssetMetadata {
     | "SVG_FE_IMAGE"
     | (string & {})
   >;
-  /** ID of the creative asset. This is a required field. */
-  assetIdentifier?: CreativeAssetId;
-  /** Numeric ID of the asset. This is a read-only, auto-generated field. */
-  id?: string;
+  /** True if the uploaded asset is a rich media asset. This is a read-only, auto-generated field. */
+  richMedia?: boolean;
+  /** Rules validated during code generation that generated a warning. This is a read-only, auto-generated field. Possible values are: - "ADMOB_REFERENCED" - "ASSET_FORMAT_UNSUPPORTED_DCM" - "ASSET_INVALID" - "CLICK_TAG_HARD_CODED" - "CLICK_TAG_INVALID" - "CLICK_TAG_IN_GWD" - "CLICK_TAG_MISSING" - "CLICK_TAG_MORE_THAN_ONE" - "CLICK_TAG_NON_TOP_LEVEL" - "COMPONENT_UNSUPPORTED_DCM" - "ENABLER_UNSUPPORTED_METHOD_DCM" - "EXTERNAL_FILE_REFERENCED" - "FILE_DETAIL_EMPTY" - "FILE_TYPE_INVALID" - "GWD_PROPERTIES_INVALID" - "HTML5_FEATURE_UNSUPPORTED" - "LINKED_FILE_NOT_FOUND" - "MAX_FLASH_VERSION_11" - "MRAID_REFERENCED" - "NOT_SSL_COMPLIANT" - "ORPHANED_ASSET" - "PRIMARY_HTML_MISSING" - "SVG_INVALID" - "ZIP_INVALID" */
+  warnedValidationRules?: ReadonlyArray<
+    | "CLICK_TAG_NON_TOP_LEVEL"
+    | "CLICK_TAG_MISSING"
+    | "CLICK_TAG_MORE_THAN_ONE"
+    | "CLICK_TAG_INVALID"
+    | "ORPHANED_ASSET"
+    | "PRIMARY_HTML_MISSING"
+    | "EXTERNAL_FILE_REFERENCED"
+    | "MRAID_REFERENCED"
+    | "ADMOB_REFERENCED"
+    | "FILE_TYPE_INVALID"
+    | "ZIP_INVALID"
+    | "LINKED_FILE_NOT_FOUND"
+    | "MAX_FLASH_VERSION_11"
+    | "NOT_SSL_COMPLIANT"
+    | "FILE_DETAIL_EMPTY"
+    | "ASSET_INVALID"
+    | "GWD_PROPERTIES_INVALID"
+    | "ENABLER_UNSUPPORTED_METHOD_DCM"
+    | "ASSET_FORMAT_UNSUPPORTED_DCM"
+    | "COMPONENT_UNSUPPORTED_DCM"
+    | "HTML5_FEATURE_UNSUPPORTED"
+    | "CLICK_TAG_IN_GWD"
+    | "CLICK_TAG_HARD_CODED"
+    | "SVG_INVALID"
+    | "CLICK_TAG_IN_RICH_MEDIA"
+    | "MISSING_ENABLER_REFERENCE"
+    | (string & {})
+  >;
   /** Dimension value for the numeric ID of the asset. This is a read-only, auto-generated field. */
   idDimensionValue?: DimensionValue;
-  /** List of exit events configured for the asset. This is a read-only, auto-generated field and only applicable to a rich media asset. */
-  exitCustomEvents?: ReadonlyArray<CreativeCustomEvent>;
 }
 
-export const CreativeAssetMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  counterCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
-  clickTags: Schema.optional(Schema.Array(ClickTag)),
-  richMedia: Schema.optional(Schema.Boolean),
-  kind: Schema.optional(Schema.String),
-  timerCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
-  warnedValidationRules: Schema.optional(Schema.Array(Schema.String)),
-  detectedFeatures: Schema.optional(Schema.Array(Schema.String)),
-  assetIdentifier: Schema.optional(CreativeAssetId),
-  id: Schema.optional(Schema.String),
-  idDimensionValue: Schema.optional(DimensionValue),
-  exitCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
-}).annotate({ identifier: "CreativeAssetMetadata" });
+export const CreativeAssetMetadata: Schema.Schema<CreativeAssetMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assetIdentifier: Schema.optional(CreativeAssetId),
+    exitCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
+    kind: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    timerCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
+    counterCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
+    clickTags: Schema.optional(Schema.Array(ClickTag)),
+    detectedFeatures: Schema.optional(Schema.Array(Schema.String)),
+    richMedia: Schema.optional(Schema.Boolean),
+    warnedValidationRules: Schema.optional(Schema.Array(Schema.String)),
+    idDimensionValue: Schema.optional(DimensionValue),
+  }).annotate({ identifier: "CreativeAssetMetadata" });
 
 // ==========================================================================
 // Errors

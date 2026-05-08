@@ -23,37 +23,81 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface Expr {
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
 }
 
-export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  expression: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-}).annotate({ identifier: "Expr" });
+export const Expr: Schema.Schema<Expr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
-  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
+  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
+  members?: ReadonlyArray<string>;
 }
 
-export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  role: Schema.optional(Schema.String),
-  members: Schema.optional(Schema.Array(Schema.String)),
-  condition: Schema.optional(Expr),
-}).annotate({ identifier: "Binding" });
+export const Binding: Schema.Schema<Binding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    role: Schema.optional(Schema.String),
+    condition: Schema.optional(Expr),
+    members: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "Binding" });
+
+export interface Catalog {
+  /** Output only. The deletion time of the catalog. Only set after the catalog is deleted. */
+  deleteTime?: string;
+  /** Output only. The creation time of the catalog. */
+  createTime?: string;
+  /** Output only. The last modification time of the catalog. */
+  updateTime?: string;
+  /** Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} */
+  name?: string;
+  /** Output only. The time when this catalog is considered expired. Only set after the catalog is deleted. */
+  expireTime?: string;
+}
+
+export const Catalog: Schema.Schema<Catalog> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deleteTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Catalog" });
+
+export interface RenameTableRequest {
+  /** Required. The new `name` for the specified table, must be in the same database. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
+  newName?: string;
+}
+
+export const RenameTableRequest: Schema.Schema<RenameTableRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    newName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RenameTableRequest" });
+
+export interface TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -67,10 +111,11 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  logType: Schema.optional(Schema.String),
-  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "AuditLogConfig" });
+export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logType: Schema.optional(Schema.String),
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -79,28 +124,30 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  service: Schema.optional(Schema.String),
-  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-}).annotate({ identifier: "AuditConfig" });
+export const AuditConfig: Schema.Schema<AuditConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+    auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+  }).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
-  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: ReadonlyArray<Binding>;
-  /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
+  /** Specifies cloud audit logging configuration for this policy. */
+  auditConfigs?: ReadonlyArray<AuditConfig>;
+  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
+  bindings?: ReadonlyArray<Binding>;
 }
 
-export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  version: Schema.optional(Schema.Number),
-  bindings: Schema.optional(Schema.Array(Binding)),
-  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-  etag: Schema.optional(Schema.String),
-}).annotate({ identifier: "Policy" });
+export const Policy: Schema.Schema<Policy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.Number),
+    etag: Schema.optional(Schema.String),
+    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+    bindings: Schema.optional(Schema.Array(Binding)),
+  }).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -109,195 +156,87 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  policy: Schema.optional(Policy),
-  updateMask: Schema.optional(Schema.String),
-}).annotate({ identifier: "SetIamPolicyRequest" });
-
-export interface TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsRequest =
+export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsRequest" });
-
-export interface TestIamPermissionsResponse {
-  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsResponse" });
-
-export interface Catalog {
-  /** Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} */
-  name?: string;
-  /** Output only. The creation time of the catalog. */
-  createTime?: string;
-  /** Output only. The last modification time of the catalog. */
-  updateTime?: string;
-  /** Output only. The deletion time of the catalog. Only set after the catalog is deleted. */
-  deleteTime?: string;
-  /** Output only. The time when this catalog is considered expired. Only set after the catalog is deleted. */
-  expireTime?: string;
-}
-
-export const Catalog = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  deleteTime: Schema.optional(Schema.String),
-  expireTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "Catalog" });
-
-export interface ListCatalogsResponse {
-  /** The catalogs from the specified project. */
-  catalogs?: ReadonlyArray<Catalog>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListCatalogsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  catalogs: Schema.optional(Schema.Array(Catalog)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListCatalogsResponse" });
-
-export interface HiveDatabaseOptions {
-  /** Cloud Storage folder URI where the database data is stored, starting with "gs://". */
-  locationUri?: string;
-  /** Stores user supplied Hive database parameters. */
-  parameters?: Record<string, string>;
-}
-
-export const HiveDatabaseOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  locationUri: Schema.optional(Schema.String),
-  parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-}).annotate({ identifier: "HiveDatabaseOptions" });
-
-export interface Database {
-  /** Options of a Hive database. */
-  hiveOptions?: HiveDatabaseOptions;
-  /** Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
-  name?: string;
-  /** Output only. The creation time of the database. */
-  createTime?: string;
-  /** Output only. The last modification time of the database. */
-  updateTime?: string;
-  /** Output only. The deletion time of the database. Only set after the database is deleted. */
-  deleteTime?: string;
-  /** Output only. The time when this database is considered expired. Only set after the database is deleted. */
-  expireTime?: string;
-  /** The database type. */
-  type?: "TYPE_UNSPECIFIED" | "HIVE" | (string & {});
-}
-
-export const Database = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  hiveOptions: Schema.optional(HiveDatabaseOptions),
-  name: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  deleteTime: Schema.optional(Schema.String),
-  expireTime: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-}).annotate({ identifier: "Database" });
-
-export interface ListDatabasesResponse {
-  /** The databases from the specified catalog. */
-  databases?: ReadonlyArray<Database>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListDatabasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  databases: Schema.optional(Schema.Array(Database)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListDatabasesResponse" });
+    policy: Schema.optional(Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface SerDeInfo {
   /** The fully qualified Java class name of the serialization library. */
   serializationLib?: string;
 }
 
-export const SerDeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  serializationLib: Schema.optional(Schema.String),
-}).annotate({ identifier: "SerDeInfo" });
+export const SerDeInfo: Schema.Schema<SerDeInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serializationLib: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SerDeInfo" });
 
 export interface StorageDescriptor {
-  /** Cloud Storage folder URI where the table data is stored, starting with "gs://". */
-  locationUri?: string;
   /** The fully qualified Java class name of the input format. */
   inputFormat?: string;
+  /** Cloud Storage folder URI where the table data is stored, starting with "gs://". */
+  locationUri?: string;
   /** The fully qualified Java class name of the output format. */
   outputFormat?: string;
   /** Serializer and deserializer information. */
   serdeInfo?: SerDeInfo;
 }
 
-export const StorageDescriptor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  locationUri: Schema.optional(Schema.String),
-  inputFormat: Schema.optional(Schema.String),
-  outputFormat: Schema.optional(Schema.String),
-  serdeInfo: Schema.optional(SerDeInfo),
-}).annotate({ identifier: "StorageDescriptor" });
+export const StorageDescriptor: Schema.Schema<StorageDescriptor> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputFormat: Schema.optional(Schema.String),
+    locationUri: Schema.optional(Schema.String),
+    outputFormat: Schema.optional(Schema.String),
+    serdeInfo: Schema.optional(SerDeInfo),
+  }).annotate({ identifier: "StorageDescriptor" });
 
 export interface HiveTableOptions {
   /** Stores user supplied Hive table parameters. */
   parameters?: Record<string, string>;
-  /** Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE. */
-  tableType?: string;
   /** Stores physical storage information of the data. */
   storageDescriptor?: StorageDescriptor;
+  /** Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE. */
+  tableType?: string;
 }
 
-export const HiveTableOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  tableType: Schema.optional(Schema.String),
-  storageDescriptor: Schema.optional(StorageDescriptor),
-}).annotate({ identifier: "HiveTableOptions" });
+export const HiveTableOptions: Schema.Schema<HiveTableOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    storageDescriptor: Schema.optional(StorageDescriptor),
+    tableType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HiveTableOptions" });
 
 export interface Table {
-  /** Options of a Hive table. */
-  hiveOptions?: HiveTableOptions;
-  /** Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
-  name?: string;
-  /** Output only. The creation time of the table. */
-  createTime?: string;
   /** Output only. The last modification time of the table. */
   updateTime?: string;
-  /** Output only. The deletion time of the table. Only set after the table is deleted. */
-  deleteTime?: string;
-  /** Output only. The time when this table is considered expired. Only set after the table is deleted. */
-  expireTime?: string;
   /** The table type. */
   type?: "TYPE_UNSPECIFIED" | "HIVE" | (string & {});
+  /** Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
+  name?: string;
+  /** Output only. The time when this table is considered expired. Only set after the table is deleted. */
+  expireTime?: string;
   /** The checksum of a table object computed by the server based on the value of other fields. It may be sent on update requests to ensure the client has an up-to-date value before proceeding. It is only checked for update table operations. */
   etag?: string;
+  /** Output only. The deletion time of the table. Only set after the table is deleted. */
+  deleteTime?: string;
+  /** Options of a Hive table. */
+  hiveOptions?: HiveTableOptions;
+  /** Output only. The creation time of the table. */
+  createTime?: string;
 }
 
-export const Table = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  hiveOptions: Schema.optional(HiveTableOptions),
-  name: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  deleteTime: Schema.optional(Schema.String),
-  expireTime: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-}).annotate({ identifier: "Table" });
-
-export interface RenameTableRequest {
-  /** Required. The new `name` for the specified table, must be in the same database. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
-  newName?: string;
-}
-
-export const RenameTableRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  newName: Schema.optional(Schema.String),
-}).annotate({ identifier: "RenameTableRequest" });
+export const Table: Schema.Schema<Table> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    hiveOptions: Schema.optional(HiveTableOptions),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Table" });
 
 export interface ListTablesResponse {
   /** The tables from the specified database. */
@@ -306,10 +245,88 @@ export interface ListTablesResponse {
   nextPageToken?: string;
 }
 
-export const ListTablesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tables: Schema.optional(Schema.Array(Table)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListTablesResponse" });
+export const ListTablesResponse: Schema.Schema<ListTablesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tables: Schema.optional(Schema.Array(Table)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTablesResponse" });
+
+export interface HiveDatabaseOptions {
+  /** Cloud Storage folder URI where the database data is stored, starting with "gs://". */
+  locationUri?: string;
+  /** Stores user supplied Hive database parameters. */
+  parameters?: Record<string, string>;
+}
+
+export const HiveDatabaseOptions: Schema.Schema<HiveDatabaseOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationUri: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "HiveDatabaseOptions" });
+
+export interface Database {
+  /** Options of a Hive database. */
+  hiveOptions?: HiveDatabaseOptions;
+  /** Output only. The creation time of the database. */
+  createTime?: string;
+  /** Output only. The deletion time of the database. Only set after the database is deleted. */
+  deleteTime?: string;
+  /** Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
+  name?: string;
+  /** Output only. The time when this database is considered expired. Only set after the database is deleted. */
+  expireTime?: string;
+  /** Output only. The last modification time of the database. */
+  updateTime?: string;
+  /** The database type. */
+  type?: "TYPE_UNSPECIFIED" | "HIVE" | (string & {});
+}
+
+export const Database: Schema.Schema<Database> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hiveOptions: Schema.optional(HiveDatabaseOptions),
+    createTime: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Database" });
+
+export interface TestIamPermissionsResponse {
+  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
+
+export interface ListCatalogsResponse {
+  /** The catalogs from the specified project. */
+  catalogs?: ReadonlyArray<Catalog>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListCatalogsResponse: Schema.Schema<ListCatalogsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    catalogs: Schema.optional(Schema.Array(Catalog)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCatalogsResponse" });
+
+export interface ListDatabasesResponse {
+  /** The databases from the specified catalog. */
+  databases?: ReadonlyArray<Database>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListDatabasesResponse: Schema.Schema<ListDatabasesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databases: Schema.optional(Schema.Array(Database)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDatabasesResponse" });
 
 // ==========================================================================
 // Errors
@@ -491,6 +508,50 @@ export const testIamPermissionsProjectsCatalogs: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface TestIamPermissionsProjectsCatalogsNamespacesRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsCatalogsNamespacesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsCatalogsNamespacesRequest>;
+
+export type TestIamPermissionsProjectsCatalogsNamespacesResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsCatalogsNamespacesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsCatalogsNamespacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Tests the IAM permissions for the specified namespace. */
+export const testIamPermissionsProjectsCatalogsNamespaces: API.OperationMethod<
+  TestIamPermissionsProjectsCatalogsNamespacesRequest,
+  TestIamPermissionsProjectsCatalogsNamespacesResponse,
+  TestIamPermissionsProjectsCatalogsNamespacesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsCatalogsNamespacesRequest,
+  output: TestIamPermissionsProjectsCatalogsNamespacesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface GetIamPolicyProjectsCatalogsNamespacesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -573,14 +634,14 @@ export const setIamPolicyProjectsCatalogsNamespaces: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface TestIamPermissionsProjectsCatalogsNamespacesRequest {
+export interface TestIamPermissionsProjectsCatalogsNamespacesTablesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
 
-export const TestIamPermissionsProjectsCatalogsNamespacesRequest =
+export const TestIamPermissionsProjectsCatalogsNamespacesTablesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
@@ -591,29 +652,29 @@ export const TestIamPermissionsProjectsCatalogsNamespacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsCatalogsNamespacesRequest>;
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsCatalogsNamespacesTablesRequest>;
 
-export type TestIamPermissionsProjectsCatalogsNamespacesResponse =
+export type TestIamPermissionsProjectsCatalogsNamespacesTablesResponse =
   TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsCatalogsNamespacesResponse =
+export const TestIamPermissionsProjectsCatalogsNamespacesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsCatalogsNamespacesError =
+export type TestIamPermissionsProjectsCatalogsNamespacesTablesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Tests the IAM permissions for the specified namespace. */
-export const testIamPermissionsProjectsCatalogsNamespaces: API.OperationMethod<
-  TestIamPermissionsProjectsCatalogsNamespacesRequest,
-  TestIamPermissionsProjectsCatalogsNamespacesResponse,
-  TestIamPermissionsProjectsCatalogsNamespacesError,
+/** Tests the IAM permissions for the specified table. */
+export const testIamPermissionsProjectsCatalogsNamespacesTables: API.OperationMethod<
+  TestIamPermissionsProjectsCatalogsNamespacesTablesRequest,
+  TestIamPermissionsProjectsCatalogsNamespacesTablesResponse,
+  TestIamPermissionsProjectsCatalogsNamespacesTablesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsCatalogsNamespacesRequest,
-  output: TestIamPermissionsProjectsCatalogsNamespacesResponse,
+  input: TestIamPermissionsProjectsCatalogsNamespacesTablesRequest,
+  output: TestIamPermissionsProjectsCatalogsNamespacesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -699,92 +760,6 @@ export const setIamPolicyProjectsCatalogsNamespacesTables: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface TestIamPermissionsProjectsCatalogsNamespacesTablesRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsCatalogsNamespacesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsCatalogsNamespacesTablesRequest>;
-
-export type TestIamPermissionsProjectsCatalogsNamespacesTablesResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsCatalogsNamespacesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsCatalogsNamespacesTablesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Tests the IAM permissions for the specified table. */
-export const testIamPermissionsProjectsCatalogsNamespacesTables: API.OperationMethod<
-  TestIamPermissionsProjectsCatalogsNamespacesTablesRequest,
-  TestIamPermissionsProjectsCatalogsNamespacesTablesResponse,
-  TestIamPermissionsProjectsCatalogsNamespacesTablesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsCatalogsNamespacesTablesRequest,
-  output: TestIamPermissionsProjectsCatalogsNamespacesTablesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsLocationsCatalogsRequest {
-  /** Required. The parent resource where this catalog will be created. Format: projects/{project_id_or_number}/locations/{location_id} */
-  parent: string;
-  /** Required. The ID to use for the catalog, which will become the final component of the catalog's resource name. */
-  catalogId?: string;
-  /** Request body */
-  body?: Catalog;
-}
-
-export const CreateProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    catalogId: Schema.optional(Schema.String).pipe(T.HttpQuery("catalogId")),
-    body: Schema.optional(Catalog).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/catalogs", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCatalogsRequest>;
-
-export type CreateProjectsLocationsCatalogsResponse = Catalog;
-export const CreateProjectsLocationsCatalogsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Catalog;
-
-export type CreateProjectsLocationsCatalogsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new catalog. */
-export const createProjectsLocationsCatalogs: API.OperationMethod<
-  CreateProjectsLocationsCatalogsRequest,
-  CreateProjectsLocationsCatalogsResponse,
-  CreateProjectsLocationsCatalogsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsCatalogsRequest,
-  output: CreateProjectsLocationsCatalogsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface DeleteProjectsLocationsCatalogsRequest {
   /** Required. The name of the catalog to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} */
   name: string;
@@ -855,6 +830,48 @@ export const getProjectsLocationsCatalogs: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
+export interface CreateProjectsLocationsCatalogsRequest {
+  /** Required. The parent resource where this catalog will be created. Format: projects/{project_id_or_number}/locations/{location_id} */
+  parent: string;
+  /** Required. The ID to use for the catalog, which will become the final component of the catalog's resource name. */
+  catalogId?: string;
+  /** Request body */
+  body?: Catalog;
+}
+
+export const CreateProjectsLocationsCatalogsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    catalogId: Schema.optional(Schema.String).pipe(T.HttpQuery("catalogId")),
+    body: Schema.optional(Catalog).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/catalogs", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsCatalogsRequest>;
+
+export type CreateProjectsLocationsCatalogsResponse = Catalog;
+export const CreateProjectsLocationsCatalogsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Catalog;
+
+export type CreateProjectsLocationsCatalogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new catalog. */
+export const createProjectsLocationsCatalogs: API.OperationMethod<
+  CreateProjectsLocationsCatalogsRequest,
+  CreateProjectsLocationsCatalogsResponse,
+  CreateProjectsLocationsCatalogsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsCatalogsRequest,
+  output: CreateProjectsLocationsCatalogsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ListProjectsLocationsCatalogsRequest {
   /** Required. The parent, which owns this collection of catalogs. Format: projects/{project_id_or_number}/locations/{location_id} */
   parent: string;
@@ -899,6 +916,42 @@ export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
   },
 }));
 
+export interface DeleteProjectsLocationsCatalogsDatabasesRequest {
+  /** Required. The name of the database to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
+  name: string;
+}
+
+export const DeleteProjectsLocationsCatalogsDatabasesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsCatalogsDatabasesRequest>;
+
+export type DeleteProjectsLocationsCatalogsDatabasesResponse = Database;
+export const DeleteProjectsLocationsCatalogsDatabasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Database;
+
+export type DeleteProjectsLocationsCatalogsDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes an existing database specified by the database ID. */
+export const deleteProjectsLocationsCatalogsDatabases: API.OperationMethod<
+  DeleteProjectsLocationsCatalogsDatabasesRequest,
+  DeleteProjectsLocationsCatalogsDatabasesResponse,
+  DeleteProjectsLocationsCatalogsDatabasesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsCatalogsDatabasesRequest,
+  output: DeleteProjectsLocationsCatalogsDatabasesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface CreateProjectsLocationsCatalogsDatabasesRequest {
   /** Required. The parent resource where this database will be created. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} */
   parent: string;
@@ -939,118 +992,6 @@ export const createProjectsLocationsCatalogsDatabases: API.OperationMethod<
   input: CreateProjectsLocationsCatalogsDatabasesRequest,
   output: CreateProjectsLocationsCatalogsDatabasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsCatalogsDatabasesRequest {
-  /** Required. The name of the database to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
-  name: string;
-}
-
-export const DeleteProjectsLocationsCatalogsDatabasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCatalogsDatabasesRequest>;
-
-export type DeleteProjectsLocationsCatalogsDatabasesResponse = Database;
-export const DeleteProjectsLocationsCatalogsDatabasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Database;
-
-export type DeleteProjectsLocationsCatalogsDatabasesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes an existing database specified by the database ID. */
-export const deleteProjectsLocationsCatalogsDatabases: API.OperationMethod<
-  DeleteProjectsLocationsCatalogsDatabasesRequest,
-  DeleteProjectsLocationsCatalogsDatabasesResponse,
-  DeleteProjectsLocationsCatalogsDatabasesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsCatalogsDatabasesRequest,
-  output: DeleteProjectsLocationsCatalogsDatabasesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsLocationsCatalogsDatabasesRequest {
-  /** Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
-  name: string;
-  /** The list of fields to update. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If not set, defaults to all of the fields that are allowed to update. */
-  updateMask?: string;
-  /** Request body */
-  body?: Database;
-}
-
-export const PatchProjectsLocationsCatalogsDatabasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Database).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCatalogsDatabasesRequest>;
-
-export type PatchProjectsLocationsCatalogsDatabasesResponse = Database;
-export const PatchProjectsLocationsCatalogsDatabasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Database;
-
-export type PatchProjectsLocationsCatalogsDatabasesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates an existing database specified by the database ID. */
-export const patchProjectsLocationsCatalogsDatabases: API.OperationMethod<
-  PatchProjectsLocationsCatalogsDatabasesRequest,
-  PatchProjectsLocationsCatalogsDatabasesResponse,
-  PatchProjectsLocationsCatalogsDatabasesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsCatalogsDatabasesRequest,
-  output: PatchProjectsLocationsCatalogsDatabasesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsCatalogsDatabasesRequest {
-  /** Required. The name of the database to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
-  name: string;
-}
-
-export const GetProjectsLocationsCatalogsDatabasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCatalogsDatabasesRequest>;
-
-export type GetProjectsLocationsCatalogsDatabasesResponse = Database;
-export const GetProjectsLocationsCatalogsDatabasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Database;
-
-export type GetProjectsLocationsCatalogsDatabasesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the database specified by the resource name. */
-export const getProjectsLocationsCatalogsDatabases: API.OperationMethod<
-  GetProjectsLocationsCatalogsDatabasesRequest,
-  GetProjectsLocationsCatalogsDatabasesResponse,
-  GetProjectsLocationsCatalogsDatabasesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsCatalogsDatabasesRequest,
-  output: GetProjectsLocationsCatalogsDatabasesResponse,
-  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsCatalogsDatabasesRequest {
@@ -1098,6 +1039,157 @@ export const listProjectsLocationsCatalogsDatabases: API.PaginatedOperationMetho
   },
 }));
 
+export interface GetProjectsLocationsCatalogsDatabasesRequest {
+  /** Required. The name of the database to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
+  name: string;
+}
+
+export const GetProjectsLocationsCatalogsDatabasesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsCatalogsDatabasesRequest>;
+
+export type GetProjectsLocationsCatalogsDatabasesResponse = Database;
+export const GetProjectsLocationsCatalogsDatabasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Database;
+
+export type GetProjectsLocationsCatalogsDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the database specified by the resource name. */
+export const getProjectsLocationsCatalogsDatabases: API.OperationMethod<
+  GetProjectsLocationsCatalogsDatabasesRequest,
+  GetProjectsLocationsCatalogsDatabasesResponse,
+  GetProjectsLocationsCatalogsDatabasesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsCatalogsDatabasesRequest,
+  output: GetProjectsLocationsCatalogsDatabasesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface PatchProjectsLocationsCatalogsDatabasesRequest {
+  /** Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
+  name: string;
+  /** The list of fields to update. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If not set, defaults to all of the fields that are allowed to update. */
+  updateMask?: string;
+  /** Request body */
+  body?: Database;
+}
+
+export const PatchProjectsLocationsCatalogsDatabasesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(Database).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsCatalogsDatabasesRequest>;
+
+export type PatchProjectsLocationsCatalogsDatabasesResponse = Database;
+export const PatchProjectsLocationsCatalogsDatabasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Database;
+
+export type PatchProjectsLocationsCatalogsDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates an existing database specified by the database ID. */
+export const patchProjectsLocationsCatalogsDatabases: API.OperationMethod<
+  PatchProjectsLocationsCatalogsDatabasesRequest,
+  PatchProjectsLocationsCatalogsDatabasesResponse,
+  PatchProjectsLocationsCatalogsDatabasesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsCatalogsDatabasesRequest,
+  output: PatchProjectsLocationsCatalogsDatabasesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsLocationsCatalogsDatabasesTablesRequest {
+  /** Required. The name of the table to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
+  name: string;
+}
+
+export const DeleteProjectsLocationsCatalogsDatabasesTablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsCatalogsDatabasesTablesRequest>;
+
+export type DeleteProjectsLocationsCatalogsDatabasesTablesResponse = Table;
+export const DeleteProjectsLocationsCatalogsDatabasesTablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Table;
+
+export type DeleteProjectsLocationsCatalogsDatabasesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes an existing table specified by the table ID. */
+export const deleteProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
+  DeleteProjectsLocationsCatalogsDatabasesTablesRequest,
+  DeleteProjectsLocationsCatalogsDatabasesTablesResponse,
+  DeleteProjectsLocationsCatalogsDatabasesTablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsCatalogsDatabasesTablesRequest,
+  output: DeleteProjectsLocationsCatalogsDatabasesTablesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface RenameProjectsLocationsCatalogsDatabasesTablesRequest {
+  /** Required. The table's `name` field is used to identify the table to rename. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
+  name: string;
+  /** Request body */
+  body?: RenameTableRequest;
+}
+
+export const RenameProjectsLocationsCatalogsDatabasesTablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(RenameTableRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:rename", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<RenameProjectsLocationsCatalogsDatabasesTablesRequest>;
+
+export type RenameProjectsLocationsCatalogsDatabasesTablesResponse = Table;
+export const RenameProjectsLocationsCatalogsDatabasesTablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Table;
+
+export type RenameProjectsLocationsCatalogsDatabasesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Renames an existing table specified by the table ID. */
+export const renameProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
+  RenameProjectsLocationsCatalogsDatabasesTablesRequest,
+  RenameProjectsLocationsCatalogsDatabasesTablesResponse,
+  RenameProjectsLocationsCatalogsDatabasesTablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RenameProjectsLocationsCatalogsDatabasesTablesRequest,
+  output: RenameProjectsLocationsCatalogsDatabasesTablesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface CreateProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Required. The parent resource where this table will be created. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
   parent: string;
@@ -1140,40 +1232,52 @@ export const createProjectsLocationsCatalogsDatabasesTables: API.OperationMethod
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface DeleteProjectsLocationsCatalogsDatabasesTablesRequest {
-  /** Required. The name of the table to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
-  name: string;
+export interface ListProjectsLocationsCatalogsDatabasesTablesRequest {
+  /** The maximum number of tables to return. The service may return fewer than this value. If unspecified, at most 50 tables will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** A page token, received from a previous `ListTables` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTables` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Required. The parent, which owns this collection of tables. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
+  parent: string;
+  /** The view for the returned tables. */
+  view?: "TABLE_VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
 }
 
-export const DeleteProjectsLocationsCatalogsDatabasesTablesRequest =
+export const ListProjectsLocationsCatalogsDatabasesTablesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/tables" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCatalogsDatabasesTablesRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsCatalogsDatabasesTablesRequest>;
 
-export type DeleteProjectsLocationsCatalogsDatabasesTablesResponse = Table;
-export const DeleteProjectsLocationsCatalogsDatabasesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Table;
+export type ListProjectsLocationsCatalogsDatabasesTablesResponse =
+  ListTablesResponse;
+export const ListProjectsLocationsCatalogsDatabasesTablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListTablesResponse;
 
-export type DeleteProjectsLocationsCatalogsDatabasesTablesError =
+export type ListProjectsLocationsCatalogsDatabasesTablesError =
   | DefaultErrors
   | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  | Forbidden;
 
-/** Deletes an existing table specified by the table ID. */
-export const deleteProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
-  DeleteProjectsLocationsCatalogsDatabasesTablesRequest,
-  DeleteProjectsLocationsCatalogsDatabasesTablesResponse,
-  DeleteProjectsLocationsCatalogsDatabasesTablesError,
+/** List all tables in a specified database. */
+export const listProjectsLocationsCatalogsDatabasesTables: API.PaginatedOperationMethod<
+  ListProjectsLocationsCatalogsDatabasesTablesRequest,
+  ListProjectsLocationsCatalogsDatabasesTablesResponse,
+  ListProjectsLocationsCatalogsDatabasesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsCatalogsDatabasesTablesRequest,
-  output: DeleteProjectsLocationsCatalogsDatabasesTablesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsCatalogsDatabasesTablesRequest,
+  output: ListProjectsLocationsCatalogsDatabasesTablesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface PatchProjectsLocationsCatalogsDatabasesTablesRequest {
@@ -1218,45 +1322,6 @@ export const patchProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface RenameProjectsLocationsCatalogsDatabasesTablesRequest {
-  /** Required. The table's `name` field is used to identify the table to rename. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
-  name: string;
-  /** Request body */
-  body?: RenameTableRequest;
-}
-
-export const RenameProjectsLocationsCatalogsDatabasesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(RenameTableRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:rename", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<RenameProjectsLocationsCatalogsDatabasesTablesRequest>;
-
-export type RenameProjectsLocationsCatalogsDatabasesTablesResponse = Table;
-export const RenameProjectsLocationsCatalogsDatabasesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Table;
-
-export type RenameProjectsLocationsCatalogsDatabasesTablesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Renames an existing table specified by the table ID. */
-export const renameProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
-  RenameProjectsLocationsCatalogsDatabasesTablesRequest,
-  RenameProjectsLocationsCatalogsDatabasesTablesResponse,
-  RenameProjectsLocationsCatalogsDatabasesTablesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RenameProjectsLocationsCatalogsDatabasesTablesRequest,
-  output: RenameProjectsLocationsCatalogsDatabasesTablesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface GetProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Required. The name of the table to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
   name: string;
@@ -1289,52 +1354,4 @@ export const getProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
   input: GetProjectsLocationsCatalogsDatabasesTablesRequest,
   output: GetProjectsLocationsCatalogsDatabasesTablesResponse,
   errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsCatalogsDatabasesTablesRequest {
-  /** Required. The parent, which owns this collection of tables. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
-  parent: string;
-  /** The maximum number of tables to return. The service may return fewer than this value. If unspecified, at most 50 tables will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** A page token, received from a previous `ListTables` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTables` must match the call that provided the page token. */
-  pageToken?: string;
-  /** The view for the returned tables. */
-  view?: "TABLE_VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
-}
-
-export const ListProjectsLocationsCatalogsDatabasesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/tables" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCatalogsDatabasesTablesRequest>;
-
-export type ListProjectsLocationsCatalogsDatabasesTablesResponse =
-  ListTablesResponse;
-export const ListProjectsLocationsCatalogsDatabasesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListTablesResponse;
-
-export type ListProjectsLocationsCatalogsDatabasesTablesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** List all tables in a specified database. */
-export const listProjectsLocationsCatalogsDatabasesTables: API.PaginatedOperationMethod<
-  ListProjectsLocationsCatalogsDatabasesTablesRequest,
-  ListProjectsLocationsCatalogsDatabasesTablesResponse,
-  ListProjectsLocationsCatalogsDatabasesTablesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsCatalogsDatabasesTablesRequest,
-  output: ListProjectsLocationsCatalogsDatabasesTablesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));

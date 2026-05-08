@@ -22,6 +22,219 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface MapValue {
+  /** Floating point value. */
+  fpVal?: number;
+}
+
+export const MapValue: Schema.Schema<MapValue> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fpVal: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "MapValue" });
+
+export interface ValueMapValEntry {
+  value?: MapValue;
+  key?: string;
+}
+
+export const ValueMapValEntry: Schema.Schema<ValueMapValEntry> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(MapValue),
+    key: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ValueMapValEntry" });
+
+export interface Value {
+  /** Integer value. When this is set, other values must not be set. */
+  intVal?: number;
+  /** Map value. The valid key space and units for the corresponding value of each entry should be documented as part of the data type definition. Keys should be kept small whenever possible. Data streams with large keys and high data frequency may be down sampled. */
+  mapVal?: ReadonlyArray<ValueMapValEntry>;
+  /** String value. When this is set, other values must not be set. Strings should be kept small whenever possible. Data streams with large string values and high data frequency may be down sampled. */
+  stringVal?: string;
+  /** Floating point value. When this is set, other values must not be set. */
+  fpVal?: number;
+}
+
+export const Value: Schema.Schema<Value> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intVal: Schema.optional(Schema.Number),
+    mapVal: Schema.optional(Schema.Array(ValueMapValEntry)),
+    stringVal: Schema.optional(Schema.String),
+    fpVal: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Value" });
+
+export interface DataPoint {
+  /** The start time of the interval represented by this data point, in nanoseconds since epoch. */
+  startTimeNanos?: string;
+  /** If the data point is contained in a dataset for a derived data source, this field will be populated with the data source stream ID that created the data point originally. WARNING: do not rely on this field for anything other than debugging. The value of this field, if it is set at all, is an implementation detail and is not guaranteed to remain consistent. */
+  originDataSourceId?: string;
+  /** DO NOT USE THIS FIELD. It is ignored, and not stored. */
+  computationTimeMillis?: string;
+  /** Values of each data type field for the data point. It is expected that each value corresponding to a data type field will occur in the same order that the field is listed with in the data type specified in a data source. Only one of integer and floating point fields will be populated, depending on the format enum value within data source's type field. */
+  value?: ReadonlyArray<Value>;
+  /** The raw timestamp from the original SensorEvent. */
+  rawTimestampNanos?: string;
+  /** The end time of the interval represented by this data point, in nanoseconds since epoch. */
+  endTimeNanos?: string;
+  /** The data type defining the format of the values in this data point. */
+  dataTypeName?: string;
+  /** Indicates the last time this data point was modified. Useful only in contexts where we are listing the data changes, rather than representing the current state of the data. */
+  modifiedTimeMillis?: string;
+}
+
+export const DataPoint: Schema.Schema<DataPoint> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTimeNanos: Schema.optional(Schema.String),
+    originDataSourceId: Schema.optional(Schema.String),
+    computationTimeMillis: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Array(Value)),
+    rawTimestampNanos: Schema.optional(Schema.String),
+    endTimeNanos: Schema.optional(Schema.String),
+    dataTypeName: Schema.optional(Schema.String),
+    modifiedTimeMillis: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DataPoint" });
+
+export interface BucketBySession {
+  /** Specifies that only sessions of duration longer than minDurationMillis are considered and used as a container for aggregated data. */
+  minDurationMillis?: string;
+}
+
+export const BucketBySession: Schema.Schema<BucketBySession> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minDurationMillis: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BucketBySession" });
+
+export interface AggregateBy {
+  /** The data type to aggregate. All data sources providing this data type will contribute data to the aggregation. The response will contain a single dataset for this data type name. The dataset will have a data source ID of derived::com.google.android.gms:aggregated. If the user has no data for this data type, an empty data set will be returned. Note: Data can be aggregated by either the dataTypeName or the dataSourceId, not both. */
+  dataTypeName?: string;
+  /** A data source ID to aggregate. Only data from the specified data source ID will be included in the aggregation. If specified, this data source must exist; the OAuth scopes in the supplied credentials must grant read access to this data type. The dataset in the response will have the same data source ID. Note: Data can be aggregated by either the dataTypeName or the dataSourceId, not both. */
+  dataSourceId?: string;
+}
+
+export const AggregateBy: Schema.Schema<AggregateBy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataTypeName: Schema.optional(Schema.String),
+    dataSourceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AggregateBy" });
+
+export interface BucketByActivity {
+  /** Specifies that only activity segments of duration longer than minDurationMillis are considered and used as a container for aggregated data. */
+  minDurationMillis?: string;
+  /** The default activity stream will be used if a specific activityDataSourceId is not specified. */
+  activityDataSourceId?: string;
+}
+
+export const BucketByActivity: Schema.Schema<BucketByActivity> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minDurationMillis: Schema.optional(Schema.String),
+    activityDataSourceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BucketByActivity" });
+
+export interface Dataset {
+  /** A partial list of data points contained in the dataset, ordered by endTimeNanos. This list is considered complete when retrieving a small dataset and partial when patching a dataset or retrieving a dataset that is too large to include in a single response. */
+  point?: ReadonlyArray<DataPoint>;
+  /** The data stream ID of the data source that created the points in this dataset. */
+  dataSourceId?: string;
+  /** The largest end time of all data points in this possibly partial representation of the dataset. Time is in nanoseconds from epoch. This should also match the second part of the dataset identifier. */
+  maxEndTimeNs?: string;
+  /** The smallest start time of all data points in this possibly partial representation of the dataset. Time is in nanoseconds from epoch. This should also match the first part of the dataset identifier. */
+  minStartTimeNs?: string;
+  /** This token will be set when a dataset is received in response to a GET request and the dataset is too large to be included in a single response. Provide this value in a subsequent GET request to return the next page of data points within this dataset. */
+  nextPageToken?: string;
+}
+
+export const Dataset: Schema.Schema<Dataset> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    point: Schema.optional(Schema.Array(DataPoint)),
+    dataSourceId: Schema.optional(Schema.String),
+    maxEndTimeNs: Schema.optional(Schema.String),
+    minStartTimeNs: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Dataset" });
+
+export interface Application {
+  /** Version of the application. You should update this field whenever the application changes in a way that affects the computation of the data. */
+  version?: string;
+  /** The name of this application. This is required for REST clients, but we do not enforce uniqueness of this name. It is provided as a matter of convenience for other developers who would like to identify which REST created an Application or Data Source. */
+  name?: string;
+  /** An optional URI that can be used to link back to the application. */
+  detailsUrl?: string;
+  /** Package name for this application. This is used as a unique identifier when created by Android applications, but cannot be specified by REST clients. REST clients will have their developer project number reflected into the Data Source data stream IDs, instead of the packageName. */
+  packageName?: string;
+}
+
+export const Application: Schema.Schema<Application> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    detailsUrl: Schema.optional(Schema.String),
+    packageName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Application" });
+
+export interface Session {
+  /** A client-generated identifier that is unique across all sessions owned by this particular user. */
+  id?: string;
+  /** A timestamp that indicates when the session was last modified. */
+  modifiedTimeMillis?: string;
+  /** A human readable name of the session. */
+  name?: string;
+  /** A description for this session. */
+  description?: string;
+  /** The type of activity this session represents. */
+  activityType?: number;
+  /** An end time, in milliseconds since epoch, inclusive. */
+  endTimeMillis?: string;
+  /** The application that created the session. */
+  application?: Application;
+  /** Session active time. While start_time_millis and end_time_millis define the full session time, the active time can be shorter and specified by active_time_millis. If the inactive time during the session is known, it should also be inserted via a com.google.activity.segment data point with a STILL activity value */
+  activeTimeMillis?: string;
+  /** A start time, in milliseconds since epoch, inclusive. */
+  startTimeMillis?: string;
+}
+
+export const Session: Schema.Schema<Session> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    modifiedTimeMillis: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    activityType: Schema.optional(Schema.Number),
+    endTimeMillis: Schema.optional(Schema.String),
+    application: Schema.optional(Application),
+    activeTimeMillis: Schema.optional(Schema.String),
+    startTimeMillis: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Session" });
+
+export interface AggregateBucket {
+  /** The end time for the aggregated data, in milliseconds since epoch, inclusive. */
+  endTimeMillis?: string;
+  /** The type of a bucket signifies how the data aggregation is performed in the bucket. */
+  type?:
+    | "unknown"
+    | "time"
+    | "session"
+    | "activityType"
+    | "activitySegment"
+    | (string & {});
+  /** There will be one dataset per AggregateBy in the request. */
+  dataset?: ReadonlyArray<Dataset>;
+  /** The start time for the aggregated data, in milliseconds since epoch, inclusive. */
+  startTimeMillis?: string;
+  /** Available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT */
+  activity?: number;
+  /** Available for Bucket.Type.SESSION */
+  session?: Session;
+}
+
+export const AggregateBucket: Schema.Schema<AggregateBucket> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTimeMillis: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    dataset: Schema.optional(Schema.Array(Dataset)),
+    startTimeMillis: Schema.optional(Schema.String),
+    activity: Schema.optional(Schema.Number),
+    session: Schema.optional(Session),
+  }).annotate({ identifier: "AggregateBucket" });
+
 export interface DataTypeField {
   /** Defines the name and format of data. Unlike data type names, field names are not namespaced, and only need to be unique within the data type. */
   name?: string;
@@ -38,33 +251,93 @@ export interface DataTypeField {
   optional?: boolean;
 }
 
-export const DataTypeField = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  format: Schema.optional(Schema.String),
-  optional: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "DataTypeField" });
+export const DataTypeField: Schema.Schema<DataTypeField> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    format: Schema.optional(Schema.String),
+    optional: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DataTypeField" });
 
-export interface DataType {
-  /** Each data type has a unique, namespaced, name. All data types in the com.google namespace are shared as part of the platform. */
-  name?: string;
-  /** A field represents one dimension of a data type. */
-  field?: ReadonlyArray<DataTypeField>;
+export interface ListDataPointChangesResponse {
+  /** The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
+  nextPageToken?: string;
+  /** The data stream ID of the data source with data point changes. */
+  dataSourceId?: string;
+  /** Inserted data points for the user. */
+  insertedDataPoint?: ReadonlyArray<DataPoint>;
+  /** Deleted data points for the user. Note, for modifications this should be parsed before handling insertions. */
+  deletedDataPoint?: ReadonlyArray<DataPoint>;
 }
 
-export const DataType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  field: Schema.optional(Schema.Array(DataTypeField)),
-}).annotate({ identifier: "DataType" });
+export const ListDataPointChangesResponse: Schema.Schema<ListDataPointChangesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    dataSourceId: Schema.optional(Schema.String),
+    insertedDataPoint: Schema.optional(Schema.Array(DataPoint)),
+    deletedDataPoint: Schema.optional(Schema.Array(DataPoint)),
+  }).annotate({ identifier: "ListDataPointChangesResponse" });
+
+export interface BucketByTimePeriod {
+  value?: number;
+  type?: "day" | "week" | "month" | (string & {});
+  /** org.joda.timezone.DateTimeZone */
+  timeZoneId?: string;
+}
+
+export const BucketByTimePeriod: Schema.Schema<BucketByTimePeriod> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.Number),
+    type: Schema.optional(Schema.String),
+    timeZoneId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BucketByTimePeriod" });
+
+export interface BucketByTime {
+  /** Specifies that result buckets aggregate data by exactly durationMillis time frames. Time frames that contain no data will be included in the response with an empty dataset. */
+  durationMillis?: string;
+  period?: BucketByTimePeriod;
+}
+
+export const BucketByTime: Schema.Schema<BucketByTime> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    durationMillis: Schema.optional(Schema.String),
+    period: Schema.optional(BucketByTimePeriod),
+  }).annotate({ identifier: "BucketByTime" });
+
+export interface DataType {
+  /** A field represents one dimension of a data type. */
+  field?: ReadonlyArray<DataTypeField>;
+  /** Each data type has a unique, namespaced, name. All data types in the com.google namespace are shared as part of the platform. */
+  name?: string;
+}
+
+export const DataType: Schema.Schema<DataType> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    field: Schema.optional(Schema.Array(DataTypeField)),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DataType" });
+
+export interface ListSessionsResponse {
+  /** The sync token which is used to sync further changes. This will only be provided if both startTime and endTime are omitted from the request. */
+  nextPageToken?: string;
+  /** Sessions starting before endTime of the request and ending after startTime of the request up to (endTime of the request + 1 day). */
+  session?: ReadonlyArray<Session>;
+  /** Flag to indicate server has more data to transfer. DO NOT USE THIS FIELD. It is never populated in responses from the server. */
+  hasMoreData?: boolean;
+  /** If includeDeleted is set to true in the request, and startTime and endTime are omitted, this will include sessions which were deleted since the last sync. */
+  deletedSession?: ReadonlyArray<Session>;
+}
+
+export const ListSessionsResponse: Schema.Schema<ListSessionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    session: Schema.optional(Schema.Array(Session)),
+    hasMoreData: Schema.optional(Schema.Boolean),
+    deletedSession: Schema.optional(Schema.Array(Session)),
+  }).annotate({ identifier: "ListSessionsResponse" });
 
 export interface Device {
   /** The serial number or other unique ID for the hardware. This field is obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the uid field in clear and normal form. The obfuscation preserves equality; that is, given two IDs, if id1 == id2, obfuscated(id1) == obfuscated(id2). */
   uid?: string;
-  /** Version string for the device hardware/software. */
-  version?: string;
-  /** End-user visible model name for the device. */
-  model?: string;
-  /** Manufacturer of the product/hardware. */
-  manufacturer?: string;
   /** A constant representing the type of the device. */
   type?:
     | "unknown"
@@ -76,37 +349,44 @@ export interface Device {
     | "headMounted"
     | "smartDisplay"
     | (string & {});
-}
-
-export const Device = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  uid: Schema.optional(Schema.String),
-  version: Schema.optional(Schema.String),
-  model: Schema.optional(Schema.String),
-  manufacturer: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-}).annotate({ identifier: "Device" });
-
-export interface Application {
-  /** The name of this application. This is required for REST clients, but we do not enforce uniqueness of this name. It is provided as a matter of convenience for other developers who would like to identify which REST created an Application or Data Source. */
-  name?: string;
-  /** Package name for this application. This is used as a unique identifier when created by Android applications, but cannot be specified by REST clients. REST clients will have their developer project number reflected into the Data Source data stream IDs, instead of the packageName. */
-  packageName?: string;
-  /** An optional URI that can be used to link back to the application. */
-  detailsUrl?: string;
-  /** Version of the application. You should update this field whenever the application changes in a way that affects the computation of the data. */
+  /** Version string for the device hardware/software. */
   version?: string;
+  /** Manufacturer of the product/hardware. */
+  manufacturer?: string;
+  /** End-user visible model name for the device. */
+  model?: string;
 }
 
-export const Application = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  packageName: Schema.optional(Schema.String),
-  detailsUrl: Schema.optional(Schema.String),
-  version: Schema.optional(Schema.String),
-}).annotate({ identifier: "Application" });
+export const Device: Schema.Schema<Device> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uid: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    manufacturer: Schema.optional(Schema.String),
+    model: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Device" });
+
+export interface AggregateResponse {
+  /** A list of buckets containing the aggregated data. */
+  bucket?: ReadonlyArray<AggregateBucket>;
+}
+
+export const AggregateResponse: Schema.Schema<AggregateResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucket: Schema.optional(Schema.Array(AggregateBucket)),
+  }).annotate({ identifier: "AggregateResponse" });
 
 export interface DataSource {
   /** A unique identifier for the data stream produced by this data source. The identifier includes: - The physical device's manufacturer, model, and serial number (UID). - The application's package name or name. Package name is used when the data source was created by an Android application. The developer project number is used when the data source was created by a REST client. - The data source's type. - The data source's stream name. Note that not all attributes of the data source are used as part of the stream identifier. In particular, the version of the hardware/the application isn't used. This allows us to preserve the same stream through version updates. This also means that two DataSource objects may represent the same data stream even if they're not equal. The exact format of the data stream ID created by an Android application is: type:dataType.name:application.packageName:device.manufacturer:device.model:device.uid:dataStreamName The exact format of the data stream ID created by a REST client is: type:dataType.name:developer project number:device.manufacturer:device.model:device.uid:dataStreamName When any of the optional fields that make up the data stream ID are absent, they will be omitted from the data stream ID. The minimum viable data stream ID would be: type:dataType.name:developer project number Finally, the developer project number and device UID are obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the developer project number in clear and normal form. This means a client will see a different set of data_stream_ids than another client with different credentials. */
   dataStreamId?: string;
+  /** An end-user visible name for this data source. */
+  name?: string;
+  /** The stream name uniquely identifies this particular data source among other data sources of the same type from the same underlying producer. Setting the stream name is optional, but should be done whenever an application exposes two streams for the same data type, or when a device has two equivalent sensors. */
+  dataStreamName?: string;
+  /** Information about an application which feeds sensor data into the platform. */
+  application?: Application;
+  /** A constant describing the type of this data source. Indicates whether this data source produces raw or derived data. */
+  type?: "raw" | "derived" | (string & {});
   /** DO NOT POPULATE THIS FIELD. It is never populated in responses from the platform, and is ignored in queries. It will be removed in a future version entirely. */
   dataQualityStandard?: ReadonlyArray<
     | "dataQualityUnknown"
@@ -121,257 +401,41 @@ export interface DataSource {
     | "dataQualityBloodGlucoseIso151972013"
     | (string & {})
   >;
-  /** The stream name uniquely identifies this particular data source among other data sources of the same type from the same underlying producer. Setting the stream name is optional, but should be done whenever an application exposes two streams for the same data type, or when a device has two equivalent sensors. */
-  dataStreamName?: string;
-  /** A constant describing the type of this data source. Indicates whether this data source produces raw or derived data. */
-  type?: "raw" | "derived" | (string & {});
   /** The data type defines the schema for a stream of data being collected by, inserted into, or queried from the Fitness API. */
   dataType?: DataType;
   /** Representation of an integrated device (such as a phone or a wearable) that can hold sensors. */
   device?: Device;
-  /** Information about an application which feeds sensor data into the platform. */
-  application?: Application;
-  /** An end-user visible name for this data source. */
-  name?: string;
 }
 
-export const DataSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  dataStreamId: Schema.optional(Schema.String),
-  dataQualityStandard: Schema.optional(Schema.Array(Schema.String)),
-  dataStreamName: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  dataType: Schema.optional(DataType),
-  device: Schema.optional(Device),
-  application: Schema.optional(Application),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "DataSource" });
-
-export interface MapValue {
-  /** Floating point value. */
-  fpVal?: number;
-}
-
-export const MapValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  fpVal: Schema.optional(Schema.Number),
-}).annotate({ identifier: "MapValue" });
-
-export interface ValueMapValEntry {
-  key?: string;
-  value?: MapValue;
-}
-
-export const ValueMapValEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  key: Schema.optional(Schema.String),
-  value: Schema.optional(MapValue),
-}).annotate({ identifier: "ValueMapValEntry" });
-
-export interface Value {
-  /** Integer value. When this is set, other values must not be set. */
-  intVal?: number;
-  /** Map value. The valid key space and units for the corresponding value of each entry should be documented as part of the data type definition. Keys should be kept small whenever possible. Data streams with large keys and high data frequency may be down sampled. */
-  mapVal?: ReadonlyArray<ValueMapValEntry>;
-  /** Floating point value. When this is set, other values must not be set. */
-  fpVal?: number;
-  /** String value. When this is set, other values must not be set. Strings should be kept small whenever possible. Data streams with large string values and high data frequency may be down sampled. */
-  stringVal?: string;
-}
-
-export const Value = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  intVal: Schema.optional(Schema.Number),
-  mapVal: Schema.optional(Schema.Array(ValueMapValEntry)),
-  fpVal: Schema.optional(Schema.Number),
-  stringVal: Schema.optional(Schema.String),
-}).annotate({ identifier: "Value" });
-
-export interface DataPoint {
-  /** If the data point is contained in a dataset for a derived data source, this field will be populated with the data source stream ID that created the data point originally. WARNING: do not rely on this field for anything other than debugging. The value of this field, if it is set at all, is an implementation detail and is not guaranteed to remain consistent. */
-  originDataSourceId?: string;
-  /** The raw timestamp from the original SensorEvent. */
-  rawTimestampNanos?: string;
-  /** The start time of the interval represented by this data point, in nanoseconds since epoch. */
-  startTimeNanos?: string;
-  /** Indicates the last time this data point was modified. Useful only in contexts where we are listing the data changes, rather than representing the current state of the data. */
-  modifiedTimeMillis?: string;
-  /** The end time of the interval represented by this data point, in nanoseconds since epoch. */
-  endTimeNanos?: string;
-  /** DO NOT USE THIS FIELD. It is ignored, and not stored. */
-  computationTimeMillis?: string;
-  /** The data type defining the format of the values in this data point. */
-  dataTypeName?: string;
-  /** Values of each data type field for the data point. It is expected that each value corresponding to a data type field will occur in the same order that the field is listed with in the data type specified in a data source. Only one of integer and floating point fields will be populated, depending on the format enum value within data source's type field. */
-  value?: ReadonlyArray<Value>;
-}
-
-export const DataPoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  originDataSourceId: Schema.optional(Schema.String),
-  rawTimestampNanos: Schema.optional(Schema.String),
-  startTimeNanos: Schema.optional(Schema.String),
-  modifiedTimeMillis: Schema.optional(Schema.String),
-  endTimeNanos: Schema.optional(Schema.String),
-  computationTimeMillis: Schema.optional(Schema.String),
-  dataTypeName: Schema.optional(Schema.String),
-  value: Schema.optional(Schema.Array(Value)),
-}).annotate({ identifier: "DataPoint" });
-
-export interface Dataset {
-  /** This token will be set when a dataset is received in response to a GET request and the dataset is too large to be included in a single response. Provide this value in a subsequent GET request to return the next page of data points within this dataset. */
-  nextPageToken?: string;
-  /** A partial list of data points contained in the dataset, ordered by endTimeNanos. This list is considered complete when retrieving a small dataset and partial when patching a dataset or retrieving a dataset that is too large to include in a single response. */
-  point?: ReadonlyArray<DataPoint>;
-  /** The smallest start time of all data points in this possibly partial representation of the dataset. Time is in nanoseconds from epoch. This should also match the first part of the dataset identifier. */
-  minStartTimeNs?: string;
-  /** The largest end time of all data points in this possibly partial representation of the dataset. Time is in nanoseconds from epoch. This should also match the second part of the dataset identifier. */
-  maxEndTimeNs?: string;
-  /** The data stream ID of the data source that created the points in this dataset. */
-  dataSourceId?: string;
-}
-
-export const Dataset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  nextPageToken: Schema.optional(Schema.String),
-  point: Schema.optional(Schema.Array(DataPoint)),
-  minStartTimeNs: Schema.optional(Schema.String),
-  maxEndTimeNs: Schema.optional(Schema.String),
-  dataSourceId: Schema.optional(Schema.String),
-}).annotate({ identifier: "Dataset" });
+export const DataSource: Schema.Schema<DataSource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataStreamId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    dataStreamName: Schema.optional(Schema.String),
+    application: Schema.optional(Application),
+    type: Schema.optional(Schema.String),
+    dataQualityStandard: Schema.optional(Schema.Array(Schema.String)),
+    dataType: Schema.optional(DataType),
+    device: Schema.optional(Device),
+  }).annotate({ identifier: "DataSource" });
 
 export interface ListDataSourcesResponse {
   /** A previously created data source. */
   dataSource?: ReadonlyArray<DataSource>;
 }
 
-export const ListDataSourcesResponse =
+export const ListDataSourcesResponse: Schema.Schema<ListDataSourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSource: Schema.optional(Schema.Array(DataSource)),
   }).annotate({ identifier: "ListDataSourcesResponse" });
 
-export interface BucketByTimePeriod {
-  type?: "day" | "week" | "month" | (string & {});
-  /** org.joda.timezone.DateTimeZone */
-  timeZoneId?: string;
-  value?: number;
-}
-
-export const BucketByTimePeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  type: Schema.optional(Schema.String),
-  timeZoneId: Schema.optional(Schema.String),
-  value: Schema.optional(Schema.Number),
-}).annotate({ identifier: "BucketByTimePeriod" });
-
-export interface ListDataPointChangesResponse {
-  /** The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
-  nextPageToken?: string;
-  /** The data stream ID of the data source with data point changes. */
-  dataSourceId?: string;
-  /** Inserted data points for the user. */
-  insertedDataPoint?: ReadonlyArray<DataPoint>;
-  /** Deleted data points for the user. Note, for modifications this should be parsed before handling insertions. */
-  deletedDataPoint?: ReadonlyArray<DataPoint>;
-}
-
-export const ListDataPointChangesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    dataSourceId: Schema.optional(Schema.String),
-    insertedDataPoint: Schema.optional(Schema.Array(DataPoint)),
-    deletedDataPoint: Schema.optional(Schema.Array(DataPoint)),
-  }).annotate({ identifier: "ListDataPointChangesResponse" });
-
-export interface BucketByTime {
-  period?: BucketByTimePeriod;
-  /** Specifies that result buckets aggregate data by exactly durationMillis time frames. Time frames that contain no data will be included in the response with an empty dataset. */
-  durationMillis?: string;
-}
-
-export const BucketByTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  period: Schema.optional(BucketByTimePeriod),
-  durationMillis: Schema.optional(Schema.String),
-}).annotate({ identifier: "BucketByTime" });
-
-export interface Session {
-  /** The type of activity this session represents. */
-  activityType?: number;
-  /** A human readable name of the session. */
-  name?: string;
-  /** Session active time. While start_time_millis and end_time_millis define the full session time, the active time can be shorter and specified by active_time_millis. If the inactive time during the session is known, it should also be inserted via a com.google.activity.segment data point with a STILL activity value */
-  activeTimeMillis?: string;
-  /** A description for this session. */
-  description?: string;
-  /** A timestamp that indicates when the session was last modified. */
-  modifiedTimeMillis?: string;
-  /** A client-generated identifier that is unique across all sessions owned by this particular user. */
-  id?: string;
-  /** A start time, in milliseconds since epoch, inclusive. */
-  startTimeMillis?: string;
-  /** The application that created the session. */
-  application?: Application;
-  /** An end time, in milliseconds since epoch, inclusive. */
-  endTimeMillis?: string;
-}
-
-export const Session = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  activityType: Schema.optional(Schema.Number),
-  name: Schema.optional(Schema.String),
-  activeTimeMillis: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  modifiedTimeMillis: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  startTimeMillis: Schema.optional(Schema.String),
-  application: Schema.optional(Application),
-  endTimeMillis: Schema.optional(Schema.String),
-}).annotate({ identifier: "Session" });
-
-export interface AggregateBy {
-  /** A data source ID to aggregate. Only data from the specified data source ID will be included in the aggregation. If specified, this data source must exist; the OAuth scopes in the supplied credentials must grant read access to this data type. The dataset in the response will have the same data source ID. Note: Data can be aggregated by either the dataTypeName or the dataSourceId, not both. */
-  dataSourceId?: string;
-  /** The data type to aggregate. All data sources providing this data type will contribute data to the aggregation. The response will contain a single dataset for this data type name. The dataset will have a data source ID of derived::com.google.android.gms:aggregated. If the user has no data for this data type, an empty data set will be returned. Note: Data can be aggregated by either the dataTypeName or the dataSourceId, not both. */
-  dataTypeName?: string;
-}
-
-export const AggregateBy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  dataSourceId: Schema.optional(Schema.String),
-  dataTypeName: Schema.optional(Schema.String),
-}).annotate({ identifier: "AggregateBy" });
-
-export interface BucketBySession {
-  /** Specifies that only sessions of duration longer than minDurationMillis are considered and used as a container for aggregated data. */
-  minDurationMillis?: string;
-}
-
-export const BucketBySession = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  minDurationMillis: Schema.optional(Schema.String),
-}).annotate({ identifier: "BucketBySession" });
-
-export interface ListSessionsResponse {
-  /** Sessions starting before endTime of the request and ending after startTime of the request up to (endTime of the request + 1 day). */
-  session?: ReadonlyArray<Session>;
-  /** Flag to indicate server has more data to transfer. DO NOT USE THIS FIELD. It is never populated in responses from the server. */
-  hasMoreData?: boolean;
-  /** The sync token which is used to sync further changes. This will only be provided if both startTime and endTime are omitted from the request. */
-  nextPageToken?: string;
-  /** If includeDeleted is set to true in the request, and startTime and endTime are omitted, this will include sessions which were deleted since the last sync. */
-  deletedSession?: ReadonlyArray<Session>;
-}
-
-export const ListSessionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  session: Schema.optional(Schema.Array(Session)),
-  hasMoreData: Schema.optional(Schema.Boolean),
-  nextPageToken: Schema.optional(Schema.String),
-  deletedSession: Schema.optional(Schema.Array(Session)),
-}).annotate({ identifier: "ListSessionsResponse" });
-
-export interface BucketByActivity {
-  /** Specifies that only activity segments of duration longer than minDurationMillis are considered and used as a container for aggregated data. */
-  minDurationMillis?: string;
-  /** The default activity stream will be used if a specific activityDataSourceId is not specified. */
-  activityDataSourceId?: string;
-}
-
-export const BucketByActivity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  minDurationMillis: Schema.optional(Schema.String),
-  activityDataSourceId: Schema.optional(Schema.String),
-}).annotate({ identifier: "BucketByActivity" });
-
 export interface AggregateRequest {
+  /** The specification of data to be aggregated. At least one aggregateBy spec must be provided. All data that is specified will be aggregated using the same bucketing criteria. There will be one dataset in the response for every aggregateBy spec. */
+  aggregateBy?: ReadonlyArray<AggregateBy>;
+  /** Specifies that data be aggregated by user sessions. Data that does not fall within the time range of a session will not be included in the response. Mutually exclusive of other bucketing specifications. */
+  bucketBySession?: BucketBySession;
+  /** The end of a window of time. Data that intersects with this time window will be aggregated. The time is in milliseconds since epoch, inclusive. The maximum allowed difference between start_time_millis // and end_time_millis is 7776000000 (roughly 90 days). */
+  endTimeMillis?: string;
   /** DO NOT POPULATE THIS FIELD. It is ignored. */
   filteredDataQualityStandard?: ReadonlyArray<
     | "dataQualityUnknown"
@@ -386,71 +450,27 @@ export interface AggregateRequest {
     | "dataQualityBloodGlucoseIso151972013"
     | (string & {})
   >;
-  /** The start of a window of time. Data that intersects with this time window will be aggregated. The time is in milliseconds since epoch, inclusive. */
-  startTimeMillis?: string;
-  /** The end of a window of time. Data that intersects with this time window will be aggregated. The time is in milliseconds since epoch, inclusive. The maximum allowed difference between start_time_millis // and end_time_millis is 7776000000 (roughly 90 days). */
-  endTimeMillis?: string;
-  /** Specifies that data be aggregated by a single time interval. Mutually exclusive of other bucketing specifications. */
-  bucketByTime?: BucketByTime;
-  /** Specifies that data be aggregated by user sessions. Data that does not fall within the time range of a session will not be included in the response. Mutually exclusive of other bucketing specifications. */
-  bucketBySession?: BucketBySession;
   /** Specifies that data be aggregated by the type of activity being performed when the data was recorded. All data that was recorded during a certain activity type (.for the given time range) will be aggregated into the same bucket. Data that was recorded while the user was not active will not be included in the response. Mutually exclusive of other bucketing specifications. */
   bucketByActivityType?: BucketByActivity;
   /** Specifies that data be aggregated each activity segment recorded for a user. Similar to bucketByActivitySegment, but bucketing is done for each activity segment rather than all segments of the same type. Mutually exclusive of other bucketing specifications. */
   bucketByActivitySegment?: BucketByActivity;
-  /** The specification of data to be aggregated. At least one aggregateBy spec must be provided. All data that is specified will be aggregated using the same bucketing criteria. There will be one dataset in the response for every aggregateBy spec. */
-  aggregateBy?: ReadonlyArray<AggregateBy>;
-}
-
-export const AggregateRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  filteredDataQualityStandard: Schema.optional(Schema.Array(Schema.String)),
-  startTimeMillis: Schema.optional(Schema.String),
-  endTimeMillis: Schema.optional(Schema.String),
-  bucketByTime: Schema.optional(BucketByTime),
-  bucketBySession: Schema.optional(BucketBySession),
-  bucketByActivityType: Schema.optional(BucketByActivity),
-  bucketByActivitySegment: Schema.optional(BucketByActivity),
-  aggregateBy: Schema.optional(Schema.Array(AggregateBy)),
-}).annotate({ identifier: "AggregateRequest" });
-
-export interface AggregateBucket {
-  /** The end time for the aggregated data, in milliseconds since epoch, inclusive. */
-  endTimeMillis?: string;
-  /** There will be one dataset per AggregateBy in the request. */
-  dataset?: ReadonlyArray<Dataset>;
-  /** Available for Bucket.Type.SESSION */
-  session?: Session;
-  /** The type of a bucket signifies how the data aggregation is performed in the bucket. */
-  type?:
-    | "unknown"
-    | "time"
-    | "session"
-    | "activityType"
-    | "activitySegment"
-    | (string & {});
-  /** The start time for the aggregated data, in milliseconds since epoch, inclusive. */
+  /** The start of a window of time. Data that intersects with this time window will be aggregated. The time is in milliseconds since epoch, inclusive. */
   startTimeMillis?: string;
-  /** Available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT */
-  activity?: number;
+  /** Specifies that data be aggregated by a single time interval. Mutually exclusive of other bucketing specifications. */
+  bucketByTime?: BucketByTime;
 }
 
-export const AggregateBucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  endTimeMillis: Schema.optional(Schema.String),
-  dataset: Schema.optional(Schema.Array(Dataset)),
-  session: Schema.optional(Session),
-  type: Schema.optional(Schema.String),
-  startTimeMillis: Schema.optional(Schema.String),
-  activity: Schema.optional(Schema.Number),
-}).annotate({ identifier: "AggregateBucket" });
-
-export interface AggregateResponse {
-  /** A list of buckets containing the aggregated data. */
-  bucket?: ReadonlyArray<AggregateBucket>;
-}
-
-export const AggregateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  bucket: Schema.optional(Schema.Array(AggregateBucket)),
-}).annotate({ identifier: "AggregateResponse" });
+export const AggregateRequest: Schema.Schema<AggregateRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aggregateBy: Schema.optional(Schema.Array(AggregateBy)),
+    bucketBySession: Schema.optional(BucketBySession),
+    endTimeMillis: Schema.optional(Schema.String),
+    filteredDataQualityStandard: Schema.optional(Schema.Array(Schema.String)),
+    bucketByActivityType: Schema.optional(BucketByActivity),
+    bucketByActivitySegment: Schema.optional(BucketByActivity),
+    startTimeMillis: Schema.optional(Schema.String),
+    bucketByTime: Schema.optional(BucketByTime),
+  }).annotate({ identifier: "AggregateRequest" });
 
 // ==========================================================================
 // Errors
@@ -549,267 +569,6 @@ export const aggregateUsersDataset: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface UpdateUsersSessionsRequest {
-  /** Create sessions for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
-  userId: string;
-  /** The ID of the session to be created. */
-  sessionId: string;
-  /** Request body */
-  body?: Session;
-}
-
-export const UpdateUsersSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    userId: Schema.String.pipe(T.HttpPath("userId")),
-    sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
-    body: Schema.optional(Session).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "{userId}/sessions/{sessionId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateUsersSessionsRequest>;
-
-export type UpdateUsersSessionsResponse = Session;
-export const UpdateUsersSessionsResponse = /*@__PURE__*/ /*#__PURE__*/ Session;
-
-export type UpdateUsersSessionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates or insert a given session. */
-export const updateUsersSessions: API.OperationMethod<
-  UpdateUsersSessionsRequest,
-  UpdateUsersSessionsResponse,
-  UpdateUsersSessionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateUsersSessionsRequest,
-  output: UpdateUsersSessionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListUsersSessionsRequest {
-  /** An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but startTime is specified, all sessions ending after startTime to the end of time will be returned. */
-  endTime?: string;
-  /** The continuation token, which is used for incremental syncing. To get the next batch of changes, set this parameter to the value of nextPageToken from the previous response. The page token is ignored if either start or end time is specified. If none of start time, end time, and the page token is specified, sessions modified in the last 30 days are returned. */
-  pageToken?: string;
-  /** List sessions for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
-  userId: string;
-  /** An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but endTime is specified, all sessions starting before endTime and ending after the start of time up to (endTime + 1 day) will be returned. */
-  startTime?: string;
-  /** If true, and if both startTime and endTime are omitted, session deletions will be returned. */
-  includeDeleted?: boolean;
-  /** If non-empty, only sessions with these activity types should be returned. */
-  activityType?: number[];
-}
-
-export const ListUsersSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endTime: Schema.optional(Schema.String).pipe(T.HttpQuery("endTime")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    userId: Schema.String.pipe(T.HttpPath("userId")),
-    startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
-    includeDeleted: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("includeDeleted"),
-    ),
-    activityType: Schema.optional(Schema.Array(Schema.Number)).pipe(
-      T.HttpQuery("activityType"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "{userId}/sessions" }),
-    svc,
-  ) as unknown as Schema.Schema<ListUsersSessionsRequest>;
-
-export type ListUsersSessionsResponse = ListSessionsResponse;
-export const ListUsersSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSessionsResponse;
-
-export type ListUsersSessionsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists sessions previously created. */
-export const listUsersSessions: API.PaginatedOperationMethod<
-  ListUsersSessionsRequest,
-  ListUsersSessionsResponse,
-  ListUsersSessionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListUsersSessionsRequest,
-  output: ListUsersSessionsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface DeleteUsersSessionsRequest {
-  /** Delete a session for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
-  userId: string;
-  /** The ID of the session to be deleted. */
-  sessionId: string;
-}
-
-export const DeleteUsersSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    userId: Schema.String.pipe(T.HttpPath("userId")),
-    sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "{userId}/sessions/{sessionId}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteUsersSessionsRequest>;
-
-export interface DeleteUsersSessionsResponse {}
-export const DeleteUsersSessionsResponse: Schema.Schema<DeleteUsersSessionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<DeleteUsersSessionsResponse>;
-
-export type DeleteUsersSessionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a session specified by the given session ID. */
-export const deleteUsersSessions: API.OperationMethod<
-  DeleteUsersSessionsRequest,
-  DeleteUsersSessionsResponse,
-  DeleteUsersSessionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteUsersSessionsRequest,
-  output: DeleteUsersSessionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListUsersDataSourcesRequest {
-  /** List data sources for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
-  userId: string;
-  /** The names of data types to include in the list. If not specified, all data sources will be returned. */
-  dataTypeName?: string[];
-}
-
-export const ListUsersDataSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    userId: Schema.String.pipe(T.HttpPath("userId")),
-    dataTypeName: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("dataTypeName"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "{userId}/dataSources" }),
-    svc,
-  ) as unknown as Schema.Schema<ListUsersDataSourcesRequest>;
-
-export type ListUsersDataSourcesResponse = ListDataSourcesResponse;
-export const ListUsersDataSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDataSourcesResponse;
-
-export type ListUsersDataSourcesError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists all data sources that are visible to the developer, using the OAuth scopes provided. The list is not exhaustive; the user may have private data sources that are only visible to other developers, or calls using other scopes. */
-export const listUsersDataSources: API.OperationMethod<
-  ListUsersDataSourcesRequest,
-  ListUsersDataSourcesResponse,
-  ListUsersDataSourcesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListUsersDataSourcesRequest,
-  output: ListUsersDataSourcesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface UpdateUsersDataSourcesRequest {
-  /** The data stream ID of the data source to update. */
-  dataSourceId: string;
-  /** Update the data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
-  userId: string;
-  /** Request body */
-  body?: DataSource;
-}
-
-export const UpdateUsersDataSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dataSourceId: Schema.String.pipe(T.HttpPath("dataSourceId")),
-    userId: Schema.String.pipe(T.HttpPath("userId")),
-    body: Schema.optional(DataSource).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "{userId}/dataSources/{dataSourceId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateUsersDataSourcesRequest>;
-
-export type UpdateUsersDataSourcesResponse = DataSource;
-export const UpdateUsersDataSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DataSource;
-
-export type UpdateUsersDataSourcesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the specified data source. The dataStreamId, dataType, type, dataStreamName, and device properties with the exception of version, cannot be modified. Data sources are identified by their dataStreamId. */
-export const updateUsersDataSources: API.OperationMethod<
-  UpdateUsersDataSourcesRequest,
-  UpdateUsersDataSourcesResponse,
-  UpdateUsersDataSourcesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateUsersDataSourcesRequest,
-  output: UpdateUsersDataSourcesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteUsersDataSourcesRequest {
-  /** The data stream ID of the data source to delete. */
-  dataSourceId: string;
-  /** Retrieve a data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
-  userId: string;
-}
-
-export const DeleteUsersDataSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dataSourceId: Schema.String.pipe(T.HttpPath("dataSourceId")),
-    userId: Schema.String.pipe(T.HttpPath("userId")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "{userId}/dataSources/{dataSourceId}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteUsersDataSourcesRequest>;
-
-export type DeleteUsersDataSourcesResponse = DataSource;
-export const DeleteUsersDataSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DataSource;
-
-export type DeleteUsersDataSourcesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes the specified data source. The request will fail if the data source contains any data points. */
-export const deleteUsersDataSources: API.OperationMethod<
-  DeleteUsersDataSourcesRequest,
-  DeleteUsersDataSourcesResponse,
-  DeleteUsersDataSourcesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteUsersDataSourcesRequest,
-  output: DeleteUsersDataSourcesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface GetUsersDataSourcesRequest {
   /** Retrieve a data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
@@ -883,19 +642,140 @@ export const createUsersDataSources: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface DeleteUsersDataSourcesDatasetsRequest {
-  /** Delete a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
+export interface ListUsersDataSourcesRequest {
+  /** List data sources for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
+  /** The names of data types to include in the list. If not specified, all data sources will be returned. */
+  dataTypeName?: string[];
+}
+
+export const ListUsersDataSourcesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userId: Schema.String.pipe(T.HttpPath("userId")),
+    dataTypeName: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("dataTypeName"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "{userId}/dataSources" }),
+    svc,
+  ) as unknown as Schema.Schema<ListUsersDataSourcesRequest>;
+
+export type ListUsersDataSourcesResponse = ListDataSourcesResponse;
+export const ListUsersDataSourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListDataSourcesResponse;
+
+export type ListUsersDataSourcesError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists all data sources that are visible to the developer, using the OAuth scopes provided. The list is not exhaustive; the user may have private data sources that are only visible to other developers, or calls using other scopes. */
+export const listUsersDataSources: API.OperationMethod<
+  ListUsersDataSourcesRequest,
+  ListUsersDataSourcesResponse,
+  ListUsersDataSourcesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListUsersDataSourcesRequest,
+  output: ListUsersDataSourcesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface UpdateUsersDataSourcesRequest {
+  /** Update the data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
+  userId: string;
+  /** The data stream ID of the data source to update. */
+  dataSourceId: string;
+  /** Request body */
+  body?: DataSource;
+}
+
+export const UpdateUsersDataSourcesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userId: Schema.String.pipe(T.HttpPath("userId")),
+    dataSourceId: Schema.String.pipe(T.HttpPath("dataSourceId")),
+    body: Schema.optional(DataSource).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "{userId}/dataSources/{dataSourceId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateUsersDataSourcesRequest>;
+
+export type UpdateUsersDataSourcesResponse = DataSource;
+export const UpdateUsersDataSourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ DataSource;
+
+export type UpdateUsersDataSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the specified data source. The dataStreamId, dataType, type, dataStreamName, and device properties with the exception of version, cannot be modified. Data sources are identified by their dataStreamId. */
+export const updateUsersDataSources: API.OperationMethod<
+  UpdateUsersDataSourcesRequest,
+  UpdateUsersDataSourcesResponse,
+  UpdateUsersDataSourcesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateUsersDataSourcesRequest,
+  output: UpdateUsersDataSourcesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteUsersDataSourcesRequest {
+  /** Retrieve a data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
+  userId: string;
+  /** The data stream ID of the data source to delete. */
+  dataSourceId: string;
+}
+
+export const DeleteUsersDataSourcesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userId: Schema.String.pipe(T.HttpPath("userId")),
+    dataSourceId: Schema.String.pipe(T.HttpPath("dataSourceId")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "{userId}/dataSources/{dataSourceId}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteUsersDataSourcesRequest>;
+
+export type DeleteUsersDataSourcesResponse = DataSource;
+export const DeleteUsersDataSourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ DataSource;
+
+export type DeleteUsersDataSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes the specified data source. The request will fail if the data source contains any data points. */
+export const deleteUsersDataSources: API.OperationMethod<
+  DeleteUsersDataSourcesRequest,
+  DeleteUsersDataSourcesResponse,
+  DeleteUsersDataSourcesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteUsersDataSourcesRequest,
+  output: DeleteUsersDataSourcesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteUsersDataSourcesDatasetsRequest {
   /** Dataset identifier that is a composite of the minimum data point start time and maximum data point end time represented as nanoseconds from the epoch. The ID is formatted like: "startTime-endTime" where startTime and endTime are 64 bit integers. */
   datasetId: string;
+  /** Delete a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
+  userId: string;
   /** The data stream ID of the data source that created the dataset. */
   dataSourceId: string;
 }
 
 export const DeleteUsersDataSourcesDatasetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    userId: Schema.String.pipe(T.HttpPath("userId")),
     datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
+    userId: Schema.String.pipe(T.HttpPath("userId")),
     dataSourceId: Schema.String.pipe(T.HttpPath("dataSourceId")),
   }).pipe(
     T.Http({
@@ -933,10 +813,10 @@ export const deleteUsersDataSourcesDatasets: API.OperationMethod<
 export interface PatchUsersDataSourcesDatasetsRequest {
   /** Patch a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
-  /** This field is not used, and can be safely omitted. */
-  datasetId: string;
   /** The data stream ID of the data source that created the dataset. */
   dataSourceId: string;
+  /** This field is not used, and can be safely omitted. */
+  datasetId: string;
   /** Request body */
   body?: Dataset;
 }
@@ -944,8 +824,8 @@ export interface PatchUsersDataSourcesDatasetsRequest {
 export const PatchUsersDataSourcesDatasetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
-    datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
     dataSourceId: Schema.String.pipe(T.HttpPath("dataSourceId")),
+    datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
     body: Schema.optional(Dataset).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -986,10 +866,10 @@ export interface GetUsersDataSourcesDatasetsRequest {
   dataSourceId: string;
   /** The continuation token, which is used to page through large datasets. To get the next page of a dataset, set this parameter to the value of nextPageToken from the previous response. Each subsequent call will yield a partial dataset with data point end timestamps that are strictly smaller than those in the previous partial response. */
   pageToken?: string;
-  /** If specified, no more than this many data points will be included in the dataset. If there are more data points in the dataset, nextPageToken will be set in the dataset response. The limit is applied from the end of the time range. That is, if pageToken is absent, the limit most recent data points will be returned. */
-  limit?: number;
   /** Dataset identifier that is a composite of the minimum data point start time and maximum data point end time represented as nanoseconds from the epoch. The ID is formatted like: "startTime-endTime" where startTime and endTime are 64 bit integers. */
   datasetId: string;
+  /** If specified, no more than this many data points will be included in the dataset. If there are more data points in the dataset, nextPageToken will be set in the dataset response. The limit is applied from the end of the time range. That is, if pageToken is absent, the limit most recent data points will be returned. */
+  limit?: number;
 }
 
 export const GetUsersDataSourcesDatasetsRequest =
@@ -997,8 +877,8 @@ export const GetUsersDataSourcesDatasetsRequest =
     userId: Schema.String.pipe(T.HttpPath("userId")),
     dataSourceId: Schema.String.pipe(T.HttpPath("dataSourceId")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
     datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
+    limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1081,4 +961,144 @@ export const listUsersDataSourcesDataPointChanges: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
+}));
+
+export interface UpdateUsersSessionsRequest {
+  /** Create sessions for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
+  userId: string;
+  /** The ID of the session to be created. */
+  sessionId: string;
+  /** Request body */
+  body?: Session;
+}
+
+export const UpdateUsersSessionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userId: Schema.String.pipe(T.HttpPath("userId")),
+    sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
+    body: Schema.optional(Session).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "{userId}/sessions/{sessionId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateUsersSessionsRequest>;
+
+export type UpdateUsersSessionsResponse = Session;
+export const UpdateUsersSessionsResponse = /*@__PURE__*/ /*#__PURE__*/ Session;
+
+export type UpdateUsersSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates or insert a given session. */
+export const updateUsersSessions: API.OperationMethod<
+  UpdateUsersSessionsRequest,
+  UpdateUsersSessionsResponse,
+  UpdateUsersSessionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateUsersSessionsRequest,
+  output: UpdateUsersSessionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListUsersSessionsRequest {
+  /** List sessions for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
+  userId: string;
+  /** An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but endTime is specified, all sessions starting before endTime and ending after the start of time up to (endTime + 1 day) will be returned. */
+  startTime?: string;
+  /** If non-empty, only sessions with these activity types should be returned. */
+  activityType?: number[];
+  /** If true, and if both startTime and endTime are omitted, session deletions will be returned. */
+  includeDeleted?: boolean;
+  /** An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but startTime is specified, all sessions ending after startTime to the end of time will be returned. */
+  endTime?: string;
+  /** The continuation token, which is used for incremental syncing. To get the next batch of changes, set this parameter to the value of nextPageToken from the previous response. The page token is ignored if either start or end time is specified. If none of start time, end time, and the page token is specified, sessions modified in the last 30 days are returned. */
+  pageToken?: string;
+}
+
+export const ListUsersSessionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userId: Schema.String.pipe(T.HttpPath("userId")),
+    startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
+    activityType: Schema.optional(Schema.Array(Schema.Number)).pipe(
+      T.HttpQuery("activityType"),
+    ),
+    includeDeleted: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("includeDeleted"),
+    ),
+    endTime: Schema.optional(Schema.String).pipe(T.HttpQuery("endTime")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "{userId}/sessions" }),
+    svc,
+  ) as unknown as Schema.Schema<ListUsersSessionsRequest>;
+
+export type ListUsersSessionsResponse = ListSessionsResponse;
+export const ListUsersSessionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListSessionsResponse;
+
+export type ListUsersSessionsError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists sessions previously created. */
+export const listUsersSessions: API.PaginatedOperationMethod<
+  ListUsersSessionsRequest,
+  ListUsersSessionsResponse,
+  ListUsersSessionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListUsersSessionsRequest,
+  output: ListUsersSessionsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteUsersSessionsRequest {
+  /** Delete a session for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
+  userId: string;
+  /** The ID of the session to be deleted. */
+  sessionId: string;
+}
+
+export const DeleteUsersSessionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userId: Schema.String.pipe(T.HttpPath("userId")),
+    sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "{userId}/sessions/{sessionId}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteUsersSessionsRequest>;
+
+export interface DeleteUsersSessionsResponse {}
+export const DeleteUsersSessionsResponse: Schema.Schema<DeleteUsersSessionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<DeleteUsersSessionsResponse>;
+
+export type DeleteUsersSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a session specified by the given session ID. */
+export const deleteUsersSessions: API.OperationMethod<
+  DeleteUsersSessionsRequest,
+  DeleteUsersSessionsResponse,
+  DeleteUsersSessionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteUsersSessionsRequest,
+  output: DeleteUsersSessionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

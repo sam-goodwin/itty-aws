@@ -22,123 +22,18 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface DestinationStatus {
-  /** Output only. The status for the specified destination. */
-  status?:
-    | "STATE_UNSPECIFIED"
-    | "IN_REVIEW"
-    | "REJECTED"
-    | "LIVE"
-    | "STOPPED"
-    | "EXPIRED"
-    | "PENDING"
-    | (string & {});
-  /** Output only. The name of the promotion destination. */
-  reportingContext?:
-    | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
-    | "SHOPPING_ADS"
-    | "DISCOVERY_ADS"
-    | "DEMAND_GEN_ADS"
-    | "DEMAND_GEN_ADS_DISCOVER_SURFACE"
-    | "VIDEO_ADS"
-    | "DISPLAY_ADS"
-    | "LOCAL_INVENTORY_ADS"
-    | "VEHICLE_INVENTORY_ADS"
-    | "FREE_LISTINGS"
-    | "FREE_LISTINGS_UCP_CHECKOUT"
-    | "FREE_LOCAL_LISTINGS"
-    | "FREE_LOCAL_VEHICLE_LISTINGS"
-    | "YOUTUBE_AFFILIATE"
-    | "YOUTUBE_SHOPPING"
-    | "CLOUD_RETAIL"
-    | "LOCAL_CLOUD_RETAIL"
-    | "PRODUCT_REVIEWS"
-    | "MERCHANT_REVIEWS"
-    | "YOUTUBE_CHECKOUT"
-    | (string & {});
+export interface Price {
+  /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
+  currencyCode?: string;
+  /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
+  amountMicros?: string;
 }
 
-export const DestinationStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  status: Schema.optional(Schema.String),
-  reportingContext: Schema.optional(Schema.String),
-}).annotate({ identifier: "DestinationStatus" });
-
-export interface ItemLevelIssue {
-  /** Output only. The destination the issue applies to. */
-  reportingContext?:
-    | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
-    | "SHOPPING_ADS"
-    | "DISCOVERY_ADS"
-    | "DEMAND_GEN_ADS"
-    | "DEMAND_GEN_ADS_DISCOVER_SURFACE"
-    | "VIDEO_ADS"
-    | "DISPLAY_ADS"
-    | "LOCAL_INVENTORY_ADS"
-    | "VEHICLE_INVENTORY_ADS"
-    | "FREE_LISTINGS"
-    | "FREE_LISTINGS_UCP_CHECKOUT"
-    | "FREE_LOCAL_LISTINGS"
-    | "FREE_LOCAL_VEHICLE_LISTINGS"
-    | "YOUTUBE_AFFILIATE"
-    | "YOUTUBE_SHOPPING"
-    | "CLOUD_RETAIL"
-    | "LOCAL_CLOUD_RETAIL"
-    | "PRODUCT_REVIEWS"
-    | "MERCHANT_REVIEWS"
-    | "YOUTUBE_CHECKOUT"
-    | (string & {});
-  /** Output only. The attribute's name, if the issue is caused by a single attribute. */
-  attribute?: string;
-  /** Output only. The URL of a web page to help with resolving this issue. */
-  documentation?: string;
-  /** Output only. How this issue affects serving of the promotion. */
-  severity?:
-    | "SEVERITY_UNSPECIFIED"
-    | "NOT_IMPACTED"
-    | "DEMOTED"
-    | "DISAPPROVED"
-    | (string & {});
-  /** Output only. List of country codes (ISO 3166-1 alpha-2) where issue applies to the offer. */
-  applicableCountries?: ReadonlyArray<string>;
-  /** Output only. The error code of the issue. */
-  code?: string;
-  /** Output only. Whether the issue can be resolved by the merchant. */
-  resolution?: string;
-  /** Output only. A detailed issue description in English. */
-  detail?: string;
-  /** Output only. A short issue description in English. */
-  description?: string;
-}
-
-export const ItemLevelIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  reportingContext: Schema.optional(Schema.String),
-  attribute: Schema.optional(Schema.String),
-  documentation: Schema.optional(Schema.String),
-  severity: Schema.optional(Schema.String),
-  applicableCountries: Schema.optional(Schema.Array(Schema.String)),
-  code: Schema.optional(Schema.String),
-  resolution: Schema.optional(Schema.String),
-  detail: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-}).annotate({ identifier: "ItemLevelIssue" });
-
-export interface PromotionStatus {
-  /** Output only. The intended destinations for the promotion. */
-  destinationStatuses?: ReadonlyArray<DestinationStatus>;
-  /** Output only. Date on which the promotion status has been last updated in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example `2020-01-02T09:00:00+01:00` or `2020-01-02T09:00:00Z` */
-  lastUpdateDate?: string;
-  /** Output only. A list of issues associated with the promotion. */
-  itemLevelIssues?: ReadonlyArray<ItemLevelIssue>;
-  /** Output only. Date on which the promotion has been created in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example `2020-01-02T09:00:00+01:00` or `2020-01-02T09:00:00Z` */
-  creationDate?: string;
-}
-
-export const PromotionStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  destinationStatuses: Schema.optional(Schema.Array(DestinationStatus)),
-  lastUpdateDate: Schema.optional(Schema.String),
-  itemLevelIssues: Schema.optional(Schema.Array(ItemLevelIssue)),
-  creationDate: Schema.optional(Schema.String),
-}).annotate({ identifier: "PromotionStatus" });
+export const Price: Schema.Schema<Price> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currencyCode: Schema.optional(Schema.String),
+    amountMicros: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Price" });
 
 export interface CustomAttribute {
   /** The name of the attribute. */
@@ -167,54 +62,13 @@ export interface Interval {
   endTime?: string;
 }
 
-export const Interval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  startTime: Schema.optional(Schema.String),
-  endTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "Interval" });
-
-export interface Price {
-  /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
-  currencyCode?: string;
-  /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
-  amountMicros?: string;
-}
-
-export const Price = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  currencyCode: Schema.optional(Schema.String),
-  amountMicros: Schema.optional(Schema.String),
-}).annotate({ identifier: "Price" });
+export const Interval: Schema.Schema<Interval> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Interval" });
 
 export interface Attributes {
-  /** Optional. Generic redemption code for the promotion. To be used with the `offerType` field and must meet the [minimum requirements](https://support.google.com/merchants/answer/13837405?ref_topic=13773355). */
-  genericRedemptionCode?: string;
-  /** Optional. Event applicability for this promotion. When present, this field indicates you are creating a [sales event](https://support.google.com/merchants/answer/15523289) and not a product promotion. Exactly one of `product_applicability` or `event_applicability` must be set. */
-  eventApplicability?:
-    | "EVENT_APPLICABILITY_UNSPECIFIED"
-    | "SITEWIDE"
-    | "SPECIFIC_CATEGORIES"
-    | (string & {});
-  /** Required. `TimePeriod` representation of the promotion's effective dates. This attribute specifies that the promotion can be tested on your online store during this time period. */
-  promotionEffectiveTimePeriod?: Interval;
-  /** Optional. Product filter by [item ID exclusion](https://support.google.com/merchants/answer/13863524?ref_topic=13773355) for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
-  itemIdExclusion?: ReadonlyArray<string>;
-  /** Optional. Whether the promotion applies to [all stores, or only specified stores](https://support.google.com/merchants/answer/13857563?sjid=17642868584668136159-NC). Local Inventory ads promotions throw an error if no store applicability is included. An `INVALID_ARGUMENT` error is thrown if `store_applicability` is set to `ALL_STORES` and `store_codes_inclusion` or `score_code_exclusion` is set to a value. */
-  storeApplicability?:
-    | "STORE_APPLICABILITY_UNSPECIFIED"
-    | "ALL_STORES"
-    | "SPECIFIC_STORES"
-    | (string & {});
-  /** Optional. [Maximum purchase quantity](https://support.google.com/merchants/answer/13861564?ref_topic=13773355) for the promotion. */
-  limitQuantity?: string;
-  /** Optional. Maximum money off amount for a promotion with `MONEY_OFF_RANGE` coupon value type. At least one of `min_money_off_amount` or `max_money_off_amount` must be present when the coupon value type is `MONEY_OFF_RANGE`. If neither is provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is returned. */
-  maxMoneyOffAmount?: Price;
-  /** Optional. Product filter by [brand exclusion](https://support.google.com/merchants/answer/13861679?ref_topic=13773355) for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
-  brandExclusion?: ReadonlyArray<string>;
-  /** Optional. Minimum percent off for a promotion with `PERCENT_OFF_RANGE` coupon value type. At least one of `min_percent_off` or `max_percent_off` must be present when the coupon value type is `PERCENT_OFF_RANGE`. If neither is provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is returned. */
-  minPercentOff?: string;
-  /** Optional. Product filter by item group ID for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability [product_applicability] attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
-  itemGroupIdInclusion?: ReadonlyArray<string>;
-  /** Optional. `TimePeriod` representation of the promotion's display dates. This attribute specifies the date and time frame when the promotion will be live on Google.com and Shopping ads. If the display time period for promotion `promotion_display_time_period` attribute is not specified, the promotion effective time period `promotion_effective_time_period` determines the date and time frame when the promotion will be live on Google.com and Shopping ads. */
-  promotionDisplayTimePeriod?: Interval;
   /** Optional. A restriction customers must meet before they can redeem the promotion. */
   redemptionRestriction?:
     | "REDEMPTION_RESTRICTION_UNSPECIFIED"
@@ -224,42 +78,6 @@ export interface Attributes {
     | "SIGNUP_FOR_TEXT"
     | "CUSTOM"
     | (string & {});
-  /** Optional. Applicability of the promotion to either all products or [only specific products](https://support.google.com/merchants/answer/6396257). Exactly one of `product_applicability` or `event_applicability` must be set. */
-  productApplicability?:
-    | "PRODUCT_APPLICABILITY_UNSPECIFIED"
-    | "ALL_PRODUCTS"
-    | "SPECIFIC_PRODUCTS"
-    | (string & {});
-  /** Required. [Type](https://support.google.com/merchants/answer/13837405?ref_topic=13773355) of the promotion. Use this attribute to indicate whether or not customers need a coupon code to redeem your promotion. */
-  offerType?:
-    | "OFFER_TYPE_UNSPECIFIED"
-    | "NO_CODE"
-    | "GENERIC_CODE"
-    | (string & {});
-  /** Optional. This field defines the audience a promotion will be visible to. */
-  audience?:
-    | "AUDIENCE_UNSPECIFIED"
-    | "NEW_CUSTOMERS"
-    | "LOCATION"
-    | (string & {});
-  /** Optional. Maximum percent off for a promotion with `PERCENT_OFF_RANGE` coupon value type. At least one of `min_percent_off` or `max_percent_off` must be present when the coupon value type is `PERCENT_OFF_RANGE`. If neither is provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is returned. */
-  maxPercentOff?: string;
-  /** Optional. The [percentage discount](https://support.google.com/merchants/answer/13837404?sjid=17642868584668136159-NC) offered in the promotion. */
-  percentOff?: string;
-  /** Optional. The number of items discounted in the promotion. The attribute is set when `couponValueType` is equal to `buy_m_get_n_money_off` or `buy_m_get_n_percent_off`. */
-  getThisQuantityDiscounted?: string;
-  /** Optional. URL to the page on the merchant's site where the promotion shows. Local Inventory ads promotions throw an error if no `promotion_url` is included. URL is used to confirm that the promotion is valid and can be redeemed. */
-  promotionUrl?: string;
-  /** Optional. A list of Google product categories for this promotion. Set if `EventApplicability` is `SPECIFIC_CATEGORIES`. Up to 5 product categories can be specified. For more details on eligible values for product categories, checkout the `google_product_category` attribute in the [Promotion data specification](https://support.google.com/merchants/answer/2906014). */
-  googleProductCategories?: ReadonlyArray<string>;
-  /** Optional. [Maximum product price](https://support.google.com/merchants/answer/2906014) for promotion. */
-  limitValue?: Price;
-  /** Optional. [Minimum purchase amount](https://support.google.com/merchants/answer/13837705?ref_topic=13773355) for the promotion. */
-  minimumPurchaseAmount?: Price;
-  /** Optional. The custom redemption restriction for the promotion. If the `redemption_restriction` field is set to `CUSTOM`, this field must be set. */
-  customRedemptionRestriction?: string;
-  /** Optional. The [money off amount](https://support.google.com/merchants/answer/13838101?ref_topic=13773355) offered in the promotion. */
-  moneyOffAmount?: Price;
   /** Required. The list of destinations (also known as [Marketing methods](https://support.google.com/merchants/answer/15130232)) where the promotion applies to. If you don't specify a destination by including a supported value in your data source, your promotion will display in Shopping ads and free listings by default. You may have previously submitted the following values as destinations for your products: Shopping Actions, Surfaces across Google, Local surfaces across Google. To represent these values use `FREE_LISTINGS`, `FREE_LOCAL_LISTINGS`, `LOCAL_INVENTORY_ADS`. For more details see [Promotion destination](https://support.google.com/merchants/answer/13837465) */
   promotionDestinations?: ReadonlyArray<
     | "DESTINATION_ENUM_UNSPECIFIED"
@@ -277,10 +95,86 @@ export interface Attributes {
     | "LOCAL_CLOUD_RETAIL"
     | (string & {})
   >;
-  /** Optional. Product filter by [product type exclusion](https://support.google.com/merchants/answer/13863746?ref_topic=13773355) for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
-  productTypeExclusion?: ReadonlyArray<string>;
+  /** Optional. [Free gift value](https://support.google.com/merchants/answer/13844477?ref_topic=13773355) for the promotion. */
+  freeGiftValue?: Price;
+  /** Optional. Maximum money off amount for a promotion with `MONEY_OFF_RANGE` coupon value type. At least one of `min_money_off_amount` or `max_money_off_amount` must be present when the coupon value type is `MONEY_OFF_RANGE`. If neither is provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is returned. */
+  maxMoneyOffAmount?: Price;
+  /** Optional. URL to the page on the merchant's site where the promotion shows. Local Inventory ads promotions throw an error if no `promotion_url` is included. URL is used to confirm that the promotion is valid and can be redeemed. */
+  promotionUrl?: string;
+  /** Optional. Product filter by product type for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
+  productTypeInclusion?: ReadonlyArray<string>;
+  /** Optional. The maximum monetary discount a customer can receive for the promotion. This field is only supported with the `Percent off` coupon value type. */
+  maxDiscountAmount?: Price;
+  /** Optional. A list of [regions](https://support.google.com/merchants/answer/15406457?#howregionswork) where the promotion is applicable. Must be set if `audience` is set to `LOCATION`. */
+  regionIdInclusion?: ReadonlyArray<string>;
+  /** Optional. A list of Google product categories for this promotion. Set if `EventApplicability` is `SPECIFIC_CATEGORIES`. Up to 5 product categories can be specified. For more details on eligible values for product categories, checkout the `google_product_category` attribute in the [Promotion data specification](https://support.google.com/merchants/answer/2906014). */
+  googleProductCategories?: ReadonlyArray<string>;
+  /** Required. [Long title](https://support.google.com/merchants/answer/13838102?ref_topic=13773355) for the promotion. */
+  longTitle?: string;
+  /** Optional. Product filter by [brand exclusion](https://support.google.com/merchants/answer/13861679?ref_topic=13773355) for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
+  brandExclusion?: ReadonlyArray<string>;
+  /** Optional. [Free gift item ID](https://support.google.com/merchants/answer/13857152?ref_topic=13773355) for the promotion. */
+  freeGiftItemId?: string;
+  /** Optional. The custom redemption restriction for the promotion. If the `redemption_restriction` field is set to `CUSTOM`, this field must be set. */
+  customRedemptionRestriction?: string;
+  /** Optional. Product filter by [item ID](https://support.google.com/merchants/answer/13861565?ref_topic=13773355) for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
+  itemIdInclusion?: ReadonlyArray<string>;
+  /** Required. `TimePeriod` representation of the promotion's effective dates. This attribute specifies that the promotion can be tested on your online store during this time period. */
+  promotionEffectiveTimePeriod?: Interval;
+  /** Optional. Minimum percent off for a promotion with `PERCENT_OFF_RANGE` coupon value type. At least one of `min_percent_off` or `max_percent_off` must be present when the coupon value type is `PERCENT_OFF_RANGE`. If neither is provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is returned. */
+  minPercentOff?: string;
+  /** Optional. The [percentage discount](https://support.google.com/merchants/answer/13837404?sjid=17642868584668136159-NC) offered in the promotion. */
+  percentOff?: string;
+  /** Optional. [Store codes to exclude](https://support.google.com/merchants/answer/13859586?ref_topic=13773355) for the promotion. The store filter attributes only applies when the `store_applicability` attribute is set to [specific_stores](https://support.google.com/merchants/answer/13857563?ref_topic=13773355). */
+  storeCodesExclusion?: ReadonlyArray<string>;
+  /** Optional. Event applicability for this promotion. When present, this field indicates you are creating a [sales event](https://support.google.com/merchants/answer/15523289) and not a product promotion. Exactly one of `product_applicability` or `event_applicability` must be set. */
+  eventApplicability?:
+    | "EVENT_APPLICABILITY_UNSPECIFIED"
+    | "SITEWIDE"
+    | "SPECIFIC_CATEGORIES"
+    | (string & {});
+  /** Optional. The [money off amount](https://support.google.com/merchants/answer/13838101?ref_topic=13773355) offered in the promotion. */
+  moneyOffAmount?: Price;
+  /** Optional. Product filter by item group ID for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability [product_applicability] attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
+  itemGroupIdInclusion?: ReadonlyArray<string>;
   /** Optional. [Store codes to include](https://support.google.com/merchants/answer/13857470?ref_topic=13773355) for the promotion. The store filter attributes only applies when the `store_applicability` attribute is set to [specific_stores](https://support.google.com/merchants/answer/13857563?ref_topic=13773355). Store code (the store ID from your Business Profile) of the physical store the product is sold in. See the [Local product inventory data specification](https://support.google.com/merchants/answer/3061342) for more information. */
   storeCodesInclusion?: ReadonlyArray<string>;
+  /** Optional. `TimePeriod` representation of the promotion's display dates. This attribute specifies the date and time frame when the promotion will be live on Google.com and Shopping ads. If the display time period for promotion `promotion_display_time_period` attribute is not specified, the promotion effective time period `promotion_effective_time_period` determines the date and time frame when the promotion will be live on Google.com and Shopping ads. */
+  promotionDisplayTimePeriod?: Interval;
+  /** Optional. Maximum percent off for a promotion with `PERCENT_OFF_RANGE` coupon value type. At least one of `min_percent_off` or `max_percent_off` must be present when the coupon value type is `PERCENT_OFF_RANGE`. If neither is provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is returned. */
+  maxPercentOff?: string;
+  /** Optional. [Minimum purchase amount](https://support.google.com/merchants/answer/13837705?ref_topic=13773355) for the promotion. */
+  minimumPurchaseAmount?: Price;
+  /** Optional. Applicability of the promotion to either all products or [only specific products](https://support.google.com/merchants/answer/6396257). Exactly one of `product_applicability` or `event_applicability` must be set. */
+  productApplicability?:
+    | "PRODUCT_APPLICABILITY_UNSPECIFIED"
+    | "ALL_PRODUCTS"
+    | "SPECIFIC_PRODUCTS"
+    | (string & {});
+  /** Optional. Generic redemption code for the promotion. To be used with the `offerType` field and must meet the [minimum requirements](https://support.google.com/merchants/answer/13837405?ref_topic=13773355). */
+  genericRedemptionCode?: string;
+  /** Optional. Product filter by [item ID exclusion](https://support.google.com/merchants/answer/13863524?ref_topic=13773355) for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
+  itemIdExclusion?: ReadonlyArray<string>;
+  /** Optional. [Maximum product price](https://support.google.com/merchants/answer/2906014) for promotion. */
+  limitValue?: Price;
+  /** Optional. Product filter by [product type exclusion](https://support.google.com/merchants/answer/13863746?ref_topic=13773355) for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
+  productTypeExclusion?: ReadonlyArray<string>;
+  /** Optional. Product filter by [item group ID](https://support.google.com/merchants/answer/13837298?ref_topic=13773355). The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). exclusion for the promotion. */
+  itemGroupIdExclusion?: ReadonlyArray<string>;
+  /** Optional. [Maximum purchase quantity](https://support.google.com/merchants/answer/13861564?ref_topic=13773355) for the promotion. */
+  limitQuantity?: string;
+  /** Required. [Type](https://support.google.com/merchants/answer/13837405?ref_topic=13773355) of the promotion. Use this attribute to indicate whether or not customers need a coupon code to redeem your promotion. */
+  offerType?:
+    | "OFFER_TYPE_UNSPECIFIED"
+    | "NO_CODE"
+    | "GENERIC_CODE"
+    | (string & {});
+  /** Optional. [Free gift description](https://support.google.com/merchants/answer/13847245?ref_topic=13773355) for the promotion. */
+  freeGiftDescription?: string;
+  /** Optional. Minimum money off amount for a promotion with `MONEY_OFF_RANGE` coupon value type. At least one of `min_money_off_amount` or `max_money_off_amount` must be present when the coupon value type is `MONEY_OFF_RANGE`. If neither is provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is returned. */
+  minMoneyOffAmount?: Price;
+  /** Optional. The number of items discounted in the promotion. The attribute is set when `couponValueType` is equal to `buy_m_get_n_money_off` or `buy_m_get_n_percent_off`. */
+  getThisQuantityDiscounted?: string;
   /** Required. The [coupon value type] (https://support.google.com/merchants/answer/13861986?ref_topic=13773355) attribute to signal the type of promotion that you are running. Depending on type of the selected coupon value [some attributes are required](https://support.google.com/merchants/answer/6393006?ref_topic=7322920). */
   couponValueType?:
     | "COUPON_VALUE_TYPE_UNSPECIFIED"
@@ -299,144 +193,246 @@ export interface Attributes {
     | "MONEY_OFF_RANGE"
     | "PERCENT_OFF_RANGE"
     | (string & {});
-  /** Optional. A list of [regions](https://support.google.com/merchants/answer/15406457?#howregionswork) where the promotion is applicable. Must be set if `audience` is set to `LOCATION`. */
-  regionIdInclusion?: ReadonlyArray<string>;
-  /** Optional. [Free gift value](https://support.google.com/merchants/answer/13844477?ref_topic=13773355) for the promotion. */
-  freeGiftValue?: Price;
-  /** Optional. Minimum money off amount for a promotion with `MONEY_OFF_RANGE` coupon value type. At least one of `min_money_off_amount` or `max_money_off_amount` must be present when the coupon value type is `MONEY_OFF_RANGE`. If neither is provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is returned. */
-  minMoneyOffAmount?: Price;
-  /** Optional. Product filter by [item ID](https://support.google.com/merchants/answer/13861565?ref_topic=13773355) for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
-  itemIdInclusion?: ReadonlyArray<string>;
-  /** Optional. Product filter by [item group ID](https://support.google.com/merchants/answer/13837298?ref_topic=13773355). The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). exclusion for the promotion. */
-  itemGroupIdExclusion?: ReadonlyArray<string>;
-  /** Required. [Long title](https://support.google.com/merchants/answer/13838102?ref_topic=13773355) for the promotion. */
-  longTitle?: string;
   /** Optional. Product filter by brand for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
   brandInclusion?: ReadonlyArray<string>;
-  /** Optional. [Free gift item ID](https://support.google.com/merchants/answer/13857152?ref_topic=13773355) for the promotion. */
-  freeGiftItemId?: string;
   minimumPurchaseQuantity?: string;
-  /** Optional. The maximum monetary discount a customer can receive for the promotion. This field is only supported with the `Percent off` coupon value type. */
-  maxDiscountAmount?: Price;
-  /** Optional. [Store codes to exclude](https://support.google.com/merchants/answer/13859586?ref_topic=13773355) for the promotion. The store filter attributes only applies when the `store_applicability` attribute is set to [specific_stores](https://support.google.com/merchants/answer/13857563?ref_topic=13773355). */
-  storeCodesExclusion?: ReadonlyArray<string>;
-  /** Optional. Product filter by product type for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
-  productTypeInclusion?: ReadonlyArray<string>;
-  /** Optional. [Free gift description](https://support.google.com/merchants/answer/13847245?ref_topic=13773355) for the promotion. */
-  freeGiftDescription?: string;
+  /** Optional. Whether the promotion applies to [all stores, or only specified stores](https://support.google.com/merchants/answer/13857563?sjid=17642868584668136159-NC). Local Inventory ads promotions throw an error if no store applicability is included. An `INVALID_ARGUMENT` error is thrown if `store_applicability` is set to `ALL_STORES` and `store_codes_inclusion` or `score_code_exclusion` is set to a value. */
+  storeApplicability?:
+    | "STORE_APPLICABILITY_UNSPECIFIED"
+    | "ALL_STORES"
+    | "SPECIFIC_STORES"
+    | (string & {});
+  /** Optional. This field defines the audience a promotion will be visible to. */
+  audience?:
+    | "AUDIENCE_UNSPECIFIED"
+    | "NEW_CUSTOMERS"
+    | "LOCATION"
+    | (string & {});
 }
 
-export const Attributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  genericRedemptionCode: Schema.optional(Schema.String),
-  eventApplicability: Schema.optional(Schema.String),
-  promotionEffectiveTimePeriod: Schema.optional(Interval),
-  itemIdExclusion: Schema.optional(Schema.Array(Schema.String)),
-  storeApplicability: Schema.optional(Schema.String),
-  limitQuantity: Schema.optional(Schema.String),
-  maxMoneyOffAmount: Schema.optional(Price),
-  brandExclusion: Schema.optional(Schema.Array(Schema.String)),
-  minPercentOff: Schema.optional(Schema.String),
-  itemGroupIdInclusion: Schema.optional(Schema.Array(Schema.String)),
-  promotionDisplayTimePeriod: Schema.optional(Interval),
-  redemptionRestriction: Schema.optional(Schema.String),
-  productApplicability: Schema.optional(Schema.String),
-  offerType: Schema.optional(Schema.String),
-  audience: Schema.optional(Schema.String),
-  maxPercentOff: Schema.optional(Schema.String),
-  percentOff: Schema.optional(Schema.String),
-  getThisQuantityDiscounted: Schema.optional(Schema.String),
-  promotionUrl: Schema.optional(Schema.String),
-  googleProductCategories: Schema.optional(Schema.Array(Schema.String)),
-  limitValue: Schema.optional(Price),
-  minimumPurchaseAmount: Schema.optional(Price),
-  customRedemptionRestriction: Schema.optional(Schema.String),
-  moneyOffAmount: Schema.optional(Price),
-  promotionDestinations: Schema.optional(Schema.Array(Schema.String)),
-  productTypeExclusion: Schema.optional(Schema.Array(Schema.String)),
-  storeCodesInclusion: Schema.optional(Schema.Array(Schema.String)),
-  couponValueType: Schema.optional(Schema.String),
-  regionIdInclusion: Schema.optional(Schema.Array(Schema.String)),
-  freeGiftValue: Schema.optional(Price),
-  minMoneyOffAmount: Schema.optional(Price),
-  itemIdInclusion: Schema.optional(Schema.Array(Schema.String)),
-  itemGroupIdExclusion: Schema.optional(Schema.Array(Schema.String)),
-  longTitle: Schema.optional(Schema.String),
-  brandInclusion: Schema.optional(Schema.Array(Schema.String)),
-  freeGiftItemId: Schema.optional(Schema.String),
-  minimumPurchaseQuantity: Schema.optional(Schema.String),
-  maxDiscountAmount: Schema.optional(Price),
-  storeCodesExclusion: Schema.optional(Schema.Array(Schema.String)),
-  productTypeInclusion: Schema.optional(Schema.Array(Schema.String)),
-  freeGiftDescription: Schema.optional(Schema.String),
-}).annotate({ identifier: "Attributes" });
+export const Attributes: Schema.Schema<Attributes> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    redemptionRestriction: Schema.optional(Schema.String),
+    promotionDestinations: Schema.optional(Schema.Array(Schema.String)),
+    freeGiftValue: Schema.optional(Price),
+    maxMoneyOffAmount: Schema.optional(Price),
+    promotionUrl: Schema.optional(Schema.String),
+    productTypeInclusion: Schema.optional(Schema.Array(Schema.String)),
+    maxDiscountAmount: Schema.optional(Price),
+    regionIdInclusion: Schema.optional(Schema.Array(Schema.String)),
+    googleProductCategories: Schema.optional(Schema.Array(Schema.String)),
+    longTitle: Schema.optional(Schema.String),
+    brandExclusion: Schema.optional(Schema.Array(Schema.String)),
+    freeGiftItemId: Schema.optional(Schema.String),
+    customRedemptionRestriction: Schema.optional(Schema.String),
+    itemIdInclusion: Schema.optional(Schema.Array(Schema.String)),
+    promotionEffectiveTimePeriod: Schema.optional(Interval),
+    minPercentOff: Schema.optional(Schema.String),
+    percentOff: Schema.optional(Schema.String),
+    storeCodesExclusion: Schema.optional(Schema.Array(Schema.String)),
+    eventApplicability: Schema.optional(Schema.String),
+    moneyOffAmount: Schema.optional(Price),
+    itemGroupIdInclusion: Schema.optional(Schema.Array(Schema.String)),
+    storeCodesInclusion: Schema.optional(Schema.Array(Schema.String)),
+    promotionDisplayTimePeriod: Schema.optional(Interval),
+    maxPercentOff: Schema.optional(Schema.String),
+    minimumPurchaseAmount: Schema.optional(Price),
+    productApplicability: Schema.optional(Schema.String),
+    genericRedemptionCode: Schema.optional(Schema.String),
+    itemIdExclusion: Schema.optional(Schema.Array(Schema.String)),
+    limitValue: Schema.optional(Price),
+    productTypeExclusion: Schema.optional(Schema.Array(Schema.String)),
+    itemGroupIdExclusion: Schema.optional(Schema.Array(Schema.String)),
+    limitQuantity: Schema.optional(Schema.String),
+    offerType: Schema.optional(Schema.String),
+    freeGiftDescription: Schema.optional(Schema.String),
+    minMoneyOffAmount: Schema.optional(Price),
+    getThisQuantityDiscounted: Schema.optional(Schema.String),
+    couponValueType: Schema.optional(Schema.String),
+    brandInclusion: Schema.optional(Schema.Array(Schema.String)),
+    minimumPurchaseQuantity: Schema.optional(Schema.String),
+    storeApplicability: Schema.optional(Schema.String),
+    audience: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Attributes" });
+
+export interface DestinationStatus {
+  /** Output only. The name of the promotion destination. */
+  reportingContext?:
+    | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
+    | "SHOPPING_ADS"
+    | "DISCOVERY_ADS"
+    | "DEMAND_GEN_ADS"
+    | "DEMAND_GEN_ADS_DISCOVER_SURFACE"
+    | "VIDEO_ADS"
+    | "DISPLAY_ADS"
+    | "LOCAL_INVENTORY_ADS"
+    | "VEHICLE_INVENTORY_ADS"
+    | "FREE_LISTINGS"
+    | "FREE_LISTINGS_UCP_CHECKOUT"
+    | "FREE_LOCAL_LISTINGS"
+    | "FREE_LOCAL_VEHICLE_LISTINGS"
+    | "YOUTUBE_AFFILIATE"
+    | "YOUTUBE_SHOPPING"
+    | "CLOUD_RETAIL"
+    | "LOCAL_CLOUD_RETAIL"
+    | "PRODUCT_REVIEWS"
+    | "MERCHANT_REVIEWS"
+    | "YOUTUBE_CHECKOUT"
+    | (string & {});
+  /** Output only. The status for the specified destination. */
+  status?:
+    | "STATE_UNSPECIFIED"
+    | "IN_REVIEW"
+    | "REJECTED"
+    | "LIVE"
+    | "STOPPED"
+    | "EXPIRED"
+    | "PENDING"
+    | (string & {});
+}
+
+export const DestinationStatus: Schema.Schema<DestinationStatus> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportingContext: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DestinationStatus" });
+
+export interface ItemLevelIssue {
+  /** Output only. The attribute's name, if the issue is caused by a single attribute. */
+  attribute?: string;
+  /** Output only. A detailed issue description in English. */
+  detail?: string;
+  /** Output only. A short issue description in English. */
+  description?: string;
+  /** Output only. How this issue affects serving of the promotion. */
+  severity?:
+    | "SEVERITY_UNSPECIFIED"
+    | "NOT_IMPACTED"
+    | "DEMOTED"
+    | "DISAPPROVED"
+    | (string & {});
+  /** Output only. The URL of a web page to help with resolving this issue. */
+  documentation?: string;
+  /** Output only. Whether the issue can be resolved by the merchant. */
+  resolution?: string;
+  /** Output only. The destination the issue applies to. */
+  reportingContext?:
+    | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
+    | "SHOPPING_ADS"
+    | "DISCOVERY_ADS"
+    | "DEMAND_GEN_ADS"
+    | "DEMAND_GEN_ADS_DISCOVER_SURFACE"
+    | "VIDEO_ADS"
+    | "DISPLAY_ADS"
+    | "LOCAL_INVENTORY_ADS"
+    | "VEHICLE_INVENTORY_ADS"
+    | "FREE_LISTINGS"
+    | "FREE_LISTINGS_UCP_CHECKOUT"
+    | "FREE_LOCAL_LISTINGS"
+    | "FREE_LOCAL_VEHICLE_LISTINGS"
+    | "YOUTUBE_AFFILIATE"
+    | "YOUTUBE_SHOPPING"
+    | "CLOUD_RETAIL"
+    | "LOCAL_CLOUD_RETAIL"
+    | "PRODUCT_REVIEWS"
+    | "MERCHANT_REVIEWS"
+    | "YOUTUBE_CHECKOUT"
+    | (string & {});
+  /** Output only. The error code of the issue. */
+  code?: string;
+  /** Output only. List of country codes (ISO 3166-1 alpha-2) where issue applies to the offer. */
+  applicableCountries?: ReadonlyArray<string>;
+}
+
+export const ItemLevelIssue: Schema.Schema<ItemLevelIssue> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attribute: Schema.optional(Schema.String),
+    detail: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    severity: Schema.optional(Schema.String),
+    documentation: Schema.optional(Schema.String),
+    resolution: Schema.optional(Schema.String),
+    reportingContext: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+    applicableCountries: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ItemLevelIssue" });
+
+export interface PromotionStatus {
+  /** Output only. The intended destinations for the promotion. */
+  destinationStatuses?: ReadonlyArray<DestinationStatus>;
+  /** Output only. Date on which the promotion has been created in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example `2020-01-02T09:00:00+01:00` or `2020-01-02T09:00:00Z` */
+  creationDate?: string;
+  /** Output only. A list of issues associated with the promotion. */
+  itemLevelIssues?: ReadonlyArray<ItemLevelIssue>;
+  /** Output only. Date on which the promotion status has been last updated in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example `2020-01-02T09:00:00+01:00` or `2020-01-02T09:00:00Z` */
+  lastUpdateDate?: string;
+}
+
+export const PromotionStatus: Schema.Schema<PromotionStatus> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationStatuses: Schema.optional(Schema.Array(DestinationStatus)),
+    creationDate: Schema.optional(Schema.String),
+    itemLevelIssues: Schema.optional(Schema.Array(ItemLevelIssue)),
+    lastUpdateDate: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PromotionStatus" });
 
 export interface Promotion {
-  /** Output only. The [status of a promotion](https://support.google.com/merchants/answer/3398326?ref_topic=7322924&sjid=5155774230887277618-NC), data validation issues, that is, information about a promotion computed asynchronously. */
-  promotionStatus?: PromotionStatus;
-  /** Optional. A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute of the data specification in its generic form (for example, `{ "name": "size type", "value": "regular" }`). This is useful for submitting attributes not explicitly exposed by the API. */
-  customAttributes?: ReadonlyArray<CustomAttribute>;
   /** Required. The target country used as part of the unique identifier. Represented as a [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml). Promotions are only available in selected countries, [Free Listings and Shopping ads](https://support.google.com/merchants/answer/4588460) [Local Inventory ads](https://support.google.com/merchants/answer/10146326) */
   targetCountry?: string;
+  /** Optional. A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute of the data specification in its generic form (for example, `{ "name": "size type", "value": "regular" }`). This is useful for submitting attributes not explicitly exposed by the API. */
+  customAttributes?: ReadonlyArray<CustomAttribute>;
   /** Optional. A list of promotion attributes. */
   attributes?: Attributes;
+  /** Required. The two-letter [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code for the promotion. Promotions is only for [selected languages](https://support.google.com/merchants/answer/4588281?ref_topic=6396150&sjid=18314938579342094533-NC#option3&zippy=). */
+  contentLanguage?: string;
   /** Required. [Redemption channel](https://support.google.com/merchants/answer/13837674?ref_topic=13773355&sjid=17642868584668136159-NC) for the promotion. At least one channel is required. */
   redemptionChannel?: ReadonlyArray<
     "REDEMPTION_CHANNEL_UNSPECIFIED" | "IN_STORE" | "ONLINE" | (string & {})
   >;
-  /** Identifier. The name of the promotion. Format: `accounts/{account}/promotions/{promotion}` */
-  name?: string;
   /** Required. The user provided promotion ID to uniquely identify the promotion. Follow [minimum requirements](https://support.google.com/merchants/answer/7050148?ref_topic=7322920&sjid=871860036916537104-NC#minimum_requirements) to prevent promotion disapprovals. */
   promotionId?: string;
-  /** Optional. Represents the existing version (freshness) of the promotion, which can be used to preserve the right order when multiple updates are done at the same time. If set, the insertion is prevented when version number is lower than the current version number of the existing promotion. Re-insertion (for example, promotion refresh after 30 days) can be performed with the current `version_number`. If the operation is prevented, the aborted exception will be thrown. */
-  versionNumber?: string;
-  /** Required. The two-letter [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code for the promotion. Promotions is only for [selected languages](https://support.google.com/merchants/answer/4588281?ref_topic=6396150&sjid=18314938579342094533-NC#option3&zippy=). */
-  contentLanguage?: string;
   /** Output only. The primary data source of the promotion. */
   dataSource?: string;
+  /** Identifier. The name of the promotion. Format: `accounts/{account}/promotions/{promotion}` */
+  name?: string;
+  /** Optional. Represents the existing version (freshness) of the promotion, which can be used to preserve the right order when multiple updates are done at the same time. If set, the insertion is prevented when version number is lower than the current version number of the existing promotion. Re-insertion (for example, promotion refresh after 30 days) can be performed with the current `version_number`. If the operation is prevented, the aborted exception will be thrown. */
+  versionNumber?: string;
+  /** Output only. The [status of a promotion](https://support.google.com/merchants/answer/3398326?ref_topic=7322924&sjid=5155774230887277618-NC), data validation issues, that is, information about a promotion computed asynchronously. */
+  promotionStatus?: PromotionStatus;
 }
 
-export const Promotion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  promotionStatus: Schema.optional(PromotionStatus),
-  customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
-  targetCountry: Schema.optional(Schema.String),
-  attributes: Schema.optional(Attributes),
-  redemptionChannel: Schema.optional(Schema.Array(Schema.String)),
-  name: Schema.optional(Schema.String),
-  promotionId: Schema.optional(Schema.String),
-  versionNumber: Schema.optional(Schema.String),
-  contentLanguage: Schema.optional(Schema.String),
-  dataSource: Schema.optional(Schema.String),
-}).annotate({ identifier: "Promotion" });
+export const Promotion: Schema.Schema<Promotion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetCountry: Schema.optional(Schema.String),
+    customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
+    attributes: Schema.optional(Attributes),
+    contentLanguage: Schema.optional(Schema.String),
+    redemptionChannel: Schema.optional(Schema.Array(Schema.String)),
+    promotionId: Schema.optional(Schema.String),
+    dataSource: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    versionNumber: Schema.optional(Schema.String),
+    promotionStatus: Schema.optional(PromotionStatus),
+  }).annotate({ identifier: "Promotion" });
 
 export interface InsertPromotionRequest {
-  /** Required. The data source of the [promotion](https://support.google.com/merchants/answer/6396268?sjid=5155774230887277618-NC) Format: `accounts/{account}/dataSources/{datasource}`. */
-  dataSource?: string;
   /** Required. The promotion to insert. */
   promotion?: Promotion;
+  /** Required. The data source of the [promotion](https://support.google.com/merchants/answer/6396268?sjid=5155774230887277618-NC) Format: `accounts/{account}/dataSources/{datasource}`. */
+  dataSource?: string;
 }
 
-export const InsertPromotionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    dataSource: Schema.optional(Schema.String),
+export const InsertPromotionRequest: Schema.Schema<InsertPromotionRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     promotion: Schema.optional(Promotion),
-  },
-).annotate({ identifier: "InsertPromotionRequest" });
-
-export interface ListPromotionsResponse {
-  /** The processed promotions from the specified account. */
-  promotions?: ReadonlyArray<Promotion>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListPromotionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    promotions: Schema.optional(Schema.Array(Promotion)),
-    nextPageToken: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "ListPromotionsResponse" });
+    dataSource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InsertPromotionRequest" });
 
 export interface ProductChange {
+  /** The old value of the changed resource or attribute. If empty, it means that the product was created. Will have one of these values : (`approved`, `pending`, `disapproved`, ``) */
+  oldValue?: string;
+  /** Countries that have the change (if applicable). Represented in the ISO 3166 format. */
+  regionCode?: string;
   /** The new value of the changed resource or attribute. If empty, it means that the product was deleted. Will have one of these values : (`approved`, `pending`, `disapproved`, ``) */
   newValue?: string;
   /** Reporting contexts that have the change (if applicable). Currently this field supports only (`SHOPPING_ADS`, `LOCAL_INVENTORY_ADS`, `YOUTUBE_SHOPPING`, `YOUTUBE_CHECKOUT`, `YOUTUBE_AFFILIATE`) from the enum value [ReportingContextEnum](/merchant/api/reference/rest/Shared.Types/ReportingContextEnum) */
@@ -462,52 +458,62 @@ export interface ProductChange {
     | "MERCHANT_REVIEWS"
     | "YOUTUBE_CHECKOUT"
     | (string & {});
-  /** The old value of the changed resource or attribute. If empty, it means that the product was created. Will have one of these values : (`approved`, `pending`, `disapproved`, ``) */
-  oldValue?: string;
-  /** Countries that have the change (if applicable). Represented in the ISO 3166 format. */
-  regionCode?: string;
 }
 
-export const ProductChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  newValue: Schema.optional(Schema.String),
-  reportingContext: Schema.optional(Schema.String),
-  oldValue: Schema.optional(Schema.String),
-  regionCode: Schema.optional(Schema.String),
-}).annotate({ identifier: "ProductChange" });
+export const ProductChange: Schema.Schema<ProductChange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oldValue: Schema.optional(Schema.String),
+    regionCode: Schema.optional(Schema.String),
+    newValue: Schema.optional(Schema.String),
+    reportingContext: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductChange" });
 
 export interface ProductStatusChangeMessage {
   /** The product name. Format: `accounts/{account}/products/{product}` */
   resource?: string;
-  /** Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event. */
-  expirationTime?: string;
-  /** The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}` */
-  managingAccount?: string;
-  /** The attribute in the resource that changed, in this case it will be always `Status`. */
-  attribute?: "ATTRIBUTE_UNSPECIFIED" | "STATUS" | (string & {});
-  /** The resource that changed, in this case it will always be `Product`. */
-  resourceType?: "RESOURCE_UNSPECIFIED" | "PRODUCT" | (string & {});
-  /** A message to describe the change that happened to the product */
-  changes?: ReadonlyArray<ProductChange>;
-  /** The product id. */
-  resourceId?: string;
-  /** The time at which the event was generated. If you want to order the notification messages you receive you should rely on this field not on the order of receiving the notifications. */
-  eventTime?: string;
   /** The target account that owns the entity that changed. Format : `accounts/{merchant_id}` */
   account?: string;
+  /** The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}` */
+  managingAccount?: string;
+  /** Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event. */
+  expirationTime?: string;
+  /** The product id. */
+  resourceId?: string;
+  /** A message to describe the change that happened to the product */
+  changes?: ReadonlyArray<ProductChange>;
+  /** The resource that changed, in this case it will always be `Product`. */
+  resourceType?: "RESOURCE_UNSPECIFIED" | "PRODUCT" | (string & {});
+  /** The attribute in the resource that changed, in this case it will be always `Status`. */
+  attribute?: "ATTRIBUTE_UNSPECIFIED" | "STATUS" | (string & {});
+  /** The time at which the event was generated. If you want to order the notification messages you receive you should rely on this field not on the order of receiving the notifications. */
+  eventTime?: string;
 }
 
-export const ProductStatusChangeMessage =
+export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
-    expirationTime: Schema.optional(Schema.String),
-    managingAccount: Schema.optional(Schema.String),
-    attribute: Schema.optional(Schema.String),
-    resourceType: Schema.optional(Schema.String),
-    changes: Schema.optional(Schema.Array(ProductChange)),
-    resourceId: Schema.optional(Schema.String),
-    eventTime: Schema.optional(Schema.String),
     account: Schema.optional(Schema.String),
+    managingAccount: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    changes: Schema.optional(Schema.Array(ProductChange)),
+    resourceType: Schema.optional(Schema.String),
+    attribute: Schema.optional(Schema.String),
+    eventTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProductStatusChangeMessage" });
+
+export interface ListPromotionsResponse {
+  /** The processed promotions from the specified account. */
+  promotions?: ReadonlyArray<Promotion>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListPromotionsResponse: Schema.Schema<ListPromotionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    promotions: Schema.optional(Schema.Array(Promotion)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPromotionsResponse" });
 
 // ==========================================================================
 // Errors
@@ -563,6 +569,47 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
+export interface ListAccountsPromotionsRequest {
+  /** Optional. The maximum number of promotions to return. The service may return fewer than this value. The maximum value is 250; values above 250 will be coerced to 250. If unspecified, the maximum number of promotions will be returned. */
+  pageSize?: number;
+  /** Required. The account to list processed promotions for. Format: `accounts/{account}` */
+  parent: string;
+  /** Optional. A page token, received from a previous `ListPromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPromotions` must match the call that provided the page token. */
+  pageToken?: string;
+}
+
+export const ListAccountsPromotionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "promotions/v1/{+parent}/promotions" }),
+    svc,
+  ) as unknown as Schema.Schema<ListAccountsPromotionsRequest>;
+
+export type ListAccountsPromotionsResponse = ListPromotionsResponse;
+export const ListAccountsPromotionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListPromotionsResponse;
+
+export type ListAccountsPromotionsError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists the promotions in your Merchant Center account. The response might contain fewer items than specified by `pageSize`. Rely on `pageToken` to determine if there are more items to be requested. After inserting or updating a promotion, it may take several minutes before the updated processed promotion can be retrieved. */
+export const listAccountsPromotions: API.PaginatedOperationMethod<
+  ListAccountsPromotionsRequest,
+  ListAccountsPromotionsResponse,
+  ListAccountsPromotionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAccountsPromotionsRequest,
+  output: ListAccountsPromotionsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
 export interface InsertAccountsPromotionsRequest {
   /** Required. The account where the promotion will be inserted. Format: accounts/{account} */
   parent: string;
@@ -604,47 +651,6 @@ export const insertAccountsPromotions: API.OperationMethod<
   input: InsertAccountsPromotionsRequest,
   output: InsertAccountsPromotionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListAccountsPromotionsRequest {
-  /** Required. The account to list processed promotions for. Format: `accounts/{account}` */
-  parent: string;
-  /** Optional. The maximum number of promotions to return. The service may return fewer than this value. The maximum value is 250; values above 250 will be coerced to 250. If unspecified, the maximum number of promotions will be returned. */
-  pageSize?: number;
-  /** Optional. A page token, received from a previous `ListPromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPromotions` must match the call that provided the page token. */
-  pageToken?: string;
-}
-
-export const ListAccountsPromotionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "promotions/v1/{+parent}/promotions" }),
-    svc,
-  ) as unknown as Schema.Schema<ListAccountsPromotionsRequest>;
-
-export type ListAccountsPromotionsResponse = ListPromotionsResponse;
-export const ListAccountsPromotionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListPromotionsResponse;
-
-export type ListAccountsPromotionsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists the promotions in your Merchant Center account. The response might contain fewer items than specified by `pageSize`. Rely on `pageToken` to determine if there are more items to be requested. After inserting or updating a promotion, it may take several minutes before the updated processed promotion can be retrieved. */
-export const listAccountsPromotions: API.PaginatedOperationMethod<
-  ListAccountsPromotionsRequest,
-  ListAccountsPromotionsResponse,
-  ListAccountsPromotionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsPromotionsRequest,
-  output: ListAccountsPromotionsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
 export interface GetAccountsPromotionsRequest {

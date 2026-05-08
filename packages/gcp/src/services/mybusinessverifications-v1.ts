@@ -23,263 +23,78 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface PostalAddress {
-  /** Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
-  regionCode?: string;
-  /** Optional. The name of the organization at the address. */
-  organization?: string;
-  /** Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated. */
-  administrativeArea?: string;
+  /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
+  postalCode?: string;
   /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
   revision?: number;
   /** Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en". */
   languageCode?: string;
+  /** Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated. */
+  administrativeArea?: string;
+  /** Optional. Generally refers to the city or town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave `locality` empty and use `address_lines`. */
+  locality?: string;
   /** Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (for example, "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (Côte d'Ivoire). */
   sortingCode?: string;
   /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
   recipients?: ReadonlyArray<string>;
-  /** Optional. Generally refers to the city or town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave `locality` empty and use `address_lines`. */
-  locality?: string;
-  /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. */
-  sublocality?: string;
-  /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
-  postalCode?: string;
   /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
   addressLines?: ReadonlyArray<string>;
+  /** Optional. The name of the organization at the address. */
+  organization?: string;
+  /** Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
+  regionCode?: string;
+  /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. */
+  sublocality?: string;
 }
 
-export const PostalAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  regionCode: Schema.optional(Schema.String),
-  organization: Schema.optional(Schema.String),
-  administrativeArea: Schema.optional(Schema.String),
-  revision: Schema.optional(Schema.Number),
-  languageCode: Schema.optional(Schema.String),
-  sortingCode: Schema.optional(Schema.String),
-  recipients: Schema.optional(Schema.Array(Schema.String)),
-  locality: Schema.optional(Schema.String),
-  sublocality: Schema.optional(Schema.String),
-  postalCode: Schema.optional(Schema.String),
-  addressLines: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "PostalAddress" });
-
-export interface ServiceBusinessContext {
-  /** The verification address of the location. It is used to either enable more verification options or send a postcard. */
-  address?: PostalAddress;
-}
-
-export const ServiceBusinessContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    address: Schema.optional(PostalAddress),
-  },
-).annotate({ identifier: "ServiceBusinessContext" });
-
-export interface ResolveOwnershipConflict {}
-
-export const ResolveOwnershipConflict =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "ResolveOwnershipConflict",
-  });
-
-export interface Verify {
-  /** Indicates whether a verification process has already started, and can be completed by the location. */
-  hasPendingVerification?: boolean;
-}
-
-export const Verify = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  hasPendingVerification: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "Verify" });
-
-export interface ComplyWithGuidelines {
-  /** The reason why the location is being recommended to comply with guidelines. */
-  recommendationReason?:
-    | "RECOMMENDATION_REASON_UNSPECIFIED"
-    | "BUSINESS_LOCATION_SUSPENDED"
-    | "BUSINESS_LOCATION_DISABLED"
-    | (string & {});
-}
-
-export const ComplyWithGuidelines = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  recommendationReason: Schema.optional(Schema.String),
-}).annotate({ identifier: "ComplyWithGuidelines" });
-
-export interface WaitForVoiceOfMerchant {}
-
-export const WaitForVoiceOfMerchant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "WaitForVoiceOfMerchant" });
-
-export interface VoiceOfMerchantState {
-  /** Indicates whether the location has the authority (ownership) over the business on Google. If true, another location cannot take over and become the dominant listing on Maps. However, edits will not become live unless Voice of Merchant is gained (i.e. has_voice_of_merchant is true). */
-  hasBusinessAuthority?: boolean;
-  /** This location duplicates another location that is in good standing. If you have access to the location in good standing, use that location's id to perform operations. Otherwise, request access from the current owner. */
-  resolveOwnershipConflict?: ResolveOwnershipConflict;
-  /** Start or continue the verification process. */
-  verify?: Verify;
-  /** The location fails to comply with our [guidelines](https://support.google.com/business/answer/3038177) and requires additional steps for reinstatement. To fix this issue, consult the [Help Center Article](https://support.google.com/business/answer/4569145). */
-  complyWithGuidelines?: ComplyWithGuidelines;
-  /** Indicates whether the location is in good standing and has control over the business on Google. Any edits made to the location will propagate to Maps after passing the review phase. */
-  hasVoiceOfMerchant?: boolean;
-  /** Wait to gain Voice of Merchant. The location is under review for quality purposes. */
-  waitForVoiceOfMerchant?: WaitForVoiceOfMerchant;
-}
-
-export const VoiceOfMerchantState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  hasBusinessAuthority: Schema.optional(Schema.Boolean),
-  resolveOwnershipConflict: Schema.optional(ResolveOwnershipConflict),
-  verify: Schema.optional(Verify),
-  complyWithGuidelines: Schema.optional(ComplyWithGuidelines),
-  hasVoiceOfMerchant: Schema.optional(Schema.Boolean),
-  waitForVoiceOfMerchant: Schema.optional(WaitForVoiceOfMerchant),
-}).annotate({ identifier: "VoiceOfMerchantState" });
-
-export interface VerificationToken {
-  /** The token string. */
-  tokenString?: string;
-}
-
-export const VerificationToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tokenString: Schema.optional(Schema.String),
-}).annotate({ identifier: "VerificationToken" });
-
-export interface Verification {
-  /** The method of the verification. */
-  method?:
-    | "VERIFICATION_METHOD_UNSPECIFIED"
-    | "ADDRESS"
-    | "EMAIL"
-    | "PHONE_CALL"
-    | "SMS"
-    | "AUTO"
-    | "VETTED_PARTNER"
-    | "TRUSTED_PARTNER"
-    | (string & {});
-  /** The state of the verification. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "PENDING"
-    | "COMPLETED"
-    | "FAILED"
-    | (string & {});
-  /** The timestamp when the verification is requested. */
-  createTime?: string;
-  /** Optional. Response announcement set only if the method is VETTED_PARTNER. */
-  announcement?: string;
-  /** Resource name of the verification. */
-  name?: string;
-}
-
-export const Verification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  method: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  announcement: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "Verification" });
-
-export interface ListVerificationsResponse {
-  /** List of the verifications. */
-  verifications?: ReadonlyArray<Verification>;
-  /** If the number of verifications exceeded the requested page size, this field will be populated with a token to fetch the next page of verification on a subsequent call. If there are no more attributes, this field will not be present in the response. */
-  nextPageToken?: string;
-}
-
-export const ListVerificationsResponse =
+export const PostalAddress: Schema.Schema<PostalAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    verifications: Schema.optional(Schema.Array(Verification)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListVerificationsResponse" });
-
-export interface VerifyLocationResponse {
-  /** The created verification request. */
-  verification?: Verification;
-}
-
-export const VerifyLocationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    verification: Schema.optional(Verification),
-  },
-).annotate({ identifier: "VerifyLocationResponse" });
-
-export interface CompleteVerificationRequest {
-  /** Required. PIN code received by the merchant to complete the verification. */
-  pin?: string;
-}
-
-export const CompleteVerificationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pin: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CompleteVerificationRequest" });
-
-export interface LocationData {
-  /** Immutable. Name should reflect your business's real-world name, as used consistently on your storefront, website, and stationery, and as known to customers. Any additional information, when relevant, can be included in other fields of the resource (for example, `Address`, `Categories`). Don't add unnecessary information to your name (for example, prefer "Google" over "Google Inc. - Mountain View Corporate Headquarters"). Don't include marketing taglines, store codes, special characters, hours or closed/open status, phone numbers, website URLs, service/product information, location/address or directions, or containment information (for example, "Chase ATM in Duane Reade"). */
-  name?: string;
-  /** Immutable. A precise, accurate address to describe your business location. PO boxes or mailboxes located at remote locations are not acceptable. At this time, you can specify a maximum of five `address_lines` values in the address. */
-  address?: PostalAddress;
-}
-
-export const LocationData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  address: Schema.optional(PostalAddress),
-}).annotate({ identifier: "LocationData" });
-
-export interface GenerateInstantVerificationTokenRequest {
-  /** The location identifier associated with an unverified listing. This is the location id generated at the time that the listing was originally created. It is the final portion of a location resource name as generated by the Google My Business API. Note: the caller must be an owner or manager of this listing in order to generate a verification token. See the [location resource](/my-business/reference/rest/v4/accounts.locations) documentation for more information. */
-  locationId?: string;
-  /** Immutable. The address and other details of the location to generate an instant verification token for. */
-  locationData?: LocationData;
-}
-
-export const GenerateInstantVerificationTokenRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationId: Schema.optional(Schema.String),
-    locationData: Schema.optional(LocationData),
-  }).annotate({ identifier: "GenerateInstantVerificationTokenRequest" });
-
-export interface CompleteVerificationResponse {
-  /** The completed verification. */
-  verification?: Verification;
-}
-
-export const CompleteVerificationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    verification: Schema.optional(Verification),
-  }).annotate({ identifier: "CompleteVerificationResponse" });
-
-export interface EmailVerificationData {
-  /** Whether client is allowed to provide a different user name. */
-  isUserNameEditable?: boolean;
-  /** User name in the email address. e.g. "foo" in foo@gmail.com */
-  user?: string;
-  /** Domain name in the email address. e.g. "gmail.com" in foo@gmail.com */
-  domain?: string;
-}
-
-export const EmailVerificationData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  isUserNameEditable: Schema.optional(Schema.Boolean),
-  user: Schema.optional(Schema.String),
-  domain: Schema.optional(Schema.String),
-}).annotate({ identifier: "EmailVerificationData" });
+    postalCode: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.Number),
+    languageCode: Schema.optional(Schema.String),
+    administrativeArea: Schema.optional(Schema.String),
+    locality: Schema.optional(Schema.String),
+    sortingCode: Schema.optional(Schema.String),
+    recipients: Schema.optional(Schema.Array(Schema.String)),
+    addressLines: Schema.optional(Schema.Array(Schema.String)),
+    organization: Schema.optional(Schema.String),
+    regionCode: Schema.optional(Schema.String),
+    sublocality: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PostalAddress" });
 
 export interface AddressVerificationData {
-  /** Address that a postcard can be sent to. */
-  address?: PostalAddress;
   /** Merchant's business name. */
   business?: string;
+  /** Address that a postcard can be sent to. */
+  address?: PostalAddress;
   /** Expected number of days it takes to deliver a postcard to the address's region. */
   expectedDeliveryDaysRegion?: number;
 }
 
-export const AddressVerificationData =
+export const AddressVerificationData: Schema.Schema<AddressVerificationData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    address: Schema.optional(PostalAddress),
     business: Schema.optional(Schema.String),
+    address: Schema.optional(PostalAddress),
     expectedDeliveryDaysRegion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "AddressVerificationData" });
 
+export interface EmailVerificationData {
+  /** User name in the email address. e.g. "foo" in foo@gmail.com */
+  user?: string;
+  /** Whether client is allowed to provide a different user name. */
+  isUserNameEditable?: boolean;
+  /** Domain name in the email address. e.g. "gmail.com" in foo@gmail.com */
+  domain?: string;
+}
+
+export const EmailVerificationData: Schema.Schema<EmailVerificationData> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    user: Schema.optional(Schema.String),
+    isUserNameEditable: Schema.optional(Schema.Boolean),
+    domain: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EmailVerificationData" });
+
 export interface VerificationOption {
-  /** Set only if the method is VETTED_PARTNER. */
-  announcement?: string;
-  /** Set only if the method is PHONE_CALL or SMS. Phone number that the PIN will be sent to. */
-  phoneNumber?: string;
   /** Method to verify the location. */
   verificationMethod?:
     | "VERIFICATION_METHOD_UNSPECIFIED"
@@ -288,57 +103,86 @@ export interface VerificationOption {
     | "PHONE_CALL"
     | "SMS"
     | "AUTO"
-    | "VETTED_PARTNER"
     | "TRUSTED_PARTNER"
     | (string & {});
-  /** Set only if the method is EMAIL. */
-  emailData?: EmailVerificationData;
   /** Set only if the method is MAIL. */
   addressData?: AddressVerificationData;
+  /** Set only if the method is EMAIL. */
+  emailData?: EmailVerificationData;
+  /** Set only if the method is VETTED_PARTNER. */
+  announcement?: string;
+  /** Set only if the method is PHONE_CALL or SMS. Phone number that the PIN will be sent to. */
+  phoneNumber?: string;
 }
 
-export const VerificationOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  announcement: Schema.optional(Schema.String),
-  phoneNumber: Schema.optional(Schema.String),
-  verificationMethod: Schema.optional(Schema.String),
-  emailData: Schema.optional(EmailVerificationData),
-  addressData: Schema.optional(AddressVerificationData),
-}).annotate({ identifier: "VerificationOption" });
+export const VerificationOption: Schema.Schema<VerificationOption> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    verificationMethod: Schema.optional(Schema.String),
+    addressData: Schema.optional(AddressVerificationData),
+    emailData: Schema.optional(EmailVerificationData),
+    announcement: Schema.optional(Schema.String),
+    phoneNumber: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VerificationOption" });
 
 export interface FetchVerificationOptionsResponse {
   /** The available verification options. */
   options?: ReadonlyArray<VerificationOption>;
 }
 
-export const FetchVerificationOptionsResponse =
+export const FetchVerificationOptionsResponse: Schema.Schema<FetchVerificationOptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(Schema.Array(VerificationOption)),
   }).annotate({ identifier: "FetchVerificationOptionsResponse" });
 
-export interface GenerateInstantVerificationTokenResponse {
-  /** Output only. The result of the instant verification token generation. */
-  result?: "RESULT_UNSPECIFIED" | "SUCCEEDED" | "FAILED" | (string & {});
-  /** The generated instant verification token. */
-  instantVerificationToken?: string;
+export interface LocationData {
+  /** Immutable. Name should reflect your business's real-world name, as used consistently on your storefront, website, and stationery, and as known to customers. Any additional information, when relevant, can be included in other fields of the resource (for example, `Address`, `Categories`). Don't add unnecessary information to your name (for example, prefer "Google" over "Google Inc. - Mountain View Corporate Headquarters"). Don't include marketing taglines, store codes, special characters, hours or closed/open status, phone numbers, website URLs, service/product information, location/address or directions, or containment information (for example, "Chase ATM in Duane Reade"). */
+  name?: string;
+  /** Immutable. A precise, accurate address to describe your business location. PO boxes or mailboxes located at remote locations are not acceptable. At this time, you can specify a maximum of five `address_lines` values in the address. */
+  address?: PostalAddress;
 }
 
-export const GenerateInstantVerificationTokenResponse =
+export const LocationData: Schema.Schema<LocationData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.optional(Schema.String),
-    instantVerificationToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GenerateInstantVerificationTokenResponse" });
+    name: Schema.optional(Schema.String),
+    address: Schema.optional(PostalAddress),
+  }).annotate({ identifier: "LocationData" });
+
+export interface GenerateInstantVerificationTokenRequest {
+  /** The location identifier associated with an unverified listing. This is the location id generated at the time that the listing was originally created. It is the final portion of a location resource name as generated by the Google My Business API. Note: the caller must be an owner or manager of this listing in order to generate a verification token. See the [location resource](/my-business/reference/rest/v4/accounts.locations) documentation for more information. */
+  locationId?: string;
+  /** Immutable. The address and other details of the location to generate an instant verification token for. */
+  locationData?: LocationData;
+}
+
+export const GenerateInstantVerificationTokenRequest: Schema.Schema<GenerateInstantVerificationTokenRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationId: Schema.optional(Schema.String),
+    locationData: Schema.optional(LocationData),
+  }).annotate({ identifier: "GenerateInstantVerificationTokenRequest" });
+
+export interface VerificationToken {
+  /** The token string. */
+  tokenString?: string;
+}
+
+export const VerificationToken: Schema.Schema<VerificationToken> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tokenString: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VerificationToken" });
+
+export interface ServiceBusinessContext {
+  /** The verification address of the location. It is used to either enable more verification options or send a postcard. */
+  address?: PostalAddress;
+}
+
+export const ServiceBusinessContext: Schema.Schema<ServiceBusinessContext> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    address: Schema.optional(PostalAddress),
+  }).annotate({ identifier: "ServiceBusinessContext" });
 
 export interface VerifyLocationRequest {
   /** Optional. The BCP 47 language code representing the language that is to be used for the verification process. */
   languageCode?: string;
-  /** Optional. The input for VETTED_PARTNER method available to select [partners.](https://support.google.com/business/answer/7674102) The input is not needed for a vetted account. Token that is associated to the location. Token that is associated to the location. */
-  token?: VerificationToken;
-  /** Optional. The input for ADDRESS method. Contact name the mail should be sent to. */
-  mailerContact?: string;
-  /** Optional. The input for PHONE_CALL/SMS method The phone number that should be called or be sent SMS to. It must be one of the phone numbers in the eligible options. */
-  phoneNumber?: string;
-  /** The input for TRUSTED_PARTNER method The verification token that is associated to the location. */
-  trustedPartnerToken?: string;
   /** Optional. The input for EMAIL method. Email address where the PIN should be sent to. An email address is accepted only if it is one of the addresses provided by FetchVerificationOptions. If the EmailVerificationData has is_user_name_editable set to true, the client may specify a different user name (local-part) but must match the domain name. */
   emailAddress?: string;
   /** Required. Verification method. */
@@ -349,23 +193,175 @@ export interface VerifyLocationRequest {
     | "PHONE_CALL"
     | "SMS"
     | "AUTO"
-    | "VETTED_PARTNER"
     | "TRUSTED_PARTNER"
     | (string & {});
+  /** Optional. The input for VETTED_PARTNER method available to select [partners.](https://support.google.com/business/answer/7674102) The input is not needed for a vetted account. Token that is associated to the location. Token that is associated to the location. */
+  token?: VerificationToken;
+  /** Optional. The input for ADDRESS method. Contact name the mail should be sent to. */
+  mailerContact?: string;
+  /** Optional. The input for PHONE_CALL/SMS method The phone number that should be called or be sent SMS to. It must be one of the phone numbers in the eligible options. */
+  phoneNumber?: string;
+  /** The input for TRUSTED_PARTNER method The verification token that is associated to the location. */
+  trustedPartnerToken?: string;
   /** Optional. Extra context information for the verification of service businesses. It is only required for the locations whose business type is CUSTOMER_LOCATION_ONLY. For ADDRESS verification, the address will be used to send out postcard. For other methods, it should be the same as the one that is passed to GetVerificationOptions. INVALID_ARGUMENT will be thrown if it is set for other types of business locations. */
   context?: ServiceBusinessContext;
 }
 
-export const VerifyLocationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  languageCode: Schema.optional(Schema.String),
-  token: Schema.optional(VerificationToken),
-  mailerContact: Schema.optional(Schema.String),
-  phoneNumber: Schema.optional(Schema.String),
-  trustedPartnerToken: Schema.optional(Schema.String),
-  emailAddress: Schema.optional(Schema.String),
-  method: Schema.optional(Schema.String),
-  context: Schema.optional(ServiceBusinessContext),
-}).annotate({ identifier: "VerifyLocationRequest" });
+export const VerifyLocationRequest: Schema.Schema<VerifyLocationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    languageCode: Schema.optional(Schema.String),
+    emailAddress: Schema.optional(Schema.String),
+    method: Schema.optional(Schema.String),
+    token: Schema.optional(VerificationToken),
+    mailerContact: Schema.optional(Schema.String),
+    phoneNumber: Schema.optional(Schema.String),
+    trustedPartnerToken: Schema.optional(Schema.String),
+    context: Schema.optional(ServiceBusinessContext),
+  }).annotate({ identifier: "VerifyLocationRequest" });
+
+export interface ResolveOwnershipConflict {}
+
+export const ResolveOwnershipConflict: Schema.Schema<ResolveOwnershipConflict> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "ResolveOwnershipConflict",
+  });
+
+export interface Verification {
+  /** The state of the verification. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "PENDING"
+    | "COMPLETED"
+    | "FAILED"
+    | (string & {});
+  /** The timestamp when the verification is requested. */
+  createTime?: string;
+  /** Resource name of the verification. */
+  name?: string;
+  /** Optional. Response announcement set only if the method is VETTED_PARTNER. */
+  announcement?: string;
+  /** The method of the verification. */
+  method?:
+    | "VERIFICATION_METHOD_UNSPECIFIED"
+    | "ADDRESS"
+    | "EMAIL"
+    | "PHONE_CALL"
+    | "SMS"
+    | "AUTO"
+    | "TRUSTED_PARTNER"
+    | (string & {});
+}
+
+export const Verification: Schema.Schema<Verification> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    announcement: Schema.optional(Schema.String),
+    method: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Verification" });
+
+export interface ListVerificationsResponse {
+  /** List of the verifications. */
+  verifications?: ReadonlyArray<Verification>;
+  /** If the number of verifications exceeded the requested page size, this field will be populated with a token to fetch the next page of verification on a subsequent call. If there are no more attributes, this field will not be present in the response. */
+  nextPageToken?: string;
+}
+
+export const ListVerificationsResponse: Schema.Schema<ListVerificationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    verifications: Schema.optional(Schema.Array(Verification)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListVerificationsResponse" });
+
+export interface VerifyLocationResponse {
+  /** The created verification request. */
+  verification?: Verification;
+}
+
+export const VerifyLocationResponse: Schema.Schema<VerifyLocationResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    verification: Schema.optional(Verification),
+  }).annotate({ identifier: "VerifyLocationResponse" });
+
+export interface CompleteVerificationResponse {
+  /** The completed verification. */
+  verification?: Verification;
+}
+
+export const CompleteVerificationResponse: Schema.Schema<CompleteVerificationResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    verification: Schema.optional(Verification),
+  }).annotate({ identifier: "CompleteVerificationResponse" });
+
+export interface GenerateInstantVerificationTokenResponse {
+  /** Output only. The result of the instant verification token generation. */
+  result?: "RESULT_UNSPECIFIED" | "SUCCEEDED" | "FAILED" | (string & {});
+  /** The generated instant verification token. */
+  instantVerificationToken?: string;
+}
+
+export const GenerateInstantVerificationTokenResponse: Schema.Schema<GenerateInstantVerificationTokenResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(Schema.String),
+    instantVerificationToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateInstantVerificationTokenResponse" });
+
+export interface ComplyWithGuidelines {
+  /** The reason why the location is being recommended to comply with guidelines. */
+  recommendationReason?:
+    | "RECOMMENDATION_REASON_UNSPECIFIED"
+    | "BUSINESS_LOCATION_SUSPENDED"
+    | "BUSINESS_LOCATION_DISABLED"
+    | (string & {});
+}
+
+export const ComplyWithGuidelines: Schema.Schema<ComplyWithGuidelines> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recommendationReason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ComplyWithGuidelines" });
+
+export interface WaitForVoiceOfMerchant {}
+
+export const WaitForVoiceOfMerchant: Schema.Schema<WaitForVoiceOfMerchant> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "WaitForVoiceOfMerchant",
+  });
+
+export interface Verify {
+  /** Indicates whether a verification process has already started, and can be completed by the location. */
+  hasPendingVerification?: boolean;
+}
+
+export const Verify: Schema.Schema<Verify> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hasPendingVerification: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "Verify" });
+
+export interface VoiceOfMerchantState {
+  /** The location fails to comply with our [guidelines](https://support.google.com/business/answer/3038177) and requires additional steps for reinstatement. To fix this issue, consult the [Help Center Article](https://support.google.com/business/answer/4569145). */
+  complyWithGuidelines?: ComplyWithGuidelines;
+  /** Wait to gain Voice of Merchant. The location is under review for quality purposes. */
+  waitForVoiceOfMerchant?: WaitForVoiceOfMerchant;
+  /** Indicates whether the location has the authority (ownership) over the business on Google. If true, another location cannot take over and become the dominant listing on Maps. However, edits will not become live unless Voice of Merchant is gained (i.e. has_voice_of_merchant is true). */
+  hasBusinessAuthority?: boolean;
+  /** Start or continue the verification process. */
+  verify?: Verify;
+  /** This location duplicates another location that is in good standing. If you have access to the location in good standing, use that location's id to perform operations. Otherwise, request access from the current owner. */
+  resolveOwnershipConflict?: ResolveOwnershipConflict;
+  /** Indicates whether the location is in good standing and has control over the business on Google. Any edits made to the location will propagate to Maps after passing the review phase. */
+  hasVoiceOfMerchant?: boolean;
+}
+
+export const VoiceOfMerchantState: Schema.Schema<VoiceOfMerchantState> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    complyWithGuidelines: Schema.optional(ComplyWithGuidelines),
+    waitForVoiceOfMerchant: Schema.optional(WaitForVoiceOfMerchant),
+    hasBusinessAuthority: Schema.optional(Schema.Boolean),
+    verify: Schema.optional(Verify),
+    resolveOwnershipConflict: Schema.optional(ResolveOwnershipConflict),
+    hasVoiceOfMerchant: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "VoiceOfMerchantState" });
 
 export interface FetchVerificationOptionsRequest {
   /** Required. The BCP 47 language code representing the language that is to be used for the verification process. Available options vary by language. */
@@ -374,11 +370,21 @@ export interface FetchVerificationOptionsRequest {
   context?: ServiceBusinessContext;
 }
 
-export const FetchVerificationOptionsRequest =
+export const FetchVerificationOptionsRequest: Schema.Schema<FetchVerificationOptionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     context: Schema.optional(ServiceBusinessContext),
   }).annotate({ identifier: "FetchVerificationOptionsRequest" });
+
+export interface CompleteVerificationRequest {
+  /** Required. PIN code received by the merchant to complete the verification. */
+  pin?: string;
+}
+
+export const CompleteVerificationRequest: Schema.Schema<CompleteVerificationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pin: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CompleteVerificationRequest" });
 
 // ==========================================================================
 // Errors
@@ -433,40 +439,6 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 // Operations
 // ==========================================================================
-
-export interface GetVoiceOfMerchantStateLocationsRequest {
-  /** Required. Resource name of the location. */
-  name: string;
-}
-
-export const GetVoiceOfMerchantStateLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/VoiceOfMerchantState" }),
-    svc,
-  ) as unknown as Schema.Schema<GetVoiceOfMerchantStateLocationsRequest>;
-
-export type GetVoiceOfMerchantStateLocationsResponse = VoiceOfMerchantState;
-export const GetVoiceOfMerchantStateLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VoiceOfMerchantState;
-
-export type GetVoiceOfMerchantStateLocationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the VoiceOfMerchant state. */
-export const getVoiceOfMerchantStateLocations: API.OperationMethod<
-  GetVoiceOfMerchantStateLocationsRequest,
-  GetVoiceOfMerchantStateLocationsResponse,
-  GetVoiceOfMerchantStateLocationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetVoiceOfMerchantStateLocationsRequest,
-  output: GetVoiceOfMerchantStateLocationsResponse,
-  errors: [NotFound, Forbidden],
-}));
 
 export interface FetchVerificationOptionsLocationsRequest {
   /** Required. The location to verify. */
@@ -550,6 +522,40 @@ export const verifyLocations: API.OperationMethod<
   input: VerifyLocationsRequest,
   output: VerifyLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetVoiceOfMerchantStateLocationsRequest {
+  /** Required. Resource name of the location. */
+  name: string;
+}
+
+export const GetVoiceOfMerchantStateLocationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}/VoiceOfMerchantState" }),
+    svc,
+  ) as unknown as Schema.Schema<GetVoiceOfMerchantStateLocationsRequest>;
+
+export type GetVoiceOfMerchantStateLocationsResponse = VoiceOfMerchantState;
+export const GetVoiceOfMerchantStateLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ VoiceOfMerchantState;
+
+export type GetVoiceOfMerchantStateLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the VoiceOfMerchant state. */
+export const getVoiceOfMerchantStateLocations: API.OperationMethod<
+  GetVoiceOfMerchantStateLocationsRequest,
+  GetVoiceOfMerchantStateLocationsResponse,
+  GetVoiceOfMerchantStateLocationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetVoiceOfMerchantStateLocationsRequest,
+  output: GetVoiceOfMerchantStateLocationsResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CompleteLocationsVerificationsRequest {

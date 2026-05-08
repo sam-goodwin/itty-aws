@@ -22,11 +22,1909 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface OtherRegionsSubscriptionOfferConfig {
+  /** Whether the subscription offer in any new locations Play may launch in the future. If not specified, this will default to false. */
+  otherRegionsNewSubscriberAvailability?: boolean;
+}
+
+export const OtherRegionsSubscriptionOfferConfig: Schema.Schema<OtherRegionsSubscriptionOfferConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    otherRegionsNewSubscriberAvailability: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "OtherRegionsSubscriptionOfferConfig" });
+
+export interface TargetingRuleScopeThisSubscription {}
+
+export const TargetingRuleScopeThisSubscription: Schema.Schema<TargetingRuleScopeThisSubscription> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "TargetingRuleScopeThisSubscription",
+  });
+
+export interface TargetingRuleScopeAnySubscriptionInApp {}
+
+export const TargetingRuleScopeAnySubscriptionInApp: Schema.Schema<TargetingRuleScopeAnySubscriptionInApp> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "TargetingRuleScopeAnySubscriptionInApp",
+  });
+
+export interface TargetingRuleScope {
+  /** The scope of the current targeting rule is the subscription in which this offer is defined. */
+  thisSubscription?: TargetingRuleScopeThisSubscription;
+  /** The scope of the current targeting rule is any subscription in the parent app. */
+  anySubscriptionInApp?: TargetingRuleScopeAnySubscriptionInApp;
+  /** The scope of the current targeting rule is the subscription with the specified subscription ID. Must be a subscription within the same parent app. */
+  specificSubscriptionInApp?: string;
+}
+
+export const TargetingRuleScope: Schema.Schema<TargetingRuleScope> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    thisSubscription: Schema.optional(TargetingRuleScopeThisSubscription),
+    anySubscriptionInApp: Schema.optional(
+      TargetingRuleScopeAnySubscriptionInApp,
+    ),
+    specificSubscriptionInApp: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TargetingRuleScope" });
+
+export interface AcquisitionTargetingRule {
+  /** Required. The scope of subscriptions this rule considers. Only allows "this subscription" and "any subscription in app". */
+  scope?: TargetingRuleScope;
+}
+
+export const AcquisitionTargetingRule: Schema.Schema<AcquisitionTargetingRule> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.optional(TargetingRuleScope),
+  }).annotate({ identifier: "AcquisitionTargetingRule" });
+
+export interface UpgradeTargetingRule {
+  /** The specific billing period duration, specified in ISO 8601 format, that a user must be currently subscribed to to be eligible for this rule. If not specified, users subscribed to any billing period are matched. */
+  billingPeriodDuration?: string;
+  /** Limit this offer to only once per user. If set to true, a user can never be eligible for this offer again if they ever subscribed to this offer. */
+  oncePerUser?: boolean;
+  /** Required. The scope of subscriptions this rule considers. Only allows "this subscription" and "specific subscription in app". */
+  scope?: TargetingRuleScope;
+}
+
+export const UpgradeTargetingRule: Schema.Schema<UpgradeTargetingRule> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingPeriodDuration: Schema.optional(Schema.String),
+    oncePerUser: Schema.optional(Schema.Boolean),
+    scope: Schema.optional(TargetingRuleScope),
+  }).annotate({ identifier: "UpgradeTargetingRule" });
+
+export interface SubscriptionOfferTargeting {
+  /** Offer targeting rule for new user acquisition. */
+  acquisitionRule?: AcquisitionTargetingRule;
+  /** Offer targeting rule for upgrading users' existing plans. */
+  upgradeRule?: UpgradeTargetingRule;
+}
+
+export const SubscriptionOfferTargeting: Schema.Schema<SubscriptionOfferTargeting> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    acquisitionRule: Schema.optional(AcquisitionTargetingRule),
+    upgradeRule: Schema.optional(UpgradeTargetingRule),
+  }).annotate({ identifier: "SubscriptionOfferTargeting" });
+
+export interface Money {
+  /** The three-letter currency code defined in ISO 4217. */
+  currencyCode?: string;
+  /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
+  units?: string;
+  /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
+  nanos?: number;
+}
+
+export const Money: Schema.Schema<Money> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currencyCode: Schema.optional(Schema.String),
+    units: Schema.optional(Schema.String),
+    nanos: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Money" });
+
+export interface RegionalSubscriptionOfferPhaseFreePriceOverride {}
+
+export const RegionalSubscriptionOfferPhaseFreePriceOverride: Schema.Schema<RegionalSubscriptionOfferPhaseFreePriceOverride> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "RegionalSubscriptionOfferPhaseFreePriceOverride",
+  });
+
+export interface RegionalSubscriptionOfferPhaseConfig {
+  /** The absolute price the user pays for this offer phase. The price must not be smaller than the minimum price allowed for this region. */
+  price?: Money;
+  /** The fraction of the base plan price prorated over the phase duration that the user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a 50% discount for a phase of a duration of 3 months would correspond to a price of $1.50. The discount must be specified as a fraction strictly larger than 0 and strictly smaller than 1. The resulting price will be rounded to the nearest billable unit (e.g. cents for USD). The relative discount is considered invalid if the discounted price ends up being smaller than the minimum price allowed in this region. */
+  relativeDiscount?: number;
+  /** The absolute amount of money subtracted from the base plan price prorated over the phase duration that the user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a $1 absolute discount for a phase of a duration of 3 months would correspond to a price of $2. The resulting price may not be smaller than the minimum price allowed for this region. */
+  absoluteDiscount?: Money;
+  /** Set to specify this offer is free to obtain. */
+  free?: RegionalSubscriptionOfferPhaseFreePriceOverride;
+  /** Required. Immutable. The region to which this config applies. */
+  regionCode?: string;
+}
+
+export const RegionalSubscriptionOfferPhaseConfig: Schema.Schema<RegionalSubscriptionOfferPhaseConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    price: Schema.optional(Money),
+    relativeDiscount: Schema.optional(Schema.Number),
+    absoluteDiscount: Schema.optional(Money),
+    free: Schema.optional(RegionalSubscriptionOfferPhaseFreePriceOverride),
+    regionCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RegionalSubscriptionOfferPhaseConfig" });
+
+export interface OtherRegionsSubscriptionOfferPhasePrices {
+  /** Required. Price in USD to use for any new locations Play may launch in. */
+  usdPrice?: Money;
+  /** Required. Price in EUR to use for any new locations Play may launch in. */
+  eurPrice?: Money;
+}
+
+export const OtherRegionsSubscriptionOfferPhasePrices: Schema.Schema<OtherRegionsSubscriptionOfferPhasePrices> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    usdPrice: Schema.optional(Money),
+    eurPrice: Schema.optional(Money),
+  }).annotate({ identifier: "OtherRegionsSubscriptionOfferPhasePrices" });
+
+export interface OtherRegionsSubscriptionOfferPhaseFreePriceOverride {}
+
+export const OtherRegionsSubscriptionOfferPhaseFreePriceOverride: Schema.Schema<OtherRegionsSubscriptionOfferPhaseFreePriceOverride> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "OtherRegionsSubscriptionOfferPhaseFreePriceOverride",
+  });
+
+export interface OtherRegionsSubscriptionOfferPhaseConfig {
+  /** The fraction of the base plan price prorated over the phase duration that the user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a 50% discount for a phase of a duration of 3 months would correspond to a price of $1.50. The discount must be specified as a fraction strictly larger than 0 and strictly smaller than 1. The resulting price will be rounded to the nearest billable unit (e.g. cents for USD). The relative discount is considered invalid if the discounted price ends up being smaller than the minimum price allowed in any new locations Play may launch in. */
+  relativeDiscount?: number;
+  /** The absolute price the user pays for this offer phase. The price must not be smaller than the minimum price allowed for any new locations Play may launch in. */
+  otherRegionsPrices?: OtherRegionsSubscriptionOfferPhasePrices;
+  /** Set to specify this offer is free to obtain. */
+  free?: OtherRegionsSubscriptionOfferPhaseFreePriceOverride;
+  /** The absolute amount of money subtracted from the base plan price prorated over the phase duration that the user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a $1 absolute discount for a phase of a duration of 3 months would correspond to a price of $2. The resulting price may not be smaller than the minimum price allowed for any new locations Play may launch in. */
+  absoluteDiscounts?: OtherRegionsSubscriptionOfferPhasePrices;
+}
+
+export const OtherRegionsSubscriptionOfferPhaseConfig: Schema.Schema<OtherRegionsSubscriptionOfferPhaseConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    relativeDiscount: Schema.optional(Schema.Number),
+    otherRegionsPrices: Schema.optional(
+      OtherRegionsSubscriptionOfferPhasePrices,
+    ),
+    free: Schema.optional(OtherRegionsSubscriptionOfferPhaseFreePriceOverride),
+    absoluteDiscounts: Schema.optional(
+      OtherRegionsSubscriptionOfferPhasePrices,
+    ),
+  }).annotate({ identifier: "OtherRegionsSubscriptionOfferPhaseConfig" });
+
+export interface SubscriptionOfferPhase {
+  /** Required. The region-specific configuration of this offer phase. This list must contain exactly one entry for each region for which the subscription offer has a regional config. */
+  regionalConfigs?: ReadonlyArray<RegionalSubscriptionOfferPhaseConfig>;
+  /** Required. The duration of a single recurrence of this phase. Specified in ISO 8601 format. */
+  duration?: string;
+  /** Required. The number of times this phase repeats. If this offer phase is not free, each recurrence charges the user the price of this offer phase. */
+  recurrenceCount?: number;
+  /** Pricing information for any new locations Play may launch in. */
+  otherRegionsConfig?: OtherRegionsSubscriptionOfferPhaseConfig;
+}
+
+export const SubscriptionOfferPhase: Schema.Schema<SubscriptionOfferPhase> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionalConfigs: Schema.optional(
+      Schema.Array(RegionalSubscriptionOfferPhaseConfig),
+    ),
+    duration: Schema.optional(Schema.String),
+    recurrenceCount: Schema.optional(Schema.Number),
+    otherRegionsConfig: Schema.optional(
+      OtherRegionsSubscriptionOfferPhaseConfig,
+    ),
+  }).annotate({ identifier: "SubscriptionOfferPhase" });
+
+export interface OfferTag {
+  /** Must conform with RFC-1034. That is, this string can only contain lower-case letters (a-z), numbers (0-9), and hyphens (-), and be at most 20 characters. */
+  tag?: string;
+}
+
+export const OfferTag: Schema.Schema<OfferTag> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OfferTag" });
+
+export interface RegionalSubscriptionOfferConfig {
+  /** Required. Immutable. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US". */
+  regionCode?: string;
+  /** Whether the subscription offer in the specified region is available for new subscribers. Existing subscribers will not have their subscription cancelled if this value is set to false. If not specified, this will default to false. */
+  newSubscriberAvailability?: boolean;
+}
+
+export const RegionalSubscriptionOfferConfig: Schema.Schema<RegionalSubscriptionOfferConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionCode: Schema.optional(Schema.String),
+    newSubscriberAvailability: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "RegionalSubscriptionOfferConfig" });
+
+export interface SubscriptionOffer {
+  /** The configuration for any new locations Play may launch in the future. */
+  otherRegionsConfig?: OtherRegionsSubscriptionOfferConfig;
+  /** Required. Immutable. Unique ID of this subscription offer. Must be unique within the base plan. */
+  offerId?: string;
+  /** The requirements that users need to fulfil to be eligible for this offer. Represents the requirements that Play will evaluate to decide whether an offer should be returned. Developers may further filter these offers themselves. */
+  targeting?: SubscriptionOfferTargeting;
+  /** Required. Immutable. The package name of the app the parent subscription belongs to. */
+  packageName?: string;
+  /** Required. Immutable. The ID of the base plan to which this offer is an extension. */
+  basePlanId?: string;
+  /** Output only. The current state of this offer. Can be changed using Activate and Deactivate actions. NB: the base plan state supersedes this state, so an active offer may not be available if the base plan is not active. */
+  state?: "STATE_UNSPECIFIED" | "DRAFT" | "ACTIVE" | "INACTIVE" | (string & {});
+  /** Required. The phases of this subscription offer. Must contain at least one and at most two entries. Users will always receive all these phases in the specified order. */
+  phases?: ReadonlyArray<SubscriptionOfferPhase>;
+  /** List of up to 20 custom tags specified for this offer, and returned to the app through the billing library. */
+  offerTags?: ReadonlyArray<OfferTag>;
+  /** Required. Immutable. The ID of the parent subscription this offer belongs to. */
+  productId?: string;
+  /** Required. The region-specific configuration of this offer. Must contain at least one entry. */
+  regionalConfigs?: ReadonlyArray<RegionalSubscriptionOfferConfig>;
+}
+
+export const SubscriptionOffer: Schema.Schema<SubscriptionOffer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    otherRegionsConfig: Schema.optional(OtherRegionsSubscriptionOfferConfig),
+    offerId: Schema.optional(Schema.String),
+    targeting: Schema.optional(SubscriptionOfferTargeting),
+    packageName: Schema.optional(Schema.String),
+    basePlanId: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    phases: Schema.optional(Schema.Array(SubscriptionOfferPhase)),
+    offerTags: Schema.optional(Schema.Array(OfferTag)),
+    productId: Schema.optional(Schema.String),
+    regionalConfigs: Schema.optional(
+      Schema.Array(RegionalSubscriptionOfferConfig),
+    ),
+  }).annotate({ identifier: "SubscriptionOffer" });
+
+export interface CancelAppRecoveryResponse {}
+
+export const CancelAppRecoveryResponse: Schema.Schema<CancelAppRecoveryResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelAppRecoveryResponse",
+  });
+
+export interface UsesPermission {
+  /** The name of the permission requested. */
+  name?: string;
+  /** Optionally, the maximum SDK version for which the permission is required. */
+  maxSdkVersion?: number;
+}
+
+export const UsesPermission: Schema.Schema<UsesPermission> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    maxSdkVersion: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "UsesPermission" });
+
+export interface ExternallyHostedApk {
+  /** The version name of this APK. */
+  versionName?: string;
+  /** The icon image from the APK, as a base64 encoded byte array. */
+  iconBase64?: string;
+  /** The sha256 checksum of this APK, represented as a base64 encoded byte array. */
+  fileSha256Base64?: string;
+  /** The minimum SDK targeted by this APK. */
+  minimumSdk?: number;
+  /** The features required by this APK (optional). */
+  usesFeatures?: ReadonlyArray<string>;
+  /** The package name. */
+  packageName?: string;
+  /** The native code environments supported by this APK (optional). */
+  nativeCodes?: ReadonlyArray<string>;
+  /** The sha1 checksum of this APK, represented as a base64 encoded byte array. */
+  fileSha1Base64?: string;
+  /** The URL at which the APK is hosted. This must be an https URL. */
+  externallyHostedUrl?: string;
+  /** The maximum SDK supported by this APK (optional). */
+  maximumSdk?: number;
+  /** The permissions requested by this APK. */
+  usesPermissions?: ReadonlyArray<UsesPermission>;
+  /** The file size in bytes of this APK. */
+  fileSize?: string;
+  /** A certificate (or array of certificates if a certificate-chain is used) used to sign this APK, represented as a base64 encoded byte array. */
+  certificateBase64s?: ReadonlyArray<string>;
+  /** The version code of this APK. */
+  versionCode?: number;
+  /** The application label. */
+  applicationLabel?: string;
+}
+
+export const ExternallyHostedApk: Schema.Schema<ExternallyHostedApk> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionName: Schema.optional(Schema.String),
+    iconBase64: Schema.optional(Schema.String),
+    fileSha256Base64: Schema.optional(Schema.String),
+    minimumSdk: Schema.optional(Schema.Number),
+    usesFeatures: Schema.optional(Schema.Array(Schema.String)),
+    packageName: Schema.optional(Schema.String),
+    nativeCodes: Schema.optional(Schema.Array(Schema.String)),
+    fileSha1Base64: Schema.optional(Schema.String),
+    externallyHostedUrl: Schema.optional(Schema.String),
+    maximumSdk: Schema.optional(Schema.Number),
+    usesPermissions: Schema.optional(Schema.Array(UsesPermission)),
+    fileSize: Schema.optional(Schema.String),
+    certificateBase64s: Schema.optional(Schema.Array(Schema.String)),
+    versionCode: Schema.optional(Schema.Number),
+    applicationLabel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExternallyHostedApk" });
+
+export interface ApksAddExternallyHostedRequest {
+  /** The definition of the externally-hosted APK and where it is located. */
+  externallyHostedApk?: ExternallyHostedApk;
+}
+
+export const ApksAddExternallyHostedRequest: Schema.Schema<ApksAddExternallyHostedRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    externallyHostedApk: Schema.optional(ExternallyHostedApk),
+  }).annotate({ identifier: "ApksAddExternallyHostedRequest" });
+
+export interface RemoteInAppUpdate {
+  /** Required. Set to true if Remote In-App Update action type is needed. */
+  isRemoteInAppUpdateRequested?: boolean;
+}
+
+export const RemoteInAppUpdate: Schema.Schema<RemoteInAppUpdate> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isRemoteInAppUpdateRequested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "RemoteInAppUpdate" });
+
+export interface ApksAddExternallyHostedResponse {
+  /** The definition of the externally-hosted APK and where it is located. */
+  externallyHostedApk?: ExternallyHostedApk;
+}
+
+export const ApksAddExternallyHostedResponse: Schema.Schema<ApksAddExternallyHostedResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    externallyHostedApk: Schema.optional(ExternallyHostedApk),
+  }).annotate({ identifier: "ApksAddExternallyHostedResponse" });
+
+export interface ActivateSubscriptionOfferRequest {
+  /** Required. The parent app (package name) of the offer to activate. */
+  packageName?: string;
+  /** Required. The parent base plan (ID) of the offer to activate. */
+  basePlanId?: string;
+  /** Required. The parent subscription (ID) of the offer to activate. */
+  productId?: string;
+  /** Required. The unique offer ID of the offer to activate. */
+  offerId?: string;
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+}
+
+export const ActivateSubscriptionOfferRequest: Schema.Schema<ActivateSubscriptionOfferRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.optional(Schema.String),
+    basePlanId: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    offerId: Schema.optional(Schema.String),
+    latencyTolerance: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ActivateSubscriptionOfferRequest" });
+
+export interface DeactivateSubscriptionOfferRequest {
+  /** Required. The parent app (package name) of the offer to deactivate. */
+  packageName?: string;
+  /** Required. The parent base plan (ID) of the offer to deactivate. */
+  basePlanId?: string;
+  /** Required. The unique offer ID of the offer to deactivate. */
+  offerId?: string;
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+  /** Required. The parent subscription (ID) of the offer to deactivate. */
+  productId?: string;
+}
+
+export const DeactivateSubscriptionOfferRequest: Schema.Schema<DeactivateSubscriptionOfferRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.optional(Schema.String),
+    basePlanId: Schema.optional(Schema.String),
+    offerId: Schema.optional(Schema.String),
+    latencyTolerance: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeactivateSubscriptionOfferRequest" });
+
+export interface UpdateSubscriptionOfferStateRequest {
+  /** Activates an offer. Once activated, the offer will be available to new subscribers. */
+  activateSubscriptionOfferRequest?: ActivateSubscriptionOfferRequest;
+  /** Deactivates an offer. Once deactivated, the offer will become unavailable to new subscribers, but existing subscribers will maintain their subscription */
+  deactivateSubscriptionOfferRequest?: DeactivateSubscriptionOfferRequest;
+}
+
+export const UpdateSubscriptionOfferStateRequest: Schema.Schema<UpdateSubscriptionOfferStateRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activateSubscriptionOfferRequest: Schema.optional(
+      ActivateSubscriptionOfferRequest,
+    ),
+    deactivateSubscriptionOfferRequest: Schema.optional(
+      DeactivateSubscriptionOfferRequest,
+    ),
+  }).annotate({ identifier: "UpdateSubscriptionOfferStateRequest" });
+
+export interface BatchUpdateSubscriptionOfferStatesRequest {
+  /** Required. The update request list of up to 100 elements. All requests must update different offers. */
+  requests?: ReadonlyArray<UpdateSubscriptionOfferStateRequest>;
+}
+
+export const BatchUpdateSubscriptionOfferStatesRequest: Schema.Schema<BatchUpdateSubscriptionOfferStatesRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(UpdateSubscriptionOfferStateRequest),
+    ),
+  }).annotate({ identifier: "BatchUpdateSubscriptionOfferStatesRequest" });
+
+export interface PurchaseStateContext {
+  /** Output only. The purchase state of the purchase. */
+  purchaseState?:
+    | "PURCHASE_STATE_UNSPECIFIED"
+    | "PURCHASED"
+    | "CANCELLED"
+    | "PENDING"
+    | (string & {});
+}
+
+export const PurchaseStateContext: Schema.Schema<PurchaseStateContext> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    purchaseState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PurchaseStateContext" });
+
+export interface RegionsVersion {
+  /** Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. */
+  version?: string;
+}
+
+export const RegionsVersion: Schema.Schema<RegionsVersion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RegionsVersion" });
+
+export interface OneTimeProductDiscountedOffer {
+  /** Time when the offer will start being available. */
+  startTime?: string;
+  /** Time when the offer will stop being available. */
+  endTime?: string;
+  /** Optional. The number of times this offer can be redeemed. If unset or set to 0, allows for unlimited offer redemptions. Otherwise must be a number between 1 and 50 inclusive. */
+  redemptionLimit?: string;
+}
+
+export const OneTimeProductDiscountedOffer: Schema.Schema<OneTimeProductDiscountedOffer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    redemptionLimit: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OneTimeProductDiscountedOffer" });
+
+export interface OneTimeProductOfferNoPriceOverrideOptions {}
+
+export const OneTimeProductOfferNoPriceOverrideOptions: Schema.Schema<OneTimeProductOfferNoPriceOverrideOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "OneTimeProductOfferNoPriceOverrideOptions",
+  });
+
+export interface OneTimeProductOfferRegionalPricingAndAvailabilityConfig {
+  /** Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g., "US". */
+  regionCode?: string;
+  /** Required. The availability for this region. */
+  availability?:
+    | "AVAILABILITY_UNSPECIFIED"
+    | "AVAILABLE"
+    | "NO_LONGER_AVAILABLE"
+    | (string & {});
+  /** The fraction of the purchase option price that the user pays for this offer. For example, if the purchase option price for this region is $12, then a 50% discount would correspond to a price of $6. The discount must be specified as a fraction strictly larger than 0 and strictly smaller than 1. The resulting price will be rounded to the nearest billable unit (e.g. cents for USD). The relative discount is considered invalid if the discounted price ends up being smaller than the minimum price allowed in this region. */
+  relativeDiscount?: number;
+  /** The price defined in the purchase option for this region will be used. */
+  noOverride?: OneTimeProductOfferNoPriceOverrideOptions;
+  /** The absolute value of the discount that is subtracted from the purchase option price. It should be between 0 and the purchase option price. */
+  absoluteDiscount?: Money;
+}
+
+export const OneTimeProductOfferRegionalPricingAndAvailabilityConfig: Schema.Schema<OneTimeProductOfferRegionalPricingAndAvailabilityConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionCode: Schema.optional(Schema.String),
+    availability: Schema.optional(Schema.String),
+    relativeDiscount: Schema.optional(Schema.Number),
+    noOverride: Schema.optional(OneTimeProductOfferNoPriceOverrideOptions),
+    absoluteDiscount: Schema.optional(Money),
+  }).annotate({
+    identifier: "OneTimeProductOfferRegionalPricingAndAvailabilityConfig",
+  });
+
+export interface OneTimeProductPreOrderOffer {
+  /** Required. Time when the pre-order will start being available. */
+  startTime?: string;
+  /** Required. Time on which the product associated with the pre-order will be released and the pre-order orders fulfilled. */
+  releaseTime?: string;
+  /** Required. Time when the pre-order will stop being available. */
+  endTime?: string;
+  /** Required. Immutable. Specifies how price changes affect pre-existing pre-orders. */
+  priceChangeBehavior?:
+    | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_UNSPECIFIED"
+    | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_TWO_POINT_LOWEST"
+    | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_NEW_ORDERS_ONLY"
+    | (string & {});
+}
+
+export const OneTimeProductPreOrderOffer: Schema.Schema<OneTimeProductPreOrderOffer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    releaseTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    priceChangeBehavior: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OneTimeProductPreOrderOffer" });
+
+export interface OneTimeProductOffer {
+  /** Required. Immutable. The ID of this product offer. Must be unique within the purchase option. It must start with a number or lower-case letter, and can only contain lower-case letters (a-z), numbers (0-9), and hyphens (-). The maximum length is 63 characters. */
+  offerId?: string;
+  /** A discounted offer. */
+  discountedOffer?: OneTimeProductDiscountedOffer;
+  /** Output only. The version of the regions configuration that was used to generate the one-time product offer. */
+  regionsVersion?: RegionsVersion;
+  /** Required. Immutable. The ID of the parent product this offer belongs to. */
+  productId?: string;
+  /** Set of regional pricing and availability information for this offer. Must not have duplicate entries with the same region_code. */
+  regionalPricingAndAvailabilityConfigs?: ReadonlyArray<OneTimeProductOfferRegionalPricingAndAvailabilityConfig>;
+  /** Required. Immutable. The ID of the purchase option to which this offer is an extension. */
+  purchaseOptionId?: string;
+  /** Required. Immutable. The package name of the app the parent product belongs to. */
+  packageName?: string;
+  /** Output only. The current state of this offer. This field cannot be changed by updating the resource. Use the dedicated endpoints instead. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "DRAFT"
+    | "ACTIVE"
+    | "CANCELLED"
+    | "INACTIVE"
+    | (string & {});
+  /** A pre-order offer. */
+  preOrderOffer?: OneTimeProductPreOrderOffer;
+  /** Optional. List of up to 20 custom tags specified for this offer, and returned to the app through the billing library. */
+  offerTags?: ReadonlyArray<OfferTag>;
+}
+
+export const OneTimeProductOffer: Schema.Schema<OneTimeProductOffer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offerId: Schema.optional(Schema.String),
+    discountedOffer: Schema.optional(OneTimeProductDiscountedOffer),
+    regionsVersion: Schema.optional(RegionsVersion),
+    productId: Schema.optional(Schema.String),
+    regionalPricingAndAvailabilityConfigs: Schema.optional(
+      Schema.Array(OneTimeProductOfferRegionalPricingAndAvailabilityConfig),
+    ),
+    purchaseOptionId: Schema.optional(Schema.String),
+    packageName: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    preOrderOffer: Schema.optional(OneTimeProductPreOrderOffer),
+    offerTags: Schema.optional(Schema.Array(OfferTag)),
+  }).annotate({ identifier: "OneTimeProductOffer" });
+
+export interface UpdateOneTimeProductOfferRequest {
+  /** Optional. The latency tolerance for the propagation of this offer update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+  /** Required. The version of the available regions being used for the offer. */
+  regionsVersion?: RegionsVersion;
+  /** Optional. If set to true, and the offer with the given package_name, product_id, purchase_option_id and offer_id doesn't exist, an offer will be created. If a new offer is created, the update_mask is ignored. */
+  allowMissing?: boolean;
+  /** Required. The list of fields to be updated. */
+  updateMask?: string;
+  /** Required. The one-time product offer to update. */
+  oneTimeProductOffer?: OneTimeProductOffer;
+}
+
+export const UpdateOneTimeProductOfferRequest: Schema.Schema<UpdateOneTimeProductOfferRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latencyTolerance: Schema.optional(Schema.String),
+    regionsVersion: Schema.optional(RegionsVersion),
+    allowMissing: Schema.optional(Schema.Boolean),
+    updateMask: Schema.optional(Schema.String),
+    oneTimeProductOffer: Schema.optional(OneTimeProductOffer),
+  }).annotate({ identifier: "UpdateOneTimeProductOfferRequest" });
+
+export interface AddTargetingResponse {}
+
+export const AddTargetingResponse: Schema.Schema<AddTargetingResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "AddTargetingResponse",
+  });
+
+export interface Image {
+  /** A sha1 hash of the image. */
+  sha1?: string;
+  /** A unique id representing this image. */
+  id?: string;
+  /** A URL that will serve a preview of the image. */
+  url?: string;
+  /** A sha256 hash of the image. */
+  sha256?: string;
+}
+
+export const Image: Schema.Schema<Image> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sha1: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    url: Schema.optional(Schema.String),
+    sha256: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Image" });
+
+export interface SubscriptionListing {
+  /** Required. The title of this subscription in the language of this listing. Plain text. */
+  title?: string;
+  /** A list of benefits shown to the user on platforms such as the Play Store and in restoration flows in the language of this listing. Plain text. Ordered list of at most four benefits. */
+  benefits?: ReadonlyArray<string>;
+  /** Required. The language of this listing, as defined by BCP-47, e.g. "en-US". */
+  languageCode?: string;
+  /** The description of this subscription in the language of this listing. Maximum length - 200 characters. Plain text. */
+  description?: string;
+}
+
+export const SubscriptionListing: Schema.Schema<SubscriptionListing> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    benefits: Schema.optional(Schema.Array(Schema.String)),
+    languageCode: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SubscriptionListing" });
+
+export interface RestrictedPaymentCountries {
+  /** Required. Region codes to impose payment restrictions on, as defined by ISO 3166-2, e.g. "US". */
+  regionCodes?: ReadonlyArray<string>;
+}
+
+export const RestrictedPaymentCountries: Schema.Schema<RestrictedPaymentCountries> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionCodes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "RestrictedPaymentCountries" });
+
+export interface OtherRegionsBasePlanConfig {
+  /** Required. Price in USD to use for any new locations Play may launch in. */
+  usdPrice?: Money;
+  /** Whether the base plan is available for new subscribers in any new locations Play may launch in. If not specified, this will default to false. */
+  newSubscriberAvailability?: boolean;
+  /** Required. Price in EUR to use for any new locations Play may launch in. */
+  eurPrice?: Money;
+}
+
+export const OtherRegionsBasePlanConfig: Schema.Schema<OtherRegionsBasePlanConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    usdPrice: Schema.optional(Money),
+    newSubscriberAvailability: Schema.optional(Schema.Boolean),
+    eurPrice: Schema.optional(Money),
+  }).annotate({ identifier: "OtherRegionsBasePlanConfig" });
+
+export interface AutoRenewingBasePlanType {
+  /** Grace period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and between P0D and the lesser of 30D and base plan billing period. If not specified, a default value will be used based on the billing period. The sum of gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive. */
+  gracePeriodDuration?: string;
+  /** Optional. Custom account hold period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and between P0D and P60D. An empty field represents a recommended account hold, calculated as 60 days minus grace period. The sum of gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive. */
+  accountHoldDuration?: string;
+  /** Subscription offer id which is legacy compatible. The backward compatible subscription offer is returned by the Google Play Billing Library deprecated method querySkuDetailsAsync(). Only one subscription offer can be marked as legacy compatible for a given renewing base plan. To have no Subscription offer as legacy compatible set this field as empty string. */
+  legacyCompatibleSubscriptionOfferId?: string;
+  /** Whether users should be able to resubscribe to this base plan in Google Play surfaces. Defaults to RESUBSCRIBE_STATE_ACTIVE if not specified. */
+  resubscribeState?:
+    | "RESUBSCRIBE_STATE_UNSPECIFIED"
+    | "RESUBSCRIBE_STATE_ACTIVE"
+    | "RESUBSCRIBE_STATE_INACTIVE"
+    | (string & {});
+  /** The proration mode for the base plan determines what happens when a user switches to this plan from another base plan. If unspecified, defaults to CHARGE_ON_NEXT_BILLING_DATE. */
+  prorationMode?:
+    | "SUBSCRIPTION_PRORATION_MODE_UNSPECIFIED"
+    | "SUBSCRIPTION_PRORATION_MODE_CHARGE_ON_NEXT_BILLING_DATE"
+    | "SUBSCRIPTION_PRORATION_MODE_CHARGE_FULL_PRICE_IMMEDIATELY"
+    | (string & {});
+  /** Whether the renewing base plan is backward compatible. The backward compatible base plan is returned by the Google Play Billing Library deprecated method querySkuDetailsAsync(). Only one renewing base plan can be marked as legacy compatible for a given subscription. */
+  legacyCompatible?: boolean;
+  /** Required. Immutable. Subscription period, specified in ISO 8601 format. For a list of acceptable billing periods, refer to the help center. The duration is immutable after the base plan is created. */
+  billingPeriodDuration?: string;
+}
+
+export const AutoRenewingBasePlanType: Schema.Schema<AutoRenewingBasePlanType> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gracePeriodDuration: Schema.optional(Schema.String),
+    accountHoldDuration: Schema.optional(Schema.String),
+    legacyCompatibleSubscriptionOfferId: Schema.optional(Schema.String),
+    resubscribeState: Schema.optional(Schema.String),
+    prorationMode: Schema.optional(Schema.String),
+    legacyCompatible: Schema.optional(Schema.Boolean),
+    billingPeriodDuration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AutoRenewingBasePlanType" });
+
+export interface InstallmentsBasePlanType {
+  /** Whether users should be able to resubscribe to this base plan in Google Play surfaces. Defaults to RESUBSCRIBE_STATE_ACTIVE if not specified. */
+  resubscribeState?:
+    | "RESUBSCRIBE_STATE_UNSPECIFIED"
+    | "RESUBSCRIBE_STATE_ACTIVE"
+    | "RESUBSCRIBE_STATE_INACTIVE"
+    | (string & {});
+  /** Grace period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and between P0D and the lesser of 30D and base plan billing period. If not specified, a default value will be used based on the billing period. The sum of gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive. */
+  gracePeriodDuration?: string;
+  /** Optional. Custom account hold period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and between P0D and P60D. An empty field represents a recommended account hold, calculated as 60 days minus grace period. The sum of gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive. */
+  accountHoldDuration?: string;
+  /** Required. Immutable. Subscription period, specified in ISO 8601 format. For a list of acceptable billing periods, refer to the help center. The duration is immutable after the base plan is created. */
+  billingPeriodDuration?: string;
+  /** Required. Immutable. The number of payments the user is committed to. It is immutable after the base plan is created. */
+  committedPaymentsCount?: number;
+  /** Required. Immutable. Installments base plan renewal type. Determines the behavior at the end of the initial commitment. The renewal type is immutable after the base plan is created. */
+  renewalType?:
+    | "RENEWAL_TYPE_UNSPECIFIED"
+    | "RENEWAL_TYPE_RENEWS_WITHOUT_COMMITMENT"
+    | "RENEWAL_TYPE_RENEWS_WITH_COMMITMENT"
+    | (string & {});
+  /** The proration mode for the base plan determines what happens when a user switches to this plan from another base plan. If unspecified, defaults to CHARGE_ON_NEXT_BILLING_DATE. */
+  prorationMode?:
+    | "SUBSCRIPTION_PRORATION_MODE_UNSPECIFIED"
+    | "SUBSCRIPTION_PRORATION_MODE_CHARGE_ON_NEXT_BILLING_DATE"
+    | "SUBSCRIPTION_PRORATION_MODE_CHARGE_FULL_PRICE_IMMEDIATELY"
+    | (string & {});
+}
+
+export const InstallmentsBasePlanType: Schema.Schema<InstallmentsBasePlanType> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resubscribeState: Schema.optional(Schema.String),
+    gracePeriodDuration: Schema.optional(Schema.String),
+    accountHoldDuration: Schema.optional(Schema.String),
+    billingPeriodDuration: Schema.optional(Schema.String),
+    committedPaymentsCount: Schema.optional(Schema.Number),
+    renewalType: Schema.optional(Schema.String),
+    prorationMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InstallmentsBasePlanType" });
+
+export interface PrepaidBasePlanType {
+  /** Whether users should be able to extend this prepaid base plan in Google Play surfaces. Defaults to TIME_EXTENSION_ACTIVE if not specified. */
+  timeExtension?:
+    | "TIME_EXTENSION_UNSPECIFIED"
+    | "TIME_EXTENSION_ACTIVE"
+    | "TIME_EXTENSION_INACTIVE"
+    | (string & {});
+  /** Required. Immutable. Subscription period, specified in ISO 8601 format. For a list of acceptable billing periods, refer to the help center. The duration is immutable after the base plan is created. */
+  billingPeriodDuration?: string;
+}
+
+export const PrepaidBasePlanType: Schema.Schema<PrepaidBasePlanType> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeExtension: Schema.optional(Schema.String),
+    billingPeriodDuration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PrepaidBasePlanType" });
+
+export interface RegionalBasePlanConfig {
+  /** Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US". */
+  regionCode?: string;
+  /** Whether the base plan in the specified region is available for new subscribers. Existing subscribers will not have their subscription canceled if this value is set to false. If not specified, this will default to false. */
+  newSubscriberAvailability?: boolean;
+  /** The price of the base plan in the specified region. Must be set if the base plan is available to new subscribers. Must be set in the currency that is linked to the specified region. */
+  price?: Money;
+}
+
+export const RegionalBasePlanConfig: Schema.Schema<RegionalBasePlanConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionCode: Schema.optional(Schema.String),
+    newSubscriberAvailability: Schema.optional(Schema.Boolean),
+    price: Schema.optional(Money),
+  }).annotate({ identifier: "RegionalBasePlanConfig" });
+
+export interface BasePlan {
+  /** Pricing information for any new locations Play may launch in the future. If omitted, the BasePlan will not be automatically available any new locations Play may launch in the future. */
+  otherRegionsConfig?: OtherRegionsBasePlanConfig;
+  /** Set when the base plan automatically renews at a regular interval. */
+  autoRenewingBasePlanType?: AutoRenewingBasePlanType;
+  /** Required. Immutable. The unique identifier of this base plan. Must be unique within the subscription, and conform with RFC-1034. That is, this ID can only contain lower-case letters (a-z), numbers (0-9), and hyphens (-), and be at most 63 characters. */
+  basePlanId?: string;
+  /** Output only. The state of the base plan, i.e. whether it's active. Draft and inactive base plans can be activated or deleted. Active base plans can be made inactive. Inactive base plans can be canceled. This field cannot be changed by updating the resource. Use the dedicated endpoints instead. */
+  state?: "STATE_UNSPECIFIED" | "DRAFT" | "ACTIVE" | "INACTIVE" | (string & {});
+  /** List of up to 20 custom tags specified for this base plan, and returned to the app through the billing library. Subscription offers for this base plan will also receive these offer tags in the billing library. */
+  offerTags?: ReadonlyArray<OfferTag>;
+  /** Set for installments base plans where a user is committed to a specified number of payments. */
+  installmentsBasePlanType?: InstallmentsBasePlanType;
+  /** Set when the base plan does not automatically renew at the end of the billing period. */
+  prepaidBasePlanType?: PrepaidBasePlanType;
+  /** Region-specific information for this base plan. */
+  regionalConfigs?: ReadonlyArray<RegionalBasePlanConfig>;
+}
+
+export const BasePlan: Schema.Schema<BasePlan> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    otherRegionsConfig: Schema.optional(OtherRegionsBasePlanConfig),
+    autoRenewingBasePlanType: Schema.optional(AutoRenewingBasePlanType),
+    basePlanId: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    offerTags: Schema.optional(Schema.Array(OfferTag)),
+    installmentsBasePlanType: Schema.optional(InstallmentsBasePlanType),
+    prepaidBasePlanType: Schema.optional(PrepaidBasePlanType),
+    regionalConfigs: Schema.optional(Schema.Array(RegionalBasePlanConfig)),
+  }).annotate({ identifier: "BasePlan" });
+
+export interface RegionalProductAgeRatingInfo {
+  /** The age rating tier of a product for the given region. */
+  productAgeRatingTier?:
+    | "PRODUCT_AGE_RATING_TIER_UNKNOWN"
+    | "PRODUCT_AGE_RATING_TIER_EVERYONE"
+    | "PRODUCT_AGE_RATING_TIER_THIRTEEN_AND_ABOVE"
+    | "PRODUCT_AGE_RATING_TIER_SIXTEEN_AND_ABOVE"
+    | "PRODUCT_AGE_RATING_TIER_EIGHTEEN_AND_ABOVE"
+    | (string & {});
+  /** Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US". */
+  regionCode?: string;
+}
+
+export const RegionalProductAgeRatingInfo: Schema.Schema<RegionalProductAgeRatingInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productAgeRatingTier: Schema.optional(Schema.String),
+    regionCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RegionalProductAgeRatingInfo" });
+
+export interface RegionalTaxRateInfo {
+  /** To collect communications or amusement taxes in the United States, choose the appropriate tax category. [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498#streaming_tax). */
+  streamingTaxType?:
+    | "STREAMING_TAX_TYPE_UNSPECIFIED"
+    | "STREAMING_TAX_TYPE_TELCO_VIDEO_RENTAL"
+    | "STREAMING_TAX_TYPE_TELCO_VIDEO_SALES"
+    | "STREAMING_TAX_TYPE_TELCO_VIDEO_MULTI_CHANNEL"
+    | "STREAMING_TAX_TYPE_TELCO_AUDIO_RENTAL"
+    | "STREAMING_TAX_TYPE_TELCO_AUDIO_SALES"
+    | "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL"
+    | (string & {});
+  /** You must tell us if your app contains streaming products to correctly charge US state and local sales tax. Field only supported in the United States. */
+  eligibleForStreamingServiceTaxRate?: boolean;
+  /** Tax tier to specify reduced tax rate. Developers who sell digital news, magazines, newspapers, books, or audiobooks in various regions may be eligible for reduced tax rates. [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498). */
+  taxTier?:
+    | "TAX_TIER_UNSPECIFIED"
+    | "TAX_TIER_BOOKS_1"
+    | "TAX_TIER_NEWS_1"
+    | "TAX_TIER_NEWS_2"
+    | "TAX_TIER_MUSIC_OR_AUDIO_1"
+    | "TAX_TIER_LIVE_OR_BROADCAST_1"
+    | (string & {});
+}
+
+export const RegionalTaxRateInfo: Schema.Schema<RegionalTaxRateInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    streamingTaxType: Schema.optional(Schema.String),
+    eligibleForStreamingServiceTaxRate: Schema.optional(Schema.Boolean),
+    taxTier: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RegionalTaxRateInfo" });
+
+export interface SubscriptionTaxAndComplianceSettings {
+  /** Regional age rating information. Currently this field is only supported for region code `US`. */
+  regionalProductAgeRatingInfos?: ReadonlyArray<RegionalProductAgeRatingInfo>;
+  /** Digital content or service classification for products distributed to users in the European Economic Area (EEA). The withdrawal regime under EEA consumer laws depends on this classification. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/10463498) for more information. */
+  eeaWithdrawalRightType?:
+    | "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
+    | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
+    | "WITHDRAWAL_RIGHT_SERVICE"
+    | (string & {});
+  /** A mapping from region code to tax rate details. The keys are region codes as defined by Unicode's "CLDR". */
+  taxRateInfoByRegionCode?: Record<string, RegionalTaxRateInfo>;
+  /** Product tax category code to assign to the subscription. Product tax category determines the transaction tax rates applied to the subscription. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information. */
+  productTaxCategoryCode?: string;
+  /** Whether this subscription is declared as a product representing a tokenized digital asset. */
+  isTokenizedDigitalAsset?: boolean;
+}
+
+export const SubscriptionTaxAndComplianceSettings: Schema.Schema<SubscriptionTaxAndComplianceSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionalProductAgeRatingInfos: Schema.optional(
+      Schema.Array(RegionalProductAgeRatingInfo),
+    ),
+    eeaWithdrawalRightType: Schema.optional(Schema.String),
+    taxRateInfoByRegionCode: Schema.optional(
+      Schema.Record(Schema.String, RegionalTaxRateInfo),
+    ),
+    productTaxCategoryCode: Schema.optional(Schema.String),
+    isTokenizedDigitalAsset: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "SubscriptionTaxAndComplianceSettings" });
+
+export interface Subscription {
+  /** Required. List of localized listings for this subscription. Must contain at least an entry for the default language of the parent app. */
+  listings?: ReadonlyArray<SubscriptionListing>;
+  /** Immutable. Package name of the parent app. */
+  packageName?: string;
+  /** Output only. Deprecated: subscription archiving is not supported. */
+  archived?: boolean;
+  /** Immutable. Unique product ID of the product. Unique within the parent app. Product IDs must be composed of lower-case letters (a-z), numbers (0-9), underscores (_) and dots (.). It must start with a lower-case letter or number, and be between 1 and 40 (inclusive) characters in length. */
+  productId?: string;
+  /** Optional. Countries where the purchase of this subscription is restricted to payment methods registered in the same country. If empty, no payment location restrictions are imposed. */
+  restrictedPaymentCountries?: RestrictedPaymentCountries;
+  /** The set of base plans for this subscription. Represents the prices and duration of the subscription if no other offers apply. */
+  basePlans?: ReadonlyArray<BasePlan>;
+  /** Details about taxes and legal compliance. */
+  taxAndComplianceSettings?: SubscriptionTaxAndComplianceSettings;
+}
+
+export const Subscription: Schema.Schema<Subscription> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    listings: Schema.optional(Schema.Array(SubscriptionListing)),
+    packageName: Schema.optional(Schema.String),
+    archived: Schema.optional(Schema.Boolean),
+    productId: Schema.optional(Schema.String),
+    restrictedPaymentCountries: Schema.optional(RestrictedPaymentCountries),
+    basePlans: Schema.optional(Schema.Array(BasePlan)),
+    taxAndComplianceSettings: Schema.optional(
+      SubscriptionTaxAndComplianceSettings,
+    ),
+  }).annotate({ identifier: "Subscription" });
+
+export interface BatchGetSubscriptionsResponse {
+  /** The list of requested subscriptions, in the same order as the request. */
+  subscriptions?: ReadonlyArray<Subscription>;
+}
+
+export const BatchGetSubscriptionsResponse: Schema.Schema<BatchGetSubscriptionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptions: Schema.optional(Schema.Array(Subscription)),
+  }).annotate({ identifier: "BatchGetSubscriptionsResponse" });
+
+export interface ConvertedRegionPrice {
+  /** The converted price tax inclusive. */
+  price?: Money;
+  /** The region code of the region. */
+  regionCode?: string;
+  /** The tax amount of the converted price. */
+  taxAmount?: Money;
+}
+
+export const ConvertedRegionPrice: Schema.Schema<ConvertedRegionPrice> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    price: Schema.optional(Money),
+    regionCode: Schema.optional(Schema.String),
+    taxAmount: Schema.optional(Money),
+  }).annotate({ identifier: "ConvertedRegionPrice" });
+
+export interface PaidAppDetails {}
+
+export const PaidAppDetails: Schema.Schema<PaidAppDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "PaidAppDetails",
+  });
+
+export interface RefundDetails {
+  /** The total amount refunded, including tax. */
+  total?: Money;
+  /** The amount of tax refunded. */
+  tax?: Money;
+}
+
+export const RefundDetails: Schema.Schema<RefundDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    total: Schema.optional(Money),
+    tax: Schema.optional(Money),
+  }).annotate({ identifier: "RefundDetails" });
+
+export interface Abi {
+  /** Alias for an abi. */
+  alias?:
+    | "UNSPECIFIED_CPU_ARCHITECTURE"
+    | "ARMEABI"
+    | "ARMEABI_V7A"
+    | "ARM64_V8A"
+    | "X86"
+    | "X86_64"
+    | "RISCV64"
+    | (string & {});
+}
+
+export const Abi: Schema.Schema<Abi> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alias: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Abi" });
+
+export interface MultiAbi {
+  /** A list of targeted ABIs, as represented by the Android Platform */
+  abi?: ReadonlyArray<Abi>;
+}
+
+export const MultiAbi: Schema.Schema<MultiAbi> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    abi: Schema.optional(Schema.Array(Abi)),
+  }).annotate({ identifier: "MultiAbi" });
+
+export interface PendingCancellation {}
+
+export const PendingCancellation: Schema.Schema<PendingCancellation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "PendingCancellation",
+  });
+
+export interface FreeTrialDetails {}
+
+export const FreeTrialDetails: Schema.Schema<FreeTrialDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "FreeTrialDetails",
+  });
+
+export interface BaseDetails {}
+
+export const BaseDetails: Schema.Schema<BaseDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "BaseDetails",
+  });
+
+export interface IntroductoryPriceDetails {}
+
+export const IntroductoryPriceDetails: Schema.Schema<IntroductoryPriceDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "IntroductoryPriceDetails",
+  });
+
+export interface ProrationPeriodDetails {
+  /** Represent the original offer phase from the purchased the line item if the proration period contains any of them. For example, a proration period from CHARGE_FULL_PRICE plan change may merge the 1st offer phase of the subscription offer of the new product user purchased. In this case, the original offer phase will be set here. */
+  originalOfferPhase?:
+    | "OFFER_PHASE_UNSPECIFIED"
+    | "BASE"
+    | "INTRODUCTORY"
+    | "FREE_TRIAL"
+    | (string & {});
+}
+
+export const ProrationPeriodDetails: Schema.Schema<ProrationPeriodDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalOfferPhase: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProrationPeriodDetails" });
+
+export interface OfferPhaseDetails {
+  /** The order funds a free trial period. */
+  freeTrialDetails?: FreeTrialDetails;
+  /** The order funds a base price period. */
+  baseDetails?: BaseDetails;
+  /** The order funds an introductory pricing period. */
+  introductoryPriceDetails?: IntroductoryPriceDetails;
+  /** The order funds a proration period. */
+  prorationPeriodDetails?: ProrationPeriodDetails;
+}
+
+export const OfferPhaseDetails: Schema.Schema<OfferPhaseDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    freeTrialDetails: Schema.optional(FreeTrialDetails),
+    baseDetails: Schema.optional(BaseDetails),
+    introductoryPriceDetails: Schema.optional(IntroductoryPriceDetails),
+    prorationPeriodDetails: Schema.optional(ProrationPeriodDetails),
+  }).annotate({ identifier: "OfferPhaseDetails" });
+
+export interface SubscriptionDetails {
+  /** The pricing phase for the billing period funded by this order. Deprecated. Use offer_phase_details instead. */
+  offerPhase?:
+    | "OFFER_PHASE_UNSPECIFIED"
+    | "BASE"
+    | "INTRODUCTORY"
+    | "FREE_TRIAL"
+    | (string & {});
+  /** The end of the billing period funded by this order. This is a snapshot of the billing/service period end time at the moment the order was processed, and should be used only for accounting. To get the current end time of the subscription service period, use purchases.subscriptionsv2.get. */
+  servicePeriodEndTime?: string;
+  /** The offer ID for the current subscription offer. */
+  offerId?: string;
+  /** The base plan ID of the subscription. */
+  basePlanId?: string;
+  /** The start of the billing period funded by this order. This is a snapshot of the billing/service period start time at the moment the order was processed, and should be used only for accounting. */
+  servicePeriodStartTime?: string;
+  /** The pricing phase details for the entitlement period funded by this order. */
+  offerPhaseDetails?: OfferPhaseDetails;
+}
+
+export const SubscriptionDetails: Schema.Schema<SubscriptionDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offerPhase: Schema.optional(Schema.String),
+    servicePeriodEndTime: Schema.optional(Schema.String),
+    offerId: Schema.optional(Schema.String),
+    basePlanId: Schema.optional(Schema.String),
+    servicePeriodStartTime: Schema.optional(Schema.String),
+    offerPhaseDetails: Schema.optional(OfferPhaseDetails),
+  }).annotate({ identifier: "SubscriptionDetails" });
+
+export interface ManagedProductTaxAndComplianceSettings {
+  /** Digital content or service classification for products distributed to users in the European Economic Area (EEA). The withdrawal regime under EEA consumer laws depends on this classification. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/10463498) for more information. */
+  eeaWithdrawalRightType?:
+    | "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
+    | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
+    | "WITHDRAWAL_RIGHT_SERVICE"
+    | (string & {});
+  /** Whether this in-app product is declared as a product representing a tokenized digital asset. */
+  isTokenizedDigitalAsset?: boolean;
+  /** A mapping from region code to tax rate details. The keys are region codes as defined by Unicode's "CLDR". */
+  taxRateInfoByRegionCode?: Record<string, RegionalTaxRateInfo>;
+  /** Product tax category code to assign to the in-app product. Product tax category determines the transaction tax rates applied to the product. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information. */
+  productTaxCategoryCode?: string;
+  /** Regional age rating information. Currently this field is only supported for region code `US`. */
+  regionalProductAgeRatingInfos?: ReadonlyArray<RegionalProductAgeRatingInfo>;
+}
+
+export const ManagedProductTaxAndComplianceSettings: Schema.Schema<ManagedProductTaxAndComplianceSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eeaWithdrawalRightType: Schema.optional(Schema.String),
+    isTokenizedDigitalAsset: Schema.optional(Schema.Boolean),
+    taxRateInfoByRegionCode: Schema.optional(
+      Schema.Record(Schema.String, RegionalTaxRateInfo),
+    ),
+    productTaxCategoryCode: Schema.optional(Schema.String),
+    regionalProductAgeRatingInfos: Schema.optional(
+      Schema.Array(RegionalProductAgeRatingInfo),
+    ),
+  }).annotate({ identifier: "ManagedProductTaxAndComplianceSettings" });
+
+export interface InAppProductListing {
+  /** Description for the store listing. */
+  description?: string;
+  /** Title for the store listing. */
+  title?: string;
+  /** Localized entitlement benefits for a subscription. */
+  benefits?: ReadonlyArray<string>;
+}
+
+export const InAppProductListing: Schema.Schema<InAppProductListing> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    benefits: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "InAppProductListing" });
+
+export interface Price {
+  /** Price in 1/million of the currency base unit, represented as a string. */
+  priceMicros?: string;
+  /** 3 letter Currency code, as defined by ISO 4217. See java/com/google/common/money/CurrencyCode.java */
+  currency?: string;
+}
+
+export const Price: Schema.Schema<Price> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    priceMicros: Schema.optional(Schema.String),
+    currency: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Price" });
+
+export interface InAppProduct {
+  /** Stock-keeping-unit (SKU) of the product, unique within an app. */
+  sku?: string;
+  /** Trial period, specified in ISO 8601 format. Acceptable values are anything between P7D (seven days) and P999D (999 days). */
+  trialPeriod?: string;
+  /** Details about taxes and legal compliance. Only applicable to managed products. */
+  managedProductTaxesAndComplianceSettings?: ManagedProductTaxAndComplianceSettings;
+  /** The status of the product, e.g. whether it's active. */
+  status?: "statusUnspecified" | "active" | "inactive" | (string & {});
+  /** List of localized title and description data. Map key is the language of the localized data, as defined by BCP-47, e.g. "en-US". */
+  listings?: Record<string, InAppProductListing>;
+  /** Package name of the parent app. */
+  packageName?: string;
+  /** Grace period of the subscription, specified in ISO 8601 format. Allows developers to give their subscribers a grace period when the payment for the new recurrence period is declined. Acceptable values are P0D (zero days), P3D (three days), P7D (seven days), P14D (14 days), and P30D (30 days). */
+  gracePeriod?: string;
+  /** Default language of the localized data, as defined by BCP-47. e.g. "en-US". */
+  defaultLanguage?: string;
+  /** The type of the product, e.g. a recurring subscription. */
+  purchaseType?:
+    | "purchaseTypeUnspecified"
+    | "managedUser"
+    | "subscription"
+    | (string & {});
+  /** Subscription period, specified in ISO 8601 format. Acceptable values are P1W (one week), P1M (one month), P3M (three months), P6M (six months), and P1Y (one year). */
+  subscriptionPeriod?: string;
+  /** Default price. Cannot be zero, as in-app products are never free. Always in the developer's Checkout merchant currency. */
+  defaultPrice?: Price;
+  /** Prices per buyer region. None of these can be zero, as in-app products are never free. Map key is region code, as defined by ISO 3166-2. */
+  prices?: Record<string, Price>;
+  /** Details about taxes and legal compliance. Only applicable to subscription products. */
+  subscriptionTaxesAndComplianceSettings?: SubscriptionTaxAndComplianceSettings;
+}
+
+export const InAppProduct: Schema.Schema<InAppProduct> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.String),
+    trialPeriod: Schema.optional(Schema.String),
+    managedProductTaxesAndComplianceSettings: Schema.optional(
+      ManagedProductTaxAndComplianceSettings,
+    ),
+    status: Schema.optional(Schema.String),
+    listings: Schema.optional(
+      Schema.Record(Schema.String, InAppProductListing),
+    ),
+    packageName: Schema.optional(Schema.String),
+    gracePeriod: Schema.optional(Schema.String),
+    defaultLanguage: Schema.optional(Schema.String),
+    purchaseType: Schema.optional(Schema.String),
+    subscriptionPeriod: Schema.optional(Schema.String),
+    defaultPrice: Schema.optional(Price),
+    prices: Schema.optional(Schema.Record(Schema.String, Price)),
+    subscriptionTaxesAndComplianceSettings: Schema.optional(
+      SubscriptionTaxAndComplianceSettings,
+    ),
+  }).annotate({ identifier: "InAppProduct" });
+
+export interface InappproductsUpdateRequest {
+  /** The new in-app product. */
+  inappproduct?: InAppProduct;
+  /** Package name of the app. */
+  packageName?: string;
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+  /** Unique identifier for the in-app product. */
+  sku?: string;
+  /** If set to true, and the in-app product with the given package_name and sku doesn't exist, the in-app product will be created. */
+  allowMissing?: boolean;
+  /** If true the prices for all regions targeted by the parent app that don't have a price specified for this in-app product will be auto converted to the target currency based on the default price. Defaults to false. */
+  autoConvertMissingPrices?: boolean;
+}
+
+export const InappproductsUpdateRequest: Schema.Schema<InappproductsUpdateRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inappproduct: Schema.optional(InAppProduct),
+    packageName: Schema.optional(Schema.String),
+    latencyTolerance: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.String),
+    allowMissing: Schema.optional(Schema.Boolean),
+    autoConvertMissingPrices: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "InappproductsUpdateRequest" });
+
+export interface BatchGetOneTimeProductOffersResponse {
+  /** The list of updated one-time product offers, in the same order as the request. */
+  oneTimeProductOffers?: ReadonlyArray<OneTimeProductOffer>;
+}
+
+export const BatchGetOneTimeProductOffersResponse: Schema.Schema<BatchGetOneTimeProductOffersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oneTimeProductOffers: Schema.optional(Schema.Array(OneTimeProductOffer)),
+  }).annotate({ identifier: "BatchGetOneTimeProductOffersResponse" });
+
+export interface TestPurchaseContext {
+  /** The fop type of the test purchase. */
+  fopType?: "FOP_TYPE_UNSPECIFIED" | "TEST" | (string & {});
+}
+
+export const TestPurchaseContext: Schema.Schema<TestPurchaseContext> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fopType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TestPurchaseContext" });
+
+export interface SdkVersion {
+  /** Inclusive minimum value of an sdk version. */
+  min?: number;
+}
+
+export const SdkVersion: Schema.Schema<SdkVersion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    min: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "SdkVersion" });
+
+export interface BatchUpdateSubscriptionOfferStatesResponse {
+  /** The updated subscription offers list. */
+  subscriptionOffers?: ReadonlyArray<SubscriptionOffer>;
+}
+
+export const BatchUpdateSubscriptionOfferStatesResponse: Schema.Schema<BatchUpdateSubscriptionOfferStatesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionOffers: Schema.optional(Schema.Array(SubscriptionOffer)),
+  }).annotate({ identifier: "BatchUpdateSubscriptionOfferStatesResponse" });
+
+export interface MultiAbiTargeting {
+  /** Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other main splits. */
+  alternatives?: ReadonlyArray<MultiAbi>;
+  /** Value of a multi abi. */
+  value?: ReadonlyArray<MultiAbi>;
+}
+
+export const MultiAbiTargeting: Schema.Schema<MultiAbiTargeting> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alternatives: Schema.optional(Schema.Array(MultiAbi)),
+    value: Schema.optional(Schema.Array(MultiAbi)),
+  }).annotate({ identifier: "MultiAbiTargeting" });
+
+export interface CancelSurveyResult {
+  /** The reason the user selected in the cancel survey. */
+  reason?:
+    | "CANCEL_SURVEY_REASON_UNSPECIFIED"
+    | "CANCEL_SURVEY_REASON_NOT_ENOUGH_USAGE"
+    | "CANCEL_SURVEY_REASON_TECHNICAL_ISSUES"
+    | "CANCEL_SURVEY_REASON_COST_RELATED"
+    | "CANCEL_SURVEY_REASON_FOUND_BETTER_APP"
+    | "CANCEL_SURVEY_REASON_OTHERS"
+    | (string & {});
+  /** Only set for CANCEL_SURVEY_REASON_OTHERS. This is the user's freeform response to the survey. */
+  reasonUserInput?: string;
+}
+
+export const CancelSurveyResult: Schema.Schema<CancelSurveyResult> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reason: Schema.optional(Schema.String),
+    reasonUserInput: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CancelSurveyResult" });
+
+export interface UserInitiatedCancellation {
+  /** Information provided by the user when they complete the subscription cancellation flow (cancellation reason survey). */
+  cancelSurveyResult?: CancelSurveyResult;
+  /** The time at which the subscription was canceled by the user. The user might still have access to the subscription after this time. Use line_items.expiry_time to determine if a user still has access. */
+  cancelTime?: string;
+}
+
+export const UserInitiatedCancellation: Schema.Schema<UserInitiatedCancellation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cancelSurveyResult: Schema.optional(CancelSurveyResult),
+    cancelTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UserInitiatedCancellation" });
+
+export interface TokenPagination {
+  /** Tokens to pass to the standard list field 'page_token'. Whenever available, tokens are preferred over manipulating start_index. */
+  nextPageToken?: string;
+  previousPageToken?: string;
+}
+
+export const TokenPagination: Schema.Schema<TokenPagination> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    previousPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TokenPagination" });
+
+export interface VoidedPurchase {
+  /** The order id which uniquely identifies a one-time purchase, subscription purchase, or subscription renewal. */
+  orderId?: string;
+  /** The time at which the purchase was made, in milliseconds since the epoch (Jan 1, 1970). */
+  purchaseTimeMillis?: string;
+  /** The time at which the purchase was canceled/refunded/charged-back, in milliseconds since the epoch (Jan 1, 1970). */
+  voidedTimeMillis?: string;
+  /** The reason why the purchase was voided, possible values are: 0. Other 1. Remorse 2. Not_received 3. Defective 4. Accidental_purchase 5. Fraud 6. Friendly_fraud 7. Chargeback 8. Unacknowledged_purchase */
+  voidedReason?: number;
+  /** This kind represents a voided purchase object in the androidpublisher service. */
+  kind?: string;
+  /** The initiator of voided purchase, possible values are: 0. User 1. Developer 2. Google */
+  voidedSource?: number;
+  /** The token which uniquely identifies a one-time purchase or subscription. To uniquely identify subscription renewals use order_id (available starting from version 3 of the API). */
+  purchaseToken?: string;
+  /** The voided quantity as the result of a quantity-based partial refund. Voided purchases of quantity-based partial refunds may only be returned when includeQuantityBasedPartialRefund is set to true. */
+  voidedQuantity?: number;
+}
+
+export const VoidedPurchase: Schema.Schema<VoidedPurchase> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orderId: Schema.optional(Schema.String),
+    purchaseTimeMillis: Schema.optional(Schema.String),
+    voidedTimeMillis: Schema.optional(Schema.String),
+    voidedReason: Schema.optional(Schema.Number),
+    kind: Schema.optional(Schema.String),
+    voidedSource: Schema.optional(Schema.Number),
+    purchaseToken: Schema.optional(Schema.String),
+    voidedQuantity: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "VoidedPurchase" });
+
+export interface PageInfo {
+  /** Index of the first result returned in the current page. */
+  startIndex?: number;
+  /** Maximum number of results returned in one page. ! The number of results included in the API response. */
+  resultPerPage?: number;
+  /** Total number of results available on the backend ! The total number of results in the result set. */
+  totalResults?: number;
+}
+
+export const PageInfo: Schema.Schema<PageInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startIndex: Schema.optional(Schema.Number),
+    resultPerPage: Schema.optional(Schema.Number),
+    totalResults: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "PageInfo" });
+
+export interface VoidedPurchasesListResponse {
+  /** Pagination information for token pagination. */
+  tokenPagination?: TokenPagination;
+  voidedPurchases?: ReadonlyArray<VoidedPurchase>;
+  /** General pagination information. */
+  pageInfo?: PageInfo;
+}
+
+export const VoidedPurchasesListResponse: Schema.Schema<VoidedPurchasesListResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tokenPagination: Schema.optional(TokenPagination),
+    voidedPurchases: Schema.optional(Schema.Array(VoidedPurchase)),
+    pageInfo: Schema.optional(PageInfo),
+  }).annotate({ identifier: "VoidedPurchasesListResponse" });
+
+export interface DeviceTier {
+  /** Groups of devices included in this tier. These groups must be defined explicitly under device_groups in this configuration. */
+  deviceGroupNames?: ReadonlyArray<string>;
+  /** The priority level of the tier. Tiers are evaluated in descending order of level: the highest level tier has the highest priority. The highest tier matching a given device is selected for that device. You should use a contiguous range of levels for your tiers in a tier set; tier levels in a tier set must be unique. For instance, if your tier set has 4 tiers (including the global fallback), you should define tiers 1, 2 and 3 in this configuration. Note: tier 0 is implicitly defined as a global fallback and selected for devices that don't match any of the tiers explicitly defined here. You mustn't define level 0 explicitly in this configuration. */
+  level?: number;
+}
+
+export const DeviceTier: Schema.Schema<DeviceTier> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceGroupNames: Schema.optional(Schema.Array(Schema.String)),
+    level: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DeviceTier" });
+
+export interface DeviceTierSet {
+  /** Device tiers belonging to the set. */
+  deviceTiers?: ReadonlyArray<DeviceTier>;
+}
+
+export const DeviceTierSet: Schema.Schema<DeviceTierSet> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceTiers: Schema.optional(Schema.Array(DeviceTier)),
+  }).annotate({ identifier: "DeviceTierSet" });
+
+export interface UserCountrySet {
+  /** Country set name. */
+  name?: string;
+  /** List of country codes representing countries. A Country code is represented in ISO 3166 alpha-2 format. For Example:- "IT" for Italy, "GE" for Georgia. */
+  countryCodes?: ReadonlyArray<string>;
+}
+
+export const UserCountrySet: Schema.Schema<UserCountrySet> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    countryCodes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "UserCountrySet" });
+
+export interface SystemFeature {
+  /** The name of the feature. */
+  name?: string;
+}
+
+export const SystemFeature: Schema.Schema<SystemFeature> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SystemFeature" });
+
+export interface SystemOnChip {
+  /** Required. The model of the SoC, eg. "Tensor" Value of build property "ro.soc.model" https://developer.android.com/reference/android/os/Build#SOC_MODEL Required. */
+  model?: string;
+  /** Required. The designer of the SoC, eg. "Google" Value of build property "ro.soc.manufacturer" https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER Required. */
+  manufacturer?: string;
+}
+
+export const SystemOnChip: Schema.Schema<SystemOnChip> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    model: Schema.optional(Schema.String),
+    manufacturer: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SystemOnChip" });
+
+export interface DeviceId {
+  /** Value of Build.BRAND. */
+  buildBrand?: string;
+  /** Value of Build.DEVICE. */
+  buildDevice?: string;
+}
+
+export const DeviceId: Schema.Schema<DeviceId> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    buildBrand: Schema.optional(Schema.String),
+    buildDevice: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeviceId" });
+
+export interface DeviceRam {
+  /** Minimum RAM in bytes (bound included). */
+  minBytes?: string;
+  /** Maximum RAM in bytes (bound excluded). */
+  maxBytes?: string;
+}
+
+export const DeviceRam: Schema.Schema<DeviceRam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minBytes: Schema.optional(Schema.String),
+    maxBytes: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeviceRam" });
+
+export interface DeviceSelector {
+  /** A device that has any of these system features is excluded by this selector, even if it matches all other conditions. */
+  forbiddenSystemFeatures?: ReadonlyArray<SystemFeature>;
+  /** Optional. The SoCs included by this selector. Only works for Android S+ devices. */
+  systemOnChips?: ReadonlyArray<SystemOnChip>;
+  /** Device models excluded by this selector, even if they match all other conditions. */
+  excludedDeviceIds?: ReadonlyArray<DeviceId>;
+  /** Device models included by this selector. */
+  includedDeviceIds?: ReadonlyArray<DeviceId>;
+  /** Conditions on the device's RAM. */
+  deviceRam?: DeviceRam;
+  /** A device needs to have all these system features to be included by the selector. */
+  requiredSystemFeatures?: ReadonlyArray<SystemFeature>;
+}
+
+export const DeviceSelector: Schema.Schema<DeviceSelector> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    forbiddenSystemFeatures: Schema.optional(Schema.Array(SystemFeature)),
+    systemOnChips: Schema.optional(Schema.Array(SystemOnChip)),
+    excludedDeviceIds: Schema.optional(Schema.Array(DeviceId)),
+    includedDeviceIds: Schema.optional(Schema.Array(DeviceId)),
+    deviceRam: Schema.optional(DeviceRam),
+    requiredSystemFeatures: Schema.optional(Schema.Array(SystemFeature)),
+  }).annotate({ identifier: "DeviceSelector" });
+
+export interface DeviceGroup {
+  /** Device selectors for this group. A device matching any of the selectors is included in this group. */
+  deviceSelectors?: ReadonlyArray<DeviceSelector>;
+  /** The name of the group. */
+  name?: string;
+}
+
+export const DeviceGroup: Schema.Schema<DeviceGroup> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceSelectors: Schema.optional(Schema.Array(DeviceSelector)),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeviceGroup" });
+
+export interface DeviceTierConfig {
+  /** Definition of the set of device tiers for the app. */
+  deviceTierSet?: DeviceTierSet;
+  /** Output only. The device tier config ID. */
+  deviceTierConfigId?: string;
+  /** Definition of user country sets for the app. */
+  userCountrySets?: ReadonlyArray<UserCountrySet>;
+  /** Definition of device groups for the app. */
+  deviceGroups?: ReadonlyArray<DeviceGroup>;
+}
+
+export const DeviceTierConfig: Schema.Schema<DeviceTierConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceTierSet: Schema.optional(DeviceTierSet),
+    deviceTierConfigId: Schema.optional(Schema.String),
+    userCountrySets: Schema.optional(Schema.Array(UserCountrySet)),
+    deviceGroups: Schema.optional(Schema.Array(DeviceGroup)),
+  }).annotate({ identifier: "DeviceTierConfig" });
+
+export interface ExternalAccountIdentifiers {
+  /** User account identifier in the third-party service. Only present if account linking happened as part of the subscription purchase flow. */
+  externalAccountId?: string;
+  /** An obfuscated version of the id that is uniquely associated with the user's account in your app. Present for the following purchases: * If account linking happened as part of the subscription purchase flow. * It was specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid when the purchase was made. */
+  obfuscatedExternalAccountId?: string;
+  /** An obfuscated version of the id that is uniquely associated with the user's profile in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid when the purchase was made. */
+  obfuscatedExternalProfileId?: string;
+}
+
+export const ExternalAccountIdentifiers: Schema.Schema<ExternalAccountIdentifiers> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    externalAccountId: Schema.optional(Schema.String),
+    obfuscatedExternalAccountId: Schema.optional(Schema.String),
+    obfuscatedExternalProfileId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExternalAccountIdentifiers" });
+
+export interface OneTimeProductListing {
+  /** Required. The title of this product in the language of this listing. The maximum length is 55 characters. */
+  title?: string;
+  /** Required. The language of this listing, as defined by BCP-47, e.g., "en-US". */
+  languageCode?: string;
+  /** Required. The description of this product in the language of this listing. The maximum length is 200 characters. */
+  description?: string;
+}
+
+export const OneTimeProductListing: Schema.Schema<OneTimeProductListing> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OneTimeProductListing" });
+
+export interface OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig {
+  /** The price of the purchase option in the specified region. Must be set in the currency that is linked to the specified region. */
+  price?: Money;
+  /** Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g., "US". */
+  regionCode?: string;
+  /** The availability of the purchase option. */
+  availability?:
+    | "AVAILABILITY_UNSPECIFIED"
+    | "AVAILABLE"
+    | "NO_LONGER_AVAILABLE"
+    | "AVAILABLE_IF_RELEASED"
+    | "AVAILABLE_FOR_OFFERS_ONLY"
+    | (string & {});
+}
+
+export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig: Schema.Schema<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    price: Schema.optional(Money),
+    regionCode: Schema.optional(Schema.String),
+    availability: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig",
+  });
+
+export interface OneTimeProductPurchaseOptionNewRegionsConfig {
+  /** Required. Price in EUR to use for any new regions Play may launch in. */
+  eurPrice?: Money;
+  /** Required. Price in USD to use for any new regions Play may launch in. */
+  usdPrice?: Money;
+  /** Required. The regional availability for the new regions config. When set to AVAILABLE, the pricing information will be used for any new regions Play may launch in the future. */
+  availability?:
+    | "AVAILABILITY_UNSPECIFIED"
+    | "AVAILABLE"
+    | "NO_LONGER_AVAILABLE"
+    | (string & {});
+}
+
+export const OneTimeProductPurchaseOptionNewRegionsConfig: Schema.Schema<OneTimeProductPurchaseOptionNewRegionsConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eurPrice: Schema.optional(Money),
+    usdPrice: Schema.optional(Money),
+    availability: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OneTimeProductPurchaseOptionNewRegionsConfig" });
+
+export interface OneTimeProductBuyPurchaseOption {
+  /** Optional. Whether this purchase option allows multi-quantity. Multi-quantity allows buyer to purchase more than one item in a single checkout. */
+  multiQuantityEnabled?: boolean;
+  /** Optional. Whether this purchase option will be available in legacy PBL flows that do not support one-time products model. Up to one "buy" purchase option can be marked as backwards compatible. */
+  legacyCompatible?: boolean;
+}
+
+export const OneTimeProductBuyPurchaseOption: Schema.Schema<OneTimeProductBuyPurchaseOption> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    multiQuantityEnabled: Schema.optional(Schema.Boolean),
+    legacyCompatible: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "OneTimeProductBuyPurchaseOption" });
+
+export interface OneTimeProductRentPurchaseOption {
+  /** Required. The amount of time a user has the entitlement for. Starts at purchase flow completion. Specified in ISO 8601 format. */
+  rentalPeriod?: string;
+  /** Optional. The amount of time the user has after starting consuming the entitlement before it is revoked. Specified in ISO 8601 format. */
+  expirationPeriod?: string;
+}
+
+export const OneTimeProductRentPurchaseOption: Schema.Schema<OneTimeProductRentPurchaseOption> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rentalPeriod: Schema.optional(Schema.String),
+    expirationPeriod: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OneTimeProductRentPurchaseOption" });
+
+export interface PurchaseOptionTaxAndComplianceSettings {
+  /** Optional. Digital content or service classification for products distributed to users in eligible regions. If unset, it defaults to `WITHDRAWAL_RIGHT_DIGITAL_CONTENT`. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/10463498) for more information. */
+  withdrawalRightType?:
+    | "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
+    | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
+    | "WITHDRAWAL_RIGHT_SERVICE"
+    | (string & {});
+}
+
+export const PurchaseOptionTaxAndComplianceSettings: Schema.Schema<PurchaseOptionTaxAndComplianceSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    withdrawalRightType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PurchaseOptionTaxAndComplianceSettings" });
+
+export interface OneTimeProductPurchaseOption {
+  /** Output only. The state of the purchase option, i.e., whether it's active. This field cannot be changed by updating the resource. Use the dedicated endpoints instead. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "DRAFT"
+    | "ACTIVE"
+    | "INACTIVE"
+    | "INACTIVE_PUBLISHED"
+    | (string & {});
+  /** Optional. List of up to 20 custom tags specified for this purchase option, and returned to the app through the billing library. Offers for this purchase option will also receive these tags in the billing library. */
+  offerTags?: ReadonlyArray<OfferTag>;
+  /** Required. Immutable. The unique identifier of this purchase option. Must be unique within the one-time product. It must start with a number or lower-case letter, and can only contain lower-case letters (a-z), numbers (0-9), and hyphens (-). The maximum length is 63 characters. */
+  purchaseOptionId?: string;
+  /** Regional pricing and availability information for this purchase option. */
+  regionalPricingAndAvailabilityConfigs?: ReadonlyArray<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>;
+  /** Pricing information for any new locations Play may launch in the future. If omitted, the purchase option will not be automatically available in any new locations Play may launch in the future. */
+  newRegionsConfig?: OneTimeProductPurchaseOptionNewRegionsConfig;
+  /** A purchase option that can be bought. */
+  buyOption?: OneTimeProductBuyPurchaseOption;
+  /** A purchase option that can be rented. */
+  rentOption?: OneTimeProductRentPurchaseOption;
+  /** Optional. Details about taxes and legal compliance. */
+  taxAndComplianceSettings?: PurchaseOptionTaxAndComplianceSettings;
+}
+
+export const OneTimeProductPurchaseOption: Schema.Schema<OneTimeProductPurchaseOption> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    offerTags: Schema.optional(Schema.Array(OfferTag)),
+    purchaseOptionId: Schema.optional(Schema.String),
+    regionalPricingAndAvailabilityConfigs: Schema.optional(
+      Schema.Array(
+        OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig,
+      ),
+    ),
+    newRegionsConfig: Schema.optional(
+      OneTimeProductPurchaseOptionNewRegionsConfig,
+    ),
+    buyOption: Schema.optional(OneTimeProductBuyPurchaseOption),
+    rentOption: Schema.optional(OneTimeProductRentPurchaseOption),
+    taxAndComplianceSettings: Schema.optional(
+      PurchaseOptionTaxAndComplianceSettings,
+    ),
+  }).annotate({ identifier: "OneTimeProductPurchaseOption" });
+
+export interface RegionalTaxConfig {
+  /** Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US". */
+  regionCode?: string;
+  /** Tax tier to specify reduced tax rate. Developers who sell digital news, magazines, newspapers, books, or audiobooks in various regions may be eligible for reduced tax rates. [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498). */
+  taxTier?:
+    | "TAX_TIER_UNSPECIFIED"
+    | "TAX_TIER_BOOKS_1"
+    | "TAX_TIER_NEWS_1"
+    | "TAX_TIER_NEWS_2"
+    | "TAX_TIER_MUSIC_OR_AUDIO_1"
+    | "TAX_TIER_LIVE_OR_BROADCAST_1"
+    | (string & {});
+  /** To collect communications or amusement taxes in the United States, choose the appropriate tax category. [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498#streaming_tax). */
+  streamingTaxType?:
+    | "STREAMING_TAX_TYPE_UNSPECIFIED"
+    | "STREAMING_TAX_TYPE_TELCO_VIDEO_RENTAL"
+    | "STREAMING_TAX_TYPE_TELCO_VIDEO_SALES"
+    | "STREAMING_TAX_TYPE_TELCO_VIDEO_MULTI_CHANNEL"
+    | "STREAMING_TAX_TYPE_TELCO_AUDIO_RENTAL"
+    | "STREAMING_TAX_TYPE_TELCO_AUDIO_SALES"
+    | "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL"
+    | (string & {});
+  /** You must tell us if your app contains streaming products to correctly charge US state and local sales tax. Field only supported in the United States. */
+  eligibleForStreamingServiceTaxRate?: boolean;
+}
+
+export const RegionalTaxConfig: Schema.Schema<RegionalTaxConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionCode: Schema.optional(Schema.String),
+    taxTier: Schema.optional(Schema.String),
+    streamingTaxType: Schema.optional(Schema.String),
+    eligibleForStreamingServiceTaxRate: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "RegionalTaxConfig" });
+
+export interface OneTimeProductTaxAndComplianceSettings {
+  /** Regional tax configuration. */
+  regionalTaxConfigs?: ReadonlyArray<RegionalTaxConfig>;
+  /** Whether this one-time product is declared as a product representing a tokenized digital asset. */
+  isTokenizedDigitalAsset?: boolean;
+  /** Product tax category code to assign to the one-time product. Product tax category determines the transaction tax rates applied to the product. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information. */
+  productTaxCategoryCode?: string;
+  /** Regional age rating information. Currently this field is only supported for region code `US`. */
+  regionalProductAgeRatingInfos?: ReadonlyArray<RegionalProductAgeRatingInfo>;
+}
+
+export const OneTimeProductTaxAndComplianceSettings: Schema.Schema<OneTimeProductTaxAndComplianceSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionalTaxConfigs: Schema.optional(Schema.Array(RegionalTaxConfig)),
+    isTokenizedDigitalAsset: Schema.optional(Schema.Boolean),
+    productTaxCategoryCode: Schema.optional(Schema.String),
+    regionalProductAgeRatingInfos: Schema.optional(
+      Schema.Array(RegionalProductAgeRatingInfo),
+    ),
+  }).annotate({ identifier: "OneTimeProductTaxAndComplianceSettings" });
+
+export interface OneTimeProduct {
+  /** Required. Set of localized title and description data. Must not have duplicate entries with the same language_code. */
+  listings?: ReadonlyArray<OneTimeProductListing>;
+  /** Required. Immutable. Package name of the parent app. */
+  packageName?: string;
+  /** Required. The set of purchase options for this one-time product. */
+  purchaseOptions?: ReadonlyArray<OneTimeProductPurchaseOption>;
+  /** Optional. List of up to 20 custom tags specified for this one-time product, and returned to the app through the billing library. Purchase options and offers for this product will also receive these tags in the billing library. */
+  offerTags?: ReadonlyArray<OfferTag>;
+  /** Output only. The version of the regions configuration that was used to generate the one-time product. */
+  regionsVersion?: RegionsVersion;
+  /** Required. Immutable. Unique product ID of the product. Unique within the parent app. Product IDs must start with a number or lowercase letter, and can contain numbers (0-9), lowercase letters (a-z), underscores (_), and periods (.). */
+  productId?: string;
+  /** Optional. Countries where the purchase of this one-time product is restricted to payment methods registered in the same country. If empty, no payment location restrictions are imposed. */
+  restrictedPaymentCountries?: RestrictedPaymentCountries;
+  /** Details about taxes and legal compliance. */
+  taxAndComplianceSettings?: OneTimeProductTaxAndComplianceSettings;
+}
+
+export const OneTimeProduct: Schema.Schema<OneTimeProduct> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    listings: Schema.optional(Schema.Array(OneTimeProductListing)),
+    packageName: Schema.optional(Schema.String),
+    purchaseOptions: Schema.optional(
+      Schema.Array(OneTimeProductPurchaseOption),
+    ),
+    offerTags: Schema.optional(Schema.Array(OfferTag)),
+    regionsVersion: Schema.optional(RegionsVersion),
+    productId: Schema.optional(Schema.String),
+    restrictedPaymentCountries: Schema.optional(RestrictedPaymentCountries),
+    taxAndComplianceSettings: Schema.optional(
+      OneTimeProductTaxAndComplianceSettings,
+    ),
+  }).annotate({ identifier: "OneTimeProduct" });
+
+export interface BatchUpdateOneTimeProductsResponse {
+  /** The list of updated one-time products list, in the same order as the request. */
+  oneTimeProducts?: ReadonlyArray<OneTimeProduct>;
+}
+
+export const BatchUpdateOneTimeProductsResponse: Schema.Schema<BatchUpdateOneTimeProductsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oneTimeProducts: Schema.optional(Schema.Array(OneTimeProduct)),
+  }).annotate({ identifier: "BatchUpdateOneTimeProductsResponse" });
+
+export interface ActivateOneTimeProductOfferRequest {
+  /** Required. The offer ID of the offer to activate. */
+  offerId?: string;
+  /** Optional. The latency tolerance for the propagation of this update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+  /** Required. The parent one-time product (ID) of the offer to activate. */
+  productId?: string;
+  /** Required. The parent purchase option (ID) of the offer to activate. */
+  purchaseOptionId?: string;
+  /** Required. The parent app (package name) of the offer to activate. */
+  packageName?: string;
+}
+
+export const ActivateOneTimeProductOfferRequest: Schema.Schema<ActivateOneTimeProductOfferRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offerId: Schema.optional(Schema.String),
+    latencyTolerance: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    purchaseOptionId: Schema.optional(Schema.String),
+    packageName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ActivateOneTimeProductOfferRequest" });
+
+export interface BatchUpdateSubscriptionOffersResponse {
+  /** The updated subscription offers list. */
+  subscriptionOffers?: ReadonlyArray<SubscriptionOffer>;
+}
+
+export const BatchUpdateSubscriptionOffersResponse: Schema.Schema<BatchUpdateSubscriptionOffersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionOffers: Schema.optional(Schema.Array(SubscriptionOffer)),
+  }).annotate({ identifier: "BatchUpdateSubscriptionOffersResponse" });
+
+export interface ConvertedOtherRegionsPrice {
+  /** Price in USD to use for the "Other regions" location exclusive of taxes. */
+  usdPrice?: Money;
+  /** Price in EUR to use for the "Other regions" location exclusive of taxes. */
+  eurPrice?: Money;
+}
+
+export const ConvertedOtherRegionsPrice: Schema.Schema<ConvertedOtherRegionsPrice> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    usdPrice: Schema.optional(Money),
+    eurPrice: Schema.optional(Money),
+  }).annotate({ identifier: "ConvertedOtherRegionsPrice" });
+
+export interface ListOneTimeProductOffersResponse {
+  /** The one_time_product offers from the specified request. */
+  oneTimeProductOffers?: ReadonlyArray<OneTimeProductOffer>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListOneTimeProductOffersResponse: Schema.Schema<ListOneTimeProductOffersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oneTimeProductOffers: Schema.optional(Schema.Array(OneTimeProductOffer)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListOneTimeProductOffersResponse" });
+
+export interface ConvertRegionPricesRequest {
+  /** Optional. Product tax category code in context. Product tax category determines the transaction tax rates applied to the product that will be factored into the price calculation. If not set, tax rates for the default product tax category will be used. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information. */
+  productTaxCategoryCode?: string;
+  /** The intital price to convert other regions from. Tax exclusive. */
+  price?: Money;
+}
+
+export const ConvertRegionPricesRequest: Schema.Schema<ConvertRegionPricesRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productTaxCategoryCode: Schema.optional(Schema.String),
+    price: Schema.optional(Money),
+  }).annotate({ identifier: "ConvertRegionPricesRequest" });
+
+export interface ActivateBasePlanRequest {
+  /** Required. The parent app (package name) of the base plan to activate. */
+  packageName?: string;
+  /** Required. The unique base plan ID of the base plan to activate. */
+  basePlanId?: string;
+  /** Required. The parent subscription (ID) of the base plan to activate. */
+  productId?: string;
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+}
+
+export const ActivateBasePlanRequest: Schema.Schema<ActivateBasePlanRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.optional(Schema.String),
+    basePlanId: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    latencyTolerance: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ActivateBasePlanRequest" });
+
 export interface Grant {
   /** Required. Resource name for this grant, following the pattern "developers/{developer}/users/{email}/grants/{package_name}". If this grant is for a draft app, the app ID will be used in this resource name instead of the package name. */
   name?: string;
-  /** Immutable. The package name of the app. This will be empty for draft apps. */
-  packageName?: string;
   /** The permissions granted to the user for this app. */
   appLevelPermissions?: ReadonlyArray<
     | "APP_LEVEL_PERMISSION_UNSPECIFIED"
@@ -46,19 +1944,24 @@ export interface Grant {
     | "CAN_MANAGE_DEEPLINKS"
     | (string & {})
   >;
+  /** Immutable. The package name of the app. This will be empty for draft apps. */
+  packageName?: string;
 }
 
-export const Grant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  packageName: Schema.optional(Schema.String),
-  appLevelPermissions: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "Grant" });
+export const Grant: Schema.Schema<Grant> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    appLevelPermissions: Schema.optional(Schema.Array(Schema.String)),
+    packageName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Grant" });
 
 export interface User {
   /** Required. Resource name for this user, following the pattern "developers/{developer}/users/{email}". */
   name?: string;
-  /** Immutable. The user's email address. */
-  email?: string;
+  /** The time at which the user's access expires, if set. When setting this value, it must always be in the future. */
+  expirationTime?: string;
+  /** Output only. Whether there are more permissions for the user that are not represented here. This can happen if the caller does not have permission to manage all apps in the account. This is also `true` if this user is the account owner. If this field is `true`, it should be taken as a signal that this user cannot be fully managed via the API. That is, the API caller is not be able to manage all of the permissions this user holds, either because it doesn't know about them or because the user is the account owner. */
+  partial?: boolean;
   /** Output only. The state of the user's access to the Play Console. */
   accessState?:
     | "ACCESS_STATE_UNSPECIFIED"
@@ -67,10 +1970,8 @@ export interface User {
     | "ACCESS_GRANTED"
     | "ACCESS_EXPIRED"
     | (string & {});
-  /** The time at which the user's access expires, if set. When setting this value, it must always be in the future. */
-  expirationTime?: string;
-  /** Output only. Whether there are more permissions for the user that are not represented here. This can happen if the caller does not have permission to manage all apps in the account. This is also `true` if this user is the account owner. If this field is `true`, it should be taken as a signal that this user cannot be fully managed via the API. That is, the API caller is not be able to manage all of the permissions this user holds, either because it doesn't know about them or because the user is the account owner. */
-  partial?: boolean;
+  /** Immutable. The user's email address. */
+  email?: string;
   /** Permissions for the user which apply across the developer account. */
   developerAccountPermissions?: ReadonlyArray<
     | "DEVELOPER_LEVEL_PERMISSION_UNSPECIFIED"
@@ -98,444 +1999,160 @@ export interface User {
   grants?: ReadonlyArray<Grant>;
 }
 
-export const User = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  email: Schema.optional(Schema.String),
-  accessState: Schema.optional(Schema.String),
-  expirationTime: Schema.optional(Schema.String),
-  partial: Schema.optional(Schema.Boolean),
-  developerAccountPermissions: Schema.optional(Schema.Array(Schema.String)),
-  grants: Schema.optional(Schema.Array(Grant)),
-}).annotate({ identifier: "User" });
-
-export interface ListUsersResponse {
-  /** The resulting users. */
-  users?: ReadonlyArray<User>;
-  /** A token to pass to subsequent calls in order to retrieve subsequent results. This will not be set if there are no more results to return. */
-  nextPageToken?: string;
-}
-
-export const ListUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  users: Schema.optional(Schema.Array(User)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListUsersResponse" });
-
-export interface ApkBinary {
-  /** A sha1 hash of the APK payload, encoded as a hex string and matching the output of the sha1sum command. */
-  sha1?: string;
-  /** A sha256 hash of the APK payload, encoded as a hex string and matching the output of the sha256sum command. */
-  sha256?: string;
-}
-
-export const ApkBinary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sha1: Schema.optional(Schema.String),
-  sha256: Schema.optional(Schema.String),
-}).annotate({ identifier: "ApkBinary" });
-
-export interface Apk {
-  /** The version code of the APK, as specified in the manifest file. */
-  versionCode?: number;
-  /** Information about the binary payload of this APK. */
-  binary?: ApkBinary;
-}
-
-export const Apk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  versionCode: Schema.optional(Schema.Number),
-  binary: Schema.optional(ApkBinary),
-}).annotate({ identifier: "Apk" });
-
-export interface ApksListResponse {
-  /** The kind of this response ("androidpublisher#apksListResponse"). */
-  kind?: string;
-  /** All APKs. */
-  apks?: ReadonlyArray<Apk>;
-}
-
-export const ApksListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  apks: Schema.optional(Schema.Array(Apk)),
-}).annotate({ identifier: "ApksListResponse" });
-
-export interface UsesPermission {
-  /** The name of the permission requested. */
-  name?: string;
-  /** Optionally, the maximum SDK version for which the permission is required. */
-  maxSdkVersion?: number;
-}
-
-export const UsesPermission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  maxSdkVersion: Schema.optional(Schema.Number),
-}).annotate({ identifier: "UsesPermission" });
-
-export interface ExternallyHostedApk {
-  /** The package name. */
-  packageName?: string;
-  /** The application label. */
-  applicationLabel?: string;
-  /** The version code of this APK. */
-  versionCode?: number;
-  /** The version name of this APK. */
-  versionName?: string;
-  /** The file size in bytes of this APK. */
-  fileSize?: string;
-  /** The sha1 checksum of this APK, represented as a base64 encoded byte array. */
-  fileSha1Base64?: string;
-  /** The sha256 checksum of this APK, represented as a base64 encoded byte array. */
-  fileSha256Base64?: string;
-  /** The icon image from the APK, as a base64 encoded byte array. */
-  iconBase64?: string;
-  /** The minimum SDK targeted by this APK. */
-  minimumSdk?: number;
-  /** A certificate (or array of certificates if a certificate-chain is used) used to sign this APK, represented as a base64 encoded byte array. */
-  certificateBase64s?: ReadonlyArray<string>;
-  /** The URL at which the APK is hosted. This must be an https URL. */
-  externallyHostedUrl?: string;
-  /** The maximum SDK supported by this APK (optional). */
-  maximumSdk?: number;
-  /** The native code environments supported by this APK (optional). */
-  nativeCodes?: ReadonlyArray<string>;
-  /** The features required by this APK (optional). */
-  usesFeatures?: ReadonlyArray<string>;
-  /** The permissions requested by this APK. */
-  usesPermissions?: ReadonlyArray<UsesPermission>;
-}
-
-export const ExternallyHostedApk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.optional(Schema.String),
-  applicationLabel: Schema.optional(Schema.String),
-  versionCode: Schema.optional(Schema.Number),
-  versionName: Schema.optional(Schema.String),
-  fileSize: Schema.optional(Schema.String),
-  fileSha1Base64: Schema.optional(Schema.String),
-  fileSha256Base64: Schema.optional(Schema.String),
-  iconBase64: Schema.optional(Schema.String),
-  minimumSdk: Schema.optional(Schema.Number),
-  certificateBase64s: Schema.optional(Schema.Array(Schema.String)),
-  externallyHostedUrl: Schema.optional(Schema.String),
-  maximumSdk: Schema.optional(Schema.Number),
-  nativeCodes: Schema.optional(Schema.Array(Schema.String)),
-  usesFeatures: Schema.optional(Schema.Array(Schema.String)),
-  usesPermissions: Schema.optional(Schema.Array(UsesPermission)),
-}).annotate({ identifier: "ExternallyHostedApk" });
-
-export interface ApksAddExternallyHostedRequest {
-  /** The definition of the externally-hosted APK and where it is located. */
-  externallyHostedApk?: ExternallyHostedApk;
-}
-
-export const ApksAddExternallyHostedRequest =
+export const User: Schema.Schema<User> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    externallyHostedApk: Schema.optional(ExternallyHostedApk),
-  }).annotate({ identifier: "ApksAddExternallyHostedRequest" });
+    name: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    partial: Schema.optional(Schema.Boolean),
+    accessState: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    developerAccountPermissions: Schema.optional(Schema.Array(Schema.String)),
+    grants: Schema.optional(Schema.Array(Grant)),
+  }).annotate({ identifier: "User" });
 
-export interface ApksAddExternallyHostedResponse {
-  /** The definition of the externally-hosted APK and where it is located. */
-  externallyHostedApk?: ExternallyHostedApk;
+export interface CancellationEvent {
+  /** The time when the order was canceled. */
+  eventTime?: string;
 }
 
-export const ApksAddExternallyHostedResponse =
+export const CancellationEvent: Schema.Schema<CancellationEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    externallyHostedApk: Schema.optional(ExternallyHostedApk),
-  }).annotate({ identifier: "ApksAddExternallyHostedResponse" });
+    eventTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CancellationEvent" });
 
-export interface Regions {
-  /** Regions targeted by the recovery action. Region codes are ISO 3166 Alpha-2 country codes. For example, US stands for United States of America. See https://www.iso.org/iso-3166-country-codes.html for the complete list of country codes. */
-  regionCode?: ReadonlyArray<string>;
-}
-
-export const Regions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  regionCode: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "Regions" });
-
-export interface AndroidSdks {
-  /** Android api levels of devices targeted by recovery action. See https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels for different api levels in android. */
-  sdkLevels?: ReadonlyArray<string>;
-}
-
-export const AndroidSdks = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sdkLevels: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "AndroidSdks" });
-
-export interface AllUsers {
-  /** Required. Set to true if all set of users are needed. */
-  isAllUsersRequested?: boolean;
-}
-
-export const AllUsers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  isAllUsersRequested: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "AllUsers" });
-
-export interface AppVersionList {
-  /** List of app version codes. */
-  versionCodes?: ReadonlyArray<string>;
-}
-
-export const AppVersionList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  versionCodes: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "AppVersionList" });
-
-export interface AppVersionRange {
-  /** Lowest app version in the range, inclusive. */
-  versionCodeStart?: string;
-  /** Highest app version in the range, inclusive. */
-  versionCodeEnd?: string;
-}
-
-export const AppVersionRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  versionCodeStart: Schema.optional(Schema.String),
-  versionCodeEnd: Schema.optional(Schema.String),
-}).annotate({ identifier: "AppVersionRange" });
-
-export interface Targeting {
-  /** Targeting is based on the user account region. */
-  regions?: Regions;
-  /** Targeting is based on android api levels of devices. */
-  androidSdks?: AndroidSdks;
-  /** All users are targeted. */
-  allUsers?: AllUsers;
-  /** Target version codes as a list. */
-  versionList?: AppVersionList;
-  /** Target version codes as a range. */
-  versionRange?: AppVersionRange;
-}
-
-export const Targeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  regions: Schema.optional(Regions),
-  androidSdks: Schema.optional(AndroidSdks),
-  allUsers: Schema.optional(AllUsers),
-  versionList: Schema.optional(AppVersionList),
-  versionRange: Schema.optional(AppVersionRange),
-}).annotate({ identifier: "Targeting" });
-
-export interface RemoteInAppUpdate {
-  /** Required. Set to true if Remote In-App Update action type is needed. */
-  isRemoteInAppUpdateRequested?: boolean;
-}
-
-export const RemoteInAppUpdate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  isRemoteInAppUpdateRequested: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "RemoteInAppUpdate" });
-
-export interface CreateDraftAppRecoveryRequest {
-  /** Specifies targeting criteria for the recovery action such as regions, android sdk versions, app versions etc. */
-  targeting?: Targeting;
-  /** Action type is remote in-app update. As a consequence of this action, a downloadable recovery module is also created for testing purposes. */
-  remoteInAppUpdate?: RemoteInAppUpdate;
-}
-
-export const CreateDraftAppRecoveryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    targeting: Schema.optional(Targeting),
-    remoteInAppUpdate: Schema.optional(RemoteInAppUpdate),
-  }).annotate({ identifier: "CreateDraftAppRecoveryRequest" });
-
-export interface RemoteInAppUpdateDataPerBundle {
-  /** Version Code corresponding to the target bundle. */
-  versionCode?: string;
-  /** Total number of devices which have been rescued. */
-  recoveredDeviceCount?: string;
-  /** Total number of devices affected by this recovery action associated with bundle of the app. */
-  totalDeviceCount?: string;
-}
-
-export const RemoteInAppUpdateDataPerBundle =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    versionCode: Schema.optional(Schema.String),
-    recoveredDeviceCount: Schema.optional(Schema.String),
-    totalDeviceCount: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RemoteInAppUpdateDataPerBundle" });
-
-export interface RemoteInAppUpdateData {
-  /** Data related to the recovery action at bundle level. */
-  remoteAppUpdateDataPerBundle?: ReadonlyArray<RemoteInAppUpdateDataPerBundle>;
-}
-
-export const RemoteInAppUpdateData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  remoteAppUpdateDataPerBundle: Schema.optional(
-    Schema.Array(RemoteInAppUpdateDataPerBundle),
-  ),
-}).annotate({ identifier: "RemoteInAppUpdateData" });
-
-export interface AppRecoveryAction {
-  /** ID corresponding to the app recovery action. */
-  appRecoveryId?: string;
-  /** The status of the recovery action. */
-  status?:
-    | "RECOVERY_STATUS_UNSPECIFIED"
-    | "RECOVERY_STATUS_ACTIVE"
-    | "RECOVERY_STATUS_CANCELED"
-    | "RECOVERY_STATUS_DRAFT"
-    | "RECOVERY_STATUS_GENERATION_IN_PROGRESS"
-    | "RECOVERY_STATUS_GENERATION_FAILED"
+export interface RefundEvent {
+  /** The time when the order was fully refunded. */
+  eventTime?: string;
+  /** Details for the full refund. */
+  refundDetails?: RefundDetails;
+  /** The reason the order was refunded. */
+  refundReason?:
+    | "REFUND_REASON_UNSPECIFIED"
+    | "OTHER"
+    | "CHARGEBACK"
     | (string & {});
-  /** Specifies targeting criteria for the recovery action such as regions, android sdk versions, app versions etc. */
-  targeting?: Targeting;
-  /** Timestamp of when the app recovery action is created by the developer. It is always set after creation of the recovery action. */
-  createTime?: string;
-  /** Timestamp of when the app recovery action is deployed to the users. Only set if the recovery action has been deployed. */
-  deployTime?: string;
-  /** Timestamp of when the app recovery action is canceled by the developer. Only set if the recovery action has been canceled. */
-  cancelTime?: string;
-  /** Timestamp of when the developer last updated recovery action. In case the action is cancelled, it corresponds to cancellation time. It is always set after creation of the recovery action. */
-  lastUpdateTime?: string;
-  /** Data about the remote in-app update action such as such as recovered user base, recoverable user base etc. Set only if the recovery action type is Remote In-App Update. */
-  remoteInAppUpdateData?: RemoteInAppUpdateData;
 }
 
-export const AppRecoveryAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  appRecoveryId: Schema.optional(Schema.String),
-  status: Schema.optional(Schema.String),
-  targeting: Schema.optional(Targeting),
-  createTime: Schema.optional(Schema.String),
-  deployTime: Schema.optional(Schema.String),
-  cancelTime: Schema.optional(Schema.String),
-  lastUpdateTime: Schema.optional(Schema.String),
-  remoteInAppUpdateData: Schema.optional(RemoteInAppUpdateData),
-}).annotate({ identifier: "AppRecoveryAction" });
+export const RefundEvent: Schema.Schema<RefundEvent> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventTime: Schema.optional(Schema.String),
+    refundDetails: Schema.optional(RefundDetails),
+    refundReason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RefundEvent" });
+
+export interface ProcessedEvent {
+  /** The time when the order was processed. */
+  eventTime?: string;
+}
+
+export const ProcessedEvent: Schema.Schema<ProcessedEvent> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProcessedEvent" });
+
+export interface PartialRefundEvent {
+  /** The time when the partial refund was processed. */
+  processTime?: string;
+  /** The state of the partial refund. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "PENDING"
+    | "PROCESSED_SUCCESSFULLY"
+    | (string & {});
+  /** The time when the partial refund was created. */
+  createTime?: string;
+  /** Details for the partial refund. */
+  refundDetails?: RefundDetails;
+}
+
+export const PartialRefundEvent: Schema.Schema<PartialRefundEvent> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    processTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    refundDetails: Schema.optional(RefundDetails),
+  }).annotate({ identifier: "PartialRefundEvent" });
+
+export interface OrderHistory {
+  /** Details of when the order was canceled. */
+  cancellationEvent?: CancellationEvent;
+  /** Details of when the order was fully refunded. */
+  refundEvent?: RefundEvent;
+  /** Details of when the order was processed. */
+  processedEvent?: ProcessedEvent;
+  /** Details of the partial refund events for this order. */
+  partialRefundEvents?: ReadonlyArray<PartialRefundEvent>;
+}
+
+export const OrderHistory: Schema.Schema<OrderHistory> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cancellationEvent: Schema.optional(CancellationEvent),
+    refundEvent: Schema.optional(RefundEvent),
+    processedEvent: Schema.optional(ProcessedEvent),
+    partialRefundEvents: Schema.optional(Schema.Array(PartialRefundEvent)),
+  }).annotate({ identifier: "OrderHistory" });
 
 export interface DeployAppRecoveryRequest {}
 
-export const DeployAppRecoveryRequest =
+export const DeployAppRecoveryRequest: Schema.Schema<DeployAppRecoveryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeployAppRecoveryRequest",
   });
-
-export interface DeployAppRecoveryResponse {}
-
-export const DeployAppRecoveryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DeployAppRecoveryResponse",
-  });
-
-export interface ListAppRecoveriesResponse {
-  /** List of recovery actions associated with the requested package name. */
-  recoveryActions?: ReadonlyArray<AppRecoveryAction>;
-}
-
-export const ListAppRecoveriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    recoveryActions: Schema.optional(Schema.Array(AppRecoveryAction)),
-  }).annotate({ identifier: "ListAppRecoveriesResponse" });
-
-export interface TargetingUpdate {
-  /** Additional regions are targeted by the recovery action. */
-  regions?: Regions;
-  /** Additional android sdk levels are targeted by the recovery action. */
-  androidSdks?: AndroidSdks;
-  /** All users are targeted. */
-  allUsers?: AllUsers;
-}
-
-export const TargetingUpdate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  regions: Schema.optional(Regions),
-  androidSdks: Schema.optional(AndroidSdks),
-  allUsers: Schema.optional(AllUsers),
-}).annotate({ identifier: "TargetingUpdate" });
-
-export interface AddTargetingRequest {
-  /** Specifies targeting updates such as regions, android sdk versions etc. */
-  targetingUpdate?: TargetingUpdate;
-}
-
-export const AddTargetingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  targetingUpdate: Schema.optional(TargetingUpdate),
-}).annotate({ identifier: "AddTargetingRequest" });
-
-export interface AddTargetingResponse {}
-
-export const AddTargetingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "AddTargetingResponse" });
-
-export interface CancelAppRecoveryRequest {}
-
-export const CancelAppRecoveryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "CancelAppRecoveryRequest",
-  });
-
-export interface CancelAppRecoveryResponse {}
-
-export const CancelAppRecoveryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "CancelAppRecoveryResponse",
-  });
-
-export interface PurchaseStateContext {
-  /** Output only. The purchase state of the purchase. */
-  purchaseState?:
-    | "PURCHASE_STATE_UNSPECIFIED"
-    | "PURCHASED"
-    | "CANCELLED"
-    | "PENDING"
-    | (string & {});
-}
-
-export const PurchaseStateContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  purchaseState: Schema.optional(Schema.String),
-}).annotate({ identifier: "PurchaseStateContext" });
-
-export interface TestPurchaseContext {
-  /** The fop type of the test purchase. */
-  fopType?: "FOP_TYPE_UNSPECIFIED" | "TEST" | (string & {});
-}
-
-export const TestPurchaseContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  fopType: Schema.optional(Schema.String),
-}).annotate({ identifier: "TestPurchaseContext" });
-
-export interface RentOfferDetails {}
-
-export const RentOfferDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "RentOfferDetails" });
 
 export interface PreorderOfferDetails {
   /** The time when a preordered item is released for a preorder purchase. */
   preorderReleaseTime?: string;
 }
 
-export const PreorderOfferDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  preorderReleaseTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "PreorderOfferDetails" });
+export const PreorderOfferDetails: Schema.Schema<PreorderOfferDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    preorderReleaseTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PreorderOfferDetails" });
+
+export interface RentOfferDetails {}
+
+export const RentOfferDetails: Schema.Schema<RentOfferDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "RentOfferDetails",
+  });
 
 export interface ProductOfferDetails {
-  /** The offer ID. Only present for offers. */
-  offerId?: string;
-  /** The purchase option ID. */
-  purchaseOptionId?: string;
-  /** Offer details about rent offers. This will only be set for rental line items. */
-  rentOfferDetails?: RentOfferDetails;
-  /** Offer details for a preorder offer. This will only be set for preorders. */
-  preorderOfferDetails?: PreorderOfferDetails;
-  /** The per-transaction offer token used to make this purchase line item. */
-  offerToken?: string;
-  /** The quantity associated with the purchase of the inapp product. */
-  quantity?: number;
   /** The quantity eligible for refund, i.e. quantity that hasn't been refunded. The value reflects quantity-based partial refunds and full refunds. */
   refundableQuantity?: number;
+  /** The latest offer tags associated with the offer. It includes tags inherited from the purchase option. */
+  offerTags?: ReadonlyArray<string>;
+  /** The purchase option ID. */
+  purchaseOptionId?: string;
   /** Output only. The consumption state of the purchase. */
   consumptionState?:
     | "CONSUMPTION_STATE_UNSPECIFIED"
     | "CONSUMPTION_STATE_YET_TO_BE_CONSUMED"
     | "CONSUMPTION_STATE_CONSUMED"
     | (string & {});
-  /** The latest offer tags associated with the offer. It includes tags inherited from the purchase option. */
-  offerTags?: ReadonlyArray<string>;
+  /** Offer details for a preorder offer. This will only be set for preorders. */
+  preorderOfferDetails?: PreorderOfferDetails;
+  /** The per-transaction offer token used to make this purchase line item. */
+  offerToken?: string;
+  /** The quantity associated with the purchase of the inapp product. */
+  quantity?: number;
+  /** The offer ID. Only present for offers. */
+  offerId?: string;
+  /** Offer details about rent offers. This will only be set for rental line items. */
+  rentOfferDetails?: RentOfferDetails;
 }
 
-export const ProductOfferDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  offerId: Schema.optional(Schema.String),
-  purchaseOptionId: Schema.optional(Schema.String),
-  rentOfferDetails: Schema.optional(RentOfferDetails),
-  preorderOfferDetails: Schema.optional(PreorderOfferDetails),
-  offerToken: Schema.optional(Schema.String),
-  quantity: Schema.optional(Schema.Number),
-  refundableQuantity: Schema.optional(Schema.Number),
-  consumptionState: Schema.optional(Schema.String),
-  offerTags: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "ProductOfferDetails" });
+export const ProductOfferDetails: Schema.Schema<ProductOfferDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    refundableQuantity: Schema.optional(Schema.Number),
+    offerTags: Schema.optional(Schema.Array(Schema.String)),
+    purchaseOptionId: Schema.optional(Schema.String),
+    consumptionState: Schema.optional(Schema.String),
+    preorderOfferDetails: Schema.optional(PreorderOfferDetails),
+    offerToken: Schema.optional(Schema.String),
+    quantity: Schema.optional(Schema.Number),
+    offerId: Schema.optional(Schema.String),
+    rentOfferDetails: Schema.optional(RentOfferDetails),
+  }).annotate({ identifier: "ProductOfferDetails" });
 
 export interface ProductLineItem {
   /** The purchased product ID (for example, 'monthly001'). */
@@ -544,659 +2161,266 @@ export interface ProductLineItem {
   productOfferDetails?: ProductOfferDetails;
 }
 
-export const ProductLineItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  productId: Schema.optional(Schema.String),
-  productOfferDetails: Schema.optional(ProductOfferDetails),
-}).annotate({ identifier: "ProductLineItem" });
+export const ProductLineItem: Schema.Schema<ProductLineItem> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.optional(Schema.String),
+    productOfferDetails: Schema.optional(ProductOfferDetails),
+  }).annotate({ identifier: "ProductLineItem" });
 
-export interface ProductPurchaseV2 {
-  /** This kind represents a ProductPurchaseV2 object in the androidpublisher service. */
+export interface StandaloneApkMetadata {
+  /** Names of the modules fused in this standalone APK. */
+  fusedModuleName?: ReadonlyArray<string>;
+}
+
+export const StandaloneApkMetadata: Schema.Schema<StandaloneApkMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fusedModuleName: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "StandaloneApkMetadata" });
+
+export interface InappproductsListResponse {
+  /** The kind of this response ("androidpublisher#inappproductsListResponse"). */
   kind?: string;
-  /** Information about the purchase state of the purchase. */
-  purchaseStateContext?: PurchaseStateContext;
-  /** Information related to test purchases. This will only be set for test purchases. */
-  testPurchaseContext?: TestPurchaseContext;
-  /** The order id associated with the purchase of the inapp product. May not be set if there is no order associated with the purchase. */
-  orderId?: string;
-  /** An obfuscated version of the id that is uniquely associated with the user's account in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid when the purchase was made. */
-  obfuscatedExternalAccountId?: string;
-  /** An obfuscated version of the id that is uniquely associated with the user's profile in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid when the purchase was made. */
-  obfuscatedExternalProfileId?: string;
-  /** ISO 3166-1 alpha-2 billing region code of the user at the time the product was granted. */
-  regionCode?: string;
-  /** Contains item-level info for a ProductPurchaseV2. */
-  productLineItem?: ReadonlyArray<ProductLineItem>;
-  /** The time when the purchase was successful, i.e., when the PurchaseState has changed to PURCHASED. This field will not be present until the payment is complete. For example, if the user initiated a pending transaction (https://developer.android.com/google/play/billing/integrate#pending), this field will not be populated until the user successfully completes the steps required to complete the transaction. */
-  purchaseCompletionTime?: string;
-  /** Output only. The acknowledgement state of the purchase. */
-  acknowledgementState?:
-    | "ACKNOWLEDGEMENT_STATE_UNSPECIFIED"
-    | "ACKNOWLEDGEMENT_STATE_PENDING"
-    | "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED"
-    | (string & {});
+  /** All in-app products. */
+  inappproduct?: ReadonlyArray<InAppProduct>;
+  /** Deprecated and unset. */
+  pageInfo?: PageInfo;
+  /** Pagination token, to handle a number of products that is over one page. */
+  tokenPagination?: TokenPagination;
 }
 
-export const ProductPurchaseV2 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  purchaseStateContext: Schema.optional(PurchaseStateContext),
-  testPurchaseContext: Schema.optional(TestPurchaseContext),
-  orderId: Schema.optional(Schema.String),
-  obfuscatedExternalAccountId: Schema.optional(Schema.String),
-  obfuscatedExternalProfileId: Schema.optional(Schema.String),
-  regionCode: Schema.optional(Schema.String),
-  productLineItem: Schema.optional(Schema.Array(ProductLineItem)),
-  purchaseCompletionTime: Schema.optional(Schema.String),
-  acknowledgementState: Schema.optional(Schema.String),
-}).annotate({ identifier: "ProductPurchaseV2" });
-
-export interface Bundle {
-  /** The version code of the Android App Bundle, as specified in the Android App Bundle's base module APK manifest file. */
-  versionCode?: number;
-  /** A sha1 hash of the upload payload, encoded as a hex string and matching the output of the sha1sum command. */
-  sha1?: string;
-  /** A sha256 hash of the upload payload, encoded as a hex string and matching the output of the sha256sum command. */
-  sha256?: string;
-}
-
-export const Bundle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  versionCode: Schema.optional(Schema.Number),
-  sha1: Schema.optional(Schema.String),
-  sha256: Schema.optional(Schema.String),
-}).annotate({ identifier: "Bundle" });
-
-export interface BundlesListResponse {
-  /** The kind of this response ("androidpublisher#bundlesListResponse"). */
-  kind?: string;
-  /** All app bundles. */
-  bundles?: ReadonlyArray<Bundle>;
-}
-
-export const BundlesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  bundles: Schema.optional(Schema.Array(Bundle)),
-}).annotate({ identifier: "BundlesListResponse" });
-
-export interface TrackTargetedCountry {
-  /** The country that can be targeted, as a two-letter CLDR code. */
-  countryCode?: string;
-}
-
-export const TrackTargetedCountry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  countryCode: Schema.optional(Schema.String),
-}).annotate({ identifier: "TrackTargetedCountry" });
-
-export interface TrackCountryAvailability {
-  /** Whether this track's availability is synced with the default production track. See https://support.google.com/googleplay/android-developer/answer/7550024 for more information on syncing country availability with production. Note that if this is true, the returned "countries" and "rest_of_world" fields will reflect the values for the default production track. */
-  syncWithProduction?: boolean;
-  /** A list of one or more countries where artifacts in this track are available. This list includes all countries that are targeted by the track, even if only specific carriers are targeted in that country. */
-  countries?: ReadonlyArray<TrackTargetedCountry>;
-  /** Whether artifacts in this track are available to "rest of the world" countries. */
-  restOfWorld?: boolean;
-}
-
-export const TrackCountryAvailability =
+export const InappproductsListResponse: Schema.Schema<InappproductsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    syncWithProduction: Schema.optional(Schema.Boolean),
-    countries: Schema.optional(Schema.Array(TrackTargetedCountry)),
-    restOfWorld: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "TrackCountryAvailability" });
+    kind: Schema.optional(Schema.String),
+    inappproduct: Schema.optional(Schema.Array(InAppProduct)),
+    pageInfo: Schema.optional(PageInfo),
+    tokenPagination: Schema.optional(TokenPagination),
+  }).annotate({ identifier: "InappproductsListResponse" });
 
-export interface DeobfuscationFile {
-  /** The type of the deobfuscation file. */
-  symbolType?:
-    | "deobfuscationFileTypeUnspecified"
-    | "proguard"
-    | "nativeCode"
-    | (string & {});
-}
+export interface RevocationContextProratedRefund {}
 
-export const DeobfuscationFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  symbolType: Schema.optional(Schema.String),
-}).annotate({ identifier: "DeobfuscationFile" });
-
-export interface DeobfuscationFilesUploadResponse {
-  /** The uploaded Deobfuscation File configuration. */
-  deobfuscationFile?: DeobfuscationFile;
-}
-
-export const DeobfuscationFilesUploadResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    deobfuscationFile: Schema.optional(DeobfuscationFile),
-  }).annotate({ identifier: "DeobfuscationFilesUploadResponse" });
-
-export interface AppDetails {
-  /** Default language code, in BCP 47 format (eg "en-US"). */
-  defaultLanguage?: string;
-  /** The user-visible website for this app. */
-  contactWebsite?: string;
-  /** The user-visible support email for this app. */
-  contactEmail?: string;
-  /** The user-visible support telephone number for this app. */
-  contactPhone?: string;
-}
-
-export const AppDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  defaultLanguage: Schema.optional(Schema.String),
-  contactWebsite: Schema.optional(Schema.String),
-  contactEmail: Schema.optional(Schema.String),
-  contactPhone: Schema.optional(Schema.String),
-}).annotate({ identifier: "AppDetails" });
-
-export interface DeviceRam {
-  /** Minimum RAM in bytes (bound included). */
-  minBytes?: string;
-  /** Maximum RAM in bytes (bound excluded). */
-  maxBytes?: string;
-}
-
-export const DeviceRam = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  minBytes: Schema.optional(Schema.String),
-  maxBytes: Schema.optional(Schema.String),
-}).annotate({ identifier: "DeviceRam" });
-
-export interface DeviceId {
-  /** Value of Build.BRAND. */
-  buildBrand?: string;
-  /** Value of Build.DEVICE. */
-  buildDevice?: string;
-}
-
-export const DeviceId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  buildBrand: Schema.optional(Schema.String),
-  buildDevice: Schema.optional(Schema.String),
-}).annotate({ identifier: "DeviceId" });
-
-export interface SystemFeature {
-  /** The name of the feature. */
-  name?: string;
-}
-
-export const SystemFeature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "SystemFeature" });
-
-export interface SystemOnChip {
-  /** Required. The designer of the SoC, eg. "Google" Value of build property "ro.soc.manufacturer" https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER Required. */
-  manufacturer?: string;
-  /** Required. The model of the SoC, eg. "Tensor" Value of build property "ro.soc.model" https://developer.android.com/reference/android/os/Build#SOC_MODEL Required. */
-  model?: string;
-}
-
-export const SystemOnChip = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  manufacturer: Schema.optional(Schema.String),
-  model: Schema.optional(Schema.String),
-}).annotate({ identifier: "SystemOnChip" });
-
-export interface DeviceSelector {
-  /** Conditions on the device's RAM. */
-  deviceRam?: DeviceRam;
-  /** Device models included by this selector. */
-  includedDeviceIds?: ReadonlyArray<DeviceId>;
-  /** Device models excluded by this selector, even if they match all other conditions. */
-  excludedDeviceIds?: ReadonlyArray<DeviceId>;
-  /** A device needs to have all these system features to be included by the selector. */
-  requiredSystemFeatures?: ReadonlyArray<SystemFeature>;
-  /** A device that has any of these system features is excluded by this selector, even if it matches all other conditions. */
-  forbiddenSystemFeatures?: ReadonlyArray<SystemFeature>;
-  /** Optional. The SoCs included by this selector. Only works for Android S+ devices. */
-  systemOnChips?: ReadonlyArray<SystemOnChip>;
-}
-
-export const DeviceSelector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  deviceRam: Schema.optional(DeviceRam),
-  includedDeviceIds: Schema.optional(Schema.Array(DeviceId)),
-  excludedDeviceIds: Schema.optional(Schema.Array(DeviceId)),
-  requiredSystemFeatures: Schema.optional(Schema.Array(SystemFeature)),
-  forbiddenSystemFeatures: Schema.optional(Schema.Array(SystemFeature)),
-  systemOnChips: Schema.optional(Schema.Array(SystemOnChip)),
-}).annotate({ identifier: "DeviceSelector" });
-
-export interface DeviceGroup {
-  /** The name of the group. */
-  name?: string;
-  /** Device selectors for this group. A device matching any of the selectors is included in this group. */
-  deviceSelectors?: ReadonlyArray<DeviceSelector>;
-}
-
-export const DeviceGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  deviceSelectors: Schema.optional(Schema.Array(DeviceSelector)),
-}).annotate({ identifier: "DeviceGroup" });
-
-export interface DeviceTier {
-  /** Groups of devices included in this tier. These groups must be defined explicitly under device_groups in this configuration. */
-  deviceGroupNames?: ReadonlyArray<string>;
-  /** The priority level of the tier. Tiers are evaluated in descending order of level: the highest level tier has the highest priority. The highest tier matching a given device is selected for that device. You should use a contiguous range of levels for your tiers in a tier set; tier levels in a tier set must be unique. For instance, if your tier set has 4 tiers (including the global fallback), you should define tiers 1, 2 and 3 in this configuration. Note: tier 0 is implicitly defined as a global fallback and selected for devices that don't match any of the tiers explicitly defined here. You mustn't define level 0 explicitly in this configuration. */
-  level?: number;
-}
-
-export const DeviceTier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  deviceGroupNames: Schema.optional(Schema.Array(Schema.String)),
-  level: Schema.optional(Schema.Number),
-}).annotate({ identifier: "DeviceTier" });
-
-export interface DeviceTierSet {
-  /** Device tiers belonging to the set. */
-  deviceTiers?: ReadonlyArray<DeviceTier>;
-}
-
-export const DeviceTierSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  deviceTiers: Schema.optional(Schema.Array(DeviceTier)),
-}).annotate({ identifier: "DeviceTierSet" });
-
-export interface UserCountrySet {
-  /** Country set name. */
-  name?: string;
-  /** List of country codes representing countries. A Country code is represented in ISO 3166 alpha-2 format. For Example:- "IT" for Italy, "GE" for Georgia. */
-  countryCodes?: ReadonlyArray<string>;
-}
-
-export const UserCountrySet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  countryCodes: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "UserCountrySet" });
-
-export interface DeviceTierConfig {
-  /** Output only. The device tier config ID. */
-  deviceTierConfigId?: string;
-  /** Definition of device groups for the app. */
-  deviceGroups?: ReadonlyArray<DeviceGroup>;
-  /** Definition of the set of device tiers for the app. */
-  deviceTierSet?: DeviceTierSet;
-  /** Definition of user country sets for the app. */
-  userCountrySets?: ReadonlyArray<UserCountrySet>;
-}
-
-export const DeviceTierConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  deviceTierConfigId: Schema.optional(Schema.String),
-  deviceGroups: Schema.optional(Schema.Array(DeviceGroup)),
-  deviceTierSet: Schema.optional(DeviceTierSet),
-  userCountrySets: Schema.optional(Schema.Array(UserCountrySet)),
-}).annotate({ identifier: "DeviceTierConfig" });
-
-export interface ListDeviceTierConfigsResponse {
-  /** Device tier configs created by the developer. */
-  deviceTierConfigs?: ReadonlyArray<DeviceTierConfig>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListDeviceTierConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    deviceTierConfigs: Schema.optional(Schema.Array(DeviceTierConfig)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListDeviceTierConfigsResponse" });
-
-export interface AppEdit {
-  /** Output only. Identifier of the edit. Can be used in subsequent API calls. */
-  id?: string;
-  /** Output only. The time (as seconds since Epoch) at which the edit will expire and will be no longer valid for use. */
-  expiryTimeSeconds?: string;
-}
-
-export const AppEdit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.String),
-  expiryTimeSeconds: Schema.optional(Schema.String),
-}).annotate({ identifier: "AppEdit" });
-
-export interface ExpansionFile {
-  /** If set, this APK's expansion file references another APK's expansion file. The file_size field will not be set. */
-  referencesVersion?: number;
-  /** If set, this field indicates that this APK has an expansion file uploaded to it: this APK does not reference another APK's expansion file. The field's value is the size of the uploaded expansion file in bytes. */
-  fileSize?: string;
-}
-
-export const ExpansionFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  referencesVersion: Schema.optional(Schema.Number),
-  fileSize: Schema.optional(Schema.String),
-}).annotate({ identifier: "ExpansionFile" });
-
-export interface ExpansionFilesUploadResponse {
-  /** The uploaded expansion file configuration. */
-  expansionFile?: ExpansionFile;
-}
-
-export const ExpansionFilesUploadResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    expansionFile: Schema.optional(ExpansionFile),
-  }).annotate({ identifier: "ExpansionFilesUploadResponse" });
-
-export interface Price {
-  /** Price in 1/million of the currency base unit, represented as a string. */
-  priceMicros?: string;
-  /** 3 letter Currency code, as defined by ISO 4217. See java/com/google/common/money/CurrencyCode.java */
-  currency?: string;
-}
-
-export const Price = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  priceMicros: Schema.optional(Schema.String),
-  currency: Schema.optional(Schema.String),
-}).annotate({ identifier: "Price" });
-
-export interface ExternalTransactionTestPurchase {}
-
-export const ExternalTransactionTestPurchase =
+export const RevocationContextProratedRefund: Schema.Schema<RevocationContextProratedRefund> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "ExternalTransactionTestPurchase",
+    identifier: "RevocationContextProratedRefund",
   });
 
-export interface OneTimeExternalTransaction {
-  /** Input only. Provided during the call to Create. Retrieved from the client when the alternative billing flow is launched. */
-  externalTransactionToken?: string;
+export interface RevocationContextItemBasedRefund {
+  /** Required. If the subscription is a subscription with add-ons, the product id of the subscription item to revoke. */
+  productId?: string;
 }
 
-export const OneTimeExternalTransaction =
+export const RevocationContextItemBasedRefund: Schema.Schema<RevocationContextItemBasedRefund> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    externalTransactionToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "OneTimeExternalTransaction" });
+    productId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RevocationContextItemBasedRefund" });
 
-export interface ExternalSubscription {
-  /** Required. The type of the external subscription. */
-  subscriptionType?:
-    | "SUBSCRIPTION_TYPE_UNSPECIFIED"
-    | "RECURRING"
-    | "PREPAID"
-    | (string & {});
+export interface RevocationContextFullRefund {}
+
+export const RevocationContextFullRefund: Schema.Schema<RevocationContextFullRefund> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "RevocationContextFullRefund",
+  });
+
+export interface RevocationContext {
+  /** Optional. Used when users should be refunded a prorated amount they paid for their subscription based on the amount of time remaining in a subscription. */
+  proratedRefund?: RevocationContextProratedRefund;
+  /** Optional. Used when a specific item should be refunded in a subscription with add-on items. */
+  itemBasedRefund?: RevocationContextItemBasedRefund;
+  /** Optional. Used when users should be refunded the full amount of latest charge on each item in the subscription. */
+  fullRefund?: RevocationContextFullRefund;
 }
 
-export const ExternalSubscription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  subscriptionType: Schema.optional(Schema.String),
-}).annotate({ identifier: "ExternalSubscription" });
-
-export interface OtherRecurringProduct {}
-
-export const OtherRecurringProduct = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "OtherRecurringProduct" });
-
-export interface RecurringExternalTransaction {
-  /** The external transaction id of the first transaction of this recurring series of transactions. For example, for a subscription this would be the transaction id of the first payment. Required when creating recurring external transactions. */
-  initialExternalTransactionId?: string;
-  /** Input only. Provided during the call to Create. Retrieved from the client when the alternative billing flow is launched. Required only for the initial purchase. */
-  externalTransactionToken?: string;
-  /** Input only. Provided during the call to Create. Must only be used when migrating a subscription from manual monthly reporting to automated reporting. */
-  migratedTransactionProgram?:
-    | "EXTERNAL_TRANSACTION_PROGRAM_UNSPECIFIED"
-    | "USER_CHOICE_BILLING"
-    | "ALTERNATIVE_BILLING_ONLY"
-    | (string & {});
-  /** Details of an external subscription. */
-  externalSubscription?: ExternalSubscription;
-  /** Details of a recurring external transaction product which doesn't belong to any other specific category. */
-  otherRecurringProduct?: OtherRecurringProduct;
-}
-
-export const RecurringExternalTransaction =
+export const RevocationContext: Schema.Schema<RevocationContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    initialExternalTransactionId: Schema.optional(Schema.String),
-    externalTransactionToken: Schema.optional(Schema.String),
-    migratedTransactionProgram: Schema.optional(Schema.String),
-    externalSubscription: Schema.optional(ExternalSubscription),
-    otherRecurringProduct: Schema.optional(OtherRecurringProduct),
-  }).annotate({ identifier: "RecurringExternalTransaction" });
+    proratedRefund: Schema.optional(RevocationContextProratedRefund),
+    itemBasedRefund: Schema.optional(RevocationContextItemBasedRefund),
+    fullRefund: Schema.optional(RevocationContextFullRefund),
+  }).annotate({ identifier: "RevocationContext" });
 
-export interface ExternalTransactionAddress {
-  /** Required. Two letter region code based on ISO-3166-1 Alpha-2 (UN region codes). */
-  regionCode?: string;
-  /** Optional. Top-level administrative subdivision of the country/region. Only required for transactions in India. Valid values are "ANDAMAN AND NICOBAR ISLANDS", "ANDHRA PRADESH", "ARUNACHAL PRADESH", "ASSAM", "BIHAR", "CHANDIGARH", "CHHATTISGARH", "DADRA AND NAGAR HAVELI", "DADRA AND NAGAR HAVELI AND DAMAN AND DIU", "DAMAN AND DIU", "DELHI", "GOA", "GUJARAT", "HARYANA", "HIMACHAL PRADESH", "JAMMU AND KASHMIR", "JHARKHAND", "KARNATAKA", "KERALA", "LADAKH", "LAKSHADWEEP", "MADHYA PRADESH", "MAHARASHTRA", "MANIPUR", "MEGHALAYA", "MIZORAM", "NAGALAND", "ODISHA", "PUDUCHERRY", "PUNJAB", "RAJASTHAN", "SIKKIM", "TAMIL NADU", "TELANGANA", "TRIPURA", "UTTAR PRADESH", "UTTARAKHAND", and "WEST BENGAL". */
-  administrativeArea?: string;
+export interface BuyerAddress {
+  /** Postal code of an address. When Google is the Merchant of Record for the order, this information is not included. */
+  buyerPostcode?: string;
+  /** Top-level administrative subdivision of the buyer address country. When Google is the Merchant of Record for the order, this information is not included. */
+  buyerState?: string;
+  /** Two letter country code based on ISO-3166-1 Alpha-2 (UN country codes). */
+  buyerCountry?: string;
 }
 
-export const ExternalTransactionAddress =
+export const BuyerAddress: Schema.Schema<BuyerAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    regionCode: Schema.optional(Schema.String),
-    administrativeArea: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ExternalTransactionAddress" });
+    buyerPostcode: Schema.optional(Schema.String),
+    buyerState: Schema.optional(Schema.String),
+    buyerCountry: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BuyerAddress" });
 
-export interface ExternalOfferDetails {
-  /** Optional. The type of content being reported by this transaction. Required when reporting app downloads or purchased digital content offers made in app installed through Google Play. */
-  linkType?:
-    | "EXTERNAL_OFFER_LINK_TYPE_UNSPECIFIED"
-    | "LINK_TO_DIGITAL_CONTENT_OFFER"
-    | "LINK_TO_APP_DOWNLOAD"
-    | (string & {});
-  /** Optional. The package name of the app downloaded through this transaction. Required when link_type is LINK_TO_APP_DOWNLOAD. */
-  installedAppPackage?: string;
-  /** Optional. The category of the downloaded app though this transaction. This must match the category provided in Play Console during the external app verification process. Only required for app downloads. */
-  installedAppCategory?:
-    | "EXTERNAL_OFFER_APP_CATEGORY_UNSPECIFIED"
-    | "APP"
-    | "GAME"
-    | (string & {});
-  /** Optional. The external transaction id associated with the app download event through an external link. Required when reporting transactions made in externally installed apps. */
-  appDownloadEventExternalTransactionId?: string;
+export interface OrderDetails {
+  /** Indicates whether the listed price was tax inclusive or not. */
+  taxInclusive?: boolean;
 }
 
-export const ExternalOfferDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  linkType: Schema.optional(Schema.String),
-  installedAppPackage: Schema.optional(Schema.String),
-  installedAppCategory: Schema.optional(Schema.String),
-  appDownloadEventExternalTransactionId: Schema.optional(Schema.String),
-}).annotate({ identifier: "ExternalOfferDetails" });
+export const OrderDetails: Schema.Schema<OrderDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taxInclusive: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "OrderDetails" });
 
-export interface ExternalTransaction {
-  /** Output only. The resource name of the external transaction. The package name of the application the inapp products were sold (for example, 'com.some.app'). */
-  packageName?: string;
-  /** Output only. The id of this transaction. All transaction ids under the same package name must be unique. Set when creating the external transaction. */
-  externalTransactionId?: string;
-  /** Required. The original transaction amount before taxes. This represents the pre-tax amount originally notified to Google before any refunds were applied. */
-  originalPreTaxAmount?: Price;
-  /** Required. The original tax amount. This represents the tax amount originally notified to Google before any refunds were applied. */
-  originalTaxAmount?: Price;
-  /** Output only. The current transaction amount before tax. This represents the current pre-tax amount including any refunds that may have been applied to this transaction. */
-  currentPreTaxAmount?: Price;
-  /** Output only. The current tax amount. This represents the current tax amount including any refunds that may have been applied to this transaction. */
-  currentTaxAmount?: Price;
-  /** Output only. If set, this transaction was a test purchase. Google will not charge for a test transaction. */
-  testPurchase?: ExternalTransactionTestPurchase;
-  /** This is a one-time transaction and not part of a subscription. */
-  oneTimeTransaction?: OneTimeExternalTransaction;
-  /** This transaction is part of a recurring series of transactions. */
-  recurringTransaction?: RecurringExternalTransaction;
-  /** Required. The time when the transaction was completed. */
-  transactionTime?: string;
-  /** Output only. The time when this transaction was created. This is the time when Google was notified of the transaction. */
+export interface PreorderDetails {}
+
+export const PreorderDetails: Schema.Schema<PreorderDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "PreorderDetails",
+  });
+
+export interface RentalDetails {}
+
+export const RentalDetails: Schema.Schema<RentalDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "RentalDetails",
+  });
+
+export interface OneTimePurchaseDetails {
+  /** The offer ID of the one-time purchase offer. */
+  offerId?: string;
+  /** The number of items purchased (for multi-quantity item purchases). */
+  quantity?: number;
+  /** ID of the purchase option. This field is set for both purchase options and variant offers. For purchase options, this ID identifies the purchase option itself. For variant offers, this ID refers to the associated purchase option, and in conjunction with offer_id it identifies the variant offer. */
+  purchaseOptionId?: string;
+  /** The details of a pre-order purchase. Only set if it is a pre-order purchase. Note that this field will be set even after pre-order is fulfilled. */
+  preorderDetails?: PreorderDetails;
+  /** The details of a rent purchase. Only set if it is a rent purchase. */
+  rentalDetails?: RentalDetails;
+}
+
+export const OneTimePurchaseDetails: Schema.Schema<OneTimePurchaseDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offerId: Schema.optional(Schema.String),
+    quantity: Schema.optional(Schema.Number),
+    purchaseOptionId: Schema.optional(Schema.String),
+    preorderDetails: Schema.optional(PreorderDetails),
+    rentalDetails: Schema.optional(RentalDetails),
+  }).annotate({ identifier: "OneTimePurchaseDetails" });
+
+export interface LineItem {
+  /** Details of a one-time purchase. */
+  oneTimePurchaseDetails?: OneTimePurchaseDetails;
+  /** Developer-specified name of the product. Displayed in buyer's locale. Example: coins, monthly subscription, etc. */
+  productTitle?: string;
+  /** The purchased product ID or in-app SKU (for example, 'monthly001' or 'com.some.thing.inapp1'). */
+  productId?: string;
+  /** Details of a subscription purchase. */
+  subscriptionDetails?: SubscriptionDetails;
+  /** Item's listed price on Play Store, this may or may not include tax. Excludes Google-funded discounts only. */
+  listingPrice?: Money;
+  /** The total amount paid by the user for this line item, taking into account discounts and tax. */
+  total?: Money;
+  /** Details of a paid app purchase. */
+  paidAppDetails?: PaidAppDetails;
+  /** The tax paid for this line item. */
+  tax?: Money;
+}
+
+export const LineItem: Schema.Schema<LineItem> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oneTimePurchaseDetails: Schema.optional(OneTimePurchaseDetails),
+    productTitle: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    subscriptionDetails: Schema.optional(SubscriptionDetails),
+    listingPrice: Schema.optional(Money),
+    total: Schema.optional(Money),
+    paidAppDetails: Schema.optional(PaidAppDetails),
+    tax: Schema.optional(Money),
+  }).annotate({ identifier: "LineItem" });
+
+export interface PointsDetails {
+  /** The percentage rate which the Play Points promotion reduces the cost by. E.g. for a 100 points for $2 coupon, this is 500,000. Since $2 has an estimate of 200 points, but the actual Points required, 100, is 50% of this, and 50% in micros is 500,000. Between 0 and 1,000,000. */
+  pointsDiscountRateMicros?: string;
+  /** ID unique to the play points offer in use for this order. */
+  pointsOfferId?: string;
+  /** The monetary value of a Play Points coupon. This is the discount the coupon provides, which may not be the total amount. Only set when Play Points coupons have been used. E.g. for a 100 points for $2 coupon, this is $2. */
+  pointsCouponValue?: Money;
+  /** The number of Play Points applied in this order. E.g. for a 100 points for $2 coupon, this is 100. For coupon stacked with base offer, this is the total points spent across both. */
+  pointsSpent?: string;
+}
+
+export const PointsDetails: Schema.Schema<PointsDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pointsDiscountRateMicros: Schema.optional(Schema.String),
+    pointsOfferId: Schema.optional(Schema.String),
+    pointsCouponValue: Schema.optional(Money),
+    pointsSpent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PointsDetails" });
+
+export interface Order {
+  /** Address information for the customer, for use in tax computation. When Google is the Merchant of Record for the order, only country is shown. */
+  buyerAddress?: BuyerAddress;
+  /** Details about events which modified the order. */
+  orderHistory?: OrderHistory;
+  /** The total tax paid as a part of this order. */
+  tax?: Money;
+  /** The token provided to the user's device when the subscription or item was purchased. */
+  purchaseToken?: string;
+  /** Detailed information about the order at creation time. */
+  orderDetails?: OrderDetails;
+  /** The final amount paid by the customer, taking into account discounts and taxes. */
+  total?: Money;
+  /** The individual line items making up this order. */
+  lineItems?: ReadonlyArray<LineItem>;
+  /** The originating sales channel of the order. */
+  salesChannel?:
+    | "SALES_CHANNEL_UNSPECIFIED"
+    | "IN_APP"
+    | "PC_EMULATOR"
+    | "NATIVE_PC"
+    | "PLAY_STORE"
+    | "OUTSIDE_PLAY_STORE"
+    | (string & {});
+  /** The time of the last event that occurred on the order. */
+  lastEventTime?: string;
+  /** Your revenue for this order in the buyer's currency, including deductions of partial refunds, taxes and fees. Google deducts standard transaction and third party fees from each sale, including VAT in some regions. */
+  developerRevenueInBuyerCurrency?: Money;
+  /** Play points applied to the order, including offer information, discount rate and point values. */
+  pointsDetails?: PointsDetails;
+  /** The state of the order. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "PENDING"
+    | "PROCESSED"
+    | "CANCELED"
+    | "PENDING_REFUND"
+    | "PARTIALLY_REFUNDED"
+    | "REFUNDED"
+    | (string & {});
+  /** The order ID. */
+  orderId?: string;
+  /** The time when the order was created. */
   createTime?: string;
-  /** Output only. The current state of the transaction. */
-  transactionState?:
-    | "TRANSACTION_STATE_UNSPECIFIED"
-    | "TRANSACTION_REPORTED"
-    | "TRANSACTION_CANCELED"
-    | (string & {});
-  /** Required. User address for tax computation. */
-  userTaxAddress?: ExternalTransactionAddress;
-  /** Optional. The transaction program code, used to help determine service fee for eligible apps participating in partner programs. Developers participating in the Play Media Experience Program (https://play.google.com/console/about/programs/mediaprogram/) must provide the program code when reporting alternative billing transactions. If you are an eligible developer, please contact your BDM for more information on how to set this field. Note: this field can not be used for external offers transactions. */
-  transactionProgramCode?: number;
-  /** Optional. Details necessary to accurately report external offers transactions. */
-  externalOfferDetails?: ExternalOfferDetails;
 }
 
-export const ExternalTransaction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.optional(Schema.String),
-  externalTransactionId: Schema.optional(Schema.String),
-  originalPreTaxAmount: Schema.optional(Price),
-  originalTaxAmount: Schema.optional(Price),
-  currentPreTaxAmount: Schema.optional(Price),
-  currentTaxAmount: Schema.optional(Price),
-  testPurchase: Schema.optional(ExternalTransactionTestPurchase),
-  oneTimeTransaction: Schema.optional(OneTimeExternalTransaction),
-  recurringTransaction: Schema.optional(RecurringExternalTransaction),
-  transactionTime: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  transactionState: Schema.optional(Schema.String),
-  userTaxAddress: Schema.optional(ExternalTransactionAddress),
-  transactionProgramCode: Schema.optional(Schema.Number),
-  externalOfferDetails: Schema.optional(ExternalOfferDetails),
-}).annotate({ identifier: "ExternalTransaction" });
-
-export interface PartialRefund {
-  /** Required. A unique id distinguishing this partial refund. If the refund is successful, subsequent refunds with the same id will fail. Must be unique across refunds for one individual transaction. */
-  refundId?: string;
-  /** Required. The pre-tax amount of the partial refund. Should be less than the remaining pre-tax amount of the transaction. */
-  refundPreTaxAmount?: Price;
-}
-
-export const PartialRefund = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  refundId: Schema.optional(Schema.String),
-  refundPreTaxAmount: Schema.optional(Price),
-}).annotate({ identifier: "PartialRefund" });
-
-export interface FullRefund {}
-
-export const FullRefund = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "FullRefund" });
-
-export interface RefundExternalTransactionRequest {
-  /** A partial refund. */
-  partialRefund?: PartialRefund;
-  /** A full-amount refund. */
-  fullRefund?: FullRefund;
-  /** Required. The time that the transaction was refunded. */
-  refundTime?: string;
-}
-
-export const RefundExternalTransactionRequest =
+export const Order: Schema.Schema<Order> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    partialRefund: Schema.optional(PartialRefund),
-    fullRefund: Schema.optional(FullRefund),
-    refundTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RefundExternalTransactionRequest" });
+    buyerAddress: Schema.optional(BuyerAddress),
+    orderHistory: Schema.optional(OrderHistory),
+    tax: Schema.optional(Money),
+    purchaseToken: Schema.optional(Schema.String),
+    orderDetails: Schema.optional(OrderDetails),
+    total: Schema.optional(Money),
+    lineItems: Schema.optional(Schema.Array(LineItem)),
+    salesChannel: Schema.optional(Schema.String),
+    lastEventTime: Schema.optional(Schema.String),
+    developerRevenueInBuyerCurrency: Schema.optional(Money),
+    pointsDetails: Schema.optional(PointsDetails),
+    state: Schema.optional(Schema.String),
+    orderId: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Order" });
 
-export interface GeneratedSplitApk {
-  /** Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download` method. */
-  downloadId?: string;
-  /** ID of the generated variant. */
-  variantId?: number;
-  /** Name of the module that this APK belongs to. */
-  moduleName?: string;
-  /** Split ID. Empty for the main split of the base module. */
-  splitId?: string;
+export interface BatchGetOrdersResponse {
+  /** Details for the requested order IDs. */
+  orders?: ReadonlyArray<Order>;
 }
 
-export const GeneratedSplitApk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  downloadId: Schema.optional(Schema.String),
-  variantId: Schema.optional(Schema.Number),
-  moduleName: Schema.optional(Schema.String),
-  splitId: Schema.optional(Schema.String),
-}).annotate({ identifier: "GeneratedSplitApk" });
-
-export interface GeneratedAssetPackSlice {
-  /** Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download` method. */
-  downloadId?: string;
-  /** Name of the module that this asset slice belongs to. */
-  moduleName?: string;
-  /** Asset slice ID. */
-  sliceId?: string;
-  /** Asset module version. */
-  version?: string;
-}
-
-export const GeneratedAssetPackSlice =
+export const BatchGetOrdersResponse: Schema.Schema<BatchGetOrdersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    downloadId: Schema.optional(Schema.String),
-    moduleName: Schema.optional(Schema.String),
-    sliceId: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GeneratedAssetPackSlice" });
-
-export interface GeneratedStandaloneApk {
-  /** Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download` method. */
-  downloadId?: string;
-  /** ID of the generated variant. */
-  variantId?: number;
-}
-
-export const GeneratedStandaloneApk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    downloadId: Schema.optional(Schema.String),
-    variantId: Schema.optional(Schema.Number),
-  },
-).annotate({ identifier: "GeneratedStandaloneApk" });
-
-export interface GeneratedUniversalApk {
-  /** Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download` method. */
-  downloadId?: string;
-}
-
-export const GeneratedUniversalApk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  downloadId: Schema.optional(Schema.String),
-}).annotate({ identifier: "GeneratedUniversalApk" });
-
-export interface GeneratedRecoveryApk {
-  /** Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download` method. */
-  downloadId?: string;
-  /** ID of the recovery action. */
-  recoveryId?: string;
-  /** The status of the recovery action corresponding to the recovery apk. */
-  recoveryStatus?:
-    | "RECOVERY_STATUS_UNSPECIFIED"
-    | "RECOVERY_STATUS_ACTIVE"
-    | "RECOVERY_STATUS_CANCELED"
-    | "RECOVERY_STATUS_DRAFT"
-    | "RECOVERY_STATUS_GENERATION_IN_PROGRESS"
-    | "RECOVERY_STATUS_GENERATION_FAILED"
-    | (string & {});
-  /** Name of the module which recovery apk belongs to. */
-  moduleName?: string;
-}
-
-export const GeneratedRecoveryApk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  downloadId: Schema.optional(Schema.String),
-  recoveryId: Schema.optional(Schema.String),
-  recoveryStatus: Schema.optional(Schema.String),
-  moduleName: Schema.optional(Schema.String),
-}).annotate({ identifier: "GeneratedRecoveryApk" });
-
-export interface SdkVersion {
-  /** Inclusive minimum value of an sdk version. */
-  min?: number;
-}
-
-export const SdkVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  min: Schema.optional(Schema.Number),
-}).annotate({ identifier: "SdkVersion" });
-
-export interface SdkVersionTargeting {
-  /** Value of an sdk version. */
-  value?: ReadonlyArray<SdkVersion>;
-  /** Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other main splits. */
-  alternatives?: ReadonlyArray<SdkVersion>;
-}
-
-export const SdkVersionTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(Schema.Array(SdkVersion)),
-  alternatives: Schema.optional(Schema.Array(SdkVersion)),
-}).annotate({ identifier: "SdkVersionTargeting" });
-
-export interface Abi {
-  /** Alias for an abi. */
-  alias?:
-    | "UNSPECIFIED_CPU_ARCHITECTURE"
-    | "ARMEABI"
-    | "ARMEABI_V7A"
-    | "ARM64_V8A"
-    | "X86"
-    | "X86_64"
-    | "RISCV64"
-    | (string & {});
-}
-
-export const Abi = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  alias: Schema.optional(Schema.String),
-}).annotate({ identifier: "Abi" });
-
-export interface AbiTargeting {
-  /** Value of an abi. */
-  value?: ReadonlyArray<Abi>;
-  /** Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other main splits. */
-  alternatives?: ReadonlyArray<Abi>;
-}
-
-export const AbiTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(Schema.Array(Abi)),
-  alternatives: Schema.optional(Schema.Array(Abi)),
-}).annotate({ identifier: "AbiTargeting" });
+    orders: Schema.optional(Schema.Array(Order)),
+  }).annotate({ identifier: "BatchGetOrdersResponse" });
 
 export interface ScreenDensity {
   /** Alias for a screen density. */
@@ -1215,45 +2439,37 @@ export interface ScreenDensity {
   densityDpi?: number;
 }
 
-export const ScreenDensity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  densityAlias: Schema.optional(Schema.String),
-  densityDpi: Schema.optional(Schema.Number),
-}).annotate({ identifier: "ScreenDensity" });
+export const ScreenDensity: Schema.Schema<ScreenDensity> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    densityAlias: Schema.optional(Schema.String),
+    densityDpi: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ScreenDensity" });
 
 export interface ScreenDensityTargeting {
-  /** Value of a screen density. */
-  value?: ReadonlyArray<ScreenDensity>;
   /** Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other main splits. */
   alternatives?: ReadonlyArray<ScreenDensity>;
+  /** Value of a screen density. */
+  value?: ReadonlyArray<ScreenDensity>;
 }
 
-export const ScreenDensityTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(Schema.Array(ScreenDensity)),
+export const ScreenDensityTargeting: Schema.Schema<ScreenDensityTargeting> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alternatives: Schema.optional(Schema.Array(ScreenDensity)),
-  },
-).annotate({ identifier: "ScreenDensityTargeting" });
+    value: Schema.optional(Schema.Array(ScreenDensity)),
+  }).annotate({ identifier: "ScreenDensityTargeting" });
 
-export interface MultiAbi {
-  /** A list of targeted ABIs, as represented by the Android Platform */
-  abi?: ReadonlyArray<Abi>;
-}
-
-export const MultiAbi = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  abi: Schema.optional(Schema.Array(Abi)),
-}).annotate({ identifier: "MultiAbi" });
-
-export interface MultiAbiTargeting {
-  /** Value of a multi abi. */
-  value?: ReadonlyArray<MultiAbi>;
+export interface SdkVersionTargeting {
+  /** Value of an sdk version. */
+  value?: ReadonlyArray<SdkVersion>;
   /** Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other main splits. */
-  alternatives?: ReadonlyArray<MultiAbi>;
+  alternatives?: ReadonlyArray<SdkVersion>;
 }
 
-export const MultiAbiTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(Schema.Array(MultiAbi)),
-  alternatives: Schema.optional(Schema.Array(MultiAbi)),
-}).annotate({ identifier: "MultiAbiTargeting" });
+export const SdkVersionTargeting: Schema.Schema<SdkVersionTargeting> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.Array(SdkVersion)),
+    alternatives: Schema.optional(Schema.Array(SdkVersion)),
+  }).annotate({ identifier: "SdkVersionTargeting" });
 
 export interface TextureCompressionFormat {
   /** Alias for texture compression format. */
@@ -1272,7 +2488,7 @@ export interface TextureCompressionFormat {
     | (string & {});
 }
 
-export const TextureCompressionFormat =
+export const TextureCompressionFormat: Schema.Schema<TextureCompressionFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alias: Schema.optional(Schema.String),
   }).annotate({ identifier: "TextureCompressionFormat" });
@@ -1284,34 +2500,48 @@ export interface TextureCompressionFormatTargeting {
   alternatives?: ReadonlyArray<TextureCompressionFormat>;
 }
 
-export const TextureCompressionFormatTargeting =
+export const TextureCompressionFormatTargeting: Schema.Schema<TextureCompressionFormatTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(TextureCompressionFormat)),
     alternatives: Schema.optional(Schema.Array(TextureCompressionFormat)),
   }).annotate({ identifier: "TextureCompressionFormatTargeting" });
 
+export interface AbiTargeting {
+  /** Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other main splits. */
+  alternatives?: ReadonlyArray<Abi>;
+  /** Value of an abi. */
+  value?: ReadonlyArray<Abi>;
+}
+
+export const AbiTargeting: Schema.Schema<AbiTargeting> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alternatives: Schema.optional(Schema.Array(Abi)),
+    value: Schema.optional(Schema.Array(Abi)),
+  }).annotate({ identifier: "AbiTargeting" });
+
 export interface VariantTargeting {
-  /** The sdk version that the variant targets */
-  sdkVersionTargeting?: SdkVersionTargeting;
-  /** The abi that the variant targets */
-  abiTargeting?: AbiTargeting;
   /** The screen densities that this variant supports */
   screenDensityTargeting?: ScreenDensityTargeting;
   /** Multi-api-level targeting */
   multiAbiTargeting?: MultiAbiTargeting;
+  /** The sdk version that the variant targets */
+  sdkVersionTargeting?: SdkVersionTargeting;
   /** Texture-compression-format-level targeting */
   textureCompressionFormatTargeting?: TextureCompressionFormatTargeting;
+  /** The abi that the variant targets */
+  abiTargeting?: AbiTargeting;
 }
 
-export const VariantTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sdkVersionTargeting: Schema.optional(SdkVersionTargeting),
-  abiTargeting: Schema.optional(AbiTargeting),
-  screenDensityTargeting: Schema.optional(ScreenDensityTargeting),
-  multiAbiTargeting: Schema.optional(MultiAbiTargeting),
-  textureCompressionFormatTargeting: Schema.optional(
-    TextureCompressionFormatTargeting,
-  ),
-}).annotate({ identifier: "VariantTargeting" });
+export const VariantTargeting: Schema.Schema<VariantTargeting> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    screenDensityTargeting: Schema.optional(ScreenDensityTargeting),
+    multiAbiTargeting: Schema.optional(MultiAbiTargeting),
+    sdkVersionTargeting: Schema.optional(SdkVersionTargeting),
+    textureCompressionFormatTargeting: Schema.optional(
+      TextureCompressionFormatTargeting,
+    ),
+    abiTargeting: Schema.optional(AbiTargeting),
+  }).annotate({ identifier: "VariantTargeting" });
 
 export interface DeviceFeature {
   /** Name of the feature. */
@@ -1320,21 +2550,21 @@ export interface DeviceFeature {
   featureVersion?: number;
 }
 
-export const DeviceFeature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  featureName: Schema.optional(Schema.String),
-  featureVersion: Schema.optional(Schema.Number),
-}).annotate({ identifier: "DeviceFeature" });
+export const DeviceFeature: Schema.Schema<DeviceFeature> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    featureName: Schema.optional(Schema.String),
+    featureVersion: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DeviceFeature" });
 
 export interface DeviceFeatureTargeting {
   /** Feature of the device. */
   requiredFeature?: DeviceFeature;
 }
 
-export const DeviceFeatureTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const DeviceFeatureTargeting: Schema.Schema<DeviceFeatureTargeting> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requiredFeature: Schema.optional(DeviceFeature),
-  },
-).annotate({ identifier: "DeviceFeatureTargeting" });
+  }).annotate({ identifier: "DeviceFeatureTargeting" });
 
 export interface UserCountriesTargeting {
   /** List of country codes in the two-letter CLDR territory format. */
@@ -1343,12 +2573,11 @@ export interface UserCountriesTargeting {
   exclude?: boolean;
 }
 
-export const UserCountriesTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const UserCountriesTargeting: Schema.Schema<UserCountriesTargeting> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     countryCodes: Schema.optional(Schema.Array(Schema.String)),
     exclude: Schema.optional(Schema.Boolean),
-  },
-).annotate({ identifier: "UserCountriesTargeting" });
+  }).annotate({ identifier: "UserCountriesTargeting" });
 
 export interface ModuleTargeting {
   /** The sdk version that the variant targets */
@@ -1359,17 +2588,16 @@ export interface ModuleTargeting {
   userCountriesTargeting?: UserCountriesTargeting;
 }
 
-export const ModuleTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sdkVersionTargeting: Schema.optional(SdkVersionTargeting),
-  deviceFeatureTargeting: Schema.optional(Schema.Array(DeviceFeatureTargeting)),
-  userCountriesTargeting: Schema.optional(UserCountriesTargeting),
-}).annotate({ identifier: "ModuleTargeting" });
+export const ModuleTargeting: Schema.Schema<ModuleTargeting> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sdkVersionTargeting: Schema.optional(SdkVersionTargeting),
+    deviceFeatureTargeting: Schema.optional(
+      Schema.Array(DeviceFeatureTargeting),
+    ),
+    userCountriesTargeting: Schema.optional(UserCountriesTargeting),
+  }).annotate({ identifier: "ModuleTargeting" });
 
 export interface ModuleMetadata {
-  /** Module name. */
-  name?: string;
-  /** Indicates the type of this feature module. */
-  moduleType?: "UNKNOWN_MODULE_TYPE" | "FEATURE_MODULE" | (string & {});
   /** Indicates the delivery type (e.g. on-demand) of the module. */
   deliveryType?:
     | "UNKNOWN_DELIVERY_TYPE"
@@ -1377,102 +2605,102 @@ export interface ModuleMetadata {
     | "ON_DEMAND"
     | "FAST_FOLLOW"
     | (string & {});
+  /** Indicates the type of this feature module. */
+  moduleType?: "UNKNOWN_MODULE_TYPE" | "FEATURE_MODULE" | (string & {});
   /** Names of the modules that this module directly depends on. Each module implicitly depends on the base module. */
   dependencies?: ReadonlyArray<string>;
+  /** Module name. */
+  name?: string;
   /** The targeting that makes a conditional module installed. Relevant only for Split APKs. */
   targeting?: ModuleTargeting;
 }
 
-export const ModuleMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  moduleType: Schema.optional(Schema.String),
-  deliveryType: Schema.optional(Schema.String),
-  dependencies: Schema.optional(Schema.Array(Schema.String)),
-  targeting: Schema.optional(ModuleTargeting),
-}).annotate({ identifier: "ModuleMetadata" });
+export const ModuleMetadata: Schema.Schema<ModuleMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deliveryType: Schema.optional(Schema.String),
+    moduleType: Schema.optional(Schema.String),
+    dependencies: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.String),
+    targeting: Schema.optional(ModuleTargeting),
+  }).annotate({ identifier: "ModuleMetadata" });
 
 export interface LanguageTargeting {
-  /** ISO-639: 2 or 3 letter language code. */
-  value?: ReadonlyArray<string>;
   /** Alternative languages. */
   alternatives?: ReadonlyArray<string>;
+  /** ISO-639: 2 or 3 letter language code. */
+  value?: ReadonlyArray<string>;
 }
 
-export const LanguageTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(Schema.Array(Schema.String)),
-  alternatives: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "LanguageTargeting" });
+export const LanguageTargeting: Schema.Schema<LanguageTargeting> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alternatives: Schema.optional(Schema.Array(Schema.String)),
+    value: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "LanguageTargeting" });
 
 export interface ApkTargeting {
-  /** The abi that the apk targets */
-  abiTargeting?: AbiTargeting;
-  /** The language that the apk targets */
-  languageTargeting?: LanguageTargeting;
-  /** The screen density that this apk supports. */
-  screenDensityTargeting?: ScreenDensityTargeting;
   /** The sdk version that the apk targets */
   sdkVersionTargeting?: SdkVersionTargeting;
   /** Texture-compression-format-level targeting */
   textureCompressionFormatTargeting?: TextureCompressionFormatTargeting;
+  /** The abi that the apk targets */
+  abiTargeting?: AbiTargeting;
+  /** The screen density that this apk supports. */
+  screenDensityTargeting?: ScreenDensityTargeting;
+  /** The language that the apk targets */
+  languageTargeting?: LanguageTargeting;
   /** Multi-api-level targeting. */
   multiAbiTargeting?: MultiAbiTargeting;
 }
 
-export const ApkTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  abiTargeting: Schema.optional(AbiTargeting),
-  languageTargeting: Schema.optional(LanguageTargeting),
-  screenDensityTargeting: Schema.optional(ScreenDensityTargeting),
-  sdkVersionTargeting: Schema.optional(SdkVersionTargeting),
-  textureCompressionFormatTargeting: Schema.optional(
-    TextureCompressionFormatTargeting,
-  ),
-  multiAbiTargeting: Schema.optional(MultiAbiTargeting),
-}).annotate({ identifier: "ApkTargeting" });
+export const ApkTargeting: Schema.Schema<ApkTargeting> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sdkVersionTargeting: Schema.optional(SdkVersionTargeting),
+    textureCompressionFormatTargeting: Schema.optional(
+      TextureCompressionFormatTargeting,
+    ),
+    abiTargeting: Schema.optional(AbiTargeting),
+    screenDensityTargeting: Schema.optional(ScreenDensityTargeting),
+    languageTargeting: Schema.optional(LanguageTargeting),
+    multiAbiTargeting: Schema.optional(MultiAbiTargeting),
+  }).annotate({ identifier: "ApkTargeting" });
 
 export interface SplitApkMetadata {
-  /** Id of the split. */
-  splitId?: string;
   /** Indicates whether this APK is the main split of the module. */
   isMasterSplit?: boolean;
+  /** Id of the split. */
+  splitId?: string;
 }
 
-export const SplitApkMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  splitId: Schema.optional(Schema.String),
-  isMasterSplit: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "SplitApkMetadata" });
-
-export interface StandaloneApkMetadata {
-  /** Names of the modules fused in this standalone APK. */
-  fusedModuleName?: ReadonlyArray<string>;
-}
-
-export const StandaloneApkMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  fusedModuleName: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "StandaloneApkMetadata" });
+export const SplitApkMetadata: Schema.Schema<SplitApkMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isMasterSplit: Schema.optional(Schema.Boolean),
+    splitId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SplitApkMetadata" });
 
 export interface ApkDescription {
   /** Apk-level targeting. */
   targeting?: ApkTargeting;
-  /** Path of the Apk, will be in the following format: .apk where DownloadId is the ID used to download the apk using GeneratedApks.Download API. */
-  path?: string;
   /** Set only for Split APKs. */
   splitApkMetadata?: SplitApkMetadata;
   /** Set only for standalone APKs. */
   standaloneApkMetadata?: StandaloneApkMetadata;
+  /** Path of the Apk, will be in the following format: .apk where DownloadId is the ID used to download the apk using GeneratedApks.Download API. */
+  path?: string;
   /** Set only for Instant split APKs. */
   instantApkMetadata?: SplitApkMetadata;
   /** Set only for asset slices. */
   assetSliceMetadata?: SplitApkMetadata;
 }
 
-export const ApkDescription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  targeting: Schema.optional(ApkTargeting),
-  path: Schema.optional(Schema.String),
-  splitApkMetadata: Schema.optional(SplitApkMetadata),
-  standaloneApkMetadata: Schema.optional(StandaloneApkMetadata),
-  instantApkMetadata: Schema.optional(SplitApkMetadata),
-  assetSliceMetadata: Schema.optional(SplitApkMetadata),
-}).annotate({ identifier: "ApkDescription" });
+export const ApkDescription: Schema.Schema<ApkDescription> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targeting: Schema.optional(ApkTargeting),
+    splitApkMetadata: Schema.optional(SplitApkMetadata),
+    standaloneApkMetadata: Schema.optional(StandaloneApkMetadata),
+    path: Schema.optional(Schema.String),
+    instantApkMetadata: Schema.optional(SplitApkMetadata),
+    assetSliceMetadata: Schema.optional(SplitApkMetadata),
+  }).annotate({ identifier: "ApkDescription" });
 
 export interface ApkSet {
   /** Metadata about the module represented by this ApkSet */
@@ -1481,25 +2709,27 @@ export interface ApkSet {
   apkDescription?: ReadonlyArray<ApkDescription>;
 }
 
-export const ApkSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  moduleMetadata: Schema.optional(ModuleMetadata),
-  apkDescription: Schema.optional(Schema.Array(ApkDescription)),
-}).annotate({ identifier: "ApkSet" });
+export const ApkSet: Schema.Schema<ApkSet> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    moduleMetadata: Schema.optional(ModuleMetadata),
+    apkDescription: Schema.optional(Schema.Array(ApkDescription)),
+  }).annotate({ identifier: "ApkSet" });
 
 export interface SplitApkVariant {
+  /** Number of the variant, starting at 0 (unless overridden). A device will receive APKs from the first variant that matches the device configuration, with higher variant numbers having priority over lower variant numbers. */
+  variantNumber?: number;
   /** Variant-level targeting. */
   targeting?: VariantTargeting;
   /** Set of APKs, one set per module. */
   apkSet?: ReadonlyArray<ApkSet>;
-  /** Number of the variant, starting at 0 (unless overridden). A device will receive APKs from the first variant that matches the device configuration, with higher variant numbers having priority over lower variant numbers. */
-  variantNumber?: number;
 }
 
-export const SplitApkVariant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  targeting: Schema.optional(VariantTargeting),
-  apkSet: Schema.optional(Schema.Array(ApkSet)),
-  variantNumber: Schema.optional(Schema.Number),
-}).annotate({ identifier: "SplitApkVariant" });
+export const SplitApkVariant: Schema.Schema<SplitApkVariant> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    variantNumber: Schema.optional(Schema.Number),
+    targeting: Schema.optional(VariantTargeting),
+    apkSet: Schema.optional(Schema.Array(ApkSet)),
+  }).annotate({ identifier: "SplitApkVariant" });
 
 export interface AssetModuleMetadata {
   /** Module name. */
@@ -1513,10 +2743,11 @@ export interface AssetModuleMetadata {
     | (string & {});
 }
 
-export const AssetModuleMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  deliveryType: Schema.optional(Schema.String),
-}).annotate({ identifier: "AssetModuleMetadata" });
+export const AssetModuleMetadata: Schema.Schema<AssetModuleMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    deliveryType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AssetModuleMetadata" });
 
 export interface AssetSliceSet {
   /** Module level metadata. */
@@ -1525,10 +2756,11 @@ export interface AssetSliceSet {
   apkDescription?: ReadonlyArray<ApkDescription>;
 }
 
-export const AssetSliceSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  assetModuleMetadata: Schema.optional(AssetModuleMetadata),
-  apkDescription: Schema.optional(Schema.Array(ApkDescription)),
-}).annotate({ identifier: "AssetSliceSet" });
+export const AssetSliceSet: Schema.Schema<AssetSliceSet> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assetModuleMetadata: Schema.optional(AssetModuleMetadata),
+    apkDescription: Schema.optional(Schema.Array(ApkDescription)),
+  }).annotate({ identifier: "AssetSliceSet" });
 
 export interface TargetingInfo {
   /** The package name of this app. */
@@ -1539,44 +2771,142 @@ export interface TargetingInfo {
   assetSliceSet?: ReadonlyArray<AssetSliceSet>;
 }
 
-export const TargetingInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.optional(Schema.String),
-  variant: Schema.optional(Schema.Array(SplitApkVariant)),
-  assetSliceSet: Schema.optional(Schema.Array(AssetSliceSet)),
-}).annotate({ identifier: "TargetingInfo" });
+export const TargetingInfo: Schema.Schema<TargetingInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.optional(Schema.String),
+    variant: Schema.optional(Schema.Array(SplitApkVariant)),
+    assetSliceSet: Schema.optional(Schema.Array(AssetSliceSet)),
+  }).annotate({ identifier: "TargetingInfo" });
+
+export interface GeneratedRecoveryApk {
+  /** Name of the module which recovery apk belongs to. */
+  moduleName?: string;
+  /** ID of the recovery action. */
+  recoveryId?: string;
+  /** The status of the recovery action corresponding to the recovery apk. */
+  recoveryStatus?:
+    | "RECOVERY_STATUS_UNSPECIFIED"
+    | "RECOVERY_STATUS_ACTIVE"
+    | "RECOVERY_STATUS_CANCELED"
+    | "RECOVERY_STATUS_DRAFT"
+    | "RECOVERY_STATUS_GENERATION_IN_PROGRESS"
+    | "RECOVERY_STATUS_GENERATION_FAILED"
+    | (string & {});
+  /** Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download` method. */
+  downloadId?: string;
+}
+
+export const GeneratedRecoveryApk: Schema.Schema<GeneratedRecoveryApk> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    moduleName: Schema.optional(Schema.String),
+    recoveryId: Schema.optional(Schema.String),
+    recoveryStatus: Schema.optional(Schema.String),
+    downloadId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GeneratedRecoveryApk" });
+
+export interface GeneratedAssetPackSlice {
+  /** Name of the module that this asset slice belongs to. */
+  moduleName?: string;
+  /** Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download` method. */
+  downloadId?: string;
+  /** Asset slice ID. */
+  sliceId?: string;
+  /** Asset module version. */
+  version?: string;
+}
+
+export const GeneratedAssetPackSlice: Schema.Schema<GeneratedAssetPackSlice> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    moduleName: Schema.optional(Schema.String),
+    downloadId: Schema.optional(Schema.String),
+    sliceId: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GeneratedAssetPackSlice" });
+
+export interface GeneratedSplitApk {
+  /** Name of the module that this APK belongs to. */
+  moduleName?: string;
+  /** Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download` method. */
+  downloadId?: string;
+  /** ID of the generated variant. */
+  variantId?: number;
+  /** Split ID. Empty for the main split of the base module. */
+  splitId?: string;
+}
+
+export const GeneratedSplitApk: Schema.Schema<GeneratedSplitApk> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    moduleName: Schema.optional(Schema.String),
+    downloadId: Schema.optional(Schema.String),
+    variantId: Schema.optional(Schema.Number),
+    splitId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GeneratedSplitApk" });
+
+export interface GeneratedStandaloneApk {
+  /** Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download` method. */
+  downloadId?: string;
+  /** ID of the generated variant. */
+  variantId?: number;
+}
+
+export const GeneratedStandaloneApk: Schema.Schema<GeneratedStandaloneApk> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    downloadId: Schema.optional(Schema.String),
+    variantId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GeneratedStandaloneApk" });
+
+export interface GeneratedUniversalApk {
+  /** Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download` method. */
+  downloadId?: string;
+}
+
+export const GeneratedUniversalApk: Schema.Schema<GeneratedUniversalApk> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    downloadId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GeneratedUniversalApk" });
 
 export interface GeneratedApksPerSigningKey {
+  /** Contains targeting information about the generated apks. */
+  targetingInfo?: TargetingInfo;
   /** SHA256 hash of the APK signing public key certificate. */
   certificateSha256Hash?: string;
-  /** List of generated split APKs, signed with a key corresponding to certificate_sha256_hash. */
-  generatedSplitApks?: ReadonlyArray<GeneratedSplitApk>;
+  /** Generated recovery apks for recovery actions signed with a key corresponding to certificate_sha256_hash. This includes all generated recovery APKs, also those in draft or cancelled state. This field is not set if no recovery actions were created for this signing key. */
+  generatedRecoveryModules?: ReadonlyArray<GeneratedRecoveryApk>;
   /** List of asset pack slices which will be served for this app bundle, signed with a key corresponding to certificate_sha256_hash. */
   generatedAssetPackSlices?: ReadonlyArray<GeneratedAssetPackSlice>;
+  /** List of generated split APKs without automatic protection, signed with a key corresponding to certificate_sha256_hash. This field is only present if the app uses automatic protection. In this case, `generated_split_apks` contains APKs with automatic protection enabled, whereas this field contains APKs without automatic protection. */
+  unprotectedGeneratedSplitApks?: ReadonlyArray<GeneratedSplitApk>;
   /** List of generated standalone APKs, signed with a key corresponding to certificate_sha256_hash. */
   generatedStandaloneApks?: ReadonlyArray<GeneratedStandaloneApk>;
   /** Generated universal APK, signed with a key corresponding to certificate_sha256_hash. This field is not set if no universal APK was generated for this signing key. */
   generatedUniversalApk?: GeneratedUniversalApk;
-  /** Generated recovery apks for recovery actions signed with a key corresponding to certificate_sha256_hash. This includes all generated recovery APKs, also those in draft or cancelled state. This field is not set if no recovery actions were created for this signing key. */
-  generatedRecoveryModules?: ReadonlyArray<GeneratedRecoveryApk>;
-  /** Contains targeting information about the generated apks. */
-  targetingInfo?: TargetingInfo;
+  /** List of generated standalone APKs without automatic protection, signed with a key corresponding to certificate_sha256_hash. This field is only present if the app uses automatic protection. In this case, `generated_standalone_apks` contains APKs with automatic protection enabled, whereas this field contains APKs without automatic protection. */
+  unprotectedGeneratedStandaloneApks?: ReadonlyArray<GeneratedStandaloneApk>;
+  /** List of generated split APKs, signed with a key corresponding to certificate_sha256_hash. */
+  generatedSplitApks?: ReadonlyArray<GeneratedSplitApk>;
 }
 
-export const GeneratedApksPerSigningKey =
+export const GeneratedApksPerSigningKey: Schema.Schema<GeneratedApksPerSigningKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetingInfo: Schema.optional(TargetingInfo),
     certificateSha256Hash: Schema.optional(Schema.String),
-    generatedSplitApks: Schema.optional(Schema.Array(GeneratedSplitApk)),
+    generatedRecoveryModules: Schema.optional(
+      Schema.Array(GeneratedRecoveryApk),
+    ),
     generatedAssetPackSlices: Schema.optional(
       Schema.Array(GeneratedAssetPackSlice),
+    ),
+    unprotectedGeneratedSplitApks: Schema.optional(
+      Schema.Array(GeneratedSplitApk),
     ),
     generatedStandaloneApks: Schema.optional(
       Schema.Array(GeneratedStandaloneApk),
     ),
     generatedUniversalApk: Schema.optional(GeneratedUniversalApk),
-    generatedRecoveryModules: Schema.optional(
-      Schema.Array(GeneratedRecoveryApk),
+    unprotectedGeneratedStandaloneApks: Schema.optional(
+      Schema.Array(GeneratedStandaloneApk),
     ),
-    targetingInfo: Schema.optional(TargetingInfo),
+    generatedSplitApks: Schema.optional(Schema.Array(GeneratedSplitApk)),
   }).annotate({ identifier: "GeneratedApksPerSigningKey" });
 
 export interface GeneratedApksListResponse {
@@ -1584,1182 +2914,61 @@ export interface GeneratedApksListResponse {
   generatedApks?: ReadonlyArray<GeneratedApksPerSigningKey>;
 }
 
-export const GeneratedApksListResponse =
+export const GeneratedApksListResponse: Schema.Schema<GeneratedApksListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     generatedApks: Schema.optional(Schema.Array(GeneratedApksPerSigningKey)),
   }).annotate({ identifier: "GeneratedApksListResponse" });
-
-export interface Image {
-  /** A unique id representing this image. */
-  id?: string;
-  /** A URL that will serve a preview of the image. */
-  url?: string;
-  /** A sha1 hash of the image. */
-  sha1?: string;
-  /** A sha256 hash of the image. */
-  sha256?: string;
-}
-
-export const Image = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.String),
-  url: Schema.optional(Schema.String),
-  sha1: Schema.optional(Schema.String),
-  sha256: Schema.optional(Schema.String),
-}).annotate({ identifier: "Image" });
-
-export interface ImagesListResponse {
-  /** All listed Images. */
-  images?: ReadonlyArray<Image>;
-}
-
-export const ImagesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  images: Schema.optional(Schema.Array(Image)),
-}).annotate({ identifier: "ImagesListResponse" });
-
-export interface ImagesDeleteAllResponse {
-  /** The deleted images. */
-  deleted?: ReadonlyArray<Image>;
-}
-
-export const ImagesDeleteAllResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    deleted: Schema.optional(Schema.Array(Image)),
-  }).annotate({ identifier: "ImagesDeleteAllResponse" });
-
-export interface ImagesUploadResponse {
-  /** The uploaded image. */
-  image?: Image;
-}
-
-export const ImagesUploadResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  image: Schema.optional(Image),
-}).annotate({ identifier: "ImagesUploadResponse" });
-
-export interface InAppProductListing {
-  /** Title for the store listing. */
-  title?: string;
-  /** Description for the store listing. */
-  description?: string;
-  /** Localized entitlement benefits for a subscription. */
-  benefits?: ReadonlyArray<string>;
-}
-
-export const InAppProductListing = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  title: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  benefits: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "InAppProductListing" });
-
-export interface RegionalTaxRateInfo {
-  /** Tax tier to specify reduced tax rate. Developers who sell digital news, magazines, newspapers, books, or audiobooks in various regions may be eligible for reduced tax rates. [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498). */
-  taxTier?:
-    | "TAX_TIER_UNSPECIFIED"
-    | "TAX_TIER_BOOKS_1"
-    | "TAX_TIER_NEWS_1"
-    | "TAX_TIER_NEWS_2"
-    | "TAX_TIER_MUSIC_OR_AUDIO_1"
-    | "TAX_TIER_LIVE_OR_BROADCAST_1"
-    | (string & {});
-  /** You must tell us if your app contains streaming products to correctly charge US state and local sales tax. Field only supported in the United States. */
-  eligibleForStreamingServiceTaxRate?: boolean;
-  /** To collect communications or amusement taxes in the United States, choose the appropriate tax category. [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498#streaming_tax). */
-  streamingTaxType?:
-    | "STREAMING_TAX_TYPE_UNSPECIFIED"
-    | "STREAMING_TAX_TYPE_TELCO_VIDEO_RENTAL"
-    | "STREAMING_TAX_TYPE_TELCO_VIDEO_SALES"
-    | "STREAMING_TAX_TYPE_TELCO_VIDEO_MULTI_CHANNEL"
-    | "STREAMING_TAX_TYPE_TELCO_AUDIO_RENTAL"
-    | "STREAMING_TAX_TYPE_TELCO_AUDIO_SALES"
-    | "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL"
-    | (string & {});
-}
-
-export const RegionalTaxRateInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  taxTier: Schema.optional(Schema.String),
-  eligibleForStreamingServiceTaxRate: Schema.optional(Schema.Boolean),
-  streamingTaxType: Schema.optional(Schema.String),
-}).annotate({ identifier: "RegionalTaxRateInfo" });
-
-export interface RegionalProductAgeRatingInfo {
-  /** Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US". */
-  regionCode?: string;
-  /** The age rating tier of a product for the given region. */
-  productAgeRatingTier?:
-    | "PRODUCT_AGE_RATING_TIER_UNKNOWN"
-    | "PRODUCT_AGE_RATING_TIER_EVERYONE"
-    | "PRODUCT_AGE_RATING_TIER_THIRTEEN_AND_ABOVE"
-    | "PRODUCT_AGE_RATING_TIER_SIXTEEN_AND_ABOVE"
-    | "PRODUCT_AGE_RATING_TIER_EIGHTEEN_AND_ABOVE"
-    | (string & {});
-}
-
-export const RegionalProductAgeRatingInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    regionCode: Schema.optional(Schema.String),
-    productAgeRatingTier: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RegionalProductAgeRatingInfo" });
-
-export interface SubscriptionTaxAndComplianceSettings {
-  /** Digital content or service classification for products distributed to users in the European Economic Area (EEA). The withdrawal regime under EEA consumer laws depends on this classification. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/10463498) for more information. */
-  eeaWithdrawalRightType?:
-    | "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
-    | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
-    | "WITHDRAWAL_RIGHT_SERVICE"
-    | (string & {});
-  /** A mapping from region code to tax rate details. The keys are region codes as defined by Unicode's "CLDR". */
-  taxRateInfoByRegionCode?: Record<string, RegionalTaxRateInfo>;
-  /** Whether this subscription is declared as a product representing a tokenized digital asset. */
-  isTokenizedDigitalAsset?: boolean;
-  /** Product tax category code to assign to the subscription. Product tax category determines the transaction tax rates applied to the subscription. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information. */
-  productTaxCategoryCode?: string;
-  /** Regional age rating information. Currently this field is only supported for region code `US`. */
-  regionalProductAgeRatingInfos?: ReadonlyArray<RegionalProductAgeRatingInfo>;
-}
-
-export const SubscriptionTaxAndComplianceSettings =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    eeaWithdrawalRightType: Schema.optional(Schema.String),
-    taxRateInfoByRegionCode: Schema.optional(
-      Schema.Record(Schema.String, RegionalTaxRateInfo),
-    ),
-    isTokenizedDigitalAsset: Schema.optional(Schema.Boolean),
-    productTaxCategoryCode: Schema.optional(Schema.String),
-    regionalProductAgeRatingInfos: Schema.optional(
-      Schema.Array(RegionalProductAgeRatingInfo),
-    ),
-  }).annotate({ identifier: "SubscriptionTaxAndComplianceSettings" });
-
-export interface ManagedProductTaxAndComplianceSettings {
-  /** Digital content or service classification for products distributed to users in the European Economic Area (EEA). The withdrawal regime under EEA consumer laws depends on this classification. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/10463498) for more information. */
-  eeaWithdrawalRightType?:
-    | "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
-    | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
-    | "WITHDRAWAL_RIGHT_SERVICE"
-    | (string & {});
-  /** A mapping from region code to tax rate details. The keys are region codes as defined by Unicode's "CLDR". */
-  taxRateInfoByRegionCode?: Record<string, RegionalTaxRateInfo>;
-  /** Whether this in-app product is declared as a product representing a tokenized digital asset. */
-  isTokenizedDigitalAsset?: boolean;
-  /** Product tax category code to assign to the in-app product. Product tax category determines the transaction tax rates applied to the product. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information. */
-  productTaxCategoryCode?: string;
-  /** Regional age rating information. Currently this field is only supported for region code `US`. */
-  regionalProductAgeRatingInfos?: ReadonlyArray<RegionalProductAgeRatingInfo>;
-}
-
-export const ManagedProductTaxAndComplianceSettings =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    eeaWithdrawalRightType: Schema.optional(Schema.String),
-    taxRateInfoByRegionCode: Schema.optional(
-      Schema.Record(Schema.String, RegionalTaxRateInfo),
-    ),
-    isTokenizedDigitalAsset: Schema.optional(Schema.Boolean),
-    productTaxCategoryCode: Schema.optional(Schema.String),
-    regionalProductAgeRatingInfos: Schema.optional(
-      Schema.Array(RegionalProductAgeRatingInfo),
-    ),
-  }).annotate({ identifier: "ManagedProductTaxAndComplianceSettings" });
-
-export interface InAppProduct {
-  /** Package name of the parent app. */
-  packageName?: string;
-  /** Stock-keeping-unit (SKU) of the product, unique within an app. */
-  sku?: string;
-  /** The status of the product, e.g. whether it's active. */
-  status?: "statusUnspecified" | "active" | "inactive" | (string & {});
-  /** The type of the product, e.g. a recurring subscription. */
-  purchaseType?:
-    | "purchaseTypeUnspecified"
-    | "managedUser"
-    | "subscription"
-    | (string & {});
-  /** Default price. Cannot be zero, as in-app products are never free. Always in the developer's Checkout merchant currency. */
-  defaultPrice?: Price;
-  /** Prices per buyer region. None of these can be zero, as in-app products are never free. Map key is region code, as defined by ISO 3166-2. */
-  prices?: Record<string, Price>;
-  /** List of localized title and description data. Map key is the language of the localized data, as defined by BCP-47, e.g. "en-US". */
-  listings?: Record<string, InAppProductListing>;
-  /** Default language of the localized data, as defined by BCP-47. e.g. "en-US". */
-  defaultLanguage?: string;
-  /** Subscription period, specified in ISO 8601 format. Acceptable values are P1W (one week), P1M (one month), P3M (three months), P6M (six months), and P1Y (one year). */
-  subscriptionPeriod?: string;
-  /** Trial period, specified in ISO 8601 format. Acceptable values are anything between P7D (seven days) and P999D (999 days). */
-  trialPeriod?: string;
-  /** Grace period of the subscription, specified in ISO 8601 format. Allows developers to give their subscribers a grace period when the payment for the new recurrence period is declined. Acceptable values are P0D (zero days), P3D (three days), P7D (seven days), P14D (14 days), and P30D (30 days). */
-  gracePeriod?: string;
-  /** Details about taxes and legal compliance. Only applicable to subscription products. */
-  subscriptionTaxesAndComplianceSettings?: SubscriptionTaxAndComplianceSettings;
-  /** Details about taxes and legal compliance. Only applicable to managed products. */
-  managedProductTaxesAndComplianceSettings?: ManagedProductTaxAndComplianceSettings;
-}
-
-export const InAppProduct = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.optional(Schema.String),
-  sku: Schema.optional(Schema.String),
-  status: Schema.optional(Schema.String),
-  purchaseType: Schema.optional(Schema.String),
-  defaultPrice: Schema.optional(Price),
-  prices: Schema.optional(Schema.Record(Schema.String, Price)),
-  listings: Schema.optional(Schema.Record(Schema.String, InAppProductListing)),
-  defaultLanguage: Schema.optional(Schema.String),
-  subscriptionPeriod: Schema.optional(Schema.String),
-  trialPeriod: Schema.optional(Schema.String),
-  gracePeriod: Schema.optional(Schema.String),
-  subscriptionTaxesAndComplianceSettings: Schema.optional(
-    SubscriptionTaxAndComplianceSettings,
-  ),
-  managedProductTaxesAndComplianceSettings: Schema.optional(
-    ManagedProductTaxAndComplianceSettings,
-  ),
-}).annotate({ identifier: "InAppProduct" });
-
-export interface InappproductsBatchGetResponse {
-  /** The list of requested in-app products, in the same order as the request. */
-  inappproduct?: ReadonlyArray<InAppProduct>;
-}
-
-export const InappproductsBatchGetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    inappproduct: Schema.optional(Schema.Array(InAppProduct)),
-  }).annotate({ identifier: "InappproductsBatchGetResponse" });
-
-export interface TokenPagination {
-  /** Tokens to pass to the standard list field 'page_token'. Whenever available, tokens are preferred over manipulating start_index. */
-  nextPageToken?: string;
-  previousPageToken?: string;
-}
-
-export const TokenPagination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  nextPageToken: Schema.optional(Schema.String),
-  previousPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "TokenPagination" });
-
-export interface PageInfo {
-  /** Total number of results available on the backend ! The total number of results in the result set. */
-  totalResults?: number;
-  /** Maximum number of results returned in one page. ! The number of results included in the API response. */
-  resultPerPage?: number;
-  /** Index of the first result returned in the current page. */
-  startIndex?: number;
-}
-
-export const PageInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  totalResults: Schema.optional(Schema.Number),
-  resultPerPage: Schema.optional(Schema.Number),
-  startIndex: Schema.optional(Schema.Number),
-}).annotate({ identifier: "PageInfo" });
-
-export interface InappproductsListResponse {
-  /** The kind of this response ("androidpublisher#inappproductsListResponse"). */
-  kind?: string;
-  /** All in-app products. */
-  inappproduct?: ReadonlyArray<InAppProduct>;
-  /** Pagination token, to handle a number of products that is over one page. */
-  tokenPagination?: TokenPagination;
-  /** Deprecated and unset. */
-  pageInfo?: PageInfo;
-}
-
-export const InappproductsListResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    inappproduct: Schema.optional(Schema.Array(InAppProduct)),
-    tokenPagination: Schema.optional(TokenPagination),
-    pageInfo: Schema.optional(PageInfo),
-  }).annotate({ identifier: "InappproductsListResponse" });
-
-export interface InappproductsUpdateRequest {
-  /** Package name of the app. */
-  packageName?: string;
-  /** Unique identifier for the in-app product. */
-  sku?: string;
-  /** If true the prices for all regions targeted by the parent app that don't have a price specified for this in-app product will be auto converted to the target currency based on the default price. Defaults to false. */
-  autoConvertMissingPrices?: boolean;
-  /** The new in-app product. */
-  inappproduct?: InAppProduct;
-  /** If set to true, and the in-app product with the given package_name and sku doesn't exist, the in-app product will be created. */
-  allowMissing?: boolean;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-}
-
-export const InappproductsUpdateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.optional(Schema.String),
-    sku: Schema.optional(Schema.String),
-    autoConvertMissingPrices: Schema.optional(Schema.Boolean),
-    inappproduct: Schema.optional(InAppProduct),
-    allowMissing: Schema.optional(Schema.Boolean),
-    latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "InappproductsUpdateRequest" });
-
-export interface InappproductsBatchUpdateRequest {
-  /** Required. Individual update requests. At least one request is required. Can contain up to 100 requests. All requests must correspond to different in-app products. */
-  requests?: ReadonlyArray<InappproductsUpdateRequest>;
-}
-
-export const InappproductsBatchUpdateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requests: Schema.optional(Schema.Array(InappproductsUpdateRequest)),
-  }).annotate({ identifier: "InappproductsBatchUpdateRequest" });
-
-export interface InappproductsBatchUpdateResponse {
-  /** The updated or inserted in-app products. */
-  inappproducts?: ReadonlyArray<InAppProduct>;
-}
-
-export const InappproductsBatchUpdateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    inappproducts: Schema.optional(Schema.Array(InAppProduct)),
-  }).annotate({ identifier: "InappproductsBatchUpdateResponse" });
-
-export interface InappproductsDeleteRequest {
-  /** Package name of the app. */
-  packageName?: string;
-  /** Unique identifier for the in-app product. */
-  sku?: string;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-}
-
-export const InappproductsDeleteRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.optional(Schema.String),
-    sku: Schema.optional(Schema.String),
-    latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "InappproductsDeleteRequest" });
-
-export interface InappproductsBatchDeleteRequest {
-  /** Individual delete requests. At least one request is required. Can contain up to 100 requests. All requests must correspond to different in-app products. */
-  requests?: ReadonlyArray<InappproductsDeleteRequest>;
-}
-
-export const InappproductsBatchDeleteRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requests: Schema.optional(Schema.Array(InappproductsDeleteRequest)),
-  }).annotate({ identifier: "InappproductsBatchDeleteRequest" });
-
-export interface InternalAppSharingArtifact {
-  /** The download URL generated for the uploaded artifact. Users that are authorized to download can follow the link to the Play Store app to install it. */
-  downloadUrl?: string;
-  /** The sha256 fingerprint of the certificate used to sign the generated artifact. */
-  certificateFingerprint?: string;
-  /** The sha256 hash of the artifact represented as a lowercase hexadecimal number, matching the output of the sha256sum command. */
-  sha256?: string;
-}
-
-export const InternalAppSharingArtifact =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    downloadUrl: Schema.optional(Schema.String),
-    certificateFingerprint: Schema.optional(Schema.String),
-    sha256: Schema.optional(Schema.String),
-  }).annotate({ identifier: "InternalAppSharingArtifact" });
-
-export interface Listing {
-  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
-  language?: string;
-  /** Localized title of the app. */
-  title?: string;
-  /** Full description of the app. */
-  fullDescription?: string;
-  /** Short description of the app. */
-  shortDescription?: string;
-  /** URL of a promotional YouTube video for the app. */
-  video?: string;
-}
-
-export const Listing = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  language: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-  fullDescription: Schema.optional(Schema.String),
-  shortDescription: Schema.optional(Schema.String),
-  video: Schema.optional(Schema.String),
-}).annotate({ identifier: "Listing" });
-
-export interface ListingsListResponse {
-  /** The kind of this response ("androidpublisher#listingsListResponse"). */
-  kind?: string;
-  /** All localized listings. */
-  listings?: ReadonlyArray<Listing>;
-}
-
-export const ListingsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  listings: Schema.optional(Schema.Array(Listing)),
-}).annotate({ identifier: "ListingsListResponse" });
-
-export interface OneTimeProductListing {
-  /** Required. The language of this listing, as defined by BCP-47, e.g., "en-US". */
-  languageCode?: string;
-  /** Required. The title of this product in the language of this listing. The maximum length is 55 characters. */
-  title?: string;
-  /** Required. The description of this product in the language of this listing. The maximum length is 200 characters. */
-  description?: string;
-}
-
-export const OneTimeProductListing = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  languageCode: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-}).annotate({ identifier: "OneTimeProductListing" });
-
-export interface RegionalTaxConfig {
-  /** Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US". */
-  regionCode?: string;
-  /** Tax tier to specify reduced tax rate. Developers who sell digital news, magazines, newspapers, books, or audiobooks in various regions may be eligible for reduced tax rates. [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498). */
-  taxTier?:
-    | "TAX_TIER_UNSPECIFIED"
-    | "TAX_TIER_BOOKS_1"
-    | "TAX_TIER_NEWS_1"
-    | "TAX_TIER_NEWS_2"
-    | "TAX_TIER_MUSIC_OR_AUDIO_1"
-    | "TAX_TIER_LIVE_OR_BROADCAST_1"
-    | (string & {});
-  /** You must tell us if your app contains streaming products to correctly charge US state and local sales tax. Field only supported in the United States. */
-  eligibleForStreamingServiceTaxRate?: boolean;
-  /** To collect communications or amusement taxes in the United States, choose the appropriate tax category. [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498#streaming_tax). */
-  streamingTaxType?:
-    | "STREAMING_TAX_TYPE_UNSPECIFIED"
-    | "STREAMING_TAX_TYPE_TELCO_VIDEO_RENTAL"
-    | "STREAMING_TAX_TYPE_TELCO_VIDEO_SALES"
-    | "STREAMING_TAX_TYPE_TELCO_VIDEO_MULTI_CHANNEL"
-    | "STREAMING_TAX_TYPE_TELCO_AUDIO_RENTAL"
-    | "STREAMING_TAX_TYPE_TELCO_AUDIO_SALES"
-    | "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL"
-    | (string & {});
-}
-
-export const RegionalTaxConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  regionCode: Schema.optional(Schema.String),
-  taxTier: Schema.optional(Schema.String),
-  eligibleForStreamingServiceTaxRate: Schema.optional(Schema.Boolean),
-  streamingTaxType: Schema.optional(Schema.String),
-}).annotate({ identifier: "RegionalTaxConfig" });
-
-export interface OneTimeProductTaxAndComplianceSettings {
-  /** Regional tax configuration. */
-  regionalTaxConfigs?: ReadonlyArray<RegionalTaxConfig>;
-  /** Whether this one-time product is declared as a product representing a tokenized digital asset. */
-  isTokenizedDigitalAsset?: boolean;
-  /** Product tax category code to assign to the one-time product. Product tax category determines the transaction tax rates applied to the product. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information. */
-  productTaxCategoryCode?: string;
-  /** Regional age rating information. Currently this field is only supported for region code `US`. */
-  regionalProductAgeRatingInfos?: ReadonlyArray<RegionalProductAgeRatingInfo>;
-}
-
-export const OneTimeProductTaxAndComplianceSettings =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    regionalTaxConfigs: Schema.optional(Schema.Array(RegionalTaxConfig)),
-    isTokenizedDigitalAsset: Schema.optional(Schema.Boolean),
-    productTaxCategoryCode: Schema.optional(Schema.String),
-    regionalProductAgeRatingInfos: Schema.optional(
-      Schema.Array(RegionalProductAgeRatingInfo),
-    ),
-  }).annotate({ identifier: "OneTimeProductTaxAndComplianceSettings" });
-
-export interface OneTimeProductBuyPurchaseOption {
-  /** Optional. Whether this purchase option will be available in legacy PBL flows that do not support one-time products model. Up to one "buy" purchase option can be marked as backwards compatible. */
-  legacyCompatible?: boolean;
-  /** Optional. Whether this purchase option allows multi-quantity. Multi-quantity allows buyer to purchase more than one item in a single checkout. */
-  multiQuantityEnabled?: boolean;
-}
-
-export const OneTimeProductBuyPurchaseOption =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    legacyCompatible: Schema.optional(Schema.Boolean),
-    multiQuantityEnabled: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "OneTimeProductBuyPurchaseOption" });
-
-export interface OneTimeProductRentPurchaseOption {
-  /** Required. The amount of time a user has the entitlement for. Starts at purchase flow completion. Specified in ISO 8601 format. */
-  rentalPeriod?: string;
-  /** Optional. The amount of time the user has after starting consuming the entitlement before it is revoked. Specified in ISO 8601 format. */
-  expirationPeriod?: string;
-}
-
-export const OneTimeProductRentPurchaseOption =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    rentalPeriod: Schema.optional(Schema.String),
-    expirationPeriod: Schema.optional(Schema.String),
-  }).annotate({ identifier: "OneTimeProductRentPurchaseOption" });
-
-export interface Money {
-  /** The three-letter currency code defined in ISO 4217. */
-  currencyCode?: string;
-  /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
-  units?: string;
-  /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
-  nanos?: number;
-}
-
-export const Money = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  currencyCode: Schema.optional(Schema.String),
-  units: Schema.optional(Schema.String),
-  nanos: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Money" });
-
-export interface OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig {
-  /** Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g., "US". */
-  regionCode?: string;
-  /** The price of the purchase option in the specified region. Must be set in the currency that is linked to the specified region. */
-  price?: Money;
-  /** The availability of the purchase option. */
-  availability?:
-    | "AVAILABILITY_UNSPECIFIED"
-    | "AVAILABLE"
-    | "NO_LONGER_AVAILABLE"
-    | "AVAILABLE_IF_RELEASED"
-    | "AVAILABLE_FOR_OFFERS_ONLY"
-    | (string & {});
-}
-
-export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    regionCode: Schema.optional(Schema.String),
-    price: Schema.optional(Money),
-    availability: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig",
-  });
-
-export interface OneTimeProductPurchaseOptionNewRegionsConfig {
-  /** Required. Price in USD to use for any new regions Play may launch in. */
-  usdPrice?: Money;
-  /** Required. Price in EUR to use for any new regions Play may launch in. */
-  eurPrice?: Money;
-  /** Required. The regional availability for the new regions config. When set to AVAILABLE, the pricing information will be used for any new regions Play may launch in the future. */
-  availability?:
-    | "AVAILABILITY_UNSPECIFIED"
-    | "AVAILABLE"
-    | "NO_LONGER_AVAILABLE"
-    | (string & {});
-}
-
-export const OneTimeProductPurchaseOptionNewRegionsConfig =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    usdPrice: Schema.optional(Money),
-    eurPrice: Schema.optional(Money),
-    availability: Schema.optional(Schema.String),
-  }).annotate({ identifier: "OneTimeProductPurchaseOptionNewRegionsConfig" });
-
-export interface OfferTag {
-  /** Must conform with RFC-1034. That is, this string can only contain lower-case letters (a-z), numbers (0-9), and hyphens (-), and be at most 20 characters. */
-  tag?: string;
-}
-
-export const OfferTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tag: Schema.optional(Schema.String),
-}).annotate({ identifier: "OfferTag" });
-
-export interface PurchaseOptionTaxAndComplianceSettings {
-  /** Optional. Digital content or service classification for products distributed to users in eligible regions. If unset, it defaults to `WITHDRAWAL_RIGHT_DIGITAL_CONTENT`. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/10463498) for more information. */
-  withdrawalRightType?:
-    | "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
-    | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
-    | "WITHDRAWAL_RIGHT_SERVICE"
-    | (string & {});
-}
-
-export const PurchaseOptionTaxAndComplianceSettings =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    withdrawalRightType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "PurchaseOptionTaxAndComplianceSettings" });
-
-export interface OneTimeProductPurchaseOption {
-  /** Required. Immutable. The unique identifier of this purchase option. Must be unique within the one-time product. It must start with a number or lower-case letter, and can only contain lower-case letters (a-z), numbers (0-9), and hyphens (-). The maximum length is 63 characters. */
-  purchaseOptionId?: string;
-  /** Output only. The state of the purchase option, i.e., whether it's active. This field cannot be changed by updating the resource. Use the dedicated endpoints instead. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "DRAFT"
-    | "ACTIVE"
-    | "INACTIVE"
-    | "INACTIVE_PUBLISHED"
-    | (string & {});
-  /** A purchase option that can be bought. */
-  buyOption?: OneTimeProductBuyPurchaseOption;
-  /** A purchase option that can be rented. */
-  rentOption?: OneTimeProductRentPurchaseOption;
-  /** Regional pricing and availability information for this purchase option. */
-  regionalPricingAndAvailabilityConfigs?: ReadonlyArray<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>;
-  /** Pricing information for any new locations Play may launch in the future. If omitted, the purchase option will not be automatically available in any new locations Play may launch in the future. */
-  newRegionsConfig?: OneTimeProductPurchaseOptionNewRegionsConfig;
-  /** Optional. List of up to 20 custom tags specified for this purchase option, and returned to the app through the billing library. Offers for this purchase option will also receive these tags in the billing library. */
-  offerTags?: ReadonlyArray<OfferTag>;
-  /** Optional. Details about taxes and legal compliance. */
-  taxAndComplianceSettings?: PurchaseOptionTaxAndComplianceSettings;
-}
-
-export const OneTimeProductPurchaseOption =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    purchaseOptionId: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    buyOption: Schema.optional(OneTimeProductBuyPurchaseOption),
-    rentOption: Schema.optional(OneTimeProductRentPurchaseOption),
-    regionalPricingAndAvailabilityConfigs: Schema.optional(
-      Schema.Array(
-        OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig,
-      ),
-    ),
-    newRegionsConfig: Schema.optional(
-      OneTimeProductPurchaseOptionNewRegionsConfig,
-    ),
-    offerTags: Schema.optional(Schema.Array(OfferTag)),
-    taxAndComplianceSettings: Schema.optional(
-      PurchaseOptionTaxAndComplianceSettings,
-    ),
-  }).annotate({ identifier: "OneTimeProductPurchaseOption" });
-
-export interface RestrictedPaymentCountries {
-  /** Required. Region codes to impose payment restrictions on, as defined by ISO 3166-2, e.g. "US". */
-  regionCodes?: ReadonlyArray<string>;
-}
-
-export const RestrictedPaymentCountries =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    regionCodes: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "RestrictedPaymentCountries" });
-
-export interface RegionsVersion {
-  /** Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. */
-  version?: string;
-}
-
-export const RegionsVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  version: Schema.optional(Schema.String),
-}).annotate({ identifier: "RegionsVersion" });
-
-export interface OneTimeProduct {
-  /** Required. Immutable. Package name of the parent app. */
-  packageName?: string;
-  /** Required. Immutable. Unique product ID of the product. Unique within the parent app. Product IDs must start with a number or lowercase letter, and can contain numbers (0-9), lowercase letters (a-z), underscores (_), and periods (.). */
-  productId?: string;
-  /** Required. Set of localized title and description data. Must not have duplicate entries with the same language_code. */
-  listings?: ReadonlyArray<OneTimeProductListing>;
-  /** Details about taxes and legal compliance. */
-  taxAndComplianceSettings?: OneTimeProductTaxAndComplianceSettings;
-  /** Required. The set of purchase options for this one-time product. */
-  purchaseOptions?: ReadonlyArray<OneTimeProductPurchaseOption>;
-  /** Optional. Countries where the purchase of this one-time product is restricted to payment methods registered in the same country. If empty, no payment location restrictions are imposed. */
-  restrictedPaymentCountries?: RestrictedPaymentCountries;
-  /** Optional. List of up to 20 custom tags specified for this one-time product, and returned to the app through the billing library. Purchase options and offers for this product will also receive these tags in the billing library. */
-  offerTags?: ReadonlyArray<OfferTag>;
-  /** Output only. The version of the regions configuration that was used to generate the one-time product. */
-  regionsVersion?: RegionsVersion;
-}
-
-export const OneTimeProduct = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.optional(Schema.String),
-  productId: Schema.optional(Schema.String),
-  listings: Schema.optional(Schema.Array(OneTimeProductListing)),
-  taxAndComplianceSettings: Schema.optional(
-    OneTimeProductTaxAndComplianceSettings,
-  ),
-  purchaseOptions: Schema.optional(Schema.Array(OneTimeProductPurchaseOption)),
-  restrictedPaymentCountries: Schema.optional(RestrictedPaymentCountries),
-  offerTags: Schema.optional(Schema.Array(OfferTag)),
-  regionsVersion: Schema.optional(RegionsVersion),
-}).annotate({ identifier: "OneTimeProduct" });
-
-export interface BatchGetOneTimeProductsResponse {
-  /** The list of requested one-time products, in the same order as the request. */
-  oneTimeProducts?: ReadonlyArray<OneTimeProduct>;
-}
-
-export const BatchGetOneTimeProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    oneTimeProducts: Schema.optional(Schema.Array(OneTimeProduct)),
-  }).annotate({ identifier: "BatchGetOneTimeProductsResponse" });
-
-export interface ListOneTimeProductsResponse {
-  /** The one-time products from the specified app. */
-  oneTimeProducts?: ReadonlyArray<OneTimeProduct>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListOneTimeProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    oneTimeProducts: Schema.optional(Schema.Array(OneTimeProduct)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListOneTimeProductsResponse" });
-
-export interface UpdateOneTimeProductRequest {
-  /** Required. The one-time product to upsert. */
-  oneTimeProduct?: OneTimeProduct;
-  /** Required. The list of fields to be updated. */
-  updateMask?: string;
-  /** Required. The version of the available regions being used for the one-time product. */
-  regionsVersion?: RegionsVersion;
-  /** Optional. If set to true, and the one-time product with the given package_name and product_id doesn't exist, the one-time product will be created. If a new one-time product is created, update_mask is ignored. */
-  allowMissing?: boolean;
-  /** Optional. The latency tolerance for the propagation of this product upsert. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-}
-
-export const UpdateOneTimeProductRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    oneTimeProduct: Schema.optional(OneTimeProduct),
-    updateMask: Schema.optional(Schema.String),
-    regionsVersion: Schema.optional(RegionsVersion),
-    allowMissing: Schema.optional(Schema.Boolean),
-    latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UpdateOneTimeProductRequest" });
-
-export interface BatchUpdateOneTimeProductsRequest {
-  /** Required. A list of update requests of up to 100 elements. All requests must update different one-time products. */
-  requests?: ReadonlyArray<UpdateOneTimeProductRequest>;
-}
-
-export const BatchUpdateOneTimeProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requests: Schema.optional(Schema.Array(UpdateOneTimeProductRequest)),
-  }).annotate({ identifier: "BatchUpdateOneTimeProductsRequest" });
-
-export interface BatchUpdateOneTimeProductsResponse {
-  /** The list of updated one-time products list, in the same order as the request. */
-  oneTimeProducts?: ReadonlyArray<OneTimeProduct>;
-}
-
-export const BatchUpdateOneTimeProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    oneTimeProducts: Schema.optional(Schema.Array(OneTimeProduct)),
-  }).annotate({ identifier: "BatchUpdateOneTimeProductsResponse" });
-
-export interface DeleteOneTimeProductRequest {
-  /** Required. The parent app (package name) of the one-time product to delete. */
-  packageName?: string;
-  /** Required. The one-time product ID of the one-time product to delete. */
-  productId?: string;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-}
-
-export const DeleteOneTimeProductRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
-    latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DeleteOneTimeProductRequest" });
-
-export interface BatchDeleteOneTimeProductsRequest {
-  /** Required. A list of delete requests of up to 100 elements. All requests must delete different one-time products. */
-  requests?: ReadonlyArray<DeleteOneTimeProductRequest>;
-}
-
-export const BatchDeleteOneTimeProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requests: Schema.optional(Schema.Array(DeleteOneTimeProductRequest)),
-  }).annotate({ identifier: "BatchDeleteOneTimeProductsRequest" });
-
-export interface ActivatePurchaseOptionRequest {
-  /** Required. The parent app (package name) of the purchase option to activate. */
-  packageName?: string;
-  /** Required. The parent one-time product (ID) of the purchase option to activate. */
-  productId?: string;
-  /** Required. The purchase option ID of the purchase option to activate. */
-  purchaseOptionId?: string;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-}
-
-export const ActivatePurchaseOptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
-    purchaseOptionId: Schema.optional(Schema.String),
-    latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ActivatePurchaseOptionRequest" });
-
-export interface DeactivatePurchaseOptionRequest {
-  /** Required. The parent app (package name) of the purchase option to deactivate. */
-  packageName?: string;
-  /** Required. The parent one-time product (ID) of the purchase option to deactivate. */
-  productId?: string;
-  /** Required. The purchase option ID of the purchase option to deactivate. */
-  purchaseOptionId?: string;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-}
-
-export const DeactivatePurchaseOptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
-    purchaseOptionId: Schema.optional(Schema.String),
-    latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DeactivatePurchaseOptionRequest" });
-
-export interface UpdatePurchaseOptionStateRequest {
-  /** Activates a purchase option. Once activated, the purchase option will be available. */
-  activatePurchaseOptionRequest?: ActivatePurchaseOptionRequest;
-  /** Deactivates a purchase option. Once deactivated, the purchase option will become unavailable. */
-  deactivatePurchaseOptionRequest?: DeactivatePurchaseOptionRequest;
-}
-
-export const UpdatePurchaseOptionStateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    activatePurchaseOptionRequest: Schema.optional(
-      ActivatePurchaseOptionRequest,
-    ),
-    deactivatePurchaseOptionRequest: Schema.optional(
-      DeactivatePurchaseOptionRequest,
-    ),
-  }).annotate({ identifier: "UpdatePurchaseOptionStateRequest" });
-
-export interface BatchUpdatePurchaseOptionStatesRequest {
-  /** Required. The update request list of up to 100 elements. All requests must update different purchase options. */
-  requests?: ReadonlyArray<UpdatePurchaseOptionStateRequest>;
-}
-
-export const BatchUpdatePurchaseOptionStatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requests: Schema.optional(Schema.Array(UpdatePurchaseOptionStateRequest)),
-  }).annotate({ identifier: "BatchUpdatePurchaseOptionStatesRequest" });
-
-export interface BatchUpdatePurchaseOptionStatesResponse {
-  /** The list of updated one-time products. This list will match the requests one to one, in the same order. */
-  oneTimeProducts?: ReadonlyArray<OneTimeProduct>;
-}
-
-export const BatchUpdatePurchaseOptionStatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    oneTimeProducts: Schema.optional(Schema.Array(OneTimeProduct)),
-  }).annotate({ identifier: "BatchUpdatePurchaseOptionStatesResponse" });
-
-export interface DeletePurchaseOptionRequest {
-  /** Required. The parent app (package name) of the purchase option to delete. */
-  packageName?: string;
-  /** Required. The parent one-time product (ID) of the purchase option to delete. */
-  productId?: string;
-  /** Required. The purchase option ID of the purchase option to delete. */
-  purchaseOptionId?: string;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-  /** Optional. This field has no effect for purchase options with no offers under them. For purchase options with associated offers: * If `force` is set to false (default), an error will be returned. * If `force` is set to true, any associated offers under the purchase option will be deleted. */
-  force?: boolean;
-}
-
-export const DeletePurchaseOptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
-    purchaseOptionId: Schema.optional(Schema.String),
-    latencyTolerance: Schema.optional(Schema.String),
-    force: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "DeletePurchaseOptionRequest" });
-
-export interface BatchDeletePurchaseOptionsRequest {
-  /** Required. A list of delete requests of up to 100 elements. All requests must delete purchase options from different one-time products. */
-  requests?: ReadonlyArray<DeletePurchaseOptionRequest>;
-}
-
-export const BatchDeletePurchaseOptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requests: Schema.optional(Schema.Array(DeletePurchaseOptionRequest)),
-  }).annotate({ identifier: "BatchDeletePurchaseOptionsRequest" });
-
-export interface OneTimeProductPreOrderOffer {
-  /** Required. Time when the pre-order will start being available. */
-  startTime?: string;
-  /** Required. Time when the pre-order will stop being available. */
-  endTime?: string;
-  /** Required. Time on which the product associated with the pre-order will be released and the pre-order orders fulfilled. */
-  releaseTime?: string;
-  /** Required. Immutable. Specifies how price changes affect pre-existing pre-orders. */
-  priceChangeBehavior?:
-    | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_UNSPECIFIED"
-    | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_TWO_POINT_LOWEST"
-    | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_NEW_ORDERS_ONLY"
-    | (string & {});
-}
-
-export const OneTimeProductPreOrderOffer =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    releaseTime: Schema.optional(Schema.String),
-    priceChangeBehavior: Schema.optional(Schema.String),
-  }).annotate({ identifier: "OneTimeProductPreOrderOffer" });
-
-export interface OneTimeProductDiscountedOffer {
-  /** Time when the offer will start being available. */
-  startTime?: string;
-  /** Time when the offer will stop being available. */
-  endTime?: string;
-  /** Optional. The number of times this offer can be redeemed. If unset or set to 0, allows for unlimited offer redemptions. Otherwise must be a number between 1 and 50 inclusive. */
-  redemptionLimit?: string;
-}
-
-export const OneTimeProductDiscountedOffer =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    redemptionLimit: Schema.optional(Schema.String),
-  }).annotate({ identifier: "OneTimeProductDiscountedOffer" });
-
-export interface OneTimeProductOfferNoPriceOverrideOptions {}
-
-export const OneTimeProductOfferNoPriceOverrideOptions =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "OneTimeProductOfferNoPriceOverrideOptions",
-  });
-
-export interface OneTimeProductOfferRegionalPricingAndAvailabilityConfig {
-  /** Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g., "US". */
-  regionCode?: string;
-  /** The price defined in the purchase option for this region will be used. */
-  noOverride?: OneTimeProductOfferNoPriceOverrideOptions;
-  /** The fraction of the purchase option price that the user pays for this offer. For example, if the purchase option price for this region is $12, then a 50% discount would correspond to a price of $6. The discount must be specified as a fraction strictly larger than 0 and strictly smaller than 1. The resulting price will be rounded to the nearest billable unit (e.g. cents for USD). The relative discount is considered invalid if the discounted price ends up being smaller than the minimum price allowed in this region. */
-  relativeDiscount?: number;
-  /** The absolute value of the discount that is subtracted from the purchase option price. It should be between 0 and the purchase option price. */
-  absoluteDiscount?: Money;
-  /** Required. The availability for this region. */
-  availability?:
-    | "AVAILABILITY_UNSPECIFIED"
-    | "AVAILABLE"
-    | "NO_LONGER_AVAILABLE"
-    | (string & {});
-}
-
-export const OneTimeProductOfferRegionalPricingAndAvailabilityConfig =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    regionCode: Schema.optional(Schema.String),
-    noOverride: Schema.optional(OneTimeProductOfferNoPriceOverrideOptions),
-    relativeDiscount: Schema.optional(Schema.Number),
-    absoluteDiscount: Schema.optional(Money),
-    availability: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "OneTimeProductOfferRegionalPricingAndAvailabilityConfig",
-  });
-
-export interface OneTimeProductOffer {
-  /** Required. Immutable. The package name of the app the parent product belongs to. */
-  packageName?: string;
-  /** Required. Immutable. The ID of the parent product this offer belongs to. */
-  productId?: string;
-  /** Required. Immutable. The ID of the purchase option to which this offer is an extension. */
-  purchaseOptionId?: string;
-  /** Required. Immutable. The ID of this product offer. Must be unique within the purchase option. It must start with a number or lower-case letter, and can only contain lower-case letters (a-z), numbers (0-9), and hyphens (-). The maximum length is 63 characters. */
-  offerId?: string;
-  /** Output only. The current state of this offer. This field cannot be changed by updating the resource. Use the dedicated endpoints instead. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "DRAFT"
-    | "ACTIVE"
-    | "CANCELLED"
-    | "INACTIVE"
-    | (string & {});
-  /** A pre-order offer. */
-  preOrderOffer?: OneTimeProductPreOrderOffer;
-  /** A discounted offer. */
-  discountedOffer?: OneTimeProductDiscountedOffer;
-  /** Set of regional pricing and availability information for this offer. Must not have duplicate entries with the same region_code. */
-  regionalPricingAndAvailabilityConfigs?: ReadonlyArray<OneTimeProductOfferRegionalPricingAndAvailabilityConfig>;
-  /** Optional. List of up to 20 custom tags specified for this offer, and returned to the app through the billing library. */
-  offerTags?: ReadonlyArray<OfferTag>;
-  /** Output only. The version of the regions configuration that was used to generate the one-time product offer. */
-  regionsVersion?: RegionsVersion;
-}
-
-export const OneTimeProductOffer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.optional(Schema.String),
-  productId: Schema.optional(Schema.String),
-  purchaseOptionId: Schema.optional(Schema.String),
-  offerId: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  preOrderOffer: Schema.optional(OneTimeProductPreOrderOffer),
-  discountedOffer: Schema.optional(OneTimeProductDiscountedOffer),
-  regionalPricingAndAvailabilityConfigs: Schema.optional(
-    Schema.Array(OneTimeProductOfferRegionalPricingAndAvailabilityConfig),
-  ),
-  offerTags: Schema.optional(Schema.Array(OfferTag)),
-  regionsVersion: Schema.optional(RegionsVersion),
-}).annotate({ identifier: "OneTimeProductOffer" });
-
-export interface ListOneTimeProductOffersResponse {
-  /** The one_time_product offers from the specified request. */
-  oneTimeProductOffers?: ReadonlyArray<OneTimeProductOffer>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListOneTimeProductOffersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    oneTimeProductOffers: Schema.optional(Schema.Array(OneTimeProductOffer)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListOneTimeProductOffersResponse" });
-
-export interface GetOneTimeProductOfferRequest {
-  /** Required. The parent app (package name) of the offer to get. */
-  packageName?: string;
-  /** Required. The parent one-time product (ID) of the offer to get. */
-  productId?: string;
-  /** Required. The parent purchase option (ID) of the offer to get. */
-  purchaseOptionId?: string;
-  /** Required. The unique offer ID of the offer to get. */
-  offerId?: string;
-}
-
-export const GetOneTimeProductOfferRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
-    purchaseOptionId: Schema.optional(Schema.String),
-    offerId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GetOneTimeProductOfferRequest" });
-
-export interface BatchGetOneTimeProductOffersRequest {
-  /** Required. A list of get requests of up to 100 elements. All requests must retrieve different offers. */
-  requests?: ReadonlyArray<GetOneTimeProductOfferRequest>;
-}
-
-export const BatchGetOneTimeProductOffersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requests: Schema.optional(Schema.Array(GetOneTimeProductOfferRequest)),
-  }).annotate({ identifier: "BatchGetOneTimeProductOffersRequest" });
-
-export interface BatchGetOneTimeProductOffersResponse {
-  /** The list of updated one-time product offers, in the same order as the request. */
-  oneTimeProductOffers?: ReadonlyArray<OneTimeProductOffer>;
-}
-
-export const BatchGetOneTimeProductOffersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    oneTimeProductOffers: Schema.optional(Schema.Array(OneTimeProductOffer)),
-  }).annotate({ identifier: "BatchGetOneTimeProductOffersResponse" });
-
-export interface UpdateOneTimeProductOfferRequest {
-  /** Required. The one-time product offer to update. */
-  oneTimeProductOffer?: OneTimeProductOffer;
-  /** Required. The list of fields to be updated. */
-  updateMask?: string;
-  /** Required. The version of the available regions being used for the offer. */
-  regionsVersion?: RegionsVersion;
-  /** Optional. If set to true, and the offer with the given package_name, product_id, purchase_option_id and offer_id doesn't exist, an offer will be created. If a new offer is created, the update_mask is ignored. */
-  allowMissing?: boolean;
-  /** Optional. The latency tolerance for the propagation of this offer update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-}
-
-export const UpdateOneTimeProductOfferRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    oneTimeProductOffer: Schema.optional(OneTimeProductOffer),
-    updateMask: Schema.optional(Schema.String),
-    regionsVersion: Schema.optional(RegionsVersion),
-    allowMissing: Schema.optional(Schema.Boolean),
-    latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UpdateOneTimeProductOfferRequest" });
-
-export interface BatchUpdateOneTimeProductOffersRequest {
-  /** Required. A list of update requests of up to 100 elements. All requests must update different offers. */
-  requests?: ReadonlyArray<UpdateOneTimeProductOfferRequest>;
-}
-
-export const BatchUpdateOneTimeProductOffersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requests: Schema.optional(Schema.Array(UpdateOneTimeProductOfferRequest)),
-  }).annotate({ identifier: "BatchUpdateOneTimeProductOffersRequest" });
 
 export interface BatchUpdateOneTimeProductOffersResponse {
   /** The list of updated one-time product offers, in the same order as the request. */
   oneTimeProductOffers?: ReadonlyArray<OneTimeProductOffer>;
 }
 
-export const BatchUpdateOneTimeProductOffersResponse =
+export const BatchUpdateOneTimeProductOffersResponse: Schema.Schema<BatchUpdateOneTimeProductOffersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oneTimeProductOffers: Schema.optional(Schema.Array(OneTimeProductOffer)),
   }).annotate({ identifier: "BatchUpdateOneTimeProductOffersResponse" });
 
-export interface ActivateOneTimeProductOfferRequest {
-  /** Required. The parent app (package name) of the offer to activate. */
-  packageName?: string;
-  /** Required. The parent one-time product (ID) of the offer to activate. */
-  productId?: string;
-  /** Required. The parent purchase option (ID) of the offer to activate. */
-  purchaseOptionId?: string;
-  /** Required. The offer ID of the offer to activate. */
-  offerId?: string;
-  /** Optional. The latency tolerance for the propagation of this update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
+export interface SafetyLabelsUpdateResponse {}
+
+export const SafetyLabelsUpdateResponse: Schema.Schema<SafetyLabelsUpdateResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "SafetyLabelsUpdateResponse",
+  });
+
+export interface OneTimeCode {}
+
+export const OneTimeCode: Schema.Schema<OneTimeCode> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "OneTimeCode",
+  });
+
+export interface BasePriceOfferPhase {}
+
+export const BasePriceOfferPhase: Schema.Schema<BasePriceOfferPhase> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "BasePriceOfferPhase",
+  });
+
+export interface RemoteInAppUpdateDataPerBundle {
+  /** Version Code corresponding to the target bundle. */
+  versionCode?: string;
+  /** Total number of devices affected by this recovery action associated with bundle of the app. */
+  totalDeviceCount?: string;
+  /** Total number of devices which have been rescued. */
+  recoveredDeviceCount?: string;
 }
 
-export const ActivateOneTimeProductOfferRequest =
+export const RemoteInAppUpdateDataPerBundle: Schema.Schema<RemoteInAppUpdateDataPerBundle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
-    purchaseOptionId: Schema.optional(Schema.String),
-    offerId: Schema.optional(Schema.String),
-    latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ActivateOneTimeProductOfferRequest" });
-
-export interface CancelOneTimeProductOfferRequest {
-  /** Required. The parent app (package name) of the offer to cancel. */
-  packageName?: string;
-  /** Required. The parent one-time product (ID) of the offer to cancel. */
-  productId?: string;
-  /** Required. The parent purchase option (ID) of the offer to cancel. */
-  purchaseOptionId?: string;
-  /** Required. The offer ID of the offer to cancel. */
-  offerId?: string;
-  /** Optional. The latency tolerance for the propagation of this update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-}
-
-export const CancelOneTimeProductOfferRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
-    purchaseOptionId: Schema.optional(Schema.String),
-    offerId: Schema.optional(Schema.String),
-    latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CancelOneTimeProductOfferRequest" });
+    versionCode: Schema.optional(Schema.String),
+    totalDeviceCount: Schema.optional(Schema.String),
+    recoveredDeviceCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RemoteInAppUpdateDataPerBundle" });
 
 export interface DeactivateOneTimeProductOfferRequest {
   /** Required. The parent app (package name) of the offer to deactivate. */
   packageName?: string;
-  /** Required. The parent one-time product (ID) of the offer to deactivate. */
-  productId?: string;
   /** Required. The parent purchase option (ID) of the offer to deactivate. */
   purchaseOptionId?: string;
   /** Required. The offer ID of the offer to deactivate. */
@@ -2770,512 +2979,213 @@ export interface DeactivateOneTimeProductOfferRequest {
     | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
     | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
     | (string & {});
+  /** Required. The parent one-time product (ID) of the offer to deactivate. */
+  productId?: string;
 }
 
-export const DeactivateOneTimeProductOfferRequest =
+export const DeactivateOneTimeProductOfferRequest: Schema.Schema<DeactivateOneTimeProductOfferRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
     purchaseOptionId: Schema.optional(Schema.String),
     offerId: Schema.optional(Schema.String),
     latencyTolerance: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeactivateOneTimeProductOfferRequest" });
 
-export interface UpdateOneTimeProductOfferStateRequest {
-  /** Activates an offer. Once activated, the offer is available to users, as long as its conditions are met. */
-  activateOneTimeProductOfferRequest?: ActivateOneTimeProductOfferRequest;
-  /** Cancels an offer. Once cancelled, the offer is not available to users. Any pending orders related to this offer will be cancelled. This state transition is specific to pre-orders. */
-  cancelOneTimeProductOfferRequest?: CancelOneTimeProductOfferRequest;
-  /** Deactivates an offer. Once deactivated, the offer is no longer available to users. This state transition is specific to discounted offers. */
-  deactivateOneTimeProductOfferRequest?: DeactivateOneTimeProductOfferRequest;
-}
-
-export const UpdateOneTimeProductOfferStateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    activateOneTimeProductOfferRequest: Schema.optional(
-      ActivateOneTimeProductOfferRequest,
-    ),
-    cancelOneTimeProductOfferRequest: Schema.optional(
-      CancelOneTimeProductOfferRequest,
-    ),
-    deactivateOneTimeProductOfferRequest: Schema.optional(
-      DeactivateOneTimeProductOfferRequest,
-    ),
-  }).annotate({ identifier: "UpdateOneTimeProductOfferStateRequest" });
-
-export interface BatchUpdateOneTimeProductOfferStatesRequest {
-  /** Required. The update request list of up to 100 elements. All requests must update different offers. */
-  requests?: ReadonlyArray<UpdateOneTimeProductOfferStateRequest>;
-}
-
-export const BatchUpdateOneTimeProductOfferStatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requests: Schema.optional(
-      Schema.Array(UpdateOneTimeProductOfferStateRequest),
-    ),
-  }).annotate({ identifier: "BatchUpdateOneTimeProductOfferStatesRequest" });
-
-export interface BatchUpdateOneTimeProductOfferStatesResponse {
-  /** The updated one-time product offers list, in the same order as the request. */
-  oneTimeProductOffers?: ReadonlyArray<OneTimeProductOffer>;
-}
-
-export const BatchUpdateOneTimeProductOfferStatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    oneTimeProductOffers: Schema.optional(Schema.Array(OneTimeProductOffer)),
-  }).annotate({ identifier: "BatchUpdateOneTimeProductOfferStatesResponse" });
-
-export interface DeleteOneTimeProductOfferRequest {
-  /** Required. The parent app (package name) of the offer to delete. */
-  packageName?: string;
-  /** Required. The parent one-time product (ID) of the offer to delete. */
-  productId?: string;
-  /** Required. The parent purchase option (ID) of the offer to delete. */
-  purchaseOptionId?: string;
-  /** Required. The unique offer ID of the offer to delete. */
-  offerId?: string;
+export interface UpdateSubscriptionRequest {
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
   latencyTolerance?:
     | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
     | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
     | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
     | (string & {});
+  /** Required. The version of the available regions being used for the subscription. */
+  regionsVersion?: RegionsVersion;
+  /** Optional. If set to true, and the subscription with the given package_name and product_id doesn't exist, the subscription will be created. If a new subscription is created, update_mask is ignored. */
+  allowMissing?: boolean;
+  /** Required. The subscription to update. */
+  subscription?: Subscription;
+  /** Required. The list of fields to be updated. */
+  updateMask?: string;
 }
 
-export const DeleteOneTimeProductOfferRequest =
+export const UpdateSubscriptionRequest: Schema.Schema<UpdateSubscriptionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
-    purchaseOptionId: Schema.optional(Schema.String),
-    offerId: Schema.optional(Schema.String),
     latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DeleteOneTimeProductOfferRequest" });
+    regionsVersion: Schema.optional(RegionsVersion),
+    allowMissing: Schema.optional(Schema.Boolean),
+    subscription: Schema.optional(Subscription),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateSubscriptionRequest" });
 
-export interface BatchDeleteOneTimeProductOffersRequest {
-  /** Required. A list of update requests of up to 100 elements. All requests must correspond to different offers. */
-  requests?: ReadonlyArray<DeleteOneTimeProductOfferRequest>;
-}
-
-export const BatchDeleteOneTimeProductOffersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requests: Schema.optional(Schema.Array(DeleteOneTimeProductOfferRequest)),
-  }).annotate({ identifier: "BatchDeleteOneTimeProductOffersRequest" });
-
-export interface BuyerAddress {
-  /** Top-level administrative subdivision of the buyer address country. When Google is the Merchant of Record for the order, this information is not included. */
-  buyerState?: string;
-  /** Two letter country code based on ISO-3166-1 Alpha-2 (UN country codes). */
-  buyerCountry?: string;
-  /** Postal code of an address. When Google is the Merchant of Record for the order, this information is not included. */
-  buyerPostcode?: string;
-}
-
-export const BuyerAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  buyerState: Schema.optional(Schema.String),
-  buyerCountry: Schema.optional(Schema.String),
-  buyerPostcode: Schema.optional(Schema.String),
-}).annotate({ identifier: "BuyerAddress" });
-
-export interface OrderDetails {
-  /** Indicates whether the listed price was tax inclusive or not. */
-  taxInclusive?: boolean;
-}
-
-export const OrderDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  taxInclusive: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "OrderDetails" });
-
-export interface PreorderDetails {}
-
-export const PreorderDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "PreorderDetails" });
-
-export interface RentalDetails {}
-
-export const RentalDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "RentalDetails" });
-
-export interface OneTimePurchaseDetails {
-  /** The number of items purchased (for multi-quantity item purchases). */
-  quantity?: number;
-  /** The offer ID of the one-time purchase offer. */
-  offerId?: string;
-  /** ID of the purchase option. This field is set for both purchase options and variant offers. For purchase options, this ID identifies the purchase option itself. For variant offers, this ID refers to the associated purchase option, and in conjunction with offer_id it identifies the variant offer. */
-  purchaseOptionId?: string;
-  /** The details of a pre-order purchase. Only set if it is a pre-order purchase. Note that this field will be set even after pre-order is fulfilled. */
-  preorderDetails?: PreorderDetails;
-  /** The details of a rent purchase. Only set if it is a rent purchase. */
-  rentalDetails?: RentalDetails;
-}
-
-export const OneTimePurchaseDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    quantity: Schema.optional(Schema.Number),
-    offerId: Schema.optional(Schema.String),
-    purchaseOptionId: Schema.optional(Schema.String),
-    preorderDetails: Schema.optional(PreorderDetails),
-    rentalDetails: Schema.optional(RentalDetails),
-  },
-).annotate({ identifier: "OneTimePurchaseDetails" });
-
-export interface FreeTrialDetails {}
-
-export const FreeTrialDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "FreeTrialDetails" });
-
-export interface IntroductoryPriceDetails {}
-
-export const IntroductoryPriceDetails =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "IntroductoryPriceDetails",
-  });
-
-export interface BaseDetails {}
-
-export const BaseDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "BaseDetails" });
-
-export interface ProrationPeriodDetails {
-  /** Represent the original offer phase from the purchased the line item if the proration period contains any of them. For example, a proration period from CHARGE_FULL_PRICE plan change may merge the 1st offer phase of the subscription offer of the new product user purchased. In this case, the original offer phase will be set here. */
-  originalOfferPhase?:
-    | "OFFER_PHASE_UNSPECIFIED"
-    | "BASE"
-    | "INTRODUCTORY"
-    | "FREE_TRIAL"
-    | (string & {});
-}
-
-export const ProrationPeriodDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    originalOfferPhase: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "ProrationPeriodDetails" });
-
-export interface OfferPhaseDetails {
-  /** The order funds a free trial period. */
-  freeTrialDetails?: FreeTrialDetails;
-  /** The order funds an introductory pricing period. */
-  introductoryPriceDetails?: IntroductoryPriceDetails;
-  /** The order funds a base price period. */
-  baseDetails?: BaseDetails;
-  /** The order funds a proration period. */
-  prorationPeriodDetails?: ProrationPeriodDetails;
-}
-
-export const OfferPhaseDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  freeTrialDetails: Schema.optional(FreeTrialDetails),
-  introductoryPriceDetails: Schema.optional(IntroductoryPriceDetails),
-  baseDetails: Schema.optional(BaseDetails),
-  prorationPeriodDetails: Schema.optional(ProrationPeriodDetails),
-}).annotate({ identifier: "OfferPhaseDetails" });
-
-export interface SubscriptionDetails {
-  /** The base plan ID of the subscription. */
-  basePlanId?: string;
-  /** The offer ID for the current subscription offer. */
-  offerId?: string;
-  /** The pricing phase for the billing period funded by this order. Deprecated. Use offer_phase_details instead. */
-  offerPhase?:
-    | "OFFER_PHASE_UNSPECIFIED"
-    | "BASE"
-    | "INTRODUCTORY"
-    | "FREE_TRIAL"
-    | (string & {});
-  /** The pricing phase details for the entitlement period funded by this order. */
-  offerPhaseDetails?: OfferPhaseDetails;
-  /** The start of the billing period funded by this order. This is a snapshot of the billing/service period start time at the moment the order was processed, and should be used only for accounting. */
-  servicePeriodStartTime?: string;
-  /** The end of the billing period funded by this order. This is a snapshot of the billing/service period end time at the moment the order was processed, and should be used only for accounting. To get the current end time of the subscription service period, use purchases.subscriptionsv2.get. */
-  servicePeriodEndTime?: string;
-}
-
-export const SubscriptionDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  basePlanId: Schema.optional(Schema.String),
-  offerId: Schema.optional(Schema.String),
-  offerPhase: Schema.optional(Schema.String),
-  offerPhaseDetails: Schema.optional(OfferPhaseDetails),
-  servicePeriodStartTime: Schema.optional(Schema.String),
-  servicePeriodEndTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "SubscriptionDetails" });
-
-export interface PaidAppDetails {}
-
-export const PaidAppDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "PaidAppDetails" });
-
-export interface LineItem {
-  /** Developer-specified name of the product. Displayed in buyer's locale. Example: coins, monthly subscription, etc. */
-  productTitle?: string;
-  /** The purchased product ID or in-app SKU (for example, 'monthly001' or 'com.some.thing.inapp1'). */
-  productId?: string;
-  /** Item's listed price on Play Store, this may or may not include tax. Excludes Google-funded discounts only. */
-  listingPrice?: Money;
-  /** The total amount paid by the user for this line item, taking into account discounts and tax. */
-  total?: Money;
-  /** The tax paid for this line item. */
-  tax?: Money;
-  /** Details of a one-time purchase. */
-  oneTimePurchaseDetails?: OneTimePurchaseDetails;
-  /** Details of a subscription purchase. */
-  subscriptionDetails?: SubscriptionDetails;
-  /** Details of a paid app purchase. */
-  paidAppDetails?: PaidAppDetails;
-}
-
-export const LineItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  productTitle: Schema.optional(Schema.String),
-  productId: Schema.optional(Schema.String),
-  listingPrice: Schema.optional(Money),
-  total: Schema.optional(Money),
-  tax: Schema.optional(Money),
-  oneTimePurchaseDetails: Schema.optional(OneTimePurchaseDetails),
-  subscriptionDetails: Schema.optional(SubscriptionDetails),
-  paidAppDetails: Schema.optional(PaidAppDetails),
-}).annotate({ identifier: "LineItem" });
-
-export interface ProcessedEvent {
-  /** The time when the order was processed. */
-  eventTime?: string;
-}
-
-export const ProcessedEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  eventTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "ProcessedEvent" });
-
-export interface CancellationEvent {
-  /** The time when the order was canceled. */
-  eventTime?: string;
-}
-
-export const CancellationEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  eventTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "CancellationEvent" });
-
-export interface RefundDetails {
-  /** The total amount refunded, including tax. */
-  total?: Money;
-  /** The amount of tax refunded. */
-  tax?: Money;
-}
-
-export const RefundDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  total: Schema.optional(Money),
-  tax: Schema.optional(Money),
-}).annotate({ identifier: "RefundDetails" });
-
-export interface RefundEvent {
-  /** The time when the order was fully refunded. */
-  eventTime?: string;
-  /** Details for the full refund. */
-  refundDetails?: RefundDetails;
-  /** The reason the order was refunded. */
-  refundReason?:
-    | "REFUND_REASON_UNSPECIFIED"
-    | "OTHER"
-    | "CHARGEBACK"
-    | (string & {});
-}
-
-export const RefundEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  eventTime: Schema.optional(Schema.String),
-  refundDetails: Schema.optional(RefundDetails),
-  refundReason: Schema.optional(Schema.String),
-}).annotate({ identifier: "RefundEvent" });
-
-export interface PartialRefundEvent {
-  /** The time when the partial refund was created. */
-  createTime?: string;
-  /** The time when the partial refund was processed. */
-  processTime?: string;
-  /** The state of the partial refund. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "PENDING"
-    | "PROCESSED_SUCCESSFULLY"
-    | (string & {});
-  /** Details for the partial refund. */
-  refundDetails?: RefundDetails;
-}
-
-export const PartialRefundEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  createTime: Schema.optional(Schema.String),
-  processTime: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  refundDetails: Schema.optional(RefundDetails),
-}).annotate({ identifier: "PartialRefundEvent" });
-
-export interface OrderHistory {
-  /** Details of when the order was processed. */
-  processedEvent?: ProcessedEvent;
-  /** Details of when the order was canceled. */
-  cancellationEvent?: CancellationEvent;
-  /** Details of when the order was fully refunded. */
-  refundEvent?: RefundEvent;
-  /** Details of the partial refund events for this order. */
-  partialRefundEvents?: ReadonlyArray<PartialRefundEvent>;
-}
-
-export const OrderHistory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  processedEvent: Schema.optional(ProcessedEvent),
-  cancellationEvent: Schema.optional(CancellationEvent),
-  refundEvent: Schema.optional(RefundEvent),
-  partialRefundEvents: Schema.optional(Schema.Array(PartialRefundEvent)),
-}).annotate({ identifier: "OrderHistory" });
-
-export interface PointsDetails {
-  /** ID unique to the play points offer in use for this order. */
-  pointsOfferId?: string;
-  /** The monetary value of a Play Points coupon. This is the discount the coupon provides, which may not be the total amount. Only set when Play Points coupons have been used. E.g. for a 100 points for $2 coupon, this is $2. */
-  pointsCouponValue?: Money;
-  /** The percentage rate which the Play Points promotion reduces the cost by. E.g. for a 100 points for $2 coupon, this is 500,000. Since $2 has an estimate of 200 points, but the actual Points required, 100, is 50% of this, and 50% in micros is 500,000. Between 0 and 1,000,000. */
-  pointsDiscountRateMicros?: string;
-  /** The number of Play Points applied in this order. E.g. for a 100 points for $2 coupon, this is 100. For coupon stacked with base offer, this is the total points spent across both. */
-  pointsSpent?: string;
-}
-
-export const PointsDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  pointsOfferId: Schema.optional(Schema.String),
-  pointsCouponValue: Schema.optional(Money),
-  pointsDiscountRateMicros: Schema.optional(Schema.String),
-  pointsSpent: Schema.optional(Schema.String),
-}).annotate({ identifier: "PointsDetails" });
-
-export interface Order {
-  /** The order ID. */
-  orderId?: string;
-  /** The token provided to the user's device when the subscription or item was purchased. */
-  purchaseToken?: string;
-  /** The state of the order. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "PENDING"
-    | "PROCESSED"
-    | "CANCELED"
-    | "PENDING_REFUND"
-    | "PARTIALLY_REFUNDED"
-    | "REFUNDED"
-    | (string & {});
-  /** The time when the order was created. */
-  createTime?: string;
-  /** The time of the last event that occurred on the order. */
-  lastEventTime?: string;
-  /** Address information for the customer, for use in tax computation. When Google is the Merchant of Record for the order, only country is shown. */
-  buyerAddress?: BuyerAddress;
-  /** The final amount paid by the customer, taking into account discounts and taxes. */
-  total?: Money;
-  /** The total tax paid as a part of this order. */
-  tax?: Money;
-  /** Detailed information about the order at creation time. */
-  orderDetails?: OrderDetails;
-  /** The individual line items making up this order. */
-  lineItems?: ReadonlyArray<LineItem>;
-  /** Details about events which modified the order. */
-  orderHistory?: OrderHistory;
-  /** Your revenue for this order in the buyer's currency, including deductions of partial refunds, taxes and fees. Google deducts standard transaction and third party fees from each sale, including VAT in some regions. */
-  developerRevenueInBuyerCurrency?: Money;
-  /** Play points applied to the order, including offer information, discount rate and point values. */
-  pointsDetails?: PointsDetails;
-  /** The originating sales channel of the order. */
-  salesChannel?:
-    | "SALES_CHANNEL_UNSPECIFIED"
-    | "IN_APP"
-    | "PC_EMULATOR"
-    | "NATIVE_PC"
-    | "PLAY_STORE"
-    | "OUTSIDE_PLAY_STORE"
-    | (string & {});
-}
-
-export const Order = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  orderId: Schema.optional(Schema.String),
-  purchaseToken: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  lastEventTime: Schema.optional(Schema.String),
-  buyerAddress: Schema.optional(BuyerAddress),
-  total: Schema.optional(Money),
-  tax: Schema.optional(Money),
-  orderDetails: Schema.optional(OrderDetails),
-  lineItems: Schema.optional(Schema.Array(LineItem)),
-  orderHistory: Schema.optional(OrderHistory),
-  developerRevenueInBuyerCurrency: Schema.optional(Money),
-  pointsDetails: Schema.optional(PointsDetails),
-  salesChannel: Schema.optional(Schema.String),
-}).annotate({ identifier: "Order" });
-
-export interface BatchGetOrdersResponse {
-  /** Details for the requested order IDs. */
-  orders?: ReadonlyArray<Order>;
-}
-
-export const BatchGetOrdersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    orders: Schema.optional(Schema.Array(Order)),
-  },
-).annotate({ identifier: "BatchGetOrdersResponse" });
-
-export interface SafetyLabelsUpdateRequest {
-  /** Required. Contents of the CSV file containing Data Safety responses. For the format of this file, see the Help Center documentation at https://support.google.com/googleplay/android-developer/answer/10787469?#zippy=%2Cunderstand-the-csv-format To download an up to date template, follow the steps at https://support.google.com/googleplay/android-developer/answer/10787469?#zippy=%2Cexport-to-a-csv-file */
-  safetyLabels?: string;
-}
-
-export const SafetyLabelsUpdateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    safetyLabels: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SafetyLabelsUpdateRequest" });
-
-export interface SafetyLabelsUpdateResponse {}
-
-export const SafetyLabelsUpdateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "SafetyLabelsUpdateResponse",
-  });
-
-export interface ConvertRegionPricesRequest {
-  /** The intital price to convert other regions from. Tax exclusive. */
-  price?: Money;
-  /** Optional. Product tax category code in context. Product tax category determines the transaction tax rates applied to the product that will be factored into the price calculation. If not set, tax rates for the default product tax category will be used. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information. */
-  productTaxCategoryCode?: string;
-}
-
-export const ConvertRegionPricesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    price: Schema.optional(Money),
-    productTaxCategoryCode: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ConvertRegionPricesRequest" });
-
-export interface ConvertedRegionPrice {
-  /** The region code of the region. */
+export interface RegionalPriceMigrationConfig {
+  /** Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US". */
   regionCode?: string;
-  /** The converted price tax inclusive. */
-  price?: Money;
-  /** The tax amount of the converted price. */
-  taxAmount?: Money;
+  /** Required. Subscribers in all legacy price cohorts before this time will be migrated to the current price. Subscribers in any newer price cohorts are unaffected. Affected subscribers will receive one or more notifications from Google Play about the price change. Price decreases occur at the subscriber's next billing date. Price increases occur at the subscriber's next billing date following a notification period that varies by region and price increase type. */
+  oldestAllowedPriceVersionTime?: string;
+  /** Optional. The requested type of price increase */
+  priceIncreaseType?:
+    | "PRICE_INCREASE_TYPE_UNSPECIFIED"
+    | "PRICE_INCREASE_TYPE_OPT_IN"
+    | "PRICE_INCREASE_TYPE_OPT_OUT"
+    | (string & {});
 }
 
-export const ConvertedRegionPrice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  regionCode: Schema.optional(Schema.String),
-  price: Schema.optional(Money),
-  taxAmount: Schema.optional(Money),
-}).annotate({ identifier: "ConvertedRegionPrice" });
-
-export interface ConvertedOtherRegionsPrice {
-  /** Price in USD to use for the "Other regions" location exclusive of taxes. */
-  usdPrice?: Money;
-  /** Price in EUR to use for the "Other regions" location exclusive of taxes. */
-  eurPrice?: Money;
-}
-
-export const ConvertedOtherRegionsPrice =
+export const RegionalPriceMigrationConfig: Schema.Schema<RegionalPriceMigrationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    usdPrice: Schema.optional(Money),
-    eurPrice: Schema.optional(Money),
-  }).annotate({ identifier: "ConvertedOtherRegionsPrice" });
+    regionCode: Schema.optional(Schema.String),
+    oldestAllowedPriceVersionTime: Schema.optional(Schema.String),
+    priceIncreaseType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RegionalPriceMigrationConfig" });
+
+export interface MigrateBasePlanPricesRequest {
+  /** Required. The version of the available regions being used for the regional_price_migrations. */
+  regionsVersion?: RegionsVersion;
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+  /** Required. The ID of the subscription to update. Must be equal to the product_id field on the Subscription resource. */
+  productId?: string;
+  /** Required. Package name of the parent app. Must be equal to the package_name field on the Subscription resource. */
+  packageName?: string;
+  /** Required. The unique base plan ID of the base plan to update prices on. */
+  basePlanId?: string;
+  /** Required. The regional prices to update. */
+  regionalPriceMigrations?: ReadonlyArray<RegionalPriceMigrationConfig>;
+}
+
+export const MigrateBasePlanPricesRequest: Schema.Schema<MigrateBasePlanPricesRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionsVersion: Schema.optional(RegionsVersion),
+    latencyTolerance: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    packageName: Schema.optional(Schema.String),
+    basePlanId: Schema.optional(Schema.String),
+    regionalPriceMigrations: Schema.optional(
+      Schema.Array(RegionalPriceMigrationConfig),
+    ),
+  }).annotate({ identifier: "MigrateBasePlanPricesRequest" });
+
+export interface BatchMigrateBasePlanPricesRequest {
+  /** Required. Up to 100 price migration requests. All requests must update different base plans. */
+  requests?: ReadonlyArray<MigrateBasePlanPricesRequest>;
+}
+
+export const BatchMigrateBasePlanPricesRequest: Schema.Schema<BatchMigrateBasePlanPricesRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(MigrateBasePlanPricesRequest)),
+  }).annotate({ identifier: "BatchMigrateBasePlanPricesRequest" });
+
+export interface SystemApkOptions {
+  /** Whether system APK was generated with uncompressed dex files. */
+  uncompressedDexFiles?: boolean;
+  /** Whether to use the rotated key for signing the system APK. */
+  rotated?: boolean;
+  /** Whether system APK was generated with uncompressed native libraries. */
+  uncompressedNativeLibraries?: boolean;
+}
+
+export const SystemApkOptions: Schema.Schema<SystemApkOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uncompressedDexFiles: Schema.optional(Schema.Boolean),
+    rotated: Schema.optional(Schema.Boolean),
+    uncompressedNativeLibraries: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "SystemApkOptions" });
+
+export interface DeviceSpec {
+  /** Screen dpi. */
+  screenDensity?: number;
+  /** Supported ABI architectures in the order of preference. The values should be the string as reported by the platform, e.g. "armeabi-v7a", "x86_64". */
+  supportedAbis?: ReadonlyArray<string>;
+  /** All installed locales represented as BCP-47 strings, e.g. "en-US". */
+  supportedLocales?: ReadonlyArray<string>;
+}
+
+export const DeviceSpec: Schema.Schema<DeviceSpec> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    screenDensity: Schema.optional(Schema.Number),
+    supportedAbis: Schema.optional(Schema.Array(Schema.String)),
+    supportedLocales: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "DeviceSpec" });
+
+export interface Variant {
+  /** Output only. The ID of a previously created system APK variant. */
+  variantId?: number;
+  /** Optional. Options applied to the generated APK. */
+  options?: SystemApkOptions;
+  /** The device spec used to generate the APK. */
+  deviceSpec?: DeviceSpec;
+}
+
+export const Variant: Schema.Schema<Variant> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    variantId: Schema.optional(Schema.Number),
+    options: Schema.optional(SystemApkOptions),
+    deviceSpec: Schema.optional(DeviceSpec),
+  }).annotate({ identifier: "Variant" });
+
+export interface SystemApksListResponse {
+  /** All system APK variants created. */
+  variants?: ReadonlyArray<Variant>;
+}
+
+export const SystemApksListResponse: Schema.Schema<SystemApksListResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    variants: Schema.optional(Schema.Array(Variant)),
+  }).annotate({ identifier: "SystemApksListResponse" });
+
+export interface AppVersionList {
+  /** List of app version codes. */
+  versionCodes?: ReadonlyArray<string>;
+}
+
+export const AppVersionList: Schema.Schema<AppVersionList> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionCodes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AppVersionList" });
+
+export interface BatchUpdateOneTimeProductOffersRequest {
+  /** Required. A list of update requests of up to 100 elements. All requests must update different offers. */
+  requests?: ReadonlyArray<UpdateOneTimeProductOfferRequest>;
+}
+
+export const BatchUpdateOneTimeProductOffersRequest: Schema.Schema<BatchUpdateOneTimeProductOffersRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(UpdateOneTimeProductOfferRequest)),
+  }).annotate({ identifier: "BatchUpdateOneTimeProductOffersRequest" });
+
+export interface ListSubscriptionsResponse {
+  /** The subscriptions from the specified app. */
+  subscriptions?: ReadonlyArray<Subscription>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListSubscriptionsResponse: Schema.Schema<ListSubscriptionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptions: Schema.optional(Schema.Array(Subscription)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSubscriptionsResponse" });
+
+export interface ExternalTransactionTestPurchase {}
+
+export const ExternalTransactionTestPurchase: Schema.Schema<ExternalTransactionTestPurchase> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "ExternalTransactionTestPurchase",
+  });
+
+export interface PausedStateContext {
+  /** Time at which the subscription will be automatically resumed. */
+  autoResumeTime?: string;
+}
+
+export const PausedStateContext: Schema.Schema<PausedStateContext> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoResumeTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PausedStateContext" });
 
 export interface ConvertRegionPricesResponse {
   /** Map from region code to converted region price. */
@@ -3286,7 +3196,7 @@ export interface ConvertRegionPricesResponse {
   regionVersion?: RegionsVersion;
 }
 
-export const ConvertRegionPricesResponse =
+export const ConvertRegionPricesResponse: Schema.Schema<ConvertRegionPricesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     convertedRegionPrices: Schema.optional(
       Schema.Record(Schema.String, ConvertedRegionPrice),
@@ -3295,611 +3205,9 @@ export const ConvertRegionPricesResponse =
     regionVersion: Schema.optional(RegionsVersion),
   }).annotate({ identifier: "ConvertRegionPricesResponse" });
 
-export interface ProductPurchase {
-  /** This kind represents an inappPurchase object in the androidpublisher service. */
-  kind?: string;
-  /** The time the product was purchased, in milliseconds since the epoch (Jan 1, 1970). */
-  purchaseTimeMillis?: string;
-  /** The purchase state of the order. Possible values are: 0. Purchased 1. Canceled 2. Pending */
-  purchaseState?: number;
-  /** The consumption state of the inapp product. Possible values are: 0. Yet to be consumed 1. Consumed */
-  consumptionState?: number;
-  /** A developer-specified string that contains supplemental information about an order. */
-  developerPayload?: string;
-  /** The order id associated with the purchase of the inapp product. */
-  orderId?: string;
-  /** The type of purchase of the inapp product. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are: 0. Test (i.e. purchased from a license testing account) 1. Promo (i.e. purchased using a promo code). Does not include Play Points purchases. 2. Rewarded (i.e. from watching a video ad instead of paying) */
-  purchaseType?: number;
-  /** The acknowledgement state of the inapp product. Possible values are: 0. Yet to be acknowledged 1. Acknowledged */
-  acknowledgementState?: number;
-  /** The purchase token generated to identify this purchase. May not be present. */
-  purchaseToken?: string;
-  /** The inapp product SKU. May not be present. */
-  productId?: string;
-  /** The quantity associated with the purchase of the inapp product. If not present, the quantity is 1. */
-  quantity?: number;
-  /** An obfuscated version of the id that is uniquely associated with the user's account in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid when the purchase was made. */
-  obfuscatedExternalAccountId?: string;
-  /** An obfuscated version of the id that is uniquely associated with the user's profile in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid when the purchase was made. */
-  obfuscatedExternalProfileId?: string;
-  /** ISO 3166-1 alpha-2 billing region code of the user at the time the product was granted. */
-  regionCode?: string;
-  /** The quantity eligible for refund, i.e. quantity that hasn't been refunded. The value reflects quantity-based partial refunds and full refunds. */
-  refundableQuantity?: number;
-}
-
-export const ProductPurchase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  purchaseTimeMillis: Schema.optional(Schema.String),
-  purchaseState: Schema.optional(Schema.Number),
-  consumptionState: Schema.optional(Schema.Number),
-  developerPayload: Schema.optional(Schema.String),
-  orderId: Schema.optional(Schema.String),
-  purchaseType: Schema.optional(Schema.Number),
-  acknowledgementState: Schema.optional(Schema.Number),
-  purchaseToken: Schema.optional(Schema.String),
-  productId: Schema.optional(Schema.String),
-  quantity: Schema.optional(Schema.Number),
-  obfuscatedExternalAccountId: Schema.optional(Schema.String),
-  obfuscatedExternalProfileId: Schema.optional(Schema.String),
-  regionCode: Schema.optional(Schema.String),
-  refundableQuantity: Schema.optional(Schema.Number),
-}).annotate({ identifier: "ProductPurchase" });
-
-export interface ProductPurchasesAcknowledgeRequest {
-  /** Payload to attach to the purchase. */
-  developerPayload?: string;
-}
-
-export const ProductPurchasesAcknowledgeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    developerPayload: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ProductPurchasesAcknowledgeRequest" });
-
-export interface ArtifactSummary {
-  /** Artifact's version code */
-  versionCode?: number;
-}
-
-export const ArtifactSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  versionCode: Schema.optional(Schema.Number),
-}).annotate({ identifier: "ArtifactSummary" });
-
-export interface ReleaseSummary {
-  /** Name of the release. */
-  releaseName?: string;
-  /** Identifier for the track. [Learn more about track names.](https://developers.google.com/android-publisher/tracks). */
-  track?: string;
-  /** List of active artifacts on this release */
-  activeArtifacts?: ReadonlyArray<ArtifactSummary>;
-  /** The lifecycle state of a release. */
-  releaseLifecycleState?:
-    | "RELEASE_LIFECYCLE_STATE_UNSPECIFIED"
-    | "RELEASE_LIFECYCLE_STATE_DRAFT"
-    | "RELEASE_LIFECYCLE_STATE_NOT_SENT_FOR_REVIEW"
-    | "RELEASE_LIFECYCLE_STATE_IN_REVIEW"
-    | "RELEASE_LIFECYCLE_STATE_APPROVED_NOT_PUBLISHED"
-    | "RELEASE_LIFECYCLE_STATE_NOT_APPROVED"
-    | "RELEASE_LIFECYCLE_STATE_PUBLISHED"
-    | (string & {});
-}
-
-export const ReleaseSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  releaseName: Schema.optional(Schema.String),
-  track: Schema.optional(Schema.String),
-  activeArtifacts: Schema.optional(Schema.Array(ArtifactSummary)),
-  releaseLifecycleState: Schema.optional(Schema.String),
-}).annotate({ identifier: "ReleaseSummary" });
-
-export interface ListReleaseSummariesResponse {
-  /** List of releases for this track. A maximum of 20 releases can be returned. */
-  releases?: ReadonlyArray<ReleaseSummary>;
-}
-
-export const ListReleaseSummariesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    releases: Schema.optional(Schema.Array(ReleaseSummary)),
-  }).annotate({ identifier: "ListReleaseSummariesResponse" });
-
-export interface Timestamp {
-  /** Represents seconds of UTC time since Unix epoch. */
-  seconds?: string;
-  /** Non-negative fractions of a second at nanosecond resolution. Must be from 0 to 999,999,999 inclusive. */
-  nanos?: number;
-}
-
-export const Timestamp = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  seconds: Schema.optional(Schema.String),
-  nanos: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Timestamp" });
-
-export interface DeviceMetadata {
-  /** Device model name (e.g. Droid) */
-  productName?: string;
-  /** Device manufacturer (e.g. Motorola) */
-  manufacturer?: string;
-  /** Device class (e.g. tablet) */
-  deviceClass?: string;
-  /** Screen width in pixels */
-  screenWidthPx?: number;
-  /** Screen height in pixels */
-  screenHeightPx?: number;
-  /** Comma separated list of native platforms (e.g. "arm", "arm7") */
-  nativePlatform?: string;
-  /** Screen density in DPI */
-  screenDensityDpi?: number;
-  /** OpenGL version */
-  glEsVersion?: number;
-  /** Device CPU model, e.g. "MSM8974" */
-  cpuModel?: string;
-  /** Device CPU make, e.g. "Qualcomm" */
-  cpuMake?: string;
-  /** Device RAM in Megabytes, e.g. "2048" */
-  ramMb?: number;
-}
-
-export const DeviceMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  productName: Schema.optional(Schema.String),
-  manufacturer: Schema.optional(Schema.String),
-  deviceClass: Schema.optional(Schema.String),
-  screenWidthPx: Schema.optional(Schema.Number),
-  screenHeightPx: Schema.optional(Schema.Number),
-  nativePlatform: Schema.optional(Schema.String),
-  screenDensityDpi: Schema.optional(Schema.Number),
-  glEsVersion: Schema.optional(Schema.Number),
-  cpuModel: Schema.optional(Schema.String),
-  cpuMake: Schema.optional(Schema.String),
-  ramMb: Schema.optional(Schema.Number),
-}).annotate({ identifier: "DeviceMetadata" });
-
-export interface UserComment {
-  /** The content of the comment, i.e. review body. In some cases users have been able to write a review with separate title and body; in those cases the title and body are concatenated and separated by a tab character. */
-  text?: string;
-  /** The last time at which this comment was updated. */
-  lastModified?: Timestamp;
-  /** The star rating associated with the review, from 1 to 5. */
-  starRating?: number;
-  /** Language code for the reviewer. This is taken from the device settings so is not guaranteed to match the language the review is written in. May be absent. */
-  reviewerLanguage?: string;
-  /** Codename for the reviewer's device, e.g. klte, flounder. May be absent. */
-  device?: string;
-  /** Integer Android SDK version of the user's device at the time the review was written, e.g. 23 is Marshmallow. May be absent. */
-  androidOsVersion?: number;
-  /** Integer version code of the app as installed at the time the review was written. May be absent. */
-  appVersionCode?: number;
-  /** String version name of the app as installed at the time the review was written. May be absent. */
-  appVersionName?: string;
-  /** Number of users who have given this review a thumbs up. */
-  thumbsUpCount?: number;
-  /** Number of users who have given this review a thumbs down. */
-  thumbsDownCount?: number;
-  /** Information about the characteristics of the user's device. */
-  deviceMetadata?: DeviceMetadata;
-  /** Untranslated text of the review, where the review was translated. If the review was not translated this is left blank. */
-  originalText?: string;
-}
-
-export const UserComment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  text: Schema.optional(Schema.String),
-  lastModified: Schema.optional(Timestamp),
-  starRating: Schema.optional(Schema.Number),
-  reviewerLanguage: Schema.optional(Schema.String),
-  device: Schema.optional(Schema.String),
-  androidOsVersion: Schema.optional(Schema.Number),
-  appVersionCode: Schema.optional(Schema.Number),
-  appVersionName: Schema.optional(Schema.String),
-  thumbsUpCount: Schema.optional(Schema.Number),
-  thumbsDownCount: Schema.optional(Schema.Number),
-  deviceMetadata: Schema.optional(DeviceMetadata),
-  originalText: Schema.optional(Schema.String),
-}).annotate({ identifier: "UserComment" });
-
-export interface DeveloperComment {
-  /** The content of the comment, i.e. reply body. */
-  text?: string;
-  /** The last time at which this comment was updated. */
-  lastModified?: Timestamp;
-}
-
-export const DeveloperComment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  text: Schema.optional(Schema.String),
-  lastModified: Schema.optional(Timestamp),
-}).annotate({ identifier: "DeveloperComment" });
-
-export interface Comment {
-  /** A comment from a user. */
-  userComment?: UserComment;
-  /** A comment from a developer. */
-  developerComment?: DeveloperComment;
-}
-
-export const Comment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  userComment: Schema.optional(UserComment),
-  developerComment: Schema.optional(DeveloperComment),
-}).annotate({ identifier: "Comment" });
-
-export interface Review {
-  /** Unique identifier for this review. */
-  reviewId?: string;
-  /** The name of the user who wrote the review. */
-  authorName?: string;
-  /** A repeated field containing comments for the review. */
-  comments?: ReadonlyArray<Comment>;
-}
-
-export const Review = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  reviewId: Schema.optional(Schema.String),
-  authorName: Schema.optional(Schema.String),
-  comments: Schema.optional(Schema.Array(Comment)),
-}).annotate({ identifier: "Review" });
-
-export interface ReviewsListResponse {
-  /** List of reviews. */
-  reviews?: ReadonlyArray<Review>;
-  /** Pagination token, to handle a number of products that is over one page. */
-  tokenPagination?: TokenPagination;
-  /** Information about the current page. */
-  pageInfo?: PageInfo;
-}
-
-export const ReviewsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  reviews: Schema.optional(Schema.Array(Review)),
-  tokenPagination: Schema.optional(TokenPagination),
-  pageInfo: Schema.optional(PageInfo),
-}).annotate({ identifier: "ReviewsListResponse" });
-
-export interface ReviewsReplyRequest {
-  /** The text to set as the reply. Replies of more than approximately 350 characters will be rejected. HTML tags will be stripped. */
-  replyText?: string;
-}
-
-export const ReviewsReplyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  replyText: Schema.optional(Schema.String),
-}).annotate({ identifier: "ReviewsReplyRequest" });
-
-export interface ReviewReplyResult {
-  /** The reply text that was applied. */
-  replyText?: string;
-  /** The time at which the reply took effect. */
-  lastEdited?: Timestamp;
-}
-
-export const ReviewReplyResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  replyText: Schema.optional(Schema.String),
-  lastEdited: Schema.optional(Timestamp),
-}).annotate({ identifier: "ReviewReplyResult" });
-
-export interface ReviewsReplyResponse {
-  /** The result of replying/updating a reply to review. */
-  result?: ReviewReplyResult;
-}
-
-export const ReviewsReplyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.optional(ReviewReplyResult),
-}).annotate({ identifier: "ReviewsReplyResponse" });
-
-export interface IntroductoryPriceInfo {
-  /** ISO 4217 currency code for the introductory subscription price. For example, if the price is specified in British pounds sterling, price_currency_code is "GBP". */
-  introductoryPriceCurrencyCode?: string;
-  /** Introductory price of the subscription, not including tax. The currency is the same as price_currency_code. Price is expressed in micro-units, where 1,000,000 micro-units represents one unit of the currency. For example, if the subscription price is €1.99, price_amount_micros is 1990000. */
-  introductoryPriceAmountMicros?: string;
-  /** Introductory price period, specified in ISO 8601 format. Common values are (but not limited to) "P1W" (one week), "P1M" (one month), "P3M" (three months), "P6M" (six months), and "P1Y" (one year). */
-  introductoryPricePeriod?: string;
-  /** The number of billing period to offer introductory pricing. */
-  introductoryPriceCycles?: number;
-}
-
-export const IntroductoryPriceInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  introductoryPriceCurrencyCode: Schema.optional(Schema.String),
-  introductoryPriceAmountMicros: Schema.optional(Schema.String),
-  introductoryPricePeriod: Schema.optional(Schema.String),
-  introductoryPriceCycles: Schema.optional(Schema.Number),
-}).annotate({ identifier: "IntroductoryPriceInfo" });
-
-export interface SubscriptionCancelSurveyResult {
-  /** The cancellation reason the user chose in the survey. Possible values are: 0. Other 1. I don't use this service enough 2. Technical issues 3. Cost-related reasons 4. I found a better app */
-  cancelSurveyReason?: number;
-  /** The customized input cancel reason from the user. Only present when cancelReason is 0. */
-  userInputCancelReason?: string;
-}
-
-export const SubscriptionCancelSurveyResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cancelSurveyReason: Schema.optional(Schema.Number),
-    userInputCancelReason: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SubscriptionCancelSurveyResult" });
-
-export interface SubscriptionPriceChange {
-  /** The new price the subscription will renew with if the price change is accepted by the user. */
-  newPrice?: Price;
-  /** The current state of the price change. Possible values are: 0. Outstanding: State for a pending price change waiting for the user to agree. In this state, you can optionally seek confirmation from the user using the In-App API. 1. Accepted: State for an accepted price change that the subscription will renew with unless it's canceled. The price change takes effect on a future date when the subscription renews. Note that the change might not occur when the subscription is renewed next. */
-  state?: number;
-}
-
-export const SubscriptionPriceChange =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    newPrice: Schema.optional(Price),
-    state: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "SubscriptionPriceChange" });
-
-export interface SubscriptionPurchase {
-  /** This kind represents a subscriptionPurchase object in the androidpublisher service. */
-  kind?: string;
-  /** Time at which the subscription was granted, in milliseconds since the Epoch. */
-  startTimeMillis?: string;
-  /** Time at which the subscription will expire, in milliseconds since the Epoch. */
-  expiryTimeMillis?: string;
-  /** Time at which the subscription will be automatically resumed, in milliseconds since the Epoch. Only present if the user has requested to pause the subscription. */
-  autoResumeTimeMillis?: string;
-  /** Whether the subscription will automatically be renewed when it reaches its current expiry time. */
-  autoRenewing?: boolean;
-  /** ISO 4217 currency code for the subscription price. For example, if the price is specified in British pounds sterling, price_currency_code is "GBP". */
-  priceCurrencyCode?: string;
-  /** Price of the subscription, For tax exclusive countries, the price doesn't include tax. For tax inclusive countries, the price includes tax. Price is expressed in micro-units, where 1,000,000 micro-units represents one unit of the currency. For example, if the subscription price is €1.99, price_amount_micros is 1990000. */
-  priceAmountMicros?: string;
-  /** Introductory price information of the subscription. This is only present when the subscription was purchased with an introductory price. This field does not indicate the subscription is currently in introductory price period. */
-  introductoryPriceInfo?: IntroductoryPriceInfo;
-  /** ISO 3166-1 alpha-2 billing country/region code of the user at the time the subscription was granted. */
-  countryCode?: string;
-  /** A developer-specified string that contains supplemental information about an order. */
-  developerPayload?: string;
-  /** The payment state of the subscription. Possible values are: 0. Payment pending 1. Payment received 2. Free trial 3. Pending deferred upgrade/downgrade Not present for canceled, expired subscriptions. */
-  paymentState?: number;
-  /** The reason why a subscription was canceled or is not auto-renewing. Possible values are: 0. User canceled the subscription 1. Subscription was canceled by the system, for example because of a billing problem 2. Subscription was replaced with a new subscription 3. Subscription was canceled by the developer */
-  cancelReason?: number;
-  /** The time at which the subscription was canceled by the user, in milliseconds since the epoch. Only present if cancelReason is 0. */
-  userCancellationTimeMillis?: string;
-  /** Information provided by the user when they complete the subscription cancellation flow (cancellation reason survey). */
-  cancelSurveyResult?: SubscriptionCancelSurveyResult;
-  /** The order id of the latest recurring order associated with the purchase of the subscription. If the subscription was canceled because payment was declined, this will be the order id from the payment declined order. */
-  orderId?: string;
-  /** The purchase token of the originating purchase if this subscription is one of the following: 0. Re-signup of a canceled but non-lapsed subscription 1. Upgrade/downgrade from a previous subscription For example, suppose a user originally signs up and you receive purchase token X, then the user cancels and goes through the resignup flow (before their subscription lapses) and you receive purchase token Y, and finally the user upgrades their subscription and you receive purchase token Z. If you call this API with purchase token Z, this field will be set to Y. If you call this API with purchase token Y, this field will be set to X. If you call this API with purchase token X, this field will not be set. */
-  linkedPurchaseToken?: string;
-  /** The type of purchase of the subscription. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are: 0. Test (i.e. purchased from a license testing account) 1. Promo (i.e. purchased using a promo code) */
-  purchaseType?: number;
-  /** The latest price change information available. This is present only when there is an upcoming price change for the subscription yet to be applied. Once the subscription renews with the new price or the subscription is canceled, no price change information will be returned. */
-  priceChange?: SubscriptionPriceChange;
-  /** The profile name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'. */
-  profileName?: string;
-  /** The email address of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'. */
-  emailAddress?: string;
-  /** The given name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'. */
-  givenName?: string;
-  /** The family name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'. */
-  familyName?: string;
-  /** The Google profile id of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'. */
-  profileId?: string;
-  /** The acknowledgement state of the subscription product. Possible values are: 0. Yet to be acknowledged 1. Acknowledged */
-  acknowledgementState?: number;
-  /** User account identifier in the third-party service. Only present if account linking happened as part of the subscription purchase flow. */
-  externalAccountId?: string;
-  /** The type of promotion applied on this purchase. This field is only set if a promotion is applied when the subscription was purchased. Possible values are: 0. One time code 1. Vanity code */
-  promotionType?: number;
-  /** The promotion code applied on this purchase. This field is only set if a vanity code promotion is applied when the subscription was purchased. */
-  promotionCode?: string;
-  /** An obfuscated version of the id that is uniquely associated with the user's account in your app. Present for the following purchases: * If account linking happened as part of the subscription purchase flow. * It was specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid when the purchase was made. */
-  obfuscatedExternalAccountId?: string;
-  /** An obfuscated version of the id that is uniquely associated with the user's profile in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid when the purchase was made. */
-  obfuscatedExternalProfileId?: string;
-}
-
-export const SubscriptionPurchase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  startTimeMillis: Schema.optional(Schema.String),
-  expiryTimeMillis: Schema.optional(Schema.String),
-  autoResumeTimeMillis: Schema.optional(Schema.String),
-  autoRenewing: Schema.optional(Schema.Boolean),
-  priceCurrencyCode: Schema.optional(Schema.String),
-  priceAmountMicros: Schema.optional(Schema.String),
-  introductoryPriceInfo: Schema.optional(IntroductoryPriceInfo),
-  countryCode: Schema.optional(Schema.String),
-  developerPayload: Schema.optional(Schema.String),
-  paymentState: Schema.optional(Schema.Number),
-  cancelReason: Schema.optional(Schema.Number),
-  userCancellationTimeMillis: Schema.optional(Schema.String),
-  cancelSurveyResult: Schema.optional(SubscriptionCancelSurveyResult),
-  orderId: Schema.optional(Schema.String),
-  linkedPurchaseToken: Schema.optional(Schema.String),
-  purchaseType: Schema.optional(Schema.Number),
-  priceChange: Schema.optional(SubscriptionPriceChange),
-  profileName: Schema.optional(Schema.String),
-  emailAddress: Schema.optional(Schema.String),
-  givenName: Schema.optional(Schema.String),
-  familyName: Schema.optional(Schema.String),
-  profileId: Schema.optional(Schema.String),
-  acknowledgementState: Schema.optional(Schema.Number),
-  externalAccountId: Schema.optional(Schema.String),
-  promotionType: Schema.optional(Schema.Number),
-  promotionCode: Schema.optional(Schema.String),
-  obfuscatedExternalAccountId: Schema.optional(Schema.String),
-  obfuscatedExternalProfileId: Schema.optional(Schema.String),
-}).annotate({ identifier: "SubscriptionPurchase" });
-
-export interface SubscriptionDeferralInfo {
-  /** The expected expiry time for the subscription. If the current expiry time for the subscription is not the value specified here, the deferral will not occur. */
-  expectedExpiryTimeMillis?: string;
-  /** The desired next expiry time to assign to the subscription, in milliseconds since the Epoch. The given time must be later/greater than the current expiry time for the subscription. */
-  desiredExpiryTimeMillis?: string;
-}
-
-export const SubscriptionDeferralInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    expectedExpiryTimeMillis: Schema.optional(Schema.String),
-    desiredExpiryTimeMillis: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SubscriptionDeferralInfo" });
-
-export interface SubscriptionPurchasesDeferRequest {
-  /** The information about the new desired expiry time for the subscription. */
-  deferralInfo?: SubscriptionDeferralInfo;
-}
-
-export const SubscriptionPurchasesDeferRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    deferralInfo: Schema.optional(SubscriptionDeferralInfo),
-  }).annotate({ identifier: "SubscriptionPurchasesDeferRequest" });
-
-export interface SubscriptionPurchasesDeferResponse {
-  /** The new expiry time for the subscription in milliseconds since the Epoch. */
-  newExpiryTimeMillis?: string;
-}
-
-export const SubscriptionPurchasesDeferResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    newExpiryTimeMillis: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SubscriptionPurchasesDeferResponse" });
-
-export interface ExternalAccountIds {
-  /** Optional. Specifies an optional obfuscated string that is uniquely associated with the purchaser's user account in your app. If you pass this value, Google Play can use it to detect irregular activity. Do not use this field to store any Personally Identifiable Information (PII) such as emails in cleartext. Attempting to store PII in this field will result in purchases being blocked. Google Play recommends that you use either encryption or a one-way hash to generate an obfuscated identifier to send to Google Play. This identifier is limited to 64 characters. This field can only be set for resubscription purchases. See https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid to set this field for purchases made using the standard in-app billing flow. */
-  obfuscatedAccountId?: string;
-  /** Optional. Specifies an optional obfuscated string that is uniquely associated with the purchaser's user profile in your app. If you pass this value, Google Play can use it to detect irregular activity. Do not use this field to store any Personally Identifiable Information (PII) such as emails in cleartext. Attempting to store PII in this field will result in purchases being blocked. Google Play recommends that you use either encryption or a one-way hash to generate an obfuscated identifier to send to Google Play. This identifier is limited to 64 characters. This field can only be set for resubscription purchases. See https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid to set this field for purchases made using the standard in-app billing flow. */
-  obfuscatedProfileId?: string;
-}
-
-export const ExternalAccountIds = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  obfuscatedAccountId: Schema.optional(Schema.String),
-  obfuscatedProfileId: Schema.optional(Schema.String),
-}).annotate({ identifier: "ExternalAccountIds" });
-
-export interface SubscriptionPurchasesAcknowledgeRequest {
-  /** Payload to attach to the purchase. */
-  developerPayload?: string;
-  /** Optional. User account identifier in your app. */
-  externalAccountIds?: ExternalAccountIds;
-}
-
-export const SubscriptionPurchasesAcknowledgeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    developerPayload: Schema.optional(Schema.String),
-    externalAccountIds: Schema.optional(ExternalAccountIds),
-  }).annotate({ identifier: "SubscriptionPurchasesAcknowledgeRequest" });
-
-export interface PausedStateContext {
-  /** Time at which the subscription will be automatically resumed. */
-  autoResumeTime?: string;
-}
-
-export const PausedStateContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  autoResumeTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "PausedStateContext" });
-
-export interface CancelSurveyResult {
-  /** The reason the user selected in the cancel survey. */
-  reason?:
-    | "CANCEL_SURVEY_REASON_UNSPECIFIED"
-    | "CANCEL_SURVEY_REASON_NOT_ENOUGH_USAGE"
-    | "CANCEL_SURVEY_REASON_TECHNICAL_ISSUES"
-    | "CANCEL_SURVEY_REASON_COST_RELATED"
-    | "CANCEL_SURVEY_REASON_FOUND_BETTER_APP"
-    | "CANCEL_SURVEY_REASON_OTHERS"
-    | (string & {});
-  /** Only set for CANCEL_SURVEY_REASON_OTHERS. This is the user's freeform response to the survey. */
-  reasonUserInput?: string;
-}
-
-export const CancelSurveyResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  reason: Schema.optional(Schema.String),
-  reasonUserInput: Schema.optional(Schema.String),
-}).annotate({ identifier: "CancelSurveyResult" });
-
-export interface UserInitiatedCancellation {
-  /** Information provided by the user when they complete the subscription cancellation flow (cancellation reason survey). */
-  cancelSurveyResult?: CancelSurveyResult;
-  /** The time at which the subscription was canceled by the user. The user might still have access to the subscription after this time. Use line_items.expiry_time to determine if a user still has access. */
-  cancelTime?: string;
-}
-
-export const UserInitiatedCancellation =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cancelSurveyResult: Schema.optional(CancelSurveyResult),
-    cancelTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UserInitiatedCancellation" });
-
-export interface SystemInitiatedCancellation {}
-
-export const SystemInitiatedCancellation =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "SystemInitiatedCancellation",
-  });
-
-export interface DeveloperInitiatedCancellation {}
-
-export const DeveloperInitiatedCancellation =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DeveloperInitiatedCancellation",
-  });
-
-export interface ReplacementCancellation {}
-
-export const ReplacementCancellation =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "ReplacementCancellation",
-  });
-
-export interface CanceledStateContext {
-  /** Subscription was canceled by user. */
-  userInitiatedCancellation?: UserInitiatedCancellation;
-  /** Subscription was canceled by the system, for example because of a billing problem. */
-  systemInitiatedCancellation?: SystemInitiatedCancellation;
-  /** Subscription was canceled by the developer. */
-  developerInitiatedCancellation?: DeveloperInitiatedCancellation;
-  /** Subscription was replaced by a new subscription. */
-  replacementCancellation?: ReplacementCancellation;
-}
-
-export const CanceledStateContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  userInitiatedCancellation: Schema.optional(UserInitiatedCancellation),
-  systemInitiatedCancellation: Schema.optional(SystemInitiatedCancellation),
-  developerInitiatedCancellation: Schema.optional(
-    DeveloperInitiatedCancellation,
-  ),
-  replacementCancellation: Schema.optional(ReplacementCancellation),
-}).annotate({ identifier: "CanceledStateContext" });
-
-export interface TestPurchase {}
-
-export const TestPurchase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "TestPurchase" });
-
-export interface ExternalAccountIdentifiers {
-  /** User account identifier in the third-party service. Only present if account linking happened as part of the subscription purchase flow. */
-  externalAccountId?: string;
-  /** An obfuscated version of the id that is uniquely associated with the user's account in your app. Present for the following purchases: * If account linking happened as part of the subscription purchase flow. * It was specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid when the purchase was made. */
-  obfuscatedExternalAccountId?: string;
-  /** An obfuscated version of the id that is uniquely associated with the user's profile in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid when the purchase was made. */
-  obfuscatedExternalProfileId?: string;
-}
-
-export const ExternalAccountIdentifiers =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    externalAccountId: Schema.optional(Schema.String),
-    obfuscatedExternalAccountId: Schema.optional(Schema.String),
-    obfuscatedExternalProfileId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ExternalAccountIdentifiers" });
-
-export interface SubscribeWithGoogleInfo {
-  /** The Google profile id of the user when the subscription was purchased. */
-  profileId?: string;
-  /** The profile name of the user when the subscription was purchased. */
-  profileName?: string;
-  /** The email address of the user when the subscription was purchased. */
-  emailAddress?: string;
-  /** The given name of the user when the subscription was purchased. */
-  givenName?: string;
-  /** The family name of the user when the subscription was purchased. */
-  familyName?: string;
-}
-
-export const SubscribeWithGoogleInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    profileId: Schema.optional(Schema.String),
-    profileName: Schema.optional(Schema.String),
-    emailAddress: Schema.optional(Schema.String),
-    givenName: Schema.optional(Schema.String),
-    familyName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SubscribeWithGoogleInfo" });
-
 export interface SubscriptionItemPriceChangeDetails {
+  /** The renewal time at which the price change will become effective for the user. This is subject to change(to a future time) due to cases where the renewal time shifts like pause. This field is only populated if the price change has not taken effect. */
+  expectedNewPriceChargeTime?: string;
   /** New recurring price for the subscription item. */
   newPrice?: Money;
   /** Price change mode specifies how the subscription item price is changing. */
@@ -3917,43 +3225,557 @@ export interface SubscriptionItemPriceChangeDetails {
     | "APPLIED"
     | "CANCELED"
     | (string & {});
-  /** The renewal time at which the price change will become effective for the user. This is subject to change(to a future time) due to cases where the renewal time shifts like pause. This field is only populated if the price change has not taken effect. */
-  expectedNewPriceChargeTime?: string;
 }
 
-export const SubscriptionItemPriceChangeDetails =
+export const SubscriptionItemPriceChangeDetails: Schema.Schema<SubscriptionItemPriceChangeDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expectedNewPriceChargeTime: Schema.optional(Schema.String),
     newPrice: Schema.optional(Money),
     priceChangeMode: Schema.optional(Schema.String),
     priceChangeState: Schema.optional(Schema.String),
-    expectedNewPriceChargeTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "SubscriptionItemPriceChangeDetails" });
 
-export interface PendingCancellation {}
+export interface RevokeSubscriptionPurchaseRequest {
+  /** Required. Additional details around the subscription revocation. */
+  revocationContext?: RevocationContext;
+}
 
-export const PendingCancellation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "PendingCancellation" });
+export const RevokeSubscriptionPurchaseRequest: Schema.Schema<RevokeSubscriptionPurchaseRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revocationContext: Schema.optional(RevocationContext),
+  }).annotate({ identifier: "RevokeSubscriptionPurchaseRequest" });
+
+export interface ProductPurchaseV2 {
+  /** ISO 3166-1 alpha-2 billing region code of the user at the time the product was granted. */
+  regionCode?: string;
+  /** Contains item-level info for a ProductPurchaseV2. */
+  productLineItem?: ReadonlyArray<ProductLineItem>;
+  /** Information related to test purchases. This will only be set for test purchases. */
+  testPurchaseContext?: TestPurchaseContext;
+  /** The time when the purchase was successful, i.e., when the PurchaseState has changed to PURCHASED. This field will not be present until the payment is complete. For example, if the user initiated a pending transaction (https://developer.android.com/google/play/billing/integrate#pending), this field will not be populated until the user successfully completes the steps required to complete the transaction. */
+  purchaseCompletionTime?: string;
+  /** The order id associated with the purchase of the inapp product. May not be set if there is no order associated with the purchase. */
+  orderId?: string;
+  /** An obfuscated version of the id that is uniquely associated with the user's account in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid when the purchase was made. */
+  obfuscatedExternalAccountId?: string;
+  /** An obfuscated version of the id that is uniquely associated with the user's profile in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid when the purchase was made. */
+  obfuscatedExternalProfileId?: string;
+  /** Information about the purchase state of the purchase. */
+  purchaseStateContext?: PurchaseStateContext;
+  /** Output only. The acknowledgement state of the purchase. */
+  acknowledgementState?:
+    | "ACKNOWLEDGEMENT_STATE_UNSPECIFIED"
+    | "ACKNOWLEDGEMENT_STATE_PENDING"
+    | "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED"
+    | (string & {});
+  /** This kind represents a ProductPurchaseV2 object in the androidpublisher service. */
+  kind?: string;
+}
+
+export const ProductPurchaseV2: Schema.Schema<ProductPurchaseV2> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionCode: Schema.optional(Schema.String),
+    productLineItem: Schema.optional(Schema.Array(ProductLineItem)),
+    testPurchaseContext: Schema.optional(TestPurchaseContext),
+    purchaseCompletionTime: Schema.optional(Schema.String),
+    orderId: Schema.optional(Schema.String),
+    obfuscatedExternalAccountId: Schema.optional(Schema.String),
+    obfuscatedExternalProfileId: Schema.optional(Schema.String),
+    purchaseStateContext: Schema.optional(PurchaseStateContext),
+    acknowledgementState: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductPurchaseV2" });
 
 export interface InstallmentPlan {
-  /** Total number of payments the user is initially committed for. */
-  initialCommittedPaymentsCount?: number;
   /** Total number of payments the user will be committed for after each commitment period. Empty means the installment plan will fall back to a normal auto-renew subscription after initial commitment. */
   subsequentCommittedPaymentsCount?: number;
   /** Total number of committed payments remaining to be paid for in this renewal cycle. */
   remainingCommittedPaymentsCount?: number;
   /** If present, this installment plan is pending to be canceled. The cancellation will happen only after the user finished all committed payments. */
   pendingCancellation?: PendingCancellation;
+  /** Total number of payments the user is initially committed for. */
+  initialCommittedPaymentsCount?: number;
 }
 
-export const InstallmentPlan = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  initialCommittedPaymentsCount: Schema.optional(Schema.Number),
-  subsequentCommittedPaymentsCount: Schema.optional(Schema.Number),
-  remainingCommittedPaymentsCount: Schema.optional(Schema.Number),
-  pendingCancellation: Schema.optional(PendingCancellation),
-}).annotate({ identifier: "InstallmentPlan" });
+export const InstallmentPlan: Schema.Schema<InstallmentPlan> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subsequentCommittedPaymentsCount: Schema.optional(Schema.Number),
+    remainingCommittedPaymentsCount: Schema.optional(Schema.Number),
+    pendingCancellation: Schema.optional(PendingCancellation),
+    initialCommittedPaymentsCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "InstallmentPlan" });
+
+export interface ArtifactSummary {
+  /** Artifact's version code */
+  versionCode?: number;
+}
+
+export const ArtifactSummary: Schema.Schema<ArtifactSummary> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionCode: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ArtifactSummary" });
+
+export interface ReplacementCancellation {}
+
+export const ReplacementCancellation: Schema.Schema<ReplacementCancellation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "ReplacementCancellation",
+  });
+
+export interface SystemInitiatedCancellation {}
+
+export const SystemInitiatedCancellation: Schema.Schema<SystemInitiatedCancellation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "SystemInitiatedCancellation",
+  });
+
+export interface DeveloperInitiatedCancellation {}
+
+export const DeveloperInitiatedCancellation: Schema.Schema<DeveloperInitiatedCancellation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeveloperInitiatedCancellation",
+  });
+
+export interface CanceledStateContext {
+  /** Subscription was replaced by a new subscription. */
+  replacementCancellation?: ReplacementCancellation;
+  /** Subscription was canceled by user. */
+  userInitiatedCancellation?: UserInitiatedCancellation;
+  /** Subscription was canceled by the system, for example because of a billing problem. */
+  systemInitiatedCancellation?: SystemInitiatedCancellation;
+  /** Subscription was canceled by the developer. */
+  developerInitiatedCancellation?: DeveloperInitiatedCancellation;
+}
+
+export const CanceledStateContext: Schema.Schema<CanceledStateContext> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    replacementCancellation: Schema.optional(ReplacementCancellation),
+    userInitiatedCancellation: Schema.optional(UserInitiatedCancellation),
+    systemInitiatedCancellation: Schema.optional(SystemInitiatedCancellation),
+    developerInitiatedCancellation: Schema.optional(
+      DeveloperInitiatedCancellation,
+    ),
+  }).annotate({ identifier: "CanceledStateContext" });
+
+export interface ExternalOfferDetails {
+  /** Optional. The external transaction id associated with the app download event through an external link. Required when reporting transactions made in externally installed apps. */
+  appDownloadEventExternalTransactionId?: string;
+  /** Optional. The package name of the app downloaded through this transaction. Required when link_type is LINK_TO_APP_DOWNLOAD. */
+  installedAppPackage?: string;
+  /** Optional. The type of content being reported by this transaction. Required when reporting app downloads or purchased digital content offers made in app installed through Google Play. */
+  linkType?:
+    | "EXTERNAL_OFFER_LINK_TYPE_UNSPECIFIED"
+    | "LINK_TO_DIGITAL_CONTENT_OFFER"
+    | "LINK_TO_APP_DOWNLOAD"
+    | (string & {});
+  /** Optional. The category of the downloaded app though this transaction. This must match the category provided in Play Console during the external app verification process. Only required for app downloads. */
+  installedAppCategory?:
+    | "EXTERNAL_OFFER_APP_CATEGORY_UNSPECIFIED"
+    | "APP"
+    | "GAME"
+    | (string & {});
+}
+
+export const ExternalOfferDetails: Schema.Schema<ExternalOfferDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appDownloadEventExternalTransactionId: Schema.optional(Schema.String),
+    installedAppPackage: Schema.optional(Schema.String),
+    linkType: Schema.optional(Schema.String),
+    installedAppCategory: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExternalOfferDetails" });
+
+export interface OneTimeExternalTransaction {
+  /** Input only. Provided during the call to Create. Retrieved from the client when the alternative billing flow is launched. */
+  externalTransactionToken?: string;
+}
+
+export const OneTimeExternalTransaction: Schema.Schema<OneTimeExternalTransaction> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    externalTransactionToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OneTimeExternalTransaction" });
+
+export interface ExternalSubscription {
+  /** Required. The type of the external subscription. */
+  subscriptionType?:
+    | "SUBSCRIPTION_TYPE_UNSPECIFIED"
+    | "RECURRING"
+    | "PREPAID"
+    | (string & {});
+}
+
+export const ExternalSubscription: Schema.Schema<ExternalSubscription> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExternalSubscription" });
+
+export interface OtherRecurringProduct {}
+
+export const OtherRecurringProduct: Schema.Schema<OtherRecurringProduct> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "OtherRecurringProduct",
+  });
+
+export interface RecurringExternalTransaction {
+  /** Input only. Provided during the call to Create. Retrieved from the client when the alternative billing flow is launched. Required only for the initial purchase. */
+  externalTransactionToken?: string;
+  /** Input only. Provided during the call to Create. Must only be used when migrating a subscription from manual monthly reporting to automated reporting. */
+  migratedTransactionProgram?:
+    | "EXTERNAL_TRANSACTION_PROGRAM_UNSPECIFIED"
+    | "USER_CHOICE_BILLING"
+    | "ALTERNATIVE_BILLING_ONLY"
+    | (string & {});
+  /** Details of an external subscription. */
+  externalSubscription?: ExternalSubscription;
+  /** Details of a recurring external transaction product which doesn't belong to any other specific category. */
+  otherRecurringProduct?: OtherRecurringProduct;
+  /** The external transaction id of the first transaction of this recurring series of transactions. For example, for a subscription this would be the transaction id of the first payment. Required when creating recurring external transactions. */
+  initialExternalTransactionId?: string;
+}
+
+export const RecurringExternalTransaction: Schema.Schema<RecurringExternalTransaction> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    externalTransactionToken: Schema.optional(Schema.String),
+    migratedTransactionProgram: Schema.optional(Schema.String),
+    externalSubscription: Schema.optional(ExternalSubscription),
+    otherRecurringProduct: Schema.optional(OtherRecurringProduct),
+    initialExternalTransactionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RecurringExternalTransaction" });
+
+export interface ExternalTransactionAddress {
+  /** Required. Two letter region code based on ISO-3166-1 Alpha-2 (UN region codes). */
+  regionCode?: string;
+  /** Optional. Top-level administrative subdivision of the country/region. Only required for transactions in India. Valid values are "ANDAMAN AND NICOBAR ISLANDS", "ANDHRA PRADESH", "ARUNACHAL PRADESH", "ASSAM", "BIHAR", "CHANDIGARH", "CHHATTISGARH", "DADRA AND NAGAR HAVELI", "DADRA AND NAGAR HAVELI AND DAMAN AND DIU", "DAMAN AND DIU", "DELHI", "GOA", "GUJARAT", "HARYANA", "HIMACHAL PRADESH", "JAMMU AND KASHMIR", "JHARKHAND", "KARNATAKA", "KERALA", "LADAKH", "LAKSHADWEEP", "MADHYA PRADESH", "MAHARASHTRA", "MANIPUR", "MEGHALAYA", "MIZORAM", "NAGALAND", "ODISHA", "PUDUCHERRY", "PUNJAB", "RAJASTHAN", "SIKKIM", "TAMIL NADU", "TELANGANA", "TRIPURA", "UTTAR PRADESH", "UTTARAKHAND", and "WEST BENGAL". */
+  administrativeArea?: string;
+}
+
+export const ExternalTransactionAddress: Schema.Schema<ExternalTransactionAddress> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionCode: Schema.optional(Schema.String),
+    administrativeArea: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExternalTransactionAddress" });
+
+export interface ExternalTransaction {
+  /** Output only. The current state of the transaction. */
+  transactionState?:
+    | "TRANSACTION_STATE_UNSPECIFIED"
+    | "TRANSACTION_REPORTED"
+    | "TRANSACTION_CANCELED"
+    | (string & {});
+  /** Output only. The current transaction amount before tax. This represents the current pre-tax amount including any refunds that may have been applied to this transaction. */
+  currentPreTaxAmount?: Price;
+  /** Optional. Details necessary to accurately report external offers transactions. */
+  externalOfferDetails?: ExternalOfferDetails;
+  /** Output only. The id of this transaction. All transaction ids under the same package name must be unique. Set when creating the external transaction. */
+  externalTransactionId?: string;
+  /** Output only. The time when this transaction was created. This is the time when Google was notified of the transaction. */
+  createTime?: string;
+  /** This is a one-time transaction and not part of a subscription. */
+  oneTimeTransaction?: OneTimeExternalTransaction;
+  /** Output only. The current tax amount. This represents the current tax amount including any refunds that may have been applied to this transaction. */
+  currentTaxAmount?: Price;
+  /** Output only. The resource name of the external transaction. The package name of the application the inapp products were sold (for example, 'com.some.app'). */
+  packageName?: string;
+  /** This transaction is part of a recurring series of transactions. */
+  recurringTransaction?: RecurringExternalTransaction;
+  /** Required. The time when the transaction was completed. */
+  transactionTime?: string;
+  /** Optional. The transaction program code, used to help determine service fee for eligible apps participating in partner programs. Developers participating in the Play Media Experience Program (https://play.google.com/console/about/programs/mediaprogram/) must provide the program code when reporting alternative billing transactions. If you are an eligible developer, please contact your BDM for more information on how to set this field. Note: this field can not be used for external offers transactions. */
+  transactionProgramCode?: number;
+  /** Output only. If set, this transaction was a test purchase. Google will not charge for a test transaction. */
+  testPurchase?: ExternalTransactionTestPurchase;
+  /** Required. The original tax amount. This represents the tax amount originally notified to Google before any refunds were applied. */
+  originalTaxAmount?: Price;
+  /** Required. The original transaction amount before taxes. This represents the pre-tax amount originally notified to Google before any refunds were applied. */
+  originalPreTaxAmount?: Price;
+  /** Required. User address for tax computation. */
+  userTaxAddress?: ExternalTransactionAddress;
+}
+
+export const ExternalTransaction: Schema.Schema<ExternalTransaction> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transactionState: Schema.optional(Schema.String),
+    currentPreTaxAmount: Schema.optional(Price),
+    externalOfferDetails: Schema.optional(ExternalOfferDetails),
+    externalTransactionId: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    oneTimeTransaction: Schema.optional(OneTimeExternalTransaction),
+    currentTaxAmount: Schema.optional(Price),
+    packageName: Schema.optional(Schema.String),
+    recurringTransaction: Schema.optional(RecurringExternalTransaction),
+    transactionTime: Schema.optional(Schema.String),
+    transactionProgramCode: Schema.optional(Schema.Number),
+    testPurchase: Schema.optional(ExternalTransactionTestPurchase),
+    originalTaxAmount: Schema.optional(Price),
+    originalPreTaxAmount: Schema.optional(Price),
+    userTaxAddress: Schema.optional(ExternalTransactionAddress),
+  }).annotate({ identifier: "ExternalTransaction" });
+
+export interface DeleteOneTimeProductOfferRequest {
+  /** Required. The parent one-time product (ID) of the offer to delete. */
+  productId?: string;
+  /** Required. The unique offer ID of the offer to delete. */
+  offerId?: string;
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+  /** Required. The parent app (package name) of the offer to delete. */
+  packageName?: string;
+  /** Required. The parent purchase option (ID) of the offer to delete. */
+  purchaseOptionId?: string;
+}
+
+export const DeleteOneTimeProductOfferRequest: Schema.Schema<DeleteOneTimeProductOfferRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.optional(Schema.String),
+    offerId: Schema.optional(Schema.String),
+    latencyTolerance: Schema.optional(Schema.String),
+    packageName: Schema.optional(Schema.String),
+    purchaseOptionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeleteOneTimeProductOfferRequest" });
+
+export interface BatchDeleteOneTimeProductOffersRequest {
+  /** Required. A list of update requests of up to 100 elements. All requests must correspond to different offers. */
+  requests?: ReadonlyArray<DeleteOneTimeProductOfferRequest>;
+}
+
+export const BatchDeleteOneTimeProductOffersRequest: Schema.Schema<BatchDeleteOneTimeProductOffersRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(DeleteOneTimeProductOfferRequest)),
+  }).annotate({ identifier: "BatchDeleteOneTimeProductOffersRequest" });
+
+export interface DeactivateBasePlanRequest {
+  /** Required. The parent subscription (ID) of the base plan to deactivate. */
+  productId?: string;
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+  /** Required. The parent app (package name) of the base plan to deactivate. */
+  packageName?: string;
+  /** Required. The unique base plan ID of the base plan to deactivate. */
+  basePlanId?: string;
+}
+
+export const DeactivateBasePlanRequest: Schema.Schema<DeactivateBasePlanRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.optional(Schema.String),
+    latencyTolerance: Schema.optional(Schema.String),
+    packageName: Schema.optional(Schema.String),
+    basePlanId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeactivateBasePlanRequest" });
+
+export interface UpdateBasePlanStateRequest {
+  /** Activates a base plan. Once activated, base plans will be available to new subscribers. */
+  activateBasePlanRequest?: ActivateBasePlanRequest;
+  /** Deactivates a base plan. Once deactivated, the base plan will become unavailable to new subscribers, but existing subscribers will maintain their subscription */
+  deactivateBasePlanRequest?: DeactivateBasePlanRequest;
+}
+
+export const UpdateBasePlanStateRequest: Schema.Schema<UpdateBasePlanStateRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activateBasePlanRequest: Schema.optional(ActivateBasePlanRequest),
+    deactivateBasePlanRequest: Schema.optional(DeactivateBasePlanRequest),
+  }).annotate({ identifier: "UpdateBasePlanStateRequest" });
+
+export interface MigrateBasePlanPricesResponse {}
+
+export const MigrateBasePlanPricesResponse: Schema.Schema<MigrateBasePlanPricesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "MigrateBasePlanPricesResponse",
+  });
+
+export interface BatchMigrateBasePlanPricesResponse {
+  /** Contains one response per requested price migration, in the same order as the request. */
+  responses?: ReadonlyArray<MigrateBasePlanPricesResponse>;
+}
+
+export const BatchMigrateBasePlanPricesResponse: Schema.Schema<BatchMigrateBasePlanPricesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responses: Schema.optional(Schema.Array(MigrateBasePlanPricesResponse)),
+  }).annotate({ identifier: "BatchMigrateBasePlanPricesResponse" });
+
+export interface DeviceMetadata {
+  /** Screen height in pixels */
+  screenHeightPx?: number;
+  /** Device CPU make, e.g. "Qualcomm" */
+  cpuMake?: string;
+  /** Device manufacturer (e.g. Motorola) */
+  manufacturer?: string;
+  /** Device class (e.g. tablet) */
+  deviceClass?: string;
+  /** Screen density in DPI */
+  screenDensityDpi?: number;
+  /** Device CPU model, e.g. "MSM8974" */
+  cpuModel?: string;
+  /** Device model name (e.g. Droid) */
+  productName?: string;
+  /** Comma separated list of native platforms (e.g. "arm", "arm7") */
+  nativePlatform?: string;
+  /** Device RAM in Megabytes, e.g. "2048" */
+  ramMb?: number;
+  /** Screen width in pixels */
+  screenWidthPx?: number;
+  /** OpenGL version */
+  glEsVersion?: number;
+}
+
+export const DeviceMetadata: Schema.Schema<DeviceMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    screenHeightPx: Schema.optional(Schema.Number),
+    cpuMake: Schema.optional(Schema.String),
+    manufacturer: Schema.optional(Schema.String),
+    deviceClass: Schema.optional(Schema.String),
+    screenDensityDpi: Schema.optional(Schema.Number),
+    cpuModel: Schema.optional(Schema.String),
+    productName: Schema.optional(Schema.String),
+    nativePlatform: Schema.optional(Schema.String),
+    ramMb: Schema.optional(Schema.Number),
+    screenWidthPx: Schema.optional(Schema.Number),
+    glEsVersion: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DeviceMetadata" });
+
+export interface Timestamp {
+  /** Represents seconds of UTC time since Unix epoch. */
+  seconds?: string;
+  /** Non-negative fractions of a second at nanosecond resolution. Must be from 0 to 999,999,999 inclusive. */
+  nanos?: number;
+}
+
+export const Timestamp: Schema.Schema<Timestamp> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    seconds: Schema.optional(Schema.String),
+    nanos: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Timestamp" });
+
+export interface UserComment {
+  /** Information about the characteristics of the user's device. */
+  deviceMetadata?: DeviceMetadata;
+  /** Integer version code of the app as installed at the time the review was written. May be absent. */
+  appVersionCode?: number;
+  /** Untranslated text of the review, where the review was translated. If the review was not translated this is left blank. */
+  originalText?: string;
+  /** The star rating associated with the review, from 1 to 5. */
+  starRating?: number;
+  /** Integer Android SDK version of the user's device at the time the review was written, e.g. 23 is Marshmallow. May be absent. */
+  androidOsVersion?: number;
+  /** The last time at which this comment was updated. */
+  lastModified?: Timestamp;
+  /** The content of the comment, i.e. review body. In some cases users have been able to write a review with separate title and body; in those cases the title and body are concatenated and separated by a tab character. */
+  text?: string;
+  /** Language code for the reviewer. This is taken from the device settings so is not guaranteed to match the language the review is written in. May be absent. */
+  reviewerLanguage?: string;
+  /** Codename for the reviewer's device, e.g. klte, flounder. May be absent. */
+  device?: string;
+  /** Number of users who have given this review a thumbs up. */
+  thumbsUpCount?: number;
+  /** Number of users who have given this review a thumbs down. */
+  thumbsDownCount?: number;
+  /** String version name of the app as installed at the time the review was written. May be absent. */
+  appVersionName?: string;
+}
+
+export const UserComment: Schema.Schema<UserComment> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceMetadata: Schema.optional(DeviceMetadata),
+    appVersionCode: Schema.optional(Schema.Number),
+    originalText: Schema.optional(Schema.String),
+    starRating: Schema.optional(Schema.Number),
+    androidOsVersion: Schema.optional(Schema.Number),
+    lastModified: Schema.optional(Timestamp),
+    text: Schema.optional(Schema.String),
+    reviewerLanguage: Schema.optional(Schema.String),
+    device: Schema.optional(Schema.String),
+    thumbsUpCount: Schema.optional(Schema.Number),
+    thumbsDownCount: Schema.optional(Schema.Number),
+    appVersionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UserComment" });
+
+export interface DeveloperComment {
+  /** The content of the comment, i.e. reply body. */
+  text?: string;
+  /** The last time at which this comment was updated. */
+  lastModified?: Timestamp;
+}
+
+export const DeveloperComment: Schema.Schema<DeveloperComment> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    lastModified: Schema.optional(Timestamp),
+  }).annotate({ identifier: "DeveloperComment" });
+
+export interface Comment {
+  /** A comment from a user. */
+  userComment?: UserComment;
+  /** A comment from a developer. */
+  developerComment?: DeveloperComment;
+}
+
+export const Comment: Schema.Schema<Comment> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userComment: Schema.optional(UserComment),
+    developerComment: Schema.optional(DeveloperComment),
+  }).annotate({ identifier: "Comment" });
+
+export interface InappproductsDeleteRequest {
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+  /** Unique identifier for the in-app product. */
+  sku?: string;
+  /** Package name of the app. */
+  packageName?: string;
+}
+
+export const InappproductsDeleteRequest: Schema.Schema<InappproductsDeleteRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latencyTolerance: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.String),
+    packageName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InappproductsDeleteRequest" });
+
+export interface InappproductsBatchDeleteRequest {
+  /** Individual delete requests. At least one request is required. Can contain up to 100 requests. All requests must correspond to different in-app products. */
+  requests?: ReadonlyArray<InappproductsDeleteRequest>;
+}
+
+export const InappproductsBatchDeleteRequest: Schema.Schema<InappproductsBatchDeleteRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(InappproductsDeleteRequest)),
+  }).annotate({ identifier: "InappproductsBatchDeleteRequest" });
+
+export interface DeferredItemRemoval {}
+
+export const DeferredItemRemoval: Schema.Schema<DeferredItemRemoval> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeferredItemRemoval",
+  });
+
+export interface CountryTargeting {
+  /** Countries to target, specified as two letter [CLDR codes](https://unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html). */
+  countries?: ReadonlyArray<string>;
+  /** Include "rest of world" as well as explicitly targeted countries. */
+  includeRestOfWorld?: boolean;
+}
+
+export const CountryTargeting: Schema.Schema<CountryTargeting> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    countries: Schema.optional(Schema.Array(Schema.String)),
+    includeRestOfWorld: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CountryTargeting" });
 
 export interface PriceStepUpConsentDetails {
+  /** The deadline by which the user must provide consent. If consent is not provided by this time, the subscription will be canceled. */
+  consentDeadlineTime?: string;
+  /** The new price which requires user consent. */
+  newPrice?: Money;
   /** Output only. The state of the price step-up consent. */
   state?:
     | "CONSENT_STATE_UNSPECIFIED"
@@ -3961,110 +3783,132 @@ export interface PriceStepUpConsentDetails {
     | "CONFIRMED"
     | "COMPLETED"
     | (string & {});
-  /** The deadline by which the user must provide consent. If consent is not provided by this time, the subscription will be canceled. */
-  consentDeadlineTime?: string;
-  /** The new price which requires user consent. */
-  newPrice?: Money;
 }
 
-export const PriceStepUpConsentDetails =
+export const PriceStepUpConsentDetails: Schema.Schema<PriceStepUpConsentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    state: Schema.optional(Schema.String),
     consentDeadlineTime: Schema.optional(Schema.String),
     newPrice: Schema.optional(Money),
+    state: Schema.optional(Schema.String),
   }).annotate({ identifier: "PriceStepUpConsentDetails" });
 
-export interface AutoRenewingPlan {
-  /** If the subscription is currently set to auto-renew, e.g. the user has not canceled the subscription */
-  autoRenewEnabled?: boolean;
-  /** The current recurring price of the auto renewing plan. Note that the price does not take into account discounts and does not include taxes for tax-exclusive pricing, please call orders.get API instead if transaction details are needed. */
-  recurringPrice?: Money;
-  /** The information of the last price change for the item since subscription signup. */
-  priceChangeDetails?: SubscriptionItemPriceChangeDetails;
-  /** The installment plan commitment and state related info for the auto renewing plan. */
-  installmentDetails?: InstallmentPlan;
-  /** The information of the latest price step-up consent. */
-  priceStepUpConsentDetails?: PriceStepUpConsentDetails;
+export interface AllUsers {
+  /** Required. Set to true if all set of users are needed. */
+  isAllUsersRequested?: boolean;
 }
 
-export const AutoRenewingPlan = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  autoRenewEnabled: Schema.optional(Schema.Boolean),
-  recurringPrice: Schema.optional(Money),
-  priceChangeDetails: Schema.optional(SubscriptionItemPriceChangeDetails),
-  installmentDetails: Schema.optional(InstallmentPlan),
-  priceStepUpConsentDetails: Schema.optional(PriceStepUpConsentDetails),
-}).annotate({ identifier: "AutoRenewingPlan" });
-
-export interface PrepaidPlan {
-  /** If present, this is the time after which top up purchases are allowed for the prepaid plan. Will not be present for expired prepaid plans. */
-  allowExtendAfterTime?: string;
-}
-
-export const PrepaidPlan = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  allowExtendAfterTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "PrepaidPlan" });
-
-export interface OfferDetails {
-  /** The base plan ID. Present for all base plan and offers. */
-  basePlanId?: string;
-  /** The offer ID. Only present for discounted offers. */
-  offerId?: string;
-  /** The latest offer tags associated with the offer. It includes tags inherited from the base plan. */
-  offerTags?: ReadonlyArray<string>;
-}
-
-export const OfferDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  basePlanId: Schema.optional(Schema.String),
-  offerId: Schema.optional(Schema.String),
-  offerTags: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "OfferDetails" });
-
-export interface DeferredItemReplacement {
-  /** The product_id going to replace the existing product_id. */
-  productId?: string;
-}
-
-export const DeferredItemReplacement =
+export const AllUsers: Schema.Schema<AllUsers> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    productId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DeferredItemReplacement" });
+    isAllUsersRequested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AllUsers" });
 
-export interface DeferredItemRemoval {}
-
-export const DeferredItemRemoval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "DeferredItemRemoval" });
-
-export interface OneTimeCode {}
-
-export const OneTimeCode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "OneTimeCode" });
-
-export interface VanityCode {
-  /** The promotion code. */
-  promotionCode?: string;
+export interface AndroidSdks {
+  /** Android api levels of devices targeted by recovery action. See https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels for different api levels in android. */
+  sdkLevels?: ReadonlyArray<string>;
 }
 
-export const VanityCode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  promotionCode: Schema.optional(Schema.String),
-}).annotate({ identifier: "VanityCode" });
+export const AndroidSdks: Schema.Schema<AndroidSdks> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sdkLevels: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AndroidSdks" });
 
-export interface SignupPromotion {
-  /** A one-time code was applied. */
-  oneTimeCode?: OneTimeCode;
-  /** A vanity code was applied. */
-  vanityCode?: VanityCode;
+export interface Regions {
+  /** Regions targeted by the recovery action. Region codes are ISO 3166 Alpha-2 country codes. For example, US stands for United States of America. See https://www.iso.org/iso-3166-country-codes.html for the complete list of country codes. */
+  regionCode?: ReadonlyArray<string>;
 }
 
-export const SignupPromotion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  oneTimeCode: Schema.optional(OneTimeCode),
-  vanityCode: Schema.optional(VanityCode),
-}).annotate({ identifier: "SignupPromotion" });
+export const Regions: Schema.Schema<Regions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionCode: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "Regions" });
+
+export interface TargetingUpdate {
+  /** All users are targeted. */
+  allUsers?: AllUsers;
+  /** Additional android sdk levels are targeted by the recovery action. */
+  androidSdks?: AndroidSdks;
+  /** Additional regions are targeted by the recovery action. */
+  regions?: Regions;
+}
+
+export const TargetingUpdate: Schema.Schema<TargetingUpdate> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allUsers: Schema.optional(AllUsers),
+    androidSdks: Schema.optional(AndroidSdks),
+    regions: Schema.optional(Regions),
+  }).annotate({ identifier: "TargetingUpdate" });
+
+export interface BatchUpdatePurchaseOptionStatesResponse {
+  /** The list of updated one-time products. This list will match the requests one to one, in the same order. */
+  oneTimeProducts?: ReadonlyArray<OneTimeProduct>;
+}
+
+export const BatchUpdatePurchaseOptionStatesResponse: Schema.Schema<BatchUpdatePurchaseOptionStatesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oneTimeProducts: Schema.optional(Schema.Array(OneTimeProduct)),
+  }).annotate({ identifier: "BatchUpdatePurchaseOptionStatesResponse" });
+
+export interface ReviewReplyResult {
+  /** The reply text that was applied. */
+  replyText?: string;
+  /** The time at which the reply took effect. */
+  lastEdited?: Timestamp;
+}
+
+export const ReviewReplyResult: Schema.Schema<ReviewReplyResult> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    replyText: Schema.optional(Schema.String),
+    lastEdited: Schema.optional(Timestamp),
+  }).annotate({ identifier: "ReviewReplyResult" });
+
+export interface ReviewsReplyResponse {
+  /** The result of replying/updating a reply to review. */
+  result?: ReviewReplyResult;
+}
+
+export const ReviewsReplyResponse: Schema.Schema<ReviewsReplyResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(ReviewReplyResult),
+  }).annotate({ identifier: "ReviewsReplyResponse" });
+
+export interface BatchUpdateBasePlanStatesResponse {
+  /** The list of updated subscriptions. This list will match the requests one to one, in the same order. */
+  subscriptions?: ReadonlyArray<Subscription>;
+}
+
+export const BatchUpdateBasePlanStatesResponse: Schema.Schema<BatchUpdateBasePlanStatesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptions: Schema.optional(Schema.Array(Subscription)),
+  }).annotate({ identifier: "BatchUpdateBasePlanStatesResponse" });
+
+export interface BatchUpdateSubscriptionsResponse {
+  /** The updated subscriptions list. */
+  subscriptions?: ReadonlyArray<Subscription>;
+}
+
+export const BatchUpdateSubscriptionsResponse: Schema.Schema<BatchUpdateSubscriptionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptions: Schema.optional(Schema.Array(Subscription)),
+  }).annotate({ identifier: "BatchUpdateSubscriptionsResponse" });
+
+export interface ExternalAccountIds {
+  /** Optional. Specifies an optional obfuscated string that is uniquely associated with the purchaser's user account in your app. If you pass this value, Google Play can use it to detect irregular activity. Do not use this field to store any Personally Identifiable Information (PII) such as emails in cleartext. Attempting to store PII in this field will result in purchases being blocked. Google Play recommends that you use either encryption or a one-way hash to generate an obfuscated identifier to send to Google Play. This identifier is limited to 64 characters. This field can only be set for resubscription purchases. See https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid to set this field for purchases made using the standard in-app billing flow. */
+  obfuscatedAccountId?: string;
+  /** Optional. Specifies an optional obfuscated string that is uniquely associated with the purchaser's user profile in your app. If you pass this value, Google Play can use it to detect irregular activity. Do not use this field to store any Personally Identifiable Information (PII) such as emails in cleartext. Attempting to store PII in this field will result in purchases being blocked. Google Play recommends that you use either encryption or a one-way hash to generate an obfuscated identifier to send to Google Play. This identifier is limited to 64 characters. This field can only be set for resubscription purchases. See https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid to set this field for purchases made using the standard in-app billing flow. */
+  obfuscatedProfileId?: string;
+}
+
+export const ExternalAccountIds: Schema.Schema<ExternalAccountIds> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    obfuscatedAccountId: Schema.optional(Schema.String),
+    obfuscatedProfileId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExternalAccountIds" });
 
 export interface ItemReplacement {
   /** The product ID of the subscription line item being replaced. */
   productId?: string;
+  /** The offer ID of the subscription line item being replaced, if applicable. */
+  offerId?: string;
   /** The replacement mode applied during the purchase. */
   replacementMode?:
     | "REPLACEMENT_MODE_UNSPECIFIED"
@@ -4077,16 +3921,180 @@ export interface ItemReplacement {
     | (string & {});
   /** The base plan ID of the subscription line item being replaced. */
   basePlanId?: string;
-  /** The offer ID of the subscription line item being replaced, if applicable. */
+}
+
+export const ItemReplacement: Schema.Schema<ItemReplacement> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.optional(Schema.String),
+    offerId: Schema.optional(Schema.String),
+    replacementMode: Schema.optional(Schema.String),
+    basePlanId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ItemReplacement" });
+
+export interface SubscriptionPurchasesDeferResponse {
+  /** The new expiry time for the subscription in milliseconds since the Epoch. */
+  newExpiryTimeMillis?: string;
+}
+
+export const SubscriptionPurchasesDeferResponse: Schema.Schema<SubscriptionPurchasesDeferResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    newExpiryTimeMillis: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SubscriptionPurchasesDeferResponse" });
+
+export interface GetSubscriptionOfferRequest {
+  /** Required. The parent app (package name) of the offer to get. */
+  packageName?: string;
+  /** Required. The parent base plan (ID) of the offer to get. */
+  basePlanId?: string;
+  /** Required. The parent subscription (ID) of the offer to get. */
+  productId?: string;
+  /** Required. The unique offer ID of the offer to get. */
   offerId?: string;
 }
 
-export const ItemReplacement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  productId: Schema.optional(Schema.String),
-  replacementMode: Schema.optional(Schema.String),
-  basePlanId: Schema.optional(Schema.String),
-  offerId: Schema.optional(Schema.String),
-}).annotate({ identifier: "ItemReplacement" });
+export const GetSubscriptionOfferRequest: Schema.Schema<GetSubscriptionOfferRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.optional(Schema.String),
+    basePlanId: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    offerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetSubscriptionOfferRequest" });
+
+export interface SubscriptionPriceChange {
+  /** The new price the subscription will renew with if the price change is accepted by the user. */
+  newPrice?: Price;
+  /** The current state of the price change. Possible values are: 0. Outstanding: State for a pending price change waiting for the user to agree. In this state, you can optionally seek confirmation from the user using the In-App API. 1. Accepted: State for an accepted price change that the subscription will renew with unless it's canceled. The price change takes effect on a future date when the subscription renews. Note that the change might not occur when the subscription is renewed next. */
+  state?: number;
+}
+
+export const SubscriptionPriceChange: Schema.Schema<SubscriptionPriceChange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    newPrice: Schema.optional(Price),
+    state: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "SubscriptionPriceChange" });
+
+export interface DeactivatePurchaseOptionRequest {
+  /** Required. The parent app (package name) of the purchase option to deactivate. */
+  packageName?: string;
+  /** Required. The parent one-time product (ID) of the purchase option to deactivate. */
+  productId?: string;
+  /** Required. The purchase option ID of the purchase option to deactivate. */
+  purchaseOptionId?: string;
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+}
+
+export const DeactivatePurchaseOptionRequest: Schema.Schema<DeactivatePurchaseOptionRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    purchaseOptionId: Schema.optional(Schema.String),
+    latencyTolerance: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeactivatePurchaseOptionRequest" });
+
+export interface ActivatePurchaseOptionRequest {
+  /** Required. The parent app (package name) of the purchase option to activate. */
+  packageName?: string;
+  /** Required. The parent one-time product (ID) of the purchase option to activate. */
+  productId?: string;
+  /** Required. The purchase option ID of the purchase option to activate. */
+  purchaseOptionId?: string;
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+}
+
+export const ActivatePurchaseOptionRequest: Schema.Schema<ActivatePurchaseOptionRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    purchaseOptionId: Schema.optional(Schema.String),
+    latencyTolerance: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ActivatePurchaseOptionRequest" });
+
+export interface UpdatePurchaseOptionStateRequest {
+  /** Deactivates a purchase option. Once deactivated, the purchase option will become unavailable. */
+  deactivatePurchaseOptionRequest?: DeactivatePurchaseOptionRequest;
+  /** Activates a purchase option. Once activated, the purchase option will be available. */
+  activatePurchaseOptionRequest?: ActivatePurchaseOptionRequest;
+}
+
+export const UpdatePurchaseOptionStateRequest: Schema.Schema<UpdatePurchaseOptionStateRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deactivatePurchaseOptionRequest: Schema.optional(
+      DeactivatePurchaseOptionRequest,
+    ),
+    activatePurchaseOptionRequest: Schema.optional(
+      ActivatePurchaseOptionRequest,
+    ),
+  }).annotate({ identifier: "UpdatePurchaseOptionStateRequest" });
+
+export interface BatchUpdatePurchaseOptionStatesRequest {
+  /** Required. The update request list of up to 100 elements. All requests must update different purchase options. */
+  requests?: ReadonlyArray<UpdatePurchaseOptionStateRequest>;
+}
+
+export const BatchUpdatePurchaseOptionStatesRequest: Schema.Schema<BatchUpdatePurchaseOptionStatesRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(UpdatePurchaseOptionStateRequest)),
+  }).annotate({ identifier: "BatchUpdatePurchaseOptionStatesRequest" });
+
+export interface FreeTrialOfferPhase {}
+
+export const FreeTrialOfferPhase: Schema.Schema<FreeTrialOfferPhase> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "FreeTrialOfferPhase",
+  });
+
+export interface FullRefund {}
+
+export const FullRefund: Schema.Schema<FullRefund> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "FullRefund",
+  });
+
+export interface PartialRefund {
+  /** Required. The pre-tax amount of the partial refund. Should be less than the remaining pre-tax amount of the transaction. */
+  refundPreTaxAmount?: Price;
+  /** Required. A unique id distinguishing this partial refund. If the refund is successful, subsequent refunds with the same id will fail. Must be unique across refunds for one individual transaction. */
+  refundId?: string;
+}
+
+export const PartialRefund: Schema.Schema<PartialRefund> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    refundPreTaxAmount: Schema.optional(Price),
+    refundId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PartialRefund" });
+
+export interface RefundExternalTransactionRequest {
+  /** Required. The time that the transaction was refunded. */
+  refundTime?: string;
+  /** A full-amount refund. */
+  fullRefund?: FullRefund;
+  /** A partial refund. */
+  partialRefund?: PartialRefund;
+}
+
+export const RefundExternalTransactionRequest: Schema.Schema<RefundExternalTransactionRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    refundTime: Schema.optional(Schema.String),
+    fullRefund: Schema.optional(FullRefund),
+    partialRefund: Schema.optional(PartialRefund),
+  }).annotate({ identifier: "RefundExternalTransactionRequest" });
+
+export interface IntroductoryPriceOfferPhase {}
+
+export const IntroductoryPriceOfferPhase: Schema.Schema<IntroductoryPriceOfferPhase> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "IntroductoryPriceOfferPhase",
+  });
 
 export interface ProrationPeriodOfferPhase {
   /** The original offer phase type before the proration period. Only set when the proration period is updated from an existing offer phase. */
@@ -4098,110 +4106,642 @@ export interface ProrationPeriodOfferPhase {
     | (string & {});
 }
 
-export const ProrationPeriodOfferPhase =
+export const ProrationPeriodOfferPhase: Schema.Schema<ProrationPeriodOfferPhase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalOfferPhaseType: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProrationPeriodOfferPhase" });
 
-export interface FreeTrialOfferPhase {}
-
-export const FreeTrialOfferPhase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "FreeTrialOfferPhase" });
-
-export interface IntroductoryPriceOfferPhase {}
-
-export const IntroductoryPriceOfferPhase =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "IntroductoryPriceOfferPhase",
-  });
-
-export interface BasePriceOfferPhase {}
-
-export const BasePriceOfferPhase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "BasePriceOfferPhase" });
-
 export interface OfferPhase {
-  /** Set when the offer phase is a proration period. */
-  prorationPeriod?: ProrationPeriodOfferPhase;
   /** Set when the offer phase is a free trial. */
   freeTrial?: FreeTrialOfferPhase;
   /** Set when the offer phase is an introductory price offer phase. */
   introductoryPrice?: IntroductoryPriceOfferPhase;
   /** Set when the offer phase is a base plan pricing phase. */
   basePrice?: BasePriceOfferPhase;
+  /** Set when the offer phase is a proration period. */
+  prorationPeriod?: ProrationPeriodOfferPhase;
 }
 
-export const OfferPhase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  prorationPeriod: Schema.optional(ProrationPeriodOfferPhase),
-  freeTrial: Schema.optional(FreeTrialOfferPhase),
-  introductoryPrice: Schema.optional(IntroductoryPriceOfferPhase),
-  basePrice: Schema.optional(BasePriceOfferPhase),
-}).annotate({ identifier: "OfferPhase" });
+export const OfferPhase: Schema.Schema<OfferPhase> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    freeTrial: Schema.optional(FreeTrialOfferPhase),
+    introductoryPrice: Schema.optional(IntroductoryPriceOfferPhase),
+    basePrice: Schema.optional(BasePriceOfferPhase),
+    prorationPeriod: Schema.optional(ProrationPeriodOfferPhase),
+  }).annotate({ identifier: "OfferPhase" });
+
+export interface TrackTargetedCountry {
+  /** The country that can be targeted, as a two-letter CLDR code. */
+  countryCode?: string;
+}
+
+export const TrackTargetedCountry: Schema.Schema<TrackTargetedCountry> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    countryCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TrackTargetedCountry" });
+
+export interface TrackCountryAvailability {
+  /** Whether this track's availability is synced with the default production track. See https://support.google.com/googleplay/android-developer/answer/7550024 for more information on syncing country availability with production. Note that if this is true, the returned "countries" and "rest_of_world" fields will reflect the values for the default production track. */
+  syncWithProduction?: boolean;
+  /** A list of one or more countries where artifacts in this track are available. This list includes all countries that are targeted by the track, even if only specific carriers are targeted in that country. */
+  countries?: ReadonlyArray<TrackTargetedCountry>;
+  /** Whether artifacts in this track are available to "rest of the world" countries. */
+  restOfWorld?: boolean;
+}
+
+export const TrackCountryAvailability: Schema.Schema<TrackCountryAvailability> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    syncWithProduction: Schema.optional(Schema.Boolean),
+    countries: Schema.optional(Schema.Array(TrackTargetedCountry)),
+    restOfWorld: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "TrackCountryAvailability" });
+
+export interface ReleaseSummary {
+  /** Identifier for the track. [Learn more about track names.](https://developers.google.com/android-publisher/tracks). */
+  track?: string;
+  /** List of active artifacts on this release */
+  activeArtifacts?: ReadonlyArray<ArtifactSummary>;
+  /** Name of the release. */
+  releaseName?: string;
+  /** The lifecycle state of a release. */
+  releaseLifecycleState?:
+    | "RELEASE_LIFECYCLE_STATE_UNSPECIFIED"
+    | "RELEASE_LIFECYCLE_STATE_DRAFT"
+    | "RELEASE_LIFECYCLE_STATE_NOT_SENT_FOR_REVIEW"
+    | "RELEASE_LIFECYCLE_STATE_IN_REVIEW"
+    | "RELEASE_LIFECYCLE_STATE_APPROVED_NOT_PUBLISHED"
+    | "RELEASE_LIFECYCLE_STATE_NOT_APPROVED"
+    | "RELEASE_LIFECYCLE_STATE_PUBLISHED"
+    | (string & {});
+}
+
+export const ReleaseSummary: Schema.Schema<ReleaseSummary> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    track: Schema.optional(Schema.String),
+    activeArtifacts: Schema.optional(Schema.Array(ArtifactSummary)),
+    releaseName: Schema.optional(Schema.String),
+    releaseLifecycleState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReleaseSummary" });
+
+export interface RemoteInAppUpdateData {
+  /** Data related to the recovery action at bundle level. */
+  remoteAppUpdateDataPerBundle?: ReadonlyArray<RemoteInAppUpdateDataPerBundle>;
+}
+
+export const RemoteInAppUpdateData: Schema.Schema<RemoteInAppUpdateData> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    remoteAppUpdateDataPerBundle: Schema.optional(
+      Schema.Array(RemoteInAppUpdateDataPerBundle),
+    ),
+  }).annotate({ identifier: "RemoteInAppUpdateData" });
+
+export interface CancelOneTimeProductOfferRequest {
+  /** Required. The parent app (package name) of the offer to cancel. */
+  packageName?: string;
+  /** Required. The parent purchase option (ID) of the offer to cancel. */
+  purchaseOptionId?: string;
+  /** Required. The parent one-time product (ID) of the offer to cancel. */
+  productId?: string;
+  /** Required. The offer ID of the offer to cancel. */
+  offerId?: string;
+  /** Optional. The latency tolerance for the propagation of this update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+}
+
+export const CancelOneTimeProductOfferRequest: Schema.Schema<CancelOneTimeProductOfferRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.optional(Schema.String),
+    purchaseOptionId: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    offerId: Schema.optional(Schema.String),
+    latencyTolerance: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CancelOneTimeProductOfferRequest" });
+
+export interface Review {
+  /** The name of the user who wrote the review. */
+  authorName?: string;
+  /** Unique identifier for this review. */
+  reviewId?: string;
+  /** A repeated field containing comments for the review. */
+  comments?: ReadonlyArray<Comment>;
+}
+
+export const Review: Schema.Schema<Review> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorName: Schema.optional(Schema.String),
+    reviewId: Schema.optional(Schema.String),
+    comments: Schema.optional(Schema.Array(Comment)),
+  }).annotate({ identifier: "Review" });
+
+export interface ReviewsListResponse {
+  /** Information about the current page. */
+  pageInfo?: PageInfo;
+  /** List of reviews. */
+  reviews?: ReadonlyArray<Review>;
+  /** Pagination token, to handle a number of products that is over one page. */
+  tokenPagination?: TokenPagination;
+}
+
+export const ReviewsListResponse: Schema.Schema<ReviewsListResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageInfo: Schema.optional(PageInfo),
+    reviews: Schema.optional(Schema.Array(Review)),
+    tokenPagination: Schema.optional(TokenPagination),
+  }).annotate({ identifier: "ReviewsListResponse" });
+
+export interface SubscriptionPurchasesAcknowledgeRequest {
+  /** Optional. User account identifier in your app. */
+  externalAccountIds?: ExternalAccountIds;
+  /** Payload to attach to the purchase. */
+  developerPayload?: string;
+}
+
+export const SubscriptionPurchasesAcknowledgeRequest: Schema.Schema<SubscriptionPurchasesAcknowledgeRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    externalAccountIds: Schema.optional(ExternalAccountIds),
+    developerPayload: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SubscriptionPurchasesAcknowledgeRequest" });
+
+export interface ListDeviceTierConfigsResponse {
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+  /** Device tier configs created by the developer. */
+  deviceTierConfigs?: ReadonlyArray<DeviceTierConfig>;
+}
+
+export const ListDeviceTierConfigsResponse: Schema.Schema<ListDeviceTierConfigsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    deviceTierConfigs: Schema.optional(Schema.Array(DeviceTierConfig)),
+  }).annotate({ identifier: "ListDeviceTierConfigsResponse" });
+
+export interface ListReleaseSummariesResponse {
+  /** List of releases for this track. A maximum of 20 releases can be returned. */
+  releases?: ReadonlyArray<ReleaseSummary>;
+}
+
+export const ListReleaseSummariesResponse: Schema.Schema<ListReleaseSummariesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    releases: Schema.optional(Schema.Array(ReleaseSummary)),
+  }).annotate({ identifier: "ListReleaseSummariesResponse" });
+
+export interface ExpansionFile {
+  /** If set, this APK's expansion file references another APK's expansion file. The file_size field will not be set. */
+  referencesVersion?: number;
+  /** If set, this field indicates that this APK has an expansion file uploaded to it: this APK does not reference another APK's expansion file. The field's value is the size of the uploaded expansion file in bytes. */
+  fileSize?: string;
+}
+
+export const ExpansionFile: Schema.Schema<ExpansionFile> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    referencesVersion: Schema.optional(Schema.Number),
+    fileSize: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExpansionFile" });
+
+export interface ExpansionFilesUploadResponse {
+  /** The uploaded expansion file configuration. */
+  expansionFile?: ExpansionFile;
+}
+
+export const ExpansionFilesUploadResponse: Schema.Schema<ExpansionFilesUploadResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expansionFile: Schema.optional(ExpansionFile),
+  }).annotate({ identifier: "ExpansionFilesUploadResponse" });
+
+export interface DeletePurchaseOptionRequest {
+  /** Required. The parent one-time product (ID) of the purchase option to delete. */
+  productId?: string;
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+  /** Required. The parent app (package name) of the purchase option to delete. */
+  packageName?: string;
+  /** Required. The purchase option ID of the purchase option to delete. */
+  purchaseOptionId?: string;
+  /** Optional. This field has no effect for purchase options with no offers under them. For purchase options with associated offers: * If `force` is set to false (default), an error will be returned. * If `force` is set to true, any associated offers under the purchase option will be deleted. */
+  force?: boolean;
+}
+
+export const DeletePurchaseOptionRequest: Schema.Schema<DeletePurchaseOptionRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.optional(Schema.String),
+    latencyTolerance: Schema.optional(Schema.String),
+    packageName: Schema.optional(Schema.String),
+    purchaseOptionId: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DeletePurchaseOptionRequest" });
+
+export interface BatchDeletePurchaseOptionsRequest {
+  /** Required. A list of delete requests of up to 100 elements. All requests must delete purchase options from different one-time products. */
+  requests?: ReadonlyArray<DeletePurchaseOptionRequest>;
+}
+
+export const BatchDeletePurchaseOptionsRequest: Schema.Schema<BatchDeletePurchaseOptionsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(DeletePurchaseOptionRequest)),
+  }).annotate({ identifier: "BatchDeletePurchaseOptionsRequest" });
+
+export interface InappproductsBatchUpdateRequest {
+  /** Required. Individual update requests. At least one request is required. Can contain up to 100 requests. All requests must correspond to different in-app products. */
+  requests?: ReadonlyArray<InappproductsUpdateRequest>;
+}
+
+export const InappproductsBatchUpdateRequest: Schema.Schema<InappproductsBatchUpdateRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(InappproductsUpdateRequest)),
+  }).annotate({ identifier: "InappproductsBatchUpdateRequest" });
+
+export interface DeferredItemReplacement {
+  /** The product_id going to replace the existing product_id. */
+  productId?: string;
+}
+
+export const DeferredItemReplacement: Schema.Schema<DeferredItemReplacement> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeferredItemReplacement" });
+
+export interface AppVersionRange {
+  /** Lowest app version in the range, inclusive. */
+  versionCodeStart?: string;
+  /** Highest app version in the range, inclusive. */
+  versionCodeEnd?: string;
+}
+
+export const AppVersionRange: Schema.Schema<AppVersionRange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionCodeStart: Schema.optional(Schema.String),
+    versionCodeEnd: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AppVersionRange" });
+
+export interface Targeting {
+  /** All users are targeted. */
+  allUsers?: AllUsers;
+  /** Target version codes as a list. */
+  versionList?: AppVersionList;
+  /** Targeting is based on the user account region. */
+  regions?: Regions;
+  /** Target version codes as a range. */
+  versionRange?: AppVersionRange;
+  /** Targeting is based on android api levels of devices. */
+  androidSdks?: AndroidSdks;
+}
+
+export const Targeting: Schema.Schema<Targeting> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allUsers: Schema.optional(AllUsers),
+    versionList: Schema.optional(AppVersionList),
+    regions: Schema.optional(Regions),
+    versionRange: Schema.optional(AppVersionRange),
+    androidSdks: Schema.optional(AndroidSdks),
+  }).annotate({ identifier: "Targeting" });
+
+export interface CreateDraftAppRecoveryRequest {
+  /** Specifies targeting criteria for the recovery action such as regions, android sdk versions, app versions etc. */
+  targeting?: Targeting;
+  /** Action type is remote in-app update. As a consequence of this action, a downloadable recovery module is also created for testing purposes. */
+  remoteInAppUpdate?: RemoteInAppUpdate;
+}
+
+export const CreateDraftAppRecoveryRequest: Schema.Schema<CreateDraftAppRecoveryRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targeting: Schema.optional(Targeting),
+    remoteInAppUpdate: Schema.optional(RemoteInAppUpdate),
+  }).annotate({ identifier: "CreateDraftAppRecoveryRequest" });
+
+export interface OfferDetails {
+  /** The base plan ID. Present for all base plan and offers. */
+  basePlanId?: string;
+  /** The latest offer tags associated with the offer. It includes tags inherited from the base plan. */
+  offerTags?: ReadonlyArray<string>;
+  /** The offer ID. Only present for discounted offers. */
+  offerId?: string;
+}
+
+export const OfferDetails: Schema.Schema<OfferDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    basePlanId: Schema.optional(Schema.String),
+    offerTags: Schema.optional(Schema.Array(Schema.String)),
+    offerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OfferDetails" });
+
+export interface SubscriptionCancelSurveyResult {
+  /** The cancellation reason the user chose in the survey. Possible values are: 0. Other 1. I don't use this service enough 2. Technical issues 3. Cost-related reasons 4. I found a better app */
+  cancelSurveyReason?: number;
+  /** The customized input cancel reason from the user. Only present when cancelReason is 0. */
+  userInputCancelReason?: string;
+}
+
+export const SubscriptionCancelSurveyResult: Schema.Schema<SubscriptionCancelSurveyResult> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cancelSurveyReason: Schema.optional(Schema.Number),
+    userInputCancelReason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SubscriptionCancelSurveyResult" });
+
+export interface IntroductoryPriceInfo {
+  /** The number of billing period to offer introductory pricing. */
+  introductoryPriceCycles?: number;
+  /** ISO 4217 currency code for the introductory subscription price. For example, if the price is specified in British pounds sterling, price_currency_code is "GBP". */
+  introductoryPriceCurrencyCode?: string;
+  /** Introductory price of the subscription, not including tax. The currency is the same as price_currency_code. Price is expressed in micro-units, where 1,000,000 micro-units represents one unit of the currency. For example, if the subscription price is €1.99, price_amount_micros is 1990000. */
+  introductoryPriceAmountMicros?: string;
+  /** Introductory price period, specified in ISO 8601 format. Common values are (but not limited to) "P1W" (one week), "P1M" (one month), "P3M" (three months), "P6M" (six months), and "P1Y" (one year). */
+  introductoryPricePeriod?: string;
+}
+
+export const IntroductoryPriceInfo: Schema.Schema<IntroductoryPriceInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    introductoryPriceCycles: Schema.optional(Schema.Number),
+    introductoryPriceCurrencyCode: Schema.optional(Schema.String),
+    introductoryPriceAmountMicros: Schema.optional(Schema.String),
+    introductoryPricePeriod: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IntroductoryPriceInfo" });
+
+export interface SubscriptionPurchase {
+  /** The Google profile id of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'. */
+  profileId?: string;
+  /** Time at which the subscription will expire, in milliseconds since the Epoch. */
+  expiryTimeMillis?: string;
+  /** ISO 4217 currency code for the subscription price. For example, if the price is specified in British pounds sterling, price_currency_code is "GBP". */
+  priceCurrencyCode?: string;
+  /** The latest price change information available. This is present only when there is an upcoming price change for the subscription yet to be applied. Once the subscription renews with the new price or the subscription is canceled, no price change information will be returned. */
+  priceChange?: SubscriptionPriceChange;
+  /** The order id of the latest recurring order associated with the purchase of the subscription. If the subscription was canceled because payment was declined, this will be the order id from the payment declined order. */
+  orderId?: string;
+  /** The family name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'. */
+  familyName?: string;
+  /** Time at which the subscription will be automatically resumed, in milliseconds since the Epoch. Only present if the user has requested to pause the subscription. */
+  autoResumeTimeMillis?: string;
+  /** The promotion code applied on this purchase. This field is only set if a vanity code promotion is applied when the subscription was purchased. */
+  promotionCode?: string;
+  /** The acknowledgement state of the subscription product. Possible values are: 0. Yet to be acknowledged 1. Acknowledged */
+  acknowledgementState?: number;
+  /** An obfuscated version of the id that is uniquely associated with the user's profile in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid when the purchase was made. */
+  obfuscatedExternalProfileId?: string;
+  /** The purchase token of the originating purchase if this subscription is one of the following: 0. Re-signup of a canceled but non-lapsed subscription 1. Upgrade/downgrade from a previous subscription For example, suppose a user originally signs up and you receive purchase token X, then the user cancels and goes through the resignup flow (before their subscription lapses) and you receive purchase token Y, and finally the user upgrades their subscription and you receive purchase token Z. If you call this API with purchase token Z, this field will be set to Y. If you call this API with purchase token Y, this field will be set to X. If you call this API with purchase token X, this field will not be set. */
+  linkedPurchaseToken?: string;
+  /** Price of the subscription, For tax exclusive countries, the price doesn't include tax. For tax inclusive countries, the price includes tax. Price is expressed in micro-units, where 1,000,000 micro-units represents one unit of the currency. For example, if the subscription price is €1.99, price_amount_micros is 1990000. */
+  priceAmountMicros?: string;
+  /** The reason why a subscription was canceled or is not auto-renewing. Possible values are: 0. User canceled the subscription 1. Subscription was canceled by the system, for example because of a billing problem 2. Subscription was replaced with a new subscription 3. Subscription was canceled by the developer */
+  cancelReason?: number;
+  /** Time at which the subscription was granted, in milliseconds since the Epoch. */
+  startTimeMillis?: string;
+  /** The profile name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'. */
+  profileName?: string;
+  /** The time at which the subscription was canceled by the user, in milliseconds since the epoch. Only present if cancelReason is 0. */
+  userCancellationTimeMillis?: string;
+  /** ISO 3166-1 alpha-2 billing country/region code of the user at the time the subscription was granted. */
+  countryCode?: string;
+  /** Whether the subscription will automatically be renewed when it reaches its current expiry time. */
+  autoRenewing?: boolean;
+  /** Information provided by the user when they complete the subscription cancellation flow (cancellation reason survey). */
+  cancelSurveyResult?: SubscriptionCancelSurveyResult;
+  /** The email address of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'. */
+  emailAddress?: string;
+  /** An obfuscated version of the id that is uniquely associated with the user's account in your app. Present for the following purchases: * If account linking happened as part of the subscription purchase flow. * It was specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid when the purchase was made. */
+  obfuscatedExternalAccountId?: string;
+  /** User account identifier in the third-party service. Only present if account linking happened as part of the subscription purchase flow. */
+  externalAccountId?: string;
+  /** Introductory price information of the subscription. This is only present when the subscription was purchased with an introductory price. This field does not indicate the subscription is currently in introductory price period. */
+  introductoryPriceInfo?: IntroductoryPriceInfo;
+  /** This kind represents a subscriptionPurchase object in the androidpublisher service. */
+  kind?: string;
+  /** The given name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'. */
+  givenName?: string;
+  /** The type of promotion applied on this purchase. This field is only set if a promotion is applied when the subscription was purchased. Possible values are: 0. One time code 1. Vanity code */
+  promotionType?: number;
+  /** A developer-specified string that contains supplemental information about an order. */
+  developerPayload?: string;
+  /** The type of purchase of the subscription. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are: 0. Test (i.e. purchased from a license testing account) 1. Promo (i.e. purchased using a promo code) */
+  purchaseType?: number;
+  /** The payment state of the subscription. Possible values are: 0. Payment pending 1. Payment received 2. Free trial 3. Pending deferred upgrade/downgrade Not present for canceled, expired subscriptions. */
+  paymentState?: number;
+}
+
+export const SubscriptionPurchase: Schema.Schema<SubscriptionPurchase> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    profileId: Schema.optional(Schema.String),
+    expiryTimeMillis: Schema.optional(Schema.String),
+    priceCurrencyCode: Schema.optional(Schema.String),
+    priceChange: Schema.optional(SubscriptionPriceChange),
+    orderId: Schema.optional(Schema.String),
+    familyName: Schema.optional(Schema.String),
+    autoResumeTimeMillis: Schema.optional(Schema.String),
+    promotionCode: Schema.optional(Schema.String),
+    acknowledgementState: Schema.optional(Schema.Number),
+    obfuscatedExternalProfileId: Schema.optional(Schema.String),
+    linkedPurchaseToken: Schema.optional(Schema.String),
+    priceAmountMicros: Schema.optional(Schema.String),
+    cancelReason: Schema.optional(Schema.Number),
+    startTimeMillis: Schema.optional(Schema.String),
+    profileName: Schema.optional(Schema.String),
+    userCancellationTimeMillis: Schema.optional(Schema.String),
+    countryCode: Schema.optional(Schema.String),
+    autoRenewing: Schema.optional(Schema.Boolean),
+    cancelSurveyResult: Schema.optional(SubscriptionCancelSurveyResult),
+    emailAddress: Schema.optional(Schema.String),
+    obfuscatedExternalAccountId: Schema.optional(Schema.String),
+    externalAccountId: Schema.optional(Schema.String),
+    introductoryPriceInfo: Schema.optional(IntroductoryPriceInfo),
+    kind: Schema.optional(Schema.String),
+    givenName: Schema.optional(Schema.String),
+    promotionType: Schema.optional(Schema.Number),
+    developerPayload: Schema.optional(Schema.String),
+    purchaseType: Schema.optional(Schema.Number),
+    paymentState: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "SubscriptionPurchase" });
+
+export interface AppEdit {
+  /** Output only. Identifier of the edit. Can be used in subsequent API calls. */
+  id?: string;
+  /** Output only. The time (as seconds since Epoch) at which the edit will expire and will be no longer valid for use. */
+  expiryTimeSeconds?: string;
+}
+
+export const AppEdit: Schema.Schema<AppEdit> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    expiryTimeSeconds: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AppEdit" });
+
+export interface TrackConfig {
+  /** Required. Type of the new track. Currently, the only supported value is closedTesting. */
+  type?: "TRACK_TYPE_UNSPECIFIED" | "CLOSED_TESTING" | (string & {});
+  /** Required. Identifier of the new track. For default tracks, this field consists of the track alias only. Form factor tracks have a special prefix as an identifier, for example `wear:production`, `automotive:production`. This prefix must match the value of the `form_factor` field, if it is not a default track. [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name) */
+  track?: string;
+  /** Required. Form factor of the new track. Defaults to the default track. */
+  formFactor?:
+    | "FORM_FACTOR_UNSPECIFIED"
+    | "DEFAULT"
+    | "WEAR"
+    | "AUTOMOTIVE"
+    | (string & {});
+}
+
+export const TrackConfig: Schema.Schema<TrackConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    track: Schema.optional(Schema.String),
+    formFactor: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TrackConfig" });
+
+export interface AutoRenewingPlan {
+  /** The installment plan commitment and state related info for the auto renewing plan. */
+  installmentDetails?: InstallmentPlan;
+  /** The information of the latest price step-up consent. */
+  priceStepUpConsentDetails?: PriceStepUpConsentDetails;
+  /** The current recurring price of the auto renewing plan. Note that the price does not take into account discounts and does not include taxes for tax-exclusive pricing, please call orders.get API instead if transaction details are needed. */
+  recurringPrice?: Money;
+  /** If the subscription is currently set to auto-renew, e.g. the user has not canceled the subscription */
+  autoRenewEnabled?: boolean;
+  /** The information of the last price change for the item since subscription signup. */
+  priceChangeDetails?: SubscriptionItemPriceChangeDetails;
+}
+
+export const AutoRenewingPlan: Schema.Schema<AutoRenewingPlan> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    installmentDetails: Schema.optional(InstallmentPlan),
+    priceStepUpConsentDetails: Schema.optional(PriceStepUpConsentDetails),
+    recurringPrice: Schema.optional(Money),
+    autoRenewEnabled: Schema.optional(Schema.Boolean),
+    priceChangeDetails: Schema.optional(SubscriptionItemPriceChangeDetails),
+  }).annotate({ identifier: "AutoRenewingPlan" });
+
+export interface VanityCode {
+  /** The promotion code. */
+  promotionCode?: string;
+}
+
+export const VanityCode: Schema.Schema<VanityCode> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    promotionCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VanityCode" });
+
+export interface SignupPromotion {
+  /** A vanity code was applied. */
+  vanityCode?: VanityCode;
+  /** A one-time code was applied. */
+  oneTimeCode?: OneTimeCode;
+}
+
+export const SignupPromotion: Schema.Schema<SignupPromotion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vanityCode: Schema.optional(VanityCode),
+    oneTimeCode: Schema.optional(OneTimeCode),
+  }).annotate({ identifier: "SignupPromotion" });
+
+export interface PrepaidPlan {
+  /** If present, this is the time after which top up purchases are allowed for the prepaid plan. Will not be present for expired prepaid plans. */
+  allowExtendAfterTime?: string;
+}
+
+export const PrepaidPlan: Schema.Schema<PrepaidPlan> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowExtendAfterTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PrepaidPlan" });
 
 export interface SubscriptionPurchaseLineItem {
+  /** The order id of the latest successful order associated with this item. Not present if the item is not owned by the user yet (e.g. the item being deferred replaced to). */
+  latestSuccessfulOrderId?: string;
+  /** The offer details for this item. */
+  offerDetails?: OfferDetails;
+  /** Information for deferred item removal. */
+  deferredItemRemoval?: DeferredItemRemoval;
+  /** Details of the item being replaced. This field is only populated if this item replaced another item in a previous subscription and is only available for 60 days after the purchase time. */
+  itemReplacement?: ItemReplacement;
+  /** The item is auto renewing. */
+  autoRenewingPlan?: AutoRenewingPlan;
+  /** Promotion details about this item. Only set if a promotion was applied during signup. */
+  signupPromotion?: SignupPromotion;
   /** The purchased product ID (for example, 'monthly001'). */
   productId?: string;
   /** Time at which the subscription expired or will expire unless the access is extended (ex. renews). */
   expiryTime?: string;
-  /** The order id of the latest successful order associated with this item. Not present if the item is not owned by the user yet (e.g. the item being deferred replaced to). */
-  latestSuccessfulOrderId?: string;
-  /** The item is auto renewing. */
-  autoRenewingPlan?: AutoRenewingPlan;
   /** The item is prepaid. */
   prepaidPlan?: PrepaidPlan;
-  /** The offer details for this item. */
-  offerDetails?: OfferDetails;
-  /** Information for deferred item replacement. */
-  deferredItemReplacement?: DeferredItemReplacement;
-  /** Information for deferred item removal. */
-  deferredItemRemoval?: DeferredItemRemoval;
-  /** Promotion details about this item. Only set if a promotion was applied during signup. */
-  signupPromotion?: SignupPromotion;
-  /** Details of the item being replaced. This field is only populated if this item replaced another item in a previous subscription and is only available for 60 days after the purchase time. */
-  itemReplacement?: ItemReplacement;
   /** Current offer phase details for this item. */
   offerPhase?: OfferPhase;
+  /** Information for deferred item replacement. */
+  deferredItemReplacement?: DeferredItemReplacement;
 }
 
-export const SubscriptionPurchaseLineItem =
+export const SubscriptionPurchaseLineItem: Schema.Schema<SubscriptionPurchaseLineItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latestSuccessfulOrderId: Schema.optional(Schema.String),
+    offerDetails: Schema.optional(OfferDetails),
+    deferredItemRemoval: Schema.optional(DeferredItemRemoval),
+    itemReplacement: Schema.optional(ItemReplacement),
+    autoRenewingPlan: Schema.optional(AutoRenewingPlan),
+    signupPromotion: Schema.optional(SignupPromotion),
     productId: Schema.optional(Schema.String),
     expiryTime: Schema.optional(Schema.String),
-    latestSuccessfulOrderId: Schema.optional(Schema.String),
-    autoRenewingPlan: Schema.optional(AutoRenewingPlan),
     prepaidPlan: Schema.optional(PrepaidPlan),
-    offerDetails: Schema.optional(OfferDetails),
-    deferredItemReplacement: Schema.optional(DeferredItemReplacement),
-    deferredItemRemoval: Schema.optional(DeferredItemRemoval),
-    signupPromotion: Schema.optional(SignupPromotion),
-    itemReplacement: Schema.optional(ItemReplacement),
     offerPhase: Schema.optional(OfferPhase),
+    deferredItemReplacement: Schema.optional(DeferredItemReplacement),
   }).annotate({ identifier: "SubscriptionPurchaseLineItem" });
 
-export interface OutOfAppPurchaseContext {
-  /** User account identifier from the last expired subscription for this SKU. */
-  expiredExternalAccountIdentifiers?: ExternalAccountIdentifiers;
-  /** The purchase token of the last expired subscription. This purchase token must only be used to help identify the user if the link between the purchaseToken and user is stored in your database. This cannot be used to call the Google Developer API if it has been more than 60 days since expiry. */
-  expiredPurchaseToken?: string;
+export interface SubscribeWithGoogleInfo {
+  /** The Google profile id of the user when the subscription was purchased. */
+  profileId?: string;
+  /** The email address of the user when the subscription was purchased. */
+  emailAddress?: string;
+  /** The family name of the user when the subscription was purchased. */
+  familyName?: string;
+  /** The profile name of the user when the subscription was purchased. */
+  profileName?: string;
+  /** The given name of the user when the subscription was purchased. */
+  givenName?: string;
 }
 
-export const OutOfAppPurchaseContext =
+export const SubscribeWithGoogleInfo: Schema.Schema<SubscribeWithGoogleInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    profileId: Schema.optional(Schema.String),
+    emailAddress: Schema.optional(Schema.String),
+    familyName: Schema.optional(Schema.String),
+    profileName: Schema.optional(Schema.String),
+    givenName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SubscribeWithGoogleInfo" });
+
+export interface TestPurchase {}
+
+export const TestPurchase: Schema.Schema<TestPurchase> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "TestPurchase",
+  });
+
+export interface OutOfAppPurchaseContext {
+  /** The purchase token of the last expired subscription. This purchase token must only be used to help identify the user if the link between the purchaseToken and user is stored in your database. This cannot be used to call the Google Developer API if it has been more than 60 days since expiry. */
+  expiredPurchaseToken?: string;
+  /** User account identifier from the last expired subscription for this SKU. */
+  expiredExternalAccountIdentifiers?: ExternalAccountIdentifiers;
+}
+
+export const OutOfAppPurchaseContext: Schema.Schema<OutOfAppPurchaseContext> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expiredPurchaseToken: Schema.optional(Schema.String),
     expiredExternalAccountIdentifiers: Schema.optional(
       ExternalAccountIdentifiers,
     ),
-    expiredPurchaseToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "OutOfAppPurchaseContext" });
 
 export interface SubscriptionPurchaseV2 {
-  /** This kind represents a SubscriptionPurchaseV2 object in the androidpublisher service. */
-  kind?: string;
-  /** Time at which the subscription was granted. Not set for pending subscriptions (subscription was created but awaiting payment during signup). */
-  startTime?: string;
+  /** Additional context around canceled subscriptions. Only present if the subscription currently has subscription_state SUBSCRIPTION_STATE_CANCELED or SUBSCRIPTION_STATE_EXPIRED. */
+  canceledStateContext?: CanceledStateContext;
+  /** Entity tag representing the current state of the subscription. The developer will provide this etag for subscription actions. This etag is always present for auto-renewing and prepaid subscriptions. */
+  etag?: string;
+  /** Additional context around paused subscriptions. Only present if the subscription currently has subscription_state SUBSCRIPTION_STATE_PAUSED. */
+  pausedStateContext?: PausedStateContext;
   /** ISO 3166-1 alpha-2 billing country/region code of the user at the time the subscription was granted. */
   regionCode?: string;
+  /** Time at which the subscription was granted. Not set for pending subscriptions (subscription was created but awaiting payment during signup). */
+  startTime?: string;
   /** The current state of the subscription. */
   subscriptionState?:
     | "SUBSCRIPTION_STATE_UNSPECIFIED"
@@ -4214,1098 +4754,255 @@ export interface SubscriptionPurchaseV2 {
     | "SUBSCRIPTION_STATE_EXPIRED"
     | "SUBSCRIPTION_STATE_PENDING_PURCHASE_CANCELED"
     | (string & {});
-  /** Deprecated: Use line_items.latest_successful_order_id instead. The order id of the latest order associated with the purchase of the subscription. For autoRenewing subscription, this is the order id of signup order if it is not renewed yet, or the last recurring order id (success, pending, or declined order). For prepaid subscription, this is the order id associated with the queried purchase token. */
-  latestOrderId?: string;
-  /** The purchase token of the old subscription if this subscription is one of the following: * Re-signup of a canceled but non-lapsed subscription * Upgrade/downgrade from a previous subscription. * Convert from prepaid to auto renewing subscription. * Convert from an auto renewing subscription to prepaid. * Topup a prepaid subscription. */
-  linkedPurchaseToken?: string;
-  /** Additional context around paused subscriptions. Only present if the subscription currently has subscription_state SUBSCRIPTION_STATE_PAUSED. */
-  pausedStateContext?: PausedStateContext;
-  /** Additional context around canceled subscriptions. Only present if the subscription currently has subscription_state SUBSCRIPTION_STATE_CANCELED or SUBSCRIPTION_STATE_EXPIRED. */
-  canceledStateContext?: CanceledStateContext;
-  /** Only present if this subscription purchase is a test purchase. */
-  testPurchase?: TestPurchase;
+  /** This kind represents a SubscriptionPurchaseV2 object in the androidpublisher service. */
+  kind?: string;
   /** The acknowledgement state of the subscription. */
   acknowledgementState?:
     | "ACKNOWLEDGEMENT_STATE_UNSPECIFIED"
     | "ACKNOWLEDGEMENT_STATE_PENDING"
     | "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED"
     | (string & {});
-  /** User account identifier in the third-party service. */
-  externalAccountIdentifiers?: ExternalAccountIdentifiers;
-  /** User profile associated with purchases made with 'Subscribe with Google'. */
-  subscribeWithGoogleInfo?: SubscribeWithGoogleInfo;
   /** Item-level info for a subscription purchase. The items in the same purchase should be either all with AutoRenewingPlan or all with PrepaidPlan. */
   lineItems?: ReadonlyArray<SubscriptionPurchaseLineItem>;
-  /** Entity tag representing the current state of the subscription. The developer will provide this etag for subscription actions. This etag is always present for auto-renewing and prepaid subscriptions. */
-  etag?: string;
+  /** The purchase token of the old subscription if this subscription is one of the following: * Re-signup of a canceled but non-lapsed subscription * Upgrade/downgrade from a previous subscription. * Convert from prepaid to auto renewing subscription. * Convert from an auto renewing subscription to prepaid. * Topup a prepaid subscription. */
+  linkedPurchaseToken?: string;
+  /** User profile associated with purchases made with 'Subscribe with Google'. */
+  subscribeWithGoogleInfo?: SubscribeWithGoogleInfo;
+  /** Only present if this subscription purchase is a test purchase. */
+  testPurchase?: TestPurchase;
+  /** Deprecated: Use line_items.latest_successful_order_id instead. The order id of the latest order associated with the purchase of the subscription. For autoRenewing subscription, this is the order id of signup order if it is not renewed yet, or the last recurring order id (success, pending, or declined order). For prepaid subscription, this is the order id associated with the queried purchase token. */
+  latestOrderId?: string;
   /** Additional context for out of app purchases. This information is only present for re-subscription purchases (subscription purchases made after the previous subscription of the same product has expired) made through the Google Play subscriptions center. This field will be removed after you acknowledge the subscription. */
   outOfAppPurchaseContext?: OutOfAppPurchaseContext;
+  /** User account identifier in the third-party service. */
+  externalAccountIdentifiers?: ExternalAccountIdentifiers;
 }
 
-export const SubscriptionPurchaseV2 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    kind: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-    regionCode: Schema.optional(Schema.String),
-    subscriptionState: Schema.optional(Schema.String),
-    latestOrderId: Schema.optional(Schema.String),
-    linkedPurchaseToken: Schema.optional(Schema.String),
-    pausedStateContext: Schema.optional(PausedStateContext),
+export const SubscriptionPurchaseV2: Schema.Schema<SubscriptionPurchaseV2> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     canceledStateContext: Schema.optional(CanceledStateContext),
-    testPurchase: Schema.optional(TestPurchase),
-    acknowledgementState: Schema.optional(Schema.String),
-    externalAccountIdentifiers: Schema.optional(ExternalAccountIdentifiers),
-    subscribeWithGoogleInfo: Schema.optional(SubscribeWithGoogleInfo),
-    lineItems: Schema.optional(Schema.Array(SubscriptionPurchaseLineItem)),
     etag: Schema.optional(Schema.String),
+    pausedStateContext: Schema.optional(PausedStateContext),
+    regionCode: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    subscriptionState: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    acknowledgementState: Schema.optional(Schema.String),
+    lineItems: Schema.optional(Schema.Array(SubscriptionPurchaseLineItem)),
+    linkedPurchaseToken: Schema.optional(Schema.String),
+    subscribeWithGoogleInfo: Schema.optional(SubscribeWithGoogleInfo),
+    testPurchase: Schema.optional(TestPurchase),
+    latestOrderId: Schema.optional(Schema.String),
     outOfAppPurchaseContext: Schema.optional(OutOfAppPurchaseContext),
-  },
-).annotate({ identifier: "SubscriptionPurchaseV2" });
-
-export interface RevocationContextFullRefund {}
-
-export const RevocationContextFullRefund =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "RevocationContextFullRefund",
-  });
-
-export interface RevocationContextProratedRefund {}
-
-export const RevocationContextProratedRefund =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "RevocationContextProratedRefund",
-  });
-
-export interface RevocationContextItemBasedRefund {
-  /** Required. If the subscription is a subscription with add-ons, the product id of the subscription item to revoke. */
-  productId?: string;
-}
-
-export const RevocationContextItemBasedRefund =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    productId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RevocationContextItemBasedRefund" });
-
-export interface RevocationContext {
-  /** Optional. Used when users should be refunded the full amount of latest charge on each item in the subscription. */
-  fullRefund?: RevocationContextFullRefund;
-  /** Optional. Used when users should be refunded a prorated amount they paid for their subscription based on the amount of time remaining in a subscription. */
-  proratedRefund?: RevocationContextProratedRefund;
-  /** Optional. Used when a specific item should be refunded in a subscription with add-on items. */
-  itemBasedRefund?: RevocationContextItemBasedRefund;
-}
-
-export const RevocationContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  fullRefund: Schema.optional(RevocationContextFullRefund),
-  proratedRefund: Schema.optional(RevocationContextProratedRefund),
-  itemBasedRefund: Schema.optional(RevocationContextItemBasedRefund),
-}).annotate({ identifier: "RevocationContext" });
-
-export interface RevokeSubscriptionPurchaseRequest {
-  /** Required. Additional details around the subscription revocation. */
-  revocationContext?: RevocationContext;
-}
-
-export const RevokeSubscriptionPurchaseRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    revocationContext: Schema.optional(RevocationContext),
-  }).annotate({ identifier: "RevokeSubscriptionPurchaseRequest" });
+    externalAccountIdentifiers: Schema.optional(ExternalAccountIdentifiers),
+  }).annotate({ identifier: "SubscriptionPurchaseV2" });
 
 export interface RevokeSubscriptionPurchaseResponse {}
 
-export const RevokeSubscriptionPurchaseResponse =
+export const RevokeSubscriptionPurchaseResponse: Schema.Schema<RevokeSubscriptionPurchaseResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RevokeSubscriptionPurchaseResponse",
   });
 
-export interface CancellationContext {
-  /** Required. The type of cancellation for the purchased subscription. */
-  cancellationType?:
-    | "CANCELLATION_TYPE_UNSPECIFIED"
-    | "USER_REQUESTED_STOP_RENEWALS"
-    | "DEVELOPER_REQUESTED_STOP_PAYMENTS"
+export interface ProductPurchasesAcknowledgeRequest {
+  /** Payload to attach to the purchase. */
+  developerPayload?: string;
+}
+
+export const ProductPurchasesAcknowledgeRequest: Schema.Schema<ProductPurchasesAcknowledgeRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    developerPayload: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductPurchasesAcknowledgeRequest" });
+
+export interface AppRecoveryAction {
+  /** Timestamp of when the app recovery action is deployed to the users. Only set if the recovery action has been deployed. */
+  deployTime?: string;
+  /** ID corresponding to the app recovery action. */
+  appRecoveryId?: string;
+  /** The status of the recovery action. */
+  status?:
+    | "RECOVERY_STATUS_UNSPECIFIED"
+    | "RECOVERY_STATUS_ACTIVE"
+    | "RECOVERY_STATUS_CANCELED"
+    | "RECOVERY_STATUS_DRAFT"
+    | "RECOVERY_STATUS_GENERATION_IN_PROGRESS"
+    | "RECOVERY_STATUS_GENERATION_FAILED"
     | (string & {});
+  /** Timestamp of when the developer last updated recovery action. In case the action is cancelled, it corresponds to cancellation time. It is always set after creation of the recovery action. */
+  lastUpdateTime?: string;
+  /** Timestamp of when the app recovery action is created by the developer. It is always set after creation of the recovery action. */
+  createTime?: string;
+  /** Specifies targeting criteria for the recovery action such as regions, android sdk versions, app versions etc. */
+  targeting?: Targeting;
+  /** Timestamp of when the app recovery action is canceled by the developer. Only set if the recovery action has been canceled. */
+  cancelTime?: string;
+  /** Data about the remote in-app update action such as such as recovered user base, recoverable user base etc. Set only if the recovery action type is Remote In-App Update. */
+  remoteInAppUpdateData?: RemoteInAppUpdateData;
 }
 
-export const CancellationContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  cancellationType: Schema.optional(Schema.String),
-}).annotate({ identifier: "CancellationContext" });
-
-export interface CancelSubscriptionPurchaseRequest {
-  /** Required. Additional details around the subscription revocation. */
-  cancellationContext?: CancellationContext;
-}
-
-export const CancelSubscriptionPurchaseRequest =
+export const AppRecoveryAction: Schema.Schema<AppRecoveryAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cancellationContext: Schema.optional(CancellationContext),
-  }).annotate({ identifier: "CancelSubscriptionPurchaseRequest" });
-
-export interface CancelSubscriptionPurchaseResponse {}
-
-export const CancelSubscriptionPurchaseResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "CancelSubscriptionPurchaseResponse",
-  });
-
-export interface DeferralContext {
-  /** Required. The API will fail if the etag does not match the latest etag for this subscription. The etag is retrieved from purchases.subscriptionsv2.get: https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.subscriptionsv2/get */
-  etag?: string;
-  /** Required. The duration by which all subscription items should be deferred. */
-  deferDuration?: string;
-  /** If set to "true", the request is a dry run to validate the effect of Defer, the subscription would not be impacted. */
-  validateOnly?: boolean;
-}
-
-export const DeferralContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  etag: Schema.optional(Schema.String),
-  deferDuration: Schema.optional(Schema.String),
-  validateOnly: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "DeferralContext" });
-
-export interface DeferSubscriptionPurchaseRequest {
-  /** Required. Details about the subscription deferral. */
-  deferralContext?: DeferralContext;
-}
-
-export const DeferSubscriptionPurchaseRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    deferralContext: Schema.optional(DeferralContext),
-  }).annotate({ identifier: "DeferSubscriptionPurchaseRequest" });
-
-export interface ItemExpiryTimeDetails {
-  /** The product ID of the subscription item (for example, 'premium_plan'). */
-  productId?: string;
-  /** The new expiry time for this subscription item. */
-  expiryTime?: string;
-}
-
-export const ItemExpiryTimeDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  productId: Schema.optional(Schema.String),
-  expiryTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "ItemExpiryTimeDetails" });
-
-export interface DeferSubscriptionPurchaseResponse {
-  /** The new expiry time for each subscription items. */
-  itemExpiryTimeDetails?: ReadonlyArray<ItemExpiryTimeDetails>;
-}
-
-export const DeferSubscriptionPurchaseResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    itemExpiryTimeDetails: Schema.optional(Schema.Array(ItemExpiryTimeDetails)),
-  }).annotate({ identifier: "DeferSubscriptionPurchaseResponse" });
-
-export interface AutoRenewingBasePlanType {
-  /** Required. Immutable. Subscription period, specified in ISO 8601 format. For a list of acceptable billing periods, refer to the help center. The duration is immutable after the base plan is created. */
-  billingPeriodDuration?: string;
-  /** Grace period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and between P0D and the lesser of 30D and base plan billing period. If not specified, a default value will be used based on the billing period. The sum of gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive. */
-  gracePeriodDuration?: string;
-  /** Optional. Custom account hold period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and between P0D and P60D. An empty field represents a recommended account hold, calculated as 60 days minus grace period. The sum of gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive. */
-  accountHoldDuration?: string;
-  /** Whether users should be able to resubscribe to this base plan in Google Play surfaces. Defaults to RESUBSCRIBE_STATE_ACTIVE if not specified. */
-  resubscribeState?:
-    | "RESUBSCRIBE_STATE_UNSPECIFIED"
-    | "RESUBSCRIBE_STATE_ACTIVE"
-    | "RESUBSCRIBE_STATE_INACTIVE"
-    | (string & {});
-  /** The proration mode for the base plan determines what happens when a user switches to this plan from another base plan. If unspecified, defaults to CHARGE_ON_NEXT_BILLING_DATE. */
-  prorationMode?:
-    | "SUBSCRIPTION_PRORATION_MODE_UNSPECIFIED"
-    | "SUBSCRIPTION_PRORATION_MODE_CHARGE_ON_NEXT_BILLING_DATE"
-    | "SUBSCRIPTION_PRORATION_MODE_CHARGE_FULL_PRICE_IMMEDIATELY"
-    | (string & {});
-  /** Whether the renewing base plan is backward compatible. The backward compatible base plan is returned by the Google Play Billing Library deprecated method querySkuDetailsAsync(). Only one renewing base plan can be marked as legacy compatible for a given subscription. */
-  legacyCompatible?: boolean;
-  /** Subscription offer id which is legacy compatible. The backward compatible subscription offer is returned by the Google Play Billing Library deprecated method querySkuDetailsAsync(). Only one subscription offer can be marked as legacy compatible for a given renewing base plan. To have no Subscription offer as legacy compatible set this field as empty string. */
-  legacyCompatibleSubscriptionOfferId?: string;
-}
-
-export const AutoRenewingBasePlanType =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    billingPeriodDuration: Schema.optional(Schema.String),
-    gracePeriodDuration: Schema.optional(Schema.String),
-    accountHoldDuration: Schema.optional(Schema.String),
-    resubscribeState: Schema.optional(Schema.String),
-    prorationMode: Schema.optional(Schema.String),
-    legacyCompatible: Schema.optional(Schema.Boolean),
-    legacyCompatibleSubscriptionOfferId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "AutoRenewingBasePlanType" });
-
-export interface PrepaidBasePlanType {
-  /** Required. Immutable. Subscription period, specified in ISO 8601 format. For a list of acceptable billing periods, refer to the help center. The duration is immutable after the base plan is created. */
-  billingPeriodDuration?: string;
-  /** Whether users should be able to extend this prepaid base plan in Google Play surfaces. Defaults to TIME_EXTENSION_ACTIVE if not specified. */
-  timeExtension?:
-    | "TIME_EXTENSION_UNSPECIFIED"
-    | "TIME_EXTENSION_ACTIVE"
-    | "TIME_EXTENSION_INACTIVE"
-    | (string & {});
-}
-
-export const PrepaidBasePlanType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  billingPeriodDuration: Schema.optional(Schema.String),
-  timeExtension: Schema.optional(Schema.String),
-}).annotate({ identifier: "PrepaidBasePlanType" });
-
-export interface InstallmentsBasePlanType {
-  /** Required. Immutable. Subscription period, specified in ISO 8601 format. For a list of acceptable billing periods, refer to the help center. The duration is immutable after the base plan is created. */
-  billingPeriodDuration?: string;
-  /** Required. Immutable. The number of payments the user is committed to. It is immutable after the base plan is created. */
-  committedPaymentsCount?: number;
-  /** Required. Immutable. Installments base plan renewal type. Determines the behavior at the end of the initial commitment. The renewal type is immutable after the base plan is created. */
-  renewalType?:
-    | "RENEWAL_TYPE_UNSPECIFIED"
-    | "RENEWAL_TYPE_RENEWS_WITHOUT_COMMITMENT"
-    | "RENEWAL_TYPE_RENEWS_WITH_COMMITMENT"
-    | (string & {});
-  /** Grace period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and between P0D and the lesser of 30D and base plan billing period. If not specified, a default value will be used based on the billing period. The sum of gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive. */
-  gracePeriodDuration?: string;
-  /** Optional. Custom account hold period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and between P0D and P60D. An empty field represents a recommended account hold, calculated as 60 days minus grace period. The sum of gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive. */
-  accountHoldDuration?: string;
-  /** Whether users should be able to resubscribe to this base plan in Google Play surfaces. Defaults to RESUBSCRIBE_STATE_ACTIVE if not specified. */
-  resubscribeState?:
-    | "RESUBSCRIBE_STATE_UNSPECIFIED"
-    | "RESUBSCRIBE_STATE_ACTIVE"
-    | "RESUBSCRIBE_STATE_INACTIVE"
-    | (string & {});
-  /** The proration mode for the base plan determines what happens when a user switches to this plan from another base plan. If unspecified, defaults to CHARGE_ON_NEXT_BILLING_DATE. */
-  prorationMode?:
-    | "SUBSCRIPTION_PRORATION_MODE_UNSPECIFIED"
-    | "SUBSCRIPTION_PRORATION_MODE_CHARGE_ON_NEXT_BILLING_DATE"
-    | "SUBSCRIPTION_PRORATION_MODE_CHARGE_FULL_PRICE_IMMEDIATELY"
-    | (string & {});
-}
-
-export const InstallmentsBasePlanType =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    billingPeriodDuration: Schema.optional(Schema.String),
-    committedPaymentsCount: Schema.optional(Schema.Number),
-    renewalType: Schema.optional(Schema.String),
-    gracePeriodDuration: Schema.optional(Schema.String),
-    accountHoldDuration: Schema.optional(Schema.String),
-    resubscribeState: Schema.optional(Schema.String),
-    prorationMode: Schema.optional(Schema.String),
-  }).annotate({ identifier: "InstallmentsBasePlanType" });
-
-export interface RegionalBasePlanConfig {
-  /** Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US". */
-  regionCode?: string;
-  /** Whether the base plan in the specified region is available for new subscribers. Existing subscribers will not have their subscription canceled if this value is set to false. If not specified, this will default to false. */
-  newSubscriberAvailability?: boolean;
-  /** The price of the base plan in the specified region. Must be set if the base plan is available to new subscribers. Must be set in the currency that is linked to the specified region. */
-  price?: Money;
-}
-
-export const RegionalBasePlanConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    regionCode: Schema.optional(Schema.String),
-    newSubscriberAvailability: Schema.optional(Schema.Boolean),
-    price: Schema.optional(Money),
-  },
-).annotate({ identifier: "RegionalBasePlanConfig" });
-
-export interface OtherRegionsBasePlanConfig {
-  /** Required. Price in USD to use for any new locations Play may launch in. */
-  usdPrice?: Money;
-  /** Required. Price in EUR to use for any new locations Play may launch in. */
-  eurPrice?: Money;
-  /** Whether the base plan is available for new subscribers in any new locations Play may launch in. If not specified, this will default to false. */
-  newSubscriberAvailability?: boolean;
-}
-
-export const OtherRegionsBasePlanConfig =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    usdPrice: Schema.optional(Money),
-    eurPrice: Schema.optional(Money),
-    newSubscriberAvailability: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "OtherRegionsBasePlanConfig" });
-
-export interface BasePlan {
-  /** Required. Immutable. The unique identifier of this base plan. Must be unique within the subscription, and conform with RFC-1034. That is, this ID can only contain lower-case letters (a-z), numbers (0-9), and hyphens (-), and be at most 63 characters. */
-  basePlanId?: string;
-  /** Output only. The state of the base plan, i.e. whether it's active. Draft and inactive base plans can be activated or deleted. Active base plans can be made inactive. Inactive base plans can be canceled. This field cannot be changed by updating the resource. Use the dedicated endpoints instead. */
-  state?: "STATE_UNSPECIFIED" | "DRAFT" | "ACTIVE" | "INACTIVE" | (string & {});
-  /** Set when the base plan automatically renews at a regular interval. */
-  autoRenewingBasePlanType?: AutoRenewingBasePlanType;
-  /** Set when the base plan does not automatically renew at the end of the billing period. */
-  prepaidBasePlanType?: PrepaidBasePlanType;
-  /** Set for installments base plans where a user is committed to a specified number of payments. */
-  installmentsBasePlanType?: InstallmentsBasePlanType;
-  /** Region-specific information for this base plan. */
-  regionalConfigs?: ReadonlyArray<RegionalBasePlanConfig>;
-  /** List of up to 20 custom tags specified for this base plan, and returned to the app through the billing library. Subscription offers for this base plan will also receive these offer tags in the billing library. */
-  offerTags?: ReadonlyArray<OfferTag>;
-  /** Pricing information for any new locations Play may launch in the future. If omitted, the BasePlan will not be automatically available any new locations Play may launch in the future. */
-  otherRegionsConfig?: OtherRegionsBasePlanConfig;
-}
-
-export const BasePlan = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  basePlanId: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  autoRenewingBasePlanType: Schema.optional(AutoRenewingBasePlanType),
-  prepaidBasePlanType: Schema.optional(PrepaidBasePlanType),
-  installmentsBasePlanType: Schema.optional(InstallmentsBasePlanType),
-  regionalConfigs: Schema.optional(Schema.Array(RegionalBasePlanConfig)),
-  offerTags: Schema.optional(Schema.Array(OfferTag)),
-  otherRegionsConfig: Schema.optional(OtherRegionsBasePlanConfig),
-}).annotate({ identifier: "BasePlan" });
-
-export interface SubscriptionListing {
-  /** Required. The language of this listing, as defined by BCP-47, e.g. "en-US". */
-  languageCode?: string;
-  /** Required. The title of this subscription in the language of this listing. Plain text. */
-  title?: string;
-  /** A list of benefits shown to the user on platforms such as the Play Store and in restoration flows in the language of this listing. Plain text. Ordered list of at most four benefits. */
-  benefits?: ReadonlyArray<string>;
-  /** The description of this subscription in the language of this listing. Maximum length - 80 characters. Plain text. */
-  description?: string;
-}
-
-export const SubscriptionListing = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  languageCode: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-  benefits: Schema.optional(Schema.Array(Schema.String)),
-  description: Schema.optional(Schema.String),
-}).annotate({ identifier: "SubscriptionListing" });
-
-export interface Subscription {
-  /** Immutable. Package name of the parent app. */
-  packageName?: string;
-  /** Immutable. Unique product ID of the product. Unique within the parent app. Product IDs must be composed of lower-case letters (a-z), numbers (0-9), underscores (_) and dots (.). It must start with a lower-case letter or number, and be between 1 and 40 (inclusive) characters in length. */
-  productId?: string;
-  /** The set of base plans for this subscription. Represents the prices and duration of the subscription if no other offers apply. */
-  basePlans?: ReadonlyArray<BasePlan>;
-  /** Required. List of localized listings for this subscription. Must contain at least an entry for the default language of the parent app. */
-  listings?: ReadonlyArray<SubscriptionListing>;
-  /** Output only. Deprecated: subscription archiving is not supported. */
-  archived?: boolean;
-  /** Details about taxes and legal compliance. */
-  taxAndComplianceSettings?: SubscriptionTaxAndComplianceSettings;
-  /** Optional. Countries where the purchase of this subscription is restricted to payment methods registered in the same country. If empty, no payment location restrictions are imposed. */
-  restrictedPaymentCountries?: RestrictedPaymentCountries;
-}
-
-export const Subscription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.optional(Schema.String),
-  productId: Schema.optional(Schema.String),
-  basePlans: Schema.optional(Schema.Array(BasePlan)),
-  listings: Schema.optional(Schema.Array(SubscriptionListing)),
-  archived: Schema.optional(Schema.Boolean),
-  taxAndComplianceSettings: Schema.optional(
-    SubscriptionTaxAndComplianceSettings,
-  ),
-  restrictedPaymentCountries: Schema.optional(RestrictedPaymentCountries),
-}).annotate({ identifier: "Subscription" });
-
-export interface BatchGetSubscriptionsResponse {
-  /** The list of requested subscriptions, in the same order as the request. */
-  subscriptions?: ReadonlyArray<Subscription>;
-}
-
-export const BatchGetSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptions: Schema.optional(Schema.Array(Subscription)),
-  }).annotate({ identifier: "BatchGetSubscriptionsResponse" });
-
-export interface ListSubscriptionsResponse {
-  /** The subscriptions from the specified app. */
-  subscriptions?: ReadonlyArray<Subscription>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptions: Schema.optional(Schema.Array(Subscription)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListSubscriptionsResponse" });
-
-export interface UpdateSubscriptionRequest {
-  /** Required. The subscription to update. */
-  subscription?: Subscription;
-  /** Required. The list of fields to be updated. */
-  updateMask?: string;
-  /** Required. The version of the available regions being used for the subscription. */
-  regionsVersion?: RegionsVersion;
-  /** Optional. If set to true, and the subscription with the given package_name and product_id doesn't exist, the subscription will be created. If a new subscription is created, update_mask is ignored. */
-  allowMissing?: boolean;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-}
-
-export const UpdateSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscription: Schema.optional(Subscription),
-    updateMask: Schema.optional(Schema.String),
-    regionsVersion: Schema.optional(RegionsVersion),
-    allowMissing: Schema.optional(Schema.Boolean),
-    latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UpdateSubscriptionRequest" });
-
-export interface BatchUpdateSubscriptionsRequest {
-  /** Required. A list of update requests of up to 100 elements. All requests must update different subscriptions. */
-  requests?: ReadonlyArray<UpdateSubscriptionRequest>;
-}
-
-export const BatchUpdateSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requests: Schema.optional(Schema.Array(UpdateSubscriptionRequest)),
-  }).annotate({ identifier: "BatchUpdateSubscriptionsRequest" });
-
-export interface BatchUpdateSubscriptionsResponse {
-  /** The updated subscriptions list. */
-  subscriptions?: ReadonlyArray<Subscription>;
-}
-
-export const BatchUpdateSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptions: Schema.optional(Schema.Array(Subscription)),
-  }).annotate({ identifier: "BatchUpdateSubscriptionsResponse" });
-
-export interface ArchiveSubscriptionRequest {}
-
-export const ArchiveSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "ArchiveSubscriptionRequest",
-  });
-
-export interface ActivateBasePlanRequest {
-  /** Required. The parent app (package name) of the base plan to activate. */
-  packageName?: string;
-  /** Required. The parent subscription (ID) of the base plan to activate. */
-  productId?: string;
-  /** Required. The unique base plan ID of the base plan to activate. */
-  basePlanId?: string;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-}
-
-export const ActivateBasePlanRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
-    basePlanId: Schema.optional(Schema.String),
-    latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ActivateBasePlanRequest" });
-
-export interface DeactivateBasePlanRequest {
-  /** Required. The parent app (package name) of the base plan to deactivate. */
-  packageName?: string;
-  /** Required. The parent subscription (ID) of the base plan to deactivate. */
-  productId?: string;
-  /** Required. The unique base plan ID of the base plan to deactivate. */
-  basePlanId?: string;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-}
-
-export const DeactivateBasePlanRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
-    basePlanId: Schema.optional(Schema.String),
-    latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DeactivateBasePlanRequest" });
-
-export interface UpdateBasePlanStateRequest {
-  /** Activates a base plan. Once activated, base plans will be available to new subscribers. */
-  activateBasePlanRequest?: ActivateBasePlanRequest;
-  /** Deactivates a base plan. Once deactivated, the base plan will become unavailable to new subscribers, but existing subscribers will maintain their subscription */
-  deactivateBasePlanRequest?: DeactivateBasePlanRequest;
-}
-
-export const UpdateBasePlanStateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    activateBasePlanRequest: Schema.optional(ActivateBasePlanRequest),
-    deactivateBasePlanRequest: Schema.optional(DeactivateBasePlanRequest),
-  }).annotate({ identifier: "UpdateBasePlanStateRequest" });
+    deployTime: Schema.optional(Schema.String),
+    appRecoveryId: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    lastUpdateTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    targeting: Schema.optional(Targeting),
+    cancelTime: Schema.optional(Schema.String),
+    remoteInAppUpdateData: Schema.optional(RemoteInAppUpdateData),
+  }).annotate({ identifier: "AppRecoveryAction" });
 
 export interface BatchUpdateBasePlanStatesRequest {
   /** Required. The update request list of up to 100 elements. All requests must update different base plans. */
   requests?: ReadonlyArray<UpdateBasePlanStateRequest>;
 }
 
-export const BatchUpdateBasePlanStatesRequest =
+export const BatchUpdateBasePlanStatesRequest: Schema.Schema<BatchUpdateBasePlanStatesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(UpdateBasePlanStateRequest)),
   }).annotate({ identifier: "BatchUpdateBasePlanStatesRequest" });
 
-export interface BatchUpdateBasePlanStatesResponse {
-  /** The list of updated subscriptions. This list will match the requests one to one, in the same order. */
-  subscriptions?: ReadonlyArray<Subscription>;
+export interface AppDetails {
+  /** Default language code, in BCP 47 format (eg "en-US"). */
+  defaultLanguage?: string;
+  /** The user-visible support email for this app. */
+  contactEmail?: string;
+  /** The user-visible website for this app. */
+  contactWebsite?: string;
+  /** The user-visible support telephone number for this app. */
+  contactPhone?: string;
 }
 
-export const BatchUpdateBasePlanStatesResponse =
+export const AppDetails: Schema.Schema<AppDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptions: Schema.optional(Schema.Array(Subscription)),
-  }).annotate({ identifier: "BatchUpdateBasePlanStatesResponse" });
-
-export interface RegionalPriceMigrationConfig {
-  /** Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US". */
-  regionCode?: string;
-  /** Required. Subscribers in all legacy price cohorts before this time will be migrated to the current price. Subscribers in any newer price cohorts are unaffected. Affected subscribers will receive one or more notifications from Google Play about the price change. Price decreases occur at the subscriber's next billing date. Price increases occur at the subscriber's next billing date following a notification period that varies by region and price increase type. */
-  oldestAllowedPriceVersionTime?: string;
-  /** Optional. The requested type of price increase */
-  priceIncreaseType?:
-    | "PRICE_INCREASE_TYPE_UNSPECIFIED"
-    | "PRICE_INCREASE_TYPE_OPT_IN"
-    | "PRICE_INCREASE_TYPE_OPT_OUT"
-    | (string & {});
-}
-
-export const RegionalPriceMigrationConfig =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    regionCode: Schema.optional(Schema.String),
-    oldestAllowedPriceVersionTime: Schema.optional(Schema.String),
-    priceIncreaseType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RegionalPriceMigrationConfig" });
-
-export interface MigrateBasePlanPricesRequest {
-  /** Required. Package name of the parent app. Must be equal to the package_name field on the Subscription resource. */
-  packageName?: string;
-  /** Required. The ID of the subscription to update. Must be equal to the product_id field on the Subscription resource. */
-  productId?: string;
-  /** Required. The unique base plan ID of the base plan to update prices on. */
-  basePlanId?: string;
-  /** Required. The regional prices to update. */
-  regionalPriceMigrations?: ReadonlyArray<RegionalPriceMigrationConfig>;
-  /** Required. The version of the available regions being used for the regional_price_migrations. */
-  regionsVersion?: RegionsVersion;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-}
-
-export const MigrateBasePlanPricesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
-    basePlanId: Schema.optional(Schema.String),
-    regionalPriceMigrations: Schema.optional(
-      Schema.Array(RegionalPriceMigrationConfig),
-    ),
-    regionsVersion: Schema.optional(RegionsVersion),
-    latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "MigrateBasePlanPricesRequest" });
-
-export interface MigrateBasePlanPricesResponse {}
-
-export const MigrateBasePlanPricesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "MigrateBasePlanPricesResponse",
-  });
-
-export interface BatchMigrateBasePlanPricesRequest {
-  /** Required. Up to 100 price migration requests. All requests must update different base plans. */
-  requests?: ReadonlyArray<MigrateBasePlanPricesRequest>;
-}
-
-export const BatchMigrateBasePlanPricesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requests: Schema.optional(Schema.Array(MigrateBasePlanPricesRequest)),
-  }).annotate({ identifier: "BatchMigrateBasePlanPricesRequest" });
-
-export interface BatchMigrateBasePlanPricesResponse {
-  /** Contains one response per requested price migration, in the same order as the request. */
-  responses?: ReadonlyArray<MigrateBasePlanPricesResponse>;
-}
-
-export const BatchMigrateBasePlanPricesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    responses: Schema.optional(Schema.Array(MigrateBasePlanPricesResponse)),
-  }).annotate({ identifier: "BatchMigrateBasePlanPricesResponse" });
-
-export interface RegionalSubscriptionOfferPhaseFreePriceOverride {}
-
-export const RegionalSubscriptionOfferPhaseFreePriceOverride =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "RegionalSubscriptionOfferPhaseFreePriceOverride",
-  });
-
-export interface RegionalSubscriptionOfferPhaseConfig {
-  /** Required. Immutable. The region to which this config applies. */
-  regionCode?: string;
-  /** The absolute price the user pays for this offer phase. The price must not be smaller than the minimum price allowed for this region. */
-  price?: Money;
-  /** The fraction of the base plan price prorated over the phase duration that the user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a 50% discount for a phase of a duration of 3 months would correspond to a price of $1.50. The discount must be specified as a fraction strictly larger than 0 and strictly smaller than 1. The resulting price will be rounded to the nearest billable unit (e.g. cents for USD). The relative discount is considered invalid if the discounted price ends up being smaller than the minimum price allowed in this region. */
-  relativeDiscount?: number;
-  /** The absolute amount of money subtracted from the base plan price prorated over the phase duration that the user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a $1 absolute discount for a phase of a duration of 3 months would correspond to a price of $2. The resulting price may not be smaller than the minimum price allowed for this region. */
-  absoluteDiscount?: Money;
-  /** Set to specify this offer is free to obtain. */
-  free?: RegionalSubscriptionOfferPhaseFreePriceOverride;
-}
-
-export const RegionalSubscriptionOfferPhaseConfig =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    regionCode: Schema.optional(Schema.String),
-    price: Schema.optional(Money),
-    relativeDiscount: Schema.optional(Schema.Number),
-    absoluteDiscount: Schema.optional(Money),
-    free: Schema.optional(RegionalSubscriptionOfferPhaseFreePriceOverride),
-  }).annotate({ identifier: "RegionalSubscriptionOfferPhaseConfig" });
-
-export interface OtherRegionsSubscriptionOfferPhasePrices {
-  /** Required. Price in USD to use for any new locations Play may launch in. */
-  usdPrice?: Money;
-  /** Required. Price in EUR to use for any new locations Play may launch in. */
-  eurPrice?: Money;
-}
-
-export const OtherRegionsSubscriptionOfferPhasePrices =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    usdPrice: Schema.optional(Money),
-    eurPrice: Schema.optional(Money),
-  }).annotate({ identifier: "OtherRegionsSubscriptionOfferPhasePrices" });
-
-export interface OtherRegionsSubscriptionOfferPhaseFreePriceOverride {}
-
-export const OtherRegionsSubscriptionOfferPhaseFreePriceOverride =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "OtherRegionsSubscriptionOfferPhaseFreePriceOverride",
-  });
-
-export interface OtherRegionsSubscriptionOfferPhaseConfig {
-  /** The absolute price the user pays for this offer phase. The price must not be smaller than the minimum price allowed for any new locations Play may launch in. */
-  otherRegionsPrices?: OtherRegionsSubscriptionOfferPhasePrices;
-  /** The fraction of the base plan price prorated over the phase duration that the user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a 50% discount for a phase of a duration of 3 months would correspond to a price of $1.50. The discount must be specified as a fraction strictly larger than 0 and strictly smaller than 1. The resulting price will be rounded to the nearest billable unit (e.g. cents for USD). The relative discount is considered invalid if the discounted price ends up being smaller than the minimum price allowed in any new locations Play may launch in. */
-  relativeDiscount?: number;
-  /** The absolute amount of money subtracted from the base plan price prorated over the phase duration that the user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a $1 absolute discount for a phase of a duration of 3 months would correspond to a price of $2. The resulting price may not be smaller than the minimum price allowed for any new locations Play may launch in. */
-  absoluteDiscounts?: OtherRegionsSubscriptionOfferPhasePrices;
-  /** Set to specify this offer is free to obtain. */
-  free?: OtherRegionsSubscriptionOfferPhaseFreePriceOverride;
-}
-
-export const OtherRegionsSubscriptionOfferPhaseConfig =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    otherRegionsPrices: Schema.optional(
-      OtherRegionsSubscriptionOfferPhasePrices,
-    ),
-    relativeDiscount: Schema.optional(Schema.Number),
-    absoluteDiscounts: Schema.optional(
-      OtherRegionsSubscriptionOfferPhasePrices,
-    ),
-    free: Schema.optional(OtherRegionsSubscriptionOfferPhaseFreePriceOverride),
-  }).annotate({ identifier: "OtherRegionsSubscriptionOfferPhaseConfig" });
-
-export interface SubscriptionOfferPhase {
-  /** Required. The number of times this phase repeats. If this offer phase is not free, each recurrence charges the user the price of this offer phase. */
-  recurrenceCount?: number;
-  /** Required. The duration of a single recurrence of this phase. Specified in ISO 8601 format. */
-  duration?: string;
-  /** Required. The region-specific configuration of this offer phase. This list must contain exactly one entry for each region for which the subscription offer has a regional config. */
-  regionalConfigs?: ReadonlyArray<RegionalSubscriptionOfferPhaseConfig>;
-  /** Pricing information for any new locations Play may launch in. */
-  otherRegionsConfig?: OtherRegionsSubscriptionOfferPhaseConfig;
-}
-
-export const SubscriptionOfferPhase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    recurrenceCount: Schema.optional(Schema.Number),
-    duration: Schema.optional(Schema.String),
-    regionalConfigs: Schema.optional(
-      Schema.Array(RegionalSubscriptionOfferPhaseConfig),
-    ),
-    otherRegionsConfig: Schema.optional(
-      OtherRegionsSubscriptionOfferPhaseConfig,
-    ),
-  },
-).annotate({ identifier: "SubscriptionOfferPhase" });
-
-export interface TargetingRuleScopeThisSubscription {}
-
-export const TargetingRuleScopeThisSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "TargetingRuleScopeThisSubscription",
-  });
-
-export interface TargetingRuleScopeAnySubscriptionInApp {}
-
-export const TargetingRuleScopeAnySubscriptionInApp =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "TargetingRuleScopeAnySubscriptionInApp",
-  });
-
-export interface TargetingRuleScope {
-  /** The scope of the current targeting rule is the subscription in which this offer is defined. */
-  thisSubscription?: TargetingRuleScopeThisSubscription;
-  /** The scope of the current targeting rule is any subscription in the parent app. */
-  anySubscriptionInApp?: TargetingRuleScopeAnySubscriptionInApp;
-  /** The scope of the current targeting rule is the subscription with the specified subscription ID. Must be a subscription within the same parent app. */
-  specificSubscriptionInApp?: string;
-}
-
-export const TargetingRuleScope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  thisSubscription: Schema.optional(TargetingRuleScopeThisSubscription),
-  anySubscriptionInApp: Schema.optional(TargetingRuleScopeAnySubscriptionInApp),
-  specificSubscriptionInApp: Schema.optional(Schema.String),
-}).annotate({ identifier: "TargetingRuleScope" });
-
-export interface AcquisitionTargetingRule {
-  /** Required. The scope of subscriptions this rule considers. Only allows "this subscription" and "any subscription in app". */
-  scope?: TargetingRuleScope;
-}
-
-export const AcquisitionTargetingRule =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scope: Schema.optional(TargetingRuleScope),
-  }).annotate({ identifier: "AcquisitionTargetingRule" });
-
-export interface UpgradeTargetingRule {
-  /** Limit this offer to only once per user. If set to true, a user can never be eligible for this offer again if they ever subscribed to this offer. */
-  oncePerUser?: boolean;
-  /** Required. The scope of subscriptions this rule considers. Only allows "this subscription" and "specific subscription in app". */
-  scope?: TargetingRuleScope;
-  /** The specific billing period duration, specified in ISO 8601 format, that a user must be currently subscribed to to be eligible for this rule. If not specified, users subscribed to any billing period are matched. */
-  billingPeriodDuration?: string;
-}
-
-export const UpgradeTargetingRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  oncePerUser: Schema.optional(Schema.Boolean),
-  scope: Schema.optional(TargetingRuleScope),
-  billingPeriodDuration: Schema.optional(Schema.String),
-}).annotate({ identifier: "UpgradeTargetingRule" });
-
-export interface SubscriptionOfferTargeting {
-  /** Offer targeting rule for new user acquisition. */
-  acquisitionRule?: AcquisitionTargetingRule;
-  /** Offer targeting rule for upgrading users' existing plans. */
-  upgradeRule?: UpgradeTargetingRule;
-}
-
-export const SubscriptionOfferTargeting =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    acquisitionRule: Schema.optional(AcquisitionTargetingRule),
-    upgradeRule: Schema.optional(UpgradeTargetingRule),
-  }).annotate({ identifier: "SubscriptionOfferTargeting" });
-
-export interface RegionalSubscriptionOfferConfig {
-  /** Required. Immutable. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US". */
-  regionCode?: string;
-  /** Whether the subscription offer in the specified region is available for new subscribers. Existing subscribers will not have their subscription cancelled if this value is set to false. If not specified, this will default to false. */
-  newSubscriberAvailability?: boolean;
-}
-
-export const RegionalSubscriptionOfferConfig =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    regionCode: Schema.optional(Schema.String),
-    newSubscriberAvailability: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "RegionalSubscriptionOfferConfig" });
-
-export interface OtherRegionsSubscriptionOfferConfig {
-  /** Whether the subscription offer in any new locations Play may launch in the future. If not specified, this will default to false. */
-  otherRegionsNewSubscriberAvailability?: boolean;
-}
-
-export const OtherRegionsSubscriptionOfferConfig =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    otherRegionsNewSubscriberAvailability: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "OtherRegionsSubscriptionOfferConfig" });
-
-export interface SubscriptionOffer {
-  /** Required. Immutable. The package name of the app the parent subscription belongs to. */
-  packageName?: string;
-  /** Required. Immutable. The ID of the parent subscription this offer belongs to. */
-  productId?: string;
-  /** Required. Immutable. The ID of the base plan to which this offer is an extension. */
-  basePlanId?: string;
-  /** Required. Immutable. Unique ID of this subscription offer. Must be unique within the base plan. */
-  offerId?: string;
-  /** Output only. The current state of this offer. Can be changed using Activate and Deactivate actions. NB: the base plan state supersedes this state, so an active offer may not be available if the base plan is not active. */
-  state?: "STATE_UNSPECIFIED" | "DRAFT" | "ACTIVE" | "INACTIVE" | (string & {});
-  /** Required. The phases of this subscription offer. Must contain at least one and at most two entries. Users will always receive all these phases in the specified order. */
-  phases?: ReadonlyArray<SubscriptionOfferPhase>;
-  /** The requirements that users need to fulfil to be eligible for this offer. Represents the requirements that Play will evaluate to decide whether an offer should be returned. Developers may further filter these offers themselves. */
-  targeting?: SubscriptionOfferTargeting;
-  /** Required. The region-specific configuration of this offer. Must contain at least one entry. */
-  regionalConfigs?: ReadonlyArray<RegionalSubscriptionOfferConfig>;
-  /** The configuration for any new locations Play may launch in the future. */
-  otherRegionsConfig?: OtherRegionsSubscriptionOfferConfig;
-  /** List of up to 20 custom tags specified for this offer, and returned to the app through the billing library. */
-  offerTags?: ReadonlyArray<OfferTag>;
-}
-
-export const SubscriptionOffer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.optional(Schema.String),
-  productId: Schema.optional(Schema.String),
-  basePlanId: Schema.optional(Schema.String),
-  offerId: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  phases: Schema.optional(Schema.Array(SubscriptionOfferPhase)),
-  targeting: Schema.optional(SubscriptionOfferTargeting),
-  regionalConfigs: Schema.optional(
-    Schema.Array(RegionalSubscriptionOfferConfig),
-  ),
-  otherRegionsConfig: Schema.optional(OtherRegionsSubscriptionOfferConfig),
-  offerTags: Schema.optional(Schema.Array(OfferTag)),
-}).annotate({ identifier: "SubscriptionOffer" });
-
-export interface GetSubscriptionOfferRequest {
-  /** Required. The parent app (package name) of the offer to get. */
-  packageName?: string;
-  /** Required. The parent subscription (ID) of the offer to get. */
-  productId?: string;
-  /** Required. The parent base plan (ID) of the offer to get. */
-  basePlanId?: string;
-  /** Required. The unique offer ID of the offer to get. */
-  offerId?: string;
-}
-
-export const GetSubscriptionOfferRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
-    basePlanId: Schema.optional(Schema.String),
-    offerId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GetSubscriptionOfferRequest" });
-
-export interface BatchGetSubscriptionOffersRequest {
-  /** Required. A list of update requests of up to 100 elements. All requests must update different subscriptions. */
-  requests?: ReadonlyArray<GetSubscriptionOfferRequest>;
-}
-
-export const BatchGetSubscriptionOffersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requests: Schema.optional(Schema.Array(GetSubscriptionOfferRequest)),
-  }).annotate({ identifier: "BatchGetSubscriptionOffersRequest" });
+    defaultLanguage: Schema.optional(Schema.String),
+    contactEmail: Schema.optional(Schema.String),
+    contactWebsite: Schema.optional(Schema.String),
+    contactPhone: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AppDetails" });
 
 export interface BatchGetSubscriptionOffersResponse {
   subscriptionOffers?: ReadonlyArray<SubscriptionOffer>;
 }
 
-export const BatchGetSubscriptionOffersResponse =
+export const BatchGetSubscriptionOffersResponse: Schema.Schema<BatchGetSubscriptionOffersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionOffers: Schema.optional(Schema.Array(SubscriptionOffer)),
   }).annotate({ identifier: "BatchGetSubscriptionOffersResponse" });
 
-export interface ListSubscriptionOffersResponse {
-  /** The subscription offers from the specified subscription. */
-  subscriptionOffers?: ReadonlyArray<SubscriptionOffer>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
+export interface CancelSubscriptionPurchaseResponse {}
+
+export const CancelSubscriptionPurchaseResponse: Schema.Schema<CancelSubscriptionPurchaseResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelSubscriptionPurchaseResponse",
+  });
+
+export interface ArchiveSubscriptionRequest {}
+
+export const ArchiveSubscriptionRequest: Schema.Schema<ArchiveSubscriptionRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "ArchiveSubscriptionRequest",
+  });
+
+export interface Bundle {
+  /** A sha1 hash of the upload payload, encoded as a hex string and matching the output of the sha1sum command. */
+  sha1?: string;
+  /** The version code of the Android App Bundle, as specified in the Android App Bundle's base module APK manifest file. */
+  versionCode?: number;
+  /** A sha256 hash of the upload payload, encoded as a hex string and matching the output of the sha256sum command. */
+  sha256?: string;
 }
 
-export const ListSubscriptionOffersResponse =
+export const Bundle: Schema.Schema<Bundle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionOffers: Schema.optional(Schema.Array(SubscriptionOffer)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListSubscriptionOffersResponse" });
+    sha1: Schema.optional(Schema.String),
+    versionCode: Schema.optional(Schema.Number),
+    sha256: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Bundle" });
 
-export interface UpdateSubscriptionOfferRequest {
-  /** Required. The subscription offer to update. */
-  subscriptionOffer?: SubscriptionOffer;
-  /** Required. The list of fields to be updated. */
-  updateMask?: string;
-  /** Required. The version of the available regions being used for the subscription_offer. */
-  regionsVersion?: RegionsVersion;
-  /** Optional. If set to true, and the subscription offer with the given package_name, product_id, base_plan_id and offer_id doesn't exist, an offer will be created. If a new offer is created, update_mask is ignored. */
-  allowMissing?: boolean;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
+export interface BundlesListResponse {
+  /** The kind of this response ("androidpublisher#bundlesListResponse"). */
+  kind?: string;
+  /** All app bundles. */
+  bundles?: ReadonlyArray<Bundle>;
 }
 
-export const UpdateSubscriptionOfferRequest =
+export const BundlesListResponse: Schema.Schema<BundlesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionOffer: Schema.optional(SubscriptionOffer),
-    updateMask: Schema.optional(Schema.String),
-    regionsVersion: Schema.optional(RegionsVersion),
-    allowMissing: Schema.optional(Schema.Boolean),
-    latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UpdateSubscriptionOfferRequest" });
+    kind: Schema.optional(Schema.String),
+    bundles: Schema.optional(Schema.Array(Bundle)),
+  }).annotate({ identifier: "BundlesListResponse" });
 
-export interface BatchUpdateSubscriptionOffersRequest {
-  /** Required. A list of update requests of up to 100 elements. All requests must update different subscription offers. */
-  requests?: ReadonlyArray<UpdateSubscriptionOfferRequest>;
+export interface Listing {
+  /** URL of a promotional YouTube video for the app. */
+  video?: string;
+  /** Short description of the app. */
+  shortDescription?: string;
+  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
+  language?: string;
+  /** Localized title of the app. */
+  title?: string;
+  /** Full description of the app. */
+  fullDescription?: string;
 }
 
-export const BatchUpdateSubscriptionOffersRequest =
+export const Listing: Schema.Schema<Listing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requests: Schema.optional(Schema.Array(UpdateSubscriptionOfferRequest)),
-  }).annotate({ identifier: "BatchUpdateSubscriptionOffersRequest" });
+    video: Schema.optional(Schema.String),
+    shortDescription: Schema.optional(Schema.String),
+    language: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    fullDescription: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Listing" });
 
-export interface BatchUpdateSubscriptionOffersResponse {
-  /** The updated subscription offers list. */
-  subscriptionOffers?: ReadonlyArray<SubscriptionOffer>;
+export interface ListingsListResponse {
+  /** The kind of this response ("androidpublisher#listingsListResponse"). */
+  kind?: string;
+  /** All localized listings. */
+  listings?: ReadonlyArray<Listing>;
 }
 
-export const BatchUpdateSubscriptionOffersResponse =
+export const ListingsListResponse: Schema.Schema<ListingsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionOffers: Schema.optional(Schema.Array(SubscriptionOffer)),
-  }).annotate({ identifier: "BatchUpdateSubscriptionOffersResponse" });
+    kind: Schema.optional(Schema.String),
+    listings: Schema.optional(Schema.Array(Listing)),
+  }).annotate({ identifier: "ListingsListResponse" });
 
-export interface ActivateSubscriptionOfferRequest {
-  /** Required. The parent app (package name) of the offer to activate. */
-  packageName?: string;
-  /** Required. The parent subscription (ID) of the offer to activate. */
-  productId?: string;
-  /** Required. The parent base plan (ID) of the offer to activate. */
-  basePlanId?: string;
-  /** Required. The unique offer ID of the offer to activate. */
-  offerId?: string;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
+export interface BatchUpdateSubscriptionsRequest {
+  /** Required. A list of update requests of up to 100 elements. All requests must update different subscriptions. */
+  requests?: ReadonlyArray<UpdateSubscriptionRequest>;
 }
 
-export const ActivateSubscriptionOfferRequest =
+export const BatchUpdateSubscriptionsRequest: Schema.Schema<BatchUpdateSubscriptionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
-    basePlanId: Schema.optional(Schema.String),
-    offerId: Schema.optional(Schema.String),
-    latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ActivateSubscriptionOfferRequest" });
+    requests: Schema.optional(Schema.Array(UpdateSubscriptionRequest)),
+  }).annotate({ identifier: "BatchUpdateSubscriptionsRequest" });
 
-export interface DeactivateSubscriptionOfferRequest {
-  /** Required. The parent app (package name) of the offer to deactivate. */
-  packageName?: string;
-  /** Required. The parent subscription (ID) of the offer to deactivate. */
-  productId?: string;
-  /** Required. The parent base plan (ID) of the offer to deactivate. */
-  basePlanId?: string;
-  /** Required. The unique offer ID of the offer to deactivate. */
-  offerId?: string;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
+export interface ApkBinary {
+  /** A sha1 hash of the APK payload, encoded as a hex string and matching the output of the sha1sum command. */
+  sha1?: string;
+  /** A sha256 hash of the APK payload, encoded as a hex string and matching the output of the sha256sum command. */
+  sha256?: string;
 }
 
-export const DeactivateSubscriptionOfferRequest =
+export const ApkBinary: Schema.Schema<ApkBinary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
-    basePlanId: Schema.optional(Schema.String),
-    offerId: Schema.optional(Schema.String),
-    latencyTolerance: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DeactivateSubscriptionOfferRequest" });
+    sha1: Schema.optional(Schema.String),
+    sha256: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApkBinary" });
 
-export interface UpdateSubscriptionOfferStateRequest {
-  /** Activates an offer. Once activated, the offer will be available to new subscribers. */
-  activateSubscriptionOfferRequest?: ActivateSubscriptionOfferRequest;
-  /** Deactivates an offer. Once deactivated, the offer will become unavailable to new subscribers, but existing subscribers will maintain their subscription */
-  deactivateSubscriptionOfferRequest?: DeactivateSubscriptionOfferRequest;
+export interface Apk {
+  /** The version code of the APK, as specified in the manifest file. */
+  versionCode?: number;
+  /** Information about the binary payload of this APK. */
+  binary?: ApkBinary;
 }
 
-export const UpdateSubscriptionOfferStateRequest =
+export const Apk: Schema.Schema<Apk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    activateSubscriptionOfferRequest: Schema.optional(
-      ActivateSubscriptionOfferRequest,
-    ),
-    deactivateSubscriptionOfferRequest: Schema.optional(
-      DeactivateSubscriptionOfferRequest,
-    ),
-  }).annotate({ identifier: "UpdateSubscriptionOfferStateRequest" });
-
-export interface BatchUpdateSubscriptionOfferStatesRequest {
-  /** Required. The update request list of up to 100 elements. All requests must update different offers. */
-  requests?: ReadonlyArray<UpdateSubscriptionOfferStateRequest>;
-}
-
-export const BatchUpdateSubscriptionOfferStatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requests: Schema.optional(
-      Schema.Array(UpdateSubscriptionOfferStateRequest),
-    ),
-  }).annotate({ identifier: "BatchUpdateSubscriptionOfferStatesRequest" });
-
-export interface BatchUpdateSubscriptionOfferStatesResponse {
-  /** The updated subscription offers list. */
-  subscriptionOffers?: ReadonlyArray<SubscriptionOffer>;
-}
-
-export const BatchUpdateSubscriptionOfferStatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionOffers: Schema.optional(Schema.Array(SubscriptionOffer)),
-  }).annotate({ identifier: "BatchUpdateSubscriptionOfferStatesResponse" });
-
-export interface DeviceSpec {
-  /** Supported ABI architectures in the order of preference. The values should be the string as reported by the platform, e.g. "armeabi-v7a", "x86_64". */
-  supportedAbis?: ReadonlyArray<string>;
-  /** All installed locales represented as BCP-47 strings, e.g. "en-US". */
-  supportedLocales?: ReadonlyArray<string>;
-  /** Screen dpi. */
-  screenDensity?: number;
-}
-
-export const DeviceSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  supportedAbis: Schema.optional(Schema.Array(Schema.String)),
-  supportedLocales: Schema.optional(Schema.Array(Schema.String)),
-  screenDensity: Schema.optional(Schema.Number),
-}).annotate({ identifier: "DeviceSpec" });
-
-export interface SystemApkOptions {
-  /** Whether system APK was generated with uncompressed native libraries. */
-  uncompressedNativeLibraries?: boolean;
-  /** Whether system APK was generated with uncompressed dex files. */
-  uncompressedDexFiles?: boolean;
-  /** Whether to use the rotated key for signing the system APK. */
-  rotated?: boolean;
-}
-
-export const SystemApkOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  uncompressedNativeLibraries: Schema.optional(Schema.Boolean),
-  uncompressedDexFiles: Schema.optional(Schema.Boolean),
-  rotated: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "SystemApkOptions" });
-
-export interface Variant {
-  /** Output only. The ID of a previously created system APK variant. */
-  variantId?: number;
-  /** The device spec used to generate the APK. */
-  deviceSpec?: DeviceSpec;
-  /** Optional. Options applied to the generated APK. */
-  options?: SystemApkOptions;
-}
-
-export const Variant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  variantId: Schema.optional(Schema.Number),
-  deviceSpec: Schema.optional(DeviceSpec),
-  options: Schema.optional(SystemApkOptions),
-}).annotate({ identifier: "Variant" });
-
-export interface SystemApksListResponse {
-  /** All system APK variants created. */
-  variants?: ReadonlyArray<Variant>;
-}
-
-export const SystemApksListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    variants: Schema.optional(Schema.Array(Variant)),
-  },
-).annotate({ identifier: "SystemApksListResponse" });
-
-export interface Testers {
-  /** All testing Google Groups, as email addresses. */
-  googleGroups?: ReadonlyArray<string>;
-}
-
-export const Testers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  googleGroups: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "Testers" });
+    versionCode: Schema.optional(Schema.Number),
+    binary: Schema.optional(ApkBinary),
+  }).annotate({ identifier: "Apk" });
 
 export interface LocalizedText {
   /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
@@ -5314,28 +5011,21 @@ export interface LocalizedText {
   text?: string;
 }
 
-export const LocalizedText = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  language: Schema.optional(Schema.String),
-  text: Schema.optional(Schema.String),
-}).annotate({ identifier: "LocalizedText" });
-
-export interface CountryTargeting {
-  /** Countries to target, specified as two letter [CLDR codes](https://unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html). */
-  countries?: ReadonlyArray<string>;
-  /** Include "rest of world" as well as explicitly targeted countries. */
-  includeRestOfWorld?: boolean;
-}
-
-export const CountryTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  countries: Schema.optional(Schema.Array(Schema.String)),
-  includeRestOfWorld: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "CountryTargeting" });
+export const LocalizedText: Schema.Schema<LocalizedText> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    language: Schema.optional(Schema.String),
+    text: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LocalizedText" });
 
 export interface TrackRelease {
   /** The release name. Not required to be unique. If not set, the name is generated from the APK's version_name. If the release contains multiple APKs, the name is generated from the date. */
   name?: string;
   /** Version codes of all APKs in the release. Must include version codes to retain from previous releases. */
   versionCodes?: ReadonlyArray<string>;
+  /** Fraction of users who are eligible for a staged release. 0 < fraction < 1. Can only be set when status is "inProgress" or "halted". */
+  userFraction?: number;
+  /** In-app update priority of the release. All newly added APKs in the release will be considered at this priority. Can take values in the range [0, 5], with 5 the highest priority. Defaults to 0. in_app_update_priority can not be updated once the release is rolled out. See https://developer.android.com/guide/playcore/in-app-updates. */
+  inAppUpdatePriority?: number;
   /** A description of what is new in this release. */
   releaseNotes?: ReadonlyArray<LocalizedText>;
   /** The status of the release. */
@@ -5346,23 +5036,43 @@ export interface TrackRelease {
     | "halted"
     | "completed"
     | (string & {});
-  /** Fraction of users who are eligible for a staged release. 0 < fraction < 1. Can only be set when status is "inProgress" or "halted". */
-  userFraction?: number;
   /** Restricts a release to a specific set of countries. Note this is only allowed to be set for inProgress releases in the production track. */
   countryTargeting?: CountryTargeting;
-  /** In-app update priority of the release. All newly added APKs in the release will be considered at this priority. Can take values in the range [0, 5], with 5 the highest priority. Defaults to 0. in_app_update_priority can not be updated once the release is rolled out. See https://developer.android.com/guide/playcore/in-app-updates. */
-  inAppUpdatePriority?: number;
 }
 
-export const TrackRelease = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  versionCodes: Schema.optional(Schema.Array(Schema.String)),
-  releaseNotes: Schema.optional(Schema.Array(LocalizedText)),
-  status: Schema.optional(Schema.String),
-  userFraction: Schema.optional(Schema.Number),
-  countryTargeting: Schema.optional(CountryTargeting),
-  inAppUpdatePriority: Schema.optional(Schema.Number),
-}).annotate({ identifier: "TrackRelease" });
+export const TrackRelease: Schema.Schema<TrackRelease> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    versionCodes: Schema.optional(Schema.Array(Schema.String)),
+    userFraction: Schema.optional(Schema.Number),
+    inAppUpdatePriority: Schema.optional(Schema.Number),
+    releaseNotes: Schema.optional(Schema.Array(LocalizedText)),
+    status: Schema.optional(Schema.String),
+    countryTargeting: Schema.optional(CountryTargeting),
+  }).annotate({ identifier: "TrackRelease" });
+
+export interface ListOneTimeProductsResponse {
+  /** The one-time products from the specified app. */
+  oneTimeProducts?: ReadonlyArray<OneTimeProduct>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListOneTimeProductsResponse: Schema.Schema<ListOneTimeProductsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oneTimeProducts: Schema.optional(Schema.Array(OneTimeProduct)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListOneTimeProductsResponse" });
+
+export interface BatchGetSubscriptionOffersRequest {
+  /** Required. A list of update requests of up to 100 elements. All requests must update different subscriptions. */
+  requests?: ReadonlyArray<GetSubscriptionOfferRequest>;
+}
+
+export const BatchGetSubscriptionOffersRequest: Schema.Schema<BatchGetSubscriptionOffersRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(GetSubscriptionOfferRequest)),
+  }).annotate({ identifier: "BatchGetSubscriptionOffersRequest" });
 
 export interface Track {
   /** Identifier of the track. Form factor tracks have a special prefix as an identifier, for example `wear:production`, `automotive:production`. [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name) */
@@ -5371,87 +5081,550 @@ export interface Track {
   releases?: ReadonlyArray<TrackRelease>;
 }
 
-export const Track = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  track: Schema.optional(Schema.String),
-  releases: Schema.optional(Schema.Array(TrackRelease)),
-}).annotate({ identifier: "Track" });
+export const Track: Schema.Schema<Track> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    track: Schema.optional(Schema.String),
+    releases: Schema.optional(Schema.Array(TrackRelease)),
+  }).annotate({ identifier: "Track" });
 
 export interface TracksListResponse {
-  /** The kind of this response ("androidpublisher#tracksListResponse"). */
-  kind?: string;
   /** All tracks (including tracks with no releases). */
   tracks?: ReadonlyArray<Track>;
+  /** The kind of this response ("androidpublisher#tracksListResponse"). */
+  kind?: string;
 }
 
-export const TracksListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  tracks: Schema.optional(Schema.Array(Track)),
-}).annotate({ identifier: "TracksListResponse" });
+export const TracksListResponse: Schema.Schema<TracksListResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tracks: Schema.optional(Schema.Array(Track)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TracksListResponse" });
 
-export interface TrackConfig {
-  /** Required. Identifier of the new track. For default tracks, this field consists of the track alias only. Form factor tracks have a special prefix as an identifier, for example `wear:production`, `automotive:production`. This prefix must match the value of the `form_factor` field, if it is not a default track. [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name) */
-  track?: string;
-  /** Required. Type of the new track. Currently, the only supported value is closedTesting. */
-  type?: "TRACK_TYPE_UNSPECIFIED" | "CLOSED_TESTING" | (string & {});
-  /** Required. Form factor of the new track. Defaults to the default track. */
-  formFactor?:
-    | "FORM_FACTOR_UNSPECIFIED"
-    | "DEFAULT"
-    | "WEAR"
-    | "AUTOMOTIVE"
+export interface ProductPurchase {
+  /** The order id associated with the purchase of the inapp product. */
+  orderId?: string;
+  /** An obfuscated version of the id that is uniquely associated with the user's account in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid when the purchase was made. */
+  obfuscatedExternalAccountId?: string;
+  /** The purchase state of the order. Possible values are: 0. Purchased 1. Canceled 2. Pending */
+  purchaseState?: number;
+  /** ISO 3166-1 alpha-2 billing region code of the user at the time the product was granted. */
+  regionCode?: string;
+  /** The acknowledgement state of the inapp product. Possible values are: 0. Yet to be acknowledged 1. Acknowledged */
+  acknowledgementState?: number;
+  /** This kind represents an inappPurchase object in the androidpublisher service. */
+  kind?: string;
+  /** The time the product was purchased, in milliseconds since the epoch (Jan 1, 1970). */
+  purchaseTimeMillis?: string;
+  /** An obfuscated version of the id that is uniquely associated with the user's profile in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid when the purchase was made. */
+  obfuscatedExternalProfileId?: string;
+  /** The quantity associated with the purchase of the inapp product. If not present, the quantity is 1. */
+  quantity?: number;
+  /** The quantity eligible for refund, i.e. quantity that hasn't been refunded. The value reflects quantity-based partial refunds and full refunds. */
+  refundableQuantity?: number;
+  /** The consumption state of the inapp product. Possible values are: 0. Yet to be consumed 1. Consumed */
+  consumptionState?: number;
+  /** A developer-specified string that contains supplemental information about an order. */
+  developerPayload?: string;
+  /** The type of purchase of the inapp product. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are: 0. Test (i.e. purchased from a license testing account) 1. Promo (i.e. purchased using a promo code). Does not include Play Points purchases. 2. Rewarded (i.e. from watching a video ad instead of paying) */
+  purchaseType?: number;
+  /** The purchase token generated to identify this purchase. May not be present. */
+  purchaseToken?: string;
+  /** The inapp product SKU. May not be present. */
+  productId?: string;
+}
+
+export const ProductPurchase: Schema.Schema<ProductPurchase> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orderId: Schema.optional(Schema.String),
+    obfuscatedExternalAccountId: Schema.optional(Schema.String),
+    purchaseState: Schema.optional(Schema.Number),
+    regionCode: Schema.optional(Schema.String),
+    acknowledgementState: Schema.optional(Schema.Number),
+    kind: Schema.optional(Schema.String),
+    purchaseTimeMillis: Schema.optional(Schema.String),
+    obfuscatedExternalProfileId: Schema.optional(Schema.String),
+    quantity: Schema.optional(Schema.Number),
+    refundableQuantity: Schema.optional(Schema.Number),
+    consumptionState: Schema.optional(Schema.Number),
+    developerPayload: Schema.optional(Schema.String),
+    purchaseType: Schema.optional(Schema.Number),
+    purchaseToken: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductPurchase" });
+
+export interface ImagesListResponse {
+  /** All listed Images. */
+  images?: ReadonlyArray<Image>;
+}
+
+export const ImagesListResponse: Schema.Schema<ImagesListResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    images: Schema.optional(Schema.Array(Image)),
+  }).annotate({ identifier: "ImagesListResponse" });
+
+export interface ImagesUploadResponse {
+  /** The uploaded image. */
+  image?: Image;
+}
+
+export const ImagesUploadResponse: Schema.Schema<ImagesUploadResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    image: Schema.optional(Image),
+  }).annotate({ identifier: "ImagesUploadResponse" });
+
+export interface DeferralContext {
+  /** Required. The duration by which all subscription items should be deferred. */
+  deferDuration?: string;
+  /** Required. The API will fail if the etag does not match the latest etag for this subscription. The etag is retrieved from purchases.subscriptionsv2.get: https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.subscriptionsv2/get */
+  etag?: string;
+  /** If set to "true", the request is a dry run to validate the effect of Defer, the subscription would not be impacted. */
+  validateOnly?: boolean;
+}
+
+export const DeferralContext: Schema.Schema<DeferralContext> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deferDuration: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    validateOnly: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DeferralContext" });
+
+export interface AddTargetingRequest {
+  /** Specifies targeting updates such as regions, android sdk versions etc. */
+  targetingUpdate?: TargetingUpdate;
+}
+
+export const AddTargetingRequest: Schema.Schema<AddTargetingRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetingUpdate: Schema.optional(TargetingUpdate),
+  }).annotate({ identifier: "AddTargetingRequest" });
+
+export interface UpdateSubscriptionOfferRequest {
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+  /** Required. The version of the available regions being used for the subscription_offer. */
+  regionsVersion?: RegionsVersion;
+  /** Optional. If set to true, and the subscription offer with the given package_name, product_id, base_plan_id and offer_id doesn't exist, an offer will be created. If a new offer is created, update_mask is ignored. */
+  allowMissing?: boolean;
+  /** Required. The subscription offer to update. */
+  subscriptionOffer?: SubscriptionOffer;
+  /** Required. The list of fields to be updated. */
+  updateMask?: string;
+}
+
+export const UpdateSubscriptionOfferRequest: Schema.Schema<UpdateSubscriptionOfferRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latencyTolerance: Schema.optional(Schema.String),
+    regionsVersion: Schema.optional(RegionsVersion),
+    allowMissing: Schema.optional(Schema.Boolean),
+    subscriptionOffer: Schema.optional(SubscriptionOffer),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateSubscriptionOfferRequest" });
+
+export interface UpdateOneTimeProductOfferStateRequest {
+  /** Activates an offer. Once activated, the offer is available to users, as long as its conditions are met. */
+  activateOneTimeProductOfferRequest?: ActivateOneTimeProductOfferRequest;
+  /** Cancels an offer. Once cancelled, the offer is not available to users. Any pending orders related to this offer will be cancelled. This state transition is specific to pre-orders. */
+  cancelOneTimeProductOfferRequest?: CancelOneTimeProductOfferRequest;
+  /** Deactivates an offer. Once deactivated, the offer is no longer available to users. This state transition is specific to discounted offers. */
+  deactivateOneTimeProductOfferRequest?: DeactivateOneTimeProductOfferRequest;
+}
+
+export const UpdateOneTimeProductOfferStateRequest: Schema.Schema<UpdateOneTimeProductOfferStateRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activateOneTimeProductOfferRequest: Schema.optional(
+      ActivateOneTimeProductOfferRequest,
+    ),
+    cancelOneTimeProductOfferRequest: Schema.optional(
+      CancelOneTimeProductOfferRequest,
+    ),
+    deactivateOneTimeProductOfferRequest: Schema.optional(
+      DeactivateOneTimeProductOfferRequest,
+    ),
+  }).annotate({ identifier: "UpdateOneTimeProductOfferStateRequest" });
+
+export interface BatchUpdateOneTimeProductOfferStatesRequest {
+  /** Required. The update request list of up to 100 elements. All requests must update different offers. */
+  requests?: ReadonlyArray<UpdateOneTimeProductOfferStateRequest>;
+}
+
+export const BatchUpdateOneTimeProductOfferStatesRequest: Schema.Schema<BatchUpdateOneTimeProductOfferStatesRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(UpdateOneTimeProductOfferStateRequest),
+    ),
+  }).annotate({ identifier: "BatchUpdateOneTimeProductOfferStatesRequest" });
+
+export interface ItemExpiryTimeDetails {
+  /** The new expiry time for this subscription item. */
+  expiryTime?: string;
+  /** The product ID of the subscription item (for example, 'premium_plan'). */
+  productId?: string;
+}
+
+export const ItemExpiryTimeDetails: Schema.Schema<ItemExpiryTimeDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expiryTime: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ItemExpiryTimeDetails" });
+
+export interface DeferSubscriptionPurchaseResponse {
+  /** The new expiry time for each subscription items. */
+  itemExpiryTimeDetails?: ReadonlyArray<ItemExpiryTimeDetails>;
+}
+
+export const DeferSubscriptionPurchaseResponse: Schema.Schema<DeferSubscriptionPurchaseResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    itemExpiryTimeDetails: Schema.optional(Schema.Array(ItemExpiryTimeDetails)),
+  }).annotate({ identifier: "DeferSubscriptionPurchaseResponse" });
+
+export interface InternalAppSharingArtifact {
+  /** The download URL generated for the uploaded artifact. Users that are authorized to download can follow the link to the Play Store app to install it. */
+  downloadUrl?: string;
+  /** The sha256 fingerprint of the certificate used to sign the generated artifact. */
+  certificateFingerprint?: string;
+  /** The sha256 hash of the artifact represented as a lowercase hexadecimal number, matching the output of the sha256sum command. */
+  sha256?: string;
+}
+
+export const InternalAppSharingArtifact: Schema.Schema<InternalAppSharingArtifact> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    downloadUrl: Schema.optional(Schema.String),
+    certificateFingerprint: Schema.optional(Schema.String),
+    sha256: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InternalAppSharingArtifact" });
+
+export interface Testers {
+  /** All testing Google Groups, as email addresses. */
+  googleGroups?: ReadonlyArray<string>;
+}
+
+export const Testers: Schema.Schema<Testers> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googleGroups: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "Testers" });
+
+export interface BatchGetOneTimeProductsResponse {
+  /** The list of requested one-time products, in the same order as the request. */
+  oneTimeProducts?: ReadonlyArray<OneTimeProduct>;
+}
+
+export const BatchGetOneTimeProductsResponse: Schema.Schema<BatchGetOneTimeProductsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oneTimeProducts: Schema.optional(Schema.Array(OneTimeProduct)),
+  }).annotate({ identifier: "BatchGetOneTimeProductsResponse" });
+
+export interface BatchUpdateSubscriptionOffersRequest {
+  /** Required. A list of update requests of up to 100 elements. All requests must update different subscription offers. */
+  requests?: ReadonlyArray<UpdateSubscriptionOfferRequest>;
+}
+
+export const BatchUpdateSubscriptionOffersRequest: Schema.Schema<BatchUpdateSubscriptionOffersRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(UpdateSubscriptionOfferRequest)),
+  }).annotate({ identifier: "BatchUpdateSubscriptionOffersRequest" });
+
+export interface GetOneTimeProductOfferRequest {
+  /** Required. The unique offer ID of the offer to get. */
+  offerId?: string;
+  /** Required. The parent one-time product (ID) of the offer to get. */
+  productId?: string;
+  /** Required. The parent purchase option (ID) of the offer to get. */
+  purchaseOptionId?: string;
+  /** Required. The parent app (package name) of the offer to get. */
+  packageName?: string;
+}
+
+export const GetOneTimeProductOfferRequest: Schema.Schema<GetOneTimeProductOfferRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offerId: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    purchaseOptionId: Schema.optional(Schema.String),
+    packageName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetOneTimeProductOfferRequest" });
+
+export interface BatchGetOneTimeProductOffersRequest {
+  /** Required. A list of get requests of up to 100 elements. All requests must retrieve different offers. */
+  requests?: ReadonlyArray<GetOneTimeProductOfferRequest>;
+}
+
+export const BatchGetOneTimeProductOffersRequest: Schema.Schema<BatchGetOneTimeProductOffersRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(GetOneTimeProductOfferRequest)),
+  }).annotate({ identifier: "BatchGetOneTimeProductOffersRequest" });
+
+export interface ReviewsReplyRequest {
+  /** The text to set as the reply. Replies of more than approximately 350 characters will be rejected. HTML tags will be stripped. */
+  replyText?: string;
+}
+
+export const ReviewsReplyRequest: Schema.Schema<ReviewsReplyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    replyText: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReviewsReplyRequest" });
+
+export interface ListAppRecoveriesResponse {
+  /** List of recovery actions associated with the requested package name. */
+  recoveryActions?: ReadonlyArray<AppRecoveryAction>;
+}
+
+export const ListAppRecoveriesResponse: Schema.Schema<ListAppRecoveriesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recoveryActions: Schema.optional(Schema.Array(AppRecoveryAction)),
+  }).annotate({ identifier: "ListAppRecoveriesResponse" });
+
+export interface InappproductsBatchUpdateResponse {
+  /** The updated or inserted in-app products. */
+  inappproducts?: ReadonlyArray<InAppProduct>;
+}
+
+export const InappproductsBatchUpdateResponse: Schema.Schema<InappproductsBatchUpdateResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inappproducts: Schema.optional(Schema.Array(InAppProduct)),
+  }).annotate({ identifier: "InappproductsBatchUpdateResponse" });
+
+export interface DeleteOneTimeProductRequest {
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+  /** Required. The one-time product ID of the one-time product to delete. */
+  productId?: string;
+  /** Required. The parent app (package name) of the one-time product to delete. */
+  packageName?: string;
+}
+
+export const DeleteOneTimeProductRequest: Schema.Schema<DeleteOneTimeProductRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latencyTolerance: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    packageName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeleteOneTimeProductRequest" });
+
+export interface BatchDeleteOneTimeProductsRequest {
+  /** Required. A list of delete requests of up to 100 elements. All requests must delete different one-time products. */
+  requests?: ReadonlyArray<DeleteOneTimeProductRequest>;
+}
+
+export const BatchDeleteOneTimeProductsRequest: Schema.Schema<BatchDeleteOneTimeProductsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(DeleteOneTimeProductRequest)),
+  }).annotate({ identifier: "BatchDeleteOneTimeProductsRequest" });
+
+export interface CancellationContext {
+  /** Required. The type of cancellation for the purchased subscription. */
+  cancellationType?:
+    | "CANCELLATION_TYPE_UNSPECIFIED"
+    | "USER_REQUESTED_STOP_RENEWALS"
+    | "DEVELOPER_REQUESTED_STOP_PAYMENTS"
     | (string & {});
 }
 
-export const TrackConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  track: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  formFactor: Schema.optional(Schema.String),
-}).annotate({ identifier: "TrackConfig" });
-
-export interface VoidedPurchase {
-  /** This kind represents a voided purchase object in the androidpublisher service. */
-  kind?: string;
-  /** The token which uniquely identifies a one-time purchase or subscription. To uniquely identify subscription renewals use order_id (available starting from version 3 of the API). */
-  purchaseToken?: string;
-  /** The time at which the purchase was made, in milliseconds since the epoch (Jan 1, 1970). */
-  purchaseTimeMillis?: string;
-  /** The time at which the purchase was canceled/refunded/charged-back, in milliseconds since the epoch (Jan 1, 1970). */
-  voidedTimeMillis?: string;
-  /** The order id which uniquely identifies a one-time purchase, subscription purchase, or subscription renewal. */
-  orderId?: string;
-  /** The initiator of voided purchase, possible values are: 0. User 1. Developer 2. Google */
-  voidedSource?: number;
-  /** The reason why the purchase was voided, possible values are: 0. Other 1. Remorse 2. Not_received 3. Defective 4. Accidental_purchase 5. Fraud 6. Friendly_fraud 7. Chargeback 8. Unacknowledged_purchase */
-  voidedReason?: number;
-  /** The voided quantity as the result of a quantity-based partial refund. Voided purchases of quantity-based partial refunds may only be returned when includeQuantityBasedPartialRefund is set to true. */
-  voidedQuantity?: number;
-}
-
-export const VoidedPurchase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  purchaseToken: Schema.optional(Schema.String),
-  purchaseTimeMillis: Schema.optional(Schema.String),
-  voidedTimeMillis: Schema.optional(Schema.String),
-  orderId: Schema.optional(Schema.String),
-  voidedSource: Schema.optional(Schema.Number),
-  voidedReason: Schema.optional(Schema.Number),
-  voidedQuantity: Schema.optional(Schema.Number),
-}).annotate({ identifier: "VoidedPurchase" });
-
-export interface VoidedPurchasesListResponse {
-  /** General pagination information. */
-  pageInfo?: PageInfo;
-  /** Pagination information for token pagination. */
-  tokenPagination?: TokenPagination;
-  voidedPurchases?: ReadonlyArray<VoidedPurchase>;
-}
-
-export const VoidedPurchasesListResponse =
+export const CancellationContext: Schema.Schema<CancellationContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageInfo: Schema.optional(PageInfo),
-    tokenPagination: Schema.optional(TokenPagination),
-    voidedPurchases: Schema.optional(Schema.Array(VoidedPurchase)),
-  }).annotate({ identifier: "VoidedPurchasesListResponse" });
+    cancellationType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CancellationContext" });
+
+export interface UpdateOneTimeProductRequest {
+  /** Required. The version of the available regions being used for the one-time product. */
+  regionsVersion?: RegionsVersion;
+  /** Optional. If set to true, and the one-time product with the given package_name and product_id doesn't exist, the one-time product will be created. If a new one-time product is created, update_mask is ignored. */
+  allowMissing?: boolean;
+  /** Optional. The latency tolerance for the propagation of this product upsert. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+  /** Required. The one-time product to upsert. */
+  oneTimeProduct?: OneTimeProduct;
+  /** Required. The list of fields to be updated. */
+  updateMask?: string;
+}
+
+export const UpdateOneTimeProductRequest: Schema.Schema<UpdateOneTimeProductRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionsVersion: Schema.optional(RegionsVersion),
+    allowMissing: Schema.optional(Schema.Boolean),
+    latencyTolerance: Schema.optional(Schema.String),
+    oneTimeProduct: Schema.optional(OneTimeProduct),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateOneTimeProductRequest" });
+
+export interface BatchUpdateOneTimeProductsRequest {
+  /** Required. A list of update requests of up to 100 elements. All requests must update different one-time products. */
+  requests?: ReadonlyArray<UpdateOneTimeProductRequest>;
+}
+
+export const BatchUpdateOneTimeProductsRequest: Schema.Schema<BatchUpdateOneTimeProductsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(UpdateOneTimeProductRequest)),
+  }).annotate({ identifier: "BatchUpdateOneTimeProductsRequest" });
+
+export interface ListUsersResponse {
+  /** The resulting users. */
+  users?: ReadonlyArray<User>;
+  /** A token to pass to subsequent calls in order to retrieve subsequent results. This will not be set if there are no more results to return. */
+  nextPageToken?: string;
+}
+
+export const ListUsersResponse: Schema.Schema<ListUsersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    users: Schema.optional(Schema.Array(User)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListUsersResponse" });
+
+export interface DeferSubscriptionPurchaseRequest {
+  /** Required. Details about the subscription deferral. */
+  deferralContext?: DeferralContext;
+}
+
+export const DeferSubscriptionPurchaseRequest: Schema.Schema<DeferSubscriptionPurchaseRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deferralContext: Schema.optional(DeferralContext),
+  }).annotate({ identifier: "DeferSubscriptionPurchaseRequest" });
+
+export interface DeobfuscationFile {
+  /** The type of the deobfuscation file. */
+  symbolType?:
+    | "deobfuscationFileTypeUnspecified"
+    | "proguard"
+    | "nativeCode"
+    | (string & {});
+}
+
+export const DeobfuscationFile: Schema.Schema<DeobfuscationFile> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    symbolType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeobfuscationFile" });
+
+export interface DeobfuscationFilesUploadResponse {
+  /** The uploaded Deobfuscation File configuration. */
+  deobfuscationFile?: DeobfuscationFile;
+}
+
+export const DeobfuscationFilesUploadResponse: Schema.Schema<DeobfuscationFilesUploadResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deobfuscationFile: Schema.optional(DeobfuscationFile),
+  }).annotate({ identifier: "DeobfuscationFilesUploadResponse" });
+
+export interface ImagesDeleteAllResponse {
+  /** The deleted images. */
+  deleted?: ReadonlyArray<Image>;
+}
+
+export const ImagesDeleteAllResponse: Schema.Schema<ImagesDeleteAllResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deleted: Schema.optional(Schema.Array(Image)),
+  }).annotate({ identifier: "ImagesDeleteAllResponse" });
+
+export interface ListSubscriptionOffersResponse {
+  /** The subscription offers from the specified subscription. */
+  subscriptionOffers?: ReadonlyArray<SubscriptionOffer>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListSubscriptionOffersResponse: Schema.Schema<ListSubscriptionOffersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionOffers: Schema.optional(Schema.Array(SubscriptionOffer)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSubscriptionOffersResponse" });
+
+export interface InappproductsBatchGetResponse {
+  /** The list of requested in-app products, in the same order as the request. */
+  inappproduct?: ReadonlyArray<InAppProduct>;
+}
+
+export const InappproductsBatchGetResponse: Schema.Schema<InappproductsBatchGetResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inappproduct: Schema.optional(Schema.Array(InAppProduct)),
+  }).annotate({ identifier: "InappproductsBatchGetResponse" });
+
+export interface BatchUpdateOneTimeProductOfferStatesResponse {
+  /** The updated one-time product offers list, in the same order as the request. */
+  oneTimeProductOffers?: ReadonlyArray<OneTimeProductOffer>;
+}
+
+export const BatchUpdateOneTimeProductOfferStatesResponse: Schema.Schema<BatchUpdateOneTimeProductOfferStatesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oneTimeProductOffers: Schema.optional(Schema.Array(OneTimeProductOffer)),
+  }).annotate({ identifier: "BatchUpdateOneTimeProductOfferStatesResponse" });
+
+export interface CancelAppRecoveryRequest {}
+
+export const CancelAppRecoveryRequest: Schema.Schema<CancelAppRecoveryRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelAppRecoveryRequest",
+  });
+
+export interface DeployAppRecoveryResponse {}
+
+export const DeployAppRecoveryResponse: Schema.Schema<DeployAppRecoveryResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeployAppRecoveryResponse",
+  });
+
+export interface SubscriptionDeferralInfo {
+  /** The expected expiry time for the subscription. If the current expiry time for the subscription is not the value specified here, the deferral will not occur. */
+  expectedExpiryTimeMillis?: string;
+  /** The desired next expiry time to assign to the subscription, in milliseconds since the Epoch. The given time must be later/greater than the current expiry time for the subscription. */
+  desiredExpiryTimeMillis?: string;
+}
+
+export const SubscriptionDeferralInfo: Schema.Schema<SubscriptionDeferralInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expectedExpiryTimeMillis: Schema.optional(Schema.String),
+    desiredExpiryTimeMillis: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SubscriptionDeferralInfo" });
+
+export interface SubscriptionPurchasesDeferRequest {
+  /** The information about the new desired expiry time for the subscription. */
+  deferralInfo?: SubscriptionDeferralInfo;
+}
+
+export const SubscriptionPurchasesDeferRequest: Schema.Schema<SubscriptionPurchasesDeferRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deferralInfo: Schema.optional(SubscriptionDeferralInfo),
+  }).annotate({ identifier: "SubscriptionPurchasesDeferRequest" });
+
+export interface ApksListResponse {
+  /** The kind of this response ("androidpublisher#apksListResponse"). */
+  kind?: string;
+  /** All APKs. */
+  apks?: ReadonlyArray<Apk>;
+}
+
+export const ApksListResponse: Schema.Schema<ApksListResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    apks: Schema.optional(Schema.Array(Apk)),
+  }).annotate({ identifier: "ApksListResponse" });
+
+export interface SafetyLabelsUpdateRequest {
+  /** Required. Contents of the CSV file containing Data Safety responses. For the format of this file, see the Help Center documentation at https://support.google.com/googleplay/android-developer/answer/10787469?#zippy=%2Cunderstand-the-csv-format To download an up to date template, follow the steps at https://support.google.com/googleplay/android-developer/answer/10787469?#zippy=%2Cexport-to-a-csv-file */
+  safetyLabels?: string;
+}
+
+export const SafetyLabelsUpdateRequest: Schema.Schema<SafetyLabelsUpdateRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    safetyLabels: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SafetyLabelsUpdateRequest" });
+
+export interface CancelSubscriptionPurchaseRequest {
+  /** Required. Additional details around the subscription revocation. */
+  cancellationContext?: CancellationContext;
+}
+
+export const CancelSubscriptionPurchaseRequest: Schema.Schema<CancelSubscriptionPurchaseRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cancellationContext: Schema.optional(CancellationContext),
+  }).annotate({ identifier: "CancelSubscriptionPurchaseRequest" });
 
 // ==========================================================================
 // Errors
@@ -5507,85 +5680,884 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface CreateUsersRequest {
-  /** Required. The developer account to add the user to. Format: developers/{developer} */
-  parent: string;
-  /** Request body */
-  body?: User;
+export interface GetPurchasesProductsRequest {
+  /** The inapp product SKU (for example, 'com.some.thing.inapp1'). */
+  productId: string;
+  /** The token provided to the user's device when the inapp product was purchased. */
+  token: string;
+  /** The package name of the application the inapp product was sold in (for example, 'com.some.thing'). */
+  packageName: string;
 }
 
-export const CreateUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  parent: Schema.String.pipe(T.HttpPath("parent")),
-  body: Schema.optional(User).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "androidpublisher/v3/{+parent}/users",
-    hasBody: true,
-  }),
-  svc,
-) as unknown as Schema.Schema<CreateUsersRequest>;
+export const GetPurchasesProductsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+    token: Schema.String.pipe(T.HttpPath("token")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetPurchasesProductsRequest>;
 
-export type CreateUsersResponse = User;
-export const CreateUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
+export type GetPurchasesProductsResponse = ProductPurchase;
+export const GetPurchasesProductsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ProductPurchase;
 
-export type CreateUsersError =
+export type GetPurchasesProductsError = DefaultErrors | NotFound | Forbidden;
+
+/** Checks the purchase and consumption status of an inapp item. */
+export const getPurchasesProducts: API.OperationMethod<
+  GetPurchasesProductsRequest,
+  GetPurchasesProductsResponse,
+  GetPurchasesProductsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetPurchasesProductsRequest,
+  output: GetPurchasesProductsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface AcknowledgePurchasesProductsRequest {
+  /** The package name of the application the inapp product was sold in (for example, 'com.some.thing'). */
+  packageName: string;
+  /** The inapp product SKU (for example, 'com.some.thing.inapp1'). */
+  productId: string;
+  /** The token provided to the user's device when the inapp product was purchased. */
+  token: string;
+  /** Request body */
+  body?: ProductPurchasesAcknowledgeRequest;
+}
+
+export const AcknowledgePurchasesProductsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+    token: Schema.String.pipe(T.HttpPath("token")),
+    body: Schema.optional(ProductPurchasesAcknowledgeRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}:acknowledge",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<AcknowledgePurchasesProductsRequest>;
+
+export interface AcknowledgePurchasesProductsResponse {}
+export const AcknowledgePurchasesProductsResponse: Schema.Schema<AcknowledgePurchasesProductsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<AcknowledgePurchasesProductsResponse>;
+
+export type AcknowledgePurchasesProductsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Grant access for a user to the given developer account. */
-export const createUsers: API.OperationMethod<
-  CreateUsersRequest,
-  CreateUsersResponse,
-  CreateUsersError,
+/** Acknowledges a purchase of an inapp item. */
+export const acknowledgePurchasesProducts: API.OperationMethod<
+  AcknowledgePurchasesProductsRequest,
+  AcknowledgePurchasesProductsResponse,
+  AcknowledgePurchasesProductsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateUsersRequest,
-  output: CreateUsersResponse,
+  input: AcknowledgePurchasesProductsRequest,
+  output: AcknowledgePurchasesProductsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListUsersRequest {
-  /** Required. The developer account to fetch users from. Format: developers/{developer} */
-  parent: string;
-  /** The maximum number of results to return. This must be set to -1 to disable pagination. */
-  pageSize?: number;
-  /** A token received from a previous call to this method, in order to retrieve further results. */
-  pageToken?: string;
+export interface ConsumePurchasesProductsRequest {
+  /** The package name of the application the inapp product was sold in (for example, 'com.some.thing'). */
+  packageName: string;
+  /** The token provided to the user's device when the inapp product was purchased. */
+  token: string;
+  /** The inapp product SKU (for example, 'com.some.thing.inapp1'). */
+  productId: string;
 }
 
-export const ListUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  parent: Schema.String.pipe(T.HttpPath("parent")),
-  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-}).pipe(
-  T.Http({ method: "GET", path: "androidpublisher/v3/{+parent}/users" }),
-  svc,
-) as unknown as Schema.Schema<ListUsersRequest>;
+export const ConsumePurchasesProductsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    token: Schema.String.pipe(T.HttpPath("token")),
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}:consume",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ConsumePurchasesProductsRequest>;
 
-export type ListUsersResponse_Op = ListUsersResponse;
-export const ListUsersResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListUsersResponse;
+export interface ConsumePurchasesProductsResponse {}
+export const ConsumePurchasesProductsResponse: Schema.Schema<ConsumePurchasesProductsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<ConsumePurchasesProductsResponse>;
 
-export type ListUsersError = DefaultErrors | NotFound | Forbidden;
+export type ConsumePurchasesProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Lists all users with access to a developer account. */
-export const listUsers: API.PaginatedOperationMethod<
-  ListUsersRequest,
-  ListUsersResponse_Op,
-  ListUsersError,
+/** Consumes a purchase for an inapp item. */
+export const consumePurchasesProducts: API.OperationMethod<
+  ConsumePurchasesProductsRequest,
+  ConsumePurchasesProductsResponse,
+  ConsumePurchasesProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListUsersRequest,
-  output: ListUsersResponse_Op,
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ConsumePurchasesProductsRequest,
+  output: ConsumePurchasesProductsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface Getproductpurchasev2PurchasesProductsv2Request {
+  /** The package name of the application the inapp product was sold in (for example, 'com.some.thing'). */
+  packageName: string;
+  /** The token provided to the user's device when the inapp product was purchased. */
+  token: string;
+}
+
+export const Getproductpurchasev2PurchasesProductsv2Request =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    token: Schema.String.pipe(T.HttpPath("token")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/purchases/productsv2/tokens/{token}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<Getproductpurchasev2PurchasesProductsv2Request>;
+
+export type Getproductpurchasev2PurchasesProductsv2Response = ProductPurchaseV2;
+export const Getproductpurchasev2PurchasesProductsv2Response =
+  /*@__PURE__*/ /*#__PURE__*/ ProductPurchaseV2;
+
+export type Getproductpurchasev2PurchasesProductsv2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Checks the purchase and consumption status of an inapp item. */
+export const getproductpurchasev2PurchasesProductsv2: API.OperationMethod<
+  Getproductpurchasev2PurchasesProductsv2Request,
+  Getproductpurchasev2PurchasesProductsv2Response,
+  Getproductpurchasev2PurchasesProductsv2Error,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: Getproductpurchasev2PurchasesProductsv2Request,
+  output: Getproductpurchasev2PurchasesProductsv2Response,
   errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
+}));
+
+export interface GetPurchasesSubscriptionsRequest {
+  /** The package name of the application for which this subscription was purchased (for example, 'com.some.thing'). */
+  packageName: string;
+  /** The token provided to the user's device when the subscription was purchased. */
+  token: string;
+  /** The purchased subscription ID (for example, 'monthly001'). */
+  subscriptionId: string;
+}
+
+export const GetPurchasesSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    token: Schema.String.pipe(T.HttpPath("token")),
+    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetPurchasesSubscriptionsRequest>;
+
+export type GetPurchasesSubscriptionsResponse = SubscriptionPurchase;
+export const GetPurchasesSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SubscriptionPurchase;
+
+export type GetPurchasesSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Deprecated: Use purchases.subscriptionsv2.get instead. Checks whether a user's subscription purchase is valid and returns its expiry time. */
+export const getPurchasesSubscriptions: API.OperationMethod<
+  GetPurchasesSubscriptionsRequest,
+  GetPurchasesSubscriptionsResponse,
+  GetPurchasesSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetPurchasesSubscriptionsRequest,
+  output: GetPurchasesSubscriptionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeferPurchasesSubscriptionsRequest {
+  /** The package name of the application for which this subscription was purchased (for example, 'com.some.thing'). */
+  packageName: string;
+  /** The token provided to the user's device when the subscription was purchased. */
+  token: string;
+  /** The purchased subscription ID (for example, 'monthly001'). */
+  subscriptionId: string;
+  /** Request body */
+  body?: SubscriptionPurchasesDeferRequest;
+}
+
+export const DeferPurchasesSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    token: Schema.String.pipe(T.HttpPath("token")),
+    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
+    body: Schema.optional(SubscriptionPurchasesDeferRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:defer",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeferPurchasesSubscriptionsRequest>;
+
+export type DeferPurchasesSubscriptionsResponse =
+  SubscriptionPurchasesDeferResponse;
+export const DeferPurchasesSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SubscriptionPurchasesDeferResponse;
+
+export type DeferPurchasesSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Defers a user's subscription purchase until a specified future expiration time. */
+export const deferPurchasesSubscriptions: API.OperationMethod<
+  DeferPurchasesSubscriptionsRequest,
+  DeferPurchasesSubscriptionsResponse,
+  DeferPurchasesSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeferPurchasesSubscriptionsRequest,
+  output: DeferPurchasesSubscriptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface AcknowledgePurchasesSubscriptionsRequest {
+  /** The package name of the application for which this subscription was purchased (for example, 'com.some.thing'). */
+  packageName: string;
+  /** Note: Since May 21, 2025, subscription_id is not required, and not recommended for subscription with add-ons. The purchased subscription ID (for example, 'monthly001'). */
+  subscriptionId: string;
+  /** The token provided to the user's device when the subscription was purchased. */
+  token: string;
+  /** Request body */
+  body?: SubscriptionPurchasesAcknowledgeRequest;
+}
+
+export const AcknowledgePurchasesSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
+    token: Schema.String.pipe(T.HttpPath("token")),
+    body: Schema.optional(SubscriptionPurchasesAcknowledgeRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:acknowledge",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<AcknowledgePurchasesSubscriptionsRequest>;
+
+export interface AcknowledgePurchasesSubscriptionsResponse {}
+export const AcknowledgePurchasesSubscriptionsResponse: Schema.Schema<AcknowledgePurchasesSubscriptionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<AcknowledgePurchasesSubscriptionsResponse>;
+
+export type AcknowledgePurchasesSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Acknowledges a subscription purchase. */
+export const acknowledgePurchasesSubscriptions: API.OperationMethod<
+  AcknowledgePurchasesSubscriptionsRequest,
+  AcknowledgePurchasesSubscriptionsResponse,
+  AcknowledgePurchasesSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: AcknowledgePurchasesSubscriptionsRequest,
+  output: AcknowledgePurchasesSubscriptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface RefundPurchasesSubscriptionsRequest {
+  /** The package name of the application for which this subscription was purchased (for example, 'com.some.thing'). */
+  packageName: string;
+  /** The token provided to the user's device when the subscription was purchased. */
+  token: string;
+  /** "The purchased subscription ID (for example, 'monthly001'). */
+  subscriptionId: string;
+}
+
+export const RefundPurchasesSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    token: Schema.String.pipe(T.HttpPath("token")),
+    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:refund",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<RefundPurchasesSubscriptionsRequest>;
+
+export interface RefundPurchasesSubscriptionsResponse {}
+export const RefundPurchasesSubscriptionsResponse: Schema.Schema<RefundPurchasesSubscriptionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<RefundPurchasesSubscriptionsResponse>;
+
+export type RefundPurchasesSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deprecated: Use orders.refund instead. Refunds a user's subscription purchase, but the subscription remains valid until its expiration time and it will continue to recur. */
+export const refundPurchasesSubscriptions: API.OperationMethod<
+  RefundPurchasesSubscriptionsRequest,
+  RefundPurchasesSubscriptionsResponse,
+  RefundPurchasesSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RefundPurchasesSubscriptionsRequest,
+  output: RefundPurchasesSubscriptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CancelPurchasesSubscriptionsRequest {
+  /** The token provided to the user's device when the subscription was purchased. */
+  token: string;
+  /** Note: Since May 21, 2025, subscription_id is not required, and not recommended for subscription with add-ons. The purchased subscription ID (for example, 'monthly001'). */
+  subscriptionId: string;
+  /** The package name of the application for which this subscription was purchased (for example, 'com.some.thing'). */
+  packageName: string;
+}
+
+export const CancelPurchasesSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    token: Schema.String.pipe(T.HttpPath("token")),
+    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:cancel",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CancelPurchasesSubscriptionsRequest>;
+
+export interface CancelPurchasesSubscriptionsResponse {}
+export const CancelPurchasesSubscriptionsResponse: Schema.Schema<CancelPurchasesSubscriptionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<CancelPurchasesSubscriptionsResponse>;
+
+export type CancelPurchasesSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Cancels a user's subscription purchase. The subscription remains valid until its expiration time. Newer version is available at purchases.subscriptionsv2.cancel for better client library support. */
+export const cancelPurchasesSubscriptions: API.OperationMethod<
+  CancelPurchasesSubscriptionsRequest,
+  CancelPurchasesSubscriptionsResponse,
+  CancelPurchasesSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelPurchasesSubscriptionsRequest,
+  output: CancelPurchasesSubscriptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface RevokePurchasesSubscriptionsRequest {
+  /** The token provided to the user's device when the subscription was purchased. */
+  token: string;
+  /** The purchased subscription ID (for example, 'monthly001'). */
+  subscriptionId: string;
+  /** The package name of the application for which this subscription was purchased (for example, 'com.some.thing'). */
+  packageName: string;
+}
+
+export const RevokePurchasesSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    token: Schema.String.pipe(T.HttpPath("token")),
+    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:revoke",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<RevokePurchasesSubscriptionsRequest>;
+
+export interface RevokePurchasesSubscriptionsResponse {}
+export const RevokePurchasesSubscriptionsResponse: Schema.Schema<RevokePurchasesSubscriptionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<RevokePurchasesSubscriptionsResponse>;
+
+export type RevokePurchasesSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deprecated: Use purchases.subscriptionsv2.revoke instead. Refunds and immediately revokes a user's subscription purchase. Access to the subscription will be terminated immediately and it will stop recurring. */
+export const revokePurchasesSubscriptions: API.OperationMethod<
+  RevokePurchasesSubscriptionsRequest,
+  RevokePurchasesSubscriptionsResponse,
+  RevokePurchasesSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RevokePurchasesSubscriptionsRequest,
+  output: RevokePurchasesSubscriptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetPurchasesSubscriptionsv2Request {
+  /** The package of the application for which this subscription was purchased (for example, 'com.some.thing'). */
+  packageName: string;
+  /** Required. The token provided to the user's device when the subscription was purchased. */
+  token: string;
+}
+
+export const GetPurchasesSubscriptionsv2Request =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    token: Schema.String.pipe(T.HttpPath("token")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetPurchasesSubscriptionsv2Request>;
+
+export type GetPurchasesSubscriptionsv2Response = SubscriptionPurchaseV2;
+export const GetPurchasesSubscriptionsv2Response =
+  /*@__PURE__*/ /*#__PURE__*/ SubscriptionPurchaseV2;
+
+export type GetPurchasesSubscriptionsv2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get metadata about a subscription */
+export const getPurchasesSubscriptionsv2: API.OperationMethod<
+  GetPurchasesSubscriptionsv2Request,
+  GetPurchasesSubscriptionsv2Response,
+  GetPurchasesSubscriptionsv2Error,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetPurchasesSubscriptionsv2Request,
+  output: GetPurchasesSubscriptionsv2Response,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeferPurchasesSubscriptionsv2Request {
+  /** Required. The package of the application for which this subscription was purchased (for example, 'com.some.thing'). */
+  packageName: string;
+  /** Required. The token provided to the user's device when the subscription was purchased. */
+  token: string;
+  /** Request body */
+  body?: DeferSubscriptionPurchaseRequest;
+}
+
+export const DeferPurchasesSubscriptionsv2Request =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    token: Schema.String.pipe(T.HttpPath("token")),
+    body: Schema.optional(DeferSubscriptionPurchaseRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:defer",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeferPurchasesSubscriptionsv2Request>;
+
+export type DeferPurchasesSubscriptionsv2Response =
+  DeferSubscriptionPurchaseResponse;
+export const DeferPurchasesSubscriptionsv2Response =
+  /*@__PURE__*/ /*#__PURE__*/ DeferSubscriptionPurchaseResponse;
+
+export type DeferPurchasesSubscriptionsv2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Defers the renewal of a subscription. */
+export const deferPurchasesSubscriptionsv2: API.OperationMethod<
+  DeferPurchasesSubscriptionsv2Request,
+  DeferPurchasesSubscriptionsv2Response,
+  DeferPurchasesSubscriptionsv2Error,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeferPurchasesSubscriptionsv2Request,
+  output: DeferPurchasesSubscriptionsv2Response,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface RevokePurchasesSubscriptionsv2Request {
+  /** Required. The package of the application for which this subscription was purchased (for example, 'com.some.thing'). */
+  packageName: string;
+  /** Required. The token provided to the user's device when the subscription was purchased. */
+  token: string;
+  /** Request body */
+  body?: RevokeSubscriptionPurchaseRequest;
+}
+
+export const RevokePurchasesSubscriptionsv2Request =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    token: Schema.String.pipe(T.HttpPath("token")),
+    body: Schema.optional(RevokeSubscriptionPurchaseRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:revoke",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<RevokePurchasesSubscriptionsv2Request>;
+
+export type RevokePurchasesSubscriptionsv2Response =
+  RevokeSubscriptionPurchaseResponse;
+export const RevokePurchasesSubscriptionsv2Response =
+  /*@__PURE__*/ /*#__PURE__*/ RevokeSubscriptionPurchaseResponse;
+
+export type RevokePurchasesSubscriptionsv2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Revoke a subscription purchase for the user. */
+export const revokePurchasesSubscriptionsv2: API.OperationMethod<
+  RevokePurchasesSubscriptionsv2Request,
+  RevokePurchasesSubscriptionsv2Response,
+  RevokePurchasesSubscriptionsv2Error,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RevokePurchasesSubscriptionsv2Request,
+  output: RevokePurchasesSubscriptionsv2Response,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CancelPurchasesSubscriptionsv2Request {
+  /** Required. The package of the application for which this subscription was purchased (for example, 'com.some.thing'). */
+  packageName: string;
+  /** Required. The token provided to the user's device when the subscription was purchased. */
+  token: string;
+  /** Request body */
+  body?: CancelSubscriptionPurchaseRequest;
+}
+
+export const CancelPurchasesSubscriptionsv2Request =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    token: Schema.String.pipe(T.HttpPath("token")),
+    body: Schema.optional(CancelSubscriptionPurchaseRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:cancel",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CancelPurchasesSubscriptionsv2Request>;
+
+export type CancelPurchasesSubscriptionsv2Response =
+  CancelSubscriptionPurchaseResponse;
+export const CancelPurchasesSubscriptionsv2Response =
+  /*@__PURE__*/ /*#__PURE__*/ CancelSubscriptionPurchaseResponse;
+
+export type CancelPurchasesSubscriptionsv2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Cancel a subscription purchase for the user. */
+export const cancelPurchasesSubscriptionsv2: API.OperationMethod<
+  CancelPurchasesSubscriptionsv2Request,
+  CancelPurchasesSubscriptionsv2Response,
+  CancelPurchasesSubscriptionsv2Error,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelPurchasesSubscriptionsv2Request,
+  output: CancelPurchasesSubscriptionsv2Response,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListPurchasesVoidedpurchasesRequest {
+  /** Defines how many results the list operation should return. The default number depends on the resource collection. */
+  maxResults?: number;
+  /** The type of voided purchases that you want to see in the response. Possible values are: 0. Only voided in-app product purchases will be returned in the response. This is the default value. 1. Both voided in-app purchases and voided subscription purchases will be returned in the response. Note: Before requesting to receive voided subscription purchases, you must switch to use orderId in the response which uniquely identifies one-time purchases and subscriptions. Otherwise, you will receive multiple subscription orders with the same PurchaseToken, because subscription renewal orders share the same PurchaseToken. */
+  type?: number;
+  /** The time, in milliseconds since the Epoch, of the oldest voided purchase that you want to see in the response. The value of this parameter cannot be older than 30 days and is ignored if a pagination token is set. Default value is current time minus 30 days. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response. */
+  startTime?: string;
+  /** Optional. Whether to include voided purchases of quantity-based partial refunds, which are applicable only to multi-quantity purchases. If true, additional voided purchases may be returned with voidedQuantity that indicates the refund quantity of a quantity-based partial refund. The default value is false. */
+  includeQuantityBasedPartialRefund?: boolean;
+  /** Defines the token of the page to return, usually taken from TokenPagination. This can only be used if token paging is enabled. */
+  token?: string;
+  /** The package name of the application for which voided purchases need to be returned (for example, 'com.some.thing'). */
+  packageName: string;
+  /** Defines the index of the first element to return. This can only be used if indexed paging is enabled. */
+  startIndex?: number;
+  /** The time, in milliseconds since the Epoch, of the newest voided purchase that you want to see in the response. The value of this parameter cannot be greater than the current time and is ignored if a pagination token is set. Default value is current time. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response. */
+  endTime?: string;
+}
+
+export const ListPurchasesVoidedpurchasesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    type: Schema.optional(Schema.Number).pipe(T.HttpQuery("type")),
+    startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
+    includeQuantityBasedPartialRefund: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("includeQuantityBasedPartialRefund"),
+    ),
+    token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    startIndex: Schema.optional(Schema.Number).pipe(T.HttpQuery("startIndex")),
+    endTime: Schema.optional(Schema.String).pipe(T.HttpQuery("endTime")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/purchases/voidedpurchases",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListPurchasesVoidedpurchasesRequest>;
+
+export type ListPurchasesVoidedpurchasesResponse = VoidedPurchasesListResponse;
+export const ListPurchasesVoidedpurchasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ VoidedPurchasesListResponse;
+
+export type ListPurchasesVoidedpurchasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the purchases that were canceled, refunded or charged-back. */
+export const listPurchasesVoidedpurchases: API.OperationMethod<
+  ListPurchasesVoidedpurchasesRequest,
+  ListPurchasesVoidedpurchasesResponse,
+  ListPurchasesVoidedpurchasesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListPurchasesVoidedpurchasesRequest,
+  output: ListPurchasesVoidedpurchasesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListSystemapksVariantsRequest {
+  /** The version code of the App Bundle. */
+  versionCode: string;
+  /** Package name of the app. */
+  packageName: string;
+}
+
+export const ListSystemapksVariantsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionCode: Schema.String.pipe(T.HttpPath("versionCode")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListSystemapksVariantsRequest>;
+
+export type ListSystemapksVariantsResponse = SystemApksListResponse;
+export const ListSystemapksVariantsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SystemApksListResponse;
+
+export type ListSystemapksVariantsError = DefaultErrors | NotFound | Forbidden;
+
+/** Returns the list of previously created system APK variants. */
+export const listSystemapksVariants: API.OperationMethod<
+  ListSystemapksVariantsRequest,
+  ListSystemapksVariantsResponse,
+  ListSystemapksVariantsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListSystemapksVariantsRequest,
+  output: ListSystemapksVariantsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DownloadSystemapksVariantsRequest {
+  /** The version code of the App Bundle. */
+  versionCode: string;
+  /** The ID of a previously created system APK variant. */
+  variantId: number;
+  /** Package name of the app. */
+  packageName: string;
+}
+
+export const DownloadSystemapksVariantsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionCode: Schema.String.pipe(T.HttpPath("versionCode")),
+    variantId: Schema.Number.pipe(T.HttpPath("variantId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}:download",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DownloadSystemapksVariantsRequest>;
+
+export interface DownloadSystemapksVariantsResponse {}
+export const DownloadSystemapksVariantsResponse: Schema.Schema<DownloadSystemapksVariantsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<DownloadSystemapksVariantsResponse>;
+
+export type DownloadSystemapksVariantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Downloads a previously created system APK which is suitable for inclusion in a system image. */
+export const downloadSystemapksVariants: API.OperationMethod<
+  DownloadSystemapksVariantsRequest,
+  DownloadSystemapksVariantsResponse,
+  DownloadSystemapksVariantsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DownloadSystemapksVariantsRequest,
+  output: DownloadSystemapksVariantsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateSystemapksVariantsRequest {
+  /** The version code of the App Bundle. */
+  versionCode: string;
+  /** Package name of the app. */
+  packageName: string;
+  /** Request body */
+  body?: Variant;
+}
+
+export const CreateSystemapksVariantsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionCode: Schema.String.pipe(T.HttpPath("versionCode")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    body: Schema.optional(Variant).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateSystemapksVariantsRequest>;
+
+export type CreateSystemapksVariantsResponse = Variant;
+export const CreateSystemapksVariantsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Variant;
+
+export type CreateSystemapksVariantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates an APK which is suitable for inclusion in a system image from an already uploaded Android App Bundle. */
+export const createSystemapksVariants: API.OperationMethod<
+  CreateSystemapksVariantsRequest,
+  CreateSystemapksVariantsResponse,
+  CreateSystemapksVariantsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateSystemapksVariantsRequest,
+  output: CreateSystemapksVariantsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetSystemapksVariantsRequest {
+  /** The version code of the App Bundle. */
+  versionCode: string;
+  /** The ID of a previously created system APK variant. */
+  variantId: number;
+  /** Package name of the app. */
+  packageName: string;
+}
+
+export const GetSystemapksVariantsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionCode: Schema.String.pipe(T.HttpPath("versionCode")),
+    variantId: Schema.Number.pipe(T.HttpPath("variantId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetSystemapksVariantsRequest>;
+
+export type GetSystemapksVariantsResponse = Variant;
+export const GetSystemapksVariantsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Variant;
+
+export type GetSystemapksVariantsError = DefaultErrors | NotFound | Forbidden;
+
+/** Returns a previously created system APK variant. */
+export const getSystemapksVariants: API.OperationMethod<
+  GetSystemapksVariantsRequest,
+  GetSystemapksVariantsResponse,
+  GetSystemapksVariantsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetSystemapksVariantsRequest,
+  output: GetSystemapksVariantsResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchUsersRequest {
@@ -5632,6 +6604,87 @@ export const patchUsers: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface CreateUsersRequest {
+  /** Required. The developer account to add the user to. Format: developers/{developer} */
+  parent: string;
+  /** Request body */
+  body?: User;
+}
+
+export const CreateUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parent: Schema.String.pipe(T.HttpPath("parent")),
+  body: Schema.optional(User).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "androidpublisher/v3/{+parent}/users",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<CreateUsersRequest>;
+
+export type CreateUsersResponse = User;
+export const CreateUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
+
+export type CreateUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Grant access for a user to the given developer account. */
+export const createUsers: API.OperationMethod<
+  CreateUsersRequest,
+  CreateUsersResponse,
+  CreateUsersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateUsersRequest,
+  output: CreateUsersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListUsersRequest {
+  /** Required. The developer account to fetch users from. Format: developers/{developer} */
+  parent: string;
+  /** A token received from a previous call to this method, in order to retrieve further results. */
+  pageToken?: string;
+  /** The maximum number of results to return. This must be set to -1 to disable pagination. */
+  pageSize?: number;
+}
+
+export const ListUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parent: Schema.String.pipe(T.HttpPath("parent")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+}).pipe(
+  T.Http({ method: "GET", path: "androidpublisher/v3/{+parent}/users" }),
+  svc,
+) as unknown as Schema.Schema<ListUsersRequest>;
+
+export type ListUsersResponse_Op = ListUsersResponse;
+export const ListUsersResponse_Op =
+  /*@__PURE__*/ /*#__PURE__*/ ListUsersResponse;
+
+export type ListUsersError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists all users with access to a developer account. */
+export const listUsers: API.PaginatedOperationMethod<
+  ListUsersRequest,
+  ListUsersResponse_Op,
+  ListUsersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListUsersRequest,
+  output: ListUsersResponse_Op,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
 export interface DeleteUsersRequest {
   /** Required. The name of the user to delete. Format: developers/{developer}/users/{email} */
   name: string;
@@ -5666,6 +6719,2701 @@ export const deleteUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersRequest,
   output: DeleteUsersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DataSafetyApplicationsRequest {
+  /** Required. Package name of the app. */
+  packageName: string;
+  /** Request body */
+  body?: SafetyLabelsUpdateRequest;
+}
+
+export const DataSafetyApplicationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    body: Schema.optional(SafetyLabelsUpdateRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/dataSafety",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DataSafetyApplicationsRequest>;
+
+export type DataSafetyApplicationsResponse = SafetyLabelsUpdateResponse;
+export const DataSafetyApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SafetyLabelsUpdateResponse;
+
+export type DataSafetyApplicationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Writes the Safety Labels declaration of an app. */
+export const dataSafetyApplications: API.OperationMethod<
+  DataSafetyApplicationsRequest,
+  DataSafetyApplicationsResponse,
+  DataSafetyApplicationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DataSafetyApplicationsRequest,
+  output: DataSafetyApplicationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListApplicationsDeviceTierConfigsRequest {
+  /** A page token, received from a previous `ListDeviceTierConfigs` call. Provide this to retrieve the subsequent page. */
+  pageToken?: string;
+  /** Package name of the app. */
+  packageName: string;
+  /** The maximum number of device tier configs to return. The service may return fewer than this value. If unspecified, at most 10 device tier configs will be returned. The maximum value for this field is 100; values above 100 will be coerced to 100. Device tier configs will be ordered by descending creation time. */
+  pageSize?: number;
+}
+
+export const ListApplicationsDeviceTierConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/deviceTierConfigs",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListApplicationsDeviceTierConfigsRequest>;
+
+export type ListApplicationsDeviceTierConfigsResponse =
+  ListDeviceTierConfigsResponse;
+export const ListApplicationsDeviceTierConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListDeviceTierConfigsResponse;
+
+export type ListApplicationsDeviceTierConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns created device tier configs, ordered by descending creation time. */
+export const listApplicationsDeviceTierConfigs: API.PaginatedOperationMethod<
+  ListApplicationsDeviceTierConfigsRequest,
+  ListApplicationsDeviceTierConfigsResponse,
+  ListApplicationsDeviceTierConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListApplicationsDeviceTierConfigsRequest,
+  output: ListApplicationsDeviceTierConfigsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetApplicationsDeviceTierConfigsRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Required. Id of an existing device tier config. */
+  deviceTierConfigId: string;
+}
+
+export const GetApplicationsDeviceTierConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    deviceTierConfigId: Schema.String.pipe(T.HttpPath("deviceTierConfigId")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/deviceTierConfigs/{deviceTierConfigId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetApplicationsDeviceTierConfigsRequest>;
+
+export type GetApplicationsDeviceTierConfigsResponse = DeviceTierConfig;
+export const GetApplicationsDeviceTierConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ DeviceTierConfig;
+
+export type GetApplicationsDeviceTierConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns a particular device tier config. */
+export const getApplicationsDeviceTierConfigs: API.OperationMethod<
+  GetApplicationsDeviceTierConfigsRequest,
+  GetApplicationsDeviceTierConfigsResponse,
+  GetApplicationsDeviceTierConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetApplicationsDeviceTierConfigsRequest,
+  output: GetApplicationsDeviceTierConfigsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateApplicationsDeviceTierConfigsRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Whether the service should accept device IDs that are unknown to Play's device catalog. */
+  allowUnknownDevices?: boolean;
+  /** Request body */
+  body?: DeviceTierConfig;
+}
+
+export const CreateApplicationsDeviceTierConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    allowUnknownDevices: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("allowUnknownDevices"),
+    ),
+    body: Schema.optional(DeviceTierConfig).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/deviceTierConfigs",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateApplicationsDeviceTierConfigsRequest>;
+
+export type CreateApplicationsDeviceTierConfigsResponse = DeviceTierConfig;
+export const CreateApplicationsDeviceTierConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ DeviceTierConfig;
+
+export type CreateApplicationsDeviceTierConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new device tier config for an app. */
+export const createApplicationsDeviceTierConfigs: API.OperationMethod<
+  CreateApplicationsDeviceTierConfigsRequest,
+  CreateApplicationsDeviceTierConfigsResponse,
+  CreateApplicationsDeviceTierConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateApplicationsDeviceTierConfigsRequest,
+  output: CreateApplicationsDeviceTierConfigsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListApplicationsTracksReleasesRequest {
+  /** Required. The parent track, which owns this collection of releases. Format: applications/{package_name}/tracks/{track} */
+  parent: string;
+}
+
+export const ListApplicationsTracksReleasesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+  }).pipe(
+    T.Http({ method: "GET", path: "androidpublisher/v3/{+parent}/releases" }),
+    svc,
+  ) as unknown as Schema.Schema<ListApplicationsTracksReleasesRequest>;
+
+export type ListApplicationsTracksReleasesResponse =
+  ListReleaseSummariesResponse;
+export const ListApplicationsTracksReleasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListReleaseSummariesResponse;
+
+export type ListApplicationsTracksReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns the list of all releases for a given track. This excludes any releases that are obsolete. */
+export const listApplicationsTracksReleases: API.OperationMethod<
+  ListApplicationsTracksReleasesRequest,
+  ListApplicationsTracksReleasesResponse,
+  ListApplicationsTracksReleasesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListApplicationsTracksReleasesRequest,
+  output: ListApplicationsTracksReleasesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetexternaltransactionExternaltransactionsRequest {
+  /** Required. The name of the external transaction to retrieve. Format: applications/{package_name}/externalTransactions/{external_transaction} */
+  name: string;
+}
+
+export const GetexternaltransactionExternaltransactionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "androidpublisher/v3/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetexternaltransactionExternaltransactionsRequest>;
+
+export type GetexternaltransactionExternaltransactionsResponse =
+  ExternalTransaction;
+export const GetexternaltransactionExternaltransactionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExternalTransaction;
+
+export type GetexternaltransactionExternaltransactionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets an existing external transaction. */
+export const getexternaltransactionExternaltransactions: API.OperationMethod<
+  GetexternaltransactionExternaltransactionsRequest,
+  GetexternaltransactionExternaltransactionsResponse,
+  GetexternaltransactionExternaltransactionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetexternaltransactionExternaltransactionsRequest,
+  output: GetexternaltransactionExternaltransactionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface RefundexternaltransactionExternaltransactionsRequest {
+  /** Required. The name of the external transaction that will be refunded. Format: applications/{package_name}/externalTransactions/{external_transaction} */
+  name: string;
+  /** Request body */
+  body?: RefundExternalTransactionRequest;
+}
+
+export const RefundexternaltransactionExternaltransactionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(RefundExternalTransactionRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/{+name}:refund",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<RefundexternaltransactionExternaltransactionsRequest>;
+
+export type RefundexternaltransactionExternaltransactionsResponse =
+  ExternalTransaction;
+export const RefundexternaltransactionExternaltransactionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExternalTransaction;
+
+export type RefundexternaltransactionExternaltransactionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Refunds or partially refunds an existing external transaction. */
+export const refundexternaltransactionExternaltransactions: API.OperationMethod<
+  RefundexternaltransactionExternaltransactionsRequest,
+  RefundexternaltransactionExternaltransactionsResponse,
+  RefundexternaltransactionExternaltransactionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RefundexternaltransactionExternaltransactionsRequest,
+  output: RefundexternaltransactionExternaltransactionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateexternaltransactionExternaltransactionsRequest {
+  /** Required. The parent resource where this external transaction will be created. Format: applications/{package_name} */
+  parent: string;
+  /** Required. The id to use for the external transaction. Must be unique across all other transactions for the app. This value should be 1-63 characters and valid characters are /a-zA-Z0-9_-/. Do not use this field to store any Personally Identifiable Information (PII) such as emails. Attempting to store PII in this field may result in requests being blocked. */
+  externalTransactionId?: string;
+  /** Request body */
+  body?: ExternalTransaction;
+}
+
+export const CreateexternaltransactionExternaltransactionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    externalTransactionId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("externalTransactionId"),
+    ),
+    body: Schema.optional(ExternalTransaction).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/{+parent}/externalTransactions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateexternaltransactionExternaltransactionsRequest>;
+
+export type CreateexternaltransactionExternaltransactionsResponse =
+  ExternalTransaction;
+export const CreateexternaltransactionExternaltransactionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExternalTransaction;
+
+export type CreateexternaltransactionExternaltransactionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new external transaction. */
+export const createexternaltransactionExternaltransactions: API.OperationMethod<
+  CreateexternaltransactionExternaltransactionsRequest,
+  CreateexternaltransactionExternaltransactionsResponse,
+  CreateexternaltransactionExternaltransactionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateexternaltransactionExternaltransactionsRequest,
+  output: CreateexternaltransactionExternaltransactionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListReviewsRequest {
+  /** How many results the list operation should return. */
+  maxResults?: number;
+  /** Language localization code. */
+  translationLanguage?: string;
+  /** Pagination token. If empty, list starts at the first review. */
+  token?: string;
+  /** Package name of the app. */
+  packageName: string;
+  /** The index of the first element to return. */
+  startIndex?: number;
+}
+
+export const ListReviewsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  translationLanguage: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("translationLanguage"),
+  ),
+  token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
+  packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  startIndex: Schema.optional(Schema.Number).pipe(T.HttpQuery("startIndex")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "androidpublisher/v3/applications/{packageName}/reviews",
+  }),
+  svc,
+) as unknown as Schema.Schema<ListReviewsRequest>;
+
+export type ListReviewsResponse = ReviewsListResponse;
+export const ListReviewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ReviewsListResponse;
+
+export type ListReviewsError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists all reviews. */
+export const listReviews: API.OperationMethod<
+  ListReviewsRequest,
+  ListReviewsResponse,
+  ListReviewsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListReviewsRequest,
+  output: ListReviewsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetReviewsRequest {
+  /** Language localization code. */
+  translationLanguage?: string;
+  /** Package name of the app. */
+  packageName: string;
+  /** Unique identifier for a review. */
+  reviewId: string;
+}
+
+export const GetReviewsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  translationLanguage: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("translationLanguage"),
+  ),
+  packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  reviewId: Schema.String.pipe(T.HttpPath("reviewId")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "androidpublisher/v3/applications/{packageName}/reviews/{reviewId}",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetReviewsRequest>;
+
+export type GetReviewsResponse = Review;
+export const GetReviewsResponse = /*@__PURE__*/ /*#__PURE__*/ Review;
+
+export type GetReviewsError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets a single review. */
+export const getReviews: API.OperationMethod<
+  GetReviewsRequest,
+  GetReviewsResponse,
+  GetReviewsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetReviewsRequest,
+  output: GetReviewsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ReplyReviewsRequest {
+  /** Unique identifier for a review. */
+  reviewId: string;
+  /** Package name of the app. */
+  packageName: string;
+  /** Request body */
+  body?: ReviewsReplyRequest;
+}
+
+export const ReplyReviewsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reviewId: Schema.String.pipe(T.HttpPath("reviewId")),
+  packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  body: Schema.optional(ReviewsReplyRequest).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "androidpublisher/v3/applications/{packageName}/reviews/{reviewId}:reply",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<ReplyReviewsRequest>;
+
+export type ReplyReviewsResponse = ReviewsReplyResponse;
+export const ReplyReviewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ReviewsReplyResponse;
+
+export type ReplyReviewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Replies to a single review, or updates an existing reply. */
+export const replyReviews: API.OperationMethod<
+  ReplyReviewsRequest,
+  ReplyReviewsResponse,
+  ReplyReviewsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ReplyReviewsRequest,
+  output: ReplyReviewsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListGeneratedapksRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Version code of the app bundle. */
+  versionCode: number;
+}
+
+export const ListGeneratedapksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    versionCode: Schema.Number.pipe(T.HttpPath("versionCode")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListGeneratedapksRequest>;
+
+export type ListGeneratedapksResponse = GeneratedApksListResponse;
+export const ListGeneratedapksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GeneratedApksListResponse;
+
+export type ListGeneratedapksError = DefaultErrors | NotFound | Forbidden;
+
+/** Returns download metadata for all APKs that were generated from a given app bundle. */
+export const listGeneratedapks: API.OperationMethod<
+  ListGeneratedapksRequest,
+  ListGeneratedapksResponse,
+  ListGeneratedapksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListGeneratedapksRequest,
+  output: ListGeneratedapksResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DownloadGeneratedapksRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Download ID, which uniquely identifies the APK to download. Can be obtained from the response of `generatedapks.list` method. */
+  downloadId: string;
+  /** Version code of the app bundle. */
+  versionCode: number;
+}
+
+export const DownloadGeneratedapksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    downloadId: Schema.String.pipe(T.HttpPath("downloadId")),
+    versionCode: Schema.Number.pipe(T.HttpPath("versionCode")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}/downloads/{downloadId}:download",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DownloadGeneratedapksRequest>;
+
+export interface DownloadGeneratedapksResponse {}
+export const DownloadGeneratedapksResponse: Schema.Schema<DownloadGeneratedapksResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<DownloadGeneratedapksResponse>;
+
+export type DownloadGeneratedapksError = DefaultErrors | NotFound | Forbidden;
+
+/** Downloads a single signed APK generated from an app bundle. */
+export const downloadGeneratedapks: API.OperationMethod<
+  DownloadGeneratedapksRequest,
+  DownloadGeneratedapksResponse,
+  DownloadGeneratedapksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DownloadGeneratedapksRequest,
+  output: DownloadGeneratedapksResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetEditsRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Identifier of the edit. */
+  editId: string;
+}
+
+export const GetEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  editId: Schema.String.pipe(T.HttpPath("editId")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetEditsRequest>;
+
+export type GetEditsResponse = AppEdit;
+export const GetEditsResponse = /*@__PURE__*/ /*#__PURE__*/ AppEdit;
+
+export type GetEditsError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets an app edit. */
+export const getEdits: API.OperationMethod<
+  GetEditsRequest,
+  GetEditsResponse,
+  GetEditsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetEditsRequest,
+  output: GetEditsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteEditsRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Identifier of the edit. */
+  editId: string;
+}
+
+export const DeleteEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  editId: Schema.String.pipe(T.HttpPath("editId")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}",
+  }),
+  svc,
+) as unknown as Schema.Schema<DeleteEditsRequest>;
+
+export interface DeleteEditsResponse {}
+export const DeleteEditsResponse: Schema.Schema<DeleteEditsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<DeleteEditsResponse>;
+
+export type DeleteEditsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes an app edit. */
+export const deleteEdits: API.OperationMethod<
+  DeleteEditsRequest,
+  DeleteEditsResponse,
+  DeleteEditsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteEditsRequest,
+  output: DeleteEditsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface InsertEditsRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Request body */
+  body?: AppEdit;
+}
+
+export const InsertEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  body: Schema.optional(AppEdit).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "androidpublisher/v3/applications/{packageName}/edits",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<InsertEditsRequest>;
+
+export type InsertEditsResponse = AppEdit;
+export const InsertEditsResponse = /*@__PURE__*/ /*#__PURE__*/ AppEdit;
+
+export type InsertEditsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new edit for an app. */
+export const insertEdits: API.OperationMethod<
+  InsertEditsRequest,
+  InsertEditsResponse,
+  InsertEditsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: InsertEditsRequest,
+  output: InsertEditsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ValidateEditsRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Identifier of the edit. */
+  editId: string;
+}
+
+export const ValidateEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  editId: Schema.String.pipe(T.HttpPath("editId")),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}:validate",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<ValidateEditsRequest>;
+
+export type ValidateEditsResponse = AppEdit;
+export const ValidateEditsResponse = /*@__PURE__*/ /*#__PURE__*/ AppEdit;
+
+export type ValidateEditsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Validates an app edit. */
+export const validateEdits: API.OperationMethod<
+  ValidateEditsRequest,
+  ValidateEditsResponse,
+  ValidateEditsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ValidateEditsRequest,
+  output: ValidateEditsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CommitEditsRequest {
+  /** When a rejection happens, the parameter will make sure that the changes in this edit won't be reviewed until they are explicitly sent for review from within the Google Play Console UI. These changes will be added to any other changes that are not yet sent for review. */
+  changesNotSentForReview?: boolean;
+  /** Optional. Specify how the API should behave if there are changes currently in review. If this value is not set, it will default to "CANCEL_IN_REVIEW_AND_SUBMIT", which will cancel the changes in review and then send all the changes for publishing. */
+  changesInReviewBehavior?:
+    | "CHANGES_IN_REVIEW_BEHAVIOR_TYPE_UNSPECIFIED"
+    | "CANCEL_IN_REVIEW_AND_SUBMIT"
+    | "ERROR_IF_IN_REVIEW"
+    | (string & {});
+  /** Package name of the app. */
+  packageName: string;
+  /** Identifier of the edit. */
+  editId: string;
+}
+
+export const CommitEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  changesNotSentForReview: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("changesNotSentForReview"),
+  ),
+  changesInReviewBehavior: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("changesInReviewBehavior"),
+  ),
+  packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  editId: Schema.String.pipe(T.HttpPath("editId")),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}:commit",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<CommitEditsRequest>;
+
+export type CommitEditsResponse = AppEdit;
+export const CommitEditsResponse = /*@__PURE__*/ /*#__PURE__*/ AppEdit;
+
+export type CommitEditsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Commits an app edit. */
+export const commitEdits: API.OperationMethod<
+  CommitEditsRequest,
+  CommitEditsResponse,
+  CommitEditsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CommitEditsRequest,
+  output: CommitEditsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetEditsTestersRequest {
+  /** The track to read from. */
+  track: string;
+  /** Package name of the app. */
+  packageName: string;
+  /** Identifier of the edit. */
+  editId: string;
+}
+
+export const GetEditsTestersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    track: Schema.String.pipe(T.HttpPath("track")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetEditsTestersRequest>;
+
+export type GetEditsTestersResponse = Testers;
+export const GetEditsTestersResponse = /*@__PURE__*/ /*#__PURE__*/ Testers;
+
+export type GetEditsTestersError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets testers. Note: Testers resource does not support email lists. */
+export const getEditsTesters: API.OperationMethod<
+  GetEditsTestersRequest,
+  GetEditsTestersResponse,
+  GetEditsTestersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetEditsTestersRequest,
+  output: GetEditsTestersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface UpdateEditsTestersRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Identifier of the edit. */
+  editId: string;
+  /** The track to update. */
+  track: string;
+  /** Request body */
+  body?: Testers;
+}
+
+export const UpdateEditsTestersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    track: Schema.String.pipe(T.HttpPath("track")),
+    body: Schema.optional(Testers).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateEditsTestersRequest>;
+
+export type UpdateEditsTestersResponse = Testers;
+export const UpdateEditsTestersResponse = /*@__PURE__*/ /*#__PURE__*/ Testers;
+
+export type UpdateEditsTestersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates testers. Note: Testers resource does not support email lists. */
+export const updateEditsTesters: API.OperationMethod<
+  UpdateEditsTestersRequest,
+  UpdateEditsTestersResponse,
+  UpdateEditsTestersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateEditsTestersRequest,
+  output: UpdateEditsTestersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchEditsTestersRequest {
+  /** Identifier of the edit. */
+  editId: string;
+  /** Package name of the app. */
+  packageName: string;
+  /** The track to update. */
+  track: string;
+  /** Request body */
+  body?: Testers;
+}
+
+export const PatchEditsTestersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    track: Schema.String.pipe(T.HttpPath("track")),
+    body: Schema.optional(Testers).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchEditsTestersRequest>;
+
+export type PatchEditsTestersResponse = Testers;
+export const PatchEditsTestersResponse = /*@__PURE__*/ /*#__PURE__*/ Testers;
+
+export type PatchEditsTestersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Patches testers. Note: Testers resource does not support email lists. */
+export const patchEditsTesters: API.OperationMethod<
+  PatchEditsTestersRequest,
+  PatchEditsTestersResponse,
+  PatchEditsTestersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchEditsTestersRequest,
+  output: PatchEditsTestersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListEditsTracksRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Identifier of the edit. */
+  editId: string;
+}
+
+export const ListEditsTracksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks",
+  }),
+  svc,
+) as unknown as Schema.Schema<ListEditsTracksRequest>;
+
+export type ListEditsTracksResponse = TracksListResponse;
+export const ListEditsTracksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TracksListResponse;
+
+export type ListEditsTracksError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists all tracks. */
+export const listEditsTracks: API.OperationMethod<
+  ListEditsTracksRequest,
+  ListEditsTracksResponse,
+  ListEditsTracksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListEditsTracksRequest,
+  output: ListEditsTracksResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetEditsTracksRequest {
+  /** Identifier of the track. [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name) */
+  track: string;
+  /** Package name of the app. */
+  packageName: string;
+  /** Identifier of the edit. */
+  editId: string;
+}
+
+export const GetEditsTracksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  track: Schema.String.pipe(T.HttpPath("track")),
+  packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  editId: Schema.String.pipe(T.HttpPath("editId")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetEditsTracksRequest>;
+
+export type GetEditsTracksResponse = Track;
+export const GetEditsTracksResponse = /*@__PURE__*/ /*#__PURE__*/ Track;
+
+export type GetEditsTracksError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets a track. */
+export const getEditsTracks: API.OperationMethod<
+  GetEditsTracksRequest,
+  GetEditsTracksResponse,
+  GetEditsTracksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetEditsTracksRequest,
+  output: GetEditsTracksResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface UpdateEditsTracksRequest {
+  /** Identifier of the track. [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name) */
+  track: string;
+  /** Identifier of the edit. */
+  editId: string;
+  /** Package name of the app. */
+  packageName: string;
+  /** Request body */
+  body?: Track;
+}
+
+export const UpdateEditsTracksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    track: Schema.String.pipe(T.HttpPath("track")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    body: Schema.optional(Track).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateEditsTracksRequest>;
+
+export type UpdateEditsTracksResponse = Track;
+export const UpdateEditsTracksResponse = /*@__PURE__*/ /*#__PURE__*/ Track;
+
+export type UpdateEditsTracksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a track. */
+export const updateEditsTracks: API.OperationMethod<
+  UpdateEditsTracksRequest,
+  UpdateEditsTracksResponse,
+  UpdateEditsTracksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateEditsTracksRequest,
+  output: UpdateEditsTracksResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchEditsTracksRequest {
+  /** Identifier of the track. [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name) */
+  track: string;
+  /** Identifier of the edit. */
+  editId: string;
+  /** Package name of the app. */
+  packageName: string;
+  /** Request body */
+  body?: Track;
+}
+
+export const PatchEditsTracksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    track: Schema.String.pipe(T.HttpPath("track")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    body: Schema.optional(Track).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchEditsTracksRequest>;
+
+export type PatchEditsTracksResponse = Track;
+export const PatchEditsTracksResponse = /*@__PURE__*/ /*#__PURE__*/ Track;
+
+export type PatchEditsTracksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Patches a track. */
+export const patchEditsTracks: API.OperationMethod<
+  PatchEditsTracksRequest,
+  PatchEditsTracksResponse,
+  PatchEditsTracksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchEditsTracksRequest,
+  output: PatchEditsTracksResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateEditsTracksRequest {
+  /** Required. Package name of the app. */
+  packageName: string;
+  /** Required. Identifier of the edit. */
+  editId: string;
+  /** Request body */
+  body?: TrackConfig;
+}
+
+export const CreateEditsTracksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    body: Schema.optional(TrackConfig).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateEditsTracksRequest>;
+
+export type CreateEditsTracksResponse = Track;
+export const CreateEditsTracksResponse = /*@__PURE__*/ /*#__PURE__*/ Track;
+
+export type CreateEditsTracksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new track. */
+export const createEditsTracks: API.OperationMethod<
+  CreateEditsTracksRequest,
+  CreateEditsTracksResponse,
+  CreateEditsTracksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateEditsTracksRequest,
+  output: CreateEditsTracksResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface UploadEditsBundlesRequest {
+  /** Deprecated. The installation warning has been removed, it's not necessary to set this field anymore. */
+  ackBundleInstallationWarning?: boolean;
+  /** Identifier of the edit. */
+  editId: string;
+  /** Device tier config (DTC) to be used for generating deliverables (APKs). Contains id of the DTC or "LATEST" for last uploaded DTC. */
+  deviceTierConfigId?: string;
+  /** Package name of the app. */
+  packageName: string;
+}
+
+export const UploadEditsBundlesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ackBundleInstallationWarning: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("ackBundleInstallationWarning"),
+    ),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    deviceTierConfigId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("deviceTierConfigId"),
+    ),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UploadEditsBundlesRequest>;
+
+export type UploadEditsBundlesResponse = Bundle;
+export const UploadEditsBundlesResponse = /*@__PURE__*/ /*#__PURE__*/ Bundle;
+
+export type UploadEditsBundlesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Uploads a new Android App Bundle to this edit. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java. */
+export const uploadEditsBundles: API.OperationMethod<
+  UploadEditsBundlesRequest,
+  UploadEditsBundlesResponse,
+  UploadEditsBundlesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UploadEditsBundlesRequest,
+  output: UploadEditsBundlesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListEditsBundlesRequest {
+  /** Identifier of the edit. */
+  editId: string;
+  /** Package name of the app. */
+  packageName: string;
+}
+
+export const ListEditsBundlesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListEditsBundlesRequest>;
+
+export type ListEditsBundlesResponse = BundlesListResponse;
+export const ListEditsBundlesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BundlesListResponse;
+
+export type ListEditsBundlesError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists all current Android App Bundles of the app and edit. */
+export const listEditsBundles: API.OperationMethod<
+  ListEditsBundlesRequest,
+  ListEditsBundlesResponse,
+  ListEditsBundlesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListEditsBundlesRequest,
+  output: ListEditsBundlesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListEditsListingsRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Identifier of the edit. */
+  editId: string;
+}
+
+export const ListEditsListingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListEditsListingsRequest>;
+
+export type ListEditsListingsResponse = ListingsListResponse;
+export const ListEditsListingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListingsListResponse;
+
+export type ListEditsListingsError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists all localized store listings. */
+export const listEditsListings: API.OperationMethod<
+  ListEditsListingsRequest,
+  ListEditsListingsResponse,
+  ListEditsListingsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListEditsListingsRequest,
+  output: ListEditsListingsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteEditsListingsRequest {
+  /** Identifier of the edit. */
+  editId: string;
+  /** Package name of the app. */
+  packageName: string;
+  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
+  language: string;
+}
+
+export const DeleteEditsListingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    language: Schema.String.pipe(T.HttpPath("language")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteEditsListingsRequest>;
+
+export interface DeleteEditsListingsResponse {}
+export const DeleteEditsListingsResponse: Schema.Schema<DeleteEditsListingsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<DeleteEditsListingsResponse>;
+
+export type DeleteEditsListingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a localized store listing. */
+export const deleteEditsListings: API.OperationMethod<
+  DeleteEditsListingsRequest,
+  DeleteEditsListingsResponse,
+  DeleteEditsListingsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteEditsListingsRequest,
+  output: DeleteEditsListingsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface UpdateEditsListingsRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
+  language: string;
+  /** Identifier of the edit. */
+  editId: string;
+  /** Request body */
+  body?: Listing;
+}
+
+export const UpdateEditsListingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    language: Schema.String.pipe(T.HttpPath("language")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    body: Schema.optional(Listing).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateEditsListingsRequest>;
+
+export type UpdateEditsListingsResponse = Listing;
+export const UpdateEditsListingsResponse = /*@__PURE__*/ /*#__PURE__*/ Listing;
+
+export type UpdateEditsListingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates or updates a localized store listing. */
+export const updateEditsListings: API.OperationMethod<
+  UpdateEditsListingsRequest,
+  UpdateEditsListingsResponse,
+  UpdateEditsListingsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateEditsListingsRequest,
+  output: UpdateEditsListingsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchEditsListingsRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
+  language: string;
+  /** Identifier of the edit. */
+  editId: string;
+  /** Request body */
+  body?: Listing;
+}
+
+export const PatchEditsListingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    language: Schema.String.pipe(T.HttpPath("language")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    body: Schema.optional(Listing).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchEditsListingsRequest>;
+
+export type PatchEditsListingsResponse = Listing;
+export const PatchEditsListingsResponse = /*@__PURE__*/ /*#__PURE__*/ Listing;
+
+export type PatchEditsListingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Patches a localized store listing. */
+export const patchEditsListings: API.OperationMethod<
+  PatchEditsListingsRequest,
+  PatchEditsListingsResponse,
+  PatchEditsListingsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchEditsListingsRequest,
+  output: PatchEditsListingsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetEditsListingsRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
+  language: string;
+  /** Identifier of the edit. */
+  editId: string;
+}
+
+export const GetEditsListingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    language: Schema.String.pipe(T.HttpPath("language")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetEditsListingsRequest>;
+
+export type GetEditsListingsResponse = Listing;
+export const GetEditsListingsResponse = /*@__PURE__*/ /*#__PURE__*/ Listing;
+
+export type GetEditsListingsError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets a localized store listing. */
+export const getEditsListings: API.OperationMethod<
+  GetEditsListingsRequest,
+  GetEditsListingsResponse,
+  GetEditsListingsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetEditsListingsRequest,
+  output: GetEditsListingsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteallEditsListingsRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Identifier of the edit. */
+  editId: string;
+}
+
+export const DeleteallEditsListingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteallEditsListingsRequest>;
+
+export interface DeleteallEditsListingsResponse {}
+export const DeleteallEditsListingsResponse: Schema.Schema<DeleteallEditsListingsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<DeleteallEditsListingsResponse>;
+
+export type DeleteallEditsListingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes all store listings. */
+export const deleteallEditsListings: API.OperationMethod<
+  DeleteallEditsListingsRequest,
+  DeleteallEditsListingsResponse,
+  DeleteallEditsListingsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteallEditsListingsRequest,
+  output: DeleteallEditsListingsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface UploadEditsExpansionfilesRequest {
+  /** The file type of the expansion file configuration which is being updated. */
+  expansionFileType:
+    | "expansionFileTypeUnspecified"
+    | "main"
+    | "patch"
+    | (string & {});
+  /** Package name of the app. */
+  packageName: string;
+  /** Identifier of the edit. */
+  editId: string;
+  /** The version code of the APK whose expansion file configuration is being read or modified. */
+  apkVersionCode: number;
+}
+
+export const UploadEditsExpansionfilesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expansionFileType: Schema.String.pipe(T.HttpPath("expansionFileType")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    apkVersionCode: Schema.Number.pipe(T.HttpPath("apkVersionCode")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UploadEditsExpansionfilesRequest>;
+
+export type UploadEditsExpansionfilesResponse = ExpansionFilesUploadResponse;
+export const UploadEditsExpansionfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExpansionFilesUploadResponse;
+
+export type UploadEditsExpansionfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Uploads a new expansion file and attaches to the specified APK. */
+export const uploadEditsExpansionfiles: API.OperationMethod<
+  UploadEditsExpansionfilesRequest,
+  UploadEditsExpansionfilesResponse,
+  UploadEditsExpansionfilesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UploadEditsExpansionfilesRequest,
+  output: UploadEditsExpansionfilesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetEditsExpansionfilesRequest {
+  /** The file type of the file configuration which is being read or modified. */
+  expansionFileType:
+    | "expansionFileTypeUnspecified"
+    | "main"
+    | "patch"
+    | (string & {});
+  /** Identifier of the edit. */
+  editId: string;
+  /** The version code of the APK whose expansion file configuration is being read or modified. */
+  apkVersionCode: number;
+  /** Package name of the app. */
+  packageName: string;
+}
+
+export const GetEditsExpansionfilesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expansionFileType: Schema.String.pipe(T.HttpPath("expansionFileType")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    apkVersionCode: Schema.Number.pipe(T.HttpPath("apkVersionCode")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetEditsExpansionfilesRequest>;
+
+export type GetEditsExpansionfilesResponse = ExpansionFile;
+export const GetEditsExpansionfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExpansionFile;
+
+export type GetEditsExpansionfilesError = DefaultErrors | NotFound | Forbidden;
+
+/** Fetches the expansion file configuration for the specified APK. */
+export const getEditsExpansionfiles: API.OperationMethod<
+  GetEditsExpansionfilesRequest,
+  GetEditsExpansionfilesResponse,
+  GetEditsExpansionfilesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetEditsExpansionfilesRequest,
+  output: GetEditsExpansionfilesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface UpdateEditsExpansionfilesRequest {
+  /** The file type of the file configuration which is being read or modified. */
+  expansionFileType:
+    | "expansionFileTypeUnspecified"
+    | "main"
+    | "patch"
+    | (string & {});
+  /** Package name of the app. */
+  packageName: string;
+  /** Identifier of the edit. */
+  editId: string;
+  /** The version code of the APK whose expansion file configuration is being read or modified. */
+  apkVersionCode: number;
+  /** Request body */
+  body?: ExpansionFile;
+}
+
+export const UpdateEditsExpansionfilesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expansionFileType: Schema.String.pipe(T.HttpPath("expansionFileType")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    apkVersionCode: Schema.Number.pipe(T.HttpPath("apkVersionCode")),
+    body: Schema.optional(ExpansionFile).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateEditsExpansionfilesRequest>;
+
+export type UpdateEditsExpansionfilesResponse = ExpansionFile;
+export const UpdateEditsExpansionfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExpansionFile;
+
+export type UpdateEditsExpansionfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the APK's expansion file configuration to reference another APK's expansion file. To add a new expansion file use the Upload method. */
+export const updateEditsExpansionfiles: API.OperationMethod<
+  UpdateEditsExpansionfilesRequest,
+  UpdateEditsExpansionfilesResponse,
+  UpdateEditsExpansionfilesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateEditsExpansionfilesRequest,
+  output: UpdateEditsExpansionfilesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchEditsExpansionfilesRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Identifier of the edit. */
+  editId: string;
+  /** The version code of the APK whose expansion file configuration is being read or modified. */
+  apkVersionCode: number;
+  /** The file type of the expansion file configuration which is being updated. */
+  expansionFileType:
+    | "expansionFileTypeUnspecified"
+    | "main"
+    | "patch"
+    | (string & {});
+  /** Request body */
+  body?: ExpansionFile;
+}
+
+export const PatchEditsExpansionfilesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    apkVersionCode: Schema.Number.pipe(T.HttpPath("apkVersionCode")),
+    expansionFileType: Schema.String.pipe(T.HttpPath("expansionFileType")),
+    body: Schema.optional(ExpansionFile).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchEditsExpansionfilesRequest>;
+
+export type PatchEditsExpansionfilesResponse = ExpansionFile;
+export const PatchEditsExpansionfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExpansionFile;
+
+export type PatchEditsExpansionfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Patches the APK's expansion file configuration to reference another APK's expansion file. To add a new expansion file use the Upload method. */
+export const patchEditsExpansionfiles: API.OperationMethod<
+  PatchEditsExpansionfilesRequest,
+  PatchEditsExpansionfilesResponse,
+  PatchEditsExpansionfilesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchEditsExpansionfilesRequest,
+  output: PatchEditsExpansionfilesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface UploadEditsDeobfuscationfilesRequest {
+  /** Unique identifier for this edit. */
+  editId: string;
+  /** The version code of the APK whose Deobfuscation File is being uploaded. */
+  apkVersionCode: number;
+  /** Unique identifier for the Android app. */
+  packageName: string;
+  /** The type of the deobfuscation file. */
+  deobfuscationFileType:
+    | "deobfuscationFileTypeUnspecified"
+    | "proguard"
+    | "nativeCode"
+    | (string & {});
+}
+
+export const UploadEditsDeobfuscationfilesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    apkVersionCode: Schema.Number.pipe(T.HttpPath("apkVersionCode")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    deobfuscationFileType: Schema.String.pipe(
+      T.HttpPath("deobfuscationFileType"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UploadEditsDeobfuscationfilesRequest>;
+
+export type UploadEditsDeobfuscationfilesResponse =
+  DeobfuscationFilesUploadResponse;
+export const UploadEditsDeobfuscationfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ DeobfuscationFilesUploadResponse;
+
+export type UploadEditsDeobfuscationfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Uploads a new deobfuscation file and attaches to the specified APK. */
+export const uploadEditsDeobfuscationfiles: API.OperationMethod<
+  UploadEditsDeobfuscationfilesRequest,
+  UploadEditsDeobfuscationfilesResponse,
+  UploadEditsDeobfuscationfilesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UploadEditsDeobfuscationfilesRequest,
+  output: UploadEditsDeobfuscationfilesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListEditsApksRequest {
+  /** Identifier of the edit. */
+  editId: string;
+  /** Package name of the app. */
+  packageName: string;
+}
+
+export const ListEditsApksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  editId: Schema.String.pipe(T.HttpPath("editId")),
+  packageName: Schema.String.pipe(T.HttpPath("packageName")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks",
+  }),
+  svc,
+) as unknown as Schema.Schema<ListEditsApksRequest>;
+
+export type ListEditsApksResponse = ApksListResponse;
+export const ListEditsApksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApksListResponse;
+
+export type ListEditsApksError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists all current APKs of the app and edit. */
+export const listEditsApks: API.OperationMethod<
+  ListEditsApksRequest,
+  ListEditsApksResponse,
+  ListEditsApksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListEditsApksRequest,
+  output: ListEditsApksResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface AddexternallyhostedEditsApksRequest {
+  /** Identifier of the edit. */
+  editId: string;
+  /** Package name of the app. */
+  packageName: string;
+  /** Request body */
+  body?: ApksAddExternallyHostedRequest;
+}
+
+export const AddexternallyhostedEditsApksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    body: Schema.optional(ApksAddExternallyHostedRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/externallyHosted",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<AddexternallyhostedEditsApksRequest>;
+
+export type AddexternallyhostedEditsApksResponse =
+  ApksAddExternallyHostedResponse;
+export const AddexternallyhostedEditsApksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApksAddExternallyHostedResponse;
+
+export type AddexternallyhostedEditsApksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a specified URL. This function is only available to organizations using Managed Play whose application is configured to restrict distribution to the organizations. */
+export const addexternallyhostedEditsApks: API.OperationMethod<
+  AddexternallyhostedEditsApksRequest,
+  AddexternallyhostedEditsApksResponse,
+  AddexternallyhostedEditsApksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: AddexternallyhostedEditsApksRequest,
+  output: AddexternallyhostedEditsApksResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface UploadEditsApksRequest {
+  /** Identifier of the edit. */
+  editId: string;
+  /** Package name of the app. */
+  packageName: string;
+}
+
+export const UploadEditsApksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<UploadEditsApksRequest>;
+
+export type UploadEditsApksResponse = Apk;
+export const UploadEditsApksResponse = /*@__PURE__*/ /*#__PURE__*/ Apk;
+
+export type UploadEditsApksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Uploads an APK and adds to the current edit. */
+export const uploadEditsApks: API.OperationMethod<
+  UploadEditsApksRequest,
+  UploadEditsApksResponse,
+  UploadEditsApksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UploadEditsApksRequest,
+  output: UploadEditsApksResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListEditsImagesRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). There must be a store listing for the specified language. */
+  language: string;
+  /** Identifier of the edit. */
+  editId: string;
+  /** Type of the Image. Providing an image type that refers to no images will return an empty response. */
+  imageType:
+    | "appImageTypeUnspecified"
+    | "phoneScreenshots"
+    | "sevenInchScreenshots"
+    | "tenInchScreenshots"
+    | "tvScreenshots"
+    | "wearScreenshots"
+    | "icon"
+    | "featureGraphic"
+    | "tvBanner"
+    | (string & {});
+}
+
+export const ListEditsImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    language: Schema.String.pipe(T.HttpPath("language")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    imageType: Schema.String.pipe(T.HttpPath("imageType")),
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
+  }),
+  svc,
+) as unknown as Schema.Schema<ListEditsImagesRequest>;
+
+export type ListEditsImagesResponse = ImagesListResponse;
+export const ListEditsImagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ImagesListResponse;
+
+export type ListEditsImagesError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists all images. The response may be empty. */
+export const listEditsImages: API.OperationMethod<
+  ListEditsImagesRequest,
+  ListEditsImagesResponse,
+  ListEditsImagesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListEditsImagesRequest,
+  output: ListEditsImagesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteEditsImagesRequest {
+  /** Identifier of the edit. */
+  editId: string;
+  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
+  language: string;
+  /** Unique identifier an image within the set of images attached to this edit. */
+  imageId: string;
+  /** Type of the Image. */
+  imageType:
+    | "appImageTypeUnspecified"
+    | "phoneScreenshots"
+    | "sevenInchScreenshots"
+    | "tenInchScreenshots"
+    | "tvScreenshots"
+    | "wearScreenshots"
+    | "icon"
+    | "featureGraphic"
+    | "tvBanner"
+    | (string & {});
+  /** Package name of the app. */
+  packageName: string;
+}
+
+export const DeleteEditsImagesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    language: Schema.String.pipe(T.HttpPath("language")),
+    imageId: Schema.String.pipe(T.HttpPath("imageId")),
+    imageType: Schema.String.pipe(T.HttpPath("imageType")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}/{imageId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteEditsImagesRequest>;
+
+export interface DeleteEditsImagesResponse {}
+export const DeleteEditsImagesResponse: Schema.Schema<DeleteEditsImagesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<DeleteEditsImagesResponse>;
+
+export type DeleteEditsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes the image (specified by id) from the edit. */
+export const deleteEditsImages: API.OperationMethod<
+  DeleteEditsImagesRequest,
+  DeleteEditsImagesResponse,
+  DeleteEditsImagesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteEditsImagesRequest,
+  output: DeleteEditsImagesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface UploadEditsImagesRequest {
+  /** Identifier of the edit. */
+  editId: string;
+  /** Type of the Image. */
+  imageType:
+    | "appImageTypeUnspecified"
+    | "phoneScreenshots"
+    | "sevenInchScreenshots"
+    | "tenInchScreenshots"
+    | "tvScreenshots"
+    | "wearScreenshots"
+    | "icon"
+    | "featureGraphic"
+    | "tvBanner"
+    | (string & {});
+  /** Package name of the app. */
+  packageName: string;
+  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). Providing a language that is not supported by the App is a no-op. */
+  language: string;
+}
+
+export const UploadEditsImagesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    imageType: Schema.String.pipe(T.HttpPath("imageType")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    language: Schema.String.pipe(T.HttpPath("language")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UploadEditsImagesRequest>;
+
+export type UploadEditsImagesResponse = ImagesUploadResponse;
+export const UploadEditsImagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ImagesUploadResponse;
+
+export type UploadEditsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Uploads an image of the specified language and image type, and adds to the edit. */
+export const uploadEditsImages: API.OperationMethod<
+  UploadEditsImagesRequest,
+  UploadEditsImagesResponse,
+  UploadEditsImagesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UploadEditsImagesRequest,
+  output: UploadEditsImagesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteallEditsImagesRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). Providing a language that is not supported by the App is a no-op. */
+  language: string;
+  /** Identifier of the edit. */
+  editId: string;
+  /** Type of the Image. Providing an image type that refers to no images is a no-op. */
+  imageType:
+    | "appImageTypeUnspecified"
+    | "phoneScreenshots"
+    | "sevenInchScreenshots"
+    | "tenInchScreenshots"
+    | "tvScreenshots"
+    | "wearScreenshots"
+    | "icon"
+    | "featureGraphic"
+    | "tvBanner"
+    | (string & {});
+}
+
+export const DeleteallEditsImagesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    language: Schema.String.pipe(T.HttpPath("language")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    imageType: Schema.String.pipe(T.HttpPath("imageType")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteallEditsImagesRequest>;
+
+export type DeleteallEditsImagesResponse = ImagesDeleteAllResponse;
+export const DeleteallEditsImagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ImagesDeleteAllResponse;
+
+export type DeleteallEditsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes all images for the specified language and image type. Returns an empty response if no images are found. */
+export const deleteallEditsImages: API.OperationMethod<
+  DeleteallEditsImagesRequest,
+  DeleteallEditsImagesResponse,
+  DeleteallEditsImagesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteallEditsImagesRequest,
+  output: DeleteallEditsImagesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetEditsCountryavailabilityRequest {
+  /** The track to read from. */
+  track: string;
+  /** Identifier of the edit. */
+  editId: string;
+  /** Package name of the app. */
+  packageName: string;
+}
+
+export const GetEditsCountryavailabilityRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    track: Schema.String.pipe(T.HttpPath("track")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/countryAvailability/{track}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetEditsCountryavailabilityRequest>;
+
+export type GetEditsCountryavailabilityResponse = TrackCountryAvailability;
+export const GetEditsCountryavailabilityResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TrackCountryAvailability;
+
+export type GetEditsCountryavailabilityError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets country availability. */
+export const getEditsCountryavailability: API.OperationMethod<
+  GetEditsCountryavailabilityRequest,
+  GetEditsCountryavailabilityResponse,
+  GetEditsCountryavailabilityError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetEditsCountryavailabilityRequest,
+  output: GetEditsCountryavailabilityResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetEditsDetailsRequest {
+  /** Identifier of the edit. */
+  editId: string;
+  /** Package name of the app. */
+  packageName: string;
+}
+
+export const GetEditsDetailsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetEditsDetailsRequest>;
+
+export type GetEditsDetailsResponse = AppDetails;
+export const GetEditsDetailsResponse = /*@__PURE__*/ /*#__PURE__*/ AppDetails;
+
+export type GetEditsDetailsError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets details of an app. */
+export const getEditsDetails: API.OperationMethod<
+  GetEditsDetailsRequest,
+  GetEditsDetailsResponse,
+  GetEditsDetailsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetEditsDetailsRequest,
+  output: GetEditsDetailsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface UpdateEditsDetailsRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Identifier of the edit. */
+  editId: string;
+  /** Request body */
+  body?: AppDetails;
+}
+
+export const UpdateEditsDetailsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    body: Schema.optional(AppDetails).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateEditsDetailsRequest>;
+
+export type UpdateEditsDetailsResponse = AppDetails;
+export const UpdateEditsDetailsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AppDetails;
+
+export type UpdateEditsDetailsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates details of an app. */
+export const updateEditsDetails: API.OperationMethod<
+  UpdateEditsDetailsRequest,
+  UpdateEditsDetailsResponse,
+  UpdateEditsDetailsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateEditsDetailsRequest,
+  output: UpdateEditsDetailsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchEditsDetailsRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Identifier of the edit. */
+  editId: string;
+  /** Request body */
+  body?: AppDetails;
+}
+
+export const PatchEditsDetailsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    editId: Schema.String.pipe(T.HttpPath("editId")),
+    body: Schema.optional(AppDetails).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchEditsDetailsRequest>;
+
+export type PatchEditsDetailsResponse = AppDetails;
+export const PatchEditsDetailsResponse = /*@__PURE__*/ /*#__PURE__*/ AppDetails;
+
+export type PatchEditsDetailsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Patches details of an app. */
+export const patchEditsDetails: API.OperationMethod<
+  PatchEditsDetailsRequest,
+  PatchEditsDetailsResponse,
+  PatchEditsDetailsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchEditsDetailsRequest,
+  output: PatchEditsDetailsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface BatchgetOrdersRequest {
+  /** Required. The list of order IDs to retrieve order details for. There must be between 1 and 1000 (inclusive) order IDs per request. If any order ID is not found or does not match the provided package, the entire request will fail with an error. The order IDs must be distinct. */
+  orderIds?: string[];
+  /** Required. The package name of the application for which this subscription or in-app item was purchased (for example, 'com.some.thing'). */
+  packageName: string;
+}
+
+export const BatchgetOrdersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  orderIds: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("orderIds"),
+  ),
+  packageName: Schema.String.pipe(T.HttpPath("packageName")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "androidpublisher/v3/applications/{packageName}/orders:batchGet",
+  }),
+  svc,
+) as unknown as Schema.Schema<BatchgetOrdersRequest>;
+
+export type BatchgetOrdersResponse = BatchGetOrdersResponse;
+export const BatchgetOrdersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BatchGetOrdersResponse;
+
+export type BatchgetOrdersError = DefaultErrors | NotFound | Forbidden;
+
+/** Get order details for a list of orders. */
+export const batchgetOrders: API.OperationMethod<
+  BatchgetOrdersRequest,
+  BatchgetOrdersResponse,
+  BatchgetOrdersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchgetOrdersRequest,
+  output: BatchgetOrdersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface RefundOrdersRequest {
+  /** The order ID provided to the user when the subscription or in-app order was purchased. */
+  orderId: string;
+  /** Whether to revoke the purchased item. If set to true, access to the subscription or in-app item will be terminated immediately. If the item is a recurring subscription, all future payments will also be terminated. Consumed in-app items need to be handled by developer's app. (optional). */
+  revoke?: boolean;
+  /** The package name of the application for which this subscription or in-app item was purchased (for example, 'com.some.thing'). */
+  packageName: string;
+}
+
+export const RefundOrdersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  orderId: Schema.String.pipe(T.HttpPath("orderId")),
+  revoke: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("revoke")),
+  packageName: Schema.String.pipe(T.HttpPath("packageName")),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "androidpublisher/v3/applications/{packageName}/orders/{orderId}:refund",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<RefundOrdersRequest>;
+
+export interface RefundOrdersResponse {}
+export const RefundOrdersResponse: Schema.Schema<RefundOrdersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<RefundOrdersResponse>;
+
+export type RefundOrdersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Refunds a user's subscription or in-app purchase order. Orders older than 3 years cannot be refunded. */
+export const refundOrders: API.OperationMethod<
+  RefundOrdersRequest,
+  RefundOrdersResponse,
+  RefundOrdersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RefundOrdersRequest,
+  output: RefundOrdersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetOrdersRequest {
+  /** Required. The order ID provided to the user when the subscription or in-app order was purchased. */
+  orderId: string;
+  /** Required. The package name of the application for which this subscription or in-app item was purchased (for example, 'com.some.thing'). */
+  packageName: string;
+}
+
+export const GetOrdersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  orderId: Schema.String.pipe(T.HttpPath("orderId")),
+  packageName: Schema.String.pipe(T.HttpPath("packageName")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "androidpublisher/v3/applications/{packageName}/orders/{orderId}",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetOrdersRequest>;
+
+export type GetOrdersResponse = Order;
+export const GetOrdersResponse = /*@__PURE__*/ /*#__PURE__*/ Order;
+
+export type GetOrdersError = DefaultErrors | NotFound | Forbidden;
+
+/** Get order details for a single order. */
+export const getOrders: API.OperationMethod<
+  GetOrdersRequest,
+  GetOrdersResponse,
+  GetOrdersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetOrdersRequest,
+  output: GetOrdersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListApprecoveryRequest {
+  /** Required. Version code targeted by the list of recovery actions. */
+  versionCode?: string;
+  /** Required. Package name of the app for which list of recovery actions is requested. */
+  packageName: string;
+}
+
+export const ListApprecoveryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    versionCode: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("versionCode"),
+    ),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "androidpublisher/v3/applications/{packageName}/appRecoveries",
+  }),
+  svc,
+) as unknown as Schema.Schema<ListApprecoveryRequest>;
+
+export type ListApprecoveryResponse = ListAppRecoveriesResponse;
+export const ListApprecoveryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListAppRecoveriesResponse;
+
+export type ListApprecoveryError = DefaultErrors | NotFound | Forbidden;
+
+/** List all app recovery action resources associated with a particular package name and app version. */
+export const listApprecovery: API.OperationMethod<
+  ListApprecoveryRequest,
+  ListApprecoveryResponse,
+  ListApprecoveryError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListApprecoveryRequest,
+  output: ListApprecoveryResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateApprecoveryRequest {
+  /** Required. Package name of the app on which recovery action is performed. */
+  packageName: string;
+  /** Request body */
+  body?: CreateDraftAppRecoveryRequest;
+}
+
+export const CreateApprecoveryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    body: Schema.optional(CreateDraftAppRecoveryRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/appRecoveries",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateApprecoveryRequest>;
+
+export type CreateApprecoveryResponse = AppRecoveryAction;
+export const CreateApprecoveryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AppRecoveryAction;
+
+export type CreateApprecoveryError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Create an app recovery action with recovery status as DRAFT. Note that this action does not execute the recovery action. */
+export const createApprecovery: API.OperationMethod<
+  CreateApprecoveryRequest,
+  CreateApprecoveryResponse,
+  CreateApprecoveryError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateApprecoveryRequest,
+  output: CreateApprecoveryResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeployApprecoveryRequest {
+  /** Required. Package name of the app for which recovery action is deployed. */
+  packageName: string;
+  /** Required. ID corresponding to the app recovery action to deploy. */
+  appRecoveryId: string;
+  /** Request body */
+  body?: DeployAppRecoveryRequest;
+}
+
+export const DeployApprecoveryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    appRecoveryId: Schema.String.pipe(T.HttpPath("appRecoveryId")),
+    body: Schema.optional(DeployAppRecoveryRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:deploy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeployApprecoveryRequest>;
+
+export type DeployApprecoveryResponse = DeployAppRecoveryResponse;
+export const DeployApprecoveryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ DeployAppRecoveryResponse;
+
+export type DeployApprecoveryError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deploy an already created app recovery action with recovery status DRAFT. Note that this action activates the recovery action for all targeted users and changes its status to ACTIVE. */
+export const deployApprecovery: API.OperationMethod<
+  DeployApprecoveryRequest,
+  DeployApprecoveryResponse,
+  DeployApprecoveryError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeployApprecoveryRequest,
+  output: DeployApprecoveryResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface AddTargetingApprecoveryRequest {
+  /** Required. ID corresponding to the app recovery action. */
+  appRecoveryId: string;
+  /** Required. Package name of the app for which recovery action is to be updated. */
+  packageName: string;
+  /** Request body */
+  body?: AddTargetingRequest;
+}
+
+export const AddTargetingApprecoveryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appRecoveryId: Schema.String.pipe(T.HttpPath("appRecoveryId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    body: Schema.optional(AddTargetingRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:addTargeting",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<AddTargetingApprecoveryRequest>;
+
+export type AddTargetingApprecoveryResponse = AddTargetingResponse;
+export const AddTargetingApprecoveryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AddTargetingResponse;
+
+export type AddTargetingApprecoveryError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Incrementally update targeting for a recovery action. Note that only the criteria selected during the creation of recovery action can be expanded. */
+export const addTargetingApprecovery: API.OperationMethod<
+  AddTargetingApprecoveryRequest,
+  AddTargetingApprecoveryResponse,
+  AddTargetingApprecoveryError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: AddTargetingApprecoveryRequest,
+  output: AddTargetingApprecoveryResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CancelApprecoveryRequest {
+  /** Required. ID corresponding to the app recovery action. */
+  appRecoveryId: string;
+  /** Required. Package name of the app for which recovery action cancellation is requested. */
+  packageName: string;
+  /** Request body */
+  body?: CancelAppRecoveryRequest;
+}
+
+export const CancelApprecoveryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appRecoveryId: Schema.String.pipe(T.HttpPath("appRecoveryId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    body: Schema.optional(CancelAppRecoveryRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:cancel",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CancelApprecoveryRequest>;
+
+export type CancelApprecoveryResponse = CancelAppRecoveryResponse;
+export const CancelApprecoveryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ CancelAppRecoveryResponse;
+
+export type CancelApprecoveryError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Cancel an already executing app recovery action. Note that this action changes status of the recovery action to CANCELED. */
+export const cancelApprecovery: API.OperationMethod<
+  CancelApprecoveryRequest,
+  CancelApprecoveryResponse,
+  CancelApprecoveryError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelApprecoveryRequest,
+  output: CancelApprecoveryResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface UploadapkInternalappsharingartifactsRequest {
+  /** Package name of the app. */
+  packageName: string;
+}
+
+export const UploadapkInternalappsharingartifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/apk",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UploadapkInternalappsharingartifactsRequest>;
+
+export type UploadapkInternalappsharingartifactsResponse =
+  InternalAppSharingArtifact;
+export const UploadapkInternalappsharingartifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ InternalAppSharingArtifact;
+
+export type UploadapkInternalappsharingartifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Uploads an APK to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java. */
+export const uploadapkInternalappsharingartifacts: API.OperationMethod<
+  UploadapkInternalappsharingartifactsRequest,
+  UploadapkInternalappsharingartifactsResponse,
+  UploadapkInternalappsharingartifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UploadapkInternalappsharingartifactsRequest,
+  output: UploadapkInternalappsharingartifactsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface UploadbundleInternalappsharingartifactsRequest {
+  /** Package name of the app. */
+  packageName: string;
+}
+
+export const UploadbundleInternalappsharingartifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/bundle",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UploadbundleInternalappsharingartifactsRequest>;
+
+export type UploadbundleInternalappsharingartifactsResponse =
+  InternalAppSharingArtifact;
+export const UploadbundleInternalappsharingartifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ InternalAppSharingArtifact;
+
+export type UploadbundleInternalappsharingartifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Uploads an app bundle to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java. */
+export const uploadbundleInternalappsharingartifacts: API.OperationMethod<
+  UploadbundleInternalappsharingartifactsRequest,
+  UploadbundleInternalappsharingartifactsResponse,
+  UploadbundleInternalappsharingartifactsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UploadbundleInternalappsharingartifactsRequest,
+  output: UploadbundleInternalappsharingartifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -5791,2982 +9539,6 @@ export const deleteGrants: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface CreateApprecoveryRequest {
-  /** Required. Package name of the app on which recovery action is performed. */
-  packageName: string;
-  /** Request body */
-  body?: CreateDraftAppRecoveryRequest;
-}
-
-export const CreateApprecoveryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    body: Schema.optional(CreateDraftAppRecoveryRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/appRecoveries",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateApprecoveryRequest>;
-
-export type CreateApprecoveryResponse = AppRecoveryAction;
-export const CreateApprecoveryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AppRecoveryAction;
-
-export type CreateApprecoveryError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Create an app recovery action with recovery status as DRAFT. Note that this action does not execute the recovery action. */
-export const createApprecovery: API.OperationMethod<
-  CreateApprecoveryRequest,
-  CreateApprecoveryResponse,
-  CreateApprecoveryError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateApprecoveryRequest,
-  output: CreateApprecoveryResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeployApprecoveryRequest {
-  /** Required. Package name of the app for which recovery action is deployed. */
-  packageName: string;
-  /** Required. ID corresponding to the app recovery action to deploy. */
-  appRecoveryId: string;
-  /** Request body */
-  body?: DeployAppRecoveryRequest;
-}
-
-export const DeployApprecoveryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    appRecoveryId: Schema.String.pipe(T.HttpPath("appRecoveryId")),
-    body: Schema.optional(DeployAppRecoveryRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:deploy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeployApprecoveryRequest>;
-
-export type DeployApprecoveryResponse = DeployAppRecoveryResponse;
-export const DeployApprecoveryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DeployAppRecoveryResponse;
-
-export type DeployApprecoveryError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deploy an already created app recovery action with recovery status DRAFT. Note that this action activates the recovery action for all targeted users and changes its status to ACTIVE. */
-export const deployApprecovery: API.OperationMethod<
-  DeployApprecoveryRequest,
-  DeployApprecoveryResponse,
-  DeployApprecoveryError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeployApprecoveryRequest,
-  output: DeployApprecoveryResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListApprecoveryRequest {
-  /** Required. Package name of the app for which list of recovery actions is requested. */
-  packageName: string;
-  /** Required. Version code targeted by the list of recovery actions. */
-  versionCode?: string;
-}
-
-export const ListApprecoveryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    versionCode: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("versionCode"),
-    ),
-  },
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "androidpublisher/v3/applications/{packageName}/appRecoveries",
-  }),
-  svc,
-) as unknown as Schema.Schema<ListApprecoveryRequest>;
-
-export type ListApprecoveryResponse = ListAppRecoveriesResponse;
-export const ListApprecoveryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAppRecoveriesResponse;
-
-export type ListApprecoveryError = DefaultErrors | NotFound | Forbidden;
-
-/** List all app recovery action resources associated with a particular package name and app version. */
-export const listApprecovery: API.OperationMethod<
-  ListApprecoveryRequest,
-  ListApprecoveryResponse,
-  ListApprecoveryError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListApprecoveryRequest,
-  output: ListApprecoveryResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface AddTargetingApprecoveryRequest {
-  /** Required. Package name of the app for which recovery action is to be updated. */
-  packageName: string;
-  /** Required. ID corresponding to the app recovery action. */
-  appRecoveryId: string;
-  /** Request body */
-  body?: AddTargetingRequest;
-}
-
-export const AddTargetingApprecoveryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    appRecoveryId: Schema.String.pipe(T.HttpPath("appRecoveryId")),
-    body: Schema.optional(AddTargetingRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:addTargeting",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<AddTargetingApprecoveryRequest>;
-
-export type AddTargetingApprecoveryResponse = AddTargetingResponse;
-export const AddTargetingApprecoveryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AddTargetingResponse;
-
-export type AddTargetingApprecoveryError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Incrementally update targeting for a recovery action. Note that only the criteria selected during the creation of recovery action can be expanded. */
-export const addTargetingApprecovery: API.OperationMethod<
-  AddTargetingApprecoveryRequest,
-  AddTargetingApprecoveryResponse,
-  AddTargetingApprecoveryError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: AddTargetingApprecoveryRequest,
-  output: AddTargetingApprecoveryResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CancelApprecoveryRequest {
-  /** Required. Package name of the app for which recovery action cancellation is requested. */
-  packageName: string;
-  /** Required. ID corresponding to the app recovery action. */
-  appRecoveryId: string;
-  /** Request body */
-  body?: CancelAppRecoveryRequest;
-}
-
-export const CancelApprecoveryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    appRecoveryId: Schema.String.pipe(T.HttpPath("appRecoveryId")),
-    body: Schema.optional(CancelAppRecoveryRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:cancel",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CancelApprecoveryRequest>;
-
-export type CancelApprecoveryResponse = CancelAppRecoveryResponse;
-export const CancelApprecoveryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CancelAppRecoveryResponse;
-
-export type CancelApprecoveryError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Cancel an already executing app recovery action. Note that this action changes status of the recovery action to CANCELED. */
-export const cancelApprecovery: API.OperationMethod<
-  CancelApprecoveryRequest,
-  CancelApprecoveryResponse,
-  CancelApprecoveryError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelApprecoveryRequest,
-  output: CancelApprecoveryResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface Getproductpurchasev2PurchasesProductsv2Request {
-  /** The package name of the application the inapp product was sold in (for example, 'com.some.thing'). */
-  packageName: string;
-  /** The token provided to the user's device when the inapp product was purchased. */
-  token: string;
-}
-
-export const Getproductpurchasev2PurchasesProductsv2Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    token: Schema.String.pipe(T.HttpPath("token")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/purchases/productsv2/tokens/{token}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<Getproductpurchasev2PurchasesProductsv2Request>;
-
-export type Getproductpurchasev2PurchasesProductsv2Response = ProductPurchaseV2;
-export const Getproductpurchasev2PurchasesProductsv2Response =
-  /*@__PURE__*/ /*#__PURE__*/ ProductPurchaseV2;
-
-export type Getproductpurchasev2PurchasesProductsv2Error =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Checks the purchase and consumption status of an inapp item. */
-export const getproductpurchasev2PurchasesProductsv2: API.OperationMethod<
-  Getproductpurchasev2PurchasesProductsv2Request,
-  Getproductpurchasev2PurchasesProductsv2Response,
-  Getproductpurchasev2PurchasesProductsv2Error,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: Getproductpurchasev2PurchasesProductsv2Request,
-  output: Getproductpurchasev2PurchasesProductsv2Response,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetPurchasesProductsRequest {
-  /** The package name of the application the inapp product was sold in (for example, 'com.some.thing'). */
-  packageName: string;
-  /** The inapp product SKU (for example, 'com.some.thing.inapp1'). */
-  productId: string;
-  /** The token provided to the user's device when the inapp product was purchased. */
-  token: string;
-}
-
-export const GetPurchasesProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
-    token: Schema.String.pipe(T.HttpPath("token")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetPurchasesProductsRequest>;
-
-export type GetPurchasesProductsResponse = ProductPurchase;
-export const GetPurchasesProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ProductPurchase;
-
-export type GetPurchasesProductsError = DefaultErrors | NotFound | Forbidden;
-
-/** Checks the purchase and consumption status of an inapp item. */
-export const getPurchasesProducts: API.OperationMethod<
-  GetPurchasesProductsRequest,
-  GetPurchasesProductsResponse,
-  GetPurchasesProductsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetPurchasesProductsRequest,
-  output: GetPurchasesProductsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface AcknowledgePurchasesProductsRequest {
-  /** The package name of the application the inapp product was sold in (for example, 'com.some.thing'). */
-  packageName: string;
-  /** The inapp product SKU (for example, 'com.some.thing.inapp1'). */
-  productId: string;
-  /** The token provided to the user's device when the inapp product was purchased. */
-  token: string;
-  /** Request body */
-  body?: ProductPurchasesAcknowledgeRequest;
-}
-
-export const AcknowledgePurchasesProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
-    token: Schema.String.pipe(T.HttpPath("token")),
-    body: Schema.optional(ProductPurchasesAcknowledgeRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}:acknowledge",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<AcknowledgePurchasesProductsRequest>;
-
-export interface AcknowledgePurchasesProductsResponse {}
-export const AcknowledgePurchasesProductsResponse: Schema.Schema<AcknowledgePurchasesProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<AcknowledgePurchasesProductsResponse>;
-
-export type AcknowledgePurchasesProductsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Acknowledges a purchase of an inapp item. */
-export const acknowledgePurchasesProducts: API.OperationMethod<
-  AcknowledgePurchasesProductsRequest,
-  AcknowledgePurchasesProductsResponse,
-  AcknowledgePurchasesProductsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: AcknowledgePurchasesProductsRequest,
-  output: AcknowledgePurchasesProductsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ConsumePurchasesProductsRequest {
-  /** The package name of the application the inapp product was sold in (for example, 'com.some.thing'). */
-  packageName: string;
-  /** The inapp product SKU (for example, 'com.some.thing.inapp1'). */
-  productId: string;
-  /** The token provided to the user's device when the inapp product was purchased. */
-  token: string;
-}
-
-export const ConsumePurchasesProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
-    token: Schema.String.pipe(T.HttpPath("token")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}:consume",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ConsumePurchasesProductsRequest>;
-
-export interface ConsumePurchasesProductsResponse {}
-export const ConsumePurchasesProductsResponse: Schema.Schema<ConsumePurchasesProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<ConsumePurchasesProductsResponse>;
-
-export type ConsumePurchasesProductsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Consumes a purchase for an inapp item. */
-export const consumePurchasesProducts: API.OperationMethod<
-  ConsumePurchasesProductsRequest,
-  ConsumePurchasesProductsResponse,
-  ConsumePurchasesProductsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ConsumePurchasesProductsRequest,
-  output: ConsumePurchasesProductsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetPurchasesSubscriptionsRequest {
-  /** The package name of the application for which this subscription was purchased (for example, 'com.some.thing'). */
-  packageName: string;
-  /** The purchased subscription ID (for example, 'monthly001'). */
-  subscriptionId: string;
-  /** The token provided to the user's device when the subscription was purchased. */
-  token: string;
-}
-
-export const GetPurchasesSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
-    token: Schema.String.pipe(T.HttpPath("token")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetPurchasesSubscriptionsRequest>;
-
-export type GetPurchasesSubscriptionsResponse = SubscriptionPurchase;
-export const GetPurchasesSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SubscriptionPurchase;
-
-export type GetPurchasesSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Deprecated: Use purchases.subscriptionsv2.get instead. Checks whether a user's subscription purchase is valid and returns its expiry time. */
-export const getPurchasesSubscriptions: API.OperationMethod<
-  GetPurchasesSubscriptionsRequest,
-  GetPurchasesSubscriptionsResponse,
-  GetPurchasesSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetPurchasesSubscriptionsRequest,
-  output: GetPurchasesSubscriptionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CancelPurchasesSubscriptionsRequest {
-  /** The package name of the application for which this subscription was purchased (for example, 'com.some.thing'). */
-  packageName: string;
-  /** Note: Since May 21, 2025, subscription_id is not required, and not recommended for subscription with add-ons. The purchased subscription ID (for example, 'monthly001'). */
-  subscriptionId: string;
-  /** The token provided to the user's device when the subscription was purchased. */
-  token: string;
-}
-
-export const CancelPurchasesSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
-    token: Schema.String.pipe(T.HttpPath("token")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:cancel",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CancelPurchasesSubscriptionsRequest>;
-
-export interface CancelPurchasesSubscriptionsResponse {}
-export const CancelPurchasesSubscriptionsResponse: Schema.Schema<CancelPurchasesSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<CancelPurchasesSubscriptionsResponse>;
-
-export type CancelPurchasesSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Cancels a user's subscription purchase. The subscription remains valid until its expiration time. Newer version is available at purchases.subscriptionsv2.cancel for better client library support. */
-export const cancelPurchasesSubscriptions: API.OperationMethod<
-  CancelPurchasesSubscriptionsRequest,
-  CancelPurchasesSubscriptionsResponse,
-  CancelPurchasesSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelPurchasesSubscriptionsRequest,
-  output: CancelPurchasesSubscriptionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeferPurchasesSubscriptionsRequest {
-  /** The package name of the application for which this subscription was purchased (for example, 'com.some.thing'). */
-  packageName: string;
-  /** The purchased subscription ID (for example, 'monthly001'). */
-  subscriptionId: string;
-  /** The token provided to the user's device when the subscription was purchased. */
-  token: string;
-  /** Request body */
-  body?: SubscriptionPurchasesDeferRequest;
-}
-
-export const DeferPurchasesSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
-    token: Schema.String.pipe(T.HttpPath("token")),
-    body: Schema.optional(SubscriptionPurchasesDeferRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:defer",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeferPurchasesSubscriptionsRequest>;
-
-export type DeferPurchasesSubscriptionsResponse =
-  SubscriptionPurchasesDeferResponse;
-export const DeferPurchasesSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SubscriptionPurchasesDeferResponse;
-
-export type DeferPurchasesSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Defers a user's subscription purchase until a specified future expiration time. */
-export const deferPurchasesSubscriptions: API.OperationMethod<
-  DeferPurchasesSubscriptionsRequest,
-  DeferPurchasesSubscriptionsResponse,
-  DeferPurchasesSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeferPurchasesSubscriptionsRequest,
-  output: DeferPurchasesSubscriptionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface RefundPurchasesSubscriptionsRequest {
-  /** The package name of the application for which this subscription was purchased (for example, 'com.some.thing'). */
-  packageName: string;
-  /** "The purchased subscription ID (for example, 'monthly001'). */
-  subscriptionId: string;
-  /** The token provided to the user's device when the subscription was purchased. */
-  token: string;
-}
-
-export const RefundPurchasesSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
-    token: Schema.String.pipe(T.HttpPath("token")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:refund",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RefundPurchasesSubscriptionsRequest>;
-
-export interface RefundPurchasesSubscriptionsResponse {}
-export const RefundPurchasesSubscriptionsResponse: Schema.Schema<RefundPurchasesSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<RefundPurchasesSubscriptionsResponse>;
-
-export type RefundPurchasesSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deprecated: Use orders.refund instead. Refunds a user's subscription purchase, but the subscription remains valid until its expiration time and it will continue to recur. */
-export const refundPurchasesSubscriptions: API.OperationMethod<
-  RefundPurchasesSubscriptionsRequest,
-  RefundPurchasesSubscriptionsResponse,
-  RefundPurchasesSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RefundPurchasesSubscriptionsRequest,
-  output: RefundPurchasesSubscriptionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface RevokePurchasesSubscriptionsRequest {
-  /** The package name of the application for which this subscription was purchased (for example, 'com.some.thing'). */
-  packageName: string;
-  /** The purchased subscription ID (for example, 'monthly001'). */
-  subscriptionId: string;
-  /** The token provided to the user's device when the subscription was purchased. */
-  token: string;
-}
-
-export const RevokePurchasesSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
-    token: Schema.String.pipe(T.HttpPath("token")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:revoke",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RevokePurchasesSubscriptionsRequest>;
-
-export interface RevokePurchasesSubscriptionsResponse {}
-export const RevokePurchasesSubscriptionsResponse: Schema.Schema<RevokePurchasesSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<RevokePurchasesSubscriptionsResponse>;
-
-export type RevokePurchasesSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deprecated: Use purchases.subscriptionsv2.revoke instead. Refunds and immediately revokes a user's subscription purchase. Access to the subscription will be terminated immediately and it will stop recurring. */
-export const revokePurchasesSubscriptions: API.OperationMethod<
-  RevokePurchasesSubscriptionsRequest,
-  RevokePurchasesSubscriptionsResponse,
-  RevokePurchasesSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RevokePurchasesSubscriptionsRequest,
-  output: RevokePurchasesSubscriptionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface AcknowledgePurchasesSubscriptionsRequest {
-  /** The package name of the application for which this subscription was purchased (for example, 'com.some.thing'). */
-  packageName: string;
-  /** Note: Since May 21, 2025, subscription_id is not required, and not recommended for subscription with add-ons. The purchased subscription ID (for example, 'monthly001'). */
-  subscriptionId: string;
-  /** The token provided to the user's device when the subscription was purchased. */
-  token: string;
-  /** Request body */
-  body?: SubscriptionPurchasesAcknowledgeRequest;
-}
-
-export const AcknowledgePurchasesSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
-    token: Schema.String.pipe(T.HttpPath("token")),
-    body: Schema.optional(SubscriptionPurchasesAcknowledgeRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:acknowledge",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<AcknowledgePurchasesSubscriptionsRequest>;
-
-export interface AcknowledgePurchasesSubscriptionsResponse {}
-export const AcknowledgePurchasesSubscriptionsResponse: Schema.Schema<AcknowledgePurchasesSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<AcknowledgePurchasesSubscriptionsResponse>;
-
-export type AcknowledgePurchasesSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Acknowledges a subscription purchase. */
-export const acknowledgePurchasesSubscriptions: API.OperationMethod<
-  AcknowledgePurchasesSubscriptionsRequest,
-  AcknowledgePurchasesSubscriptionsResponse,
-  AcknowledgePurchasesSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: AcknowledgePurchasesSubscriptionsRequest,
-  output: AcknowledgePurchasesSubscriptionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetPurchasesSubscriptionsv2Request {
-  /** The package of the application for which this subscription was purchased (for example, 'com.some.thing'). */
-  packageName: string;
-  /** Required. The token provided to the user's device when the subscription was purchased. */
-  token: string;
-}
-
-export const GetPurchasesSubscriptionsv2Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    token: Schema.String.pipe(T.HttpPath("token")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetPurchasesSubscriptionsv2Request>;
-
-export type GetPurchasesSubscriptionsv2Response = SubscriptionPurchaseV2;
-export const GetPurchasesSubscriptionsv2Response =
-  /*@__PURE__*/ /*#__PURE__*/ SubscriptionPurchaseV2;
-
-export type GetPurchasesSubscriptionsv2Error =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get metadata about a subscription */
-export const getPurchasesSubscriptionsv2: API.OperationMethod<
-  GetPurchasesSubscriptionsv2Request,
-  GetPurchasesSubscriptionsv2Response,
-  GetPurchasesSubscriptionsv2Error,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetPurchasesSubscriptionsv2Request,
-  output: GetPurchasesSubscriptionsv2Response,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface RevokePurchasesSubscriptionsv2Request {
-  /** Required. The package of the application for which this subscription was purchased (for example, 'com.some.thing'). */
-  packageName: string;
-  /** Required. The token provided to the user's device when the subscription was purchased. */
-  token: string;
-  /** Request body */
-  body?: RevokeSubscriptionPurchaseRequest;
-}
-
-export const RevokePurchasesSubscriptionsv2Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    token: Schema.String.pipe(T.HttpPath("token")),
-    body: Schema.optional(RevokeSubscriptionPurchaseRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:revoke",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RevokePurchasesSubscriptionsv2Request>;
-
-export type RevokePurchasesSubscriptionsv2Response =
-  RevokeSubscriptionPurchaseResponse;
-export const RevokePurchasesSubscriptionsv2Response =
-  /*@__PURE__*/ /*#__PURE__*/ RevokeSubscriptionPurchaseResponse;
-
-export type RevokePurchasesSubscriptionsv2Error =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Revoke a subscription purchase for the user. */
-export const revokePurchasesSubscriptionsv2: API.OperationMethod<
-  RevokePurchasesSubscriptionsv2Request,
-  RevokePurchasesSubscriptionsv2Response,
-  RevokePurchasesSubscriptionsv2Error,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RevokePurchasesSubscriptionsv2Request,
-  output: RevokePurchasesSubscriptionsv2Response,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CancelPurchasesSubscriptionsv2Request {
-  /** Required. The package of the application for which this subscription was purchased (for example, 'com.some.thing'). */
-  packageName: string;
-  /** Required. The token provided to the user's device when the subscription was purchased. */
-  token: string;
-  /** Request body */
-  body?: CancelSubscriptionPurchaseRequest;
-}
-
-export const CancelPurchasesSubscriptionsv2Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    token: Schema.String.pipe(T.HttpPath("token")),
-    body: Schema.optional(CancelSubscriptionPurchaseRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:cancel",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CancelPurchasesSubscriptionsv2Request>;
-
-export type CancelPurchasesSubscriptionsv2Response =
-  CancelSubscriptionPurchaseResponse;
-export const CancelPurchasesSubscriptionsv2Response =
-  /*@__PURE__*/ /*#__PURE__*/ CancelSubscriptionPurchaseResponse;
-
-export type CancelPurchasesSubscriptionsv2Error =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Cancel a subscription purchase for the user. */
-export const cancelPurchasesSubscriptionsv2: API.OperationMethod<
-  CancelPurchasesSubscriptionsv2Request,
-  CancelPurchasesSubscriptionsv2Response,
-  CancelPurchasesSubscriptionsv2Error,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelPurchasesSubscriptionsv2Request,
-  output: CancelPurchasesSubscriptionsv2Response,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeferPurchasesSubscriptionsv2Request {
-  /** Required. The package of the application for which this subscription was purchased (for example, 'com.some.thing'). */
-  packageName: string;
-  /** Required. The token provided to the user's device when the subscription was purchased. */
-  token: string;
-  /** Request body */
-  body?: DeferSubscriptionPurchaseRequest;
-}
-
-export const DeferPurchasesSubscriptionsv2Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    token: Schema.String.pipe(T.HttpPath("token")),
-    body: Schema.optional(DeferSubscriptionPurchaseRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:defer",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeferPurchasesSubscriptionsv2Request>;
-
-export type DeferPurchasesSubscriptionsv2Response =
-  DeferSubscriptionPurchaseResponse;
-export const DeferPurchasesSubscriptionsv2Response =
-  /*@__PURE__*/ /*#__PURE__*/ DeferSubscriptionPurchaseResponse;
-
-export type DeferPurchasesSubscriptionsv2Error =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Defers the renewal of a subscription. */
-export const deferPurchasesSubscriptionsv2: API.OperationMethod<
-  DeferPurchasesSubscriptionsv2Request,
-  DeferPurchasesSubscriptionsv2Response,
-  DeferPurchasesSubscriptionsv2Error,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeferPurchasesSubscriptionsv2Request,
-  output: DeferPurchasesSubscriptionsv2Response,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListPurchasesVoidedpurchasesRequest {
-  /** The package name of the application for which voided purchases need to be returned (for example, 'com.some.thing'). */
-  packageName: string;
-  /** Defines how many results the list operation should return. The default number depends on the resource collection. */
-  maxResults?: number;
-  /** Defines the index of the first element to return. This can only be used if indexed paging is enabled. */
-  startIndex?: number;
-  /** Defines the token of the page to return, usually taken from TokenPagination. This can only be used if token paging is enabled. */
-  token?: string;
-  /** The time, in milliseconds since the Epoch, of the oldest voided purchase that you want to see in the response. The value of this parameter cannot be older than 30 days and is ignored if a pagination token is set. Default value is current time minus 30 days. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response. */
-  startTime?: string;
-  /** The time, in milliseconds since the Epoch, of the newest voided purchase that you want to see in the response. The value of this parameter cannot be greater than the current time and is ignored if a pagination token is set. Default value is current time. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response. */
-  endTime?: string;
-  /** The type of voided purchases that you want to see in the response. Possible values are: 0. Only voided in-app product purchases will be returned in the response. This is the default value. 1. Both voided in-app purchases and voided subscription purchases will be returned in the response. Note: Before requesting to receive voided subscription purchases, you must switch to use orderId in the response which uniquely identifies one-time purchases and subscriptions. Otherwise, you will receive multiple subscription orders with the same PurchaseToken, because subscription renewal orders share the same PurchaseToken. */
-  type?: number;
-  /** Optional. Whether to include voided purchases of quantity-based partial refunds, which are applicable only to multi-quantity purchases. If true, additional voided purchases may be returned with voidedQuantity that indicates the refund quantity of a quantity-based partial refund. The default value is false. */
-  includeQuantityBasedPartialRefund?: boolean;
-}
-
-export const ListPurchasesVoidedpurchasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    startIndex: Schema.optional(Schema.Number).pipe(T.HttpQuery("startIndex")),
-    token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
-    startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
-    endTime: Schema.optional(Schema.String).pipe(T.HttpQuery("endTime")),
-    type: Schema.optional(Schema.Number).pipe(T.HttpQuery("type")),
-    includeQuantityBasedPartialRefund: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("includeQuantityBasedPartialRefund"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/purchases/voidedpurchases",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListPurchasesVoidedpurchasesRequest>;
-
-export type ListPurchasesVoidedpurchasesResponse = VoidedPurchasesListResponse;
-export const ListPurchasesVoidedpurchasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VoidedPurchasesListResponse;
-
-export type ListPurchasesVoidedpurchasesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists the purchases that were canceled, refunded or charged-back. */
-export const listPurchasesVoidedpurchases: API.OperationMethod<
-  ListPurchasesVoidedpurchasesRequest,
-  ListPurchasesVoidedpurchasesResponse,
-  ListPurchasesVoidedpurchasesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListPurchasesVoidedpurchasesRequest,
-  output: ListPurchasesVoidedpurchasesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface InsertEditsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Request body */
-  body?: AppEdit;
-}
-
-export const InsertEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.String.pipe(T.HttpPath("packageName")),
-  body: Schema.optional(AppEdit).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "androidpublisher/v3/applications/{packageName}/edits",
-    hasBody: true,
-  }),
-  svc,
-) as unknown as Schema.Schema<InsertEditsRequest>;
-
-export type InsertEditsResponse = AppEdit;
-export const InsertEditsResponse = /*@__PURE__*/ /*#__PURE__*/ AppEdit;
-
-export type InsertEditsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new edit for an app. */
-export const insertEdits: API.OperationMethod<
-  InsertEditsRequest,
-  InsertEditsResponse,
-  InsertEditsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: InsertEditsRequest,
-  output: InsertEditsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetEditsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-}
-
-export const GetEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.String.pipe(T.HttpPath("packageName")),
-  editId: Schema.String.pipe(T.HttpPath("editId")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}",
-  }),
-  svc,
-) as unknown as Schema.Schema<GetEditsRequest>;
-
-export type GetEditsResponse = AppEdit;
-export const GetEditsResponse = /*@__PURE__*/ /*#__PURE__*/ AppEdit;
-
-export type GetEditsError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets an app edit. */
-export const getEdits: API.OperationMethod<
-  GetEditsRequest,
-  GetEditsResponse,
-  GetEditsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetEditsRequest,
-  output: GetEditsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteEditsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-}
-
-export const DeleteEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.String.pipe(T.HttpPath("packageName")),
-  editId: Schema.String.pipe(T.HttpPath("editId")),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}",
-  }),
-  svc,
-) as unknown as Schema.Schema<DeleteEditsRequest>;
-
-export interface DeleteEditsResponse {}
-export const DeleteEditsResponse: Schema.Schema<DeleteEditsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<DeleteEditsResponse>;
-
-export type DeleteEditsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes an app edit. */
-export const deleteEdits: API.OperationMethod<
-  DeleteEditsRequest,
-  DeleteEditsResponse,
-  DeleteEditsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteEditsRequest,
-  output: DeleteEditsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CommitEditsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** When a rejection happens, the parameter will make sure that the changes in this edit won't be reviewed until they are explicitly sent for review from within the Google Play Console UI. These changes will be added to any other changes that are not yet sent for review. */
-  changesNotSentForReview?: boolean;
-  /** Optional. Specify how the API should behave if there are changes currently in review. If this value is not set, it will default to "CANCEL_IN_REVIEW_AND_SUBMIT", which will cancel the changes in review and then send all the changes for publishing. */
-  changesInReviewBehavior?:
-    | "CHANGES_IN_REVIEW_BEHAVIOR_TYPE_UNSPECIFIED"
-    | "CANCEL_IN_REVIEW_AND_SUBMIT"
-    | "ERROR_IF_IN_REVIEW"
-    | (string & {});
-}
-
-export const CommitEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.String.pipe(T.HttpPath("packageName")),
-  editId: Schema.String.pipe(T.HttpPath("editId")),
-  changesNotSentForReview: Schema.optional(Schema.Boolean).pipe(
-    T.HttpQuery("changesNotSentForReview"),
-  ),
-  changesInReviewBehavior: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("changesInReviewBehavior"),
-  ),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}:commit",
-    hasBody: true,
-  }),
-  svc,
-) as unknown as Schema.Schema<CommitEditsRequest>;
-
-export type CommitEditsResponse = AppEdit;
-export const CommitEditsResponse = /*@__PURE__*/ /*#__PURE__*/ AppEdit;
-
-export type CommitEditsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Commits an app edit. */
-export const commitEdits: API.OperationMethod<
-  CommitEditsRequest,
-  CommitEditsResponse,
-  CommitEditsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CommitEditsRequest,
-  output: CommitEditsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ValidateEditsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-}
-
-export const ValidateEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.String.pipe(T.HttpPath("packageName")),
-  editId: Schema.String.pipe(T.HttpPath("editId")),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}:validate",
-    hasBody: true,
-  }),
-  svc,
-) as unknown as Schema.Schema<ValidateEditsRequest>;
-
-export type ValidateEditsResponse = AppEdit;
-export const ValidateEditsResponse = /*@__PURE__*/ /*#__PURE__*/ AppEdit;
-
-export type ValidateEditsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Validates an app edit. */
-export const validateEdits: API.OperationMethod<
-  ValidateEditsRequest,
-  ValidateEditsResponse,
-  ValidateEditsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ValidateEditsRequest,
-  output: ValidateEditsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface UploadEditsApksRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-}
-
-export const UploadEditsApksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-  },
-).pipe(
-  T.Http({
-    method: "POST",
-    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks",
-    hasBody: true,
-  }),
-  svc,
-) as unknown as Schema.Schema<UploadEditsApksRequest>;
-
-export type UploadEditsApksResponse = Apk;
-export const UploadEditsApksResponse = /*@__PURE__*/ /*#__PURE__*/ Apk;
-
-export type UploadEditsApksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Uploads an APK and adds to the current edit. */
-export const uploadEditsApks: API.OperationMethod<
-  UploadEditsApksRequest,
-  UploadEditsApksResponse,
-  UploadEditsApksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UploadEditsApksRequest,
-  output: UploadEditsApksResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListEditsApksRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-}
-
-export const ListEditsApksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.String.pipe(T.HttpPath("packageName")),
-  editId: Schema.String.pipe(T.HttpPath("editId")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks",
-  }),
-  svc,
-) as unknown as Schema.Schema<ListEditsApksRequest>;
-
-export type ListEditsApksResponse = ApksListResponse;
-export const ListEditsApksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApksListResponse;
-
-export type ListEditsApksError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists all current APKs of the app and edit. */
-export const listEditsApks: API.OperationMethod<
-  ListEditsApksRequest,
-  ListEditsApksResponse,
-  ListEditsApksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListEditsApksRequest,
-  output: ListEditsApksResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface AddexternallyhostedEditsApksRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** Request body */
-  body?: ApksAddExternallyHostedRequest;
-}
-
-export const AddexternallyhostedEditsApksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    body: Schema.optional(ApksAddExternallyHostedRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/externallyHosted",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<AddexternallyhostedEditsApksRequest>;
-
-export type AddexternallyhostedEditsApksResponse =
-  ApksAddExternallyHostedResponse;
-export const AddexternallyhostedEditsApksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApksAddExternallyHostedResponse;
-
-export type AddexternallyhostedEditsApksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a specified URL. This function is only available to organizations using Managed Play whose application is configured to restrict distribution to the organizations. */
-export const addexternallyhostedEditsApks: API.OperationMethod<
-  AddexternallyhostedEditsApksRequest,
-  AddexternallyhostedEditsApksResponse,
-  AddexternallyhostedEditsApksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: AddexternallyhostedEditsApksRequest,
-  output: AddexternallyhostedEditsApksResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListEditsBundlesRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-}
-
-export const ListEditsBundlesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListEditsBundlesRequest>;
-
-export type ListEditsBundlesResponse = BundlesListResponse;
-export const ListEditsBundlesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BundlesListResponse;
-
-export type ListEditsBundlesError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists all current Android App Bundles of the app and edit. */
-export const listEditsBundles: API.OperationMethod<
-  ListEditsBundlesRequest,
-  ListEditsBundlesResponse,
-  ListEditsBundlesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListEditsBundlesRequest,
-  output: ListEditsBundlesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface UploadEditsBundlesRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** Deprecated. The installation warning has been removed, it's not necessary to set this field anymore. */
-  ackBundleInstallationWarning?: boolean;
-  /** Device tier config (DTC) to be used for generating deliverables (APKs). Contains id of the DTC or "LATEST" for last uploaded DTC. */
-  deviceTierConfigId?: string;
-}
-
-export const UploadEditsBundlesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    ackBundleInstallationWarning: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("ackBundleInstallationWarning"),
-    ),
-    deviceTierConfigId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("deviceTierConfigId"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UploadEditsBundlesRequest>;
-
-export type UploadEditsBundlesResponse = Bundle;
-export const UploadEditsBundlesResponse = /*@__PURE__*/ /*#__PURE__*/ Bundle;
-
-export type UploadEditsBundlesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Uploads a new Android App Bundle to this edit. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java. */
-export const uploadEditsBundles: API.OperationMethod<
-  UploadEditsBundlesRequest,
-  UploadEditsBundlesResponse,
-  UploadEditsBundlesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UploadEditsBundlesRequest,
-  output: UploadEditsBundlesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetEditsCountryavailabilityRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** The track to read from. */
-  track: string;
-}
-
-export const GetEditsCountryavailabilityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    track: Schema.String.pipe(T.HttpPath("track")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/countryAvailability/{track}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetEditsCountryavailabilityRequest>;
-
-export type GetEditsCountryavailabilityResponse = TrackCountryAvailability;
-export const GetEditsCountryavailabilityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TrackCountryAvailability;
-
-export type GetEditsCountryavailabilityError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets country availability. */
-export const getEditsCountryavailability: API.OperationMethod<
-  GetEditsCountryavailabilityRequest,
-  GetEditsCountryavailabilityResponse,
-  GetEditsCountryavailabilityError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetEditsCountryavailabilityRequest,
-  output: GetEditsCountryavailabilityResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface UploadEditsDeobfuscationfilesRequest {
-  /** Unique identifier for the Android app. */
-  packageName: string;
-  /** Unique identifier for this edit. */
-  editId: string;
-  /** The version code of the APK whose Deobfuscation File is being uploaded. */
-  apkVersionCode: number;
-  /** The type of the deobfuscation file. */
-  deobfuscationFileType:
-    | "deobfuscationFileTypeUnspecified"
-    | "proguard"
-    | "nativeCode"
-    | (string & {});
-}
-
-export const UploadEditsDeobfuscationfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    apkVersionCode: Schema.Number.pipe(T.HttpPath("apkVersionCode")),
-    deobfuscationFileType: Schema.String.pipe(
-      T.HttpPath("deobfuscationFileType"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UploadEditsDeobfuscationfilesRequest>;
-
-export type UploadEditsDeobfuscationfilesResponse =
-  DeobfuscationFilesUploadResponse;
-export const UploadEditsDeobfuscationfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DeobfuscationFilesUploadResponse;
-
-export type UploadEditsDeobfuscationfilesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Uploads a new deobfuscation file and attaches to the specified APK. */
-export const uploadEditsDeobfuscationfiles: API.OperationMethod<
-  UploadEditsDeobfuscationfilesRequest,
-  UploadEditsDeobfuscationfilesResponse,
-  UploadEditsDeobfuscationfilesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UploadEditsDeobfuscationfilesRequest,
-  output: UploadEditsDeobfuscationfilesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetEditsDetailsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-}
-
-export const GetEditsDetailsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-  },
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
-  }),
-  svc,
-) as unknown as Schema.Schema<GetEditsDetailsRequest>;
-
-export type GetEditsDetailsResponse = AppDetails;
-export const GetEditsDetailsResponse = /*@__PURE__*/ /*#__PURE__*/ AppDetails;
-
-export type GetEditsDetailsError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets details of an app. */
-export const getEditsDetails: API.OperationMethod<
-  GetEditsDetailsRequest,
-  GetEditsDetailsResponse,
-  GetEditsDetailsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetEditsDetailsRequest,
-  output: GetEditsDetailsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface UpdateEditsDetailsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** Request body */
-  body?: AppDetails;
-}
-
-export const UpdateEditsDetailsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    body: Schema.optional(AppDetails).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateEditsDetailsRequest>;
-
-export type UpdateEditsDetailsResponse = AppDetails;
-export const UpdateEditsDetailsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AppDetails;
-
-export type UpdateEditsDetailsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates details of an app. */
-export const updateEditsDetails: API.OperationMethod<
-  UpdateEditsDetailsRequest,
-  UpdateEditsDetailsResponse,
-  UpdateEditsDetailsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateEditsDetailsRequest,
-  output: UpdateEditsDetailsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchEditsDetailsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** Request body */
-  body?: AppDetails;
-}
-
-export const PatchEditsDetailsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    body: Schema.optional(AppDetails).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchEditsDetailsRequest>;
-
-export type PatchEditsDetailsResponse = AppDetails;
-export const PatchEditsDetailsResponse = /*@__PURE__*/ /*#__PURE__*/ AppDetails;
-
-export type PatchEditsDetailsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Patches details of an app. */
-export const patchEditsDetails: API.OperationMethod<
-  PatchEditsDetailsRequest,
-  PatchEditsDetailsResponse,
-  PatchEditsDetailsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchEditsDetailsRequest,
-  output: PatchEditsDetailsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetEditsExpansionfilesRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** The version code of the APK whose expansion file configuration is being read or modified. */
-  apkVersionCode: number;
-  /** The file type of the file configuration which is being read or modified. */
-  expansionFileType:
-    | "expansionFileTypeUnspecified"
-    | "main"
-    | "patch"
-    | (string & {});
-}
-
-export const GetEditsExpansionfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    apkVersionCode: Schema.Number.pipe(T.HttpPath("apkVersionCode")),
-    expansionFileType: Schema.String.pipe(T.HttpPath("expansionFileType")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetEditsExpansionfilesRequest>;
-
-export type GetEditsExpansionfilesResponse = ExpansionFile;
-export const GetEditsExpansionfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ExpansionFile;
-
-export type GetEditsExpansionfilesError = DefaultErrors | NotFound | Forbidden;
-
-/** Fetches the expansion file configuration for the specified APK. */
-export const getEditsExpansionfiles: API.OperationMethod<
-  GetEditsExpansionfilesRequest,
-  GetEditsExpansionfilesResponse,
-  GetEditsExpansionfilesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetEditsExpansionfilesRequest,
-  output: GetEditsExpansionfilesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface UpdateEditsExpansionfilesRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** The version code of the APK whose expansion file configuration is being read or modified. */
-  apkVersionCode: number;
-  /** The file type of the file configuration which is being read or modified. */
-  expansionFileType:
-    | "expansionFileTypeUnspecified"
-    | "main"
-    | "patch"
-    | (string & {});
-  /** Request body */
-  body?: ExpansionFile;
-}
-
-export const UpdateEditsExpansionfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    apkVersionCode: Schema.Number.pipe(T.HttpPath("apkVersionCode")),
-    expansionFileType: Schema.String.pipe(T.HttpPath("expansionFileType")),
-    body: Schema.optional(ExpansionFile).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateEditsExpansionfilesRequest>;
-
-export type UpdateEditsExpansionfilesResponse = ExpansionFile;
-export const UpdateEditsExpansionfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ExpansionFile;
-
-export type UpdateEditsExpansionfilesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the APK's expansion file configuration to reference another APK's expansion file. To add a new expansion file use the Upload method. */
-export const updateEditsExpansionfiles: API.OperationMethod<
-  UpdateEditsExpansionfilesRequest,
-  UpdateEditsExpansionfilesResponse,
-  UpdateEditsExpansionfilesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateEditsExpansionfilesRequest,
-  output: UpdateEditsExpansionfilesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchEditsExpansionfilesRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** The version code of the APK whose expansion file configuration is being read or modified. */
-  apkVersionCode: number;
-  /** The file type of the expansion file configuration which is being updated. */
-  expansionFileType:
-    | "expansionFileTypeUnspecified"
-    | "main"
-    | "patch"
-    | (string & {});
-  /** Request body */
-  body?: ExpansionFile;
-}
-
-export const PatchEditsExpansionfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    apkVersionCode: Schema.Number.pipe(T.HttpPath("apkVersionCode")),
-    expansionFileType: Schema.String.pipe(T.HttpPath("expansionFileType")),
-    body: Schema.optional(ExpansionFile).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchEditsExpansionfilesRequest>;
-
-export type PatchEditsExpansionfilesResponse = ExpansionFile;
-export const PatchEditsExpansionfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ExpansionFile;
-
-export type PatchEditsExpansionfilesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Patches the APK's expansion file configuration to reference another APK's expansion file. To add a new expansion file use the Upload method. */
-export const patchEditsExpansionfiles: API.OperationMethod<
-  PatchEditsExpansionfilesRequest,
-  PatchEditsExpansionfilesResponse,
-  PatchEditsExpansionfilesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchEditsExpansionfilesRequest,
-  output: PatchEditsExpansionfilesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface UploadEditsExpansionfilesRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** The version code of the APK whose expansion file configuration is being read or modified. */
-  apkVersionCode: number;
-  /** The file type of the expansion file configuration which is being updated. */
-  expansionFileType:
-    | "expansionFileTypeUnspecified"
-    | "main"
-    | "patch"
-    | (string & {});
-}
-
-export const UploadEditsExpansionfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    apkVersionCode: Schema.Number.pipe(T.HttpPath("apkVersionCode")),
-    expansionFileType: Schema.String.pipe(T.HttpPath("expansionFileType")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UploadEditsExpansionfilesRequest>;
-
-export type UploadEditsExpansionfilesResponse = ExpansionFilesUploadResponse;
-export const UploadEditsExpansionfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ExpansionFilesUploadResponse;
-
-export type UploadEditsExpansionfilesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Uploads a new expansion file and attaches to the specified APK. */
-export const uploadEditsExpansionfiles: API.OperationMethod<
-  UploadEditsExpansionfilesRequest,
-  UploadEditsExpansionfilesResponse,
-  UploadEditsExpansionfilesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UploadEditsExpansionfilesRequest,
-  output: UploadEditsExpansionfilesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListEditsImagesRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). There must be a store listing for the specified language. */
-  language: string;
-  /** Type of the Image. Providing an image type that refers to no images will return an empty response. */
-  imageType:
-    | "appImageTypeUnspecified"
-    | "phoneScreenshots"
-    | "sevenInchScreenshots"
-    | "tenInchScreenshots"
-    | "tvScreenshots"
-    | "wearScreenshots"
-    | "icon"
-    | "featureGraphic"
-    | "tvBanner"
-    | (string & {});
-}
-
-export const ListEditsImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    language: Schema.String.pipe(T.HttpPath("language")),
-    imageType: Schema.String.pipe(T.HttpPath("imageType")),
-  },
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
-  }),
-  svc,
-) as unknown as Schema.Schema<ListEditsImagesRequest>;
-
-export type ListEditsImagesResponse = ImagesListResponse;
-export const ListEditsImagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ImagesListResponse;
-
-export type ListEditsImagesError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists all images. The response may be empty. */
-export const listEditsImages: API.OperationMethod<
-  ListEditsImagesRequest,
-  ListEditsImagesResponse,
-  ListEditsImagesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListEditsImagesRequest,
-  output: ListEditsImagesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteEditsImagesRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
-  language: string;
-  /** Type of the Image. */
-  imageType:
-    | "appImageTypeUnspecified"
-    | "phoneScreenshots"
-    | "sevenInchScreenshots"
-    | "tenInchScreenshots"
-    | "tvScreenshots"
-    | "wearScreenshots"
-    | "icon"
-    | "featureGraphic"
-    | "tvBanner"
-    | (string & {});
-  /** Unique identifier an image within the set of images attached to this edit. */
-  imageId: string;
-}
-
-export const DeleteEditsImagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    language: Schema.String.pipe(T.HttpPath("language")),
-    imageType: Schema.String.pipe(T.HttpPath("imageType")),
-    imageId: Schema.String.pipe(T.HttpPath("imageId")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}/{imageId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteEditsImagesRequest>;
-
-export interface DeleteEditsImagesResponse {}
-export const DeleteEditsImagesResponse: Schema.Schema<DeleteEditsImagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<DeleteEditsImagesResponse>;
-
-export type DeleteEditsImagesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes the image (specified by id) from the edit. */
-export const deleteEditsImages: API.OperationMethod<
-  DeleteEditsImagesRequest,
-  DeleteEditsImagesResponse,
-  DeleteEditsImagesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteEditsImagesRequest,
-  output: DeleteEditsImagesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteallEditsImagesRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). Providing a language that is not supported by the App is a no-op. */
-  language: string;
-  /** Type of the Image. Providing an image type that refers to no images is a no-op. */
-  imageType:
-    | "appImageTypeUnspecified"
-    | "phoneScreenshots"
-    | "sevenInchScreenshots"
-    | "tenInchScreenshots"
-    | "tvScreenshots"
-    | "wearScreenshots"
-    | "icon"
-    | "featureGraphic"
-    | "tvBanner"
-    | (string & {});
-}
-
-export const DeleteallEditsImagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    language: Schema.String.pipe(T.HttpPath("language")),
-    imageType: Schema.String.pipe(T.HttpPath("imageType")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteallEditsImagesRequest>;
-
-export type DeleteallEditsImagesResponse = ImagesDeleteAllResponse;
-export const DeleteallEditsImagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ImagesDeleteAllResponse;
-
-export type DeleteallEditsImagesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes all images for the specified language and image type. Returns an empty response if no images are found. */
-export const deleteallEditsImages: API.OperationMethod<
-  DeleteallEditsImagesRequest,
-  DeleteallEditsImagesResponse,
-  DeleteallEditsImagesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteallEditsImagesRequest,
-  output: DeleteallEditsImagesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface UploadEditsImagesRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). Providing a language that is not supported by the App is a no-op. */
-  language: string;
-  /** Type of the Image. */
-  imageType:
-    | "appImageTypeUnspecified"
-    | "phoneScreenshots"
-    | "sevenInchScreenshots"
-    | "tenInchScreenshots"
-    | "tvScreenshots"
-    | "wearScreenshots"
-    | "icon"
-    | "featureGraphic"
-    | "tvBanner"
-    | (string & {});
-}
-
-export const UploadEditsImagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    language: Schema.String.pipe(T.HttpPath("language")),
-    imageType: Schema.String.pipe(T.HttpPath("imageType")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UploadEditsImagesRequest>;
-
-export type UploadEditsImagesResponse = ImagesUploadResponse;
-export const UploadEditsImagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ImagesUploadResponse;
-
-export type UploadEditsImagesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Uploads an image of the specified language and image type, and adds to the edit. */
-export const uploadEditsImages: API.OperationMethod<
-  UploadEditsImagesRequest,
-  UploadEditsImagesResponse,
-  UploadEditsImagesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UploadEditsImagesRequest,
-  output: UploadEditsImagesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface UpdateEditsListingsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
-  language: string;
-  /** Request body */
-  body?: Listing;
-}
-
-export const UpdateEditsListingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    language: Schema.String.pipe(T.HttpPath("language")),
-    body: Schema.optional(Listing).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateEditsListingsRequest>;
-
-export type UpdateEditsListingsResponse = Listing;
-export const UpdateEditsListingsResponse = /*@__PURE__*/ /*#__PURE__*/ Listing;
-
-export type UpdateEditsListingsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates or updates a localized store listing. */
-export const updateEditsListings: API.OperationMethod<
-  UpdateEditsListingsRequest,
-  UpdateEditsListingsResponse,
-  UpdateEditsListingsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateEditsListingsRequest,
-  output: UpdateEditsListingsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchEditsListingsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
-  language: string;
-  /** Request body */
-  body?: Listing;
-}
-
-export const PatchEditsListingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    language: Schema.String.pipe(T.HttpPath("language")),
-    body: Schema.optional(Listing).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchEditsListingsRequest>;
-
-export type PatchEditsListingsResponse = Listing;
-export const PatchEditsListingsResponse = /*@__PURE__*/ /*#__PURE__*/ Listing;
-
-export type PatchEditsListingsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Patches a localized store listing. */
-export const patchEditsListings: API.OperationMethod<
-  PatchEditsListingsRequest,
-  PatchEditsListingsResponse,
-  PatchEditsListingsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchEditsListingsRequest,
-  output: PatchEditsListingsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetEditsListingsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
-  language: string;
-}
-
-export const GetEditsListingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    language: Schema.String.pipe(T.HttpPath("language")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetEditsListingsRequest>;
-
-export type GetEditsListingsResponse = Listing;
-export const GetEditsListingsResponse = /*@__PURE__*/ /*#__PURE__*/ Listing;
-
-export type GetEditsListingsError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets a localized store listing. */
-export const getEditsListings: API.OperationMethod<
-  GetEditsListingsRequest,
-  GetEditsListingsResponse,
-  GetEditsListingsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetEditsListingsRequest,
-  output: GetEditsListingsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListEditsListingsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-}
-
-export const ListEditsListingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListEditsListingsRequest>;
-
-export type ListEditsListingsResponse = ListingsListResponse;
-export const ListEditsListingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListingsListResponse;
-
-export type ListEditsListingsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists all localized store listings. */
-export const listEditsListings: API.OperationMethod<
-  ListEditsListingsRequest,
-  ListEditsListingsResponse,
-  ListEditsListingsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListEditsListingsRequest,
-  output: ListEditsListingsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteEditsListingsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
-  language: string;
-}
-
-export const DeleteEditsListingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    language: Schema.String.pipe(T.HttpPath("language")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteEditsListingsRequest>;
-
-export interface DeleteEditsListingsResponse {}
-export const DeleteEditsListingsResponse: Schema.Schema<DeleteEditsListingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<DeleteEditsListingsResponse>;
-
-export type DeleteEditsListingsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a localized store listing. */
-export const deleteEditsListings: API.OperationMethod<
-  DeleteEditsListingsRequest,
-  DeleteEditsListingsResponse,
-  DeleteEditsListingsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteEditsListingsRequest,
-  output: DeleteEditsListingsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteallEditsListingsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-}
-
-export const DeleteallEditsListingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteallEditsListingsRequest>;
-
-export interface DeleteallEditsListingsResponse {}
-export const DeleteallEditsListingsResponse: Schema.Schema<DeleteallEditsListingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<DeleteallEditsListingsResponse>;
-
-export type DeleteallEditsListingsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes all store listings. */
-export const deleteallEditsListings: API.OperationMethod<
-  DeleteallEditsListingsRequest,
-  DeleteallEditsListingsResponse,
-  DeleteallEditsListingsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteallEditsListingsRequest,
-  output: DeleteallEditsListingsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetEditsTestersRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** The track to read from. */
-  track: string;
-}
-
-export const GetEditsTestersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    track: Schema.String.pipe(T.HttpPath("track")),
-  },
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
-  }),
-  svc,
-) as unknown as Schema.Schema<GetEditsTestersRequest>;
-
-export type GetEditsTestersResponse = Testers;
-export const GetEditsTestersResponse = /*@__PURE__*/ /*#__PURE__*/ Testers;
-
-export type GetEditsTestersError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets testers. Note: Testers resource does not support email lists. */
-export const getEditsTesters: API.OperationMethod<
-  GetEditsTestersRequest,
-  GetEditsTestersResponse,
-  GetEditsTestersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetEditsTestersRequest,
-  output: GetEditsTestersResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface UpdateEditsTestersRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** The track to update. */
-  track: string;
-  /** Request body */
-  body?: Testers;
-}
-
-export const UpdateEditsTestersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    track: Schema.String.pipe(T.HttpPath("track")),
-    body: Schema.optional(Testers).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateEditsTestersRequest>;
-
-export type UpdateEditsTestersResponse = Testers;
-export const UpdateEditsTestersResponse = /*@__PURE__*/ /*#__PURE__*/ Testers;
-
-export type UpdateEditsTestersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates testers. Note: Testers resource does not support email lists. */
-export const updateEditsTesters: API.OperationMethod<
-  UpdateEditsTestersRequest,
-  UpdateEditsTestersResponse,
-  UpdateEditsTestersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateEditsTestersRequest,
-  output: UpdateEditsTestersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchEditsTestersRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** The track to update. */
-  track: string;
-  /** Request body */
-  body?: Testers;
-}
-
-export const PatchEditsTestersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    track: Schema.String.pipe(T.HttpPath("track")),
-    body: Schema.optional(Testers).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchEditsTestersRequest>;
-
-export type PatchEditsTestersResponse = Testers;
-export const PatchEditsTestersResponse = /*@__PURE__*/ /*#__PURE__*/ Testers;
-
-export type PatchEditsTestersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Patches testers. Note: Testers resource does not support email lists. */
-export const patchEditsTesters: API.OperationMethod<
-  PatchEditsTestersRequest,
-  PatchEditsTestersResponse,
-  PatchEditsTestersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchEditsTestersRequest,
-  output: PatchEditsTestersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetEditsTracksRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** Identifier of the track. [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name) */
-  track: string;
-}
-
-export const GetEditsTracksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.String.pipe(T.HttpPath("packageName")),
-  editId: Schema.String.pipe(T.HttpPath("editId")),
-  track: Schema.String.pipe(T.HttpPath("track")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
-  }),
-  svc,
-) as unknown as Schema.Schema<GetEditsTracksRequest>;
-
-export type GetEditsTracksResponse = Track;
-export const GetEditsTracksResponse = /*@__PURE__*/ /*#__PURE__*/ Track;
-
-export type GetEditsTracksError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets a track. */
-export const getEditsTracks: API.OperationMethod<
-  GetEditsTracksRequest,
-  GetEditsTracksResponse,
-  GetEditsTracksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetEditsTracksRequest,
-  output: GetEditsTracksResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListEditsTracksRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-}
-
-export const ListEditsTracksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-  },
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks",
-  }),
-  svc,
-) as unknown as Schema.Schema<ListEditsTracksRequest>;
-
-export type ListEditsTracksResponse = TracksListResponse;
-export const ListEditsTracksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TracksListResponse;
-
-export type ListEditsTracksError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists all tracks. */
-export const listEditsTracks: API.OperationMethod<
-  ListEditsTracksRequest,
-  ListEditsTracksResponse,
-  ListEditsTracksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListEditsTracksRequest,
-  output: ListEditsTracksResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface UpdateEditsTracksRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** Identifier of the track. [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name) */
-  track: string;
-  /** Request body */
-  body?: Track;
-}
-
-export const UpdateEditsTracksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    track: Schema.String.pipe(T.HttpPath("track")),
-    body: Schema.optional(Track).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateEditsTracksRequest>;
-
-export type UpdateEditsTracksResponse = Track;
-export const UpdateEditsTracksResponse = /*@__PURE__*/ /*#__PURE__*/ Track;
-
-export type UpdateEditsTracksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a track. */
-export const updateEditsTracks: API.OperationMethod<
-  UpdateEditsTracksRequest,
-  UpdateEditsTracksResponse,
-  UpdateEditsTracksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateEditsTracksRequest,
-  output: UpdateEditsTracksResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchEditsTracksRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Identifier of the edit. */
-  editId: string;
-  /** Identifier of the track. [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name) */
-  track: string;
-  /** Request body */
-  body?: Track;
-}
-
-export const PatchEditsTracksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    track: Schema.String.pipe(T.HttpPath("track")),
-    body: Schema.optional(Track).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchEditsTracksRequest>;
-
-export type PatchEditsTracksResponse = Track;
-export const PatchEditsTracksResponse = /*@__PURE__*/ /*#__PURE__*/ Track;
-
-export type PatchEditsTracksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Patches a track. */
-export const patchEditsTracks: API.OperationMethod<
-  PatchEditsTracksRequest,
-  PatchEditsTracksResponse,
-  PatchEditsTracksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchEditsTracksRequest,
-  output: PatchEditsTracksResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateEditsTracksRequest {
-  /** Required. Package name of the app. */
-  packageName: string;
-  /** Required. Identifier of the edit. */
-  editId: string;
-  /** Request body */
-  body?: TrackConfig;
-}
-
-export const CreateEditsTracksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    editId: Schema.String.pipe(T.HttpPath("editId")),
-    body: Schema.optional(TrackConfig).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateEditsTracksRequest>;
-
-export type CreateEditsTracksResponse = Track;
-export const CreateEditsTracksResponse = /*@__PURE__*/ /*#__PURE__*/ Track;
-
-export type CreateEditsTracksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new track. */
-export const createEditsTracks: API.OperationMethod<
-  CreateEditsTracksRequest,
-  CreateEditsTracksResponse,
-  CreateEditsTracksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateEditsTracksRequest,
-  output: CreateEditsTracksResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateexternaltransactionExternaltransactionsRequest {
-  /** Required. The parent resource where this external transaction will be created. Format: applications/{package_name} */
-  parent: string;
-  /** Required. The id to use for the external transaction. Must be unique across all other transactions for the app. This value should be 1-63 characters and valid characters are /a-zA-Z0-9_-/. Do not use this field to store any Personally Identifiable Information (PII) such as emails. Attempting to store PII in this field may result in requests being blocked. */
-  externalTransactionId?: string;
-  /** Request body */
-  body?: ExternalTransaction;
-}
-
-export const CreateexternaltransactionExternaltransactionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    externalTransactionId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("externalTransactionId"),
-    ),
-    body: Schema.optional(ExternalTransaction).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/{+parent}/externalTransactions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateexternaltransactionExternaltransactionsRequest>;
-
-export type CreateexternaltransactionExternaltransactionsResponse =
-  ExternalTransaction;
-export const CreateexternaltransactionExternaltransactionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ExternalTransaction;
-
-export type CreateexternaltransactionExternaltransactionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new external transaction. */
-export const createexternaltransactionExternaltransactions: API.OperationMethod<
-  CreateexternaltransactionExternaltransactionsRequest,
-  CreateexternaltransactionExternaltransactionsResponse,
-  CreateexternaltransactionExternaltransactionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateexternaltransactionExternaltransactionsRequest,
-  output: CreateexternaltransactionExternaltransactionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface RefundexternaltransactionExternaltransactionsRequest {
-  /** Required. The name of the external transaction that will be refunded. Format: applications/{package_name}/externalTransactions/{external_transaction} */
-  name: string;
-  /** Request body */
-  body?: RefundExternalTransactionRequest;
-}
-
-export const RefundexternaltransactionExternaltransactionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(RefundExternalTransactionRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/{+name}:refund",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RefundexternaltransactionExternaltransactionsRequest>;
-
-export type RefundexternaltransactionExternaltransactionsResponse =
-  ExternalTransaction;
-export const RefundexternaltransactionExternaltransactionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ExternalTransaction;
-
-export type RefundexternaltransactionExternaltransactionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Refunds or partially refunds an existing external transaction. */
-export const refundexternaltransactionExternaltransactions: API.OperationMethod<
-  RefundexternaltransactionExternaltransactionsRequest,
-  RefundexternaltransactionExternaltransactionsResponse,
-  RefundexternaltransactionExternaltransactionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RefundexternaltransactionExternaltransactionsRequest,
-  output: RefundexternaltransactionExternaltransactionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetexternaltransactionExternaltransactionsRequest {
-  /** Required. The name of the external transaction to retrieve. Format: applications/{package_name}/externalTransactions/{external_transaction} */
-  name: string;
-}
-
-export const GetexternaltransactionExternaltransactionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "androidpublisher/v3/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetexternaltransactionExternaltransactionsRequest>;
-
-export type GetexternaltransactionExternaltransactionsResponse =
-  ExternalTransaction;
-export const GetexternaltransactionExternaltransactionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ExternalTransaction;
-
-export type GetexternaltransactionExternaltransactionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets an existing external transaction. */
-export const getexternaltransactionExternaltransactions: API.OperationMethod<
-  GetexternaltransactionExternaltransactionsRequest,
-  GetexternaltransactionExternaltransactionsResponse,
-  GetexternaltransactionExternaltransactionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetexternaltransactionExternaltransactionsRequest,
-  output: GetexternaltransactionExternaltransactionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListGeneratedapksRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Version code of the app bundle. */
-  versionCode: number;
-}
-
-export const ListGeneratedapksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    versionCode: Schema.Number.pipe(T.HttpPath("versionCode")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListGeneratedapksRequest>;
-
-export type ListGeneratedapksResponse = GeneratedApksListResponse;
-export const ListGeneratedapksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GeneratedApksListResponse;
-
-export type ListGeneratedapksError = DefaultErrors | NotFound | Forbidden;
-
-/** Returns download metadata for all APKs that were generated from a given app bundle. */
-export const listGeneratedapks: API.OperationMethod<
-  ListGeneratedapksRequest,
-  ListGeneratedapksResponse,
-  ListGeneratedapksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListGeneratedapksRequest,
-  output: ListGeneratedapksResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DownloadGeneratedapksRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Version code of the app bundle. */
-  versionCode: number;
-  /** Download ID, which uniquely identifies the APK to download. Can be obtained from the response of `generatedapks.list` method. */
-  downloadId: string;
-}
-
-export const DownloadGeneratedapksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    versionCode: Schema.Number.pipe(T.HttpPath("versionCode")),
-    downloadId: Schema.String.pipe(T.HttpPath("downloadId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}/downloads/{downloadId}:download",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DownloadGeneratedapksRequest>;
-
-export interface DownloadGeneratedapksResponse {}
-export const DownloadGeneratedapksResponse: Schema.Schema<DownloadGeneratedapksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<DownloadGeneratedapksResponse>;
-
-export type DownloadGeneratedapksError = DefaultErrors | NotFound | Forbidden;
-
-/** Downloads a single signed APK generated from an app bundle. */
-export const downloadGeneratedapks: API.OperationMethod<
-  DownloadGeneratedapksRequest,
-  DownloadGeneratedapksResponse,
-  DownloadGeneratedapksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DownloadGeneratedapksRequest,
-  output: DownloadGeneratedapksResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetInappproductsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Unique identifier for the in-app product. */
-  sku: string;
-}
-
-export const GetInappproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    sku: Schema.String.pipe(T.HttpPath("sku")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetInappproductsRequest>;
-
-export type GetInappproductsResponse = InAppProduct;
-export const GetInappproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ InAppProduct;
-
-export type GetInappproductsError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets an in-app product, which can be a managed product or a subscription. This method should no longer be used to retrieve subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
-export const getInappproducts: API.OperationMethod<
-  GetInappproductsRequest,
-  GetInappproductsResponse,
-  GetInappproductsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetInappproductsRequest,
-  output: GetInappproductsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface BatchGetInappproductsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Unique identifier for the in-app products. */
-  sku?: string[];
-}
-
-export const BatchGetInappproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    sku: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("sku")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/inappproducts:batchGet",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<BatchGetInappproductsRequest>;
-
-export type BatchGetInappproductsResponse = InappproductsBatchGetResponse;
-export const BatchGetInappproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ InappproductsBatchGetResponse;
-
-export type BatchGetInappproductsError = DefaultErrors | NotFound | Forbidden;
-
-/** Reads multiple in-app products, which can be managed products or subscriptions. This method should not be used to retrieve subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
-export const batchGetInappproducts: API.OperationMethod<
-  BatchGetInappproductsRequest,
-  BatchGetInappproductsResponse,
-  BatchGetInappproductsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: BatchGetInappproductsRequest,
-  output: BatchGetInappproductsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListInappproductsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Pagination token. If empty, list starts at the first product. */
-  token?: string;
-  /** Deprecated and ignored. Set the `token` parameter to retrieve the next page. */
-  startIndex?: number;
-  /** Deprecated and ignored. The page size is determined by the server. */
-  maxResults?: number;
-}
-
-export const ListInappproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
-    startIndex: Schema.optional(Schema.Number).pipe(T.HttpQuery("startIndex")),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/inappproducts",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListInappproductsRequest>;
-
-export type ListInappproductsResponse = InappproductsListResponse;
-export const ListInappproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ InappproductsListResponse;
-
-export type ListInappproductsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists all in-app products - both managed products and subscriptions. If an app has a large number of in-app products, the response may be paginated. In this case the response field `tokenPagination.nextPageToken` will be set and the caller should provide its value as a `token` request parameter to retrieve the next page. This method should no longer be used to retrieve subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
-export const listInappproducts: API.OperationMethod<
-  ListInappproductsRequest,
-  ListInappproductsResponse,
-  ListInappproductsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListInappproductsRequest,
-  output: ListInappproductsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface InsertInappproductsRequest {
   /** Package name of the app. */
   packageName: string;
@@ -8815,71 +9587,6 @@ export const insertInappproducts: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface UpdateInappproductsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Unique identifier for the in-app product. */
-  sku: string;
-  /** If true the prices for all regions targeted by the parent app that don't have a price specified for this in-app product will be auto converted to the target currency based on the default price. Defaults to false. */
-  autoConvertMissingPrices?: boolean;
-  /** If set to true, and the in-app product with the given package_name and sku doesn't exist, the in-app product will be created. */
-  allowMissing?: boolean;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-  /** Request body */
-  body?: InAppProduct;
-}
-
-export const UpdateInappproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    sku: Schema.String.pipe(T.HttpPath("sku")),
-    autoConvertMissingPrices: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("autoConvertMissingPrices"),
-    ),
-    allowMissing: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("allowMissing"),
-    ),
-    latencyTolerance: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("latencyTolerance"),
-    ),
-    body: Schema.optional(InAppProduct).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateInappproductsRequest>;
-
-export type UpdateInappproductsResponse = InAppProduct;
-export const UpdateInappproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ InAppProduct;
-
-export type UpdateInappproductsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates an in-app product (a managed product or a subscription). This method should no longer be used to update subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
-export const updateInappproducts: API.OperationMethod<
-  UpdateInappproductsRequest,
-  UpdateInappproductsResponse,
-  UpdateInappproductsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateInappproductsRequest,
-  output: UpdateInappproductsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface BatchUpdateInappproductsRequest {
   /** Package name of the app. */
   packageName: string;
@@ -8923,86 +9630,143 @@ export const batchUpdateInappproducts: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchInappproductsRequest {
+export interface BatchGetInappproductsRequest {
   /** Package name of the app. */
   packageName: string;
-  /** Unique identifier for the in-app product. */
-  sku: string;
-  /** If true the prices for all regions targeted by the parent app that don't have a price specified for this in-app product will be auto converted to the target currency based on the default price. Defaults to false. */
-  autoConvertMissingPrices?: boolean;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-  /** Request body */
-  body?: InAppProduct;
+  /** Unique identifier for the in-app products. */
+  sku?: string[];
 }
 
-export const PatchInappproductsRequest =
+export const BatchGetInappproductsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    sku: Schema.String.pipe(T.HttpPath("sku")),
-    autoConvertMissingPrices: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("autoConvertMissingPrices"),
-    ),
-    latencyTolerance: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("latencyTolerance"),
-    ),
-    body: Schema.optional(InAppProduct).pipe(T.HttpBody()),
+    sku: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("sku")),
   }).pipe(
     T.Http({
-      method: "PATCH",
-      path: "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
-      hasBody: true,
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/inappproducts:batchGet",
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchInappproductsRequest>;
+  ) as unknown as Schema.Schema<BatchGetInappproductsRequest>;
 
-export type PatchInappproductsResponse = InAppProduct;
-export const PatchInappproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ InAppProduct;
+export type BatchGetInappproductsResponse = InappproductsBatchGetResponse;
+export const BatchGetInappproductsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ InappproductsBatchGetResponse;
 
-export type PatchInappproductsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+export type BatchGetInappproductsError = DefaultErrors | NotFound | Forbidden;
 
-/** Patches an in-app product (a managed product or a subscription). This method should no longer be used to update subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
-export const patchInappproducts: API.OperationMethod<
-  PatchInappproductsRequest,
-  PatchInappproductsResponse,
-  PatchInappproductsError,
+/** Reads multiple in-app products, which can be managed products or subscriptions. This method should not be used to retrieve subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
+export const batchGetInappproducts: API.OperationMethod<
+  BatchGetInappproductsRequest,
+  BatchGetInappproductsResponse,
+  BatchGetInappproductsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchInappproductsRequest,
-  output: PatchInappproductsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+  input: BatchGetInappproductsRequest,
+  output: BatchGetInappproductsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetInappproductsRequest {
+  /** Unique identifier for the in-app product. */
+  sku: string;
+  /** Package name of the app. */
+  packageName: string;
+}
+
+export const GetInappproductsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.String.pipe(T.HttpPath("sku")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetInappproductsRequest>;
+
+export type GetInappproductsResponse = InAppProduct;
+export const GetInappproductsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ InAppProduct;
+
+export type GetInappproductsError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets an in-app product, which can be a managed product or a subscription. This method should no longer be used to retrieve subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
+export const getInappproducts: API.OperationMethod<
+  GetInappproductsRequest,
+  GetInappproductsResponse,
+  GetInappproductsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetInappproductsRequest,
+  output: GetInappproductsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListInappproductsRequest {
+  /** Package name of the app. */
+  packageName: string;
+  /** Deprecated and ignored. Set the `token` parameter to retrieve the next page. */
+  startIndex?: number;
+  /** Pagination token. If empty, list starts at the first product. */
+  token?: string;
+  /** Deprecated and ignored. The page size is determined by the server. */
+  maxResults?: number;
+}
+
+export const ListInappproductsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    startIndex: Schema.optional(Schema.Number).pipe(T.HttpQuery("startIndex")),
+    token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/inappproducts",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListInappproductsRequest>;
+
+export type ListInappproductsResponse = InappproductsListResponse;
+export const ListInappproductsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ InappproductsListResponse;
+
+export type ListInappproductsError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists all in-app products - both managed products and subscriptions. If an app has a large number of in-app products, the response may be paginated. In this case the response field `tokenPagination.nextPageToken` will be set and the caller should provide its value as a `token` request parameter to retrieve the next page. This method should no longer be used to retrieve subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
+export const listInappproducts: API.OperationMethod<
+  ListInappproductsRequest,
+  ListInappproductsResponse,
+  ListInappproductsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListInappproductsRequest,
+  output: ListInappproductsResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteInappproductsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Unique identifier for the in-app product. */
-  sku: string;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
   latencyTolerance?:
     | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
     | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
     | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
     | (string & {});
+  /** Unique identifier for the in-app product. */
+  sku: string;
+  /** Package name of the app. */
+  packageName: string;
 }
 
 export const DeleteInappproductsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    sku: Schema.String.pipe(T.HttpPath("sku")),
     latencyTolerance: Schema.optional(Schema.String).pipe(
       T.HttpQuery("latencyTolerance"),
     ),
+    sku: Schema.String.pipe(T.HttpPath("sku")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -9081,420 +9845,129 @@ export const batchDeleteInappproducts: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface UploadapkInternalappsharingartifactsRequest {
+export interface UpdateInappproductsRequest {
   /** Package name of the app. */
   packageName: string;
-}
-
-export const UploadapkInternalappsharingartifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/apk",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UploadapkInternalappsharingartifactsRequest>;
-
-export type UploadapkInternalappsharingartifactsResponse =
-  InternalAppSharingArtifact;
-export const UploadapkInternalappsharingartifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ InternalAppSharingArtifact;
-
-export type UploadapkInternalappsharingartifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Uploads an APK to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java. */
-export const uploadapkInternalappsharingartifacts: API.OperationMethod<
-  UploadapkInternalappsharingartifactsRequest,
-  UploadapkInternalappsharingartifactsResponse,
-  UploadapkInternalappsharingartifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UploadapkInternalappsharingartifactsRequest,
-  output: UploadapkInternalappsharingartifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface UploadbundleInternalappsharingartifactsRequest {
-  /** Package name of the app. */
-  packageName: string;
-}
-
-export const UploadbundleInternalappsharingartifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/bundle",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UploadbundleInternalappsharingartifactsRequest>;
-
-export type UploadbundleInternalappsharingartifactsResponse =
-  InternalAppSharingArtifact;
-export const UploadbundleInternalappsharingartifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ InternalAppSharingArtifact;
-
-export type UploadbundleInternalappsharingartifactsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Uploads an app bundle to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java. */
-export const uploadbundleInternalappsharingartifacts: API.OperationMethod<
-  UploadbundleInternalappsharingartifactsRequest,
-  UploadbundleInternalappsharingartifactsResponse,
-  UploadbundleInternalappsharingartifactsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UploadbundleInternalappsharingartifactsRequest,
-  output: UploadbundleInternalappsharingartifactsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface RefundOrdersRequest {
-  /** The package name of the application for which this subscription or in-app item was purchased (for example, 'com.some.thing'). */
-  packageName: string;
-  /** The order ID provided to the user when the subscription or in-app order was purchased. */
-  orderId: string;
-  /** Whether to revoke the purchased item. If set to true, access to the subscription or in-app item will be terminated immediately. If the item is a recurring subscription, all future payments will also be terminated. Consumed in-app items need to be handled by developer's app. (optional). */
-  revoke?: boolean;
-}
-
-export const RefundOrdersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.String.pipe(T.HttpPath("packageName")),
-  orderId: Schema.String.pipe(T.HttpPath("orderId")),
-  revoke: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("revoke")),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "androidpublisher/v3/applications/{packageName}/orders/{orderId}:refund",
-    hasBody: true,
-  }),
-  svc,
-) as unknown as Schema.Schema<RefundOrdersRequest>;
-
-export interface RefundOrdersResponse {}
-export const RefundOrdersResponse: Schema.Schema<RefundOrdersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<RefundOrdersResponse>;
-
-export type RefundOrdersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Refunds a user's subscription or in-app purchase order. Orders older than 3 years cannot be refunded. */
-export const refundOrders: API.OperationMethod<
-  RefundOrdersRequest,
-  RefundOrdersResponse,
-  RefundOrdersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RefundOrdersRequest,
-  output: RefundOrdersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetOrdersRequest {
-  /** Required. The package name of the application for which this subscription or in-app item was purchased (for example, 'com.some.thing'). */
-  packageName: string;
-  /** Required. The order ID provided to the user when the subscription or in-app order was purchased. */
-  orderId: string;
-}
-
-export const GetOrdersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.String.pipe(T.HttpPath("packageName")),
-  orderId: Schema.String.pipe(T.HttpPath("orderId")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "androidpublisher/v3/applications/{packageName}/orders/{orderId}",
-  }),
-  svc,
-) as unknown as Schema.Schema<GetOrdersRequest>;
-
-export type GetOrdersResponse = Order;
-export const GetOrdersResponse = /*@__PURE__*/ /*#__PURE__*/ Order;
-
-export type GetOrdersError = DefaultErrors | NotFound | Forbidden;
-
-/** Get order details for a single order. */
-export const getOrders: API.OperationMethod<
-  GetOrdersRequest,
-  GetOrdersResponse,
-  GetOrdersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOrdersRequest,
-  output: GetOrdersResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface BatchgetOrdersRequest {
-  /** Required. The package name of the application for which this subscription or in-app item was purchased (for example, 'com.some.thing'). */
-  packageName: string;
-  /** Required. The list of order IDs to retrieve order details for. There must be between 1 and 1000 (inclusive) order IDs per request. If any order ID is not found or does not match the provided package, the entire request will fail with an error. The order IDs must be distinct. */
-  orderIds?: string[];
-}
-
-export const BatchgetOrdersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.String.pipe(T.HttpPath("packageName")),
-  orderIds: Schema.optional(Schema.Array(Schema.String)).pipe(
-    T.HttpQuery("orderIds"),
-  ),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "androidpublisher/v3/applications/{packageName}/orders:batchGet",
-  }),
-  svc,
-) as unknown as Schema.Schema<BatchgetOrdersRequest>;
-
-export type BatchgetOrdersResponse = BatchGetOrdersResponse;
-export const BatchgetOrdersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchGetOrdersResponse;
-
-export type BatchgetOrdersError = DefaultErrors | NotFound | Forbidden;
-
-/** Get order details for a list of orders. */
-export const batchgetOrders: API.OperationMethod<
-  BatchgetOrdersRequest,
-  BatchgetOrdersResponse,
-  BatchgetOrdersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: BatchgetOrdersRequest,
-  output: BatchgetOrdersResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DataSafetyApplicationsRequest {
-  /** Required. Package name of the app. */
-  packageName: string;
+  /** Unique identifier for the in-app product. */
+  sku: string;
+  /** If set to true, and the in-app product with the given package_name and sku doesn't exist, the in-app product will be created. */
+  allowMissing?: boolean;
+  /** If true the prices for all regions targeted by the parent app that don't have a price specified for this in-app product will be auto converted to the target currency based on the default price. Defaults to false. */
+  autoConvertMissingPrices?: boolean;
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
   /** Request body */
-  body?: SafetyLabelsUpdateRequest;
+  body?: InAppProduct;
 }
 
-export const DataSafetyApplicationsRequest =
+export const UpdateInappproductsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    body: Schema.optional(SafetyLabelsUpdateRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/dataSafety",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DataSafetyApplicationsRequest>;
-
-export type DataSafetyApplicationsResponse = SafetyLabelsUpdateResponse;
-export const DataSafetyApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SafetyLabelsUpdateResponse;
-
-export type DataSafetyApplicationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Writes the Safety Labels declaration of an app. */
-export const dataSafetyApplications: API.OperationMethod<
-  DataSafetyApplicationsRequest,
-  DataSafetyApplicationsResponse,
-  DataSafetyApplicationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DataSafetyApplicationsRequest,
-  output: DataSafetyApplicationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateApplicationsDeviceTierConfigsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Whether the service should accept device IDs that are unknown to Play's device catalog. */
-  allowUnknownDevices?: boolean;
-  /** Request body */
-  body?: DeviceTierConfig;
-}
-
-export const CreateApplicationsDeviceTierConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    allowUnknownDevices: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("allowUnknownDevices"),
+    sku: Schema.String.pipe(T.HttpPath("sku")),
+    allowMissing: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("allowMissing"),
     ),
-    body: Schema.optional(DeviceTierConfig).pipe(T.HttpBody()),
+    autoConvertMissingPrices: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("autoConvertMissingPrices"),
+    ),
+    latencyTolerance: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("latencyTolerance"),
+    ),
+    body: Schema.optional(InAppProduct).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/deviceTierConfigs",
+      method: "PUT",
+      path: "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateApplicationsDeviceTierConfigsRequest>;
+  ) as unknown as Schema.Schema<UpdateInappproductsRequest>;
 
-export type CreateApplicationsDeviceTierConfigsResponse = DeviceTierConfig;
-export const CreateApplicationsDeviceTierConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DeviceTierConfig;
+export type UpdateInappproductsResponse = InAppProduct;
+export const UpdateInappproductsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ InAppProduct;
 
-export type CreateApplicationsDeviceTierConfigsError =
+export type UpdateInappproductsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a new device tier config for an app. */
-export const createApplicationsDeviceTierConfigs: API.OperationMethod<
-  CreateApplicationsDeviceTierConfigsRequest,
-  CreateApplicationsDeviceTierConfigsResponse,
-  CreateApplicationsDeviceTierConfigsError,
+/** Updates an in-app product (a managed product or a subscription). This method should no longer be used to update subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
+export const updateInappproducts: API.OperationMethod<
+  UpdateInappproductsRequest,
+  UpdateInappproductsResponse,
+  UpdateInappproductsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateApplicationsDeviceTierConfigsRequest,
-  output: CreateApplicationsDeviceTierConfigsResponse,
+  input: UpdateInappproductsRequest,
+  output: UpdateInappproductsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetApplicationsDeviceTierConfigsRequest {
+export interface PatchInappproductsRequest {
+  /** Unique identifier for the in-app product. */
+  sku: string;
   /** Package name of the app. */
   packageName: string;
-  /** Required. Id of an existing device tier config. */
-  deviceTierConfigId: string;
+  /** If true the prices for all regions targeted by the parent app that don't have a price specified for this in-app product will be auto converted to the target currency based on the default price. Defaults to false. */
+  autoConvertMissingPrices?: boolean;
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+  /** Request body */
+  body?: InAppProduct;
 }
 
-export const GetApplicationsDeviceTierConfigsRequest =
+export const PatchInappproductsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.String.pipe(T.HttpPath("sku")),
     packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    deviceTierConfigId: Schema.String.pipe(T.HttpPath("deviceTierConfigId")),
+    autoConvertMissingPrices: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("autoConvertMissingPrices"),
+    ),
+    latencyTolerance: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("latencyTolerance"),
+    ),
+    body: Schema.optional(InAppProduct).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/deviceTierConfigs/{deviceTierConfigId}",
+      method: "PATCH",
+      path: "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
+      hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetApplicationsDeviceTierConfigsRequest>;
+  ) as unknown as Schema.Schema<PatchInappproductsRequest>;
 
-export type GetApplicationsDeviceTierConfigsResponse = DeviceTierConfig;
-export const GetApplicationsDeviceTierConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DeviceTierConfig;
+export type PatchInappproductsResponse = InAppProduct;
+export const PatchInappproductsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ InAppProduct;
 
-export type GetApplicationsDeviceTierConfigsError =
+export type PatchInappproductsError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Returns a particular device tier config. */
-export const getApplicationsDeviceTierConfigs: API.OperationMethod<
-  GetApplicationsDeviceTierConfigsRequest,
-  GetApplicationsDeviceTierConfigsResponse,
-  GetApplicationsDeviceTierConfigsError,
+/** Patches an in-app product (a managed product or a subscription). This method should no longer be used to update subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
+export const patchInappproducts: API.OperationMethod<
+  PatchInappproductsRequest,
+  PatchInappproductsResponse,
+  PatchInappproductsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetApplicationsDeviceTierConfigsRequest,
-  output: GetApplicationsDeviceTierConfigsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListApplicationsDeviceTierConfigsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** The maximum number of device tier configs to return. The service may return fewer than this value. If unspecified, at most 10 device tier configs will be returned. The maximum value for this field is 100; values above 100 will be coerced to 100. Device tier configs will be ordered by descending creation time. */
-  pageSize?: number;
-  /** A page token, received from a previous `ListDeviceTierConfigs` call. Provide this to retrieve the subsequent page. */
-  pageToken?: string;
-}
-
-export const ListApplicationsDeviceTierConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/deviceTierConfigs",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListApplicationsDeviceTierConfigsRequest>;
-
-export type ListApplicationsDeviceTierConfigsResponse =
-  ListDeviceTierConfigsResponse;
-export const ListApplicationsDeviceTierConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDeviceTierConfigsResponse;
-
-export type ListApplicationsDeviceTierConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns created device tier configs, ordered by descending creation time. */
-export const listApplicationsDeviceTierConfigs: API.PaginatedOperationMethod<
-  ListApplicationsDeviceTierConfigsRequest,
-  ListApplicationsDeviceTierConfigsResponse,
-  ListApplicationsDeviceTierConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListApplicationsDeviceTierConfigsRequest,
-  output: ListApplicationsDeviceTierConfigsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface ListApplicationsTracksReleasesRequest {
-  /** Required. The parent track, which owns this collection of releases. Format: applications/{package_name}/tracks/{track} */
-  parent: string;
-}
-
-export const ListApplicationsTracksReleasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-  }).pipe(
-    T.Http({ method: "GET", path: "androidpublisher/v3/{+parent}/releases" }),
-    svc,
-  ) as unknown as Schema.Schema<ListApplicationsTracksReleasesRequest>;
-
-export type ListApplicationsTracksReleasesResponse =
-  ListReleaseSummariesResponse;
-export const ListApplicationsTracksReleasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListReleaseSummariesResponse;
-
-export type ListApplicationsTracksReleasesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns the list of all releases for a given track. This excludes any releases that are obsolete. */
-export const listApplicationsTracksReleases: API.OperationMethod<
-  ListApplicationsTracksReleasesRequest,
-  ListApplicationsTracksReleasesResponse,
-  ListApplicationsTracksReleasesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListApplicationsTracksReleasesRequest,
-  output: ListApplicationsTracksReleasesResponse,
-  errors: [NotFound, Forbidden],
+  input: PatchInappproductsRequest,
+  output: PatchInappproductsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ConvertRegionPricesMonetizationRequest {
@@ -9541,44 +10014,49 @@ export const convertRegionPricesMonetization: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetMonetizationOnetimeproductsRequest {
-  /** Required. The parent app (package name) of the product to retrieve. */
+export interface BatchDeleteMonetizationOnetimeproductsRequest {
+  /** Required. The parent app (package name) for which the one-time products should be deleted. Must be equal to the package_name field on all the OneTimeProduct resources. */
   packageName: string;
-  /** Required. The product ID of the product to retrieve. */
-  productId: string;
+  /** Request body */
+  body?: BatchDeleteOneTimeProductsRequest;
 }
 
-export const GetMonetizationOnetimeproductsRequest =
+export const BatchDeleteMonetizationOnetimeproductsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
+    body: Schema.optional(BatchDeleteOneTimeProductsRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}",
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts:batchDelete",
+      hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetMonetizationOnetimeproductsRequest>;
+  ) as unknown as Schema.Schema<BatchDeleteMonetizationOnetimeproductsRequest>;
 
-export type GetMonetizationOnetimeproductsResponse = OneTimeProduct;
-export const GetMonetizationOnetimeproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OneTimeProduct;
+export interface BatchDeleteMonetizationOnetimeproductsResponse {}
+export const BatchDeleteMonetizationOnetimeproductsResponse: Schema.Schema<BatchDeleteMonetizationOnetimeproductsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<BatchDeleteMonetizationOnetimeproductsResponse>;
 
-export type GetMonetizationOnetimeproductsError =
+export type BatchDeleteMonetizationOnetimeproductsError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Reads a single one-time product. */
-export const getMonetizationOnetimeproducts: API.OperationMethod<
-  GetMonetizationOnetimeproductsRequest,
-  GetMonetizationOnetimeproductsResponse,
-  GetMonetizationOnetimeproductsError,
+/** Deletes one or more one-time products. */
+export const batchDeleteMonetizationOnetimeproducts: API.OperationMethod<
+  BatchDeleteMonetizationOnetimeproductsRequest,
+  BatchDeleteMonetizationOnetimeproductsResponse,
+  BatchDeleteMonetizationOnetimeproductsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetMonetizationOnetimeproductsRequest,
-  output: GetMonetizationOnetimeproductsResponse,
-  errors: [NotFound, Forbidden],
+  input: BatchDeleteMonetizationOnetimeproductsRequest,
+  output: BatchDeleteMonetizationOnetimeproductsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetMonetizationOnetimeproductsRequest {
@@ -9625,18 +10103,18 @@ export const batchGetMonetizationOnetimeproducts: API.OperationMethod<
 }));
 
 export interface ListMonetizationOnetimeproductsRequest {
-  /** Required. The parent app (package name) for which the one-time product should be read. */
-  packageName: string;
   /** Optional. The maximum number of one-time product to return. The service may return fewer than this value. If unspecified, at most 50 one-time products will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
+  /** Required. The parent app (package name) for which the one-time product should be read. */
+  packageName: string;
   /** Optional. A page token, received from a previous `ListOneTimeProducts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListOneTimeProducts` must match the call that provided the page token. */
   pageToken?: string;
 }
 
 export const ListMonetizationOnetimeproductsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({
@@ -9672,41 +10150,134 @@ export const listMonetizationOnetimeproducts: API.PaginatedOperationMethod<
   },
 }));
 
-export interface PatchMonetizationOnetimeproductsRequest {
-  /** Required. Immutable. Package name of the parent app. */
+export interface DeleteMonetizationOnetimeproductsRequest {
+  /** Required. The parent app (package name) of the one-time product to delete. */
   packageName: string;
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+  /** Required. The one-time product ID of the one-time product to delete. */
+  productId: string;
+}
+
+export const DeleteMonetizationOnetimeproductsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    latencyTolerance: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("latencyTolerance"),
+    ),
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteMonetizationOnetimeproductsRequest>;
+
+export interface DeleteMonetizationOnetimeproductsResponse {}
+export const DeleteMonetizationOnetimeproductsResponse: Schema.Schema<DeleteMonetizationOnetimeproductsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<DeleteMonetizationOnetimeproductsResponse>;
+
+export type DeleteMonetizationOnetimeproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a one-time product. */
+export const deleteMonetizationOnetimeproducts: API.OperationMethod<
+  DeleteMonetizationOnetimeproductsRequest,
+  DeleteMonetizationOnetimeproductsResponse,
+  DeleteMonetizationOnetimeproductsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteMonetizationOnetimeproductsRequest,
+  output: DeleteMonetizationOnetimeproductsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetMonetizationOnetimeproductsRequest {
+  /** Required. The parent app (package name) of the product to retrieve. */
+  packageName: string;
+  /** Required. The product ID of the product to retrieve. */
+  productId: string;
+}
+
+export const GetMonetizationOnetimeproductsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetMonetizationOnetimeproductsRequest>;
+
+export type GetMonetizationOnetimeproductsResponse = OneTimeProduct;
+export const GetMonetizationOnetimeproductsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ OneTimeProduct;
+
+export type GetMonetizationOnetimeproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Reads a single one-time product. */
+export const getMonetizationOnetimeproducts: API.OperationMethod<
+  GetMonetizationOnetimeproductsRequest,
+  GetMonetizationOnetimeproductsResponse,
+  GetMonetizationOnetimeproductsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetMonetizationOnetimeproductsRequest,
+  output: GetMonetizationOnetimeproductsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface PatchMonetizationOnetimeproductsRequest {
   /** Required. Immutable. Unique product ID of the product. Unique within the parent app. Product IDs must start with a number or lowercase letter, and can contain numbers (0-9), lowercase letters (a-z), underscores (_), and periods (.). */
   productId: string;
-  /** Required. The list of fields to be updated. */
-  updateMask?: string;
-  /** Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. */
-  "regionsVersion.version"?: string;
-  /** Optional. If set to true, and the one-time product with the given package_name and product_id doesn't exist, the one-time product will be created. If a new one-time product is created, update_mask is ignored. */
-  allowMissing?: boolean;
   /** Optional. The latency tolerance for the propagation of this product upsert. Defaults to latency-sensitive. */
   latencyTolerance?:
     | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
     | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
     | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
     | (string & {});
+  /** Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. */
+  "regionsVersion.version"?: string;
+  /** Optional. If set to true, and the one-time product with the given package_name and product_id doesn't exist, the one-time product will be created. If a new one-time product is created, update_mask is ignored. */
+  allowMissing?: boolean;
+  /** Required. Immutable. Package name of the parent app. */
+  packageName: string;
+  /** Required. The list of fields to be updated. */
+  updateMask?: string;
   /** Request body */
   body?: OneTimeProduct;
 }
 
 export const PatchMonetizationOnetimeproductsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
     productId: Schema.String.pipe(T.HttpPath("productId")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    latencyTolerance: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("latencyTolerance"),
+    ),
     "regionsVersion.version": Schema.optional(Schema.String).pipe(
       T.HttpQuery("regionsVersion.version"),
     ),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
     ),
-    latencyTolerance: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("latencyTolerance"),
-    ),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(OneTimeProduct).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -9781,104 +10352,6 @@ export const batchUpdateMonetizationOnetimeproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateMonetizationOnetimeproductsRequest,
   output: BatchUpdateMonetizationOnetimeproductsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteMonetizationOnetimeproductsRequest {
-  /** Required. The parent app (package name) of the one-time product to delete. */
-  packageName: string;
-  /** Required. The one-time product ID of the one-time product to delete. */
-  productId: string;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-}
-
-export const DeleteMonetizationOnetimeproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
-    latencyTolerance: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("latencyTolerance"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteMonetizationOnetimeproductsRequest>;
-
-export interface DeleteMonetizationOnetimeproductsResponse {}
-export const DeleteMonetizationOnetimeproductsResponse: Schema.Schema<DeleteMonetizationOnetimeproductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<DeleteMonetizationOnetimeproductsResponse>;
-
-export type DeleteMonetizationOnetimeproductsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a one-time product. */
-export const deleteMonetizationOnetimeproducts: API.OperationMethod<
-  DeleteMonetizationOnetimeproductsRequest,
-  DeleteMonetizationOnetimeproductsResponse,
-  DeleteMonetizationOnetimeproductsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteMonetizationOnetimeproductsRequest,
-  output: DeleteMonetizationOnetimeproductsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface BatchDeleteMonetizationOnetimeproductsRequest {
-  /** Required. The parent app (package name) for which the one-time products should be deleted. Must be equal to the package_name field on all the OneTimeProduct resources. */
-  packageName: string;
-  /** Request body */
-  body?: BatchDeleteOneTimeProductsRequest;
-}
-
-export const BatchDeleteMonetizationOnetimeproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    body: Schema.optional(BatchDeleteOneTimeProductsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts:batchDelete",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<BatchDeleteMonetizationOnetimeproductsRequest>;
-
-export interface BatchDeleteMonetizationOnetimeproductsResponse {}
-export const BatchDeleteMonetizationOnetimeproductsResponse: Schema.Schema<BatchDeleteMonetizationOnetimeproductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<BatchDeleteMonetizationOnetimeproductsResponse>;
-
-export type BatchDeleteMonetizationOnetimeproductsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes one or more one-time products. */
-export const batchDeleteMonetizationOnetimeproducts: API.OperationMethod<
-  BatchDeleteMonetizationOnetimeproductsRequest,
-  BatchDeleteMonetizationOnetimeproductsResponse,
-  BatchDeleteMonetizationOnetimeproductsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: BatchDeleteMonetizationOnetimeproductsRequest,
-  output: BatchDeleteMonetizationOnetimeproductsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -9979,112 +10452,6 @@ export const batchDeleteMonetizationOnetimeproductsPurchaseOptions: API.Operatio
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
-  /** Required. The parent app (package name) for which the offers should be read. */
-  packageName: string;
-  /** Required. The parent one-time product (ID) for which the offers should be read. May be specified as '-' to read all offers under an app. */
-  productId: string;
-  /** Required. The parent purchase option (ID) for which the offers should be read. May be specified as '-' to read all offers under a one-time product or an app. Must be specified as '-' if product_id is specified as '-'. */
-  purchaseOptionId: string;
-  /** Optional. The maximum number of offers to return. The service may return fewer than this value. If unspecified, at most 50 offers will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** Optional. A page token, received from a previous `ListOneTimeProductsOffers` call. Provide this to retrieve the subsequent page. When paginating, product_id, package_name and purchase_option_id provided to `ListOneTimeProductsOffersRequest` must match the call that provided the page token. */
-  pageToken?: string;
-}
-
-export const ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
-    purchaseOptionId: Schema.String.pipe(T.HttpPath("purchaseOptionId")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
-
-export type ListMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
-  ListOneTimeProductOffersResponse;
-export const ListMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOneTimeProductOffersResponse;
-
-export type ListMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists all offers under a given app, product, or purchase option. */
-export const listMonetizationOnetimeproductsPurchaseOptionsOffers: API.PaginatedOperationMethod<
-  ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
-  ListMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
-  ListMonetizationOnetimeproductsPurchaseOptionsOffersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
-  output: ListMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
-  /** Required. The parent app (package name) of the updated offers. Must be equal to the package_name field on all the updated OneTimeProductOffer resources. */
-  packageName: string;
-  /** Required. The product ID of the parent one-time product, if all updated offers belong to the same product. If this request spans multiple one-time products, set this field to "-". */
-  productId: string;
-  /** Required. The parent purchase option (ID) for which the offers should be updated. May be specified as '-' to update offers from multiple purchase options. */
-  purchaseOptionId: string;
-  /** Request body */
-  body?: BatchGetOneTimeProductOffersRequest;
-}
-
-export const BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
-    purchaseOptionId: Schema.String.pipe(T.HttpPath("purchaseOptionId")),
-    body: Schema.optional(BatchGetOneTimeProductOffersRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchGet",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
-
-export type BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
-  BatchGetOneTimeProductOffersResponse;
-export const BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchGetOneTimeProductOffersResponse;
-
-export type BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Reads one or more one-time product offers. */
-export const batchGetMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
-  BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
-  BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
-  BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
-  output: BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
   /** Required. The parent app (package name) of the updated offers. Must be equal to the package_name field on all the updated OneTimeProductOffer resources. */
   packageName: string;
@@ -10134,6 +10501,59 @@ export const batchUpdateMonetizationOnetimeproductsPurchaseOptionsOffers: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
   output: BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
+  /** Required. The parent app (package name) of the offer to cancel. */
+  packageName: string;
+  /** Required. The offer ID of the offer to cancel. */
+  offerId: string;
+  /** Required. The parent one-time product (ID) of the offer to cancel. */
+  productId: string;
+  /** Required. The parent purchase option (ID) of the offer to cancel. */
+  purchaseOptionId: string;
+  /** Request body */
+  body?: CancelOneTimeProductOfferRequest;
+}
+
+export const CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    offerId: Schema.String.pipe(T.HttpPath("offerId")),
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+    purchaseOptionId: Schema.String.pipe(T.HttpPath("purchaseOptionId")),
+    body: Schema.optional(CancelOneTimeProductOfferRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:cancel",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+
+export type CancelMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
+  OneTimeProductOffer;
+export const CancelMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ OneTimeProductOffer;
+
+export type CancelMonetizationOnetimeproductsPurchaseOptionsOffersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Cancels a one-time product offer. */
+export const cancelMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
+  CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
+  CancelMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
+  CancelMonetizationOnetimeproductsPurchaseOptionsOffersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
+  output: CancelMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -10244,114 +10664,6 @@ export const batchDeleteMonetizationOnetimeproductsPurchaseOptionsOffers: API.Op
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
-  /** Required. The parent app (package name) of the offer to activate. */
-  packageName: string;
-  /** Required. The parent one-time product (ID) of the offer to activate. */
-  productId: string;
-  /** Required. The parent purchase option (ID) of the offer to activate. */
-  purchaseOptionId: string;
-  /** Required. The offer ID of the offer to activate. */
-  offerId: string;
-  /** Request body */
-  body?: ActivateOneTimeProductOfferRequest;
-}
-
-export const ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
-    purchaseOptionId: Schema.String.pipe(T.HttpPath("purchaseOptionId")),
-    offerId: Schema.String.pipe(T.HttpPath("offerId")),
-    body: Schema.optional(ActivateOneTimeProductOfferRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:activate",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
-
-export type ActivateMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
-  OneTimeProductOffer;
-export const ActivateMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OneTimeProductOffer;
-
-export type ActivateMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Activates a one-time product offer. */
-export const activateMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
-  ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
-  ActivateMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
-  ActivateMonetizationOnetimeproductsPurchaseOptionsOffersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
-  output: ActivateMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
-  /** Required. The parent app (package name) of the offer to cancel. */
-  packageName: string;
-  /** Required. The parent one-time product (ID) of the offer to cancel. */
-  productId: string;
-  /** Required. The parent purchase option (ID) of the offer to cancel. */
-  purchaseOptionId: string;
-  /** Required. The offer ID of the offer to cancel. */
-  offerId: string;
-  /** Request body */
-  body?: CancelOneTimeProductOfferRequest;
-}
-
-export const CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
-    purchaseOptionId: Schema.String.pipe(T.HttpPath("purchaseOptionId")),
-    offerId: Schema.String.pipe(T.HttpPath("offerId")),
-    body: Schema.optional(CancelOneTimeProductOfferRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:cancel",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
-
-export type CancelMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
-  OneTimeProductOffer;
-export const CancelMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OneTimeProductOffer;
-
-export type CancelMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Cancels a one-time product offer. */
-export const cancelMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
-  CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
-  CancelMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
-  CancelMonetizationOnetimeproductsPurchaseOptionsOffersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
-  output: CancelMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
   /** Required. The parent app (package name) of the offer to deactivate. */
   packageName: string;
@@ -10407,134 +10719,53 @@ export const deactivateMonetizationOnetimeproductsPurchaseOptionsOffers: API.Ope
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetMonetizationSubscriptionsRequest {
-  /** Required. The parent app (package name) of the subscription to get. */
+export interface ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
+  /** Optional. The maximum number of offers to return. The service may return fewer than this value. If unspecified, at most 50 offers will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** Required. The parent purchase option (ID) for which the offers should be read. May be specified as '-' to read all offers under a one-time product or an app. Must be specified as '-' if product_id is specified as '-'. */
+  purchaseOptionId: string;
+  /** Required. The parent app (package name) for which the offers should be read. */
   packageName: string;
-  /** Required. The unique product ID of the subscription to get. */
+  /** Required. The parent one-time product (ID) for which the offers should be read. May be specified as '-' to read all offers under an app. */
   productId: string;
+  /** Optional. A page token, received from a previous `ListOneTimeProductsOffers` call. Provide this to retrieve the subsequent page. When paginating, product_id, package_name and purchase_option_id provided to `ListOneTimeProductsOffersRequest` must match the call that provided the page token. */
+  pageToken?: string;
 }
 
-export const GetMonetizationSubscriptionsRequest =
+export const ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    purchaseOptionId: Schema.String.pipe(T.HttpPath("purchaseOptionId")),
     packageName: Schema.String.pipe(T.HttpPath("packageName")),
     productId: Schema.String.pipe(T.HttpPath("productId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetMonetizationSubscriptionsRequest>;
-
-export type GetMonetizationSubscriptionsResponse = Subscription;
-export const GetMonetizationSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
-
-export type GetMonetizationSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Reads a single subscription. */
-export const getMonetizationSubscriptions: API.OperationMethod<
-  GetMonetizationSubscriptionsRequest,
-  GetMonetizationSubscriptionsResponse,
-  GetMonetizationSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetMonetizationSubscriptionsRequest,
-  output: GetMonetizationSubscriptionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface BatchGetMonetizationSubscriptionsRequest {
-  /** Required. The parent app (package name) for which the subscriptions should be retrieved. Must be equal to the package_name field on all the requests. */
-  packageName: string;
-  /** Required. A list of up to 100 subscription product IDs to retrieve. All the IDs must be different. */
-  productIds?: string[];
-}
-
-export const BatchGetMonetizationSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productIds: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("productIds"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/subscriptions:batchGet",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<BatchGetMonetizationSubscriptionsRequest>;
-
-export type BatchGetMonetizationSubscriptionsResponse =
-  BatchGetSubscriptionsResponse;
-export const BatchGetMonetizationSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchGetSubscriptionsResponse;
-
-export type BatchGetMonetizationSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Reads one or more subscriptions. */
-export const batchGetMonetizationSubscriptions: API.OperationMethod<
-  BatchGetMonetizationSubscriptionsRequest,
-  BatchGetMonetizationSubscriptionsResponse,
-  BatchGetMonetizationSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: BatchGetMonetizationSubscriptionsRequest,
-  output: BatchGetMonetizationSubscriptionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListMonetizationSubscriptionsRequest {
-  /** Required. The parent app (package name) for which the subscriptions should be read. */
-  packageName: string;
-  /** The maximum number of subscriptions to return. The service may return fewer than this value. If unspecified, at most 50 subscriptions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** A page token, received from a previous `ListSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscriptions` must match the call that provided the page token. */
-  pageToken?: string;
-  /** Deprecated: subscription archiving is not supported. */
-  showArchived?: boolean;
-}
-
-export const ListMonetizationSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    showArchived: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("showArchived"),
-    ),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/subscriptions",
+      path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListMonetizationSubscriptionsRequest>;
+  ) as unknown as Schema.Schema<ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
-export type ListMonetizationSubscriptionsResponse = ListSubscriptionsResponse;
-export const ListMonetizationSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionsResponse;
+export type ListMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
+  ListOneTimeProductOffersResponse;
+export const ListMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListOneTimeProductOffersResponse;
 
-export type ListMonetizationSubscriptionsError =
+export type ListMonetizationOnetimeproductsPurchaseOptionsOffersError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Lists all subscriptions under a given app. */
-export const listMonetizationSubscriptions: API.PaginatedOperationMethod<
-  ListMonetizationSubscriptionsRequest,
-  ListMonetizationSubscriptionsResponse,
-  ListMonetizationSubscriptionsError,
+/** Lists all offers under a given app, product, or purchase option. */
+export const listMonetizationOnetimeproductsPurchaseOptionsOffers: API.PaginatedOperationMethod<
+  ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
+  ListMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
+  ListMonetizationOnetimeproductsPurchaseOptionsOffersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListMonetizationSubscriptionsRequest,
-  output: ListMonetizationSubscriptionsResponse,
+  input: ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
+  output: ListMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -10542,24 +10773,131 @@ export const listMonetizationSubscriptions: API.PaginatedOperationMethod<
   },
 }));
 
+export interface BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
+  /** Required. The parent app (package name) of the updated offers. Must be equal to the package_name field on all the updated OneTimeProductOffer resources. */
+  packageName: string;
+  /** Required. The product ID of the parent one-time product, if all updated offers belong to the same product. If this request spans multiple one-time products, set this field to "-". */
+  productId: string;
+  /** Required. The parent purchase option (ID) for which the offers should be updated. May be specified as '-' to update offers from multiple purchase options. */
+  purchaseOptionId: string;
+  /** Request body */
+  body?: BatchGetOneTimeProductOffersRequest;
+}
+
+export const BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+    purchaseOptionId: Schema.String.pipe(T.HttpPath("purchaseOptionId")),
+    body: Schema.optional(BatchGetOneTimeProductOffersRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchGet",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+
+export type BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
+  BatchGetOneTimeProductOffersResponse;
+export const BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BatchGetOneTimeProductOffersResponse;
+
+export type BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Reads one or more one-time product offers. */
+export const batchGetMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
+  BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
+  BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
+  BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
+  output: BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
+  /** Required. The offer ID of the offer to activate. */
+  offerId: string;
+  /** Required. The parent one-time product (ID) of the offer to activate. */
+  productId: string;
+  /** Required. The parent purchase option (ID) of the offer to activate. */
+  purchaseOptionId: string;
+  /** Required. The parent app (package name) of the offer to activate. */
+  packageName: string;
+  /** Request body */
+  body?: ActivateOneTimeProductOfferRequest;
+}
+
+export const ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offerId: Schema.String.pipe(T.HttpPath("offerId")),
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+    purchaseOptionId: Schema.String.pipe(T.HttpPath("purchaseOptionId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    body: Schema.optional(ActivateOneTimeProductOfferRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:activate",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+
+export type ActivateMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
+  OneTimeProductOffer;
+export const ActivateMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ OneTimeProductOffer;
+
+export type ActivateMonetizationOnetimeproductsPurchaseOptionsOffersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Activates a one-time product offer. */
+export const activateMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
+  ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
+  ActivateMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
+  ActivateMonetizationOnetimeproductsPurchaseOptionsOffersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
+  output: ActivateMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface CreateMonetizationSubscriptionsRequest {
+  /** Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. */
+  "regionsVersion.version"?: string;
   /** Required. The parent app (package name) for which the subscription should be created. Must be equal to the package_name field on the Subscription resource. */
   packageName: string;
   /** Required. The ID to use for the subscription. For the requirements on this format, see the documentation of the product_id field on the Subscription resource. */
   productId?: string;
-  /** Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. */
-  "regionsVersion.version"?: string;
   /** Request body */
   body?: Subscription;
 }
 
 export const CreateMonetizationSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.optional(Schema.String).pipe(T.HttpQuery("productId")),
     "regionsVersion.version": Schema.optional(Schema.String).pipe(
       T.HttpQuery("regionsVersion.version"),
     ),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    productId: Schema.optional(Schema.String).pipe(T.HttpQuery("productId")),
     body: Schema.optional(Subscription).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -10590,74 +10928,6 @@ export const createMonetizationSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMonetizationSubscriptionsRequest,
   output: CreateMonetizationSubscriptionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchMonetizationSubscriptionsRequest {
-  /** Immutable. Package name of the parent app. */
-  packageName: string;
-  /** Immutable. Unique product ID of the product. Unique within the parent app. Product IDs must be composed of lower-case letters (a-z), numbers (0-9), underscores (_) and dots (.). It must start with a lower-case letter or number, and be between 1 and 40 (inclusive) characters in length. */
-  productId: string;
-  /** Required. The list of fields to be updated. */
-  updateMask?: string;
-  /** Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. */
-  "regionsVersion.version"?: string;
-  /** Optional. If set to true, and the subscription with the given package_name and product_id doesn't exist, the subscription will be created. If a new subscription is created, update_mask is ignored. */
-  allowMissing?: boolean;
-  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
-  latencyTolerance?:
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-    | (string & {});
-  /** Request body */
-  body?: Subscription;
-}
-
-export const PatchMonetizationSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    "regionsVersion.version": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("regionsVersion.version"),
-    ),
-    allowMissing: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("allowMissing"),
-    ),
-    latencyTolerance: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("latencyTolerance"),
-    ),
-    body: Schema.optional(Subscription).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchMonetizationSubscriptionsRequest>;
-
-export type PatchMonetizationSubscriptionsResponse = Subscription;
-export const PatchMonetizationSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
-
-export type PatchMonetizationSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates an existing subscription. */
-export const patchMonetizationSubscriptions: API.OperationMethod<
-  PatchMonetizationSubscriptionsRequest,
-  PatchMonetizationSubscriptionsResponse,
-  PatchMonetizationSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchMonetizationSubscriptionsRequest,
-  output: PatchMonetizationSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -10702,50 +10972,6 @@ export const batchUpdateMonetizationSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateMonetizationSubscriptionsRequest,
   output: BatchUpdateMonetizationSubscriptionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteMonetizationSubscriptionsRequest {
-  /** Required. The parent app (package name) of the app of the subscription to delete. */
-  packageName: string;
-  /** Required. The unique product ID of the subscription to delete. */
-  productId: string;
-}
-
-export const DeleteMonetizationSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteMonetizationSubscriptionsRequest>;
-
-export interface DeleteMonetizationSubscriptionsResponse {}
-export const DeleteMonetizationSubscriptionsResponse: Schema.Schema<DeleteMonetizationSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<DeleteMonetizationSubscriptionsResponse>;
-
-export type DeleteMonetizationSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a subscription. A subscription can only be deleted if it has never had a base plan published. */
-export const deleteMonetizationSubscriptions: API.OperationMethod<
-  DeleteMonetizationSubscriptionsRequest,
-  DeleteMonetizationSubscriptionsResponse,
-  DeleteMonetizationSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteMonetizationSubscriptionsRequest,
-  output: DeleteMonetizationSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -10795,20 +11021,411 @@ export const archiveMonetizationSubscriptions: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetMonetizationSubscriptionsRequest {
+  /** Required. The unique product ID of the subscription to get. */
+  productId: string;
+  /** Required. The parent app (package name) of the subscription to get. */
+  packageName: string;
+}
+
+export const GetMonetizationSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetMonetizationSubscriptionsRequest>;
+
+export type GetMonetizationSubscriptionsResponse = Subscription;
+export const GetMonetizationSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+
+export type GetMonetizationSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Reads a single subscription. */
+export const getMonetizationSubscriptions: API.OperationMethod<
+  GetMonetizationSubscriptionsRequest,
+  GetMonetizationSubscriptionsResponse,
+  GetMonetizationSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetMonetizationSubscriptionsRequest,
+  output: GetMonetizationSubscriptionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface PatchMonetizationSubscriptionsRequest {
+  /** Immutable. Unique product ID of the product. Unique within the parent app. Product IDs must be composed of lower-case letters (a-z), numbers (0-9), underscores (_) and dots (.). It must start with a lower-case letter or number, and be between 1 and 40 (inclusive) characters in length. */
+  productId: string;
+  /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
+  latencyTolerance?:
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
+    | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+    | (string & {});
+  /** Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. */
+  "regionsVersion.version"?: string;
+  /** Optional. If set to true, and the subscription with the given package_name and product_id doesn't exist, the subscription will be created. If a new subscription is created, update_mask is ignored. */
+  allowMissing?: boolean;
+  /** Immutable. Package name of the parent app. */
+  packageName: string;
+  /** Required. The list of fields to be updated. */
+  updateMask?: string;
+  /** Request body */
+  body?: Subscription;
+}
+
+export const PatchMonetizationSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+    latencyTolerance: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("latencyTolerance"),
+    ),
+    "regionsVersion.version": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("regionsVersion.version"),
+    ),
+    allowMissing: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("allowMissing"),
+    ),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(Subscription).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchMonetizationSubscriptionsRequest>;
+
+export type PatchMonetizationSubscriptionsResponse = Subscription;
+export const PatchMonetizationSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+
+export type PatchMonetizationSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates an existing subscription. */
+export const patchMonetizationSubscriptions: API.OperationMethod<
+  PatchMonetizationSubscriptionsRequest,
+  PatchMonetizationSubscriptionsResponse,
+  PatchMonetizationSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchMonetizationSubscriptionsRequest,
+  output: PatchMonetizationSubscriptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface BatchGetMonetizationSubscriptionsRequest {
+  /** Required. A list of up to 100 subscription product IDs to retrieve. All the IDs must be different. */
+  productIds?: string[];
+  /** Required. The parent app (package name) for which the subscriptions should be retrieved. Must be equal to the package_name field on all the requests. */
+  packageName: string;
+}
+
+export const BatchGetMonetizationSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productIds: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("productIds"),
+    ),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/subscriptions:batchGet",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<BatchGetMonetizationSubscriptionsRequest>;
+
+export type BatchGetMonetizationSubscriptionsResponse =
+  BatchGetSubscriptionsResponse;
+export const BatchGetMonetizationSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BatchGetSubscriptionsResponse;
+
+export type BatchGetMonetizationSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Reads one or more subscriptions. */
+export const batchGetMonetizationSubscriptions: API.OperationMethod<
+  BatchGetMonetizationSubscriptionsRequest,
+  BatchGetMonetizationSubscriptionsResponse,
+  BatchGetMonetizationSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchGetMonetizationSubscriptionsRequest,
+  output: BatchGetMonetizationSubscriptionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListMonetizationSubscriptionsRequest {
+  /** Required. The parent app (package name) for which the subscriptions should be read. */
+  packageName: string;
+  /** A page token, received from a previous `ListSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscriptions` must match the call that provided the page token. */
+  pageToken?: string;
+  /** The maximum number of subscriptions to return. The service may return fewer than this value. If unspecified, at most 50 subscriptions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** Deprecated: subscription archiving is not supported. */
+  showArchived?: boolean;
+}
+
+export const ListMonetizationSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    showArchived: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("showArchived"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/subscriptions",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListMonetizationSubscriptionsRequest>;
+
+export type ListMonetizationSubscriptionsResponse = ListSubscriptionsResponse;
+export const ListMonetizationSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionsResponse;
+
+export type ListMonetizationSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists all subscriptions under a given app. */
+export const listMonetizationSubscriptions: API.PaginatedOperationMethod<
+  ListMonetizationSubscriptionsRequest,
+  ListMonetizationSubscriptionsResponse,
+  ListMonetizationSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListMonetizationSubscriptionsRequest,
+  output: ListMonetizationSubscriptionsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteMonetizationSubscriptionsRequest {
+  /** Required. The parent app (package name) of the app of the subscription to delete. */
+  packageName: string;
+  /** Required. The unique product ID of the subscription to delete. */
+  productId: string;
+}
+
+export const DeleteMonetizationSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteMonetizationSubscriptionsRequest>;
+
+export interface DeleteMonetizationSubscriptionsResponse {}
+export const DeleteMonetizationSubscriptionsResponse: Schema.Schema<DeleteMonetizationSubscriptionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<DeleteMonetizationSubscriptionsResponse>;
+
+export type DeleteMonetizationSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a subscription. A subscription can only be deleted if it has never had a base plan published. */
+export const deleteMonetizationSubscriptions: API.OperationMethod<
+  DeleteMonetizationSubscriptionsRequest,
+  DeleteMonetizationSubscriptionsResponse,
+  DeleteMonetizationSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteMonetizationSubscriptionsRequest,
+  output: DeleteMonetizationSubscriptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface BatchMigratePricesMonetizationSubscriptionsBasePlansRequest {
+  /** Required. The product ID of the parent subscription, if all updated offers belong to the same subscription. If this batch update spans multiple subscriptions, set this field to "-". Must be set. */
+  productId: string;
+  /** Required. The parent app (package name) for which the subscriptions should be created or updated. Must be equal to the package_name field on all the Subscription resources. */
+  packageName: string;
+  /** Request body */
+  body?: BatchMigrateBasePlanPricesRequest;
+}
+
+export const BatchMigratePricesMonetizationSubscriptionsBasePlansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    body: Schema.optional(BatchMigrateBasePlanPricesRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchMigratePrices",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<BatchMigratePricesMonetizationSubscriptionsBasePlansRequest>;
+
+export type BatchMigratePricesMonetizationSubscriptionsBasePlansResponse =
+  BatchMigrateBasePlanPricesResponse;
+export const BatchMigratePricesMonetizationSubscriptionsBasePlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BatchMigrateBasePlanPricesResponse;
+
+export type BatchMigratePricesMonetizationSubscriptionsBasePlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Batch variant of the MigrateBasePlanPrices endpoint. Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. */
+export const batchMigratePricesMonetizationSubscriptionsBasePlans: API.OperationMethod<
+  BatchMigratePricesMonetizationSubscriptionsBasePlansRequest,
+  BatchMigratePricesMonetizationSubscriptionsBasePlansResponse,
+  BatchMigratePricesMonetizationSubscriptionsBasePlansError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchMigratePricesMonetizationSubscriptionsBasePlansRequest,
+  output: BatchMigratePricesMonetizationSubscriptionsBasePlansResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest {
+  /** Required. The product ID of the parent subscription, if all updated base plans belong to the same subscription. If this batch update spans multiple subscriptions, set this field to "-". Must be set. */
+  productId: string;
+  /** Required. The parent app (package name) of the updated base plans. */
+  packageName: string;
+  /** Request body */
+  body?: BatchUpdateBasePlanStatesRequest;
+}
+
+export const BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    body: Schema.optional(BatchUpdateBasePlanStatesRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchUpdateStates",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest>;
+
+export type BatchUpdateStatesMonetizationSubscriptionsBasePlansResponse =
+  BatchUpdateBasePlanStatesResponse;
+export const BatchUpdateStatesMonetizationSubscriptionsBasePlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BatchUpdateBasePlanStatesResponse;
+
+export type BatchUpdateStatesMonetizationSubscriptionsBasePlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Activates or deactivates base plans across one or multiple subscriptions. Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. */
+export const batchUpdateStatesMonetizationSubscriptionsBasePlans: API.OperationMethod<
+  BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest,
+  BatchUpdateStatesMonetizationSubscriptionsBasePlansResponse,
+  BatchUpdateStatesMonetizationSubscriptionsBasePlansError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest,
+  output: BatchUpdateStatesMonetizationSubscriptionsBasePlansResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface MigratePricesMonetizationSubscriptionsBasePlansRequest {
+  /** Required. The ID of the subscription to update. Must be equal to the product_id field on the Subscription resource. */
+  productId: string;
+  /** Required. Package name of the parent app. Must be equal to the package_name field on the Subscription resource. */
+  packageName: string;
+  /** Required. The unique base plan ID of the base plan to update prices on. */
+  basePlanId: string;
+  /** Request body */
+  body?: MigrateBasePlanPricesRequest;
+}
+
+export const MigratePricesMonetizationSubscriptionsBasePlansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
+    body: Schema.optional(MigrateBasePlanPricesRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}:migratePrices",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<MigratePricesMonetizationSubscriptionsBasePlansRequest>;
+
+export type MigratePricesMonetizationSubscriptionsBasePlansResponse =
+  MigrateBasePlanPricesResponse;
+export const MigratePricesMonetizationSubscriptionsBasePlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ MigrateBasePlanPricesResponse;
+
+export type MigratePricesMonetizationSubscriptionsBasePlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Migrates subscribers from one or more legacy price cohorts to the current price. Requests result in Google Play notifying affected subscribers. Only up to 250 simultaneous legacy price cohorts are supported. */
+export const migratePricesMonetizationSubscriptionsBasePlans: API.OperationMethod<
+  MigratePricesMonetizationSubscriptionsBasePlansRequest,
+  MigratePricesMonetizationSubscriptionsBasePlansResponse,
+  MigratePricesMonetizationSubscriptionsBasePlansError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: MigratePricesMonetizationSubscriptionsBasePlansRequest,
+  output: MigratePricesMonetizationSubscriptionsBasePlansResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface DeleteMonetizationSubscriptionsBasePlansRequest {
   /** Required. The parent app (package name) of the base plan to delete. */
   packageName: string;
-  /** Required. The parent subscription (ID) of the base plan to delete. */
-  productId: string;
   /** Required. The unique offer ID of the base plan to delete. */
   basePlanId: string;
+  /** Required. The parent subscription (ID) of the base plan to delete. */
+  productId: string;
 }
 
 export const DeleteMonetizationSubscriptionsBasePlansRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
     basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
+    productId: Schema.String.pipe(T.HttpPath("productId")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -10845,10 +11462,10 @@ export const deleteMonetizationSubscriptionsBasePlans: API.OperationMethod<
 export interface ActivateMonetizationSubscriptionsBasePlansRequest {
   /** Required. The parent app (package name) of the base plan to activate. */
   packageName: string;
-  /** Required. The parent subscription (ID) of the base plan to activate. */
-  productId: string;
   /** Required. The unique base plan ID of the base plan to activate. */
   basePlanId: string;
+  /** Required. The parent subscription (ID) of the base plan to activate. */
+  productId: string;
   /** Request body */
   body?: ActivateBasePlanRequest;
 }
@@ -10856,8 +11473,8 @@ export interface ActivateMonetizationSubscriptionsBasePlansRequest {
 export const ActivateMonetizationSubscriptionsBasePlansRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
     basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
+    productId: Schema.String.pipe(T.HttpPath("productId")),
     body: Schema.optional(ActivateBasePlanRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -10892,10 +11509,10 @@ export const activateMonetizationSubscriptionsBasePlans: API.OperationMethod<
 }));
 
 export interface DeactivateMonetizationSubscriptionsBasePlansRequest {
-  /** Required. The parent app (package name) of the base plan to deactivate. */
-  packageName: string;
   /** Required. The parent subscription (ID) of the base plan to deactivate. */
   productId: string;
+  /** Required. The parent app (package name) of the base plan to deactivate. */
+  packageName: string;
   /** Required. The unique base plan ID of the base plan to deactivate. */
   basePlanId: string;
   /** Request body */
@@ -10904,8 +11521,8 @@ export interface DeactivateMonetizationSubscriptionsBasePlansRequest {
 
 export const DeactivateMonetizationSubscriptionsBasePlansRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
     productId: Schema.String.pipe(T.HttpPath("productId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
     basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
     body: Schema.optional(DeactivateBasePlanRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -10940,308 +11557,13 @@ export const deactivateMonetizationSubscriptionsBasePlans: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest {
-  /** Required. The parent app (package name) of the updated base plans. */
-  packageName: string;
-  /** Required. The product ID of the parent subscription, if all updated base plans belong to the same subscription. If this batch update spans multiple subscriptions, set this field to "-". Must be set. */
-  productId: string;
-  /** Request body */
-  body?: BatchUpdateBasePlanStatesRequest;
-}
-
-export const BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
-    body: Schema.optional(BatchUpdateBasePlanStatesRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchUpdateStates",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest>;
-
-export type BatchUpdateStatesMonetizationSubscriptionsBasePlansResponse =
-  BatchUpdateBasePlanStatesResponse;
-export const BatchUpdateStatesMonetizationSubscriptionsBasePlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchUpdateBasePlanStatesResponse;
-
-export type BatchUpdateStatesMonetizationSubscriptionsBasePlansError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Activates or deactivates base plans across one or multiple subscriptions. Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. */
-export const batchUpdateStatesMonetizationSubscriptionsBasePlans: API.OperationMethod<
-  BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest,
-  BatchUpdateStatesMonetizationSubscriptionsBasePlansResponse,
-  BatchUpdateStatesMonetizationSubscriptionsBasePlansError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest,
-  output: BatchUpdateStatesMonetizationSubscriptionsBasePlansResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface MigratePricesMonetizationSubscriptionsBasePlansRequest {
-  /** Required. Package name of the parent app. Must be equal to the package_name field on the Subscription resource. */
-  packageName: string;
-  /** Required. The ID of the subscription to update. Must be equal to the product_id field on the Subscription resource. */
-  productId: string;
-  /** Required. The unique base plan ID of the base plan to update prices on. */
-  basePlanId: string;
-  /** Request body */
-  body?: MigrateBasePlanPricesRequest;
-}
-
-export const MigratePricesMonetizationSubscriptionsBasePlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
-    basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
-    body: Schema.optional(MigrateBasePlanPricesRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}:migratePrices",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<MigratePricesMonetizationSubscriptionsBasePlansRequest>;
-
-export type MigratePricesMonetizationSubscriptionsBasePlansResponse =
-  MigrateBasePlanPricesResponse;
-export const MigratePricesMonetizationSubscriptionsBasePlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ MigrateBasePlanPricesResponse;
-
-export type MigratePricesMonetizationSubscriptionsBasePlansError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Migrates subscribers from one or more legacy price cohorts to the current price. Requests result in Google Play notifying affected subscribers. Only up to 250 simultaneous legacy price cohorts are supported. */
-export const migratePricesMonetizationSubscriptionsBasePlans: API.OperationMethod<
-  MigratePricesMonetizationSubscriptionsBasePlansRequest,
-  MigratePricesMonetizationSubscriptionsBasePlansResponse,
-  MigratePricesMonetizationSubscriptionsBasePlansError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: MigratePricesMonetizationSubscriptionsBasePlansRequest,
-  output: MigratePricesMonetizationSubscriptionsBasePlansResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface BatchMigratePricesMonetizationSubscriptionsBasePlansRequest {
-  /** Required. The parent app (package name) for which the subscriptions should be created or updated. Must be equal to the package_name field on all the Subscription resources. */
-  packageName: string;
-  /** Required. The product ID of the parent subscription, if all updated offers belong to the same subscription. If this batch update spans multiple subscriptions, set this field to "-". Must be set. */
-  productId: string;
-  /** Request body */
-  body?: BatchMigrateBasePlanPricesRequest;
-}
-
-export const BatchMigratePricesMonetizationSubscriptionsBasePlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
-    body: Schema.optional(BatchMigrateBasePlanPricesRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchMigratePrices",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<BatchMigratePricesMonetizationSubscriptionsBasePlansRequest>;
-
-export type BatchMigratePricesMonetizationSubscriptionsBasePlansResponse =
-  BatchMigrateBasePlanPricesResponse;
-export const BatchMigratePricesMonetizationSubscriptionsBasePlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchMigrateBasePlanPricesResponse;
-
-export type BatchMigratePricesMonetizationSubscriptionsBasePlansError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Batch variant of the MigrateBasePlanPrices endpoint. Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. */
-export const batchMigratePricesMonetizationSubscriptionsBasePlans: API.OperationMethod<
-  BatchMigratePricesMonetizationSubscriptionsBasePlansRequest,
-  BatchMigratePricesMonetizationSubscriptionsBasePlansResponse,
-  BatchMigratePricesMonetizationSubscriptionsBasePlansError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: BatchMigratePricesMonetizationSubscriptionsBasePlansRequest,
-  output: BatchMigratePricesMonetizationSubscriptionsBasePlansResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetMonetizationSubscriptionsBasePlansOffersRequest {
-  /** Required. The parent app (package name) of the offer to get. */
-  packageName: string;
-  /** Required. The parent subscription (ID) of the offer to get. */
-  productId: string;
-  /** Required. The parent base plan (ID) of the offer to get. */
-  basePlanId: string;
-  /** Required. The unique offer ID of the offer to get. */
-  offerId: string;
-}
-
-export const GetMonetizationSubscriptionsBasePlansOffersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
-    basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
-    offerId: Schema.String.pipe(T.HttpPath("offerId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetMonetizationSubscriptionsBasePlansOffersRequest>;
-
-export type GetMonetizationSubscriptionsBasePlansOffersResponse =
-  SubscriptionOffer;
-export const GetMonetizationSubscriptionsBasePlansOffersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SubscriptionOffer;
-
-export type GetMonetizationSubscriptionsBasePlansOffersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Reads a single offer */
-export const getMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
-  GetMonetizationSubscriptionsBasePlansOffersRequest,
-  GetMonetizationSubscriptionsBasePlansOffersResponse,
-  GetMonetizationSubscriptionsBasePlansOffersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetMonetizationSubscriptionsBasePlansOffersRequest,
-  output: GetMonetizationSubscriptionsBasePlansOffersResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface BatchGetMonetizationSubscriptionsBasePlansOffersRequest {
-  /** Required. The parent app (package name) for which the subscriptions should be created or updated. Must be equal to the package_name field on all the requests. */
-  packageName: string;
-  /** Required. The product ID of the parent subscription, if all updated offers belong to the same subscription. If this request spans multiple subscriptions, set this field to "-". Must be set. */
-  productId: string;
-  /** Required. The parent base plan (ID) for which the offers should be read. May be specified as '-' to read offers from multiple base plans. */
-  basePlanId: string;
-  /** Request body */
-  body?: BatchGetSubscriptionOffersRequest;
-}
-
-export const BatchGetMonetizationSubscriptionsBasePlansOffersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
-    basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
-    body: Schema.optional(BatchGetSubscriptionOffersRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchGet",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<BatchGetMonetizationSubscriptionsBasePlansOffersRequest>;
-
-export type BatchGetMonetizationSubscriptionsBasePlansOffersResponse =
-  BatchGetSubscriptionOffersResponse;
-export const BatchGetMonetizationSubscriptionsBasePlansOffersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchGetSubscriptionOffersResponse;
-
-export type BatchGetMonetizationSubscriptionsBasePlansOffersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Reads one or more subscription offers. */
-export const batchGetMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
-  BatchGetMonetizationSubscriptionsBasePlansOffersRequest,
-  BatchGetMonetizationSubscriptionsBasePlansOffersResponse,
-  BatchGetMonetizationSubscriptionsBasePlansOffersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: BatchGetMonetizationSubscriptionsBasePlansOffersRequest,
-  output: BatchGetMonetizationSubscriptionsBasePlansOffersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListMonetizationSubscriptionsBasePlansOffersRequest {
-  /** Required. The parent app (package name) for which the subscriptions should be read. */
-  packageName: string;
-  /** Required. The parent subscription (ID) for which the offers should be read. May be specified as '-' to read all offers under an app. */
-  productId: string;
-  /** Required. The parent base plan (ID) for which the offers should be read. May be specified as '-' to read all offers under a subscription or an app. Must be specified as '-' if product_id is specified as '-'. */
-  basePlanId: string;
-  /** The maximum number of subscriptions to return. The service may return fewer than this value. If unspecified, at most 50 subscriptions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** A page token, received from a previous `ListSubscriptionsOffers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscriptionOffers` must match the call that provided the page token. */
-  pageToken?: string;
-}
-
-export const ListMonetizationSubscriptionsBasePlansOffersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
-    basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListMonetizationSubscriptionsBasePlansOffersRequest>;
-
-export type ListMonetizationSubscriptionsBasePlansOffersResponse =
-  ListSubscriptionOffersResponse;
-export const ListMonetizationSubscriptionsBasePlansOffersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionOffersResponse;
-
-export type ListMonetizationSubscriptionsBasePlansOffersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists all offers under a given subscription. */
-export const listMonetizationSubscriptionsBasePlansOffers: API.PaginatedOperationMethod<
-  ListMonetizationSubscriptionsBasePlansOffersRequest,
-  ListMonetizationSubscriptionsBasePlansOffersResponse,
-  ListMonetizationSubscriptionsBasePlansOffersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListMonetizationSubscriptionsBasePlansOffersRequest,
-  output: ListMonetizationSubscriptionsBasePlansOffersResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface CreateMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. The parent app (package name) for which the offer should be created. Must be equal to the package_name field on the Subscription resource. */
   packageName: string;
-  /** Required. The parent subscription (ID) for which the offer should be created. Must be equal to the product_id field on the SubscriptionOffer resource. */
-  productId: string;
   /** Required. The parent base plan (ID) for which the offer should be created. Must be equal to the base_plan_id field on the SubscriptionOffer resource. */
   basePlanId: string;
+  /** Required. The parent subscription (ID) for which the offer should be created. Must be equal to the product_id field on the SubscriptionOffer resource. */
+  productId: string;
   /** Required. The ID to use for the offer. For the requirements on this format, see the documentation of the offer_id field on the SubscriptionOffer resource. */
   offerId?: string;
   /** Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. */
@@ -11253,8 +11575,8 @@ export interface CreateMonetizationSubscriptionsBasePlansOffersRequest {
 export const CreateMonetizationSubscriptionsBasePlansOffersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
     basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
+    productId: Schema.String.pipe(T.HttpPath("productId")),
     offerId: Schema.optional(Schema.String).pipe(T.HttpQuery("offerId")),
     "regionsVersion.version": Schema.optional(Schema.String).pipe(
       T.HttpQuery("regionsVersion.version"),
@@ -11296,24 +11618,24 @@ export const createMonetizationSubscriptionsBasePlansOffers: API.OperationMethod
 export interface PatchMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. Immutable. The package name of the app the parent subscription belongs to. */
   packageName: string;
-  /** Required. Immutable. The ID of the parent subscription this offer belongs to. */
-  productId: string;
   /** Required. Immutable. The ID of the base plan to which this offer is an extension. */
   basePlanId: string;
-  /** Required. Immutable. Unique ID of this subscription offer. Must be unique within the base plan. */
-  offerId: string;
   /** Required. The list of fields to be updated. */
   updateMask?: string;
   /** Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. */
   "regionsVersion.version"?: string;
   /** Optional. If set to true, and the subscription offer with the given package_name, product_id, base_plan_id and offer_id doesn't exist, an offer will be created. If a new offer is created, update_mask is ignored. */
   allowMissing?: boolean;
+  /** Required. Immutable. Unique ID of this subscription offer. Must be unique within the base plan. */
+  offerId: string;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
   latencyTolerance?:
     | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
     | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
     | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
     | (string & {});
+  /** Required. Immutable. The ID of the parent subscription this offer belongs to. */
+  productId: string;
   /** Request body */
   body?: SubscriptionOffer;
 }
@@ -11321,9 +11643,7 @@ export interface PatchMonetizationSubscriptionsBasePlansOffersRequest {
 export const PatchMonetizationSubscriptionsBasePlansOffersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
     basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
-    offerId: Schema.String.pipe(T.HttpPath("offerId")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     "regionsVersion.version": Schema.optional(Schema.String).pipe(
       T.HttpQuery("regionsVersion.version"),
@@ -11331,9 +11651,11 @@ export const PatchMonetizationSubscriptionsBasePlansOffersRequest =
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
     ),
+    offerId: Schema.String.pipe(T.HttpPath("offerId")),
     latencyTolerance: Schema.optional(Schema.String).pipe(
       T.HttpQuery("latencyTolerance"),
     ),
+    productId: Schema.String.pipe(T.HttpPath("productId")),
     body: Schema.optional(SubscriptionOffer).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -11368,11 +11690,170 @@ export const patchMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest {
-  /** Required. The parent app (package name) of the updated subscription offers. Must be equal to the package_name field on all the updated SubscriptionOffer resources. */
+export interface DeactivateMonetizationSubscriptionsBasePlansOffersRequest {
+  /** Required. The unique offer ID of the offer to deactivate. */
+  offerId: string;
+  /** Required. The parent subscription (ID) of the offer to deactivate. */
+  productId: string;
+  /** Required. The parent app (package name) of the offer to deactivate. */
   packageName: string;
+  /** Required. The parent base plan (ID) of the offer to deactivate. */
+  basePlanId: string;
+  /** Request body */
+  body?: DeactivateSubscriptionOfferRequest;
+}
+
+export const DeactivateMonetizationSubscriptionsBasePlansOffersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offerId: Schema.String.pipe(T.HttpPath("offerId")),
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
+    body: Schema.optional(DeactivateSubscriptionOfferRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}:deactivate",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeactivateMonetizationSubscriptionsBasePlansOffersRequest>;
+
+export type DeactivateMonetizationSubscriptionsBasePlansOffersResponse =
+  SubscriptionOffer;
+export const DeactivateMonetizationSubscriptionsBasePlansOffersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SubscriptionOffer;
+
+export type DeactivateMonetizationSubscriptionsBasePlansOffersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deactivates a subscription offer. Once deactivated, existing subscribers will maintain their subscription, but the offer will become unavailable to new subscribers. */
+export const deactivateMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
+  DeactivateMonetizationSubscriptionsBasePlansOffersRequest,
+  DeactivateMonetizationSubscriptionsBasePlansOffersResponse,
+  DeactivateMonetizationSubscriptionsBasePlansOffersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeactivateMonetizationSubscriptionsBasePlansOffersRequest,
+  output: DeactivateMonetizationSubscriptionsBasePlansOffersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListMonetizationSubscriptionsBasePlansOffersRequest {
+  /** A page token, received from a previous `ListSubscriptionsOffers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscriptionOffers` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Required. The parent subscription (ID) for which the offers should be read. May be specified as '-' to read all offers under an app. */
+  productId: string;
+  /** Required. The parent app (package name) for which the subscriptions should be read. */
+  packageName: string;
+  /** Required. The parent base plan (ID) for which the offers should be read. May be specified as '-' to read all offers under a subscription or an app. Must be specified as '-' if product_id is specified as '-'. */
+  basePlanId: string;
+  /** The maximum number of subscriptions to return. The service may return fewer than this value. If unspecified, at most 50 subscriptions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+}
+
+export const ListMonetizationSubscriptionsBasePlansOffersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListMonetizationSubscriptionsBasePlansOffersRequest>;
+
+export type ListMonetizationSubscriptionsBasePlansOffersResponse =
+  ListSubscriptionOffersResponse;
+export const ListMonetizationSubscriptionsBasePlansOffersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionOffersResponse;
+
+export type ListMonetizationSubscriptionsBasePlansOffersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists all offers under a given subscription. */
+export const listMonetizationSubscriptionsBasePlansOffers: API.PaginatedOperationMethod<
+  ListMonetizationSubscriptionsBasePlansOffersRequest,
+  ListMonetizationSubscriptionsBasePlansOffersResponse,
+  ListMonetizationSubscriptionsBasePlansOffersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListMonetizationSubscriptionsBasePlansOffersRequest,
+  output: ListMonetizationSubscriptionsBasePlansOffersResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteMonetizationSubscriptionsBasePlansOffersRequest {
+  /** Required. The parent app (package name) of the offer to delete. */
+  packageName: string;
+  /** Required. The parent base plan (ID) of the offer to delete. */
+  basePlanId: string;
+  /** Required. The unique offer ID of the offer to delete. */
+  offerId: string;
+  /** Required. The parent subscription (ID) of the offer to delete. */
+  productId: string;
+}
+
+export const DeleteMonetizationSubscriptionsBasePlansOffersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
+    basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
+    offerId: Schema.String.pipe(T.HttpPath("offerId")),
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteMonetizationSubscriptionsBasePlansOffersRequest>;
+
+export interface DeleteMonetizationSubscriptionsBasePlansOffersResponse {}
+export const DeleteMonetizationSubscriptionsBasePlansOffersResponse: Schema.Schema<DeleteMonetizationSubscriptionsBasePlansOffersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Schema<DeleteMonetizationSubscriptionsBasePlansOffersResponse>;
+
+export type DeleteMonetizationSubscriptionsBasePlansOffersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a subscription offer. Can only be done for draft offers. This action is irreversible. */
+export const deleteMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
+  DeleteMonetizationSubscriptionsBasePlansOffersRequest,
+  DeleteMonetizationSubscriptionsBasePlansOffersResponse,
+  DeleteMonetizationSubscriptionsBasePlansOffersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteMonetizationSubscriptionsBasePlansOffersRequest,
+  output: DeleteMonetizationSubscriptionsBasePlansOffersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. The product ID of the parent subscription, if all updated offers belong to the same subscription. If this request spans multiple subscriptions, set this field to "-". Must be set. */
   productId: string;
+  /** Required. The parent app (package name) of the updated subscription offers. Must be equal to the package_name field on all the updated SubscriptionOffer resources. */
+  packageName: string;
   /** Required. The parent base plan (ID) for which the offers should be updated. May be specified as '-' to update offers from multiple base plans. */
   basePlanId: string;
   /** Request body */
@@ -11381,8 +11862,8 @@ export interface BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest {
 
 export const BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
     productId: Schema.String.pipe(T.HttpPath("productId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
     basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
     body: Schema.optional(BatchUpdateSubscriptionOffersRequest).pipe(
       T.HttpBody(),
@@ -11420,119 +11901,58 @@ export const batchUpdateMonetizationSubscriptionsBasePlansOffers: API.OperationM
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ActivateMonetizationSubscriptionsBasePlansOffersRequest {
-  /** Required. The parent app (package name) of the offer to activate. */
+export interface GetMonetizationSubscriptionsBasePlansOffersRequest {
+  /** Required. The parent app (package name) of the offer to get. */
   packageName: string;
-  /** Required. The parent subscription (ID) of the offer to activate. */
-  productId: string;
-  /** Required. The parent base plan (ID) of the offer to activate. */
+  /** Required. The parent base plan (ID) of the offer to get. */
   basePlanId: string;
-  /** Required. The unique offer ID of the offer to activate. */
+  /** Required. The unique offer ID of the offer to get. */
   offerId: string;
-  /** Request body */
-  body?: ActivateSubscriptionOfferRequest;
+  /** Required. The parent subscription (ID) of the offer to get. */
+  productId: string;
 }
 
-export const ActivateMonetizationSubscriptionsBasePlansOffersRequest =
+export const GetMonetizationSubscriptionsBasePlansOffersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
     basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
     offerId: Schema.String.pipe(T.HttpPath("offerId")),
-    body: Schema.optional(ActivateSubscriptionOfferRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}:activate",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ActivateMonetizationSubscriptionsBasePlansOffersRequest>;
-
-export type ActivateMonetizationSubscriptionsBasePlansOffersResponse =
-  SubscriptionOffer;
-export const ActivateMonetizationSubscriptionsBasePlansOffersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SubscriptionOffer;
-
-export type ActivateMonetizationSubscriptionsBasePlansOffersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Activates a subscription offer. Once activated, subscription offers will be available to new subscribers. */
-export const activateMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
-  ActivateMonetizationSubscriptionsBasePlansOffersRequest,
-  ActivateMonetizationSubscriptionsBasePlansOffersResponse,
-  ActivateMonetizationSubscriptionsBasePlansOffersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ActivateMonetizationSubscriptionsBasePlansOffersRequest,
-  output: ActivateMonetizationSubscriptionsBasePlansOffersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeactivateMonetizationSubscriptionsBasePlansOffersRequest {
-  /** Required. The parent app (package name) of the offer to deactivate. */
-  packageName: string;
-  /** Required. The parent subscription (ID) of the offer to deactivate. */
-  productId: string;
-  /** Required. The parent base plan (ID) of the offer to deactivate. */
-  basePlanId: string;
-  /** Required. The unique offer ID of the offer to deactivate. */
-  offerId: string;
-  /** Request body */
-  body?: DeactivateSubscriptionOfferRequest;
-}
-
-export const DeactivateMonetizationSubscriptionsBasePlansOffersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
     productId: Schema.String.pipe(T.HttpPath("productId")),
-    basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
-    offerId: Schema.String.pipe(T.HttpPath("offerId")),
-    body: Schema.optional(DeactivateSubscriptionOfferRequest).pipe(
-      T.HttpBody(),
-    ),
   }).pipe(
     T.Http({
-      method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}:deactivate",
-      hasBody: true,
+      method: "GET",
+      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeactivateMonetizationSubscriptionsBasePlansOffersRequest>;
+  ) as unknown as Schema.Schema<GetMonetizationSubscriptionsBasePlansOffersRequest>;
 
-export type DeactivateMonetizationSubscriptionsBasePlansOffersResponse =
+export type GetMonetizationSubscriptionsBasePlansOffersResponse =
   SubscriptionOffer;
-export const DeactivateMonetizationSubscriptionsBasePlansOffersResponse =
+export const GetMonetizationSubscriptionsBasePlansOffersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SubscriptionOffer;
 
-export type DeactivateMonetizationSubscriptionsBasePlansOffersError =
+export type GetMonetizationSubscriptionsBasePlansOffersError =
   | DefaultErrors
   | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  | Forbidden;
 
-/** Deactivates a subscription offer. Once deactivated, existing subscribers will maintain their subscription, but the offer will become unavailable to new subscribers. */
-export const deactivateMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
-  DeactivateMonetizationSubscriptionsBasePlansOffersRequest,
-  DeactivateMonetizationSubscriptionsBasePlansOffersResponse,
-  DeactivateMonetizationSubscriptionsBasePlansOffersError,
+/** Reads a single offer */
+export const getMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
+  GetMonetizationSubscriptionsBasePlansOffersRequest,
+  GetMonetizationSubscriptionsBasePlansOffersResponse,
+  GetMonetizationSubscriptionsBasePlansOffersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeactivateMonetizationSubscriptionsBasePlansOffersRequest,
-  output: DeactivateMonetizationSubscriptionsBasePlansOffersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+  input: GetMonetizationSubscriptionsBasePlansOffersRequest,
+  output: GetMonetizationSubscriptionsBasePlansOffersResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest {
-  /** Required. The parent app (package name) of the updated subscription offers. Must be equal to the package_name field on all the updated SubscriptionOffer resources. */
-  packageName: string;
   /** Required. The product ID of the parent subscription, if all updated offers belong to the same subscription. If this request spans multiple subscriptions, set this field to "-". Must be set. */
   productId: string;
+  /** Required. The parent app (package name) of the updated subscription offers. Must be equal to the package_name field on all the updated SubscriptionOffer resources. */
+  packageName: string;
   /** Required. The parent base plan (ID) for which the offers should be updated. May be specified as '-' to update offers from multiple base plans. */
   basePlanId: string;
   /** Request body */
@@ -11541,8 +11961,8 @@ export interface BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersReques
 
 export const BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
     productId: Schema.String.pipe(T.HttpPath("productId")),
+    packageName: Schema.String.pipe(T.HttpPath("packageName")),
     basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
     body: Schema.optional(BatchUpdateSubscriptionOfferStatesRequest).pipe(
       T.HttpBody(),
@@ -11580,352 +12000,105 @@ export const batchUpdateStatesMonetizationSubscriptionsBasePlansOffers: API.Oper
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface DeleteMonetizationSubscriptionsBasePlansOffersRequest {
-  /** Required. The parent app (package name) of the offer to delete. */
+export interface BatchGetMonetizationSubscriptionsBasePlansOffersRequest {
+  /** Required. The parent app (package name) for which the subscriptions should be created or updated. Must be equal to the package_name field on all the requests. */
   packageName: string;
-  /** Required. The parent subscription (ID) of the offer to delete. */
-  productId: string;
-  /** Required. The parent base plan (ID) of the offer to delete. */
+  /** Required. The parent base plan (ID) for which the offers should be read. May be specified as '-' to read offers from multiple base plans. */
   basePlanId: string;
-  /** Required. The unique offer ID of the offer to delete. */
-  offerId: string;
+  /** Required. The product ID of the parent subscription, if all updated offers belong to the same subscription. If this request spans multiple subscriptions, set this field to "-". Must be set. */
+  productId: string;
+  /** Request body */
+  body?: BatchGetSubscriptionOffersRequest;
 }
 
-export const DeleteMonetizationSubscriptionsBasePlansOffersRequest =
+export const BatchGetMonetizationSubscriptionsBasePlansOffersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    productId: Schema.String.pipe(T.HttpPath("productId")),
     basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
-    offerId: Schema.String.pipe(T.HttpPath("offerId")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteMonetizationSubscriptionsBasePlansOffersRequest>;
-
-export interface DeleteMonetizationSubscriptionsBasePlansOffersResponse {}
-export const DeleteMonetizationSubscriptionsBasePlansOffersResponse: Schema.Schema<DeleteMonetizationSubscriptionsBasePlansOffersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<DeleteMonetizationSubscriptionsBasePlansOffersResponse>;
-
-export type DeleteMonetizationSubscriptionsBasePlansOffersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a subscription offer. Can only be done for draft offers. This action is irreversible. */
-export const deleteMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
-  DeleteMonetizationSubscriptionsBasePlansOffersRequest,
-  DeleteMonetizationSubscriptionsBasePlansOffersResponse,
-  DeleteMonetizationSubscriptionsBasePlansOffersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteMonetizationSubscriptionsBasePlansOffersRequest,
-  output: DeleteMonetizationSubscriptionsBasePlansOffersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetReviewsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Unique identifier for a review. */
-  reviewId: string;
-  /** Language localization code. */
-  translationLanguage?: string;
-}
-
-export const GetReviewsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.String.pipe(T.HttpPath("packageName")),
-  reviewId: Schema.String.pipe(T.HttpPath("reviewId")),
-  translationLanguage: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("translationLanguage"),
-  ),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "androidpublisher/v3/applications/{packageName}/reviews/{reviewId}",
-  }),
-  svc,
-) as unknown as Schema.Schema<GetReviewsRequest>;
-
-export type GetReviewsResponse = Review;
-export const GetReviewsResponse = /*@__PURE__*/ /*#__PURE__*/ Review;
-
-export type GetReviewsError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets a single review. */
-export const getReviews: API.OperationMethod<
-  GetReviewsRequest,
-  GetReviewsResponse,
-  GetReviewsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetReviewsRequest,
-  output: GetReviewsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListReviewsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Pagination token. If empty, list starts at the first review. */
-  token?: string;
-  /** The index of the first element to return. */
-  startIndex?: number;
-  /** How many results the list operation should return. */
-  maxResults?: number;
-  /** Language localization code. */
-  translationLanguage?: string;
-}
-
-export const ListReviewsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.String.pipe(T.HttpPath("packageName")),
-  token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
-  startIndex: Schema.optional(Schema.Number).pipe(T.HttpQuery("startIndex")),
-  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-  translationLanguage: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("translationLanguage"),
-  ),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "androidpublisher/v3/applications/{packageName}/reviews",
-  }),
-  svc,
-) as unknown as Schema.Schema<ListReviewsRequest>;
-
-export type ListReviewsResponse = ReviewsListResponse;
-export const ListReviewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReviewsListResponse;
-
-export type ListReviewsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists all reviews. */
-export const listReviews: API.OperationMethod<
-  ListReviewsRequest,
-  ListReviewsResponse,
-  ListReviewsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListReviewsRequest,
-  output: ListReviewsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ReplyReviewsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** Unique identifier for a review. */
-  reviewId: string;
-  /** Request body */
-  body?: ReviewsReplyRequest;
-}
-
-export const ReplyReviewsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.String.pipe(T.HttpPath("packageName")),
-  reviewId: Schema.String.pipe(T.HttpPath("reviewId")),
-  body: Schema.optional(ReviewsReplyRequest).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "androidpublisher/v3/applications/{packageName}/reviews/{reviewId}:reply",
-    hasBody: true,
-  }),
-  svc,
-) as unknown as Schema.Schema<ReplyReviewsRequest>;
-
-export type ReplyReviewsResponse = ReviewsReplyResponse;
-export const ReplyReviewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReviewsReplyResponse;
-
-export type ReplyReviewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Replies to a single review, or updates an existing reply. */
-export const replyReviews: API.OperationMethod<
-  ReplyReviewsRequest,
-  ReplyReviewsResponse,
-  ReplyReviewsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ReplyReviewsRequest,
-  output: ReplyReviewsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateSystemapksVariantsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** The version code of the App Bundle. */
-  versionCode: string;
-  /** Request body */
-  body?: Variant;
-}
-
-export const CreateSystemapksVariantsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    versionCode: Schema.String.pipe(T.HttpPath("versionCode")),
-    body: Schema.optional(Variant).pipe(T.HttpBody()),
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+    body: Schema.optional(BatchGetSubscriptionOffersRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
+      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchGet",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSystemapksVariantsRequest>;
+  ) as unknown as Schema.Schema<BatchGetMonetizationSubscriptionsBasePlansOffersRequest>;
 
-export type CreateSystemapksVariantsResponse = Variant;
-export const CreateSystemapksVariantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Variant;
+export type BatchGetMonetizationSubscriptionsBasePlansOffersResponse =
+  BatchGetSubscriptionOffersResponse;
+export const BatchGetMonetizationSubscriptionsBasePlansOffersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BatchGetSubscriptionOffersResponse;
 
-export type CreateSystemapksVariantsError =
+export type BatchGetMonetizationSubscriptionsBasePlansOffersError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates an APK which is suitable for inclusion in a system image from an already uploaded Android App Bundle. */
-export const createSystemapksVariants: API.OperationMethod<
-  CreateSystemapksVariantsRequest,
-  CreateSystemapksVariantsResponse,
-  CreateSystemapksVariantsError,
+/** Reads one or more subscription offers. */
+export const batchGetMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
+  BatchGetMonetizationSubscriptionsBasePlansOffersRequest,
+  BatchGetMonetizationSubscriptionsBasePlansOffersResponse,
+  BatchGetMonetizationSubscriptionsBasePlansOffersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateSystemapksVariantsRequest,
-  output: CreateSystemapksVariantsResponse,
+  input: BatchGetMonetizationSubscriptionsBasePlansOffersRequest,
+  output: BatchGetMonetizationSubscriptionsBasePlansOffersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListSystemapksVariantsRequest {
-  /** Package name of the app. */
+export interface ActivateMonetizationSubscriptionsBasePlansOffersRequest {
+  /** Required. The parent subscription (ID) of the offer to activate. */
+  productId: string;
+  /** Required. The unique offer ID of the offer to activate. */
+  offerId: string;
+  /** Required. The parent app (package name) of the offer to activate. */
   packageName: string;
-  /** The version code of the App Bundle. */
-  versionCode: string;
+  /** Required. The parent base plan (ID) of the offer to activate. */
+  basePlanId: string;
+  /** Request body */
+  body?: ActivateSubscriptionOfferRequest;
 }
 
-export const ListSystemapksVariantsRequest =
+export const ActivateMonetizationSubscriptionsBasePlansOffersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.String.pipe(T.HttpPath("productId")),
+    offerId: Schema.String.pipe(T.HttpPath("offerId")),
     packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    versionCode: Schema.String.pipe(T.HttpPath("versionCode")),
+    basePlanId: Schema.String.pipe(T.HttpPath("basePlanId")),
+    body: Schema.optional(ActivateSubscriptionOfferRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
+      method: "POST",
+      path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}:activate",
+      hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListSystemapksVariantsRequest>;
+  ) as unknown as Schema.Schema<ActivateMonetizationSubscriptionsBasePlansOffersRequest>;
 
-export type ListSystemapksVariantsResponse = SystemApksListResponse;
-export const ListSystemapksVariantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SystemApksListResponse;
+export type ActivateMonetizationSubscriptionsBasePlansOffersResponse =
+  SubscriptionOffer;
+export const ActivateMonetizationSubscriptionsBasePlansOffersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SubscriptionOffer;
 
-export type ListSystemapksVariantsError = DefaultErrors | NotFound | Forbidden;
-
-/** Returns the list of previously created system APK variants. */
-export const listSystemapksVariants: API.OperationMethod<
-  ListSystemapksVariantsRequest,
-  ListSystemapksVariantsResponse,
-  ListSystemapksVariantsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListSystemapksVariantsRequest,
-  output: ListSystemapksVariantsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetSystemapksVariantsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** The version code of the App Bundle. */
-  versionCode: string;
-  /** The ID of a previously created system APK variant. */
-  variantId: number;
-}
-
-export const GetSystemapksVariantsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    versionCode: Schema.String.pipe(T.HttpPath("versionCode")),
-    variantId: Schema.Number.pipe(T.HttpPath("variantId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetSystemapksVariantsRequest>;
-
-export type GetSystemapksVariantsResponse = Variant;
-export const GetSystemapksVariantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Variant;
-
-export type GetSystemapksVariantsError = DefaultErrors | NotFound | Forbidden;
-
-/** Returns a previously created system APK variant. */
-export const getSystemapksVariants: API.OperationMethod<
-  GetSystemapksVariantsRequest,
-  GetSystemapksVariantsResponse,
-  GetSystemapksVariantsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetSystemapksVariantsRequest,
-  output: GetSystemapksVariantsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DownloadSystemapksVariantsRequest {
-  /** Package name of the app. */
-  packageName: string;
-  /** The version code of the App Bundle. */
-  versionCode: string;
-  /** The ID of a previously created system APK variant. */
-  variantId: number;
-}
-
-export const DownloadSystemapksVariantsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    packageName: Schema.String.pipe(T.HttpPath("packageName")),
-    versionCode: Schema.String.pipe(T.HttpPath("versionCode")),
-    variantId: Schema.Number.pipe(T.HttpPath("variantId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}:download",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DownloadSystemapksVariantsRequest>;
-
-export interface DownloadSystemapksVariantsResponse {}
-export const DownloadSystemapksVariantsResponse: Schema.Schema<DownloadSystemapksVariantsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<DownloadSystemapksVariantsResponse>;
-
-export type DownloadSystemapksVariantsError =
+export type ActivateMonetizationSubscriptionsBasePlansOffersError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Downloads a previously created system APK which is suitable for inclusion in a system image. */
-export const downloadSystemapksVariants: API.OperationMethod<
-  DownloadSystemapksVariantsRequest,
-  DownloadSystemapksVariantsResponse,
-  DownloadSystemapksVariantsError,
+/** Activates a subscription offer. Once activated, subscription offers will be available to new subscribers. */
+export const activateMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
+  ActivateMonetizationSubscriptionsBasePlansOffersRequest,
+  ActivateMonetizationSubscriptionsBasePlansOffersResponse,
+  ActivateMonetizationSubscriptionsBasePlansOffersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DownloadSystemapksVariantsRequest,
-  output: DownloadSystemapksVariantsResponse,
-  errors: [NotFound, Forbidden],
+  input: ActivateMonetizationSubscriptionsBasePlansOffersRequest,
+  output: ActivateMonetizationSubscriptionsBasePlansOffersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

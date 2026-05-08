@@ -29,10 +29,11 @@ export interface CloudSqlCredential {
   password?: string;
 }
 
-export const CloudSqlCredential = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  username: Schema.optional(Schema.String),
-  password: Schema.optional(Schema.String),
-}).annotate({ identifier: "CloudSqlCredential" });
+export const CloudSqlCredential: Schema.Schema<CloudSqlCredential> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    username: Schema.optional(Schema.String),
+    password: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudSqlCredential" });
 
 export interface CloudSqlProperties {
   /** Cloud SQL instance ID in the form `project:location:instance`. */
@@ -47,13 +48,14 @@ export interface CloudSqlProperties {
   serviceAccountId?: string;
 }
 
-export const CloudSqlProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  instanceId: Schema.optional(Schema.String),
-  database: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  credential: Schema.optional(CloudSqlCredential),
-  serviceAccountId: Schema.optional(Schema.String),
-}).annotate({ identifier: "CloudSqlProperties" });
+export const CloudSqlProperties: Schema.Schema<CloudSqlProperties> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceId: Schema.optional(Schema.String),
+    database: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    credential: Schema.optional(CloudSqlCredential),
+    serviceAccountId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudSqlProperties" });
 
 export interface AwsAccessRole {
   /** The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection. */
@@ -62,19 +64,21 @@ export interface AwsAccessRole {
   identity?: string;
 }
 
-export const AwsAccessRole = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  iamRoleId: Schema.optional(Schema.String),
-  identity: Schema.optional(Schema.String),
-}).annotate({ identifier: "AwsAccessRole" });
+export const AwsAccessRole: Schema.Schema<AwsAccessRole> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    iamRoleId: Schema.optional(Schema.String),
+    identity: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AwsAccessRole" });
 
 export interface AwsProperties {
   /** Authentication using Google owned service account to assume into customer's AWS IAM Role. */
   accessRole?: AwsAccessRole;
 }
 
-export const AwsProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accessRole: Schema.optional(AwsAccessRole),
-}).annotate({ identifier: "AwsProperties" });
+export const AwsProperties: Schema.Schema<AwsProperties> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessRole: Schema.optional(AwsAccessRole),
+  }).annotate({ identifier: "AwsProperties" });
 
 export interface AzureProperties {
   /** Output only. The name of the Azure Active Directory Application. */
@@ -93,15 +97,16 @@ export interface AzureProperties {
   identity?: string;
 }
 
-export const AzureProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  application: Schema.optional(Schema.String),
-  clientId: Schema.optional(Schema.String),
-  objectId: Schema.optional(Schema.String),
-  customerTenantId: Schema.optional(Schema.String),
-  redirectUri: Schema.optional(Schema.String),
-  federatedApplicationClientId: Schema.optional(Schema.String),
-  identity: Schema.optional(Schema.String),
-}).annotate({ identifier: "AzureProperties" });
+export const AzureProperties: Schema.Schema<AzureProperties> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    application: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    objectId: Schema.optional(Schema.String),
+    customerTenantId: Schema.optional(Schema.String),
+    redirectUri: Schema.optional(Schema.String),
+    federatedApplicationClientId: Schema.optional(Schema.String),
+    identity: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AzureProperties" });
 
 export interface CloudSpannerProperties {
   /** Cloud Spanner database in the form `project/instance/database' */
@@ -118,23 +123,22 @@ export interface CloudSpannerProperties {
   databaseRole?: string;
 }
 
-export const CloudSpannerProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const CloudSpannerProperties: Schema.Schema<CloudSpannerProperties> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     database: Schema.optional(Schema.String),
     useParallelism: Schema.optional(Schema.Boolean),
     maxParallelism: Schema.optional(Schema.Number),
     useServerlessAnalytics: Schema.optional(Schema.Boolean),
     useDataBoost: Schema.optional(Schema.Boolean),
     databaseRole: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "CloudSpannerProperties" });
+  }).annotate({ identifier: "CloudSpannerProperties" });
 
 export interface CloudResourceProperties {
   /** Output only. The account ID of the service created for the purpose of this connection. The service account does not have any permissions associated with it when it is created. After creation, customers delegate permissions to the service account. When the connection is used in the context of an operation in BigQuery, the service account will be used to connect to the desired resources in GCP. The account ID is in the form of: @gcp-sa-bigquery-cloudresource.iam.gserviceaccount.com */
   serviceAccountId?: string;
 }
 
-export const CloudResourceProperties =
+export const CloudResourceProperties: Schema.Schema<CloudResourceProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccountId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CloudResourceProperties" });
@@ -144,18 +148,17 @@ export interface MetastoreServiceConfig {
   metastoreService?: string;
 }
 
-export const MetastoreServiceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const MetastoreServiceConfig: Schema.Schema<MetastoreServiceConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metastoreService: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "MetastoreServiceConfig" });
+  }).annotate({ identifier: "MetastoreServiceConfig" });
 
 export interface SparkHistoryServerConfig {
   /** Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection. Example: * `projects/[project_id]/regions/[region]/clusters/[cluster_name]` */
   dataprocCluster?: string;
 }
 
-export const SparkHistoryServerConfig =
+export const SparkHistoryServerConfig: Schema.Schema<SparkHistoryServerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataprocCluster: Schema.optional(Schema.String),
   }).annotate({ identifier: "SparkHistoryServerConfig" });
@@ -169,11 +172,12 @@ export interface SparkProperties {
   sparkHistoryServerConfig?: SparkHistoryServerConfig;
 }
 
-export const SparkProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  serviceAccountId: Schema.optional(Schema.String),
-  metastoreServiceConfig: Schema.optional(MetastoreServiceConfig),
-  sparkHistoryServerConfig: Schema.optional(SparkHistoryServerConfig),
-}).annotate({ identifier: "SparkProperties" });
+export const SparkProperties: Schema.Schema<SparkProperties> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccountId: Schema.optional(Schema.String),
+    metastoreServiceConfig: Schema.optional(MetastoreServiceConfig),
+    sparkHistoryServerConfig: Schema.optional(SparkHistoryServerConfig),
+  }).annotate({ identifier: "SparkProperties" });
 
 export interface SalesforceDataCloudProperties {
   /** The URL to the user's Salesforce DataCloud instance. */
@@ -184,7 +188,7 @@ export interface SalesforceDataCloudProperties {
   tenantId?: string;
 }
 
-export const SalesforceDataCloudProperties =
+export const SalesforceDataCloudProperties: Schema.Schema<SalesforceDataCloudProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceUri: Schema.optional(Schema.String),
     identity: Schema.optional(Schema.String),
@@ -196,7 +200,7 @@ export interface ConnectorConfigurationEndpoint {
   hostPort?: string;
 }
 
-export const ConnectorConfigurationEndpoint =
+export const ConnectorConfigurationEndpoint: Schema.Schema<ConnectorConfigurationEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hostPort: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConnectorConfigurationEndpoint" });
@@ -208,7 +212,7 @@ export interface ConnectorConfigurationSecret {
   secretType?: "SECRET_TYPE_UNSPECIFIED" | "PLAINTEXT" | (string & {});
 }
 
-export const ConnectorConfigurationSecret =
+export const ConnectorConfigurationSecret: Schema.Schema<ConnectorConfigurationSecret> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     plaintext: Schema.optional(Schema.String),
     secretType: Schema.optional(Schema.String),
@@ -221,7 +225,7 @@ export interface ConnectorConfigurationUsernamePassword {
   password?: ConnectorConfigurationSecret;
 }
 
-export const ConnectorConfigurationUsernamePassword =
+export const ConnectorConfigurationUsernamePassword: Schema.Schema<ConnectorConfigurationUsernamePassword> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     password: Schema.optional(ConnectorConfigurationSecret),
@@ -234,7 +238,7 @@ export interface ConnectorConfigurationAuthentication {
   serviceAccount?: string;
 }
 
-export const ConnectorConfigurationAuthentication =
+export const ConnectorConfigurationAuthentication: Schema.Schema<ConnectorConfigurationAuthentication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     usernamePassword: Schema.optional(ConnectorConfigurationUsernamePassword),
     serviceAccount: Schema.optional(Schema.String),
@@ -245,7 +249,7 @@ export interface ConnectorConfigurationPrivateServiceConnect {
   networkAttachment?: string;
 }
 
-export const ConnectorConfigurationPrivateServiceConnect =
+export const ConnectorConfigurationPrivateServiceConnect: Schema.Schema<ConnectorConfigurationPrivateServiceConnect> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkAttachment: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConnectorConfigurationPrivateServiceConnect" });
@@ -255,7 +259,7 @@ export interface ConnectorConfigurationNetwork {
   privateServiceConnect?: ConnectorConfigurationPrivateServiceConnect;
 }
 
-export const ConnectorConfigurationNetwork =
+export const ConnectorConfigurationNetwork: Schema.Schema<ConnectorConfigurationNetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateServiceConnect: Schema.optional(
       ConnectorConfigurationPrivateServiceConnect,
@@ -269,7 +273,7 @@ export interface ConnectorConfigurationAsset {
   googleCloudResource?: string;
 }
 
-export const ConnectorConfigurationAsset =
+export const ConnectorConfigurationAsset: Schema.Schema<ConnectorConfigurationAsset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     database: Schema.optional(Schema.String),
     googleCloudResource: Schema.optional(Schema.String),
@@ -288,15 +292,14 @@ export interface ConnectorConfiguration {
   asset?: ConnectorConfigurationAsset;
 }
 
-export const ConnectorConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const ConnectorConfiguration: Schema.Schema<ConnectorConfiguration> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectorId: Schema.optional(Schema.String),
     endpoint: Schema.optional(ConnectorConfigurationEndpoint),
     authentication: Schema.optional(ConnectorConfigurationAuthentication),
     network: Schema.optional(ConnectorConfigurationNetwork),
     asset: Schema.optional(ConnectorConfigurationAsset),
-  },
-).annotate({ identifier: "ConnectorConfiguration" });
+  }).annotate({ identifier: "ConnectorConfiguration" });
 
 export interface Connection {
   /** Output only. The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}` */
@@ -331,23 +334,24 @@ export interface Connection {
   kmsKeyName?: string;
 }
 
-export const Connection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  friendlyName: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  cloudSql: Schema.optional(CloudSqlProperties),
-  aws: Schema.optional(AwsProperties),
-  azure: Schema.optional(AzureProperties),
-  cloudSpanner: Schema.optional(CloudSpannerProperties),
-  cloudResource: Schema.optional(CloudResourceProperties),
-  spark: Schema.optional(SparkProperties),
-  salesforceDataCloud: Schema.optional(SalesforceDataCloudProperties),
-  configuration: Schema.optional(ConnectorConfiguration),
-  creationTime: Schema.optional(Schema.String),
-  lastModifiedTime: Schema.optional(Schema.String),
-  hasCredential: Schema.optional(Schema.Boolean),
-  kmsKeyName: Schema.optional(Schema.String),
-}).annotate({ identifier: "Connection" });
+export const Connection: Schema.Schema<Connection> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    friendlyName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    cloudSql: Schema.optional(CloudSqlProperties),
+    aws: Schema.optional(AwsProperties),
+    azure: Schema.optional(AzureProperties),
+    cloudSpanner: Schema.optional(CloudSpannerProperties),
+    cloudResource: Schema.optional(CloudResourceProperties),
+    spark: Schema.optional(SparkProperties),
+    salesforceDataCloud: Schema.optional(SalesforceDataCloudProperties),
+    configuration: Schema.optional(ConnectorConfiguration),
+    creationTime: Schema.optional(Schema.String),
+    lastModifiedTime: Schema.optional(Schema.String),
+    hasCredential: Schema.optional(Schema.Boolean),
+    kmsKeyName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Connection" });
 
 export interface ListConnectionsResponse {
   /** Next page token. */
@@ -356,7 +360,7 @@ export interface ListConnectionsResponse {
   connections?: ReadonlyArray<Connection>;
 }
 
-export const ListConnectionsResponse =
+export const ListConnectionsResponse: Schema.Schema<ListConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     connections: Schema.optional(Schema.Array(Connection)),
@@ -364,27 +368,30 @@ export const ListConnectionsResponse =
 
 export interface Empty {}
 
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
 
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  requestedPolicyVersion: Schema.optional(Schema.Number),
-}).annotate({ identifier: "GetPolicyOptions" });
+export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedPolicyVersion: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GetPolicyOptions" });
 
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  options: Schema.optional(GetPolicyOptions),
-}).annotate({ identifier: "GetIamPolicyRequest" });
+export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    options: Schema.optional(GetPolicyOptions),
+  }).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -397,12 +404,13 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  expression: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-}).annotate({ identifier: "Expr" });
+export const Expr: Schema.Schema<Expr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expression: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -413,11 +421,12 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  role: Schema.optional(Schema.String),
-  members: Schema.optional(Schema.Array(Schema.String)),
-  condition: Schema.optional(Expr),
-}).annotate({ identifier: "Binding" });
+export const Binding: Schema.Schema<Binding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    role: Schema.optional(Schema.String),
+    members: Schema.optional(Schema.Array(Schema.String)),
+    condition: Schema.optional(Expr),
+  }).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -431,10 +440,11 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  logType: Schema.optional(Schema.String),
-  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "AuditLogConfig" });
+export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logType: Schema.optional(Schema.String),
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -443,10 +453,11 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  service: Schema.optional(Schema.String),
-  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-}).annotate({ identifier: "AuditConfig" });
+export const AuditConfig: Schema.Schema<AuditConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+    auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+  }).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -459,12 +470,13 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  version: Schema.optional(Schema.Number),
-  bindings: Schema.optional(Schema.Array(Binding)),
-  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-  etag: Schema.optional(Schema.String),
-}).annotate({ identifier: "Policy" });
+export const Policy: Schema.Schema<Policy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.Number),
+    bindings: Schema.optional(Schema.Array(Binding)),
+    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -473,17 +485,18 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  policy: Schema.optional(Policy),
-  updateMask: Schema.optional(Schema.String),
-}).annotate({ identifier: "SetIamPolicyRequest" });
+export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest =
+export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -493,7 +506,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse =
+export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });

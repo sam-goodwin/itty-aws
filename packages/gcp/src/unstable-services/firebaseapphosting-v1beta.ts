@@ -31,13 +31,14 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  code: Schema.optional(Schema.Number),
-  message: Schema.optional(Schema.String),
-  details: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-}).annotate({ identifier: "Status" });
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -52,13 +53,14 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  done: Schema.optional(Schema.Boolean),
-  error: Schema.optional(Status),
-  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-}).annotate({ identifier: "Operation" });
+export const Operation: Schema.Schema<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(Status),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -69,19 +71,19 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
-  },
-).annotate({ identifier: "ListOperationsResponse" });
+  }).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
 
 export interface Codebase {
   /** Required. The resource name for the Developer Connect [`gitRepositoryLink`](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections.gitRepositoryLinks) connected to this backend, in the format: `projects/{project}/locations/{location}/connections/{connection}/gitRepositoryLinks/{repositoryLink}` The connection for the `gitRepositoryLink` must made be using the Firebase App Hosting GitHub App via the Firebase Console. */
@@ -90,28 +92,31 @@ export interface Codebase {
   rootDirectory?: string;
 }
 
-export const Codebase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  repository: Schema.optional(Schema.String),
-  rootDirectory: Schema.optional(Schema.String),
-}).annotate({ identifier: "Codebase" });
+export const Codebase: Schema.Schema<Codebase> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repository: Schema.optional(Schema.String),
+    rootDirectory: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Codebase" });
 
 export interface RunService {
   /** Optional. The name of the Cloud Run [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service), in the format: `projects/{project}/locations/{location}/services/{serviceId}` */
   service?: string;
 }
 
-export const RunService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  service: Schema.optional(Schema.String),
-}).annotate({ identifier: "RunService" });
+export const RunService: Schema.Schema<RunService> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RunService" });
 
 export interface ManagedResource {
   /** A Cloud Run [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service), managed by App Hosting. */
   runService?: RunService;
 }
 
-export const ManagedResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  runService: Schema.optional(RunService),
-}).annotate({ identifier: "ManagedResource" });
+export const ManagedResource: Schema.Schema<ManagedResource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    runService: Schema.optional(RunService),
+  }).annotate({ identifier: "ManagedResource" });
 
 export interface EnvironmentVariable {
   /** A plaintext value. This value is encrypted at rest, but all project readers can view the value when reading your backend configuration. */
@@ -136,14 +141,15 @@ export interface EnvironmentVariable {
   originFileName?: string;
 }
 
-export const EnvironmentVariable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(Schema.String),
-  secret: Schema.optional(Schema.String),
-  variable: Schema.optional(Schema.String),
-  availability: Schema.optional(Schema.Array(Schema.String)),
-  origin: Schema.optional(Schema.String),
-  originFileName: Schema.optional(Schema.String),
-}).annotate({ identifier: "EnvironmentVariable" });
+export const EnvironmentVariable: Schema.Schema<EnvironmentVariable> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    secret: Schema.optional(Schema.String),
+    variable: Schema.optional(Schema.String),
+    availability: Schema.optional(Schema.Array(Schema.String)),
+    origin: Schema.optional(Schema.String),
+    originFileName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnvironmentVariable" });
 
 export interface Backend {
   /** Identifier. The resource name of the backend. Format: `projects/{project}/locations/{locationId}/backends/{backendId}`. */
@@ -192,28 +198,29 @@ export interface Backend {
   etag?: string;
 }
 
-export const Backend = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  mode: Schema.optional(Schema.String),
-  servingLocality: Schema.optional(Schema.String),
-  codebase: Schema.optional(Codebase),
-  uri: Schema.optional(Schema.String),
-  managedResources: Schema.optional(Schema.Array(ManagedResource)),
-  serviceAccount: Schema.optional(Schema.String),
-  appId: Schema.optional(Schema.String),
-  environment: Schema.optional(Schema.String),
-  overrideEnv: Schema.optional(Schema.Array(EnvironmentVariable)),
-  requestLogsDisabled: Schema.optional(Schema.Boolean),
-  reconciling: Schema.optional(Schema.Boolean),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  deleteTime: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  uid: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-}).annotate({ identifier: "Backend" });
+export const Backend: Schema.Schema<Backend> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    mode: Schema.optional(Schema.String),
+    servingLocality: Schema.optional(Schema.String),
+    codebase: Schema.optional(Codebase),
+    uri: Schema.optional(Schema.String),
+    managedResources: Schema.optional(Schema.Array(ManagedResource)),
+    serviceAccount: Schema.optional(Schema.String),
+    appId: Schema.optional(Schema.String),
+    environment: Schema.optional(Schema.String),
+    overrideEnv: Schema.optional(Schema.Array(EnvironmentVariable)),
+    requestLogsDisabled: Schema.optional(Schema.Boolean),
+    reconciling: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    uid: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Backend" });
 
 export interface ListBackendsResponse {
   /** The list of backends */
@@ -224,11 +231,44 @@ export interface ListBackendsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListBackendsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  backends: Schema.optional(Schema.Array(Backend)),
-  nextPageToken: Schema.optional(Schema.String),
-  unreachable: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "ListBackendsResponse" });
+export const ListBackendsResponse: Schema.Schema<ListBackendsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backends: Schema.optional(Schema.Array(Backend)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListBackendsResponse" });
+
+export interface SupportedRuntime {
+  /** Identifier. The resource name of the supported runtime. Format: projects/{project}/locations/{location}/supportedRuntimes/{runtime_id} */
+  name?: string;
+  /** Output only. The identifier of the runtime, e.g., "nodejs22". */
+  runtimeId?: string;
+  /** Output only. True if Automatic Base Image Updates (ABIU) is supported for this runtime. */
+  automaticBaseImageUpdatesSupported?: boolean;
+  /** Output only. The time at which this runtime will effectively be deprecated. After this date, the runtime is still usable but may not receive new features or updates. */
+  deprecateTime?: string;
+  /** Output only. The time at which this runtime will be decommissioned. After this date, the runtime can no longer be used for new builds. */
+  decommissionTime?: string;
+}
+
+export const SupportedRuntime: Schema.Schema<SupportedRuntime> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    runtimeId: Schema.optional(Schema.String),
+    automaticBaseImageUpdatesSupported: Schema.optional(Schema.Boolean),
+    deprecateTime: Schema.optional(Schema.String),
+    decommissionTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SupportedRuntime" });
+
+export interface ListSupportedRuntimesResponse {
+  /** The list of supported runtimes. */
+  supportedRuntimes?: ReadonlyArray<SupportedRuntime>;
+}
+
+export const ListSupportedRuntimesResponse: Schema.Schema<ListSupportedRuntimesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    supportedRuntimes: Schema.optional(Schema.Array(SupportedRuntime)),
+  }).annotate({ identifier: "ListSupportedRuntimesResponse" });
 
 export interface TrafficSplit {
   /** Required. The build that traffic is being routed to. */
@@ -237,19 +277,21 @@ export interface TrafficSplit {
   percent?: number;
 }
 
-export const TrafficSplit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  build: Schema.optional(Schema.String),
-  percent: Schema.optional(Schema.Number),
-}).annotate({ identifier: "TrafficSplit" });
+export const TrafficSplit: Schema.Schema<TrafficSplit> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    build: Schema.optional(Schema.String),
+    percent: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "TrafficSplit" });
 
 export interface TrafficSet {
   /** Required. The list of traffic splits. */
   splits?: ReadonlyArray<TrafficSplit>;
 }
 
-export const TrafficSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  splits: Schema.optional(Schema.Array(TrafficSplit)),
-}).annotate({ identifier: "TrafficSet" });
+export const TrafficSet: Schema.Schema<TrafficSet> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    splits: Schema.optional(Schema.Array(TrafficSplit)),
+  }).annotate({ identifier: "TrafficSet" });
 
 export interface Path {
   /** Optional. The pattern to match against. */
@@ -258,10 +300,11 @@ export interface Path {
   type?: "PATTERN_TYPE_UNSPECIFIED" | "RE2" | "GLOB" | "PREFIX" | (string & {});
 }
 
-export const Path = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  pattern: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-}).annotate({ identifier: "Path" });
+export const Path: Schema.Schema<Path> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pattern: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Path" });
 
 export interface RolloutPolicy {
   /** If set, specifies a branch that triggers a new build to be started with this policy. Otherwise, no automatic rollouts will happen. */
@@ -276,13 +319,14 @@ export interface RolloutPolicy {
   ignoredPaths?: ReadonlyArray<Path>;
 }
 
-export const RolloutPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  codebaseBranch: Schema.optional(Schema.String),
-  disabled: Schema.optional(Schema.Boolean),
-  disabledTime: Schema.optional(Schema.String),
-  requiredPaths: Schema.optional(Schema.Array(Path)),
-  ignoredPaths: Schema.optional(Schema.Array(Path)),
-}).annotate({ identifier: "RolloutPolicy" });
+export const RolloutPolicy: Schema.Schema<RolloutPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    codebaseBranch: Schema.optional(Schema.String),
+    disabled: Schema.optional(Schema.Boolean),
+    disabledTime: Schema.optional(Schema.String),
+    requiredPaths: Schema.optional(Schema.Array(Path)),
+    ignoredPaths: Schema.optional(Schema.Array(Path)),
+  }).annotate({ identifier: "RolloutPolicy" });
 
 export interface Traffic {
   /** Set to manually control the desired traffic for the backend. This will cause `current` to eventually match this value. The percentages must add up to 100%. */
@@ -309,19 +353,20 @@ export interface Traffic {
   uid?: string;
 }
 
-export const Traffic = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  target: Schema.optional(TrafficSet),
-  rolloutPolicy: Schema.optional(RolloutPolicy),
-  name: Schema.optional(Schema.String),
-  current: Schema.optional(TrafficSet),
-  reconciling: Schema.optional(Schema.Boolean),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  etag: Schema.optional(Schema.String),
-  uid: Schema.optional(Schema.String),
-}).annotate({ identifier: "Traffic" });
+export const Traffic: Schema.Schema<Traffic> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    target: Schema.optional(TrafficSet),
+    rolloutPolicy: Schema.optional(RolloutPolicy),
+    name: Schema.optional(Schema.String),
+    current: Schema.optional(TrafficSet),
+    reconciling: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Traffic" });
 
 export interface RunConfig {
   /** Optional. Number of CPUs used for each serving instance. By default, cpu defaults to the Cloud Run's default of 1.0. CPU can be set to value 1, 2, 4, 6, or 8 CPUs, and for less than 1 CPU, a value from 0.08 to less than 1.00, in increments of 0.01. If you set a value of less than 1 CPU, you must set concurrency to 1, and CPU will only be allocated during request processing. Increasing CPUs limit may require increase in memory limits: - 4 CPUs: at least 2 GiB - 6 CPUs: at least 4 GiB - 8 CPUs: at least 4 GiB */
@@ -336,13 +381,14 @@ export interface RunConfig {
   minInstances?: number;
 }
 
-export const RunConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  cpu: Schema.optional(Schema.Number),
-  memoryMib: Schema.optional(Schema.Number),
-  concurrency: Schema.optional(Schema.Number),
-  maxInstances: Schema.optional(Schema.Number),
-  minInstances: Schema.optional(Schema.Number),
-}).annotate({ identifier: "RunConfig" });
+export const RunConfig: Schema.Schema<RunConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cpu: Schema.optional(Schema.Number),
+    memoryMib: Schema.optional(Schema.Number),
+    concurrency: Schema.optional(Schema.Number),
+    maxInstances: Schema.optional(Schema.Number),
+    minInstances: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "RunConfig" });
 
 export interface Config {
   /** Optional. Additional configuration of the Cloud Run [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service). */
@@ -353,11 +399,12 @@ export interface Config {
   effectiveEnv?: ReadonlyArray<EnvironmentVariable>;
 }
 
-export const Config = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  runConfig: Schema.optional(RunConfig),
-  env: Schema.optional(Schema.Array(EnvironmentVariable)),
-  effectiveEnv: Schema.optional(Schema.Array(EnvironmentVariable)),
-}).annotate({ identifier: "Config" });
+export const Config: Schema.Schema<Config> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    runConfig: Schema.optional(RunConfig),
+    env: Schema.optional(Schema.Array(EnvironmentVariable)),
+    effectiveEnv: Schema.optional(Schema.Array(EnvironmentVariable)),
+  }).annotate({ identifier: "Config" });
 
 export interface UserMetadata {
   /** Output only. The 'name' field in a Git user's git.config. Required by Git. */
@@ -368,11 +415,12 @@ export interface UserMetadata {
   imageUri?: string;
 }
 
-export const UserMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  email: Schema.optional(Schema.String),
-  imageUri: Schema.optional(Schema.String),
-}).annotate({ identifier: "UserMetadata" });
+export const UserMetadata: Schema.Schema<UserMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    imageUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UserMetadata" });
 
 export interface CodebaseSource {
   /** The branch in the codebase to build from, using the latest commit. */
@@ -395,26 +443,28 @@ export interface CodebaseSource {
   commitTime?: string;
 }
 
-export const CodebaseSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  branch: Schema.optional(Schema.String),
-  commit: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  repository: Schema.optional(Schema.String),
-  hash: Schema.optional(Schema.String),
-  commitMessage: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  author: Schema.optional(UserMetadata),
-  commitTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "CodebaseSource" });
+export const CodebaseSource: Schema.Schema<CodebaseSource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    branch: Schema.optional(Schema.String),
+    commit: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    repository: Schema.optional(Schema.String),
+    hash: Schema.optional(Schema.String),
+    commitMessage: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    author: Schema.optional(UserMetadata),
+    commitTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CodebaseSource" });
 
 export interface ContainerSource {
   /** Required. A URI representing a container for the backend to use. */
   image?: string;
 }
 
-export const ContainerSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  image: Schema.optional(Schema.String),
-}).annotate({ identifier: "ContainerSource" });
+export const ContainerSource: Schema.Schema<ContainerSource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    image: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ContainerSource" });
 
 export interface SourceUserMetadata {
   /** Output only. Deprecated: Not used. The user-chosen displayname. May be empty. */
@@ -425,11 +475,12 @@ export interface SourceUserMetadata {
   imageUri?: string;
 }
 
-export const SourceUserMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  displayName: Schema.optional(Schema.String),
-  email: Schema.optional(Schema.String),
-  imageUri: Schema.optional(Schema.String),
-}).annotate({ identifier: "SourceUserMetadata" });
+export const SourceUserMetadata: Schema.Schema<SourceUserMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    imageUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SourceUserMetadata" });
 
 export interface ArchiveSource {
   /** URI to an archive in Cloud Storage. The object must be a zipped (.zip) or gzipped archive file (.tar.gz) containing source to deploy. */
@@ -444,13 +495,14 @@ export interface ArchiveSource {
   description?: string;
 }
 
-export const ArchiveSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  userStorageUri: Schema.optional(Schema.String),
-  externalSignedUri: Schema.optional(Schema.String),
-  rootDirectory: Schema.optional(Schema.String),
-  author: Schema.optional(SourceUserMetadata),
-  description: Schema.optional(Schema.String),
-}).annotate({ identifier: "ArchiveSource" });
+export const ArchiveSource: Schema.Schema<ArchiveSource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userStorageUri: Schema.optional(Schema.String),
+    externalSignedUri: Schema.optional(Schema.String),
+    rootDirectory: Schema.optional(Schema.String),
+    author: Schema.optional(SourceUserMetadata),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ArchiveSource" });
 
 export interface BuildSource {
   /** A codebase source. */
@@ -461,11 +513,12 @@ export interface BuildSource {
   archive?: ArchiveSource;
 }
 
-export const BuildSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  codebase: Schema.optional(CodebaseSource),
-  container: Schema.optional(ContainerSource),
-  archive: Schema.optional(ArchiveSource),
-}).annotate({ identifier: "BuildSource" });
+export const BuildSource: Schema.Schema<BuildSource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    codebase: Schema.optional(CodebaseSource),
+    container: Schema.optional(ContainerSource),
+    archive: Schema.optional(ArchiveSource),
+  }).annotate({ identifier: "BuildSource" });
 
 export interface Firebaseapphosting_Error {
   /** Output only. A status and (human readable) error message for the build, if in a `FAILED` state. */
@@ -480,7 +533,7 @@ export interface Firebaseapphosting_Error {
   cloudResource?: string;
 }
 
-export const Firebaseapphosting_Error =
+export const Firebaseapphosting_Error: Schema.Schema<Firebaseapphosting_Error> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     errorSource: Schema.optional(Schema.String),
@@ -505,6 +558,7 @@ export interface Build {
     | "READY"
     | "FAILED"
     | "SKIPPED"
+    | "EXPIRED"
     | (string & {});
   /** Output only. The Artifact Registry [container image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages) URI, used by the Cloud Run [`revision`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services.revisions) for this build. */
   image?: string;
@@ -540,27 +594,28 @@ export interface Build {
     | (string & {});
 }
 
-export const Build = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  config: Schema.optional(Config),
-  source: Schema.optional(BuildSource),
-  state: Schema.optional(Schema.String),
-  image: Schema.optional(Schema.String),
-  buildLogsUri: Schema.optional(Schema.String),
-  environment: Schema.optional(Schema.String),
-  errors: Schema.optional(Schema.Array(Firebaseapphosting_Error)),
-  reconciling: Schema.optional(Schema.Boolean),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  deleteTime: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  uid: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-  error: Schema.optional(Status),
-  errorSource: Schema.optional(Schema.String),
-}).annotate({ identifier: "Build" });
+export const Build: Schema.Schema<Build> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    config: Schema.optional(Config),
+    source: Schema.optional(BuildSource),
+    state: Schema.optional(Schema.String),
+    image: Schema.optional(Schema.String),
+    buildLogsUri: Schema.optional(Schema.String),
+    environment: Schema.optional(Schema.String),
+    errors: Schema.optional(Schema.Array(Firebaseapphosting_Error)),
+    reconciling: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    uid: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    error: Schema.optional(Status),
+    errorSource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Build" });
 
 export interface ListBuildsResponse {
   /** The list of builds. */
@@ -571,11 +626,12 @@ export interface ListBuildsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListBuildsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  builds: Schema.optional(Schema.Array(Build)),
-  nextPageToken: Schema.optional(Schema.String),
-  unreachable: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "ListBuildsResponse" });
+export const ListBuildsResponse: Schema.Schema<ListBuildsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    builds: Schema.optional(Schema.Array(Build)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListBuildsResponse" });
 
 export interface Rollout {
   /** Identifier. The resource name of the rollout. Format: `projects/{project}/locations/{locationId}/backends/{backendId}/rollouts/{rolloutId}`. */
@@ -616,21 +672,22 @@ export interface Rollout {
   etag?: string;
 }
 
-export const Rollout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  error: Schema.optional(Status),
-  build: Schema.optional(Schema.String),
-  reconciling: Schema.optional(Schema.Boolean),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  deleteTime: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  uid: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-}).annotate({ identifier: "Rollout" });
+export const Rollout: Schema.Schema<Rollout> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    error: Schema.optional(Status),
+    build: Schema.optional(Schema.String),
+    reconciling: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    uid: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Rollout" });
 
 export interface ListRolloutsResponse {
   /** The list of rollouts. */
@@ -641,11 +698,12 @@ export interface ListRolloutsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListRolloutsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  rollouts: Schema.optional(Schema.Array(Rollout)),
-  nextPageToken: Schema.optional(Schema.String),
-  unreachable: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "ListRolloutsResponse" });
+export const ListRolloutsResponse: Schema.Schema<ListRolloutsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rollouts: Schema.optional(Schema.Array(Rollout)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListRolloutsResponse" });
 
 export interface Redirect {
   /** Required. The URI of the redirect's intended destination. This URI will be prepended to the original request path. URI without a scheme are assumed to be HTTPS. */
@@ -654,19 +712,21 @@ export interface Redirect {
   status?: string;
 }
 
-export const Redirect = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  uri: Schema.optional(Schema.String),
-  status: Schema.optional(Schema.String),
-}).annotate({ identifier: "Redirect" });
+export const Redirect: Schema.Schema<Redirect> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Redirect" });
 
 export interface ServingBehavior {
   /** Optional. Redirect behavior for a domain, if provided. */
   redirect?: Redirect;
 }
 
-export const ServingBehavior = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  redirect: Schema.optional(Redirect),
-}).annotate({ identifier: "ServingBehavior" });
+export const ServingBehavior: Schema.Schema<ServingBehavior> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    redirect: Schema.optional(Redirect),
+  }).annotate({ identifier: "ServingBehavior" });
 
 export interface DnsRecord {
   /** Output only. The domain the record pertains to, e.g. `foo.bar.com.`. */
@@ -694,13 +754,14 @@ export interface DnsRecord {
   >;
 }
 
-export const DnsRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  domainName: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  rdata: Schema.optional(Schema.String),
-  requiredAction: Schema.optional(Schema.String),
-  relevantState: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "DnsRecord" });
+export const DnsRecord: Schema.Schema<DnsRecord> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domainName: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    rdata: Schema.optional(Schema.String),
+    requiredAction: Schema.optional(Schema.String),
+    relevantState: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "DnsRecord" });
 
 export interface DnsRecordSet {
   /** Output only. The domain name the record set pertains to. */
@@ -711,11 +772,12 @@ export interface DnsRecordSet {
   records?: ReadonlyArray<DnsRecord>;
 }
 
-export const DnsRecordSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  domainName: Schema.optional(Schema.String),
-  checkError: Schema.optional(Status),
-  records: Schema.optional(Schema.Array(DnsRecord)),
-}).annotate({ identifier: "DnsRecordSet" });
+export const DnsRecordSet: Schema.Schema<DnsRecordSet> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domainName: Schema.optional(Schema.String),
+    checkError: Schema.optional(Status),
+    records: Schema.optional(Schema.Array(DnsRecord)),
+  }).annotate({ identifier: "DnsRecordSet" });
 
 export interface DnsUpdates {
   /** Output only. The domain name the DNS updates pertain to. */
@@ -728,12 +790,13 @@ export interface DnsUpdates {
   checkTime?: string;
 }
 
-export const DnsUpdates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  domainName: Schema.optional(Schema.String),
-  discovered: Schema.optional(Schema.Array(DnsRecordSet)),
-  desired: Schema.optional(Schema.Array(DnsRecordSet)),
-  checkTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "DnsUpdates" });
+export const DnsUpdates: Schema.Schema<DnsUpdates> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domainName: Schema.optional(Schema.String),
+    discovered: Schema.optional(Schema.Array(DnsRecordSet)),
+    desired: Schema.optional(Schema.Array(DnsRecordSet)),
+    checkTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DnsUpdates" });
 
 export interface CustomDomainStatus {
   /** Output only. Tracks whether a custom domain is detected as appropriately directing traffic to App Hosting. */
@@ -772,13 +835,14 @@ export interface CustomDomainStatus {
   issues?: ReadonlyArray<Status>;
 }
 
-export const CustomDomainStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  hostState: Schema.optional(Schema.String),
-  ownershipState: Schema.optional(Schema.String),
-  certState: Schema.optional(Schema.String),
-  requiredDnsUpdates: Schema.optional(Schema.Array(DnsUpdates)),
-  issues: Schema.optional(Schema.Array(Status)),
-}).annotate({ identifier: "CustomDomainStatus" });
+export const CustomDomainStatus: Schema.Schema<CustomDomainStatus> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hostState: Schema.optional(Schema.String),
+    ownershipState: Schema.optional(Schema.String),
+    certState: Schema.optional(Schema.String),
+    requiredDnsUpdates: Schema.optional(Schema.Array(DnsUpdates)),
+    issues: Schema.optional(Schema.Array(Status)),
+  }).annotate({ identifier: "CustomDomainStatus" });
 
 export interface Domain {
   /** Identifier. The resource name of the domain, e.g. `/projects/p/locations/l/backends/b/domains/foo.com` */
@@ -813,23 +877,24 @@ export interface Domain {
   etag?: string;
 }
 
-export const Domain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  disabled: Schema.optional(Schema.Boolean),
-  serve: Schema.optional(ServingBehavior),
-  customDomainStatus: Schema.optional(CustomDomainStatus),
-  reconciling: Schema.optional(Schema.Boolean),
-  deleteTime: Schema.optional(Schema.String),
-  purgeTime: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  uid: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-}).annotate({ identifier: "Domain" });
+export const Domain: Schema.Schema<Domain> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    disabled: Schema.optional(Schema.Boolean),
+    serve: Schema.optional(ServingBehavior),
+    customDomainStatus: Schema.optional(CustomDomainStatus),
+    reconciling: Schema.optional(Schema.Boolean),
+    deleteTime: Schema.optional(Schema.String),
+    purgeTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    uid: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Domain" });
 
 export interface ListDomainsResponse {
   /** Output only. The list of domains. */
@@ -840,11 +905,12 @@ export interface ListDomainsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  domains: Schema.optional(Schema.Array(Domain)),
-  nextPageToken: Schema.optional(Schema.String),
-  unreachable: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "ListDomainsResponse" });
+export const ListDomainsResponse: Schema.Schema<ListDomainsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domains: Schema.optional(Schema.Array(Domain)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListDomainsResponse" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -859,13 +925,14 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  locationId: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-}).annotate({ identifier: "Location" });
+export const Location: Schema.Schema<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    locationId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -874,10 +941,11 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  locations: Schema.optional(Schema.Array(Location)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListLocationsResponse" });
+export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Location)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocationsResponse" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -896,15 +964,16 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  createTime: Schema.optional(Schema.String),
-  endTime: Schema.optional(Schema.String),
-  target: Schema.optional(Schema.String),
-  verb: Schema.optional(Schema.String),
-  statusMessage: Schema.optional(Schema.String),
-  requestedCancellation: Schema.optional(Schema.Boolean),
-  apiVersion: Schema.optional(Schema.String),
-}).annotate({ identifier: "OperationMetadata" });
+export const OperationMetadata: Schema.Schema<OperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadata" });
 
 export interface LiveMigrationStep {
   /** Output only. The state of the live migration step, indicates whether you should work to complete the step now, in the future, or have already completed it. */
@@ -930,12 +999,13 @@ export interface LiveMigrationStep {
   issues?: ReadonlyArray<Status>;
 }
 
-export const LiveMigrationStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  stepState: Schema.optional(Schema.String),
-  relevantDomainStates: Schema.optional(Schema.Array(Schema.String)),
-  dnsUpdates: Schema.optional(Schema.Array(DnsUpdates)),
-  issues: Schema.optional(Schema.Array(Status)),
-}).annotate({ identifier: "LiveMigrationStep" });
+export const LiveMigrationStep: Schema.Schema<LiveMigrationStep> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stepState: Schema.optional(Schema.String),
+    relevantDomainStates: Schema.optional(Schema.Array(Schema.String)),
+    dnsUpdates: Schema.optional(Schema.Array(DnsUpdates)),
+    issues: Schema.optional(Schema.Array(Status)),
+  }).annotate({ identifier: "LiveMigrationStep" });
 
 export interface CustomDomainOperationMetadata {
   /** Output only. The custom domain's `HostState`, which must be `HOST_ACTIVE` for Create operations of the domain name this `CustomDomain` refers toto complete. */
@@ -976,7 +1046,7 @@ export interface CustomDomainOperationMetadata {
   liveMigrationSteps?: ReadonlyArray<LiveMigrationStep>;
 }
 
-export const CustomDomainOperationMetadata =
+export const CustomDomainOperationMetadata: Schema.Schema<CustomDomainOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hostState: Schema.optional(Schema.String),
     ownershipState: Schema.optional(Schema.String),
@@ -1005,7 +1075,7 @@ export interface DomainOperationMetadata {
   customDomainOperationMetadata?: CustomDomainOperationMetadata;
 }
 
-export const DomainOperationMetadata =
+export const DomainOperationMetadata: Schema.Schema<DomainOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -1082,7 +1152,7 @@ export interface ListProjectsLocationsRequest {
   pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
-  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
 }
 
@@ -1106,7 +1176,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
-/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -2212,4 +2282,42 @@ export const deleteProjectsLocationsBackendsDomains: API.OperationMethod<
   input: DeleteProjectsLocationsBackendsDomainsRequest,
   output: DeleteProjectsLocationsBackendsDomainsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsSupportedRuntimesRequest {
+  /** Required. The parent, which owns this collection of SupportedRuntime. Format: projects/{project}/locations/{location} */
+  parent: string;
+  /** Optional. The suggested number of runtimes to return. This field is ignored. We return all runtimes in a single page regardless of the page size. */
+  pageSize?: number;
+}
+
+export const ListProjectsLocationsSupportedRuntimesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+parent}/supportedRuntimes" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsSupportedRuntimesRequest>;
+
+export type ListProjectsLocationsSupportedRuntimesResponse =
+  ListSupportedRuntimesResponse;
+export const ListProjectsLocationsSupportedRuntimesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListSupportedRuntimesResponse;
+
+export type ListProjectsLocationsSupportedRuntimesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists the runtimes supported by the backend. The list of runtimes may vary across projects and locations, for example, during staged rollouts of new runtime support. */
+export const listProjectsLocationsSupportedRuntimes: API.OperationMethod<
+  ListProjectsLocationsSupportedRuntimesRequest,
+  ListProjectsLocationsSupportedRuntimesResponse,
+  ListProjectsLocationsSupportedRuntimesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListProjectsLocationsSupportedRuntimesRequest,
+  output: ListProjectsLocationsSupportedRuntimesResponse,
+  errors: [NotFound, Forbidden],
 }));

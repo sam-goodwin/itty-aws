@@ -22,6 +22,16 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface SignSshPublicKeyResponse {
+  /** The signed SSH public key to use in the SSH handshake. */
+  signedSshPublicKey?: string;
+}
+
+export const SignSshPublicKeyResponse: Schema.Schema<SignSshPublicKeyResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    signedSshPublicKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SignSshPublicKeyResponse" });
+
 export interface SignSshPublicKeyRequest {
   /** The Compute instance to sign the SSH public key for. Expected format: projects/{project}/zones/{zone}/instances/{numeric_instance_id} */
   computeInstance?: string;
@@ -33,7 +43,7 @@ export interface SignSshPublicKeyRequest {
   serviceAccount?: string;
 }
 
-export const SignSshPublicKeyRequest =
+export const SignSshPublicKeyRequest: Schema.Schema<SignSshPublicKeyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     computeInstance: Schema.optional(Schema.String),
     appEngineInstance: Schema.optional(Schema.String),
@@ -41,97 +51,91 @@ export const SignSshPublicKeyRequest =
     serviceAccount: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignSshPublicKeyRequest" });
 
-export interface SignSshPublicKeyResponse {
-  /** The signed SSH public key to use in the SSH handshake. */
-  signedSshPublicKey?: string;
-}
-
-export const SignSshPublicKeyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    signedSshPublicKey: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SignSshPublicKeyResponse" });
-
-export interface SshPublicKey {
-  /** Required. Public key text in SSH format, defined by [RFC4253](https://www.ietf.org/rfc/rfc4253.txt) section 6.6. */
-  key?: string;
-  /** An expiration time in microseconds since epoch. */
-  expirationTimeUsec?: string;
-  /** Output only. The SHA-256 fingerprint of the SSH public key. */
-  fingerprint?: string;
-  /** Output only. The canonical resource name. */
-  name?: string;
-}
-
-export const SshPublicKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  key: Schema.optional(Schema.String),
-  expirationTimeUsec: Schema.optional(Schema.String),
-  fingerprint: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "SshPublicKey" });
-
-export interface Empty {}
-
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
-
 export interface PosixAccount {
-  /** Only one POSIX account can be marked as primary. */
-  primary?: boolean;
-  /** The username of the POSIX account. */
-  username?: string;
-  /** The user ID. */
-  uid?: string;
-  /** The default group ID. */
-  gid?: string;
   /** The path to the home directory for this account. */
   homeDirectory?: string;
-  /** The path to the logic shell for this account. */
-  shell?: string;
-  /** The GECOS (user information) entry for this account. */
-  gecos?: string;
-  /** System identifier for which account the username or uid applies to. By default, the empty value is used. */
-  systemId?: string;
-  /** Output only. A POSIX account identifier. */
-  accountId?: string;
   /** The operating system type where this account applies. */
   operatingSystemType?:
     | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
     | "LINUX"
     | "WINDOWS"
     | (string & {});
+  /** System identifier for which account the username or uid applies to. By default, the empty value is used. */
+  systemId?: string;
   /** Output only. The canonical resource name. */
   name?: string;
+  /** The username of the POSIX account. */
+  username?: string;
+  /** Only one POSIX account can be marked as primary. */
+  primary?: boolean;
+  /** The user ID. */
+  uid?: string;
+  /** The GECOS (user information) entry for this account. */
+  gecos?: string;
+  /** The path to the logic shell for this account. */
+  shell?: string;
+  /** Output only. A POSIX account identifier. */
+  accountId?: string;
+  /** The default group ID. */
+  gid?: string;
 }
 
-export const PosixAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  primary: Schema.optional(Schema.Boolean),
-  username: Schema.optional(Schema.String),
-  uid: Schema.optional(Schema.String),
-  gid: Schema.optional(Schema.String),
-  homeDirectory: Schema.optional(Schema.String),
-  shell: Schema.optional(Schema.String),
-  gecos: Schema.optional(Schema.String),
-  systemId: Schema.optional(Schema.String),
-  accountId: Schema.optional(Schema.String),
-  operatingSystemType: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "PosixAccount" });
+export const PosixAccount: Schema.Schema<PosixAccount> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    homeDirectory: Schema.optional(Schema.String),
+    operatingSystemType: Schema.optional(Schema.String),
+    systemId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    username: Schema.optional(Schema.String),
+    primary: Schema.optional(Schema.Boolean),
+    uid: Schema.optional(Schema.String),
+    gecos: Schema.optional(Schema.String),
+    shell: Schema.optional(Schema.String),
+    accountId: Schema.optional(Schema.String),
+    gid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PosixAccount" });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface SshPublicKey {
+  /** Output only. The SHA-256 fingerprint of the SSH public key. */
+  fingerprint?: string;
+  /** Required. Public key text in SSH format, defined by [RFC4253](https://www.ietf.org/rfc/rfc4253.txt) section 6.6. */
+  key?: string;
+  /** Output only. The canonical resource name. */
+  name?: string;
+  /** An expiration time in microseconds since epoch. */
+  expirationTimeUsec?: string;
+}
+
+export const SshPublicKey: Schema.Schema<SshPublicKey> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fingerprint: Schema.optional(Schema.String),
+    key: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    expirationTimeUsec: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SshPublicKey" });
 
 export interface LoginProfile {
-  /** Required. A unique user ID. */
-  name?: string;
   /** The list of POSIX accounts associated with the user. */
   posixAccounts?: ReadonlyArray<PosixAccount>;
+  /** Required. A unique user ID. */
+  name?: string;
   /** A map from SSH public key fingerprint to the associated key object. */
   sshPublicKeys?: Record<string, SshPublicKey>;
 }
 
-export const LoginProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  posixAccounts: Schema.optional(Schema.Array(PosixAccount)),
-  sshPublicKeys: Schema.optional(Schema.Record(Schema.String, SshPublicKey)),
-}).annotate({ identifier: "LoginProfile" });
+export const LoginProfile: Schema.Schema<LoginProfile> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    posixAccounts: Schema.optional(Schema.Array(PosixAccount)),
+    name: Schema.optional(Schema.String),
+    sshPublicKeys: Schema.optional(Schema.Record(Schema.String, SshPublicKey)),
+  }).annotate({ identifier: "LoginProfile" });
 
 export interface ImportSshPublicKeyResponse {
   /** The login profile information for the user. */
@@ -140,7 +144,7 @@ export interface ImportSshPublicKeyResponse {
   details?: string;
 }
 
-export const ImportSshPublicKeyResponse =
+export const ImportSshPublicKeyResponse: Schema.Schema<ImportSshPublicKeyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     loginProfile: Schema.optional(LoginProfile),
     details: Schema.optional(Schema.String),
@@ -151,7 +155,7 @@ export interface ProvisionPosixAccountRequest {
   regions?: ReadonlyArray<string>;
 }
 
-export const ProvisionPosixAccountRequest =
+export const ProvisionPosixAccountRequest: Schema.Schema<ProvisionPosixAccountRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ProvisionPosixAccountRequest" });
@@ -209,50 +213,6 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 // Operations
 // ==========================================================================
-
-export interface SignSshPublicKeyProjectsLocationsRequest {
-  /** Required. The parent for the signing request. Format: projects/{project}/locations/{location} */
-  parent: string;
-  /** Request body */
-  body?: SignSshPublicKeyRequest;
-}
-
-export const SignSshPublicKeyProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(SignSshPublicKeyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}:signSshPublicKey",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SignSshPublicKeyProjectsLocationsRequest>;
-
-export type SignSshPublicKeyProjectsLocationsResponse =
-  SignSshPublicKeyResponse;
-export const SignSshPublicKeyProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SignSshPublicKeyResponse;
-
-export type SignSshPublicKeyProjectsLocationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Signs an SSH public key for a user to authenticate to a virtual machine on Google Compute Engine. */
-export const signSshPublicKeyProjectsLocations: API.OperationMethod<
-  SignSshPublicKeyProjectsLocationsRequest,
-  SignSshPublicKeyProjectsLocationsResponse,
-  SignSshPublicKeyProjectsLocationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SignSshPublicKeyProjectsLocationsRequest,
-  output: SignSshPublicKeyProjectsLocationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
 
 export interface GetLoginProfileUsersRequest {
   /** Required. The unique ID for the user in format `users/{user}`. */
@@ -342,49 +302,6 @@ export const importSshPublicKeyUsers: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface CreateUsersSshPublicKeysRequest {
-  /** Required. The unique ID for the user in format `users/{user}`. */
-  parent: string;
-  /** Request body */
-  body?: SshPublicKey;
-}
-
-export const CreateUsersSshPublicKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(SshPublicKey).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}/sshPublicKeys",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateUsersSshPublicKeysRequest>;
-
-export type CreateUsersSshPublicKeysResponse = SshPublicKey;
-export const CreateUsersSshPublicKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SshPublicKey;
-
-export type CreateUsersSshPublicKeysError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Create an SSH public key */
-export const createUsersSshPublicKeys: API.OperationMethod<
-  CreateUsersSshPublicKeysRequest,
-  CreateUsersSshPublicKeysResponse,
-  CreateUsersSshPublicKeysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateUsersSshPublicKeysRequest,
-  output: CreateUsersSshPublicKeysResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface DeleteUsersSshPublicKeysRequest {
   /** Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. */
   name: string;
@@ -453,18 +370,18 @@ export const getUsersSshPublicKeys: API.OperationMethod<
 }));
 
 export interface PatchUsersSshPublicKeysRequest {
-  /** Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. */
-  name: string;
   /** Optional. Mask to control which fields get updated. Updates all if not present. */
   updateMask?: string;
+  /** Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. */
+  name: string;
   /** Request body */
   body?: SshPublicKey;
 }
 
 export const PatchUsersSshPublicKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SshPublicKey).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
@@ -491,6 +408,49 @@ export const patchUsersSshPublicKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUsersSshPublicKeysRequest,
   output: PatchUsersSshPublicKeysResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateUsersSshPublicKeysRequest {
+  /** Required. The unique ID for the user in format `users/{user}`. */
+  parent: string;
+  /** Request body */
+  body?: SshPublicKey;
+}
+
+export const CreateUsersSshPublicKeysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(SshPublicKey).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/sshPublicKeys",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateUsersSshPublicKeysRequest>;
+
+export type CreateUsersSshPublicKeysResponse = SshPublicKey;
+export const CreateUsersSshPublicKeysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SshPublicKey;
+
+export type CreateUsersSshPublicKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Create an SSH public key */
+export const createUsersSshPublicKeys: API.OperationMethod<
+  CreateUsersSshPublicKeysRequest,
+  CreateUsersSshPublicKeysResponse,
+  CreateUsersSshPublicKeysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateUsersSshPublicKeysRequest,
+  output: CreateUsersSshPublicKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -565,5 +525,49 @@ export const provisionPosixAccountUsersProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ProvisionPosixAccountUsersProjectsRequest,
   output: ProvisionPosixAccountUsersProjectsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SignSshPublicKeyProjectsLocationsRequest {
+  /** Required. The parent for the signing request. Format: projects/{project}/locations/{location} */
+  parent: string;
+  /** Request body */
+  body?: SignSshPublicKeyRequest;
+}
+
+export const SignSshPublicKeyProjectsLocationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(SignSshPublicKeyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}:signSshPublicKey",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SignSshPublicKeyProjectsLocationsRequest>;
+
+export type SignSshPublicKeyProjectsLocationsResponse =
+  SignSshPublicKeyResponse;
+export const SignSshPublicKeyProjectsLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SignSshPublicKeyResponse;
+
+export type SignSshPublicKeyProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Signs an SSH public key for a user to authenticate to a virtual machine on Google Compute Engine. */
+export const signSshPublicKeyProjectsLocations: API.OperationMethod<
+  SignSshPublicKeyProjectsLocationsRequest,
+  SignSshPublicKeyProjectsLocationsResponse,
+  SignSshPublicKeyProjectsLocationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SignSshPublicKeyProjectsLocationsRequest,
+  output: SignSshPublicKeyProjectsLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

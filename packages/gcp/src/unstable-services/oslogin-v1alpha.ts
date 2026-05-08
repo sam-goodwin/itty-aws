@@ -22,34 +22,136 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest {
-  /** The Compute instance to sign the SSH public key for. Expected format: projects/{project}/zones/{zone}/instances/{numeric_instance_id} */
-  computeInstance?: string;
-  /** The App Engine instance to sign the SSH public key for. Expected format: apps/{app}/services/{service}/versions/{version}/instances/{instance} */
-  appEngineInstance?: string;
-  /** Required. The SSH public key to sign. */
-  sshPublicKey?: string;
-  /** Optional. The service account for the instance. If the instance in question does not have a service account, this field should be left empty. If the wrong service account is provided, this operation will return a signed certificate that will not be accepted by the VM. */
-  serviceAccount?: string;
+export interface UniversalTwoFactor {
+  /** Application ID for the U2F protocol. */
+  appId?: string;
 }
 
-export const GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest =
+export const UniversalTwoFactor: Schema.Schema<UniversalTwoFactor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    computeInstance: Schema.optional(Schema.String),
-    appEngineInstance: Schema.optional(Schema.String),
-    sshPublicKey: Schema.optional(Schema.String),
-    serviceAccount: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest",
-  });
+    appId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UniversalTwoFactor" });
+
+export interface WebAuthn {
+  /** Relying party ID for Web Authentication. */
+  rpId?: string;
+}
+
+export const WebAuthn: Schema.Schema<WebAuthn> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rpId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WebAuthn" });
+
+export interface SecurityKey {
+  /** Hardware-backed private key text in SSH format. */
+  privateKey?: string;
+  /** The U2F protocol type. */
+  universalTwoFactor?: UniversalTwoFactor;
+  /** Public key text in SSH format, defined by [RFC4253]("https://www.ietf.org/rfc/rfc4253.txt") section 6.6. */
+  publicKey?: string;
+  /** The Web Authentication protocol type. */
+  webAuthn?: WebAuthn;
+  /** The security key nickname explicitly set by the user. */
+  deviceNickname?: string;
+}
+
+export const SecurityKey: Schema.Schema<SecurityKey> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateKey: Schema.optional(Schema.String),
+    universalTwoFactor: Schema.optional(UniversalTwoFactor),
+    publicKey: Schema.optional(Schema.String),
+    webAuthn: Schema.optional(WebAuthn),
+    deviceNickname: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SecurityKey" });
+
+export interface PosixAccount {
+  /** The default group ID. */
+  gid?: string;
+  /** Output only. A POSIX account identifier. */
+  accountId?: string;
+  /** The path to the logic shell for this account. */
+  shell?: string;
+  /** The username of the POSIX account. */
+  username?: string;
+  /** Only one POSIX account can be marked as primary. */
+  primary?: boolean;
+  /** The user ID. */
+  uid?: string;
+  /** The GECOS (user information) entry for this account. */
+  gecos?: string;
+  /** System identifier for which account the username or uid applies to. By default, the empty value is used. */
+  systemId?: string;
+  /** Output only. The canonical resource name. */
+  name?: string;
+  /** The path to the home directory for this account. */
+  homeDirectory?: string;
+  /** The operating system type where this account applies. */
+  operatingSystemType?:
+    | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
+    | "LINUX"
+    | "WINDOWS"
+    | (string & {});
+}
+
+export const PosixAccount: Schema.Schema<PosixAccount> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gid: Schema.optional(Schema.String),
+    accountId: Schema.optional(Schema.String),
+    shell: Schema.optional(Schema.String),
+    username: Schema.optional(Schema.String),
+    primary: Schema.optional(Schema.Boolean),
+    uid: Schema.optional(Schema.String),
+    gecos: Schema.optional(Schema.String),
+    systemId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    homeDirectory: Schema.optional(Schema.String),
+    operatingSystemType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PosixAccount" });
+
+export interface SshPublicKey {
+  /** An expiration time in microseconds since epoch. */
+  expirationTimeUsec?: string;
+  /** Required. Public key text in SSH format, defined by [RFC4253](https://www.ietf.org/rfc/rfc4253.txt) section 6.6. */
+  key?: string;
+  /** Output only. The canonical resource name. */
+  name?: string;
+  /** Output only. The SHA-256 fingerprint of the SSH public key. */
+  fingerprint?: string;
+}
+
+export const SshPublicKey: Schema.Schema<SshPublicKey> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expirationTimeUsec: Schema.optional(Schema.String),
+    key: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    fingerprint: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SshPublicKey" });
+
+export interface LoginProfile {
+  /** Required. A unique user ID. */
+  name?: string;
+  /** The registered security key credentials for a user. */
+  securityKeys?: ReadonlyArray<SecurityKey>;
+  /** The list of POSIX accounts associated with the user. */
+  posixAccounts?: ReadonlyArray<PosixAccount>;
+  /** A map from SSH public key fingerprint to the associated key object. */
+  sshPublicKeys?: Record<string, SshPublicKey>;
+}
+
+export const LoginProfile: Schema.Schema<LoginProfile> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    securityKeys: Schema.optional(Schema.Array(SecurityKey)),
+    posixAccounts: Schema.optional(Schema.Array(PosixAccount)),
+    sshPublicKeys: Schema.optional(Schema.Record(Schema.String, SshPublicKey)),
+  }).annotate({ identifier: "LoginProfile" });
 
 export interface GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse {
   /** The signed SSH public key to use in the SSH handshake. */
   signedSshPublicKey?: string;
 }
 
-export const GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse =
+export const GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse: Schema.Schema<GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signedSshPublicKey: Schema.optional(Schema.String),
   }).annotate({
@@ -57,149 +159,12 @@ export const GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRespon
       "GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse",
   });
 
-export interface SshPublicKey {
-  /** Required. Public key text in SSH format, defined by [RFC4253](https://www.ietf.org/rfc/rfc4253.txt) section 6.6. */
-  key?: string;
-  /** An expiration time in microseconds since epoch. */
-  expirationTimeUsec?: string;
-  /** Output only. The SHA-256 fingerprint of the SSH public key. */
-  fingerprint?: string;
-  /** Output only. The canonical resource name. */
-  name?: string;
-}
-
-export const SshPublicKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  key: Schema.optional(Schema.String),
-  expirationTimeUsec: Schema.optional(Schema.String),
-  fingerprint: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "SshPublicKey" });
-
-export interface Empty {}
-
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
-
-export interface PosixAccount {
-  /** Only one POSIX account can be marked as primary. */
-  primary?: boolean;
-  /** The username of the POSIX account. */
-  username?: string;
-  /** The user ID. */
-  uid?: string;
-  /** The default group ID. */
-  gid?: string;
-  /** The path to the home directory for this account. */
-  homeDirectory?: string;
-  /** The path to the logic shell for this account. */
-  shell?: string;
-  /** The GECOS (user information) entry for this account. */
-  gecos?: string;
-  /** System identifier for which account the username or uid applies to. By default, the empty value is used. */
-  systemId?: string;
-  /** Output only. A POSIX account identifier. */
-  accountId?: string;
-  /** The operating system type where this account applies. */
-  operatingSystemType?:
-    | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
-    | "LINUX"
-    | "WINDOWS"
-    | (string & {});
-  /** Output only. The canonical resource name. */
-  name?: string;
-}
-
-export const PosixAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  primary: Schema.optional(Schema.Boolean),
-  username: Schema.optional(Schema.String),
-  uid: Schema.optional(Schema.String),
-  gid: Schema.optional(Schema.String),
-  homeDirectory: Schema.optional(Schema.String),
-  shell: Schema.optional(Schema.String),
-  gecos: Schema.optional(Schema.String),
-  systemId: Schema.optional(Schema.String),
-  accountId: Schema.optional(Schema.String),
-  operatingSystemType: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "PosixAccount" });
-
-export interface UniversalTwoFactor {
-  /** Application ID for the U2F protocol. */
-  appId?: string;
-}
-
-export const UniversalTwoFactor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  appId: Schema.optional(Schema.String),
-}).annotate({ identifier: "UniversalTwoFactor" });
-
-export interface WebAuthn {
-  /** Relying party ID for Web Authentication. */
-  rpId?: string;
-}
-
-export const WebAuthn = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  rpId: Schema.optional(Schema.String),
-}).annotate({ identifier: "WebAuthn" });
-
-export interface SecurityKey {
-  /** Public key text in SSH format, defined by [RFC4253]("https://www.ietf.org/rfc/rfc4253.txt") section 6.6. */
-  publicKey?: string;
-  /** Hardware-backed private key text in SSH format. */
-  privateKey?: string;
-  /** The U2F protocol type. */
-  universalTwoFactor?: UniversalTwoFactor;
-  /** The Web Authentication protocol type. */
-  webAuthn?: WebAuthn;
-  /** The security key nickname explicitly set by the user. */
-  deviceNickname?: string;
-}
-
-export const SecurityKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  publicKey: Schema.optional(Schema.String),
-  privateKey: Schema.optional(Schema.String),
-  universalTwoFactor: Schema.optional(UniversalTwoFactor),
-  webAuthn: Schema.optional(WebAuthn),
-  deviceNickname: Schema.optional(Schema.String),
-}).annotate({ identifier: "SecurityKey" });
-
-export interface LoginProfile {
-  /** Required. A unique user ID. */
-  name?: string;
-  /** The list of POSIX accounts associated with the user. */
-  posixAccounts?: ReadonlyArray<PosixAccount>;
-  /** A map from SSH public key fingerprint to the associated key object. */
-  sshPublicKeys?: Record<string, SshPublicKey>;
-  /** The registered security key credentials for a user. */
-  securityKeys?: ReadonlyArray<SecurityKey>;
-}
-
-export const LoginProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  posixAccounts: Schema.optional(Schema.Array(PosixAccount)),
-  sshPublicKeys: Schema.optional(Schema.Record(Schema.String, SshPublicKey)),
-  securityKeys: Schema.optional(Schema.Array(SecurityKey)),
-}).annotate({ identifier: "LoginProfile" });
-
-export interface ImportSshPublicKeyResponse {
-  /** The login profile information for the user. */
-  loginProfile?: LoginProfile;
-  /** Detailed information about import results. */
-  details?: string;
-}
-
-export const ImportSshPublicKeyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    loginProfile: Schema.optional(LoginProfile),
-    details: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ImportSshPublicKeyResponse" });
-
 export interface ProvisionPosixAccountRequest {
   /** Optional. The regions to wait for a POSIX account to be written to before returning a response. If unspecified, defaults to all regions. Regions are listed at https://cloud.google.com/about/locations#region. */
   regions?: ReadonlyArray<string>;
 }
 
-export const ProvisionPosixAccountRequest =
+export const ProvisionPosixAccountRequest: Schema.Schema<ProvisionPosixAccountRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ProvisionPosixAccountRequest" });
@@ -209,20 +174,62 @@ export interface SignSshPublicKeyRequest {
   sshPublicKey?: string;
 }
 
-export const SignSshPublicKeyRequest =
+export const SignSshPublicKeyRequest: Schema.Schema<SignSshPublicKeyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sshPublicKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignSshPublicKeyRequest" });
+
+export interface ImportSshPublicKeyResponse {
+  /** The login profile information for the user. */
+  loginProfile?: LoginProfile;
+  /** Detailed information about import results. */
+  details?: string;
+}
+
+export const ImportSshPublicKeyResponse: Schema.Schema<ImportSshPublicKeyResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    loginProfile: Schema.optional(LoginProfile),
+    details: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ImportSshPublicKeyResponse" });
 
 export interface SignSshPublicKeyResponse {
   /** The signed SSH public key to use in the SSH handshake. */
   signedSshPublicKey?: string;
 }
 
-export const SignSshPublicKeyResponse =
+export const SignSshPublicKeyResponse: Schema.Schema<SignSshPublicKeyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signedSshPublicKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignSshPublicKeyResponse" });
+
+export interface GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest {
+  /** Required. The SSH public key to sign. */
+  sshPublicKey?: string;
+  /** Optional. The service account for the instance. If the instance in question does not have a service account, this field should be left empty. If the wrong service account is provided, this operation will return a signed certificate that will not be accepted by the VM. */
+  serviceAccount?: string;
+  /** The App Engine instance to sign the SSH public key for. Expected format: apps/{app}/services/{service}/versions/{version}/instances/{instance} */
+  appEngineInstance?: string;
+  /** The Compute instance to sign the SSH public key for. Expected format: projects/{project}/zones/{zone}/instances/{numeric_instance_id} */
+  computeInstance?: string;
+}
+
+export const GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest: Schema.Schema<GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sshPublicKey: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    appEngineInstance: Schema.optional(Schema.String),
+    computeInstance: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest",
+  });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
 
 // ==========================================================================
 // Errors
@@ -277,52 +284,6 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 // Operations
 // ==========================================================================
-
-export interface SignSshPublicKeyProjectsLocationsRequest {
-  /** Required. The parent for the signing request. Format: projects/{project}/locations/{location} */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest;
-}
-
-export const SignSshPublicKeyProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(
-      GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest,
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha/{+parent}:signSshPublicKey",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SignSshPublicKeyProjectsLocationsRequest>;
-
-export type SignSshPublicKeyProjectsLocationsResponse =
-  GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse;
-export const SignSshPublicKeyProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse;
-
-export type SignSshPublicKeyProjectsLocationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Signs an SSH public key for a user to authenticate to a virtual machine on Google Compute Engine. */
-export const signSshPublicKeyProjectsLocations: API.OperationMethod<
-  SignSshPublicKeyProjectsLocationsRequest,
-  SignSshPublicKeyProjectsLocationsResponse,
-  SignSshPublicKeyProjectsLocationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SignSshPublicKeyProjectsLocationsRequest,
-  output: SignSshPublicKeyProjectsLocationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
 
 export interface GetLoginProfileUsersRequest {
   /** Required. The unique ID for the user in format `users/{user}`. */
@@ -546,18 +507,18 @@ export const getUsersSshPublicKeys: API.OperationMethod<
 }));
 
 export interface PatchUsersSshPublicKeysRequest {
-  /** Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. */
-  name: string;
   /** Optional. Mask to control which fields get updated. Updates all if not present. */
   updateMask?: string;
+  /** Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. */
+  name: string;
   /** Request body */
   body?: SshPublicKey;
 }
 
 export const PatchUsersSshPublicKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SshPublicKey).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
@@ -755,5 +716,51 @@ export const signSshPublicKeyUsersProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignSshPublicKeyUsersProjectsLocationsRequest,
   output: SignSshPublicKeyUsersProjectsLocationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SignSshPublicKeyProjectsLocationsRequest {
+  /** Required. The parent for the signing request. Format: projects/{project}/locations/{location} */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest;
+}
+
+export const SignSshPublicKeyProjectsLocationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(
+      GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest,
+    ).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1alpha/{+parent}:signSshPublicKey",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SignSshPublicKeyProjectsLocationsRequest>;
+
+export type SignSshPublicKeyProjectsLocationsResponse =
+  GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse;
+export const SignSshPublicKeyProjectsLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse;
+
+export type SignSshPublicKeyProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Signs an SSH public key for a user to authenticate to a virtual machine on Google Compute Engine. */
+export const signSshPublicKeyProjectsLocations: API.OperationMethod<
+  SignSshPublicKeyProjectsLocationsRequest,
+  SignSshPublicKeyProjectsLocationsResponse,
+  SignSshPublicKeyProjectsLocationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SignSshPublicKeyProjectsLocationsRequest,
+  output: SignSshPublicKeyProjectsLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

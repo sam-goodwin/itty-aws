@@ -22,35 +22,37 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface Domain {
-  /** Output only. User's permission of this domain. */
-  permission?:
-    | "PERMISSION_UNSPECIFIED"
-    | "READER"
-    | "OWNER"
-    | "NONE"
-    | (string & {});
-  /** The timestamp at which the domain was last verified by the user. */
-  lastVerifyTime?: string;
-  /** Identifier. The resource name of the domain. Format: `domains/{domain_name}`, where domain_name is the fully qualified domain name (i.e., mymail.mydomain.com). */
-  name?: string;
-  /** Output only. Information about a user's verification history and properties for the domain. */
-  verificationState?:
-    | "VERIFICATION_STATE_UNSPECIFIED"
-    | "UNVERIFIED"
-    | "VERIFIED"
-    | (string & {});
-  /** Output only. Immutable. The timestamp at which the domain was added to the user's account. */
-  createTime?: string;
+export interface StringList {
+  /** The string values. */
+  values?: ReadonlyArray<string>;
 }
 
-export const Domain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  permission: Schema.optional(Schema.String),
-  lastVerifyTime: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  verificationState: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "Domain" });
+export const StringList: Schema.Schema<StringList> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "StringList" });
+
+export interface StatisticValue {
+  /** Double value. */
+  doubleValue?: number;
+  /** String value. */
+  stringValue?: string;
+  /** Integer value. */
+  intValue?: string;
+  /** Float value. */
+  floatValue?: number;
+  /** List of string values. */
+  stringList?: StringList;
+}
+
+export const StatisticValue: Schema.Schema<StatisticValue> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    doubleValue: Schema.optional(Schema.Number),
+    stringValue: Schema.optional(Schema.String),
+    intValue: Schema.optional(Schema.String),
+    floatValue: Schema.optional(Schema.Number),
+    stringList: Schema.optional(StringList),
+  }).annotate({ identifier: "StatisticValue" });
 
 export interface Gmailpostmastertools_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -61,90 +63,62 @@ export interface Gmailpostmastertools_Date {
   day?: number;
 }
 
-export const Gmailpostmastertools_Date =
+export const Gmailpostmastertools_Date: Schema.Schema<Gmailpostmastertools_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Gmailpostmastertools_Date" });
 
-export interface StringList {
-  /** The string values. */
-  values?: ReadonlyArray<string>;
-}
-
-export const StringList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  values: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "StringList" });
-
-export interface StatisticValue {
-  /** Integer value. */
-  intValue?: string;
-  /** String value. */
-  stringValue?: string;
-  /** List of string values. */
-  stringList?: StringList;
-  /** Float value. */
-  floatValue?: number;
-  /** Double value. */
-  doubleValue?: number;
-}
-
-export const StatisticValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  intValue: Schema.optional(Schema.String),
-  stringValue: Schema.optional(Schema.String),
-  stringList: Schema.optional(StringList),
-  floatValue: Schema.optional(Schema.Number),
-  doubleValue: Schema.optional(Schema.Number),
-}).annotate({ identifier: "StatisticValue" });
-
 export interface DomainStat {
-  /** Output only. The resource name of the DomainStat resource. Format: domains/{domain}/domainStats/{domain_stat} The `{domain_stat}` segment is an opaque, server-generated ID. We recommend using the `metric` field to identify queried metrics instead of parsing the name. */
-  name?: string;
   /** The user-defined name from MetricDefinition.name in the request, used to correlate this result with the requested metric. */
   metric?: string;
-  /** Optional. The specific date for these stats, if granularity is DAILY. This field is populated if the QueryDomainStatsRequest specified a DAILY aggregation granularity. */
-  date?: Gmailpostmastertools_Date;
   /** The value of the corresponding metric. */
   value?: StatisticValue;
+  /** Output only. The resource name of the DomainStat resource. Format: domains/{domain}/domainStats/{domain_stat} The `{domain_stat}` segment is an opaque, server-generated ID. We recommend using the `metric` field to identify queried metrics instead of parsing the name. */
+  name?: string;
+  /** Optional. The specific date for these stats, if granularity is DAILY. This field is populated if the QueryDomainStatsRequest specified a DAILY aggregation granularity. */
+  date?: Gmailpostmastertools_Date;
 }
 
-export const DomainStat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  metric: Schema.optional(Schema.String),
-  date: Schema.optional(Gmailpostmastertools_Date),
-  value: Schema.optional(StatisticValue),
-}).annotate({ identifier: "DomainStat" });
+export const DomainStat: Schema.Schema<DomainStat> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metric: Schema.optional(Schema.String),
+    value: Schema.optional(StatisticValue),
+    name: Schema.optional(Schema.String),
+    date: Schema.optional(Gmailpostmastertools_Date),
+  }).annotate({ identifier: "DomainStat" });
 
 export interface QueryDomainStatsResponse {
-  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
   /** The list of domain statistics. Each DomainStat object contains the value for a metric requested in the QueryDomainStatsRequest. */
   domainStats?: ReadonlyArray<DomainStat>;
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
 }
 
-export const QueryDomainStatsResponse =
+export const QueryDomainStatsResponse: Schema.Schema<QueryDomainStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
     domainStats: Schema.optional(Schema.Array(DomainStat)),
+    nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "QueryDomainStatsResponse" });
 
 export interface Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: ReadonlyArray<Record<string, unknown>>;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
 }
 
-export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  message: Schema.optional(Schema.String),
-  details: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-  code: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Status" });
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "Status" });
 
 export interface BatchQueryDomainStatsResult {
   /** The successful response for the individual query. */
@@ -153,7 +127,7 @@ export interface BatchQueryDomainStatsResult {
   error?: Status;
 }
 
-export const BatchQueryDomainStatsResult =
+export const BatchQueryDomainStatsResult: Schema.Schema<BatchQueryDomainStatsResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     response: Schema.optional(QueryDomainStatsResponse),
     error: Schema.optional(Status),
@@ -164,46 +138,20 @@ export interface BatchQueryDomainStatsResponse {
   results?: ReadonlyArray<BatchQueryDomainStatsResult>;
 }
 
-export const BatchQueryDomainStatsResponse =
+export const BatchQueryDomainStatsResponse: Schema.Schema<BatchQueryDomainStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Array(BatchQueryDomainStatsResult)),
   }).annotate({ identifier: "BatchQueryDomainStatsResponse" });
-
-export interface ComplianceStatus {
-  /** Output only. The compliance status. */
-  status?: "STATE_UNSPECIFIED" | "COMPLIANT" | "NEEDS_WORK" | (string & {});
-}
-
-export const ComplianceStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  status: Schema.optional(Schema.String),
-}).annotate({ identifier: "ComplianceStatus" });
-
-export interface HonorUnsubscribeVerdict {
-  /** The compliance status. */
-  status?: ComplianceStatus;
-  /** The specific reason for the compliance verdict. Must be empty if the status is compliant. */
-  reason?:
-    | "REASON_UNSPECIFIED"
-    | "NOT_HONORING"
-    | "NOT_HONORING_TOO_FEW_CAMPAIGNS"
-    | "NOT_HONORING_TOO_MANY_CAMPAIGNS"
-    | (string & {});
-}
-
-export const HonorUnsubscribeVerdict =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.optional(ComplianceStatus),
-    reason: Schema.optional(Schema.String),
-  }).annotate({ identifier: "HonorUnsubscribeVerdict" });
 
 export interface DateList {
   /** Required. The list of specific dates for which to retrieve data. */
   dates?: ReadonlyArray<Gmailpostmastertools_Date>;
 }
 
-export const DateList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  dates: Schema.optional(Schema.Array(Gmailpostmastertools_Date)),
-}).annotate({ identifier: "DateList" });
+export const DateList: Schema.Schema<DateList> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dates: Schema.optional(Schema.Array(Gmailpostmastertools_Date)),
+  }).annotate({ identifier: "DateList" });
 
 export interface DateRange {
   /** Required. The inclusive start date of the date range. */
@@ -212,19 +160,21 @@ export interface DateRange {
   end?: Gmailpostmastertools_Date;
 }
 
-export const DateRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  start: Schema.optional(Gmailpostmastertools_Date),
-  end: Schema.optional(Gmailpostmastertools_Date),
-}).annotate({ identifier: "DateRange" });
+export const DateRange: Schema.Schema<DateRange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    start: Schema.optional(Gmailpostmastertools_Date),
+    end: Schema.optional(Gmailpostmastertools_Date),
+  }).annotate({ identifier: "DateRange" });
 
 export interface DateRanges {
   /** Required. The list of date ranges for which to retrieve data. */
   dateRanges?: ReadonlyArray<DateRange>;
 }
 
-export const DateRanges = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  dateRanges: Schema.optional(Schema.Array(DateRange)),
-}).annotate({ identifier: "DateRanges" });
+export const DateRanges: Schema.Schema<DateRanges> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dateRanges: Schema.optional(Schema.Array(DateRange)),
+  }).annotate({ identifier: "DateRanges" });
 
 export interface TimeQuery {
   /** A list of specific dates. */
@@ -233,95 +183,21 @@ export interface TimeQuery {
   dateRanges?: DateRanges;
 }
 
-export const TimeQuery = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  dateList: Schema.optional(DateList),
-  dateRanges: Schema.optional(DateRanges),
-}).annotate({ identifier: "TimeQuery" });
-
-export interface BaseMetric {
-  /** A predefined standard metric. */
-  standardMetric?:
-    | "STANDARD_METRIC_UNSPECIFIED"
-    | "FEEDBACK_LOOP_ID"
-    | "FEEDBACK_LOOP_SPAM_RATE"
-    | "SPAM_RATE"
-    | "AUTH_SUCCESS_RATE"
-    | "TLS_ENCRYPTION_MESSAGE_COUNT"
-    | "TLS_ENCRYPTION_RATE"
-    | "DELIVERY_ERROR_COUNT"
-    | "DELIVERY_ERROR_RATE"
-    | (string & {});
-}
-
-export const BaseMetric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  standardMetric: Schema.optional(Schema.String),
-}).annotate({ identifier: "BaseMetric" });
-
-export interface MetricDefinition {
-  /** Required. The user-defined name for this metric. This name will be used as the key for this metric's value in the response. */
-  name?: string;
-  /** Optional. Optional filters to apply to the metric. */
-  filter?: string;
-  /** Required. The underlying metric to query. */
-  baseMetric?: BaseMetric;
-}
-
-export const MetricDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  filter: Schema.optional(Schema.String),
-  baseMetric: Schema.optional(BaseMetric),
-}).annotate({ identifier: "MetricDefinition" });
-
-export interface QueryDomainStatsRequest {
-  /** Optional. The next_page_token value returned from a previous List request, if any. If the aggregation granularity is DAILY, the page token will be the encoded date + "/" + metric name. If the aggregation granularity is OVERALL, the page token will be the encoded metric name. */
-  pageToken?: string;
-  /** Optional. The granularity at which to aggregate the statistics. If unspecified, defaults to DAILY. */
-  aggregationGranularity?:
-    | "AGGREGATION_GRANULARITY_UNSPECIFIED"
-    | "DAILY"
-    | "OVERALL"
-    | (string & {});
-  /** Required. The time range or specific dates for which to retrieve the metrics. */
-  timeQuery?: TimeQuery;
-  /** Optional. The maximum number of DomainStats resources to return in the response. The server may return fewer than this value. If unspecified, a default value of 10 will be used. The maximum value is 200. */
-  pageSize?: number;
-  /** Required. The parent resource name where the stats are queried. Format: domains/{domain} */
-  parent?: string;
-  /** Required. The specific metrics to query. You can define a custom name for each metric, which will be used in the response. */
-  metricDefinitions?: ReadonlyArray<MetricDefinition>;
-}
-
-export const QueryDomainStatsRequest =
+export const TimeQuery: Schema.Schema<TimeQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String),
-    aggregationGranularity: Schema.optional(Schema.String),
-    timeQuery: Schema.optional(TimeQuery),
-    pageSize: Schema.optional(Schema.Number),
-    parent: Schema.optional(Schema.String),
-    metricDefinitions: Schema.optional(Schema.Array(MetricDefinition)),
-  }).annotate({ identifier: "QueryDomainStatsRequest" });
+    dateList: Schema.optional(DateList),
+    dateRanges: Schema.optional(DateRanges),
+  }).annotate({ identifier: "TimeQuery" });
 
-export interface BatchQueryDomainStatsRequest {
-  /** Required. A list of individual query requests. Each request can be for a different domain. A maximum of 100 requests can be included in a single batch. */
-  requests?: ReadonlyArray<QueryDomainStatsRequest>;
+export interface ComplianceStatus {
+  /** Output only. The compliance status. */
+  status?: "STATE_UNSPECIFIED" | "COMPLIANT" | "NEEDS_WORK" | (string & {});
 }
 
-export const BatchQueryDomainStatsRequest =
+export const ComplianceStatus: Schema.Schema<ComplianceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requests: Schema.optional(Schema.Array(QueryDomainStatsRequest)),
-  }).annotate({ identifier: "BatchQueryDomainStatsRequest" });
-
-export interface ListDomainsResponse {
-  /** The domains that have been registered by the user. */
-  domains?: ReadonlyArray<Domain>;
-  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-}
-
-export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  domains: Schema.optional(Schema.Array(Domain)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListDomainsResponse" });
+    status: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ComplianceStatus" });
 
 export interface ComplianceRowData {
   /** The compliance requirement. */
@@ -343,10 +219,130 @@ export interface ComplianceRowData {
   status?: ComplianceStatus;
 }
 
-export const ComplianceRowData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  requirement: Schema.optional(Schema.String),
-  status: Schema.optional(ComplianceStatus),
-}).annotate({ identifier: "ComplianceRowData" });
+export const ComplianceRowData: Schema.Schema<ComplianceRowData> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requirement: Schema.optional(Schema.String),
+    status: Schema.optional(ComplianceStatus),
+  }).annotate({ identifier: "ComplianceRowData" });
+
+export interface BaseMetric {
+  /** A predefined standard metric. */
+  standardMetric?:
+    | "STANDARD_METRIC_UNSPECIFIED"
+    | "FEEDBACK_LOOP_ID"
+    | "FEEDBACK_LOOP_SPAM_RATE"
+    | "SPAM_RATE"
+    | "AUTH_SUCCESS_RATE"
+    | "TLS_ENCRYPTION_MESSAGE_COUNT"
+    | "TLS_ENCRYPTION_RATE"
+    | "DELIVERY_ERROR_COUNT"
+    | "DELIVERY_ERROR_RATE"
+    | (string & {});
+}
+
+export const BaseMetric: Schema.Schema<BaseMetric> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    standardMetric: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BaseMetric" });
+
+export interface MetricDefinition {
+  /** Optional. Optional filters to apply to the metric. */
+  filter?: string;
+  /** Required. The user-defined name for this metric. This name will be used as the key for this metric's value in the response. */
+  name?: string;
+  /** Required. The underlying metric to query. */
+  baseMetric?: BaseMetric;
+}
+
+export const MetricDefinition: Schema.Schema<MetricDefinition> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    baseMetric: Schema.optional(BaseMetric),
+  }).annotate({ identifier: "MetricDefinition" });
+
+export interface Domain {
+  /** Output only. User's permission of this domain. */
+  permission?:
+    | "PERMISSION_UNSPECIFIED"
+    | "READER"
+    | "OWNER"
+    | "NONE"
+    | (string & {});
+  /** Output only. Information about a user's verification history and properties for the domain. */
+  verificationState?:
+    | "VERIFICATION_STATE_UNSPECIFIED"
+    | "UNVERIFIED"
+    | "VERIFIED"
+    | (string & {});
+  /** The timestamp at which the domain was last verified by the user. */
+  lastVerifyTime?: string;
+  /** Identifier. The resource name of the domain. Format: `domains/{domain_name}`, where domain_name is the fully qualified domain name (i.e., mymail.mydomain.com). */
+  name?: string;
+  /** Output only. Immutable. The timestamp at which the domain was added to the user's account. */
+  createTime?: string;
+}
+
+export const Domain: Schema.Schema<Domain> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permission: Schema.optional(Schema.String),
+    verificationState: Schema.optional(Schema.String),
+    lastVerifyTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Domain" });
+
+export interface ListDomainsResponse {
+  /** The domains that have been registered by the user. */
+  domains?: ReadonlyArray<Domain>;
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+}
+
+export const ListDomainsResponse: Schema.Schema<ListDomainsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domains: Schema.optional(Schema.Array(Domain)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDomainsResponse" });
+
+export interface QueryDomainStatsRequest {
+  /** Optional. The maximum number of DomainStats resources to return in the response. The server may return fewer than this value. If unspecified, a default value of 10 will be used. The maximum value is 200. */
+  pageSize?: number;
+  /** Required. The parent resource name where the stats are queried. Format: domains/{domain} */
+  parent?: string;
+  /** Required. The specific metrics to query. You can define a custom name for each metric, which will be used in the response. */
+  metricDefinitions?: ReadonlyArray<MetricDefinition>;
+  /** Required. The time range or specific dates for which to retrieve the metrics. */
+  timeQuery?: TimeQuery;
+  /** Optional. The next_page_token value returned from a previous List request, if any. If the aggregation granularity is DAILY, the page token will be the encoded date + "/" + metric name. If the aggregation granularity is OVERALL, the page token will be the encoded metric name. */
+  pageToken?: string;
+  /** Optional. The granularity at which to aggregate the statistics. If unspecified, defaults to DAILY. */
+  aggregationGranularity?:
+    | "AGGREGATION_GRANULARITY_UNSPECIFIED"
+    | "DAILY"
+    | "OVERALL"
+    | (string & {});
+}
+
+export const QueryDomainStatsRequest: Schema.Schema<QueryDomainStatsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number),
+    parent: Schema.optional(Schema.String),
+    metricDefinitions: Schema.optional(Schema.Array(MetricDefinition)),
+    timeQuery: Schema.optional(TimeQuery),
+    pageToken: Schema.optional(Schema.String),
+    aggregationGranularity: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryDomainStatsRequest" });
+
+export interface BatchQueryDomainStatsRequest {
+  /** Required. A list of individual query requests. Each request can be for a different domain. A maximum of 100 requests can be included in a single batch. */
+  requests?: ReadonlyArray<QueryDomainStatsRequest>;
+}
+
+export const BatchQueryDomainStatsRequest: Schema.Schema<BatchQueryDomainStatsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(QueryDomainStatsRequest)),
+  }).annotate({ identifier: "BatchQueryDomainStatsRequest" });
 
 export interface OneClickUnsubscribeVerdict {
   /** The compliance status. */
@@ -360,46 +356,64 @@ export interface OneClickUnsubscribeVerdict {
     | (string & {});
 }
 
-export const OneClickUnsubscribeVerdict =
+export const OneClickUnsubscribeVerdict: Schema.Schema<OneClickUnsubscribeVerdict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(ComplianceStatus),
     reason: Schema.optional(Schema.String),
   }).annotate({ identifier: "OneClickUnsubscribeVerdict" });
 
+export interface HonorUnsubscribeVerdict {
+  /** The specific reason for the compliance verdict. Must be empty if the status is compliant. */
+  reason?:
+    | "REASON_UNSPECIFIED"
+    | "NOT_HONORING"
+    | "NOT_HONORING_TOO_FEW_CAMPAIGNS"
+    | "NOT_HONORING_TOO_MANY_CAMPAIGNS"
+    | (string & {});
+  /** The compliance status. */
+  status?: ComplianceStatus;
+}
+
+export const HonorUnsubscribeVerdict: Schema.Schema<HonorUnsubscribeVerdict> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reason: Schema.optional(Schema.String),
+    status: Schema.optional(ComplianceStatus),
+  }).annotate({ identifier: "HonorUnsubscribeVerdict" });
+
 export interface DomainComplianceData {
   /** Data for each of the rows of the table. Each message contains all the data that backs a single row. */
   rowData?: ReadonlyArray<ComplianceRowData>;
-  /** Domain that this data is for. */
-  domainId?: string;
   /** One-click unsubscribe compliance verdict. */
   oneClickUnsubscribeVerdict?: OneClickUnsubscribeVerdict;
+  /** Domain that this data is for. */
+  domainId?: string;
   /** Unsubscribe honoring compliance verdict. */
   honorUnsubscribeVerdict?: HonorUnsubscribeVerdict;
 }
 
-export const DomainComplianceData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  rowData: Schema.optional(Schema.Array(ComplianceRowData)),
-  domainId: Schema.optional(Schema.String),
-  oneClickUnsubscribeVerdict: Schema.optional(OneClickUnsubscribeVerdict),
-  honorUnsubscribeVerdict: Schema.optional(HonorUnsubscribeVerdict),
-}).annotate({ identifier: "DomainComplianceData" });
+export const DomainComplianceData: Schema.Schema<DomainComplianceData> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rowData: Schema.optional(Schema.Array(ComplianceRowData)),
+    oneClickUnsubscribeVerdict: Schema.optional(OneClickUnsubscribeVerdict),
+    domainId: Schema.optional(Schema.String),
+    honorUnsubscribeVerdict: Schema.optional(HonorUnsubscribeVerdict),
+  }).annotate({ identifier: "DomainComplianceData" });
 
 export interface DomainComplianceStatus {
-  /** Identifier. The resource name of the domain's compliance status. Format: `domains/{domain_id}/complianceStatus`. */
-  name?: string;
-  /** Compliance data calculated specifically for the subdomain in `name`. This field is only populated if the domain in `name` is a subdomain that differs from its registrable domain (e.g., `sub.example.com`), and if compliance data is available for that specific subdomain. */
-  subdomainComplianceData?: DomainComplianceData;
   /** Compliance data for the registrable domain part of the domain in `name`. For example, if `name` is `domains/example.com/complianceStatus`, this field contains compliance data for `example.com`. */
   complianceData?: DomainComplianceData;
+  /** Compliance data calculated specifically for the subdomain in `name`. This field is only populated if the domain in `name` is a subdomain that differs from its registrable domain (e.g., `sub.example.com`), and if compliance data is available for that specific subdomain. */
+  subdomainComplianceData?: DomainComplianceData;
+  /** Identifier. The resource name of the domain's compliance status. Format: `domains/{domain_id}/complianceStatus`. */
+  name?: string;
 }
 
-export const DomainComplianceStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.optional(Schema.String),
-    subdomainComplianceData: Schema.optional(DomainComplianceData),
+export const DomainComplianceStatus: Schema.Schema<DomainComplianceStatus> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     complianceData: Schema.optional(DomainComplianceData),
-  },
-).annotate({ identifier: "DomainComplianceStatus" });
+    subdomainComplianceData: Schema.optional(DomainComplianceData),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DomainComplianceStatus" });
 
 // ==========================================================================
 // Errors
@@ -455,16 +469,45 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
+export interface GetDomainsRequest {
+  /** Required. The resource name of the domain. Format: `domains/{domain_name}`, where domain_name is the fully qualified domain name (i.e., mymail.mydomain.com). */
+  name: string;
+}
+
+export const GetDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v2/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetDomainsRequest>;
+
+export type GetDomainsResponse = Domain;
+export const GetDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domain;
+
+export type GetDomainsError = DefaultErrors | NotFound | Forbidden;
+
+/** Retrieves detailed information about a domain registered by you. Returns NOT_FOUND if the domain is not registered by you. Domain represents the metadata of a domain that has been registered within the system and linked to a user. */
+export const getDomains: API.OperationMethod<
+  GetDomainsRequest,
+  GetDomainsResponse,
+  GetDomainsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetDomainsRequest,
+  output: GetDomainsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface ListDomainsRequest {
-  /** Optional. Requested page size. Server may return fewer domains than requested. If unspecified, the default value for this field is 10. The maximum value for this field is 200. */
-  pageSize?: number;
   /** Optional. The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
+  /** Optional. Requested page size. Server may return fewer domains than requested. If unspecified, the default value for this field is 10. The maximum value for this field is 200. */
+  pageSize?: number;
 }
 
 export const ListDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
 }).pipe(
   T.Http({ method: "GET", path: "v2/domains" }),
   svc,
@@ -523,35 +566,6 @@ export const getComplianceStatusDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetComplianceStatusDomainsRequest,
   output: GetComplianceStatusDomainsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetDomainsRequest {
-  /** Required. The resource name of the domain. Format: `domains/{domain_name}`, where domain_name is the fully qualified domain name (i.e., mymail.mydomain.com). */
-  name: string;
-}
-
-export const GetDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-}).pipe(
-  T.Http({ method: "GET", path: "v2/{+name}" }),
-  svc,
-) as unknown as Schema.Schema<GetDomainsRequest>;
-
-export type GetDomainsResponse = Domain;
-export const GetDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domain;
-
-export type GetDomainsError = DefaultErrors | NotFound | Forbidden;
-
-/** Retrieves detailed information about a domain registered by you. Returns NOT_FOUND if the domain is not registered by you. Domain represents the metadata of a domain that has been registered within the system and linked to a user. */
-export const getDomains: API.OperationMethod<
-  GetDomainsRequest,
-  GetDomainsResponse,
-  GetDomainsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetDomainsRequest,
-  output: GetDomainsResponse,
   errors: [NotFound, Forbidden],
 }));
 

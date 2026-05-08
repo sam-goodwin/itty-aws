@@ -22,22 +22,15 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface AnswerQueryRequest {
-  /** Required. The query to answer. */
-  query?: string;
-}
-
-export const AnswerQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  query: Schema.optional(Schema.String),
-}).annotate({ identifier: "AnswerQueryRequest" });
-
 export interface Document {
-  /** Output only. Represents the timestamp when the content or metadata of the document was last updated. */
-  updateTime?: string;
   /** Identifier. Contains the resource name of the document. Format: `documents/{uri_without_scheme}` Example: `documents/docs.cloud.google.com/storage/docs/creating-buckets` */
   name?: string;
-  /** Output only. Specifies the data source of the document. Example data source: `firebase.google.com` */
-  dataSource?: string;
+  /** Output only. Provides the URI of the content, such as `docs.cloud.google.com/storage/docs/creating-buckets`. */
+  uri?: string;
+  /** Output only. Provides the title of the document. */
+  title?: string;
+  /** Output only. Contains the full content of the document in Markdown format. */
+  content?: string;
   /** Output only. Specifies the DocumentView of the document. */
   view?:
     | "DOCUMENT_VIEW_UNSPECIFIED"
@@ -45,64 +38,51 @@ export interface Document {
     | "DOCUMENT_VIEW_FULL"
     | "DOCUMENT_VIEW_CONTENT"
     | (string & {});
-  /** Output only. Provides the URI of the content, such as `docs.cloud.google.com/storage/docs/creating-buckets`. */
-  uri?: string;
-  /** Output only. Contains the full content of the document in Markdown format. */
-  content?: string;
   /** Output only. Provides a description of the document. */
   description?: string;
-  /** Output only. Provides the title of the document. */
-  title?: string;
+  /** Output only. Specifies the data source of the document. Example data source: `firebase.google.com` */
+  dataSource?: string;
+  /** Output only. Represents the timestamp when the content or metadata of the document was last updated. */
+  updateTime?: string;
 }
 
-export const Document = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  updateTime: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  dataSource: Schema.optional(Schema.String),
-  view: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  content: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-}).annotate({ identifier: "Document" });
+export const Document: Schema.Schema<Document> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    view: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    dataSource: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Document" });
 
 export interface DocumentChunk {
-  /** Output only. Contains the content of the document chunk. */
-  content?: string;
-  /** Output only. Represents metadata about the Document this chunk is from. The DocumentView of this Document message will be set to `DOCUMENT_VIEW_BASIC`. It is included here for convenience so that clients do not need to call DeveloperKnowledge.GetDocument or DeveloperKnowledge.BatchGetDocuments if they only need the metadata fields. Otherwise, clients should use DeveloperKnowledge.GetDocument or DeveloperKnowledge.BatchGetDocuments to fetch the full document content. */
-  document?: Document;
   /** Output only. Contains the resource name of the document this chunk is from. Format: `documents/{uri_without_scheme}` Example: `documents/docs.cloud.google.com/storage/docs/creating-buckets` */
   parent?: string;
   /** Output only. Specifies the ID of this chunk within the document. The chunk ID is unique within a document, but not globally unique across documents. The chunk ID is not stable and may change over time. */
   id?: string;
+  /** Output only. Contains the content of the document chunk. */
+  content?: string;
+  /** Output only. Represents metadata about the Document this chunk is from. The DocumentView of this Document message will be set to `DOCUMENT_VIEW_BASIC`. It is included here for convenience so that clients do not need to call DeveloperKnowledge.GetDocument or DeveloperKnowledge.BatchGetDocuments if they only need the metadata fields. Otherwise, clients should use DeveloperKnowledge.GetDocument or DeveloperKnowledge.BatchGetDocuments to fetch the full document content. */
+  document?: Document;
 }
 
-export const DocumentChunk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  content: Schema.optional(Schema.String),
-  document: Schema.optional(Document),
-  parent: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-}).annotate({ identifier: "DocumentChunk" });
-
-export interface SearchDocumentChunksResponse {
-  /** Contains the search results for the given query. Each DocumentChunk in this list contains a snippet of content relevant to the search query. Use the DocumentChunk.parent field of each result with DeveloperKnowledge.GetDocument or DeveloperKnowledge.BatchGetDocuments to retrieve the full document content. */
-  results?: ReadonlyArray<DocumentChunk>;
-  /** Optional. Provides a token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const SearchDocumentChunksResponse =
+export const DocumentChunk: Schema.Schema<DocumentChunk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    results: Schema.optional(Schema.Array(DocumentChunk)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SearchDocumentChunksResponse" });
+    parent: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    document: Schema.optional(Document),
+  }).annotate({ identifier: "DocumentChunk" });
 
 export interface BatchGetDocumentsResponse {
   /** Contains the documents requested. */
   documents?: ReadonlyArray<Document>;
 }
 
-export const BatchGetDocumentsResponse =
+export const BatchGetDocumentsResponse: Schema.Schema<BatchGetDocumentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documents: Schema.optional(Schema.Array(Document)),
   }).annotate({ identifier: "BatchGetDocumentsResponse" });
@@ -112,18 +92,43 @@ export interface Answer {
   answerText?: string;
 }
 
-export const Answer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  answerText: Schema.optional(Schema.String),
-}).annotate({ identifier: "Answer" });
+export const Answer: Schema.Schema<Answer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answerText: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Answer" });
 
 export interface AnswerQueryResponse {
   /** The answer to the query. */
   answer?: Answer;
 }
 
-export const AnswerQueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  answer: Schema.optional(Answer),
-}).annotate({ identifier: "AnswerQueryResponse" });
+export const AnswerQueryResponse: Schema.Schema<AnswerQueryResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answer: Schema.optional(Answer),
+  }).annotate({ identifier: "AnswerQueryResponse" });
+
+export interface AnswerQueryRequest {
+  /** Required. The query to answer. */
+  query?: string;
+}
+
+export const AnswerQueryRequest: Schema.Schema<AnswerQueryRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    query: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AnswerQueryRequest" });
+
+export interface SearchDocumentChunksResponse {
+  /** Contains the search results for the given query. Each DocumentChunk in this list contains a snippet of content relevant to the search query. Use the DocumentChunk.parent field of each result with DeveloperKnowledge.GetDocument or DeveloperKnowledge.BatchGetDocuments to retrieve the full document content. */
+  results?: ReadonlyArray<DocumentChunk>;
+  /** Optional. Provides a token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const SearchDocumentChunksResponse: Schema.Schema<SearchDocumentChunksResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    results: Schema.optional(Schema.Array(DocumentChunk)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchDocumentChunksResponse" });
 
 // ==========================================================================
 // Errors
@@ -135,6 +140,7 @@ export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
   status: Schema.optional(Schema.String),
   reason: Schema.optional(Schema.String),
   domain: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
 }) {}
 T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
 
@@ -146,6 +152,7 @@ export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
     status: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
+    details: Schema.optional(Schema.Array(Schema.Unknown)),
   },
 ) {}
 T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
@@ -158,6 +165,7 @@ export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
     status: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
+    details: Schema.optional(Schema.Array(Schema.Unknown)),
   },
 ) {}
 T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
@@ -168,6 +176,7 @@ export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
   status: Schema.optional(Schema.String),
   reason: Schema.optional(Schema.String),
   domain: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
 }) {}
 T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 
@@ -255,10 +264,10 @@ export const batchGetDocuments: API.OperationMethod<
 export interface SearchDocumentChunksDocumentsRequest {
   /** Optional. Contains a page token, received from a previous `SearchDocumentChunks` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
-  /** Optional. Applies a strict filter to the search results. The expression supports a subset of the syntax described at https://google.aip.dev/160. While `SearchDocumentChunks` returns DocumentChunks, the filter is applied to `DocumentChunk.document` fields. Supported fields for filtering: * `data_source` (STRING): The source of the document, e.g. `docs.cloud.google.com`. See https://developers.google.com/knowledge/reference/corpus-reference for the complete list of data sources in the corpus. * `update_time` (TIMESTAMP): The timestamp of when the document was last meaningfully updated. A meaningful update is one that changes document's markdown content or metadata. * `uri` (STRING): The document URI, e.g. `https://docs.cloud.google.com/bigquery/docs/tables`. STRING fields support `=` (equals) and `!=` (not equals) operators for **exact match** on the whole string. Partial match, prefix match, and regexp match are not supported. TIMESTAMP fields support `=`, `<`, `<=`, `>`, and `>=` operators. Timestamps must be in RFC-3339 format, e.g., `"2025-01-01T00:00:00Z"`. You can combine expressions using `AND`, `OR`, and `NOT` (or `-`) logical operators. `OR` has higher precedence than `AND`. Use parentheses for explicit precedence grouping. Examples: * `data_source = "docs.cloud.google.com" OR data_source = "firebase.google.com"` * `data_source != "firebase.google.com"` * `update_time < "2024-01-01T00:00:00Z"` * `update_time >= "2025-01-22T00:00:00Z" AND (data_source = "developer.chrome.com" OR data_source = "web.dev")` * `uri = "https://docs.cloud.google.com/release-notes"` The `filter` string must not exceed 500 characters; values longer than 500 characters will result in an `INVALID_ARGUMENT` error. */
-  filter?: string;
   /** Required. Provides the raw query string provided by the user, such as "How to create a Cloud Storage bucket?". */
   query?: string;
+  /** Optional. Applies a strict filter to the search results. The expression supports a subset of the syntax described at https://google.aip.dev/160. While `SearchDocumentChunks` returns DocumentChunks, the filter is applied to `DocumentChunk.document` fields. Supported fields for filtering: * `data_source` (STRING): The source of the document, e.g. `docs.cloud.google.com`. See https://developers.google.com/knowledge/reference/corpus-reference for the complete list of data sources in the corpus. * `update_time` (TIMESTAMP): The timestamp of when the document was last meaningfully updated. A meaningful update is one that changes document's markdown content or metadata. * `uri` (STRING): The document URI, e.g. `https://docs.cloud.google.com/bigquery/docs/tables`. STRING fields support `=` (equals) and `!=` (not equals) operators for **exact match** on the whole string. Partial match, prefix match, and regexp match are not supported. TIMESTAMP fields support `=`, `<`, `<=`, `>`, and `>=` operators. Timestamps must be in RFC-3339 format, e.g., `"2025-01-01T00:00:00Z"`. You can combine expressions using `AND`, `OR`, and `NOT` (or `-`) logical operators. `OR` has higher precedence than `AND`. Use parentheses for explicit precedence grouping. Examples: * `data_source = "docs.cloud.google.com" OR data_source = "firebase.google.com"` * `data_source != "firebase.google.com"` * `update_time < "2024-01-01T00:00:00Z"` * `update_time >= "2025-01-22T00:00:00Z" AND (data_source = "developer.chrome.com" OR data_source = "web.dev")` * `uri = "https://docs.cloud.google.com/release-notes"` The `filter` string must not exceed 500 characters; values longer than 500 characters will result in an `INVALID_ARGUMENT` error. */
+  filter?: string;
   /** Optional. Specifies the maximum number of results to return. The service may return fewer than this value. If unspecified, at most 5 results will be returned. The maximum value is 20; values above 20 will result in an INVALID_ARGUMENT error. */
   pageSize?: number;
 }
@@ -266,8 +275,8 @@ export interface SearchDocumentChunksDocumentsRequest {
 export const SearchDocumentChunksDocumentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/documents:searchDocumentChunks" }),

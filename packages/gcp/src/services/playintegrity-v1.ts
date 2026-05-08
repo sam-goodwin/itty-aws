@@ -22,35 +22,176 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface PcRequestDetails {
-  /** Required. Application package name this attestation was requested for. Note: This field makes no guarantees or promises on the caller integrity. */
-  requestPackageName?: string;
+export interface Values {
+  /** Required. Second recall bit value. */
+  bitSecond?: boolean;
+  /** Required. Third recall bit value. */
+  bitThird?: boolean;
+  /** Required. First recall bit value. */
+  bitFirst?: boolean;
+}
+
+export const Values: Schema.Schema<Values> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bitSecond: Schema.optional(Schema.Boolean),
+    bitThird: Schema.optional(Schema.Boolean),
+    bitFirst: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "Values" });
+
+export interface WriteDeviceRecallRequest {
+  /** Required. Integrity token obtained from calling Play Integrity API. */
+  integrityToken?: string;
+  /** Required. The new values for the device recall bits to be written. */
+  newValues?: Values;
+}
+
+export const WriteDeviceRecallRequest: Schema.Schema<WriteDeviceRecallRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrityToken: Schema.optional(Schema.String),
+    newValues: Schema.optional(Values),
+  }).annotate({ identifier: "WriteDeviceRecallRequest" });
+
+export interface RequestDetails {
+  /** Required. Timestamp, in milliseconds, of the integrity application request. */
+  timestampMillis?: string;
+  /** Nonce that was provided in the request (which is base64 web-safe no-wrap). */
+  nonce?: string;
   /** Request hash that was provided in the request. */
   requestHash?: string;
-  /** Required. Timestamp, of the integrity application request. */
-  requestTime?: string;
+  /** Required. Application package name this attestation was requested for. Note: This field makes no guarantees or promises on the caller integrity. For details on application integrity, check application_integrity. */
+  requestPackageName?: string;
 }
 
-export const PcRequestDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  requestPackageName: Schema.optional(Schema.String),
-  requestHash: Schema.optional(Schema.String),
-  requestTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "PcRequestDetails" });
+export const RequestDetails: Schema.Schema<RequestDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timestampMillis: Schema.optional(Schema.String),
+    nonce: Schema.optional(Schema.String),
+    requestHash: Schema.optional(Schema.String),
+    requestPackageName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RequestDetails" });
 
-export interface PcDeviceIntegrity {
+export interface DecodeIntegrityTokenRequest {
+  /** Encoded integrity token. */
+  integrityToken?: string;
+}
+
+export const DecodeIntegrityTokenRequest: Schema.Schema<DecodeIntegrityTokenRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrityToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DecodeIntegrityTokenRequest" });
+
+export interface RecentDeviceActivity {
+  /** Required. Indicates the activity level of the device. */
+  deviceActivityLevel?:
+    | "DEVICE_ACTIVITY_LEVEL_UNSPECIFIED"
+    | "UNEVALUATED"
+    | "LEVEL_1"
+    | "LEVEL_2"
+    | "LEVEL_3"
+    | "LEVEL_4"
+    | (string & {});
+}
+
+export const RecentDeviceActivity: Schema.Schema<RecentDeviceActivity> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceActivityLevel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RecentDeviceActivity" });
+
+export interface WriteDates {
+  /** Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the second bit. Note that this value won't be set if the second bit is false. */
+  yyyymmSecond?: number;
+  /** Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the third bit. Note that this value won't be set if the third bit is false. */
+  yyyymmThird?: number;
+  /** Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the first bit. Note that this value won't be set if the first bit is false. */
+  yyyymmFirst?: number;
+}
+
+export const WriteDates: Schema.Schema<WriteDates> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    yyyymmSecond: Schema.optional(Schema.Number),
+    yyyymmThird: Schema.optional(Schema.Number),
+    yyyymmFirst: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "WriteDates" });
+
+export interface DeviceRecall {
+  /** Required. Contains the recall bits values. */
+  values?: Values;
+  /** Required. Contains the recall bits write dates. */
+  writeDates?: WriteDates;
+}
+
+export const DeviceRecall: Schema.Schema<DeviceRecall> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Values),
+    writeDates: Schema.optional(WriteDates),
+  }).annotate({ identifier: "DeviceRecall" });
+
+export interface DeviceAttributes {
+  /** Android SDK version of the device, as defined in the public Android documentation: https://developer.android.com/reference/android/os/Build.VERSION_CODES. It won't be set if a necessary requirement was missed. For example DeviceIntegrity did not meet the minimum bar. */
+  sdkVersion?: number;
+}
+
+export const DeviceAttributes: Schema.Schema<DeviceAttributes> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sdkVersion: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DeviceAttributes" });
+
+export interface DeviceIntegrity {
   /** Details about the integrity of the device the app is running on. */
   deviceRecognitionVerdict?: ReadonlyArray<
-    | "DEVICE_RECOGNITION_VERDICT_UNSPECIFIED"
-    | "MEETS_PC_INTEGRITY"
+    | "UNKNOWN"
+    | "MEETS_BASIC_INTEGRITY"
+    | "MEETS_DEVICE_INTEGRITY"
+    | "MEETS_STRONG_INTEGRITY"
+    | "MEETS_VIRTUAL_INTEGRITY"
     | (string & {})
   >;
+  /** Details about the device activity of the device the app is running on. */
+  recentDeviceActivity?: RecentDeviceActivity;
+  /** Details about the device recall bits set by the developer. */
+  deviceRecall?: DeviceRecall;
+  /** Contains legacy details about the integrity of the device the app is running on. Only for devices with Android version T or higher and only for apps opted in to the new verdicts. Only available during the transition period to the new verdicts system and will be removed afterwards. */
+  legacyDeviceRecognitionVerdict?: ReadonlyArray<
+    | "UNKNOWN"
+    | "MEETS_BASIC_INTEGRITY"
+    | "MEETS_DEVICE_INTEGRITY"
+    | "MEETS_STRONG_INTEGRITY"
+    | "MEETS_VIRTUAL_INTEGRITY"
+    | (string & {})
+  >;
+  /** Attributes of the device where the integrity token was generated. */
+  deviceAttributes?: DeviceAttributes;
 }
 
-export const PcDeviceIntegrity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  deviceRecognitionVerdict: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "PcDeviceIntegrity" });
+export const DeviceIntegrity: Schema.Schema<DeviceIntegrity> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceRecognitionVerdict: Schema.optional(Schema.Array(Schema.String)),
+    recentDeviceActivity: Schema.optional(RecentDeviceActivity),
+    deviceRecall: Schema.optional(DeviceRecall),
+    legacyDeviceRecognitionVerdict: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    deviceAttributes: Schema.optional(DeviceAttributes),
+  }).annotate({ identifier: "DeviceIntegrity" });
 
-export interface PcAccountDetails {
+export interface AccountActivity {
+  /** Required. Indicates the activity level of the account. */
+  activityLevel?:
+    | "ACTIVITY_LEVEL_UNSPECIFIED"
+    | "UNEVALUATED"
+    | "UNUSUAL"
+    | "UNKNOWN"
+    | "TYPICAL_BASIC"
+    | "TYPICAL_STRONG"
+    | (string & {});
+}
+
+export const AccountActivity: Schema.Schema<AccountActivity> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activityLevel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountActivity" });
+
+export interface AccountDetails {
   /** Required. Details about the licensing status of the user for the app in the scope. */
   appLicensingVerdict?:
     | "UNKNOWN"
@@ -58,50 +199,39 @@ export interface PcAccountDetails {
     | "UNLICENSED"
     | "UNEVALUATED"
     | (string & {});
+  /** (Restricted Access) Details about the account activity for the user in the scope. */
+  accountActivity?: AccountActivity;
 }
 
-export const PcAccountDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  appLicensingVerdict: Schema.optional(Schema.String),
-}).annotate({ identifier: "PcAccountDetails" });
-
-export interface PcTestingDetails {
-  /** Indicates that the information contained in this payload is a testing response that is statically overridden for a tester. */
-  isTestingResponse?: boolean;
-}
-
-export const PcTestingDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  isTestingResponse: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "PcTestingDetails" });
-
-export interface PcTokenPayloadExternal {
-  /** Required. Details about the integrity request. */
-  requestDetails?: PcRequestDetails;
-  /** Required. Details about the device integrity. */
-  deviceIntegrity?: PcDeviceIntegrity;
-  /** Details about the account information such as the licensing status. */
-  accountDetails?: PcAccountDetails;
-  /** Indicates that this payload is generated for testing purposes and contains any additional data that is linked with testing status. */
-  testingDetails?: PcTestingDetails;
-}
-
-export const PcTokenPayloadExternal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    requestDetails: Schema.optional(PcRequestDetails),
-    deviceIntegrity: Schema.optional(PcDeviceIntegrity),
-    accountDetails: Schema.optional(PcAccountDetails),
-    testingDetails: Schema.optional(PcTestingDetails),
-  },
-).annotate({ identifier: "PcTokenPayloadExternal" });
-
-export interface DecodePcIntegrityTokenResponse {
-  /** Plain token payload generated from the decoded integrity token. */
-  tokenPayloadExternal?: PcTokenPayloadExternal;
-}
-
-export const DecodePcIntegrityTokenResponse =
+export const AccountDetails: Schema.Schema<AccountDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tokenPayloadExternal: Schema.optional(PcTokenPayloadExternal),
-  }).annotate({ identifier: "DecodePcIntegrityTokenResponse" });
+    appLicensingVerdict: Schema.optional(Schema.String),
+    accountActivity: Schema.optional(AccountActivity),
+  }).annotate({ identifier: "AccountDetails" });
+
+export interface AppIntegrity {
+  /** Package name of the application under attestation. Set iff app_recognition_verdict != UNEVALUATED. */
+  packageName?: string;
+  /** Required. Details about the app recognition verdict */
+  appRecognitionVerdict?:
+    | "UNKNOWN"
+    | "PLAY_RECOGNIZED"
+    | "UNRECOGNIZED_VERSION"
+    | "UNEVALUATED"
+    | (string & {});
+  /** The SHA256 hash of the requesting app's signing certificates (base64 web-safe encoded). Set iff app_recognition_verdict != UNEVALUATED. */
+  certificateSha256Digest?: ReadonlyArray<string>;
+  /** Version code of the application. Set iff app_recognition_verdict != UNEVALUATED. */
+  versionCode?: string;
+}
+
+export const AppIntegrity: Schema.Schema<AppIntegrity> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.optional(Schema.String),
+    appRecognitionVerdict: Schema.optional(Schema.String),
+    certificateSha256Digest: Schema.optional(Schema.Array(Schema.String)),
+    versionCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AppIntegrity" });
 
 export interface AppAccessRiskVerdict {
   /** List of detected app types signalled for App Access Risk. */
@@ -119,9 +249,10 @@ export interface AppAccessRiskVerdict {
   >;
 }
 
-export const AppAccessRiskVerdict = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  appsDetected: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "AppAccessRiskVerdict" });
+export const AppAccessRiskVerdict: Schema.Schema<AppAccessRiskVerdict> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appsDetected: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AppAccessRiskVerdict" });
 
 export interface EnvironmentDetails {
   /** The evaluation of Play Protect verdict. */
@@ -138,130 +269,13 @@ export interface EnvironmentDetails {
   appAccessRiskVerdict?: AppAccessRiskVerdict;
 }
 
-export const EnvironmentDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  playProtectVerdict: Schema.optional(Schema.String),
-  appAccessRiskVerdict: Schema.optional(AppAccessRiskVerdict),
-}).annotate({ identifier: "EnvironmentDetails" });
+export const EnvironmentDetails: Schema.Schema<EnvironmentDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    playProtectVerdict: Schema.optional(Schema.String),
+    appAccessRiskVerdict: Schema.optional(AppAccessRiskVerdict),
+  }).annotate({ identifier: "EnvironmentDetails" });
 
-export interface DeviceAttributes {
-  /** Android SDK version of the device, as defined in the public Android documentation: https://developer.android.com/reference/android/os/Build.VERSION_CODES. It won't be set if a necessary requirement was missed. For example DeviceIntegrity did not meet the minimum bar. */
-  sdkVersion?: number;
-}
-
-export const DeviceAttributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sdkVersion: Schema.optional(Schema.Number),
-}).annotate({ identifier: "DeviceAttributes" });
-
-export interface RecentDeviceActivity {
-  /** Required. Indicates the activity level of the device. */
-  deviceActivityLevel?:
-    | "DEVICE_ACTIVITY_LEVEL_UNSPECIFIED"
-    | "UNEVALUATED"
-    | "LEVEL_1"
-    | "LEVEL_2"
-    | "LEVEL_3"
-    | "LEVEL_4"
-    | (string & {});
-}
-
-export const RecentDeviceActivity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  deviceActivityLevel: Schema.optional(Schema.String),
-}).annotate({ identifier: "RecentDeviceActivity" });
-
-export interface WriteDates {
-  /** Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the first bit. Note that this value won't be set if the first bit is false. */
-  yyyymmFirst?: number;
-  /** Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the second bit. Note that this value won't be set if the second bit is false. */
-  yyyymmSecond?: number;
-  /** Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the third bit. Note that this value won't be set if the third bit is false. */
-  yyyymmThird?: number;
-}
-
-export const WriteDates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  yyyymmFirst: Schema.optional(Schema.Number),
-  yyyymmSecond: Schema.optional(Schema.Number),
-  yyyymmThird: Schema.optional(Schema.Number),
-}).annotate({ identifier: "WriteDates" });
-
-export interface Values {
-  /** Required. First recall bit value. */
-  bitFirst?: boolean;
-  /** Required. Second recall bit value. */
-  bitSecond?: boolean;
-  /** Required. Third recall bit value. */
-  bitThird?: boolean;
-}
-
-export const Values = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  bitFirst: Schema.optional(Schema.Boolean),
-  bitSecond: Schema.optional(Schema.Boolean),
-  bitThird: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "Values" });
-
-export interface DeviceRecall {
-  /** Required. Contains the recall bits write dates. */
-  writeDates?: WriteDates;
-  /** Required. Contains the recall bits values. */
-  values?: Values;
-}
-
-export const DeviceRecall = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  writeDates: Schema.optional(WriteDates),
-  values: Schema.optional(Values),
-}).annotate({ identifier: "DeviceRecall" });
-
-export interface DeviceIntegrity {
-  /** Attributes of the device where the integrity token was generated. */
-  deviceAttributes?: DeviceAttributes;
-  /** Contains legacy details about the integrity of the device the app is running on. Only for devices with Android version T or higher and only for apps opted in to the new verdicts. Only available during the transition period to the new verdicts system and will be removed afterwards. */
-  legacyDeviceRecognitionVerdict?: ReadonlyArray<
-    | "UNKNOWN"
-    | "MEETS_BASIC_INTEGRITY"
-    | "MEETS_DEVICE_INTEGRITY"
-    | "MEETS_STRONG_INTEGRITY"
-    | "MEETS_VIRTUAL_INTEGRITY"
-    | (string & {})
-  >;
-  /** Details about the device activity of the device the app is running on. */
-  recentDeviceActivity?: RecentDeviceActivity;
-  /** Details about the device recall bits set by the developer. */
-  deviceRecall?: DeviceRecall;
-  /** Details about the integrity of the device the app is running on. */
-  deviceRecognitionVerdict?: ReadonlyArray<
-    | "UNKNOWN"
-    | "MEETS_BASIC_INTEGRITY"
-    | "MEETS_DEVICE_INTEGRITY"
-    | "MEETS_STRONG_INTEGRITY"
-    | "MEETS_VIRTUAL_INTEGRITY"
-    | (string & {})
-  >;
-}
-
-export const DeviceIntegrity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  deviceAttributes: Schema.optional(DeviceAttributes),
-  legacyDeviceRecognitionVerdict: Schema.optional(Schema.Array(Schema.String)),
-  recentDeviceActivity: Schema.optional(RecentDeviceActivity),
-  deviceRecall: Schema.optional(DeviceRecall),
-  deviceRecognitionVerdict: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "DeviceIntegrity" });
-
-export interface AccountActivity {
-  /** Required. Indicates the activity level of the account. */
-  activityLevel?:
-    | "ACTIVITY_LEVEL_UNSPECIFIED"
-    | "UNEVALUATED"
-    | "UNUSUAL"
-    | "UNKNOWN"
-    | "TYPICAL_BASIC"
-    | "TYPICAL_STRONG"
-    | (string & {});
-}
-
-export const AccountActivity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  activityLevel: Schema.optional(Schema.String),
-}).annotate({ identifier: "AccountActivity" });
-
-export interface AccountDetails {
+export interface PcAccountDetails {
   /** Required. Details about the licensing status of the user for the app in the scope. */
   appLicensingVerdict?:
     | "UNKNOWN"
@@ -269,138 +283,143 @@ export interface AccountDetails {
     | "UNLICENSED"
     | "UNEVALUATED"
     | (string & {});
-  /** (Restricted Access) Details about the account activity for the user in the scope. */
-  accountActivity?: AccountActivity;
 }
 
-export const AccountDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  appLicensingVerdict: Schema.optional(Schema.String),
-  accountActivity: Schema.optional(AccountActivity),
-}).annotate({ identifier: "AccountDetails" });
+export const PcAccountDetails: Schema.Schema<PcAccountDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appLicensingVerdict: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PcAccountDetails" });
 
-export interface AppIntegrity {
-  /** Package name of the application under attestation. Set iff app_recognition_verdict != UNEVALUATED. */
-  packageName?: string;
-  /** The SHA256 hash of the requesting app's signing certificates (base64 web-safe encoded). Set iff app_recognition_verdict != UNEVALUATED. */
-  certificateSha256Digest?: ReadonlyArray<string>;
-  /** Required. Details about the app recognition verdict */
-  appRecognitionVerdict?:
-    | "UNKNOWN"
-    | "PLAY_RECOGNIZED"
-    | "UNRECOGNIZED_VERSION"
-    | "UNEVALUATED"
-    | (string & {});
-  /** Version code of the application. Set iff app_recognition_verdict != UNEVALUATED. */
-  versionCode?: string;
+export interface PcTestingDetails {
+  /** Indicates that the information contained in this payload is a testing response that is statically overridden for a tester. */
+  isTestingResponse?: boolean;
 }
 
-export const AppIntegrity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  packageName: Schema.optional(Schema.String),
-  certificateSha256Digest: Schema.optional(Schema.Array(Schema.String)),
-  appRecognitionVerdict: Schema.optional(Schema.String),
-  versionCode: Schema.optional(Schema.String),
-}).annotate({ identifier: "AppIntegrity" });
+export const PcTestingDetails: Schema.Schema<PcTestingDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isTestingResponse: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "PcTestingDetails" });
+
+export interface PcRequestDetails {
+  /** Required. Application package name this attestation was requested for. Note: This field makes no guarantees or promises on the caller integrity. */
+  requestPackageName?: string;
+  /** Required. Timestamp, of the integrity application request. */
+  requestTime?: string;
+  /** Request hash that was provided in the request. */
+  requestHash?: string;
+}
+
+export const PcRequestDetails: Schema.Schema<PcRequestDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestPackageName: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+    requestHash: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PcRequestDetails" });
+
+export interface PcDeviceIntegrity {
+  /** Details about the integrity of the device the app is running on. */
+  deviceRecognitionVerdict?: ReadonlyArray<
+    | "DEVICE_RECOGNITION_VERDICT_UNSPECIFIED"
+    | "MEETS_PC_INTEGRITY"
+    | (string & {})
+  >;
+}
+
+export const PcDeviceIntegrity: Schema.Schema<PcDeviceIntegrity> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceRecognitionVerdict: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "PcDeviceIntegrity" });
+
+export interface PcTokenPayloadExternal {
+  /** Details about the account information such as the licensing status. */
+  accountDetails?: PcAccountDetails;
+  /** Indicates that this payload is generated for testing purposes and contains any additional data that is linked with testing status. */
+  testingDetails?: PcTestingDetails;
+  /** Required. Details about the integrity request. */
+  requestDetails?: PcRequestDetails;
+  /** Required. Details about the device integrity. */
+  deviceIntegrity?: PcDeviceIntegrity;
+}
+
+export const PcTokenPayloadExternal: Schema.Schema<PcTokenPayloadExternal> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountDetails: Schema.optional(PcAccountDetails),
+    testingDetails: Schema.optional(PcTestingDetails),
+    requestDetails: Schema.optional(PcRequestDetails),
+    deviceIntegrity: Schema.optional(PcDeviceIntegrity),
+  }).annotate({ identifier: "PcTokenPayloadExternal" });
+
+export interface WriteDeviceRecallResponse {}
+
+export const WriteDeviceRecallResponse: Schema.Schema<WriteDeviceRecallResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "WriteDeviceRecallResponse",
+  });
+
+export interface DecodePcIntegrityTokenResponse {
+  /** Plain token payload generated from the decoded integrity token. */
+  tokenPayloadExternal?: PcTokenPayloadExternal;
+}
+
+export const DecodePcIntegrityTokenResponse: Schema.Schema<DecodePcIntegrityTokenResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tokenPayloadExternal: Schema.optional(PcTokenPayloadExternal),
+  }).annotate({ identifier: "DecodePcIntegrityTokenResponse" });
 
 export interface TestingDetails {
   /** Required. Indicates that the information contained in this payload is a testing response that is statically overridden for a tester. */
   isTestingResponse?: boolean;
 }
 
-export const TestingDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  isTestingResponse: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "TestingDetails" });
-
-export interface RequestDetails {
-  /** Required. Application package name this attestation was requested for. Note: This field makes no guarantees or promises on the caller integrity. For details on application integrity, check application_integrity. */
-  requestPackageName?: string;
-  /** Nonce that was provided in the request (which is base64 web-safe no-wrap). */
-  nonce?: string;
-  /** Request hash that was provided in the request. */
-  requestHash?: string;
-  /** Required. Timestamp, in milliseconds, of the integrity application request. */
-  timestampMillis?: string;
-}
-
-export const RequestDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  requestPackageName: Schema.optional(Schema.String),
-  nonce: Schema.optional(Schema.String),
-  requestHash: Schema.optional(Schema.String),
-  timestampMillis: Schema.optional(Schema.String),
-}).annotate({ identifier: "RequestDetails" });
+export const TestingDetails: Schema.Schema<TestingDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isTestingResponse: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "TestingDetails" });
 
 export interface TokenPayloadExternal {
-  /** Details of the environment Play Integrity API runs in. */
-  environmentDetails?: EnvironmentDetails;
+  /** Required. Details about the integrity request. */
+  requestDetails?: RequestDetails;
+  /** Indicates that this payload is generated for testing purposes and contains any additional data that is linked with testing status. */
+  testingDetails?: TestingDetails;
+  /** Required. Details about the application integrity. */
+  appIntegrity?: AppIntegrity;
   /** Required. Details about the device integrity. */
   deviceIntegrity?: DeviceIntegrity;
   /** Required. Details about the Play Store account. */
   accountDetails?: AccountDetails;
-  /** Required. Details about the application integrity. */
-  appIntegrity?: AppIntegrity;
-  /** Indicates that this payload is generated for testing purposes and contains any additional data that is linked with testing status. */
-  testingDetails?: TestingDetails;
-  /** Required. Details about the integrity request. */
-  requestDetails?: RequestDetails;
+  /** Details of the environment Play Integrity API runs in. */
+  environmentDetails?: EnvironmentDetails;
 }
 
-export const TokenPayloadExternal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  environmentDetails: Schema.optional(EnvironmentDetails),
-  deviceIntegrity: Schema.optional(DeviceIntegrity),
-  accountDetails: Schema.optional(AccountDetails),
-  appIntegrity: Schema.optional(AppIntegrity),
-  testingDetails: Schema.optional(TestingDetails),
-  requestDetails: Schema.optional(RequestDetails),
-}).annotate({ identifier: "TokenPayloadExternal" });
+export const TokenPayloadExternal: Schema.Schema<TokenPayloadExternal> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestDetails: Schema.optional(RequestDetails),
+    testingDetails: Schema.optional(TestingDetails),
+    appIntegrity: Schema.optional(AppIntegrity),
+    deviceIntegrity: Schema.optional(DeviceIntegrity),
+    accountDetails: Schema.optional(AccountDetails),
+    environmentDetails: Schema.optional(EnvironmentDetails),
+  }).annotate({ identifier: "TokenPayloadExternal" });
 
 export interface DecodeIntegrityTokenResponse {
   /** Plain token payload generated from the decoded integrity token. */
   tokenPayloadExternal?: TokenPayloadExternal;
 }
 
-export const DecodeIntegrityTokenResponse =
+export const DecodeIntegrityTokenResponse: Schema.Schema<DecodeIntegrityTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tokenPayloadExternal: Schema.optional(TokenPayloadExternal),
   }).annotate({ identifier: "DecodeIntegrityTokenResponse" });
-
-export interface DecodeIntegrityTokenRequest {
-  /** Encoded integrity token. */
-  integrityToken?: string;
-}
-
-export const DecodeIntegrityTokenRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    integrityToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DecodeIntegrityTokenRequest" });
 
 export interface DecodePcIntegrityTokenRequest {
   /** Encoded integrity token. */
   integrityToken?: string;
 }
 
-export const DecodePcIntegrityTokenRequest =
+export const DecodePcIntegrityTokenRequest: Schema.Schema<DecodePcIntegrityTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrityToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "DecodePcIntegrityTokenRequest" });
-
-export interface WriteDeviceRecallRequest {
-  /** Required. Integrity token obtained from calling Play Integrity API. */
-  integrityToken?: string;
-  /** Required. The new values for the device recall bits to be written. */
-  newValues?: Values;
-}
-
-export const WriteDeviceRecallRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    integrityToken: Schema.optional(Schema.String),
-    newValues: Schema.optional(Values),
-  }).annotate({ identifier: "WriteDeviceRecallRequest" });
-
-export interface WriteDeviceRecallResponse {}
-
-export const WriteDeviceRecallResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "WriteDeviceRecallResponse",
-  });
 
 // ==========================================================================
 // Errors

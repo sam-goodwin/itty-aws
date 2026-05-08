@@ -22,6 +22,29 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface AmpUrlError {
+  /** The error code of an API call. */
+  errorCode?:
+    | "ERROR_CODE_UNSPECIFIED"
+    | "INPUT_URL_NOT_FOUND"
+    | "NO_AMP_URL"
+    | "APPLICATION_ERROR"
+    | "URL_IS_VALID_AMP"
+    | "URL_IS_INVALID_AMP"
+    | (string & {});
+  /** An optional descriptive error message. */
+  errorMessage?: string;
+  /** The original non-AMP URL. */
+  originalUrl?: string;
+}
+
+export const AmpUrlError: Schema.Schema<AmpUrlError> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorCode: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+    originalUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AmpUrlError" });
+
 export interface BatchGetAmpUrlsRequest {
   /** List of URLs to look up for the paired AMP URLs. The URLs are case-sensitive. Up to 50 URLs per lookup (see [Usage Limits](/amp/cache/reference/limits)). */
   urls?: ReadonlyArray<string>;
@@ -29,12 +52,11 @@ export interface BatchGetAmpUrlsRequest {
   lookupStrategy?: "FETCH_LIVE_DOC" | "IN_INDEX_DOC" | (string & {});
 }
 
-export const BatchGetAmpUrlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const BatchGetAmpUrlsRequest: Schema.Schema<BatchGetAmpUrlsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     urls: Schema.optional(Schema.Array(Schema.String)),
     lookupStrategy: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "BatchGetAmpUrlsRequest" });
+  }).annotate({ identifier: "BatchGetAmpUrlsRequest" });
 
 export interface AmpUrl {
   /** The original non-AMP URL. */
@@ -45,45 +67,24 @@ export interface AmpUrl {
   cdnAmpUrl?: string;
 }
 
-export const AmpUrl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  originalUrl: Schema.optional(Schema.String),
-  ampUrl: Schema.optional(Schema.String),
-  cdnAmpUrl: Schema.optional(Schema.String),
-}).annotate({ identifier: "AmpUrl" });
-
-export interface AmpUrlError {
-  /** An optional descriptive error message. */
-  errorMessage?: string;
-  /** The error code of an API call. */
-  errorCode?:
-    | "ERROR_CODE_UNSPECIFIED"
-    | "INPUT_URL_NOT_FOUND"
-    | "NO_AMP_URL"
-    | "APPLICATION_ERROR"
-    | "URL_IS_VALID_AMP"
-    | "URL_IS_INVALID_AMP"
-    | (string & {});
-  /** The original non-AMP URL. */
-  originalUrl?: string;
-}
-
-export const AmpUrlError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  errorMessage: Schema.optional(Schema.String),
-  errorCode: Schema.optional(Schema.String),
-  originalUrl: Schema.optional(Schema.String),
-}).annotate({ identifier: "AmpUrlError" });
+export const AmpUrl: Schema.Schema<AmpUrl> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalUrl: Schema.optional(Schema.String),
+    ampUrl: Schema.optional(Schema.String),
+    cdnAmpUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AmpUrl" });
 
 export interface BatchGetAmpUrlsResponse {
-  /** The errors for requested URLs that have no AMP URL. */
-  urlErrors?: ReadonlyArray<AmpUrlError>;
   /** For each URL in BatchAmpUrlsRequest, the URL response. The response might not be in the same order as URLs in the batch request. If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated only once. */
   ampUrls?: ReadonlyArray<AmpUrl>;
+  /** The errors for requested URLs that have no AMP URL. */
+  urlErrors?: ReadonlyArray<AmpUrlError>;
 }
 
-export const BatchGetAmpUrlsResponse =
+export const BatchGetAmpUrlsResponse: Schema.Schema<BatchGetAmpUrlsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    urlErrors: Schema.optional(Schema.Array(AmpUrlError)),
     ampUrls: Schema.optional(Schema.Array(AmpUrl)),
+    urlErrors: Schema.optional(Schema.Array(AmpUrlError)),
   }).annotate({ identifier: "BatchGetAmpUrlsResponse" });
 
 // ==========================================================================

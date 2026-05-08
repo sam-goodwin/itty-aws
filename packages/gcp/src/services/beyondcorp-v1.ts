@@ -22,6 +22,189 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway {
+  /** Output only. List of IP addresses assigned to the Cloud NAT. */
+  assignedIps?: ReadonlyArray<string>;
+}
+
+export const GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assignedIps: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
+    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway",
+  });
+
+export interface GoogleCloudBeyondcorpAppconnectorsV1ImageConfig {
+  /** The initial image the remote agent will attempt to run for the control plane. Format would be a gcr image path, e.g.: gcr.io/PROJECT-ID/my-image:tag1 */
+  targetImage?: string;
+  /** The stable image that the remote agent will fallback to if the target image fails. Format would be a gcr image path, e.g.: gcr.io/PROJECT-ID/my-image:tag1 */
+  stableImage?: string;
+}
+
+export const GoogleCloudBeyondcorpAppconnectorsV1ImageConfig: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ImageConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetImage: Schema.optional(Schema.String),
+    stableImage: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudBeyondcorpAppconnectorsV1ImageConfig",
+  });
+
+export interface GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails {
+  /** The latest error message. */
+  errorMsg?: string;
+  /** The version of the expected config. */
+  expectedConfigVersion?: string;
+  /** The extended status. Such as ExitCode, StartedAt, FinishedAt, etc. */
+  extendedStatus?: Record<string, string>;
+  /** The version of the current config. */
+  currentConfigVersion?: string;
+}
+
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorMsg: Schema.optional(Schema.String),
+    expectedConfigVersion: Schema.optional(Schema.String),
+    extendedStatus: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    currentConfigVersion: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails",
+  });
+
+export interface CloudSecurityZerotrustApplinkAppConnectorProtoGateway {
+  /** zone represents the zone the instance belongs. It is derived from the gateway URL. For example, zone=${zone} assuming a gateway URL. https://www.googleapis.com/compute/${version}/projects/${project}/zones/${zone}/instances/${instance} */
+  zone?: string;
+  /** interface specifies the network interface of the gateway to connect to. */
+  interface?: string;
+  /** self_link is the gateway URL in the form https://www.googleapis.com/compute/${version}/projects/${project}/zones/${zone}/instances/${instance} */
+  selfLink?: string;
+  /** name is the name of an instance running a gateway. It is the unique ID for a gateway. All gateways under the same connection have the same prefix. It is derived from the gateway URL. For example, name=${instance} assuming a gateway URL. https://www.googleapis.com/compute/${version}/projects/${project}/zones/${zone}/instances/${instance} */
+  name?: string;
+  /** project is the tenant project the gateway belongs to. Different from the project in the connection, it is a BeyondCorpAPI internally created project to manage all the gateways. It is sharing the same network with the consumer project user owned. It is derived from the gateway URL. For example, project=${project} assuming a gateway URL. https://www.googleapis.com/compute/${version}/projects/${project}/zones/${zone}/instances/${instance} */
+  project?: string;
+  /** port specifies the port of the gateway for tunnel connections from the connectors. */
+  port?: number;
+}
+
+export const CloudSecurityZerotrustApplinkAppConnectorProtoGateway: Schema.Schema<CloudSecurityZerotrustApplinkAppConnectorProtoGateway> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zone: Schema.optional(Schema.String),
+    interface: Schema.optional(Schema.String),
+    selfLink: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    project: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.Number),
+  }).annotate({
+    identifier: "CloudSecurityZerotrustApplinkAppConnectorProtoGateway",
+  });
+
+export interface CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig {
+  /** tunnels_per_gateway reflects the number of tunnels between a connector and a gateway. */
+  tunnelsPerGateway?: number;
+  /** name is the unique ID for each connection. TODO(b/190732451) returns connection name from user-specified name in config. Now, name = ${application_name}:${application_endpoint} */
+  name?: string;
+  /** application_endpoint is the endpoint of the application the form of host:port. For example, "localhost:80". */
+  applicationEndpoint?: string;
+  /** application_name represents the given name of the application the connection is connecting with. */
+  applicationName?: string;
+  /** project represents the consumer project the connection belongs to. */
+  project?: string;
+  /** gateway lists all instances running a gateway in GCP. They all connect to a connector on the host. */
+  gateway?: ReadonlyArray<CloudSecurityZerotrustApplinkAppConnectorProtoGateway>;
+  /** user_port specifies the reserved port on gateways for user connections. */
+  userPort?: number;
+}
+
+export const CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig: Schema.Schema<CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tunnelsPerGateway: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    applicationEndpoint: Schema.optional(Schema.String),
+    applicationName: Schema.optional(Schema.String),
+    project: Schema.optional(Schema.String),
+    gateway: Schema.optional(
+      Schema.Array(CloudSecurityZerotrustApplinkAppConnectorProtoGateway),
+    ),
+    userPort: Schema.optional(Schema.Number),
+  }).annotate({
+    identifier:
+      "CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig",
+  });
+
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1Hub {
+  /** Optional. Internet Gateway configuration. */
+  internetGateway?: GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway;
+}
+
+export const GoogleCloudBeyondcorpSecuritygatewaysV1Hub: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1Hub> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    internetGateway: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway,
+    ),
+  }).annotate({ identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1Hub" });
+
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor {
+  /** Optional. Contains the URI path fragment where HTTP request is sent. */
+  path?: string;
+}
+
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    path: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor",
+  });
+
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway {
+  /** Optional. Enables fetching resource model updates to alter service behavior per Chrome profile. */
+  resourceOverride?: GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor;
+}
+
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceOverride: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor,
+    ),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway",
+  });
+
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery {
+  /** Optional. External API configuration. */
+  apiGateway?: GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway;
+}
+
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiGateway: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway,
+    ),
+  }).annotate({
+    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery",
+  });
+
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo {
+  /** Optional. The delegated user's information. */
+  outputType?:
+    | "OUTPUT_TYPE_UNSPECIFIED"
+    | "PROTOBUF"
+    | "JSON"
+    | "NONE"
+    | (string & {});
+}
+
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    outputType: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo",
+  });
+
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo {
   /** Optional. The output type of the delegated group information. */
   outputType?:
@@ -32,7 +215,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegat
     | (string & {});
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputType: Schema.optional(Schema.String),
   }).annotate({
@@ -40,165 +223,262 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGr
       "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo",
   });
 
-export interface GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
-  /** The timestamp to collect the info. It is suggested to be set by the topmost level resource only. */
-  time?: string;
-  /** List of Info for the sub level resources. */
-  sub?: ReadonlyArray<GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo>;
-  /** Required. Unique Id for the resource. */
-  id?: string;
-  /** Overall health status. Overall status is derived based on the status of each sub level resources. */
-  status?:
-    | "HEALTH_STATUS_UNSPECIFIED"
-    | "HEALTHY"
-    | "UNHEALTHY"
-    | "UNRESPONSIVE"
-    | "DEGRADED"
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo {
+  /** Optional. The output type details for the delegated device. */
+  outputType?:
+    | "OUTPUT_TYPE_UNSPECIFIED"
+    | "PROTOBUF"
+    | "JSON"
+    | "NONE"
     | (string & {});
-  /** Specific details for the resource. This is for internal use only. */
-  resource?: Record<string, unknown>;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      time: Schema.optional(Schema.String),
-      sub: Schema.optional(
-        Schema.Array(GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo),
-      ),
-      id: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo>;
-
-export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount {
-  /** Email address of the service account. */
-  email?: string;
-}
-
-export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    email: Schema.optional(Schema.String),
+    outputType: Schema.optional(Schema.String),
   }).annotate({
     identifier:
-      "GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount",
+      "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo",
   });
 
-export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo {
-  /** A GCP service account. */
-  serviceAccount?: GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount;
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {
+  /** Optional. User details. */
+  userInfo?: GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo;
+  /** Optional. Default output type for all enabled headers. */
+  outputType?:
+    | "OUTPUT_TYPE_UNSPECIFIED"
+    | "PROTOBUF"
+    | "JSON"
+    | "NONE"
+    | (string & {});
+  /** Optional. Group details. */
+  groupInfo?: GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo;
+  /** Optional. The device information configuration. */
+  deviceInfo?: GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    serviceAccount: Schema.optional(
-      GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount,
+    userInfo: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo,
+    ),
+    outputType: Schema.optional(Schema.String),
+    groupInfo: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo,
+    ),
+    deviceInfo: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo,
     ),
   }).annotate({
-    identifier: "GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo",
+    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders",
   });
 
-export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnector {
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig {
+  /** Optional. Configuration for the contextual headers. */
+  contextualHeaders?: GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders;
+  /** Optional. The security gateway identity configuration. */
+  gatewayIdentity?:
+    | "GATEWAY_IDENTITY_UNSPECIFIED"
+    | "RESOURCE_NAME"
+    | (string & {});
+  /** Optional. Custom resource specific headers along with the values. The names should conform to RFC 9110: >Field names can contain alphanumeric characters, hyphens, and periods, can contain only ASCII-printable characters and tabs, and must start with a letter. */
+  metadataHeaders?: Record<string, string>;
+  /** Optional. List of the allowed client header names. */
+  allowedClientHeaders?: ReadonlyArray<string>;
+  /** Optional. Client IP configuration. The client IP address is included if true. */
+  clientIp?: boolean;
+}
+
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contextualHeaders: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders,
+    ),
+    gatewayIdentity: Schema.optional(Schema.String),
+    metadataHeaders: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    allowedClientHeaders: Schema.optional(Schema.Array(Schema.String)),
+    clientIp: Schema.optional(Schema.Boolean),
+  }).annotate({
+    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig",
+  });
+
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig {}
+
+export const GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig",
+  });
+
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
+  /** Optional. An arbitrary user-provided name for the SecurityGateway. Cannot exceed 64 characters. */
+  displayName?: string;
   /** Output only. Timestamp when the resource was last modified. */
   updateTime?: string;
-  /** Optional. An arbitrary user-provided name for the AppConnector. Cannot exceed 64 characters. */
-  displayName?: string;
-  /** Optional. Resource info of the connector. */
-  resourceInfo?: GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo;
-  /** Output only. A unique identifier for the instance generated by the system. */
-  uid?: string;
-  /** Required. Principal information about the Identity of the AppConnector. */
-  principalInfo?: GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo;
-  /** Required. Unique resource name of the AppConnector. The name is ignored when creating a AppConnector. */
-  name?: string;
-  /** Output only. Timestamp when the resource was created. */
-  createTime?: string;
-  /** Optional. Resource labels to represent user provided metadata. */
-  labels?: Record<string, string>;
-  /** Output only. The current state of the AppConnector. */
+  /** Output only. The operational state of the SecurityGateway. */
   state?:
     | "STATE_UNSPECIFIED"
     | "CREATING"
-    | "CREATED"
     | "UPDATING"
     | "DELETING"
+    | "RUNNING"
     | "DOWN"
+    | "ERROR"
     | (string & {});
+  /** Optional. Map of Hubs that represents regional data path deployment with GCP region as a key. */
+  hubs?: Record<string, GoogleCloudBeyondcorpSecuritygatewaysV1Hub>;
+  /** Optional. Settings related to the Service Discovery. */
+  serviceDiscovery?: GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery;
+  /** Output only. IP addresses that will be used for establishing connection to the endpoints. */
+  externalIps?: ReadonlyArray<string>;
+  /** Output only. Timestamp when the resource was created. */
+  createTime?: string;
+  /** Output only. Service account used for operations that involve resources in consumer projects. */
+  delegatingServiceAccount?: string;
+  /** Identifier. Name of the resource. */
+  name?: string;
+  /** Optional. Shared proxy configuration for all apps. */
+  proxyProtocolConfig?: GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig;
+  /** Optional. Configuration for Cloud Logging. If this field is present, the logging will be enabled. */
+  logging?: GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1AppConnector =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateTime: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
-    resourceInfo: Schema.optional(
-      GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo,
-    ),
-    uid: Schema.optional(Schema.String),
-    principalInfo: Schema.optional(
-      GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo,
-    ),
-    name: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    updateTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
+    hubs: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudBeyondcorpSecuritygatewaysV1Hub),
+    ),
+    serviceDiscovery: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery,
+    ),
+    externalIps: Schema.optional(Schema.Array(Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    delegatingServiceAccount: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    proxyProtocolConfig: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig,
+    ),
+    logging: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig,
+    ),
   }).annotate({
-    identifier: "GoogleCloudBeyondcorpAppconnectorsV1AppConnector",
+    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway",
   });
 
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway {
-  /** Output only. List of IP addresses assigned to the Cloud NAT. */
-  assignedIps?: ReadonlyArray<string>;
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse {
+  /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+  /** A list of locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+  /** A list of BeyondCorp SecurityGateway in the project. */
+  securityGateways?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway>;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    assignedIps: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    securityGateways: Schema.optional(
+      Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway),
+    ),
   }).annotate({
-    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway",
+    identifier:
+      "GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse",
   });
 
-export interface GoogleLongrunningCancelOperationRequest {}
+export interface AppGatewayOperationMetadata {
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+}
 
-export const GoogleLongrunningCancelOperationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleLongrunningCancelOperationRequest",
+export const AppGatewayOperationMetadata: Schema.Schema<AppGatewayOperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AppGatewayOperationMetadata" });
+
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata {
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+}
+
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata",
   });
 
-export interface GoogleTypeExpr {
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
-  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
-  location?: string;
-  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
-  title?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
+export interface GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadata {
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
 }
 
-export const GoogleTypeExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  expression: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-}).annotate({ identifier: "GoogleTypeExpr" });
-
-export interface GoogleIamV1Binding {
-  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: ReadonlyArray<string>;
-  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  condition?: GoogleTypeExpr;
-  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
-  role?: string;
-}
-
-export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  members: Schema.optional(Schema.Array(Schema.String)),
-  condition: Schema.optional(GoogleTypeExpr),
-  role: Schema.optional(Schema.String),
-}).annotate({ identifier: "GoogleIamV1Binding" });
+export const GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    verb: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadata",
+  });
 
 export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
@@ -212,7 +492,7 @@ export interface GoogleIamV1AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1AuditLogConfig =
+export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -225,211 +505,1041 @@ export interface GoogleIamV1AuditConfig {
   auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
 }
 
-export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
-  },
-).annotate({ identifier: "GoogleIamV1AuditConfig" });
+  }).annotate({ identifier: "GoogleIamV1AuditConfig" });
 
-export interface GoogleIamV1Policy {
-  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: ReadonlyArray<GoogleIamV1Binding>;
-  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
-  etag?: string;
-  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  version?: number;
-  /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: ReadonlyArray<GoogleIamV1AuditConfig>;
+export interface GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetadata {
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
 }
 
-export const GoogleIamV1Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
-  etag: Schema.optional(Schema.String),
-  version: Schema.optional(Schema.Number),
-  auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
-}).annotate({ identifier: "GoogleIamV1Policy" });
+export const GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    verb: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetadata",
+  });
 
-export interface GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails {
+export interface CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails {}
+
+export const CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails: Schema.Schema<CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails",
+  });
+
+export interface GoogleRpcStatus {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
+}
+
+export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "GoogleRpcStatus" });
+
+export interface GoogleLongrunningOperation {
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: GoogleRpcStatus;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+}
+
+export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    error: Schema.optional(GoogleRpcStatus),
+    done: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
+
+export interface GoogleLongrunningListOperationsResponse {
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: ReadonlyArray<string>;
+}
+
+export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
+
+export interface Tunnelv1ProtoTunnelerError {
+  /** Original raw error */
+  err?: string;
+  /** retryable isn't used for now, but we may want to reuse it in the future. */
+  retryable?: boolean;
+}
+
+export const Tunnelv1ProtoTunnelerError: Schema.Schema<Tunnelv1ProtoTunnelerError> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    err: Schema.optional(Schema.String),
+    retryable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "Tunnelv1ProtoTunnelerError" });
+
+export interface Tunnelv1ProtoTunnelerInfo {
+  /** id is the unique id of a tunneler. */
+  id?: string;
+  /** latest_err stores the Error for the latest tunneler failure. Gets reset everytime the tunneler is retried by tunManager. */
+  latestErr?: Tunnelv1ProtoTunnelerError;
+  /** backoff_retry_count stores the number of times the tunneler has been retried by tunManager for current backoff sequence. Gets reset to 0 if time difference between 2 consecutive retries exceeds backoffRetryResetTime. */
+  backoffRetryCount?: number;
+  /** latest_retry_time stores the time when the tunneler was last restarted. */
+  latestRetryTime?: string;
+  /** total_retry_count stores the total number of times the tunneler has been retried by tunManager. */
+  totalRetryCount?: number;
+}
+
+export const Tunnelv1ProtoTunnelerInfo: Schema.Schema<Tunnelv1ProtoTunnelerInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    latestErr: Schema.optional(Tunnelv1ProtoTunnelerError),
+    backoffRetryCount: Schema.optional(Schema.Number),
+    latestRetryTime: Schema.optional(Schema.String),
+    totalRetryCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Tunnelv1ProtoTunnelerInfo" });
+
+export interface GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails {
   /** The version of the current config. */
   currentConfigVersion?: string;
+  /** The version of the expected config. */
+  expectedConfigVersion?: string;
   /** The extended status. Such as ExitCode, StartedAt, FinishedAt, etc. */
   extendedStatus?: Record<string, string>;
   /** The latest error message. */
   errorMsg?: string;
-  /** The version of the expected config. */
-  expectedConfigVersion?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails =
+export const GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails: Schema.Schema<GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currentConfigVersion: Schema.optional(Schema.String),
+    expectedConfigVersion: Schema.optional(Schema.String),
     extendedStatus: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
     ),
     errorMsg: Schema.optional(Schema.String),
-    expectedConfigVersion: Schema.optional(Schema.String),
   }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails",
+    identifier: "GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails",
   });
 
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo {
-  /** Optional. The delegated user's information. */
-  outputType?:
-    | "OUTPUT_TYPE_UNSPECIFIED"
-    | "PROTOBUF"
-    | "JSON"
-    | "NONE"
-    | (string & {});
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork {
+  /** Required. Network name is of the format: `projects/{project}/global/networks/{network} */
+  name?: string;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    outputType: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
   }).annotate({
     identifier:
-      "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo",
+      "GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork",
   });
 
-export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata {
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
+export interface GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails {}
+
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails",
+  });
+
+export interface GoogleCloudLocationLocation {
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: Record<string, string>;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
+}
+
+export const GoogleCloudLocationLocation: Schema.Schema<GoogleCloudLocationLocation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    locationId: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudLocationLocation" });
+
+export interface GoogleCloudLocationListLocationsResponse {
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: ReadonlyArray<GoogleCloudLocationLocation>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+}
+
+export const GoogleCloudLocationListLocationsResponse: Schema.Schema<GoogleCloudLocationListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudLocationListLocationsResponse" });
+
+export interface GoogleLongrunningCancelOperationRequest {}
+
+export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleLongrunningCancelOperationRequest",
+  });
+
+export interface GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata {
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
   /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
   requestedCancellation?: boolean;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
   /** Output only. API version used to start the operation. */
   apiVersion?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+}
+
+export const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata",
+  });
+
+export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
+  /** Required. AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}` */
+  appGateway?: string;
+  /** Output only. L7 private service connection for this resource. */
+  l7psc?: string;
+  /** Required. The type of hosting used by the gateway. */
+  type?: "TYPE_UNSPECIFIED" | "GCP_REGIONAL_MIG" | (string & {});
+  /** Output only. Server-defined URI for this resource. */
+  uri?: string;
+  /** Output only. Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443. */
+  ingressPort?: number;
+}
+
+export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appGateway: Schema.optional(Schema.String),
+    l7psc: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    ingressPort: Schema.optional(Schema.Number),
+  }).annotate({
+    identifier: "GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway",
+  });
+
+export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint {
+  /** Required. Hostname or IP address of the remote application endpoint. */
+  host?: string;
+  /** Required. Port of the remote application endpoint. */
+  port?: number;
+}
+
+export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    host: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.Number),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint",
+  });
+
+export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
+  /** Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorized to be associated with this AppConnection. */
+  connectors?: ReadonlyArray<string>;
+  /** Output only. Reserved for future use. */
+  satisfiesPzs?: boolean;
+  /** Output only. Reserved for future use. */
+  satisfiesPzi?: boolean;
+  /** Output only. A unique identifier for the instance generated by the system. */
+  uid?: string;
+  /** Optional. Gateway used by the AppConnection. */
+  gateway?: GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway;
+  /** Optional. An arbitrary user-provided name for the AppConnection. Cannot exceed 64 characters. */
+  displayName?: string;
+  /** Output only. Timestamp when the resource was last modified. */
+  updateTime?: string;
+  /** Required. The type of network connectivity used by the AppConnection. */
+  type?: "TYPE_UNSPECIFIED" | "TCP_PROXY" | (string & {});
+  /** Output only. The current state of the AppConnection. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "CREATED"
+    | "UPDATING"
+    | "DELETING"
+    | "DOWN"
+    | (string & {});
+  /** Optional. Resource labels to represent user provided metadata. */
+  labels?: Record<string, string>;
+  /** Required. Unique resource name of the AppConnection. The name is ignored when creating a AppConnection. */
+  name?: string;
+  /** Required. Address of the remote application endpoint for the BeyondCorp AppConnection. */
+  applicationEndpoint?: GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint;
+  /** Output only. Timestamp when the resource was created. */
+  createTime?: string;
+}
+
+export const GoogleCloudBeyondcorpAppconnectionsV1AppConnection: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnection> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectors: Schema.optional(Schema.Array(Schema.String)),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    uid: Schema.optional(Schema.String),
+    gateway: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway,
+    ),
+    displayName: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    applicationEndpoint: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint,
+    ),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudBeyondcorpAppconnectionsV1AppConnection",
+  });
+
+export interface GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails {
+  /** If type=GCP_REGIONAL_MIG, contains most recent VM instances, like `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone_id}/instances/{instance_id}`. */
+  recentMigVms?: ReadonlyArray<string>;
+  /** A BeyondCorp AppConnection in the project. */
+  appConnection?: GoogleCloudBeyondcorpAppconnectionsV1AppConnection;
+}
+
+export const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recentMigVms: Schema.optional(Schema.Array(Schema.String)),
+    appConnection: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectionsV1AppConnection,
+    ),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails",
+  });
+
+export interface GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse {
+  /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+  /** A list of locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+  /** A list of BeyondCorp AppConnections with details in the project. */
+  appConnectionDetails?: ReadonlyArray<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails>;
+}
+
+export const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    appConnectionDetails: Schema.optional(
+      Schema.Array(
+        GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails,
+      ),
+    ),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse",
+  });
+
+export interface GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata {
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+}
+
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata",
+  });
+
+export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata {
   /** Output only. The time the operation was created. */
   createTime?: string;
   /** Output only. Name of the verb executed by the operation. */
   verb?: string;
   /** Output only. The time the operation finished running. */
   endTime?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
   /** Output only. Server-defined resource path for the target of the operation. */
   target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata =
+export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    statusMessage: Schema.optional(Schema.String),
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    apiVersion: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     verb: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
     target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata",
+  });
+
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher {
+  /** Required. The ports of the application. */
+  ports?: ReadonlyArray<number>;
+  /** Required. Hostname of the application. */
+  hostname?: string;
+}
+
+export const GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ports: Schema.optional(Schema.Array(Schema.Number)),
+    hostname: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher",
+  });
+
+export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount {
+  /** Email address of the service account. */
+  email?: string;
+}
+
+export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount",
+  });
+
+export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo {
+  /** A GCP service account. */
+  serviceAccount?: GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount;
+}
+
+export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccount: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount,
+    ),
+  }).annotate({
+    identifier: "GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo",
+  });
+
+export interface GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
+  /** Specific details for the resource. This is for internal use only. */
+  resource?: Record<string, unknown>;
+  /** Overall health status. Overall status is derived based on the status of each sub level resources. */
+  status?:
+    | "HEALTH_STATUS_UNSPECIFIED"
+    | "HEALTHY"
+    | "UNHEALTHY"
+    | "UNRESPONSIVE"
+    | "DEGRADED"
+    | (string & {});
+  /** List of Info for the sub level resources. */
+  sub?: ReadonlyArray<GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo>;
+  /** Required. Unique Id for the resource. */
+  id?: string;
+  /** The timestamp to collect the info. It is suggested to be set by the topmost level resource only. */
+  time?: string;
+}
+
+export const GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      resource: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      status: Schema.optional(Schema.String),
+      sub: Schema.optional(
+        Schema.Array(GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo),
+      ),
+      id: Schema.optional(Schema.String),
+      time: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo",
+  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo>;
+
+export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnector {
+  /** Required. Unique resource name of the AppConnector. The name is ignored when creating a AppConnector. */
+  name?: string;
+  /** Optional. Resource labels to represent user provided metadata. */
+  labels?: Record<string, string>;
+  /** Output only. Timestamp when the resource was created. */
+  createTime?: string;
+  /** Output only. Timestamp when the resource was last modified. */
+  updateTime?: string;
+  /** Output only. The current state of the AppConnector. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "CREATED"
+    | "UPDATING"
+    | "DELETING"
+    | "DOWN"
+    | (string & {});
+  /** Required. Principal information about the Identity of the AppConnector. */
+  principalInfo?: GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo;
+  /** Optional. An arbitrary user-provided name for the AppConnector. Cannot exceed 64 characters. */
+  displayName?: string;
+  /** Optional. Resource info of the connector. */
+  resourceInfo?: GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo;
+  /** Output only. A unique identifier for the instance generated by the system. */
+  uid?: string;
+}
+
+export const GoogleCloudBeyondcorpAppconnectorsV1AppConnector: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnector> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    principalInfo: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo,
+    ),
+    displayName: Schema.optional(Schema.String),
+    resourceInfo: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo,
+    ),
+    uid: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudBeyondcorpAppconnectorsV1AppConnector",
+  });
+
+export interface GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse {
+  /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+  /** A list of locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+  /** A list of BeyondCorp AppConnectors in the project. */
+  appConnectors?: ReadonlyArray<GoogleCloudBeyondcorpAppconnectorsV1AppConnector>;
+}
+
+export const GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    appConnectors: Schema.optional(
+      Schema.Array(GoogleCloudBeyondcorpAppconnectorsV1AppConnector),
+    ),
+  }).annotate({
+    identifier: "GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse",
+  });
+
+export interface AllocatedConnection {
+  /** Required. The ingress port of an allocated connection */
+  ingressPort?: number;
+  /** Required. The PSC uri of an allocated connection */
+  pscUri?: string;
+}
+
+export const AllocatedConnection: Schema.Schema<AllocatedConnection> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ingressPort: Schema.optional(Schema.Number),
+    pscUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AllocatedConnection" });
+
+export interface AppGateway {
+  /** Output only. A list of connections allocated for the Gateway */
+  allocatedConnections?: ReadonlyArray<AllocatedConnection>;
+  /** Output only. Server-defined URI for this resource. */
+  uri?: string;
+  /** Required. The type of hosting used by the AppGateway. */
+  hostType?: "HOST_TYPE_UNSPECIFIED" | "GCP_REGIONAL_MIG" | (string & {});
+  /** Output only. A unique identifier for the instance generated by the system. */
+  uid?: string;
+  /** Output only. Reserved for future use. */
+  satisfiesPzs?: boolean;
+  /** Output only. Reserved for future use. */
+  satisfiesPzi?: boolean;
+  /** Required. Unique resource name of the AppGateway. The name is ignored when creating an AppGateway. */
+  name?: string;
+  /** Optional. Resource labels to represent user provided metadata. */
+  labels?: Record<string, string>;
+  /** Output only. Timestamp when the resource was created. */
+  createTime?: string;
+  /** Output only. Timestamp when the resource was last modified. */
+  updateTime?: string;
+  /** Required. The type of network connectivity used by the AppGateway. */
+  type?: "TYPE_UNSPECIFIED" | "TCP_PROXY" | (string & {});
+  /** Output only. The current state of the AppGateway. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "CREATED"
+    | "UPDATING"
+    | "DELETING"
+    | "DOWN"
+    | (string & {});
+  /** Optional. An arbitrary user-provided name for the AppGateway. Cannot exceed 64 characters. */
+  displayName?: string;
+}
+
+export const AppGateway: Schema.Schema<AppGateway> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allocatedConnections: Schema.optional(Schema.Array(AllocatedConnection)),
+    uri: Schema.optional(Schema.String),
+    hostType: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AppGateway" });
+
+export interface ListAppGatewaysResponse {
+  /** A list of BeyondCorp AppGateways in the project. */
+  appGateways?: ReadonlyArray<AppGateway>;
+  /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+  /** A list of locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+}
+
+export const ListAppGatewaysResponse: Schema.Schema<ListAppGatewaysResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appGateways: Schema.optional(Schema.Array(AppGateway)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListAppGatewaysResponse" });
+
+export interface GoogleTypeExpr {
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
+  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
+  location?: string;
+  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
+  title?: string;
+}
+
+export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleTypeExpr" });
+
+export interface GoogleIamV1Binding {
+  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
+  members?: ReadonlyArray<string>;
+  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  condition?: GoogleTypeExpr;
+  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
+  role?: string;
+}
+
+export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    members: Schema.optional(Schema.Array(Schema.String)),
+    condition: Schema.optional(GoogleTypeExpr),
+    role: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV1Binding" });
+
+export interface GoogleIamV1Policy {
+  /** Specifies cloud audit logging configuration for this policy. */
+  auditConfigs?: ReadonlyArray<GoogleIamV1AuditConfig>;
+  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
+  etag?: string;
+  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
+  bindings?: ReadonlyArray<GoogleIamV1Binding>;
+  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  version?: number;
+}
+
+export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
+    etag: Schema.optional(Schema.String),
+    bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
+    version: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleIamV1Policy" });
+
+export interface GoogleIamV1SetIamPolicyRequest {
+  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
+  policy?: GoogleIamV1Policy;
+  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
+  updateMask?: string;
+}
+
+export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(GoogleIamV1Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV1SetIamPolicyRequest" });
+
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint {
+  /** Required. Hostname of the endpoint. */
+  hostname?: string;
+  /** Required. Port of the endpoint. */
+  port?: number;
+}
+
+export const GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hostname: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.Number),
+  }).annotate({
+    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint",
+  });
+
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal {
+  /** Required. List of the endpoints to forward traffic to. */
+  endpoints?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint>;
+}
+
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpoints: Schema.optional(
+      Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint),
+    ),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal",
+  });
+
+export interface CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails {}
+
+export const CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails: Schema.Schema<CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier:
+      "CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails",
+  });
+
+export interface GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails {}
+
+export const GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails",
+  });
+
+export interface GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata {
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Identifies whether the caller has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+}
+
+export const GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata",
+  });
+
+export interface GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest {
+  /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
+  validateOnly?: boolean;
+  /** Required. Resource info of the connector. */
+  resourceInfo?: GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+}
+
+export const GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateOnly: Schema.optional(Schema.Boolean),
+    resourceInfo: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo,
+    ),
+    requestId: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest",
+  });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata {
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Identifies whether the caller has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+}
+
+export const GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    verb: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata",
+  });
+
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy {
+  /** Required. List of the regions where the application sends traffic. */
+  regions?: ReadonlyArray<string>;
+}
+
+export const GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
+    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy",
+  });
+
+export interface GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails {}
+
+export const GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails: Schema.Schema<GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails",
+  });
+
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream {
+  /** Optional. Enables proxy protocol configuration for the upstream. */
+  proxyProtocol?: GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig;
+  /** Optional. Routing policy information. */
+  egressPolicy?: GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy;
+  /** Network to forward traffic to. */
+  network?: GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork;
+  /** List of the external endpoints to forward traffic to. */
+  external?: GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal;
+}
+
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    proxyProtocol: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig,
+    ),
+    egressPolicy: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy,
+    ),
+    network: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork,
+    ),
+    external: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal,
+    ),
+  }).annotate({
+    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream",
+  });
+
+export interface GoogleIamV1TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const GoogleIamV1TestIamPermissionsRequest: Schema.Schema<GoogleIamV1TestIamPermissionsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
+
+export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata {
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+}
+
+export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    verb: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier:
       "GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata",
   });
 
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor {
-  /** Optional. Contains the URI path fragment where HTTP request is sent. */
-  path?: string;
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    path: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor",
-  });
-
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway {
-  /** Optional. Enables fetching resource model updates to alter service behavior per Chrome profile. */
-  resourceOverride?: GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor;
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceOverride: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor,
-    ),
-  }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway",
-  });
-
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo {
-  /** Optional. The output type details for the delegated device. */
-  outputType?:
-    | "OUTPUT_TYPE_UNSPECIFIED"
-    | "PROTOBUF"
-    | "JSON"
-    | "NONE"
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1Application {
+  /** Output only. Timestamp when the resource was created. */
+  createTime?: string;
+  /** Identifier. Name of the resource. */
+  name?: string;
+  /** Output only. Timestamp when the resource was last modified. */
+  updateTime?: string;
+  /** Optional. An array of conditions to match the application's network endpoint. Each element in the array is an EndpointMatcher object, which defines a specific combination of a hostname pattern and one or more ports. The application is considered matched if at least one of the EndpointMatcher conditions in this array is met (the conditions are combined using OR logic). Each EndpointMatcher must contain a hostname pattern, such as "example.com", and one or more port numbers specified as a string, such as "443". Hostname and port number examples: "*.example.com", "443" "example.com" and "22" "example.com" and "22,33" */
+  endpointMatchers?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>;
+  /** Optional. An arbitrary user-provided name for the application resource. Cannot exceed 64 characters. */
+  displayName?: string;
+  /** Optional. Which upstream resources to forward traffic to. */
+  upstreams?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream>;
+  /** Optional. Type of the external application. */
+  schema?:
+    | "SCHEMA_UNSPECIFIED"
+    | "PROXY_GATEWAY"
+    | "API_GATEWAY"
     | (string & {});
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1Application: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1Application> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    outputType: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    endpointMatchers: Schema.optional(
+      Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher),
+    ),
+    displayName: Schema.optional(Schema.String),
+    upstreams: Schema.optional(
+      Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream),
+    ),
+    schema: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1Application",
+  });
+
+export interface GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata {
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+}
+
+export const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
   }).annotate({
     identifier:
-      "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo",
-  });
-
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {
-  /** Optional. Default output type for all enabled headers. */
-  outputType?:
-    | "OUTPUT_TYPE_UNSPECIFIED"
-    | "PROTOBUF"
-    | "JSON"
-    | "NONE"
-    | (string & {});
-  /** Optional. User details. */
-  userInfo?: GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo;
-  /** Optional. The device information configuration. */
-  deviceInfo?: GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo;
-  /** Optional. Group details. */
-  groupInfo?: GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo;
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    outputType: Schema.optional(Schema.String),
-    userInfo: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo,
-    ),
-    deviceInfo: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo,
-    ),
-    groupInfo: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo,
-    ),
-  }).annotate({
-    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders",
-  });
-
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig {
-  /** Optional. List of the allowed client header names. */
-  allowedClientHeaders?: ReadonlyArray<string>;
-  /** Optional. Custom resource specific headers along with the values. The names should conform to RFC 9110: >Field names can contain alphanumeric characters, hyphens, and periods, can contain only ASCII-printable characters and tabs, and must start with a letter. */
-  metadataHeaders?: Record<string, string>;
-  /** Optional. Client IP configuration. The client IP address is included if true. */
-  clientIp?: boolean;
-  /** Optional. The security gateway identity configuration. */
-  gatewayIdentity?:
-    | "GATEWAY_IDENTITY_UNSPECIFIED"
-    | "RESOURCE_NAME"
-    | (string & {});
-  /** Optional. Configuration for the contextual headers. */
-  contextualHeaders?: GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders;
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    allowedClientHeaders: Schema.optional(Schema.Array(Schema.String)),
-    metadataHeaders: Schema.optional(
-      Schema.Record(Schema.String, Schema.String),
-    ),
-    clientIp: Schema.optional(Schema.Boolean),
-    gatewayIdentity: Schema.optional(Schema.String),
-    contextualHeaders: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders,
-    ),
-  }).annotate({
-    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig",
+      "GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata",
   });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig {
@@ -437,7 +1547,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubS
   pubsubSubscription?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig =
+export const GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pubsubSubscription: Schema.optional(Schema.String),
   }).annotate({
@@ -450,28 +1560,13 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig {
   pubsubNotification?: GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig =
+export const GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pubsubNotification: Schema.optional(
       GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig,
     ),
   }).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig",
-  });
-
-export interface GoogleCloudBeyondcorpAppconnectorsV1ImageConfig {
-  /** The stable image that the remote agent will fallback to if the target image fails. Format would be a gcr image path, e.g.: gcr.io/PROJECT-ID/my-image:tag1 */
-  stableImage?: string;
-  /** The initial image the remote agent will attempt to run for the control plane. Format would be a gcr image path, e.g.: gcr.io/PROJECT-ID/my-image:tag1 */
-  targetImage?: string;
-}
-
-export const GoogleCloudBeyondcorpAppconnectorsV1ImageConfig =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    stableImage: Schema.optional(Schema.String),
-    targetImage: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudBeyondcorpAppconnectorsV1ImageConfig",
   });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig {
@@ -485,7 +1580,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig 
   imageConfig?: GoogleCloudBeyondcorpAppconnectorsV1ImageConfig;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig =
+export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sequenceNumber: Schema.optional(Schema.String),
     instanceConfig: Schema.optional(
@@ -507,7 +1602,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigRespon
   instanceConfig?: GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse =
+export const GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceConfig: Schema.optional(
       GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig,
@@ -517,928 +1612,69 @@ export const GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse =
       "GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse",
   });
 
-export interface GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse {
-  /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-  /** A list of BeyondCorp AppConnectors in the project. */
-  appConnectors?: ReadonlyArray<GoogleCloudBeyondcorpAppconnectorsV1AppConnector>;
-  /** A list of locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-}
-
-export const GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    appConnectors: Schema.optional(
-      Schema.Array(GoogleCloudBeyondcorpAppconnectorsV1AppConnector),
-    ),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({
-    identifier: "GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse",
-  });
-
-export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
-  /** Required. The type of hosting used by the gateway. */
-  type?: "TYPE_UNSPECIFIED" | "GCP_REGIONAL_MIG" | (string & {});
-  /** Output only. L7 private service connection for this resource. */
-  l7psc?: string;
-  /** Output only. Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443. */
-  ingressPort?: number;
-  /** Output only. Server-defined URI for this resource. */
-  uri?: string;
-  /** Required. AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}` */
-  appGateway?: string;
-}
-
-export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    type: Schema.optional(Schema.String),
-    l7psc: Schema.optional(Schema.String),
-    ingressPort: Schema.optional(Schema.Number),
-    uri: Schema.optional(Schema.String),
-    appGateway: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway",
-  });
-
-export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint {
-  /** Required. Port of the remote application endpoint. */
-  port?: number;
-  /** Required. Hostname or IP address of the remote application endpoint. */
-  host?: string;
-}
-
-export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    port: Schema.optional(Schema.Number),
-    host: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint",
-  });
-
-export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
-  /** Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorized to be associated with this AppConnection. */
-  connectors?: ReadonlyArray<string>;
-  /** Optional. An arbitrary user-provided name for the AppConnection. Cannot exceed 64 characters. */
-  displayName?: string;
-  /** Optional. Resource labels to represent user provided metadata. */
-  labels?: Record<string, string>;
-  /** Optional. Gateway used by the AppConnection. */
-  gateway?: GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway;
-  /** Required. Unique resource name of the AppConnection. The name is ignored when creating a AppConnection. */
-  name?: string;
-  /** Required. Address of the remote application endpoint for the BeyondCorp AppConnection. */
-  applicationEndpoint?: GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint;
-  /** Output only. Reserved for future use. */
-  satisfiesPzi?: boolean;
-  /** Output only. A unique identifier for the instance generated by the system. */
-  uid?: string;
-  /** Output only. Timestamp when the resource was last modified. */
-  updateTime?: string;
-  /** Output only. The current state of the AppConnection. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "CREATED"
-    | "UPDATING"
-    | "DELETING"
-    | "DOWN"
-    | (string & {});
-  /** Output only. Timestamp when the resource was created. */
-  createTime?: string;
-  /** Required. The type of network connectivity used by the AppConnection. */
-  type?: "TYPE_UNSPECIFIED" | "TCP_PROXY" | (string & {});
-  /** Output only. Reserved for future use. */
-  satisfiesPzs?: boolean;
-}
-
-export const GoogleCloudBeyondcorpAppconnectionsV1AppConnection =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    connectors: Schema.optional(Schema.Array(Schema.String)),
-    displayName: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    gateway: Schema.optional(
-      GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway,
-    ),
-    name: Schema.optional(Schema.String),
-    applicationEndpoint: Schema.optional(
-      GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint,
-    ),
-    satisfiesPzi: Schema.optional(Schema.Boolean),
-    uid: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    satisfiesPzs: Schema.optional(Schema.Boolean),
-  }).annotate({
-    identifier: "GoogleCloudBeyondcorpAppconnectionsV1AppConnection",
-  });
-
 export interface GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse {
-  /** A list of locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
   /** A list of BeyondCorp AppConnections in the project. */
   appConnections?: ReadonlyArray<GoogleCloudBeyondcorpAppconnectionsV1AppConnection>;
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
+  /** A list of locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse =
+export const GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
     appConnections: Schema.optional(
       Schema.Array(GoogleCloudBeyondcorpAppconnectionsV1AppConnection),
     ),
     nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
       "GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse",
   });
 
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery {
-  /** Optional. External API configuration. */
-  apiGateway?: GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway;
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    apiGateway: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway,
-    ),
-  }).annotate({
-    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery",
-  });
-
-export interface GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata {
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-}
-
-export const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    apiVersion: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata",
-  });
-
-export interface GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata {
-  /** Output only. Identifies whether the caller has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-}
-
-export const GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    apiVersion: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata",
-  });
-
-export interface Empty {}
-
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
-
-export interface GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails {
-  /** The version of the expected config. */
-  expectedConfigVersion?: string;
-  /** The extended status. Such as ExitCode, StartedAt, FinishedAt, etc. */
-  extendedStatus?: Record<string, string>;
-  /** The latest error message. */
-  errorMsg?: string;
-  /** The version of the current config. */
-  currentConfigVersion?: string;
-}
-
-export const GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    expectedConfigVersion: Schema.optional(Schema.String),
-    extendedStatus: Schema.optional(
-      Schema.Record(Schema.String, Schema.String),
-    ),
-    errorMsg: Schema.optional(Schema.String),
-    currentConfigVersion: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails",
-  });
-
-export interface AppGatewayOperationMetadata {
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-}
-
-export const AppGatewayOperationMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endTime: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    apiVersion: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-  }).annotate({ identifier: "AppGatewayOperationMetadata" });
-
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork {
-  /** Required. Network name is of the format: `projects/{project}/global/networks/{network} */
-  name?: string;
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork",
-  });
-
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint {
-  /** Required. Hostname of the endpoint. */
-  hostname?: string;
-  /** Required. Port of the endpoint. */
-  port?: number;
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    hostname: Schema.optional(Schema.String),
-    port: Schema.optional(Schema.Number),
-  }).annotate({
-    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint",
-  });
-
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal {
-  /** Required. List of the endpoints to forward traffic to. */
-  endpoints?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint>;
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endpoints: Schema.optional(
-      Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint),
-    ),
-  }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal",
-  });
-
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy {
-  /** Required. List of the regions where the application sends traffic. */
-  regions?: ReadonlyArray<string>;
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    regions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({
-    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy",
-  });
-
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream {
-  /** Network to forward traffic to. */
-  network?: GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork;
-  /** List of the external endpoints to forward traffic to. */
-  external?: GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal;
-  /** Optional. Routing policy information. */
-  egressPolicy?: GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy;
-  /** Optional. Enables proxy protocol configuration for the upstream. */
-  proxyProtocol?: GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig;
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    network: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork,
-    ),
-    external: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal,
-    ),
-    egressPolicy: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy,
-    ),
-    proxyProtocol: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig,
-    ),
-  }).annotate({
-    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream",
-  });
-
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher {
-  /** Required. Hostname of the application. */
-  hostname?: string;
-  /** Required. The ports of the application. */
-  ports?: ReadonlyArray<number>;
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    hostname: Schema.optional(Schema.String),
-    ports: Schema.optional(Schema.Array(Schema.Number)),
-  }).annotate({
-    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher",
-  });
-
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1Application {
-  /** Optional. Which upstream resources to forward traffic to. */
-  upstreams?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream>;
-  /** Identifier. Name of the resource. */
-  name?: string;
-  /** Output only. Timestamp when the resource was created. */
-  createTime?: string;
-  /** Optional. An array of conditions to match the application's network endpoint. Each element in the array is an EndpointMatcher object, which defines a specific combination of a hostname pattern and one or more ports. The application is considered matched if at least one of the EndpointMatcher conditions in this array is met (the conditions are combined using OR logic). Each EndpointMatcher must contain a hostname pattern, such as "example.com", and one or more port numbers specified as a string, such as "443". Hostname and port number examples: "*.example.com", "443" "example.com" and "22" "example.com" and "22,33" */
-  endpointMatchers?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>;
-  /** Output only. Timestamp when the resource was last modified. */
-  updateTime?: string;
-  /** Optional. An arbitrary user-provided name for the application resource. Cannot exceed 64 characters. */
-  displayName?: string;
-  /** Optional. Type of the external application. */
-  schema?:
-    | "SCHEMA_UNSPECIFIED"
-    | "PROXY_GATEWAY"
-    | "API_GATEWAY"
-    | (string & {});
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1Application =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    upstreams: Schema.optional(
-      Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream),
-    ),
-    name: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    endpointMatchers: Schema.optional(
-      Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher),
-    ),
-    updateTime: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    schema: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1Application",
-  });
-
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse {
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
-  /** A list of BeyondCorp Application in the project. */
-  applications?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1Application>;
   /** A list of locations that could not be reached. */
   unreachable?: ReadonlyArray<string>;
+  /** A list of BeyondCorp Application in the project. */
+  applications?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1Application>;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
     applications: Schema.optional(
       Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1Application),
     ),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
       "GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse",
   });
 
-export interface GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetadata {
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
+export interface GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails {
+  /** The version of the expected config. */
+  expectedConfigVersion?: string;
+  /** The extended status. Such as ExitCode, StartedAt, FinishedAt, etc. */
+  extendedStatus?: Record<string, string>;
+  /** The version of the current config. */
+  currentConfigVersion?: string;
+  /** The latest error message. */
+  errorMsg?: string;
 }
 
-export const GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetadata =
+export const GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endTime: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    apiVersion: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetadata",
-  });
-
-export interface GoogleIamV1SetIamPolicyRequest {
-  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
-  policy?: GoogleIamV1Policy;
-  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
-  updateMask?: string;
-}
-
-export const GoogleIamV1SetIamPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    policy: Schema.optional(GoogleIamV1Policy),
-    updateMask: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleIamV1SetIamPolicyRequest" });
-
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata {
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    createTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    apiVersion: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata",
-  });
-
-export interface GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails {
-  /** A BeyondCorp AppConnection in the project. */
-  appConnection?: GoogleCloudBeyondcorpAppconnectionsV1AppConnection;
-  /** If type=GCP_REGIONAL_MIG, contains most recent VM instances, like `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone_id}/instances/{instance_id}`. */
-  recentMigVms?: ReadonlyArray<string>;
-}
-
-export const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    appConnection: Schema.optional(
-      GoogleCloudBeyondcorpAppconnectionsV1AppConnection,
+    expectedConfigVersion: Schema.optional(Schema.String),
+    extendedStatus: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
     ),
-    recentMigVms: Schema.optional(Schema.Array(Schema.String)),
+    currentConfigVersion: Schema.optional(Schema.String),
+    errorMsg: Schema.optional(Schema.String),
   }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails",
-  });
-
-export interface GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse {
-  /** A list of locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-  /** A list of BeyondCorp AppConnections with details in the project. */
-  appConnectionDetails?: ReadonlyArray<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails>;
-  /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-}
-
-export const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    appConnectionDetails: Schema.optional(
-      Schema.Array(
-        GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails,
-      ),
-    ),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse",
-  });
-
-export interface GoogleRpcStatus {
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-}
-
-export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  details: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-  code: Schema.optional(Schema.Number),
-  message: Schema.optional(Schema.String),
-}).annotate({ identifier: "GoogleRpcStatus" });
-
-export interface GoogleLongrunningOperation {
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: GoogleRpcStatus;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-}
-
-export const GoogleLongrunningOperation =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    done: Schema.optional(Schema.Boolean),
-    name: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    error: Schema.optional(GoogleRpcStatus),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  }).annotate({ identifier: "GoogleLongrunningOperation" });
-
-export interface GoogleLongrunningListOperationsResponse {
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: ReadonlyArray<string>;
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: ReadonlyArray<GoogleLongrunningOperation>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-}
-
-export const GoogleLongrunningListOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
-
-export interface Tunnelv1ProtoTunnelerError {
-  /** retryable isn't used for now, but we may want to reuse it in the future. */
-  retryable?: boolean;
-  /** Original raw error */
-  err?: string;
-}
-
-export const Tunnelv1ProtoTunnelerError =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    retryable: Schema.optional(Schema.Boolean),
-    err: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Tunnelv1ProtoTunnelerError" });
-
-export interface Tunnelv1ProtoTunnelerInfo {
-  /** latest_err stores the Error for the latest tunneler failure. Gets reset everytime the tunneler is retried by tunManager. */
-  latestErr?: Tunnelv1ProtoTunnelerError;
-  /** total_retry_count stores the total number of times the tunneler has been retried by tunManager. */
-  totalRetryCount?: number;
-  /** id is the unique id of a tunneler. */
-  id?: string;
-  /** backoff_retry_count stores the number of times the tunneler has been retried by tunManager for current backoff sequence. Gets reset to 0 if time difference between 2 consecutive retries exceeds backoffRetryResetTime. */
-  backoffRetryCount?: number;
-  /** latest_retry_time stores the time when the tunneler was last restarted. */
-  latestRetryTime?: string;
-}
-
-export const Tunnelv1ProtoTunnelerInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    latestErr: Schema.optional(Tunnelv1ProtoTunnelerError),
-    totalRetryCount: Schema.optional(Schema.Number),
-    id: Schema.optional(Schema.String),
-    backoffRetryCount: Schema.optional(Schema.Number),
-    latestRetryTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Tunnelv1ProtoTunnelerInfo" });
-
-export interface CloudSecurityZerotrustApplinkAppConnectorProtoGateway {
-  /** self_link is the gateway URL in the form https://www.googleapis.com/compute/${version}/projects/${project}/zones/${zone}/instances/${instance} */
-  selfLink?: string;
-  /** interface specifies the network interface of the gateway to connect to. */
-  interface?: string;
-  /** zone represents the zone the instance belongs. It is derived from the gateway URL. For example, zone=${zone} assuming a gateway URL. https://www.googleapis.com/compute/${version}/projects/${project}/zones/${zone}/instances/${instance} */
-  zone?: string;
-  /** name is the name of an instance running a gateway. It is the unique ID for a gateway. All gateways under the same connection have the same prefix. It is derived from the gateway URL. For example, name=${instance} assuming a gateway URL. https://www.googleapis.com/compute/${version}/projects/${project}/zones/${zone}/instances/${instance} */
-  name?: string;
-  /** project is the tenant project the gateway belongs to. Different from the project in the connection, it is a BeyondCorpAPI internally created project to manage all the gateways. It is sharing the same network with the consumer project user owned. It is derived from the gateway URL. For example, project=${project} assuming a gateway URL. https://www.googleapis.com/compute/${version}/projects/${project}/zones/${zone}/instances/${instance} */
-  project?: string;
-  /** port specifies the port of the gateway for tunnel connections from the connectors. */
-  port?: number;
-}
-
-export const CloudSecurityZerotrustApplinkAppConnectorProtoGateway =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    selfLink: Schema.optional(Schema.String),
-    interface: Schema.optional(Schema.String),
-    zone: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    project: Schema.optional(Schema.String),
-    port: Schema.optional(Schema.Number),
-  }).annotate({
-    identifier: "CloudSecurityZerotrustApplinkAppConnectorProtoGateway",
-  });
-
-export interface CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig {
-  /** project represents the consumer project the connection belongs to. */
-  project?: string;
-  /** application_endpoint is the endpoint of the application the form of host:port. For example, "localhost:80". */
-  applicationEndpoint?: string;
-  /** name is the unique ID for each connection. TODO(b/190732451) returns connection name from user-specified name in config. Now, name = ${application_name}:${application_endpoint} */
-  name?: string;
-  /** application_name represents the given name of the application the connection is connecting with. */
-  applicationName?: string;
-  /** gateway lists all instances running a gateway in GCP. They all connect to a connector on the host. */
-  gateway?: ReadonlyArray<CloudSecurityZerotrustApplinkAppConnectorProtoGateway>;
-  /** tunnels_per_gateway reflects the number of tunnels between a connector and a gateway. */
-  tunnelsPerGateway?: number;
-  /** user_port specifies the reserved port on gateways for user connections. */
-  userPort?: number;
-}
-
-export const CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.optional(Schema.String),
-    applicationEndpoint: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    applicationName: Schema.optional(Schema.String),
-    gateway: Schema.optional(
-      Schema.Array(CloudSecurityZerotrustApplinkAppConnectorProtoGateway),
-    ),
-    tunnelsPerGateway: Schema.optional(Schema.Number),
-    userPort: Schema.optional(Schema.Number),
-  }).annotate({
-    identifier:
-      "CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig",
-  });
-
-export interface GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata {
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Output only. Identifies whether the caller has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-}
-
-export const GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    statusMessage: Schema.optional(Schema.String),
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    apiVersion: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata",
-  });
-
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig {}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig",
-  });
-
-export interface GoogleCloudLocationLocation {
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: Record<string, string>;
-}
-
-export const GoogleCloudLocationLocation =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationId: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }).annotate({ identifier: "GoogleCloudLocationLocation" });
-
-export interface GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest {
-  /** Required. Resource info of the connector. */
-  resourceInfo?: GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
-  validateOnly?: boolean;
-}
-
-export const GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceInfo: Schema.optional(
-      GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo,
-    ),
-    requestId: Schema.optional(Schema.String),
-    validateOnly: Schema.optional(Schema.Boolean),
-  }).annotate({
-    identifier: "GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest",
-  });
-
-export interface CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails {}
-
-export const CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails",
-  });
-
-export interface GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetadata {
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-}
-
-export const GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    apiVersion: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetadata",
-  });
-
-export interface CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails {}
-
-export const CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier:
-      "CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails",
-  });
-
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1Hub {
-  /** Optional. Internet Gateway configuration. */
-  internetGateway?: GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway;
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1Hub =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    internetGateway: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway,
-    ),
-  }).annotate({ identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1Hub" });
-
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
-  /** Optional. Map of Hubs that represents regional data path deployment with GCP region as a key. */
-  hubs?: Record<string, GoogleCloudBeyondcorpSecuritygatewaysV1Hub>;
-  /** Optional. Configuration for Cloud Logging. If this field is present, the logging will be enabled. */
-  logging?: GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig;
-  /** Output only. Timestamp when the resource was last modified. */
-  updateTime?: string;
-  /** Optional. An arbitrary user-provided name for the SecurityGateway. Cannot exceed 64 characters. */
-  displayName?: string;
-  /** Optional. Shared proxy configuration for all apps. */
-  proxyProtocolConfig?: GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig;
-  /** Output only. The operational state of the SecurityGateway. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "UPDATING"
-    | "DELETING"
-    | "RUNNING"
-    | "DOWN"
-    | "ERROR"
-    | (string & {});
-  /** Identifier. Name of the resource. */
-  name?: string;
-  /** Optional. Settings related to the Service Discovery. */
-  serviceDiscovery?: GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery;
-  /** Output only. Timestamp when the resource was created. */
-  createTime?: string;
-  /** Output only. IP addresses that will be used for establishing connection to the endpoints. */
-  externalIps?: ReadonlyArray<string>;
-  /** Output only. Service account used for operations that involve resources in consumer projects. */
-  delegatingServiceAccount?: string;
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    hubs: Schema.optional(
-      Schema.Record(Schema.String, GoogleCloudBeyondcorpSecuritygatewaysV1Hub),
-    ),
-    logging: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig,
-    ),
-    updateTime: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    proxyProtocolConfig: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig,
-    ),
-    state: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    serviceDiscovery: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery,
-    ),
-    createTime: Schema.optional(Schema.String),
-    externalIps: Schema.optional(Schema.Array(Schema.String)),
-    delegatingServiceAccount: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway",
-  });
-
-export interface GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata {
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-}
-
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    apiVersion: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata",
+    identifier: "GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails",
   });
 
 export interface GoogleIamV1TestIamPermissionsResponse {
@@ -1446,270 +1682,40 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsResponse =
+export const GoogleIamV1TestIamPermissionsResponse: Schema.Schema<GoogleIamV1TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
 
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse {
-  /** A list of BeyondCorp SecurityGateway in the project. */
-  securityGateways?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway>;
-  /** A list of locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-  /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    securityGateways: Schema.optional(
-      Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway),
-    ),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse",
-  });
-
-export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata {
+export interface GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetadata {
   /** Output only. The time the operation was created. */
   createTime?: string;
   /** Output only. Name of the verb executed by the operation. */
   verb?: string;
   /** Output only. The time the operation finished running. */
   endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
   /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
   requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-}
-
-export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    createTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    apiVersion: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata",
-  });
-
-export interface GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails {}
-
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails",
-  });
-
-export interface GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata {
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-}
-
-export const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    apiVersion: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata",
-  });
-
-export interface GoogleIamV1TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const GoogleIamV1TestIamPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
-
-export interface GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadata {
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
   /** Output only. Server-defined resource path for the target of the operation. */
   target?: string;
   /** Output only. Human-readable status of the operation, if any. */
   statusMessage?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
   /** Output only. API version used to start the operation. */
   apiVersion?: string;
 }
 
-export const GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadata =
+export const GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     verb: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
     target: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
-    requestedCancellation: Schema.optional(Schema.Boolean),
     apiVersion: Schema.optional(Schema.String),
   }).annotate({
     identifier:
-      "GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadata",
-  });
-
-export interface AllocatedConnection {
-  /** Required. The ingress port of an allocated connection */
-  ingressPort?: number;
-  /** Required. The PSC uri of an allocated connection */
-  pscUri?: string;
-}
-
-export const AllocatedConnection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  ingressPort: Schema.optional(Schema.Number),
-  pscUri: Schema.optional(Schema.String),
-}).annotate({ identifier: "AllocatedConnection" });
-
-export interface AppGateway {
-  /** Output only. A list of connections allocated for the Gateway */
-  allocatedConnections?: ReadonlyArray<AllocatedConnection>;
-  /** Optional. An arbitrary user-provided name for the AppGateway. Cannot exceed 64 characters. */
-  displayName?: string;
-  /** Required. Unique resource name of the AppGateway. The name is ignored when creating an AppGateway. */
-  name?: string;
-  /** Optional. Resource labels to represent user provided metadata. */
-  labels?: Record<string, string>;
-  /** Output only. A unique identifier for the instance generated by the system. */
-  uid?: string;
-  /** Output only. Reserved for future use. */
-  satisfiesPzi?: boolean;
-  /** Output only. Timestamp when the resource was last modified. */
-  updateTime?: string;
-  /** Required. The type of hosting used by the AppGateway. */
-  hostType?: "HOST_TYPE_UNSPECIFIED" | "GCP_REGIONAL_MIG" | (string & {});
-  /** Output only. The current state of the AppGateway. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "CREATED"
-    | "UPDATING"
-    | "DELETING"
-    | "DOWN"
-    | (string & {});
-  /** Output only. Server-defined URI for this resource. */
-  uri?: string;
-  /** Output only. Timestamp when the resource was created. */
-  createTime?: string;
-  /** Output only. Reserved for future use. */
-  satisfiesPzs?: boolean;
-  /** Required. The type of network connectivity used by the AppGateway. */
-  type?: "TYPE_UNSPECIFIED" | "TCP_PROXY" | (string & {});
-}
-
-export const AppGateway = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  allocatedConnections: Schema.optional(Schema.Array(AllocatedConnection)),
-  displayName: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  uid: Schema.optional(Schema.String),
-  satisfiesPzi: Schema.optional(Schema.Boolean),
-  updateTime: Schema.optional(Schema.String),
-  hostType: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  uri: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  satisfiesPzs: Schema.optional(Schema.Boolean),
-  type: Schema.optional(Schema.String),
-}).annotate({ identifier: "AppGateway" });
-
-export interface ListAppGatewaysResponse {
-  /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-  /** A list of BeyondCorp AppGateways in the project. */
-  appGateways?: ReadonlyArray<AppGateway>;
-  /** A list of locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-}
-
-export const ListAppGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    appGateways: Schema.optional(Schema.Array(AppGateway)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ListAppGatewaysResponse" });
-
-export interface GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails {
-  /** The extended status. Such as ExitCode, StartedAt, FinishedAt, etc. */
-  extendedStatus?: Record<string, string>;
-  /** The latest error message. */
-  errorMsg?: string;
-  /** The version of the current config. */
-  currentConfigVersion?: string;
-  /** The version of the expected config. */
-  expectedConfigVersion?: string;
-}
-
-export const GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    extendedStatus: Schema.optional(
-      Schema.Record(Schema.String, Schema.String),
-    ),
-    errorMsg: Schema.optional(Schema.String),
-    currentConfigVersion: Schema.optional(Schema.String),
-    expectedConfigVersion: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails",
-  });
-
-export interface GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails {}
-
-export const GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails",
-  });
-
-export interface GoogleCloudLocationListLocationsResponse {
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: ReadonlyArray<GoogleCloudLocationLocation>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-}
-
-export const GoogleCloudLocationListLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudLocationListLocationsResponse" });
-
-export interface GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails {}
-
-export const GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails",
+      "GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetadata",
   });
 
 // ==========================================================================
@@ -1767,24 +1773,24 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 
 export interface ListProjectsLocationsRequest {
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
-  filter?: string;
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
+  filter?: string;
   /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
 }
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
     ),
@@ -1847,677 +1853,6 @@ export const getProjectsLocations: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface GetProjectsLocationsAppConnectorsRequest {
-  /** Required. BeyondCorp AppConnector name using the form: `projects/{project_id}/locations/{location_id}/appConnectors/{app_connector_id}` */
-  name: string;
-}
-
-export const GetProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppConnectorsRequest>;
-
-export type GetProjectsLocationsAppConnectorsResponse =
-  GoogleCloudBeyondcorpAppconnectorsV1AppConnector;
-export const GetProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectorsV1AppConnector;
-
-export type GetProjectsLocationsAppConnectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets details of a single AppConnector. */
-export const getProjectsLocationsAppConnectors: API.OperationMethod<
-  GetProjectsLocationsAppConnectorsRequest,
-  GetProjectsLocationsAppConnectorsResponse,
-  GetProjectsLocationsAppConnectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAppConnectorsRequest,
-  output: GetProjectsLocationsAppConnectorsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ResolveInstanceConfigProjectsLocationsAppConnectorsRequest {
-  /** Required. BeyondCorp AppConnector name using the form: `projects/{project_id}/locations/{location_id}/appConnectors/{app_connector}` */
-  appConnector: string;
-}
-
-export const ResolveInstanceConfigProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    appConnector: Schema.String.pipe(T.HttpPath("appConnector")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+appConnector}:resolveInstanceConfig" }),
-    svc,
-  ) as unknown as Schema.Schema<ResolveInstanceConfigProjectsLocationsAppConnectorsRequest>;
-
-export type ResolveInstanceConfigProjectsLocationsAppConnectorsResponse =
-  GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse;
-export const ResolveInstanceConfigProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse;
-
-export type ResolveInstanceConfigProjectsLocationsAppConnectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets instance configuration for a given AppConnector. An internal method called by a AppConnector to get its container config. */
-export const resolveInstanceConfigProjectsLocationsAppConnectors: API.OperationMethod<
-  ResolveInstanceConfigProjectsLocationsAppConnectorsRequest,
-  ResolveInstanceConfigProjectsLocationsAppConnectorsResponse,
-  ResolveInstanceConfigProjectsLocationsAppConnectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ResolveInstanceConfigProjectsLocationsAppConnectorsRequest,
-  output: ResolveInstanceConfigProjectsLocationsAppConnectorsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsAppConnectorsRequest {
-  /** Optional. The maximum number of items to return. If not specified, a default value of 50 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
-  /** Optional. A filter specifying constraints of a list operation. */
-  filter?: string;
-  /** Required. The resource name of the AppConnector location using the form: `projects/{project_id}/locations/{location_id}` */
-  parent: string;
-  /** Optional. The next_page_token value returned from a previous ListAppConnectorsRequest, if any. */
-  pageToken?: string;
-  /** Optional. Specifies the ordering of results. See [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information. */
-  orderBy?: string;
-}
-
-export const ListProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/appConnectors" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppConnectorsRequest>;
-
-export type ListProjectsLocationsAppConnectorsResponse =
-  GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse;
-export const ListProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse;
-
-export type ListProjectsLocationsAppConnectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists AppConnectors in a given project and location. */
-export const listProjectsLocationsAppConnectors: API.PaginatedOperationMethod<
-  ListProjectsLocationsAppConnectorsRequest,
-  ListProjectsLocationsAppConnectorsResponse,
-  ListProjectsLocationsAppConnectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAppConnectorsRequest,
-  output: ListProjectsLocationsAppConnectorsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface ReportStatusProjectsLocationsAppConnectorsRequest {
-  /** Required. BeyondCorp Connector name using the form: `projects/{project_id}/locations/{location_id}/connectors/{connector}` */
-  appConnector: string;
-  /** Request body */
-  body?: GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest;
-}
-
-export const ReportStatusProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    appConnector: Schema.String.pipe(T.HttpPath("appConnector")),
-    body: Schema.optional(
-      GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest,
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+appConnector}:reportStatus",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ReportStatusProjectsLocationsAppConnectorsRequest>;
-
-export type ReportStatusProjectsLocationsAppConnectorsResponse =
-  GoogleLongrunningOperation;
-export const ReportStatusProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type ReportStatusProjectsLocationsAppConnectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Report status for a given connector. */
-export const reportStatusProjectsLocationsAppConnectors: API.OperationMethod<
-  ReportStatusProjectsLocationsAppConnectorsRequest,
-  ReportStatusProjectsLocationsAppConnectorsResponse,
-  ReportStatusProjectsLocationsAppConnectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ReportStatusProjectsLocationsAppConnectorsRequest,
-  output: ReportStatusProjectsLocationsAppConnectorsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsLocationsAppConnectorsRequest {
-  /** Required. Unique resource name of the AppConnector. The name is ignored when creating a AppConnector. */
-  name: string;
-  /** Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from [BeyondCorp.AppConnector]: * `labels` * `display_name` */
-  updateMask?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
-  validateOnly?: boolean;
-  /** Request body */
-  body?: GoogleCloudBeyondcorpAppconnectorsV1AppConnector;
-}
-
-export const PatchProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    validateOnly: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("validateOnly"),
-    ),
-    body: Schema.optional(
-      GoogleCloudBeyondcorpAppconnectorsV1AppConnector,
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAppConnectorsRequest>;
-
-export type PatchProjectsLocationsAppConnectorsResponse =
-  GoogleLongrunningOperation;
-export const PatchProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type PatchProjectsLocationsAppConnectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the parameters of a single AppConnector. */
-export const patchProjectsLocationsAppConnectors: API.OperationMethod<
-  PatchProjectsLocationsAppConnectorsRequest,
-  PatchProjectsLocationsAppConnectorsResponse,
-  PatchProjectsLocationsAppConnectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsAppConnectorsRequest,
-  output: PatchProjectsLocationsAppConnectorsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyProjectsLocationsAppConnectorsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: GoogleIamV1SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(GoogleIamV1SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsAppConnectorsRequest>;
-
-export type SetIamPolicyProjectsLocationsAppConnectorsResponse =
-  GoogleIamV1Policy;
-export const SetIamPolicyProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
-
-export type SetIamPolicyProjectsLocationsAppConnectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsAppConnectors: API.OperationMethod<
-  SetIamPolicyProjectsLocationsAppConnectorsRequest,
-  SetIamPolicyProjectsLocationsAppConnectorsResponse,
-  SetIamPolicyProjectsLocationsAppConnectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsAppConnectorsRequest,
-  output: SetIamPolicyProjectsLocationsAppConnectorsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsAppConnectorsRequest {
-  /** Required. BeyondCorp AppConnector name using the form: `projects/{project_id}/locations/{location_id}/appConnectors/{app_connector_id}` */
-  name: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
-  validateOnly?: boolean;
-}
-
-export const DeleteProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    validateOnly: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("validateOnly"),
-    ),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppConnectorsRequest>;
-
-export type DeleteProjectsLocationsAppConnectorsResponse =
-  GoogleLongrunningOperation;
-export const DeleteProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type DeleteProjectsLocationsAppConnectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a single AppConnector. */
-export const deleteProjectsLocationsAppConnectors: API.OperationMethod<
-  DeleteProjectsLocationsAppConnectorsRequest,
-  DeleteProjectsLocationsAppConnectorsResponse,
-  DeleteProjectsLocationsAppConnectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAppConnectorsRequest,
-  output: DeleteProjectsLocationsAppConnectorsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface TestIamPermissionsProjectsLocationsAppConnectorsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: GoogleIamV1TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsAppConnectorsRequest>;
-
-export type TestIamPermissionsProjectsLocationsAppConnectorsResponse =
-  GoogleIamV1TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsAppConnectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsAppConnectors: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsAppConnectorsRequest,
-  TestIamPermissionsProjectsLocationsAppConnectorsResponse,
-  TestIamPermissionsProjectsLocationsAppConnectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsAppConnectorsRequest,
-  output: TestIamPermissionsProjectsLocationsAppConnectorsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsLocationsAppConnectorsRequest {
-  /** Required. The resource project name of the AppConnector location using the form: `projects/{project_id}/locations/{location_id}` */
-  parent: string;
-  /** Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. */
-  appConnectorId?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
-  validateOnly?: boolean;
-  /** Request body */
-  body?: GoogleCloudBeyondcorpAppconnectorsV1AppConnector;
-}
-
-export const CreateProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    appConnectorId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("appConnectorId"),
-    ),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    validateOnly: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("validateOnly"),
-    ),
-    body: Schema.optional(
-      GoogleCloudBeyondcorpAppconnectorsV1AppConnector,
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}/appConnectors",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppConnectorsRequest>;
-
-export type CreateProjectsLocationsAppConnectorsResponse =
-  GoogleLongrunningOperation;
-export const CreateProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type CreateProjectsLocationsAppConnectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new AppConnector in a given project and location. */
-export const createProjectsLocationsAppConnectors: API.OperationMethod<
-  CreateProjectsLocationsAppConnectorsRequest,
-  CreateProjectsLocationsAppConnectorsResponse,
-  CreateProjectsLocationsAppConnectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAppConnectorsRequest,
-  output: CreateProjectsLocationsAppConnectorsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsLocationsAppConnectorsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsAppConnectorsRequest>;
-
-export type GetIamPolicyProjectsLocationsAppConnectorsResponse =
-  GoogleIamV1Policy;
-export const GetIamPolicyProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
-
-export type GetIamPolicyProjectsLocationsAppConnectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsAppConnectors: API.OperationMethod<
-  GetIamPolicyProjectsLocationsAppConnectorsRequest,
-  GetIamPolicyProjectsLocationsAppConnectorsResponse,
-  GetIamPolicyProjectsLocationsAppConnectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsAppConnectorsRequest,
-  output: GetIamPolicyProjectsLocationsAppConnectorsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsSecurityGatewaysRequest {
-  /** Optional. Specifies the ordering of results. See [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information. */
-  orderBy?: string;
-  /** Required. The parent location to which the resources belong. `projects/{project_id}/locations/{location_id}/` */
-  parent: string;
-  /** Optional. The next_page_token value returned from a previous ListSecurityGatewayRequest, if any. */
-  pageToken?: string;
-  /** Optional. The maximum number of items to return. If not specified, a default value of 50 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
-  /** Optional. A filter specifying constraints of a list operation. All fields in the SecurityGateway message are supported. For example, the following query will return the SecurityGateway with displayName "test-security-gateway" For more information, please refer to https://google.aip.dev/160. */
-  filter?: string;
-}
-
-export const ListProjectsLocationsSecurityGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/securityGateways" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSecurityGatewaysRequest>;
-
-export type ListProjectsLocationsSecurityGatewaysResponse =
-  GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse;
-export const ListProjectsLocationsSecurityGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse;
-
-export type ListProjectsLocationsSecurityGatewaysError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists SecurityGateways in a given project and location. */
-export const listProjectsLocationsSecurityGateways: API.PaginatedOperationMethod<
-  ListProjectsLocationsSecurityGatewaysRequest,
-  ListProjectsLocationsSecurityGatewaysResponse,
-  ListProjectsLocationsSecurityGatewaysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSecurityGatewaysRequest,
-  output: ListProjectsLocationsSecurityGatewaysResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface TestIamPermissionsProjectsLocationsSecurityGatewaysRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: GoogleIamV1TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsSecurityGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsSecurityGatewaysRequest>;
-
-export type TestIamPermissionsProjectsLocationsSecurityGatewaysResponse =
-  GoogleIamV1TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsSecurityGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsSecurityGatewaysError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsSecurityGateways: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsSecurityGatewaysRequest,
-  TestIamPermissionsProjectsLocationsSecurityGatewaysResponse,
-  TestIamPermissionsProjectsLocationsSecurityGatewaysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsSecurityGatewaysRequest,
-  output: TestIamPermissionsProjectsLocationsSecurityGatewaysResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsSecurityGatewaysRequest {
-  /** Required. BeyondCorp SecurityGateway name using the form: `projects/{project_id}/locations/{location_id}/securityGateways/{security_gateway_id}` */
-  name: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
-  validateOnly?: boolean;
-}
-
-export const DeleteProjectsLocationsSecurityGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    validateOnly: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("validateOnly"),
-    ),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSecurityGatewaysRequest>;
-
-export type DeleteProjectsLocationsSecurityGatewaysResponse =
-  GoogleLongrunningOperation;
-export const DeleteProjectsLocationsSecurityGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type DeleteProjectsLocationsSecurityGatewaysError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a single SecurityGateway. */
-export const deleteProjectsLocationsSecurityGateways: API.OperationMethod<
-  DeleteProjectsLocationsSecurityGatewaysRequest,
-  DeleteProjectsLocationsSecurityGatewaysResponse,
-  DeleteProjectsLocationsSecurityGatewaysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSecurityGatewaysRequest,
-  output: DeleteProjectsLocationsSecurityGatewaysResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsSecurityGatewaysRequest {
-  /** Required. The resource name of the PartnerTenant using the form: `projects/{project_id}/locations/{location_id}/securityGateway/{security_gateway_id}` */
-  name: string;
-}
-
-export const GetProjectsLocationsSecurityGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSecurityGatewaysRequest>;
-
-export type GetProjectsLocationsSecurityGatewaysResponse =
-  GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway;
-export const GetProjectsLocationsSecurityGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway;
-
-export type GetProjectsLocationsSecurityGatewaysError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets details of a single SecurityGateway. */
-export const getProjectsLocationsSecurityGateways: API.OperationMethod<
-  GetProjectsLocationsSecurityGatewaysRequest,
-  GetProjectsLocationsSecurityGatewaysResponse,
-  GetProjectsLocationsSecurityGatewaysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSecurityGatewaysRequest,
-  output: GetProjectsLocationsSecurityGatewaysResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetIamPolicyProjectsLocationsSecurityGatewaysRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsSecurityGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsSecurityGatewaysRequest>;
-
-export type GetIamPolicyProjectsLocationsSecurityGatewaysResponse =
-  GoogleIamV1Policy;
-export const GetIamPolicyProjectsLocationsSecurityGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
-
-export type GetIamPolicyProjectsLocationsSecurityGatewaysError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsSecurityGateways: API.OperationMethod<
-  GetIamPolicyProjectsLocationsSecurityGatewaysRequest,
-  GetIamPolicyProjectsLocationsSecurityGatewaysResponse,
-  GetIamPolicyProjectsLocationsSecurityGatewaysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsSecurityGatewaysRequest,
-  output: GetIamPolicyProjectsLocationsSecurityGatewaysResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface CreateProjectsLocationsSecurityGatewaysRequest {
   /** Required. The resource project name of the SecurityGateway location using the form: `projects/{project_id}/locations/{location_id}` */
   parent: string;
@@ -2572,54 +1907,6 @@ export const createProjectsLocationsSecurityGateways: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchProjectsLocationsSecurityGatewaysRequest {
-  /** Identifier. Name of the resource. */
-  name: string;
-  /** Optional. Mutable fields include: display_name, hubs. */
-  updateMask?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request timed out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Request body */
-  body?: GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway;
-}
-
-export const PatchProjectsLocationsSecurityGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    body: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway,
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsSecurityGatewaysRequest>;
-
-export type PatchProjectsLocationsSecurityGatewaysResponse =
-  GoogleLongrunningOperation;
-export const PatchProjectsLocationsSecurityGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type PatchProjectsLocationsSecurityGatewaysError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the parameters of a single SecurityGateway. */
-export const patchProjectsLocationsSecurityGateways: API.OperationMethod<
-  PatchProjectsLocationsSecurityGatewaysRequest,
-  PatchProjectsLocationsSecurityGatewaysResponse,
-  PatchProjectsLocationsSecurityGatewaysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsSecurityGatewaysRequest,
-  output: PatchProjectsLocationsSecurityGatewaysResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface SetIamPolicyProjectsLocationsSecurityGatewaysRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -2664,14 +1951,65 @@ export const setIamPolicyProjectsLocationsSecurityGateways: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest {
+export interface ListProjectsLocationsSecurityGatewaysRequest {
+  /** Optional. A filter specifying constraints of a list operation. All fields in the SecurityGateway message are supported. For example, the following query will return the SecurityGateway with displayName "test-security-gateway" For more information, please refer to https://google.aip.dev/160. */
+  filter?: string;
+  /** Optional. Specifies the ordering of results. See [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information. */
+  orderBy?: string;
+  /** Required. The parent location to which the resources belong. `projects/{project_id}/locations/{location_id}/` */
+  parent: string;
+  /** Optional. The next_page_token value returned from a previous ListSecurityGatewayRequest, if any. */
+  pageToken?: string;
+  /** Optional. The maximum number of items to return. If not specified, a default value of 50 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
+}
+
+export const ListProjectsLocationsSecurityGatewaysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/securityGateways" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsSecurityGatewaysRequest>;
+
+export type ListProjectsLocationsSecurityGatewaysResponse =
+  GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse;
+export const ListProjectsLocationsSecurityGatewaysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse;
+
+export type ListProjectsLocationsSecurityGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists SecurityGateways in a given project and location. */
+export const listProjectsLocationsSecurityGateways: API.PaginatedOperationMethod<
+  ListProjectsLocationsSecurityGatewaysRequest,
+  ListProjectsLocationsSecurityGatewaysResponse,
+  ListProjectsLocationsSecurityGatewaysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsSecurityGatewaysRequest,
+  output: ListProjectsLocationsSecurityGatewaysResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetIamPolicyProjectsLocationsSecurityGatewaysRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
 
-export const GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest =
+export const GetIamPolicyProjectsLocationsSecurityGatewaysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
@@ -2680,129 +2018,201 @@ export const GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest>;
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsSecurityGatewaysRequest>;
 
-export type GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse =
+export type GetIamPolicyProjectsLocationsSecurityGatewaysResponse =
   GoogleIamV1Policy;
-export const GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse =
+export const GetIamPolicyProjectsLocationsSecurityGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsError =
+export type GetIamPolicyProjectsLocationsSecurityGatewaysError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
-  GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest,
-  GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse,
-  GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsError,
+export const getIamPolicyProjectsLocationsSecurityGateways: API.OperationMethod<
+  GetIamPolicyProjectsLocationsSecurityGatewaysRequest,
+  GetIamPolicyProjectsLocationsSecurityGatewaysResponse,
+  GetIamPolicyProjectsLocationsSecurityGatewaysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest,
-  output: GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse,
+  input: GetIamPolicyProjectsLocationsSecurityGatewaysRequest,
+  output: GetIamPolicyProjectsLocationsSecurityGatewaysResponse,
   errors: [NotFound, Forbidden],
 }));
 
-export interface CreateProjectsLocationsSecurityGatewaysApplicationsRequest {
-  /** Required. The resource name of the parent SecurityGateway using the form: `projects/{project_id}/locations/global/securityGateways/{security_gateway_id}` */
-  parent: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. */
-  requestId?: string;
-  /** Optional. User-settable Application resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or letter. */
-  applicationId?: string;
-  /** Request body */
-  body?: GoogleCloudBeyondcorpSecuritygatewaysV1Application;
-}
-
-export const CreateProjectsLocationsSecurityGatewaysApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    applicationId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("applicationId"),
-    ),
-    body: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1Application,
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}/applications",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSecurityGatewaysApplicationsRequest>;
-
-export type CreateProjectsLocationsSecurityGatewaysApplicationsResponse =
-  GoogleLongrunningOperation;
-export const CreateProjectsLocationsSecurityGatewaysApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type CreateProjectsLocationsSecurityGatewaysApplicationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new Application in a given project and location. */
-export const createProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
-  CreateProjectsLocationsSecurityGatewaysApplicationsRequest,
-  CreateProjectsLocationsSecurityGatewaysApplicationsResponse,
-  CreateProjectsLocationsSecurityGatewaysApplicationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSecurityGatewaysApplicationsRequest,
-  output: CreateProjectsLocationsSecurityGatewaysApplicationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsLocationsSecurityGatewaysApplicationsRequest {
-  /** Identifier. Name of the resource. */
-  name: string;
-  /** Optional. Mutable fields include: display_name. */
+export interface PatchProjectsLocationsSecurityGatewaysRequest {
+  /** Optional. Mutable fields include: display_name, hubs. */
   updateMask?: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request timed out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
+  /** Identifier. Name of the resource. */
+  name: string;
   /** Request body */
-  body?: GoogleCloudBeyondcorpSecuritygatewaysV1Application;
+  body?: GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway;
 }
 
-export const PatchProjectsLocationsSecurityGatewaysApplicationsRequest =
+export const PatchProjectsLocationsSecurityGatewaysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
-      GoogleCloudBeyondcorpSecuritygatewaysV1Application,
+      GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway,
     ).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsSecurityGatewaysApplicationsRequest>;
+  ) as unknown as Schema.Schema<PatchProjectsLocationsSecurityGatewaysRequest>;
 
-export type PatchProjectsLocationsSecurityGatewaysApplicationsResponse =
+export type PatchProjectsLocationsSecurityGatewaysResponse =
   GoogleLongrunningOperation;
-export const PatchProjectsLocationsSecurityGatewaysApplicationsResponse =
+export const PatchProjectsLocationsSecurityGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type PatchProjectsLocationsSecurityGatewaysApplicationsError =
+export type PatchProjectsLocationsSecurityGatewaysError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates the parameters of a single Application. */
-export const patchProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
-  PatchProjectsLocationsSecurityGatewaysApplicationsRequest,
-  PatchProjectsLocationsSecurityGatewaysApplicationsResponse,
-  PatchProjectsLocationsSecurityGatewaysApplicationsError,
+/** Updates the parameters of a single SecurityGateway. */
+export const patchProjectsLocationsSecurityGateways: API.OperationMethod<
+  PatchProjectsLocationsSecurityGatewaysRequest,
+  PatchProjectsLocationsSecurityGatewaysResponse,
+  PatchProjectsLocationsSecurityGatewaysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsSecurityGatewaysApplicationsRequest,
-  output: PatchProjectsLocationsSecurityGatewaysApplicationsResponse,
+  input: PatchProjectsLocationsSecurityGatewaysRequest,
+  output: PatchProjectsLocationsSecurityGatewaysResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsSecurityGatewaysRequest {
+  /** Required. The resource name of the PartnerTenant using the form: `projects/{project_id}/locations/{location_id}/securityGateway/{security_gateway_id}` */
+  name: string;
+}
+
+export const GetProjectsLocationsSecurityGatewaysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsSecurityGatewaysRequest>;
+
+export type GetProjectsLocationsSecurityGatewaysResponse =
+  GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway;
+export const GetProjectsLocationsSecurityGatewaysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway;
+
+export type GetProjectsLocationsSecurityGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets details of a single SecurityGateway. */
+export const getProjectsLocationsSecurityGateways: API.OperationMethod<
+  GetProjectsLocationsSecurityGatewaysRequest,
+  GetProjectsLocationsSecurityGatewaysResponse,
+  GetProjectsLocationsSecurityGatewaysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsSecurityGatewaysRequest,
+  output: GetProjectsLocationsSecurityGatewaysResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsSecurityGatewaysRequest {
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Required. BeyondCorp SecurityGateway name using the form: `projects/{project_id}/locations/{location_id}/securityGateways/{security_gateway_id}` */
+  name: string;
+  /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
+  validateOnly?: boolean;
+}
+
+export const DeleteProjectsLocationsSecurityGatewaysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    validateOnly: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("validateOnly"),
+    ),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsSecurityGatewaysRequest>;
+
+export type DeleteProjectsLocationsSecurityGatewaysResponse =
+  GoogleLongrunningOperation;
+export const DeleteProjectsLocationsSecurityGatewaysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type DeleteProjectsLocationsSecurityGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a single SecurityGateway. */
+export const deleteProjectsLocationsSecurityGateways: API.OperationMethod<
+  DeleteProjectsLocationsSecurityGatewaysRequest,
+  DeleteProjectsLocationsSecurityGatewaysResponse,
+  DeleteProjectsLocationsSecurityGatewaysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsSecurityGatewaysRequest,
+  output: DeleteProjectsLocationsSecurityGatewaysResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsLocationsSecurityGatewaysRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: GoogleIamV1TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsSecurityGatewaysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsSecurityGatewaysRequest>;
+
+export type TestIamPermissionsProjectsLocationsSecurityGatewaysResponse =
+  GoogleIamV1TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsSecurityGatewaysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsSecurityGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsSecurityGateways: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsSecurityGatewaysRequest,
+  TestIamPermissionsProjectsLocationsSecurityGatewaysResponse,
+  TestIamPermissionsProjectsLocationsSecurityGatewaysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsSecurityGatewaysRequest,
+  output: TestIamPermissionsProjectsLocationsSecurityGatewaysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -2850,55 +2260,138 @@ export const setIamPolicyProjectsLocationsSecurityGatewaysApplications: API.Oper
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsLocationsSecurityGatewaysApplicationsRequest {
-  /** Optional. Specifies the ordering of results. See [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information. */
-  orderBy?: string;
-  /** Optional. A filter specifying constraints of a list operation. All fields in the Application message are supported. For example, the following query will return the Application with displayName "test-application" For more information, please refer to https://google.aip.dev/160. */
-  filter?: string;
-  /** Optional. The maximum number of items to return. If not specified, a default value of 50 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
-  /** Required. The parent location to which the resources belong. `projects/{project_id}/locations/global/securityGateways/{security_gateway_id}` */
+export interface CreateProjectsLocationsSecurityGatewaysApplicationsRequest {
+  /** Optional. User-settable Application resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or letter. */
+  applicationId?: string;
+  /** Required. The resource name of the parent SecurityGateway using the form: `projects/{project_id}/locations/global/securityGateways/{security_gateway_id}` */
   parent: string;
-  /** Optional. The next_page_token value returned from a previous ListApplicationsRequest, if any. */
-  pageToken?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. */
+  requestId?: string;
+  /** Request body */
+  body?: GoogleCloudBeyondcorpSecuritygatewaysV1Application;
 }
 
-export const ListProjectsLocationsSecurityGatewaysApplicationsRequest =
+export const CreateProjectsLocationsSecurityGatewaysApplicationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    applicationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("applicationId"),
+    ),
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1Application,
+    ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/applications" }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/applications",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSecurityGatewaysApplicationsRequest>;
+  ) as unknown as Schema.Schema<CreateProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
-export type ListProjectsLocationsSecurityGatewaysApplicationsResponse =
-  GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse;
-export const ListProjectsLocationsSecurityGatewaysApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse;
+export type CreateProjectsLocationsSecurityGatewaysApplicationsResponse =
+  GoogleLongrunningOperation;
+export const CreateProjectsLocationsSecurityGatewaysApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ListProjectsLocationsSecurityGatewaysApplicationsError =
+export type CreateProjectsLocationsSecurityGatewaysApplicationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new Application in a given project and location. */
+export const createProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
+  CreateProjectsLocationsSecurityGatewaysApplicationsRequest,
+  CreateProjectsLocationsSecurityGatewaysApplicationsResponse,
+  CreateProjectsLocationsSecurityGatewaysApplicationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsSecurityGatewaysApplicationsRequest,
+  output: CreateProjectsLocationsSecurityGatewaysApplicationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsSecurityGatewaysApplicationsRequest {
+  /** Required. The resource name of the Application using the form: `projects/{project_id}/locations/global/securityGateway/{security_gateway_id}/applications/{application_id}` */
+  name: string;
+}
+
+export const GetProjectsLocationsSecurityGatewaysApplicationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsSecurityGatewaysApplicationsRequest>;
+
+export type GetProjectsLocationsSecurityGatewaysApplicationsResponse =
+  GoogleCloudBeyondcorpSecuritygatewaysV1Application;
+export const GetProjectsLocationsSecurityGatewaysApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1Application;
+
+export type GetProjectsLocationsSecurityGatewaysApplicationsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Lists Applications in a given project and location. */
-export const listProjectsLocationsSecurityGatewaysApplications: API.PaginatedOperationMethod<
-  ListProjectsLocationsSecurityGatewaysApplicationsRequest,
-  ListProjectsLocationsSecurityGatewaysApplicationsResponse,
-  ListProjectsLocationsSecurityGatewaysApplicationsError,
+/** Gets details of a single Application. */
+export const getProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
+  GetProjectsLocationsSecurityGatewaysApplicationsRequest,
+  GetProjectsLocationsSecurityGatewaysApplicationsResponse,
+  GetProjectsLocationsSecurityGatewaysApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSecurityGatewaysApplicationsRequest,
-  output: ListProjectsLocationsSecurityGatewaysApplicationsResponse,
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsSecurityGatewaysApplicationsRequest,
+  output: GetProjectsLocationsSecurityGatewaysApplicationsResponse,
   errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
+}));
+
+export interface DeleteProjectsLocationsSecurityGatewaysApplicationsRequest {
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Required. Name of the resource. */
+  name: string;
+  /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
+  validateOnly?: boolean;
+}
+
+export const DeleteProjectsLocationsSecurityGatewaysApplicationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    validateOnly: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("validateOnly"),
+    ),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsSecurityGatewaysApplicationsRequest>;
+
+export type DeleteProjectsLocationsSecurityGatewaysApplicationsResponse =
+  GoogleLongrunningOperation;
+export const DeleteProjectsLocationsSecurityGatewaysApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type DeleteProjectsLocationsSecurityGatewaysApplicationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a single application. */
+export const deleteProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
+  DeleteProjectsLocationsSecurityGatewaysApplicationsRequest,
+  DeleteProjectsLocationsSecurityGatewaysApplicationsResponse,
+  DeleteProjectsLocationsSecurityGatewaysApplicationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsSecurityGatewaysApplicationsRequest,
+  output: DeleteProjectsLocationsSecurityGatewaysApplicationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequest {
@@ -2948,132 +2441,98 @@ export const testIamPermissionsProjectsLocationsSecurityGatewaysApplications: AP
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsSecurityGatewaysApplicationsRequest {
-  /** Required. The resource name of the Application using the form: `projects/{project_id}/locations/global/securityGateway/{security_gateway_id}/applications/{application_id}` */
-  name: string;
-}
-
-export const GetProjectsLocationsSecurityGatewaysApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSecurityGatewaysApplicationsRequest>;
-
-export type GetProjectsLocationsSecurityGatewaysApplicationsResponse =
-  GoogleCloudBeyondcorpSecuritygatewaysV1Application;
-export const GetProjectsLocationsSecurityGatewaysApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1Application;
-
-export type GetProjectsLocationsSecurityGatewaysApplicationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets details of a single Application. */
-export const getProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
-  GetProjectsLocationsSecurityGatewaysApplicationsRequest,
-  GetProjectsLocationsSecurityGatewaysApplicationsResponse,
-  GetProjectsLocationsSecurityGatewaysApplicationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSecurityGatewaysApplicationsRequest,
-  output: GetProjectsLocationsSecurityGatewaysApplicationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteProjectsLocationsSecurityGatewaysApplicationsRequest {
-  /** Required. Name of the resource. */
-  name: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+export interface PatchProjectsLocationsSecurityGatewaysApplicationsRequest {
+  /** Optional. Mutable fields include: display_name. */
+  updateMask?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request timed out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
-  /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
-  validateOnly?: boolean;
+  /** Identifier. Name of the resource. */
+  name: string;
+  /** Request body */
+  body?: GoogleCloudBeyondcorpSecuritygatewaysV1Application;
 }
 
-export const DeleteProjectsLocationsSecurityGatewaysApplicationsRequest =
+export const PatchProjectsLocationsSecurityGatewaysApplicationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    validateOnly: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("validateOnly"),
-    ),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1Application,
+    ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSecurityGatewaysApplicationsRequest>;
+  ) as unknown as Schema.Schema<PatchProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
-export type DeleteProjectsLocationsSecurityGatewaysApplicationsResponse =
+export type PatchProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleLongrunningOperation;
-export const DeleteProjectsLocationsSecurityGatewaysApplicationsResponse =
+export const PatchProjectsLocationsSecurityGatewaysApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsSecurityGatewaysApplicationsError =
+export type PatchProjectsLocationsSecurityGatewaysApplicationsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Deletes a single application. */
-export const deleteProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
-  DeleteProjectsLocationsSecurityGatewaysApplicationsRequest,
-  DeleteProjectsLocationsSecurityGatewaysApplicationsResponse,
-  DeleteProjectsLocationsSecurityGatewaysApplicationsError,
+/** Updates the parameters of a single Application. */
+export const patchProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
+  PatchProjectsLocationsSecurityGatewaysApplicationsRequest,
+  PatchProjectsLocationsSecurityGatewaysApplicationsResponse,
+  PatchProjectsLocationsSecurityGatewaysApplicationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSecurityGatewaysApplicationsRequest,
-  output: DeleteProjectsLocationsSecurityGatewaysApplicationsResponse,
+  input: PatchProjectsLocationsSecurityGatewaysApplicationsRequest,
+  output: PatchProjectsLocationsSecurityGatewaysApplicationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsLocationsOperationsRequest {
-  /** The name of the operation's parent resource. */
-  name: string;
-  /** The standard list page size. */
-  pageSize?: number;
-  /** The standard list filter. */
+export interface ListProjectsLocationsSecurityGatewaysApplicationsRequest {
+  /** Required. The parent location to which the resources belong. `projects/{project_id}/locations/global/securityGateways/{security_gateway_id}` */
+  parent: string;
+  /** Optional. A filter specifying constraints of a list operation. All fields in the Application message are supported. For example, the following query will return the Application with displayName "test-application" For more information, please refer to https://google.aip.dev/160. */
   filter?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
-  /** The standard list page token. */
+  /** Optional. Specifies the ordering of results. See [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information. */
+  orderBy?: string;
+  /** Optional. The next_page_token value returned from a previous ListApplicationsRequest, if any. */
   pageToken?: string;
+  /** Optional. The maximum number of items to return. If not specified, a default value of 50 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
 }
 
-export const ListProjectsLocationsOperationsRequest =
+export const ListProjectsLocationsSecurityGatewaysApplicationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("returnPartialSuccess"),
-    ),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/applications" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
-export type ListProjectsLocationsOperationsResponse =
-  GoogleLongrunningListOperationsResponse;
-export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+export type ListProjectsLocationsSecurityGatewaysApplicationsResponse =
+  GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse;
+export const ListProjectsLocationsSecurityGatewaysApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse;
 
-export type ListProjectsLocationsOperationsError =
+export type ListProjectsLocationsSecurityGatewaysApplicationsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
-export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
-  ListProjectsLocationsOperationsRequest,
-  ListProjectsLocationsOperationsResponse,
-  ListProjectsLocationsOperationsError,
+/** Lists Applications in a given project and location. */
+export const listProjectsLocationsSecurityGatewaysApplications: API.PaginatedOperationMethod<
+  ListProjectsLocationsSecurityGatewaysApplicationsRequest,
+  ListProjectsLocationsSecurityGatewaysApplicationsResponse,
+  ListProjectsLocationsSecurityGatewaysApplicationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListProjectsLocationsOperationsResponse,
+  input: ListProjectsLocationsSecurityGatewaysApplicationsRequest,
+  output: ListProjectsLocationsSecurityGatewaysApplicationsResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -3081,45 +2540,44 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   },
 }));
 
-export interface CancelProjectsLocationsOperationsRequest {
-  /** The name of the operation resource to be cancelled. */
-  name: string;
-  /** Request body */
-  body?: GoogleLongrunningCancelOperationRequest;
+export interface GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
 }
 
-export const CancelProjectsLocationsOperationsRequest =
+export const GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(GoogleLongrunningCancelOperationRequest).pipe(
-      T.HttpBody(),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
-export type CancelProjectsLocationsOperationsResponse = Empty;
-export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export type GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse =
+  GoogleIamV1Policy;
+export const GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type CancelProjectsLocationsOperationsError =
+export type GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsError =
   | DefaultErrors
   | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  | Forbidden;
 
-/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
-export const cancelProjectsLocationsOperations: API.OperationMethod<
-  CancelProjectsLocationsOperationsRequest,
-  CancelProjectsLocationsOperationsResponse,
-  CancelProjectsLocationsOperationsError,
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
+  GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest,
+  GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse,
+  GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: CancelProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+  input: GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest,
+  output: GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsOperationsRequest {
@@ -3192,49 +2650,93 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsLocationsAppGatewaysRequest {
-  /** Optional. The maximum number of items to return. If not specified, a default value of 50 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
-  /** Optional. A filter specifying constraints of a list operation. */
-  filter?: string;
-  /** Required. The resource name of the AppGateway location using the form: `projects/{project_id}/locations/{location_id}` */
-  parent: string;
-  /** Optional. The next_page_token value returned from a previous ListAppGatewaysRequest, if any. */
-  pageToken?: string;
-  /** Optional. Specifies the ordering of results. See [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information. */
-  orderBy?: string;
+export interface CancelProjectsLocationsOperationsRequest {
+  /** The name of the operation resource to be cancelled. */
+  name: string;
+  /** Request body */
+  body?: GoogleLongrunningCancelOperationRequest;
 }
 
-export const ListProjectsLocationsAppGatewaysRequest =
+export const CancelProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(GoogleLongrunningCancelOperationRequest).pipe(
+      T.HttpBody(),
+    ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/appGateways" }),
+    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppGatewaysRequest>;
+  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
-export type ListProjectsLocationsAppGatewaysResponse = ListAppGatewaysResponse;
-export const ListProjectsLocationsAppGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAppGatewaysResponse;
+export type CancelProjectsLocationsOperationsResponse = Empty;
+export const CancelProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ListProjectsLocationsAppGatewaysError =
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
+export const cancelProjectsLocationsOperations: API.OperationMethod<
+  CancelProjectsLocationsOperationsRequest,
+  CancelProjectsLocationsOperationsResponse,
+  CancelProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelProjectsLocationsOperationsRequest,
+  output: CancelProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsOperationsRequest {
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** The standard list filter. */
+  filter?: string;
+  /** The standard list page size. */
+  pageSize?: number;
+  /** The name of the operation's parent resource. */
+  name: string;
+}
+
+export const ListProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+
+export type ListProjectsLocationsOperationsResponse =
+  GoogleLongrunningListOperationsResponse;
+export const ListProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+
+export type ListProjectsLocationsOperationsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Lists AppGateways in a given project and location. */
-export const listProjectsLocationsAppGateways: API.PaginatedOperationMethod<
-  ListProjectsLocationsAppGatewaysRequest,
-  ListProjectsLocationsAppGatewaysResponse,
-  ListProjectsLocationsAppGatewaysError,
+/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
+export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
+  ListProjectsLocationsOperationsRequest,
+  ListProjectsLocationsOperationsResponse,
+  ListProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAppGatewaysRequest,
-  output: ListProjectsLocationsAppGatewaysResponse,
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -3242,14 +2744,317 @@ export const listProjectsLocationsAppGateways: API.PaginatedOperationMethod<
   },
 }));
 
-export interface TestIamPermissionsProjectsLocationsAppGatewaysRequest {
+export interface PatchProjectsLocationsAppConnectorsRequest {
+  /** Required. Unique resource name of the AppConnector. The name is ignored when creating a AppConnector. */
+  name: string;
+  /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
+  validateOnly?: boolean;
+  /** Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from [BeyondCorp.AppConnector]: * `labels` * `display_name` */
+  updateMask?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Request body */
+  body?: GoogleCloudBeyondcorpAppconnectorsV1AppConnector;
+}
+
+export const PatchProjectsLocationsAppConnectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    validateOnly: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("validateOnly"),
+    ),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectorsV1AppConnector,
+    ).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsAppConnectorsRequest>;
+
+export type PatchProjectsLocationsAppConnectorsResponse =
+  GoogleLongrunningOperation;
+export const PatchProjectsLocationsAppConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type PatchProjectsLocationsAppConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the parameters of a single AppConnector. */
+export const patchProjectsLocationsAppConnectors: API.OperationMethod<
+  PatchProjectsLocationsAppConnectorsRequest,
+  PatchProjectsLocationsAppConnectorsResponse,
+  PatchProjectsLocationsAppConnectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsAppConnectorsRequest,
+  output: PatchProjectsLocationsAppConnectorsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsAppConnectorsRequest {
+  /** Required. BeyondCorp AppConnector name using the form: `projects/{project_id}/locations/{location_id}/appConnectors/{app_connector_id}` */
+  name: string;
+}
+
+export const GetProjectsLocationsAppConnectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsAppConnectorsRequest>;
+
+export type GetProjectsLocationsAppConnectorsResponse =
+  GoogleCloudBeyondcorpAppconnectorsV1AppConnector;
+export const GetProjectsLocationsAppConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectorsV1AppConnector;
+
+export type GetProjectsLocationsAppConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets details of a single AppConnector. */
+export const getProjectsLocationsAppConnectors: API.OperationMethod<
+  GetProjectsLocationsAppConnectorsRequest,
+  GetProjectsLocationsAppConnectorsResponse,
+  GetProjectsLocationsAppConnectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsAppConnectorsRequest,
+  output: GetProjectsLocationsAppConnectorsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsAppConnectorsRequest {
+  /** Required. BeyondCorp AppConnector name using the form: `projects/{project_id}/locations/{location_id}/appConnectors/{app_connector_id}` */
+  name: string;
+  /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
+  validateOnly?: boolean;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+}
+
+export const DeleteProjectsLocationsAppConnectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    validateOnly: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("validateOnly"),
+    ),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppConnectorsRequest>;
+
+export type DeleteProjectsLocationsAppConnectorsResponse =
+  GoogleLongrunningOperation;
+export const DeleteProjectsLocationsAppConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type DeleteProjectsLocationsAppConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a single AppConnector. */
+export const deleteProjectsLocationsAppConnectors: API.OperationMethod<
+  DeleteProjectsLocationsAppConnectorsRequest,
+  DeleteProjectsLocationsAppConnectorsResponse,
+  DeleteProjectsLocationsAppConnectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsAppConnectorsRequest,
+  output: DeleteProjectsLocationsAppConnectorsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ResolveInstanceConfigProjectsLocationsAppConnectorsRequest {
+  /** Required. BeyondCorp AppConnector name using the form: `projects/{project_id}/locations/{location_id}/appConnectors/{app_connector}` */
+  appConnector: string;
+}
+
+export const ResolveInstanceConfigProjectsLocationsAppConnectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appConnector: Schema.String.pipe(T.HttpPath("appConnector")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+appConnector}:resolveInstanceConfig" }),
+    svc,
+  ) as unknown as Schema.Schema<ResolveInstanceConfigProjectsLocationsAppConnectorsRequest>;
+
+export type ResolveInstanceConfigProjectsLocationsAppConnectorsResponse =
+  GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse;
+export const ResolveInstanceConfigProjectsLocationsAppConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse;
+
+export type ResolveInstanceConfigProjectsLocationsAppConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets instance configuration for a given AppConnector. An internal method called by a AppConnector to get its container config. */
+export const resolveInstanceConfigProjectsLocationsAppConnectors: API.OperationMethod<
+  ResolveInstanceConfigProjectsLocationsAppConnectorsRequest,
+  ResolveInstanceConfigProjectsLocationsAppConnectorsResponse,
+  ResolveInstanceConfigProjectsLocationsAppConnectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ResolveInstanceConfigProjectsLocationsAppConnectorsRequest,
+  output: ResolveInstanceConfigProjectsLocationsAppConnectorsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface SetIamPolicyProjectsLocationsAppConnectorsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: GoogleIamV1SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsAppConnectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(GoogleIamV1SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsAppConnectorsRequest>;
+
+export type SetIamPolicyProjectsLocationsAppConnectorsResponse =
+  GoogleIamV1Policy;
+export const SetIamPolicyProjectsLocationsAppConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+
+export type SetIamPolicyProjectsLocationsAppConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsAppConnectors: API.OperationMethod<
+  SetIamPolicyProjectsLocationsAppConnectorsRequest,
+  SetIamPolicyProjectsLocationsAppConnectorsResponse,
+  SetIamPolicyProjectsLocationsAppConnectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsAppConnectorsRequest,
+  output: SetIamPolicyProjectsLocationsAppConnectorsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsAppConnectorsRequest {
+  /** Optional. The next_page_token value returned from a previous ListAppConnectorsRequest, if any. */
+  pageToken?: string;
+  /** Optional. A filter specifying constraints of a list operation. */
+  filter?: string;
+  /** Optional. Specifies the ordering of results. See [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information. */
+  orderBy?: string;
+  /** Required. The resource name of the AppConnector location using the form: `projects/{project_id}/locations/{location_id}` */
+  parent: string;
+  /** Optional. The maximum number of items to return. If not specified, a default value of 50 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
+}
+
+export const ListProjectsLocationsAppConnectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/appConnectors" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsAppConnectorsRequest>;
+
+export type ListProjectsLocationsAppConnectorsResponse =
+  GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse;
+export const ListProjectsLocationsAppConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse;
+
+export type ListProjectsLocationsAppConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists AppConnectors in a given project and location. */
+export const listProjectsLocationsAppConnectors: API.PaginatedOperationMethod<
+  ListProjectsLocationsAppConnectorsRequest,
+  ListProjectsLocationsAppConnectorsResponse,
+  ListProjectsLocationsAppConnectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsAppConnectorsRequest,
+  output: ListProjectsLocationsAppConnectorsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetIamPolicyProjectsLocationsAppConnectorsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsAppConnectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsAppConnectorsRequest>;
+
+export type GetIamPolicyProjectsLocationsAppConnectorsResponse =
+  GoogleIamV1Policy;
+export const GetIamPolicyProjectsLocationsAppConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+
+export type GetIamPolicyProjectsLocationsAppConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsAppConnectors: API.OperationMethod<
+  GetIamPolicyProjectsLocationsAppConnectorsRequest,
+  GetIamPolicyProjectsLocationsAppConnectorsResponse,
+  GetIamPolicyProjectsLocationsAppConnectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsAppConnectorsRequest,
+  output: GetIamPolicyProjectsLocationsAppConnectorsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface TestIamPermissionsProjectsLocationsAppConnectorsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
 
-export const TestIamPermissionsProjectsLocationsAppGatewaysRequest =
+export const TestIamPermissionsProjectsLocationsAppConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
@@ -3262,14 +3067,14 @@ export const TestIamPermissionsProjectsLocationsAppGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsAppGatewaysRequest>;
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsAppConnectorsRequest>;
 
-export type TestIamPermissionsProjectsLocationsAppGatewaysResponse =
+export type TestIamPermissionsProjectsLocationsAppConnectorsResponse =
   GoogleIamV1TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsAppGatewaysResponse =
+export const TestIamPermissionsProjectsLocationsAppConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsAppGatewaysError =
+export type TestIamPermissionsProjectsLocationsAppConnectorsError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -3277,104 +3082,227 @@ export type TestIamPermissionsProjectsLocationsAppGatewaysError =
   | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsAppGateways: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsAppGatewaysRequest,
-  TestIamPermissionsProjectsLocationsAppGatewaysResponse,
-  TestIamPermissionsProjectsLocationsAppGatewaysError,
+export const testIamPermissionsProjectsLocationsAppConnectors: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsAppConnectorsRequest,
+  TestIamPermissionsProjectsLocationsAppConnectorsResponse,
+  TestIamPermissionsProjectsLocationsAppConnectorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsAppGatewaysRequest,
-  output: TestIamPermissionsProjectsLocationsAppGatewaysResponse,
+  input: TestIamPermissionsProjectsLocationsAppConnectorsRequest,
+  output: TestIamPermissionsProjectsLocationsAppConnectorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface DeleteProjectsLocationsAppGatewaysRequest {
-  /** Required. BeyondCorp AppGateway name using the form: `projects/{project_id}/locations/{location_id}/appGateways/{app_gateway_id}` */
-  name: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+export interface CreateProjectsLocationsAppConnectorsRequest {
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
+  /** Required. The resource project name of the AppConnector location using the form: `projects/{project_id}/locations/{location_id}` */
+  parent: string;
+  /** Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. */
+  appConnectorId?: string;
   /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
   validateOnly?: boolean;
+  /** Request body */
+  body?: GoogleCloudBeyondcorpAppconnectorsV1AppConnector;
 }
 
-export const DeleteProjectsLocationsAppGatewaysRequest =
+export const CreateProjectsLocationsAppConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    appConnectorId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("appConnectorId"),
+    ),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
+    body: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectorsV1AppConnector,
+    ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/appConnectors",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppGatewaysRequest>;
+  ) as unknown as Schema.Schema<CreateProjectsLocationsAppConnectorsRequest>;
 
-export type DeleteProjectsLocationsAppGatewaysResponse =
+export type CreateProjectsLocationsAppConnectorsResponse =
   GoogleLongrunningOperation;
-export const DeleteProjectsLocationsAppGatewaysResponse =
+export const CreateProjectsLocationsAppConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsAppGatewaysError =
+export type CreateProjectsLocationsAppConnectorsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Deletes a single AppGateway. */
-export const deleteProjectsLocationsAppGateways: API.OperationMethod<
-  DeleteProjectsLocationsAppGatewaysRequest,
-  DeleteProjectsLocationsAppGatewaysResponse,
-  DeleteProjectsLocationsAppGatewaysError,
+/** Creates a new AppConnector in a given project and location. */
+export const createProjectsLocationsAppConnectors: API.OperationMethod<
+  CreateProjectsLocationsAppConnectorsRequest,
+  CreateProjectsLocationsAppConnectorsResponse,
+  CreateProjectsLocationsAppConnectorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAppGatewaysRequest,
-  output: DeleteProjectsLocationsAppGatewaysResponse,
+  input: CreateProjectsLocationsAppConnectorsRequest,
+  output: CreateProjectsLocationsAppConnectorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsAppGatewaysRequest {
-  /** Required. BeyondCorp AppGateway name using the form: `projects/{project_id}/locations/{location_id}/appGateways/{app_gateway_id}` */
-  name: string;
+export interface ReportStatusProjectsLocationsAppConnectorsRequest {
+  /** Required. BeyondCorp Connector name using the form: `projects/{project_id}/locations/{location_id}/connectors/{connector}` */
+  appConnector: string;
+  /** Request body */
+  body?: GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest;
 }
 
-export const GetProjectsLocationsAppGatewaysRequest =
+export const ReportStatusProjectsLocationsAppConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
+    appConnector: Schema.String.pipe(T.HttpPath("appConnector")),
+    body: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest,
+    ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+appConnector}:reportStatus",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppGatewaysRequest>;
+  ) as unknown as Schema.Schema<ReportStatusProjectsLocationsAppConnectorsRequest>;
 
-export type GetProjectsLocationsAppGatewaysResponse = AppGateway;
-export const GetProjectsLocationsAppGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AppGateway;
+export type ReportStatusProjectsLocationsAppConnectorsResponse =
+  GoogleLongrunningOperation;
+export const ReportStatusProjectsLocationsAppConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsLocationsAppGatewaysError =
+export type ReportStatusProjectsLocationsAppConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Report status for a given connector. */
+export const reportStatusProjectsLocationsAppConnectors: API.OperationMethod<
+  ReportStatusProjectsLocationsAppConnectorsRequest,
+  ReportStatusProjectsLocationsAppConnectorsResponse,
+  ReportStatusProjectsLocationsAppConnectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ReportStatusProjectsLocationsAppConnectorsRequest,
+  output: ReportStatusProjectsLocationsAppConnectorsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsLocationsAppConnectionsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: GoogleIamV1TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsAppConnectionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsAppConnectionsRequest>;
+
+export type TestIamPermissionsProjectsLocationsAppConnectionsResponse =
+  GoogleIamV1TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsAppConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsAppConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsAppConnections: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsAppConnectionsRequest,
+  TestIamPermissionsProjectsLocationsAppConnectionsResponse,
+  TestIamPermissionsProjectsLocationsAppConnectionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsAppConnectionsRequest,
+  output: TestIamPermissionsProjectsLocationsAppConnectionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsAppConnectionsRequest {
+  /** Optional. The next_page_token value returned from a previous ListAppConnectionsRequest, if any. */
+  pageToken?: string;
+  /** Required. The resource name of the AppConnection location using the form: `projects/{project_id}/locations/{location_id}` */
+  parent: string;
+  /** Optional. A filter specifying constraints of a list operation. */
+  filter?: string;
+  /** Optional. Specifies the ordering of results. See [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information. */
+  orderBy?: string;
+  /** Optional. The maximum number of items to return. If not specified, a default value of 50 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
+}
+
+export const ListProjectsLocationsAppConnectionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/appConnections" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsAppConnectionsRequest>;
+
+export type ListProjectsLocationsAppConnectionsResponse =
+  GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse;
+export const ListProjectsLocationsAppConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse;
+
+export type ListProjectsLocationsAppConnectionsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Gets details of a single AppGateway. */
-export const getProjectsLocationsAppGateways: API.OperationMethod<
-  GetProjectsLocationsAppGatewaysRequest,
-  GetProjectsLocationsAppGatewaysResponse,
-  GetProjectsLocationsAppGatewaysError,
+/** Lists AppConnections in a given project and location. */
+export const listProjectsLocationsAppConnections: API.PaginatedOperationMethod<
+  ListProjectsLocationsAppConnectionsRequest,
+  ListProjectsLocationsAppConnectionsResponse,
+  ListProjectsLocationsAppConnectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAppGatewaysRequest,
-  output: GetProjectsLocationsAppGatewaysResponse,
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsAppConnectionsRequest,
+  output: ListProjectsLocationsAppConnectionsResponse,
   errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
-export interface GetIamPolicyProjectsLocationsAppGatewaysRequest {
+export interface GetIamPolicyProjectsLocationsAppConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
 
-export const GetIamPolicyProjectsLocationsAppGatewaysRequest =
+export const GetIamPolicyProjectsLocationsAppConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
@@ -3383,152 +3311,244 @@ export const GetIamPolicyProjectsLocationsAppGatewaysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsAppGatewaysRequest>;
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsAppConnectionsRequest>;
 
-export type GetIamPolicyProjectsLocationsAppGatewaysResponse =
+export type GetIamPolicyProjectsLocationsAppConnectionsResponse =
   GoogleIamV1Policy;
-export const GetIamPolicyProjectsLocationsAppGatewaysResponse =
+export const GetIamPolicyProjectsLocationsAppConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type GetIamPolicyProjectsLocationsAppGatewaysError =
+export type GetIamPolicyProjectsLocationsAppConnectionsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsAppGateways: API.OperationMethod<
-  GetIamPolicyProjectsLocationsAppGatewaysRequest,
-  GetIamPolicyProjectsLocationsAppGatewaysResponse,
-  GetIamPolicyProjectsLocationsAppGatewaysError,
+export const getIamPolicyProjectsLocationsAppConnections: API.OperationMethod<
+  GetIamPolicyProjectsLocationsAppConnectionsRequest,
+  GetIamPolicyProjectsLocationsAppConnectionsResponse,
+  GetIamPolicyProjectsLocationsAppConnectionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsAppGatewaysRequest,
-  output: GetIamPolicyProjectsLocationsAppGatewaysResponse,
+  input: GetIamPolicyProjectsLocationsAppConnectionsRequest,
+  output: GetIamPolicyProjectsLocationsAppConnectionsResponse,
   errors: [NotFound, Forbidden],
 }));
 
-export interface CreateProjectsLocationsAppGatewaysRequest {
-  /** Required. The resource project name of the AppGateway location using the form: `projects/{project_id}/locations/{location_id}` */
-  parent: string;
-  /** Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. */
-  appGatewayId?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+export interface CreateProjectsLocationsAppConnectionsRequest {
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
+  /** Required. The resource project name of the AppConnection location using the form: `projects/{project_id}/locations/{location_id}` */
+  parent: string;
   /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
   validateOnly?: boolean;
+  /** Optional. User-settable AppConnection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. */
+  appConnectionId?: string;
   /** Request body */
-  body?: AppGateway;
+  body?: GoogleCloudBeyondcorpAppconnectionsV1AppConnection;
 }
 
-export const CreateProjectsLocationsAppGatewaysRequest =
+export const CreateProjectsLocationsAppConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    appGatewayId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("appGatewayId"),
-    ),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
-    body: Schema.optional(AppGateway).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/appGateways", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppGatewaysRequest>;
-
-export type CreateProjectsLocationsAppGatewaysResponse =
-  GoogleLongrunningOperation;
-export const CreateProjectsLocationsAppGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type CreateProjectsLocationsAppGatewaysError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new AppGateway in a given project and location. */
-export const createProjectsLocationsAppGateways: API.OperationMethod<
-  CreateProjectsLocationsAppGatewaysRequest,
-  CreateProjectsLocationsAppGatewaysResponse,
-  CreateProjectsLocationsAppGatewaysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAppGatewaysRequest,
-  output: CreateProjectsLocationsAppGatewaysResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyProjectsLocationsAppGatewaysRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: GoogleIamV1SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsAppGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(GoogleIamV1SetIamPolicyRequest).pipe(T.HttpBody()),
+    appConnectionId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("appConnectionId"),
+    ),
+    body: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectionsV1AppConnection,
+    ).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
+      path: "v1/{+parent}/appConnections",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsAppGatewaysRequest>;
+  ) as unknown as Schema.Schema<CreateProjectsLocationsAppConnectionsRequest>;
 
-export type SetIamPolicyProjectsLocationsAppGatewaysResponse =
-  GoogleIamV1Policy;
-export const SetIamPolicyProjectsLocationsAppGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+export type CreateProjectsLocationsAppConnectionsResponse =
+  GoogleLongrunningOperation;
+export const CreateProjectsLocationsAppConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type SetIamPolicyProjectsLocationsAppGatewaysError =
+export type CreateProjectsLocationsAppConnectionsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsAppGateways: API.OperationMethod<
-  SetIamPolicyProjectsLocationsAppGatewaysRequest,
-  SetIamPolicyProjectsLocationsAppGatewaysResponse,
-  SetIamPolicyProjectsLocationsAppGatewaysError,
+/** Creates a new AppConnection in a given project and location. */
+export const createProjectsLocationsAppConnections: API.OperationMethod<
+  CreateProjectsLocationsAppConnectionsRequest,
+  CreateProjectsLocationsAppConnectionsResponse,
+  CreateProjectsLocationsAppConnectionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsAppGatewaysRequest,
-  output: SetIamPolicyProjectsLocationsAppGatewaysResponse,
+  input: CreateProjectsLocationsAppConnectionsRequest,
+  output: CreateProjectsLocationsAppConnectionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchProjectsLocationsAppConnectionsRequest {
-  /** Optional. If set as true, will create the resource if it is not found. */
-  allowMissing?: boolean;
-  /** Required. Unique resource name of the AppConnection. The name is ignored when creating a AppConnection. */
+export interface GetProjectsLocationsAppConnectionsRequest {
+  /** Required. BeyondCorp AppConnection name using the form: `projects/{project_id}/locations/{location_id}/appConnections/{app_connection_id}` */
   name: string;
+}
+
+export const GetProjectsLocationsAppConnectionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsAppConnectionsRequest>;
+
+export type GetProjectsLocationsAppConnectionsResponse =
+  GoogleCloudBeyondcorpAppconnectionsV1AppConnection;
+export const GetProjectsLocationsAppConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectionsV1AppConnection;
+
+export type GetProjectsLocationsAppConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets details of a single AppConnection. */
+export const getProjectsLocationsAppConnections: API.OperationMethod<
+  GetProjectsLocationsAppConnectionsRequest,
+  GetProjectsLocationsAppConnectionsResponse,
+  GetProjectsLocationsAppConnectionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsAppConnectionsRequest,
+  output: GetProjectsLocationsAppConnectionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteProjectsLocationsAppConnectionsRequest {
+  /** Required. BeyondCorp Connector name using the form: `projects/{project_id}/locations/{location_id}/appConnections/{app_connection_id}` */
+  name: string;
+  /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
+  validateOnly?: boolean;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+}
+
+export const DeleteProjectsLocationsAppConnectionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    validateOnly: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("validateOnly"),
+    ),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppConnectionsRequest>;
+
+export type DeleteProjectsLocationsAppConnectionsResponse =
+  GoogleLongrunningOperation;
+export const DeleteProjectsLocationsAppConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type DeleteProjectsLocationsAppConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a single AppConnection. */
+export const deleteProjectsLocationsAppConnections: API.OperationMethod<
+  DeleteProjectsLocationsAppConnectionsRequest,
+  DeleteProjectsLocationsAppConnectionsResponse,
+  DeleteProjectsLocationsAppConnectionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsAppConnectionsRequest,
+  output: DeleteProjectsLocationsAppConnectionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ResolveProjectsLocationsAppConnectionsRequest {
+  /** Required. The resource name of the AppConnection location using the form: `projects/{project_id}/locations/{location_id}` */
+  parent: string;
+  /** Required. BeyondCorp Connector name of the connector associated with those AppConnections using the form: `projects/{project_id}/locations/{location_id}/appConnectors/{app_connector_id}` */
+  appConnectorId?: string;
+  /** Optional. The maximum number of items to return. If not specified, a default value of 50 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
+  /** Optional. The next_page_token value returned from a previous ResolveAppConnectionsResponse, if any. */
+  pageToken?: string;
+}
+
+export const ResolveProjectsLocationsAppConnectionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    appConnectorId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("appConnectorId"),
+    ),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/appConnections:resolve" }),
+    svc,
+  ) as unknown as Schema.Schema<ResolveProjectsLocationsAppConnectionsRequest>;
+
+export type ResolveProjectsLocationsAppConnectionsResponse =
+  GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse;
+export const ResolveProjectsLocationsAppConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse;
+
+export type ResolveProjectsLocationsAppConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Resolves AppConnections details for a given AppConnector. An internal method called by a connector to find AppConnections to connect to. */
+export const resolveProjectsLocationsAppConnections: API.PaginatedOperationMethod<
+  ResolveProjectsLocationsAppConnectionsRequest,
+  ResolveProjectsLocationsAppConnectionsResponse,
+  ResolveProjectsLocationsAppConnectionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ResolveProjectsLocationsAppConnectionsRequest,
+  output: ResolveProjectsLocationsAppConnectionsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface PatchProjectsLocationsAppConnectionsRequest {
+  /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
+  validateOnly?: boolean;
   /** Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from [BeyondCorp.AppConnection]: * `labels` * `display_name` * `application_endpoint` * `connectors` */
   updateMask?: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
-  /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
-  validateOnly?: boolean;
+  /** Required. Unique resource name of the AppConnection. The name is ignored when creating a AppConnection. */
+  name: string;
+  /** Optional. If set as true, will create the resource if it is not found. */
+  allowMissing?: boolean;
   /** Request body */
   body?: GoogleCloudBeyondcorpAppconnectionsV1AppConnection;
 }
 
 export const PatchProjectsLocationsAppConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    allowMissing: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("allowMissing"),
-    ),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
+    ),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    allowMissing: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("allowMissing"),
     ),
     body: Schema.optional(
       GoogleCloudBeyondcorpAppconnectionsV1AppConnection,
@@ -3606,294 +3626,93 @@ export const setIamPolicyProjectsLocationsAppConnections: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsAppConnectionsRequest {
-  /** Required. BeyondCorp AppConnection name using the form: `projects/{project_id}/locations/{location_id}/appConnections/{app_connection_id}` */
+export interface GetProjectsLocationsAppGatewaysRequest {
+  /** Required. BeyondCorp AppGateway name using the form: `projects/{project_id}/locations/{location_id}/appGateways/{app_gateway_id}` */
   name: string;
 }
 
-export const GetProjectsLocationsAppConnectionsRequest =
+export const GetProjectsLocationsAppGatewaysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppConnectionsRequest>;
+  ) as unknown as Schema.Schema<GetProjectsLocationsAppGatewaysRequest>;
 
-export type GetProjectsLocationsAppConnectionsResponse =
-  GoogleCloudBeyondcorpAppconnectionsV1AppConnection;
-export const GetProjectsLocationsAppConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectionsV1AppConnection;
+export type GetProjectsLocationsAppGatewaysResponse = AppGateway;
+export const GetProjectsLocationsAppGatewaysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AppGateway;
 
-export type GetProjectsLocationsAppConnectionsError =
+export type GetProjectsLocationsAppGatewaysError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Gets details of a single AppConnection. */
-export const getProjectsLocationsAppConnections: API.OperationMethod<
-  GetProjectsLocationsAppConnectionsRequest,
-  GetProjectsLocationsAppConnectionsResponse,
-  GetProjectsLocationsAppConnectionsError,
+/** Gets details of a single AppGateway. */
+export const getProjectsLocationsAppGateways: API.OperationMethod<
+  GetProjectsLocationsAppGatewaysRequest,
+  GetProjectsLocationsAppGatewaysResponse,
+  GetProjectsLocationsAppGatewaysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAppConnectionsRequest,
-  output: GetProjectsLocationsAppConnectionsResponse,
+  input: GetProjectsLocationsAppGatewaysRequest,
+  output: GetProjectsLocationsAppGatewaysResponse,
   errors: [NotFound, Forbidden],
 }));
 
-export interface ListProjectsLocationsAppConnectionsRequest {
-  /** Optional. The maximum number of items to return. If not specified, a default value of 50 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
-  /** Optional. A filter specifying constraints of a list operation. */
-  filter?: string;
-  /** Required. The resource name of the AppConnection location using the form: `projects/{project_id}/locations/{location_id}` */
-  parent: string;
-  /** Optional. The next_page_token value returned from a previous ListAppConnectionsRequest, if any. */
-  pageToken?: string;
-  /** Optional. Specifies the ordering of results. See [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information. */
-  orderBy?: string;
-}
-
-export const ListProjectsLocationsAppConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/appConnections" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppConnectionsRequest>;
-
-export type ListProjectsLocationsAppConnectionsResponse =
-  GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse;
-export const ListProjectsLocationsAppConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse;
-
-export type ListProjectsLocationsAppConnectionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists AppConnections in a given project and location. */
-export const listProjectsLocationsAppConnections: API.PaginatedOperationMethod<
-  ListProjectsLocationsAppConnectionsRequest,
-  ListProjectsLocationsAppConnectionsResponse,
-  ListProjectsLocationsAppConnectionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAppConnectionsRequest,
-  output: ListProjectsLocationsAppConnectionsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface ResolveProjectsLocationsAppConnectionsRequest {
-  /** Required. The resource name of the AppConnection location using the form: `projects/{project_id}/locations/{location_id}` */
-  parent: string;
-  /** Optional. The next_page_token value returned from a previous ResolveAppConnectionsResponse, if any. */
-  pageToken?: string;
-  /** Required. BeyondCorp Connector name of the connector associated with those AppConnections using the form: `projects/{project_id}/locations/{location_id}/appConnectors/{app_connector_id}` */
-  appConnectorId?: string;
-  /** Optional. The maximum number of items to return. If not specified, a default value of 50 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
-}
-
-export const ResolveProjectsLocationsAppConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    appConnectorId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("appConnectorId"),
-    ),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/appConnections:resolve" }),
-    svc,
-  ) as unknown as Schema.Schema<ResolveProjectsLocationsAppConnectionsRequest>;
-
-export type ResolveProjectsLocationsAppConnectionsResponse =
-  GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse;
-export const ResolveProjectsLocationsAppConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse;
-
-export type ResolveProjectsLocationsAppConnectionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Resolves AppConnections details for a given AppConnector. An internal method called by a connector to find AppConnections to connect to. */
-export const resolveProjectsLocationsAppConnections: API.PaginatedOperationMethod<
-  ResolveProjectsLocationsAppConnectionsRequest,
-  ResolveProjectsLocationsAppConnectionsResponse,
-  ResolveProjectsLocationsAppConnectionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ResolveProjectsLocationsAppConnectionsRequest,
-  output: ResolveProjectsLocationsAppConnectionsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface CreateProjectsLocationsAppConnectionsRequest {
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
-  validateOnly?: boolean;
-  /** Required. The resource project name of the AppConnection location using the form: `projects/{project_id}/locations/{location_id}` */
-  parent: string;
-  /** Optional. User-settable AppConnection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. */
-  appConnectionId?: string;
-  /** Request body */
-  body?: GoogleCloudBeyondcorpAppconnectionsV1AppConnection;
-}
-
-export const CreateProjectsLocationsAppConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    validateOnly: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("validateOnly"),
-    ),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    appConnectionId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("appConnectionId"),
-    ),
-    body: Schema.optional(
-      GoogleCloudBeyondcorpAppconnectionsV1AppConnection,
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}/appConnections",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppConnectionsRequest>;
-
-export type CreateProjectsLocationsAppConnectionsResponse =
-  GoogleLongrunningOperation;
-export const CreateProjectsLocationsAppConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
-
-export type CreateProjectsLocationsAppConnectionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new AppConnection in a given project and location. */
-export const createProjectsLocationsAppConnections: API.OperationMethod<
-  CreateProjectsLocationsAppConnectionsRequest,
-  CreateProjectsLocationsAppConnectionsResponse,
-  CreateProjectsLocationsAppConnectionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAppConnectionsRequest,
-  output: CreateProjectsLocationsAppConnectionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsLocationsAppConnectionsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsAppConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsAppConnectionsRequest>;
-
-export type GetIamPolicyProjectsLocationsAppConnectionsResponse =
-  GoogleIamV1Policy;
-export const GetIamPolicyProjectsLocationsAppConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
-
-export type GetIamPolicyProjectsLocationsAppConnectionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsAppConnections: API.OperationMethod<
-  GetIamPolicyProjectsLocationsAppConnectionsRequest,
-  GetIamPolicyProjectsLocationsAppConnectionsResponse,
-  GetIamPolicyProjectsLocationsAppConnectionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsAppConnectionsRequest,
-  output: GetIamPolicyProjectsLocationsAppConnectionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteProjectsLocationsAppConnectionsRequest {
-  /** Required. BeyondCorp Connector name using the form: `projects/{project_id}/locations/{location_id}/appConnections/{app_connection_id}` */
+export interface DeleteProjectsLocationsAppGatewaysRequest {
+  /** Required. BeyondCorp AppGateway name using the form: `projects/{project_id}/locations/{location_id}/appGateways/{app_gateway_id}` */
   name: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
   validateOnly?: boolean;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
 }
 
-export const DeleteProjectsLocationsAppConnectionsRequest =
+export const DeleteProjectsLocationsAppGatewaysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppConnectionsRequest>;
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppGatewaysRequest>;
 
-export type DeleteProjectsLocationsAppConnectionsResponse =
+export type DeleteProjectsLocationsAppGatewaysResponse =
   GoogleLongrunningOperation;
-export const DeleteProjectsLocationsAppConnectionsResponse =
+export const DeleteProjectsLocationsAppGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsAppConnectionsError =
+export type DeleteProjectsLocationsAppGatewaysError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Deletes a single AppConnection. */
-export const deleteProjectsLocationsAppConnections: API.OperationMethod<
-  DeleteProjectsLocationsAppConnectionsRequest,
-  DeleteProjectsLocationsAppConnectionsResponse,
-  DeleteProjectsLocationsAppConnectionsError,
+/** Deletes a single AppGateway. */
+export const deleteProjectsLocationsAppGateways: API.OperationMethod<
+  DeleteProjectsLocationsAppGatewaysRequest,
+  DeleteProjectsLocationsAppGatewaysResponse,
+  DeleteProjectsLocationsAppGatewaysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAppConnectionsRequest,
-  output: DeleteProjectsLocationsAppConnectionsResponse,
+  input: DeleteProjectsLocationsAppGatewaysRequest,
+  output: DeleteProjectsLocationsAppGatewaysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface TestIamPermissionsProjectsLocationsAppConnectionsRequest {
+export interface TestIamPermissionsProjectsLocationsAppGatewaysRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
 
-export const TestIamPermissionsProjectsLocationsAppConnectionsRequest =
+export const TestIamPermissionsProjectsLocationsAppGatewaysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
@@ -3906,14 +3725,14 @@ export const TestIamPermissionsProjectsLocationsAppConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsAppConnectionsRequest>;
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsAppGatewaysRequest>;
 
-export type TestIamPermissionsProjectsLocationsAppConnectionsResponse =
+export type TestIamPermissionsProjectsLocationsAppGatewaysResponse =
   GoogleIamV1TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsAppConnectionsResponse =
+export const TestIamPermissionsProjectsLocationsAppGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsAppConnectionsError =
+export type TestIamPermissionsProjectsLocationsAppGatewaysError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -3921,14 +3740,201 @@ export type TestIamPermissionsProjectsLocationsAppConnectionsError =
   | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsAppConnections: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsAppConnectionsRequest,
-  TestIamPermissionsProjectsLocationsAppConnectionsResponse,
-  TestIamPermissionsProjectsLocationsAppConnectionsError,
+export const testIamPermissionsProjectsLocationsAppGateways: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsAppGatewaysRequest,
+  TestIamPermissionsProjectsLocationsAppGatewaysResponse,
+  TestIamPermissionsProjectsLocationsAppGatewaysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsAppConnectionsRequest,
-  output: TestIamPermissionsProjectsLocationsAppConnectionsResponse,
+  input: TestIamPermissionsProjectsLocationsAppGatewaysRequest,
+  output: TestIamPermissionsProjectsLocationsAppGatewaysResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsAppGatewaysRequest {
+  /** Optional. The maximum number of items to return. If not specified, a default value of 50 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
+  /** Optional. The next_page_token value returned from a previous ListAppGatewaysRequest, if any. */
+  pageToken?: string;
+  /** Optional. A filter specifying constraints of a list operation. */
+  filter?: string;
+  /** Optional. Specifies the ordering of results. See [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information. */
+  orderBy?: string;
+  /** Required. The resource name of the AppGateway location using the form: `projects/{project_id}/locations/{location_id}` */
+  parent: string;
+}
+
+export const ListProjectsLocationsAppGatewaysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/appGateways" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsAppGatewaysRequest>;
+
+export type ListProjectsLocationsAppGatewaysResponse = ListAppGatewaysResponse;
+export const ListProjectsLocationsAppGatewaysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListAppGatewaysResponse;
+
+export type ListProjectsLocationsAppGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists AppGateways in a given project and location. */
+export const listProjectsLocationsAppGateways: API.PaginatedOperationMethod<
+  ListProjectsLocationsAppGatewaysRequest,
+  ListProjectsLocationsAppGatewaysResponse,
+  ListProjectsLocationsAppGatewaysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsAppGatewaysRequest,
+  output: ListProjectsLocationsAppGatewaysResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetIamPolicyProjectsLocationsAppGatewaysRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsAppGatewaysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsAppGatewaysRequest>;
+
+export type GetIamPolicyProjectsLocationsAppGatewaysResponse =
+  GoogleIamV1Policy;
+export const GetIamPolicyProjectsLocationsAppGatewaysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+
+export type GetIamPolicyProjectsLocationsAppGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsAppGateways: API.OperationMethod<
+  GetIamPolicyProjectsLocationsAppGatewaysRequest,
+  GetIamPolicyProjectsLocationsAppGatewaysResponse,
+  GetIamPolicyProjectsLocationsAppGatewaysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsAppGatewaysRequest,
+  output: GetIamPolicyProjectsLocationsAppGatewaysResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface SetIamPolicyProjectsLocationsAppGatewaysRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: GoogleIamV1SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsAppGatewaysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(GoogleIamV1SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsAppGatewaysRequest>;
+
+export type SetIamPolicyProjectsLocationsAppGatewaysResponse =
+  GoogleIamV1Policy;
+export const SetIamPolicyProjectsLocationsAppGatewaysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+
+export type SetIamPolicyProjectsLocationsAppGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsAppGateways: API.OperationMethod<
+  SetIamPolicyProjectsLocationsAppGatewaysRequest,
+  SetIamPolicyProjectsLocationsAppGatewaysResponse,
+  SetIamPolicyProjectsLocationsAppGatewaysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsAppGatewaysRequest,
+  output: SetIamPolicyProjectsLocationsAppGatewaysResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsLocationsAppGatewaysRequest {
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Required. The resource project name of the AppGateway location using the form: `projects/{project_id}/locations/{location_id}` */
+  parent: string;
+  /** Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. */
+  appGatewayId?: string;
+  /** Optional. If set, validates request by executing a dry-run which would not alter the resource in any way. */
+  validateOnly?: boolean;
+  /** Request body */
+  body?: AppGateway;
+}
+
+export const CreateProjectsLocationsAppGatewaysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    appGatewayId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("appGatewayId"),
+    ),
+    validateOnly: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("validateOnly"),
+    ),
+    body: Schema.optional(AppGateway).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/appGateways", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsAppGatewaysRequest>;
+
+export type CreateProjectsLocationsAppGatewaysResponse =
+  GoogleLongrunningOperation;
+export const CreateProjectsLocationsAppGatewaysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type CreateProjectsLocationsAppGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new AppGateway in a given project and location. */
+export const createProjectsLocationsAppGateways: API.OperationMethod<
+  CreateProjectsLocationsAppGatewaysRequest,
+  CreateProjectsLocationsAppGatewaysResponse,
+  CreateProjectsLocationsAppGatewaysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsAppGatewaysRequest,
+  output: CreateProjectsLocationsAppGatewaysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -4003,59 +4009,6 @@ export const deleteOrganizationsLocationsOperations: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListOrganizationsLocationsOperationsRequest {
-  /** The standard list filter. */
-  filter?: string;
-  /** The name of the operation's parent resource. */
-  name: string;
-  /** The standard list page size. */
-  pageSize?: number;
-  /** The standard list page token. */
-  pageToken?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
-}
-
-export const ListOrganizationsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("returnPartialSuccess"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsOperationsRequest>;
-
-export type ListOrganizationsLocationsOperationsResponse =
-  GoogleLongrunningListOperationsResponse;
-export const ListOrganizationsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
-
-export type ListOrganizationsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
-export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
-  ListOrganizationsLocationsOperationsRequest,
-  ListOrganizationsLocationsOperationsResponse,
-  ListOrganizationsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsOperationsRequest,
-  output: ListOrganizationsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface CancelOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
@@ -4095,4 +4048,57 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   input: CancelOrganizationsLocationsOperationsRequest,
   output: CancelOrganizationsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListOrganizationsLocationsOperationsRequest {
+  /** The name of the operation's parent resource. */
+  name: string;
+  /** The standard list page size. */
+  pageSize?: number;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
+  /** The standard list filter. */
+  filter?: string;
+}
+
+export const ListOrganizationsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
+    svc,
+  ) as unknown as Schema.Schema<ListOrganizationsLocationsOperationsRequest>;
+
+export type ListOrganizationsLocationsOperationsResponse =
+  GoogleLongrunningListOperationsResponse;
+export const ListOrganizationsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+
+export type ListOrganizationsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
+export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
+  ListOrganizationsLocationsOperationsRequest,
+  ListOrganizationsLocationsOperationsResponse,
+  ListOrganizationsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListOrganizationsLocationsOperationsRequest,
+  output: ListOrganizationsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));

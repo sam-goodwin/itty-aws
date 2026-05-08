@@ -39,7 +39,7 @@ export interface AggregateClassificationMetrics {
   threshold?: number;
 }
 
-export const AggregateClassificationMetrics =
+export const AggregateClassificationMetrics: Schema.Schema<AggregateClassificationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accuracy: Schema.optional(Schema.Number),
     f1Score: Schema.optional(Schema.Number),
@@ -57,7 +57,7 @@ export interface AggregationThresholdPolicy {
   threshold?: string;
 }
 
-export const AggregationThresholdPolicy =
+export const AggregationThresholdPolicy: Schema.Schema<AggregationThresholdPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privacyUnitColumns: Schema.optional(Schema.Array(Schema.String)),
     threshold: Schema.optional(Schema.String),
@@ -153,13 +153,14 @@ export interface Argument {
   name?: string;
 }
 
-export const Argument = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  argumentKind: Schema.optional(Schema.String),
-  dataType: Schema.optional(StandardSqlDataType),
-  isAggregate: Schema.optional(Schema.Boolean),
-  mode: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "Argument" });
+export const Argument: Schema.Schema<Argument> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    argumentKind: Schema.optional(Schema.String),
+    dataType: Schema.optional(StandardSqlDataType),
+    isAggregate: Schema.optional(Schema.Boolean),
+    mode: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Argument" });
 
 export interface ArimaCoefficients {
   /** Auto-regressive coefficients, an array of double. */
@@ -170,11 +171,12 @@ export interface ArimaCoefficients {
   movingAverageCoefficients?: ReadonlyArray<number>;
 }
 
-export const ArimaCoefficients = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  autoRegressiveCoefficients: Schema.optional(Schema.Array(Schema.Number)),
-  interceptCoefficient: Schema.optional(Schema.Number),
-  movingAverageCoefficients: Schema.optional(Schema.Array(Schema.Number)),
-}).annotate({ identifier: "ArimaCoefficients" });
+export const ArimaCoefficients: Schema.Schema<ArimaCoefficients> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoRegressiveCoefficients: Schema.optional(Schema.Array(Schema.Number)),
+    interceptCoefficient: Schema.optional(Schema.Number),
+    movingAverageCoefficients: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({ identifier: "ArimaCoefficients" });
 
 export interface ArimaFittingMetrics {
   /** AIC. */
@@ -185,11 +187,12 @@ export interface ArimaFittingMetrics {
   variance?: number;
 }
 
-export const ArimaFittingMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  aic: Schema.optional(Schema.Number),
-  logLikelihood: Schema.optional(Schema.Number),
-  variance: Schema.optional(Schema.Number),
-}).annotate({ identifier: "ArimaFittingMetrics" });
+export const ArimaFittingMetrics: Schema.Schema<ArimaFittingMetrics> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aic: Schema.optional(Schema.Number),
+    logLikelihood: Schema.optional(Schema.Number),
+    variance: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ArimaFittingMetrics" });
 
 export interface ArimaOrder {
   /** Order of the differencing part. */
@@ -200,11 +203,12 @@ export interface ArimaOrder {
   q?: string;
 }
 
-export const ArimaOrder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  d: Schema.optional(Schema.String),
-  p: Schema.optional(Schema.String),
-  q: Schema.optional(Schema.String),
-}).annotate({ identifier: "ArimaOrder" });
+export const ArimaOrder: Schema.Schema<ArimaOrder> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    d: Schema.optional(Schema.String),
+    p: Schema.optional(Schema.String),
+    q: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ArimaOrder" });
 
 export interface ArimaSingleModelForecastingMetrics {
   /** Arima fitting metrics. */
@@ -237,7 +241,7 @@ export interface ArimaSingleModelForecastingMetrics {
   timeSeriesIds?: ReadonlyArray<string>;
 }
 
-export const ArimaSingleModelForecastingMetrics =
+export const ArimaSingleModelForecastingMetrics: Schema.Schema<ArimaSingleModelForecastingMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     arimaFittingMetrics: Schema.optional(ArimaFittingMetrics),
     hasDrift: Schema.optional(Schema.Boolean),
@@ -275,7 +279,7 @@ export interface ArimaForecastingMetrics {
   timeSeriesId?: ReadonlyArray<string>;
 }
 
-export const ArimaForecastingMetrics =
+export const ArimaForecastingMetrics: Schema.Schema<ArimaForecastingMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     arimaFittingMetrics: Schema.optional(Schema.Array(ArimaFittingMetrics)),
     arimaSingleModelForecastingMetrics: Schema.optional(
@@ -320,18 +324,19 @@ export interface ArimaModelInfo {
   timeSeriesIds?: ReadonlyArray<string>;
 }
 
-export const ArimaModelInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  arimaCoefficients: Schema.optional(ArimaCoefficients),
-  arimaFittingMetrics: Schema.optional(ArimaFittingMetrics),
-  hasDrift: Schema.optional(Schema.Boolean),
-  hasHolidayEffect: Schema.optional(Schema.Boolean),
-  hasSpikesAndDips: Schema.optional(Schema.Boolean),
-  hasStepChanges: Schema.optional(Schema.Boolean),
-  nonSeasonalOrder: Schema.optional(ArimaOrder),
-  seasonalPeriods: Schema.optional(Schema.Array(Schema.String)),
-  timeSeriesId: Schema.optional(Schema.String),
-  timeSeriesIds: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "ArimaModelInfo" });
+export const ArimaModelInfo: Schema.Schema<ArimaModelInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    arimaCoefficients: Schema.optional(ArimaCoefficients),
+    arimaFittingMetrics: Schema.optional(ArimaFittingMetrics),
+    hasDrift: Schema.optional(Schema.Boolean),
+    hasHolidayEffect: Schema.optional(Schema.Boolean),
+    hasSpikesAndDips: Schema.optional(Schema.Boolean),
+    hasStepChanges: Schema.optional(Schema.Boolean),
+    nonSeasonalOrder: Schema.optional(ArimaOrder),
+    seasonalPeriods: Schema.optional(Schema.Array(Schema.String)),
+    timeSeriesId: Schema.optional(Schema.String),
+    timeSeriesIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ArimaModelInfo" });
 
 export interface ArimaResult {
   /** This message is repeated because there are multiple arima models fitted in auto-arima. For non-auto-arima model, its size is one. */
@@ -350,10 +355,11 @@ export interface ArimaResult {
   >;
 }
 
-export const ArimaResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  arimaModelInfo: Schema.optional(Schema.Array(ArimaModelInfo)),
-  seasonalPeriods: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "ArimaResult" });
+export const ArimaResult: Schema.Schema<ArimaResult> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    arimaModelInfo: Schema.optional(Schema.Array(ArimaModelInfo)),
+    seasonalPeriods: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ArimaResult" });
 
 export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
@@ -367,10 +373,11 @@ export interface AuditLogConfig {
     | (string & {});
 }
 
-export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-  logType: Schema.optional(Schema.String),
-}).annotate({ identifier: "AuditLogConfig" });
+export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+    logType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
@@ -379,19 +386,21 @@ export interface AuditConfig {
   service?: string;
 }
 
-export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-  service: Schema.optional(Schema.String),
-}).annotate({ identifier: "AuditConfig" });
+export const AuditConfig: Schema.Schema<AuditConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+    service: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AuditConfig" });
 
 export interface AvroOptions {
   /** Optional. If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER). */
   useAvroLogicalTypes?: boolean;
 }
 
-export const AvroOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  useAvroLogicalTypes: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "AvroOptions" });
+export const AvroOptions: Schema.Schema<AvroOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    useAvroLogicalTypes: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AvroOptions" });
 
 export interface BatchDeleteRowAccessPoliciesRequest {
   /** If set to true, it deletes the row access policy even if it's the last row access policy on the table and the deletion will widen the access rather narrowing it. */
@@ -400,7 +409,7 @@ export interface BatchDeleteRowAccessPoliciesRequest {
   policyIds?: ReadonlyArray<string>;
 }
 
-export const BatchDeleteRowAccessPoliciesRequest =
+export const BatchDeleteRowAccessPoliciesRequest: Schema.Schema<BatchDeleteRowAccessPoliciesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean),
     policyIds: Schema.optional(Schema.Array(Schema.String)),
@@ -421,10 +430,11 @@ export interface BiEngineReason {
   message?: string;
 }
 
-export const BiEngineReason = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  code: Schema.optional(Schema.String),
-  message: Schema.optional(Schema.String),
-}).annotate({ identifier: "BiEngineReason" });
+export const BiEngineReason: Schema.Schema<BiEngineReason> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BiEngineReason" });
 
 export interface BiEngineStatistics {
   /** Output only. Specifies which mode of BI Engine acceleration was performed (if any). */
@@ -446,11 +456,12 @@ export interface BiEngineStatistics {
   biEngineReasons?: ReadonlyArray<BiEngineReason>;
 }
 
-export const BiEngineStatistics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accelerationMode: Schema.optional(Schema.String),
-  biEngineMode: Schema.optional(Schema.String),
-  biEngineReasons: Schema.optional(Schema.Array(BiEngineReason)),
-}).annotate({ identifier: "BiEngineStatistics" });
+export const BiEngineStatistics: Schema.Schema<BiEngineStatistics> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accelerationMode: Schema.optional(Schema.String),
+    biEngineMode: Schema.optional(Schema.String),
+    biEngineReasons: Schema.optional(Schema.Array(BiEngineReason)),
+  }).annotate({ identifier: "BiEngineStatistics" });
 
 export interface BigLakeConfiguration {
   /** Optional. The connection specifying the credentials to be used to read and write to external storage, such as Cloud Storage. The connection_id can have the form `{project}.{location}.{connection_id}` or `projects/{project}/locations/{location}/connections/{connection_id}". */
@@ -463,12 +474,13 @@ export interface BigLakeConfiguration {
   tableFormat?: "TABLE_FORMAT_UNSPECIFIED" | "ICEBERG" | (string & {});
 }
 
-export const BigLakeConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  connectionId: Schema.optional(Schema.String),
-  fileFormat: Schema.optional(Schema.String),
-  storageUri: Schema.optional(Schema.String),
-  tableFormat: Schema.optional(Schema.String),
-}).annotate({ identifier: "BigLakeConfiguration" });
+export const BigLakeConfiguration: Schema.Schema<BigLakeConfiguration> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectionId: Schema.optional(Schema.String),
+    fileFormat: Schema.optional(Schema.String),
+    storageUri: Schema.optional(Schema.String),
+    tableFormat: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BigLakeConfiguration" });
 
 export interface BigQueryModelTraining {
   /** Deprecated. */
@@ -477,10 +489,11 @@ export interface BigQueryModelTraining {
   expectedTotalIterations?: string;
 }
 
-export const BigQueryModelTraining = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  currentIteration: Schema.optional(Schema.Number),
-  expectedTotalIterations: Schema.optional(Schema.String),
-}).annotate({ identifier: "BigQueryModelTraining" });
+export const BigQueryModelTraining: Schema.Schema<BigQueryModelTraining> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currentIteration: Schema.optional(Schema.Number),
+    expectedTotalIterations: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BigQueryModelTraining" });
 
 export interface BigtableProtoConfig {
   /** Optional. The fully qualified proto message name of the protobuf. In the format of "foo.bar.Message". */
@@ -489,10 +502,11 @@ export interface BigtableProtoConfig {
   schemaBundleId?: string;
 }
 
-export const BigtableProtoConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  protoMessageName: Schema.optional(Schema.String),
-  schemaBundleId: Schema.optional(Schema.String),
-}).annotate({ identifier: "BigtableProtoConfig" });
+export const BigtableProtoConfig: Schema.Schema<BigtableProtoConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protoMessageName: Schema.optional(Schema.String),
+    schemaBundleId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BigtableProtoConfig" });
 
 export interface BigtableColumn {
   /** Optional. The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. PROTO_BINARY - indicates values are encoded using serialized proto messages. This can only be used in combination with JSON type. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels. */
@@ -511,15 +525,16 @@ export interface BigtableColumn {
   type?: string;
 }
 
-export const BigtableColumn = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  encoding: Schema.optional(Schema.String),
-  fieldName: Schema.optional(Schema.String),
-  onlyReadLatest: Schema.optional(Schema.Boolean),
-  protoConfig: Schema.optional(BigtableProtoConfig),
-  qualifierEncoded: Schema.optional(Schema.String),
-  qualifierString: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-}).annotate({ identifier: "BigtableColumn" });
+export const BigtableColumn: Schema.Schema<BigtableColumn> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encoding: Schema.optional(Schema.String),
+    fieldName: Schema.optional(Schema.String),
+    onlyReadLatest: Schema.optional(Schema.Boolean),
+    protoConfig: Schema.optional(BigtableProtoConfig),
+    qualifierEncoded: Schema.optional(Schema.String),
+    qualifierString: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BigtableColumn" });
 
 export interface BigtableColumnFamily {
   /** Optional. Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as `.`. Other columns can be accessed as a list through the `.Column` field. */
@@ -536,14 +551,15 @@ export interface BigtableColumnFamily {
   type?: string;
 }
 
-export const BigtableColumnFamily = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  columns: Schema.optional(Schema.Array(BigtableColumn)),
-  encoding: Schema.optional(Schema.String),
-  familyId: Schema.optional(Schema.String),
-  onlyReadLatest: Schema.optional(Schema.Boolean),
-  protoConfig: Schema.optional(BigtableProtoConfig),
-  type: Schema.optional(Schema.String),
-}).annotate({ identifier: "BigtableColumnFamily" });
+export const BigtableColumnFamily: Schema.Schema<BigtableColumnFamily> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columns: Schema.optional(Schema.Array(BigtableColumn)),
+    encoding: Schema.optional(Schema.String),
+    familyId: Schema.optional(Schema.String),
+    onlyReadLatest: Schema.optional(Schema.Boolean),
+    protoConfig: Schema.optional(BigtableProtoConfig),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BigtableColumnFamily" });
 
 export interface BigtableOptions {
   /** Optional. List of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable. */
@@ -556,12 +572,13 @@ export interface BigtableOptions {
   readRowkeyAsString?: boolean;
 }
 
-export const BigtableOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  columnFamilies: Schema.optional(Schema.Array(BigtableColumnFamily)),
-  ignoreUnspecifiedColumnFamilies: Schema.optional(Schema.Boolean),
-  outputColumnFamiliesAsJson: Schema.optional(Schema.Boolean),
-  readRowkeyAsString: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "BigtableOptions" });
+export const BigtableOptions: Schema.Schema<BigtableOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columnFamilies: Schema.optional(Schema.Array(BigtableColumnFamily)),
+    ignoreUnspecifiedColumnFamilies: Schema.optional(Schema.Boolean),
+    outputColumnFamiliesAsJson: Schema.optional(Schema.Boolean),
+    readRowkeyAsString: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BigtableOptions" });
 
 export interface BinaryConfusionMatrix {
   /** The fraction of predictions given the correct label. */
@@ -584,17 +601,18 @@ export interface BinaryConfusionMatrix {
   truePositives?: string;
 }
 
-export const BinaryConfusionMatrix = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accuracy: Schema.optional(Schema.Number),
-  f1Score: Schema.optional(Schema.Number),
-  falseNegatives: Schema.optional(Schema.String),
-  falsePositives: Schema.optional(Schema.String),
-  positiveClassThreshold: Schema.optional(Schema.Number),
-  precision: Schema.optional(Schema.Number),
-  recall: Schema.optional(Schema.Number),
-  trueNegatives: Schema.optional(Schema.String),
-  truePositives: Schema.optional(Schema.String),
-}).annotate({ identifier: "BinaryConfusionMatrix" });
+export const BinaryConfusionMatrix: Schema.Schema<BinaryConfusionMatrix> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accuracy: Schema.optional(Schema.Number),
+    f1Score: Schema.optional(Schema.Number),
+    falseNegatives: Schema.optional(Schema.String),
+    falsePositives: Schema.optional(Schema.String),
+    positiveClassThreshold: Schema.optional(Schema.Number),
+    precision: Schema.optional(Schema.Number),
+    recall: Schema.optional(Schema.Number),
+    trueNegatives: Schema.optional(Schema.String),
+    truePositives: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BinaryConfusionMatrix" });
 
 export interface BinaryClassificationMetrics {
   /** Aggregate classification metrics. */
@@ -607,7 +625,7 @@ export interface BinaryClassificationMetrics {
   positiveLabel?: string;
 }
 
-export const BinaryClassificationMetrics =
+export const BinaryClassificationMetrics: Schema.Schema<BinaryClassificationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aggregateClassificationMetrics: Schema.optional(
       AggregateClassificationMetrics,
@@ -630,12 +648,13 @@ export interface Expr {
   title?: string;
 }
 
-export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  description: Schema.optional(Schema.String),
-  expression: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-}).annotate({ identifier: "Expr" });
+export const Expr: Schema.Schema<Expr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -646,11 +665,12 @@ export interface Binding {
   role?: string;
 }
 
-export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  condition: Schema.optional(Expr),
-  members: Schema.optional(Schema.Array(Schema.String)),
-  role: Schema.optional(Schema.String),
-}).annotate({ identifier: "Binding" });
+export const Binding: Schema.Schema<Binding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    condition: Schema.optional(Expr),
+    members: Schema.optional(Schema.Array(Schema.String)),
+    role: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Binding" });
 
 export interface BqmlIterationResult {
   /** Deprecated. */
@@ -665,13 +685,14 @@ export interface BqmlIterationResult {
   trainingLoss?: number;
 }
 
-export const BqmlIterationResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  durationMs: Schema.optional(Schema.String),
-  evalLoss: Schema.optional(Schema.Number),
-  index: Schema.optional(Schema.Number),
-  learnRate: Schema.optional(Schema.Number),
-  trainingLoss: Schema.optional(Schema.Number),
-}).annotate({ identifier: "BqmlIterationResult" });
+export const BqmlIterationResult: Schema.Schema<BqmlIterationResult> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    durationMs: Schema.optional(Schema.String),
+    evalLoss: Schema.optional(Schema.Number),
+    index: Schema.optional(Schema.Number),
+    learnRate: Schema.optional(Schema.Number),
+    trainingLoss: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "BqmlIterationResult" });
 
 export interface BqmlTrainingRun {
   /** Deprecated. */
@@ -694,24 +715,25 @@ export interface BqmlTrainingRun {
   };
 }
 
-export const BqmlTrainingRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  iterationResults: Schema.optional(Schema.Array(BqmlIterationResult)),
-  startTime: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  trainingOptions: Schema.optional(
-    Schema.Struct({
-      earlyStop: Schema.optional(Schema.Boolean),
-      l1Reg: Schema.optional(Schema.Number),
-      l2Reg: Schema.optional(Schema.Number),
-      learnRate: Schema.optional(Schema.Number),
-      learnRateStrategy: Schema.optional(Schema.String),
-      lineSearchInitLearnRate: Schema.optional(Schema.Number),
-      maxIteration: Schema.optional(Schema.String),
-      minRelProgress: Schema.optional(Schema.Number),
-      warmStart: Schema.optional(Schema.Boolean),
-    }),
-  ),
-}).annotate({ identifier: "BqmlTrainingRun" });
+export const BqmlTrainingRun: Schema.Schema<BqmlTrainingRun> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    iterationResults: Schema.optional(Schema.Array(BqmlIterationResult)),
+    startTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    trainingOptions: Schema.optional(
+      Schema.Struct({
+        earlyStop: Schema.optional(Schema.Boolean),
+        l1Reg: Schema.optional(Schema.Number),
+        l2Reg: Schema.optional(Schema.Number),
+        learnRate: Schema.optional(Schema.Number),
+        learnRateStrategy: Schema.optional(Schema.String),
+        lineSearchInitLearnRate: Schema.optional(Schema.Number),
+        maxIteration: Schema.optional(Schema.String),
+        minRelProgress: Schema.optional(Schema.Number),
+        warmStart: Schema.optional(Schema.Boolean),
+      }),
+    ),
+  }).annotate({ identifier: "BqmlTrainingRun" });
 
 export interface CategoryCount {
   /** The name of category. */
@@ -720,19 +742,21 @@ export interface CategoryCount {
   count?: string;
 }
 
-export const CategoryCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  category: Schema.optional(Schema.String),
-  count: Schema.optional(Schema.String),
-}).annotate({ identifier: "CategoryCount" });
+export const CategoryCount: Schema.Schema<CategoryCount> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    category: Schema.optional(Schema.String),
+    count: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CategoryCount" });
 
 export interface CategoricalValue {
   /** Counts of all categories for the categorical feature. If there are more than ten categories, we return top ten (by count) and return one more CategoryCount with category "_OTHER_" and count as aggregate counts of remaining categories. */
   categoryCounts?: ReadonlyArray<CategoryCount>;
 }
 
-export const CategoricalValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  categoryCounts: Schema.optional(Schema.Array(CategoryCount)),
-}).annotate({ identifier: "CategoricalValue" });
+export const CategoricalValue: Schema.Schema<CategoricalValue> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    categoryCounts: Schema.optional(Schema.Array(CategoryCount)),
+  }).annotate({ identifier: "CategoricalValue" });
 
 export interface TableReference {
   /** Required. The ID of the dataset containing this table. */
@@ -743,11 +767,12 @@ export interface TableReference {
   tableId?: string;
 }
 
-export const TableReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  datasetId: Schema.optional(Schema.String),
-  projectId: Schema.optional(Schema.String),
-  tableId: Schema.optional(Schema.String),
-}).annotate({ identifier: "TableReference" });
+export const TableReference: Schema.Schema<TableReference> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datasetId: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    tableId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TableReference" });
 
 export interface CloneDefinition {
   /** Required. Reference describing the ID of the table that was cloned. */
@@ -756,10 +781,11 @@ export interface CloneDefinition {
   cloneTime?: string;
 }
 
-export const CloneDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  baseTableReference: Schema.optional(TableReference),
-  cloneTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "CloneDefinition" });
+export const CloneDefinition: Schema.Schema<CloneDefinition> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseTableReference: Schema.optional(TableReference),
+    cloneTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloneDefinition" });
 
 export interface FeatureValue {
   /** The categorical feature value. */
@@ -770,11 +796,12 @@ export interface FeatureValue {
   numericalValue?: number;
 }
 
-export const FeatureValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  categoricalValue: Schema.optional(CategoricalValue),
-  featureColumn: Schema.optional(Schema.String),
-  numericalValue: Schema.optional(Schema.Number),
-}).annotate({ identifier: "FeatureValue" });
+export const FeatureValue: Schema.Schema<FeatureValue> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    categoricalValue: Schema.optional(CategoricalValue),
+    featureColumn: Schema.optional(Schema.String),
+    numericalValue: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "FeatureValue" });
 
 export interface Cluster {
   /** Centroid id. */
@@ -785,11 +812,12 @@ export interface Cluster {
   featureValues?: ReadonlyArray<FeatureValue>;
 }
 
-export const Cluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  centroidId: Schema.optional(Schema.String),
-  count: Schema.optional(Schema.String),
-  featureValues: Schema.optional(Schema.Array(FeatureValue)),
-}).annotate({ identifier: "Cluster" });
+export const Cluster: Schema.Schema<Cluster> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    centroidId: Schema.optional(Schema.String),
+    count: Schema.optional(Schema.String),
+    featureValues: Schema.optional(Schema.Array(FeatureValue)),
+  }).annotate({ identifier: "Cluster" });
 
 export interface ClusterInfo {
   /** Centroid id. */
@@ -800,20 +828,22 @@ export interface ClusterInfo {
   clusterSize?: string;
 }
 
-export const ClusterInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  centroidId: Schema.optional(Schema.String),
-  clusterRadius: Schema.optional(Schema.Number),
-  clusterSize: Schema.optional(Schema.String),
-}).annotate({ identifier: "ClusterInfo" });
+export const ClusterInfo: Schema.Schema<ClusterInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    centroidId: Schema.optional(Schema.String),
+    clusterRadius: Schema.optional(Schema.Number),
+    clusterSize: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ClusterInfo" });
 
 export interface Clustering {
   /** One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. The ordering of the clustering fields should be prioritized from most to least important for filtering purposes. For additional information, see [Introduction to clustered tables](https://cloud.google.com/bigquery/docs/clustered-tables#limitations). */
   fields?: ReadonlyArray<string>;
 }
 
-export const Clustering = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  fields: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "Clustering" });
+export const Clustering: Schema.Schema<Clustering> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fields: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "Clustering" });
 
 export interface ClusteringMetrics {
   /** Information for all clusters. */
@@ -824,11 +854,12 @@ export interface ClusteringMetrics {
   meanSquaredDistance?: number;
 }
 
-export const ClusteringMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  clusters: Schema.optional(Schema.Array(Cluster)),
-  daviesBouldinIndex: Schema.optional(Schema.Number),
-  meanSquaredDistance: Schema.optional(Schema.Number),
-}).annotate({ identifier: "ClusteringMetrics" });
+export const ClusteringMetrics: Schema.Schema<ClusteringMetrics> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusters: Schema.optional(Schema.Array(Cluster)),
+    daviesBouldinIndex: Schema.optional(Schema.Number),
+    meanSquaredDistance: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ClusteringMetrics" });
 
 export interface Entry {
   /** Number of items being predicted as this label. */
@@ -837,10 +868,11 @@ export interface Entry {
   predictedLabel?: string;
 }
 
-export const Entry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  itemCount: Schema.optional(Schema.String),
-  predictedLabel: Schema.optional(Schema.String),
-}).annotate({ identifier: "Entry" });
+export const Entry: Schema.Schema<Entry> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    itemCount: Schema.optional(Schema.String),
+    predictedLabel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Entry" });
 
 export interface Row {
   /** The original label of this row. */
@@ -849,10 +881,11 @@ export interface Row {
   entries?: ReadonlyArray<Entry>;
 }
 
-export const Row = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  actualLabel: Schema.optional(Schema.String),
-  entries: Schema.optional(Schema.Array(Entry)),
-}).annotate({ identifier: "Row" });
+export const Row: Schema.Schema<Row> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    actualLabel: Schema.optional(Schema.String),
+    entries: Schema.optional(Schema.Array(Entry)),
+  }).annotate({ identifier: "Row" });
 
 export interface ConfusionMatrix {
   /** Confidence threshold used when computing the entries of the confusion matrix. */
@@ -861,10 +894,11 @@ export interface ConfusionMatrix {
   rows?: ReadonlyArray<Row>;
 }
 
-export const ConfusionMatrix = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  confidenceThreshold: Schema.optional(Schema.Number),
-  rows: Schema.optional(Schema.Array(Row)),
-}).annotate({ identifier: "ConfusionMatrix" });
+export const ConfusionMatrix: Schema.Schema<ConfusionMatrix> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    confidenceThreshold: Schema.optional(Schema.Number),
+    rows: Schema.optional(Schema.Array(Row)),
+  }).annotate({ identifier: "ConfusionMatrix" });
 
 export interface ConnectionProperty {
   /** The key of the property to set. */
@@ -873,10 +907,11 @@ export interface ConnectionProperty {
   value?: string;
 }
 
-export const ConnectionProperty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  key: Schema.optional(Schema.String),
-  value: Schema.optional(Schema.String),
-}).annotate({ identifier: "ConnectionProperty" });
+export const ConnectionProperty: Schema.Schema<ConnectionProperty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConnectionProperty" });
 
 export interface CsvOptions {
   /** Optional. Indicates if BigQuery should accept rows that are missing trailing optional columns. If true, BigQuery treats missing trailing columns as null values. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. */
@@ -901,18 +936,19 @@ export interface CsvOptions {
   sourceColumnMatch?: string;
 }
 
-export const CsvOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  allowJaggedRows: Schema.optional(Schema.Boolean),
-  allowQuotedNewlines: Schema.optional(Schema.Boolean),
-  encoding: Schema.optional(Schema.String),
-  fieldDelimiter: Schema.optional(Schema.String),
-  nullMarker: Schema.optional(Schema.String),
-  nullMarkers: Schema.optional(Schema.Array(Schema.String)),
-  preserveAsciiControlCharacters: Schema.optional(Schema.Boolean),
-  quote: Schema.optional(Schema.String),
-  skipLeadingRows: Schema.optional(Schema.String),
-  sourceColumnMatch: Schema.optional(Schema.String),
-}).annotate({ identifier: "CsvOptions" });
+export const CsvOptions: Schema.Schema<CsvOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowJaggedRows: Schema.optional(Schema.Boolean),
+    allowQuotedNewlines: Schema.optional(Schema.Boolean),
+    encoding: Schema.optional(Schema.String),
+    fieldDelimiter: Schema.optional(Schema.String),
+    nullMarker: Schema.optional(Schema.String),
+    nullMarkers: Schema.optional(Schema.Array(Schema.String)),
+    preserveAsciiControlCharacters: Schema.optional(Schema.Boolean),
+    quote: Schema.optional(Schema.String),
+    skipLeadingRows: Schema.optional(Schema.String),
+    sourceColumnMatch: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CsvOptions" });
 
 export interface DataFormatOptions {
   /** Optional. The API output format for a timestamp. This offers more explicit control over the timestamp output format as compared to the existing `use_int64_timestamp` option. */
@@ -926,28 +962,31 @@ export interface DataFormatOptions {
   useInt64Timestamp?: boolean;
 }
 
-export const DataFormatOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  timestampOutputFormat: Schema.optional(Schema.String),
-  useInt64Timestamp: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "DataFormatOptions" });
+export const DataFormatOptions: Schema.Schema<DataFormatOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timestampOutputFormat: Schema.optional(Schema.String),
+    useInt64Timestamp: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DataFormatOptions" });
 
 export interface DataMaskingStatistics {
   /** Whether any accessed data was protected by the data masking. */
   dataMaskingApplied?: boolean;
 }
 
-export const DataMaskingStatistics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  dataMaskingApplied: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "DataMaskingStatistics" });
+export const DataMaskingStatistics: Schema.Schema<DataMaskingStatistics> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataMaskingApplied: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DataMaskingStatistics" });
 
 export interface DataPolicyOption {
   /** Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id. */
   name?: string;
 }
 
-export const DataPolicyOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "DataPolicyOption" });
+export const DataPolicyOption: Schema.Schema<DataPolicyOption> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DataPolicyOption" });
 
 export interface DataSplitResult {
   /** Table reference of the evaluation data after split. */
@@ -958,11 +997,12 @@ export interface DataSplitResult {
   trainingTable?: TableReference;
 }
 
-export const DataSplitResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  evaluationTable: Schema.optional(TableReference),
-  testTable: Schema.optional(TableReference),
-  trainingTable: Schema.optional(TableReference),
-}).annotate({ identifier: "DataSplitResult" });
+export const DataSplitResult: Schema.Schema<DataSplitResult> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    evaluationTable: Schema.optional(TableReference),
+    testTable: Schema.optional(TableReference),
+    trainingTable: Schema.optional(TableReference),
+  }).annotate({ identifier: "DataSplitResult" });
 
 export interface DatasetReference {
   /** Required. A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters. */
@@ -971,10 +1011,11 @@ export interface DatasetReference {
   projectId?: string;
 }
 
-export const DatasetReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  datasetId: Schema.optional(Schema.String),
-  projectId: Schema.optional(Schema.String),
-}).annotate({ identifier: "DatasetReference" });
+export const DatasetReference: Schema.Schema<DatasetReference> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datasetId: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DatasetReference" });
 
 export interface DatasetAccessEntry {
   /** The dataset this entry applies to */
@@ -985,10 +1026,11 @@ export interface DatasetAccessEntry {
   >;
 }
 
-export const DatasetAccessEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  dataset: Schema.optional(DatasetReference),
-  targetTypes: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "DatasetAccessEntry" });
+export const DatasetAccessEntry: Schema.Schema<DatasetAccessEntry> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataset: Schema.optional(DatasetReference),
+    targetTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "DatasetAccessEntry" });
 
 export interface RoutineReference {
   /** Required. The ID of the dataset containing this routine. */
@@ -999,18 +1041,19 @@ export interface RoutineReference {
   routineId?: string;
 }
 
-export const RoutineReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  datasetId: Schema.optional(Schema.String),
-  projectId: Schema.optional(Schema.String),
-  routineId: Schema.optional(Schema.String),
-}).annotate({ identifier: "RoutineReference" });
+export const RoutineReference: Schema.Schema<RoutineReference> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datasetId: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    routineId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RoutineReference" });
 
 export interface EncryptionConfiguration {
   /** Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key. */
   kmsKeyName?: string;
 }
 
-export const EncryptionConfiguration =
+export const EncryptionConfiguration: Schema.Schema<EncryptionConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKeyName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EncryptionConfiguration" });
@@ -1022,7 +1065,7 @@ export interface ExternalCatalogDatasetOptions {
   parameters?: Record<string, string>;
 }
 
-export const ExternalCatalogDatasetOptions =
+export const ExternalCatalogDatasetOptions: Schema.Schema<ExternalCatalogDatasetOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultStorageLocationUri: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1035,7 +1078,7 @@ export interface ExternalDatasetReference {
   externalSource?: string;
 }
 
-export const ExternalDatasetReference =
+export const ExternalDatasetReference: Schema.Schema<ExternalDatasetReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connection: Schema.optional(Schema.String),
     externalSource: Schema.optional(Schema.String),
@@ -1046,18 +1089,20 @@ export interface LinkedDatasetMetadata {
   linkState?: "LINK_STATE_UNSPECIFIED" | "LINKED" | "UNLINKED" | (string & {});
 }
 
-export const LinkedDatasetMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  linkState: Schema.optional(Schema.String),
-}).annotate({ identifier: "LinkedDatasetMetadata" });
+export const LinkedDatasetMetadata: Schema.Schema<LinkedDatasetMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    linkState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LinkedDatasetMetadata" });
 
 export interface LinkedDatasetSource {
   /** The source dataset reference contains project numbers and not project ids. */
   sourceDataset?: DatasetReference;
 }
 
-export const LinkedDatasetSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sourceDataset: Schema.optional(DatasetReference),
-}).annotate({ identifier: "LinkedDatasetSource" });
+export const LinkedDatasetSource: Schema.Schema<LinkedDatasetSource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceDataset: Schema.optional(DatasetReference),
+  }).annotate({ identifier: "LinkedDatasetSource" });
 
 export interface RestrictionConfig {
   /** Output only. Specifies the type of dataset/table restriction. */
@@ -1067,9 +1112,10 @@ export interface RestrictionConfig {
     | (string & {});
 }
 
-export const RestrictionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  type: Schema.optional(Schema.String),
-}).annotate({ identifier: "RestrictionConfig" });
+export const RestrictionConfig: Schema.Schema<RestrictionConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RestrictionConfig" });
 
 export interface Dataset {
   /** Optional. An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER; If you patch a dataset, then this field is overwritten by the patched dataset's access field. To add entities, you must supply the entire existing access array in addition to any new entities that you want to add. */
@@ -1155,61 +1201,64 @@ export interface Dataset {
   type?: string;
 }
 
-export const Dataset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  access: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        condition: Schema.optional(Expr),
-        dataset: Schema.optional(DatasetAccessEntry),
-        domain: Schema.optional(Schema.String),
-        groupByEmail: Schema.optional(Schema.String),
-        iamMember: Schema.optional(Schema.String),
-        role: Schema.optional(Schema.String),
-        routine: Schema.optional(RoutineReference),
-        specialGroup: Schema.optional(Schema.String),
-        userByEmail: Schema.optional(Schema.String),
-        view: Schema.optional(TableReference),
-      }),
+export const Dataset: Schema.Schema<Dataset> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    access: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          condition: Schema.optional(Expr),
+          dataset: Schema.optional(DatasetAccessEntry),
+          domain: Schema.optional(Schema.String),
+          groupByEmail: Schema.optional(Schema.String),
+          iamMember: Schema.optional(Schema.String),
+          role: Schema.optional(Schema.String),
+          routine: Schema.optional(RoutineReference),
+          specialGroup: Schema.optional(Schema.String),
+          userByEmail: Schema.optional(Schema.String),
+          view: Schema.optional(TableReference),
+        }),
+      ),
     ),
-  ),
-  catalogSource: Schema.optional(Schema.String),
-  creationTime: Schema.optional(Schema.String),
-  datasetReference: Schema.optional(DatasetReference),
-  defaultCollation: Schema.optional(Schema.String),
-  defaultEncryptionConfiguration: Schema.optional(EncryptionConfiguration),
-  defaultPartitionExpirationMs: Schema.optional(Schema.String),
-  defaultRoundingMode: Schema.optional(Schema.String),
-  defaultTableExpirationMs: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-  externalCatalogDatasetOptions: Schema.optional(ExternalCatalogDatasetOptions),
-  externalDatasetReference: Schema.optional(ExternalDatasetReference),
-  friendlyName: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  isCaseInsensitive: Schema.optional(Schema.Boolean),
-  kind: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  lastModifiedTime: Schema.optional(Schema.String),
-  linkedDatasetMetadata: Schema.optional(LinkedDatasetMetadata),
-  linkedDatasetSource: Schema.optional(LinkedDatasetSource),
-  location: Schema.optional(Schema.String),
-  maxTimeTravelHours: Schema.optional(Schema.String),
-  resourceTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  restrictions: Schema.optional(RestrictionConfig),
-  satisfiesPzi: Schema.optional(Schema.Boolean),
-  satisfiesPzs: Schema.optional(Schema.Boolean),
-  selfLink: Schema.optional(Schema.String),
-  storageBillingModel: Schema.optional(Schema.String),
-  tags: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        tagKey: Schema.optional(Schema.String),
-        tagValue: Schema.optional(Schema.String),
-      }),
+    catalogSource: Schema.optional(Schema.String),
+    creationTime: Schema.optional(Schema.String),
+    datasetReference: Schema.optional(DatasetReference),
+    defaultCollation: Schema.optional(Schema.String),
+    defaultEncryptionConfiguration: Schema.optional(EncryptionConfiguration),
+    defaultPartitionExpirationMs: Schema.optional(Schema.String),
+    defaultRoundingMode: Schema.optional(Schema.String),
+    defaultTableExpirationMs: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    externalCatalogDatasetOptions: Schema.optional(
+      ExternalCatalogDatasetOptions,
     ),
-  ),
-  type: Schema.optional(Schema.String),
-}).annotate({ identifier: "Dataset" });
+    externalDatasetReference: Schema.optional(ExternalDatasetReference),
+    friendlyName: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    isCaseInsensitive: Schema.optional(Schema.Boolean),
+    kind: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    lastModifiedTime: Schema.optional(Schema.String),
+    linkedDatasetMetadata: Schema.optional(LinkedDatasetMetadata),
+    linkedDatasetSource: Schema.optional(LinkedDatasetSource),
+    location: Schema.optional(Schema.String),
+    maxTimeTravelHours: Schema.optional(Schema.String),
+    resourceTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    restrictions: Schema.optional(RestrictionConfig),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    selfLink: Schema.optional(Schema.String),
+    storageBillingModel: Schema.optional(Schema.String),
+    tags: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          tagKey: Schema.optional(Schema.String),
+          tagValue: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Dataset" });
 
 export interface DatasetList {
   /** An array of the dataset resources in the project. Each resource contains basic information. For full information about a particular dataset resource, use the Datasets: get method. This property is omitted when there are no datasets in the project. */
@@ -1234,27 +1283,28 @@ export interface DatasetList {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const DatasetList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  datasets: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        catalogSource: Schema.optional(Schema.String),
-        datasetReference: Schema.optional(DatasetReference),
-        externalDatasetReference: Schema.optional(ExternalDatasetReference),
-        friendlyName: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
+export const DatasetList: Schema.Schema<DatasetList> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datasets: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          catalogSource: Schema.optional(Schema.String),
+          datasetReference: Schema.optional(DatasetReference),
+          externalDatasetReference: Schema.optional(ExternalDatasetReference),
+          friendlyName: Schema.optional(Schema.String),
+          id: Schema.optional(Schema.String),
+          kind: Schema.optional(Schema.String),
+          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          location: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
     ),
-  ),
-  etag: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  nextPageToken: Schema.optional(Schema.String),
-  unreachable: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "DatasetList" });
+    etag: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "DatasetList" });
 
 export interface DestinationTableProperties {
   /** Optional. The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail. */
@@ -1267,7 +1317,7 @@ export interface DestinationTableProperties {
   labels?: Record<string, string>;
 }
 
-export const DestinationTableProperties =
+export const DestinationTableProperties: Schema.Schema<DestinationTableProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     expirationTime: Schema.optional(Schema.String),
@@ -1294,7 +1344,7 @@ export interface DifferentialPrivacyPolicy {
   privacyUnitColumn?: string;
 }
 
-export const DifferentialPrivacyPolicy =
+export const DifferentialPrivacyPolicy: Schema.Schema<DifferentialPrivacyPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deltaBudget: Schema.optional(Schema.Number),
     deltaBudgetRemaining: Schema.optional(Schema.Number),
@@ -1311,7 +1361,7 @@ export interface DimensionalityReductionMetrics {
   totalExplainedVarianceRatio?: number;
 }
 
-export const DimensionalityReductionMetrics =
+export const DimensionalityReductionMetrics: Schema.Schema<DimensionalityReductionMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalExplainedVarianceRatio: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DimensionalityReductionMetrics" });
@@ -1338,22 +1388,24 @@ export interface DmlStatistics {
   updatedRowCount?: string;
 }
 
-export const DmlStatistics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  deletedRowCount: Schema.optional(Schema.String),
-  dmlMode: Schema.optional(Schema.String),
-  fineGrainedDmlUnusedReason: Schema.optional(Schema.String),
-  insertedRowCount: Schema.optional(Schema.String),
-  updatedRowCount: Schema.optional(Schema.String),
-}).annotate({ identifier: "DmlStatistics" });
+export const DmlStatistics: Schema.Schema<DmlStatistics> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deletedRowCount: Schema.optional(Schema.String),
+    dmlMode: Schema.optional(Schema.String),
+    fineGrainedDmlUnusedReason: Schema.optional(Schema.String),
+    insertedRowCount: Schema.optional(Schema.String),
+    updatedRowCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DmlStatistics" });
 
 export interface DoubleCandidates {
   /** Candidates for the double parameter in increasing order. */
   candidates?: ReadonlyArray<number>;
 }
 
-export const DoubleCandidates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  candidates: Schema.optional(Schema.Array(Schema.Number)),
-}).annotate({ identifier: "DoubleCandidates" });
+export const DoubleCandidates: Schema.Schema<DoubleCandidates> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    candidates: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({ identifier: "DoubleCandidates" });
 
 export interface DoubleRange {
   /** Max value of the double parameter. */
@@ -1362,10 +1414,11 @@ export interface DoubleRange {
   min?: number;
 }
 
-export const DoubleRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  max: Schema.optional(Schema.Number),
-  min: Schema.optional(Schema.Number),
-}).annotate({ identifier: "DoubleRange" });
+export const DoubleRange: Schema.Schema<DoubleRange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    max: Schema.optional(Schema.Number),
+    min: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DoubleRange" });
 
 export interface DoubleHparamSearchSpace {
   /** Candidates of the double hyperparameter. */
@@ -1374,7 +1427,7 @@ export interface DoubleHparamSearchSpace {
   range?: DoubleRange;
 }
 
-export const DoubleHparamSearchSpace =
+export const DoubleHparamSearchSpace: Schema.Schema<DoubleHparamSearchSpace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     candidates: Schema.optional(DoubleCandidates),
     range: Schema.optional(DoubleRange),
@@ -1391,12 +1444,13 @@ export interface ErrorProto {
   reason?: string;
 }
 
-export const ErrorProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  debugInfo: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-  message: Schema.optional(Schema.String),
-  reason: Schema.optional(Schema.String),
-}).annotate({ identifier: "ErrorProto" });
+export const ErrorProto: Schema.Schema<ErrorProto> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    debugInfo: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ErrorProto" });
 
 export interface MultiClassClassificationMetrics {
   /** Aggregate classification metrics. */
@@ -1405,7 +1459,7 @@ export interface MultiClassClassificationMetrics {
   confusionMatrixList?: ReadonlyArray<ConfusionMatrix>;
 }
 
-export const MultiClassClassificationMetrics =
+export const MultiClassClassificationMetrics: Schema.Schema<MultiClassClassificationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aggregateClassificationMetrics: Schema.optional(
       AggregateClassificationMetrics,
@@ -1424,12 +1478,13 @@ export interface RankingMetrics {
   normalizedDiscountedCumulativeGain?: number;
 }
 
-export const RankingMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  averageRank: Schema.optional(Schema.Number),
-  meanAveragePrecision: Schema.optional(Schema.Number),
-  meanSquaredError: Schema.optional(Schema.Number),
-  normalizedDiscountedCumulativeGain: Schema.optional(Schema.Number),
-}).annotate({ identifier: "RankingMetrics" });
+export const RankingMetrics: Schema.Schema<RankingMetrics> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    averageRank: Schema.optional(Schema.Number),
+    meanAveragePrecision: Schema.optional(Schema.Number),
+    meanSquaredError: Schema.optional(Schema.Number),
+    normalizedDiscountedCumulativeGain: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "RankingMetrics" });
 
 export interface RegressionMetrics {
   /** Mean absolute error. */
@@ -1444,13 +1499,14 @@ export interface RegressionMetrics {
   rSquared?: number;
 }
 
-export const RegressionMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  meanAbsoluteError: Schema.optional(Schema.Number),
-  meanSquaredError: Schema.optional(Schema.Number),
-  meanSquaredLogError: Schema.optional(Schema.Number),
-  medianAbsoluteError: Schema.optional(Schema.Number),
-  rSquared: Schema.optional(Schema.Number),
-}).annotate({ identifier: "RegressionMetrics" });
+export const RegressionMetrics: Schema.Schema<RegressionMetrics> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    meanAbsoluteError: Schema.optional(Schema.Number),
+    meanSquaredError: Schema.optional(Schema.Number),
+    meanSquaredLogError: Schema.optional(Schema.Number),
+    medianAbsoluteError: Schema.optional(Schema.Number),
+    rSquared: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "RegressionMetrics" });
 
 export interface EvaluationMetrics {
   /** Populated for ARIMA models. */
@@ -1469,19 +1525,20 @@ export interface EvaluationMetrics {
   regressionMetrics?: RegressionMetrics;
 }
 
-export const EvaluationMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  arimaForecastingMetrics: Schema.optional(ArimaForecastingMetrics),
-  binaryClassificationMetrics: Schema.optional(BinaryClassificationMetrics),
-  clusteringMetrics: Schema.optional(ClusteringMetrics),
-  dimensionalityReductionMetrics: Schema.optional(
-    DimensionalityReductionMetrics,
-  ),
-  multiClassClassificationMetrics: Schema.optional(
-    MultiClassClassificationMetrics,
-  ),
-  rankingMetrics: Schema.optional(RankingMetrics),
-  regressionMetrics: Schema.optional(RegressionMetrics),
-}).annotate({ identifier: "EvaluationMetrics" });
+export const EvaluationMetrics: Schema.Schema<EvaluationMetrics> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    arimaForecastingMetrics: Schema.optional(ArimaForecastingMetrics),
+    binaryClassificationMetrics: Schema.optional(BinaryClassificationMetrics),
+    clusteringMetrics: Schema.optional(ClusteringMetrics),
+    dimensionalityReductionMetrics: Schema.optional(
+      DimensionalityReductionMetrics,
+    ),
+    multiClassClassificationMetrics: Schema.optional(
+      MultiClassClassificationMetrics,
+    ),
+    rankingMetrics: Schema.optional(RankingMetrics),
+    regressionMetrics: Schema.optional(RegressionMetrics),
+  }).annotate({ identifier: "EvaluationMetrics" });
 
 export interface ExplainQueryStep {
   /** Machine-readable operation type. */
@@ -1490,10 +1547,11 @@ export interface ExplainQueryStep {
   substeps?: ReadonlyArray<string>;
 }
 
-export const ExplainQueryStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  substeps: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "ExplainQueryStep" });
+export const ExplainQueryStep: Schema.Schema<ExplainQueryStep> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    substeps: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ExplainQueryStep" });
 
 export interface ExplainQueryStage {
   /** Number of parallel input segments completed. */
@@ -1564,39 +1622,40 @@ export interface ExplainQueryStage {
   writeRatioMax?: number;
 }
 
-export const ExplainQueryStage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  completedParallelInputs: Schema.optional(Schema.String),
-  computeMode: Schema.optional(Schema.String),
-  computeMsAvg: Schema.optional(Schema.String),
-  computeMsMax: Schema.optional(Schema.String),
-  computeRatioAvg: Schema.optional(Schema.Number),
-  computeRatioMax: Schema.optional(Schema.Number),
-  endMs: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  inputStages: Schema.optional(Schema.Array(Schema.String)),
-  name: Schema.optional(Schema.String),
-  parallelInputs: Schema.optional(Schema.String),
-  readMsAvg: Schema.optional(Schema.String),
-  readMsMax: Schema.optional(Schema.String),
-  readRatioAvg: Schema.optional(Schema.Number),
-  readRatioMax: Schema.optional(Schema.Number),
-  recordsRead: Schema.optional(Schema.String),
-  recordsWritten: Schema.optional(Schema.String),
-  shuffleOutputBytes: Schema.optional(Schema.String),
-  shuffleOutputBytesSpilled: Schema.optional(Schema.String),
-  slotMs: Schema.optional(Schema.String),
-  startMs: Schema.optional(Schema.String),
-  status: Schema.optional(Schema.String),
-  steps: Schema.optional(Schema.Array(ExplainQueryStep)),
-  waitMsAvg: Schema.optional(Schema.String),
-  waitMsMax: Schema.optional(Schema.String),
-  waitRatioAvg: Schema.optional(Schema.Number),
-  waitRatioMax: Schema.optional(Schema.Number),
-  writeMsAvg: Schema.optional(Schema.String),
-  writeMsMax: Schema.optional(Schema.String),
-  writeRatioAvg: Schema.optional(Schema.Number),
-  writeRatioMax: Schema.optional(Schema.Number),
-}).annotate({ identifier: "ExplainQueryStage" });
+export const ExplainQueryStage: Schema.Schema<ExplainQueryStage> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completedParallelInputs: Schema.optional(Schema.String),
+    computeMode: Schema.optional(Schema.String),
+    computeMsAvg: Schema.optional(Schema.String),
+    computeMsMax: Schema.optional(Schema.String),
+    computeRatioAvg: Schema.optional(Schema.Number),
+    computeRatioMax: Schema.optional(Schema.Number),
+    endMs: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    inputStages: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.String),
+    parallelInputs: Schema.optional(Schema.String),
+    readMsAvg: Schema.optional(Schema.String),
+    readMsMax: Schema.optional(Schema.String),
+    readRatioAvg: Schema.optional(Schema.Number),
+    readRatioMax: Schema.optional(Schema.Number),
+    recordsRead: Schema.optional(Schema.String),
+    recordsWritten: Schema.optional(Schema.String),
+    shuffleOutputBytes: Schema.optional(Schema.String),
+    shuffleOutputBytesSpilled: Schema.optional(Schema.String),
+    slotMs: Schema.optional(Schema.String),
+    startMs: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    steps: Schema.optional(Schema.Array(ExplainQueryStep)),
+    waitMsAvg: Schema.optional(Schema.String),
+    waitMsMax: Schema.optional(Schema.String),
+    waitRatioAvg: Schema.optional(Schema.Number),
+    waitRatioMax: Schema.optional(Schema.Number),
+    writeMsAvg: Schema.optional(Schema.String),
+    writeMsMax: Schema.optional(Schema.String),
+    writeRatioAvg: Schema.optional(Schema.Number),
+    writeRatioMax: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ExplainQueryStage" });
 
 export interface Explanation {
   /** Attribution of feature. */
@@ -1605,10 +1664,11 @@ export interface Explanation {
   featureName?: string;
 }
 
-export const Explanation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  attribution: Schema.optional(Schema.Number),
-  featureName: Schema.optional(Schema.String),
-}).annotate({ identifier: "Explanation" });
+export const Explanation: Schema.Schema<Explanation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attribution: Schema.optional(Schema.Number),
+    featureName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Explanation" });
 
 export interface ExportDataStatistics {
   /** Number of destination files generated in case of EXPORT DATA statement only. */
@@ -1617,10 +1677,11 @@ export interface ExportDataStatistics {
   rowCount?: string;
 }
 
-export const ExportDataStatistics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  fileCount: Schema.optional(Schema.String),
-  rowCount: Schema.optional(Schema.String),
-}).annotate({ identifier: "ExportDataStatistics" });
+export const ExportDataStatistics: Schema.Schema<ExportDataStatistics> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fileCount: Schema.optional(Schema.String),
+    rowCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExportDataStatistics" });
 
 export interface SerDeInfo {
   /** Optional. Name of the SerDe. The maximum length is 256 characters. */
@@ -1631,11 +1692,12 @@ export interface SerDeInfo {
   serializationLibrary?: string;
 }
 
-export const SerDeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  serializationLibrary: Schema.optional(Schema.String),
-}).annotate({ identifier: "SerDeInfo" });
+export const SerDeInfo: Schema.Schema<SerDeInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    serializationLibrary: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SerDeInfo" });
 
 export interface StorageDescriptor {
   /** Optional. Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters. */
@@ -1648,12 +1710,13 @@ export interface StorageDescriptor {
   serdeInfo?: SerDeInfo;
 }
 
-export const StorageDescriptor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  inputFormat: Schema.optional(Schema.String),
-  locationUri: Schema.optional(Schema.String),
-  outputFormat: Schema.optional(Schema.String),
-  serdeInfo: Schema.optional(SerDeInfo),
-}).annotate({ identifier: "StorageDescriptor" });
+export const StorageDescriptor: Schema.Schema<StorageDescriptor> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputFormat: Schema.optional(Schema.String),
+    locationUri: Schema.optional(Schema.String),
+    outputFormat: Schema.optional(Schema.String),
+    serdeInfo: Schema.optional(SerDeInfo),
+  }).annotate({ identifier: "StorageDescriptor" });
 
 export interface ExternalCatalogTableOptions {
   /** Optional. A connection ID that specifies the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or Amazon S3. This connection is needed to read the open source table from BigQuery. The connection_id format must be either `..` or `projects//locations//connections/`. */
@@ -1664,7 +1727,7 @@ export interface ExternalCatalogTableOptions {
   storageDescriptor?: StorageDescriptor;
 }
 
-export const ExternalCatalogTableOptions =
+export const ExternalCatalogTableOptions: Schema.Schema<ExternalCatalogTableOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectionId: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1678,10 +1741,11 @@ export interface GoogleSheetsOptions {
   skipLeadingRows?: string;
 }
 
-export const GoogleSheetsOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  range: Schema.optional(Schema.String),
-  skipLeadingRows: Schema.optional(Schema.String),
-}).annotate({ identifier: "GoogleSheetsOptions" });
+export const GoogleSheetsOptions: Schema.Schema<GoogleSheetsOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    range: Schema.optional(Schema.String),
+    skipLeadingRows: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleSheetsOptions" });
 
 export interface HivePartitioningOptions {
   /** Output only. For permanent external tables, this field is populated with the hive partition keys in the order they were inferred. The types of the partition keys can be deduced by checking the table schema (which will include the partition keys). Not every API will populate this field in the output. For example, Tables.Get will populate it, but Tables.List will not contain this field. */
@@ -1694,7 +1758,7 @@ export interface HivePartitioningOptions {
   sourceUriPrefix?: string;
 }
 
-export const HivePartitioningOptions =
+export const HivePartitioningOptions: Schema.Schema<HivePartitioningOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.Array(Schema.String)),
     mode: Schema.optional(Schema.String),
@@ -1707,9 +1771,10 @@ export interface JsonOptions {
   encoding?: string;
 }
 
-export const JsonOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  encoding: Schema.optional(Schema.String),
-}).annotate({ identifier: "JsonOptions" });
+export const JsonOptions: Schema.Schema<JsonOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encoding: Schema.optional(Schema.String),
+  }).annotate({ identifier: "JsonOptions" });
 
 export interface ParquetOptions {
   /** Optional. Indicates whether to use schema inference specifically for Parquet LIST logical type. */
@@ -1723,11 +1788,12 @@ export interface ParquetOptions {
     | (string & {});
 }
 
-export const ParquetOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  enableListInference: Schema.optional(Schema.Boolean),
-  enumAsString: Schema.optional(Schema.Boolean),
-  mapTargetType: Schema.optional(Schema.String),
-}).annotate({ identifier: "ParquetOptions" });
+export const ParquetOptions: Schema.Schema<ParquetOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableListInference: Schema.optional(Schema.Boolean),
+    enumAsString: Schema.optional(Schema.Boolean),
+    mapTargetType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ParquetOptions" });
 
 export interface GeneratedExpressionInfo {
   /** Optional. Whether the column generation is done asynchronously. */
@@ -1738,7 +1804,7 @@ export interface GeneratedExpressionInfo {
   stored?: boolean;
 }
 
-export const GeneratedExpressionInfo =
+export const GeneratedExpressionInfo: Schema.Schema<GeneratedExpressionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     asynchronous: Schema.optional(Schema.Boolean),
     generationExpression: Schema.optional(Schema.String),
@@ -1756,10 +1822,11 @@ export interface GeneratedColumn {
     | (string & {});
 }
 
-export const GeneratedColumn = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  generatedExpressionInfo: Schema.optional(GeneratedExpressionInfo),
-  generatedMode: Schema.optional(Schema.String),
-}).annotate({ identifier: "GeneratedColumn" });
+export const GeneratedColumn: Schema.Schema<GeneratedColumn> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generatedExpressionInfo: Schema.optional(GeneratedExpressionInfo),
+    generatedMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GeneratedColumn" });
 
 export interface TableFieldSchema {
   /** Deprecated. */
@@ -1841,9 +1908,10 @@ export interface ForeignTypeInfo {
   typeSystem?: "TYPE_SYSTEM_UNSPECIFIED" | "HIVE" | (string & {});
 }
 
-export const ForeignTypeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  typeSystem: Schema.optional(Schema.String),
-}).annotate({ identifier: "ForeignTypeInfo" });
+export const ForeignTypeInfo: Schema.Schema<ForeignTypeInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    typeSystem: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ForeignTypeInfo" });
 
 export interface TableSchema {
   /** Describes the fields in a table. */
@@ -1852,10 +1920,11 @@ export interface TableSchema {
   foreignTypeInfo?: ForeignTypeInfo;
 }
 
-export const TableSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  fields: Schema.optional(Schema.Array(TableFieldSchema)),
-  foreignTypeInfo: Schema.optional(ForeignTypeInfo),
-}).annotate({ identifier: "TableSchema" });
+export const TableSchema: Schema.Schema<TableSchema> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fields: Schema.optional(Schema.Array(TableFieldSchema)),
+    foreignTypeInfo: Schema.optional(ForeignTypeInfo),
+  }).annotate({ identifier: "TableSchema" });
 
 export interface ExternalDataConfiguration {
   /** Try to detect schema and format options automatically. Any option specified explicitly will be honored. */
@@ -1931,7 +2000,7 @@ export interface ExternalDataConfiguration {
   timestampTargetPrecision?: ReadonlyArray<number>;
 }
 
-export const ExternalDataConfiguration =
+export const ExternalDataConfiguration: Schema.Schema<ExternalDataConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autodetect: Schema.optional(Schema.Boolean),
     avroOptions: Schema.optional(AvroOptions),
@@ -1975,15 +2044,14 @@ export interface ExternalRuntimeOptions {
   runtimeVersion?: string;
 }
 
-export const ExternalRuntimeOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const ExternalRuntimeOptions: Schema.Schema<ExternalRuntimeOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerCpu: Schema.optional(Schema.Number),
     containerMemory: Schema.optional(Schema.String),
     maxBatchingRows: Schema.optional(Schema.String),
     runtimeConnection: Schema.optional(Schema.String),
     runtimeVersion: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "ExternalRuntimeOptions" });
+  }).annotate({ identifier: "ExternalRuntimeOptions" });
 
 export interface ExternalServiceCost {
   /** The billing method used for the external job. This field, set to `SERVICES_SKU`, is only used when billing under the services SKU. Otherwise, it is unspecified for backward compatibility. */
@@ -2000,14 +2068,15 @@ export interface ExternalServiceCost {
   slotMs?: string;
 }
 
-export const ExternalServiceCost = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  billingMethod: Schema.optional(Schema.String),
-  bytesBilled: Schema.optional(Schema.String),
-  bytesProcessed: Schema.optional(Schema.String),
-  externalService: Schema.optional(Schema.String),
-  reservedSlotCount: Schema.optional(Schema.String),
-  slotMs: Schema.optional(Schema.String),
-}).annotate({ identifier: "ExternalServiceCost" });
+export const ExternalServiceCost: Schema.Schema<ExternalServiceCost> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingMethod: Schema.optional(Schema.String),
+    bytesBilled: Schema.optional(Schema.String),
+    bytesProcessed: Schema.optional(Schema.String),
+    externalService: Schema.optional(Schema.String),
+    reservedSlotCount: Schema.optional(Schema.String),
+    slotMs: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExternalServiceCost" });
 
 export interface ForeignViewDefinition {
   /** Optional. Represents the dialect of the query. */
@@ -2016,19 +2085,21 @@ export interface ForeignViewDefinition {
   query?: string;
 }
 
-export const ForeignViewDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  dialect: Schema.optional(Schema.String),
-  query: Schema.optional(Schema.String),
-}).annotate({ identifier: "ForeignViewDefinition" });
+export const ForeignViewDefinition: Schema.Schema<ForeignViewDefinition> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dialect: Schema.optional(Schema.String),
+    query: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ForeignViewDefinition" });
 
 export interface GenAiErrorStats {
   /** A list of unique errors at query level (up to 5, truncated to 100 chars) */
   errors?: ReadonlyArray<string>;
 }
 
-export const GenAiErrorStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  errors: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "GenAiErrorStats" });
+export const GenAiErrorStats: Schema.Schema<GenAiErrorStats> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errors: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GenAiErrorStats" });
 
 export interface GenAiFunctionCostOptimizationStats {
   /** System generated message to provide insights into cost optimization state. */
@@ -2037,7 +2108,7 @@ export interface GenAiFunctionCostOptimizationStats {
   numCostOptimizedRows?: string;
 }
 
-export const GenAiFunctionCostOptimizationStats =
+export const GenAiFunctionCostOptimizationStats: Schema.Schema<GenAiFunctionCostOptimizationStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     numCostOptimizedRows: Schema.optional(Schema.String),
@@ -2050,7 +2121,7 @@ export interface GenAiFunctionErrorStats {
   numFailedRows?: string;
 }
 
-export const GenAiFunctionErrorStats =
+export const GenAiFunctionErrorStats: Schema.Schema<GenAiFunctionErrorStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.optional(Schema.Array(Schema.String)),
     numFailedRows: Schema.optional(Schema.String),
@@ -2069,13 +2140,14 @@ export interface GenAiFunctionStats {
   prompt?: string;
 }
 
-export const GenAiFunctionStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  costOptimizationStats: Schema.optional(GenAiFunctionCostOptimizationStats),
-  errorStats: Schema.optional(GenAiFunctionErrorStats),
-  functionName: Schema.optional(Schema.String),
-  numProcessedRows: Schema.optional(Schema.String),
-  prompt: Schema.optional(Schema.String),
-}).annotate({ identifier: "GenAiFunctionStats" });
+export const GenAiFunctionStats: Schema.Schema<GenAiFunctionStats> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    costOptimizationStats: Schema.optional(GenAiFunctionCostOptimizationStats),
+    errorStats: Schema.optional(GenAiFunctionErrorStats),
+    functionName: Schema.optional(Schema.String),
+    numProcessedRows: Schema.optional(Schema.String),
+    prompt: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenAiFunctionStats" });
 
 export interface GenAiStats {
   /** Job level error stats across all GenAi functions */
@@ -2084,28 +2156,31 @@ export interface GenAiStats {
   functionStats?: ReadonlyArray<GenAiFunctionStats>;
 }
 
-export const GenAiStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  errorStats: Schema.optional(GenAiErrorStats),
-  functionStats: Schema.optional(Schema.Array(GenAiFunctionStats)),
-}).annotate({ identifier: "GenAiStats" });
+export const GenAiStats: Schema.Schema<GenAiStats> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorStats: Schema.optional(GenAiErrorStats),
+    functionStats: Schema.optional(Schema.Array(GenAiFunctionStats)),
+  }).annotate({ identifier: "GenAiStats" });
 
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  requestedPolicyVersion: Schema.optional(Schema.Number),
-}).annotate({ identifier: "GetPolicyOptions" });
+export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedPolicyVersion: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GetPolicyOptions" });
 
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  options: Schema.optional(GetPolicyOptions),
-}).annotate({ identifier: "GetIamPolicyRequest" });
+export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    options: Schema.optional(GetPolicyOptions),
+  }).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface JobReference {
   /** Required. The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters. */
@@ -2116,28 +2191,31 @@ export interface JobReference {
   projectId?: string;
 }
 
-export const JobReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  jobId: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-  projectId: Schema.optional(Schema.String),
-}).annotate({ identifier: "JobReference" });
+export const JobReference: Schema.Schema<JobReference> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobId: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "JobReference" });
 
 export interface TableCell {
   v?: unknown;
 }
 
-export const TableCell = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  v: Schema.optional(Schema.Unknown),
-}).annotate({ identifier: "TableCell" });
+export const TableCell: Schema.Schema<TableCell> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    v: Schema.optional(Schema.Unknown),
+  }).annotate({ identifier: "TableCell" });
 
 export interface TableRow {
   /** Represents a single row in the result set, consisting of one or more fields. */
   f?: ReadonlyArray<TableCell>;
 }
 
-export const TableRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  f: Schema.optional(Schema.Array(TableCell)),
-}).annotate({ identifier: "TableRow" });
+export const TableRow: Schema.Schema<TableRow> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    f: Schema.optional(Schema.Array(TableCell)),
+  }).annotate({ identifier: "TableRow" });
 
 export interface GetQueryResultsResponse {
   /** Whether the query result was fetched from the query cache. */
@@ -2166,7 +2244,7 @@ export interface GetQueryResultsResponse {
   totalRows?: string;
 }
 
-export const GetQueryResultsResponse =
+export const GetQueryResultsResponse: Schema.Schema<GetQueryResultsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cacheHit: Schema.optional(Schema.Boolean),
     errors: Schema.optional(Schema.Array(ErrorProto)),
@@ -2189,7 +2267,7 @@ export interface GetServiceAccountResponse {
   kind?: string;
 }
 
-export const GetServiceAccountResponse =
+export const GetServiceAccountResponse: Schema.Schema<GetServiceAccountResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -2202,10 +2280,11 @@ export interface GlobalExplanation {
   explanations?: ReadonlyArray<Explanation>;
 }
 
-export const GlobalExplanation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  classLabel: Schema.optional(Schema.String),
-  explanations: Schema.optional(Schema.Array(Explanation)),
-}).annotate({ identifier: "GlobalExplanation" });
+export const GlobalExplanation: Schema.Schema<GlobalExplanation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    classLabel: Schema.optional(Schema.String),
+    explanations: Schema.optional(Schema.Array(Explanation)),
+  }).annotate({ identifier: "GlobalExplanation" });
 
 export interface HighCardinalityJoin {
   /** Output only. Count of left input rows. */
@@ -2218,19 +2297,20 @@ export interface HighCardinalityJoin {
   stepIndex?: number;
 }
 
-export const HighCardinalityJoin = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  leftRows: Schema.optional(Schema.String),
-  outputRows: Schema.optional(Schema.String),
-  rightRows: Schema.optional(Schema.String),
-  stepIndex: Schema.optional(Schema.Number),
-}).annotate({ identifier: "HighCardinalityJoin" });
+export const HighCardinalityJoin: Schema.Schema<HighCardinalityJoin> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    leftRows: Schema.optional(Schema.String),
+    outputRows: Schema.optional(Schema.String),
+    rightRows: Schema.optional(Schema.String),
+    stepIndex: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "HighCardinalityJoin" });
 
 export interface StringHparamSearchSpace {
   /** Canididates for the string or enum parameter in lower case. */
   candidates?: ReadonlyArray<string>;
 }
 
-export const StringHparamSearchSpace =
+export const StringHparamSearchSpace: Schema.Schema<StringHparamSearchSpace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     candidates: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "StringHparamSearchSpace" });
@@ -2240,9 +2320,10 @@ export interface IntCandidates {
   candidates?: ReadonlyArray<string>;
 }
 
-export const IntCandidates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  candidates: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "IntCandidates" });
+export const IntCandidates: Schema.Schema<IntCandidates> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    candidates: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "IntCandidates" });
 
 export interface IntRange {
   /** Max value of the int parameter. */
@@ -2251,10 +2332,11 @@ export interface IntRange {
   min?: string;
 }
 
-export const IntRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  max: Schema.optional(Schema.String),
-  min: Schema.optional(Schema.String),
-}).annotate({ identifier: "IntRange" });
+export const IntRange: Schema.Schema<IntRange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    max: Schema.optional(Schema.String),
+    min: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IntRange" });
 
 export interface IntHparamSearchSpace {
   /** Candidates of the int hyperparameter. */
@@ -2263,26 +2345,28 @@ export interface IntHparamSearchSpace {
   range?: IntRange;
 }
 
-export const IntHparamSearchSpace = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  candidates: Schema.optional(IntCandidates),
-  range: Schema.optional(IntRange),
-}).annotate({ identifier: "IntHparamSearchSpace" });
+export const IntHparamSearchSpace: Schema.Schema<IntHparamSearchSpace> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    candidates: Schema.optional(IntCandidates),
+    range: Schema.optional(IntRange),
+  }).annotate({ identifier: "IntHparamSearchSpace" });
 
 export interface IntArray {
   /** Elements in the int array. */
   elements?: ReadonlyArray<string>;
 }
 
-export const IntArray = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  elements: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "IntArray" });
+export const IntArray: Schema.Schema<IntArray> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    elements: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "IntArray" });
 
 export interface IntArrayHparamSearchSpace {
   /** Candidates for the int array parameter. */
   candidates?: ReadonlyArray<IntArray>;
 }
 
-export const IntArrayHparamSearchSpace =
+export const IntArrayHparamSearchSpace: Schema.Schema<IntArrayHparamSearchSpace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     candidates: Schema.optional(Schema.Array(IntArray)),
   }).annotate({ identifier: "IntArrayHparamSearchSpace" });
@@ -2334,30 +2418,31 @@ export interface HparamSearchSpaces {
   walsAlpha?: DoubleHparamSearchSpace;
 }
 
-export const HparamSearchSpaces = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  activationFn: Schema.optional(StringHparamSearchSpace),
-  batchSize: Schema.optional(IntHparamSearchSpace),
-  boosterType: Schema.optional(StringHparamSearchSpace),
-  colsampleBylevel: Schema.optional(DoubleHparamSearchSpace),
-  colsampleBynode: Schema.optional(DoubleHparamSearchSpace),
-  colsampleBytree: Schema.optional(DoubleHparamSearchSpace),
-  dartNormalizeType: Schema.optional(StringHparamSearchSpace),
-  dropout: Schema.optional(DoubleHparamSearchSpace),
-  hiddenUnits: Schema.optional(IntArrayHparamSearchSpace),
-  l1Reg: Schema.optional(DoubleHparamSearchSpace),
-  l2Reg: Schema.optional(DoubleHparamSearchSpace),
-  learnRate: Schema.optional(DoubleHparamSearchSpace),
-  maxTreeDepth: Schema.optional(IntHparamSearchSpace),
-  minSplitLoss: Schema.optional(DoubleHparamSearchSpace),
-  minTreeChildWeight: Schema.optional(IntHparamSearchSpace),
-  numClusters: Schema.optional(IntHparamSearchSpace),
-  numFactors: Schema.optional(IntHparamSearchSpace),
-  numParallelTree: Schema.optional(IntHparamSearchSpace),
-  optimizer: Schema.optional(StringHparamSearchSpace),
-  subsample: Schema.optional(DoubleHparamSearchSpace),
-  treeMethod: Schema.optional(StringHparamSearchSpace),
-  walsAlpha: Schema.optional(DoubleHparamSearchSpace),
-}).annotate({ identifier: "HparamSearchSpaces" });
+export const HparamSearchSpaces: Schema.Schema<HparamSearchSpaces> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activationFn: Schema.optional(StringHparamSearchSpace),
+    batchSize: Schema.optional(IntHparamSearchSpace),
+    boosterType: Schema.optional(StringHparamSearchSpace),
+    colsampleBylevel: Schema.optional(DoubleHparamSearchSpace),
+    colsampleBynode: Schema.optional(DoubleHparamSearchSpace),
+    colsampleBytree: Schema.optional(DoubleHparamSearchSpace),
+    dartNormalizeType: Schema.optional(StringHparamSearchSpace),
+    dropout: Schema.optional(DoubleHparamSearchSpace),
+    hiddenUnits: Schema.optional(IntArrayHparamSearchSpace),
+    l1Reg: Schema.optional(DoubleHparamSearchSpace),
+    l2Reg: Schema.optional(DoubleHparamSearchSpace),
+    learnRate: Schema.optional(DoubleHparamSearchSpace),
+    maxTreeDepth: Schema.optional(IntHparamSearchSpace),
+    minSplitLoss: Schema.optional(DoubleHparamSearchSpace),
+    minTreeChildWeight: Schema.optional(IntHparamSearchSpace),
+    numClusters: Schema.optional(IntHparamSearchSpace),
+    numFactors: Schema.optional(IntHparamSearchSpace),
+    numParallelTree: Schema.optional(IntHparamSearchSpace),
+    optimizer: Schema.optional(StringHparamSearchSpace),
+    subsample: Schema.optional(DoubleHparamSearchSpace),
+    treeMethod: Schema.optional(StringHparamSearchSpace),
+    walsAlpha: Schema.optional(DoubleHparamSearchSpace),
+  }).annotate({ identifier: "HparamSearchSpaces" });
 
 export interface TrainingOptions {
   /** Activation function of the neural nets. */
@@ -2793,111 +2878,112 @@ export interface TrainingOptions {
   xgboostVersion?: string;
 }
 
-export const TrainingOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  activationFn: Schema.optional(Schema.String),
-  adjustStepChanges: Schema.optional(Schema.Boolean),
-  approxGlobalFeatureContrib: Schema.optional(Schema.Boolean),
-  autoArima: Schema.optional(Schema.Boolean),
-  autoArimaMaxOrder: Schema.optional(Schema.String),
-  autoArimaMinOrder: Schema.optional(Schema.String),
-  autoClassWeights: Schema.optional(Schema.Boolean),
-  batchSize: Schema.optional(Schema.String),
-  boosterType: Schema.optional(Schema.String),
-  budgetHours: Schema.optional(Schema.Number),
-  calculatePValues: Schema.optional(Schema.Boolean),
-  categoryEncodingMethod: Schema.optional(Schema.String),
-  cleanSpikesAndDips: Schema.optional(Schema.Boolean),
-  colorSpace: Schema.optional(Schema.String),
-  colsampleBylevel: Schema.optional(Schema.Number),
-  colsampleBynode: Schema.optional(Schema.Number),
-  colsampleBytree: Schema.optional(Schema.Number),
-  contributionMetric: Schema.optional(Schema.String),
-  dartNormalizeType: Schema.optional(Schema.String),
-  dataFrequency: Schema.optional(Schema.String),
-  dataSplitColumn: Schema.optional(Schema.String),
-  dataSplitEvalFraction: Schema.optional(Schema.Number),
-  dataSplitMethod: Schema.optional(Schema.String),
-  decomposeTimeSeries: Schema.optional(Schema.Boolean),
-  dimensionIdColumns: Schema.optional(Schema.Array(Schema.String)),
-  distanceType: Schema.optional(Schema.String),
-  dropout: Schema.optional(Schema.Number),
-  earlyStop: Schema.optional(Schema.Boolean),
-  enableGlobalExplain: Schema.optional(Schema.Boolean),
-  endpointIdleTtl: Schema.optional(Schema.String),
-  feedbackType: Schema.optional(Schema.String),
-  fitIntercept: Schema.optional(Schema.Boolean),
-  forecastLimitLowerBound: Schema.optional(Schema.Number),
-  forecastLimitUpperBound: Schema.optional(Schema.Number),
-  hiddenUnits: Schema.optional(Schema.Array(Schema.String)),
-  holidayRegion: Schema.optional(Schema.String),
-  holidayRegions: Schema.optional(Schema.Array(Schema.String)),
-  horizon: Schema.optional(Schema.String),
-  hparamTuningObjectives: Schema.optional(Schema.Array(Schema.String)),
-  huggingFaceModelId: Schema.optional(Schema.String),
-  includeDrift: Schema.optional(Schema.Boolean),
-  initialLearnRate: Schema.optional(Schema.Number),
-  inputLabelColumns: Schema.optional(Schema.Array(Schema.String)),
-  instanceWeightColumn: Schema.optional(Schema.String),
-  integratedGradientsNumSteps: Schema.optional(Schema.String),
-  isTestColumn: Schema.optional(Schema.String),
-  itemColumn: Schema.optional(Schema.String),
-  kmeansInitializationColumn: Schema.optional(Schema.String),
-  kmeansInitializationMethod: Schema.optional(Schema.String),
-  l1RegActivation: Schema.optional(Schema.Number),
-  l1Regularization: Schema.optional(Schema.Number),
-  l2Regularization: Schema.optional(Schema.Number),
-  labelClassWeights: Schema.optional(
-    Schema.Record(Schema.String, Schema.Number),
-  ),
-  learnRate: Schema.optional(Schema.Number),
-  learnRateStrategy: Schema.optional(Schema.String),
-  lossType: Schema.optional(Schema.String),
-  machineType: Schema.optional(Schema.String),
-  maxIterations: Schema.optional(Schema.String),
-  maxParallelTrials: Schema.optional(Schema.String),
-  maxReplicaCount: Schema.optional(Schema.String),
-  maxTimeSeriesLength: Schema.optional(Schema.String),
-  maxTreeDepth: Schema.optional(Schema.String),
-  minAprioriSupport: Schema.optional(Schema.Number),
-  minRelativeProgress: Schema.optional(Schema.Number),
-  minReplicaCount: Schema.optional(Schema.String),
-  minSplitLoss: Schema.optional(Schema.Number),
-  minTimeSeriesLength: Schema.optional(Schema.String),
-  minTreeChildWeight: Schema.optional(Schema.String),
-  modelGardenModelName: Schema.optional(Schema.String),
-  modelRegistry: Schema.optional(Schema.String),
-  modelUri: Schema.optional(Schema.String),
-  nonSeasonalOrder: Schema.optional(ArimaOrder),
-  numClusters: Schema.optional(Schema.String),
-  numFactors: Schema.optional(Schema.String),
-  numParallelTree: Schema.optional(Schema.String),
-  numPrincipalComponents: Schema.optional(Schema.String),
-  numTrials: Schema.optional(Schema.String),
-  optimizationStrategy: Schema.optional(Schema.String),
-  optimizer: Schema.optional(Schema.String),
-  pcaExplainedVarianceRatio: Schema.optional(Schema.Number),
-  pcaSolver: Schema.optional(Schema.String),
-  reservationAffinityKey: Schema.optional(Schema.String),
-  reservationAffinityType: Schema.optional(Schema.String),
-  reservationAffinityValues: Schema.optional(Schema.Array(Schema.String)),
-  sampledShapleyNumPaths: Schema.optional(Schema.String),
-  scaleFeatures: Schema.optional(Schema.Boolean),
-  standardizeFeatures: Schema.optional(Schema.Boolean),
-  subsample: Schema.optional(Schema.Number),
-  tfVersion: Schema.optional(Schema.String),
-  timeSeriesDataColumn: Schema.optional(Schema.String),
-  timeSeriesIdColumn: Schema.optional(Schema.String),
-  timeSeriesIdColumns: Schema.optional(Schema.Array(Schema.String)),
-  timeSeriesLengthFraction: Schema.optional(Schema.Number),
-  timeSeriesTimestampColumn: Schema.optional(Schema.String),
-  treeMethod: Schema.optional(Schema.String),
-  trendSmoothingWindowSize: Schema.optional(Schema.String),
-  userColumn: Schema.optional(Schema.String),
-  vertexAiModelVersionAliases: Schema.optional(Schema.Array(Schema.String)),
-  walsAlpha: Schema.optional(Schema.Number),
-  warmStart: Schema.optional(Schema.Boolean),
-  xgboostVersion: Schema.optional(Schema.String),
-}).annotate({ identifier: "TrainingOptions" });
+export const TrainingOptions: Schema.Schema<TrainingOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activationFn: Schema.optional(Schema.String),
+    adjustStepChanges: Schema.optional(Schema.Boolean),
+    approxGlobalFeatureContrib: Schema.optional(Schema.Boolean),
+    autoArima: Schema.optional(Schema.Boolean),
+    autoArimaMaxOrder: Schema.optional(Schema.String),
+    autoArimaMinOrder: Schema.optional(Schema.String),
+    autoClassWeights: Schema.optional(Schema.Boolean),
+    batchSize: Schema.optional(Schema.String),
+    boosterType: Schema.optional(Schema.String),
+    budgetHours: Schema.optional(Schema.Number),
+    calculatePValues: Schema.optional(Schema.Boolean),
+    categoryEncodingMethod: Schema.optional(Schema.String),
+    cleanSpikesAndDips: Schema.optional(Schema.Boolean),
+    colorSpace: Schema.optional(Schema.String),
+    colsampleBylevel: Schema.optional(Schema.Number),
+    colsampleBynode: Schema.optional(Schema.Number),
+    colsampleBytree: Schema.optional(Schema.Number),
+    contributionMetric: Schema.optional(Schema.String),
+    dartNormalizeType: Schema.optional(Schema.String),
+    dataFrequency: Schema.optional(Schema.String),
+    dataSplitColumn: Schema.optional(Schema.String),
+    dataSplitEvalFraction: Schema.optional(Schema.Number),
+    dataSplitMethod: Schema.optional(Schema.String),
+    decomposeTimeSeries: Schema.optional(Schema.Boolean),
+    dimensionIdColumns: Schema.optional(Schema.Array(Schema.String)),
+    distanceType: Schema.optional(Schema.String),
+    dropout: Schema.optional(Schema.Number),
+    earlyStop: Schema.optional(Schema.Boolean),
+    enableGlobalExplain: Schema.optional(Schema.Boolean),
+    endpointIdleTtl: Schema.optional(Schema.String),
+    feedbackType: Schema.optional(Schema.String),
+    fitIntercept: Schema.optional(Schema.Boolean),
+    forecastLimitLowerBound: Schema.optional(Schema.Number),
+    forecastLimitUpperBound: Schema.optional(Schema.Number),
+    hiddenUnits: Schema.optional(Schema.Array(Schema.String)),
+    holidayRegion: Schema.optional(Schema.String),
+    holidayRegions: Schema.optional(Schema.Array(Schema.String)),
+    horizon: Schema.optional(Schema.String),
+    hparamTuningObjectives: Schema.optional(Schema.Array(Schema.String)),
+    huggingFaceModelId: Schema.optional(Schema.String),
+    includeDrift: Schema.optional(Schema.Boolean),
+    initialLearnRate: Schema.optional(Schema.Number),
+    inputLabelColumns: Schema.optional(Schema.Array(Schema.String)),
+    instanceWeightColumn: Schema.optional(Schema.String),
+    integratedGradientsNumSteps: Schema.optional(Schema.String),
+    isTestColumn: Schema.optional(Schema.String),
+    itemColumn: Schema.optional(Schema.String),
+    kmeansInitializationColumn: Schema.optional(Schema.String),
+    kmeansInitializationMethod: Schema.optional(Schema.String),
+    l1RegActivation: Schema.optional(Schema.Number),
+    l1Regularization: Schema.optional(Schema.Number),
+    l2Regularization: Schema.optional(Schema.Number),
+    labelClassWeights: Schema.optional(
+      Schema.Record(Schema.String, Schema.Number),
+    ),
+    learnRate: Schema.optional(Schema.Number),
+    learnRateStrategy: Schema.optional(Schema.String),
+    lossType: Schema.optional(Schema.String),
+    machineType: Schema.optional(Schema.String),
+    maxIterations: Schema.optional(Schema.String),
+    maxParallelTrials: Schema.optional(Schema.String),
+    maxReplicaCount: Schema.optional(Schema.String),
+    maxTimeSeriesLength: Schema.optional(Schema.String),
+    maxTreeDepth: Schema.optional(Schema.String),
+    minAprioriSupport: Schema.optional(Schema.Number),
+    minRelativeProgress: Schema.optional(Schema.Number),
+    minReplicaCount: Schema.optional(Schema.String),
+    minSplitLoss: Schema.optional(Schema.Number),
+    minTimeSeriesLength: Schema.optional(Schema.String),
+    minTreeChildWeight: Schema.optional(Schema.String),
+    modelGardenModelName: Schema.optional(Schema.String),
+    modelRegistry: Schema.optional(Schema.String),
+    modelUri: Schema.optional(Schema.String),
+    nonSeasonalOrder: Schema.optional(ArimaOrder),
+    numClusters: Schema.optional(Schema.String),
+    numFactors: Schema.optional(Schema.String),
+    numParallelTree: Schema.optional(Schema.String),
+    numPrincipalComponents: Schema.optional(Schema.String),
+    numTrials: Schema.optional(Schema.String),
+    optimizationStrategy: Schema.optional(Schema.String),
+    optimizer: Schema.optional(Schema.String),
+    pcaExplainedVarianceRatio: Schema.optional(Schema.Number),
+    pcaSolver: Schema.optional(Schema.String),
+    reservationAffinityKey: Schema.optional(Schema.String),
+    reservationAffinityType: Schema.optional(Schema.String),
+    reservationAffinityValues: Schema.optional(Schema.Array(Schema.String)),
+    sampledShapleyNumPaths: Schema.optional(Schema.String),
+    scaleFeatures: Schema.optional(Schema.Boolean),
+    standardizeFeatures: Schema.optional(Schema.Boolean),
+    subsample: Schema.optional(Schema.Number),
+    tfVersion: Schema.optional(Schema.String),
+    timeSeriesDataColumn: Schema.optional(Schema.String),
+    timeSeriesIdColumn: Schema.optional(Schema.String),
+    timeSeriesIdColumns: Schema.optional(Schema.Array(Schema.String)),
+    timeSeriesLengthFraction: Schema.optional(Schema.Number),
+    timeSeriesTimestampColumn: Schema.optional(Schema.String),
+    treeMethod: Schema.optional(Schema.String),
+    trendSmoothingWindowSize: Schema.optional(Schema.String),
+    userColumn: Schema.optional(Schema.String),
+    vertexAiModelVersionAliases: Schema.optional(Schema.Array(Schema.String)),
+    walsAlpha: Schema.optional(Schema.Number),
+    warmStart: Schema.optional(Schema.Boolean),
+    xgboostVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TrainingOptions" });
 
 export interface HparamTuningTrial {
   /** Ending time of the trial. */
@@ -2930,18 +3016,19 @@ export interface HparamTuningTrial {
   trialId?: string;
 }
 
-export const HparamTuningTrial = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  endTimeMs: Schema.optional(Schema.String),
-  errorMessage: Schema.optional(Schema.String),
-  evalLoss: Schema.optional(Schema.Number),
-  evaluationMetrics: Schema.optional(EvaluationMetrics),
-  hparamTuningEvaluationMetrics: Schema.optional(EvaluationMetrics),
-  hparams: Schema.optional(TrainingOptions),
-  startTimeMs: Schema.optional(Schema.String),
-  status: Schema.optional(Schema.String),
-  trainingLoss: Schema.optional(Schema.Number),
-  trialId: Schema.optional(Schema.String),
-}).annotate({ identifier: "HparamTuningTrial" });
+export const HparamTuningTrial: Schema.Schema<HparamTuningTrial> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTimeMs: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+    evalLoss: Schema.optional(Schema.Number),
+    evaluationMetrics: Schema.optional(EvaluationMetrics),
+    hparamTuningEvaluationMetrics: Schema.optional(EvaluationMetrics),
+    hparams: Schema.optional(TrainingOptions),
+    startTimeMs: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    trainingLoss: Schema.optional(Schema.Number),
+    trialId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HparamTuningTrial" });
 
 export interface IncrementalResultStats {
   /** Output only. Reason why incremental query results are/were not written by the query. */
@@ -2964,8 +3051,8 @@ export interface IncrementalResultStats {
   resultSetLastReplaceTime?: string;
 }
 
-export const IncrementalResultStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const IncrementalResultStats: Schema.Schema<IncrementalResultStats> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disabledReason: Schema.optional(Schema.String),
     disabledReasonDetails: Schema.optional(Schema.String),
     firstIncrementalRowTime: Schema.optional(Schema.String),
@@ -2973,8 +3060,7 @@ export const IncrementalResultStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     lastIncrementalRowTime: Schema.optional(Schema.String),
     resultSetLastModifyTime: Schema.optional(Schema.String),
     resultSetLastReplaceTime: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "IncrementalResultStats" });
+  }).annotate({ identifier: "IncrementalResultStats" });
 
 export interface IndexPruningStats {
   /** The base table reference. */
@@ -2987,12 +3073,13 @@ export interface IndexPruningStats {
   preIndexPruningParallelInputCount?: string;
 }
 
-export const IndexPruningStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  baseTable: Schema.optional(TableReference),
-  indexId: Schema.optional(Schema.String),
-  postIndexPruningParallelInputCount: Schema.optional(Schema.String),
-  preIndexPruningParallelInputCount: Schema.optional(Schema.String),
-}).annotate({ identifier: "IndexPruningStats" });
+export const IndexPruningStats: Schema.Schema<IndexPruningStats> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseTable: Schema.optional(TableReference),
+    indexId: Schema.optional(Schema.String),
+    postIndexPruningParallelInputCount: Schema.optional(Schema.String),
+    preIndexPruningParallelInputCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IndexPruningStats" });
 
 export interface IndexUnusedReason {
   /** Specifies the base table involved in the reason that no search index was used. */
@@ -3028,21 +3115,23 @@ export interface IndexUnusedReason {
   message?: string;
 }
 
-export const IndexUnusedReason = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  baseTable: Schema.optional(TableReference),
-  code: Schema.optional(Schema.String),
-  indexName: Schema.optional(Schema.String),
-  message: Schema.optional(Schema.String),
-}).annotate({ identifier: "IndexUnusedReason" });
+export const IndexUnusedReason: Schema.Schema<IndexUnusedReason> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseTable: Schema.optional(TableReference),
+    code: Schema.optional(Schema.String),
+    indexName: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IndexUnusedReason" });
 
 export interface InputDataChange {
   /** Output only. Records read difference percentage compared to a previous run. */
   recordsReadDiffPercentage?: number;
 }
 
-export const InputDataChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  recordsReadDiffPercentage: Schema.optional(Schema.Number),
-}).annotate({ identifier: "InputDataChange" });
+export const InputDataChange: Schema.Schema<InputDataChange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recordsReadDiffPercentage: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "InputDataChange" });
 
 export interface PrincipalComponentInfo {
   /** The explained_variance is pre-ordered in the descending order to compute the cumulative explained variance ratio. */
@@ -3055,14 +3144,13 @@ export interface PrincipalComponentInfo {
   principalComponentId?: string;
 }
 
-export const PrincipalComponentInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const PrincipalComponentInfo: Schema.Schema<PrincipalComponentInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cumulativeExplainedVarianceRatio: Schema.optional(Schema.Number),
     explainedVariance: Schema.optional(Schema.Number),
     explainedVarianceRatio: Schema.optional(Schema.Number),
     principalComponentId: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "PrincipalComponentInfo" });
+  }).annotate({ identifier: "PrincipalComponentInfo" });
 
 export interface IterationResult {
   /** Arima result. */
@@ -3083,18 +3171,19 @@ export interface IterationResult {
   trainingLoss?: number;
 }
 
-export const IterationResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  arimaResult: Schema.optional(ArimaResult),
-  clusterInfos: Schema.optional(Schema.Array(ClusterInfo)),
-  durationMs: Schema.optional(Schema.String),
-  evalLoss: Schema.optional(Schema.Number),
-  index: Schema.optional(Schema.Number),
-  learnRate: Schema.optional(Schema.Number),
-  principalComponentInfos: Schema.optional(
-    Schema.Array(PrincipalComponentInfo),
-  ),
-  trainingLoss: Schema.optional(Schema.Number),
-}).annotate({ identifier: "IterationResult" });
+export const IterationResult: Schema.Schema<IterationResult> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    arimaResult: Schema.optional(ArimaResult),
+    clusterInfos: Schema.optional(Schema.Array(ClusterInfo)),
+    durationMs: Schema.optional(Schema.String),
+    evalLoss: Schema.optional(Schema.Number),
+    index: Schema.optional(Schema.Number),
+    learnRate: Schema.optional(Schema.Number),
+    principalComponentInfos: Schema.optional(
+      Schema.Array(PrincipalComponentInfo),
+    ),
+    trainingLoss: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "IterationResult" });
 
 export interface JobConfigurationTableCopy {
   /** Optional. Specifies whether the job is allowed to create new tables. The following values are supported: * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion. */
@@ -3121,7 +3210,7 @@ export interface JobConfigurationTableCopy {
   writeDisposition?: string;
 }
 
-export const JobConfigurationTableCopy =
+export const JobConfigurationTableCopy: Schema.Schema<JobConfigurationTableCopy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createDisposition: Schema.optional(Schema.String),
     destinationEncryptionConfiguration: Schema.optional(
@@ -3140,9 +3229,10 @@ export interface ModelExtractOptions {
   trialId?: string;
 }
 
-export const ModelExtractOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  trialId: Schema.optional(Schema.String),
-}).annotate({ identifier: "ModelExtractOptions" });
+export const ModelExtractOptions: Schema.Schema<ModelExtractOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trialId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ModelExtractOptions" });
 
 export interface ModelReference {
   /** Required. The ID of the dataset containing this model. */
@@ -3153,11 +3243,12 @@ export interface ModelReference {
   projectId?: string;
 }
 
-export const ModelReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  datasetId: Schema.optional(Schema.String),
-  modelId: Schema.optional(Schema.String),
-  projectId: Schema.optional(Schema.String),
-}).annotate({ identifier: "ModelReference" });
+export const ModelReference: Schema.Schema<ModelReference> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datasetId: Schema.optional(Schema.String),
+    modelId: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ModelReference" });
 
 export interface JobConfigurationExtract {
   /** Optional. The compression type to use for exported files. Possible values include DEFLATE, GZIP, NONE, SNAPPY, and ZSTD. The default value is NONE. Not all compression formats are support for all file formats. DEFLATE is only supported for Avro. ZSTD is only supported for Parquet. Not applicable when extracting models. */
@@ -3182,7 +3273,7 @@ export interface JobConfigurationExtract {
   useAvroLogicalTypes?: boolean;
 }
 
-export const JobConfigurationExtract =
+export const JobConfigurationExtract: Schema.Schema<JobConfigurationExtract> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     compression: Schema.optional(Schema.String),
     destinationFormat: Schema.optional(Schema.String),
@@ -3203,16 +3294,17 @@ export interface RangePartitioning {
   range?: { end?: string; interval?: string; start?: string };
 }
 
-export const RangePartitioning = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  field: Schema.optional(Schema.String),
-  range: Schema.optional(
-    Schema.Struct({
-      end: Schema.optional(Schema.String),
-      interval: Schema.optional(Schema.String),
-      start: Schema.optional(Schema.String),
-    }),
-  ),
-}).annotate({ identifier: "RangePartitioning" });
+export const RangePartitioning: Schema.Schema<RangePartitioning> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    field: Schema.optional(Schema.String),
+    range: Schema.optional(
+      Schema.Struct({
+        end: Schema.optional(Schema.String),
+        interval: Schema.optional(Schema.String),
+        start: Schema.optional(Schema.String),
+      }),
+    ),
+  }).annotate({ identifier: "RangePartitioning" });
 
 export interface TimePartitioning {
   /** Optional. Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value. */
@@ -3225,12 +3317,13 @@ export interface TimePartitioning {
   type?: string;
 }
 
-export const TimePartitioning = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  expirationMs: Schema.optional(Schema.String),
-  field: Schema.optional(Schema.String),
-  requirePartitionFilter: Schema.optional(Schema.Boolean),
-  type: Schema.optional(Schema.String),
-}).annotate({ identifier: "TimePartitioning" });
+export const TimePartitioning: Schema.Schema<TimePartitioning> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expirationMs: Schema.optional(Schema.String),
+    field: Schema.optional(Schema.String),
+    requirePartitionFilter: Schema.optional(Schema.Boolean),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TimePartitioning" });
 
 export interface JobConfigurationLoad {
   /** Optional. Accept rows that are missing trailing optional columns. The missing values are treated as nulls. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats. */
@@ -3343,53 +3436,56 @@ export interface JobConfigurationLoad {
   writeDisposition?: string;
 }
 
-export const JobConfigurationLoad = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  allowJaggedRows: Schema.optional(Schema.Boolean),
-  allowQuotedNewlines: Schema.optional(Schema.Boolean),
-  autodetect: Schema.optional(Schema.Boolean),
-  clustering: Schema.optional(Clustering),
-  columnNameCharacterMap: Schema.optional(Schema.String),
-  connectionProperties: Schema.optional(Schema.Array(ConnectionProperty)),
-  copyFilesOnly: Schema.optional(Schema.Boolean),
-  createDisposition: Schema.optional(Schema.String),
-  createSession: Schema.optional(Schema.Boolean),
-  dateFormat: Schema.optional(Schema.String),
-  datetimeFormat: Schema.optional(Schema.String),
-  decimalTargetTypes: Schema.optional(Schema.Array(Schema.String)),
-  destinationEncryptionConfiguration: Schema.optional(EncryptionConfiguration),
-  destinationTable: Schema.optional(TableReference),
-  destinationTableProperties: Schema.optional(DestinationTableProperties),
-  encoding: Schema.optional(Schema.String),
-  fieldDelimiter: Schema.optional(Schema.String),
-  fileSetSpecType: Schema.optional(Schema.String),
-  hivePartitioningOptions: Schema.optional(HivePartitioningOptions),
-  ignoreUnknownValues: Schema.optional(Schema.Boolean),
-  jsonExtension: Schema.optional(Schema.String),
-  maxBadRecords: Schema.optional(Schema.Number),
-  nullMarker: Schema.optional(Schema.String),
-  nullMarkers: Schema.optional(Schema.Array(Schema.String)),
-  parquetOptions: Schema.optional(ParquetOptions),
-  preserveAsciiControlCharacters: Schema.optional(Schema.Boolean),
-  projectionFields: Schema.optional(Schema.Array(Schema.String)),
-  quote: Schema.optional(Schema.String),
-  rangePartitioning: Schema.optional(RangePartitioning),
-  referenceFileSchemaUri: Schema.optional(Schema.String),
-  schema: Schema.optional(TableSchema),
-  schemaInline: Schema.optional(Schema.String),
-  schemaInlineFormat: Schema.optional(Schema.String),
-  schemaUpdateOptions: Schema.optional(Schema.Array(Schema.String)),
-  skipLeadingRows: Schema.optional(Schema.Number),
-  sourceColumnMatch: Schema.optional(Schema.String),
-  sourceFormat: Schema.optional(Schema.String),
-  sourceUris: Schema.optional(Schema.Array(Schema.String)),
-  timeFormat: Schema.optional(Schema.String),
-  timePartitioning: Schema.optional(TimePartitioning),
-  timeZone: Schema.optional(Schema.String),
-  timestampFormat: Schema.optional(Schema.String),
-  timestampTargetPrecision: Schema.optional(Schema.Array(Schema.Number)),
-  useAvroLogicalTypes: Schema.optional(Schema.Boolean),
-  writeDisposition: Schema.optional(Schema.String),
-}).annotate({ identifier: "JobConfigurationLoad" });
+export const JobConfigurationLoad: Schema.Schema<JobConfigurationLoad> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowJaggedRows: Schema.optional(Schema.Boolean),
+    allowQuotedNewlines: Schema.optional(Schema.Boolean),
+    autodetect: Schema.optional(Schema.Boolean),
+    clustering: Schema.optional(Clustering),
+    columnNameCharacterMap: Schema.optional(Schema.String),
+    connectionProperties: Schema.optional(Schema.Array(ConnectionProperty)),
+    copyFilesOnly: Schema.optional(Schema.Boolean),
+    createDisposition: Schema.optional(Schema.String),
+    createSession: Schema.optional(Schema.Boolean),
+    dateFormat: Schema.optional(Schema.String),
+    datetimeFormat: Schema.optional(Schema.String),
+    decimalTargetTypes: Schema.optional(Schema.Array(Schema.String)),
+    destinationEncryptionConfiguration: Schema.optional(
+      EncryptionConfiguration,
+    ),
+    destinationTable: Schema.optional(TableReference),
+    destinationTableProperties: Schema.optional(DestinationTableProperties),
+    encoding: Schema.optional(Schema.String),
+    fieldDelimiter: Schema.optional(Schema.String),
+    fileSetSpecType: Schema.optional(Schema.String),
+    hivePartitioningOptions: Schema.optional(HivePartitioningOptions),
+    ignoreUnknownValues: Schema.optional(Schema.Boolean),
+    jsonExtension: Schema.optional(Schema.String),
+    maxBadRecords: Schema.optional(Schema.Number),
+    nullMarker: Schema.optional(Schema.String),
+    nullMarkers: Schema.optional(Schema.Array(Schema.String)),
+    parquetOptions: Schema.optional(ParquetOptions),
+    preserveAsciiControlCharacters: Schema.optional(Schema.Boolean),
+    projectionFields: Schema.optional(Schema.Array(Schema.String)),
+    quote: Schema.optional(Schema.String),
+    rangePartitioning: Schema.optional(RangePartitioning),
+    referenceFileSchemaUri: Schema.optional(Schema.String),
+    schema: Schema.optional(TableSchema),
+    schemaInline: Schema.optional(Schema.String),
+    schemaInlineFormat: Schema.optional(Schema.String),
+    schemaUpdateOptions: Schema.optional(Schema.Array(Schema.String)),
+    skipLeadingRows: Schema.optional(Schema.Number),
+    sourceColumnMatch: Schema.optional(Schema.String),
+    sourceFormat: Schema.optional(Schema.String),
+    sourceUris: Schema.optional(Schema.Array(Schema.String)),
+    timeFormat: Schema.optional(Schema.String),
+    timePartitioning: Schema.optional(TimePartitioning),
+    timeZone: Schema.optional(Schema.String),
+    timestampFormat: Schema.optional(Schema.String),
+    timestampTargetPrecision: Schema.optional(Schema.Array(Schema.Number)),
+    useAvroLogicalTypes: Schema.optional(Schema.Boolean),
+    writeDisposition: Schema.optional(Schema.String),
+  }).annotate({ identifier: "JobConfigurationLoad" });
 
 export interface QueryParameterType {
   /** Optional. The type of the array's elements, if this is an array. */
@@ -3478,11 +3574,12 @@ export interface QueryParameter {
   parameterValue?: QueryParameterValue;
 }
 
-export const QueryParameter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  parameterType: Schema.optional(QueryParameterType),
-  parameterValue: Schema.optional(QueryParameterValue),
-}).annotate({ identifier: "QueryParameter" });
+export const QueryParameter: Schema.Schema<QueryParameter> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    parameterType: Schema.optional(QueryParameterType),
+    parameterValue: Schema.optional(QueryParameterValue),
+  }).annotate({ identifier: "QueryParameter" });
 
 export interface ScriptOptions {
   /** Determines which statement in the script represents the "key result", used to populate the schema and query results of the script job. Default is LAST. */
@@ -3497,11 +3594,12 @@ export interface ScriptOptions {
   statementTimeoutMs?: string;
 }
 
-export const ScriptOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  keyResultStatement: Schema.optional(Schema.String),
-  statementByteBudget: Schema.optional(Schema.String),
-  statementTimeoutMs: Schema.optional(Schema.String),
-}).annotate({ identifier: "ScriptOptions" });
+export const ScriptOptions: Schema.Schema<ScriptOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyResultStatement: Schema.optional(Schema.String),
+    statementByteBudget: Schema.optional(Schema.String),
+    statementTimeoutMs: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ScriptOptions" });
 
 export interface SystemVariables {
   /** Output only. Data type for each system variable. */
@@ -3510,10 +3608,11 @@ export interface SystemVariables {
   values?: Record<string, unknown>;
 }
 
-export const SystemVariables = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  types: Schema.optional(Schema.Record(Schema.String, StandardSqlDataType)),
-  values: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-}).annotate({ identifier: "SystemVariables" });
+export const SystemVariables: Schema.Schema<SystemVariables> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    types: Schema.optional(Schema.Record(Schema.String, StandardSqlDataType)),
+    values: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "SystemVariables" });
 
 export interface UserDefinedFunctionResource {
   /** [Pick one] An inline resource that contains code for a user-defined function (UDF). Providing a inline code resource is equivalent to providing a URI for a file containing the same code. */
@@ -3522,7 +3621,7 @@ export interface UserDefinedFunctionResource {
   resourceUri?: string;
 }
 
-export const UserDefinedFunctionResource =
+export const UserDefinedFunctionResource: Schema.Schema<UserDefinedFunctionResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inlineCode: Schema.optional(Schema.String),
     resourceUri: Schema.optional(Schema.String),
@@ -3587,40 +3686,43 @@ export interface JobConfigurationQuery {
   writeIncrementalResults?: boolean;
 }
 
-export const JobConfigurationQuery = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  allowLargeResults: Schema.optional(Schema.Boolean),
-  clustering: Schema.optional(Clustering),
-  connectionProperties: Schema.optional(Schema.Array(ConnectionProperty)),
-  continuous: Schema.optional(Schema.Boolean),
-  createDisposition: Schema.optional(Schema.String),
-  createSession: Schema.optional(Schema.Boolean),
-  defaultDataset: Schema.optional(DatasetReference),
-  destinationEncryptionConfiguration: Schema.optional(EncryptionConfiguration),
-  destinationTable: Schema.optional(TableReference),
-  flattenResults: Schema.optional(Schema.Boolean),
-  maximumBillingTier: Schema.optional(Schema.Number),
-  maximumBytesBilled: Schema.optional(Schema.String),
-  parameterMode: Schema.optional(Schema.String),
-  preserveNulls: Schema.optional(Schema.Boolean),
-  priority: Schema.optional(Schema.String),
-  query: Schema.optional(Schema.String),
-  queryParameters: Schema.optional(Schema.Array(QueryParameter)),
-  rangePartitioning: Schema.optional(RangePartitioning),
-  schemaUpdateOptions: Schema.optional(Schema.Array(Schema.String)),
-  scriptOptions: Schema.optional(ScriptOptions),
-  systemVariables: Schema.optional(SystemVariables),
-  tableDefinitions: Schema.optional(
-    Schema.Record(Schema.String, ExternalDataConfiguration),
-  ),
-  timePartitioning: Schema.optional(TimePartitioning),
-  useLegacySql: Schema.optional(Schema.Boolean),
-  useQueryCache: Schema.optional(Schema.Boolean),
-  userDefinedFunctionResources: Schema.optional(
-    Schema.Array(UserDefinedFunctionResource),
-  ),
-  writeDisposition: Schema.optional(Schema.String),
-  writeIncrementalResults: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "JobConfigurationQuery" });
+export const JobConfigurationQuery: Schema.Schema<JobConfigurationQuery> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowLargeResults: Schema.optional(Schema.Boolean),
+    clustering: Schema.optional(Clustering),
+    connectionProperties: Schema.optional(Schema.Array(ConnectionProperty)),
+    continuous: Schema.optional(Schema.Boolean),
+    createDisposition: Schema.optional(Schema.String),
+    createSession: Schema.optional(Schema.Boolean),
+    defaultDataset: Schema.optional(DatasetReference),
+    destinationEncryptionConfiguration: Schema.optional(
+      EncryptionConfiguration,
+    ),
+    destinationTable: Schema.optional(TableReference),
+    flattenResults: Schema.optional(Schema.Boolean),
+    maximumBillingTier: Schema.optional(Schema.Number),
+    maximumBytesBilled: Schema.optional(Schema.String),
+    parameterMode: Schema.optional(Schema.String),
+    preserveNulls: Schema.optional(Schema.Boolean),
+    priority: Schema.optional(Schema.String),
+    query: Schema.optional(Schema.String),
+    queryParameters: Schema.optional(Schema.Array(QueryParameter)),
+    rangePartitioning: Schema.optional(RangePartitioning),
+    schemaUpdateOptions: Schema.optional(Schema.Array(Schema.String)),
+    scriptOptions: Schema.optional(ScriptOptions),
+    systemVariables: Schema.optional(SystemVariables),
+    tableDefinitions: Schema.optional(
+      Schema.Record(Schema.String, ExternalDataConfiguration),
+    ),
+    timePartitioning: Schema.optional(TimePartitioning),
+    useLegacySql: Schema.optional(Schema.Boolean),
+    useQueryCache: Schema.optional(Schema.Boolean),
+    userDefinedFunctionResources: Schema.optional(
+      Schema.Array(UserDefinedFunctionResource),
+    ),
+    writeDisposition: Schema.optional(Schema.String),
+    writeIncrementalResults: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "JobConfigurationQuery" });
 
 export interface JobConfiguration {
   /** [Pick one] Copies a table. */
@@ -3645,18 +3747,19 @@ export interface JobConfiguration {
   reservation?: string;
 }
 
-export const JobConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  copy: Schema.optional(JobConfigurationTableCopy),
-  dryRun: Schema.optional(Schema.Boolean),
-  extract: Schema.optional(JobConfigurationExtract),
-  jobTimeoutMs: Schema.optional(Schema.String),
-  jobType: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  load: Schema.optional(JobConfigurationLoad),
-  maxSlots: Schema.optional(Schema.Number),
-  query: Schema.optional(JobConfigurationQuery),
-  reservation: Schema.optional(Schema.String),
-}).annotate({ identifier: "JobConfiguration" });
+export const JobConfiguration: Schema.Schema<JobConfiguration> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    copy: Schema.optional(JobConfigurationTableCopy),
+    dryRun: Schema.optional(Schema.Boolean),
+    extract: Schema.optional(JobConfigurationExtract),
+    jobTimeoutMs: Schema.optional(Schema.String),
+    jobType: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    load: Schema.optional(JobConfigurationLoad),
+    maxSlots: Schema.optional(Schema.Number),
+    query: Schema.optional(JobConfigurationQuery),
+    reservation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "JobConfiguration" });
 
 export interface JobCreationReason {
   /** Output only. Specifies the high level reason why a Job was created. */
@@ -3669,9 +3772,10 @@ export interface JobCreationReason {
     | (string & {});
 }
 
-export const JobCreationReason = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  code: Schema.optional(Schema.String),
-}).annotate({ identifier: "JobCreationReason" });
+export const JobCreationReason: Schema.Schema<JobCreationReason> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+  }).annotate({ identifier: "JobCreationReason" });
 
 export interface JobStatistics5 {
   /** Output only. Number of logical bytes copied to the destination table. */
@@ -3680,10 +3784,11 @@ export interface JobStatistics5 {
   copiedRows?: string;
 }
 
-export const JobStatistics5 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  copiedLogicalBytes: Schema.optional(Schema.String),
-  copiedRows: Schema.optional(Schema.String),
-}).annotate({ identifier: "JobStatistics5" });
+export const JobStatistics5: Schema.Schema<JobStatistics5> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    copiedLogicalBytes: Schema.optional(Schema.String),
+    copiedRows: Schema.optional(Schema.String),
+  }).annotate({ identifier: "JobStatistics5" });
 
 export interface QueryTimelineSample {
   /** Total number of active workers. This does not correspond directly to slot usage. This is the largest value observed since the last sample. */
@@ -3702,15 +3807,16 @@ export interface QueryTimelineSample {
   totalSlotMs?: string;
 }
 
-export const QueryTimelineSample = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  activeUnits: Schema.optional(Schema.String),
-  completedUnits: Schema.optional(Schema.String),
-  elapsedMs: Schema.optional(Schema.String),
-  estimatedRunnableUnits: Schema.optional(Schema.String),
-  pendingUnits: Schema.optional(Schema.String),
-  shuffleRamUsageRatio: Schema.optional(Schema.Number),
-  totalSlotMs: Schema.optional(Schema.String),
-}).annotate({ identifier: "QueryTimelineSample" });
+export const QueryTimelineSample: Schema.Schema<QueryTimelineSample> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activeUnits: Schema.optional(Schema.String),
+    completedUnits: Schema.optional(Schema.String),
+    elapsedMs: Schema.optional(Schema.String),
+    estimatedRunnableUnits: Schema.optional(Schema.String),
+    pendingUnits: Schema.optional(Schema.String),
+    shuffleRamUsageRatio: Schema.optional(Schema.Number),
+    totalSlotMs: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryTimelineSample" });
 
 export interface JobStatistics4 {
   /** Output only. Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field. */
@@ -3721,11 +3827,12 @@ export interface JobStatistics4 {
   timeline?: ReadonlyArray<QueryTimelineSample>;
 }
 
-export const JobStatistics4 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  destinationUriFileCounts: Schema.optional(Schema.Array(Schema.String)),
-  inputBytes: Schema.optional(Schema.String),
-  timeline: Schema.optional(Schema.Array(QueryTimelineSample)),
-}).annotate({ identifier: "JobStatistics4" });
+export const JobStatistics4: Schema.Schema<JobStatistics4> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationUriFileCounts: Schema.optional(Schema.Array(Schema.String)),
+    inputBytes: Schema.optional(Schema.String),
+    timeline: Schema.optional(Schema.Array(QueryTimelineSample)),
+  }).annotate({ identifier: "JobStatistics4" });
 
 export interface JobStatistics3 {
   /** Output only. The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data. */
@@ -3742,14 +3849,15 @@ export interface JobStatistics3 {
   timeline?: ReadonlyArray<QueryTimelineSample>;
 }
 
-export const JobStatistics3 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  badRecords: Schema.optional(Schema.String),
-  inputFileBytes: Schema.optional(Schema.String),
-  inputFiles: Schema.optional(Schema.String),
-  outputBytes: Schema.optional(Schema.String),
-  outputRows: Schema.optional(Schema.String),
-  timeline: Schema.optional(Schema.Array(QueryTimelineSample)),
-}).annotate({ identifier: "JobStatistics3" });
+export const JobStatistics3: Schema.Schema<JobStatistics3> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    badRecords: Schema.optional(Schema.String),
+    inputFileBytes: Schema.optional(Schema.String),
+    inputFiles: Schema.optional(Schema.String),
+    outputBytes: Schema.optional(Schema.String),
+    outputRows: Schema.optional(Schema.String),
+    timeline: Schema.optional(Schema.Array(QueryTimelineSample)),
+  }).annotate({ identifier: "JobStatistics3" });
 
 export interface RowAccessPolicyReference {
   /** Required. The ID of the dataset containing this row access policy. */
@@ -3762,7 +3870,7 @@ export interface RowAccessPolicyReference {
   tableId?: string;
 }
 
-export const RowAccessPolicyReference =
+export const RowAccessPolicyReference: Schema.Schema<RowAccessPolicyReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetId: Schema.optional(Schema.String),
     policyId: Schema.optional(Schema.String),
@@ -3785,14 +3893,15 @@ export interface LoadQueryStatistics {
   outputRows?: string;
 }
 
-export const LoadQueryStatistics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  badRecords: Schema.optional(Schema.String),
-  bytesTransferred: Schema.optional(Schema.String),
-  inputFileBytes: Schema.optional(Schema.String),
-  inputFiles: Schema.optional(Schema.String),
-  outputBytes: Schema.optional(Schema.String),
-  outputRows: Schema.optional(Schema.String),
-}).annotate({ identifier: "LoadQueryStatistics" });
+export const LoadQueryStatistics: Schema.Schema<LoadQueryStatistics> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    badRecords: Schema.optional(Schema.String),
+    bytesTransferred: Schema.optional(Schema.String),
+    inputFileBytes: Schema.optional(Schema.String),
+    inputFiles: Schema.optional(Schema.String),
+    outputBytes: Schema.optional(Schema.String),
+    outputRows: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LoadQueryStatistics" });
 
 export interface MaterializedView {
   /** Whether the materialized view is chosen for the query. A materialized view can be chosen to rewrite multiple parts of the same query. If a materialized view is chosen to rewrite any part of the query, then this field is true, even if the materialized view was not chosen to rewrite others parts. */
@@ -3818,19 +3927,20 @@ export interface MaterializedView {
   tableReference?: TableReference;
 }
 
-export const MaterializedView = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  chosen: Schema.optional(Schema.Boolean),
-  estimatedBytesSaved: Schema.optional(Schema.String),
-  rejectedReason: Schema.optional(Schema.String),
-  tableReference: Schema.optional(TableReference),
-}).annotate({ identifier: "MaterializedView" });
+export const MaterializedView: Schema.Schema<MaterializedView> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    chosen: Schema.optional(Schema.Boolean),
+    estimatedBytesSaved: Schema.optional(Schema.String),
+    rejectedReason: Schema.optional(Schema.String),
+    tableReference: Schema.optional(TableReference),
+  }).annotate({ identifier: "MaterializedView" });
 
 export interface MaterializedViewStatistics {
   /** Materialized views considered for the query job. Only certain materialized views are used. For a detailed list, see the child message. If many materialized views are considered, then the list might be incomplete. */
   materializedView?: ReadonlyArray<MaterializedView>;
 }
 
-export const MaterializedViewStatistics =
+export const MaterializedViewStatistics: Schema.Schema<MaterializedViewStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     materializedView: Schema.optional(Schema.Array(MaterializedView)),
   }).annotate({ identifier: "MaterializedViewStatistics" });
@@ -3844,11 +3954,12 @@ export interface PruningStats {
   preCmetaPruningParallelInputCount?: string;
 }
 
-export const PruningStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  postCmetaPruningParallelInputCount: Schema.optional(Schema.String),
-  postCmetaPruningPartitionCount: Schema.optional(Schema.String),
-  preCmetaPruningParallelInputCount: Schema.optional(Schema.String),
-}).annotate({ identifier: "PruningStats" });
+export const PruningStats: Schema.Schema<PruningStats> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    postCmetaPruningParallelInputCount: Schema.optional(Schema.String),
+    postCmetaPruningPartitionCount: Schema.optional(Schema.String),
+    preCmetaPruningParallelInputCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PruningStats" });
 
 export interface TableMetadataCacheUsage {
   /** Free form human-readable reason metadata caching was unused for the job. */
@@ -3870,7 +3981,7 @@ export interface TableMetadataCacheUsage {
     | (string & {});
 }
 
-export const TableMetadataCacheUsage =
+export const TableMetadataCacheUsage: Schema.Schema<TableMetadataCacheUsage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     explanation: Schema.optional(Schema.String),
     pruningStats: Schema.optional(PruningStats),
@@ -3885,7 +3996,7 @@ export interface MetadataCacheStatistics {
   tableMetadataCacheUsage?: ReadonlyArray<TableMetadataCacheUsage>;
 }
 
-export const MetadataCacheStatistics =
+export const MetadataCacheStatistics: Schema.Schema<MetadataCacheStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableMetadataCacheUsage: Schema.optional(
       Schema.Array(TableMetadataCacheUsage),
@@ -3936,13 +4047,14 @@ export interface MlStatistics {
     | (string & {});
 }
 
-export const MlStatistics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  hparamTrials: Schema.optional(Schema.Array(HparamTuningTrial)),
-  iterationResults: Schema.optional(Schema.Array(IterationResult)),
-  maxIterations: Schema.optional(Schema.String),
-  modelType: Schema.optional(Schema.String),
-  trainingType: Schema.optional(Schema.String),
-}).annotate({ identifier: "MlStatistics" });
+export const MlStatistics: Schema.Schema<MlStatistics> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hparamTrials: Schema.optional(Schema.Array(HparamTuningTrial)),
+    iterationResults: Schema.optional(Schema.Array(IterationResult)),
+    maxIterations: Schema.optional(Schema.String),
+    modelType: Schema.optional(Schema.String),
+    trainingType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MlStatistics" });
 
 export interface StagePerformanceChangeInsight {
   /** Output only. Input data change insight of the query stage. */
@@ -3951,7 +4063,7 @@ export interface StagePerformanceChangeInsight {
   stageId?: string;
 }
 
-export const StagePerformanceChangeInsight =
+export const StagePerformanceChangeInsight: Schema.Schema<StagePerformanceChangeInsight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputDataChange: Schema.optional(InputDataChange),
     stageId: Schema.optional(Schema.String),
@@ -3962,18 +4074,20 @@ export interface SkewSource {
   stageId?: string;
 }
 
-export const SkewSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  stageId: Schema.optional(Schema.String),
-}).annotate({ identifier: "SkewSource" });
+export const SkewSource: Schema.Schema<SkewSource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stageId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SkewSource" });
 
 export interface PartitionSkew {
   /** Output only. Source stages which produce skewed data. */
   skewSources?: ReadonlyArray<SkewSource>;
 }
 
-export const PartitionSkew = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  skewSources: Schema.optional(Schema.Array(SkewSource)),
-}).annotate({ identifier: "PartitionSkew" });
+export const PartitionSkew: Schema.Schema<PartitionSkew> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skewSources: Schema.optional(Schema.Array(SkewSource)),
+  }).annotate({ identifier: "PartitionSkew" });
 
 export interface StagePerformanceStandaloneInsight {
   /** Output only. If present, the stage had the following reasons for being disqualified from BI Engine execution. */
@@ -3990,7 +4104,7 @@ export interface StagePerformanceStandaloneInsight {
   stageId?: string;
 }
 
-export const StagePerformanceStandaloneInsight =
+export const StagePerformanceStandaloneInsight: Schema.Schema<StagePerformanceStandaloneInsight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     biEngineReasons: Schema.optional(Schema.Array(BiEngineReason)),
     highCardinalityJoins: Schema.optional(Schema.Array(HighCardinalityJoin)),
@@ -4009,26 +4123,28 @@ export interface PerformanceInsights {
   stagePerformanceStandaloneInsights?: ReadonlyArray<StagePerformanceStandaloneInsight>;
 }
 
-export const PerformanceInsights = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  avgPreviousExecutionMs: Schema.optional(Schema.String),
-  stagePerformanceChangeInsights: Schema.optional(
-    Schema.Array(StagePerformanceChangeInsight),
-  ),
-  stagePerformanceStandaloneInsights: Schema.optional(
-    Schema.Array(StagePerformanceStandaloneInsight),
-  ),
-}).annotate({ identifier: "PerformanceInsights" });
+export const PerformanceInsights: Schema.Schema<PerformanceInsights> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    avgPreviousExecutionMs: Schema.optional(Schema.String),
+    stagePerformanceChangeInsights: Schema.optional(
+      Schema.Array(StagePerformanceChangeInsight),
+    ),
+    stagePerformanceStandaloneInsights: Schema.optional(
+      Schema.Array(StagePerformanceStandaloneInsight),
+    ),
+  }).annotate({ identifier: "PerformanceInsights" });
 
 export interface QueryInfo {
   /** Output only. Information about query optimizations. */
   optimizationDetails?: Record<string, unknown>;
 }
 
-export const QueryInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  optimizationDetails: Schema.optional(
-    Schema.Record(Schema.String, Schema.Unknown),
-  ),
-}).annotate({ identifier: "QueryInfo" });
+export const QueryInfo: Schema.Schema<QueryInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    optimizationDetails: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+  }).annotate({ identifier: "QueryInfo" });
 
 export interface PropertyGraphReference {
   /** Required. The ID of the dataset containing this property graph. */
@@ -4039,13 +4155,12 @@ export interface PropertyGraphReference {
   propertyGraphId?: string;
 }
 
-export const PropertyGraphReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const PropertyGraphReference: Schema.Schema<PropertyGraphReference> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
     propertyGraphId: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "PropertyGraphReference" });
+  }).annotate({ identifier: "PropertyGraphReference" });
 
 export interface SearchStatistics {
   /** Search index pruning statistics, one for each base table that has a search index. If a base table does not have a search index or the index does not help with pruning on the base table, then there is no pruning statistics for that table. */
@@ -4061,11 +4176,12 @@ export interface SearchStatistics {
     | (string & {});
 }
 
-export const SearchStatistics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  indexPruningStats: Schema.optional(Schema.Array(IndexPruningStats)),
-  indexUnusedReasons: Schema.optional(Schema.Array(IndexUnusedReason)),
-  indexUsageMode: Schema.optional(Schema.String),
-}).annotate({ identifier: "SearchStatistics" });
+export const SearchStatistics: Schema.Schema<SearchStatistics> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    indexPruningStats: Schema.optional(Schema.Array(IndexPruningStats)),
+    indexUnusedReasons: Schema.optional(Schema.Array(IndexUnusedReason)),
+    indexUsageMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchStatistics" });
 
 export interface SparkLoggingInfo {
   /** Output only. Project ID where the Spark logs were written. */
@@ -4074,10 +4190,11 @@ export interface SparkLoggingInfo {
   resourceType?: string;
 }
 
-export const SparkLoggingInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  projectId: Schema.optional(Schema.String),
-  resourceType: Schema.optional(Schema.String),
-}).annotate({ identifier: "SparkLoggingInfo" });
+export const SparkLoggingInfo: Schema.Schema<SparkLoggingInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String),
+    resourceType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SparkLoggingInfo" });
 
 export interface SparkStatistics {
   /** Output only. Endpoints returned from Dataproc. Key list: - history_server_endpoint: A link to Spark job UI. */
@@ -4094,14 +4211,15 @@ export interface SparkStatistics {
   sparkJobLocation?: string;
 }
 
-export const SparkStatistics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  endpoints: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  gcsStagingBucket: Schema.optional(Schema.String),
-  kmsKeyName: Schema.optional(Schema.String),
-  loggingInfo: Schema.optional(SparkLoggingInfo),
-  sparkJobId: Schema.optional(Schema.String),
-  sparkJobLocation: Schema.optional(Schema.String),
-}).annotate({ identifier: "SparkStatistics" });
+export const SparkStatistics: Schema.Schema<SparkStatistics> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpoints: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    gcsStagingBucket: Schema.optional(Schema.String),
+    kmsKeyName: Schema.optional(Schema.String),
+    loggingInfo: Schema.optional(SparkLoggingInfo),
+    sparkJobId: Schema.optional(Schema.String),
+    sparkJobLocation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SparkStatistics" });
 
 export interface StoredColumnsUnusedReason {
   /** Specifies the high-level reason for the unused scenario, each reason must have a code associated. */
@@ -4120,7 +4238,7 @@ export interface StoredColumnsUnusedReason {
   uncoveredColumns?: ReadonlyArray<string>;
 }
 
-export const StoredColumnsUnusedReason =
+export const StoredColumnsUnusedReason: Schema.Schema<StoredColumnsUnusedReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -4136,13 +4254,14 @@ export interface StoredColumnsUsage {
   storedColumnsUnusedReasons?: ReadonlyArray<StoredColumnsUnusedReason>;
 }
 
-export const StoredColumnsUsage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  baseTable: Schema.optional(TableReference),
-  isQueryAccelerated: Schema.optional(Schema.Boolean),
-  storedColumnsUnusedReasons: Schema.optional(
-    Schema.Array(StoredColumnsUnusedReason),
-  ),
-}).annotate({ identifier: "StoredColumnsUsage" });
+export const StoredColumnsUsage: Schema.Schema<StoredColumnsUsage> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseTable: Schema.optional(TableReference),
+    isQueryAccelerated: Schema.optional(Schema.Boolean),
+    storedColumnsUnusedReasons: Schema.optional(
+      Schema.Array(StoredColumnsUnusedReason),
+    ),
+  }).annotate({ identifier: "StoredColumnsUsage" });
 
 export interface VectorSearchStatistics {
   /** When `indexUsageMode` is `UNUSED` or `PARTIALLY_USED`, this field explains why indexes were not used in all or part of the vector search query. If `indexUsageMode` is `FULLY_USED`, this field is not populated. */
@@ -4158,13 +4277,12 @@ export interface VectorSearchStatistics {
   storedColumnsUsages?: ReadonlyArray<StoredColumnsUsage>;
 }
 
-export const VectorSearchStatistics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const VectorSearchStatistics: Schema.Schema<VectorSearchStatistics> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     indexUnusedReasons: Schema.optional(Schema.Array(IndexUnusedReason)),
     indexUsageMode: Schema.optional(Schema.String),
     storedColumnsUsages: Schema.optional(Schema.Array(StoredColumnsUsage)),
-  },
-).annotate({ identifier: "VectorSearchStatistics" });
+  }).annotate({ identifier: "VectorSearchStatistics" });
 
 export interface JobStatistics2 {
   /** Output only. BI Engine specific Statistics. */
@@ -4265,72 +4383,73 @@ export interface JobStatistics2 {
   vectorSearchStatistics?: VectorSearchStatistics;
 }
 
-export const JobStatistics2 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  biEngineStatistics: Schema.optional(BiEngineStatistics),
-  billingTier: Schema.optional(Schema.Number),
-  cacheHit: Schema.optional(Schema.Boolean),
-  dclTargetDataset: Schema.optional(DatasetReference),
-  dclTargetTable: Schema.optional(TableReference),
-  dclTargetView: Schema.optional(TableReference),
-  ddlAffectedRowAccessPolicyCount: Schema.optional(Schema.String),
-  ddlDestinationTable: Schema.optional(TableReference),
-  ddlOperationPerformed: Schema.optional(Schema.String),
-  ddlTargetDataset: Schema.optional(DatasetReference),
-  ddlTargetRoutine: Schema.optional(RoutineReference),
-  ddlTargetRowAccessPolicy: Schema.optional(RowAccessPolicyReference),
-  ddlTargetTable: Schema.optional(TableReference),
-  dmlStats: Schema.optional(DmlStatistics),
-  estimatedBytesProcessed: Schema.optional(Schema.String),
-  exportDataStatistics: Schema.optional(ExportDataStatistics),
-  externalServiceCosts: Schema.optional(Schema.Array(ExternalServiceCost)),
-  genAiStats: Schema.optional(GenAiStats),
-  incrementalResultStats: Schema.optional(IncrementalResultStats),
-  loadQueryStatistics: Schema.optional(LoadQueryStatistics),
-  materializedViewStatistics: Schema.optional(MaterializedViewStatistics),
-  metadataCacheStatistics: Schema.optional(MetadataCacheStatistics),
-  mlStatistics: Schema.optional(MlStatistics),
-  modelTraining: Schema.optional(BigQueryModelTraining),
-  modelTrainingCurrentIteration: Schema.optional(Schema.Number),
-  modelTrainingExpectedTotalIteration: Schema.optional(Schema.String),
-  numDmlAffectedRows: Schema.optional(Schema.String),
-  performanceInsights: Schema.optional(PerformanceInsights),
-  queryInfo: Schema.optional(QueryInfo),
-  queryPlan: Schema.optional(Schema.Array(ExplainQueryStage)),
-  referencedPropertyGraphs: Schema.optional(
-    Schema.Array(PropertyGraphReference),
-  ),
-  referencedRoutines: Schema.optional(Schema.Array(RoutineReference)),
-  referencedTables: Schema.optional(Schema.Array(TableReference)),
-  reservationUsage: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        slotMs: Schema.optional(Schema.String),
-      }),
+export const JobStatistics2: Schema.Schema<JobStatistics2> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    biEngineStatistics: Schema.optional(BiEngineStatistics),
+    billingTier: Schema.optional(Schema.Number),
+    cacheHit: Schema.optional(Schema.Boolean),
+    dclTargetDataset: Schema.optional(DatasetReference),
+    dclTargetTable: Schema.optional(TableReference),
+    dclTargetView: Schema.optional(TableReference),
+    ddlAffectedRowAccessPolicyCount: Schema.optional(Schema.String),
+    ddlDestinationTable: Schema.optional(TableReference),
+    ddlOperationPerformed: Schema.optional(Schema.String),
+    ddlTargetDataset: Schema.optional(DatasetReference),
+    ddlTargetRoutine: Schema.optional(RoutineReference),
+    ddlTargetRowAccessPolicy: Schema.optional(RowAccessPolicyReference),
+    ddlTargetTable: Schema.optional(TableReference),
+    dmlStats: Schema.optional(DmlStatistics),
+    estimatedBytesProcessed: Schema.optional(Schema.String),
+    exportDataStatistics: Schema.optional(ExportDataStatistics),
+    externalServiceCosts: Schema.optional(Schema.Array(ExternalServiceCost)),
+    genAiStats: Schema.optional(GenAiStats),
+    incrementalResultStats: Schema.optional(IncrementalResultStats),
+    loadQueryStatistics: Schema.optional(LoadQueryStatistics),
+    materializedViewStatistics: Schema.optional(MaterializedViewStatistics),
+    metadataCacheStatistics: Schema.optional(MetadataCacheStatistics),
+    mlStatistics: Schema.optional(MlStatistics),
+    modelTraining: Schema.optional(BigQueryModelTraining),
+    modelTrainingCurrentIteration: Schema.optional(Schema.Number),
+    modelTrainingExpectedTotalIteration: Schema.optional(Schema.String),
+    numDmlAffectedRows: Schema.optional(Schema.String),
+    performanceInsights: Schema.optional(PerformanceInsights),
+    queryInfo: Schema.optional(QueryInfo),
+    queryPlan: Schema.optional(Schema.Array(ExplainQueryStage)),
+    referencedPropertyGraphs: Schema.optional(
+      Schema.Array(PropertyGraphReference),
     ),
-  ),
-  schema: Schema.optional(TableSchema),
-  searchStatistics: Schema.optional(SearchStatistics),
-  sparkStatistics: Schema.optional(SparkStatistics),
-  statementType: Schema.optional(Schema.String),
-  timeline: Schema.optional(Schema.Array(QueryTimelineSample)),
-  totalBytesBilled: Schema.optional(Schema.String),
-  totalBytesProcessed: Schema.optional(Schema.String),
-  totalBytesProcessedAccuracy: Schema.optional(Schema.String),
-  totalPartitionsProcessed: Schema.optional(Schema.String),
-  totalServicesSkuSlotMs: Schema.optional(Schema.String),
-  totalSlotMs: Schema.optional(Schema.String),
-  transferredBytes: Schema.optional(Schema.String),
-  undeclaredQueryParameters: Schema.optional(Schema.Array(QueryParameter)),
-  vectorSearchStatistics: Schema.optional(VectorSearchStatistics),
-}).annotate({ identifier: "JobStatistics2" });
+    referencedRoutines: Schema.optional(Schema.Array(RoutineReference)),
+    referencedTables: Schema.optional(Schema.Array(TableReference)),
+    reservationUsage: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          slotMs: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    schema: Schema.optional(TableSchema),
+    searchStatistics: Schema.optional(SearchStatistics),
+    sparkStatistics: Schema.optional(SparkStatistics),
+    statementType: Schema.optional(Schema.String),
+    timeline: Schema.optional(Schema.Array(QueryTimelineSample)),
+    totalBytesBilled: Schema.optional(Schema.String),
+    totalBytesProcessed: Schema.optional(Schema.String),
+    totalBytesProcessedAccuracy: Schema.optional(Schema.String),
+    totalPartitionsProcessed: Schema.optional(Schema.String),
+    totalServicesSkuSlotMs: Schema.optional(Schema.String),
+    totalSlotMs: Schema.optional(Schema.String),
+    transferredBytes: Schema.optional(Schema.String),
+    undeclaredQueryParameters: Schema.optional(Schema.Array(QueryParameter)),
+    vectorSearchStatistics: Schema.optional(VectorSearchStatistics),
+  }).annotate({ identifier: "JobStatistics2" });
 
 export interface RowLevelSecurityStatistics {
   /** Whether any accessed data was protected by row access policies. */
   rowLevelSecurityApplied?: boolean;
 }
 
-export const RowLevelSecurityStatistics =
+export const RowLevelSecurityStatistics: Schema.Schema<RowLevelSecurityStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowLevelSecurityApplied: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "RowLevelSecurityStatistics" });
@@ -4350,14 +4469,15 @@ export interface ScriptStackFrame {
   text?: string;
 }
 
-export const ScriptStackFrame = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  endColumn: Schema.optional(Schema.Number),
-  endLine: Schema.optional(Schema.Number),
-  procedureId: Schema.optional(Schema.String),
-  startColumn: Schema.optional(Schema.Number),
-  startLine: Schema.optional(Schema.Number),
-  text: Schema.optional(Schema.String),
-}).annotate({ identifier: "ScriptStackFrame" });
+export const ScriptStackFrame: Schema.Schema<ScriptStackFrame> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endColumn: Schema.optional(Schema.Number),
+    endLine: Schema.optional(Schema.Number),
+    procedureId: Schema.optional(Schema.String),
+    startColumn: Schema.optional(Schema.Number),
+    startLine: Schema.optional(Schema.Number),
+    text: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ScriptStackFrame" });
 
 export interface ScriptStatistics {
   /** Whether this child job was a statement or expression. */
@@ -4370,28 +4490,31 @@ export interface ScriptStatistics {
   stackFrames?: ReadonlyArray<ScriptStackFrame>;
 }
 
-export const ScriptStatistics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  evaluationKind: Schema.optional(Schema.String),
-  stackFrames: Schema.optional(Schema.Array(ScriptStackFrame)),
-}).annotate({ identifier: "ScriptStatistics" });
+export const ScriptStatistics: Schema.Schema<ScriptStatistics> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    evaluationKind: Schema.optional(Schema.String),
+    stackFrames: Schema.optional(Schema.Array(ScriptStackFrame)),
+  }).annotate({ identifier: "ScriptStatistics" });
 
 export interface SessionInfo {
   /** Output only. The id of the session. */
   sessionId?: string;
 }
 
-export const SessionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sessionId: Schema.optional(Schema.String),
-}).annotate({ identifier: "SessionInfo" });
+export const SessionInfo: Schema.Schema<SessionInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sessionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SessionInfo" });
 
 export interface TransactionInfo {
   /** Output only. [Alpha] Id of the transaction. */
   transactionId?: string;
 }
 
-export const TransactionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  transactionId: Schema.optional(Schema.String),
-}).annotate({ identifier: "TransactionInfo" });
+export const TransactionInfo: Schema.Schema<TransactionInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transactionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TransactionInfo" });
 
 export interface JobStatistics {
   /** Output only. [TrustedTester] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs. */
@@ -4447,38 +4570,39 @@ export interface JobStatistics {
   transactionInfo?: TransactionInfo;
 }
 
-export const JobStatistics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  completionRatio: Schema.optional(Schema.Number),
-  copy: Schema.optional(JobStatistics5),
-  creationTime: Schema.optional(Schema.String),
-  dataMaskingStatistics: Schema.optional(DataMaskingStatistics),
-  edition: Schema.optional(Schema.String),
-  endTime: Schema.optional(Schema.String),
-  extract: Schema.optional(JobStatistics4),
-  finalExecutionDurationMs: Schema.optional(Schema.String),
-  load: Schema.optional(JobStatistics3),
-  numChildJobs: Schema.optional(Schema.String),
-  parentJobId: Schema.optional(Schema.String),
-  query: Schema.optional(JobStatistics2),
-  quotaDeferments: Schema.optional(Schema.Array(Schema.String)),
-  reservationGroupPath: Schema.optional(Schema.Array(Schema.String)),
-  reservationUsage: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        slotMs: Schema.optional(Schema.String),
-      }),
+export const JobStatistics: Schema.Schema<JobStatistics> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completionRatio: Schema.optional(Schema.Number),
+    copy: Schema.optional(JobStatistics5),
+    creationTime: Schema.optional(Schema.String),
+    dataMaskingStatistics: Schema.optional(DataMaskingStatistics),
+    edition: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    extract: Schema.optional(JobStatistics4),
+    finalExecutionDurationMs: Schema.optional(Schema.String),
+    load: Schema.optional(JobStatistics3),
+    numChildJobs: Schema.optional(Schema.String),
+    parentJobId: Schema.optional(Schema.String),
+    query: Schema.optional(JobStatistics2),
+    quotaDeferments: Schema.optional(Schema.Array(Schema.String)),
+    reservationGroupPath: Schema.optional(Schema.Array(Schema.String)),
+    reservationUsage: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          slotMs: Schema.optional(Schema.String),
+        }),
+      ),
     ),
-  ),
-  reservation_id: Schema.optional(Schema.String),
-  rowLevelSecurityStatistics: Schema.optional(RowLevelSecurityStatistics),
-  scriptStatistics: Schema.optional(ScriptStatistics),
-  sessionInfo: Schema.optional(SessionInfo),
-  startTime: Schema.optional(Schema.String),
-  totalBytesProcessed: Schema.optional(Schema.String),
-  totalSlotMs: Schema.optional(Schema.String),
-  transactionInfo: Schema.optional(TransactionInfo),
-}).annotate({ identifier: "JobStatistics" });
+    reservation_id: Schema.optional(Schema.String),
+    rowLevelSecurityStatistics: Schema.optional(RowLevelSecurityStatistics),
+    scriptStatistics: Schema.optional(ScriptStatistics),
+    sessionInfo: Schema.optional(SessionInfo),
+    startTime: Schema.optional(Schema.String),
+    totalBytesProcessed: Schema.optional(Schema.String),
+    totalSlotMs: Schema.optional(Schema.String),
+    transactionInfo: Schema.optional(TransactionInfo),
+  }).annotate({ identifier: "JobStatistics" });
 
 export interface JobStatus {
   /** Output only. Final error result of the job. If present, indicates that the job has completed and was unsuccessful. */
@@ -4489,11 +4613,12 @@ export interface JobStatus {
   state?: string;
 }
 
-export const JobStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  errorResult: Schema.optional(ErrorProto),
-  errors: Schema.optional(Schema.Array(ErrorProto)),
-  state: Schema.optional(Schema.String),
-}).annotate({ identifier: "JobStatus" });
+export const JobStatus: Schema.Schema<JobStatus> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorResult: Schema.optional(ErrorProto),
+    errors: Schema.optional(Schema.Array(ErrorProto)),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "JobStatus" });
 
 export interface Job {
   /** Required. Describes the job configuration. */
@@ -4520,19 +4645,20 @@ export interface Job {
   user_email?: string;
 }
 
-export const Job = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  configuration: Schema.optional(JobConfiguration),
-  etag: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  jobCreationReason: Schema.optional(JobCreationReason),
-  jobReference: Schema.optional(JobReference),
-  kind: Schema.optional(Schema.String),
-  principal_subject: Schema.optional(Schema.String),
-  selfLink: Schema.optional(Schema.String),
-  statistics: Schema.optional(JobStatistics),
-  status: Schema.optional(JobStatus),
-  user_email: Schema.optional(Schema.String),
-}).annotate({ identifier: "Job" });
+export const Job: Schema.Schema<Job> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configuration: Schema.optional(JobConfiguration),
+    etag: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    jobCreationReason: Schema.optional(JobCreationReason),
+    jobReference: Schema.optional(JobReference),
+    kind: Schema.optional(Schema.String),
+    principal_subject: Schema.optional(Schema.String),
+    selfLink: Schema.optional(Schema.String),
+    statistics: Schema.optional(JobStatistics),
+    status: Schema.optional(JobStatus),
+    user_email: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Job" });
 
 export interface JobCancelResponse {
   /** The final state of the job. */
@@ -4541,10 +4667,11 @@ export interface JobCancelResponse {
   kind?: string;
 }
 
-export const JobCancelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  job: Schema.optional(Job),
-  kind: Schema.optional(Schema.String),
-}).annotate({ identifier: "JobCancelResponse" });
+export const JobCancelResponse: Schema.Schema<JobCancelResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    job: Schema.optional(Job),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "JobCancelResponse" });
 
 export interface JobList {
   /** A hash of this page of results. */
@@ -4570,28 +4697,29 @@ export interface JobList {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const JobList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  etag: Schema.optional(Schema.String),
-  jobs: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        configuration: Schema.optional(JobConfiguration),
-        errorResult: Schema.optional(ErrorProto),
-        id: Schema.optional(Schema.String),
-        jobReference: Schema.optional(JobReference),
-        kind: Schema.optional(Schema.String),
-        principal_subject: Schema.optional(Schema.String),
-        state: Schema.optional(Schema.String),
-        statistics: Schema.optional(JobStatistics),
-        status: Schema.optional(JobStatus),
-        user_email: Schema.optional(Schema.String),
-      }),
+export const JobList: Schema.Schema<JobList> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    jobs: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          configuration: Schema.optional(JobConfiguration),
+          errorResult: Schema.optional(ErrorProto),
+          id: Schema.optional(Schema.String),
+          jobReference: Schema.optional(JobReference),
+          kind: Schema.optional(Schema.String),
+          principal_subject: Schema.optional(Schema.String),
+          state: Schema.optional(Schema.String),
+          statistics: Schema.optional(JobStatistics),
+          status: Schema.optional(JobStatus),
+          user_email: Schema.optional(Schema.String),
+        }),
+      ),
     ),
-  ),
-  kind: Schema.optional(Schema.String),
-  nextPageToken: Schema.optional(Schema.String),
-  unreachable: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "JobList" });
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "JobList" });
 
 export interface JoinRestrictionPolicy {
   /** Optional. The only columns that joins are allowed on. This field is must be specified for join_conditions JOIN_ANY and JOIN_ALL and it cannot be set for JOIN_BLOCKED. */
@@ -4606,10 +4734,11 @@ export interface JoinRestrictionPolicy {
     | (string & {});
 }
 
-export const JoinRestrictionPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  joinAllowedColumns: Schema.optional(Schema.Array(Schema.String)),
-  joinCondition: Schema.optional(Schema.String),
-}).annotate({ identifier: "JoinRestrictionPolicy" });
+export const JoinRestrictionPolicy: Schema.Schema<JoinRestrictionPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    joinAllowedColumns: Schema.optional(Schema.Array(Schema.String)),
+    joinCondition: Schema.optional(Schema.String),
+  }).annotate({ identifier: "JoinRestrictionPolicy" });
 
 export type JsonValue = unknown;
 export const JsonValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
@@ -4642,14 +4771,15 @@ export interface RemoteModelInfo {
   speechRecognizer?: string;
 }
 
-export const RemoteModelInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  connection: Schema.optional(Schema.String),
-  endpoint: Schema.optional(Schema.String),
-  maxBatchingRows: Schema.optional(Schema.String),
-  remoteModelVersion: Schema.optional(Schema.String),
-  remoteServiceType: Schema.optional(Schema.String),
-  speechRecognizer: Schema.optional(Schema.String),
-}).annotate({ identifier: "RemoteModelInfo" });
+export const RemoteModelInfo: Schema.Schema<RemoteModelInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connection: Schema.optional(Schema.String),
+    endpoint: Schema.optional(Schema.String),
+    maxBatchingRows: Schema.optional(Schema.String),
+    remoteModelVersion: Schema.optional(Schema.String),
+    remoteServiceType: Schema.optional(Schema.String),
+    speechRecognizer: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RemoteModelInfo" });
 
 export interface TrainingRun {
   /** Output only. Global explanation contains the explanation of top features on the class level. Applies to classification models only. */
@@ -4674,20 +4804,21 @@ export interface TrainingRun {
   vertexAiModelVersion?: string;
 }
 
-export const TrainingRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  classLevelGlobalExplanations: Schema.optional(
-    Schema.Array(GlobalExplanation),
-  ),
-  dataSplitResult: Schema.optional(DataSplitResult),
-  evaluationMetrics: Schema.optional(EvaluationMetrics),
-  modelLevelGlobalExplanation: Schema.optional(GlobalExplanation),
-  results: Schema.optional(Schema.Array(IterationResult)),
-  startTime: Schema.optional(Schema.String),
-  trainingOptions: Schema.optional(TrainingOptions),
-  trainingStartTime: Schema.optional(Schema.String),
-  vertexAiModelId: Schema.optional(Schema.String),
-  vertexAiModelVersion: Schema.optional(Schema.String),
-}).annotate({ identifier: "TrainingRun" });
+export const TrainingRun: Schema.Schema<TrainingRun> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    classLevelGlobalExplanations: Schema.optional(
+      Schema.Array(GlobalExplanation),
+    ),
+    dataSplitResult: Schema.optional(DataSplitResult),
+    evaluationMetrics: Schema.optional(EvaluationMetrics),
+    modelLevelGlobalExplanation: Schema.optional(GlobalExplanation),
+    results: Schema.optional(Schema.Array(IterationResult)),
+    startTime: Schema.optional(Schema.String),
+    trainingOptions: Schema.optional(TrainingOptions),
+    trainingStartTime: Schema.optional(Schema.String),
+    vertexAiModelId: Schema.optional(Schema.String),
+    vertexAiModelVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TrainingRun" });
 
 export interface TransformColumn {
   /** Output only. Name of the column. */
@@ -4698,11 +4829,12 @@ export interface TransformColumn {
   type?: StandardSqlDataType;
 }
 
-export const TransformColumn = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  transformSql: Schema.optional(Schema.String),
-  type: Schema.optional(StandardSqlDataType),
-}).annotate({ identifier: "TransformColumn" });
+export const TransformColumn: Schema.Schema<TransformColumn> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    transformSql: Schema.optional(Schema.String),
+    type: Schema.optional(StandardSqlDataType),
+  }).annotate({ identifier: "TransformColumn" });
 
 export interface Model {
   /** The best trial_id across all training runs. */
@@ -4776,29 +4908,30 @@ export interface Model {
   transformColumns?: ReadonlyArray<TransformColumn>;
 }
 
-export const Model = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  bestTrialId: Schema.optional(Schema.String),
-  creationTime: Schema.optional(Schema.String),
-  defaultTrialId: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  encryptionConfiguration: Schema.optional(EncryptionConfiguration),
-  etag: Schema.optional(Schema.String),
-  expirationTime: Schema.optional(Schema.String),
-  featureColumns: Schema.optional(Schema.Array(StandardSqlField)),
-  friendlyName: Schema.optional(Schema.String),
-  hparamSearchSpaces: Schema.optional(HparamSearchSpaces),
-  hparamTrials: Schema.optional(Schema.Array(HparamTuningTrial)),
-  labelColumns: Schema.optional(Schema.Array(StandardSqlField)),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  lastModifiedTime: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-  modelReference: Schema.optional(ModelReference),
-  modelType: Schema.optional(Schema.String),
-  optimalTrialIds: Schema.optional(Schema.Array(Schema.String)),
-  remoteModelInfo: Schema.optional(RemoteModelInfo),
-  trainingRuns: Schema.optional(Schema.Array(TrainingRun)),
-  transformColumns: Schema.optional(Schema.Array(TransformColumn)),
-}).annotate({ identifier: "Model" });
+export const Model: Schema.Schema<Model> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bestTrialId: Schema.optional(Schema.String),
+    creationTime: Schema.optional(Schema.String),
+    defaultTrialId: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    encryptionConfiguration: Schema.optional(EncryptionConfiguration),
+    etag: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    featureColumns: Schema.optional(Schema.Array(StandardSqlField)),
+    friendlyName: Schema.optional(Schema.String),
+    hparamSearchSpaces: Schema.optional(HparamSearchSpaces),
+    hparamTrials: Schema.optional(Schema.Array(HparamTuningTrial)),
+    labelColumns: Schema.optional(Schema.Array(StandardSqlField)),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    lastModifiedTime: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    modelReference: Schema.optional(ModelReference),
+    modelType: Schema.optional(Schema.String),
+    optimalTrialIds: Schema.optional(Schema.Array(Schema.String)),
+    remoteModelInfo: Schema.optional(RemoteModelInfo),
+    trainingRuns: Schema.optional(Schema.Array(TrainingRun)),
+    transformColumns: Schema.optional(Schema.Array(TransformColumn)),
+  }).annotate({ identifier: "Model" });
 
 export interface ListModelsResponse {
   /** Models in the requested dataset. Only the following fields are populated: model_reference, model_type, creation_time, last_modified_time and labels. */
@@ -4807,10 +4940,11 @@ export interface ListModelsResponse {
   nextPageToken?: string;
 }
 
-export const ListModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  models: Schema.optional(Schema.Array(Model)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListModelsResponse" });
+export const ListModelsResponse: Schema.Schema<ListModelsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    models: Schema.optional(Schema.Array(Model)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListModelsResponse" });
 
 export interface RoutineBuildStatus {
   /** Output only. The time taken for the image build. Populated only after the build succeeds or fails. */
@@ -4830,13 +4964,14 @@ export interface RoutineBuildStatus {
   imageSizeBytes?: string;
 }
 
-export const RoutineBuildStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  buildDuration: Schema.optional(Schema.String),
-  buildState: Schema.optional(Schema.String),
-  buildStateUpdateTime: Schema.optional(Schema.String),
-  errorResult: Schema.optional(ErrorProto),
-  imageSizeBytes: Schema.optional(Schema.String),
-}).annotate({ identifier: "RoutineBuildStatus" });
+export const RoutineBuildStatus: Schema.Schema<RoutineBuildStatus> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    buildDuration: Schema.optional(Schema.String),
+    buildState: Schema.optional(Schema.String),
+    buildStateUpdateTime: Schema.optional(Schema.String),
+    errorResult: Schema.optional(ErrorProto),
+    imageSizeBytes: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RoutineBuildStatus" });
 
 export interface PythonOptions {
   /** Required. The name of the function defined in Python code as the entry point when the Python UDF is invoked. */
@@ -4845,10 +4980,11 @@ export interface PythonOptions {
   packages?: ReadonlyArray<string>;
 }
 
-export const PythonOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  entryPoint: Schema.optional(Schema.String),
-  packages: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "PythonOptions" });
+export const PythonOptions: Schema.Schema<PythonOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entryPoint: Schema.optional(Schema.String),
+    packages: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "PythonOptions" });
 
 export interface RemoteFunctionOptions {
   /** Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. Format: ```"projects/{projectId}/locations/{locationId}/connections/{connectionId}"``` */
@@ -4861,23 +4997,25 @@ export interface RemoteFunctionOptions {
   userDefinedContext?: Record<string, string>;
 }
 
-export const RemoteFunctionOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  connection: Schema.optional(Schema.String),
-  endpoint: Schema.optional(Schema.String),
-  maxBatchingRows: Schema.optional(Schema.String),
-  userDefinedContext: Schema.optional(
-    Schema.Record(Schema.String, Schema.String),
-  ),
-}).annotate({ identifier: "RemoteFunctionOptions" });
+export const RemoteFunctionOptions: Schema.Schema<RemoteFunctionOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connection: Schema.optional(Schema.String),
+    endpoint: Schema.optional(Schema.String),
+    maxBatchingRows: Schema.optional(Schema.String),
+    userDefinedContext: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  }).annotate({ identifier: "RemoteFunctionOptions" });
 
 export interface StandardSqlTableType {
   /** The columns in this table type */
   columns?: ReadonlyArray<StandardSqlField>;
 }
 
-export const StandardSqlTableType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  columns: Schema.optional(Schema.Array(StandardSqlField)),
-}).annotate({ identifier: "StandardSqlTableType" });
+export const StandardSqlTableType: Schema.Schema<StandardSqlTableType> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columns: Schema.optional(Schema.Array(StandardSqlField)),
+  }).annotate({ identifier: "StandardSqlTableType" });
 
 export interface SparkOptions {
   /** Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html). */
@@ -4902,18 +5040,19 @@ export interface SparkOptions {
   runtimeVersion?: string;
 }
 
-export const SparkOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  archiveUris: Schema.optional(Schema.Array(Schema.String)),
-  connection: Schema.optional(Schema.String),
-  containerImage: Schema.optional(Schema.String),
-  fileUris: Schema.optional(Schema.Array(Schema.String)),
-  jarUris: Schema.optional(Schema.Array(Schema.String)),
-  mainClass: Schema.optional(Schema.String),
-  mainFileUri: Schema.optional(Schema.String),
-  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  pyFileUris: Schema.optional(Schema.Array(Schema.String)),
-  runtimeVersion: Schema.optional(Schema.String),
-}).annotate({ identifier: "SparkOptions" });
+export const SparkOptions: Schema.Schema<SparkOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    archiveUris: Schema.optional(Schema.Array(Schema.String)),
+    connection: Schema.optional(Schema.String),
+    containerImage: Schema.optional(Schema.String),
+    fileUris: Schema.optional(Schema.Array(Schema.String)),
+    jarUris: Schema.optional(Schema.Array(Schema.String)),
+    mainClass: Schema.optional(Schema.String),
+    mainFileUri: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    pyFileUris: Schema.optional(Schema.Array(Schema.String)),
+    runtimeVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SparkOptions" });
 
 export interface Routine {
   /** Optional. */
@@ -4984,29 +5123,30 @@ export interface Routine {
   strictMode?: boolean;
 }
 
-export const Routine = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  arguments: Schema.optional(Schema.Array(Argument)),
-  buildStatus: Schema.optional(RoutineBuildStatus),
-  creationTime: Schema.optional(Schema.String),
-  dataGovernanceType: Schema.optional(Schema.String),
-  definitionBody: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  determinismLevel: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-  externalRuntimeOptions: Schema.optional(ExternalRuntimeOptions),
-  importedLibraries: Schema.optional(Schema.Array(Schema.String)),
-  language: Schema.optional(Schema.String),
-  lastModifiedTime: Schema.optional(Schema.String),
-  pythonOptions: Schema.optional(PythonOptions),
-  remoteFunctionOptions: Schema.optional(RemoteFunctionOptions),
-  returnTableType: Schema.optional(StandardSqlTableType),
-  returnType: Schema.optional(StandardSqlDataType),
-  routineReference: Schema.optional(RoutineReference),
-  routineType: Schema.optional(Schema.String),
-  securityMode: Schema.optional(Schema.String),
-  sparkOptions: Schema.optional(SparkOptions),
-  strictMode: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "Routine" });
+export const Routine: Schema.Schema<Routine> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    arguments: Schema.optional(Schema.Array(Argument)),
+    buildStatus: Schema.optional(RoutineBuildStatus),
+    creationTime: Schema.optional(Schema.String),
+    dataGovernanceType: Schema.optional(Schema.String),
+    definitionBody: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    determinismLevel: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    externalRuntimeOptions: Schema.optional(ExternalRuntimeOptions),
+    importedLibraries: Schema.optional(Schema.Array(Schema.String)),
+    language: Schema.optional(Schema.String),
+    lastModifiedTime: Schema.optional(Schema.String),
+    pythonOptions: Schema.optional(PythonOptions),
+    remoteFunctionOptions: Schema.optional(RemoteFunctionOptions),
+    returnTableType: Schema.optional(StandardSqlTableType),
+    returnType: Schema.optional(StandardSqlDataType),
+    routineReference: Schema.optional(RoutineReference),
+    routineType: Schema.optional(Schema.String),
+    securityMode: Schema.optional(Schema.String),
+    sparkOptions: Schema.optional(SparkOptions),
+    strictMode: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "Routine" });
 
 export interface ListRoutinesResponse {
   /** A token to request the next page of results. */
@@ -5015,10 +5155,11 @@ export interface ListRoutinesResponse {
   routines?: ReadonlyArray<Routine>;
 }
 
-export const ListRoutinesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  nextPageToken: Schema.optional(Schema.String),
-  routines: Schema.optional(Schema.Array(Routine)),
-}).annotate({ identifier: "ListRoutinesResponse" });
+export const ListRoutinesResponse: Schema.Schema<ListRoutinesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    routines: Schema.optional(Schema.Array(Routine)),
+  }).annotate({ identifier: "ListRoutinesResponse" });
 
 export interface RowAccessPolicy {
   /** Output only. The time when this row access policy was created, in milliseconds since the epoch. */
@@ -5035,14 +5176,15 @@ export interface RowAccessPolicy {
   rowAccessPolicyReference?: RowAccessPolicyReference;
 }
 
-export const RowAccessPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  creationTime: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-  filterPredicate: Schema.optional(Schema.String),
-  grantees: Schema.optional(Schema.Array(Schema.String)),
-  lastModifiedTime: Schema.optional(Schema.String),
-  rowAccessPolicyReference: Schema.optional(RowAccessPolicyReference),
-}).annotate({ identifier: "RowAccessPolicy" });
+export const RowAccessPolicy: Schema.Schema<RowAccessPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    creationTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    filterPredicate: Schema.optional(Schema.String),
+    grantees: Schema.optional(Schema.Array(Schema.String)),
+    lastModifiedTime: Schema.optional(Schema.String),
+    rowAccessPolicyReference: Schema.optional(RowAccessPolicyReference),
+  }).annotate({ identifier: "RowAccessPolicy" });
 
 export interface ListRowAccessPoliciesResponse {
   /** A token to request the next page of results. */
@@ -5051,7 +5193,7 @@ export interface ListRowAccessPoliciesResponse {
   rowAccessPolicies?: ReadonlyArray<RowAccessPolicy>;
 }
 
-export const ListRowAccessPoliciesResponse =
+export const ListRowAccessPoliciesResponse: Schema.Schema<ListRowAccessPoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     rowAccessPolicies: Schema.optional(Schema.Array(RowAccessPolicy)),
@@ -5062,9 +5204,10 @@ export interface LocationMetadata {
   legacyLocationId?: string;
 }
 
-export const LocationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  legacyLocationId: Schema.optional(Schema.String),
-}).annotate({ identifier: "LocationMetadata" });
+export const LocationMetadata: Schema.Schema<LocationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    legacyLocationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LocationMetadata" });
 
 export interface MaterializedViewDefinition {
   /** Optional. This option declares the intention to construct a materialized view that isn't refreshed incrementally. Non-incremental materialized views support an expanded range of SQL queries. The `allow_non_incremental_definition` option can't be changed after the materialized view is created. */
@@ -5081,7 +5224,7 @@ export interface MaterializedViewDefinition {
   refreshIntervalMs?: string;
 }
 
-export const MaterializedViewDefinition =
+export const MaterializedViewDefinition: Schema.Schema<MaterializedViewDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowNonIncrementalDefinition: Schema.optional(Schema.Boolean),
     enableRefresh: Schema.optional(Schema.Boolean),
@@ -5098,12 +5241,11 @@ export interface MaterializedViewStatus {
   refreshWatermark?: string;
 }
 
-export const MaterializedViewStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const MaterializedViewStatus: Schema.Schema<MaterializedViewStatus> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastRefreshStatus: Schema.optional(ErrorProto),
     refreshWatermark: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "MaterializedViewStatus" });
+  }).annotate({ identifier: "MaterializedViewStatus" });
 
 export interface ModelDefinition {
   /** Deprecated. */
@@ -5116,36 +5258,37 @@ export interface ModelDefinition {
   trainingRuns?: ReadonlyArray<BqmlTrainingRun>;
 }
 
-export const ModelDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  modelOptions: Schema.optional(
-    Schema.Struct({
-      labels: Schema.optional(Schema.Array(Schema.String)),
-      lossType: Schema.optional(Schema.String),
-      modelType: Schema.optional(Schema.String),
-    }),
-  ),
-  trainingRuns: Schema.optional(Schema.Array(BqmlTrainingRun)),
-}).annotate({ identifier: "ModelDefinition" });
+export const ModelDefinition: Schema.Schema<ModelDefinition> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modelOptions: Schema.optional(
+      Schema.Struct({
+        labels: Schema.optional(Schema.Array(Schema.String)),
+        lossType: Schema.optional(Schema.String),
+        modelType: Schema.optional(Schema.String),
+      }),
+    ),
+    trainingRuns: Schema.optional(Schema.Array(BqmlTrainingRun)),
+  }).annotate({ identifier: "ModelDefinition" });
 
 export interface PartitionedColumn {
   /** Required. The name of the partition column. */
   field?: string;
 }
 
-export const PartitionedColumn = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  field: Schema.optional(Schema.String),
-}).annotate({ identifier: "PartitionedColumn" });
+export const PartitionedColumn: Schema.Schema<PartitionedColumn> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    field: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PartitionedColumn" });
 
 export interface PartitioningDefinition {
   /** Optional. Details about each partitioning column. This field is output only for all partitioning types other than metastore partitioned tables. BigQuery native tables only support 1 partitioning column. Other table types may support 0, 1 or more partitioning columns. For metastore partitioned tables, the order must match the definition order in the Hive Metastore, where it must match the physical layout of the table. For example, CREATE TABLE a_table(id BIGINT, name STRING) PARTITIONED BY (city STRING, state STRING). In this case the values must be ['city', 'state'] in that order. */
   partitionedColumn?: ReadonlyArray<PartitionedColumn>;
 }
 
-export const PartitioningDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const PartitioningDefinition: Schema.Schema<PartitioningDefinition> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitionedColumn: Schema.optional(Schema.Array(PartitionedColumn)),
-  },
-).annotate({ identifier: "PartitioningDefinition" });
+  }).annotate({ identifier: "PartitioningDefinition" });
 
 export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
@@ -5158,12 +5301,13 @@ export interface Policy {
   version?: number;
 }
 
-export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-  bindings: Schema.optional(Schema.Array(Binding)),
-  etag: Schema.optional(Schema.String),
-  version: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Policy" });
+export const Policy: Schema.Schema<Policy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+    bindings: Schema.optional(Schema.Array(Binding)),
+    etag: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Policy" });
 
 export interface PrivacyPolicy {
   /** Optional. Policy used for aggregation thresholds. */
@@ -5174,20 +5318,22 @@ export interface PrivacyPolicy {
   joinRestrictionPolicy?: JoinRestrictionPolicy;
 }
 
-export const PrivacyPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  aggregationThresholdPolicy: Schema.optional(AggregationThresholdPolicy),
-  differentialPrivacyPolicy: Schema.optional(DifferentialPrivacyPolicy),
-  joinRestrictionPolicy: Schema.optional(JoinRestrictionPolicy),
-}).annotate({ identifier: "PrivacyPolicy" });
+export const PrivacyPolicy: Schema.Schema<PrivacyPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aggregationThresholdPolicy: Schema.optional(AggregationThresholdPolicy),
+    differentialPrivacyPolicy: Schema.optional(DifferentialPrivacyPolicy),
+    joinRestrictionPolicy: Schema.optional(JoinRestrictionPolicy),
+  }).annotate({ identifier: "PrivacyPolicy" });
 
 export interface ProjectReference {
   /** Required. ID of the project. Can be either the numeric ID or the assigned ID of the project. */
   projectId?: string;
 }
 
-export const ProjectReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  projectId: Schema.optional(Schema.String),
-}).annotate({ identifier: "ProjectReference" });
+export const ProjectReference: Schema.Schema<ProjectReference> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProjectReference" });
 
 export interface ProjectList {
   /** A hash of the page of results. */
@@ -5208,23 +5354,24 @@ export interface ProjectList {
   totalItems?: number;
 }
 
-export const ProjectList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  etag: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  nextPageToken: Schema.optional(Schema.String),
-  projects: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        friendlyName: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        numericId: Schema.optional(Schema.String),
-        projectReference: Schema.optional(ProjectReference),
-      }),
+export const ProjectList: Schema.Schema<ProjectList> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    projects: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          friendlyName: Schema.optional(Schema.String),
+          id: Schema.optional(Schema.String),
+          kind: Schema.optional(Schema.String),
+          numericId: Schema.optional(Schema.String),
+          projectReference: Schema.optional(ProjectReference),
+        }),
+      ),
     ),
-  ),
-  totalItems: Schema.optional(Schema.Number),
-}).annotate({ identifier: "ProjectList" });
+    totalItems: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ProjectList" });
 
 export interface QueryRequest {
   /** Optional. Connection properties which can modify the query behavior. */
@@ -5283,33 +5430,36 @@ export interface QueryRequest {
   writeIncrementalResults?: boolean;
 }
 
-export const QueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  connectionProperties: Schema.optional(Schema.Array(ConnectionProperty)),
-  continuous: Schema.optional(Schema.Boolean),
-  createSession: Schema.optional(Schema.Boolean),
-  defaultDataset: Schema.optional(DatasetReference),
-  destinationEncryptionConfiguration: Schema.optional(EncryptionConfiguration),
-  dryRun: Schema.optional(Schema.Boolean),
-  formatOptions: Schema.optional(DataFormatOptions),
-  jobCreationMode: Schema.optional(Schema.String),
-  jobTimeoutMs: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.optional(Schema.String),
-  maxResults: Schema.optional(Schema.Number),
-  maxSlots: Schema.optional(Schema.Number),
-  maximumBytesBilled: Schema.optional(Schema.String),
-  parameterMode: Schema.optional(Schema.String),
-  preserveNulls: Schema.optional(Schema.Boolean),
-  query: Schema.optional(Schema.String),
-  queryParameters: Schema.optional(Schema.Array(QueryParameter)),
-  requestId: Schema.optional(Schema.String),
-  reservation: Schema.optional(Schema.String),
-  timeoutMs: Schema.optional(Schema.Number),
-  useLegacySql: Schema.optional(Schema.Boolean),
-  useQueryCache: Schema.optional(Schema.Boolean),
-  writeIncrementalResults: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "QueryRequest" });
+export const QueryRequest: Schema.Schema<QueryRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectionProperties: Schema.optional(Schema.Array(ConnectionProperty)),
+    continuous: Schema.optional(Schema.Boolean),
+    createSession: Schema.optional(Schema.Boolean),
+    defaultDataset: Schema.optional(DatasetReference),
+    destinationEncryptionConfiguration: Schema.optional(
+      EncryptionConfiguration,
+    ),
+    dryRun: Schema.optional(Schema.Boolean),
+    formatOptions: Schema.optional(DataFormatOptions),
+    jobCreationMode: Schema.optional(Schema.String),
+    jobTimeoutMs: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    maxResults: Schema.optional(Schema.Number),
+    maxSlots: Schema.optional(Schema.Number),
+    maximumBytesBilled: Schema.optional(Schema.String),
+    parameterMode: Schema.optional(Schema.String),
+    preserveNulls: Schema.optional(Schema.Boolean),
+    query: Schema.optional(Schema.String),
+    queryParameters: Schema.optional(Schema.Array(QueryParameter)),
+    requestId: Schema.optional(Schema.String),
+    reservation: Schema.optional(Schema.String),
+    timeoutMs: Schema.optional(Schema.Number),
+    useLegacySql: Schema.optional(Schema.Boolean),
+    useQueryCache: Schema.optional(Schema.Boolean),
+    writeIncrementalResults: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "QueryRequest" });
 
 export interface QueryResponse {
   /** Whether the query result was fetched from the query cache. */
@@ -5356,29 +5506,30 @@ export interface QueryResponse {
   totalSlotMs?: string;
 }
 
-export const QueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  cacheHit: Schema.optional(Schema.Boolean),
-  creationTime: Schema.optional(Schema.String),
-  dmlStats: Schema.optional(DmlStatistics),
-  endTime: Schema.optional(Schema.String),
-  errors: Schema.optional(Schema.Array(ErrorProto)),
-  jobComplete: Schema.optional(Schema.Boolean),
-  jobCreationReason: Schema.optional(JobCreationReason),
-  jobReference: Schema.optional(JobReference),
-  kind: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-  numDmlAffectedRows: Schema.optional(Schema.String),
-  pageToken: Schema.optional(Schema.String),
-  queryId: Schema.optional(Schema.String),
-  rows: Schema.optional(Schema.Array(TableRow)),
-  schema: Schema.optional(TableSchema),
-  sessionInfo: Schema.optional(SessionInfo),
-  startTime: Schema.optional(Schema.String),
-  totalBytesBilled: Schema.optional(Schema.String),
-  totalBytesProcessed: Schema.optional(Schema.String),
-  totalRows: Schema.optional(Schema.String),
-  totalSlotMs: Schema.optional(Schema.String),
-}).annotate({ identifier: "QueryResponse" });
+export const QueryResponse: Schema.Schema<QueryResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cacheHit: Schema.optional(Schema.Boolean),
+    creationTime: Schema.optional(Schema.String),
+    dmlStats: Schema.optional(DmlStatistics),
+    endTime: Schema.optional(Schema.String),
+    errors: Schema.optional(Schema.Array(ErrorProto)),
+    jobComplete: Schema.optional(Schema.Boolean),
+    jobCreationReason: Schema.optional(JobCreationReason),
+    jobReference: Schema.optional(JobReference),
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    numDmlAffectedRows: Schema.optional(Schema.String),
+    pageToken: Schema.optional(Schema.String),
+    queryId: Schema.optional(Schema.String),
+    rows: Schema.optional(Schema.Array(TableRow)),
+    schema: Schema.optional(TableSchema),
+    sessionInfo: Schema.optional(SessionInfo),
+    startTime: Schema.optional(Schema.String),
+    totalBytesBilled: Schema.optional(Schema.String),
+    totalBytesProcessed: Schema.optional(Schema.String),
+    totalRows: Schema.optional(Schema.String),
+    totalSlotMs: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryResponse" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -5387,10 +5538,11 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  policy: Schema.optional(Policy),
-  updateMask: Schema.optional(Schema.String),
-}).annotate({ identifier: "SetIamPolicyRequest" });
+export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface SnapshotDefinition {
   /** Required. Reference describing the ID of the table that was snapshot. */
@@ -5399,10 +5551,11 @@ export interface SnapshotDefinition {
   snapshotTime?: string;
 }
 
-export const SnapshotDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  baseTableReference: Schema.optional(TableReference),
-  snapshotTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "SnapshotDefinition" });
+export const SnapshotDefinition: Schema.Schema<SnapshotDefinition> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseTableReference: Schema.optional(TableReference),
+    snapshotTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SnapshotDefinition" });
 
 export interface Streamingbuffer {
   /** Output only. A lower-bound estimate of the number of bytes currently in the streaming buffer. */
@@ -5413,11 +5566,12 @@ export interface Streamingbuffer {
   oldestEntryTime?: string;
 }
 
-export const Streamingbuffer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  estimatedBytes: Schema.optional(Schema.String),
-  estimatedRows: Schema.optional(Schema.String),
-  oldestEntryTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "Streamingbuffer" });
+export const Streamingbuffer: Schema.Schema<Streamingbuffer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    estimatedBytes: Schema.optional(Schema.String),
+    estimatedRows: Schema.optional(Schema.String),
+    oldestEntryTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Streamingbuffer" });
 
 export interface TableConstraints {
   /** Optional. Present only if the table has a foreign key. The foreign key is not enforced. */
@@ -5437,33 +5591,34 @@ export interface TableConstraints {
   primaryKey?: { columns?: ReadonlyArray<string> };
 }
 
-export const TableConstraints = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  foreignKeys: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        columnReferences: Schema.optional(
-          Schema.Array(
+export const TableConstraints: Schema.Schema<TableConstraints> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    foreignKeys: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          columnReferences: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                referencedColumn: Schema.optional(Schema.String),
+                referencingColumn: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          name: Schema.optional(Schema.String),
+          referencedTable: Schema.optional(
             Schema.Struct({
-              referencedColumn: Schema.optional(Schema.String),
-              referencingColumn: Schema.optional(Schema.String),
+              datasetId: Schema.optional(Schema.String),
+              projectId: Schema.optional(Schema.String),
+              tableId: Schema.optional(Schema.String),
             }),
           ),
-        ),
-        name: Schema.optional(Schema.String),
-        referencedTable: Schema.optional(
-          Schema.Struct({
-            datasetId: Schema.optional(Schema.String),
-            projectId: Schema.optional(Schema.String),
-            tableId: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+        }),
+      ),
     ),
-  ),
-  primaryKey: Schema.optional(
-    Schema.Struct({ columns: Schema.optional(Schema.Array(Schema.String)) }),
-  ),
-}).annotate({ identifier: "TableConstraints" });
+    primaryKey: Schema.optional(
+      Schema.Struct({ columns: Schema.optional(Schema.Array(Schema.String)) }),
+    ),
+  }).annotate({ identifier: "TableConstraints" });
 
 export interface TableReplicationInfo {
   /** Optional. Output only. If source is a materialized view, this field signifies the last refresh time of the source. */
@@ -5484,13 +5639,14 @@ export interface TableReplicationInfo {
   sourceTable?: TableReference;
 }
 
-export const TableReplicationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  replicatedSourceLastRefreshTime: Schema.optional(Schema.String),
-  replicationError: Schema.optional(ErrorProto),
-  replicationIntervalMs: Schema.optional(Schema.String),
-  replicationStatus: Schema.optional(Schema.String),
-  sourceTable: Schema.optional(TableReference),
-}).annotate({ identifier: "TableReplicationInfo" });
+export const TableReplicationInfo: Schema.Schema<TableReplicationInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    replicatedSourceLastRefreshTime: Schema.optional(Schema.String),
+    replicationError: Schema.optional(ErrorProto),
+    replicationIntervalMs: Schema.optional(Schema.String),
+    replicationStatus: Schema.optional(Schema.String),
+    sourceTable: Schema.optional(TableReference),
+  }).annotate({ identifier: "TableReplicationInfo" });
 
 export interface ViewDefinition {
   /** Optional. Foreign view representations. */
@@ -5507,16 +5663,17 @@ export interface ViewDefinition {
   userDefinedFunctionResources?: ReadonlyArray<UserDefinedFunctionResource>;
 }
 
-export const ViewDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  foreignDefinitions: Schema.optional(Schema.Array(ForeignViewDefinition)),
-  privacyPolicy: Schema.optional(PrivacyPolicy),
-  query: Schema.optional(Schema.String),
-  useExplicitColumnNames: Schema.optional(Schema.Boolean),
-  useLegacySql: Schema.optional(Schema.Boolean),
-  userDefinedFunctionResources: Schema.optional(
-    Schema.Array(UserDefinedFunctionResource),
-  ),
-}).annotate({ identifier: "ViewDefinition" });
+export const ViewDefinition: Schema.Schema<ViewDefinition> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    foreignDefinitions: Schema.optional(Schema.Array(ForeignViewDefinition)),
+    privacyPolicy: Schema.optional(PrivacyPolicy),
+    query: Schema.optional(Schema.String),
+    useExplicitColumnNames: Schema.optional(Schema.Boolean),
+    useLegacySql: Schema.optional(Schema.Boolean),
+    userDefinedFunctionResources: Schema.optional(
+      Schema.Array(UserDefinedFunctionResource),
+    ),
+  }).annotate({ identifier: "ViewDefinition" });
 
 export interface Table {
   /** Optional. Specifies the configuration of a BigQuery table for Apache Iceberg. */
@@ -5633,60 +5790,61 @@ export interface Table {
   view?: ViewDefinition;
 }
 
-export const Table = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  biglakeConfiguration: Schema.optional(BigLakeConfiguration),
-  cloneDefinition: Schema.optional(CloneDefinition),
-  clustering: Schema.optional(Clustering),
-  creationTime: Schema.optional(Schema.String),
-  defaultCollation: Schema.optional(Schema.String),
-  defaultRoundingMode: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  encryptionConfiguration: Schema.optional(EncryptionConfiguration),
-  etag: Schema.optional(Schema.String),
-  expirationTime: Schema.optional(Schema.String),
-  externalCatalogTableOptions: Schema.optional(ExternalCatalogTableOptions),
-  externalDataConfiguration: Schema.optional(ExternalDataConfiguration),
-  friendlyName: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  lastModifiedTime: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-  managedTableType: Schema.optional(Schema.String),
-  materializedView: Schema.optional(MaterializedViewDefinition),
-  materializedViewStatus: Schema.optional(MaterializedViewStatus),
-  maxStaleness: Schema.optional(Schema.String),
-  model: Schema.optional(ModelDefinition),
-  numActiveLogicalBytes: Schema.optional(Schema.String),
-  numActivePhysicalBytes: Schema.optional(Schema.String),
-  numBytes: Schema.optional(Schema.String),
-  numCurrentPhysicalBytes: Schema.optional(Schema.String),
-  numLongTermBytes: Schema.optional(Schema.String),
-  numLongTermLogicalBytes: Schema.optional(Schema.String),
-  numLongTermPhysicalBytes: Schema.optional(Schema.String),
-  numPartitions: Schema.optional(Schema.String),
-  numPhysicalBytes: Schema.optional(Schema.String),
-  numRows: Schema.optional(Schema.String),
-  numTimeTravelPhysicalBytes: Schema.optional(Schema.String),
-  numTotalLogicalBytes: Schema.optional(Schema.String),
-  numTotalPhysicalBytes: Schema.optional(Schema.String),
-  partitionDefinition: Schema.optional(PartitioningDefinition),
-  rangePartitioning: Schema.optional(RangePartitioning),
-  replicas: Schema.optional(Schema.Array(TableReference)),
-  requirePartitionFilter: Schema.optional(Schema.Boolean),
-  resourceTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  restrictions: Schema.optional(RestrictionConfig),
-  schema: Schema.optional(TableSchema),
-  selfLink: Schema.optional(Schema.String),
-  snapshotDefinition: Schema.optional(SnapshotDefinition),
-  streamingBuffer: Schema.optional(Streamingbuffer),
-  tableConstraints: Schema.optional(TableConstraints),
-  tableReference: Schema.optional(TableReference),
-  tableReplicationInfo: Schema.optional(TableReplicationInfo),
-  timePartitioning: Schema.optional(TimePartitioning),
-  type: Schema.optional(Schema.String),
-  view: Schema.optional(ViewDefinition),
-}).annotate({ identifier: "Table" });
+export const Table: Schema.Schema<Table> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    biglakeConfiguration: Schema.optional(BigLakeConfiguration),
+    cloneDefinition: Schema.optional(CloneDefinition),
+    clustering: Schema.optional(Clustering),
+    creationTime: Schema.optional(Schema.String),
+    defaultCollation: Schema.optional(Schema.String),
+    defaultRoundingMode: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    encryptionConfiguration: Schema.optional(EncryptionConfiguration),
+    etag: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    externalCatalogTableOptions: Schema.optional(ExternalCatalogTableOptions),
+    externalDataConfiguration: Schema.optional(ExternalDataConfiguration),
+    friendlyName: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    lastModifiedTime: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    managedTableType: Schema.optional(Schema.String),
+    materializedView: Schema.optional(MaterializedViewDefinition),
+    materializedViewStatus: Schema.optional(MaterializedViewStatus),
+    maxStaleness: Schema.optional(Schema.String),
+    model: Schema.optional(ModelDefinition),
+    numActiveLogicalBytes: Schema.optional(Schema.String),
+    numActivePhysicalBytes: Schema.optional(Schema.String),
+    numBytes: Schema.optional(Schema.String),
+    numCurrentPhysicalBytes: Schema.optional(Schema.String),
+    numLongTermBytes: Schema.optional(Schema.String),
+    numLongTermLogicalBytes: Schema.optional(Schema.String),
+    numLongTermPhysicalBytes: Schema.optional(Schema.String),
+    numPartitions: Schema.optional(Schema.String),
+    numPhysicalBytes: Schema.optional(Schema.String),
+    numRows: Schema.optional(Schema.String),
+    numTimeTravelPhysicalBytes: Schema.optional(Schema.String),
+    numTotalLogicalBytes: Schema.optional(Schema.String),
+    numTotalPhysicalBytes: Schema.optional(Schema.String),
+    partitionDefinition: Schema.optional(PartitioningDefinition),
+    rangePartitioning: Schema.optional(RangePartitioning),
+    replicas: Schema.optional(Schema.Array(TableReference)),
+    requirePartitionFilter: Schema.optional(Schema.Boolean),
+    resourceTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    restrictions: Schema.optional(RestrictionConfig),
+    schema: Schema.optional(TableSchema),
+    selfLink: Schema.optional(Schema.String),
+    snapshotDefinition: Schema.optional(SnapshotDefinition),
+    streamingBuffer: Schema.optional(Streamingbuffer),
+    tableConstraints: Schema.optional(TableConstraints),
+    tableReference: Schema.optional(TableReference),
+    tableReplicationInfo: Schema.optional(TableReplicationInfo),
+    timePartitioning: Schema.optional(TimePartitioning),
+    type: Schema.optional(Schema.String),
+    view: Schema.optional(ViewDefinition),
+  }).annotate({ identifier: "Table" });
 
 export interface TableDataInsertAllRequest {
   /** Optional. Accept rows that contain values that do not match the schema. The unknown values are ignored. Default is false, which treats unknown values as errors. */
@@ -5702,7 +5860,7 @@ export interface TableDataInsertAllRequest {
   traceId?: string;
 }
 
-export const TableDataInsertAllRequest =
+export const TableDataInsertAllRequest: Schema.Schema<TableDataInsertAllRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ignoreUnknownValues: Schema.optional(Schema.Boolean),
     kind: Schema.optional(Schema.String),
@@ -5729,7 +5887,7 @@ export interface TableDataInsertAllResponse {
   kind?: string;
 }
 
-export const TableDataInsertAllResponse =
+export const TableDataInsertAllResponse: Schema.Schema<TableDataInsertAllResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     insertErrors: Schema.optional(
       Schema.Array(
@@ -5755,13 +5913,14 @@ export interface TableDataList {
   totalRows?: string;
 }
 
-export const TableDataList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  etag: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  pageToken: Schema.optional(Schema.String),
-  rows: Schema.optional(Schema.Array(TableRow)),
-  totalRows: Schema.optional(Schema.String),
-}).annotate({ identifier: "TableDataList" });
+export const TableDataList: Schema.Schema<TableDataList> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    pageToken: Schema.optional(Schema.String),
+    rows: Schema.optional(Schema.Array(TableRow)),
+    totalRows: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TableDataList" });
 
 export interface TableList {
   /** A hash of this page of results. */
@@ -5790,43 +5949,44 @@ export interface TableList {
   totalItems?: number;
 }
 
-export const TableList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  etag: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  nextPageToken: Schema.optional(Schema.String),
-  tables: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        clustering: Schema.optional(Clustering),
-        creationTime: Schema.optional(Schema.String),
-        expirationTime: Schema.optional(Schema.String),
-        friendlyName: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        rangePartitioning: Schema.optional(RangePartitioning),
-        requirePartitionFilter: Schema.optional(Schema.Boolean),
-        tableReference: Schema.optional(TableReference),
-        timePartitioning: Schema.optional(TimePartitioning),
-        type: Schema.optional(Schema.String),
-        view: Schema.optional(
-          Schema.Struct({
-            privacyPolicy: Schema.optional(PrivacyPolicy),
-            useLegacySql: Schema.optional(Schema.Boolean),
-          }),
-        ),
-      }),
+export const TableList: Schema.Schema<TableList> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    tables: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          clustering: Schema.optional(Clustering),
+          creationTime: Schema.optional(Schema.String),
+          expirationTime: Schema.optional(Schema.String),
+          friendlyName: Schema.optional(Schema.String),
+          id: Schema.optional(Schema.String),
+          kind: Schema.optional(Schema.String),
+          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          rangePartitioning: Schema.optional(RangePartitioning),
+          requirePartitionFilter: Schema.optional(Schema.Boolean),
+          tableReference: Schema.optional(TableReference),
+          timePartitioning: Schema.optional(TimePartitioning),
+          type: Schema.optional(Schema.String),
+          view: Schema.optional(
+            Schema.Struct({
+              privacyPolicy: Schema.optional(PrivacyPolicy),
+              useLegacySql: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        }),
+      ),
     ),
-  ),
-  totalItems: Schema.optional(Schema.Number),
-}).annotate({ identifier: "TableList" });
+    totalItems: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "TableList" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest =
+export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -5836,7 +5996,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse =
+export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -5846,11 +6006,10 @@ export interface UndeleteDatasetRequest {
   deletionTime?: string;
 }
 
-export const UndeleteDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const UndeleteDatasetRequest: Schema.Schema<UndeleteDatasetRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deletionTime: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "UndeleteDatasetRequest" });
+  }).annotate({ identifier: "UndeleteDatasetRequest" });
 
 // ==========================================================================
 // Errors

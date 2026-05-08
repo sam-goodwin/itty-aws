@@ -22,53 +22,7 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface PlaceActionLink {
-  /** Required. The type of place action that can be performed using this link. */
-  placeActionType?:
-    | "PLACE_ACTION_TYPE_UNSPECIFIED"
-    | "APPOINTMENT"
-    | "ONLINE_APPOINTMENT"
-    | "DINING_RESERVATION"
-    | "FOOD_ORDERING"
-    | "FOOD_DELIVERY"
-    | "FOOD_TAKEOUT"
-    | "SHOP_ONLINE"
-    | "SOLOPRENEUR_APPOINTMENT"
-    | (string & {});
-  /** Output only. Specifies the provider type. */
-  providerType?:
-    | "PROVIDER_TYPE_UNSPECIFIED"
-    | "MERCHANT"
-    | "AGGREGATOR_3P"
-    | (string & {});
-  /** Output only. The time when the place action link was created. */
-  createTime?: string;
-  /** Optional. The resource name, in the format `locations/{location_id}/placeActionLinks/{place_action_link_id}`. The name field will only be considered in UpdatePlaceActionLink and DeletePlaceActionLink requests for updating and deleting links respectively. However, it will be ignored in CreatePlaceActionLink request, where `place_action_link_id` will be assigned by the server on successful creation of a new link and returned as part of the response. */
-  name?: string;
-  /** Optional. Whether this link is preferred by the merchant. Only one link can be marked as preferred per place action type at a location. If a future request marks a different link as preferred for the same place action type, then the current preferred link (if any exists) will lose its preference. */
-  isPreferred?: boolean;
-  /** Required. The link uri. The same uri can be reused for different action types across different locations. However, only one place action link is allowed for each unique combination of (uri, place action type, location). */
-  uri?: string;
-  /** Output only. Indicates whether this link can be edited by the client. */
-  isEditable?: boolean;
-  /** Output only. The time when the place action link was last modified. */
-  updateTime?: string;
-}
-
-export const PlaceActionLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  placeActionType: Schema.optional(Schema.String),
-  providerType: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  isPreferred: Schema.optional(Schema.Boolean),
-  uri: Schema.optional(Schema.String),
-  isEditable: Schema.optional(Schema.Boolean),
-  updateTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "PlaceActionLink" });
-
 export interface PlaceActionTypeMetadata {
-  /** The localized display name for the attribute, if available; otherwise, the English display name. */
-  displayName?: string;
   /** The place action type. */
   placeActionType?:
     | "PLACE_ACTION_TYPE_UNSPECIFIED"
@@ -81,13 +35,60 @@ export interface PlaceActionTypeMetadata {
     | "SHOP_ONLINE"
     | "SOLOPRENEUR_APPOINTMENT"
     | (string & {});
+  /** The localized display name for the attribute, if available; otherwise, the English display name. */
+  displayName?: string;
 }
 
-export const PlaceActionTypeMetadata =
+export const PlaceActionTypeMetadata: Schema.Schema<PlaceActionTypeMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    displayName: Schema.optional(Schema.String),
     placeActionType: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "PlaceActionTypeMetadata" });
+
+export interface PlaceActionLink {
+  /** Output only. Specifies the provider type. */
+  providerType?:
+    | "PROVIDER_TYPE_UNSPECIFIED"
+    | "MERCHANT"
+    | "AGGREGATOR_3P"
+    | (string & {});
+  /** Optional. The resource name, in the format `locations/{location_id}/placeActionLinks/{place_action_link_id}`. The name field will only be considered in UpdatePlaceActionLink and DeletePlaceActionLink requests for updating and deleting links respectively. However, it will be ignored in CreatePlaceActionLink request, where `place_action_link_id` will be assigned by the server on successful creation of a new link and returned as part of the response. */
+  name?: string;
+  /** Required. The type of place action that can be performed using this link. */
+  placeActionType?:
+    | "PLACE_ACTION_TYPE_UNSPECIFIED"
+    | "APPOINTMENT"
+    | "ONLINE_APPOINTMENT"
+    | "DINING_RESERVATION"
+    | "FOOD_ORDERING"
+    | "FOOD_DELIVERY"
+    | "FOOD_TAKEOUT"
+    | "SHOP_ONLINE"
+    | "SOLOPRENEUR_APPOINTMENT"
+    | (string & {});
+  /** Optional. Whether this link is preferred by the merchant. Only one link can be marked as preferred per place action type at a location. If a future request marks a different link as preferred for the same place action type, then the current preferred link (if any exists) will lose its preference. */
+  isPreferred?: boolean;
+  /** Required. The link uri. The same uri can be reused for different action types across different locations. However, only one place action link is allowed for each unique combination of (uri, place action type, location). */
+  uri?: string;
+  /** Output only. The time when the place action link was last modified. */
+  updateTime?: string;
+  /** Output only. Indicates whether this link can be edited by the client. */
+  isEditable?: boolean;
+  /** Output only. The time when the place action link was created. */
+  createTime?: string;
+}
+
+export const PlaceActionLink: Schema.Schema<PlaceActionLink> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    providerType: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    placeActionType: Schema.optional(Schema.String),
+    isPreferred: Schema.optional(Schema.Boolean),
+    uri: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    isEditable: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PlaceActionLink" });
 
 export interface ListPlaceActionTypeMetadataResponse {
   /** A collection of metadata for the available place action types. */
@@ -96,7 +97,7 @@ export interface ListPlaceActionTypeMetadataResponse {
   nextPageToken?: string;
 }
 
-export const ListPlaceActionTypeMetadataResponse =
+export const ListPlaceActionTypeMetadataResponse: Schema.Schema<ListPlaceActionTypeMetadataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     placeActionTypeMetadata: Schema.optional(
       Schema.Array(PlaceActionTypeMetadata),
@@ -104,24 +105,25 @@ export const ListPlaceActionTypeMetadataResponse =
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListPlaceActionTypeMetadataResponse" });
 
-export interface ListPlaceActionLinksResponse {
-  /** The returned list of place action links. */
-  placeActionLinks?: ReadonlyArray<PlaceActionLink>;
-  /** If there are more place action links than the requested page size, then this field is populated with a token to fetch the next page of results. */
-  nextPageToken?: string;
-}
-
-export const ListPlaceActionLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    placeActionLinks: Schema.optional(Schema.Array(PlaceActionLink)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListPlaceActionLinksResponse" });
-
 export interface Empty {}
 
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface ListPlaceActionLinksResponse {
+  /** If there are more place action links than the requested page size, then this field is populated with a token to fetch the next page of results. */
+  nextPageToken?: string;
+  /** The returned list of place action links. */
+  placeActionLinks?: ReadonlyArray<PlaceActionLink>;
+}
+
+export const ListPlaceActionLinksResponse: Schema.Schema<ListPlaceActionLinksResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    placeActionLinks: Schema.optional(Schema.Array(PlaceActionLink)),
+  }).annotate({ identifier: "ListPlaceActionLinksResponse" });
 
 // ==========================================================================
 // Errors
@@ -177,73 +179,23 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface ListPlaceActionTypeMetadataRequest {
-  /** Optional. The IETF BCP-47 code of language to get display names in. If this language is not available, they will be provided in English. */
-  languageCode?: string;
-  /** Optional. How many action types to include per page. Default is 10, minimum is 1. */
-  pageSize?: number;
-  /** Optional. A filter constraining the place action types to return metadata for. The response includes entries that match the filter. We support only the following filters: 1. location=XYZ where XYZ is a string indicating the resource name of a location, in the format `locations/{location_id}`. 2. region_code=XYZ where XYZ is a Unicode CLDR region code to find available action types. If no filter is provided, all place action types are returned. */
-  filter?: string;
-  /** Optional. If specified, the next page of place action type metadata is retrieved. The `pageToken` is returned when a call to `placeActionTypeMetadata.list` returns more results than can fit into the requested page size. */
-  pageToken?: string;
-}
-
-export const ListPlaceActionTypeMetadataRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    languageCode: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("languageCode"),
-    ),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/placeActionTypeMetadata" }),
-    svc,
-  ) as unknown as Schema.Schema<ListPlaceActionTypeMetadataRequest>;
-
-export type ListPlaceActionTypeMetadataResponse_Op =
-  ListPlaceActionTypeMetadataResponse;
-export const ListPlaceActionTypeMetadataResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListPlaceActionTypeMetadataResponse;
-
-export type ListPlaceActionTypeMetadataError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns the list of available place action types for a location or country. */
-export const listPlaceActionTypeMetadata: API.PaginatedOperationMethod<
-  ListPlaceActionTypeMetadataRequest,
-  ListPlaceActionTypeMetadataResponse_Op,
-  ListPlaceActionTypeMetadataError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListPlaceActionTypeMetadataRequest,
-  output: ListPlaceActionTypeMetadataResponse_Op,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface ListLocationsPlaceActionLinksRequest {
-  /** Required. The name of the location whose place action links will be listed. `locations/{location_id}`. */
-  parent: string;
+  /** Optional. How many place action links to return per page. Default of 10. The minimum is 1. */
+  pageSize?: number;
   /** Optional. If specified, returns the next page of place action links. */
   pageToken?: string;
   /** Optional. A filter constraining the place action links to return. The response includes entries that match the filter. We support only the following filter: 1. place_action_type=XYZ where XYZ is a valid PlaceActionType. */
   filter?: string;
-  /** Optional. How many place action links to return per page. Default of 10. The minimum is 1. */
-  pageSize?: number;
+  /** Required. The name of the location whose place action links will be listed. `locations/{location_id}`. */
+  parent: string;
 }
 
 export const ListLocationsPlaceActionLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/placeActionLinks" }),
     svc,
@@ -318,45 +270,39 @@ export const createLocationsPlaceActionLinks: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchLocationsPlaceActionLinksRequest {
-  /** Required. The specific fields to update. The only editable fields are `uri`, `place_action_type` and `is_preferred`. If the updated link already exists at the same location with the same `place_action_type` and `uri`, fails with an `ALREADY_EXISTS` error. */
-  updateMask?: string;
-  /** Optional. The resource name, in the format `locations/{location_id}/placeActionLinks/{place_action_link_id}`. The name field will only be considered in UpdatePlaceActionLink and DeletePlaceActionLink requests for updating and deleting links respectively. However, it will be ignored in CreatePlaceActionLink request, where `place_action_link_id` will be assigned by the server on successful creation of a new link and returned as part of the response. */
+export interface DeleteLocationsPlaceActionLinksRequest {
+  /** Required. The resource name of the place action link to remove from the location. */
   name: string;
-  /** Request body */
-  body?: PlaceActionLink;
 }
 
-export const PatchLocationsPlaceActionLinksRequest =
+export const DeleteLocationsPlaceActionLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(PlaceActionLink).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<PatchLocationsPlaceActionLinksRequest>;
+  ) as unknown as Schema.Schema<DeleteLocationsPlaceActionLinksRequest>;
 
-export type PatchLocationsPlaceActionLinksResponse = PlaceActionLink;
-export const PatchLocationsPlaceActionLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PlaceActionLink;
+export type DeleteLocationsPlaceActionLinksResponse = Empty;
+export const DeleteLocationsPlaceActionLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type PatchLocationsPlaceActionLinksError =
+export type DeleteLocationsPlaceActionLinksError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates the specified place action link and returns it. */
-export const patchLocationsPlaceActionLinks: API.OperationMethod<
-  PatchLocationsPlaceActionLinksRequest,
-  PatchLocationsPlaceActionLinksResponse,
-  PatchLocationsPlaceActionLinksError,
+/** Deletes a place action link from the specified location. */
+export const deleteLocationsPlaceActionLinks: API.OperationMethod<
+  DeleteLocationsPlaceActionLinksRequest,
+  DeleteLocationsPlaceActionLinksResponse,
+  DeleteLocationsPlaceActionLinksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchLocationsPlaceActionLinksRequest,
-  output: PatchLocationsPlaceActionLinksResponse,
+  input: DeleteLocationsPlaceActionLinksRequest,
+  output: DeleteLocationsPlaceActionLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -394,38 +340,94 @@ export const getLocationsPlaceActionLinks: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface DeleteLocationsPlaceActionLinksRequest {
-  /** Required. The resource name of the place action link to remove from the location. */
+export interface PatchLocationsPlaceActionLinksRequest {
+  /** Optional. The resource name, in the format `locations/{location_id}/placeActionLinks/{place_action_link_id}`. The name field will only be considered in UpdatePlaceActionLink and DeletePlaceActionLink requests for updating and deleting links respectively. However, it will be ignored in CreatePlaceActionLink request, where `place_action_link_id` will be assigned by the server on successful creation of a new link and returned as part of the response. */
   name: string;
+  /** Required. The specific fields to update. The only editable fields are `uri`, `place_action_type` and `is_preferred`. If the updated link already exists at the same location with the same `place_action_type` and `uri`, fails with an `ALREADY_EXISTS` error. */
+  updateMask?: string;
+  /** Request body */
+  body?: PlaceActionLink;
 }
 
-export const DeleteLocationsPlaceActionLinksRequest =
+export const PatchLocationsPlaceActionLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(PlaceActionLink).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DeleteLocationsPlaceActionLinksRequest>;
+  ) as unknown as Schema.Schema<PatchLocationsPlaceActionLinksRequest>;
 
-export type DeleteLocationsPlaceActionLinksResponse = Empty;
-export const DeleteLocationsPlaceActionLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export type PatchLocationsPlaceActionLinksResponse = PlaceActionLink;
+export const PatchLocationsPlaceActionLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ PlaceActionLink;
 
-export type DeleteLocationsPlaceActionLinksError =
+export type PatchLocationsPlaceActionLinksError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Deletes a place action link from the specified location. */
-export const deleteLocationsPlaceActionLinks: API.OperationMethod<
-  DeleteLocationsPlaceActionLinksRequest,
-  DeleteLocationsPlaceActionLinksResponse,
-  DeleteLocationsPlaceActionLinksError,
+/** Updates the specified place action link and returns it. */
+export const patchLocationsPlaceActionLinks: API.OperationMethod<
+  PatchLocationsPlaceActionLinksRequest,
+  PatchLocationsPlaceActionLinksResponse,
+  PatchLocationsPlaceActionLinksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteLocationsPlaceActionLinksRequest,
-  output: DeleteLocationsPlaceActionLinksResponse,
+  input: PatchLocationsPlaceActionLinksRequest,
+  output: PatchLocationsPlaceActionLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListPlaceActionTypeMetadataRequest {
+  /** Optional. How many action types to include per page. Default is 10, minimum is 1. */
+  pageSize?: number;
+  /** Optional. If specified, the next page of place action type metadata is retrieved. The `pageToken` is returned when a call to `placeActionTypeMetadata.list` returns more results than can fit into the requested page size. */
+  pageToken?: string;
+  /** Optional. The IETF BCP-47 code of language to get display names in. If this language is not available, they will be provided in English. */
+  languageCode?: string;
+  /** Optional. A filter constraining the place action types to return metadata for. The response includes entries that match the filter. We support only the following filters: 1. location=XYZ where XYZ is a string indicating the resource name of a location, in the format `locations/{location_id}`. 2. region_code=XYZ where XYZ is a Unicode CLDR region code to find available action types. If no filter is provided, all place action types are returned. */
+  filter?: string;
+}
+
+export const ListPlaceActionTypeMetadataRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    languageCode: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("languageCode"),
+    ),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/placeActionTypeMetadata" }),
+    svc,
+  ) as unknown as Schema.Schema<ListPlaceActionTypeMetadataRequest>;
+
+export type ListPlaceActionTypeMetadataResponse_Op =
+  ListPlaceActionTypeMetadataResponse;
+export const ListPlaceActionTypeMetadataResponse_Op =
+  /*@__PURE__*/ /*#__PURE__*/ ListPlaceActionTypeMetadataResponse;
+
+export type ListPlaceActionTypeMetadataError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns the list of available place action types for a location or country. */
+export const listPlaceActionTypeMetadata: API.PaginatedOperationMethod<
+  ListPlaceActionTypeMetadataRequest,
+  ListPlaceActionTypeMetadataResponse_Op,
+  ListPlaceActionTypeMetadataError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListPlaceActionTypeMetadataRequest,
+  output: ListPlaceActionTypeMetadataResponse_Op,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));

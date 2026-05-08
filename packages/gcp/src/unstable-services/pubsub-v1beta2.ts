@@ -22,23 +22,43 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface PubsubMessage {
+  /** The message payload. For JSON requests, the value of this field must be [base64-encoded](https://tools.ietf.org/html/rfc4648). */
+  data?: string;
+  /** ID of this message, assigned by the server when the message is published. Guaranteed to be unique within the topic. This value may be read by a subscriber that receives a `PubsubMessage` via a `Pull` call or a push delivery. It must not be populated by the publisher in a `Publish` call. */
+  messageId?: string;
+  /** The time at which the message was published, populated by the server when it receives the `Publish` call. It must not be populated by the publisher in a `Publish` call. */
+  publishTime?: string;
+  /** Optional attributes for this message. */
+  attributes?: Record<string, string>;
+}
+
+export const PubsubMessage: Schema.Schema<PubsubMessage> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    data: Schema.optional(Schema.String),
+    messageId: Schema.optional(Schema.String),
+    publishTime: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "PubsubMessage" });
+
 export interface Expr {
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
 
-export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  expression: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-}).annotate({ identifier: "Expr" });
+export const Expr: Schema.Schema<Expr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -49,112 +69,51 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  role: Schema.optional(Schema.String),
-  members: Schema.optional(Schema.Array(Schema.String)),
-  condition: Schema.optional(Expr),
-}).annotate({ identifier: "Binding" });
-
-export interface Policy {
-  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  version?: number;
-  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: ReadonlyArray<Binding>;
-  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
-  etag?: string;
-}
-
-export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  version: Schema.optional(Schema.Number),
-  bindings: Schema.optional(Schema.Array(Binding)),
-  etag: Schema.optional(Schema.String),
-}).annotate({ identifier: "Policy" });
-
-export interface SetIamPolicyRequest {
-  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
-  policy?: Policy;
-}
-
-export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  policy: Schema.optional(Policy),
-}).annotate({ identifier: "SetIamPolicyRequest" });
-
-export interface TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsRequest =
+export const Binding: Schema.Schema<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsRequest" });
+    role: Schema.optional(Schema.String),
+    members: Schema.optional(Schema.Array(Schema.String)),
+    condition: Schema.optional(Expr),
+  }).annotate({ identifier: "Binding" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse =
+export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
 
-export interface Topic {
-  /** The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
-  name?: string;
+export interface OidcToken {
+  /** Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used. */
+  audience?: string;
+  /** [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission for the service account. */
+  serviceAccountEmail?: string;
 }
 
-export const Topic = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "Topic" });
+export const OidcToken: Schema.Schema<OidcToken> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audience: Schema.optional(Schema.String),
+    serviceAccountEmail: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OidcToken" });
 
-export interface PubsubMessage {
-  /** The message payload. For JSON requests, the value of this field must be [base64-encoded](https://tools.ietf.org/html/rfc4648). */
-  data?: string;
-  /** Optional attributes for this message. */
+export interface PushConfig {
+  /** Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the `CreateSubscription` call, it will default to the version of the API used to make such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. */
   attributes?: Record<string, string>;
-  /** ID of this message, assigned by the server when the message is published. Guaranteed to be unique within the topic. This value may be read by a subscriber that receives a `PubsubMessage` via a `Pull` call or a push delivery. It must not be populated by the publisher in a `Publish` call. */
-  messageId?: string;
-  /** The time at which the message was published, populated by the server when it receives the `Publish` call. It must not be populated by the publisher in a `Publish` call. */
-  publishTime?: string;
+  /** If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message. */
+  oidcToken?: OidcToken;
+  /** A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push". */
+  pushEndpoint?: string;
 }
 
-export const PubsubMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.optional(Schema.String),
-  attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  messageId: Schema.optional(Schema.String),
-  publishTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "PubsubMessage" });
-
-export interface PublishRequest {
-  /** The messages to publish. */
-  messages?: ReadonlyArray<PubsubMessage>;
-}
-
-export const PublishRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  messages: Schema.optional(Schema.Array(PubsubMessage)),
-}).annotate({ identifier: "PublishRequest" });
-
-export interface PublishResponse {
-  /** The server-assigned ID of each published message, in the same order as the messages in the request. IDs are guaranteed to be unique within the topic. */
-  messageIds?: ReadonlyArray<string>;
-}
-
-export const PublishResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  messageIds: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "PublishResponse" });
-
-export interface ListTopicsResponse {
-  /** The resulting topics. */
-  topics?: ReadonlyArray<Topic>;
-  /** If not empty, indicates that there may be more topics that match the request; this value should be passed in a new `ListTopicsRequest`. */
-  nextPageToken?: string;
-}
-
-export const ListTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  topics: Schema.optional(Schema.Array(Topic)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListTopicsResponse" });
+export const PushConfig: Schema.Schema<PushConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    oidcToken: Schema.optional(OidcToken),
+    pushEndpoint: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PushConfig" });
 
 export interface ListTopicSubscriptionsResponse {
   /** The names of the subscriptions that match the request. */
@@ -163,62 +122,139 @@ export interface ListTopicSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListTopicSubscriptionsResponse =
+export const ListTopicSubscriptionsResponse: Schema.Schema<ListTopicSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptions: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListTopicSubscriptionsResponse" });
 
-export interface Empty {}
-
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
-
-export interface OidcToken {
-  /** [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission for the service account. */
-  serviceAccountEmail?: string;
-  /** Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used. */
-  audience?: string;
+export interface Policy {
+  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
+  bindings?: ReadonlyArray<Binding>;
+  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
+  etag?: string;
+  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  version?: number;
 }
 
-export const OidcToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  serviceAccountEmail: Schema.optional(Schema.String),
-  audience: Schema.optional(Schema.String),
-}).annotate({ identifier: "OidcToken" });
+export const Policy: Schema.Schema<Policy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bindings: Schema.optional(Schema.Array(Binding)),
+    etag: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Policy" });
 
-export interface PushConfig {
-  /** A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push". */
-  pushEndpoint?: string;
-  /** Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the `CreateSubscription` call, it will default to the version of the API used to make such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. */
-  attributes?: Record<string, string>;
-  /** If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message. */
-  oidcToken?: OidcToken;
+export interface Topic {
+  /** The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
+  name?: string;
 }
 
-export const PushConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  pushEndpoint: Schema.optional(Schema.String),
-  attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  oidcToken: Schema.optional(OidcToken),
-}).annotate({ identifier: "PushConfig" });
+export const Topic: Schema.Schema<Topic> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Topic" });
+
+export interface ListTopicsResponse {
+  /** The resulting topics. */
+  topics?: ReadonlyArray<Topic>;
+  /** If not empty, indicates that there may be more topics that match the request; this value should be passed in a new `ListTopicsRequest`. */
+  nextPageToken?: string;
+}
+
+export const ListTopicsResponse: Schema.Schema<ListTopicsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    topics: Schema.optional(Schema.Array(Topic)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTopicsResponse" });
+
+export interface ReceivedMessage {
+  /** This ID can be used to acknowledge the received message. */
+  ackId?: string;
+  /** The message. */
+  message?: PubsubMessage;
+}
+
+export const ReceivedMessage: Schema.Schema<ReceivedMessage> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ackId: Schema.optional(Schema.String),
+    message: Schema.optional(PubsubMessage),
+  }).annotate({ identifier: "ReceivedMessage" });
 
 export interface Subscription {
-  /** The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
-  name?: string;
-  /** The name of the topic from which this subscription is receiving messages. The value of this field will be `_deleted-topic_` if the topic has been deleted. */
-  topic?: string;
-  /** If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods. */
-  pushConfig?: PushConfig;
   /** This value is the maximum time after a subscriber receives a message before the subscriber should acknowledge the message. After message delivery but before the ack deadline expires and before the message is acknowledged, it is an outstanding message and will not be delivered again during that time (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using pull. The maximum custom deadline you can specify is 600 seconds (10 minutes). For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message. If this parameter is 0, a default value of 10 seconds is used. */
   ackDeadlineSeconds?: number;
+  /** The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
+  name?: string;
+  /** If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods. */
+  pushConfig?: PushConfig;
+  /** The name of the topic from which this subscription is receiving messages. The value of this field will be `_deleted-topic_` if the topic has been deleted. */
+  topic?: string;
 }
 
-export const Subscription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  topic: Schema.optional(Schema.String),
-  pushConfig: Schema.optional(PushConfig),
-  ackDeadlineSeconds: Schema.optional(Schema.Number),
-}).annotate({ identifier: "Subscription" });
+export const Subscription: Schema.Schema<Subscription> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ackDeadlineSeconds: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    pushConfig: Schema.optional(PushConfig),
+    topic: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Subscription" });
+
+export interface SetIamPolicyRequest {
+  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
+  policy?: Policy;
+}
+
+export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+  }).annotate({ identifier: "SetIamPolicyRequest" });
+
+export interface PublishRequest {
+  /** The messages to publish. */
+  messages?: ReadonlyArray<PubsubMessage>;
+}
+
+export const PublishRequest: Schema.Schema<PublishRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    messages: Schema.optional(Schema.Array(PubsubMessage)),
+  }).annotate({ identifier: "PublishRequest" });
+
+export interface PublishResponse {
+  /** The server-assigned ID of each published message, in the same order as the messages in the request. IDs are guaranteed to be unique within the topic. */
+  messageIds?: ReadonlyArray<string>;
+}
+
+export const PublishResponse: Schema.Schema<PublishResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    messageIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "PublishResponse" });
+
+export interface TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
+
+export interface ModifyPushConfigRequest {
+  /** The push configuration for future deliveries. An empty `pushConfig` indicates that the Pub/Sub system should stop pushing messages from the given subscription and allow messages to be pulled and acknowledged - effectively pausing the subscription if `Pull` is not called. */
+  pushConfig?: PushConfig;
+}
+
+export const ModifyPushConfigRequest: Schema.Schema<ModifyPushConfigRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pushConfig: Schema.optional(PushConfig),
+  }).annotate({ identifier: "ModifyPushConfigRequest" });
+
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
 
 export interface ListSubscriptionsResponse {
   /** The subscriptions that match the request. */
@@ -227,11 +263,21 @@ export interface ListSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListSubscriptionsResponse =
+export const ListSubscriptionsResponse: Schema.Schema<ListSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptions: Schema.optional(Schema.Array(Subscription)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListSubscriptionsResponse" });
+
+export interface AcknowledgeRequest {
+  /** The acknowledgment ID for the messages being acknowledged that was returned by the Pub/Sub system in the `Pull` response. Must not be empty. */
+  ackIds?: ReadonlyArray<string>;
+}
+
+export const AcknowledgeRequest: Schema.Schema<AcknowledgeRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ackIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AcknowledgeRequest" });
 
 export interface ModifyAckDeadlineRequest {
   /** The acknowledgment ID. Either this or ack_ids must be populated, but not both. */
@@ -242,21 +288,12 @@ export interface ModifyAckDeadlineRequest {
   ackDeadlineSeconds?: number;
 }
 
-export const ModifyAckDeadlineRequest =
+export const ModifyAckDeadlineRequest: Schema.Schema<ModifyAckDeadlineRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ackId: Schema.optional(Schema.String),
     ackIds: Schema.optional(Schema.Array(Schema.String)),
     ackDeadlineSeconds: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ModifyAckDeadlineRequest" });
-
-export interface AcknowledgeRequest {
-  /** The acknowledgment ID for the messages being acknowledged that was returned by the Pub/Sub system in the `Pull` response. Must not be empty. */
-  ackIds?: ReadonlyArray<string>;
-}
-
-export const AcknowledgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  ackIds: Schema.optional(Schema.Array(Schema.String)),
-}).annotate({ identifier: "AcknowledgeRequest" });
 
 export interface PullRequest {
   /** Optional. If this is specified as true the system will respond immediately even if it is not able to return a message in the `Pull` response. Otherwise the system is allowed to wait until at least one message is available rather than returning no messages. The client may cancel the request if it does not wish to wait any longer for the response. Warning: setting this field to `true` is discouraged because it adversely impacts the performance of `Pull` operations. We recommend that users do not set this field. */
@@ -265,41 +302,21 @@ export interface PullRequest {
   maxMessages?: number;
 }
 
-export const PullRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  returnImmediately: Schema.optional(Schema.Boolean),
-  maxMessages: Schema.optional(Schema.Number),
-}).annotate({ identifier: "PullRequest" });
-
-export interface ReceivedMessage {
-  /** This ID can be used to acknowledge the received message. */
-  ackId?: string;
-  /** The message. */
-  message?: PubsubMessage;
-}
-
-export const ReceivedMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  ackId: Schema.optional(Schema.String),
-  message: Schema.optional(PubsubMessage),
-}).annotate({ identifier: "ReceivedMessage" });
+export const PullRequest: Schema.Schema<PullRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    returnImmediately: Schema.optional(Schema.Boolean),
+    maxMessages: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "PullRequest" });
 
 export interface PullResponse {
   /** Received Pub/Sub messages. The Pub/Sub system will return zero messages if there are no more available in the backlog. The Pub/Sub system may return fewer than the `maxMessages` requested even if there are more messages available in the backlog. */
   receivedMessages?: ReadonlyArray<ReceivedMessage>;
 }
 
-export const PullResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  receivedMessages: Schema.optional(Schema.Array(ReceivedMessage)),
-}).annotate({ identifier: "PullResponse" });
-
-export interface ModifyPushConfigRequest {
-  /** The push configuration for future deliveries. An empty `pushConfig` indicates that the Pub/Sub system should stop pushing messages from the given subscription and allow messages to be pulled and acknowledged - effectively pausing the subscription if `Pull` is not called. */
-  pushConfig?: PushConfig;
-}
-
-export const ModifyPushConfigRequest =
+export const PullResponse: Schema.Schema<PullResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pushConfig: Schema.optional(PushConfig),
-  }).annotate({ identifier: "ModifyPushConfigRequest" });
+    receivedMessages: Schema.optional(Schema.Array(ReceivedMessage)),
+  }).annotate({ identifier: "PullResponse" });
 
 // ==========================================================================
 // Errors
@@ -354,621 +371,6 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 // Operations
 // ==========================================================================
-
-export interface SetIamPolicyProjectsSubscriptionsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta2/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsSubscriptionsRequest>;
-
-export type SetIamPolicyProjectsSubscriptionsResponse = Policy;
-export const SetIamPolicyProjectsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsSubscriptions: API.OperationMethod<
-  SetIamPolicyProjectsSubscriptionsRequest,
-  SetIamPolicyProjectsSubscriptionsResponse,
-  SetIamPolicyProjectsSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsSubscriptionsRequest,
-  output: SetIamPolicyProjectsSubscriptionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsSubscriptionsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsSubscriptionsRequest>;
-
-export type GetIamPolicyProjectsSubscriptionsResponse = Policy;
-export const GetIamPolicyProjectsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsSubscriptions: API.OperationMethod<
-  GetIamPolicyProjectsSubscriptionsRequest,
-  GetIamPolicyProjectsSubscriptionsResponse,
-  GetIamPolicyProjectsSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsSubscriptionsRequest,
-  output: GetIamPolicyProjectsSubscriptionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface TestIamPermissionsProjectsSubscriptionsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta2/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsSubscriptionsRequest>;
-
-export type TestIamPermissionsProjectsSubscriptionsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsSubscriptions: API.OperationMethod<
-  TestIamPermissionsProjectsSubscriptionsRequest,
-  TestIamPermissionsProjectsSubscriptionsResponse,
-  TestIamPermissionsProjectsSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsSubscriptionsRequest,
-  output: TestIamPermissionsProjectsSubscriptionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsSubscriptionsRequest {
-  /** The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
-  name: string;
-  /** Request body */
-  body?: Subscription;
-}
-
-export const CreateProjectsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(Subscription).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "v1beta2/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsSubscriptionsRequest>;
-
-export type CreateProjectsSubscriptionsResponse = Subscription;
-export const CreateProjectsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
-
-export type CreateProjectsSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a subscription to a given topic. If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic. Note that for REST API requests, you must specify a name. */
-export const createProjectsSubscriptions: API.OperationMethod<
-  CreateProjectsSubscriptionsRequest,
-  CreateProjectsSubscriptionsResponse,
-  CreateProjectsSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsSubscriptionsRequest,
-  output: CreateProjectsSubscriptionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsSubscriptionsRequest {
-  /** The name of the subscription to get. */
-  subscription: string;
-}
-
-export const GetProjectsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscription: Schema.String.pipe(T.HttpPath("subscription")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{+subscription}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsSubscriptionsRequest>;
-
-export type GetProjectsSubscriptionsResponse = Subscription;
-export const GetProjectsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
-
-export type GetProjectsSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the configuration details of a subscription. */
-export const getProjectsSubscriptions: API.OperationMethod<
-  GetProjectsSubscriptionsRequest,
-  GetProjectsSubscriptionsResponse,
-  GetProjectsSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsSubscriptionsRequest,
-  output: GetProjectsSubscriptionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsSubscriptionsRequest {
-  /** The name of the cloud project that subscriptions belong to. */
-  project: string;
-  /** Maximum number of subscriptions to return. */
-  pageSize?: number;
-  /** The value returned by the last `ListSubscriptionsResponse`; indicates that this is a continuation of a prior `ListSubscriptions` call, and that the system should return the next page of data. */
-  pageToken?: string;
-}
-
-export const ListProjectsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    project: Schema.String.pipe(T.HttpPath("project")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{+project}/subscriptions" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsSubscriptionsRequest>;
-
-export type ListProjectsSubscriptionsResponse = ListSubscriptionsResponse;
-export const ListProjectsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionsResponse;
-
-export type ListProjectsSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists matching subscriptions. */
-export const listProjectsSubscriptions: API.PaginatedOperationMethod<
-  ListProjectsSubscriptionsRequest,
-  ListProjectsSubscriptionsResponse,
-  ListProjectsSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsSubscriptionsRequest,
-  output: ListProjectsSubscriptionsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface DeleteProjectsSubscriptionsRequest {
-  /** The subscription to delete. */
-  subscription: string;
-}
-
-export const DeleteProjectsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscription: Schema.String.pipe(T.HttpPath("subscription")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta2/{+subscription}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsSubscriptionsRequest>;
-
-export type DeleteProjectsSubscriptionsResponse = Empty;
-export const DeleteProjectsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes an existing subscription. All pending messages in the subscription are immediately dropped. Calls to `Pull` after deletion will return `NOT_FOUND`. After a subscription is deleted, a new one may be created with the same name, but the new one has no association with the old subscription, or its topic unless the same topic is specified. */
-export const deleteProjectsSubscriptions: API.OperationMethod<
-  DeleteProjectsSubscriptionsRequest,
-  DeleteProjectsSubscriptionsResponse,
-  DeleteProjectsSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsSubscriptionsRequest,
-  output: DeleteProjectsSubscriptionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ModifyAckDeadlineProjectsSubscriptionsRequest {
-  /** The name of the subscription. */
-  subscription: string;
-  /** Request body */
-  body?: ModifyAckDeadlineRequest;
-}
-
-export const ModifyAckDeadlineProjectsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscription: Schema.String.pipe(T.HttpPath("subscription")),
-    body: Schema.optional(ModifyAckDeadlineRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta2/{+subscription}:modifyAckDeadline",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ModifyAckDeadlineProjectsSubscriptionsRequest>;
-
-export type ModifyAckDeadlineProjectsSubscriptionsResponse = Empty;
-export const ModifyAckDeadlineProjectsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type ModifyAckDeadlineProjectsSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Modifies the ack deadline for a specific message. This method is useful to indicate that more time is needed to process a message by the subscriber, or to make the message available for redelivery if the processing was interrupted. Note that this does not modify the subscription-level `ackDeadlineSeconds` used for subsequent messages. */
-export const modifyAckDeadlineProjectsSubscriptions: API.OperationMethod<
-  ModifyAckDeadlineProjectsSubscriptionsRequest,
-  ModifyAckDeadlineProjectsSubscriptionsResponse,
-  ModifyAckDeadlineProjectsSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ModifyAckDeadlineProjectsSubscriptionsRequest,
-  output: ModifyAckDeadlineProjectsSubscriptionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface AcknowledgeProjectsSubscriptionsRequest {
-  /** The subscription whose message is being acknowledged. */
-  subscription: string;
-  /** Request body */
-  body?: AcknowledgeRequest;
-}
-
-export const AcknowledgeProjectsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscription: Schema.String.pipe(T.HttpPath("subscription")),
-    body: Schema.optional(AcknowledgeRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta2/{+subscription}:acknowledge",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<AcknowledgeProjectsSubscriptionsRequest>;
-
-export type AcknowledgeProjectsSubscriptionsResponse = Empty;
-export const AcknowledgeProjectsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type AcknowledgeProjectsSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Acknowledges the messages associated with the `ack_ids` in the `AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages from the subscription. Acknowledging a message whose ack deadline has expired may succeed, but such a message may be redelivered later. Acknowledging a message more than once will not result in an error. */
-export const acknowledgeProjectsSubscriptions: API.OperationMethod<
-  AcknowledgeProjectsSubscriptionsRequest,
-  AcknowledgeProjectsSubscriptionsResponse,
-  AcknowledgeProjectsSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: AcknowledgeProjectsSubscriptionsRequest,
-  output: AcknowledgeProjectsSubscriptionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PullProjectsSubscriptionsRequest {
-  /** The subscription from which messages should be pulled. */
-  subscription: string;
-  /** Request body */
-  body?: PullRequest;
-}
-
-export const PullProjectsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscription: Schema.String.pipe(T.HttpPath("subscription")),
-    body: Schema.optional(PullRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta2/{+subscription}:pull",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PullProjectsSubscriptionsRequest>;
-
-export type PullProjectsSubscriptionsResponse = PullResponse;
-export const PullProjectsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PullResponse;
-
-export type PullProjectsSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The server may return `UNAVAILABLE` if there are too many concurrent pull requests pending for the given subscription. */
-export const pullProjectsSubscriptions: API.OperationMethod<
-  PullProjectsSubscriptionsRequest,
-  PullProjectsSubscriptionsResponse,
-  PullProjectsSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PullProjectsSubscriptionsRequest,
-  output: PullProjectsSubscriptionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ModifyPushConfigProjectsSubscriptionsRequest {
-  /** The name of the subscription. */
-  subscription: string;
-  /** Request body */
-  body?: ModifyPushConfigRequest;
-}
-
-export const ModifyPushConfigProjectsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscription: Schema.String.pipe(T.HttpPath("subscription")),
-    body: Schema.optional(ModifyPushConfigRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta2/{+subscription}:modifyPushConfig",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ModifyPushConfigProjectsSubscriptionsRequest>;
-
-export type ModifyPushConfigProjectsSubscriptionsResponse = Empty;
-export const ModifyPushConfigProjectsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type ModifyPushConfigProjectsSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Modifies the `PushConfig` for a specified subscription. This may be used to change a push subscription to a pull one (signified by an empty `PushConfig`) or vice versa, or change the endpoint URL and other attributes of a push subscription. Messages will accumulate for delivery continuously through the call regardless of changes to the `PushConfig`. */
-export const modifyPushConfigProjectsSubscriptions: API.OperationMethod<
-  ModifyPushConfigProjectsSubscriptionsRequest,
-  ModifyPushConfigProjectsSubscriptionsResponse,
-  ModifyPushConfigProjectsSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ModifyPushConfigProjectsSubscriptionsRequest,
-  output: ModifyPushConfigProjectsSubscriptionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyProjectsTopicsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsTopicsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta2/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsTopicsRequest>;
-
-export type SetIamPolicyProjectsTopicsResponse = Policy;
-export const SetIamPolicyProjectsTopicsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsTopicsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsTopics: API.OperationMethod<
-  SetIamPolicyProjectsTopicsRequest,
-  SetIamPolicyProjectsTopicsResponse,
-  SetIamPolicyProjectsTopicsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsTopicsRequest,
-  output: SetIamPolicyProjectsTopicsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsTopicsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsTopicsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsTopicsRequest>;
-
-export type GetIamPolicyProjectsTopicsResponse = Policy;
-export const GetIamPolicyProjectsTopicsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsTopicsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsTopics: API.OperationMethod<
-  GetIamPolicyProjectsTopicsRequest,
-  GetIamPolicyProjectsTopicsResponse,
-  GetIamPolicyProjectsTopicsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsTopicsRequest,
-  output: GetIamPolicyProjectsTopicsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface TestIamPermissionsProjectsTopicsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsTopicsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta2/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsTopicsRequest>;
-
-export type TestIamPermissionsProjectsTopicsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsTopicsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsTopicsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsTopics: API.OperationMethod<
-  TestIamPermissionsProjectsTopicsRequest,
-  TestIamPermissionsProjectsTopicsResponse,
-  TestIamPermissionsProjectsTopicsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsTopicsRequest,
-  output: TestIamPermissionsProjectsTopicsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsTopicsRequest {
-  /** The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
-  name: string;
-  /** Request body */
-  body?: Topic;
-}
-
-export const CreateProjectsTopicsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(Topic).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "v1beta2/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsTopicsRequest>;
-
-export type CreateProjectsTopicsResponse = Topic;
-export const CreateProjectsTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
-
-export type CreateProjectsTopicsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates the given topic with the given name. */
-export const createProjectsTopics: API.OperationMethod<
-  CreateProjectsTopicsRequest,
-  CreateProjectsTopicsResponse,
-  CreateProjectsTopicsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsTopicsRequest,
-  output: CreateProjectsTopicsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
 
 export interface PublishProjectsTopicsRequest {
   /** The messages in the request will be published on this topic. */
@@ -1037,6 +439,170 @@ export const getProjectsTopics: API.OperationMethod<
   input: GetProjectsTopicsRequest,
   output: GetProjectsTopicsResponse,
   errors: [NotFound, Forbidden],
+}));
+
+export interface SetIamPolicyProjectsTopicsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsTopicsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta2/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsTopicsRequest>;
+
+export type SetIamPolicyProjectsTopicsResponse = Policy;
+export const SetIamPolicyProjectsTopicsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsTopics: API.OperationMethod<
+  SetIamPolicyProjectsTopicsRequest,
+  SetIamPolicyProjectsTopicsResponse,
+  SetIamPolicyProjectsTopicsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsTopicsRequest,
+  output: SetIamPolicyProjectsTopicsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsTopicsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsTopicsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta2/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsTopicsRequest>;
+
+export type TestIamPermissionsProjectsTopicsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsTopicsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsTopics: API.OperationMethod<
+  TestIamPermissionsProjectsTopicsRequest,
+  TestIamPermissionsProjectsTopicsResponse,
+  TestIamPermissionsProjectsTopicsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsTopicsRequest,
+  output: TestIamPermissionsProjectsTopicsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsTopicsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsTopicsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta2/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsTopicsRequest>;
+
+export type GetIamPolicyProjectsTopicsResponse = Policy;
+export const GetIamPolicyProjectsTopicsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsTopics: API.OperationMethod<
+  GetIamPolicyProjectsTopicsRequest,
+  GetIamPolicyProjectsTopicsResponse,
+  GetIamPolicyProjectsTopicsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsTopicsRequest,
+  output: GetIamPolicyProjectsTopicsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateProjectsTopicsRequest {
+  /** The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
+  name: string;
+  /** Request body */
+  body?: Topic;
+}
+
+export const CreateProjectsTopicsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Topic).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PUT", path: "v1beta2/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsTopicsRequest>;
+
+export type CreateProjectsTopicsResponse = Topic;
+export const CreateProjectsTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
+
+export type CreateProjectsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates the given topic with the given name. */
+export const createProjectsTopics: API.OperationMethod<
+  CreateProjectsTopicsRequest,
+  CreateProjectsTopicsResponse,
+  CreateProjectsTopicsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsTopicsRequest,
+  output: CreateProjectsTopicsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsTopicsRequest {
@@ -1158,4 +724,455 @@ export const listProjectsTopicsSubscriptions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
+}));
+
+export interface ListProjectsSubscriptionsRequest {
+  /** The name of the cloud project that subscriptions belong to. */
+  project: string;
+  /** Maximum number of subscriptions to return. */
+  pageSize?: number;
+  /** The value returned by the last `ListSubscriptionsResponse`; indicates that this is a continuation of a prior `ListSubscriptions` call, and that the system should return the next page of data. */
+  pageToken?: string;
+}
+
+export const ListProjectsSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta2/{+project}/subscriptions" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsSubscriptionsRequest>;
+
+export type ListProjectsSubscriptionsResponse = ListSubscriptionsResponse;
+export const ListProjectsSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionsResponse;
+
+export type ListProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists matching subscriptions. */
+export const listProjectsSubscriptions: API.PaginatedOperationMethod<
+  ListProjectsSubscriptionsRequest,
+  ListProjectsSubscriptionsResponse,
+  ListProjectsSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsSubscriptionsRequest,
+  output: ListProjectsSubscriptionsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetIamPolicyProjectsSubscriptionsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta2/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsSubscriptionsRequest>;
+
+export type GetIamPolicyProjectsSubscriptionsResponse = Policy;
+export const GetIamPolicyProjectsSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsSubscriptions: API.OperationMethod<
+  GetIamPolicyProjectsSubscriptionsRequest,
+  GetIamPolicyProjectsSubscriptionsResponse,
+  GetIamPolicyProjectsSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsSubscriptionsRequest,
+  output: GetIamPolicyProjectsSubscriptionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateProjectsSubscriptionsRequest {
+  /** The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
+  name: string;
+  /** Request body */
+  body?: Subscription;
+}
+
+export const CreateProjectsSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Subscription).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PUT", path: "v1beta2/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsSubscriptionsRequest>;
+
+export type CreateProjectsSubscriptionsResponse = Subscription;
+export const CreateProjectsSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+
+export type CreateProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a subscription to a given topic. If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic. Note that for REST API requests, you must specify a name. */
+export const createProjectsSubscriptions: API.OperationMethod<
+  CreateProjectsSubscriptionsRequest,
+  CreateProjectsSubscriptionsResponse,
+  CreateProjectsSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsSubscriptionsRequest,
+  output: CreateProjectsSubscriptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsSubscriptionsRequest {
+  /** The subscription to delete. */
+  subscription: string;
+}
+
+export const DeleteProjectsSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.String.pipe(T.HttpPath("subscription")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1beta2/{+subscription}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsSubscriptionsRequest>;
+
+export type DeleteProjectsSubscriptionsResponse = Empty;
+export const DeleteProjectsSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes an existing subscription. All pending messages in the subscription are immediately dropped. Calls to `Pull` after deletion will return `NOT_FOUND`. After a subscription is deleted, a new one may be created with the same name, but the new one has no association with the old subscription, or its topic unless the same topic is specified. */
+export const deleteProjectsSubscriptions: API.OperationMethod<
+  DeleteProjectsSubscriptionsRequest,
+  DeleteProjectsSubscriptionsResponse,
+  DeleteProjectsSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsSubscriptionsRequest,
+  output: DeleteProjectsSubscriptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SetIamPolicyProjectsSubscriptionsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta2/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsSubscriptionsRequest>;
+
+export type SetIamPolicyProjectsSubscriptionsResponse = Policy;
+export const SetIamPolicyProjectsSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsSubscriptions: API.OperationMethod<
+  SetIamPolicyProjectsSubscriptionsRequest,
+  SetIamPolicyProjectsSubscriptionsResponse,
+  SetIamPolicyProjectsSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsSubscriptionsRequest,
+  output: SetIamPolicyProjectsSubscriptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsSubscriptionsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta2/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsSubscriptionsRequest>;
+
+export type TestIamPermissionsProjectsSubscriptionsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsSubscriptions: API.OperationMethod<
+  TestIamPermissionsProjectsSubscriptionsRequest,
+  TestIamPermissionsProjectsSubscriptionsResponse,
+  TestIamPermissionsProjectsSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsSubscriptionsRequest,
+  output: TestIamPermissionsProjectsSubscriptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PullProjectsSubscriptionsRequest {
+  /** The subscription from which messages should be pulled. */
+  subscription: string;
+  /** Request body */
+  body?: PullRequest;
+}
+
+export const PullProjectsSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.String.pipe(T.HttpPath("subscription")),
+    body: Schema.optional(PullRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta2/{+subscription}:pull",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PullProjectsSubscriptionsRequest>;
+
+export type PullProjectsSubscriptionsResponse = PullResponse;
+export const PullProjectsSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ PullResponse;
+
+export type PullProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The server may return `UNAVAILABLE` if there are too many concurrent pull requests pending for the given subscription. */
+export const pullProjectsSubscriptions: API.OperationMethod<
+  PullProjectsSubscriptionsRequest,
+  PullProjectsSubscriptionsResponse,
+  PullProjectsSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PullProjectsSubscriptionsRequest,
+  output: PullProjectsSubscriptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface AcknowledgeProjectsSubscriptionsRequest {
+  /** The subscription whose message is being acknowledged. */
+  subscription: string;
+  /** Request body */
+  body?: AcknowledgeRequest;
+}
+
+export const AcknowledgeProjectsSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.String.pipe(T.HttpPath("subscription")),
+    body: Schema.optional(AcknowledgeRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta2/{+subscription}:acknowledge",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<AcknowledgeProjectsSubscriptionsRequest>;
+
+export type AcknowledgeProjectsSubscriptionsResponse = Empty;
+export const AcknowledgeProjectsSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type AcknowledgeProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Acknowledges the messages associated with the `ack_ids` in the `AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages from the subscription. Acknowledging a message whose ack deadline has expired may succeed, but such a message may be redelivered later. Acknowledging a message more than once will not result in an error. */
+export const acknowledgeProjectsSubscriptions: API.OperationMethod<
+  AcknowledgeProjectsSubscriptionsRequest,
+  AcknowledgeProjectsSubscriptionsResponse,
+  AcknowledgeProjectsSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: AcknowledgeProjectsSubscriptionsRequest,
+  output: AcknowledgeProjectsSubscriptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ModifyAckDeadlineProjectsSubscriptionsRequest {
+  /** The name of the subscription. */
+  subscription: string;
+  /** Request body */
+  body?: ModifyAckDeadlineRequest;
+}
+
+export const ModifyAckDeadlineProjectsSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.String.pipe(T.HttpPath("subscription")),
+    body: Schema.optional(ModifyAckDeadlineRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta2/{+subscription}:modifyAckDeadline",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ModifyAckDeadlineProjectsSubscriptionsRequest>;
+
+export type ModifyAckDeadlineProjectsSubscriptionsResponse = Empty;
+export const ModifyAckDeadlineProjectsSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type ModifyAckDeadlineProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Modifies the ack deadline for a specific message. This method is useful to indicate that more time is needed to process a message by the subscriber, or to make the message available for redelivery if the processing was interrupted. Note that this does not modify the subscription-level `ackDeadlineSeconds` used for subsequent messages. */
+export const modifyAckDeadlineProjectsSubscriptions: API.OperationMethod<
+  ModifyAckDeadlineProjectsSubscriptionsRequest,
+  ModifyAckDeadlineProjectsSubscriptionsResponse,
+  ModifyAckDeadlineProjectsSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ModifyAckDeadlineProjectsSubscriptionsRequest,
+  output: ModifyAckDeadlineProjectsSubscriptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsSubscriptionsRequest {
+  /** The name of the subscription to get. */
+  subscription: string;
+}
+
+export const GetProjectsSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.String.pipe(T.HttpPath("subscription")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta2/{+subscription}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsSubscriptionsRequest>;
+
+export type GetProjectsSubscriptionsResponse = Subscription;
+export const GetProjectsSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+
+export type GetProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the configuration details of a subscription. */
+export const getProjectsSubscriptions: API.OperationMethod<
+  GetProjectsSubscriptionsRequest,
+  GetProjectsSubscriptionsResponse,
+  GetProjectsSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsSubscriptionsRequest,
+  output: GetProjectsSubscriptionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ModifyPushConfigProjectsSubscriptionsRequest {
+  /** The name of the subscription. */
+  subscription: string;
+  /** Request body */
+  body?: ModifyPushConfigRequest;
+}
+
+export const ModifyPushConfigProjectsSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.String.pipe(T.HttpPath("subscription")),
+    body: Schema.optional(ModifyPushConfigRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta2/{+subscription}:modifyPushConfig",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ModifyPushConfigProjectsSubscriptionsRequest>;
+
+export type ModifyPushConfigProjectsSubscriptionsResponse = Empty;
+export const ModifyPushConfigProjectsSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type ModifyPushConfigProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Modifies the `PushConfig` for a specified subscription. This may be used to change a push subscription to a pull one (signified by an empty `PushConfig`) or vice versa, or change the endpoint URL and other attributes of a push subscription. Messages will accumulate for delivery continuously through the call regardless of changes to the `PushConfig`. */
+export const modifyPushConfigProjectsSubscriptions: API.OperationMethod<
+  ModifyPushConfigProjectsSubscriptionsRequest,
+  ModifyPushConfigProjectsSubscriptionsResponse,
+  ModifyPushConfigProjectsSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ModifyPushConfigProjectsSubscriptionsRequest,
+  output: ModifyPushConfigProjectsSubscriptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

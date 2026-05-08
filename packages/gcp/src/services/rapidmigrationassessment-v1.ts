@@ -22,29 +22,47 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface VSphereScan {
-  /** reference to the corresponding VSphere Scan in MC Source. */
-  coreSource?: string;
-}
-
-export const VSphereScan = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  coreSource: Schema.optional(Schema.String),
-}).annotate({ identifier: "VSphereScan" });
-
 export interface GuestOsScan {
   /** reference to the corresponding Guest OS Scan in MC Source. */
   coreSource?: string;
 }
 
-export const GuestOsScan = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  coreSource: Schema.optional(Schema.String),
-}).annotate({ identifier: "GuestOsScan" });
+export const GuestOsScan: Schema.Schema<GuestOsScan> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    coreSource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GuestOsScan" });
+
+export interface VSphereScan {
+  /** reference to the corresponding VSphere Scan in MC Source. */
+  coreSource?: string;
+}
+
+export const VSphereScan: Schema.Schema<VSphereScan> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    coreSource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VSphereScan" });
 
 export interface Collector {
+  /** name of resource. */
+  name?: string;
   /** Labels as key value pairs. */
   labels?: Record<string, string>;
+  /** User specified name of the Collector. */
+  displayName?: string;
+  /** User specified description of the Collector. */
+  description?: string;
+  /** Service Account email used to ingest data to this Collector. */
+  serviceAccount?: string;
+  /** Output only. Reference to MC Source Guest Os Scan. */
+  guestOsScan?: GuestOsScan;
+  /** Output only. Reference to MC Source vsphere_scan. */
+  vsphereScan?: VSphereScan;
+  /** How many days to collect data. */
+  collectionDays?: number;
   /** User specified expected asset count. */
   expectedAssetCount?: string;
+  /** Output only. Update time stamp. */
+  updateTime?: string;
   /** Output only. State of the Collector. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -57,148 +75,124 @@ export interface Collector {
     | "STATE_DECOMMISSIONED"
     | "STATE_ERROR"
     | (string & {});
-  /** Output only. Reference to MC Source vsphere_scan. */
-  vsphereScan?: VSphereScan;
-  /** Uri for EULA (End User License Agreement) from customer. */
-  eulaUri?: string;
   /** Output only. Create time stamp. */
   createTime?: string;
-  /** Output only. Reference to MC Source Guest Os Scan. */
-  guestOsScan?: GuestOsScan;
-  /** Service Account email used to ingest data to this Collector. */
-  serviceAccount?: string;
-  /** name of resource. */
-  name?: string;
-  /** User specified name of the Collector. */
-  displayName?: string;
-  /** Output only. Update time stamp. */
-  updateTime?: string;
   /** Output only. Client version. */
   clientVersion?: string;
-  /** User specified description of the Collector. */
-  description?: string;
-  /** How many days to collect data. */
-  collectionDays?: number;
+  /** Uri for EULA (End User License Agreement) from customer. */
+  eulaUri?: string;
   /** Output only. Store cloud storage bucket name (which is a guid) created with this Collector. */
   bucket?: string;
 }
 
-export const Collector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  expectedAssetCount: Schema.optional(Schema.String),
-  state: Schema.optional(Schema.String),
-  vsphereScan: Schema.optional(VSphereScan),
-  eulaUri: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  guestOsScan: Schema.optional(GuestOsScan),
-  serviceAccount: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  updateTime: Schema.optional(Schema.String),
-  clientVersion: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-  collectionDays: Schema.optional(Schema.Number),
-  bucket: Schema.optional(Schema.String),
-}).annotate({ identifier: "Collector" });
+export const Collector: Schema.Schema<Collector> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    guestOsScan: Schema.optional(GuestOsScan),
+    vsphereScan: Schema.optional(VSphereScan),
+    collectionDays: Schema.optional(Schema.Number),
+    expectedAssetCount: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    clientVersion: Schema.optional(Schema.String),
+    eulaUri: Schema.optional(Schema.String),
+    bucket: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Collector" });
 
 export interface ListCollectorsResponse {
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
   /** The list of Collectors. */
   collectors?: ReadonlyArray<Collector>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
 }
 
-export const ListCollectorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
+export const ListCollectorsResponse: Schema.Schema<ListCollectorsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     collectors: Schema.optional(Schema.Array(Collector)),
     nextPageToken: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "ListCollectorsResponse" });
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListCollectorsResponse" });
+
+export interface CancelOperationRequest {}
+
+export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelOperationRequest",
+  });
 
 export interface Empty {}
 
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
 
 export interface ResumeCollectorRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
 
-export const ResumeCollectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const ResumeCollectorRequest: Schema.Schema<ResumeCollectorRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "ResumeCollectorRequest" });
+  }).annotate({ identifier: "ResumeCollectorRequest" });
 
-export interface OperationMetadata {
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
+export interface PauseCollectorRequest {
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
 }
 
-export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  requestedCancellation: Schema.optional(Schema.Boolean),
-  apiVersion: Schema.optional(Schema.String),
-  verb: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  endTime: Schema.optional(Schema.String),
-  target: Schema.optional(Schema.String),
-  statusMessage: Schema.optional(Schema.String),
-}).annotate({ identifier: "OperationMetadata" });
+export const PauseCollectorRequest: Schema.Schema<PauseCollectorRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PauseCollectorRequest" });
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: ReadonlyArray<Record<string, unknown>>;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
 }
 
-export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  message: Schema.optional(Schema.String),
-  code: Schema.optional(Schema.Number),
-  details: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-}).annotate({ identifier: "Status" });
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    code: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Status" });
 
 export interface Operation {
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: Record<string, unknown>;
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
 }
 
-export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  name: Schema.optional(Schema.String),
-  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  error: Schema.optional(Status),
-  done: Schema.optional(Schema.Boolean),
-}).annotate({ identifier: "Operation" });
+export const Operation: Schema.Schema<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    error: Schema.optional(Status),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -207,83 +201,33 @@ export interface ListOperationsResponse {
   operations?: ReadonlyArray<Operation>;
 }
 
-export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(Operation)),
-  },
-).annotate({ identifier: "ListOperationsResponse" });
-
-export interface Annotation {
-  /** Output only. Update time stamp. */
-  updateTime?: string;
-  /** Output only. Create time stamp. */
-  createTime?: string;
-  /** Labels as key value pairs. */
-  labels?: Record<string, string>;
-  /** name of resource. */
-  name?: string;
-  /** Type of an annotation. */
-  type?:
-    | "TYPE_UNSPECIFIED"
-    | "TYPE_LEGACY_EXPORT_CONSENT"
-    | "TYPE_QWIKLAB"
-    | (string & {});
-}
-
-export const Annotation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  updateTime: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-}).annotate({ identifier: "Annotation" });
+  }).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Location {
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: Record<string, string>;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
 }
 
-export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  locationId: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "Location" });
-
-export interface CancelOperationRequest {}
-
-export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).annotate({ identifier: "CancelOperationRequest" });
-
-export interface PauseCollectorRequest {
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-}
-
-export const PauseCollectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  requestId: Schema.optional(Schema.String),
-}).annotate({ identifier: "PauseCollectorRequest" });
-
-export interface RegisterCollectorRequest {
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-}
-
-export const RegisterCollectorRequest =
+export const Location: Schema.Schema<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RegisterCollectorRequest" });
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    locationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -292,10 +236,75 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  locations: Schema.optional(Schema.Array(Location)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListLocationsResponse" });
+export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Location)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocationsResponse" });
+
+export interface RegisterCollectorRequest {
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+}
+
+export const RegisterCollectorRequest: Schema.Schema<RegisterCollectorRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RegisterCollectorRequest" });
+
+export interface Annotation {
+  /** name of resource. */
+  name?: string;
+  /** Type of an annotation. */
+  type?:
+    | "TYPE_UNSPECIFIED"
+    | "TYPE_LEGACY_EXPORT_CONSENT"
+    | "TYPE_QWIKLAB"
+    | (string & {});
+  /** Output only. Update time stamp. */
+  updateTime?: string;
+  /** Labels as key value pairs. */
+  labels?: Record<string, string>;
+  /** Output only. Create time stamp. */
+  createTime?: string;
+}
+
+export const Annotation: Schema.Schema<Annotation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Annotation" });
+
+export interface OperationMetadata {
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+}
+
+export const OperationMetadata: Schema.Schema<OperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadata" });
 
 // ==========================================================================
 // Errors
@@ -354,25 +363,25 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
-  /** Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. */
-  extraLocationTypes?: string[];
   /** The resource that owns the locations collection, if applicable. */
   name: string;
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
+  /** Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. */
+  extraLocationTypes?: string[];
 }
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
     ),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
@@ -431,82 +440,6 @@ export const getProjectsLocations: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface GetProjectsLocationsAnnotationsRequest {
-  /** Required. Name of the resource. */
-  name: string;
-}
-
-export const GetProjectsLocationsAnnotationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAnnotationsRequest>;
-
-export type GetProjectsLocationsAnnotationsResponse = Annotation;
-export const GetProjectsLocationsAnnotationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Annotation;
-
-export type GetProjectsLocationsAnnotationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets details of a single Annotation. */
-export const getProjectsLocationsAnnotations: API.OperationMethod<
-  GetProjectsLocationsAnnotationsRequest,
-  GetProjectsLocationsAnnotationsResponse,
-  GetProjectsLocationsAnnotationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAnnotationsRequest,
-  output: GetProjectsLocationsAnnotationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateProjectsLocationsAnnotationsRequest {
-  /** Required. Name of the parent (project+location). */
-  parent: string;
-  /** Optional. An optional request ID to identify requests. */
-  requestId?: string;
-  /** Request body */
-  body?: Annotation;
-}
-
-export const CreateProjectsLocationsAnnotationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    body: Schema.optional(Annotation).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/annotations", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAnnotationsRequest>;
-
-export type CreateProjectsLocationsAnnotationsResponse = Operation;
-export const CreateProjectsLocationsAnnotationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsLocationsAnnotationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates an Annotation */
-export const createProjectsLocationsAnnotations: API.OperationMethod<
-  CreateProjectsLocationsAnnotationsRequest,
-  CreateProjectsLocationsAnnotationsResponse,
-  CreateProjectsLocationsAnnotationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAnnotationsRequest,
-  output: CreateProjectsLocationsAnnotationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
@@ -546,20 +479,20 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
-  /** The standard list filter. */
-  filter?: string;
-  /** The standard list page token. */
-  pageToken?: string;
   /** The standard list page size. */
   pageSize?: number;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** The standard list filter. */
+  filter?: string;
 }
 
 export const ListProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
@@ -588,6 +521,40 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
+}));
+
+export interface GetProjectsLocationsOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+
+export type GetProjectsLocationsOperationsResponse = Operation;
+export const GetProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getProjectsLocationsOperations: API.OperationMethod<
+  GetProjectsLocationsOperationsRequest,
+  GetProjectsLocationsOperationsResponse,
+  GetProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsOperationsRequest,
+  output: GetProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -629,94 +596,26 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
-}
-
-export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
-
-export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type GetProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getProjectsLocationsOperations: API.OperationMethod<
-  GetProjectsLocationsOperationsRequest,
-  GetProjectsLocationsOperationsResponse,
-  GetProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: GetProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetProjectsLocationsCollectorsRequest {
-  /** Required. Name of the resource. */
-  name: string;
-}
-
-export const GetProjectsLocationsCollectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectorsRequest>;
-
-export type GetProjectsLocationsCollectorsResponse = Collector;
-export const GetProjectsLocationsCollectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Collector;
-
-export type GetProjectsLocationsCollectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets details of a single Collector. */
-export const getProjectsLocationsCollectors: API.OperationMethod<
-  GetProjectsLocationsCollectorsRequest,
-  GetProjectsLocationsCollectorsResponse,
-  GetProjectsLocationsCollectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsCollectorsRequest,
-  output: GetProjectsLocationsCollectorsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface ListProjectsLocationsCollectorsRequest {
-  /** A token identifying a page of results the server should return. */
-  pageToken?: string;
   /** Filtering results. */
   filter?: string;
-  /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
   /** Hint for how to order the results. */
   orderBy?: string;
   /** Required. Parent value for ListCollectorsRequest. */
   parent: string;
+  /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
+  /** A token identifying a page of results the server should return. */
+  pageToken?: string;
 }
 
 export const ListProjectsLocationsCollectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/collectors" }),
     svc,
@@ -745,45 +644,6 @@ export const listProjectsLocationsCollectors: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
-}));
-
-export interface DeleteProjectsLocationsCollectorsRequest {
-  /** Required. Name of the resource. */
-  name: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-}
-
-export const DeleteProjectsLocationsCollectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectorsRequest>;
-
-export type DeleteProjectsLocationsCollectorsResponse = Operation;
-export const DeleteProjectsLocationsCollectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsCollectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a single Collector - changes state of collector to "Deleting". Background jobs does final deletion through producer API. */
-export const deleteProjectsLocationsCollectors: API.OperationMethod<
-  DeleteProjectsLocationsCollectorsRequest,
-  DeleteProjectsLocationsCollectorsResponse,
-  DeleteProjectsLocationsCollectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsCollectorsRequest,
-  output: DeleteProjectsLocationsCollectorsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PauseProjectsLocationsCollectorsRequest {
@@ -872,6 +732,45 @@ export const createProjectsLocationsCollectors: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface DeleteProjectsLocationsCollectorsRequest {
+  /** Required. Name of the resource. */
+  name: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+}
+
+export const DeleteProjectsLocationsCollectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectorsRequest>;
+
+export type DeleteProjectsLocationsCollectorsResponse = Operation;
+export const DeleteProjectsLocationsCollectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsCollectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a single Collector - changes state of collector to "Deleting". Background jobs does final deletion through producer API. */
+export const deleteProjectsLocationsCollectors: API.OperationMethod<
+  DeleteProjectsLocationsCollectorsRequest,
+  DeleteProjectsLocationsCollectorsResponse,
+  DeleteProjectsLocationsCollectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsCollectorsRequest,
+  output: DeleteProjectsLocationsCollectorsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ResumeProjectsLocationsCollectorsRequest {
   /** Required. Name of the resource. */
   name: string;
@@ -911,22 +810,56 @@ export const resumeProjectsLocationsCollectors: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetProjectsLocationsCollectorsRequest {
+  /** Required. Name of the resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsCollectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsCollectorsRequest>;
+
+export type GetProjectsLocationsCollectorsResponse = Collector;
+export const GetProjectsLocationsCollectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Collector;
+
+export type GetProjectsLocationsCollectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets details of a single Collector. */
+export const getProjectsLocationsCollectors: API.OperationMethod<
+  GetProjectsLocationsCollectorsRequest,
+  GetProjectsLocationsCollectorsResponse,
+  GetProjectsLocationsCollectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsCollectorsRequest,
+  output: GetProjectsLocationsCollectorsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface PatchProjectsLocationsCollectorsRequest {
-  /** Required. Field mask is used to specify the fields to be overwritten in the Collector resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
-  updateMask?: string;
   /** name of resource. */
   name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
+  /** Required. Field mask is used to specify the fields to be overwritten in the Collector resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
+  updateMask?: string;
   /** Request body */
   body?: Collector;
 }
 
 export const PatchProjectsLocationsCollectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Collector).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
@@ -992,5 +925,81 @@ export const registerProjectsLocationsCollectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterProjectsLocationsCollectorsRequest,
   output: RegisterProjectsLocationsCollectorsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsAnnotationsRequest {
+  /** Required. Name of the resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsAnnotationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsAnnotationsRequest>;
+
+export type GetProjectsLocationsAnnotationsResponse = Annotation;
+export const GetProjectsLocationsAnnotationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Annotation;
+
+export type GetProjectsLocationsAnnotationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets details of a single Annotation. */
+export const getProjectsLocationsAnnotations: API.OperationMethod<
+  GetProjectsLocationsAnnotationsRequest,
+  GetProjectsLocationsAnnotationsResponse,
+  GetProjectsLocationsAnnotationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsAnnotationsRequest,
+  output: GetProjectsLocationsAnnotationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CreateProjectsLocationsAnnotationsRequest {
+  /** Required. Name of the parent (project+location). */
+  parent: string;
+  /** Optional. An optional request ID to identify requests. */
+  requestId?: string;
+  /** Request body */
+  body?: Annotation;
+}
+
+export const CreateProjectsLocationsAnnotationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(Annotation).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/annotations", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsAnnotationsRequest>;
+
+export type CreateProjectsLocationsAnnotationsResponse = Operation;
+export const CreateProjectsLocationsAnnotationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsLocationsAnnotationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates an Annotation */
+export const createProjectsLocationsAnnotations: API.OperationMethod<
+  CreateProjectsLocationsAnnotationsRequest,
+  CreateProjectsLocationsAnnotationsResponse,
+  CreateProjectsLocationsAnnotationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsAnnotationsRequest,
+  output: CreateProjectsLocationsAnnotationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

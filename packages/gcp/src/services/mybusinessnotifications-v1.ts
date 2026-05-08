@@ -23,6 +23,8 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface NotificationSetting {
+  /** Required. The resource name this setting is for. This is of the form `accounts/{account_id}/notificationSetting`. */
+  name?: string;
   /** Optional. The Google Pub/Sub topic that will receive notifications when locations managed by this account are updated. If unset, no notifications will be posted. The account mybusiness-api-pubsub@system.gserviceaccount.com must have at least Publish permissions on the Pub/Sub topic. */
   pubsubTopic?: string;
   /** The types of notifications that will be sent to the Pub/Sub topic. To stop receiving notifications entirely, use NotificationSettings.UpdateNotificationSetting with an empty notification_types or set the pubsub_topic to an empty string. */
@@ -41,15 +43,14 @@ export interface NotificationSetting {
     | "VOICE_OF_MERCHANT_UPDATED"
     | (string & {})
   >;
-  /** Required. The resource name this setting is for. This is of the form `accounts/{account_id}/notificationSetting`. */
-  name?: string;
 }
 
-export const NotificationSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  pubsubTopic: Schema.optional(Schema.String),
-  notificationTypes: Schema.optional(Schema.Array(Schema.String)),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "NotificationSetting" });
+export const NotificationSetting: Schema.Schema<NotificationSetting> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    pubsubTopic: Schema.optional(Schema.String),
+    notificationTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "NotificationSetting" });
 
 // ==========================================================================
 // Errors

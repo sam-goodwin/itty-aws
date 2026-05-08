@@ -22,264 +22,122 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface GoogleRpcStatus {
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-}
-
-export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  details: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  ),
-  message: Schema.optional(Schema.String),
-  code: Schema.optional(Schema.Number),
-}).annotate({ identifier: "GoogleRpcStatus" });
-
-export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContextPeer {
-  /** The network port of the peer. */
-  port?: string;
-  /** The IPv4 or IPv6 address of the peer. */
-  ip?: string;
-}
-
-export const GoogleCloudPolicytroubleshooterIamV3betaConditionContextPeer =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    port: Schema.optional(Schema.String),
-    ip: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudPolicytroubleshooterIamV3betaConditionContextPeer",
-  });
-
-export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContextResource {
-  /** The type of the resource, in the format `{service}/{kind}`. For a full list of resource type values, see https://cloud.google.com/iam/help/conditions/resource-types */
-  type?: string;
-  /** The name of the service that this resource belongs to, such as `compute.googleapis.com`. The service name might not match the DNS hostname that actually serves the request. For a full list of resource service values, see https://cloud.google.com/iam/help/conditions/resource-services */
-  service?: string;
-  /** The stable identifier (name) of a resource on the `service`. A resource can be logically identified as `//{resource.service}/{resource.name}`. Unlike the resource URI, the resource name doesn't contain any protocol and version information. For a list of full resource name formats, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names */
-  name?: string;
-}
-
-export const GoogleCloudPolicytroubleshooterIamV3betaConditionContextResource =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    type: Schema.optional(Schema.String),
-    service: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudPolicytroubleshooterIamV3betaConditionContextResource",
-  });
-
-export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag {
-  /** Output only. Resource name for TagValue in the format `tagValues/456`. */
-  tagValue?: string;
-  /** Output only. The name of the TagKey, in the format `tagKeys/{id}`, such as `tagKeys/123`. */
-  tagKey?: string;
-  /** Output only. The namespaced name of the TagValue. Can be in the form `{organization_id}/{tag_key_short_name}/{tag_value_short_name}` or `{project_id}/{tag_key_short_name}/{tag_value_short_name}` or `{project_number}/{tag_key_short_name}/{tag_value_short_name}`. */
-  namespacedTagValue?: string;
-  /** Output only. Indicates the inheritance status of a tag value attached to the given resource. If the tag value is inherited from one of the resource's ancestors, inherited will be true. If false, then the tag value is directly attached to the resource, inherited will be false. */
-  inherited?: boolean;
-  /** The parent name of the tag key. Must be in the format `organizations/{organization_id}` or `projects/{project_number}` */
-  tagKeyParentName?: string;
-  /** Output only. The namespaced name of the TagKey. Can be in the form `{organization_id}/{tag_key_short_name}` or `{project_id}/{tag_key_short_name}` or `{project_number}/{tag_key_short_name}`. */
-  namespacedTagKey?: string;
-}
-
-export const GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tagValue: Schema.optional(Schema.String),
-    tagKey: Schema.optional(Schema.String),
-    namespacedTagValue: Schema.optional(Schema.String),
-    inherited: Schema.optional(Schema.Boolean),
-    tagKeyParentName: Schema.optional(Schema.String),
-    namespacedTagKey: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag",
-  });
-
-export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContextRequest {
-  /** Optional. The timestamp when the destination service receives the first byte of the request. */
-  receiveTime?: string;
-}
-
-export const GoogleCloudPolicytroubleshooterIamV3betaConditionContextRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    receiveTime: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudPolicytroubleshooterIamV3betaConditionContextRequest",
-  });
-
-export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContext {
-  /** The destination of a network activity, such as accepting a TCP connection. In a multi-hop network activity, the destination represents the receiver of the last hop. */
-  destination?: GoogleCloudPolicytroubleshooterIamV3betaConditionContextPeer;
-  /** Represents a target resource that is involved with a network activity. If multiple resources are involved with an activity, this must be the primary one. */
-  resource?: GoogleCloudPolicytroubleshooterIamV3betaConditionContextResource;
-  /** Output only. The effective tags on the resource. The effective tags are fetched during troubleshooting. */
-  effectiveTags?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag>;
-  /** Represents a network request, such as an HTTP request. */
-  request?: GoogleCloudPolicytroubleshooterIamV3betaConditionContextRequest;
-}
-
-export const GoogleCloudPolicytroubleshooterIamV3betaConditionContext =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    destination: Schema.optional(
-      GoogleCloudPolicytroubleshooterIamV3betaConditionContextPeer,
-    ),
-    resource: Schema.optional(
-      GoogleCloudPolicytroubleshooterIamV3betaConditionContextResource,
-    ),
-    effectiveTags: Schema.optional(
-      Schema.Array(
-        GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag,
-      ),
-    ),
-    request: Schema.optional(
-      GoogleCloudPolicytroubleshooterIamV3betaConditionContextRequest,
-    ),
-  }).annotate({
-    identifier: "GoogleCloudPolicytroubleshooterIamV3betaConditionContext",
-  });
-
-export interface GoogleCloudPolicytroubleshooterIamV3betaAccessTuple {
-  /** Optional. Additional context for the request, such as the request time or IP address. This context allows Policy Troubleshooter to troubleshoot conditional role bindings and deny rules. */
-  conditionContext?: GoogleCloudPolicytroubleshooterIamV3betaConditionContext;
-  /** Required. The email address of the principal whose access you want to check. For example, `alice@example.com` or `my-service-account@my-project.iam.gserviceaccount.com`. The principal must be a Google Account or a service account. Other types of principals are not supported. */
-  principal?: string;
-  /** Required. The full resource name that identifies the resource. For example, `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. */
-  fullResourceName?: string;
-  /** Output only. The permission that Policy Troubleshooter checked for, in the `v2` format. */
-  permissionFqdn?: string;
-  /** Required. The IAM permission to check for, either in the `v1` permission format or the `v2` permission format. For a complete list of IAM permissions in the `v1` format, see https://cloud.google.com/iam/help/permissions/reference. For a list of IAM permissions in the `v2` format, see https://cloud.google.com/iam/help/deny/supported-permissions. For a complete list of predefined IAM roles and the permissions in each role, see https://cloud.google.com/iam/help/roles/reference. */
-  permission?: string;
-}
-
-export const GoogleCloudPolicytroubleshooterIamV3betaAccessTuple =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    conditionContext: Schema.optional(
-      GoogleCloudPolicytroubleshooterIamV3betaConditionContext,
-    ),
-    principal: Schema.optional(Schema.String),
-    fullResourceName: Schema.optional(Schema.String),
-    permissionFqdn: Schema.optional(Schema.String),
-    permission: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudPolicytroubleshooterIamV3betaAccessTuple",
-  });
-
-export interface GoogleIamV1AuditLogConfig {
-  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: ReadonlyArray<string>;
-  /** The log type that this config enables. */
-  logType?:
-    | "LOG_TYPE_UNSPECIFIED"
-    | "ADMIN_READ"
-    | "DATA_WRITE"
-    | "DATA_READ"
-    | (string & {});
-}
-
-export const GoogleIamV1AuditLogConfig =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    logType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleIamV1AuditLogConfig" });
-
-export interface GoogleIamV1AuditConfig {
-  /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
-  service?: string;
-  /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
-}
-
-export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    service: Schema.optional(Schema.String),
-    auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
-  },
-).annotate({ identifier: "GoogleIamV1AuditConfig" });
-
 export interface GoogleTypeExpr {
-  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
-  location?: string;
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
+  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
+  location?: string;
 }
 
-export const GoogleTypeExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.optional(Schema.String),
-  title: Schema.optional(Schema.String),
-  expression: Schema.optional(Schema.String),
-  description: Schema.optional(Schema.String),
-}).annotate({ identifier: "GoogleTypeExpr" });
-
-export interface GoogleIamV3PolicyBindingTarget {
-  /** Immutable. The full resource name that's used for principal access boundary policy bindings. The principal set must be directly parented by the policy binding's parent or same as the parent if the target is a project, folder, or organization. Examples: * For bindings parented by an organization: * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID` * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID` * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID` * For bindings parented by a folder: * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID` * For bindings parented by a project: * Project: * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER` * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID` * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID` */
-  principalSet?: string;
-  /** Immutable. The full resource name that's used for access policy bindings. Examples: * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID` * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID` * Project: * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER` * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID` */
-  resource?: string;
-}
-
-export const GoogleIamV3PolicyBindingTarget =
+export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    principalSet: Schema.optional(Schema.String),
-    resource: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleIamV3PolicyBindingTarget" });
+    title: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleTypeExpr" });
 
-export interface GoogleIamV3PolicyBinding {
-  /** Optional. The description of the policy binding. Must be less than or equal to 63 characters. */
-  displayName?: string;
-  /** Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created. */
-  uid?: string;
-  /** Output only. The time when the policy binding was created. */
+export interface GoogleIamV2DenyRule {
+  /** The identities that are prevented from using one or more permissions on Google Cloud resources. This field can contain the following values: * `principal://goog/subject/{email_id}`: A specific Google Account. Includes Gmail, Cloud Identity, and Google Workspace user accounts. For example, `principal://goog/subject/alice@example.com`. * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`: A Google Cloud service account. For example, `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`. * `principalSet://goog/group/{group_id}`: A Google group. For example, `principalSet://goog/group/admins@example.com`. * `principalSet://goog/public:all`: A special identifier that represents any principal that is on the internet, even if they do not have a Google Account or are not logged in. * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the principals associated with the specified Google Workspace or Cloud Identity customer ID. For example, `principalSet://goog/cloudIdentityCustomerId/C01Abc35`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `principalSet://cloudresourcemanager.googleapis.com/[projects|folders|organizations]/{project_number|folder_number|org_number}/type/ServiceAccount`: All service accounts grouped under a resource (project, folder, or organization). * `principalSet://cloudresourcemanager.googleapis.com/[projects|folders|organizations]/{project_number|folder_number|org_number}/type/ServiceAgent`: All service agents grouped under a resource (project, folder, or organization). * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific Google Account that was deleted recently. For example, `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If the Google Account is recovered, this identifier reverts to the standard identifier for a Google Account. * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group that was deleted recently. For example, `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`. If the Google group is restored, this identifier reverts to the standard identifier for a Google group. * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`: A Google Cloud service account that was deleted recently. For example, `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`. If the service account is undeleted, this identifier reverts to the standard identifier for a service account. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
+  deniedPrincipals?: ReadonlyArray<string>;
+  /** The identities that are excluded from the deny rule, even if they are listed in the `denied_principals`. For example, you could add a Google group to the `denied_principals`, then exclude specific users who belong to that group. This field can contain the same values as the `denied_principals` field, excluding `principalSet://goog/public:all`, which represents all users on the internet. */
+  exceptionPrincipals?: ReadonlyArray<string>;
+  /** The permissions that are explicitly denied by this rule. Each permission uses the format `{service_fqdn}/{resource}.{verb}`, where `{service_fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`. */
+  deniedPermissions?: ReadonlyArray<string>;
+  /** Specifies the permissions that this rule excludes from the set of denied permissions given by `denied_permissions`. If a permission appears in `denied_permissions` _and_ in `exception_permissions` then it will _not_ be denied. The excluded permissions can be specified using the same syntax as `denied_permissions`. */
+  exceptionPermissions?: ReadonlyArray<string>;
+  /** The condition that determines whether this deny rule applies to a request. If the condition expression evaluates to `true`, then the deny rule is applied; otherwise, the deny rule is not applied. Each deny rule is evaluated independently. If this deny rule does not apply to a request, other deny rules might still apply. The condition can use CEL functions that evaluate [resource tags](https://cloud.google.com/iam/help/conditions/resource-tags). Other functions and operators are not supported. */
+  denialCondition?: GoogleTypeExpr;
+}
+
+export const GoogleIamV2DenyRule: Schema.Schema<GoogleIamV2DenyRule> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deniedPrincipals: Schema.optional(Schema.Array(Schema.String)),
+    exceptionPrincipals: Schema.optional(Schema.Array(Schema.String)),
+    deniedPermissions: Schema.optional(Schema.Array(Schema.String)),
+    exceptionPermissions: Schema.optional(Schema.Array(Schema.String)),
+    denialCondition: Schema.optional(GoogleTypeExpr),
+  }).annotate({ identifier: "GoogleIamV2DenyRule" });
+
+export interface GoogleIamV2PolicyRule {
+  /** A user-specified description of the rule. This value can be up to 256 characters. */
+  description?: string;
+  /** A rule for a deny policy. */
+  denyRule?: GoogleIamV2DenyRule;
+}
+
+export const GoogleIamV2PolicyRule: Schema.Schema<GoogleIamV2PolicyRule> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    denyRule: Schema.optional(GoogleIamV2DenyRule),
+  }).annotate({ identifier: "GoogleIamV2PolicyRule" });
+
+export interface GoogleIamV2Policy {
+  /** Output only. The time when the `Policy` was created. */
   createTime?: string;
-  /** Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag. */
-  etag?: string;
-  /** Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will be automatically set to the policy kind) - The input policy kind */
-  policyKind?:
-    | "POLICY_KIND_UNSPECIFIED"
-    | "PRINCIPAL_ACCESS_BOUNDARY"
-    | "ACCESS"
-    | (string & {});
-  /** Optional. User-defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations */
-  annotations?: Record<string, string>;
-  /** Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same organization. */
-  policy?: string;
-  /** Output only. The time when the policy binding was most recently updated. */
-  updateTime?: string;
-  /** Identifier. The name of the policy binding, in the format `{binding_parent/locations/{location}/policyBindings/{policy_binding_id}`. The binding parent is the closest Resource Manager resource (project, folder, or organization) to the binding target. Format: * `projects/{project_id}/locations/{location}/policyBindings/{policy_binding_id}` * `projects/{project_number}/locations/{location}/policyBindings/{policy_binding_id}` * `folders/{folder_id}/locations/{location}/policyBindings/{policy_binding_id}` * `organizations/{organization_id}/locations/{location}/policyBindings/{policy_binding_id}` */
+  /** Output only. The kind of the `Policy`. Always contains the value `DenyPolicy`. */
+  kind?: string;
+  /** A user-specified description of the `Policy`. This value can be up to 63 characters. */
+  displayName?: string;
+  /** Immutable. The globally unique ID of the `Policy`. Assigned automatically when the `Policy` is created. */
+  uid?: string;
+  /** Immutable. The resource name of the `Policy`, which must be unique. Format: `policies/{attachment_point}/denypolicies/{policy_id}` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-deny-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, requests can use the alphanumeric or the numeric ID. Responses always contain the numeric ID. */
   name?: string;
-  /** Optional. The condition to apply to the policy binding. When set, the `expression` field in the `Expr` must include from 1 to 10 subexpressions, joined by the "||"(Logical OR), "&&"(Logical AND) or "!"(Logical NOT) operators and cannot contain more than 250 characters. The condition is currently only supported when bound to policies of kind principal access boundary. When the bound policy is a principal access boundary policy, the only supported attributes in any subexpression are `principal.type` and `principal.subject`. An example expression is: "principal.type == 'iam.googleapis.com/ServiceAccount'" or "principal.subject == 'bob@example.com'". Allowed operations for `principal.subject`: - `principal.subject == ` - `principal.subject != ` - `principal.subject in []` - `principal.subject.startsWith()` - `principal.subject.endsWith()` Allowed operations for `principal.type`: - `principal.type == ` - `principal.type != ` - `principal.type in []` Supported principal types are workspace, workforce pool, workload pool, service account, and Agent Identity. Allowed string must be one of: - `iam.googleapis.com/WorkspaceIdentity` - `iam.googleapis.com/WorkforcePoolIdentity` - `iam.googleapis.com/WorkloadPoolIdentity` - `iam.googleapis.com/ServiceAccount` - `iam.googleapis.com/AgentPoolIdentity` (available in Preview) */
-  condition?: GoogleTypeExpr;
-  /** Output only. The globally unique ID of the policy to be bound. */
-  policyUid?: string;
-  /** Required. Immutable. The full resource name of the resource to which the policy will be bound. Immutable once set. */
-  target?: GoogleIamV3PolicyBindingTarget;
+  /** An opaque tag that identifies the current version of the `Policy`. IAM uses this value to help manage concurrent updates, so they do not cause one update to be overwritten by another. If this field is present in a CreatePolicyRequest, the value is ignored. */
+  etag?: string;
+  /** A list of rules that specify the behavior of the `Policy`. All of the rules should be of the `kind` specified in the `Policy`. */
+  rules?: ReadonlyArray<GoogleIamV2PolicyRule>;
+  /** A key-value map to store arbitrary metadata for the `Policy`. Keys can be up to 63 characters. Values can be up to 255 characters. */
+  annotations?: Record<string, string>;
+  /** Output only. The time when the `Policy` was last updated. */
+  updateTime?: string;
+  /** Output only. The time when the `Policy` was deleted. Empty if the policy is not deleted. */
+  deleteTime?: string;
 }
 
-export const GoogleIamV3PolicyBinding =
+export const GoogleIamV2Policy: Schema.Schema<GoogleIamV2Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    policyKind: Schema.optional(Schema.String),
-    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    policy: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    condition: Schema.optional(GoogleTypeExpr),
-    policyUid: Schema.optional(Schema.String),
-    target: Schema.optional(GoogleIamV3PolicyBindingTarget),
-  }).annotate({ identifier: "GoogleIamV3PolicyBinding" });
+    etag: Schema.optional(Schema.String),
+    rules: Schema.optional(Schema.Array(GoogleIamV2PolicyRule)),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    updateTime: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV2Policy" });
+
+export interface GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching {
+  /** The relevance of the principal's status to the overall determination for the role binding. */
+  relevance?:
+    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
+    | "HEURISTIC_RELEVANCE_NORMAL"
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
+  /** Indicates whether the principal is listed as a denied principal in the deny rule, either directly or through membership in a principal set. */
+  membership?:
+    | "MEMBERSHIP_MATCHING_STATE_UNSPECIFIED"
+    | "MEMBERSHIP_MATCHED"
+    | "MEMBERSHIP_NOT_MATCHED"
+    | "MEMBERSHIP_UNKNOWN_INFO"
+    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED"
+    | (string & {});
+}
+
+export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    relevance: Schema.optional(Schema.String),
+    membership: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching",
+  });
 
 export interface GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching {
   /** The relevance of the permission status to the overall determination for the rule. */
@@ -296,7 +154,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnno
     | (string & {});
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching =
+export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relevance: Schema.optional(Schema.String),
     permissionMatchingState: Schema.optional(Schema.String),
@@ -305,75 +163,41 @@ export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotate
       "GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching",
   });
 
-export interface GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership {
-  /** Indicates whether the role binding includes the principal. */
-  membership?:
-    | "MEMBERSHIP_MATCHING_STATE_UNSPECIFIED"
-    | "MEMBERSHIP_MATCHED"
-    | "MEMBERSHIP_NOT_MATCHED"
-    | "MEMBERSHIP_UNKNOWN_INFO"
-    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED"
-    | (string & {});
-  /** The relevance of the principal's status to the overall determination for the role binding. */
-  relevance?:
-    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
-    | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH"
-    | (string & {});
+export interface GoogleRpcStatus {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership =
+export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    membership: Schema.optional(Schema.String),
-    relevance: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership",
-  });
-
-export interface GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching {
-  /** Indicates whether the principal is listed as a denied principal in the deny rule, either directly or through membership in a principal set. */
-  membership?:
-    | "MEMBERSHIP_MATCHING_STATE_UNSPECIFIED"
-    | "MEMBERSHIP_MATCHED"
-    | "MEMBERSHIP_NOT_MATCHED"
-    | "MEMBERSHIP_UNKNOWN_INFO"
-    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED"
-    | (string & {});
-  /** The relevance of the principal's status to the overall determination for the role binding. */
-  relevance?:
-    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
-    | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH"
-    | (string & {});
-}
-
-export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    membership: Schema.optional(Schema.String),
-    relevance: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching",
-  });
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationState {
   /** Start position of an expression in the condition, by character. */
   start?: number;
+  /** End position of an expression in the condition, by character, end included, for example: the end position of the first part of `a==b || c==d` would be 4. */
+  end?: number;
   /** Value of this expression. */
   value?: unknown;
   /** Any errors that prevented complete evaluation of the condition expression. */
   errors?: ReadonlyArray<GoogleRpcStatus>;
-  /** End position of an expression in the condition, by character, end included, for example: the end position of the first part of `a==b || c==d` would be 4. */
-  end?: number;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationState =
+export const GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationState: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     start: Schema.optional(Schema.Number),
+    end: Schema.optional(Schema.Number),
     value: Schema.optional(Schema.Unknown),
     errors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-    end: Schema.optional(Schema.Number),
   }).annotate({
     identifier:
       "GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationState",
@@ -388,7 +212,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation {
   evaluationStates?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationState>;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation =
+export const GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Unknown),
     errors: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -402,20 +226,10 @@ export const GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation =
   });
 
 export interface GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation {
-  /** Indicates whether the permission in the request is listed as a denied permission in the deny rule. */
-  combinedDeniedPermission?: GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching;
-  /** Lists all denied principals in the deny rule and indicates whether each principal matches the principal in the request, either directly or through membership in a principal set. Each key identifies a denied principal in the rule, and each value indicates whether the denied principal matches the principal in the request. */
-  deniedPrincipals?: Record<
-    string,
-    GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching
-  >;
-  /** Lists all denied permissions in the deny rule and indicates whether each permission matches the permission in the request. Each key identifies a denied permission in the rule, and each value indicates whether the denied permission matches the permission in the request. */
-  deniedPermissions?: Record<
-    string,
-    GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching
-  >;
-  /** Condition evaluation state for this role binding. */
-  conditionExplanation?: GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation;
+  /** Indicates whether the principal is listed as an exception principal in the deny rule, either directly or through membership in a principal set. */
+  combinedExceptionPrincipal?: GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching;
+  /** Indicates whether the principal is listed as a denied principal in the deny rule, either directly or through membership in a principal set. */
+  combinedDeniedPrincipal?: GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching;
   /** Required. Indicates whether _this rule_ denies the specified permission to the specified principal for the specified resource. This field does _not_ indicate whether the principal is actually denied on the permission for the resource. There might be another rule that overrides this rule. To determine whether the principal actually has the permission, use the `overall_access_state` field in the TroubleshootIamPolicyResponse. */
   denyAccessState?:
     | "DENY_ACCESS_STATE_UNSPECIFIED"
@@ -431,44 +245,42 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation {
     string,
     GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching
   >;
+  /** Condition evaluation state for this role binding. */
+  conditionExplanation?: GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation;
+  /** A condition expression that specifies when the deny rule denies the principal access. To learn about IAM Conditions, see https://cloud.google.com/iam/help/conditions/overview. */
+  condition?: GoogleTypeExpr;
+  /** Indicates whether the permission in the request is listed as a denied permission in the deny rule. */
+  combinedDeniedPermission?: GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching;
   /** The relevance of this role binding to the overall determination for the entire policy. */
   relevance?:
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
     | "HEURISTIC_RELEVANCE_HIGH"
     | (string & {});
-  /** Indicates whether the principal is listed as a denied principal in the deny rule, either directly or through membership in a principal set. */
-  combinedDeniedPrincipal?: GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching;
-  /** Indicates whether the principal is listed as an exception principal in the deny rule, either directly or through membership in a principal set. */
-  combinedExceptionPrincipal?: GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching;
+  /** Lists all denied permissions in the deny rule and indicates whether each permission matches the permission in the request. Each key identifies a denied permission in the rule, and each value indicates whether the denied permission matches the permission in the request. */
+  deniedPermissions?: Record<
+    string,
+    GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching
+  >;
   /** Lists all exception principals in the deny rule and indicates whether each principal matches the principal in the request, either directly or through membership in a principal set. Each key identifies a exception principal in the rule, and each value indicates whether the exception principal matches the principal in the request. */
   exceptionPrincipals?: Record<
     string,
     GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching
   >;
-  /** A condition expression that specifies when the deny rule denies the principal access. To learn about IAM Conditions, see https://cloud.google.com/iam/help/conditions/overview. */
-  condition?: GoogleTypeExpr;
+  /** Lists all denied principals in the deny rule and indicates whether each principal matches the principal in the request, either directly or through membership in a principal set. Each key identifies a denied principal in the rule, and each value indicates whether the denied principal matches the principal in the request. */
+  deniedPrincipals?: Record<
+    string,
+    GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching
+  >;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation =
+export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    combinedDeniedPermission: Schema.optional(
-      GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching,
+    combinedExceptionPrincipal: Schema.optional(
+      GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching,
     ),
-    deniedPrincipals: Schema.optional(
-      Schema.Record(
-        Schema.String,
-        GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching,
-      ),
-    ),
-    deniedPermissions: Schema.optional(
-      Schema.Record(
-        Schema.String,
-        GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching,
-      ),
-    ),
-    conditionExplanation: Schema.optional(
-      GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation,
+    combinedDeniedPrincipal: Schema.optional(
+      GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching,
     ),
     denyAccessState: Schema.optional(Schema.String),
     combinedExceptionPermission: Schema.optional(
@@ -480,12 +292,19 @@ export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation =
         GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching,
       ),
     ),
-    relevance: Schema.optional(Schema.String),
-    combinedDeniedPrincipal: Schema.optional(
-      GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching,
+    conditionExplanation: Schema.optional(
+      GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation,
     ),
-    combinedExceptionPrincipal: Schema.optional(
-      GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching,
+    condition: Schema.optional(GoogleTypeExpr),
+    combinedDeniedPermission: Schema.optional(
+      GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching,
+    ),
+    relevance: Schema.optional(Schema.String),
+    deniedPermissions: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedPermissionMatching,
+      ),
     ),
     exceptionPrincipals: Schema.optional(
       Schema.Record(
@@ -493,81 +312,27 @@ export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation =
         GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching,
       ),
     ),
-    condition: Schema.optional(GoogleTypeExpr),
+    deniedPrincipals: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationAnnotatedDenyPrincipalMatching,
+      ),
+    ),
   }).annotate({
     identifier: "GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation",
   });
 
-export interface GoogleIamV2DenyRule {
-  /** The identities that are prevented from using one or more permissions on Google Cloud resources. This field can contain the following values: * `principal://goog/subject/{email_id}`: A specific Google Account. Includes Gmail, Cloud Identity, and Google Workspace user accounts. For example, `principal://goog/subject/alice@example.com`. * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`: A Google Cloud service account. For example, `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`. * `principalSet://goog/group/{group_id}`: A Google group. For example, `principalSet://goog/group/admins@example.com`. * `principalSet://goog/public:all`: A special identifier that represents any principal that is on the internet, even if they do not have a Google Account or are not logged in. * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the principals associated with the specified Google Workspace or Cloud Identity customer ID. For example, `principalSet://goog/cloudIdentityCustomerId/C01Abc35`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `principalSet://cloudresourcemanager.googleapis.com/[projects|folders|organizations]/{project_number|folder_number|org_number}/type/ServiceAccount`: All service accounts grouped under a resource (project, folder, or organization). * `principalSet://cloudresourcemanager.googleapis.com/[projects|folders|organizations]/{project_number|folder_number|org_number}/type/ServiceAgent`: All service agents grouped under a resource (project, folder, or organization). * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific Google Account that was deleted recently. For example, `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If the Google Account is recovered, this identifier reverts to the standard identifier for a Google Account. * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group that was deleted recently. For example, `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`. If the Google group is restored, this identifier reverts to the standard identifier for a Google group. * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`: A Google Cloud service account that was deleted recently. For example, `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`. If the service account is undeleted, this identifier reverts to the standard identifier for a service account. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  deniedPrincipals?: ReadonlyArray<string>;
-  /** The identities that are excluded from the deny rule, even if they are listed in the `denied_principals`. For example, you could add a Google group to the `denied_principals`, then exclude specific users who belong to that group. This field can contain the same values as the `denied_principals` field, excluding `principalSet://goog/public:all`, which represents all users on the internet. */
-  exceptionPrincipals?: ReadonlyArray<string>;
-  /** The permissions that are explicitly denied by this rule. Each permission uses the format `{service_fqdn}/{resource}.{verb}`, where `{service_fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`. */
-  deniedPermissions?: ReadonlyArray<string>;
-  /** Specifies the permissions that this rule excludes from the set of denied permissions given by `denied_permissions`. If a permission appears in `denied_permissions` _and_ in `exception_permissions` then it will _not_ be denied. The excluded permissions can be specified using the same syntax as `denied_permissions`. */
-  exceptionPermissions?: ReadonlyArray<string>;
-  /** The condition that determines whether this deny rule applies to a request. If the condition expression evaluates to `true`, then the deny rule is applied; otherwise, the deny rule is not applied. Each deny rule is evaluated independently. If this deny rule does not apply to a request, other deny rules might still apply. The condition can use CEL functions that evaluate [resource tags](https://cloud.google.com/iam/help/conditions/resource-tags). Other functions and operators are not supported. */
-  denialCondition?: GoogleTypeExpr;
-}
-
-export const GoogleIamV2DenyRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  deniedPrincipals: Schema.optional(Schema.Array(Schema.String)),
-  exceptionPrincipals: Schema.optional(Schema.Array(Schema.String)),
-  deniedPermissions: Schema.optional(Schema.Array(Schema.String)),
-  exceptionPermissions: Schema.optional(Schema.Array(Schema.String)),
-  denialCondition: Schema.optional(GoogleTypeExpr),
-}).annotate({ identifier: "GoogleIamV2DenyRule" });
-
-export interface GoogleIamV2PolicyRule {
-  /** A user-specified description of the rule. This value can be up to 256 characters. */
-  description?: string;
-  /** A rule for a deny policy. */
-  denyRule?: GoogleIamV2DenyRule;
-}
-
-export const GoogleIamV2PolicyRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  description: Schema.optional(Schema.String),
-  denyRule: Schema.optional(GoogleIamV2DenyRule),
-}).annotate({ identifier: "GoogleIamV2PolicyRule" });
-
-export interface GoogleIamV2Policy {
-  /** Output only. The time when the `Policy` was deleted. Empty if the policy is not deleted. */
-  deleteTime?: string;
-  /** A user-specified description of the `Policy`. This value can be up to 63 characters. */
-  displayName?: string;
-  /** An opaque tag that identifies the current version of the `Policy`. IAM uses this value to help manage concurrent updates, so they do not cause one update to be overwritten by another. If this field is present in a CreatePolicyRequest, the value is ignored. */
-  etag?: string;
-  /** Immutable. The globally unique ID of the `Policy`. Assigned automatically when the `Policy` is created. */
-  uid?: string;
-  /** Output only. The time when the `Policy` was created. */
-  createTime?: string;
-  /** A list of rules that specify the behavior of the `Policy`. All of the rules should be of the `kind` specified in the `Policy`. */
-  rules?: ReadonlyArray<GoogleIamV2PolicyRule>;
-  /** Output only. The kind of the `Policy`. Always contains the value `DenyPolicy`. */
-  kind?: string;
-  /** A key-value map to store arbitrary metadata for the `Policy`. Keys can be up to 63 characters. Values can be up to 255 characters. */
-  annotations?: Record<string, string>;
-  /** Output only. The time when the `Policy` was last updated. */
-  updateTime?: string;
-  /** Immutable. The resource name of the `Policy`, which must be unique. Format: `policies/{attachment_point}/denypolicies/{policy_id}` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-deny-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, requests can use the alphanumeric or the numeric ID. Responses always contain the numeric ID. */
-  name?: string;
-}
-
-export const GoogleIamV2Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  deleteTime: Schema.optional(Schema.String),
-  displayName: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-  uid: Schema.optional(Schema.String),
-  createTime: Schema.optional(Schema.String),
-  rules: Schema.optional(Schema.Array(GoogleIamV2PolicyRule)),
-  kind: Schema.optional(Schema.String),
-  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  updateTime: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-}).annotate({ identifier: "GoogleIamV2Policy" });
-
 export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy {
+  /** The IAM deny policy attached to the resource. If the sender of the request does not have access to the policy, this field is omitted. */
+  policy?: GoogleIamV2Policy;
+  /** Details about how each rule in the policy affects the principal's inability to use the permission for the resource. The order of the deny rule matches the order of the rules in the deny policy. If the sender of the request does not have access to the policy, this field is omitted. */
+  ruleExplanations?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation>;
+  /** The relevance of this policy to the overall access state in the TroubleshootIamPolicyResponse. If the sender of the request does not have access to the policy, this field is omitted. */
+  relevance?:
+    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
+    | "HEURISTIC_RELEVANCE_NORMAL"
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
   /** Required. Indicates whether _this policy_ denies the specified permission to the specified principal for the specified resource. This field does _not_ indicate whether the principal actually has the permission for the resource. There might be another policy that overrides this policy. To determine whether the principal actually has the permission, use the `overall_access_state` field in the TroubleshootIamPolicyResponse. */
   denyAccessState?:
     | "DENY_ACCESS_STATE_UNSPECIFIED"
@@ -576,215 +341,74 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy {
     | "DENY_ACCESS_STATE_UNKNOWN_CONDITIONAL"
     | "DENY_ACCESS_STATE_UNKNOWN_INFO"
     | (string & {});
-  /** The relevance of this policy to the overall access state in the TroubleshootIamPolicyResponse. If the sender of the request does not have access to the policy, this field is omitted. */
-  relevance?:
-    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
-    | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH"
-    | (string & {});
-  /** Details about how each rule in the policy affects the principal's inability to use the permission for the resource. The order of the deny rule matches the order of the rules in the deny policy. If the sender of the request does not have access to the policy, this field is omitted. */
-  ruleExplanations?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation>;
-  /** The IAM deny policy attached to the resource. If the sender of the request does not have access to the policy, this field is omitted. */
-  policy?: GoogleIamV2Policy;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy =
+export const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    denyAccessState: Schema.optional(Schema.String),
-    relevance: Schema.optional(Schema.String),
+    policy: Schema.optional(GoogleIamV2Policy),
     ruleExplanations: Schema.optional(
       Schema.Array(GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation),
     ),
-    policy: Schema.optional(GoogleIamV2Policy),
+    relevance: Schema.optional(Schema.String),
+    denyAccessState: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy",
   });
 
-export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource {
-  /** List of IAM deny policies that were evaluated to check the principal's denied permissions, with annotations to indicate how each policy contributed to the final result. */
-  explainedPolicies?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy>;
-  /** Required. Indicates whether any policies attached to _this resource_ deny the specific permission to the specified principal for the specified resource. This field does _not_ indicate whether the principal actually has the permission for the resource. There might be another policy that overrides this policy. To determine whether the principal actually has the permission, use the `overall_access_state` field in the TroubleshootIamPolicyResponse. */
-  denyAccessState?:
-    | "DENY_ACCESS_STATE_UNSPECIFIED"
-    | "DENY_ACCESS_STATE_DENIED"
-    | "DENY_ACCESS_STATE_NOT_DENIED"
-    | "DENY_ACCESS_STATE_UNKNOWN_CONDITIONAL"
-    | "DENY_ACCESS_STATE_UNKNOWN_INFO"
+export interface GoogleIamV1AuditLogConfig {
+  /** The log type that this config enables. */
+  logType?:
+    | "LOG_TYPE_UNSPECIFIED"
+    | "ADMIN_READ"
+    | "DATA_WRITE"
+    | "DATA_READ"
     | (string & {});
-  /** The full resource name that identifies the resource. For example, `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. If the sender of the request does not have access to the policy, this field is omitted. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. */
-  fullResourceName?: string;
-  /** The relevance of this policy to the overall access state in the TroubleshootIamPolicyResponse. If the sender of the request does not have access to the policy, this field is omitted. */
-  relevance?:
-    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
-    | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH"
-    | (string & {});
+  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource =
+export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    explainedPolicies: Schema.optional(
-      Schema.Array(GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy),
-    ),
-    denyAccessState: Schema.optional(Schema.String),
-    fullResourceName: Schema.optional(Schema.String),
-    relevance: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource",
-  });
+    logType: Schema.optional(Schema.String),
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1AuditLogConfig" });
 
-export interface GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanation {
-  /** List of resources with IAM deny policies that were evaluated to check the principal's denied permissions, with annotations to indicate how each policy contributed to the final result. The list of resources includes the policy for the resource itself, as well as policies that are inherited from higher levels of the resource hierarchy, including the organization, the folder, and the project. The order of the resources starts from the resource and climbs up the resource hierarchy. To learn more about the resource hierarchy, see https://cloud.google.com/iam/help/resource-hierarchy. */
-  explainedResources?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource>;
-  /** Indicates whether the principal is denied the specified permission for the specified resource, based on evaluating all applicable IAM deny policies. */
-  denyAccessState?:
-    | "DENY_ACCESS_STATE_UNSPECIFIED"
-    | "DENY_ACCESS_STATE_DENIED"
-    | "DENY_ACCESS_STATE_NOT_DENIED"
-    | "DENY_ACCESS_STATE_UNKNOWN_CONDITIONAL"
-    | "DENY_ACCESS_STATE_UNKNOWN_INFO"
-    | (string & {});
-  /** The relevance of the deny policy result to the overall access state. */
-  relevance?:
-    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
-    | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH"
-    | (string & {});
-  /** Indicates whether the permission to troubleshoot is supported in deny policies. */
-  permissionDeniable?: boolean;
+export interface GoogleIamV1AuditConfig {
+  /** The configuration for logging of each type of permission. */
+  auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
+  /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
+  service?: string;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanation =
+export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    explainedResources: Schema.optional(
-      Schema.Array(
-        GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource,
-      ),
-    ),
-    denyAccessState: Schema.optional(Schema.String),
-    relevance: Schema.optional(Schema.String),
-    permissionDeniable: Schema.optional(Schema.Boolean),
-  }).annotate({
-    identifier: "GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanation",
-  });
-
-export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding {
-  /** The policy binding that is explained. */
-  policyBinding?: GoogleIamV3PolicyBinding;
-  /** Optional. Explanation of the condition in the policy binding. If the policy binding doesn't have a condition, this field is omitted. */
-  conditionExplanation?: GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation;
-  /** Output only. Indicates whether the policy binding takes effect. */
-  policyBindingState?:
-    | "POLICY_BINDING_STATE_UNSPECIFIED"
-    | "POLICY_BINDING_STATE_ENFORCED"
-    | "POLICY_BINDING_STATE_NOT_ENFORCED"
-    | (string & {});
-  /** The relevance of this policy binding to the overall access state. */
-  relevance?:
-    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
-    | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH"
-    | (string & {});
-}
-
-export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    policyBinding: Schema.optional(GoogleIamV3PolicyBinding),
-    conditionExplanation: Schema.optional(
-      GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation,
-    ),
-    policyBindingState: Schema.optional(Schema.String),
-    relevance: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding",
-  });
+    auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
+    service: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV1AuditConfig" });
 
 export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersion {
-  /** Output only. The actual version of the policy. - If the policy uses static version, this field is the chosen static version. - If the policy uses dynamic version, this field is the effective latest version. */
-  version?: number;
   /** Output only. Indicates whether the policy is enforced based on its version. */
   enforcementState?:
     | "PAB_POLICY_ENFORCEMENT_STATE_UNSPECIFIED"
     | "PAB_POLICY_ENFORCEMENT_STATE_ENFORCED"
     | "PAB_POLICY_ENFORCEMENT_STATE_NOT_ENFORCED"
     | (string & {});
+  /** Output only. The actual version of the policy. - If the policy uses static version, this field is the chosen static version. - If the policy uses dynamic version, this field is the effective latest version. */
+  version?: number;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersion =
+export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersion: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    version: Schema.optional(Schema.Number),
     enforcementState: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.Number),
   }).annotate({
     identifier:
       "GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersion",
   });
 
-export interface GoogleIamV3PrincipalAccessBoundaryPolicyRule {
-  /** Required. A list of Resource Manager resources. If a resource is listed in the rule, then the rule applies for that resource and its descendants. The number of resources in a policy is limited to 500 across all rules in the policy. The following resource types are supported: * Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`. * Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`. * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123` or `//cloudresourcemanager.googleapis.com/projects/my-project-id`. */
-  resources?: ReadonlyArray<string>;
-  /** Optional. The description of the principal access boundary policy rule. Must be less than or equal to 256 characters. */
-  description?: string;
-  /** Required. The access relationship of principals to the resources in this rule. */
-  effect?: "EFFECT_UNSPECIFIED" | "ALLOW" | (string & {});
-}
-
-export const GoogleIamV3PrincipalAccessBoundaryPolicyRule =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resources: Schema.optional(Schema.Array(Schema.String)),
-    description: Schema.optional(Schema.String),
-    effect: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleIamV3PrincipalAccessBoundaryPolicyRule" });
-
-export interface GoogleIamV3PrincipalAccessBoundaryPolicyDetails {
-  /** Required. A list of principal access boundary policy rules. The number of rules in a policy is limited to 500. */
-  rules?: ReadonlyArray<GoogleIamV3PrincipalAccessBoundaryPolicyRule>;
-  /** Optional. The version number (for example, `1` or `latest`) that indicates which permissions are able to be blocked by the policy. If empty, the PAB policy version will be set to the most recent version number at the time of the policy's creation. */
-  enforcementVersion?: string;
-}
-
-export const GoogleIamV3PrincipalAccessBoundaryPolicyDetails =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    rules: Schema.optional(
-      Schema.Array(GoogleIamV3PrincipalAccessBoundaryPolicyRule),
-    ),
-    enforcementVersion: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleIamV3PrincipalAccessBoundaryPolicyDetails",
-  });
-
-export interface GoogleIamV3PrincipalAccessBoundaryPolicy {
-  /** Optional. The etag for the principal access boundary. If this is provided on update, it must match the server's etag. */
-  etag?: string;
-  /** Output only. The time when the principal access boundary policy was created. */
-  createTime?: string;
-  /** Identifier. The resource name of the principal access boundary policy. The following format is supported: `organizations/{organization_id}/locations/{location}/principalAccessBoundaryPolicies/{policy_id}` */
-  name?: string;
-  /** Output only. The globally unique ID of the principal access boundary policy. */
-  uid?: string;
-  /** Optional. The details for the principal access boundary policy. */
-  details?: GoogleIamV3PrincipalAccessBoundaryPolicyDetails;
-  /** Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations */
-  annotations?: Record<string, string>;
-  /** Output only. The time when the principal access boundary policy was most recently updated. */
-  updateTime?: string;
-  /** Optional. The description of the principal access boundary policy. Must be less than or equal to 63 characters. */
-  displayName?: string;
-}
-
-export const GoogleIamV3PrincipalAccessBoundaryPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    etag: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    uid: Schema.optional(Schema.String),
-    details: Schema.optional(GoogleIamV3PrincipalAccessBoundaryPolicyDetails),
-    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    updateTime: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleIamV3PrincipalAccessBoundaryPolicy" });
-
 export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource {
+  /** The [full resource name](https://cloud.google.com/iam/docs/full-resource-names) that identifies the resource that is explained. This can only be a project, a folder, or an organization which is what a PAB rule accepts. */
+  resource?: string;
   /** Output only. Indicates whether the resource is the specified resource or includes the specified resource. */
   resourceInclusionState?:
     | "RESOURCE_INCLUSION_STATE_UNSPECIFIED"
@@ -793,8 +417,6 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplain
     | "RESOURCE_INCLUSION_STATE_UNKNOWN_INFO"
     | "RESOURCE_INCLUSION_STATE_UNKNOWN_UNSUPPORTED"
     | (string & {});
-  /** The [full resource name](https://cloud.google.com/iam/docs/full-resource-names) that identifies the resource that is explained. This can only be a project, a folder, or an organization which is what a PAB rule accepts. */
-  resource?: string;
   /** The relevance of this resource to the overall access state. */
   relevance?:
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
@@ -803,10 +425,10 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplain
     | (string & {});
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource =
+export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceInclusionState: Schema.optional(Schema.String),
     resource: Schema.optional(Schema.String),
+    resourceInclusionState: Schema.optional(Schema.String),
     relevance: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -814,6 +436,8 @@ export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedRe
   });
 
 export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule {
+  /** Required. The effect of the rule which describes the access relationship. */
+  effect?: "EFFECT_UNSPECIFIED" | "ALLOW" | (string & {});
   /** Output only. Indicates whether the rule allows access to the specified resource. */
   ruleAccessState?:
     | "PAB_ACCESS_STATE_UNSPECIFIED"
@@ -830,44 +454,116 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule {
     | "RESOURCE_INCLUSION_STATE_UNKNOWN_INFO"
     | "RESOURCE_INCLUSION_STATE_UNKNOWN_UNSUPPORTED"
     | (string & {});
+  /** List of resources that were explained to check the principal's access to specified resource, with annotations to indicate how each resource contributes to the overall access state. */
+  explainedResources?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource>;
   /** The relevance of this rule to the overall access state. */
   relevance?:
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
     | "HEURISTIC_RELEVANCE_HIGH"
     | (string & {});
-  /** Required. The effect of the rule which describes the access relationship. */
-  effect?: "EFFECT_UNSPECIFIED" | "ALLOW" | (string & {});
-  /** List of resources that were explained to check the principal's access to specified resource, with annotations to indicate how each resource contributes to the overall access state. */
-  explainedResources?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource>;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule =
+export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    effect: Schema.optional(Schema.String),
     ruleAccessState: Schema.optional(Schema.String),
     combinedResourceInclusionState: Schema.optional(Schema.String),
-    relevance: Schema.optional(Schema.String),
-    effect: Schema.optional(Schema.String),
     explainedResources: Schema.optional(
       Schema.Array(
         GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource,
       ),
     ),
+    relevance: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule",
   });
 
+export interface GoogleIamV3PrincipalAccessBoundaryPolicyRuleOperation {
+  /** Optional. The permissions that are explicitly affected by this rule. The number of permission strings in this field is limited to 50. Each permission uses the format `{service_fqdn}/{resource}.{verb}`, where `{service_fqdn}` is the fully qualified domain name for the service. `*` can be used as a wildcard to match all permissions for a specific service, resource type, or verb. The following formats are supported: * `{service_fqdn}/{resource}.{verb}`: A specific permission. * `{service_fqdn}/{resource}.*`: All permissions for a specific resource type. * `{service_fqdn}/*.*`: All permissions for all resource types under a specific service. * `{service_fqdn}/*.{verb}`: All permissions with a specific verb under a specific service. * `*`: All permissions across all services. For example, `compute.googleapis.com/*.setIamPolicy` refers to all setIamPolicy permissions for any compute resource. Wildcards expand only to the permissions specified in the `enforcement_version` of the policy. If the `enforcement_version` is updated, the wildcard will automatically expand to include new permissions in the updated version. */
+  permissions?: ReadonlyArray<string>;
+  /** Optional. Specifies the permissions that this rule excludes from the set of affected permissions given by `permissions`. The number of excluded permission strings in this field is limited to 50. If a permission appears in both `permissions` and `excluded_permissions` then it will _not_ be subject to the policy effect. The excluded permissions can be specified using the same syntax as `permissions`. */
+  excludedPermissions?: ReadonlyArray<string>;
+}
+
+export const GoogleIamV3PrincipalAccessBoundaryPolicyRuleOperation: Schema.Schema<GoogleIamV3PrincipalAccessBoundaryPolicyRuleOperation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+    excludedPermissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
+    identifier: "GoogleIamV3PrincipalAccessBoundaryPolicyRuleOperation",
+  });
+
+export interface GoogleIamV3PrincipalAccessBoundaryPolicyRule {
+  /** Optional. The description of the principal access boundary policy rule. Must be less than or equal to 256 characters. */
+  description?: string;
+  /** Required. A list of Resource Manager resources. If a resource is listed in the rule, then the rule applies for that resource and its descendants. The number of resources in a policy is limited to 500 across all rules in the policy. The following resource types are supported: * Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`. * Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`. * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123` or `//cloudresourcemanager.googleapis.com/projects/my-project-id`. */
+  resources?: ReadonlyArray<string>;
+  /** Required. The access relationship of principals to the resources in this rule. */
+  effect?: "EFFECT_UNSPECIFIED" | "ALLOW" | (string & {});
+  /** Optional. The operation attributes that determine whether this rule applies to a request. If this field is not specified, the rule applies to all operations. */
+  operation?: GoogleIamV3PrincipalAccessBoundaryPolicyRuleOperation;
+}
+
+export const GoogleIamV3PrincipalAccessBoundaryPolicyRule: Schema.Schema<GoogleIamV3PrincipalAccessBoundaryPolicyRule> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    resources: Schema.optional(Schema.Array(Schema.String)),
+    effect: Schema.optional(Schema.String),
+    operation: Schema.optional(
+      GoogleIamV3PrincipalAccessBoundaryPolicyRuleOperation,
+    ),
+  }).annotate({ identifier: "GoogleIamV3PrincipalAccessBoundaryPolicyRule" });
+
+export interface GoogleIamV3PrincipalAccessBoundaryPolicyDetails {
+  /** Required. A list of principal access boundary policy rules. The number of rules in a policy is limited to 500. */
+  rules?: ReadonlyArray<GoogleIamV3PrincipalAccessBoundaryPolicyRule>;
+  /** Optional. The version number (for example, `1` or `latest`) that indicates which permissions are able to be blocked by the policy. If empty, the PAB policy version will be set to the most recent version number at the time of the policy's creation. */
+  enforcementVersion?: string;
+}
+
+export const GoogleIamV3PrincipalAccessBoundaryPolicyDetails: Schema.Schema<GoogleIamV3PrincipalAccessBoundaryPolicyDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rules: Schema.optional(
+      Schema.Array(GoogleIamV3PrincipalAccessBoundaryPolicyRule),
+    ),
+    enforcementVersion: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleIamV3PrincipalAccessBoundaryPolicyDetails",
+  });
+
+export interface GoogleIamV3PrincipalAccessBoundaryPolicy {
+  /** Output only. The globally unique ID of the principal access boundary policy. */
+  uid?: string;
+  /** Optional. The description of the principal access boundary policy. Must be less than or equal to 63 characters. */
+  displayName?: string;
+  /** Output only. The time when the principal access boundary policy was most recently updated. */
+  updateTime?: string;
+  /** Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations */
+  annotations?: Record<string, string>;
+  /** Output only. The time when the principal access boundary policy was created. */
+  createTime?: string;
+  /** Optional. The etag for the principal access boundary. If this is provided on update, it must match the server's etag. */
+  etag?: string;
+  /** Optional. The details for the principal access boundary policy. */
+  details?: GoogleIamV3PrincipalAccessBoundaryPolicyDetails;
+  /** Identifier. The resource name of the principal access boundary policy. The following format is supported: `organizations/{organization_id}/locations/{location}/principalAccessBoundaryPolicies/{policy_id}` */
+  name?: string;
+}
+
+export const GoogleIamV3PrincipalAccessBoundaryPolicy: Schema.Schema<GoogleIamV3PrincipalAccessBoundaryPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uid: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    details: Schema.optional(GoogleIamV3PrincipalAccessBoundaryPolicyDetails),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV3PrincipalAccessBoundaryPolicy" });
+
 export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy {
-  /** Output only. Explanation of the principal access boundary policy's version. */
-  policyVersion?: GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersion;
-  /** The relevance of this policy to the overall access state. */
-  relevance?:
-    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
-    | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH"
-    | (string & {});
-  /** The policy that is explained. */
-  policy?: GoogleIamV3PrincipalAccessBoundaryPolicy;
   /** Output only. Indicates whether the policy allows access to the specified resource. */
   policyAccessState?:
     | "PAB_ACCESS_STATE_UNSPECIFIED"
@@ -876,126 +572,294 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy {
     | "PAB_ACCESS_STATE_NOT_ENFORCED"
     | "PAB_ACCESS_STATE_UNKNOWN_INFO"
     | (string & {});
+  /** Output only. Explanation of the principal access boundary policy's version. */
+  policyVersion?: GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersion;
   /** List of principal access boundary rules that were explained to check the principal's access to specified resource, with annotations to indicate how each rule contributes to the overall access state. */
   explainedRules?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule>;
+  /** The policy that is explained. */
+  policy?: GoogleIamV3PrincipalAccessBoundaryPolicy;
+  /** The relevance of this policy to the overall access state. */
+  relevance?:
+    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
+    | "HEURISTIC_RELEVANCE_NORMAL"
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy =
+export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyAccessState: Schema.optional(Schema.String),
     policyVersion: Schema.optional(
       GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicyVersion,
     ),
-    relevance: Schema.optional(Schema.String),
-    policy: Schema.optional(GoogleIamV3PrincipalAccessBoundaryPolicy),
-    policyAccessState: Schema.optional(Schema.String),
     explainedRules: Schema.optional(
       Schema.Array(GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule),
     ),
+    policy: Schema.optional(GoogleIamV3PrincipalAccessBoundaryPolicy),
+    relevance: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy",
   });
 
-export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy {
-  /** Output only. Indicates whether the principal is allowed to access the specified resource based on evaluating the binding and policy. */
-  bindingAndPolicyAccessState?:
-    | "PAB_ACCESS_STATE_UNSPECIFIED"
-    | "PAB_ACCESS_STATE_ALLOWED"
-    | "PAB_ACCESS_STATE_NOT_ALLOWED"
-    | "PAB_ACCESS_STATE_NOT_ENFORCED"
-    | "PAB_ACCESS_STATE_UNKNOWN_INFO"
-    | (string & {});
-  /** Details about how this binding contributes to the principal access boundary explanation, with annotations to indicate how the binding contributes to the overall access state. */
-  explainedPolicyBinding?: GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding;
-  /** Optional. Details about how this policy contributes to the principal access boundary explanation, with annotations to indicate how the policy contributes to the overall access state. If the caller doesn't have permission to view the policy in the binding, this field is omitted. */
-  explainedPolicy?: GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy;
-  /** The relevance of this principal access boundary binding and policy to the overall access state. */
-  relevance?:
-    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
-    | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH"
-    | (string & {});
+export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContextPeer {
+  /** The IPv4 or IPv6 address of the peer. */
+  ip?: string;
+  /** The network port of the peer. */
+  port?: string;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy =
+export const GoogleCloudPolicytroubleshooterIamV3betaConditionContextPeer: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionContextPeer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bindingAndPolicyAccessState: Schema.optional(Schema.String),
-    explainedPolicyBinding: Schema.optional(
-      GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding,
-    ),
-    explainedPolicy: Schema.optional(
-      GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy,
-    ),
-    relevance: Schema.optional(Schema.String),
+    ip: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.String),
   }).annotate({
-    identifier:
-      "GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy",
+    identifier: "GoogleCloudPolicytroubleshooterIamV3betaConditionContextPeer",
   });
 
-export interface GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanation {
-  /** List of principal access boundary policies and bindings that are applicable to the principal's access state, with annotations to indicate how each binding and policy contributes to the overall access state. */
-  explainedBindingsAndPolicies?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy>;
-  /** The relevance of the principal access boundary access state to the overall access state. */
+export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContextResource {
+  /** The name of the service that this resource belongs to, such as `compute.googleapis.com`. The service name might not match the DNS hostname that actually serves the request. For a full list of resource service values, see https://cloud.google.com/iam/help/conditions/resource-services */
+  service?: string;
+  /** The type of the resource, in the format `{service}/{kind}`. For a full list of resource type values, see https://cloud.google.com/iam/help/conditions/resource-types */
+  type?: string;
+  /** The stable identifier (name) of a resource on the `service`. A resource can be logically identified as `//{resource.service}/{resource.name}`. Unlike the resource URI, the resource name doesn't contain any protocol and version information. For a list of full resource name formats, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names */
+  name?: string;
+}
+
+export const GoogleCloudPolicytroubleshooterIamV3betaConditionContextResource: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionContextResource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "GoogleCloudPolicytroubleshooterIamV3betaConditionContextResource",
+  });
+
+export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContextRequest {
+  /** Optional. The timestamp when the destination service receives the first byte of the request. */
+  receiveTime?: string;
+}
+
+export const GoogleCloudPolicytroubleshooterIamV3betaConditionContextRequest: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionContextRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    receiveTime: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "GoogleCloudPolicytroubleshooterIamV3betaConditionContextRequest",
+  });
+
+export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag {
+  /** Output only. Indicates the inheritance status of a tag value attached to the given resource. If the tag value is inherited from one of the resource's ancestors, inherited will be true. If false, then the tag value is directly attached to the resource, inherited will be false. */
+  inherited?: boolean;
+  /** Output only. Resource name for TagValue in the format `tagValues/456`. */
+  tagValue?: string;
+  /** Output only. The namespaced name of the TagKey. Can be in the form `{organization_id}/{tag_key_short_name}` or `{project_id}/{tag_key_short_name}` or `{project_number}/{tag_key_short_name}`. */
+  namespacedTagKey?: string;
+  /** Output only. The name of the TagKey, in the format `tagKeys/{id}`, such as `tagKeys/123`. */
+  tagKey?: string;
+  /** The parent name of the tag key. Must be in the format `organizations/{organization_id}` or `projects/{project_number}` */
+  tagKeyParentName?: string;
+  /** Output only. The namespaced name of the TagValue. Can be in the form `{organization_id}/{tag_key_short_name}/{tag_value_short_name}` or `{project_id}/{tag_key_short_name}/{tag_value_short_name}` or `{project_number}/{tag_key_short_name}/{tag_value_short_name}`. */
+  namespacedTagValue?: string;
+}
+
+export const GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inherited: Schema.optional(Schema.Boolean),
+    tagValue: Schema.optional(Schema.String),
+    namespacedTagKey: Schema.optional(Schema.String),
+    tagKey: Schema.optional(Schema.String),
+    tagKeyParentName: Schema.optional(Schema.String),
+    namespacedTagValue: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag",
+  });
+
+export interface GoogleCloudPolicytroubleshooterIamV3betaConditionContext {
+  /** Represents a target resource that is involved with a network activity. If multiple resources are involved with an activity, this must be the primary one. */
+  resource?: GoogleCloudPolicytroubleshooterIamV3betaConditionContextResource;
+  /** The destination of a network activity, such as accepting a TCP connection. In a multi-hop network activity, the destination represents the receiver of the last hop. */
+  destination?: GoogleCloudPolicytroubleshooterIamV3betaConditionContextPeer;
+  /** Represents a network request, such as an HTTP request. */
+  request?: GoogleCloudPolicytroubleshooterIamV3betaConditionContextRequest;
+  /** Output only. The effective tags on the resource. The effective tags are fetched during troubleshooting. */
+  effectiveTags?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag>;
+}
+
+export const GoogleCloudPolicytroubleshooterIamV3betaConditionContext: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionContext> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(
+      GoogleCloudPolicytroubleshooterIamV3betaConditionContextResource,
+    ),
+    destination: Schema.optional(
+      GoogleCloudPolicytroubleshooterIamV3betaConditionContextPeer,
+    ),
+    request: Schema.optional(
+      GoogleCloudPolicytroubleshooterIamV3betaConditionContextRequest,
+    ),
+    effectiveTags: Schema.optional(
+      Schema.Array(
+        GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag,
+      ),
+    ),
+  }).annotate({
+    identifier: "GoogleCloudPolicytroubleshooterIamV3betaConditionContext",
+  });
+
+export interface GoogleCloudPolicytroubleshooterIamV3betaAccessTuple {
+  /** Required. The full resource name that identifies the resource. For example, `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. */
+  fullResourceName?: string;
+  /** Required. The IAM permission to check for, either in the `v1` permission format or the `v2` permission format. For a complete list of IAM permissions in the `v1` format, see https://cloud.google.com/iam/help/permissions/reference. For a list of IAM permissions in the `v2` format, see https://cloud.google.com/iam/help/deny/supported-permissions. For a complete list of predefined IAM roles and the permissions in each role, see https://cloud.google.com/iam/help/roles/reference. */
+  permission?: string;
+  /** Required. The email address of the principal whose access you want to check. For example, `alice@example.com` or `my-service-account@my-project.iam.gserviceaccount.com`. The principal must be a Google Account or a service account. Other types of principals are not supported. */
+  principal?: string;
+  /** Optional. Additional context for the request, such as the request time or IP address. This context allows Policy Troubleshooter to troubleshoot conditional role bindings and deny rules. */
+  conditionContext?: GoogleCloudPolicytroubleshooterIamV3betaConditionContext;
+  /** Output only. The permission that Policy Troubleshooter checked for, in the `v2` format. */
+  permissionFqdn?: string;
+}
+
+export const GoogleCloudPolicytroubleshooterIamV3betaAccessTuple: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaAccessTuple> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fullResourceName: Schema.optional(Schema.String),
+    permission: Schema.optional(Schema.String),
+    principal: Schema.optional(Schema.String),
+    conditionContext: Schema.optional(
+      GoogleCloudPolicytroubleshooterIamV3betaConditionContext,
+    ),
+    permissionFqdn: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudPolicytroubleshooterIamV3betaAccessTuple",
+  });
+
+export interface GoogleIamV1Binding {
+  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  condition?: GoogleTypeExpr;
+  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
+  members?: ReadonlyArray<string>;
+  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
+  role?: string;
+}
+
+export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    condition: Schema.optional(GoogleTypeExpr),
+    members: Schema.optional(Schema.Array(Schema.String)),
+    role: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV1Binding" });
+
+export interface GoogleIamV1Policy {
+  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  version?: number;
+  /** Specifies cloud audit logging configuration for this policy. */
+  auditConfigs?: ReadonlyArray<GoogleIamV1AuditConfig>;
+  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
+  bindings?: ReadonlyArray<GoogleIamV1Binding>;
+  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
+  etag?: string;
+}
+
+export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.Number),
+    auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
+    bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV1Policy" });
+
+export interface GoogleIamV3PolicyBindingTarget {
+  /** Immutable. The full resource name that's used for access policy bindings. Examples: * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID` * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID` * Project: * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER` * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID` */
+  resource?: string;
+  /** Immutable. The full resource name that's used for principal access boundary policy bindings. The principal set must be directly parented by the policy binding's parent or same as the parent if the target is a project, folder, or organization. Examples: * For bindings parented by an organization: * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID` * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID` * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID` * For bindings parented by a folder: * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID` * For bindings parented by a project: * Project: * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER` * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID` * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID` */
+  principalSet?: string;
+}
+
+export const GoogleIamV3PolicyBindingTarget: Schema.Schema<GoogleIamV3PolicyBindingTarget> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(Schema.String),
+    principalSet: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV3PolicyBindingTarget" });
+
+export interface GoogleIamV3PolicyBinding {
+  /** Identifier. The name of the policy binding, in the format `{binding_parent/locations/{location}/policyBindings/{policy_binding_id}`. The binding parent is the closest Resource Manager resource (project, folder, or organization) to the binding target. Format: * `projects/{project_id}/locations/{location}/policyBindings/{policy_binding_id}` * `projects/{project_number}/locations/{location}/policyBindings/{policy_binding_id}` * `folders/{folder_id}/locations/{location}/policyBindings/{policy_binding_id}` * `organizations/{organization_id}/locations/{location}/policyBindings/{policy_binding_id}` */
+  name?: string;
+  /** Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will be automatically set to the policy kind) - The input policy kind */
+  policyKind?:
+    | "POLICY_KIND_UNSPECIFIED"
+    | "PRINCIPAL_ACCESS_BOUNDARY"
+    | "ACCESS"
+    | (string & {});
+  /** Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same organization. */
+  policy?: string;
+  /** Output only. The time when the policy binding was most recently updated. */
+  updateTime?: string;
+  /** Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag. */
+  etag?: string;
+  /** Optional. User-defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations */
+  annotations?: Record<string, string>;
+  /** Optional. The condition to apply to the policy binding. When set, the `expression` field in the `Expr` must include from 1 to 10 subexpressions, joined by the "||"(Logical OR), "&&"(Logical AND) or "!"(Logical NOT) operators and cannot contain more than 250 characters. The condition is currently only supported when bound to policies of kind principal access boundary. When the bound policy is a principal access boundary policy, the only supported attributes in any subexpression are `principal.type` and `principal.subject`. An example expression is: "principal.type == 'iam.googleapis.com/ServiceAccount'" or "principal.subject == 'bob@example.com'". Allowed operations for `principal.subject`: - `principal.subject == ` - `principal.subject != ` - `principal.subject in []` - `principal.subject.startsWith()` - `principal.subject.endsWith()` Allowed operations for `principal.type`: - `principal.type == ` - `principal.type != ` - `principal.type in []` Supported principal types are workspace, workforce pool, workload pool, service account, and agent identity. Allowed string must be one of: - `iam.googleapis.com/WorkspaceIdentity` - `iam.googleapis.com/WorkforcePoolIdentity` - `iam.googleapis.com/WorkloadPoolIdentity` - `iam.googleapis.com/ServiceAccount` - `iam.googleapis.com/AgentPoolIdentity` (available in Preview) */
+  condition?: GoogleTypeExpr;
+  /** Optional. The description of the policy binding. Must be less than or equal to 63 characters. */
+  displayName?: string;
+  /** Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created. */
+  uid?: string;
+  /** Required. Immutable. The full resource name of the resource to which the policy will be bound. Immutable once set. */
+  target?: GoogleIamV3PolicyBindingTarget;
+  /** Output only. The globally unique ID of the policy to be bound. */
+  policyUid?: string;
+  /** Output only. The time when the policy binding was created. */
+  createTime?: string;
+}
+
+export const GoogleIamV3PolicyBinding: Schema.Schema<GoogleIamV3PolicyBinding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    policyKind: Schema.optional(Schema.String),
+    policy: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    condition: Schema.optional(GoogleTypeExpr),
+    displayName: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    target: Schema.optional(GoogleIamV3PolicyBindingTarget),
+    policyUid: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV3PolicyBinding" });
+
+export interface GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership {
+  /** The relevance of the principal's status to the overall determination for the role binding. */
   relevance?:
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
     | "HEURISTIC_RELEVANCE_HIGH"
     | (string & {});
-  /** Output only. Indicates whether the principal is allowed to access specified resource, based on evaluating all applicable principal access boundary bindings and policies. */
-  principalAccessBoundaryAccessState?:
-    | "PAB_ACCESS_STATE_UNSPECIFIED"
-    | "PAB_ACCESS_STATE_ALLOWED"
-    | "PAB_ACCESS_STATE_NOT_ALLOWED"
-    | "PAB_ACCESS_STATE_NOT_ENFORCED"
-    | "PAB_ACCESS_STATE_UNKNOWN_INFO"
+  /** Indicates whether the role binding includes the principal. */
+  membership?:
+    | "MEMBERSHIP_MATCHING_STATE_UNSPECIFIED"
+    | "MEMBERSHIP_MATCHED"
+    | "MEMBERSHIP_NOT_MATCHED"
+    | "MEMBERSHIP_UNKNOWN_INFO"
+    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED"
     | (string & {});
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanation =
+export const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    explainedBindingsAndPolicies: Schema.optional(
-      Schema.Array(
-        GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy,
-      ),
-    ),
     relevance: Schema.optional(Schema.String),
-    principalAccessBoundaryAccessState: Schema.optional(Schema.String),
+    membership: Schema.optional(Schema.String),
   }).annotate({
-    identifier: "GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanation",
+    identifier:
+      "GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership",
   });
 
 export interface GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation {
-  /** The role that this role binding grants. For example, `roles/compute.admin`. For a complete list of predefined IAM roles, as well as the permissions in each role, see https://cloud.google.com/iam/help/roles/reference. */
-  role?: string;
-  /** The combined result of all memberships. Indicates if the principal is included in any role binding, either directly or indirectly. */
-  combinedMembership?: GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership;
-  /** The relevance of the permission's existence, or nonexistence, in the role to the overall determination for the entire policy. */
-  rolePermissionRelevance?:
-    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
-    | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH"
-    | (string & {});
-  /** Indicates whether each role binding includes the principal specified in the request, either directly or indirectly. Each key identifies a principal in the role binding, and each value indicates whether the principal in the role binding includes the principal in the request. For example, suppose that a role binding includes the following principals: * `user:alice@example.com` * `group:product-eng@example.com` You want to troubleshoot access for `user:bob@example.com`. This user is a member of the group `group:product-eng@example.com`. For the first principal in the role binding, the key is `user:alice@example.com`, and the `membership` field in the value is set to `NOT_INCLUDED`. For the second principal in the role binding, the key is `group:product-eng@example.com`, and the `membership` field in the value is set to `INCLUDED`. */
-  memberships?: Record<
-    string,
-    GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership
-  >;
-  /** A condition expression that specifies when the role binding grants access. To learn about IAM Conditions, see https://cloud.google.com/iam/help/conditions/overview. */
-  condition?: GoogleTypeExpr;
   /** The relevance of this role binding to the overall determination for the entire policy. */
   relevance?:
     | "HEURISTIC_RELEVANCE_UNSPECIFIED"
     | "HEURISTIC_RELEVANCE_NORMAL"
     | "HEURISTIC_RELEVANCE_HIGH"
-    | (string & {});
-  /** Condition evaluation state for this role binding. */
-  conditionExplanation?: GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation;
-  /** Required. Indicates whether _this role binding_ gives the specified permission to the specified principal on the specified resource. This field does _not_ indicate whether the principal actually has the permission on the resource. There might be another role binding that overrides this role binding. To determine whether the principal actually has the permission, use the `overall_access_state` field in the TroubleshootIamPolicyResponse. */
-  allowAccessState?:
-    | "ALLOW_ACCESS_STATE_UNSPECIFIED"
-    | "ALLOW_ACCESS_STATE_GRANTED"
-    | "ALLOW_ACCESS_STATE_NOT_GRANTED"
-    | "ALLOW_ACCESS_STATE_UNKNOWN_CONDITIONAL"
-    | "ALLOW_ACCESS_STATE_UNKNOWN_INFO"
     | (string & {});
   /** Indicates whether the role granted by this role binding contains the specified permission. */
   rolePermission?:
@@ -1004,69 +868,71 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation
     | "ROLE_PERMISSION_NOT_INCLUDED"
     | "ROLE_PERMISSION_UNKNOWN_INFO"
     | (string & {});
+  /** Required. Indicates whether _this role binding_ gives the specified permission to the specified principal on the specified resource. This field does _not_ indicate whether the principal actually has the permission on the resource. There might be another role binding that overrides this role binding. To determine whether the principal actually has the permission, use the `overall_access_state` field in the TroubleshootIamPolicyResponse. */
+  allowAccessState?:
+    | "ALLOW_ACCESS_STATE_UNSPECIFIED"
+    | "ALLOW_ACCESS_STATE_GRANTED"
+    | "ALLOW_ACCESS_STATE_NOT_GRANTED"
+    | "ALLOW_ACCESS_STATE_UNKNOWN_CONDITIONAL"
+    | "ALLOW_ACCESS_STATE_UNKNOWN_INFO"
+    | (string & {});
+  /** A condition expression that specifies when the role binding grants access. To learn about IAM Conditions, see https://cloud.google.com/iam/help/conditions/overview. */
+  condition?: GoogleTypeExpr;
+  /** The relevance of the permission's existence, or nonexistence, in the role to the overall determination for the entire policy. */
+  rolePermissionRelevance?:
+    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
+    | "HEURISTIC_RELEVANCE_NORMAL"
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
+  /** The role that this role binding grants. For example, `roles/compute.admin`. For a complete list of predefined IAM roles, as well as the permissions in each role, see https://cloud.google.com/iam/help/roles/reference. */
+  role?: string;
+  /** The combined result of all memberships. Indicates if the principal is included in any role binding, either directly or indirectly. */
+  combinedMembership?: GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership;
+  /** Indicates whether each role binding includes the principal specified in the request, either directly or indirectly. Each key identifies a principal in the role binding, and each value indicates whether the principal in the role binding includes the principal in the request. For example, suppose that a role binding includes the following principals: * `user:alice@example.com` * `group:product-eng@example.com` You want to troubleshoot access for `user:bob@example.com`. This user is a member of the group `group:product-eng@example.com`. For the first principal in the role binding, the key is `user:alice@example.com`, and the `membership` field in the value is set to `NOT_INCLUDED`. For the second principal in the role binding, the key is `group:product-eng@example.com`, and the `membership` field in the value is set to `INCLUDED`. */
+  memberships?: Record<
+    string,
+    GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership
+  >;
+  /** Condition evaluation state for this role binding. */
+  conditionExplanation?: GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation =
+export const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    relevance: Schema.optional(Schema.String),
+    rolePermission: Schema.optional(Schema.String),
+    allowAccessState: Schema.optional(Schema.String),
+    condition: Schema.optional(GoogleTypeExpr),
+    rolePermissionRelevance: Schema.optional(Schema.String),
     role: Schema.optional(Schema.String),
     combinedMembership: Schema.optional(
       GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership,
     ),
-    rolePermissionRelevance: Schema.optional(Schema.String),
     memberships: Schema.optional(
       Schema.Record(
         Schema.String,
         GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationAnnotatedAllowMembership,
       ),
     ),
-    condition: Schema.optional(GoogleTypeExpr),
-    relevance: Schema.optional(Schema.String),
     conditionExplanation: Schema.optional(
       GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation,
     ),
-    allowAccessState: Schema.optional(Schema.String),
-    rolePermission: Schema.optional(Schema.String),
   }).annotate({
     identifier:
       "GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation",
   });
 
-export interface GoogleIamV1Binding {
-  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: ReadonlyArray<string>;
-  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
-  role?: string;
-  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  condition?: GoogleTypeExpr;
-}
-
-export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  members: Schema.optional(Schema.Array(Schema.String)),
-  role: Schema.optional(Schema.String),
-  condition: Schema.optional(GoogleTypeExpr),
-}).annotate({ identifier: "GoogleIamV1Binding" });
-
-export interface GoogleIamV1Policy {
-  /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: ReadonlyArray<GoogleIamV1AuditConfig>;
-  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: ReadonlyArray<GoogleIamV1Binding>;
-  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  version?: number;
-  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
-  etag?: string;
-}
-
-export const GoogleIamV1Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
-  bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
-  version: Schema.optional(Schema.Number),
-  etag: Schema.optional(Schema.String),
-}).annotate({ identifier: "GoogleIamV1Policy" });
-
 export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy {
-  /** The full resource name that identifies the resource. For example, `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. If the sender of the request does not have access to the policy, this field is omitted. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. */
-  fullResourceName?: string;
+  /** Details about how each role binding in the policy affects the principal's ability, or inability, to use the permission for the resource. The order of the role bindings matches the role binding order in the policy. If the sender of the request does not have access to the policy, this field is omitted. */
+  bindingExplanations?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation>;
+  /** The relevance of this policy to the overall access state in the TroubleshootIamPolicyResponse. If the sender of the request does not have access to the policy, this field is omitted. */
+  relevance?:
+    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
+    | "HEURISTIC_RELEVANCE_NORMAL"
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
+  /** The IAM allow policy attached to the resource. If the sender of the request does not have access to the policy, this field is empty. */
+  policy?: GoogleIamV1Policy;
   /** Required. Indicates whether _this policy_ provides the specified permission to the specified principal for the specified resource. This field does _not_ indicate whether the principal actually has the permission for the resource. There might be another policy that overrides this policy. To determine whether the principal actually has the permission, use the `overall_access_state` field in the TroubleshootIamPolicyResponse. */
   allowAccessState?:
     | "ALLOW_ACCESS_STATE_UNSPECIFIED"
@@ -1075,29 +941,21 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy {
     | "ALLOW_ACCESS_STATE_UNKNOWN_CONDITIONAL"
     | "ALLOW_ACCESS_STATE_UNKNOWN_INFO"
     | (string & {});
-  /** The relevance of this policy to the overall access state in the TroubleshootIamPolicyResponse. If the sender of the request does not have access to the policy, this field is omitted. */
-  relevance?:
-    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
-    | "HEURISTIC_RELEVANCE_NORMAL"
-    | "HEURISTIC_RELEVANCE_HIGH"
-    | (string & {});
-  /** Details about how each role binding in the policy affects the principal's ability, or inability, to use the permission for the resource. The order of the role bindings matches the role binding order in the policy. If the sender of the request does not have access to the policy, this field is omitted. */
-  bindingExplanations?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation>;
-  /** The IAM allow policy attached to the resource. If the sender of the request does not have access to the policy, this field is empty. */
-  policy?: GoogleIamV1Policy;
+  /** The full resource name that identifies the resource. For example, `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. If the sender of the request does not have access to the policy, this field is omitted. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. */
+  fullResourceName?: string;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy =
+export const GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    fullResourceName: Schema.optional(Schema.String),
-    allowAccessState: Schema.optional(Schema.String),
-    relevance: Schema.optional(Schema.String),
     bindingExplanations: Schema.optional(
       Schema.Array(
         GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation,
       ),
     ),
+    relevance: Schema.optional(Schema.String),
     policy: Schema.optional(GoogleIamV1Policy),
+    allowAccessState: Schema.optional(Schema.String),
+    fullResourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy",
   });
@@ -1121,7 +979,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanation 
   explainedPolicies?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy>;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanation =
+export const GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanation: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowAccessState: Schema.optional(Schema.String),
     relevance: Schema.optional(Schema.String),
@@ -1135,6 +993,189 @@ export const GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanation =
       "GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanation",
   });
 
+export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding {
+  /** Optional. Explanation of the condition in the policy binding. If the policy binding doesn't have a condition, this field is omitted. */
+  conditionExplanation?: GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation;
+  /** Output only. Indicates whether the policy binding takes effect. */
+  policyBindingState?:
+    | "POLICY_BINDING_STATE_UNSPECIFIED"
+    | "POLICY_BINDING_STATE_ENFORCED"
+    | "POLICY_BINDING_STATE_NOT_ENFORCED"
+    | (string & {});
+  /** The relevance of this policy binding to the overall access state. */
+  relevance?:
+    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
+    | "HEURISTIC_RELEVANCE_NORMAL"
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
+  /** The policy binding that is explained. */
+  policyBinding?: GoogleIamV3PolicyBinding;
+}
+
+export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conditionExplanation: Schema.optional(
+      GoogleCloudPolicytroubleshooterIamV3betaConditionExplanation,
+    ),
+    policyBindingState: Schema.optional(Schema.String),
+    relevance: Schema.optional(Schema.String),
+    policyBinding: Schema.optional(GoogleIamV3PolicyBinding),
+  }).annotate({
+    identifier:
+      "GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding",
+  });
+
+export interface GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRequest {
+  /** The information to use for checking whether a principal has a permission for a resource. */
+  accessTuple?: GoogleCloudPolicytroubleshooterIamV3betaAccessTuple;
+}
+
+export const GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRequest: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessTuple: Schema.optional(
+      GoogleCloudPolicytroubleshooterIamV3betaAccessTuple,
+    ),
+  }).annotate({
+    identifier:
+      "GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRequest",
+  });
+
+export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy {
+  /** Optional. Details about how this policy contributes to the principal access boundary explanation, with annotations to indicate how the policy contributes to the overall access state. If the caller doesn't have permission to view the policy in the binding, this field is omitted. */
+  explainedPolicy?: GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy;
+  /** Output only. Indicates whether the principal is allowed to access the specified resource based on evaluating the binding and policy. */
+  bindingAndPolicyAccessState?:
+    | "PAB_ACCESS_STATE_UNSPECIFIED"
+    | "PAB_ACCESS_STATE_ALLOWED"
+    | "PAB_ACCESS_STATE_NOT_ALLOWED"
+    | "PAB_ACCESS_STATE_NOT_ENFORCED"
+    | "PAB_ACCESS_STATE_UNKNOWN_INFO"
+    | (string & {});
+  /** Details about how this binding contributes to the principal access boundary explanation, with annotations to indicate how the binding contributes to the overall access state. */
+  explainedPolicyBinding?: GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding;
+  /** The relevance of this principal access boundary binding and policy to the overall access state. */
+  relevance?:
+    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
+    | "HEURISTIC_RELEVANCE_NORMAL"
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
+}
+
+export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    explainedPolicy: Schema.optional(
+      GoogleCloudPolicytroubleshooterIamV3betaExplainedPABPolicy,
+    ),
+    bindingAndPolicyAccessState: Schema.optional(Schema.String),
+    explainedPolicyBinding: Schema.optional(
+      GoogleCloudPolicytroubleshooterIamV3betaExplainedPolicyBinding,
+    ),
+    relevance: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy",
+  });
+
+export interface GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanation {
+  /** List of principal access boundary policies and bindings that are applicable to the principal's access state, with annotations to indicate how each binding and policy contributes to the overall access state. */
+  explainedBindingsAndPolicies?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy>;
+  /** Output only. Indicates whether the principal is allowed to access specified resource, based on evaluating all applicable principal access boundary bindings and policies. */
+  principalAccessBoundaryAccessState?:
+    | "PAB_ACCESS_STATE_UNSPECIFIED"
+    | "PAB_ACCESS_STATE_ALLOWED"
+    | "PAB_ACCESS_STATE_NOT_ALLOWED"
+    | "PAB_ACCESS_STATE_NOT_ENFORCED"
+    | "PAB_ACCESS_STATE_UNKNOWN_INFO"
+    | (string & {});
+  /** The relevance of the principal access boundary access state to the overall access state. */
+  relevance?:
+    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
+    | "HEURISTIC_RELEVANCE_NORMAL"
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
+}
+
+export const GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanation: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    explainedBindingsAndPolicies: Schema.optional(
+      Schema.Array(
+        GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy,
+      ),
+    ),
+    principalAccessBoundaryAccessState: Schema.optional(Schema.String),
+    relevance: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanation",
+  });
+
+export interface GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource {
+  /** The full resource name that identifies the resource. For example, `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. If the sender of the request does not have access to the policy, this field is omitted. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. */
+  fullResourceName?: string;
+  /** The relevance of this policy to the overall access state in the TroubleshootIamPolicyResponse. If the sender of the request does not have access to the policy, this field is omitted. */
+  relevance?:
+    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
+    | "HEURISTIC_RELEVANCE_NORMAL"
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
+  /** Required. Indicates whether any policies attached to _this resource_ deny the specific permission to the specified principal for the specified resource. This field does _not_ indicate whether the principal actually has the permission for the resource. There might be another policy that overrides this policy. To determine whether the principal actually has the permission, use the `overall_access_state` field in the TroubleshootIamPolicyResponse. */
+  denyAccessState?:
+    | "DENY_ACCESS_STATE_UNSPECIFIED"
+    | "DENY_ACCESS_STATE_DENIED"
+    | "DENY_ACCESS_STATE_NOT_DENIED"
+    | "DENY_ACCESS_STATE_UNKNOWN_CONDITIONAL"
+    | "DENY_ACCESS_STATE_UNKNOWN_INFO"
+    | (string & {});
+  /** List of IAM deny policies that were evaluated to check the principal's denied permissions, with annotations to indicate how each policy contributed to the final result. */
+  explainedPolicies?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy>;
+}
+
+export const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fullResourceName: Schema.optional(Schema.String),
+    relevance: Schema.optional(Schema.String),
+    denyAccessState: Schema.optional(Schema.String),
+    explainedPolicies: Schema.optional(
+      Schema.Array(GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy),
+    ),
+  }).annotate({
+    identifier: "GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource",
+  });
+
+export interface GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanation {
+  /** Indicates whether the principal is denied the specified permission for the specified resource, based on evaluating all applicable IAM deny policies. */
+  denyAccessState?:
+    | "DENY_ACCESS_STATE_UNSPECIFIED"
+    | "DENY_ACCESS_STATE_DENIED"
+    | "DENY_ACCESS_STATE_NOT_DENIED"
+    | "DENY_ACCESS_STATE_UNKNOWN_CONDITIONAL"
+    | "DENY_ACCESS_STATE_UNKNOWN_INFO"
+    | (string & {});
+  /** List of resources with IAM deny policies that were evaluated to check the principal's denied permissions, with annotations to indicate how each policy contributed to the final result. The list of resources includes the policy for the resource itself, as well as policies that are inherited from higher levels of the resource hierarchy, including the organization, the folder, and the project. The order of the resources starts from the resource and climbs up the resource hierarchy. To learn more about the resource hierarchy, see https://cloud.google.com/iam/help/resource-hierarchy. */
+  explainedResources?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource>;
+  /** The relevance of the deny policy result to the overall access state. */
+  relevance?:
+    | "HEURISTIC_RELEVANCE_UNSPECIFIED"
+    | "HEURISTIC_RELEVANCE_NORMAL"
+    | "HEURISTIC_RELEVANCE_HIGH"
+    | (string & {});
+  /** Indicates whether the permission to troubleshoot is supported in deny policies. */
+  permissionDeniable?: boolean;
+}
+
+export const GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanation: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    denyAccessState: Schema.optional(Schema.String),
+    explainedResources: Schema.optional(
+      Schema.Array(
+        GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource,
+      ),
+    ),
+    relevance: Schema.optional(Schema.String),
+    permissionDeniable: Schema.optional(Schema.Boolean),
+  }).annotate({
+    identifier: "GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanation",
+  });
+
 export interface GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyResponse {
   /** Indicates whether the principal has the specified permission for the specified resource, based on evaluating all types of the applicable IAM policies. */
   overallAccessState?:
@@ -1146,19 +1187,22 @@ export interface GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRe
     | (string & {});
   /** An explanation of how the applicable principal access boundary policies affect the final access state. */
   pabPolicyExplanation?: GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanation;
+  /** The access tuple from the request, including any provided context used to evaluate the condition. */
+  accessTuple?: GoogleCloudPolicytroubleshooterIamV3betaAccessTuple;
   /** An explanation of how the applicable IAM deny policies affect the final access state. */
   denyPolicyExplanation?: GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanation;
   /** An explanation of how the applicable IAM allow policies affect the final access state. */
   allowPolicyExplanation?: GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanation;
-  /** The access tuple from the request, including any provided context used to evaluate the condition. */
-  accessTuple?: GoogleCloudPolicytroubleshooterIamV3betaAccessTuple;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyResponse =
+export const GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyResponse: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     overallAccessState: Schema.optional(Schema.String),
     pabPolicyExplanation: Schema.optional(
       GoogleCloudPolicytroubleshooterIamV3betaPABPolicyExplanation,
+    ),
+    accessTuple: Schema.optional(
+      GoogleCloudPolicytroubleshooterIamV3betaAccessTuple,
     ),
     denyPolicyExplanation: Schema.optional(
       GoogleCloudPolicytroubleshooterIamV3betaDenyPolicyExplanation,
@@ -1166,27 +1210,9 @@ export const GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRespon
     allowPolicyExplanation: Schema.optional(
       GoogleCloudPolicytroubleshooterIamV3betaAllowPolicyExplanation,
     ),
-    accessTuple: Schema.optional(
-      GoogleCloudPolicytroubleshooterIamV3betaAccessTuple,
-    ),
   }).annotate({
     identifier:
       "GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyResponse",
-  });
-
-export interface GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRequest {
-  /** The information to use for checking whether a principal has a permission for a resource. */
-  accessTuple?: GoogleCloudPolicytroubleshooterIamV3betaAccessTuple;
-}
-
-export const GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accessTuple: Schema.optional(
-      GoogleCloudPolicytroubleshooterIamV3betaAccessTuple,
-    ),
-  }).annotate({
-    identifier:
-      "GoogleCloudPolicytroubleshooterIamV3betaTroubleshootIamPolicyRequest",
   });
 
 // ==========================================================================

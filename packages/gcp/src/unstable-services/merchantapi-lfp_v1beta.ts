@@ -22,132 +22,61 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface Empty {}
-
-export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-  identifier: "Empty",
-});
-
-export interface CountrySettings {
-  /** True if this merchant has enabled local inventory ads in MC. */
-  localInventoryAdsEnabled?: boolean;
-  /** Output only. The verification state of this merchant's inventory check. */
-  inventoryVerificationState?:
-    | "VERIFICATION_STATE_UNSPECIFIED"
-    | "VERIFICATION_STATE_NOT_APPROVED"
-    | "VERIFICATION_STATE_IN_PROGRESS"
-    | "VERIFICATION_STATE_APPROVED"
-    | (string & {});
-  /** Output only. The verification state of this merchant's pickup serving feature. */
-  pickupServingVerificationState?:
-    | "VERIFICATION_STATE_UNSPECIFIED"
-    | "VERIFICATION_STATE_NOT_APPROVED"
-    | "VERIFICATION_STATE_IN_PROGRESS"
-    | "VERIFICATION_STATE_APPROVED"
-    | (string & {});
-  /** Output only. The verification state of this merchant's instock serving feature. */
-  instockServingVerificationState?:
-    | "VERIFICATION_STATE_UNSPECIFIED"
-    | "VERIFICATION_STATE_NOT_APPROVED"
-    | "VERIFICATION_STATE_IN_PROGRESS"
-    | "VERIFICATION_STATE_APPROVED"
-    | (string & {});
-  /** True if this merchant has enabled free local listings in MC. */
-  freeLocalListingsEnabled?: boolean;
-  /** Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for the country for which these settings are defined. */
-  regionCode?: string;
-  /** Output only. The product page type selected by this merchant. */
-  productPageType?:
-    | "PRODUCT_PAGE_TYPE_UNSPECIFIED"
-    | "GOOGLE_HOSTED"
-    | "MERCHANT_HOSTED"
-    | "MERCHANT_HOSTED_STORE_SPECIFIC"
-    | (string & {});
+export interface Price {
+  /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
+  amountMicros?: string;
+  /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
+  currencyCode?: string;
 }
 
-export const CountrySettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  localInventoryAdsEnabled: Schema.optional(Schema.Boolean),
-  inventoryVerificationState: Schema.optional(Schema.String),
-  pickupServingVerificationState: Schema.optional(Schema.String),
-  instockServingVerificationState: Schema.optional(Schema.String),
-  freeLocalListingsEnabled: Schema.optional(Schema.Boolean),
-  regionCode: Schema.optional(Schema.String),
-  productPageType: Schema.optional(Schema.String),
-}).annotate({ identifier: "CountrySettings" });
+export const Price: Schema.Schema<Price> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    amountMicros: Schema.optional(Schema.String),
+    currencyCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Price" });
 
-export interface LfpStore {
-  /** Required. The street address of the store. Example: 1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA. */
-  storeAddress?: string;
-  /** Optional. The store phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. Example: `+15556767888` */
-  phoneNumber?: string;
-  /** Required. Immutable. A store identifier that is unique for the target merchant. */
+export interface LfpSale {
+  /** Required. The Global Trade Item Number of the sold product. */
+  gtin?: string;
+  /** Required. The identifier of the merchant's store. Either a `storeCode` inserted through the API or the code of the store in the Business Profile. */
   storeCode?: string;
-  /** Optional. The [Google Place Id](https://developers.google.com/maps/documentation/places/web-service/place-id#id-overview) of the store location. */
-  placeId?: string;
-  /** Output only. Identifier. The name of the `LfpStore` resource. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}` */
+  /** Output only. Identifier. The name of the `LfpSale` resource. Format: `accounts/{account}/lfpSales/{sale}` */
   name?: string;
-  /** Optional. The merchant or store name. */
-  storeName?: string;
-  /** Optional. Output only. The hint of why the matching has failed. This is only set when matchingState=`STORE_MATCHING_STATE_FAILED`. Possible values are: - "`linked-store-not-found`": There aren't any Google Business Profile stores available for matching. - "`store-match-not-found`": The provided `LfpStore` couldn't be matched to any of the connected Google Business Profile stores. Merchant Center account is connected correctly and stores are available on Google Business Profile, but the `LfpStore` location address does not match with Google Business Profile stores' addresses. Update the `LfpStore` address or Google Business Profile store address to match correctly. - "`store-match-unverified`": The provided `LfpStore` couldn't be matched to any of the connected Google Business Profile stores, as the matched Google Business Profile store is unverified. Go through the Google Business Profile verification process to match correctly. */
-  matchingStateHint?: string;
-  /** Optional. [Google My Business category id](https://support.google.com/business/answer/7249669). */
-  gcidCategory?: ReadonlyArray<string>;
-  /** Optional. Output only. The state of matching to a Google Business Profile. See matchingStateHint for further details if no match is found. */
-  matchingState?:
-    | "STORE_MATCHING_STATE_UNSPECIFIED"
-    | "STORE_MATCHING_STATE_MATCHED"
-    | "STORE_MATCHING_STATE_FAILED"
-    | (string & {});
-  /** Optional. The website URL for the store or merchant. */
-  websiteUri?: string;
-  /** Required. The Merchant Center id of the merchant to submit the store for. */
+  /** Required. The timestamp for the sale. */
+  saleTime?: string;
+  /** Optional. The [feed label](https://developers.google.com/shopping-content/guides/products/feed-labels) for the product. If this is not set, it will default to `regionCode`. */
+  feedLabel?: string;
+  /** Required. A unique identifier for the product. If both inventories and sales are submitted for a merchant, this id should match for the same product. **Note**: if the merchant sells the same product new and used, they should have different IDs. */
+  offerId?: string;
+  /** Required. The unit price of the product. */
+  price?: Price;
+  /** Required. The relative change of the available quantity. Negative for items returned. */
+  quantity?: string;
+  /** Required. The Merchant Center ID of the merchant to submit the sale for. */
   targetAccount?: string;
+  /** Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for the country where the product is sold. */
+  regionCode?: string;
+  /** Required. The two-letter ISO 639-1 language code for the item. */
+  contentLanguage?: string;
+  /** Output only. System generated globally unique ID for the `LfpSale`. */
+  uid?: string;
 }
 
-export const LfpStore = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  storeAddress: Schema.optional(Schema.String),
-  phoneNumber: Schema.optional(Schema.String),
-  storeCode: Schema.optional(Schema.String),
-  placeId: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  storeName: Schema.optional(Schema.String),
-  matchingStateHint: Schema.optional(Schema.String),
-  gcidCategory: Schema.optional(Schema.Array(Schema.String)),
-  matchingState: Schema.optional(Schema.String),
-  websiteUri: Schema.optional(Schema.String),
-  targetAccount: Schema.optional(Schema.String),
-}).annotate({ identifier: "LfpStore" });
-
-export interface ListLfpStoresResponse {
-  /** The stores from the specified merchant. */
-  lfpStores?: ReadonlyArray<LfpStore>;
-  /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListLfpStoresResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  lfpStores: Schema.optional(Schema.Array(LfpStore)),
-  nextPageToken: Schema.optional(Schema.String),
-}).annotate({ identifier: "ListLfpStoresResponse" });
-
-export interface LfpStoreState {
-  /** Required. Immutable. The identifier of this store. */
-  storeCode?: string;
-  /** Output only. The store matching state. */
-  matchingState?:
-    | "STORE_MATCHING_STATE_UNSPECIFIED"
-    | "STORE_MATCHING_STATE_MATCHED"
-    | "STORE_MATCHING_STATE_FAILED"
-    | (string & {});
-  /** The hint of why the matching has failed (only set if matching_state is FAILED). */
-  matchingStateHint?: string;
-}
-
-export const LfpStoreState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  storeCode: Schema.optional(Schema.String),
-  matchingState: Schema.optional(Schema.String),
-  matchingStateHint: Schema.optional(Schema.String),
-}).annotate({ identifier: "LfpStoreState" });
+export const LfpSale: Schema.Schema<LfpSale> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gtin: Schema.optional(Schema.String),
+    storeCode: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    saleTime: Schema.optional(Schema.String),
+    feedLabel: Schema.optional(Schema.String),
+    offerId: Schema.optional(Schema.String),
+    price: Schema.optional(Price),
+    quantity: Schema.optional(Schema.String),
+    targetAccount: Schema.optional(Schema.String),
+    regionCode: Schema.optional(Schema.String),
+    contentLanguage: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LfpSale" });
 
 export interface ProductChange {
   /** The old value of the changed resource or attribute. If empty, it means that the product was created. Will have one of these values : (`approved`, `pending`, `disapproved`, ``) */
@@ -181,187 +110,269 @@ export interface ProductChange {
     | (string & {});
 }
 
-export const ProductChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  oldValue: Schema.optional(Schema.String),
-  newValue: Schema.optional(Schema.String),
-  regionCode: Schema.optional(Schema.String),
-  reportingContext: Schema.optional(Schema.String),
-}).annotate({ identifier: "ProductChange" });
+export const ProductChange: Schema.Schema<ProductChange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oldValue: Schema.optional(Schema.String),
+    newValue: Schema.optional(Schema.String),
+    regionCode: Schema.optional(Schema.String),
+    reportingContext: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductChange" });
 
 export interface ProductStatusChangeMessage {
-  /** A message to describe the change that happened to the product */
-  changes?: ReadonlyArray<ProductChange>;
-  /** The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}` */
-  managingAccount?: string;
-  /** The target account that owns the entity that changed. Format : `accounts/{merchant_id}` */
-  account?: string;
-  /** The product id. */
-  resourceId?: string;
   /** The resource that changed, in this case it will always be `Product`. */
   resourceType?: "RESOURCE_UNSPECIFIED" | "PRODUCT" | (string & {});
-  /** The product name. Format: `accounts/{account}/products/{product}` */
-  resource?: string;
   /** Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event. */
   expirationTime?: string;
   /** The attribute in the resource that changed, in this case it will be always `Status`. */
   attribute?: "ATTRIBUTE_UNSPECIFIED" | "STATUS" | (string & {});
+  /** The target account that owns the entity that changed. Format : `accounts/{merchant_id}` */
+  account?: string;
+  /** The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}` */
+  managingAccount?: string;
+  /** A message to describe the change that happened to the product */
+  changes?: ReadonlyArray<ProductChange>;
   /** The time at which the event was generated. If you want to order the notification messages you receive you should rely on this field not on the order of receiving the notifications. */
   eventTime?: string;
+  /** The product id. */
+  resourceId?: string;
+  /** The product name. Format: `accounts/{account}/products/{product}` */
+  resource?: string;
 }
 
-export const ProductStatusChangeMessage =
+export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    changes: Schema.optional(Schema.Array(ProductChange)),
-    managingAccount: Schema.optional(Schema.String),
-    account: Schema.optional(Schema.String),
-    resourceId: Schema.optional(Schema.String),
     resourceType: Schema.optional(Schema.String),
-    resource: Schema.optional(Schema.String),
     expirationTime: Schema.optional(Schema.String),
     attribute: Schema.optional(Schema.String),
+    account: Schema.optional(Schema.String),
+    managingAccount: Schema.optional(Schema.String),
+    changes: Schema.optional(Schema.Array(ProductChange)),
     eventTime: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProductStatusChangeMessage" });
 
+export interface Empty {}
+
+export const Empty: Schema.Schema<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface LfpStoreState {
+  /** Output only. The store matching state. */
+  matchingState?:
+    | "STORE_MATCHING_STATE_UNSPECIFIED"
+    | "STORE_MATCHING_STATE_MATCHED"
+    | "STORE_MATCHING_STATE_FAILED"
+    | (string & {});
+  /** Required. Immutable. The identifier of this store. */
+  storeCode?: string;
+  /** The hint of why the matching has failed (only set if matching_state is FAILED). */
+  matchingStateHint?: string;
+}
+
+export const LfpStoreState: Schema.Schema<LfpStoreState> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchingState: Schema.optional(Schema.String),
+    storeCode: Schema.optional(Schema.String),
+    matchingStateHint: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LfpStoreState" });
+
+export interface LfpStore {
+  /** Optional. The merchant or store name. */
+  storeName?: string;
+  /** Optional. The store phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. Example: `+15556767888` */
+  phoneNumber?: string;
+  /** Optional. Output only. The hint of why the matching has failed. This is only set when matchingState=`STORE_MATCHING_STATE_FAILED`. Possible values are: - "`linked-store-not-found`": There aren't any Google Business Profile stores available for matching. - "`store-match-not-found`": The provided `LfpStore` couldn't be matched to any of the connected Google Business Profile stores. Merchant Center account is connected correctly and stores are available on Google Business Profile, but the `LfpStore` location address does not match with Google Business Profile stores' addresses. Update the `LfpStore` address or Google Business Profile store address to match correctly. - "`store-match-unverified`": The provided `LfpStore` couldn't be matched to any of the connected Google Business Profile stores, as the matched Google Business Profile store is unverified. Go through the Google Business Profile verification process to match correctly. */
+  matchingStateHint?: string;
+  /** Required. Immutable. A store identifier that is unique for the target merchant. */
+  storeCode?: string;
+  /** Optional. The [Google Place Id](https://developers.google.com/maps/documentation/places/web-service/place-id#id-overview) of the store location. */
+  placeId?: string;
+  /** Output only. Identifier. The name of the `LfpStore` resource. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}` */
+  name?: string;
+  /** Optional. [Google My Business category id](https://support.google.com/business/answer/7249669). */
+  gcidCategory?: ReadonlyArray<string>;
+  /** Required. The street address of the store. Example: 1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA. */
+  storeAddress?: string;
+  /** Required. The Merchant Center id of the merchant to submit the store for. */
+  targetAccount?: string;
+  /** Optional. The website URL for the store or merchant. */
+  websiteUri?: string;
+  /** Optional. Output only. The state of matching to a Google Business Profile. See matchingStateHint for further details if no match is found. */
+  matchingState?:
+    | "STORE_MATCHING_STATE_UNSPECIFIED"
+    | "STORE_MATCHING_STATE_MATCHED"
+    | "STORE_MATCHING_STATE_FAILED"
+    | (string & {});
+}
+
+export const LfpStore: Schema.Schema<LfpStore> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storeName: Schema.optional(Schema.String),
+    phoneNumber: Schema.optional(Schema.String),
+    matchingStateHint: Schema.optional(Schema.String),
+    storeCode: Schema.optional(Schema.String),
+    placeId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    gcidCategory: Schema.optional(Schema.Array(Schema.String)),
+    storeAddress: Schema.optional(Schema.String),
+    targetAccount: Schema.optional(Schema.String),
+    websiteUri: Schema.optional(Schema.String),
+    matchingState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LfpStore" });
+
 export interface InventoryStats {
-  /** Number of submitted in stock entries. */
-  submittedInStockEntries?: string;
   /** Number of products from provided inventories/sales that were created from matches to existing online products provided by the merchant or to the Google catalog. */
   submittedProducts?: string;
   /** Number of entries (understanding entry as a pair of product and store) that were built based on provided inventories/sales and submitted to Google. */
   submittedEntries?: string;
   /** Number of entries that were built based on provided inventories/sales and couldn't be submitted to Google due to errors like missing product. */
   unsubmittedEntries?: string;
+  /** Number of submitted in stock entries. */
+  submittedInStockEntries?: string;
 }
 
-export const InventoryStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  submittedInStockEntries: Schema.optional(Schema.String),
-  submittedProducts: Schema.optional(Schema.String),
-  submittedEntries: Schema.optional(Schema.String),
-  unsubmittedEntries: Schema.optional(Schema.String),
-}).annotate({ identifier: "InventoryStats" });
+export const InventoryStats: Schema.Schema<InventoryStats> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    submittedProducts: Schema.optional(Schema.String),
+    submittedEntries: Schema.optional(Schema.String),
+    unsubmittedEntries: Schema.optional(Schema.String),
+    submittedInStockEntries: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InventoryStats" });
 
-export interface Price {
-  /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
-  amountMicros?: string;
-  /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
-  currencyCode?: string;
-}
-
-export const Price = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  amountMicros: Schema.optional(Schema.String),
-  currencyCode: Schema.optional(Schema.String),
-}).annotate({ identifier: "Price" });
-
-export interface LfpSale {
-  /** Required. The Global Trade Item Number of the sold product. */
-  gtin?: string;
-  /** Required. The Merchant Center ID of the merchant to submit the sale for. */
-  targetAccount?: string;
-  /** Required. The two-letter ISO 639-1 language code for the item. */
-  contentLanguage?: string;
-  /** Required. The relative change of the available quantity. Negative for items returned. */
-  quantity?: string;
-  /** Output only. Identifier. The name of the `LfpSale` resource. Format: `accounts/{account}/lfpSales/{sale}` */
-  name?: string;
-  /** Required. The identifier of the merchant's store. Either a `storeCode` inserted through the API or the code of the store in the Business Profile. */
-  storeCode?: string;
-  /** Output only. System generated globally unique ID for the `LfpSale`. */
-  uid?: string;
-  /** Required. The unit price of the product. */
-  price?: Price;
-  /** Optional. The [feed label](https://developers.google.com/shopping-content/guides/products/feed-labels) for the product. If this is not set, it will default to `regionCode`. */
-  feedLabel?: string;
-  /** Required. A unique identifier for the product. If both inventories and sales are submitted for a merchant, this id should match for the same product. **Note**: if the merchant sells the same product new and used, they should have different IDs. */
-  offerId?: string;
-  /** Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for the country where the product is sold. */
+export interface CountrySettings {
+  /** Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for the country for which these settings are defined. */
   regionCode?: string;
-  /** Required. The timestamp for the sale. */
-  saleTime?: string;
+  /** Output only. The verification state of this merchant's inventory check. */
+  inventoryVerificationState?:
+    | "VERIFICATION_STATE_UNSPECIFIED"
+    | "VERIFICATION_STATE_NOT_APPROVED"
+    | "VERIFICATION_STATE_IN_PROGRESS"
+    | "VERIFICATION_STATE_APPROVED"
+    | (string & {});
+  /** Output only. The product page type selected by this merchant. */
+  productPageType?:
+    | "PRODUCT_PAGE_TYPE_UNSPECIFIED"
+    | "GOOGLE_HOSTED"
+    | "MERCHANT_HOSTED"
+    | "MERCHANT_HOSTED_STORE_SPECIFIC"
+    | (string & {});
+  /** True if this merchant has enabled free local listings in MC. */
+  freeLocalListingsEnabled?: boolean;
+  /** True if this merchant has enabled local inventory ads in MC. */
+  localInventoryAdsEnabled?: boolean;
+  /** Output only. The verification state of this merchant's instock serving feature. */
+  instockServingVerificationState?:
+    | "VERIFICATION_STATE_UNSPECIFIED"
+    | "VERIFICATION_STATE_NOT_APPROVED"
+    | "VERIFICATION_STATE_IN_PROGRESS"
+    | "VERIFICATION_STATE_APPROVED"
+    | (string & {});
+  /** Output only. The verification state of this merchant's pickup serving feature. */
+  pickupServingVerificationState?:
+    | "VERIFICATION_STATE_UNSPECIFIED"
+    | "VERIFICATION_STATE_NOT_APPROVED"
+    | "VERIFICATION_STATE_IN_PROGRESS"
+    | "VERIFICATION_STATE_APPROVED"
+    | (string & {});
 }
 
-export const LfpSale = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  gtin: Schema.optional(Schema.String),
-  targetAccount: Schema.optional(Schema.String),
-  contentLanguage: Schema.optional(Schema.String),
-  quantity: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  storeCode: Schema.optional(Schema.String),
-  uid: Schema.optional(Schema.String),
-  price: Schema.optional(Price),
-  feedLabel: Schema.optional(Schema.String),
-  offerId: Schema.optional(Schema.String),
-  regionCode: Schema.optional(Schema.String),
-  saleTime: Schema.optional(Schema.String),
-}).annotate({ identifier: "LfpSale" });
+export const CountrySettings: Schema.Schema<CountrySettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionCode: Schema.optional(Schema.String),
+    inventoryVerificationState: Schema.optional(Schema.String),
+    productPageType: Schema.optional(Schema.String),
+    freeLocalListingsEnabled: Schema.optional(Schema.Boolean),
+    localInventoryAdsEnabled: Schema.optional(Schema.Boolean),
+    instockServingVerificationState: Schema.optional(Schema.String),
+    pickupServingVerificationState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CountrySettings" });
+
+export interface LfpMerchantState {
+  /** Identifier. The name of the `LfpMerchantState` resource. Format: `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example, `accounts/123456/lfpMerchantStates/567890`. */
+  name?: string;
+  /** Number of [GBPs](https://www.google.com/business/) this merchant has access to. */
+  linkedGbps?: string;
+  /** The inventory statistics for the merchant. The field will be absent if the merchant has no inventory submitted through LFP. */
+  inventoryStats?: InventoryStats;
+  /** Country-specific settings for the merchant. */
+  countrySettings?: ReadonlyArray<CountrySettings>;
+  /** Output only. The state per store from the specified merchant. The field will be absent if the merchant has no stores submitted through LFP. */
+  storeStates?: ReadonlyArray<LfpStoreState>;
+}
+
+export const LfpMerchantState: Schema.Schema<LfpMerchantState> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    linkedGbps: Schema.optional(Schema.String),
+    inventoryStats: Schema.optional(InventoryStats),
+    countrySettings: Schema.optional(Schema.Array(CountrySettings)),
+    storeStates: Schema.optional(Schema.Array(LfpStoreState)),
+  }).annotate({ identifier: "LfpMerchantState" });
+
+export interface ListLfpStoresResponse {
+  /** The stores from the specified merchant. */
+  lfpStores?: ReadonlyArray<LfpStore>;
+  /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListLfpStoresResponse: Schema.Schema<ListLfpStoresResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lfpStores: Schema.optional(Schema.Array(LfpStore)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLfpStoresResponse" });
 
 export interface LfpInventory {
   /** Required. Availability of the product at this store. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342) */
   availability?: string;
-  /** Optional. Expected date that an order will be ready for pickup relative to the order date. Must be submitted together with `pickupMethod`. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342). */
-  pickupSla?: string;
-  /** Optional. The time when the inventory is collected. If not set, it will be set to the time when the inventory is submitted. */
-  collectionTime?: string;
-  /** Output only. Identifier. The name for the `LfpInventory` resource. Format: `accounts/{account}/lfpInventories/{target_merchant}~{store_code}~{offer}` */
-  name?: string;
-  /** Optional. Quantity of the product available at this store. Must be greater than or equal to zero. */
-  quantity?: string;
-  /** Required. The Merchant Center ID of the merchant to submit the inventory for. */
-  targetAccount?: string;
+  /** Optional. Supported pickup method for this offer. Unless the value is "not supported", this field must be submitted together with `pickupSla`. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342). */
+  pickupMethod?: string;
   /** Required. The two-letter ISO 639-1 language code for the item. */
   contentLanguage?: string;
-  /** Required. Immutable. A unique identifier for the product. If both inventories and sales are submitted for a merchant, this id should match for the same product. **Note**: if the merchant sells the same product new and used, they should have different IDs. */
-  offerId?: string;
+  /** Required. The Merchant Center ID of the merchant to submit the inventory for. */
+  targetAccount?: string;
+  /** Optional. Quantity of the product available at this store. Must be greater than or equal to zero. */
+  quantity?: string;
+  /** Optional. Expected date that an order will be ready for pickup relative to the order date. Must be submitted together with `pickupMethod`. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342). */
+  pickupSla?: string;
   /** Optional. The [feed label](https://developers.google.com/shopping-content/guides/products/feed-labels) for the product. If this is not set, it will default to `regionCode`. */
   feedLabel?: string;
   /** Required. The identifier of the merchant's store. Either the store code inserted through `InsertLfpStore` or the store code in the Business Profile. */
   storeCode?: string;
-  /** Optional. The Global Trade Item Number of the product. */
-  gtin?: string;
-  /** Optional. Supported pickup method for this offer. Unless the value is "not supported", this field must be submitted together with `pickupSla`. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342). */
-  pickupMethod?: string;
+  /** Optional. The time when the inventory is collected. If not set, it will be set to the time when the inventory is submitted. */
+  collectionTime?: string;
   /** Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for the country where the product is sold. */
   regionCode?: string;
   /** Optional. The current price of the product. */
   price?: Price;
-}
-
-export const LfpInventory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  availability: Schema.optional(Schema.String),
-  pickupSla: Schema.optional(Schema.String),
-  collectionTime: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  quantity: Schema.optional(Schema.String),
-  targetAccount: Schema.optional(Schema.String),
-  contentLanguage: Schema.optional(Schema.String),
-  offerId: Schema.optional(Schema.String),
-  feedLabel: Schema.optional(Schema.String),
-  storeCode: Schema.optional(Schema.String),
-  gtin: Schema.optional(Schema.String),
-  pickupMethod: Schema.optional(Schema.String),
-  regionCode: Schema.optional(Schema.String),
-  price: Schema.optional(Price),
-}).annotate({ identifier: "LfpInventory" });
-
-export interface LfpMerchantState {
-  /** Output only. The state per store from the specified merchant. The field will be absent if the merchant has no stores submitted through LFP. */
-  storeStates?: ReadonlyArray<LfpStoreState>;
-  /** Identifier. The name of the `LfpMerchantState` resource. Format: `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example, `accounts/123456/lfpMerchantStates/567890`. */
+  /** Required. Immutable. A unique identifier for the product. If both inventories and sales are submitted for a merchant, this id should match for the same product. **Note**: if the merchant sells the same product new and used, they should have different IDs. */
+  offerId?: string;
+  /** Output only. Identifier. The name for the `LfpInventory` resource. Format: `accounts/{account}/lfpInventories/{target_merchant}~{store_code}~{offer}` */
   name?: string;
-  /** The inventory statistics for the merchant. The field will be absent if the merchant has no inventory submitted through LFP. */
-  inventoryStats?: InventoryStats;
-  /** Number of [GBPs](https://www.google.com/business/) this merchant has access to. */
-  linkedGbps?: string;
-  /** Country-specific settings for the merchant. */
-  countrySettings?: ReadonlyArray<CountrySettings>;
+  /** Optional. The Global Trade Item Number of the product. */
+  gtin?: string;
 }
 
-export const LfpMerchantState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  storeStates: Schema.optional(Schema.Array(LfpStoreState)),
-  name: Schema.optional(Schema.String),
-  inventoryStats: Schema.optional(InventoryStats),
-  linkedGbps: Schema.optional(Schema.String),
-  countrySettings: Schema.optional(Schema.Array(CountrySettings)),
-}).annotate({ identifier: "LfpMerchantState" });
+export const LfpInventory: Schema.Schema<LfpInventory> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    availability: Schema.optional(Schema.String),
+    pickupMethod: Schema.optional(Schema.String),
+    contentLanguage: Schema.optional(Schema.String),
+    targetAccount: Schema.optional(Schema.String),
+    quantity: Schema.optional(Schema.String),
+    pickupSla: Schema.optional(Schema.String),
+    feedLabel: Schema.optional(Schema.String),
+    storeCode: Schema.optional(Schema.String),
+    collectionTime: Schema.optional(Schema.String),
+    regionCode: Schema.optional(Schema.String),
+    price: Schema.optional(Price),
+    offerId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    gtin: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LfpInventory" });
 
 // ==========================================================================
 // Errors
@@ -417,40 +428,38 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface DeleteAccountsLfpStoresRequest {
-  /** Required. The name of the store to delete for the target merchant account. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}` */
+export interface GetAccountsLfpMerchantStatesRequest {
+  /** Required. The name of the state to retrieve. Format: `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example, `accounts/123456/lfpMerchantStates/567890`. */
   name: string;
 }
 
-export const DeleteAccountsLfpStoresRequest =
+export const GetAccountsLfpMerchantStatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "lfp/v1beta/{+name}" }),
+    T.Http({ method: "GET", path: "lfp/v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsLfpStoresRequest>;
+  ) as unknown as Schema.Schema<GetAccountsLfpMerchantStatesRequest>;
 
-export type DeleteAccountsLfpStoresResponse = Empty;
-export const DeleteAccountsLfpStoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export type GetAccountsLfpMerchantStatesResponse = LfpMerchantState;
+export const GetAccountsLfpMerchantStatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ LfpMerchantState;
 
-export type DeleteAccountsLfpStoresError =
+export type GetAccountsLfpMerchantStatesError =
   | DefaultErrors
   | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  | Forbidden;
 
-/** Deletes a store for a target merchant. */
-export const deleteAccountsLfpStores: API.OperationMethod<
-  DeleteAccountsLfpStoresRequest,
-  DeleteAccountsLfpStoresResponse,
-  DeleteAccountsLfpStoresError,
+/** Gets the LFP state of a merchant */
+export const getAccountsLfpMerchantStates: API.OperationMethod<
+  GetAccountsLfpMerchantStatesRequest,
+  GetAccountsLfpMerchantStatesResponse,
+  GetAccountsLfpMerchantStatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteAccountsLfpStoresRequest,
-  output: DeleteAccountsLfpStoresResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+  input: GetAccountsLfpMerchantStatesRequest,
+  output: GetAccountsLfpMerchantStatesResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAccountsLfpStoresRequest {
@@ -482,6 +491,52 @@ export const getAccountsLfpStores: API.OperationMethod<
   input: GetAccountsLfpStoresRequest,
   output: GetAccountsLfpStoresResponse,
   errors: [NotFound, Forbidden],
+}));
+
+export interface ListAccountsLfpStoresRequest {
+  /** Optional. The maximum number of `LfpStore` resources for the given account to return. The service returns fewer than this value if the number of stores for the given account is less than the `pageSize`. The default value is 250. The maximum value is 1000; If a value higher than the maximum is specified, then the `pageSize` will default to the maximum. */
+  pageSize?: number;
+  /** Required. The LFP partner. Format: `accounts/{account}` */
+  parent: string;
+  /** Required. The Merchant Center id of the merchant to list stores for. */
+  targetAccount?: string;
+  /** Optional. A page token, received from a previous `ListLfpStoresRequest` call. Provide the page token to retrieve the subsequent page. When paginating, all other parameters provided to `ListLfpStoresRequest` must match the call that provided the page token. The token returned as nextPageToken in the response to the previous request. */
+  pageToken?: string;
+}
+
+export const ListAccountsLfpStoresRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    targetAccount: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("targetAccount"),
+    ),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "lfp/v1beta/{+parent}/lfpStores" }),
+    svc,
+  ) as unknown as Schema.Schema<ListAccountsLfpStoresRequest>;
+
+export type ListAccountsLfpStoresResponse = ListLfpStoresResponse;
+export const ListAccountsLfpStoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListLfpStoresResponse;
+
+export type ListAccountsLfpStoresError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists the stores of the target merchant, specified by the filter in `ListLfpStoresRequest`. */
+export const listAccountsLfpStores: API.PaginatedOperationMethod<
+  ListAccountsLfpStoresRequest,
+  ListAccountsLfpStoresResponse,
+  ListAccountsLfpStoresError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAccountsLfpStoresRequest,
+  output: ListAccountsLfpStoresResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface InsertAccountsLfpStoresRequest {
@@ -527,126 +582,39 @@ export const insertAccountsLfpStores: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListAccountsLfpStoresRequest {
-  /** Required. The Merchant Center id of the merchant to list stores for. */
-  targetAccount?: string;
-  /** Optional. A page token, received from a previous `ListLfpStoresRequest` call. Provide the page token to retrieve the subsequent page. When paginating, all other parameters provided to `ListLfpStoresRequest` must match the call that provided the page token. The token returned as nextPageToken in the response to the previous request. */
-  pageToken?: string;
-  /** Required. The LFP partner. Format: `accounts/{account}` */
-  parent: string;
-  /** Optional. The maximum number of `LfpStore` resources for the given account to return. The service returns fewer than this value if the number of stores for the given account is less than the `pageSize`. The default value is 250. The maximum value is 1000; If a value higher than the maximum is specified, then the `pageSize` will default to the maximum. */
-  pageSize?: number;
-}
-
-export const ListAccountsLfpStoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    targetAccount: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("targetAccount"),
-    ),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "lfp/v1beta/{+parent}/lfpStores" }),
-    svc,
-  ) as unknown as Schema.Schema<ListAccountsLfpStoresRequest>;
-
-export type ListAccountsLfpStoresResponse = ListLfpStoresResponse;
-export const ListAccountsLfpStoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLfpStoresResponse;
-
-export type ListAccountsLfpStoresError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists the stores of the target merchant, specified by the filter in `ListLfpStoresRequest`. */
-export const listAccountsLfpStores: API.PaginatedOperationMethod<
-  ListAccountsLfpStoresRequest,
-  ListAccountsLfpStoresResponse,
-  ListAccountsLfpStoresError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsLfpStoresRequest,
-  output: ListAccountsLfpStoresResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetAccountsLfpMerchantStatesRequest {
-  /** Required. The name of the state to retrieve. Format: `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example, `accounts/123456/lfpMerchantStates/567890`. */
+export interface DeleteAccountsLfpStoresRequest {
+  /** Required. The name of the store to delete for the target merchant account. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}` */
   name: string;
 }
 
-export const GetAccountsLfpMerchantStatesRequest =
+export const DeleteAccountsLfpStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "lfp/v1beta/{+name}" }),
+    T.Http({ method: "DELETE", path: "lfp/v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsLfpMerchantStatesRequest>;
+  ) as unknown as Schema.Schema<DeleteAccountsLfpStoresRequest>;
 
-export type GetAccountsLfpMerchantStatesResponse = LfpMerchantState;
-export const GetAccountsLfpMerchantStatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LfpMerchantState;
+export type DeleteAccountsLfpStoresResponse = Empty;
+export const DeleteAccountsLfpStoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type GetAccountsLfpMerchantStatesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the LFP state of a merchant */
-export const getAccountsLfpMerchantStates: API.OperationMethod<
-  GetAccountsLfpMerchantStatesRequest,
-  GetAccountsLfpMerchantStatesResponse,
-  GetAccountsLfpMerchantStatesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAccountsLfpMerchantStatesRequest,
-  output: GetAccountsLfpMerchantStatesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface InsertAccountsLfpSalesRequest {
-  /** Required. The LFP provider account. Format: `accounts/{lfp_partner}` */
-  parent: string;
-  /** Request body */
-  body?: LfpSale;
-}
-
-export const InsertAccountsLfpSalesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(LfpSale).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "lfp/v1beta/{+parent}/lfpSales:insert",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<InsertAccountsLfpSalesRequest>;
-
-export type InsertAccountsLfpSalesResponse = LfpSale;
-export const InsertAccountsLfpSalesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LfpSale;
-
-export type InsertAccountsLfpSalesError =
+export type DeleteAccountsLfpStoresError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Inserts a `LfpSale` for the given merchant. */
-export const insertAccountsLfpSales: API.OperationMethod<
-  InsertAccountsLfpSalesRequest,
-  InsertAccountsLfpSalesResponse,
-  InsertAccountsLfpSalesError,
+/** Deletes a store for a target merchant. */
+export const deleteAccountsLfpStores: API.OperationMethod<
+  DeleteAccountsLfpStoresRequest,
+  DeleteAccountsLfpStoresResponse,
+  DeleteAccountsLfpStoresError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: InsertAccountsLfpSalesRequest,
-  output: InsertAccountsLfpSalesResponse,
+  input: DeleteAccountsLfpStoresRequest,
+  output: DeleteAccountsLfpStoresResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -690,5 +658,48 @@ export const insertAccountsLfpInventories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAccountsLfpInventoriesRequest,
   output: InsertAccountsLfpInventoriesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface InsertAccountsLfpSalesRequest {
+  /** Required. The LFP provider account. Format: `accounts/{lfp_partner}` */
+  parent: string;
+  /** Request body */
+  body?: LfpSale;
+}
+
+export const InsertAccountsLfpSalesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(LfpSale).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "lfp/v1beta/{+parent}/lfpSales:insert",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<InsertAccountsLfpSalesRequest>;
+
+export type InsertAccountsLfpSalesResponse = LfpSale;
+export const InsertAccountsLfpSalesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ LfpSale;
+
+export type InsertAccountsLfpSalesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Inserts a `LfpSale` for the given merchant. */
+export const insertAccountsLfpSales: API.OperationMethod<
+  InsertAccountsLfpSalesRequest,
+  InsertAccountsLfpSalesResponse,
+  InsertAccountsLfpSalesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: InsertAccountsLfpSalesRequest,
+  output: InsertAccountsLfpSalesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
