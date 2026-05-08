@@ -1702,15 +1702,18 @@ function generateOperationSchemaAst(
  * names from the patch in the operation's type signature and errors array.
  */
 /**
- * Generate two concrete operations + a thin wrapper for an
- * accountOrZone-scoped Cloudflare operation.
+ * Generate two concrete operations for an accountOrZone-scoped Cloudflare
+ * operation.
  *
  * The upstream OpenAPI lies about `/{accountOrZone}/{accountOrZoneId}/...` —
  * it claims `account_id` AND `zone_id` are both required path params, when in
  * reality the literal first segment is one of `accounts`/`zones` and the
  * caller picks exactly one of the two IDs. We split that into two real
- * operations (`*ForAccount`, `*ForZone`) with concrete URLs, and a wrapper
- * (`*`) that dispatches based on which scope ID is present in the input.
+ * operations (`*ForAccount`, `*ForZone`) with concrete URLs. Callers pick the
+ * variant matching the scope they intend to address — there is no convenience
+ * wrapper that accepts a scope-discriminated union, since hiding which scope
+ * is being targeted behind a runtime check loses tree-shakability and
+ * produces noisier types.
  */
 function generateAccountOrZoneOperationSchema(
   op: ParsedOperation,
@@ -1723,7 +1726,6 @@ function generateAccountOrZoneOperationSchema(
   const zoneOpName = `${normalizedOpName}ForZone`;
   const accountRequestType = `${pascalOpName}ForAccountRequest`;
   const zoneRequestType = `${pascalOpName}ForZoneRequest`;
-  const requestUnionType = `${pascalOpName}Request`;
   const responseTypeName = `${pascalOpName}Response`;
   const errorTypeName = `${pascalOpName}Error`;
 
@@ -1926,11 +1928,6 @@ function generateAccountOrZoneOperationSchema(
     "Path param: The Zone ID to use for this endpoint.",
   );
 
-  lines.push(
-    `export type ${requestUnionType} = ${accountRequestType} | ${zoneRequestType};`,
-  );
-  lines.push("");
-
   // ---- emit Request schemas ----
   lines.push(
     `export const ${accountRequestType} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
@@ -2103,34 +2100,6 @@ function generateAccountOrZoneOperationSchema(
 
   emitOperation(accountOpName, accountRequestType);
   emitOperation(zoneOpName, zoneRequestType);
-
-  // ---- emit wrapper ----
-  if (isPaginated) {
-    // Paginated: wrapper returns Stream.Stream<...>
-    lines.push(
-      `export const ${normalizedOpName} = (`,
-    );
-    lines.push(`  input: ${requestUnionType},`);
-    lines.push(
-      `): stream.Stream<${responseTypeName}, ${errorTypeName}, Credentials | HttpClient.HttpClient> =>`,
-    );
-    lines.push(
-      `  "accountId" in input ? ${accountOpName}.pages(input) : ${zoneOpName}.pages(input);`,
-    );
-    lines.push("");
-  } else {
-    lines.push(
-      `export const ${normalizedOpName} = (`,
-    );
-    lines.push(`  input: ${requestUnionType},`);
-    lines.push(
-      `): Effect.Effect<${responseTypeName}, ${errorTypeName}, Credentials | HttpClient.HttpClient> =>`,
-    );
-    lines.push(
-      `  "accountId" in input ? ${accountOpName}(input) : ${zoneOpName}(input);`,
-    );
-    lines.push("");
-  }
 
   return lines.join("\n");
 }

@@ -5,8 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service firewall
  */
 
-import * as Effect from "effect/Effect";
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -35,10 +33,6 @@ export interface GetAccessRuleForZoneRequest extends GetAccessRuleBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type GetAccessRuleRequest =
-  | GetAccessRuleForAccountRequest
-  | GetAccessRuleForZoneRequest;
 
 export const GetAccessRuleForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -210,17 +204,6 @@ export const getAccessRuleForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const getAccessRule = (
-  input: GetAccessRuleRequest,
-): Effect.Effect<
-  GetAccessRuleResponse,
-  GetAccessRuleError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? getAccessRuleForAccount(input)
-    : getAccessRuleForZone(input);
-
 const ListAccessRulesBaseFields = {} as const;
 
 interface ListAccessRulesBaseRequest {}
@@ -234,10 +217,6 @@ export interface ListAccessRulesForZoneRequest extends ListAccessRulesBaseReques
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type ListAccessRulesRequest =
-  | ListAccessRulesForAccountRequest
-  | ListAccessRulesForZoneRequest;
 
 export const ListAccessRulesForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -448,17 +427,6 @@ export const listAccessRulesForZone: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export const listAccessRules = (
-  input: ListAccessRulesRequest,
-): stream.Stream<
-  ListAccessRulesResponse,
-  ListAccessRulesError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listAccessRulesForAccount.pages(input)
-    : listAccessRulesForZone.pages(input);
-
 const CreateAccessRuleBaseFields = {
   configuration: Schema.Union([
     Schema.Struct({
@@ -520,10 +488,6 @@ export interface CreateAccessRuleForZoneRequest extends CreateAccessRuleBaseRequ
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type CreateAccessRuleRequest =
-  | CreateAccessRuleForAccountRequest
-  | CreateAccessRuleForZoneRequest;
 
 export const CreateAccessRuleForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -696,17 +660,6 @@ export const createAccessRuleForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const createAccessRule = (
-  input: CreateAccessRuleRequest,
-): Effect.Effect<
-  CreateAccessRuleResponse,
-  CreateAccessRuleError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? createAccessRuleForAccount(input)
-    : createAccessRuleForZone(input);
-
 const PatchAccessRuleBaseFields = {
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
   configuration: Schema.Union([
@@ -770,10 +723,6 @@ export interface PatchAccessRuleForZoneRequest extends PatchAccessRuleBaseReques
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type PatchAccessRuleRequest =
-  | PatchAccessRuleForAccountRequest
-  | PatchAccessRuleForZoneRequest;
 
 export const PatchAccessRuleForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -946,17 +895,6 @@ export const patchAccessRuleForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const patchAccessRule = (
-  input: PatchAccessRuleRequest,
-): Effect.Effect<
-  PatchAccessRuleResponse,
-  PatchAccessRuleError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? patchAccessRuleForAccount(input)
-    : patchAccessRuleForZone(input);
-
 const DeleteAccessRuleBaseFields = {
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
 } as const;
@@ -974,10 +912,6 @@ export interface DeleteAccessRuleForZoneRequest extends DeleteAccessRuleBaseRequ
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type DeleteAccessRuleRequest =
-  | DeleteAccessRuleForAccountRequest
-  | DeleteAccessRuleForZoneRequest;
 
 export const DeleteAccessRuleForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1036,17 +970,6 @@ export const deleteAccessRuleForZone: API.OperationMethod<
   output: DeleteAccessRuleResponse,
   errors: [],
 }));
-
-export const deleteAccessRule = (
-  input: DeleteAccessRuleRequest,
-): Effect.Effect<
-  DeleteAccessRuleResponse,
-  DeleteAccessRuleError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? deleteAccessRuleForAccount(input)
-    : deleteAccessRuleForZone(input);
 
 // =============================================================================
 // Lockdown

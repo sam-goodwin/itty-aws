@@ -5,8 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service custom-pages
  */
 
-import * as Effect from "effect/Effect";
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -56,10 +54,6 @@ export interface GetCustomPageForZoneRequest extends GetCustomPageBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type GetCustomPageRequest =
-  | GetCustomPageForAccountRequest
-  | GetCustomPageForZoneRequest;
 
 export const GetCustomPageForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -150,17 +144,6 @@ export const getCustomPageForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const getCustomPage = (
-  input: GetCustomPageRequest,
-): Effect.Effect<
-  GetCustomPageResponse,
-  GetCustomPageError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? getCustomPageForAccount(input)
-    : getCustomPageForZone(input);
-
 const ListCustomPagesBaseFields = {} as const;
 
 interface ListCustomPagesBaseRequest {}
@@ -174,10 +157,6 @@ export interface ListCustomPagesForZoneRequest extends ListCustomPagesBaseReques
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type ListCustomPagesRequest =
-  | ListCustomPagesForAccountRequest
-  | ListCustomPagesForZoneRequest;
 
 export const ListCustomPagesForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -278,17 +257,6 @@ export const listCustomPagesForZone: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export const listCustomPages = (
-  input: ListCustomPagesRequest,
-): stream.Stream<
-  ListCustomPagesResponse,
-  ListCustomPagesError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listCustomPagesForAccount.pages(input)
-    : listCustomPagesForZone.pages(input);
-
 const PutCustomPageBaseFields = {
   identifier: Schema.Literals([
     "1000_errors",
@@ -333,10 +301,6 @@ export interface PutCustomPageForZoneRequest extends PutCustomPageBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type PutCustomPageRequest =
-  | PutCustomPageForAccountRequest
-  | PutCustomPageForZoneRequest;
 
 export const PutCustomPageForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -426,14 +390,3 @@ export const putCustomPageForZone: API.OperationMethod<
   output: PutCustomPageResponse,
   errors: [],
 }));
-
-export const putCustomPage = (
-  input: PutCustomPageRequest,
-): Effect.Effect<
-  PutCustomPageResponse,
-  PutCustomPageError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? putCustomPageForAccount(input)
-    : putCustomPageForZone(input);

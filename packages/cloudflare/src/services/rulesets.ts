@@ -5,8 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service rulesets
  */
 
-import * as Effect from "effect/Effect";
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -36,8 +34,6 @@ export interface GetPhasForZoneRequest extends GetPhasBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type GetPhasRequest = GetPhasForAccountRequest | GetPhasForZoneRequest;
 
 export const GetPhasForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3554,14 +3550,6 @@ export const getPhasForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const getPhas = (
-  input: GetPhasRequest,
-): Effect.Effect<
-  GetPhasResponse,
-  GetPhasError,
-  Credentials | HttpClient.HttpClient
-> => ("accountId" in input ? getPhasForAccount(input) : getPhasForZone(input));
-
 const PutPhasBaseFields = {
   rulesetPhase: Schema.String.pipe(T.HttpPath("rulesetPhase")),
   description: Schema.optional(Schema.String),
@@ -5902,8 +5890,6 @@ export interface PutPhasForZoneRequest extends PutPhasBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type PutPhasRequest = PutPhasForAccountRequest | PutPhasForZoneRequest;
 
 export const PutPhasForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -9420,14 +9406,6 @@ export const putPhasForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const putPhas = (
-  input: PutPhasRequest,
-): Effect.Effect<
-  PutPhasResponse,
-  PutPhasError,
-  Credentials | HttpClient.HttpClient
-> => ("accountId" in input ? putPhasForAccount(input) : putPhasForZone(input));
-
 // =============================================================================
 // PhasVersion
 // =============================================================================
@@ -9451,10 +9429,6 @@ export interface GetPhasVersionForZoneRequest extends GetPhasVersionBaseRequest 
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type GetPhasVersionRequest =
-  | GetPhasVersionForAccountRequest
-  | GetPhasVersionForZoneRequest;
 
 export const GetPhasVersionForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -13026,17 +13000,6 @@ export const getPhasVersionForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const getPhasVersion = (
-  input: GetPhasVersionRequest,
-): Effect.Effect<
-  GetPhasVersionResponse,
-  GetPhasVersionError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? getPhasVersionForAccount(input)
-    : getPhasVersionForZone(input);
-
 const ListPhasVersionsBaseFields = {
   rulesetPhase: Schema.String.pipe(T.HttpPath("rulesetPhase")),
 } as const;
@@ -13054,10 +13017,6 @@ export interface ListPhasVersionsForZoneRequest extends ListPhasVersionsBaseRequ
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type ListPhasVersionsRequest =
-  | ListPhasVersionsForAccountRequest
-  | ListPhasVersionsForZoneRequest;
 
 export const ListPhasVersionsForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -13199,17 +13158,6 @@ export const listPhasVersionsForZone: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export const listPhasVersions = (
-  input: ListPhasVersionsRequest,
-): stream.Stream<
-  ListPhasVersionsResponse,
-  ListPhasVersionsError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listPhasVersionsForAccount.pages(input)
-    : listPhasVersionsForZone.pages(input);
-
 // =============================================================================
 // Rule
 // =============================================================================
@@ -13342,10 +13290,6 @@ export interface CreateRuleForZoneRequest extends CreateRuleBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type CreateRuleRequest =
-  | CreateRuleForAccountRequest
-  | CreateRuleForZoneRequest;
 
 export const CreateRuleForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -16891,15 +16835,6 @@ export const createRuleForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const createRule = (
-  input: CreateRuleRequest,
-): Effect.Effect<
-  CreateRuleResponse,
-  CreateRuleError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input ? createRuleForAccount(input) : createRuleForZone(input);
-
 const PatchRuleBaseFields = {
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
@@ -17030,10 +16965,6 @@ export interface PatchRuleForZoneRequest extends PatchRuleBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type PatchRuleRequest =
-  | PatchRuleForAccountRequest
-  | PatchRuleForZoneRequest;
 
 export const PatchRuleForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -20579,15 +20510,6 @@ export const patchRuleForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const patchRule = (
-  input: PatchRuleRequest,
-): Effect.Effect<
-  PatchRuleResponse,
-  PatchRuleError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input ? patchRuleForAccount(input) : patchRuleForZone(input);
-
 const DeleteRuleBaseFields = {
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
@@ -20607,10 +20529,6 @@ export interface DeleteRuleForZoneRequest extends DeleteRuleBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type DeleteRuleRequest =
-  | DeleteRuleForAccountRequest
-  | DeleteRuleForZoneRequest;
 
 export const DeleteRuleForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -24130,15 +24048,6 @@ export const deleteRuleForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const deleteRule = (
-  input: DeleteRuleRequest,
-): Effect.Effect<
-  DeleteRuleResponse,
-  DeleteRuleError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input ? deleteRuleForAccount(input) : deleteRuleForZone(input);
-
 // =============================================================================
 // Ruleset
 // =============================================================================
@@ -24160,10 +24069,6 @@ export interface GetRulesetForZoneRequest extends GetRulesetBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type GetRulesetRequest =
-  | GetRulesetForAccountRequest
-  | GetRulesetForZoneRequest;
 
 export const GetRulesetForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27680,15 +27585,6 @@ export const getRulesetForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const getRuleset = (
-  input: GetRulesetRequest,
-): Effect.Effect<
-  GetRulesetResponse,
-  GetRulesetError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input ? getRulesetForAccount(input) : getRulesetForZone(input);
-
 const ListRulesetsBaseFields = {} as const;
 
 interface ListRulesetsBaseRequest {}
@@ -27702,10 +27598,6 @@ export interface ListRulesetsForZoneRequest extends ListRulesetsBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type ListRulesetsRequest =
-  | ListRulesetsForAccountRequest
-  | ListRulesetsForZoneRequest;
 
 export const ListRulesetsForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27866,17 +27758,6 @@ export const listRulesetsForZone: API.PaginatedOperationMethod<
     pageSize: "perPage",
   } as const,
 }));
-
-export const listRulesets = (
-  input: ListRulesetsRequest,
-): stream.Stream<
-  ListRulesetsResponse,
-  ListRulesetsError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listRulesetsForAccount.pages(input)
-    : listRulesetsForZone.pages(input);
 
 const CreateRulesetBaseFields = {
   kind: Schema.Literals(["managed", "custom", "root", "zone"]),
@@ -30269,10 +30150,6 @@ export interface CreateRulesetForZoneRequest extends CreateRulesetBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type CreateRulesetRequest =
-  | CreateRulesetForAccountRequest
-  | CreateRulesetForZoneRequest;
 
 export const CreateRulesetForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -33786,17 +33663,6 @@ export const createRulesetForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const createRuleset = (
-  input: CreateRulesetRequest,
-): Effect.Effect<
-  CreateRulesetResponse,
-  CreateRulesetError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? createRulesetForAccount(input)
-    : createRulesetForZone(input);
-
 const UpdateRulesetBaseFields = {
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
   description: Schema.optional(Schema.String),
@@ -36192,10 +36058,6 @@ export interface UpdateRulesetForZoneRequest extends UpdateRulesetBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type UpdateRulesetRequest =
-  | UpdateRulesetForAccountRequest
-  | UpdateRulesetForZoneRequest;
 
 export const UpdateRulesetForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -39712,17 +39574,6 @@ export const updateRulesetForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const updateRuleset = (
-  input: UpdateRulesetRequest,
-): Effect.Effect<
-  UpdateRulesetResponse,
-  UpdateRulesetError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? updateRulesetForAccount(input)
-    : updateRulesetForZone(input);
-
 const DeleteRulesetBaseFields = {
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
 } as const;
@@ -39740,10 +39591,6 @@ export interface DeleteRulesetForZoneRequest extends DeleteRulesetBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type DeleteRulesetRequest =
-  | DeleteRulesetForAccountRequest
-  | DeleteRulesetForZoneRequest;
 
 export const DeleteRulesetForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -39793,17 +39640,6 @@ export const deleteRulesetForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const deleteRuleset = (
-  input: DeleteRulesetRequest,
-): Effect.Effect<
-  DeleteRulesetResponse,
-  DeleteRulesetError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? deleteRulesetForAccount(input)
-    : deleteRulesetForZone(input);
-
 // =============================================================================
 // Version
 // =============================================================================
@@ -39827,10 +39663,6 @@ export interface GetVersionForZoneRequest extends GetVersionBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type GetVersionRequest =
-  | GetVersionForAccountRequest
-  | GetVersionForZoneRequest;
 
 export const GetVersionForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -43350,15 +43182,6 @@ export const getVersionForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const getVersion = (
-  input: GetVersionRequest,
-): Effect.Effect<
-  GetVersionResponse,
-  GetVersionError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input ? getVersionForAccount(input) : getVersionForZone(input);
-
 const ListVersionsBaseFields = {
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
 } as const;
@@ -43376,10 +43199,6 @@ export interface ListVersionsForZoneRequest extends ListVersionsBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type ListVersionsRequest =
-  | ListVersionsForAccountRequest
-  | ListVersionsForZoneRequest;
 
 export const ListVersionsForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -43518,17 +43337,6 @@ export const listVersionsForZone: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export const listVersions = (
-  input: ListVersionsRequest,
-): stream.Stream<
-  ListVersionsResponse,
-  ListVersionsError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listVersionsForAccount.pages(input)
-    : listVersionsForZone.pages(input);
-
 const DeleteVersionBaseFields = {
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
   rulesetVersion: Schema.String.pipe(T.HttpPath("rulesetVersion")),
@@ -43548,10 +43356,6 @@ export interface DeleteVersionForZoneRequest extends DeleteVersionBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type DeleteVersionRequest =
-  | DeleteVersionForAccountRequest
-  | DeleteVersionForZoneRequest;
 
 export const DeleteVersionForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -43603,14 +43407,3 @@ export const deleteVersionForZone: API.OperationMethod<
   output: DeleteVersionResponse,
   errors: [],
 }));
-
-export const deleteVersion = (
-  input: DeleteVersionRequest,
-): Effect.Effect<
-  DeleteVersionResponse,
-  DeleteVersionError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? deleteVersionForAccount(input)
-    : deleteVersionForZone(input);

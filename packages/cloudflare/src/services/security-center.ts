@@ -5,8 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service security-center
  */
 
-import * as Effect from "effect/Effect";
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -31,10 +29,6 @@ export interface ListInsightsForZoneRequest extends ListInsightsBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type ListInsightsRequest =
-  | ListInsightsForAccountRequest
-  | ListInsightsForZoneRequest;
 
 export const ListInsightsForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -269,17 +263,6 @@ export const listInsightsForZone: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export const listInsights = (
-  input: ListInsightsRequest,
-): stream.Stream<
-  ListInsightsResponse,
-  ListInsightsError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listInsightsForAccount.pages(input)
-    : listInsightsForZone.pages(input);
-
 const DismissInsightBaseFields = {
   issueId: Schema.String.pipe(T.HttpPath("issueId")),
   dismiss: Schema.optional(Schema.Boolean),
@@ -300,10 +283,6 @@ export interface DismissInsightForZoneRequest extends DismissInsightBaseRequest 
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type DismissInsightRequest =
-  | DismissInsightForAccountRequest
-  | DismissInsightForZoneRequest;
 
 export const DismissInsightForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -426,17 +405,6 @@ export const dismissInsightForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const dismissInsight = (
-  input: DismissInsightRequest,
-): Effect.Effect<
-  DismissInsightResponse,
-  DismissInsightError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? dismissInsightForAccount(input)
-    : dismissInsightForZone(input);
-
 // =============================================================================
 // InsightClass
 // =============================================================================
@@ -454,10 +422,6 @@ export interface GetInsightClassForZoneRequest extends GetInsightClassBaseReques
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type GetInsightClassRequest =
-  | GetInsightClassForAccountRequest
-  | GetInsightClassForZoneRequest;
 
 export const GetInsightClassForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -519,17 +483,6 @@ export const getInsightClassForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const getInsightClass = (
-  input: GetInsightClassRequest,
-): Effect.Effect<
-  GetInsightClassResponse,
-  GetInsightClassError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? getInsightClassForAccount(input)
-    : getInsightClassForZone(input);
-
 // =============================================================================
 // InsightSeverity
 // =============================================================================
@@ -547,10 +500,6 @@ export interface GetInsightSeverityForZoneRequest extends GetInsightSeverityBase
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type GetInsightSeverityRequest =
-  | GetInsightSeverityForAccountRequest
-  | GetInsightSeverityForZoneRequest;
 
 export const GetInsightSeverityForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -613,17 +562,6 @@ export const getInsightSeverityForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const getInsightSeverity = (
-  input: GetInsightSeverityRequest,
-): Effect.Effect<
-  GetInsightSeverityResponse,
-  GetInsightSeverityError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? getInsightSeverityForAccount(input)
-    : getInsightSeverityForZone(input);
-
 // =============================================================================
 // InsightType
 // =============================================================================
@@ -641,10 +579,6 @@ export interface GetInsightTypeForZoneRequest extends GetInsightTypeBaseRequest 
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type GetInsightTypeRequest =
-  | GetInsightTypeForAccountRequest
-  | GetInsightTypeForZoneRequest;
 
 export const GetInsightTypeForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -705,14 +639,3 @@ export const getInsightTypeForZone: API.OperationMethod<
   output: GetInsightTypeResponse,
   errors: [],
 }));
-
-export const getInsightType = (
-  input: GetInsightTypeRequest,
-): Effect.Effect<
-  GetInsightTypeResponse,
-  GetInsightTypeError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? getInsightTypeForAccount(input)
-    : getInsightTypeForZone(input);

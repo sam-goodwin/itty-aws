@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service waiting-rooms
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -2165,10 +2164,6 @@ export interface ListWaitingRoomsForZoneRequest extends ListWaitingRoomsBaseRequ
   zoneId: string;
 }
 
-export type ListWaitingRoomsRequest =
-  | ListWaitingRoomsForAccountRequest
-  | ListWaitingRoomsForZoneRequest;
-
 export const ListWaitingRoomsForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2511,17 +2506,6 @@ export const listWaitingRoomsForZone: API.PaginatedOperationMethod<
     pageSize: "perPage",
   } as const,
 }));
-
-export const listWaitingRooms = (
-  input: ListWaitingRoomsRequest,
-): stream.Stream<
-  ListWaitingRoomsResponse,
-  ListWaitingRoomsError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listWaitingRoomsForAccount.pages(input)
-    : listWaitingRoomsForZone.pages(input);
 
 export interface CreateWaitingRoomRequest {
   /** Path param: Identifier. */

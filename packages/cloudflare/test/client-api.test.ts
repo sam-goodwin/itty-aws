@@ -3,9 +3,6 @@ import { buildRequestParts, getHttpTrait } from "@distilled.cloud/core/traits";
 import { transformCloudflareRequestParts } from "~/client/api";
 import { CreateAssetUploadRequest, PutScriptRequest } from "~/services/workers";
 import {
-  putPhas,
-  putPhasForAccount,
-  putPhasForZone,
   PutPhasForAccountRequest,
   PutPhasForZoneRequest,
 } from "~/services/rulesets";
@@ -158,38 +155,5 @@ describe("client api", () => {
       );
     });
 
-    it("putPhas wrapper dispatches to the account variant when accountId is present", () => {
-      const accountInput = {
-        accountId: "account-123",
-        rulesetPhase: "http_request_firewall_custom",
-        description: "test",
-      };
-      const wrapped = putPhas(accountInput);
-      const direct = putPhasForAccount(accountInput);
-      // Both Effects encode the same input via the same variant schema, so
-      // their internal AST references must match.
-      expect((wrapped as { _tag?: string })._tag).toBe(
-        (direct as { _tag?: string })._tag,
-      );
-      // Source-level smoke check: the wrapper picks the variant by the
-      // presence of `accountId`.
-      const src = putPhas.toString();
-      expect(src).toContain('"accountId" in input');
-      expect(src).toContain("putPhasForAccount");
-      expect(src).toContain("putPhasForZone");
-    });
-
-    it("putPhas wrapper dispatches to the zone variant when zoneId is present", () => {
-      const zoneInput = {
-        zoneId: "zone-123",
-        rulesetPhase: "http_request_firewall_custom",
-        description: "test",
-      };
-      const wrapped = putPhas(zoneInput);
-      const direct = putPhasForZone(zoneInput);
-      expect((wrapped as { _tag?: string })._tag).toBe(
-        (direct as { _tag?: string })._tag,
-      );
-    });
   });
 });

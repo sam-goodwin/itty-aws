@@ -5,8 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service zero-trust
  */
 
-import * as Effect from "effect/Effect";
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -1193,10 +1191,6 @@ export interface GetAccessApplicationForZoneRequest extends GetAccessApplication
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type GetAccessApplicationRequest =
-  | GetAccessApplicationForAccountRequest
-  | GetAccessApplicationForZoneRequest;
 
 export const GetAccessApplicationForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -8887,17 +8881,6 @@ export const getAccessApplicationForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const getAccessApplication = (
-  input: GetAccessApplicationRequest,
-): Effect.Effect<
-  GetAccessApplicationResponse,
-  GetAccessApplicationError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? getAccessApplicationForAccount(input)
-    : getAccessApplicationForZone(input);
-
 const ListAccessApplicationsBaseFields = {} as const;
 
 interface ListAccessApplicationsBaseRequest {}
@@ -8911,10 +8894,6 @@ export interface ListAccessApplicationsForZoneRequest extends ListAccessApplicat
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type ListAccessApplicationsRequest =
-  | ListAccessApplicationsForAccountRequest
-  | ListAccessApplicationsForZoneRequest;
 
 export const ListAccessApplicationsForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -16970,17 +16949,6 @@ export const listAccessApplicationsForZone: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export const listAccessApplications = (
-  input: ListAccessApplicationsRequest,
-): stream.Stream<
-  ListAccessApplicationsResponse,
-  ListAccessApplicationsError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listAccessApplicationsForAccount.pages(input)
-    : listAccessApplicationsForZone.pages(input);
-
 const CreateAccessApplicationBaseFields = {
   domain: Schema.String,
   type: Schema.Literals([
@@ -17442,10 +17410,6 @@ export interface CreateAccessApplicationForZoneRequest extends CreateAccessAppli
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type CreateAccessApplicationRequest =
-  | CreateAccessApplicationForAccountRequest
-  | CreateAccessApplicationForZoneRequest;
 
 export const CreateAccessApplicationForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -25193,17 +25157,6 @@ export const createAccessApplicationForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const createAccessApplication = (
-  input: CreateAccessApplicationRequest,
-): Effect.Effect<
-  CreateAccessApplicationResponse,
-  CreateAccessApplicationError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? createAccessApplicationForAccount(input)
-    : createAccessApplicationForZone(input);
-
 const UpdateAccessApplicationBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
   domain: Schema.String,
@@ -25667,10 +25620,6 @@ export interface UpdateAccessApplicationForZoneRequest extends UpdateAccessAppli
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type UpdateAccessApplicationRequest =
-  | UpdateAccessApplicationForAccountRequest
-  | UpdateAccessApplicationForZoneRequest;
 
 export const UpdateAccessApplicationForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -33421,17 +33370,6 @@ export const updateAccessApplicationForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const updateAccessApplication = (
-  input: UpdateAccessApplicationRequest,
-): Effect.Effect<
-  UpdateAccessApplicationResponse,
-  UpdateAccessApplicationError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? updateAccessApplicationForAccount(input)
-    : updateAccessApplicationForZone(input);
-
 const DeleteAccessApplicationBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
 } as const;
@@ -33449,10 +33387,6 @@ export interface DeleteAccessApplicationForZoneRequest extends DeleteAccessAppli
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type DeleteAccessApplicationRequest =
-  | DeleteAccessApplicationForAccountRequest
-  | DeleteAccessApplicationForZoneRequest;
 
 export const DeleteAccessApplicationForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -33509,17 +33443,6 @@ export const deleteAccessApplicationForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const deleteAccessApplication = (
-  input: DeleteAccessApplicationRequest,
-): Effect.Effect<
-  DeleteAccessApplicationResponse,
-  DeleteAccessApplicationError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? deleteAccessApplicationForAccount(input)
-    : deleteAccessApplicationForZone(input);
-
 // =============================================================================
 // AccessApplicationCa
 // =============================================================================
@@ -33541,10 +33464,6 @@ export interface GetAccessApplicationCaForZoneRequest extends GetAccessApplicati
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type GetAccessApplicationCaRequest =
-  | GetAccessApplicationCaForAccountRequest
-  | GetAccessApplicationCaForZoneRequest;
 
 export const GetAccessApplicationCaForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -33609,17 +33528,6 @@ export const getAccessApplicationCaForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const getAccessApplicationCa = (
-  input: GetAccessApplicationCaRequest,
-): Effect.Effect<
-  GetAccessApplicationCaResponse,
-  GetAccessApplicationCaError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? getAccessApplicationCaForAccount(input)
-    : getAccessApplicationCaForZone(input);
-
 const ListAccessApplicationCasBaseFields = {} as const;
 
 interface ListAccessApplicationCasBaseRequest {}
@@ -33633,10 +33541,6 @@ export interface ListAccessApplicationCasForZoneRequest extends ListAccessApplic
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type ListAccessApplicationCasRequest =
-  | ListAccessApplicationCasForAccountRequest
-  | ListAccessApplicationCasForZoneRequest;
 
 export const ListAccessApplicationCasForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -33741,17 +33645,6 @@ export const listAccessApplicationCasForZone: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export const listAccessApplicationCas = (
-  input: ListAccessApplicationCasRequest,
-): stream.Stream<
-  ListAccessApplicationCasResponse,
-  ListAccessApplicationCasError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listAccessApplicationCasForAccount.pages(input)
-    : listAccessApplicationCasForZone.pages(input);
-
 const CreateAccessApplicationCaBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
 } as const;
@@ -33769,10 +33662,6 @@ export interface CreateAccessApplicationCaForZoneRequest extends CreateAccessApp
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type CreateAccessApplicationCaRequest =
-  | CreateAccessApplicationCaForAccountRequest
-  | CreateAccessApplicationCaForZoneRequest;
 
 export const CreateAccessApplicationCaForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -33837,17 +33726,6 @@ export const createAccessApplicationCaForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const createAccessApplicationCa = (
-  input: CreateAccessApplicationCaRequest,
-): Effect.Effect<
-  CreateAccessApplicationCaResponse,
-  CreateAccessApplicationCaError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? createAccessApplicationCaForAccount(input)
-    : createAccessApplicationCaForZone(input);
-
 const DeleteAccessApplicationCaBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
 } as const;
@@ -33865,10 +33743,6 @@ export interface DeleteAccessApplicationCaForZoneRequest extends DeleteAccessApp
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type DeleteAccessApplicationCaRequest =
-  | DeleteAccessApplicationCaForAccountRequest
-  | DeleteAccessApplicationCaForZoneRequest;
 
 export const DeleteAccessApplicationCaForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -33928,17 +33802,6 @@ export const deleteAccessApplicationCaForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const deleteAccessApplicationCa = (
-  input: DeleteAccessApplicationCaRequest,
-): Effect.Effect<
-  DeleteAccessApplicationCaResponse,
-  DeleteAccessApplicationCaError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? deleteAccessApplicationCaForAccount(input)
-    : deleteAccessApplicationCaForZone(input);
-
 // =============================================================================
 // AccessApplicationPolicy
 // =============================================================================
@@ -33962,10 +33825,6 @@ export interface GetAccessApplicationPolicyForZoneRequest extends GetAccessAppli
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type GetAccessApplicationPolicyRequest =
-  | GetAccessApplicationPolicyForAccountRequest
-  | GetAccessApplicationPolicyForZoneRequest;
 
 export const GetAccessApplicationPolicyForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -34844,17 +34703,6 @@ export const getAccessApplicationPolicyForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const getAccessApplicationPolicy = (
-  input: GetAccessApplicationPolicyRequest,
-): Effect.Effect<
-  GetAccessApplicationPolicyResponse,
-  GetAccessApplicationPolicyError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? getAccessApplicationPolicyForAccount(input)
-    : getAccessApplicationPolicyForZone(input);
-
 const ListAccessApplicationPoliciesBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
 } as const;
@@ -34872,10 +34720,6 @@ export interface ListAccessApplicationPoliciesForZoneRequest extends ListAccessA
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type ListAccessApplicationPoliciesRequest =
-  | ListAccessApplicationPoliciesForAccountRequest
-  | ListAccessApplicationPoliciesForZoneRequest;
 
 export const ListAccessApplicationPoliciesForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -35809,17 +35653,6 @@ export const listAccessApplicationPoliciesForZone: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export const listAccessApplicationPolicies = (
-  input: ListAccessApplicationPoliciesRequest,
-): stream.Stream<
-  ListAccessApplicationPoliciesResponse,
-  ListAccessApplicationPoliciesError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listAccessApplicationPoliciesForAccount.pages(input)
-    : listAccessApplicationPoliciesForZone.pages(input);
-
 const CreateAccessApplicationPolicyBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
   approvalGroups: Schema.optional(
@@ -35876,10 +35709,6 @@ export interface CreateAccessApplicationPolicyForZoneRequest extends CreateAcces
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type CreateAccessApplicationPolicyRequest =
-  | CreateAccessApplicationPolicyForAccountRequest
-  | CreateAccessApplicationPolicyForZoneRequest;
 
 export const CreateAccessApplicationPolicyForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -36776,17 +36605,6 @@ export const createAccessApplicationPolicyForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const createAccessApplicationPolicy = (
-  input: CreateAccessApplicationPolicyRequest,
-): Effect.Effect<
-  CreateAccessApplicationPolicyResponse,
-  CreateAccessApplicationPolicyError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? createAccessApplicationPolicyForAccount(input)
-    : createAccessApplicationPolicyForZone(input);
-
 const UpdateAccessApplicationPolicyBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
   policyId: Schema.String.pipe(T.HttpPath("policyId")),
@@ -36845,10 +36663,6 @@ export interface UpdateAccessApplicationPolicyForZoneRequest extends UpdateAcces
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type UpdateAccessApplicationPolicyRequest =
-  | UpdateAccessApplicationPolicyForAccountRequest
-  | UpdateAccessApplicationPolicyForZoneRequest;
 
 export const UpdateAccessApplicationPolicyForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -37745,17 +37559,6 @@ export const updateAccessApplicationPolicyForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const updateAccessApplicationPolicy = (
-  input: UpdateAccessApplicationPolicyRequest,
-): Effect.Effect<
-  UpdateAccessApplicationPolicyResponse,
-  UpdateAccessApplicationPolicyError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? updateAccessApplicationPolicyForAccount(input)
-    : updateAccessApplicationPolicyForZone(input);
-
 const DeleteAccessApplicationPolicyBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
   policyId: Schema.String.pipe(T.HttpPath("policyId")),
@@ -37775,10 +37578,6 @@ export interface DeleteAccessApplicationPolicyForZoneRequest extends DeleteAcces
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type DeleteAccessApplicationPolicyRequest =
-  | DeleteAccessApplicationPolicyForAccountRequest
-  | DeleteAccessApplicationPolicyForZoneRequest;
 
 export const DeleteAccessApplicationPolicyForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -37837,17 +37636,6 @@ export const deleteAccessApplicationPolicyForZone: API.OperationMethod<
   output: DeleteAccessApplicationPolicyResponse,
   errors: [],
 }));
-
-export const deleteAccessApplicationPolicy = (
-  input: DeleteAccessApplicationPolicyRequest,
-): Effect.Effect<
-  DeleteAccessApplicationPolicyResponse,
-  DeleteAccessApplicationPolicyError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? deleteAccessApplicationPolicyForAccount(input)
-    : deleteAccessApplicationPolicyForZone(input);
 
 // =============================================================================
 // AccessApplicationPolicyTest
@@ -38919,10 +38707,6 @@ export interface PutAccessApplicationSettingForZoneRequest extends PutAccessAppl
   zoneId: string;
 }
 
-export type PutAccessApplicationSettingRequest =
-  | PutAccessApplicationSettingForAccountRequest
-  | PutAccessApplicationSettingForZoneRequest;
-
 export const PutAccessApplicationSettingForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -39001,17 +38785,6 @@ export const putAccessApplicationSettingForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const putAccessApplicationSetting = (
-  input: PutAccessApplicationSettingRequest,
-): Effect.Effect<
-  PutAccessApplicationSettingResponse,
-  PutAccessApplicationSettingError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? putAccessApplicationSettingForAccount(input)
-    : putAccessApplicationSettingForZone(input);
-
 const PatchAccessApplicationSettingBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
   allowIframe: Schema.optional(Schema.Boolean),
@@ -39035,10 +38808,6 @@ export interface PatchAccessApplicationSettingForZoneRequest extends PatchAccess
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type PatchAccessApplicationSettingRequest =
-  | PatchAccessApplicationSettingForAccountRequest
-  | PatchAccessApplicationSettingForZoneRequest;
 
 export const PatchAccessApplicationSettingForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -39118,17 +38887,6 @@ export const patchAccessApplicationSettingForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const patchAccessApplicationSetting = (
-  input: PatchAccessApplicationSettingRequest,
-): Effect.Effect<
-  PatchAccessApplicationSettingResponse,
-  PatchAccessApplicationSettingError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? patchAccessApplicationSettingForAccount(input)
-    : patchAccessApplicationSettingForZone(input);
-
 // =============================================================================
 // AccessApplicationUserPolicyCheck
 // =============================================================================
@@ -39150,10 +38908,6 @@ export interface ListAccessApplicationUserPolicyChecksForZoneRequest extends Lis
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type ListAccessApplicationUserPolicyChecksRequest =
-  | ListAccessApplicationUserPolicyChecksForAccountRequest
-  | ListAccessApplicationUserPolicyChecksForZoneRequest;
 
 export const ListAccessApplicationUserPolicyChecksForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -39308,17 +39062,6 @@ export const listAccessApplicationUserPolicyChecksForZone: API.OperationMethod<
   output: ListAccessApplicationUserPolicyChecksResponse,
   errors: [],
 }));
-
-export const listAccessApplicationUserPolicyChecks = (
-  input: ListAccessApplicationUserPolicyChecksRequest,
-): Effect.Effect<
-  ListAccessApplicationUserPolicyChecksResponse,
-  ListAccessApplicationUserPolicyChecksError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listAccessApplicationUserPolicyChecksForAccount(input)
-    : listAccessApplicationUserPolicyChecksForZone(input);
 
 // =============================================================================
 // AccessBookmark
@@ -39651,10 +39394,6 @@ export interface GetAccessCertificateForZoneRequest extends GetAccessCertificate
   zoneId: string;
 }
 
-export type GetAccessCertificateRequest =
-  | GetAccessCertificateForAccountRequest
-  | GetAccessCertificateForZoneRequest;
-
 export const GetAccessCertificateForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -39736,17 +39475,6 @@ export const getAccessCertificateForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const getAccessCertificate = (
-  input: GetAccessCertificateRequest,
-): Effect.Effect<
-  GetAccessCertificateResponse,
-  GetAccessCertificateError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? getAccessCertificateForAccount(input)
-    : getAccessCertificateForZone(input);
-
 const ListAccessCertificatesBaseFields = {} as const;
 
 interface ListAccessCertificatesBaseRequest {}
@@ -39760,10 +39488,6 @@ export interface ListAccessCertificatesForZoneRequest extends ListAccessCertific
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type ListAccessCertificatesRequest =
-  | ListAccessCertificatesForAccountRequest
-  | ListAccessCertificatesForZoneRequest;
 
 export const ListAccessCertificatesForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -39885,17 +39609,6 @@ export const listAccessCertificatesForZone: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export const listAccessCertificates = (
-  input: ListAccessCertificatesRequest,
-): stream.Stream<
-  ListAccessCertificatesResponse,
-  ListAccessCertificatesError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listAccessCertificatesForAccount.pages(input)
-    : listAccessCertificatesForZone.pages(input);
-
 const CreateAccessCertificateBaseFields = {
   certificate: Schema.String,
   name: Schema.String,
@@ -39920,10 +39633,6 @@ export interface CreateAccessCertificateForZoneRequest extends CreateAccessCerti
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type CreateAccessCertificateRequest =
-  | CreateAccessCertificateForAccountRequest
-  | CreateAccessCertificateForZoneRequest;
 
 export const CreateAccessCertificateForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -40013,17 +39722,6 @@ export const createAccessCertificateForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const createAccessCertificate = (
-  input: CreateAccessCertificateRequest,
-): Effect.Effect<
-  CreateAccessCertificateResponse,
-  CreateAccessCertificateError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? createAccessCertificateForAccount(input)
-    : createAccessCertificateForZone(input);
-
 const UpdateAccessCertificateBaseFields = {
   certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
   associatedHostnames: Schema.Array(Schema.String),
@@ -40047,10 +39745,6 @@ export interface UpdateAccessCertificateForZoneRequest extends UpdateAccessCerti
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type UpdateAccessCertificateRequest =
-  | UpdateAccessCertificateForAccountRequest
-  | UpdateAccessCertificateForZoneRequest;
 
 export const UpdateAccessCertificateForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -40141,17 +39835,6 @@ export const updateAccessCertificateForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const updateAccessCertificate = (
-  input: UpdateAccessCertificateRequest,
-): Effect.Effect<
-  UpdateAccessCertificateResponse,
-  UpdateAccessCertificateError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? updateAccessCertificateForAccount(input)
-    : updateAccessCertificateForZone(input);
-
 const DeleteAccessCertificateBaseFields = {
   certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
 } as const;
@@ -40169,10 +39852,6 @@ export interface DeleteAccessCertificateForZoneRequest extends DeleteAccessCerti
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type DeleteAccessCertificateRequest =
-  | DeleteAccessCertificateForAccountRequest
-  | DeleteAccessCertificateForZoneRequest;
 
 export const DeleteAccessCertificateForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -40232,17 +39911,6 @@ export const deleteAccessCertificateForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const deleteAccessCertificate = (
-  input: DeleteAccessCertificateRequest,
-): Effect.Effect<
-  DeleteAccessCertificateResponse,
-  DeleteAccessCertificateError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? deleteAccessCertificateForAccount(input)
-    : deleteAccessCertificateForZone(input);
-
 // =============================================================================
 // AccessCertificateSetting
 // =============================================================================
@@ -40260,10 +39928,6 @@ export interface GetAccessCertificateSettingForZoneRequest extends GetAccessCert
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type GetAccessCertificateSettingRequest =
-  | GetAccessCertificateSettingForAccountRequest
-  | GetAccessCertificateSettingForZoneRequest;
 
 export const GetAccessCertificateSettingForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -40344,17 +40008,6 @@ export const getAccessCertificateSettingForZone: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export const getAccessCertificateSetting = (
-  input: GetAccessCertificateSettingRequest,
-): stream.Stream<
-  GetAccessCertificateSettingResponse,
-  GetAccessCertificateSettingError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? getAccessCertificateSettingForAccount.pages(input)
-    : getAccessCertificateSettingForZone.pages(input);
-
 const PutAccessCertificateSettingBaseFields = {
   settings: Schema.Array(
     Schema.Struct({
@@ -40389,10 +40042,6 @@ export interface PutAccessCertificateSettingForZoneRequest extends PutAccessCert
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type PutAccessCertificateSettingRequest =
-  | PutAccessCertificateSettingForAccountRequest
-  | PutAccessCertificateSettingForZoneRequest;
 
 export const PutAccessCertificateSettingForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -40472,17 +40121,6 @@ export const putAccessCertificateSettingForZone: API.PaginatedOperationMethod<
     items: "result",
   } as const,
 }));
-
-export const putAccessCertificateSetting = (
-  input: PutAccessCertificateSettingRequest,
-): stream.Stream<
-  PutAccessCertificateSettingResponse,
-  PutAccessCertificateSettingError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? putAccessCertificateSettingForAccount.pages(input)
-    : putAccessCertificateSettingForZone.pages(input);
 
 // =============================================================================
 // AccessCustomPage
@@ -40953,10 +40591,6 @@ export interface GetAccessGroupForZoneRequest extends GetAccessGroupBaseRequest 
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type GetAccessGroupRequest =
-  | GetAccessGroupForAccountRequest
-  | GetAccessGroupForZoneRequest;
 
 export const GetAccessGroupForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -41996,17 +41630,6 @@ export const getAccessGroupForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const getAccessGroup = (
-  input: GetAccessGroupRequest,
-): Effect.Effect<
-  GetAccessGroupResponse,
-  GetAccessGroupError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? getAccessGroupForAccount(input)
-    : getAccessGroupForZone(input);
-
 const ListAccessGroupsBaseFields = {} as const;
 
 interface ListAccessGroupsBaseRequest {}
@@ -42020,10 +41643,6 @@ export interface ListAccessGroupsForZoneRequest extends ListAccessGroupsBaseRequ
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type ListAccessGroupsRequest =
-  | ListAccessGroupsForAccountRequest
-  | ListAccessGroupsForZoneRequest;
 
 export const ListAccessGroupsForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -43129,17 +42748,6 @@ export const listAccessGroupsForZone: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export const listAccessGroups = (
-  input: ListAccessGroupsRequest,
-): stream.Stream<
-  ListAccessGroupsResponse,
-  ListAccessGroupsError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listAccessGroupsForAccount.pages(input)
-    : listAccessGroupsForZone.pages(input);
-
 const CreateAccessGroupBaseFields = {
   include: Schema.Array(
     Schema.Union([
@@ -43840,10 +43448,6 @@ export interface CreateAccessGroupForZoneRequest extends CreateAccessGroupBaseRe
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type CreateAccessGroupRequest =
-  | CreateAccessGroupForAccountRequest
-  | CreateAccessGroupForZoneRequest;
 
 export const CreateAccessGroupForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -44893,17 +44497,6 @@ export const createAccessGroupForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const createAccessGroup = (
-  input: CreateAccessGroupRequest,
-): Effect.Effect<
-  CreateAccessGroupResponse,
-  CreateAccessGroupError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? createAccessGroupForAccount(input)
-    : createAccessGroupForZone(input);
-
 const UpdateAccessGroupBaseFields = {
   groupId: Schema.String.pipe(T.HttpPath("groupId")),
   include: Schema.Array(
@@ -45606,10 +45199,6 @@ export interface UpdateAccessGroupForZoneRequest extends UpdateAccessGroupBaseRe
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type UpdateAccessGroupRequest =
-  | UpdateAccessGroupForAccountRequest
-  | UpdateAccessGroupForZoneRequest;
 
 export const UpdateAccessGroupForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -46662,17 +46251,6 @@ export const updateAccessGroupForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const updateAccessGroup = (
-  input: UpdateAccessGroupRequest,
-): Effect.Effect<
-  UpdateAccessGroupResponse,
-  UpdateAccessGroupError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? updateAccessGroupForAccount(input)
-    : updateAccessGroupForZone(input);
-
 const DeleteAccessGroupBaseFields = {
   groupId: Schema.String.pipe(T.HttpPath("groupId")),
 } as const;
@@ -46690,10 +46268,6 @@ export interface DeleteAccessGroupForZoneRequest extends DeleteAccessGroupBaseRe
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type DeleteAccessGroupRequest =
-  | DeleteAccessGroupForAccountRequest
-  | DeleteAccessGroupForZoneRequest;
 
 export const DeleteAccessGroupForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -46752,17 +46326,6 @@ export const deleteAccessGroupForZone: API.OperationMethod<
   output: DeleteAccessGroupResponse,
   errors: [],
 }));
-
-export const deleteAccessGroup = (
-  input: DeleteAccessGroupRequest,
-): Effect.Effect<
-  DeleteAccessGroupResponse,
-  DeleteAccessGroupError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? deleteAccessGroupForAccount(input)
-    : deleteAccessGroupForZone(input);
 
 // =============================================================================
 // AccessInfrastructureTarget
@@ -52953,10 +52516,6 @@ export interface GetAccessServiceTokenForZoneRequest extends GetAccessServiceTok
   zoneId: string;
 }
 
-export type GetAccessServiceTokenRequest =
-  | GetAccessServiceTokenForAccountRequest
-  | GetAccessServiceTokenForZoneRequest;
-
 export const GetAccessServiceTokenForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -53036,17 +52595,6 @@ export const getAccessServiceTokenForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const getAccessServiceToken = (
-  input: GetAccessServiceTokenRequest,
-): Effect.Effect<
-  GetAccessServiceTokenResponse,
-  GetAccessServiceTokenError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? getAccessServiceTokenForAccount(input)
-    : getAccessServiceTokenForZone(input);
-
 const ListAccessServiceTokensBaseFields = {} as const;
 
 interface ListAccessServiceTokensBaseRequest {}
@@ -53060,10 +52608,6 @@ export interface ListAccessServiceTokensForZoneRequest extends ListAccessService
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type ListAccessServiceTokensRequest =
-  | ListAccessServiceTokensForAccountRequest
-  | ListAccessServiceTokensForZoneRequest;
 
 export const ListAccessServiceTokensForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -53181,17 +52725,6 @@ export const listAccessServiceTokensForZone: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export const listAccessServiceTokens = (
-  input: ListAccessServiceTokensRequest,
-): stream.Stream<
-  ListAccessServiceTokensResponse,
-  ListAccessServiceTokensError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listAccessServiceTokensForAccount.pages(input)
-    : listAccessServiceTokensForZone.pages(input);
-
 const CreateAccessServiceTokenBaseFields = {
   name: Schema.String,
   clientSecretVersion: Schema.optional(Schema.Number),
@@ -53219,10 +52752,6 @@ export interface CreateAccessServiceTokenForZoneRequest extends CreateAccessServ
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type CreateAccessServiceTokenRequest =
-  | CreateAccessServiceTokenForAccountRequest
-  | CreateAccessServiceTokenForZoneRequest;
 
 export const CreateAccessServiceTokenForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -53313,17 +52842,6 @@ export const createAccessServiceTokenForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const createAccessServiceToken = (
-  input: CreateAccessServiceTokenRequest,
-): Effect.Effect<
-  CreateAccessServiceTokenResponse,
-  CreateAccessServiceTokenError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? createAccessServiceTokenForAccount(input)
-    : createAccessServiceTokenForZone(input);
-
 const UpdateAccessServiceTokenBaseFields = {
   serviceTokenId: Schema.String.pipe(T.HttpPath("serviceTokenId")),
   clientSecretVersion: Schema.optional(Schema.Number),
@@ -53353,10 +52871,6 @@ export interface UpdateAccessServiceTokenForZoneRequest extends UpdateAccessServ
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type UpdateAccessServiceTokenRequest =
-  | UpdateAccessServiceTokenForAccountRequest
-  | UpdateAccessServiceTokenForZoneRequest;
 
 export const UpdateAccessServiceTokenForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -53449,17 +52963,6 @@ export const updateAccessServiceTokenForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const updateAccessServiceToken = (
-  input: UpdateAccessServiceTokenRequest,
-): Effect.Effect<
-  UpdateAccessServiceTokenResponse,
-  UpdateAccessServiceTokenError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? updateAccessServiceTokenForAccount(input)
-    : updateAccessServiceTokenForZone(input);
-
 const DeleteAccessServiceTokenBaseFields = {
   serviceTokenId: Schema.String.pipe(T.HttpPath("serviceTokenId")),
 } as const;
@@ -53477,10 +52980,6 @@ export interface DeleteAccessServiceTokenForZoneRequest extends DeleteAccessServ
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type DeleteAccessServiceTokenRequest =
-  | DeleteAccessServiceTokenForAccountRequest
-  | DeleteAccessServiceTokenForZoneRequest;
 
 export const DeleteAccessServiceTokenForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -53560,17 +53059,6 @@ export const deleteAccessServiceTokenForZone: API.OperationMethod<
   output: DeleteAccessServiceTokenResponse,
   errors: [],
 }));
-
-export const deleteAccessServiceToken = (
-  input: DeleteAccessServiceTokenRequest,
-): Effect.Effect<
-  DeleteAccessServiceTokenResponse,
-  DeleteAccessServiceTokenError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? deleteAccessServiceTokenForAccount(input)
-    : deleteAccessServiceTokenForZone(input);
 
 export interface RefreshAccessServiceTokenRequest {
   serviceTokenId: string;
@@ -89705,10 +89193,6 @@ export interface GetIdentityProviderForZoneRequest extends GetIdentityProviderBa
   zoneId: string;
 }
 
-export type GetIdentityProviderRequest =
-  | GetIdentityProviderForAccountRequest
-  | GetIdentityProviderForZoneRequest;
-
 export const GetIdentityProviderForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -91125,17 +90609,6 @@ export const getIdentityProviderForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const getIdentityProvider = (
-  input: GetIdentityProviderRequest,
-): Effect.Effect<
-  GetIdentityProviderResponse,
-  GetIdentityProviderError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? getIdentityProviderForAccount(input)
-    : getIdentityProviderForZone(input);
-
 const ListIdentityProvidersBaseFields = {} as const;
 
 interface ListIdentityProvidersBaseRequest {}
@@ -91149,10 +90622,6 @@ export interface ListIdentityProvidersForZoneRequest extends ListIdentityProvide
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type ListIdentityProvidersRequest =
-  | ListIdentityProvidersForAccountRequest
-  | ListIdentityProvidersForZoneRequest;
 
 export const ListIdentityProvidersForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -92549,17 +92018,6 @@ export const listIdentityProvidersForZone: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export const listIdentityProviders = (
-  input: ListIdentityProvidersRequest,
-): stream.Stream<
-  ListIdentityProvidersResponse,
-  ListIdentityProvidersError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listIdentityProvidersForAccount.pages(input)
-    : listIdentityProvidersForZone.pages(input);
-
 const CreateIdentityProviderBaseFields = {
   config: Schema.Struct({
     claims: Schema.optional(Schema.Array(Schema.String)),
@@ -92668,10 +92126,6 @@ export interface CreateIdentityProviderForZoneRequest extends CreateIdentityProv
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type CreateIdentityProviderRequest =
-  | CreateIdentityProviderForAccountRequest
-  | CreateIdentityProviderForZoneRequest;
 
 export const CreateIdentityProviderForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -94101,17 +93555,6 @@ export const createIdentityProviderForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const createIdentityProvider = (
-  input: CreateIdentityProviderRequest,
-): Effect.Effect<
-  CreateIdentityProviderResponse,
-  CreateIdentityProviderError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? createIdentityProviderForAccount(input)
-    : createIdentityProviderForZone(input);
-
 const UpdateIdentityProviderBaseFields = {
   identityProviderId: Schema.String.pipe(T.HttpPath("identityProviderId")),
   config: Schema.Struct({
@@ -94222,10 +93665,6 @@ export interface UpdateIdentityProviderForZoneRequest extends UpdateIdentityProv
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type UpdateIdentityProviderRequest =
-  | UpdateIdentityProviderForAccountRequest
-  | UpdateIdentityProviderForZoneRequest;
 
 export const UpdateIdentityProviderForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -95655,17 +95094,6 @@ export const updateIdentityProviderForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const updateIdentityProvider = (
-  input: UpdateIdentityProviderRequest,
-): Effect.Effect<
-  UpdateIdentityProviderResponse,
-  UpdateIdentityProviderError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? updateIdentityProviderForAccount(input)
-    : updateIdentityProviderForZone(input);
-
 const DeleteIdentityProviderBaseFields = {
   identityProviderId: Schema.String.pipe(T.HttpPath("identityProviderId")),
 } as const;
@@ -95683,10 +95111,6 @@ export interface DeleteIdentityProviderForZoneRequest extends DeleteIdentityProv
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type DeleteIdentityProviderRequest =
-  | DeleteIdentityProviderForAccountRequest
-  | DeleteIdentityProviderForZoneRequest;
 
 export const DeleteIdentityProviderForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -95745,17 +95169,6 @@ export const deleteIdentityProviderForZone: API.OperationMethod<
   output: DeleteIdentityProviderResponse,
   errors: [],
 }));
-
-export const deleteIdentityProvider = (
-  input: DeleteIdentityProviderRequest,
-): Effect.Effect<
-  DeleteIdentityProviderResponse,
-  DeleteIdentityProviderError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? deleteIdentityProviderForAccount(input)
-    : deleteIdentityProviderForZone(input);
 
 // =============================================================================
 // IdentityProviderScimGroup
@@ -98040,10 +97453,6 @@ export interface ListOrganizationsForZoneRequest extends ListOrganizationsBaseRe
   zoneId: string;
 }
 
-export type ListOrganizationsRequest =
-  | ListOrganizationsForAccountRequest
-  | ListOrganizationsForZoneRequest;
-
 export const ListOrganizationsForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -98208,17 +97617,6 @@ export const listOrganizationsForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const listOrganizations = (
-  input: ListOrganizationsRequest,
-): Effect.Effect<
-  ListOrganizationsResponse,
-  ListOrganizationsError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listOrganizationsForAccount(input)
-    : listOrganizationsForZone(input);
-
 const CreateOrganizationBaseFields = {
   authDomain: Schema.String,
   name: Schema.String,
@@ -98286,10 +97684,6 @@ export interface CreateOrganizationForZoneRequest extends CreateOrganizationBase
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type CreateOrganizationRequest =
-  | CreateOrganizationForAccountRequest
-  | CreateOrganizationForZoneRequest;
 
 export const CreateOrganizationForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -98479,17 +97873,6 @@ export const createOrganizationForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const createOrganization = (
-  input: CreateOrganizationRequest,
-): Effect.Effect<
-  CreateOrganizationResponse,
-  CreateOrganizationError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? createOrganizationForAccount(input)
-    : createOrganizationForZone(input);
-
 const UpdateOrganizationBaseFields = {
   allowAuthenticateViaWarp: Schema.optional(Schema.Boolean),
   authDomain: Schema.optional(Schema.String),
@@ -98570,10 +97953,6 @@ export interface UpdateOrganizationForZoneRequest extends UpdateOrganizationBase
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type UpdateOrganizationRequest =
-  | UpdateOrganizationForAccountRequest
-  | UpdateOrganizationForZoneRequest;
 
 export const UpdateOrganizationForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -98764,17 +98143,6 @@ export const updateOrganizationForZone: API.OperationMethod<
   output: UpdateOrganizationResponse,
   errors: [],
 }));
-
-export const updateOrganization = (
-  input: UpdateOrganizationRequest,
-): Effect.Effect<
-  UpdateOrganizationResponse,
-  UpdateOrganizationError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? updateOrganizationForAccount(input)
-    : updateOrganizationForZone(input);
 
 // =============================================================================
 // OrganizationDoh
@@ -100822,10 +100190,6 @@ export interface RevokeTokensAccessApplicationForZoneRequest extends RevokeToken
   zoneId: string;
 }
 
-export type RevokeTokensAccessApplicationRequest =
-  | RevokeTokensAccessApplicationForAccountRequest
-  | RevokeTokensAccessApplicationForZoneRequest;
-
 export const RevokeTokensAccessApplicationForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -100878,17 +100242,6 @@ export const revokeTokensAccessApplicationForZone: API.OperationMethod<
   output: RevokeTokensAccessApplicationResponse,
   errors: [],
 }));
-
-export const revokeTokensAccessApplication = (
-  input: RevokeTokensAccessApplicationRequest,
-): Effect.Effect<
-  RevokeTokensAccessApplicationResponse,
-  RevokeTokensAccessApplicationError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? revokeTokensAccessApplicationForAccount(input)
-    : revokeTokensAccessApplicationForZone(input);
 
 // =============================================================================
 // Tunnel
@@ -104260,10 +103613,6 @@ export interface RevokeUsersOrganizationForZoneRequest extends RevokeUsersOrgani
   zoneId: string;
 }
 
-export type RevokeUsersOrganizationRequest =
-  | RevokeUsersOrganizationForAccountRequest
-  | RevokeUsersOrganizationForZoneRequest;
-
 export const RevokeUsersOrganizationForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -104328,17 +103677,6 @@ export const revokeUsersOrganizationForZone: API.OperationMethod<
   output: RevokeUsersOrganizationResponse,
   errors: [],
 }));
-
-export const revokeUsersOrganization = (
-  input: RevokeUsersOrganizationRequest,
-): Effect.Effect<
-  RevokeUsersOrganizationResponse,
-  RevokeUsersOrganizationError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? revokeUsersOrganizationForAccount(input)
-    : revokeUsersOrganizationForZone(input);
 
 // =============================================================================
 // V2AccessInfrastructureTarget

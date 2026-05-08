@@ -5,8 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service logpush
  */
 
-import * as Effect from "effect/Effect";
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -99,10 +97,6 @@ export interface GetDatasetFieldForZoneRequest extends GetDatasetFieldBaseReques
   zoneId: string;
 }
 
-export type GetDatasetFieldRequest =
-  | GetDatasetFieldForAccountRequest
-  | GetDatasetFieldForZoneRequest;
-
 export const GetDatasetFieldForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -155,17 +149,6 @@ export const getDatasetFieldForZone: API.OperationMethod<
   output: GetDatasetFieldResponse,
   errors: [],
 }));
-
-export const getDatasetField = (
-  input: GetDatasetFieldRequest,
-): Effect.Effect<
-  GetDatasetFieldResponse,
-  GetDatasetFieldError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? getDatasetFieldForAccount(input)
-    : getDatasetFieldForZone(input);
 
 // =============================================================================
 // DatasetJob
@@ -251,10 +234,6 @@ export interface GetDatasetJobForZoneRequest extends GetDatasetJobBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type GetDatasetJobRequest =
-  | GetDatasetJobForAccountRequest
-  | GetDatasetJobForZoneRequest;
 
 export const GetDatasetJobForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -533,17 +512,6 @@ export const getDatasetJobForZone: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export const getDatasetJob = (
-  input: GetDatasetJobRequest,
-): stream.Stream<
-  GetDatasetJobResponse,
-  GetDatasetJobError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? getDatasetJobForAccount.pages(input)
-    : getDatasetJobForZone.pages(input);
-
 // =============================================================================
 // Edge
 // =============================================================================
@@ -700,10 +668,6 @@ export interface DestinationExistsValidateForZoneRequest extends DestinationExis
   zoneId: string;
 }
 
-export type DestinationExistsValidateRequest =
-  | DestinationExistsValidateForAccountRequest
-  | DestinationExistsValidateForZoneRequest;
-
 export const DestinationExistsValidateForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -763,17 +727,6 @@ export const destinationExistsValidateForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const destinationExistsValidate = (
-  input: DestinationExistsValidateRequest,
-): Effect.Effect<
-  DestinationExistsValidateResponse,
-  DestinationExistsValidateError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? destinationExistsValidateForAccount(input)
-    : destinationExistsValidateForZone(input);
-
 // =============================================================================
 // Job
 // =============================================================================
@@ -795,8 +748,6 @@ export interface GetJobForZoneRequest extends GetJobBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type GetJobRequest = GetJobForAccountRequest | GetJobForZoneRequest;
 
 export const GetJobForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1057,14 +1008,6 @@ export const getJobForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const getJob = (
-  input: GetJobRequest,
-): Effect.Effect<
-  GetJobResponse,
-  GetJobError,
-  Credentials | HttpClient.HttpClient
-> => ("accountId" in input ? getJobForAccount(input) : getJobForZone(input));
-
 const ListJobsBaseFields = {} as const;
 
 interface ListJobsBaseRequest {}
@@ -1078,10 +1021,6 @@ export interface ListJobsForZoneRequest extends ListJobsBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type ListJobsRequest =
-  | ListJobsForAccountRequest
-  | ListJobsForZoneRequest;
 
 export const ListJobsForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1355,17 +1294,6 @@ export const listJobsForZone: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export const listJobs = (
-  input: ListJobsRequest,
-): stream.Stream<
-  ListJobsResponse,
-  ListJobsError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? listJobsForAccount.pages(input)
-    : listJobsForZone.pages(input);
-
 const CreateJobBaseFields = {
   destinationConf: Schema.String,
   dataset: Schema.optional(
@@ -1557,10 +1485,6 @@ export interface CreateJobForZoneRequest extends CreateJobBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type CreateJobRequest =
-  | CreateJobForAccountRequest
-  | CreateJobForZoneRequest;
 
 export const CreateJobForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1851,15 +1775,6 @@ export const createJobForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const createJob = (
-  input: CreateJobRequest,
-): Effect.Effect<
-  CreateJobResponse,
-  CreateJobError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input ? createJobForAccount(input) : createJobForZone(input);
-
 const UpdateJobBaseFields = {
   jobId: Schema.Number.pipe(T.HttpPath("jobId")),
   destinationConf: Schema.optional(Schema.String),
@@ -1985,10 +1900,6 @@ export interface UpdateJobForZoneRequest extends UpdateJobBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type UpdateJobRequest =
-  | UpdateJobForAccountRequest
-  | UpdateJobForZoneRequest;
 
 export const UpdateJobForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2280,15 +2191,6 @@ export const updateJobForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const updateJob = (
-  input: UpdateJobRequest,
-): Effect.Effect<
-  UpdateJobResponse,
-  UpdateJobError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input ? updateJobForAccount(input) : updateJobForZone(input);
-
 const DeleteJobBaseFields = {
   jobId: Schema.Number.pipe(T.HttpPath("jobId")),
 } as const;
@@ -2306,10 +2208,6 @@ export interface DeleteJobForZoneRequest extends DeleteJobBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type DeleteJobRequest =
-  | DeleteJobForAccountRequest
-  | DeleteJobForZoneRequest;
 
 export const DeleteJobForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2365,15 +2263,6 @@ export const deleteJobForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const deleteJob = (
-  input: DeleteJobRequest,
-): Effect.Effect<
-  DeleteJobResponse,
-  DeleteJobError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input ? deleteJobForAccount(input) : deleteJobForZone(input);
-
 // =============================================================================
 // Ownership
 // =============================================================================
@@ -2396,10 +2285,6 @@ export interface CreateOwnershipForZoneRequest extends CreateOwnershipBaseReques
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type CreateOwnershipRequest =
-  | CreateOwnershipForAccountRequest
-  | CreateOwnershipForZoneRequest;
 
 export const CreateOwnershipForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2461,17 +2346,6 @@ export const createOwnershipForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const createOwnership = (
-  input: CreateOwnershipRequest,
-): Effect.Effect<
-  CreateOwnershipResponse,
-  CreateOwnershipError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? createOwnershipForAccount(input)
-    : createOwnershipForZone(input);
-
 const ValidateOwnershipBaseFields = {
   destinationConf: Schema.String,
   ownershipChallenge: Schema.String,
@@ -2493,10 +2367,6 @@ export interface ValidateOwnershipForZoneRequest extends ValidateOwnershipBaseRe
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type ValidateOwnershipRequest =
-  | ValidateOwnershipForAccountRequest
-  | ValidateOwnershipForZoneRequest;
 
 export const ValidateOwnershipForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2563,17 +2433,6 @@ export const validateOwnershipForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const validateOwnership = (
-  input: ValidateOwnershipRequest,
-): Effect.Effect<
-  ValidateOwnershipResponse,
-  ValidateOwnershipError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? validateOwnershipForAccount(input)
-    : validateOwnershipForZone(input);
-
 // =============================================================================
 // Validate
 // =============================================================================
@@ -2596,10 +2455,6 @@ export interface DestinationValidateForZoneRequest extends DestinationValidateBa
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type DestinationValidateRequest =
-  | DestinationValidateForAccountRequest
-  | DestinationValidateForZoneRequest;
 
 export const DestinationValidateForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2662,17 +2517,6 @@ export const destinationValidateForZone: API.OperationMethod<
   errors: [],
 }));
 
-export const destinationValidate = (
-  input: DestinationValidateRequest,
-): Effect.Effect<
-  DestinationValidateResponse,
-  DestinationValidateError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? destinationValidateForAccount(input)
-    : destinationValidateForZone(input);
-
 const OriginValidateBaseFields = {
   logpullOptions: Schema.Union([Schema.String, Schema.Null]),
 } as const;
@@ -2691,10 +2535,6 @@ export interface OriginValidateForZoneRequest extends OriginValidateBaseRequest 
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
-
-export type OriginValidateRequest =
-  | OriginValidateForAccountRequest
-  | OriginValidateForZoneRequest;
 
 export const OriginValidateForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2757,14 +2597,3 @@ export const originValidateForZone: API.OperationMethod<
   output: OriginValidateResponse,
   errors: [],
 }));
-
-export const originValidate = (
-  input: OriginValidateRequest,
-): Effect.Effect<
-  OriginValidateResponse,
-  OriginValidateError,
-  Credentials | HttpClient.HttpClient
-> =>
-  "accountId" in input
-    ? originValidateForAccount(input)
-    : originValidateForZone(input);
