@@ -1490,14 +1490,20 @@ function generateOperationSchemaAst(
   }
   // Add contentType: "multipart" when operation has file uploads or uses multipartFormRequestOptions.
   // Use contentType: "binary" for raw octet-stream bodies (e.g. R2 PutObject).
+  // Use responseContentType: "binary" for raw octet-stream downloads (e.g. R2 GetObject).
   const hasFiles = operationHasFiles(op);
   const isMultipart = hasFiles || op.isMultipart;
   const isBinary = !isMultipart && operationHasBinaryBody(op);
-  const httpTrait = isMultipart
-    ? `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}", contentType: "multipart" })`
-    : isBinary
-      ? `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}", contentType: "binary" })`
-      : `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}" })`;
+  const httpTraitParts: string[] = [
+    `method: "${op.httpMethod}"`,
+    `path: "${openApiPath}"`,
+  ];
+  if (isMultipart) httpTraitParts.push(`contentType: "multipart"`);
+  else if (isBinary) httpTraitParts.push(`contentType: "binary"`);
+  if (op.responseContentType === "binary") {
+    httpTraitParts.push(`responseContentType: "binary"`);
+  }
+  const httpTrait = `T.Http({ ${httpTraitParts.join(", ")} })`;
   pipes.push(httpTrait);
 
   lines.push(
@@ -1559,7 +1565,9 @@ function generateOperationSchemaAst(
     );
   }
 
-  if (isTypeAlias && resolvedResponseType) {
+  if (op.responseContentType === "binary") {
+    emitBinaryResponse(lines, responseTypeName, op);
+  } else if (isTypeAlias && resolvedResponseType) {
     // Type alias response (e.g., `type Response = string` or `type Response = unknown`)
     const tsType = typeInfoToTsType(resolvedResponseType, 0, true);
     const schema = typeInfoToSchema(resolvedResponseType, "", 0, true);
@@ -1844,12 +1852,18 @@ function generateAccountOrZoneOperationSchema(
   const hasFiles = operationHasFiles(op);
   const isMultipart = hasFiles || op.isMultipart;
   const isBinary = !isMultipart && operationHasBinaryBody(op);
-  const buildHttpTrait = (path: string): string =>
-    isMultipart
-      ? `T.Http({ method: "${op.httpMethod}", path: "${path}", contentType: "multipart" })`
-      : isBinary
-        ? `T.Http({ method: "${op.httpMethod}", path: "${path}", contentType: "binary" })`
-        : `T.Http({ method: "${op.httpMethod}", path: "${path}" })`;
+  const buildHttpTrait = (path: string): string => {
+    const parts: string[] = [
+      `method: "${op.httpMethod}"`,
+      `path: "${path}"`,
+    ];
+    if (isMultipart) parts.push(`contentType: "multipart"`);
+    else if (isBinary) parts.push(`contentType: "binary"`);
+    if (op.responseContentType === "binary") {
+      parts.push(`responseContentType: "binary"`);
+    }
+    return `T.Http({ ${parts.join(", ")} })`;
+  };
 
   const buildPipes = (httpTrait: string): string => {
     const pipes: string[] = [];
@@ -1972,7 +1986,9 @@ function generateAccountOrZoneOperationSchema(
   const isTypeAlias = resolved.isTypeAlias;
   const responsePath = resolved.responsePath;
 
-  if (isTypeAlias && resolvedResponseType) {
+  if (op.responseContentType === "binary") {
+    emitBinaryResponse(lines, responseTypeName, op);
+  } else if (isTypeAlias && resolvedResponseType) {
     const tsType = typeInfoToTsType(resolvedResponseType, 0, true);
     const schema = typeInfoToSchema(resolvedResponseType, "", 0, true);
     const responsePathPipe = responsePath
@@ -2243,11 +2259,16 @@ function generateOperationSchema(
   const hasFiles = operationHasFiles(op);
   const isMultipart = hasFiles || op.isMultipart;
   const isBinary = !isMultipart && operationHasBinaryBody(op);
-  const httpTrait = isMultipart
-    ? `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}", contentType: "multipart" })`
-    : isBinary
-      ? `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}", contentType: "binary" })`
-      : `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}" })`;
+  const httpTraitParts2: string[] = [
+    `method: "${op.httpMethod}"`,
+    `path: "${openApiPath}"`,
+  ];
+  if (isMultipart) httpTraitParts2.push(`contentType: "multipart"`);
+  else if (isBinary) httpTraitParts2.push(`contentType: "binary"`);
+  if (op.responseContentType === "binary") {
+    httpTraitParts2.push(`responseContentType: "binary"`);
+  }
+  const httpTrait = `T.Http({ ${httpTraitParts2.join(", ")} })`;
   pipes.push(httpTrait);
 
   lines.push(
@@ -2260,7 +2281,9 @@ function generateOperationSchema(
   const isTypeAlias = resolved.isTypeAlias;
   const responsePath = resolved.responsePath;
 
-  if (isTypeAlias && resolvedResponseType) {
+  if (op.responseContentType === "binary") {
+    emitBinaryResponse(lines, responseTypeName, op);
+  } else if (isTypeAlias && resolvedResponseType) {
     const tsType = typeInfoToTsType(resolvedResponseType, 0, true);
     const schema = typeInfoToSchema(resolvedResponseType, "", 0, true);
     const responsePathPipe = responsePath
@@ -2717,9 +2740,24 @@ function operationToOpenApi(
     responses: {
       [op.successStatus ?? "200"]: {
         description: op.successDescription ?? "Success",
+        headers:
+          op.responseContentType === "binary" &&
+          op.responseHeaders &&
+          op.responseHeaders.length > 0
+            ? Object.fromEntries(
+                op.responseHeaders.map((h) => [
+                  h.name,
+                  {
+                    description: h.description,
+                    schema: typeInfoToOpenApiSchema(h.type),
+                  },
+                ]),
+              )
+            : undefined,
         content: responseSchemaSource
           ? {
-              [hasBinaryBody(responseSchemaSource)
+              [op.responseContentType === "binary" ||
+              hasBinaryBody(responseSchemaSource)
                 ? "application/octet-stream"
                 : "application/json"]: {
                 schema: typeInfoToOpenApiSchema(responseSchemaSource),
@@ -2811,11 +2849,76 @@ function operationHasBinaryBody(op: ParsedOperation): boolean {
 }
 
 /**
- * Check if an operation has a raw binary response or request body — used to
- * decide whether the generated service file needs to import `BinaryBodySchema`.
+ * Whether the service file needs to import `BinaryBodySchema` (raw request
+ * body) — true if any operation has a binary request body.
  */
-function operationUsesBinarySchema(op: ParsedOperation): boolean {
-  return operationHasBinaryBody(op) || hasBinaryBody(op.responseType);
+function serviceNeedsBinaryBodySchema(op: ParsedOperation): boolean {
+  return operationHasBinaryBody(op);
+}
+
+/**
+ * Whether the service file needs to import `BinaryStreamResponseSchema` plus
+ * `Stream` and `HttpClientError` — true if any operation has a binary
+ * download response.
+ */
+function serviceNeedsBinaryStreamResponse(op: ParsedOperation): boolean {
+  return op.responseContentType === "binary";
+}
+
+/**
+ * Emit the response interface + schema for a binary-download operation.
+ *
+ * Shape: `{ body: Stream.Stream<Uint8Array, HttpClientError>; ...headers }`
+ * where each header field is declared with `T.HttpResponseHeader(<wireName>)`
+ * so the runtime can populate it from the matching response header. The
+ * special `body` field carries `T.BinaryResponseBody()` so the runtime knows
+ * to set it to a `Stream.Stream<Uint8Array>` of the response body.
+ */
+function emitBinaryResponse(
+  lines: string[],
+  responseTypeName: string,
+  op: ParsedOperation,
+): void {
+  const headers = op.responseHeaders ?? [];
+
+  // Interface
+  lines.push(`export interface ${responseTypeName} {`);
+  lines.push(`  /** Raw object body as an Effect Stream. */`);
+  lines.push(
+    `  body: Stream.Stream<Uint8Array, HttpClientError.HttpClientError>;`,
+  );
+  for (const header of headers) {
+    const propName = toCamelCase(header.name);
+    const tsType = typeInfoToTsType(header.type, 0, true);
+    if (header.description) {
+      lines.push(
+        `  /** ${header.description.replace(/\n/g, " ").slice(0, 200)} */`,
+      );
+    }
+    lines.push(`  ${quotePropKey(propName)}?: ${tsType};`);
+  }
+  lines.push(`}`);
+  lines.push("");
+
+  // Schema
+  lines.push(
+    `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+  );
+  lines.push(
+    `  body: BinaryStreamResponseSchema.pipe(T.BinaryResponseBody()),`,
+  );
+  for (const header of headers) {
+    const propName = toCamelCase(header.name);
+    const wireName = header.name;
+    const innerSchema = typeInfoToSchema(header.type);
+    lines.push(
+      `  ${quotePropKey(propName)}: Schema.optional(${innerSchema}).pipe(T.HttpResponseHeader("${wireName}")),`,
+    );
+  }
+  lines.push(
+    `}) as unknown as Schema.Schema<${responseTypeName}>;`,
+  );
+  lines.push("");
 }
 
 function generateServiceFile(
@@ -2826,9 +2929,17 @@ function generateServiceFile(
 
   // Check if any operation has file uploads
   const hasFileUploads = service.operations.some(operationHasFiles);
-  // Check if any operation has a raw octet-stream request OR response body
-  // (e.g. R2 PutObject / GetObject) so we know to import `BinaryBodySchema`.
-  const hasBinaryBodies = service.operations.some(operationUsesBinarySchema);
+  // Whether any operation has a raw octet-stream request body (e.g. R2 PutObject)
+  // — drives the `BinaryBodySchema` import.
+  const hasBinaryRequestBodies = service.operations.some(
+    serviceNeedsBinaryBodySchema,
+  );
+  // Whether any operation has a raw octet-stream download response (e.g. R2
+  // GetObject) — drives the `BinaryStreamResponseSchema` + `Stream` +
+  // `HttpClientError` imports.
+  const hasBinaryStreamResponses = service.operations.some(
+    serviceNeedsBinaryStreamResponse,
+  );
 
   // Header
   lines.push(`/**`);
@@ -2862,10 +2973,21 @@ function generateServiceFile(
       `import { UploadableSchema } from "${withTsExtension("../schemas")}";`,
     );
   }
-  // Conditionally import BinaryBodySchema for raw octet-stream body operations.
-  if (hasBinaryBodies) {
+  // Conditionally import BinaryBodySchema for raw octet-stream request bodies.
+  if (hasBinaryRequestBodies) {
     lines.push(
       `import { BinaryBodySchema } from "${withTsExtension("../schemas")}";`,
+    );
+  }
+  // Conditionally import BinaryStreamResponseSchema + Stream / HttpClientError
+  // for raw octet-stream download responses.
+  if (hasBinaryStreamResponses) {
+    lines.push(
+      `import { BinaryStreamResponseSchema } from "${withTsExtension("../schemas")}";`,
+    );
+    lines.push(`import type * as Stream from "effect/Stream";`);
+    lines.push(
+      `import type * as HttpClientError from "effect/unstable/http/HttpClientError";`,
     );
   }
   lines.push(`__SENSITIVE_IMPORT__`);

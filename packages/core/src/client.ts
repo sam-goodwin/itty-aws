@@ -382,8 +382,11 @@ function buildFormData(body: Record<string, unknown>): FormData {
  * Set a raw binary HTTP request body.
  *
  * Used for `T.Http({ contentType: "binary" })` operations (e.g. R2 PutObject)
- * where `parts.body` is the value of the lone `T.HttpBody()` field — a `Blob`,
- * `Uint8Array`, `ArrayBuffer`, or string — rather than a record of body fields.
+ * where `parts.body` is the value of the lone `T.HttpBody()` field — wide
+ * input types are accepted: `Blob`, `Uint8Array`, `ArrayBuffer`, `string`,
+ * web `ReadableStream<Uint8Array>`, or Effect `Stream.Stream<Uint8Array>`.
+ * Stream-shaped inputs are sent as true streaming `HttpBody.stream(...)`
+ * uploads.
  *
  * The `Content-Type` header is left untouched (the operation's
  * `content-type` header field already populated `parts.headers`).
@@ -405,16 +408,35 @@ function setBinaryBody(
     );
   }
   if (typeof Blob !== "undefined" && body instanceof Blob) {
-    return Effect.tryPromise({
-      try: () => body.arrayBuffer(),
-      catch: (cause) =>
+    // Stream the Blob through `HttpBody.stream` rather than buffering — keeps
+    // memory bounded for large uploads.
+    const blob = body;
+    const blobStream = Stream.fromReadableStream({
+      evaluate: () => blob.stream(),
+      onError: (cause) =>
         new HttpBody.HttpBodyError({ reason: { _tag: "JsonError" }, cause }),
-    }).pipe(
-      Effect.map((buf) =>
-        HttpClientRequest.setBody(HttpBody.uint8Array(new Uint8Array(buf)))(
-          request,
-        ),
-      ),
+    });
+    return Effect.succeed(
+      HttpClientRequest.setBody(HttpBody.stream(blobStream))(request),
+    );
+  }
+  if (typeof ReadableStream !== "undefined" && body instanceof ReadableStream) {
+    const rs = body as ReadableStream<Uint8Array>;
+    const rsStream = Stream.fromReadableStream({
+      evaluate: () => rs,
+      onError: (cause) =>
+        new HttpBody.HttpBodyError({ reason: { _tag: "JsonError" }, cause }),
+    });
+    return Effect.succeed(
+      HttpClientRequest.setBody(HttpBody.stream(rsStream))(request),
+    );
+  }
+  if (Stream.isStream(body as Stream.Stream<unknown, unknown, unknown>)) {
+    // Effect Stream — pass straight through to `HttpBody.stream`.
+    return Effect.succeed(
+      HttpClientRequest.setBody(
+        HttpBody.stream(body as Stream.Stream<Uint8Array, unknown>),
+      )(request),
     );
   }
   if (typeof body === "string") {
@@ -426,7 +448,7 @@ function setBinaryBody(
     new HttpBody.HttpBodyError({
       reason: { _tag: "JsonError" },
       cause: new TypeError(
-        `Binary HTTP body must be a Blob, Uint8Array, ArrayBuffer, or string; got ${
+        `Binary HTTP body must be a Blob, Uint8Array, ArrayBuffer, ReadableStream, Stream<Uint8Array>, or string; got ${
           body === null ? "null" : typeof body
         }`,
       ),
@@ -706,6 +728,27 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
           // For void-returning operations (e.g. DELETE 204 No Content)
           if (AST.isVoid(outputSchema.ast)) {
             return undefined;
+          }
+
+          // Raw octet-stream download (`responseContentType: "binary"`):
+          // bypass the JSON/text decode path entirely. The output schema is
+          // a Struct shaped like `{ body: Stream<Uint8Array>, ...headers }`
+          // (see `T.BinaryResponseBody()` / `T.HttpResponseHeader()`); we
+          // populate it by reading response headers and wrapping the body
+          // bytes in `Stream.succeed`. We buffer through
+          // `response.arrayBuffer` first so the resulting stream is
+          // scope-free — callers can consume it after the underlying scope
+          // has closed. (True chunked streaming would require threading a
+          // Scope through every operation's return type, which would break
+          // the uniform `OperationMethod<I, A, E, never>` shape.)
+          if (httpTrait.responseContentType === "binary") {
+            const bytes = yield* response.arrayBuffer;
+            const stream = Stream.succeed(new Uint8Array(bytes));
+            return Traits.buildBinaryResponse(
+              outputSchema.ast,
+              stream,
+              response.headers as Record<string, string>,
+            ) as unknown;
           }
 
           // For 204 No Content: if schema is not Unknown, return undefined.

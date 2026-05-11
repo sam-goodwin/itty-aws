@@ -1,5 +1,6 @@
 import { describe, expect } from "vitest";
 import * as Effect from "effect/Effect";
+import * as Stream from "effect/Stream";
 import { test, getAccountId, testRunId } from "./test.ts";
 import * as R2 from "~/services/r2";
 
@@ -1314,15 +1315,33 @@ describe("R2", () => {
   });
 
   describe("getObject", () => {
-    test("happy path - downloads an object that was just uploaded", () =>
+    // GetObjectResponse is `{ body: Stream<Uint8Array, HttpClientError>, etag?,
+    // contentType?, contentLength?, lastModified?, ... }` — S3-style metadata
+    // headers alongside a streaming body.
+    const collectStream = Effect.fn(function* (
+      stream: Stream.Stream<Uint8Array, unknown>,
+    ) {
+      const chunks = yield* Stream.runCollect(stream);
+      const total = chunks.reduce((n, c) => n + c.length, 0);
+      const buf = new Uint8Array(total);
+      let o = 0;
+      for (const c of chunks) {
+        buf.set(c, o);
+        o += c.length;
+      }
+      return buf;
+    });
+
+    test("happy path - returns body Stream + etag + contentType + contentLength", () =>
       withBucket(bucketName("get-obj-happy"), (name) =>
         Effect.gen(function* () {
+          const payload = "round-trip";
           yield* R2.putObject({
             accountId: accountId(),
             bucketName: name,
             objectName: "round-trip.txt",
             contentType: "text/plain",
-            body: "round-trip",
+            body: payload,
           });
 
           const result = yield* R2.getObject({
@@ -1331,12 +1350,43 @@ describe("R2", () => {
             objectName: "round-trip.txt",
           });
 
-          // Response is a binary body (string in JSON contexts, raw bytes
-          // otherwise). At runtime the JSON-aware decoder hands us a string
-          // for text/plain.
-          expect(typeof result === "string" || result instanceof Uint8Array).toBe(
-            true,
-          );
+          // Body round-trips through the Stream.
+          const buf = yield* collectStream(result.body);
+          expect(new TextDecoder().decode(buf)).toBe(payload);
+
+          // S3-style metadata headers are surfaced as typed fields. R2
+          // doesn't always echo content-type back, but content-length and
+          // etag are reliable.
+          if (result.contentType !== undefined) {
+            expect(result.contentType).toContain("text/plain");
+          }
+          expect(result.contentLength).toBe(payload.length);
+          expect(typeof result.etag).toBe("string");
+          expect(typeof result.lastModified).toBe("string");
+        }),
+      ));
+
+    test("happy path - downloads a Uint8Array round-trip", () =>
+      withBucket(bucketName("get-obj-bytes"), (name) =>
+        Effect.gen(function* () {
+          const payload = new Uint8Array([0xde, 0xad, 0xbe, 0xef]);
+          yield* R2.putObject({
+            accountId: accountId(),
+            bucketName: name,
+            objectName: "bin.dat",
+            contentType: "application/octet-stream",
+            body: payload,
+          });
+
+          const result = yield* R2.getObject({
+            accountId: accountId(),
+            bucketName: name,
+            objectName: "bin.dat",
+          });
+
+          const buf = yield* collectStream(result.body);
+          expect(Array.from(buf)).toEqual(Array.from(payload));
+          expect(result.contentLength).toBe(payload.length);
         }),
       ));
 

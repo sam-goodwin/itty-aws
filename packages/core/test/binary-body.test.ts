@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import * as Stream from "effect/Stream";
 import { describe, expect, it } from "vitest";
 import * as T from "../src/traits.ts";
 
@@ -97,5 +98,69 @@ describe("buildRequestParts — binary HTTP body", () => {
     expect(parts.body).toBe(body);
     // Regression sentinel: must not be wrapped in `{ body: <value> }`.
     expect(parts.body).not.toMatchObject({ body: expect.anything() });
+  });
+});
+
+// `T.Http({ responseContentType: "binary" })` operations have an output
+// schema shaped like `{ body: Stream<Uint8Array>, ...headers }`. The runtime
+// uses `buildBinaryResponse` to populate that struct from a body stream and
+// the response headers map.
+describe("buildBinaryResponse — S3-style download response", () => {
+  const GetObjectOutput = Schema.Struct({
+    body: Schema.declare(
+      (input): input is Stream.Stream<Uint8Array, never> =>
+        Stream.isStream(input as Stream.Stream<unknown, unknown, unknown>),
+      { identifier: "Stream" },
+    ).pipe(T.BinaryResponseBody()),
+    etag: Schema.optional(Schema.String).pipe(T.HttpResponseHeader("etag")),
+    contentType: Schema.optional(Schema.String).pipe(
+      T.HttpResponseHeader("content-type"),
+    ),
+    contentLength: Schema.optional(Schema.Number).pipe(
+      T.HttpResponseHeader("content-length"),
+    ),
+    storageClass: Schema.optional(Schema.String).pipe(
+      T.HttpResponseHeader("cf-r2-storage-class"),
+    ),
+  });
+
+  it("places the stream on the body field and copies headers verbatim", () => {
+    const stream = Stream.succeed(new Uint8Array([1, 2, 3]));
+    const result = T.buildBinaryResponse(GetObjectOutput.ast, stream, {
+      etag: "abc123",
+      "content-type": "text/plain",
+      "content-length": "3",
+      "cf-r2-storage-class": "Standard",
+    });
+
+    expect(result.body).toBe(stream);
+    expect(result.etag).toBe("abc123");
+    expect(result.contentType).toBe("text/plain");
+    expect(result.storageClass).toBe("Standard");
+  });
+
+  it("coerces numeric headers to numbers", () => {
+    const result = T.buildBinaryResponse(GetObjectOutput.ast, Stream.empty, {
+      "content-length": "1024",
+    });
+    expect(result.contentLength).toBe(1024);
+  });
+
+  it("matches header names case-insensitively", () => {
+    const result = T.buildBinaryResponse(GetObjectOutput.ast, Stream.empty, {
+      ETag: "MIXED-CASE",
+      "Content-Type": "application/json",
+    });
+    expect(result.etag).toBe("MIXED-CASE");
+    expect(result.contentType).toBe("application/json");
+  });
+
+  it("omits header fields when the header is absent", () => {
+    const result = T.buildBinaryResponse(GetObjectOutput.ast, Stream.empty, {
+      etag: "only-etag",
+    });
+    expect(result.etag).toBe("only-etag");
+    expect("contentType" in result).toBe(false);
+    expect("contentLength" in result).toBe(false);
   });
 });

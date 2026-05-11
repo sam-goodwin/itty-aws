@@ -117,8 +117,25 @@ export interface HttpTrait {
   method: HttpMethod;
   /** Path template with {param} placeholders */
   path: string;
-  /** Content type override (e.g., "multipart") */
+  /**
+   * Request body content type. Recognized values:
+   *   - `"multipart"`        — `multipart/form-data` (file uploads)
+   *   - `"form-urlencoded"`  — `application/x-www-form-urlencoded`
+   *   - `"binary"`           — `application/octet-stream` (raw byte body
+   *                             accepting `Blob | Uint8Array | ArrayBuffer |
+   *                             string | Stream<Uint8Array> | ReadableStream`)
+   *   - `undefined`          — JSON
+   */
   contentType?: string;
+  /**
+   * Response body content type. Recognized values:
+   *   - `"binary"`  — `application/octet-stream` download. The runtime
+   *                   bypasses JSON decoding and returns the body as an
+   *                   Effect `Stream.Stream<Uint8Array>`.
+   *   - `undefined` — JSON / text decoded through the operation's output
+   *                   schema.
+   */
+  responseContentType?: string;
   /** Whether the request has a body (used by GCP generator) */
   hasBody?: boolean;
 }
@@ -236,6 +253,40 @@ export const httpBodySymbol = Symbol.for("@distilled.cloud/http-body");
  * (not a named field within a JSON body).
  */
 export const HttpBody = () => makeAnnotation(httpBodySymbol, true);
+
+/** Symbol for binary response body annotation */
+export const binaryResponseBodySymbol = Symbol.for(
+  "@distilled.cloud/binary-response-body",
+);
+
+/**
+ * BinaryResponseBody - marks a response struct field as the raw binary body
+ * of an `application/octet-stream` download. The runtime fills the field
+ * with an Effect `Stream.Stream<Uint8Array>` of the response body. Sibling
+ * fields annotated with `T.HttpResponseHeader` are populated from the
+ * matching response headers.
+ */
+export const BinaryResponseBody = () =>
+  makeAnnotation(binaryResponseBodySymbol, true);
+
+/** Symbol for response header annotation */
+export const responseHeaderSymbol = Symbol.for(
+  "@distilled.cloud/response-header",
+);
+
+/**
+ * HttpResponseHeader - marks a response struct field as a value pulled from
+ * a named HTTP response header (e.g. `etag`, `content-type`). The runtime
+ * populates the field with the (lowercased) header value if present, and
+ * leaves it `undefined` otherwise. Mirror of `T.HttpHeader` for response-
+ * side header extraction.
+ *
+ * Currently consumed by binary-download operations (operations whose
+ * `T.Http({ responseContentType: "binary" })` trait is set), where the
+ * response struct's shape is `{ body: Stream.Stream<Uint8Array>, ...headers }`.
+ */
+export const HttpResponseHeader = (name: string) =>
+  makeAnnotation(responseHeaderSymbol, name);
 
 /** Symbol for GraphQL operation metadata (query string + operation name) */
 export const graphqlOpSymbol = Symbol.for("@distilled.cloud/graphql-op");
@@ -787,6 +838,84 @@ export const buildRequestParts = (
     body: finalBody,
     isMultipart,
   };
+};
+
+/**
+ * Build the response object for a binary-download operation
+ * (`T.Http({ responseContentType: "binary" })`).
+ *
+ * The output schema is expected to be a Struct with one field annotated
+ * `T.BinaryResponseBody()` (the `body` field — populated with the supplied
+ * `Stream`) and zero-or-more sibling fields annotated
+ * `T.HttpResponseHeader(name)` (populated by reading the named response
+ * header). Header lookups are case-insensitive.
+ *
+ * Header values are coerced to the field's declared primitive type so that
+ * `content-length` lands as a `number`, `last-modified` as a `Date` (when
+ * the schema declares `Schema.Date`), etc. Anything more exotic stays a
+ * raw string.
+ */
+export const buildBinaryResponse = (
+  ast: AST.AST,
+  body: unknown,
+  responseHeaders: Record<string, string>,
+): Record<string, unknown> => {
+  const lowercased: Record<string, string> = {};
+  for (const [k, v] of Object.entries(responseHeaders)) {
+    lowercased[k.toLowerCase()] = v;
+  }
+
+  const props = getStructProps(ast);
+  const result: Record<string, unknown> = {};
+
+  for (const prop of props) {
+    const tsName = String(prop.name);
+    const isBody = getAnnotation<boolean>(prop.type, binaryResponseBodySymbol);
+    if (isBody) {
+      result[tsName] = body;
+      continue;
+    }
+    const headerName = getAnnotation<string>(prop.type, responseHeaderSymbol);
+    if (headerName !== undefined) {
+      const raw = lowercased[headerName.toLowerCase()];
+      if (raw === undefined) continue;
+      result[tsName] = coerceHeaderValue(raw, prop.type);
+    }
+  }
+
+  return result;
+};
+
+/**
+ * Best-effort coercion of a raw HTTP header string to whichever primitive
+ * the response schema declares. Falls back to the original string for
+ * anything we don't recognize — the schema's decode step (which the binary
+ * runtime path skips) would have done the same coercion for JSON bodies.
+ */
+const coerceHeaderValue = (raw: string, propType: AST.AST): unknown => {
+  // Walk through Suspends / Optionals / Encoded chains to the underlying type.
+  let inner: AST.AST = propType;
+  while (inner.encoding && inner.encoding.length > 0) {
+    inner = inner.encoding[0].to;
+  }
+  if (inner._tag === "Suspend") inner = inner.thunk();
+  // `Schema.optional(Schema.X)` shows up as a Union with `undefined`/void.
+  if (inner._tag === "Union") {
+    const nonOptional = (inner as unknown as { types: AST.AST[] }).types.find(
+      (t) => t._tag !== "Void" && t._tag !== "Never",
+    );
+    if (nonOptional) inner = nonOptional;
+  }
+  if (inner._tag === "Number") {
+    const n = Number(raw);
+    return Number.isFinite(n) ? n : raw;
+  }
+  if (inner._tag === "Boolean") {
+    if (raw === "true") return true;
+    if (raw === "false") return false;
+    return raw;
+  }
+  return raw;
 };
 
 /**

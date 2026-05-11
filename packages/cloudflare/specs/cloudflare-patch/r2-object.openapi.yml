@@ -130,7 +130,11 @@ paths:
     get:
       operationId: getObject
       summary: Download an object from an R2 bucket.
-      description: Downloads an object from an R2 bucket.
+      description: |
+        Downloads an object from an R2 bucket. The response is shaped like
+        `{ body: Stream.Stream<Uint8Array>, etag?, contentType?, ... }` —
+        S3-style metadata headers are surfaced as optional fields alongside
+        the streaming body.
       x-distilled-response-path: result
       x-distilled-errors:
         NoSuchBucket:
@@ -147,6 +151,54 @@ paths:
       responses:
         "200":
           description: Success
+          headers:
+            etag:
+              description: Entity tag of the object (raw hex digest).
+              schema:
+                type: string
+            content-type:
+              description: MIME type of the object.
+              schema:
+                type: string
+            content-length:
+              description: Object size in bytes.
+              schema:
+                type: integer
+            content-encoding:
+              description: Content encoding of the object (e.g. `gzip`).
+              schema:
+                type: string
+            content-disposition:
+              description: Content disposition header for the object.
+              schema:
+                type: string
+            content-language:
+              description: Content language of the object.
+              schema:
+                type: string
+            content-range:
+              description: Byte range returned (set when the request used `Range`).
+              schema:
+                type: string
+            cache-control:
+              description: Cache-Control directives associated with the object.
+              schema:
+                type: string
+            expires:
+              description: Expiration date of the object.
+              schema:
+                type: string
+            last-modified:
+              description: When the object was last modified (RFC 7231 date).
+              schema:
+                type: string
+            cf-r2-storage-class:
+              description: Storage class of the object (`Standard` or `InfrequentAccess`).
+              schema:
+                type: string
+                enum:
+                  - Standard
+                  - InfrequentAccess
           content:
             application/octet-stream:
               schema:

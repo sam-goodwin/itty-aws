@@ -12,6 +12,9 @@ import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 import { BinaryBodySchema } from "../schemas.ts";
+import { BinaryStreamResponseSchema } from "../schemas.ts";
+import type * as Stream from "effect/Stream";
+import type * as HttpClientError from "effect/unstable/http/HttpClientError";
 import { SensitiveString } from "../sensitive.ts";
 
 // =============================================================================
@@ -2635,15 +2638,69 @@ export const GetObjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/accounts/{account_id}/r2/buckets/{bucketName}/objects/{objectName}",
+    responseContentType: "binary",
   }),
 ) as unknown as Schema.Schema<GetObjectRequest>;
 
-export type GetObjectResponse = Blob | Uint8Array | ArrayBuffer | string;
+export interface GetObjectResponse {
+  /** Raw object body as an Effect Stream. */
+  body: Stream.Stream<Uint8Array, HttpClientError.HttpClientError>;
+  /** Entity tag of the object (raw hex digest). */
+  etag?: string;
+  /** MIME type of the object. */
+  contentType?: string;
+  /** Object size in bytes. */
+  contentLength?: number;
+  /** Content encoding of the object (e.g. `gzip`). */
+  contentEncoding?: string;
+  /** Content disposition header for the object. */
+  contentDisposition?: string;
+  /** Content language of the object. */
+  contentLanguage?: string;
+  /** Byte range returned (set when the request used `Range`). */
+  contentRange?: string;
+  /** Cache-Control directives associated with the object. */
+  cacheControl?: string;
+  /** Expiration date of the object. */
+  expires?: string;
+  /** When the object was last modified (RFC 7231 date). */
+  lastModified?: string;
+  /** Storage class of the object (`Standard` or `InfrequentAccess`). */
+  cfR2StorageClass?: "Standard" | "InfrequentAccess";
+}
 
-export const GetObjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BinaryBodySchema.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetObjectResponse>;
+export const GetObjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  body: BinaryStreamResponseSchema.pipe(T.BinaryResponseBody()),
+  etag: Schema.optional(Schema.String).pipe(T.HttpResponseHeader("etag")),
+  contentType: Schema.optional(Schema.String).pipe(
+    T.HttpResponseHeader("content-type"),
+  ),
+  contentLength: Schema.optional(Schema.Number).pipe(
+    T.HttpResponseHeader("content-length"),
+  ),
+  contentEncoding: Schema.optional(Schema.String).pipe(
+    T.HttpResponseHeader("content-encoding"),
+  ),
+  contentDisposition: Schema.optional(Schema.String).pipe(
+    T.HttpResponseHeader("content-disposition"),
+  ),
+  contentLanguage: Schema.optional(Schema.String).pipe(
+    T.HttpResponseHeader("content-language"),
+  ),
+  contentRange: Schema.optional(Schema.String).pipe(
+    T.HttpResponseHeader("content-range"),
+  ),
+  cacheControl: Schema.optional(Schema.String).pipe(
+    T.HttpResponseHeader("cache-control"),
+  ),
+  expires: Schema.optional(Schema.String).pipe(T.HttpResponseHeader("expires")),
+  lastModified: Schema.optional(Schema.String).pipe(
+    T.HttpResponseHeader("last-modified"),
+  ),
+  cfR2StorageClass: Schema.optional(
+    Schema.Literals(["Standard", "InfrequentAccess"]),
+  ).pipe(T.HttpResponseHeader("cf-r2-storage-class")),
+}) as unknown as Schema.Schema<GetObjectResponse>;
 
 export type GetObjectError =
   | DefaultErrors

@@ -90,21 +90,63 @@ describe("binary HTTP body codegen", () => {
       );
     });
 
-    it("emits getObject response as BinaryBodySchema with the right TS type", () => {
+    it("emits getObject response as { body: Stream<Uint8Array>, ...headers }", () => {
       const getObjectResponse = r2Source.match(
-        /export type GetObjectResponse[\s\S]*?(?=export type GetObjectError|export const getObject:)/,
+        /export interface GetObjectResponse[\s\S]*?(?=export type GetObjectError|export const getObject:)/,
       )?.[0];
       expect(getObjectResponse).toBeDefined();
+
+      // S3-style response: streaming body field + typed metadata headers.
       expect(getObjectResponse!).toMatch(
-        /export type GetObjectResponse\s*=\s*Blob\s*\|\s*Uint8Array\s*\|\s*ArrayBuffer\s*\|\s*string/,
+        /body:\s*Stream\.Stream<Uint8Array,\s*HttpClientError\.HttpClientError>/,
       );
-      expect(getObjectResponse!).toMatch(/BinaryBodySchema/);
+      expect(getObjectResponse!).toMatch(/etag\?:\s*string/);
+      expect(getObjectResponse!).toMatch(/contentType\?:\s*string/);
+      expect(getObjectResponse!).toMatch(/contentLength\?:\s*number/);
+      expect(getObjectResponse!).toMatch(/lastModified\?:\s*string/);
+
+      // Schema uses BinaryResponseBody marker for the body field and
+      // HttpResponseHeader for each header.
+      expect(getObjectResponse!).toMatch(
+        /body:\s*BinaryStreamResponseSchema\.pipe\(T\.BinaryResponseBody\(\)\)/,
+      );
+      expect(getObjectResponse!).toMatch(
+        /etag:\s*Schema\.optional\(Schema\.String\)\.pipe\(T\.HttpResponseHeader\("etag"\)\)/,
+      );
+      expect(getObjectResponse!).toMatch(
+        /contentLength:\s*Schema\.optional\(Schema\.Number\)\.pipe\(T\.HttpResponseHeader\("content-length"\)\)/,
+      );
+
+      // Regression: must not be the multipart upload schema.
       expect(getObjectResponse!).not.toMatch(/UploadableSchema/);
+      expect(getObjectResponse!).not.toMatch(/HttpFormDataFile/);
     });
 
-    it("imports BinaryBodySchema from ../schemas", () => {
+    it("emits getObject request trait with responseContentType: \"binary\"", () => {
+      const getObjectRequest = r2Source.match(
+        /export const GetObjectRequest[\s\S]*?(?=export interface GetObjectResponse|export type GetObjectResponse)/,
+      )?.[0];
+      expect(getObjectRequest).toBeDefined();
+      expect(getObjectRequest!).toMatch(
+        /T\.Http\(\{[\s\S]*?responseContentType:\s*"binary"[\s\S]*?\}\)/,
+      );
+    });
+
+    it("imports BinaryBodySchema and BinaryStreamResponseSchema from ../schemas", () => {
       expect(r2Source).toMatch(
         /import\s*\{\s*BinaryBodySchema\s*\}\s*from\s*"\.\.\/schemas\.ts"/,
+      );
+      expect(r2Source).toMatch(
+        /import\s*\{\s*BinaryStreamResponseSchema\s*\}\s*from\s*"\.\.\/schemas\.ts"/,
+      );
+    });
+
+    it("imports Stream and HttpClientError types when binary download responses exist", () => {
+      expect(r2Source).toMatch(
+        /import\s+type\s+\*\s+as\s+Stream\s+from\s+"effect\/Stream"/,
+      );
+      expect(r2Source).toMatch(
+        /import\s+type\s+\*\s+as\s+HttpClientError\s+from\s+"effect\/unstable\/http\/HttpClientError"/,
       );
     });
   });
