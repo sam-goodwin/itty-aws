@@ -1225,6 +1225,164 @@ describe("R2", () => {
   });
 
   // --------------------------------------------------------------------------
+  // putObject / getObject / deleteObject
+  //
+  // Object operations exercise the `application/octet-stream` raw-body
+  // codegen + runtime path. The Cloudflare R2 PutObject API rejects
+  // multipart/form-data uploads with error code 10028
+  // ("multipart/form-data enhancement not implemented"), so a regression in
+  // the binary-body wiring is a hard failure here.
+  // --------------------------------------------------------------------------
+  describe("putObject", () => {
+    test("happy path - uploads a string object", () =>
+      withBucket(bucketName("put-string"), (name) =>
+        Effect.gen(function* () {
+          yield* R2.putObject({
+            accountId: accountId(),
+            bucketName: name,
+            objectName: "hello.txt",
+            contentType: "text/plain",
+            body: "hello world",
+          });
+        }),
+      ));
+
+    test("happy path - uploads a Uint8Array object", () =>
+      withBucket(bucketName("put-bytes"), (name) =>
+        Effect.gen(function* () {
+          const body = new TextEncoder().encode("binary payload");
+          yield* R2.putObject({
+            accountId: accountId(),
+            bucketName: name,
+            objectName: "bytes.bin",
+            contentType: "application/octet-stream",
+            body,
+          });
+        }),
+      ));
+
+    test("happy path - uploads a Blob object", () =>
+      withBucket(bucketName("put-blob"), (name) =>
+        Effect.gen(function* () {
+          const body = new Blob(["blob content"], { type: "text/plain" });
+          yield* R2.putObject({
+            accountId: accountId(),
+            bucketName: name,
+            objectName: "blob.txt",
+            contentType: "text/plain",
+            body,
+          });
+        }),
+      ));
+
+    test("happy path - uploads with a nested object key", () =>
+      withBucket(bucketName("put-nested"), (name) =>
+        Effect.gen(function* () {
+          yield* R2.putObject({
+            accountId: accountId(),
+            bucketName: name,
+            objectName: "nested/folder/file.txt",
+            contentType: "text/plain",
+            body: "nested",
+          });
+        }),
+      ));
+
+    test("error - NoSuchBucket for non-existent bucket", () =>
+      R2.putObject({
+        accountId: accountId(),
+        bucketName: "distilled-cf-r2-nonexistent-put-obj-xyz",
+        objectName: "x.txt",
+        contentType: "text/plain",
+        body: "x",
+      }).pipe(
+        Effect.flip,
+        Effect.map((e) => expect(e._tag).toBe("NoSuchBucket")),
+      ));
+
+    test("error - CloudflareHttpError for invalid accountId", () =>
+      R2.putObject({
+        accountId: "invalid-account-id-000",
+        bucketName: "distilled-cf-r2-bad-acct",
+        objectName: "x.txt",
+        contentType: "text/plain",
+        body: "x",
+      }).pipe(
+        Effect.flip,
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
+      ));
+  });
+
+  describe("getObject", () => {
+    test("happy path - downloads an object that was just uploaded", () =>
+      withBucket(bucketName("get-obj-happy"), (name) =>
+        Effect.gen(function* () {
+          yield* R2.putObject({
+            accountId: accountId(),
+            bucketName: name,
+            objectName: "round-trip.txt",
+            contentType: "text/plain",
+            body: "round-trip",
+          });
+
+          const result = yield* R2.getObject({
+            accountId: accountId(),
+            bucketName: name,
+            objectName: "round-trip.txt",
+          });
+
+          // Response is a binary body (string in JSON contexts, raw bytes
+          // otherwise). At runtime the JSON-aware decoder hands us a string
+          // for text/plain.
+          expect(typeof result === "string" || result instanceof Uint8Array).toBe(
+            true,
+          );
+        }),
+      ));
+
+    test("error - CloudflareHttpError for invalid accountId", () =>
+      R2.getObject({
+        accountId: "invalid-account-id-000",
+        bucketName: "distilled-cf-r2-bad-acct",
+        objectName: "x.txt",
+      }).pipe(
+        Effect.flip,
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
+      ));
+  });
+
+  describe("deleteObject", () => {
+    test("happy path - deletes an existing object", () =>
+      withBucket(bucketName("del-obj-happy"), (name) =>
+        Effect.gen(function* () {
+          yield* R2.putObject({
+            accountId: accountId(),
+            bucketName: name,
+            objectName: "to-delete.txt",
+            contentType: "text/plain",
+            body: "bye",
+          });
+
+          yield* R2.deleteObject({
+            accountId: accountId(),
+            bucketName: name,
+            objectName: "to-delete.txt",
+          });
+        }),
+      ));
+
+    test("error - CloudflareHttpError for invalid accountId", () =>
+      R2.deleteObject({
+        accountId: "invalid-account-id-000",
+        bucketName: "distilled-cf-r2-bad-acct",
+        objectName: "x.txt",
+      }).pipe(
+        Effect.flip,
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
+      ));
+  });
+
+  // --------------------------------------------------------------------------
   // listBucketEventNotifications
   // --------------------------------------------------------------------------
   describe("listBucketEventNotifications", () => {

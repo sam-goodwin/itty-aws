@@ -361,7 +361,16 @@ export interface TypeInfo {
     | "object"
     | "null"
     | "unknown"
-    | "file";
+    | "file"
+    /**
+     * Raw binary HTTP body (e.g. `application/octet-stream` request bodies on
+     * R2 PutObject). Kept distinct from `"file"` (which represents a single
+     * field within a `multipart/form-data` upload) so the codegen and runtime
+     * can route them differently:
+     *   - `"file"`  → multipart form field (`UploadableSchema.pipe(T.HttpFormDataFile())`)
+     *   - `"binary"` → entire raw request body (`BinaryBodySchema.pipe(T.HttpBody())`)
+     */
+    | "binary";
   value?: string; // For primitives and literals
   values?: TypeInfo[]; // For unions
   elementType?: TypeInfo; // For arrays

@@ -378,6 +378,62 @@ function buildFormData(body: Record<string, unknown>): FormData {
   return formData;
 }
 
+/**
+ * Set a raw binary HTTP request body.
+ *
+ * Used for `T.Http({ contentType: "binary" })` operations (e.g. R2 PutObject)
+ * where `parts.body` is the value of the lone `T.HttpBody()` field — a `Blob`,
+ * `Uint8Array`, `ArrayBuffer`, or string — rather than a record of body fields.
+ *
+ * The `Content-Type` header is left untouched (the operation's
+ * `content-type` header field already populated `parts.headers`).
+ */
+function setBinaryBody(
+  request: HttpClientRequest.HttpClientRequest,
+  body: unknown,
+): Effect.Effect<HttpClientRequest.HttpClientRequest, HttpBody.HttpBodyError> {
+  if (body instanceof Uint8Array) {
+    return Effect.succeed(
+      HttpClientRequest.setBody(HttpBody.uint8Array(body))(request),
+    );
+  }
+  if (typeof ArrayBuffer !== "undefined" && body instanceof ArrayBuffer) {
+    return Effect.succeed(
+      HttpClientRequest.setBody(HttpBody.uint8Array(new Uint8Array(body)))(
+        request,
+      ),
+    );
+  }
+  if (typeof Blob !== "undefined" && body instanceof Blob) {
+    return Effect.tryPromise({
+      try: () => body.arrayBuffer(),
+      catch: (cause) =>
+        new HttpBody.HttpBodyError({ reason: { _tag: "JsonError" }, cause }),
+    }).pipe(
+      Effect.map((buf) =>
+        HttpClientRequest.setBody(HttpBody.uint8Array(new Uint8Array(buf)))(
+          request,
+        ),
+      ),
+    );
+  }
+  if (typeof body === "string") {
+    return Effect.succeed(
+      HttpClientRequest.setBody(HttpBody.text(body))(request),
+    );
+  }
+  return Effect.fail(
+    new HttpBody.HttpBodyError({
+      reason: { _tag: "JsonError" },
+      cause: new TypeError(
+        `Binary HTTP body must be a Blob, Uint8Array, ArrayBuffer, or string; got ${
+          body === null ? "null" : typeof body
+        }`,
+      ),
+    }),
+  );
+}
+
 // ============================================================================
 // API Client Factory
 // ============================================================================
@@ -494,11 +550,27 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
 
           // Set Content-Type based on body type
           // - Skip for FormData (multipart) — browser sets boundary
+          // - Skip for binary — `parts.headers` already carries a caller-supplied
+          //   `content-type` header (e.g. R2 PutObject's `content-type` field)
           // - Use form-urlencoded for Stripe-style APIs
           // - Default to JSON
           const isFormUrlEncoded = httpTrait.contentType === "form-urlencoded";
+          const isBinaryBody = httpTrait.contentType === "binary";
           if (parts.isMultipart) {
             // browser/runtime sets Content-Type with boundary
+          } else if (isBinaryBody) {
+            // Caller's `content-type` header (already applied via
+            // `setHeaders(parts.headers)`) wins. If they didn't set one, fall
+            // back to a generic octet-stream so the request is still well-formed.
+            if (
+              !("content-type" in parts.headers) &&
+              !("Content-Type" in parts.headers)
+            ) {
+              request = HttpClientRequest.setHeader(
+                "Content-Type",
+                "application/octet-stream",
+              )(request);
+            }
           } else if (isFormUrlEncoded) {
             request = HttpClientRequest.setHeader(
               "Content-Type",
@@ -523,6 +595,11 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
               request = HttpClientRequest.setBody(HttpBody.formData(formData))(
                 request,
               );
+            } else if (isBinaryBody) {
+              // Raw binary HTTP body — `parts.body` is the value of the lone
+              // `T.HttpBody()` field (e.g. a `Blob`, `Uint8Array`, or string),
+              // not a record of body fields.
+              request = yield* setBinaryBody(request, parts.body);
             } else if (isFormUrlEncoded) {
               // Encode body as form-urlencoded with deepObject bracket notation
               const encoded = buildFormUrlEncoded(

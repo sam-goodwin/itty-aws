@@ -2569,7 +2569,7 @@ paths:
         "200":
           description: Success
           content:
-            application/json:
+            application/octet-stream:
               schema:
                 type: string
                 format: binary
@@ -2669,7 +2669,7 @@ paths:
       requestBody:
         required: true
         content:
-          multipart/form-data:
+          application/octet-stream:
             schema:
               type: string
               format: binary
