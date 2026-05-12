@@ -10,7 +10,7 @@ import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
-import { type DefaultErrors } from "../errors.ts";
+import { type DefaultErrors, InternalServerError } from "../errors.ts";
 import { UploadableSchema } from "../schemas.ts";
 
 // =============================================================================
@@ -59,6 +59,10 @@ export class HostnameAlreadyInUse extends Schema.TaggedErrorClass<HostnameAlread
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(HostnameAlreadyInUse, [{ code: 100116 }]);
+
+T.applyErrorMatchers(InternalServerError, [
+  { code: 10002, message: { includes: "An unknown error has occurred" } },
+]);
 
 export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
   "InvalidRoute",
@@ -7640,6 +7644,7 @@ export type PutScriptError =
   | DefaultErrors
   | InvalidRoute
   | InvalidWorkerScript
+  | InternalServerError
   | DurableObjectMustBeSqlite
   | DuplicateMigrationTarget
   | ScriptStartupError
@@ -7656,6 +7661,7 @@ export const putScript: API.OperationMethod<
   errors: [
     InvalidRoute,
     InvalidWorkerScript,
+    InternalServerError,
     DurableObjectMustBeSqlite,
     DuplicateMigrationTarget,
     ScriptStartupError,

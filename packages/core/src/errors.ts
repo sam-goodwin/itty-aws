@@ -99,12 +99,18 @@ export class Locked extends Schema.TaggedErrorClass<Locked>()("Locked", {
 }).pipe(Category.withLockedError, Category.withRetryable()) {}
 
 /**
- * InternalServerError - Server error (500).
+ * InternalServerError - Server error.
+ *
+ * Mapped from HTTP 500 by default. Per-service patches may also pin it to a
+ * specific in-band error code/message combination (e.g. Cloudflare returns a
+ * 200 envelope carrying `{ code: 10002, message: "An unknown error has
+ * occurred" }` for transient backend failures on some endpoints).
  */
 export class InternalServerError extends Schema.TaggedErrorClass<InternalServerError>()(
   "InternalServerError",
   {
     message: Schema.String,
+    code: Schema.optional(Schema.Number),
     retryAfter: Schema.optional(DurationSchema),
   },
 ).pipe(Category.withServerError, Category.withRetryable()) {}

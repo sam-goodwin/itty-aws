@@ -10,7 +10,7 @@ import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
-import { type DefaultErrors } from "../errors.ts";
+import { type DefaultErrors, InternalServerError } from "../errors.ts";
 
 // =============================================================================
 // Errors
@@ -22,10 +22,6 @@ export class FiltersRequired extends Schema.TaggedErrorClass<FiltersRequired>()(
 ) {}
 T.applyErrorMatchers(FiltersRequired, [{ code: 17103 }]);
 
-export class InternalServerError extends Schema.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { code: Schema.Number, message: Schema.String },
-) {}
 T.applyErrorMatchers(InternalServerError, [{ code: 15000 }]);
 
 export class InvalidAlertType extends Schema.TaggedErrorClass<InvalidAlertType>()(

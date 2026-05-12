@@ -2964,8 +2964,21 @@ function generateServiceFile(
   lines.push(
     `import type { Credentials } from "${withTsExtension("../credentials")}";`,
   );
+  // Collect error tags that are shared classes re-exported from
+  // `../errors.ts` (and ultimately from `@distilled.cloud/core/errors`).
+  // These are imported rather than redeclared per service, so an
+  // operation that surfaces e.g. `InternalServerError` always refers to
+  // the same class everywhere.
+  const sharedErrorTags = ["InternalServerError"] as const;
+  const mergedErrorsPreview = mergeServiceErrors(service, patches);
+  const importedSharedErrors = sharedErrorTags.filter((tag) =>
+    mergedErrorsPreview.some((e) => e.tag === tag),
+  );
   lines.push(`import {`);
   lines.push(`  type DefaultErrors,`);
+  for (const tag of importedSharedErrors) {
+    lines.push(`  ${tag},`);
+  }
   lines.push(`} from "${withTsExtension("../errors")}";`);
   // Conditionally import UploadableSchema for file uploads
   if (hasFileUploads) {
@@ -2993,19 +3006,27 @@ function generateServiceFile(
   lines.push(`__SENSITIVE_IMPORT__`);
   lines.push("");
 
-  // Merge all error definitions across patches and emit each class once
-  const mergedErrors = mergeServiceErrors(service, patches);
+  // Merge all error definitions across patches and emit each class once.
+  // Tags listed in `sharedErrorTags` are not redeclared — we just attach
+  // their service-specific matchers to the imported class.
+  const mergedErrors = mergedErrorsPreview;
   if (mergedErrors.length > 0) {
     lines.push(`// ${"=".repeat(77)}`);
     lines.push(`// Errors`);
     lines.push(`// ${"=".repeat(77)}`);
     lines.push("");
     for (const { tag, matchers } of mergedErrors) {
-      lines.push(`export class ${tag} extends Schema.TaggedErrorClass<${tag}>()(
+      if ((sharedErrorTags as readonly string[]).includes(tag)) {
+        lines.push(
+          `T.applyErrorMatchers(${tag}, ${JSON.stringify(matchers)});`,
+        );
+      } else {
+        lines.push(`export class ${tag} extends Schema.TaggedErrorClass<${tag}>()(
   "${tag}",
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(${tag}, ${JSON.stringify(matchers)});`);
+      }
       lines.push("");
     }
   }
