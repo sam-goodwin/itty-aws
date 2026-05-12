@@ -885,10 +885,10 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
       };
 
       const Proto = {
-        [Symbol.iterator]() {
-          return new SingleShotGen(this);
+        [Symbol.iterator](this: any) {
+          return new SingleShotGen(this.asEffect());
         },
-        pipe() {
+        pipe(this: any) {
           return pipeArguments(this.asEffect(), arguments);
         },
         asEffect() {

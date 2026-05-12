@@ -317,10 +317,10 @@ export const make = <Op extends Operation<any, any, any>>(
   );
 
   const Proto = {
-    [Symbol.iterator]() {
-      return new SingleShotGen(this);
+    [Symbol.iterator](this: any) {
+      return new SingleShotGen(this.asEffect());
     },
-    pipe() {
+    pipe(this: any) {
       return pipeArguments(this.asEffect(), arguments);
     },
     asEffect() {
