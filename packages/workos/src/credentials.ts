@@ -1,9 +1,9 @@
+import { ConfigError } from "@distilled.cloud/core/errors";
 import * as EffectConfig from "effect/Config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
-import { ConfigError } from "@distilled.cloud/core/errors";
 
 /**
  * WorkOS production API base URL.
@@ -31,7 +31,7 @@ const envConfig = EffectConfig.all({
 
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
-  envConfig.asEffect().pipe(
+  envConfig.pipe(
     Effect.mapError(
       () =>
         new ConfigError({
