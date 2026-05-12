@@ -1,10 +1,10 @@
+import { ConfigError } from "@distilled.cloud/core/errors";
 import * as EffectConfig from "effect/Config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Option from "effect/Option";
 import * as Redacted from "effect/Redacted";
-import { ConfigError } from "@distilled.cloud/core/errors";
 
 export const DEFAULT_API_BASE_URL = "https://api.cdp.coinbase.com/platform";
 
@@ -48,7 +48,7 @@ const envConfig = EffectConfig.all({
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
   Effect.gen(function* () {
-    const config = yield* envConfig.asEffect().pipe(
+    const config = yield* envConfig.pipe(
       Effect.mapError(
         () =>
           new ConfigError({

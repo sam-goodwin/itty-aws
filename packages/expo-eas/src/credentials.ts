@@ -5,12 +5,12 @@
  * Personal/Organization Access Token issued from
  * https://expo.dev/settings/access-tokens, sent as `Authorization: Bearer <token>`.
  */
+import { ConfigError } from "@distilled.cloud/core/errors";
 import * as EffectConfig from "effect/Config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
-import { ConfigError } from "@distilled.cloud/core/errors";
 
 /** Default EAS GraphQL host. The endpoint path (`/graphql`) is set per operation. */
 export const DEFAULT_API_BASE_URL = "https://api.expo.dev";
@@ -42,7 +42,7 @@ const envConfig = EffectConfig.all({
  */
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
-  envConfig.asEffect().pipe(
+  envConfig.pipe(
     Effect.mapError(
       () =>
         new ConfigError({

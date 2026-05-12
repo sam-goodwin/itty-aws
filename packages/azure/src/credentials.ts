@@ -45,7 +45,7 @@ const envConfig = EffectConfig.all({
  */
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
-  envConfig.asEffect().pipe(
+  envConfig.pipe(
     Effect.mapError(
       () =>
         new ConfigError({

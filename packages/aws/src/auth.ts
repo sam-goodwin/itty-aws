@@ -201,11 +201,12 @@ export const makeAuthService = () =>
               catch: (cause) => cause,
             }),
           ),
-          Effect.catch(() =>
-            new InvalidSSOToken({
-              message: `The SSO session token associated with profile=${profileName} was not found or is invalid. ${REFRESH_MESSAGE}`,
-              sso_session: profile.sso_session!,
-            }).asEffect(),
+          Effect.catch(
+            () =>
+              new InvalidSSOToken({
+                message: `The SSO session token associated with profile=${profileName} was not found or is invalid. ${REFRESH_MESSAGE}`,
+                sso_session: profile.sso_session!,
+              }),
           ),
         );
 

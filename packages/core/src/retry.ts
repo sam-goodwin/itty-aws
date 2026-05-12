@@ -8,6 +8,7 @@
  * for that SDK without wrapping every call with `Effect.retry`.
  */
 import * as Config from "effect/Config";
+import * as Context from "effect/Context";
 import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
 import { pipe } from "effect/Function";
@@ -15,7 +16,6 @@ import * as Layer from "effect/Layer";
 import * as Option from "effect/Option";
 import * as Ref from "effect/Ref";
 import * as Schedule from "effect/Schedule";
-import * as Context from "effect/Context";
 import { isThrottling, isTransientError } from "./category.ts";
 
 // ============================================================================
@@ -145,9 +145,9 @@ const serverRetryHintCapMsConfig: Config.Config<number> = Config.string(
  */
 export const readServerRetryHintCapMsFromEnv = (): number =>
   Effect.runSync(
-    serverRetryHintCapMsConfig
-      .asEffect()
-      .pipe(Effect.orElseSucceed(() => DEFAULT_SERVER_RETRY_HINT_CAP_MS)),
+    serverRetryHintCapMsConfig.pipe(
+      Effect.orElseSucceed(() => DEFAULT_SERVER_RETRY_HINT_CAP_MS),
+    ),
   );
 
 const resolveServerRetryHintCapMs = (): Effect.Effect<number, never, never> =>
@@ -157,9 +157,9 @@ const resolveServerRetryHintCapMs = (): Effect.Effect<number, never, never> =>
       const n = fromLayer.value;
       if (Number.isFinite(n) && n >= 0) return Math.trunc(n);
     }
-    return yield* serverRetryHintCapMsConfig
-      .asEffect()
-      .pipe(Effect.orElseSucceed(() => DEFAULT_SERVER_RETRY_HINT_CAP_MS));
+    return yield* serverRetryHintCapMsConfig.pipe(
+      Effect.orElseSucceed(() => DEFAULT_SERVER_RETRY_HINT_CAP_MS),
+    );
   });
 
 /**
