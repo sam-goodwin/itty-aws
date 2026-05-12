@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare Workers API
+  title: Cloudflare WORKERS API
   version: 0.0.0
 servers:
   - url: https://api.cloudflare.com/client/v4
@@ -7325,6 +7325,10 @@ paths:
           - code: 7003
         InvalidWorkerScript:
           - code: 10068
+        InternalServerError:
+          - code: 10002
+            message:
+              includes: An unknown error has occurred
         DurableObjectMustBeSqlite:
           - code: 10074
             message:

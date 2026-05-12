@@ -2,6 +2,12 @@
   "errors": {
     "InvalidRoute": [{ "code": 7003 }],
     "InvalidWorkerScript": [{ "code": 10068 }],
+    "InternalServerError": [
+      {
+        "code": 10002,
+        "message": { "includes": "An unknown error has occurred" }
+      }
+    ],
     "DurableObjectMustBeSqlite": [
       {
         "code": 10074,
