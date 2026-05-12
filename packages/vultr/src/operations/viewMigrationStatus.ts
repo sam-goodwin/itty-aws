@@ -6,9 +6,9 @@ import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const ViewMigrationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/databases/{databaseId}/migration" }),
-  );
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseId: Schema.String.pipe(T.PathParam()),
+  }).pipe(T.Http({ method: "GET", path: "/databases/{databaseId}/migration" }));
 export type ViewMigrationStatusInput = typeof ViewMigrationStatusInput.Type;
 
 // Output Schema
@@ -22,7 +22,7 @@ export const ViewMigrationStatusOutput =
         credentials: Schema.optional(
           Schema.Struct({
             host: Schema.optional(Schema.String),
-            port: Schema.optional(Schema.Unknown),
+            port: Schema.optional(Schema.Number),
             username: Schema.optional(Schema.String),
             password: Schema.optional(SensitiveString),
             database: Schema.optional(Schema.String),
@@ -40,6 +40,8 @@ export type ViewMigrationStatusOutput = typeof ViewMigrationStatusOutput.Type;
  * Get Migration Status
  *
  * View the status of a migration attached to the Managed Database.
+ *
+ * @param databaseId - The [Managed Database ID](#operation/list-databases).
  */
 export const viewMigrationStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ViewMigrationStatusInput,

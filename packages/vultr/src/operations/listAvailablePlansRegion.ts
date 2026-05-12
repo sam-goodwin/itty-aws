@@ -15,6 +15,7 @@ export type ListAvailablePlansRegionInput =
 export const ListAvailablePlansRegionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     available_plans: Schema.optional(Schema.Array(Schema.String)),
+    available_vpc_only_plans: Schema.optional(Schema.Array(Schema.String)),
   });
 export type ListAvailablePlansRegionOutput =
   typeof ListAvailablePlansRegionOutput.Type;

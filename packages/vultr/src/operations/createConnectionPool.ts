@@ -11,6 +11,7 @@ import {
 // Input Schema
 export const CreateConnectionPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     database: Schema.String,
     username: Schema.String,
@@ -26,7 +27,17 @@ export type CreateConnectionPoolInput = typeof CreateConnectionPoolInput.Type;
 
 // Output Schema
 export const CreateConnectionPoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connection_pool: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        database: Schema.optional(Schema.String),
+        username: Schema.optional(Schema.String),
+        mode: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.Number),
+      }),
+    ),
+  });
 export type CreateConnectionPoolOutput = typeof CreateConnectionPoolOutput.Type;
 
 // The operation
@@ -34,6 +45,8 @@ export type CreateConnectionPoolOutput = typeof CreateConnectionPoolOutput.Type;
  * Create Connection Pool
  *
  * Create a new connection pool within the Managed Database (PostgreSQL engine types only).
+ *
+ * @param databaseId - The [Managed Database ID](#operation/list-databases).
  */
 export const createConnectionPool = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

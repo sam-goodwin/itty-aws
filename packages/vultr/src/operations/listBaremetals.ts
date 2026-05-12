@@ -30,10 +30,21 @@ export const ListBaremetalsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         gateway_v4: Schema.optional(Schema.String),
         plan: Schema.optional(Schema.String),
         label: Schema.optional(Schema.String),
+        internal_ip: Schema.optional(Schema.String),
+        vpcs: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              version: Schema.optional(Schema.Number),
+              subnet: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
         tag: Schema.optional(Schema.String),
         os_id: Schema.optional(Schema.Number),
         app_id: Schema.optional(Schema.Number),
         image_id: Schema.optional(Schema.String),
+        snapshot_id: Schema.optional(Schema.String),
         v6_network: Schema.optional(Schema.String),
         v6_main_ip: Schema.optional(Schema.String),
         v6_network_size: Schema.optional(Schema.Number),

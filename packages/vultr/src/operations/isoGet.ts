@@ -15,6 +15,7 @@ export const IsoGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       id: Schema.optional(Schema.String),
       date_created: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
       filename: Schema.optional(Schema.String),
       size: Schema.optional(Schema.Number),
       md5sum: Schema.optional(Schema.String),

@@ -4,9 +4,9 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
-export const ListDatabaseDbsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/databases/{databaseId}/dbs" }));
+export const ListDatabaseDbsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  databaseId: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "GET", path: "/databases/{databaseId}/dbs" }));
 export type ListDatabaseDbsInput = typeof ListDatabaseDbsInput.Type;
 
 // Output Schema
@@ -31,6 +31,8 @@ export type ListDatabaseDbsOutput = typeof ListDatabaseDbsOutput.Type;
  * List Logical Databases
  *
  * List all logical databases within the Managed Database (MySQL and PostgreSQL only).
+ *
+ * @param databaseId - The [Managed Database ID](#operation/list-databases).
  */
 export const listDatabaseDbs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListDatabaseDbsInput,

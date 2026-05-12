@@ -13,6 +13,17 @@ export const CreateNodepoolsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   auto_scaler: Schema.optional(Schema.Boolean),
   min_nodes: Schema.optional(Schema.Number),
   max_nodes: Schema.optional(Schema.Number),
+  labels: Schema.optional(Schema.Unknown),
+  taints: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        key: Schema.optional(Schema.String),
+        value: Schema.optional(Schema.String),
+        effect: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  user_data: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "POST", path: "/kubernetes/clusters/{vkeId}/node-pools" }),
 );
@@ -41,7 +52,18 @@ export const CreateNodepoolsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       date_updated: Schema.optional(Schema.String),
       auto_scaler: Schema.optional(Schema.Boolean),
       min_nodes: Schema.optional(Schema.Number),
-      max_nodes: Schema.optional(Schema.Number),
+      max_nodes: Schema.optional(Schema.Unknown),
+      labels: Schema.optional(Schema.NullOr(Schema.Unknown)),
+      taints: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            key: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
+            effect: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      user_data: Schema.optional(Schema.String),
     }),
   ),
 });

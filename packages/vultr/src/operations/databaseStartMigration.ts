@@ -12,8 +12,9 @@ import { SensitiveString } from "../sensitive.ts";
 // Input Schema
 export const DatabaseStartMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseId: Schema.String.pipe(T.PathParam()),
     host: Schema.String,
-    port: Schema.Unknown,
+    port: Schema.Number,
     username: Schema.String,
     password: SensitiveString,
     database: Schema.optional(Schema.String),
@@ -36,7 +37,7 @@ export const DatabaseStartMigrationOutput =
         credentials: Schema.optional(
           Schema.Struct({
             host: Schema.optional(Schema.String),
-            port: Schema.optional(Schema.Unknown),
+            port: Schema.optional(Schema.Number),
             username: Schema.optional(Schema.String),
             password: Schema.optional(SensitiveString),
             database: Schema.optional(Schema.String),
@@ -55,6 +56,8 @@ export type DatabaseStartMigrationOutput =
  * Start Migration
  *
  * Start a migration to the Managed Database.
+ *
+ * @param databaseId - The [Managed Database ID](#operation/list-databases).
  */
 export const databaseStartMigration = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

@@ -18,6 +18,8 @@ export const UpdateBaremetalInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   enable_vpc2: Schema.optional(Schema.Boolean),
   tags: Schema.optional(Schema.Array(Schema.String)),
   user_scheme: Schema.optional(Schema.String),
+  mdisk_mode: Schema.optional(Schema.String),
+  ipxe_chain_url: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "PATCH", path: "/bare-metals/{baremetalId}" }));
 export type UpdateBaremetalInput = typeof UpdateBaremetalInput.Type;
 

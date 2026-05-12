@@ -5,9 +5,9 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetBackupInformationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/databases/{databaseId}/backups" }),
-  );
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseId: Schema.String.pipe(T.PathParam()),
+  }).pipe(T.Http({ method: "GET", path: "/databases/{databaseId}/backups" }));
 export type GetBackupInformationInput = typeof GetBackupInformationInput.Type;
 
 // Output Schema
@@ -33,6 +33,8 @@ export type GetBackupInformationOutput = typeof GetBackupInformationOutput.Type;
  * Get Backup Information
  *
  * Get backup information for the Managed Database.
+ *
+ * @param databaseId - The [Managed Database ID](#operation/list-databases).
  */
 export const getBackupInformation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

@@ -20,12 +20,17 @@ export const CreateBaremetalInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   snapshot_id: Schema.optional(Schema.String),
   app_id: Schema.optional(Schema.Number),
   image_id: Schema.optional(Schema.String),
+  ipxe_chain_url: Schema.optional(Schema.String),
   persistent_pxe: Schema.optional(Schema.Boolean),
+  attach_vpc: Schema.optional(Schema.Array(Schema.String)),
+  enable_vpc: Schema.optional(Schema.Boolean),
   attach_vpc2: Schema.optional(Schema.Array(Schema.String)),
   detach_vpc2: Schema.optional(Schema.Array(Schema.String)),
   enable_vpc2: Schema.optional(Schema.Boolean),
   tags: Schema.optional(Schema.Array(Schema.String)),
   user_scheme: Schema.optional(Schema.String),
+  mdisk_mode: Schema.optional(Schema.String),
+  app_variables: Schema.optional(Schema.Unknown),
 }).pipe(T.Http({ method: "POST", path: "/bare-metals" }));
 export type CreateBaremetalInput = typeof CreateBaremetalInput.Type;
 

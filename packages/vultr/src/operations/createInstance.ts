@@ -20,6 +20,7 @@ export const CreateInstanceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   label: Schema.optional(Schema.String),
   sshkey_id: Schema.optional(Schema.Array(Schema.String)),
   backups: Schema.optional(Schema.String),
+  block_devices: Schema.optional(Schema.Array(Schema.Unknown)),
   app_id: Schema.optional(Schema.Number),
   image_id: Schema.optional(Schema.String),
   user_data: Schema.optional(Schema.String),
@@ -32,8 +33,10 @@ export const CreateInstanceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   enable_private_network: Schema.optional(Schema.Boolean),
   enable_vpc: Schema.optional(Schema.Boolean),
   enable_vpc2: Schema.optional(Schema.Boolean),
+  vpc_only: Schema.optional(Schema.Boolean),
   tags: Schema.optional(Schema.Array(Schema.String)),
   user_scheme: Schema.optional(Schema.String),
+  app_variables: Schema.optional(Schema.Unknown),
 }).pipe(T.Http({ method: "POST", path: "/instances" }));
 export type CreateInstanceInput = typeof CreateInstanceInput.Type;
 

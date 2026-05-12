@@ -8,6 +8,14 @@ export const UpdateKubernetesClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vkeId: Schema.String.pipe(T.PathParam()),
     label: Schema.String,
+    oidc: Schema.optional(
+      Schema.Struct({
+        issuer_url: Schema.String,
+        client_id: Schema.String,
+        username_claim: Schema.optional(Schema.String),
+        groups_claim: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(T.Http({ method: "PUT", path: "/kubernetes/clusters/{vkeId}" }));
 export type UpdateKubernetesClusterInput =
   typeof UpdateKubernetesClusterInput.Type;

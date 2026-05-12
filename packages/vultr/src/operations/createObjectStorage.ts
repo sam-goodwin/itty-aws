@@ -7,6 +7,7 @@ import { BadRequest, Forbidden } from "../errors.ts";
 export const CreateObjectStorageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cluster_id: Schema.Number,
+    tier_id: Schema.Number,
     label: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "POST", path: "/object-storage" }));
 export type CreateObjectStorageInput = typeof CreateObjectStorageInput.Type;

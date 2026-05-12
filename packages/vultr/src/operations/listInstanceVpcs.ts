@@ -14,15 +14,12 @@ export type ListInstanceVpcsInput = typeof ListInstanceVpcsInput.Type;
 // Output Schema
 export const ListInstanceVpcsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    private_networks: Schema.optional(
+    vpcs: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          id: Schema.String,
-          region: Schema.optional(Schema.String),
-          date_created: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          v4_subnet: Schema.optional(Schema.String),
-          v4_subnet_mask: Schema.optional(Schema.Number),
+          id: Schema.optional(Schema.String),
+          mac_address: Schema.optional(Schema.String),
+          ip_address: Schema.optional(Schema.String),
         }),
       ),
     ),

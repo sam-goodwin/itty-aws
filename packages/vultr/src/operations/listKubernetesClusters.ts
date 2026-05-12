@@ -18,6 +18,7 @@ export const ListKubernetesClustersOutput =
       Schema.Array(
         Schema.Struct({
           id: Schema.optional(Schema.String),
+          firewall_group_id: Schema.optional(Schema.String),
           label: Schema.optional(Schema.String),
           date_created: Schema.optional(Schema.String),
           cluster_subnet: Schema.optional(Schema.String),
@@ -28,6 +29,14 @@ export const ListKubernetesClustersOutput =
           region: Schema.optional(Schema.String),
           status: Schema.optional(Schema.String),
           ha_controlplanes: Schema.optional(Schema.Boolean),
+          oidc: Schema.optional(
+            Schema.Struct({
+              issuer_url: Schema.optional(Schema.String),
+              client_id: Schema.optional(Schema.String),
+              username_claim: Schema.optional(Schema.String),
+              groups_claim: Schema.optional(Schema.String),
+            }),
+          ),
           node_pools: Schema.optional(
             Schema.Array(
               Schema.Struct({
@@ -50,7 +59,27 @@ export const ListKubernetesClustersOutput =
                 date_updated: Schema.optional(Schema.String),
                 auto_scaler: Schema.optional(Schema.Boolean),
                 min_nodes: Schema.optional(Schema.Number),
-                max_nodes: Schema.optional(Schema.Number),
+                max_nodes: Schema.optional(Schema.Unknown),
+                labels: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                taints: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      value: Schema.optional(Schema.String),
+                      effect: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                user_data: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          vpcs: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                version: Schema.optional(Schema.Number),
+                subnet: Schema.optional(Schema.String),
               }),
             ),
           ),

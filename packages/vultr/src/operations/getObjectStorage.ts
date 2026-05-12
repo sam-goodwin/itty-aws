@@ -24,6 +24,7 @@ export const GetObjectStorageOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         s3_hostname: Schema.optional(Schema.String),
         s3_access_key: Schema.optional(Schema.String),
         s3_secret_key: Schema.optional(SensitiveString),
+        pending_charges: Schema.optional(Schema.Number),
       }),
     ),
   },

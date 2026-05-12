@@ -21,6 +21,12 @@ export const ListVpcsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         description: Schema.optional(Schema.String),
         v4_subnet: Schema.optional(Schema.String),
         v4_subnet_mask: Schema.optional(Schema.Number),
+        internet: Schema.optional(
+          Schema.Struct({
+            connectivity: Schema.optional(Schema.Boolean),
+            types: Schema.optional(Schema.Array(Schema.Unknown)),
+          }),
+        ),
       }),
     ),
   ),

@@ -21,6 +21,8 @@ export const ListBackupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         description: Schema.optional(Schema.String),
         size: Schema.optional(Schema.Number),
         status: Schema.optional(Schema.String),
+        os_id: Schema.optional(Schema.Number),
+        app_id: Schema.optional(Schema.Number),
       }),
     ),
   ),

@@ -1,12 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const ListRegionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  per_page: Schema.optional(Schema.Number),
-  cursor: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/regions" }));
+export const ListRegionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/vfs/regions" }));
 export type ListRegionsInput = typeof ListRegionsInput.Type;
 
 // Output Schema
@@ -16,36 +16,34 @@ export const ListRegionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         id: Schema.optional(Schema.String),
         country: Schema.optional(Schema.String),
-        options: Schema.optional(Schema.Array(Schema.String)),
         continent: Schema.optional(Schema.String),
-        city: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        price_per_gb: Schema.optional(
+          Schema.Struct({
+            nvme: Schema.optional(Schema.Number),
+            hdd: Schema.optional(Schema.Number),
+          }),
+        ),
+        min_size_gb: Schema.optional(
+          Schema.Struct({
+            nvme: Schema.optional(Schema.Number),
+            hdd: Schema.optional(Schema.Number),
+          }),
+        ),
       }),
     ),
-  ),
-  meta: Schema.optional(
-    Schema.Struct({
-      total: Schema.optional(Schema.Number),
-      links: Schema.optional(
-        Schema.Struct({
-          next: Schema.optional(Schema.String),
-          prev: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
   ),
 });
 export type ListRegionsOutput = typeof ListRegionsOutput.Type;
 
 // The operation
 /**
- * List Regions
+ * List VFS Regions
  *
- * List all Regions at Vultr.
- *
- * @param per_page - Number of items requested per page. Default is 100 and Max is 500.
- * @param cursor - Cursor for paging. See [Meta and Pagination](#section/Introduction/Meta-and-Pagination).
+ * Retrieve a list of all regions where VFS can be deployed
  */
 export const listRegions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListRegionsInput,
   outputSchema: ListRegionsOutput,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
 }));

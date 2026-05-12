@@ -13,6 +13,9 @@ export const UpdateDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   vpc_id: Schema.optional(Schema.String),
   maintenance_dow: Schema.optional(Schema.String),
   maintenance_time: Schema.optional(Schema.String),
+  backup_hour: Schema.optional(Schema.String),
+  backup_minute: Schema.optional(Schema.String),
+  pending_charges: Schema.optional(Schema.Number),
   cluster_time_zone: Schema.optional(Schema.String),
   trusted_ips: Schema.optional(Schema.Array(Schema.String)),
   mysql_sql_modes: Schema.optional(Schema.Array(Schema.String)),
@@ -20,6 +23,10 @@ export const UpdateDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   mysql_slow_query_log: Schema.optional(Schema.Boolean),
   mysql_long_query_time: Schema.optional(Schema.Number),
   redis_eviction_policy: Schema.optional(Schema.String),
+  eviction_policy: Schema.optional(Schema.String),
+  enable_kafka_rest: Schema.optional(Schema.Boolean),
+  enable_schema_registry: Schema.optional(Schema.Boolean),
+  enable_kafka_connect: Schema.optional(Schema.Boolean),
 }).pipe(T.Http({ method: "PUT", path: "/databases/{databaseId}" }));
 export type UpdateDatabaseInput = typeof UpdateDatabaseInput.Type;
 

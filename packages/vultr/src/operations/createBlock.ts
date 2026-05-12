@@ -9,6 +9,8 @@ export const CreateBlockInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   size_gb: Schema.Number,
   label: Schema.optional(Schema.String),
   block_type: Schema.optional(Schema.String),
+  snapshot_id: Schema.optional(Schema.String),
+  bootable: Schema.optional(Schema.Boolean),
 }).pipe(T.Http({ method: "POST", path: "/blocks" }));
 export type CreateBlockInput = typeof CreateBlockInput.Type;
 

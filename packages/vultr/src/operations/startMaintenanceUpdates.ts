@@ -5,7 +5,9 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const StartMaintenanceUpdatesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({ method: "POST", path: "/databases/{databaseId}/maintenance" }),
   );
 export type StartMaintenanceUpdatesInput =
@@ -24,6 +26,8 @@ export type StartMaintenanceUpdatesOutput =
  * Start Maintenance Updates
  *
  * Start maintenance updates for the Managed Database.
+ *
+ * @param databaseId - The [Managed Database ID](#operation/list-databases).
  */
 export const startMaintenanceUpdates = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

@@ -1,7 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../errors.ts";
+import {
+  BadRequest,
+  Forbidden,
+  NotFound,
+  UnprocessableEntity,
+} from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
@@ -13,6 +18,9 @@ export const UpdateLoadBalancerInput =
         private_key: Schema.optional(SensitiveString),
         certificate: Schema.optional(Schema.String),
         chain: Schema.optional(Schema.String),
+        private_key_b64: Schema.optional(Schema.String),
+        certificate_b64: Schema.optional(Schema.String),
+        chain_b64: Schema.optional(Schema.String),
       }),
     ),
     sticky_session: Schema.optional(
@@ -42,8 +50,10 @@ export const UpdateLoadBalancerInput =
       }),
     ),
     proxy_protocol: Schema.optional(Schema.Boolean),
+    timeout: Schema.optional(Schema.Number),
     ssl_redirect: Schema.optional(Schema.Boolean),
     http2: Schema.optional(Schema.Boolean),
+    http3: Schema.optional(Schema.Boolean),
     nodes: Schema.optional(Schema.Number),
     balancing_algorithm: Schema.optional(Schema.String),
     instances: Schema.optional(Schema.Array(Schema.String)),
@@ -59,6 +69,13 @@ export const UpdateLoadBalancerInput =
         }),
       ),
     ),
+    auto_ssl: Schema.optional(
+      Schema.Struct({
+        domain_zone: Schema.optional(Schema.String),
+        domain_sub: Schema.optional(Schema.String),
+      }),
+    ),
+    global_regions: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({ method: "PATCH", path: "/load-balancers/{loadBalancerId}" }),
   );
@@ -79,5 +96,5 @@ export type UpdateLoadBalancerOutput = typeof UpdateLoadBalancerOutput.Type;
 export const updateLoadBalancer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UpdateLoadBalancerInput,
   outputSchema: UpdateLoadBalancerOutput,
-  errors: [BadRequest, Forbidden, NotFound] as const,
+  errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
 }));

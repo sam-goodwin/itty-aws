@@ -1,7 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../errors.ts";
+import {
+  BadRequest,
+  Forbidden,
+  NotFound,
+  UnprocessableEntity,
+} from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
@@ -12,6 +17,9 @@ export const ListInstancesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   label: Schema.optional(Schema.String),
   main_ip: Schema.optional(Schema.String),
   region: Schema.optional(Schema.String),
+  firewall_group_id: Schema.optional(Schema.String),
+  hostname: Schema.optional(Schema.String),
+  show_pending_charges: Schema.optional(Schema.Boolean),
 }).pipe(T.Http({ method: "GET", path: "/instances" }));
 export type ListInstancesInput = typeof ListInstancesInput.Type;
 
@@ -48,10 +56,21 @@ export const ListInstancesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         label: Schema.optional(Schema.String),
         tag: Schema.optional(Schema.String),
         internal_ip: Schema.optional(Schema.String),
+        vpc_only: Schema.optional(Schema.Boolean),
+        vpcs: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              version: Schema.optional(Schema.Number),
+              subnet: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
         kvm: Schema.optional(Schema.String),
         os_id: Schema.optional(Schema.Number),
         app_id: Schema.optional(Schema.Number),
         image_id: Schema.optional(Schema.String),
+        snapshot_id: Schema.optional(Schema.String),
         firewall_group_id: Schema.optional(Schema.String),
         features: Schema.optional(Schema.Array(Schema.String)),
         plan: Schema.optional(Schema.String),
@@ -86,9 +105,12 @@ export type ListInstancesOutput = typeof ListInstancesOutput.Type;
  * @param label - Filter by label.
  * @param main_ip - Filter by main ip address.
  * @param region - Filter by [Region id](#operation/list-regions).
+ * @param firewall_group_id - Filter by [Firewall group id](#operation/list-firewall-groups).
+ * @param hostname - Filter by hostname.
+ * @param show_pending_charges - Set to `true` to show pending charges.
  */
 export const listInstances = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListInstancesInput,
   outputSchema: ListInstancesOutput,
-  errors: [BadRequest, Forbidden, NotFound] as const,
+  errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
 }));

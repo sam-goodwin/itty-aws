@@ -9,6 +9,8 @@ export const UpdateUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   userId: Schema.String.pipe(T.PathParam()),
   email: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
+  first_name: Schema.optional(Schema.String),
+  last_name: Schema.optional(Schema.String),
   password: Schema.optional(SensitiveString),
   api_enabled: Schema.optional(Schema.Boolean),
   acls: Schema.optional(Schema.Array(Schema.String)),

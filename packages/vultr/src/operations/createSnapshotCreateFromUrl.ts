@@ -8,6 +8,7 @@ export const CreateSnapshotCreateFromUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.String,
     description: Schema.optional(Schema.String),
+    uefi: Schema.optional(Schema.Boolean),
   }).pipe(T.Http({ method: "POST", path: "/snapshots/create-from-url" }));
 export type CreateSnapshotCreateFromUrlInput =
   typeof CreateSnapshotCreateFromUrlInput.Type;

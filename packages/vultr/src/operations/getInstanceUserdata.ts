@@ -24,7 +24,7 @@ export type GetInstanceUserdataOutput = typeof GetInstanceUserdataOutput.Type;
 /**
  * Get Instance User Data
  *
- * Get the user-supplied, base64 encoded [user data](https://www.vultr.com/docs/manage-instance-user-data-with-the-vultr-metadata-api/) for an Instance.
+ * Get the user-supplied, base64 encoded [user data](https://docs.vultr.com/manage-instance-user-data-with-the-vultr-metadata-api/) for an Instance.
  *
  * @param instanceId - The [Instance ID](#operation/list-instances).
  */

@@ -5,7 +5,9 @@ import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
 export const DatabaseDetachMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({ method: "DELETE", path: "/databases/{databaseId}/migration" }),
   );
 export type DatabaseDetachMigrationInput =
@@ -22,6 +24,8 @@ export type DatabaseDetachMigrationOutput =
  * Detach Migration
  *
  * Detach a migration from the Managed Database.
+ *
+ * @param databaseId - The [Managed Database ID](#operation/list-databases).
  */
 export const databaseDetachMigration = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

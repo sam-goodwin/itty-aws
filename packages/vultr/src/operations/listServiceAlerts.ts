@@ -11,6 +11,7 @@ import {
 // Input Schema
 export const ListServiceAlertsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    databaseId: Schema.String.pipe(T.PathParam()),
     period: Schema.String,
   },
 ).pipe(T.Http({ method: "POST", path: "/databases/{databaseId}/alerts" }));
@@ -38,6 +39,8 @@ export type ListServiceAlertsOutput = typeof ListServiceAlertsOutput.Type;
  * List Service Alerts
  *
  * List service alert messages for the Managed Database.
+ *
+ * @param databaseId - The [Managed Database ID](#operation/list-databases).
  */
 export const listServiceAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListServiceAlertsInput,

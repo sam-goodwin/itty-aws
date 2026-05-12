@@ -5,7 +5,9 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListAvailableVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({ method: "GET", path: "/databases/{databaseId}/version-upgrade" }),
   );
 export type ListAvailableVersionsInput = typeof ListAvailableVersionsInput.Type;
@@ -22,7 +24,9 @@ export type ListAvailableVersionsOutput =
 /**
  * List Available Versions
  *
- * List all available version upgrades within the Managed Database (PostgreSQL engine types only).
+ * List all available version upgrades within the Managed Database (PostgreSQL and Kafka engine types only).
+ *
+ * @param databaseId - The [Managed Database ID](#operation/list-databases).
  */
 export const listAvailableVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

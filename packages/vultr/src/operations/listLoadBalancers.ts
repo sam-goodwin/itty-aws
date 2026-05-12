@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { BadRequest, NotFound } from "../errors.ts";
+import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const ListLoadBalancersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -35,6 +35,7 @@ export const ListLoadBalancersOutput =
                 }),
               ),
               proxy_protocol: Schema.optional(Schema.Boolean),
+              timeout: Schema.optional(Schema.Number),
               private_network: Schema.optional(Schema.String),
               vpc: Schema.optional(Schema.String),
             }),
@@ -52,6 +53,7 @@ export const ListLoadBalancersOutput =
           ),
           has_ssl: Schema.optional(Schema.Boolean),
           http2: Schema.optional(Schema.Boolean),
+          http3: Schema.optional(Schema.Boolean),
           nodes: Schema.optional(Schema.Number),
           forward_rules: Schema.optional(
             Schema.Array(
@@ -75,6 +77,26 @@ export const ListLoadBalancersOutput =
               }),
             ),
           ),
+          node_ips: Schema.optional(
+            Schema.Struct({
+              v4: Schema.optional(Schema.Array(Schema.String)),
+              v6: Schema.optional(Schema.Array(Schema.String)),
+              private: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+          auto_ssl: Schema.optional(
+            Schema.Struct({
+              domain_zone: Schema.optional(Schema.String),
+              domain: Schema.optional(Schema.String),
+            }),
+          ),
+          global_parent_id: Schema.optional(Schema.String),
+          global_regions: Schema.optional(Schema.Array(Schema.String)),
+          global_children_ids: Schema.optional(Schema.Array(Schema.String)),
+          global_cname: Schema.optional(Schema.String),
+          ssl_cert_b64: Schema.optional(Schema.String),
+          pending_charges: Schema.optional(Schema.Number),
+          cname: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -105,5 +127,5 @@ export type ListLoadBalancersOutput = typeof ListLoadBalancersOutput.Type;
 export const listLoadBalancers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListLoadBalancersInput,
   outputSchema: ListLoadBalancersOutput,
-  errors: [BadRequest, NotFound] as const,
+  errors: [BadRequest, NotFound, UnprocessableEntity] as const,
 }));

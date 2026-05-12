@@ -5,7 +5,9 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const ListConnectionPoolsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({ method: "GET", path: "/databases/{databaseId}/connection-pools" }),
   );
 export type ListConnectionPoolsInput = typeof ListConnectionPoolsInput.Type;
@@ -44,6 +46,8 @@ export type ListConnectionPoolsOutput = typeof ListConnectionPoolsOutput.Type;
  * List Connection Pools
  *
  * List all connection pools within the Managed Database (PostgreSQL engine types only).
+ *
+ * @param databaseId - The [Managed Database ID](#operation/list-databases).
  */
 export const listConnectionPools = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListConnectionPoolsInput,

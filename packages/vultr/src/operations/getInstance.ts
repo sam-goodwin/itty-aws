@@ -42,10 +42,21 @@ export const GetInstanceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       label: Schema.optional(Schema.String),
       tag: Schema.optional(Schema.String),
       internal_ip: Schema.optional(Schema.String),
+      vpc_only: Schema.optional(Schema.Boolean),
+      vpcs: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.Number),
+            subnet: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
       kvm: Schema.optional(Schema.String),
       os_id: Schema.optional(Schema.Number),
       app_id: Schema.optional(Schema.Number),
       image_id: Schema.optional(Schema.String),
+      snapshot_id: Schema.optional(Schema.String),
       firewall_group_id: Schema.optional(Schema.String),
       features: Schema.optional(Schema.Array(Schema.String)),
       plan: Schema.optional(Schema.String),

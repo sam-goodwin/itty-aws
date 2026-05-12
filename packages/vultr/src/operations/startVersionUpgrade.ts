@@ -11,6 +11,7 @@ import {
 // Input Schema
 export const StartVersionUpgradeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseId: Schema.String.pipe(T.PathParam()),
     version: Schema.String,
   }).pipe(
     T.Http({ method: "POST", path: "/databases/{databaseId}/version-upgrade" }),
@@ -28,7 +29,9 @@ export type StartVersionUpgradeOutput = typeof StartVersionUpgradeOutput.Type;
 /**
  * Start Version Upgrade
  *
- * Start a version upgrade for the Managed Database (PostgreSQL engine types only).
+ * Start a version upgrade for the Managed Database (PostgreSQL and Kafka engine types only).
+ *
+ * @param databaseId - The [Managed Database ID](#operation/list-databases).
  */
 export const startVersionUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: StartVersionUpgradeInput,

@@ -45,7 +45,8 @@ export type ListDatabasePlansOutput = typeof ListDatabasePlansOutput.Type;
 
 * `mysql`
 * `pg`
-* `redis`.
+* `valkey`
+* `kafka`
  * @param nodes - Filter by number of nodes.
  * @param region - Filter by [Region id](#operation/list-regions).
  */

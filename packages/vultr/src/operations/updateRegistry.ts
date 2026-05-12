@@ -21,19 +21,19 @@ export const UpdateRegistryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       used: Schema.optional(
         Schema.Struct({
-          bytes: Schema.optional(Schema.Unknown),
-          mb: Schema.optional(Schema.Unknown),
-          gb: Schema.optional(Schema.Unknown),
-          tb: Schema.optional(Schema.Unknown),
+          bytes: Schema.optional(Schema.Number),
+          mb: Schema.optional(Schema.Number),
+          gb: Schema.optional(Schema.Number),
+          tb: Schema.optional(Schema.Number),
           updated_at: Schema.optional(Schema.String),
         }),
       ),
       allowed: Schema.optional(
         Schema.Struct({
-          bytes: Schema.optional(Schema.Unknown),
-          mb: Schema.optional(Schema.Unknown),
-          gb: Schema.optional(Schema.Unknown),
-          tb: Schema.optional(Schema.Unknown),
+          bytes: Schema.optional(Schema.Number),
+          mb: Schema.optional(Schema.Number),
+          gb: Schema.optional(Schema.Number),
+          tb: Schema.optional(Schema.Number),
           updated_at: Schema.optional(Schema.String),
         }),
       ),
@@ -69,10 +69,11 @@ export const UpdateRegistryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           billing: Schema.optional(
             Schema.Struct({
-              monthly_price: Schema.optional(Schema.Unknown),
-              pending_charges: Schema.optional(Schema.Unknown),
+              monthly_price: Schema.optional(Schema.Number),
+              pending_charges: Schema.optional(Schema.Number),
             }),
           ),
+          plan: Schema.optional(Schema.String),
         }),
       ),
     }),
