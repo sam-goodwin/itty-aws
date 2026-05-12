@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { BadRequest, Forbidden } from "../errors.ts";
+import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetBlockSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -39,5 +39,5 @@ export type GetBlockSnapshotOutput = typeof GetBlockSnapshotOutput.Type;
 export const getBlockSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetBlockSnapshotInput,
   outputSchema: GetBlockSnapshotOutput,
-  errors: [BadRequest, Forbidden] as const,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

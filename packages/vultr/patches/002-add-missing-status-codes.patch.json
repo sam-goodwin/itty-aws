@@ -1,0 +1,33 @@
+{
+  "description": "Add observed 4xx error responses missing from the Vultr OpenAPI spec for non-database operations. Discovered via live API probing on 2026-05-12 (second pass).\n\n- GET /blocks/{blockId} and GET /blocks/snapshots/{snapshotId}: return 404 (not just 400/403) when the block or snapshot UUID does not exist.\n- POST /snapshots: returns 404 when instance_id refers to a non-existent instance (the doc only lists 400).\n- POST /object-storage/{objectStorageId}/bucket: returns 404 when the parent Object Storage subscription does not exist; the spec only declares 400/403.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1blocks~1{blockId}/get/responses/404",
+      "value": {
+        "description": "Not Found (block storage subscription does not exist)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1blocks~1snapshots~1{snapshotId}/get/responses/404",
+      "value": {
+        "description": "Not Found (block snapshot does not exist)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1snapshots/post/responses/404",
+      "value": {
+        "description": "Not Found (instance_id refers to a non-existent instance)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1object-storage~1{objectStorageId}~1bucket/post/responses/404",
+      "value": {
+        "description": "Not Found (Object Storage subscription does not exist)"
+      }
+    }
+  ]
+}

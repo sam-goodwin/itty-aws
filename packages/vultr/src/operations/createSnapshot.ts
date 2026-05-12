@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { BadRequest } from "../errors.ts";
+import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
 export const CreateSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -35,5 +35,5 @@ export type CreateSnapshotOutput = typeof CreateSnapshotOutput.Type;
 export const createSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CreateSnapshotInput,
   outputSchema: CreateSnapshotOutput,
-  errors: [BadRequest] as const,
+  errors: [BadRequest, NotFound] as const,
 }));
