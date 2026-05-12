@@ -1,10 +1,13 @@
 import { describe, expect, it } from "vitest";
 import { buildRequestParts, getHttpTrait } from "@distilled.cloud/core/traits";
+import * as Schema from "effect/Schema";
 import { transformCloudflareRequestParts } from "~/client/api";
 import { CreateAssetUploadRequest, PutScriptRequest } from "~/services/workers";
 import {
+  GetPhasResponse,
   PutPhasForAccountRequest,
   PutPhasForZoneRequest,
+  PutPhasResponse,
 } from "~/services/rulesets";
 
 describe("client api", () => {
@@ -154,6 +157,46 @@ describe("client api", () => {
         "/zones/zone-123/rulesets/phases/http_request_firewall_custom/entrypoint",
       );
     });
+  });
 
+  describe("rulesets phase entrypoint responses", () => {
+    const emptyEntrypointResponse = {
+      id: "ruleset-123",
+      kind: "zone",
+      last_updated: "2026-05-12T08:52:25Z",
+      name: "http_request_firewall_custom",
+      phase: "http_request_firewall_custom",
+      source: "firewall_custom",
+      version: "3",
+      description: "",
+    };
+
+    it("decodes getPhas responses without rules", () => {
+      expect(
+        Schema.decodeUnknownSync(GetPhasResponse)(emptyEntrypointResponse),
+      ).toEqual({
+        id: "ruleset-123",
+        kind: "zone",
+        lastUpdated: "2026-05-12T08:52:25Z",
+        name: "http_request_firewall_custom",
+        phase: "http_request_firewall_custom",
+        version: "3",
+        description: "",
+      });
+    });
+
+    it("decodes putPhas responses without rules", () => {
+      expect(
+        Schema.decodeUnknownSync(PutPhasResponse)(emptyEntrypointResponse),
+      ).toEqual({
+        id: "ruleset-123",
+        kind: "zone",
+        lastUpdated: "2026-05-12T08:52:25Z",
+        name: "http_request_firewall_custom",
+        phase: "http_request_firewall_custom",
+        version: "3",
+        description: "",
+      });
+    });
   });
 });
