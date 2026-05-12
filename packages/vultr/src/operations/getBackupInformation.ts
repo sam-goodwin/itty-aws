@@ -1,7 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../errors.ts";
+import {
+  BadRequest,
+  Forbidden,
+  NotFound,
+  UnprocessableEntity,
+} from "../errors.ts";
 
 // Input Schema
 export const GetBackupInformationInput =
@@ -40,6 +45,6 @@ export const getBackupInformation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: GetBackupInformationInput,
     outputSchema: GetBackupInformationOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
+    errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
   }),
 );

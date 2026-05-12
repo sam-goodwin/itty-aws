@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { BadRequest, NotFound } from "../errors.ts";
+import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreatePullzoneInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -55,5 +55,5 @@ export type CreatePullzoneOutput = typeof CreatePullzoneOutput.Type;
 export const createPullzone = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CreatePullzoneInput,
   outputSchema: CreatePullzoneOutput,
-  errors: [BadRequest, NotFound] as const,
+  errors: [BadRequest, NotFound, UnprocessableEntity] as const,
 }));

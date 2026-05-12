@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { BadRequest, NotFound } from "../errors.ts";
+import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const DeleteDatabaseUserInput =
@@ -32,5 +32,5 @@ export type DeleteDatabaseUserOutput = typeof DeleteDatabaseUserOutput.Type;
 export const deleteDatabaseUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeleteDatabaseUserInput,
   outputSchema: DeleteDatabaseUserOutput,
-  errors: [BadRequest, NotFound] as const,
+  errors: [BadRequest, NotFound, UnprocessableEntity] as const,
 }));

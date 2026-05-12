@@ -1,7 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../errors.ts";
+import {
+  BadRequest,
+  Forbidden,
+  NotFound,
+  UnprocessableEntity,
+} from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
@@ -52,5 +57,5 @@ export type GetDatabaseUserOutput = typeof GetDatabaseUserOutput.Type;
 export const getDatabaseUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetDatabaseUserInput,
   outputSchema: GetDatabaseUserOutput,
-  errors: [BadRequest, Forbidden, NotFound] as const,
+  errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
 }));

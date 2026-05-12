@@ -1,0 +1,278 @@
+{
+  "description": "Add observed 422 Validation Error responses missing from the Vultr OpenAPI spec. Discovered via live API probing — all /databases/{databaseId}/* endpoints return 422 (often with a {message: string} body instead of the documented {error, status} shape) when given an invalid Database Subscription UUID. POST /cdns/pull-zones also returns 422 for invalid origin_domain values.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}/delete/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1usage/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1users/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1users~1{username}/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1users~1{username}/delete/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1dbs/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1dbs~1{dbName}/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1dbs~1{dbName}/delete/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1topics/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1topics~1{topicName}/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1topics~1{topicName}/delete/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1quotas/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1quotas~1{clientId}~1{username}/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1quotas~1{clientId}~1{username}/delete/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1available-connectors/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1available-connectors~1{connectorClass}~1configuration/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1connectors/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1connectors~1{connectorName}/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1connectors~1{connectorName}/delete/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1connectors~1{connectorName}~1status/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1connectors~1{connectorName}~1restart/post/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1connectors~1{connectorName}~1pause/post/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1connectors~1{connectorName}~1resume/post/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1connectors~1{connectorName}~1tasks~1{taskId}~1restart/post/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1maintenance/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1maintenance/post/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1migration/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1migration/delete/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1backups/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1connection-pools/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1connection-pools~1{poolName}/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1connection-pools~1{poolName}/delete/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1advanced-options/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1advanced-options~1kafka-rest/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1advanced-options~1schema-registry/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1advanced-options~1kafka-connect/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1databases~1{databaseId}~1version-upgrade/get/responses/422",
+      "value": {
+        "description": "Validation Error (invalid Database Subscription UUID, or malformed input)"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1cdns~1pull-zones/post/responses/422",
+      "value": {
+        "description": "Validation Error (invalid pull zone configuration, e.g. malformed origin domain)"
+      }
+    }
+  ]
+}

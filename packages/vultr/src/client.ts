@@ -22,11 +22,27 @@ import { Credentials } from "./credentials.ts";
 
 // Vultr API Error Response Schema
 // Per the Vultr API docs: "All 4xx errors will return a JSON response object
-// with an `error` attribute explaining the error."
+// with an `error` attribute explaining the error." However, several managed-
+// database endpoints (e.g. /databases/{id}/backups, /maintenance, /alerts,
+// /version-upgrade, /migration, /read-replica, /fork, /restore,
+// /advanced-options, /connectors, /quotas, /topics, /promote-read-replica,
+// and various sub-resource PUTs) actually return `{ message: string }` with
+// no `status` field. We accept either shape and use the HTTP status code as
+// the source of truth for mapping to a typed error class.
 const ApiErrorResponse = Schema.Struct({
-  error: Schema.String,
+  error: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
   status: Schema.optional(Schema.Number),
 });
+
+const extractMessage = (errorBody: unknown): string | undefined => {
+  try {
+    const parsed = Schema.decodeUnknownSync(ApiErrorResponse)(errorBody);
+    return parsed.error ?? parsed.message;
+  } catch {
+    return undefined;
+  }
+};
 
 /**
  * Match a Vultr API error response to the appropriate error class based on HTTP status.
@@ -37,26 +53,22 @@ const matchError = (
   _errors?: readonly unknown[],
   headers?: Record<string, string | undefined>,
 ): Effect.Effect<never, unknown> => {
-  try {
-    const parsed = Schema.decodeUnknownSync(ApiErrorResponse)(errorBody);
-    const ErrorClass = (HTTP_STATUS_MAP as any)[status];
-    if (ErrorClass) {
-      return Effect.fail(
-        new ErrorClass({
-          message: parsed.error ?? "",
-          retryAfter: parseRetryAfterForStatus(status, headers),
-        }),
-      );
-    }
+  const message = extractMessage(errorBody);
+  const ErrorClass = (HTTP_STATUS_MAP as any)[status];
+  if (ErrorClass) {
     return Effect.fail(
-      new UnknownVultrError({
-        message: parsed.error,
-        body: errorBody,
+      new ErrorClass({
+        message: message ?? "",
+        retryAfter: parseRetryAfterForStatus(status, headers),
       }),
     );
-  } catch {
-    return Effect.fail(new UnknownVultrError({ body: errorBody }));
   }
+  return Effect.fail(
+    new UnknownVultrError({
+      message,
+      body: errorBody,
+    }),
+  );
 };
 
 /**

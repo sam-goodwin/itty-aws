@@ -1,7 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../errors.ts";
+import {
+  BadRequest,
+  Forbidden,
+  NotFound,
+  UnprocessableEntity,
+} from "../errors.ts";
 
 // Input Schema
 export const ListDatabaseDbsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -37,5 +42,5 @@ export type ListDatabaseDbsOutput = typeof ListDatabaseDbsOutput.Type;
 export const listDatabaseDbs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListDatabaseDbsInput,
   outputSchema: ListDatabaseDbsOutput,
-  errors: [BadRequest, Forbidden, NotFound] as const,
+  errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
 }));
