@@ -107,3 +107,6 @@
 	shallow = true
 	ignore = dirty
 	fetchRecurseSubmodules = false
+[submodule "packages/vultr/specs/openapi-vultr"]
+	path = packages/vultr/specs/openapi-vultr
+	url = https://github.com/zeyuri/openapi-vultr.git

@@ -10,3 +10,4 @@ pnpm-workspace.yaml
 vendor/
 .claude
 .worktrees
+packages/vultr/specs/v2.preprocessed.json
