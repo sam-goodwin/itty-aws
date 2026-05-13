@@ -1,7 +1,7 @@
 import { Effect, Schedule } from "effect";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { UnknownPlanetScaleError } from "../src/client";
-import { Forbidden, NotFound } from "../src/errors";
+import { Forbidden, NotFound, UnprocessableEntity } from "../src/errors";
 import { createBranch } from "../src/operations/createBranch";
 import { deleteBranch } from "../src/operations/deleteBranch";
 import { demoteBranch } from "../src/operations/demoteBranch";
@@ -73,6 +73,7 @@ const isNotFoundOrForbidden = (error: unknown): boolean =>
 const isApiError = (error: unknown): boolean =>
   error instanceof NotFound ||
   error instanceof Forbidden ||
+  error instanceof UnprocessableEntity ||
   error instanceof UnknownPlanetScaleError ||
   (error !== null && typeof error === "object" && "_tag" in error);
 
@@ -536,54 +537,58 @@ describe.each([{ kind: "postgresql" }, { kind: "mysql" }] as const)(
       // verify, so the test timeout must exceed the polling window. Postgres
       // provisioning is consistently slower than mysql, so give it more headroom.
       const branchTestTimeout = kind === "postgresql" ? 900_000 : 600_000;
-      it("can create and delete a branch", { timeout: branchTestTimeout }, async () => {
-        const db = getDb();
-        const branchName = `test-${testRunId}`;
+      it(
+        "can create and delete a branch",
+        { timeout: branchTestTimeout },
+        async () => {
+          const db = getDb();
+          const branchName = `test-${testRunId}`;
 
-        // Create branch
-        const created = await runEffect(
-          createBranch({
-            organization: db.organization,
-            database: db.name,
-            name: branchName,
-            parent_branch: "main",
-          }),
-        );
-        expect(created.name).toBe(branchName);
-        expect(created.id).toBeDefined();
-        expect(created.parent_branch).toBe("main");
-
-        // Wait for ready
-        await runEffect(
-          waitForBranchReady(db.organization, db.name, branchName),
-        );
-
-        // Delete branch
-        await runEffect(
-          deleteBranch({
-            organization: db.organization,
-            database: db.name,
-            branch: branchName,
-          }),
-        );
-
-        // Verify deleted
-        const error = await runEffect(
-          getBranch({
-            organization: db.organization,
-            database: db.name,
-            branch: branchName,
-          }).pipe(
-            Effect.matchEffect({
-              onFailure: (e) => Effect.succeed(e),
-              onSuccess: () => Effect.succeed(null),
+          // Create branch
+          const created = await runEffect(
+            createBranch({
+              organization: db.organization,
+              database: db.name,
+              name: branchName,
+              parent_branch: "main",
             }),
-          ),
-        );
+          );
+          expect(created.name).toBe(branchName);
+          expect(created.id).toBeDefined();
+          expect(created.parent_branch).toBe("main");
 
-        expect(error).not.toBeNull();
-        expect((error as { _tag: string })._tag).toBe("NotFound");
-      });
+          // Wait for ready
+          await runEffect(
+            waitForBranchReady(db.organization, db.name, branchName),
+          );
+
+          // Delete branch
+          await runEffect(
+            deleteBranch({
+              organization: db.organization,
+              database: db.name,
+              branch: branchName,
+            }),
+          );
+
+          // Verify deleted
+          const error = await runEffect(
+            getBranch({
+              organization: db.organization,
+              database: db.name,
+              branch: branchName,
+            }).pipe(
+              Effect.matchEffect({
+                onFailure: (e) => Effect.succeed(e),
+                onSuccess: () => Effect.succeed(null),
+              }),
+            ),
+          );
+
+          expect(error).not.toBeNull();
+          expect((error as { _tag: string })._tag).toBe("NotFound");
+        },
+      );
     });
 
     // ============================================================================
@@ -647,7 +652,7 @@ describe.each([{ kind: "postgresql" }, { kind: "mysql" }] as const)(
         expect(isNotFoundOrForbidden(error)).toBe(true);
       });
 
-      it("returns error when trying to delete production branch (main)", async () => {
+      it("returns UnprocessableEntity when trying to delete production branch (main)", async () => {
         const db = getDb();
         const error = await runEffect(
           deleteBranch({
@@ -664,7 +669,7 @@ describe.each([{ kind: "postgresql" }, { kind: "mysql" }] as const)(
 
         // Deleting production branch should fail with some error
         expect(error).not.toBeNull();
-        expect(isApiError(error)).toBe(true);
+        expect(error).toBeInstanceOf(UnprocessableEntity);
       });
     });
 
