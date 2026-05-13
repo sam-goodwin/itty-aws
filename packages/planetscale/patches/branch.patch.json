@@ -58,6 +58,11 @@
       "value": true
     },
     {
+      "op": "add",
+      "path": "/definitions/DatabaseBranch/properties/restored_from_branch/properties/deleted_at/x-nullable",
+      "value": true
+    },
+    {
       "op": "replace",
       "path": "/definitions/PaginatedDatabaseBranch/properties/data/items/required",
       "value": [
@@ -111,6 +116,11 @@
     {
       "op": "add",
       "path": "/definitions/PaginatedDatabaseBranch/properties/data/items/properties/parent_branch/x-nullable",
+      "value": true
+    },
+    {
+      "op": "add",
+      "path": "/definitions/PaginatedDatabaseBranch/properties/data/items/properties/restored_from_branch/properties/deleted_at/x-nullable",
       "value": true
     }
   ]

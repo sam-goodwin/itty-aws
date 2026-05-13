@@ -34,7 +34,7 @@ export const UpdateBranchChangeRequestOutput =
       "completed",
     ]),
     started_at: Schema.String,
-    completed_at: Schema.String,
+    completed_at: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.String,
     updated_at: Schema.String,
     actor: Schema.Struct({
