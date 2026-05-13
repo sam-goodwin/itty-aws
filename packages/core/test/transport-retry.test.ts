@@ -21,20 +21,10 @@ describe("isTransientError — HttpClientError", () => {
     expect(Category.isTransientError(error)).toBe(true);
   });
 
-  it("retries 5xx StatusCodeError", () => {
+  it("does NOT retry StatusCodeError (left to per-SDK API client)", () => {
     const response = HttpClientResponse.fromWeb(
       fakeRequest,
       new Response(null, { status: 503 }),
-    );
-    const reason = new StatusCodeError({ request: fakeRequest, response });
-    const error = new HttpClientError({ reason });
-    expect(Category.isTransientError(error)).toBe(true);
-  });
-
-  it("does NOT retry 4xx StatusCodeError", () => {
-    const response = HttpClientResponse.fromWeb(
-      fakeRequest,
-      new Response(null, { status: 404 }),
     );
     const reason = new StatusCodeError({ request: fakeRequest, response });
     const error = new HttpClientError({ reason });
@@ -50,7 +40,7 @@ describe("isTransientError — HttpClientError", () => {
     expect(Category.isTransientError(error)).toBe(false);
   });
 
-  it("returns false for non-HttpClientError objects", () => {
+  it("returns false for non-HttpClientError values", () => {
     expect(Category.isTransientError({ some: "object" })).toBe(false);
     expect(Category.isTransientError(undefined)).toBe(false);
     expect(Category.isTransientError(null)).toBe(false);

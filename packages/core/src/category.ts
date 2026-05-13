@@ -20,6 +20,7 @@
  */
 import * as Effect from "effect/Effect";
 import * as Predicate from "effect/Predicate";
+import * as HttpClientError from "effect/unstable/http/HttpClientError";
 
 // ============================================================================
 // Error Category Constants
@@ -261,49 +262,17 @@ export const isThrottling = (error: unknown): boolean => {
 };
 
 /**
- * Effect's `FetchHttpClient` brands `HttpClientError` instances with this
- * TypeId. We duck-type against it so `isTransientError` can recognise wire-
- * level failures (undici `ConnectTimeoutError`, socket reset, DNS failure,
- * premature stream close, …) and 5xx responses without adding a hard
- * dependency on `effect/unstable/http/HttpClientError` in `@distilled.cloud/core`.
+ * Check if an error is an Effect `HttpClientError` caused by a wire-level
+ * transport failure (undici `ConnectTimeoutError`, socket reset, DNS
+ * failure, premature stream close, …). The request never reached the
+ * server (or the response never finished) so retrying is safe.
+ *
+ * Status-code retries are intentionally left to the per-SDK API client,
+ * which knows whether a given response is genuinely retryable.
  */
-const httpClientErrorTypeId = "~effect/http/HttpClientError";
-
-/**
- * Check if an error is an Effect `HttpClientError` whose underlying reason
- * is inherently retryable: a transport failure (no response was received)
- * or a 5xx response from the server.
- */
-const isRetryableHttpClientError = (error: unknown): boolean => {
-  if (
-    !Predicate.isObject(error) ||
-    !Predicate.hasProperty(httpClientErrorTypeId)(error) ||
-    !Predicate.hasProperty("reason")(error)
-  ) {
-    return false;
-  }
-  const reason = (error as { reason: unknown }).reason;
-  if (!Predicate.isObject(reason) || !Predicate.hasProperty("_tag")(reason)) {
-    return false;
-  }
-  const tag = (reason as { _tag: unknown })._tag;
-  // Wire-level failures: connect/read timeout, socket reset, DNS failure,
-  // premature stream close. The request never reached the server (or the
-  // response never finished) so retrying is safe and almost always wins.
-  if (tag === "TransportError") return true;
-  // 5xx server responses are by convention retryable.
-  if (
-    tag === "StatusCodeError" &&
-    Predicate.hasProperty("response")(reason) &&
-    Predicate.isObject((reason as { response: unknown }).response) &&
-    Predicate.hasProperty("status")((reason as { response: object }).response)
-  ) {
-    const status = (reason as { response: { status: unknown } }).response
-      .status;
-    if (typeof status === "number" && status >= 500) return true;
-  }
-  return false;
-};
+const isHttpTransportError = (error: unknown): boolean =>
+  HttpClientError.isHttpClientError(error) &&
+  error.reason._tag === "TransportError";
 
 /**
  * Check if an error is a transient error that should be automatically retried.
@@ -315,10 +284,9 @@ const isRetryableHttpClientError = (error: unknown): boolean => {
  * - NetworkError (connection issues)
  * - TimeoutError (request timed out)
  * - LockedError (423 - resource temporarily locked)
- * - Effect `HttpClientError` whose `reason` is `TransportError` (undici
- *   connect/read timeout, socket reset, DNS failure, premature stream close)
- *   or a 5xx `StatusCodeError`. This catches wire-level failures from
- *   `FetchHttpClient` that don't carry distilled category metadata.
+ * - Effect `HttpClientError` with `reason._tag === "TransportError"`
+ *   (undici connect/read timeout, socket reset, DNS failure, premature
+ *   stream close)
  */
 export const isTransientError = (error: unknown): boolean => {
   // Check for retryable trait first
@@ -333,7 +301,7 @@ export const isTransientError = (error: unknown): boolean => {
     hasCategory(error, NetworkError) ||
     hasCategory(error, TimeoutError) ||
     hasCategory(error, LockedError) ||
-    isRetryableHttpClientError(error)
+    isHttpTransportError(error)
   );
 };
 
