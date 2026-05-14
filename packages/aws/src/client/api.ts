@@ -22,7 +22,9 @@ import {
   type ResponseParserOptions,
 } from "./response-parser.ts";
 
-import { Credentials, Endpoint, Region } from "../index.ts";
+import * as Credentials from "../credentials.browser.ts";
+import * as Endpoint from "../endpoint.ts";
+import * as Region from "../region.ts";
 
 export interface MakeOptions extends ResponseParserOptions {}
 
