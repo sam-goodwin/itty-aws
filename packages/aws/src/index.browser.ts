@@ -1,4 +1,11 @@
 /**
+ * AWS Authentication service for loading AWS profiles and credentials.
+ *
+ * @since 0.0.0
+ */
+export * as Auth from "./auth.browser.ts";
+
+/**
  * AWS Credentials providers for obtaining temporary or long-lived credentials.
  *
  * @since 0.0.0

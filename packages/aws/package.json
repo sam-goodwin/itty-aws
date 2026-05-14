@@ -23,6 +23,7 @@
     "./Auth": {
       "types": "./lib/auth.d.ts",
       "bun": "./src/auth.ts",
+      "browser": "./src/auth.browser.ts",
       "default": "./lib/auth.js"
     },
     "./Category": {

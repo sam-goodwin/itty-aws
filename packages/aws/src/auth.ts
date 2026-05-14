@@ -5,9 +5,14 @@ import * as FileSystem from "effect/FileSystem";
 import * as Option from "effect/Option";
 import * as Path from "effect/Path";
 import * as Redacted from "effect/Redacted";
-import * as Context from "effect/Context";
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import { createHash } from "node:crypto";
+import {
+  Auth,
+  type AwsProfileConfig,
+  type SsoProfileConfig,
+  type SSOToken,
+} from "./auth.browser.ts";
 import {
   ConflictingSSORegion,
   ConflictingSSOStartUrl,
@@ -18,10 +23,11 @@ import {
   SsoPortalError,
   SsoRegion,
   SsoStartUrl,
-  type CredentialsError,
   type ResolvedCredentials,
 } from "./credentials.ts";
 import { parseIni, parseSSOSessionData } from "./util/parse-ini.ts";
+
+export * from "./auth.browser.ts";
 
 /**
  * The time window (5 mins) that SDK will treat the SSO token expires in before the defined expiration date in token.
@@ -30,18 +36,6 @@ import { parseIni, parseSSOSessionData } from "./util/parse-ini.ts";
 const EXPIRE_WINDOW_MS = 5 * 60 * 1000;
 
 const REFRESH_MESSAGE = `To refresh this SSO session run 'aws sso login' with the corresponding profile.`;
-
-export class Auth extends Context.Service<
-  Auth,
-  {
-    loadProfile: (
-      profileName: string,
-    ) => Effect.Effect<AwsProfileConfig, CredentialsError>;
-    loadProfileCredentials: (
-      profileName: string,
-    ) => Effect.Effect<ResolvedCredentials, CredentialsError>;
-  }
->()("distilled-aws/AWS/Auth") {}
 
 export const Default = Effect.serviceOption(Auth).pipe(
   Effect.map(Option.getOrUndefined),
@@ -286,67 +280,3 @@ export const makeAuthService = () =>
       loadProfileCredentials,
     });
   });
-
-export interface AwsProfileConfig {
-  sso_session?: string;
-  sso_account_id?: string;
-  sso_role_name?: string;
-  region?: string;
-  output?: string;
-  sso_start_url?: string;
-  sso_region?: string;
-}
-export interface SsoProfileConfig extends AwsProfileConfig {
-  sso_start_url: string;
-  sso_region: string;
-  sso_account_id: string;
-  sso_role_name: string;
-}
-
-/**
- * Cached SSO token retrieved from SSO login flow.
- * @public
- */
-export interface SSOToken {
-  /**
-   * A base64 encoded string returned by the sso-oidc service.
-   */
-  accessToken: string;
-
-  /**
-   * The expiration time of the accessToken as an RFC 3339 formatted timestamp.
-   */
-  expiresAt: string;
-
-  /**
-   * The token used to obtain an access token in the event that the accessToken is invalid or expired.
-   */
-  refreshToken?: string;
-
-  /**
-   * The unique identifier string for each client. The client ID generated when performing the registration
-   * portion of the OIDC authorization flow. This is used to refresh the accessToken.
-   */
-  clientId?: string;
-
-  /**
-   * A secret string generated when performing the registration portion of the OIDC authorization flow.
-   * This is used to refresh the accessToken.
-   */
-  clientSecret?: string;
-
-  /**
-   * The expiration time of the client registration (clientId and clientSecret) as an RFC 3339 formatted timestamp.
-   */
-  registrationExpiresAt?: string;
-
-  /**
-   * The configured sso_region for the profile that credentials are being resolved for.
-   */
-  region?: string;
-
-  /**
-   * The configured sso_start_url for the profile that credentials are being resolved for.
-   */
-  startUrl?: string;
-}
