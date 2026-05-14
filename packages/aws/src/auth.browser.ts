@@ -1,5 +1,6 @@
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
+import * as Option from "effect/Option";
 import type {
   CredentialsError,
   ResolvedCredentials,
@@ -16,6 +17,11 @@ export class Auth extends Context.Service<
     ) => Effect.Effect<ResolvedCredentials, CredentialsError>;
   }
 >()("distilled-aws/AWS/Auth") {}
+
+// This doesn't do anything - it's here so that when building for the browser, you don't get a warning about `Auth.Default` not being exported.
+export const Default = Effect.serviceOption(Auth).pipe(
+  Effect.map(Option.getOrThrow),
+);
 
 export interface AwsProfileConfig {
   sso_session?: string;
