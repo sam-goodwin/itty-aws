@@ -8,6 +8,7 @@
   },
   "type": "module",
   "sideEffects": false,
+  "browser": "src/index.browser.ts",
   "module": "src/index.ts",
   "files": [
     "lib",
@@ -32,6 +33,7 @@
     "./Credentials": {
       "types": "./lib/credentials.d.ts",
       "bun": "./src/credentials.ts",
+      "browser": "./src/credentials.browser.ts",
       "default": "./lib/credentials.js"
     },
     "./Errors": {
@@ -62,6 +64,7 @@
     ".": {
       "types": "./lib/index.d.ts",
       "bun": "./src/index.ts",
+      "browser": "./src/index.browser.ts",
       "default": "./lib/index.js"
     }
   },
