@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare WORKERS API
+  title: Cloudflare Workers API
   version: 0.0.0
 servers:
   - url: https://api.cloudflare.com/client/v4
@@ -1463,7 +1463,6 @@ paths:
       x-distilled-errors:
         WorkerNotFound:
           - code: 10007
-          - code: 10013
         WorkerVersionNotFound:
           - code: 10071
     delete:
@@ -1546,7 +1545,6 @@ paths:
       x-distilled-errors:
         WorkerNotFound:
           - code: 10007
-          - code: 10013
         WorkerVersionNotFound:
           - code: 10071
   /accounts/{account_id}/workers/workers/{workerId}/versions:
@@ -8348,7 +8346,6 @@ paths:
       x-distilled-errors:
         WorkerNotFound:
           - code: 10007
-          - code: 10013
         DeploymentNotFound:
           - code: 10336
   /accounts/{account_id}/workers/scripts/{scriptName}/deployments:

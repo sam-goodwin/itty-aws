@@ -139,7 +139,7 @@ export class WorkerNotFound extends Schema.TaggedErrorClass<WorkerNotFound>()(
   "WorkerNotFound",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(WorkerNotFound, [{ code: 10007 }, { code: 10013 }]);
+T.applyErrorMatchers(WorkerNotFound, [{ code: 10007 }]);
 
 export class WorkerVersionNotFound extends Schema.TaggedErrorClass<WorkerVersionNotFound>()(
   "WorkerVersionNotFound",
