@@ -21,6 +21,7 @@ export type ListDatabaseRegionsInput = typeof ListDatabaseRegionsInput.Type;
 // Output Schema
 export const ListDatabaseRegionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
     next_page_url: Schema.NullOr(Schema.String),
@@ -36,6 +37,8 @@ export const ListDatabaseRegionsOutput =
         location: Schema.String,
         slug: Schema.String,
         current_default: Schema.Boolean,
+        mysql_supported: Schema.Boolean,
+        postgresql_supported: Schema.Boolean,
       }),
     ),
   });

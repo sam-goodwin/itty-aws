@@ -36,6 +36,7 @@ export type ListBackupsInput = typeof ListBackupsInput.Type;
 
 // Output Schema
 export const ListBackupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
   next_page_url: Schema.NullOr(Schema.String),
@@ -73,46 +74,58 @@ export const ListBackupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           deleted_at: Schema.NullOr(Schema.String),
         }),
       ),
-      actor: Schema.Struct({
-        id: Schema.String,
-        display_name: Schema.String,
-        avatar_url: Schema.String,
-      }),
-      backup_policy: Schema.NullOr(
+      actor: Schema.NullOr(
         Schema.Struct({
           id: Schema.String,
           display_name: Schema.String,
-          name: Schema.String,
-          target: Schema.Literals(["production", "development"]),
-          retention_value: Schema.Number,
-          retention_unit: Schema.String,
-          frequency_value: Schema.Number,
-          frequency_unit: Schema.String,
-          schedule_time: Schema.NullOr(Schema.String),
-          schedule_day: Schema.Number,
-          schedule_week: Schema.Number,
-          created_at: Schema.String,
-          updated_at: Schema.String,
-          last_ran_at: Schema.NullOr(Schema.String),
-          next_run_at: Schema.NullOr(Schema.String),
-          required: Schema.Boolean,
+          avatar_url: Schema.String,
         }),
       ),
-      schema_snapshot: Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        created_at: Schema.String,
-        updated_at: Schema.String,
-        linted_at: Schema.NullOr(Schema.String),
-        url: Schema.String,
-      }),
-      database_branch: Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        created_at: Schema.String,
-        updated_at: Schema.String,
-        deleted_at: Schema.NullOr(Schema.String),
-      }),
+      backup_policy: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            id: Schema.String,
+            display_name: Schema.String,
+            name: Schema.String,
+            target: Schema.Literals(["production", "development"]),
+            retention_value: Schema.Number,
+            retention_unit: Schema.String,
+            frequency_value: Schema.Number,
+            frequency_unit: Schema.String,
+            schedule_time: Schema.NullOr(Schema.String),
+            schedule_day: Schema.NullOr(Schema.Number),
+            schedule_week: Schema.NullOr(Schema.Number),
+            created_at: Schema.String,
+            updated_at: Schema.String,
+            last_ran_at: Schema.NullOr(Schema.String),
+            next_run_at: Schema.NullOr(Schema.String),
+            required: Schema.Boolean,
+          }),
+        ),
+      ),
+      schema_snapshot: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            id: Schema.String,
+            name: Schema.String,
+            created_at: Schema.String,
+            updated_at: Schema.String,
+            linted_at: Schema.NullOr(Schema.String),
+            url: Schema.String,
+          }),
+        ),
+      ),
+      database_branch: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            id: Schema.String,
+            name: Schema.String,
+            created_at: Schema.String,
+            updated_at: Schema.String,
+            deleted_at: Schema.NullOr(Schema.String),
+          }),
+        ),
+      ),
     }),
   ),
 });

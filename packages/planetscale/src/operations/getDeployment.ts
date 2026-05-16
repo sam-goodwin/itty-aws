@@ -22,13 +22,13 @@ export const GetDeploymentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   auto_cutover: Schema.Boolean,
   auto_delete_branch: Schema.Boolean,
   created_at: Schema.String,
-  cutover_at: Schema.String,
+  cutover_at: Schema.NullOr(Schema.String),
   cutover_expiring: Schema.Boolean,
-  deploy_check_errors: Schema.String,
-  finished_at: Schema.String,
-  queued_at: Schema.String,
-  ready_to_cutover_at: Schema.String,
-  started_at: Schema.String,
+  deploy_check_errors: Schema.optional(Schema.NullOr(Schema.String)),
+  finished_at: Schema.NullOr(Schema.String),
+  queued_at: Schema.NullOr(Schema.String),
+  ready_to_cutover_at: Schema.NullOr(Schema.String),
+  started_at: Schema.NullOr(Schema.String),
   state: Schema.Literals([
     "pending",
     "ready",
@@ -51,7 +51,7 @@ export const GetDeploymentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "cancelled",
     "error",
   ]),
-  submitted_at: Schema.String,
+  submitted_at: Schema.NullOr(Schema.String),
   updated_at: Schema.String,
   into_branch: Schema.String,
   deploy_request_number: Schema.Number,
@@ -73,20 +73,20 @@ export const GetDeploymentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       keyspace_name: Schema.String,
       table_name: Schema.String,
       operation_name: Schema.String,
-      eta_seconds: Schema.Number,
-      progress_percentage: Schema.Number,
-      deploy_error_docs_url: Schema.String,
+      eta_seconds: Schema.NullOr(Schema.Number),
+      progress_percentage: Schema.NullOr(Schema.Number),
+      deploy_error_docs_url: Schema.NullOr(Schema.String),
       ddl_statement: Schema.String,
       syntax_highlighted_ddl: Schema.String,
       created_at: Schema.String,
       updated_at: Schema.String,
-      throttled_at: Schema.String,
+      throttled_at: Schema.NullOr(Schema.String),
       can_drop_data: Schema.Boolean,
       table_locked: Schema.Boolean,
       table_recently_used: Schema.Boolean,
-      table_recently_used_at: Schema.String,
-      removed_foreign_key_names: Schema.Array(Schema.String),
-      deploy_errors: Schema.String,
+      table_recently_used_at: Schema.NullOr(Schema.String),
+      removed_foreign_key_names: Schema.NullOr(Schema.Array(Schema.String)),
+      deploy_errors: Schema.NullOr(Schema.String),
     }),
   ),
   deploy_operation_summaries: Schema.Array(
@@ -108,8 +108,8 @@ export const GetDeploymentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
       syntax_highlighted_ddl: Schema.String,
       table_name: Schema.String,
-      table_recently_used_at: Schema.String,
-      throttled_at: Schema.String,
+      table_recently_used_at: Schema.NullOr(Schema.String),
+      throttled_at: Schema.NullOr(Schema.String),
       removed_foreign_key_names: Schema.Array(Schema.String),
       shard_count: Schema.Number,
       shard_names: Schema.Array(Schema.String),
@@ -141,30 +141,46 @@ export const GetDeploymentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   lookup_vindex_operations: Schema.Array(
     Schema.Record(Schema.String, Schema.Unknown),
   ),
-  throttler_configurations: Schema.Array(
+  throttler_configurations: Schema.optional(
+    Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  deployment_revert_request: Schema.NullOr(
     Schema.Record(Schema.String, Schema.Unknown),
   ),
-  deployment_revert_request: Schema.Record(Schema.String, Schema.Unknown),
-  actor: Schema.Struct({
-    id: Schema.String,
-    display_name: Schema.String,
-    avatar_url: Schema.String,
-  }),
-  cutover_actor: Schema.Struct({
-    id: Schema.String,
-    display_name: Schema.String,
-    avatar_url: Schema.String,
-  }),
-  cancelled_actor: Schema.Struct({
-    id: Schema.String,
-    display_name: Schema.String,
-    avatar_url: Schema.String,
-  }),
-  schema_last_updated_at: Schema.String,
+  actor: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        id: Schema.String,
+        display_name: Schema.String,
+        avatar_url: Schema.String,
+      }),
+    ),
+  ),
+  cutover_actor: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        id: Schema.String,
+        display_name: Schema.String,
+        avatar_url: Schema.String,
+      }),
+    ),
+  ),
+  cancelled_actor: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        id: Schema.String,
+        display_name: Schema.String,
+        avatar_url: Schema.String,
+      }),
+    ),
+  ),
+  schema_last_updated_at: Schema.NullOr(Schema.String),
   table_locked: Schema.Boolean,
-  locked_table_name: Schema.String,
+  locked_table_name: Schema.optional(Schema.NullOr(Schema.String)),
   instant_ddl: Schema.Boolean,
   instant_ddl_eligible: Schema.Boolean,
+  queue_paused: Schema.Boolean,
+  queue_pause_reason: Schema.String,
 });
 export type GetDeploymentOutput = typeof GetDeploymentOutput.Type;
 

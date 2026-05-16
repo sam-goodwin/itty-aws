@@ -24,16 +24,17 @@ export type ListGeneratedQueryPatternsReportsInput =
 // Output Schema
 export const ListGeneratedQueryPatternsReportsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.String,
     has_next: Schema.Boolean,
     has_prev: Schema.Boolean,
-    cursor_start: Schema.String,
-    cursor_end: Schema.String,
+    cursor_start: Schema.NullOr(Schema.String),
+    cursor_end: Schema.NullOr(Schema.String),
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
         state: Schema.Literals(["pending", "completed", "failed"]),
         created_at: Schema.String,
-        finished_at: Schema.String,
+        finished_at: Schema.NullOr(Schema.String),
         url: Schema.String,
         download_url: Schema.String,
         actor: Schema.Struct({

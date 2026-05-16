@@ -44,20 +44,32 @@ export const UpdateOrganizationTeamOutput =
         created_at: Schema.String,
         updated_at: Schema.String,
         two_factor_auth_configured: Schema.Boolean,
-        default_organization: Schema.Struct({
-          id: Schema.String,
-          name: Schema.String,
-          created_at: Schema.String,
-          updated_at: Schema.String,
-          deleted_at: Schema.String,
-        }),
-        sso: Schema.Boolean,
-        managed: Schema.Boolean,
-        directory_managed: Schema.Boolean,
-        email_verified: Schema.Boolean,
+        default_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.String,
+              name: Schema.String,
+              created_at: Schema.String,
+              updated_at: Schema.String,
+              deleted_at: Schema.NullOr(Schema.String),
+            }),
+          ),
+        ),
+        sso: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        managed: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        directory_managed: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
       }),
     ),
     databases: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        name: Schema.String,
+        url: Schema.String,
+        branches_url: Schema.String,
+      }),
+    ),
+    analyst_databases: Schema.Array(
       Schema.Struct({
         id: Schema.String,
         name: Schema.String,
@@ -69,7 +81,7 @@ export const UpdateOrganizationTeamOutput =
     slug: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-    description: Schema.String,
+    description: Schema.NullOr(Schema.String),
     managed: Schema.Boolean,
   });
 export type UpdateOrganizationTeamOutput =

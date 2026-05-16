@@ -7,7 +7,7 @@ import {
   NotFound,
   UnprocessableEntity,
 } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const GetOrganizationTeamMemberInput =
@@ -37,17 +37,21 @@ export const GetOrganizationTeamMemberOutput =
       created_at: Schema.String,
       updated_at: Schema.String,
       two_factor_auth_configured: Schema.Boolean,
-      default_organization: Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        created_at: Schema.String,
-        updated_at: Schema.String,
-        deleted_at: Schema.String,
-      }),
-      sso: Schema.Boolean,
-      managed: Schema.Boolean,
-      directory_managed: Schema.Boolean,
-      email_verified: Schema.Boolean,
+      default_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            id: Schema.String,
+            name: Schema.String,
+            created_at: Schema.String,
+            updated_at: Schema.String,
+            deleted_at: Schema.NullOr(Schema.String),
+          }),
+        ),
+      ),
+      sso: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      managed: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      directory_managed: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
     }),
     actor: Schema.Struct({
       id: Schema.String,
@@ -61,23 +65,25 @@ export const GetOrganizationTeamMemberOutput =
         id: Schema.String,
         name: Schema.String,
         role: Schema.Literals(["reader", "writer", "admin", "readwriter"]),
-        cidrs: Schema.Array(Schema.String),
+        cidrs: Schema.NullOr(Schema.Array(Schema.String)),
         created_at: Schema.String,
-        deleted_at: Schema.String,
-        expires_at: Schema.String,
-        last_used_at: Schema.String,
+        deleted_at: Schema.NullOr(Schema.String),
+        expires_at: Schema.NullOr(Schema.String),
+        last_used_at: Schema.NullOr(Schema.String),
         expired: Schema.Boolean,
         direct_vtgate: Schema.Boolean,
         direct_vtgate_addresses: Schema.Array(Schema.String),
-        ttl_seconds: Schema.Number,
+        ttl_seconds: Schema.NullOr(Schema.Number),
         access_host_url: Schema.String,
         access_host_regional_url: Schema.String,
         access_host_regional_urls: Schema.Array(Schema.String),
-        actor: Schema.Struct({
-          id: Schema.String,
-          display_name: Schema.String,
-          avatar_url: Schema.String,
-        }),
+        actor: Schema.NullOr(
+          Schema.Struct({
+            id: Schema.String,
+            display_name: Schema.String,
+            avatar_url: Schema.String,
+          }),
+        ),
         region: Schema.Struct({
           id: Schema.String,
           provider: Schema.String,
@@ -87,9 +93,11 @@ export const GetOrganizationTeamMemberOutput =
           location: Schema.String,
           slug: Schema.String,
           current_default: Schema.Boolean,
+          mysql_supported: Schema.Boolean,
+          postgresql_supported: Schema.Boolean,
         }),
         username: Schema.String,
-        plain_text: SensitiveString,
+        plain_text: SensitiveNullableString,
         replica: Schema.Boolean,
         renewable: Schema.Boolean,
         database_branch: Schema.Struct({

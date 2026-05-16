@@ -21,6 +21,7 @@ export type ListRolesInput = typeof ListRolesInput.Type;
 
 // Output Schema
 export const ListRolesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
   next_page_url: Schema.NullOr(Schema.String),
@@ -34,6 +35,7 @@ export const ListRolesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       private_access_host_url: Schema.String,
       private_connection_service_name: Schema.String,
       username: Schema.String,
+      base_username: Schema.String,
       password: SensitiveNullableString,
       database_name: Schema.String,
       created_at: Schema.String,

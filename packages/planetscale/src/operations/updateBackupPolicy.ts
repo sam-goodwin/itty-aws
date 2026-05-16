@@ -42,12 +42,12 @@ export const UpdateBackupPolicyOutput =
     frequency_value: Schema.Number,
     frequency_unit: Schema.String,
     schedule_time: Schema.String,
-    schedule_day: Schema.Number,
-    schedule_week: Schema.Number,
+    schedule_day: Schema.NullOr(Schema.Number),
+    schedule_week: Schema.NullOr(Schema.Number),
     created_at: Schema.String,
     updated_at: Schema.String,
-    last_ran_at: Schema.String,
-    next_run_at: Schema.String,
+    last_ran_at: Schema.NullOr(Schema.String),
+    next_run_at: Schema.NullOr(Schema.String),
     required: Schema.Boolean,
   });
 export type UpdateBackupPolicyOutput = typeof UpdateBackupPolicyOutput.Type;

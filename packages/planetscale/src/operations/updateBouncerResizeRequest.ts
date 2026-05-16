@@ -31,8 +31,8 @@ export const UpdateBouncerResizeRequestOutput =
     parameters: Schema.Record(Schema.String, Schema.Unknown),
     previous_replicas_per_cell: Schema.Number,
     previous_parameters: Schema.Record(Schema.String, Schema.Unknown),
-    started_at: Schema.String,
-    completed_at: Schema.String,
+    started_at: Schema.NullOr(Schema.String),
+    completed_at: Schema.NullOr(Schema.String),
     created_at: Schema.String,
     updated_at: Schema.String,
     actor: Schema.Struct({
@@ -45,7 +45,7 @@ export const UpdateBouncerResizeRequestOutput =
       name: Schema.String,
       created_at: Schema.String,
       updated_at: Schema.String,
-      deleted_at: Schema.String,
+      deleted_at: Schema.NullOr(Schema.String),
     }),
     sku: Schema.Struct({
       name: Schema.String,

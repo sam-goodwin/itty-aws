@@ -48,6 +48,7 @@ export const CreateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   private_access_host_url: Schema.String,
   private_connection_service_name: Schema.String,
   username: Schema.String,
+  base_username: Schema.String,
   password: SensitiveNullableString,
   database_name: Schema.String,
   created_at: Schema.String,

@@ -21,11 +21,12 @@ export type ListBackupPoliciesInput = typeof ListBackupPoliciesInput.Type;
 // Output Schema
 export const ListBackupPoliciesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.String,
     current_page: Schema.Number,
-    next_page: Schema.Number,
-    next_page_url: Schema.String,
-    prev_page: Schema.Number,
-    prev_page_url: Schema.String,
+    next_page: Schema.NullOr(Schema.Number),
+    next_page_url: Schema.NullOr(Schema.String),
+    prev_page: Schema.NullOr(Schema.Number),
+    prev_page_url: Schema.NullOr(Schema.String),
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -37,12 +38,12 @@ export const ListBackupPoliciesOutput =
         frequency_value: Schema.Number,
         frequency_unit: Schema.String,
         schedule_time: Schema.String,
-        schedule_day: Schema.Number,
-        schedule_week: Schema.Number,
+        schedule_day: Schema.NullOr(Schema.Number),
+        schedule_week: Schema.NullOr(Schema.Number),
         created_at: Schema.String,
         updated_at: Schema.String,
-        last_ran_at: Schema.String,
-        next_run_at: Schema.String,
+        last_ran_at: Schema.NullOr(Schema.String),
+        next_run_at: Schema.NullOr(Schema.String),
         required: Schema.Boolean,
       }),
     ),

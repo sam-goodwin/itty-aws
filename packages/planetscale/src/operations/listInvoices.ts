@@ -15,6 +15,7 @@ export type ListInvoicesInput = typeof ListInvoicesInput.Type;
 
 // Output Schema
 export const ListInvoicesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
   next_page_url: Schema.NullOr(Schema.String),
