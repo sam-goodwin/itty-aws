@@ -8,7 +8,7 @@ import * as Redacted from "effect/Redacted";
 export const DEFAULT_API_BASE_URL = "https://api.planetscale.com/v1";
 
 export interface Config {
-  readonly tokenId: string;
+  readonly tokenId: Redacted.Redacted<string>;
   readonly token: Redacted.Redacted<string>;
   readonly organization: string;
   readonly apiBaseUrl: string;
@@ -35,7 +35,7 @@ export const CredentialsFromEnv = Layer.effect(
         }),
     ),
     Effect.map(({ tokenId, token, organization }) => ({
-      tokenId,
+      tokenId: Redacted.make(tokenId),
       token: Redacted.make(token),
       organization,
       apiBaseUrl: DEFAULT_API_BASE_URL,
