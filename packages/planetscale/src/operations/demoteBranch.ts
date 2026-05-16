@@ -79,6 +79,7 @@ export const DemoteBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
   parent_branch: Schema.NullOr(Schema.String),
   vtgate_options: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  cluster_architecture: Schema.optional(Schema.String),
 });
 export type DemoteBranchOutput = typeof DemoteBranchOutput.Type;
 

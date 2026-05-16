@@ -49,6 +49,13 @@
     },
     {
       "op": "add",
+      "path": "/definitions/DatabaseBranch/properties/cluster_architecture",
+      "value": {
+        "type": "string"
+      }
+    },
+    {
+      "op": "add",
       "path": "/definitions/DatabaseBranch/properties/restored_from_branch/x-nullable",
       "value": true
     },
@@ -107,6 +114,13 @@
       "op": "add",
       "path": "/definitions/PaginatedDatabaseBranch/properties/data/items/properties/cluster_iops/x-nullable",
       "value": true
+    },
+    {
+      "op": "add",
+      "path": "/definitions/PaginatedDatabaseBranch/properties/data/items/properties/cluster_architecture",
+      "value": {
+        "type": "string"
+      }
     },
     {
       "op": "add",

@@ -93,6 +93,7 @@ export const ListBranchesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       vtgate_options: Schema.optional(
         Schema.Record(Schema.String, Schema.Unknown),
       ),
+      cluster_architecture: Schema.optional(Schema.String),
     }),
   ),
 });
