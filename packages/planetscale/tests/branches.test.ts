@@ -224,6 +224,7 @@ describe.each([{ kind: "postgresql" }, { kind: "mysql" }] as const)(
           expect(result.schema_ready).toBeUndefined();
           expect(result.sharded).toBeUndefined();
           expect(result.shard_count).toBeUndefined();
+          expect(result.cluster_architecture).toBeDefined();
         } else if (kind === "mysql") {
           expect(result.mysql_address).toBeDefined();
           expect(result.mysql_edge_address).toBeDefined();
