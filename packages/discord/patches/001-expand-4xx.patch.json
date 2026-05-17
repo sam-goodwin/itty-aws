@@ -1,0 +1,4898 @@
+{
+  "description": "Expand the blanket '4XX' response on each operation into explicit 400, 403, and 404 responses so the OpenAPI generator emits typed BadRequest/Forbidden/NotFound errors per operation. Every 4XX response in the Discord spec uses the same ClientErrorResponse envelope, so this is a faithful expansion.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1@me/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1@me/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1@me/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1@me/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1@me/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1@me/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1activity-instances~1{instance_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1activity-instances~1{instance_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1activity-instances~1{instance_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1attachment/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1attachment/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1attachment/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands~1{command_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands~1{command_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands~1{command_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands~1{command_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands~1{command_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands~1{command_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands~1{command_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands~1{command_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1commands~1{command_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1emojis/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1emojis/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1emojis/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1emojis/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1emojis/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1emojis/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1emojis~1{emoji_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1emojis~1{emoji_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1emojis~1{emoji_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1emojis~1{emoji_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1emojis~1{emoji_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1emojis~1{emoji_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1emojis~1{emoji_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1emojis~1{emoji_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1emojis~1{emoji_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1entitlements/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1entitlements/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1entitlements/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1entitlements/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1entitlements/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1entitlements/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1entitlements~1{entitlement_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1entitlements~1{entitlement_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1entitlements~1{entitlement_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1entitlements~1{entitlement_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1entitlements~1{entitlement_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1entitlements~1{entitlement_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1entitlements~1{entitlement_id}~1consume/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1entitlements~1{entitlement_id}~1consume/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1entitlements~1{entitlement_id}~1consume/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1permissions/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1permissions/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1permissions/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1{command_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1{command_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1{command_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1{command_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1{command_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1{command_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1{command_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1{command_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1{command_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1{command_id}~1permissions/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1{command_id}~1permissions/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1{command_id}~1permissions/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1{command_id}~1permissions/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1{command_id}~1permissions/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1guilds~1{guild_id}~1commands~1{command_id}~1permissions/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1role-connections~1metadata/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1role-connections~1metadata/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1role-connections~1metadata/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1role-connections~1metadata/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1role-connections~1metadata/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1applications~1{application_id}~1role-connections~1metadata/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1followers/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1followers/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1followers/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1invites/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1invites/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1invites/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1invites/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1invites/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1invites/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1bulk-delete/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1bulk-delete/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1bulk-delete/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1pins/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1pins/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1pins/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1pins~1{message_id}/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1pins~1{message_id}/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1pins~1{message_id}/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1pins~1{message_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1pins~1{message_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1pins~1{message_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1crosspost/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1crosspost/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1crosspost/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions~1{emoji_name}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions~1{emoji_name}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions~1{emoji_name}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions~1{emoji_name}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions~1{emoji_name}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions~1{emoji_name}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions~1{emoji_name}~1@me/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions~1{emoji_name}~1@me/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions~1{emoji_name}~1@me/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions~1{emoji_name}~1@me/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions~1{emoji_name}~1@me/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions~1{emoji_name}~1@me/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions~1{emoji_name}~1{user_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions~1{emoji_name}~1{user_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1reactions~1{emoji_name}~1{user_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1threads/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1threads/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1messages~1{message_id}~1threads/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1permissions~1{overwrite_id}/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1permissions~1{overwrite_id}/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1permissions~1{overwrite_id}/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1permissions~1{overwrite_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1permissions~1{overwrite_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1permissions~1{overwrite_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1pins/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1pins/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1pins/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1pins~1{message_id}/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1pins~1{message_id}/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1pins~1{message_id}/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1pins~1{message_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1pins~1{message_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1pins~1{message_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1polls~1{message_id}~1answers~1{answer_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1polls~1{message_id}~1answers~1{answer_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1polls~1{message_id}~1answers~1{answer_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1polls~1{message_id}~1expire/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1polls~1{message_id}~1expire/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1polls~1{message_id}~1expire/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1recipients~1{user_id}/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1recipients~1{user_id}/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1recipients~1{user_id}/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1recipients~1{user_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1recipients~1{user_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1recipients~1{user_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1send-soundboard-sound/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1send-soundboard-sound/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1send-soundboard-sound/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members~1@me/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members~1@me/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members~1@me/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members~1@me/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members~1@me/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members~1@me/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members~1{user_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members~1{user_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members~1{user_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members~1{user_id}/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members~1{user_id}/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members~1{user_id}/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members~1{user_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members~1{user_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1thread-members~1{user_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1threads/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1threads/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1threads/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1threads~1archived~1private/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1threads~1archived~1private/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1threads~1archived~1private/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1threads~1archived~1public/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1threads~1archived~1public/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1threads~1archived~1public/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1threads~1search/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1threads~1search/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1threads~1search/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1typing/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1typing/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1typing/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1users~1@me~1threads~1archived~1private/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1users~1@me~1threads~1archived~1private/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1users~1@me~1threads~1archived~1private/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1voice-status/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1voice-status/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1voice-status/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1webhooks/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1webhooks/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1webhooks/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1webhooks/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1webhooks/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1channels~1{channel_id}~1webhooks/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1gateway/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1gateway/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1gateway/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1gateway~1bot/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1gateway~1bot/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1gateway~1bot/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1templates~1{code}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1templates~1{code}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1templates~1{code}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1audit-logs/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1audit-logs/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1audit-logs/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1auto-moderation~1rules/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1auto-moderation~1rules/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1auto-moderation~1rules/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1auto-moderation~1rules/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1auto-moderation~1rules/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1auto-moderation~1rules/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1auto-moderation~1rules~1{rule_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1auto-moderation~1rules~1{rule_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1auto-moderation~1rules~1{rule_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1auto-moderation~1rules~1{rule_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1auto-moderation~1rules~1{rule_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1auto-moderation~1rules~1{rule_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1auto-moderation~1rules~1{rule_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1auto-moderation~1rules~1{rule_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1auto-moderation~1rules~1{rule_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1bans/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1bans/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1bans/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1bans~1{user_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1bans~1{user_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1bans~1{user_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1bans~1{user_id}/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1bans~1{user_id}/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1bans~1{user_id}/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1bans~1{user_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1bans~1{user_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1bans~1{user_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1bulk-ban/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1bulk-ban/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1bulk-ban/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1channels/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1channels/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1channels/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1channels/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1channels/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1channels/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1channels/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1channels/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1channels/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1emojis/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1emojis/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1emojis/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1emojis/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1emojis/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1emojis/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1emojis~1{emoji_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1emojis~1{emoji_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1emojis~1{emoji_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1emojis~1{emoji_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1emojis~1{emoji_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1emojis~1{emoji_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1emojis~1{emoji_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1emojis~1{emoji_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1emojis~1{emoji_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1integrations/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1integrations/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1integrations/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1integrations~1{integration_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1integrations~1{integration_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1integrations~1{integration_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1invites/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1invites/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1invites/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1@me/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1@me/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1@me/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1search/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1search/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1search/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}~1roles~1{role_id}/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}~1roles~1{role_id}/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}~1roles~1{role_id}/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}~1roles~1{role_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}~1roles~1{role_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1members~1{user_id}~1roles~1{role_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1messages~1search/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1messages~1search/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1messages~1search/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1new-member-welcome/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1new-member-welcome/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1new-member-welcome/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1onboarding/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1onboarding/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1onboarding/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1onboarding/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1onboarding/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1onboarding/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1preview/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1preview/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1preview/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1prune/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1prune/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1prune/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1prune/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1prune/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1prune/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1regions/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1regions/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1regions/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1requests/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1requests/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1requests/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1requests~1{request_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1requests~1{request_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1requests~1{request_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles~1member-counts/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles~1member-counts/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles~1member-counts/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles~1{role_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles~1{role_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles~1{role_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles~1{role_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles~1{role_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles~1{role_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles~1{role_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles~1{role_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1roles~1{role_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events~1{guild_scheduled_event_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events~1{guild_scheduled_event_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events~1{guild_scheduled_event_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events~1{guild_scheduled_event_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events~1{guild_scheduled_event_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events~1{guild_scheduled_event_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events~1{guild_scheduled_event_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events~1{guild_scheduled_event_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events~1{guild_scheduled_event_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events~1{guild_scheduled_event_id}~1users/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events~1{guild_scheduled_event_id}~1users/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1scheduled-events~1{guild_scheduled_event_id}~1users/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1soundboard-sounds/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1soundboard-sounds/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1soundboard-sounds/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1soundboard-sounds/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1soundboard-sounds/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1soundboard-sounds/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1soundboard-sounds~1{sound_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1soundboard-sounds~1{sound_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1soundboard-sounds~1{sound_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1soundboard-sounds~1{sound_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1soundboard-sounds~1{sound_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1soundboard-sounds~1{sound_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1soundboard-sounds~1{sound_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1soundboard-sounds~1{sound_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1soundboard-sounds~1{sound_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1stickers/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1stickers/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1stickers/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1stickers/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1stickers/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1stickers/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1stickers~1{sticker_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1stickers~1{sticker_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1stickers~1{sticker_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1stickers~1{sticker_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1stickers~1{sticker_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1stickers~1{sticker_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1stickers~1{sticker_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1stickers~1{sticker_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1stickers~1{sticker_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1templates/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1templates/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1templates/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1templates/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1templates/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1templates/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1templates~1{code}/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1templates~1{code}/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1templates~1{code}/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1templates~1{code}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1templates~1{code}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1templates~1{code}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1templates~1{code}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1templates~1{code}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1templates~1{code}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1threads~1active/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1threads~1active/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1threads~1active/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1vanity-url/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1vanity-url/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1vanity-url/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1voice-states~1@me/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1voice-states~1@me/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1voice-states~1@me/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1voice-states~1@me/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1voice-states~1@me/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1voice-states~1@me/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1voice-states~1{user_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1voice-states~1{user_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1voice-states~1{user_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1voice-states~1{user_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1voice-states~1{user_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1voice-states~1{user_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1webhooks/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1webhooks/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1webhooks/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1welcome-screen/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1welcome-screen/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1welcome-screen/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1welcome-screen/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1welcome-screen/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1welcome-screen/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1widget/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1widget/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1widget/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1widget/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1widget/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1widget/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1widget.json/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1widget.json/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1widget.json/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1widget.png/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1widget.png/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1guilds~1{guild_id}~1widget.png/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1interactions~1{interaction_id}~1{interaction_token}~1callback/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1interactions~1{interaction_id}~1{interaction_token}~1callback/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1interactions~1{interaction_id}~1{interaction_token}~1callback/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1invites~1{code}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1invites~1{code}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1invites~1{code}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1invites~1{code}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1invites~1{code}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1invites~1{code}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1invites~1{code}~1target-users/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1invites~1{code}~1target-users/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1invites~1{code}~1target-users/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1invites~1{code}~1target-users/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1invites~1{code}~1target-users/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1invites~1{code}~1target-users/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1invites~1{code}~1target-users~1job-status/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1invites~1{code}~1target-users~1job-status/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1invites~1{code}~1target-users~1job-status/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1channel-linking/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1channel-linking/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1channel-linking/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1@me/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1@me/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1@me/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1@me~1invites/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1@me~1invites/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1@me~1invites/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1bulk/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1bulk/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1bulk/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1{user_id}/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1{user_id}/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1{user_id}/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1{user_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1{user_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1{user_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1{user_id}~1invites/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1{user_id}~1invites/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1members~1{user_id}~1invites/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1messages/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1messages/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1messages/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1messages/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1messages/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1messages/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1messages~1{message_id}~1moderation-metadata/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1messages~1{message_id}~1moderation-metadata/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1lobbies~1{lobby_id}~1messages~1{message_id}~1moderation-metadata/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1oauth2~1@me/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1oauth2~1@me/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1oauth2~1@me/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1oauth2~1applications~1@me/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1oauth2~1applications~1@me/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1oauth2~1applications~1@me/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1oauth2~1keys/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1oauth2~1keys/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1oauth2~1keys/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1oauth2~1userinfo/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1oauth2~1userinfo/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1oauth2~1userinfo/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1partner-sdk~1dms~1{user_id_1}~1{user_id_2}~1messages~1{message_id}~1moderation-metadata/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1partner-sdk~1dms~1{user_id_1}~1{user_id_2}~1messages~1{message_id}~1moderation-metadata/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1partner-sdk~1dms~1{user_id_1}~1{user_id_2}~1messages~1{message_id}~1moderation-metadata/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1partner-sdk~1provisional-accounts~1unmerge/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1partner-sdk~1provisional-accounts~1unmerge/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1partner-sdk~1provisional-accounts~1unmerge/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1partner-sdk~1provisional-accounts~1unmerge~1bot/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1partner-sdk~1provisional-accounts~1unmerge~1bot/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1partner-sdk~1provisional-accounts~1unmerge~1bot/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1partner-sdk~1token/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1partner-sdk~1token/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1partner-sdk~1token/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1partner-sdk~1token~1bot/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1partner-sdk~1token~1bot/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1partner-sdk~1token~1bot/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1soundboard-default-sounds/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1soundboard-default-sounds/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1soundboard-default-sounds/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1stage-instances/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1stage-instances/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1stage-instances/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1stage-instances~1{channel_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1stage-instances~1{channel_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1stage-instances~1{channel_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1stage-instances~1{channel_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1stage-instances~1{channel_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1stage-instances~1{channel_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1stage-instances~1{channel_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1stage-instances~1{channel_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1stage-instances~1{channel_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1sticker-packs/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1sticker-packs/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1sticker-packs/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1sticker-packs~1{pack_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1sticker-packs~1{pack_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1sticker-packs~1{pack_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1stickers~1{sticker_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1stickers~1{sticker_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1stickers~1{sticker_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1applications~1{application_id}~1entitlements/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1applications~1{application_id}~1entitlements/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1applications~1{application_id}~1entitlements/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1applications~1{application_id}~1role-connection/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1applications~1{application_id}~1role-connection/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1applications~1{application_id}~1role-connection/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1applications~1{application_id}~1role-connection/put/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1applications~1{application_id}~1role-connection/put/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1applications~1{application_id}~1role-connection/put/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1applications~1{application_id}~1role-connection/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1applications~1{application_id}~1role-connection/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1applications~1{application_id}~1role-connection/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1channels/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1channels/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1channels/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1connections/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1connections/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1connections/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1guilds/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1guilds/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1guilds/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1guilds~1{guild_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1guilds~1{guild_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1guilds~1{guild_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1guilds~1{guild_id}~1member/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1guilds~1{guild_id}~1member/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1@me~1guilds~1{guild_id}~1member/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1{user_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1{user_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users~1{user_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1voice~1regions/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1voice~1regions/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1voice~1regions/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1github/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1github/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1github/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1@original/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1@original/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1@original/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1@original/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1@original/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1@original/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1@original/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1@original/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1@original/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1{message_id}/get/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1{message_id}/get/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1{message_id}/get/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1{message_id}/patch/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1{message_id}/patch/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1{message_id}/patch/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1{message_id}/delete/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1{message_id}/delete/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1messages~1{message_id}/delete/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1slack/post/responses/400",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1slack/post/responses/403",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}~1{webhook_token}~1slack/post/responses/404",
+      "value": {
+        "$ref": "#/components/responses/ClientErrorResponse"
+      }
+    }
+  ]
+}

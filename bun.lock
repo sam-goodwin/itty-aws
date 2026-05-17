@@ -133,6 +133,23 @@
         "effect": "catalog:",
       },
     },
+    "packages/discord": {
+      "name": "@distilled.cloud/discord",
+      "version": "0.2.0-alpha",
+      "dependencies": {
+        "@distilled.cloud/core": "workspace:*",
+        "effect": "catalog:",
+      },
+      "devDependencies": {
+        "@types/bun": "catalog:",
+        "@types/node": "catalog:",
+        "dotenv": "catalog:",
+        "vitest": "catalog:",
+      },
+      "peerDependencies": {
+        "effect": "catalog:",
+      },
+    },
     "packages/expo-eas": {
       "name": "@distilled.cloud/expo-eas",
       "version": "0.21.0",
@@ -479,6 +496,8 @@
     "@distilled.cloud/coinbase": ["@distilled.cloud/coinbase@workspace:packages/coinbase"],
 
     "@distilled.cloud/core": ["@distilled.cloud/core@workspace:packages/core"],
+
+    "@distilled.cloud/discord": ["@distilled.cloud/discord@workspace:packages/discord"],
 
     "@distilled.cloud/expo-eas": ["@distilled.cloud/expo-eas@workspace:packages/expo-eas"],
 

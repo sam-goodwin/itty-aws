@@ -70,6 +70,10 @@ on:
         description: "Eas"
         type: boolean
         default: false
+      discord:
+        description: "Discord"
+        type: boolean
+        default: false
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
