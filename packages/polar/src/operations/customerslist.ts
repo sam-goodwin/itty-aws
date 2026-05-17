@@ -1,0 +1,67 @@
+import * as Schema from "effect/Schema";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
+import { UnprocessableEntity } from "../errors.ts";
+
+// Input Schema
+export const CustomerslistInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  organization_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  email: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  query: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  page: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+  limit: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+  sorting: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  metadata: Schema.optional(Schema.String).pipe(T.QueryParam()),
+}).pipe(T.Http({ method: "GET", path: "/v1/customers/" }));
+export type CustomerslistInput = typeof CustomerslistInput.Type;
+
+// Output Schema
+export const CustomerslistOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      created_at: Schema.String,
+      modified_at: Schema.NullOr(Schema.String),
+      metadata: Schema.Record(Schema.String, Schema.Unknown),
+      external_id: Schema.optional(Schema.NullOr(Schema.String)),
+      email: Schema.NullOr(Schema.String),
+      email_verified: Schema.Boolean,
+      type: Schema.Literals(["individual", "team"]),
+      name: Schema.NullOr(Schema.String),
+      billing_address: Schema.NullOr(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+      tax_id: Schema.NullOr(Schema.Unknown),
+      locale: Schema.optional(Schema.NullOr(Schema.String)),
+      organization_id: Schema.String,
+      deleted_at: Schema.NullOr(Schema.String),
+      avatar_url: Schema.String,
+    }),
+  ),
+  pagination: Schema.Struct({
+    total_count: Schema.Number,
+    max_page: Schema.Number,
+  }),
+});
+export type CustomerslistOutput = typeof CustomerslistOutput.Type;
+
+// The operation
+/**
+ * List Customers
+ *
+ * List customers.
+ * **Scopes**: `customers:read` `customers:write`
+ *
+ * @param organization_id - Filter by organization ID.
+ * @param email - Filter by exact email.
+ * @param query - Filter by name, email, or external ID.
+ * @param page - Page number, defaults to 1.
+ * @param limit - Size of a page, defaults to 10. Maximum is 100.
+ * @param sorting - Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
+ * @param metadata - Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`.
+ */
+export const customerslist = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CustomerslistInput,
+  outputSchema: CustomerslistOutput,
+  errors: [UnprocessableEntity] as const,
+}));

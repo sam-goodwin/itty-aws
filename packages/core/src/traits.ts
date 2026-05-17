@@ -587,6 +587,14 @@ export const getStructProps = (ast: AST.AST): AST.PropertySignature[] => {
   if (ast._tag === "Objects") {
     return [...ast.propertySignatures];
   }
+  if (ast._tag === "Union") {
+    const props = ast.types.flatMap((member) => getStructProps(member));
+    const byName = new Map<string, AST.PropertySignature>();
+    for (const prop of props) {
+      byName.set(String(prop.name), prop);
+    }
+    return [...byName.values()];
+  }
   return [];
 };
 

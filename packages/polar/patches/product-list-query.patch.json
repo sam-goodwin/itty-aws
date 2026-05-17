@@ -1,0 +1,21 @@
+{
+  "description": "Simplify nullable boolean Product list filters so the shared OpenAPI generator emits boolean query parameters instead of falling back to strings for anyOf(boolean, null).",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1products~1/get/parameters/3/schema",
+      "value": {
+        "type": "boolean",
+        "description": "Filter on archived products."
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1products~1/get/parameters/4/schema",
+      "value": {
+        "type": "boolean",
+        "description": "Filter on recurring products."
+      }
+    }
+  ]
+}

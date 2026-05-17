@@ -1,0 +1,45 @@
+{
+  "description": "Polar CSV export endpoints advertise both an empty application/json schema and a text/csv string schema. Patch both response content schemas to string so generated operations expose the raw CSV text instead of Schema.Unknown.",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1customers~1export/get/responses/200/content/application~1json/schema",
+      "value": { "type": "string" }
+    },
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1customers~1export/get/responses/200/content/text~1csv/schema",
+      "value": { "type": "string" }
+    },
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1orders~1export/get/responses/200/content/application~1json/schema",
+      "value": { "type": "string" }
+    },
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1orders~1export/get/responses/200/content/text~1csv/schema",
+      "value": { "type": "string" }
+    },
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1subscriptions~1export/get/responses/200/content/application~1json/schema",
+      "value": { "type": "string" }
+    },
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1subscriptions~1export/get/responses/200/content/text~1csv/schema",
+      "value": { "type": "string" }
+    },
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1metrics~1export/get/responses/200/content/application~1json/schema",
+      "value": { "type": "string" }
+    },
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1metrics~1export/get/responses/200/content/text~1csv/schema",
+      "value": { "type": "string" }
+    }
+  ]
+}

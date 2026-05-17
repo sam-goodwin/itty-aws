@@ -42,6 +42,7 @@ jobs:
       typesense: ${{ steps.force.outputs.all || steps.changes.outputs.typesense }}
       workos: ${{ steps.force.outputs.all || steps.changes.outputs.workos }}
       expo-eas: ${{ steps.force.outputs.all || steps.changes.outputs.expo-eas }}
+      polar: ${{ steps.force.outputs.all || steps.changes.outputs.polar }}
     steps:
       - id: force
         if: contains(github.event.pull_request.labels.*.name, 'force-ci')
@@ -109,6 +110,9 @@ jobs:
               - 'packages/core/**'
             expo-eas:
               - 'packages/expo-eas/**'
+              - 'packages/core/**'
+            polar:
+              - 'packages/polar/**'
               - 'packages/core/**'
 
   ci-core:
@@ -494,3 +498,24 @@ jobs:
         working-directory: packages/expo-eas
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+  ci-polar:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.polar == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install
+      - run: bun run build
+        working-directory: packages/core
+      - run: bun run check
+        working-directory: packages/polar
+      - run: bun run test
+        working-directory: packages/polar
+        env:
+          POLAR_ACCESS_TOKEN: ${{ secrets.POLAR_ACCESS_TOKEN }}
+          POLAR_ORGANIZATION_ID: ${{ secrets.POLAR_ORGANIZATION_ID }}
+          POLAR_SERVER: sandbox

@@ -1,0 +1,84 @@
+{
+  "description": "OAuth authorize and userinfo responses are top-level response unions that currently generate as Schema.Unknown. Patch them to common useful output shapes so callers get typed OAuth fields without expanding the full browser authorization union.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/components/schemas/OAuth2UserInfoCommon",
+      "value": {
+        "type": "object",
+        "title": "OAuth2UserInfo",
+        "required": ["sub"],
+        "properties": {
+          "sub": { "type": "string" },
+          "name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }]
+          },
+          "email": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }]
+          },
+          "email_verified": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }]
+          }
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1oauth2~1userinfo/get/responses/200/content/application~1json/schema",
+      "value": {
+        "$ref": "#/components/schemas/OAuth2UserInfoCommon"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/components/schemas/OAuth2AuthorizeResponseCommon",
+      "value": {
+        "type": "object",
+        "title": "OAuth2AuthorizeResponse",
+        "required": ["client", "sub_type", "sub", "scopes"],
+        "properties": {
+          "client": {
+            "$ref": "#/components/schemas/OAuth2ClientPublic"
+          },
+          "sub_type": {
+            "type": "string",
+            "enum": ["user", "organization"]
+          },
+          "sub": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": true
+              },
+              { "type": "null" }
+            ]
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Scope"
+            }
+          },
+          "scope_display_names": {
+            "type": "object",
+            "additionalProperties": { "type": "string" }
+          },
+          "organizations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1oauth2~1authorize/get/responses/200/content/application~1json/schema",
+      "value": {
+        "$ref": "#/components/schemas/OAuth2AuthorizeResponseCommon"
+      }
+    }
+  ]
+}

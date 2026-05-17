@@ -1,0 +1,48 @@
+{
+  "description": "Expose Meter aggregation as a small typed object instead of Schema.Unknown. Polar currently models it as a oneOf of count/property/unique aggregation shapes; the common output and input surface is a func discriminator plus optional property.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/components/schemas/MeterAggregation",
+      "value": {
+        "type": "object",
+        "title": "MeterAggregation",
+        "description": "Aggregation to apply to filtered meter events.",
+        "required": ["func"],
+        "properties": {
+          "func": {
+            "$ref": "#/components/schemas/AggregationFunction"
+          },
+          "property": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/components/schemas/Meter/properties/aggregation",
+      "value": {
+        "$ref": "#/components/schemas/MeterAggregation"
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/components/schemas/MeterCreate/properties/aggregation",
+      "value": {
+        "$ref": "#/components/schemas/MeterAggregation"
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/components/schemas/MeterUpdate/properties/aggregation",
+      "value": {
+        "anyOf": [
+          { "$ref": "#/components/schemas/MeterAggregation" },
+          { "type": "null" }
+        ],
+        "description": "The aggregation to apply on the filtered events to calculate the meter."
+      }
+    }
+  ]
+}

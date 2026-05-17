@@ -1,0 +1,112 @@
+{
+  "description": "Expose file read responses through common typed fields instead of Schema.Unknown. Polar models file reads as a oneOf across downloadable, product_media, and organization_avatar services; the SDK keeps the shared file metadata and optional public_url.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/components/schemas/FileReadCommon",
+      "value": {
+        "type": "object",
+        "title": "FileRead",
+        "description": "A Polar file.",
+        "required": [
+          "id",
+          "organization_id",
+          "name",
+          "path",
+          "mime_type",
+          "size",
+          "storage_version",
+          "checksum_etag",
+          "checksum_sha256_base64",
+          "checksum_sha256_hex",
+          "last_modified_at",
+          "version",
+          "service",
+          "is_uploaded",
+          "created_at",
+          "size_readable"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid4",
+            "description": "The ID of the file."
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid4"
+          },
+          "name": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "mime_type": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "storage_version": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }]
+          },
+          "checksum_etag": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }]
+          },
+          "checksum_sha256_base64": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }]
+          },
+          "checksum_sha256_hex": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }]
+          },
+          "last_modified_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+          },
+          "version": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }]
+          },
+          "service": {
+            "$ref": "#/components/schemas/FileServiceTypes"
+          },
+          "is_uploaded": {
+            "type": "boolean"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "size_readable": {
+            "type": "string",
+            "readOnly": true
+          },
+          "public_url": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/components/schemas/ListResource_FileRead_/properties/items/items",
+      "value": {
+        "$ref": "#/components/schemas/FileReadCommon"
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1files~1{id}/patch/responses/200/content/application~1json/schema",
+      "value": {
+        "$ref": "#/components/schemas/FileReadCommon"
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1files~1{id}~1uploaded/post/responses/200/content/application~1json/schema",
+      "value": {
+        "$ref": "#/components/schemas/FileReadCommon"
+      }
+    }
+  ]
+}

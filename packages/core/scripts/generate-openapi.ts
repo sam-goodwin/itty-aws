@@ -153,6 +153,7 @@ interface SchemaObject {
   items?: SchemaObject;
   required?: string[];
   enum?: (string | number | boolean)[];
+  const?: string | number | boolean | null;
   additionalProperties?: boolean | SchemaObject;
   description?: string;
   default?: unknown;
@@ -315,6 +316,7 @@ const SENSITIVE_FIELD_PATTERNS: RegExp[] = [
   /secret[-_]?key/i,
   /[-_]secret$/i,
   /^client[-_]?secret$/i,
+  /^token$/i,
   /^access[-_]?token$/i,
   /^refresh[-_]?token$/i,
   /^api[-_]?key$/i,
@@ -345,6 +347,51 @@ function isSensitiveFieldName(name: string): boolean {
 interface SchemaGenerationContext {
   usesSensitiveString: boolean;
   usesSensitiveNullableString: boolean;
+}
+
+function resolveSchemaObject(
+  spec: any,
+  schema: SchemaObject,
+  seenRefs: Set<string> = new Set(),
+): SchemaObject {
+  if (!schema.$ref) return schema;
+  if (seenRefs.has(schema.$ref)) return {};
+  return resolveSchemaObject(
+    spec,
+    resolveRef(spec, schema.$ref),
+    new Set([...seenRefs, schema.$ref]),
+  );
+}
+
+function getUnionMembers(schema: SchemaObject): SchemaObject[] | undefined {
+  return schema.oneOf ?? schema.anyOf;
+}
+
+function renderConstLiteral(value: string | number | boolean | null): string {
+  if (value === null) return "Schema.Null";
+  if (typeof value === "string") {
+    return `Schema.Literal("${escapeStringLiteral(value)}")`;
+  }
+  return `Schema.Literal(${JSON.stringify(value)})`;
+}
+
+function isNullSchema(schema: SchemaObject): boolean {
+  return schema.type === "null";
+}
+
+function getNullableUnionMember(
+  schema: SchemaObject,
+): SchemaObject | undefined {
+  const members = schema.oneOf ?? schema.anyOf;
+  if (!members) return undefined;
+
+  const nonNullMembers = members.filter((member) => !isNullSchema(member));
+  const hasNullMember = nonNullMembers.length !== members.length;
+  if (!hasNullMember || nonNullMembers.length !== 1) {
+    return undefined;
+  }
+
+  return nonNullMembers[0];
 }
 
 function openApiTypeToEffectSchema(
@@ -383,8 +430,12 @@ function openApiTypeToEffectSchema(
         const mergedProp: SchemaObject = {
           ...resolved,
           ...(prop.nullable !== undefined ? { nullable: prop.nullable } : {}),
-          ...(prop["x-nullable"] !== undefined ? { "x-nullable": prop["x-nullable"] } : {}),
-          ...(prop["x-sensitive"] !== undefined ? { "x-sensitive": prop["x-sensitive"] } : {}),
+          ...(prop["x-nullable"] !== undefined
+            ? { "x-nullable": prop["x-nullable"] }
+            : {}),
+          ...(prop["x-sensitive"] !== undefined
+            ? { "x-sensitive": prop["x-sensitive"] }
+            : {}),
         };
         return openApiTypeToEffectSchema(
           mergedProp,
@@ -423,9 +474,37 @@ function openApiTypeToEffectSchema(
     return generateStructSchema(mergedSchema, spec, indent, seenRefs, ctx);
   }
 
-  // Handle oneOf/anyOf - use Unknown for now
+  // Handle simple nullable unions. Arbitrary oneOf/anyOf output unions are
+  // still left as Unknown below because many specs use recursive unions.
+  const nullableUnionMember = getNullableUnionMember(prop);
+  if (nullableUnionMember) {
+    const mergedMember: SchemaObject = {
+      ...nullableUnionMember,
+      ...(prop["x-sensitive"] !== undefined
+        ? { "x-sensitive": prop["x-sensitive"] }
+        : {}),
+    };
+    const baseSchema = openApiTypeToEffectSchema(
+      mergedMember,
+      spec,
+      indent,
+      seenRefs,
+      ctx,
+    );
+    return baseSchema.startsWith("Schema.NullOr(")
+      ? baseSchema
+      : `Schema.NullOr(${baseSchema})`;
+  }
+
+  // Handle oneOf/anyOf - use Unknown for now. Request body unions are handled
+  // separately by generateInputSchema3 where the generated shape is bounded.
   if (prop.oneOf || prop.anyOf) {
     return "Schema.Unknown";
+  }
+
+  // Handle const
+  if ("const" in prop) {
+    return renderConstLiteral(prop.const);
   }
 
   // Handle enum
@@ -550,6 +629,47 @@ function generateStructSchema(
   }
 
   return `Schema.Struct({\n${lines.join("\n")}\n${indent}})`;
+}
+
+function generateInputBodyFieldLines(
+  bodySchema: SchemaObject,
+  spec: any,
+  usedNames: Set<string>,
+  ctx?: SchemaGenerationContext,
+): string[] {
+  if (!bodySchema.properties) return [];
+
+  const required = new Set(bodySchema.required || []);
+  const lines: string[] = [];
+
+  for (const [key, value] of Object.entries(bodySchema.properties)) {
+    if (usedNames.has(key)) continue;
+    usedNames.add(key);
+    // Auto-detect sensitive fields by name pattern
+    const bType = getBaseType(value);
+    const isSensitiveByName =
+      bType === "string" &&
+      !value["x-sensitive"] &&
+      !value.enum &&
+      isSensitiveFieldName(key);
+    const effectiveValue = isSensitiveByName
+      ? { ...value, "x-sensitive": true }
+      : value;
+
+    let fieldSchema = openApiTypeToEffectSchema(
+      effectiveValue,
+      spec,
+      "  ",
+      new Set(),
+      ctx,
+    );
+    if (!required.has(key)) {
+      fieldSchema = `Schema.optional(${fieldSchema})`;
+    }
+    lines.push(`  ${quotePropKey(key)}: ${fieldSchema},`);
+  }
+
+  return lines;
 }
 
 // ============================================================================
@@ -691,7 +811,8 @@ function generateInputSchemaSwagger(
     fields.push(`  ${param.name}: ${baseSchema}.pipe(T.PathParam()),`);
   }
 
-  // Query parameters
+  // Query parameters — explicit T.QueryParam() so they remain query params
+  // for non-GET methods (where unmarked fields default to body).
   for (const param of queryParams) {
     let schema = param.enum
       ? renderEnumLiterals(param.enum, param.type)
@@ -704,7 +825,7 @@ function generateInputSchemaSwagger(
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
     }
-    fields.push(`  ${param.name}: ${schema},`);
+    fields.push(`  ${param.name}: ${schema}.pipe(T.QueryParam()),`);
   }
 
   // Body parameters
@@ -724,7 +845,13 @@ function generateInputSchemaSwagger(
           ? { ...value, "x-sensitive": true }
           : value;
 
-        let fieldSchema = openApiTypeToEffectSchema(effectiveValue, spec, "  ", new Set(), ctx);
+        let fieldSchema = openApiTypeToEffectSchema(
+          effectiveValue,
+          spec,
+          "  ",
+          new Set(),
+          ctx,
+        );
         if (!required.has(key)) {
           fieldSchema = `Schema.optional(${fieldSchema})`;
         }
@@ -812,7 +939,8 @@ function generateInputSchema3(
     fields.push(`  ${param.name}: ${baseSchema}.pipe(T.PathParam()),`);
   }
 
-  // Query parameters
+  // Query parameters — explicit T.QueryParam() so they remain query params
+  // for non-GET methods (where unmarked fields default to body).
   for (const param of queryParams) {
     if (usedNames.has(param.name)) continue;
     usedNames.add(param.name);
@@ -829,11 +957,12 @@ function generateInputSchema3(
     if (!param.required) {
       schemaStr = `Schema.optional(${schemaStr})`;
     }
-    fields.push(`  ${param.name}: ${schemaStr},`);
+    fields.push(`  ${param.name}: ${schemaStr}.pipe(T.QueryParam()),`);
   }
 
   // Request body — check for JSON, form-urlencoded, or multipart content
   let bodyContentType: string | undefined;
+  let inputSchemaExpression: string | undefined;
   if (requestBody?.content) {
     const jsonContent = requestBody.content["application/json"];
     const formContent =
@@ -846,10 +975,7 @@ function generateInputSchema3(
       bodyContentType = "multipart";
     }
     if (bodyContent?.schema) {
-      let bodySchema = bodyContent.schema;
-      if (bodySchema.$ref) {
-        bodySchema = resolveRef(spec, bodySchema.$ref);
-      }
+      let bodySchema = resolveSchemaObject(spec, bodyContent.schema);
 
       // Flatten `allOf` so a body schema like `{ allOf: [BranchCreateRequest,
       // AnnotationCreateValueRequest] }` exposes the union of its sub-schemas'
@@ -878,33 +1004,42 @@ function generateInputSchema3(
         };
       }
 
-      if (bodySchema.properties) {
-        const required = new Set(bodySchema.required || []);
-        for (const [key, value] of Object.entries(bodySchema.properties)) {
-          if (usedNames.has(key)) continue;
-          usedNames.add(key);
-          // Auto-detect sensitive fields by name pattern
-          const bType = getBaseType(value);
-          const isSensitiveByName =
-            bType === "string" &&
-            !value["x-sensitive"] &&
-            !value.enum &&
-            isSensitiveFieldName(key);
-          const effectiveValue = isSensitiveByName
-            ? { ...value, "x-sensitive": true }
-            : value;
+      const unionMembers = getUnionMembers(bodySchema)?.map((member) =>
+        resolveSchemaObject(spec, member),
+      );
 
-          let fieldSchema = openApiTypeToEffectSchema(effectiveValue, spec, "  ", new Set(), ctx);
-          if (!required.has(key)) {
-            fieldSchema = `Schema.optional(${fieldSchema})`;
-          }
-          fields.push(`  ${quotePropKey(key)}: ${fieldSchema},`);
-        }
+      if (
+        unionMembers &&
+        unionMembers.length > 0 &&
+        unionMembers.every((member) => member.properties)
+      ) {
+        const variants = unionMembers.map((member) => {
+          const variantFields = [
+            ...fields,
+            ...generateInputBodyFieldLines(
+              member,
+              spec,
+              new Set(usedNames),
+              ctx,
+            ),
+          ];
+          return `Schema.Struct({\n${variantFields.join("\n")}\n})`;
+        });
+        inputSchemaExpression = `Schema.Union([\n${variants
+          .map((variant) => `  ${variant}`)
+          .join(",\n")},\n])`;
+      } else if (bodySchema.properties) {
+        fields.push(
+          ...generateInputBodyFieldLines(bodySchema, spec, usedNames, ctx),
+        );
       }
     }
   }
 
-  const httpTraitParts = [`method: "${method.toUpperCase()}"`, `path: "${pathTemplate}"`];
+  const httpTraitParts = [
+    `method: "${method.toUpperCase()}"`,
+    `path: "${pathTemplate}"`,
+  ];
   if (bodyContentType) {
     httpTraitParts.push(`contentType: "${bodyContentType}"`);
   }
@@ -919,9 +1054,14 @@ function generateInputSchema3(
   }
 
   const inputSchemaCode =
-    annotatePureExportConst(`export const ${inputSchemaName} = Schema.Struct({
+    annotatePureExportConst(
+      `export const ${inputSchemaName} = ${
+        inputSchemaExpression ??
+        `Schema.Struct({
 ${fields.join("\n")}
-}).pipe(${traitChain.join(", ")});`) +
+})`
+      }.pipe(${traitChain.join(", ")});`,
+    ) +
     `
 export type ${inputSchemaName} = typeof ${inputSchemaName}.Type;`;
 
@@ -1208,15 +1348,22 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
             version,
             operation.responses,
           );
-          const { outputSchemaCode, outputSchemaName, sensitiveImports: outputSensitiveImports } =
-            generateOutputSchema(
-              operation.operationId,
-              responseSchema,
-              swagger,
-            );
+          const {
+            outputSchemaCode,
+            outputSchemaName,
+            sensitiveImports: outputSensitiveImports,
+          } = generateOutputSchema(
+            operation.operationId,
+            responseSchema,
+            swagger,
+          );
           const sensitiveImports = {
-            usesSensitiveString: sensitiveCtx.usesSensitiveString || outputSensitiveImports.usesSensitiveString,
-            usesSensitiveNullableString: sensitiveCtx.usesSensitiveNullableString || outputSensitiveImports.usesSensitiveNullableString,
+            usesSensitiveString:
+              sensitiveCtx.usesSensitiveString ||
+              outputSensitiveImports.usesSensitiveString,
+            usesSensitiveNullableString:
+              sensitiveCtx.usesSensitiveNullableString ||
+              outputSensitiveImports.usesSensitiveNullableString,
           };
 
           // Get operation-specific errors
@@ -1311,11 +1458,10 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
           const has3xxLocation = Object.entries(operation.responses ?? {}).some(
             ([status, resp]) => {
               if (!status.startsWith("3")) return false;
-              const respHeaders = (resp as { headers?: Record<string, unknown> })
-                .headers;
-              return (
-                respHeaders !== undefined && "Location" in respHeaders
-              );
+              const respHeaders = (
+                resp as { headers?: Record<string, unknown> }
+              ).headers;
+              return respHeaders !== undefined && "Location" in respHeaders;
             },
           );
           const noFollowRedirect =
@@ -1337,11 +1483,18 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
             version,
             operation.responses,
           );
-          const { outputSchemaCode, outputSchemaName, sensitiveImports: outputSensitiveImports } =
-            generateOutputSchema(operation.operationId, responseSchema, oas);
+          const {
+            outputSchemaCode,
+            outputSchemaName,
+            sensitiveImports: outputSensitiveImports,
+          } = generateOutputSchema(operation.operationId, responseSchema, oas);
           const sensitiveImports = {
-            usesSensitiveString: sensitiveCtx.usesSensitiveString || outputSensitiveImports.usesSensitiveString,
-            usesSensitiveNullableString: sensitiveCtx.usesSensitiveNullableString || outputSensitiveImports.usesSensitiveNullableString,
+            usesSensitiveString:
+              sensitiveCtx.usesSensitiveString ||
+              outputSensitiveImports.usesSensitiveString,
+            usesSensitiveNullableString:
+              sensitiveCtx.usesSensitiveNullableString ||
+              outputSensitiveImports.usesSensitiveNullableString,
           };
 
           // Get operation-specific errors
@@ -1399,8 +1552,9 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
   // Write barrel file
   const barrelPath = path.join(outputDir, "index.ts");
   const barrelContent =
-    operations.map((op) => `export * from "./${op.functionName}.ts";`).join("\n") +
-    "\n";
+    operations
+      .map((op) => `export * from "./${op.functionName}.ts";`)
+      .join("\n") + "\n";
   fs.writeFileSync(barrelPath, barrelContent);
 }
 

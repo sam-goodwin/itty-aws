@@ -245,6 +245,23 @@
         "effect": "catalog:",
       },
     },
+    "packages/polar": {
+      "name": "@distilled.cloud/polar",
+      "version": "0.2.0-alpha",
+      "dependencies": {
+        "@distilled.cloud/core": "workspace:*",
+        "effect": "catalog:",
+      },
+      "devDependencies": {
+        "@types/bun": "catalog:",
+        "@types/node": "catalog:",
+        "dotenv": "catalog:",
+        "vitest": "catalog:",
+      },
+      "peerDependencies": {
+        "effect": "catalog:",
+      },
+    },
     "packages/posthog": {
       "name": "@distilled.cloud/posthog",
       "version": "0.21.0",
@@ -493,6 +510,8 @@
     "@distilled.cloud/neon": ["@distilled.cloud/neon@workspace:packages/neon"],
 
     "@distilled.cloud/planetscale": ["@distilled.cloud/planetscale@workspace:packages/planetscale"],
+
+    "@distilled.cloud/polar": ["@distilled.cloud/polar@workspace:packages/polar"],
 
     "@distilled.cloud/posthog": ["@distilled.cloud/posthog@workspace:packages/posthog"],
 

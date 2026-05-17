@@ -1,0 +1,180 @@
+import * as Schema from "effect/Schema";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
+import { UnprocessableEntity } from "../errors.ts";
+
+// Input Schema
+export const OrganizationAccessTokensupdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.String.pipe(T.PathParam()),
+    comment: Schema.optional(Schema.NullOr(Schema.String)),
+    scopes: Schema.optional(
+      Schema.NullOr(
+        Schema.Array(
+          Schema.Literals([
+            "openid",
+            "profile",
+            "email",
+            "user:read",
+            "user:write",
+            "organizations:read",
+            "organizations:write",
+            "custom_fields:read",
+            "custom_fields:write",
+            "discounts:read",
+            "discounts:write",
+            "checkout_links:read",
+            "checkout_links:write",
+            "checkouts:read",
+            "checkouts:write",
+            "transactions:read",
+            "transactions:write",
+            "payouts:read",
+            "payouts:write",
+            "products:read",
+            "products:write",
+            "benefits:read",
+            "benefits:write",
+            "events:read",
+            "events:write",
+            "meters:read",
+            "meters:write",
+            "files:read",
+            "files:write",
+            "subscriptions:read",
+            "subscriptions:write",
+            "customers:read",
+            "customers:write",
+            "members:read",
+            "members:write",
+            "wallets:read",
+            "wallets:write",
+            "disputes:read",
+            "customer_meters:read",
+            "customer_sessions:write",
+            "member_sessions:write",
+            "customer_seats:read",
+            "customer_seats:write",
+            "orders:read",
+            "orders:write",
+            "refunds:read",
+            "refunds:write",
+            "payments:read",
+            "metrics:read",
+            "metrics:write",
+            "webhooks:read",
+            "webhooks:write",
+            "license_keys:read",
+            "license_keys:write",
+            "customer_portal:read",
+            "customer_portal:write",
+            "notifications:read",
+            "notifications:write",
+            "notification_recipients:read",
+            "notification_recipients:write",
+            "organization_access_tokens:read",
+            "organization_access_tokens:write",
+          ]),
+        ),
+      ),
+    ),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "/v1/organization-access-tokens/{id}" }),
+  );
+export type OrganizationAccessTokensupdateInput =
+  typeof OrganizationAccessTokensupdateInput.Type;
+
+// Output Schema
+export const OrganizationAccessTokensupdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    created_at: Schema.String,
+    modified_at: Schema.NullOr(Schema.String),
+    id: Schema.String,
+    scopes: Schema.Array(
+      Schema.Literals([
+        "openid",
+        "profile",
+        "email",
+        "user:read",
+        "user:write",
+        "web:read",
+        "web:write",
+        "organizations:read",
+        "organizations:write",
+        "custom_fields:read",
+        "custom_fields:write",
+        "discounts:read",
+        "discounts:write",
+        "checkout_links:read",
+        "checkout_links:write",
+        "checkouts:read",
+        "checkouts:write",
+        "transactions:read",
+        "transactions:write",
+        "payouts:read",
+        "payouts:write",
+        "products:read",
+        "products:write",
+        "benefits:read",
+        "benefits:write",
+        "events:read",
+        "events:write",
+        "meters:read",
+        "meters:write",
+        "files:read",
+        "files:write",
+        "subscriptions:read",
+        "subscriptions:write",
+        "customers:read",
+        "customers:write",
+        "members:read",
+        "members:write",
+        "wallets:read",
+        "wallets:write",
+        "disputes:read",
+        "customer_meters:read",
+        "customer_sessions:write",
+        "member_sessions:write",
+        "customer_seats:read",
+        "customer_seats:write",
+        "orders:read",
+        "orders:write",
+        "refunds:read",
+        "refunds:write",
+        "payments:read",
+        "metrics:read",
+        "metrics:write",
+        "webhooks:read",
+        "webhooks:write",
+        "license_keys:read",
+        "license_keys:write",
+        "customer_portal:read",
+        "customer_portal:write",
+        "notifications:read",
+        "notifications:write",
+        "notification_recipients:read",
+        "notification_recipients:write",
+        "organization_access_tokens:read",
+        "organization_access_tokens:write",
+      ]),
+    ),
+    expires_at: Schema.NullOr(Schema.String),
+    comment: Schema.String,
+    last_used_at: Schema.NullOr(Schema.String),
+    organization_id: Schema.String,
+  });
+export type OrganizationAccessTokensupdateOutput =
+  typeof OrganizationAccessTokensupdateOutput.Type;
+
+// The operation
+/**
+ * Update
+ *
+ * **Scopes**: `organization_access_tokens:write`
+ */
+export const organizationAccessTokensupdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: OrganizationAccessTokensupdateInput,
+    outputSchema: OrganizationAccessTokensupdateOutput,
+    errors: [UnprocessableEntity] as const,
+  }));

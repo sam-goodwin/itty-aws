@@ -46,6 +46,7 @@ env:
     packages/typesense/package.json
     packages/workos/package.json
     packages/expo-eas/package.json
+    packages/polar/package.json
     bun.lock
     CHANGELOG.md
 
@@ -273,6 +274,7 @@ jobs:
           - typesense
           - workos
           - expo-eas
+          - polar
         include:
           - package: aws
             runner: ubuntu-22-large

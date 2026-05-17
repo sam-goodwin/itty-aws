@@ -1,0 +1,91 @@
+{
+  "description": "Flatten ProductCreate's top-level oneOf into a pragmatic object schema. The shared OpenAPI generator currently only expands request-body properties and skipped ProductCreate entirely because the body is oneOf(ProductCreateRecurring, ProductCreateOneTime). This keeps the operation usable while preserving the common required fields and allowing recurring-only fields as optional.",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/components/schemas/ProductCreate",
+      "value": {
+        "type": "object",
+        "title": "ProductCreate",
+        "description": "Schema to create a product.",
+        "required": ["name", "prices"],
+        "properties": {
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Key-value object allowing you to store additional information."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the product."
+          },
+          "description": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "description": "The description of the product."
+          },
+          "visibility": {
+            "$ref": "#/components/schemas/ProductVisibility",
+            "description": "The visibility of the product."
+          },
+          "prices": {
+            "type": "array",
+            "items": {},
+            "description": "List of available prices for this product."
+          },
+          "medias": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid4"
+                }
+              },
+              { "type": "null" }
+            ],
+            "description": "List of file IDs."
+          },
+          "attached_custom_fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttachedCustomFieldCreate"
+            },
+            "description": "List of custom fields to attach."
+          },
+          "organization_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid4"
+              },
+              { "type": "null" }
+            ],
+            "description": "The ID of the organization owning the product. Required unless you use an organization token."
+          },
+          "trial_interval": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/TrialInterval" },
+              { "type": "null" }
+            ],
+            "description": "The interval unit for the trial period."
+          },
+          "trial_interval_count": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "description": "The number of interval units for the trial period."
+          },
+          "recurring_interval": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/SubscriptionRecurringInterval" },
+              { "type": "null" }
+            ],
+            "description": "The recurring interval of the product."
+          },
+          "recurring_interval_count": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "description": "Number of interval units of the subscription."
+          }
+        }
+      }
+    }
+  ]
+}

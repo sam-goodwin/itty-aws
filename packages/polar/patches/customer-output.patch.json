@@ -1,0 +1,93 @@
+{
+  "description": "Flatten Customer's top-level oneOf into common output fields shared by individual and team customers. The shared generator intentionally leaves arbitrary output unions as Schema.Unknown to avoid recursive schemas, but customers are central SDK resources and should expose useful typed fields for create/get/list/update.",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/components/schemas/Customer",
+      "value": {
+        "type": "object",
+        "title": "Customer",
+        "description": "A Polar customer.",
+        "required": [
+          "id",
+          "created_at",
+          "modified_at",
+          "metadata",
+          "email",
+          "email_verified",
+          "type",
+          "name",
+          "billing_address",
+          "tax_id",
+          "organization_id",
+          "deleted_at",
+          "avatar_url"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid4",
+            "description": "The ID of the customer."
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp of the object."
+          },
+          "modified_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "description": "Last modification timestamp of the object."
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "external_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "description": "The ID of the customer in your system."
+          },
+          "email": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "description": "The email address of the customer."
+          },
+          "email_verified": {
+            "type": "boolean",
+            "description": "Whether the customer email address is verified."
+          },
+          "type": {
+            "$ref": "#/components/schemas/CustomerType",
+            "description": "The type of customer."
+          },
+          "name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "description": "The name of the customer."
+          },
+          "billing_address": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true
+          },
+          "tax_id": {
+            "nullable": true
+          },
+          "locale": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }]
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid4",
+            "description": "The ID of the organization owning the customer."
+          },
+          "deleted_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "description": "Timestamp for when the customer was soft deleted."
+          },
+          "avatar_url": {
+            "type": "string",
+            "description": "Avatar URL for the customer."
+          }
+        }
+      }
+    }
+  ]
+}
