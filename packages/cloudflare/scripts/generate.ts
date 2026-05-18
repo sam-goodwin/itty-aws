@@ -201,6 +201,8 @@ interface OperationPatch {
   responsePath?: string;
   /** Request schema modifications */
   request?: ResponsePatch;
+  /** Override request body encoding when the upstream SDK metadata is wrong. */
+  requestContentType?: "binary";
   /** Response schema modifications */
   response?: ResponsePatch;
 }
@@ -536,9 +538,7 @@ function applyPatchToTypeInfo(typeInfo: TypeInfo, patch: PropertyPatch): void {
     typeInfo.values
   ) {
     for (const variant of patch.appendUnion) {
-      typeInfo.values.push(
-        JSON.parse(JSON.stringify(variant)) as TypeInfo,
-      );
+      typeInfo.values.push(JSON.parse(JSON.stringify(variant)) as TypeInfo);
     }
   }
 
@@ -661,6 +661,7 @@ function resolveOperationModel(
         if (param) {
           param.type = patchedProp.type;
           param.required = patchedProp.required;
+          param.wireKey = patchedProp.wireKey;
         }
         for (const arr of [
           resolvedPathParams,
@@ -674,6 +675,7 @@ function resolveOperationModel(
           if (catParam) {
             catParam.type = patchedProp.type;
             catParam.required = patchedProp.required;
+            catParam.wireKey = patchedProp.wireKey;
           }
         }
       }
@@ -1365,6 +1367,7 @@ function generateOperationSchemaAst(
         if (param) {
           param.type = patchedProp.type;
           param.required = patchedProp.required;
+          param.wireKey = patchedProp.wireKey;
         }
         for (const arr of [
           resolvedPathParams,
@@ -1378,6 +1381,7 @@ function generateOperationSchemaAst(
           if (catParam) {
             catParam.type = patchedProp.type;
             catParam.required = patchedProp.required;
+            catParam.wireKey = patchedProp.wireKey;
           }
         }
       }
@@ -1447,7 +1451,7 @@ function generateOperationSchemaAst(
   let hasRenamedBodyKey = false;
   for (const param of resolvedBodyParams) {
     const propName = toCamelCase(param.name);
-    const wireName = param.name;
+    const wireName = param.wireKey ?? param.name;
     let schema = typeInfoToSchema(param.type);
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
@@ -1493,7 +1497,9 @@ function generateOperationSchemaAst(
   // Use responseContentType: "binary" for raw octet-stream downloads (e.g. R2 GetObject).
   const hasFiles = operationHasFiles(op);
   const isMultipart = hasFiles || op.isMultipart;
-  const isBinary = !isMultipart && operationHasBinaryBody(op);
+  const isBinary =
+    !isMultipart &&
+    (patch?.requestContentType === "binary" || operationHasBinaryBody(op));
   const httpTraitParts: string[] = [
     `method: "${op.httpMethod}"`,
     `path: "${openApiPath}"`,
@@ -1766,7 +1772,9 @@ function generateAccountOrZoneOperationSchema(
   const isScopeParam = (p: { name: string }): boolean =>
     SCOPE_PARAM_NAMES.has(toCamelCase(p.name));
 
-  const nonScopePathParams = resolved.pathParams.filter((p) => !isScopeParam(p));
+  const nonScopePathParams = resolved.pathParams.filter(
+    (p) => !isScopeParam(p),
+  );
   const queryParams = resolved.queryParams;
   const headerParams = resolved.headerParams;
   const bodyParams = resolved.bodyParams.filter((p) => !isScopeParam(p));
@@ -1813,7 +1821,7 @@ function generateAccountOrZoneOperationSchema(
   let bodyAsHttpBodyEntry: string | undefined;
   for (const param of bodyParams) {
     const propName = toCamelCase(param.name);
-    const wireName = param.name;
+    const wireName = param.wireKey ?? param.name;
     let schema = typeInfoToSchema(param.type);
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
@@ -1851,12 +1859,11 @@ function generateAccountOrZoneOperationSchema(
 
   const hasFiles = operationHasFiles(op);
   const isMultipart = hasFiles || op.isMultipart;
-  const isBinary = !isMultipart && operationHasBinaryBody(op);
+  const isBinary =
+    !isMultipart &&
+    (patch?.requestContentType === "binary" || operationHasBinaryBody(op));
   const buildHttpTrait = (path: string): string => {
-    const parts: string[] = [
-      `method: "${op.httpMethod}"`,
-      `path: "${path}"`,
-    ];
+    const parts: string[] = [`method: "${op.httpMethod}"`, `path: "${path}"`];
     if (isMultipart) parts.push(`contentType: "multipart"`);
     else if (isBinary) parts.push(`contentType: "binary"`);
     if (op.responseContentType === "binary") {
@@ -1888,7 +1895,9 @@ function generateAccountOrZoneOperationSchema(
         `  /** ${param.description.replace(/\n/g, " ").slice(0, 200)} */`,
       );
     }
-    baseInterfaceLines.push(`  ${quotePropKey(propName)}${optMark}: ${tsType};`);
+    baseInterfaceLines.push(
+      `  ${quotePropKey(propName)}${optMark}: ${tsType};`,
+    );
   }
   for (const param of queryParams) {
     const propName = toCamelCase(param.name);
@@ -1899,7 +1908,9 @@ function generateAccountOrZoneOperationSchema(
         `  /** ${param.description.replace(/\n/g, " ").slice(0, 200)} */`,
       );
     }
-    baseInterfaceLines.push(`  ${quotePropKey(propName)}${optMark}: ${tsType};`);
+    baseInterfaceLines.push(
+      `  ${quotePropKey(propName)}${optMark}: ${tsType};`,
+    );
   }
   for (const param of headerParams) {
     const propName = toCamelCase(param.name);
@@ -1910,7 +1921,9 @@ function generateAccountOrZoneOperationSchema(
         `  /** ${param.description.replace(/\n/g, " ").slice(0, 200)} */`,
       );
     }
-    baseInterfaceLines.push(`  ${quotePropKey(propName)}${optMark}: ${tsType};`);
+    baseInterfaceLines.push(
+      `  ${quotePropKey(propName)}${optMark}: ${tsType};`,
+    );
   }
   for (const param of bodyParams) {
     const propName = toCamelCase(param.name);
@@ -1921,7 +1934,9 @@ function generateAccountOrZoneOperationSchema(
         `  /** ${param.description.replace(/\n/g, " ").slice(0, 200)} */`,
       );
     }
-    baseInterfaceLines.push(`  ${quotePropKey(propName)}${optMark}: ${tsType};`);
+    baseInterfaceLines.push(
+      `  ${quotePropKey(propName)}${optMark}: ${tsType};`,
+    );
   }
 
   // Emit a shared base interface containing all non-scope fields, then have
@@ -2222,7 +2237,7 @@ function generateOperationSchema(
   let hasRenamedBodyKey = false;
   for (const param of resolvedBodyParams) {
     const propName = toCamelCase(param.name);
-    const wireName = param.name;
+    const wireName = param.wireKey ?? param.name;
     let schema = typeInfoToSchema(param.type);
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
@@ -2258,7 +2273,9 @@ function generateOperationSchema(
   }
   const hasFiles = operationHasFiles(op);
   const isMultipart = hasFiles || op.isMultipart;
-  const isBinary = !isMultipart && operationHasBinaryBody(op);
+  const isBinary =
+    !isMultipart &&
+    (patch?.requestContentType === "binary" || operationHasBinaryBody(op));
   const httpTraitParts2: string[] = [
     `method: "${op.httpMethod}"`,
     `path: "${openApiPath}"`,
@@ -2656,19 +2673,23 @@ function bodyParamsToOpenApiSchema(
   if (bodyParams.length === 0) {
     return undefined;
   }
-  if (bodyParams.length === 1 && bodyParams[0].name === "body") {
+  if (
+    bodyParams.length === 1 &&
+    (bodyParams[0].wireKey ?? bodyParams[0].name) === "body"
+  ) {
     return typeInfoToOpenApiSchema(bodyParams[0].type);
   }
 
   const properties: Record<string, unknown> = {};
   const required: string[] = [];
   for (const param of bodyParams) {
-    properties[param.name] = typeInfoToOpenApiSchema(param.type);
+    const wireName = param.wireKey ?? param.name;
+    properties[wireName] = typeInfoToOpenApiSchema(param.type);
     if (param.description) {
-      (properties[param.name] as Record<string, unknown>).description =
+      (properties[wireName] as Record<string, unknown>).description =
         param.description;
     }
-    if (param.required) required.push(param.name);
+    if (param.required) required.push(wireName);
   }
   const schema: Record<string, unknown> = {
     type: "object",
@@ -2713,7 +2734,7 @@ function operationToOpenApi(
   const contentType =
     op.isMultipart || operationHasFiles(op)
       ? "multipart/form-data"
-      : operationHasBinaryBody(op)
+      : patch?.requestContentType === "binary" || operationHasBinaryBody(op)
         ? "application/octet-stream"
         : "application/json";
   const errors =
@@ -2915,9 +2936,7 @@ function emitBinaryResponse(
       `  ${quotePropKey(propName)}: Schema.optional(${innerSchema}).pipe(T.HttpResponseHeader("${wireName}")),`,
     );
   }
-  lines.push(
-    `}) as unknown as Schema.Schema<${responseTypeName}>;`,
-  );
+  lines.push(`}) as unknown as Schema.Schema<${responseTypeName}>;`);
   lines.push("");
 }
 

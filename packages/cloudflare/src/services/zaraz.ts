@@ -1390,9 +1390,13 @@ export interface PutZarazRequest {
 
 export const PutZarazRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  workflow: Schema.Literals(["realtime", "preview"]),
+  workflow: Schema.Literals(["realtime", "preview"]).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PUT", path: "/zones/{zone_id}/settings/zaraz/workflow" }),
+  T.Http({
+    method: "PUT",
+    path: "/zones/{zone_id}/settings/zaraz/workflow",
+    contentType: "binary",
+  }),
 ) as unknown as Schema.Schema<PutZarazRequest>;
 
 export type PutZarazResponse = "realtime" | "preview";

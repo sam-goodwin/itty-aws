@@ -1308,18 +1308,12 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          application/octet-stream:
             schema:
-              type: object
-              properties:
-                workflow:
-                  type: string
-                  enum:
-                    - realtime
-                    - preview
-                  description: "Body param: Zaraz workflow"
-              required:
-                - workflow
+              type: string
+              enum:
+                - realtime
+                - preview
       responses:
         "200":
           description: Success

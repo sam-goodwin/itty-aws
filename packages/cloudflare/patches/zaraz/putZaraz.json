@@ -1,0 +1,8 @@
+{
+  "requestContentType": "binary",
+  "request": {
+    "properties": {
+      "workflow": { "wireKey": "body" }
+    }
+  }
+}
