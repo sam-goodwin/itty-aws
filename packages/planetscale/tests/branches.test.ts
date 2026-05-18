@@ -653,24 +653,70 @@ describe.each([{ kind: "postgresql" }, { kind: "mysql" }] as const)(
         expect(isNotFoundOrForbidden(error)).toBe(true);
       });
 
-      it("returns UnprocessableEntity when trying to delete production branch (main)", async () => {
+      it("returns UnprocessableEntity when trying to delete the production branch", async () => {
         const db = getDb();
-        const error = await runEffect(
-          deleteBranch({
+
+        // PlanetScale only refuses to delete a branch if it's *currently* the
+        // production branch. On a fresh test database "main" is the default
+        // branch but isn't always production-protected, so don't rely on its
+        // status — create a throwaway branch, promote it, then verify that
+        // delete fails. Demote afterwards so the database is left in a
+        // deletable state for teardown.
+        const branchName = `test-delete-prod-${kind}-${testRunId}`;
+        await runEffect(
+          createBranch({
             organization: db.organization,
             database: db.name,
-            branch: "main",
-          }).pipe(
-            Effect.matchEffect({
-              onFailure: (e) => Effect.succeed(e),
-              onSuccess: () => Effect.succeed(null),
-            }),
-          ),
+            name: branchName,
+            parent_branch: "main",
+          }),
+        );
+        await runEffect(
+          waitForBranchReady(db.organization, db.name, branchName),
         );
 
-        // Deleting production branch should fail with some error
-        expect(error).not.toBeNull();
-        expect(error).toBeInstanceOf(UnprocessableEntity);
+        try {
+          await runEffect(
+            promoteBranch({
+              organization: db.organization,
+              database: db.name,
+              branch: branchName,
+            }),
+          );
+
+          const error = await runEffect(
+            deleteBranch({
+              organization: db.organization,
+              database: db.name,
+              branch: branchName,
+            }).pipe(
+              Effect.matchEffect({
+                onFailure: (e) => Effect.succeed(e),
+                onSuccess: () => Effect.succeed(null),
+              }),
+            ),
+          );
+
+          expect(error).not.toBeNull();
+          expect(error).toBeInstanceOf(UnprocessableEntity);
+        } finally {
+          // Demote so the branch can be deleted; teardown will drop the
+          // whole database afterwards.
+          await runEffect(
+            demoteBranch({
+              organization: db.organization,
+              database: db.name,
+              branch: branchName,
+            }).pipe(Effect.ignore),
+          );
+          await runEffect(
+            deleteBranch({
+              organization: db.organization,
+              database: db.name,
+              branch: branchName,
+            }).pipe(Effect.ignore),
+          );
+        }
       });
     });
 
