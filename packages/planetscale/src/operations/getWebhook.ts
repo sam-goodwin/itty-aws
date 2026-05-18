@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const GetWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -21,7 +21,7 @@ export type GetWebhookInput = typeof GetWebhookInput.Type;
 export const GetWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   url: Schema.String,
-  secret: SensitiveString,
+  secret: SensitiveOutputString,
   enabled: Schema.Boolean,
   last_sent_result: Schema.NullOr(Schema.String),
   last_sent_success: Schema.NullOr(Schema.Boolean),

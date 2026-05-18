@@ -343,8 +343,16 @@ function isSensitiveFieldName(name: string): boolean {
 // ============================================================================
 
 interface SchemaGenerationContext {
+  // Whether to emit input-friendly Sensitive* (decoded type is the union
+  // `A | Redacted<A>`) or output-strict SensitiveOutput* (decoded type is just
+  // `Redacted<A>`). Output schemas should use the strict variant so consumers
+  // never have to coerce. Defaults to "input" for backwards-compat callers
+  // that don't pass a direction.
+  direction?: "input" | "output";
   usesSensitiveString: boolean;
   usesSensitiveNullableString: boolean;
+  usesSensitiveOutputString: boolean;
+  usesSensitiveOutputNullableString: boolean;
 }
 
 function openApiTypeToEffectSchema(
@@ -442,16 +450,30 @@ function openApiTypeToEffectSchema(
     case "string":
       // Check for sensitive annotation
       if (prop["x-sensitive"]) {
+        // For response schemas use the strict SensitiveOutput* variants so
+        // the decoded type is `Redacted<string>` (no `string | Redacted<...>`
+        // union). For request bodies keep the input-friendly Sensitive*
+        // variants so callers can pass either form.
+        const useStrict = ctx?.direction === "output";
+        const nullable = isNullable(prop);
         if (ctx) {
-          if (isNullable(prop)) {
-            ctx.usesSensitiveNullableString = true;
+          if (useStrict) {
+            if (nullable) ctx.usesSensitiveOutputNullableString = true;
+            else ctx.usesSensitiveOutputString = true;
           } else {
-            ctx.usesSensitiveString = true;
+            if (nullable) ctx.usesSensitiveNullableString = true;
+            else ctx.usesSensitiveString = true;
           }
         }
-        baseSchema = isNullable(prop)
-          ? "SensitiveNullableString"
-          : "SensitiveString";
+        if (useStrict) {
+          baseSchema = nullable
+            ? "SensitiveOutputNullableString"
+            : "SensitiveOutputString";
+        } else {
+          baseSchema = nullable
+            ? "SensitiveNullableString"
+            : "SensitiveString";
+        }
         return baseSchema; // Return early since Sensitive handles null
       }
       baseSchema = "Schema.String";
@@ -975,12 +997,17 @@ function generateOutputSchema(
   sensitiveImports: {
     usesSensitiveString: boolean;
     usesSensitiveNullableString: boolean;
+    usesSensitiveOutputString: boolean;
+    usesSensitiveOutputNullableString: boolean;
   };
 } {
   const outputSchemaName = toPascalCase(operationId) + "Output";
   const ctx: SchemaGenerationContext = {
+    direction: "output",
     usesSensitiveString: false,
     usesSensitiveNullableString: false,
+    usesSensitiveOutputString: false,
+    usesSensitiveOutputNullableString: false,
   };
 
   if (!responseSchema) {
@@ -991,6 +1018,8 @@ export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
       sensitiveImports: {
         usesSensitiveString: false,
         usesSensitiveNullableString: false,
+        usesSensitiveOutputString: false,
+        usesSensitiveOutputNullableString: false,
       },
     };
   }
@@ -1016,6 +1045,9 @@ export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
       sensitiveImports: {
         usesSensitiveString: ctx.usesSensitiveString,
         usesSensitiveNullableString: ctx.usesSensitiveNullableString,
+        usesSensitiveOutputString: ctx.usesSensitiveOutputString,
+        usesSensitiveOutputNullableString:
+          ctx.usesSensitiveOutputNullableString,
       },
     };
   }
@@ -1034,6 +1066,8 @@ export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
     sensitiveImports: {
       usesSensitiveString: ctx.usesSensitiveString,
       usesSensitiveNullableString: ctx.usesSensitiveNullableString,
+      usesSensitiveOutputString: ctx.usesSensitiveOutputString,
+      usesSensitiveOutputNullableString: ctx.usesSensitiveOutputNullableString,
     },
   };
 }
@@ -1051,6 +1085,8 @@ function generateOperationCode(
   sensitiveImports: {
     usesSensitiveString: boolean;
     usesSensitiveNullableString: boolean;
+    usesSensitiveOutputString: boolean;
+    usesSensitiveOutputNullableString: boolean;
   },
   config: GeneratorConfig,
 ): string {
@@ -1091,6 +1127,12 @@ import * as T from "${traitsImport}.ts";`;
   }
   if (sensitiveImports.usesSensitiveNullableString) {
     sensitiveTypesToImport.push("SensitiveNullableString");
+  }
+  if (sensitiveImports.usesSensitiveOutputString) {
+    sensitiveTypesToImport.push("SensitiveOutputString");
+  }
+  if (sensitiveImports.usesSensitiveOutputNullableString) {
+    sensitiveTypesToImport.push("SensitiveOutputNullableString");
   }
   if (sensitiveTypesToImport.length > 0) {
     imports += `\nimport { ${sensitiveTypesToImport.join(", ")} } from "${sensitiveImportPath}.ts";`;
@@ -1189,8 +1231,11 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
           );
 
           const sensitiveCtx: SchemaGenerationContext = {
+            direction: "input",
             usesSensitiveString: false,
             usesSensitiveNullableString: false,
+            usesSensitiveOutputString: false,
+            usesSensitiveOutputNullableString: false,
           };
 
           const { inputSchemaCode, inputSchemaName } =
@@ -1215,8 +1260,18 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
               swagger,
             );
           const sensitiveImports = {
-            usesSensitiveString: sensitiveCtx.usesSensitiveString || outputSensitiveImports.usesSensitiveString,
-            usesSensitiveNullableString: sensitiveCtx.usesSensitiveNullableString || outputSensitiveImports.usesSensitiveNullableString,
+            usesSensitiveString:
+              sensitiveCtx.usesSensitiveString ||
+              outputSensitiveImports.usesSensitiveString,
+            usesSensitiveNullableString:
+              sensitiveCtx.usesSensitiveNullableString ||
+              outputSensitiveImports.usesSensitiveNullableString,
+            usesSensitiveOutputString:
+              sensitiveCtx.usesSensitiveOutputString ||
+              outputSensitiveImports.usesSensitiveOutputString,
+            usesSensitiveOutputNullableString:
+              sensitiveCtx.usesSensitiveOutputNullableString ||
+              outputSensitiveImports.usesSensitiveOutputNullableString,
           };
 
           // Get operation-specific errors
@@ -1295,8 +1350,11 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
           );
 
           const sensitiveCtx: SchemaGenerationContext = {
+            direction: "input",
             usesSensitiveString: false,
             usesSensitiveNullableString: false,
+            usesSensitiveOutputString: false,
+            usesSensitiveOutputNullableString: false,
           };
 
           // Detect operations that should opt out of automatic redirect-
@@ -1340,8 +1398,18 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
           const { outputSchemaCode, outputSchemaName, sensitiveImports: outputSensitiveImports } =
             generateOutputSchema(operation.operationId, responseSchema, oas);
           const sensitiveImports = {
-            usesSensitiveString: sensitiveCtx.usesSensitiveString || outputSensitiveImports.usesSensitiveString,
-            usesSensitiveNullableString: sensitiveCtx.usesSensitiveNullableString || outputSensitiveImports.usesSensitiveNullableString,
+            usesSensitiveString:
+              sensitiveCtx.usesSensitiveString ||
+              outputSensitiveImports.usesSensitiveString,
+            usesSensitiveNullableString:
+              sensitiveCtx.usesSensitiveNullableString ||
+              outputSensitiveImports.usesSensitiveNullableString,
+            usesSensitiveOutputString:
+              sensitiveCtx.usesSensitiveOutputString ||
+              outputSensitiveImports.usesSensitiveOutputString,
+            usesSensitiveOutputNullableString:
+              sensitiveCtx.usesSensitiveOutputNullableString ||
+              outputSensitiveImports.usesSensitiveOutputNullableString,
           };
 
           // Get operation-specific errors
@@ -1576,6 +1644,12 @@ import * as T from "${traitsImport}.ts";`;
   }
   if (sensitiveImports.usesSensitiveNullableString) {
     sensitiveTypesToImport.push("SensitiveNullableString");
+  }
+  if (sensitiveImports.usesSensitiveOutputString) {
+    sensitiveTypesToImport.push("SensitiveOutputString");
+  }
+  if (sensitiveImports.usesSensitiveOutputNullableString) {
+    sensitiveTypesToImport.push("SensitiveOutputNullableString");
   }
   if (sensitiveTypesToImport.length > 0) {
     imports += `\nimport { ${sensitiveTypesToImport.join(", ")} } from "${sensitiveImportPath}.ts";`;

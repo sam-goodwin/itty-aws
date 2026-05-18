@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const RenewPasswordInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -55,7 +55,7 @@ export const RenewPasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     postgresql_supported: Schema.Boolean,
   }),
   username: Schema.String,
-  plain_text: SensitiveString,
+  plain_text: SensitiveOutputString,
   replica: Schema.Boolean,
   renewable: Schema.Boolean,
   database_branch: Schema.Struct({

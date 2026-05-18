@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const GetDefaultRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -26,7 +26,7 @@ export const GetDefaultRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   private_connection_service_name: Schema.String,
   username: Schema.String,
   base_username: Schema.String,
-  password: SensitiveNullableString,
+  password: SensitiveOutputNullableString,
   database_name: Schema.String,
   created_at: Schema.String,
   updated_at: Schema.String,

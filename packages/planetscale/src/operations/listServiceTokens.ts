@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const ListServiceTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -34,7 +34,9 @@ export const ListServiceTokensOutput =
         name: Schema.optional(Schema.NullOr(Schema.String)),
         display_name: Schema.String,
         token: Schema.optional(Schema.NullOr(Schema.String)),
-        plain_text_refresh_token: Schema.optional(SensitiveNullableString),
+        plain_text_refresh_token: Schema.optional(
+          SensitiveOutputNullableString,
+        ),
         avatar_url: Schema.String,
         created_at: Schema.String,
         updated_at: Schema.String,

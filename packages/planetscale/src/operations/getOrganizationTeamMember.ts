@@ -7,7 +7,7 @@ import {
   NotFound,
   UnprocessableEntity,
 } from "../errors.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const GetOrganizationTeamMemberInput =
@@ -97,7 +97,7 @@ export const GetOrganizationTeamMemberOutput =
           postgresql_supported: Schema.Boolean,
         }),
         username: Schema.String,
-        plain_text: SensitiveNullableString,
+        plain_text: SensitiveOutputNullableString,
         replica: Schema.Boolean,
         renewable: Schema.Boolean,
         database_branch: Schema.Struct({
