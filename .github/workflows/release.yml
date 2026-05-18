@@ -46,6 +46,7 @@ env:
     packages/typesense/package.json
     packages/workos/package.json
     packages/expo-eas/package.json
+    packages/modrinth/package.json
     bun.lock
     CHANGELOG.md
 

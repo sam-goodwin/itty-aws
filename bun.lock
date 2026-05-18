@@ -197,6 +197,24 @@
         "effect": "catalog:",
       },
     },
+    "packages/modrinth": {
+      "name": "@distilled.cloud/modrinth",
+      "version": "0.2.0-alpha",
+      "dependencies": {
+        "@distilled.cloud/core": "workspace:*",
+        "effect": "catalog:",
+      },
+      "devDependencies": {
+        "@types/bun": "catalog:",
+        "@types/node": "catalog:",
+        "dotenv": "catalog:",
+        "vitest": "catalog:",
+        "yaml": "catalog:",
+      },
+      "peerDependencies": {
+        "effect": "catalog:",
+      },
+    },
     "packages/mongodb-atlas": {
       "name": "@distilled.cloud/mongodb-atlas",
       "version": "0.21.3",
@@ -487,6 +505,8 @@
     "@distilled.cloud/gcp": ["@distilled.cloud/gcp@workspace:packages/gcp"],
 
     "@distilled.cloud/kubernetes": ["@distilled.cloud/kubernetes@workspace:packages/kubernetes"],
+
+    "@distilled.cloud/modrinth": ["@distilled.cloud/modrinth@workspace:packages/modrinth"],
 
     "@distilled.cloud/mongodb-atlas": ["@distilled.cloud/mongodb-atlas@workspace:packages/mongodb-atlas"],
 

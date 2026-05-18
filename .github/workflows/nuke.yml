@@ -70,6 +70,10 @@ on:
         description: "Eas"
         type: boolean
         default: false
+      modrinth:
+        description: "Modrinth"
+        type: boolean
+        default: false
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"

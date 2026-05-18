@@ -42,6 +42,7 @@ jobs:
       typesense: ${{ steps.force.outputs.all || steps.changes.outputs.typesense }}
       workos: ${{ steps.force.outputs.all || steps.changes.outputs.workos }}
       expo-eas: ${{ steps.force.outputs.all || steps.changes.outputs.expo-eas }}
+      modrinth: ${{ steps.force.outputs.all || steps.changes.outputs.modrinth }}
     steps:
       - id: force
         if: contains(github.event.pull_request.labels.*.name, 'force-ci')
@@ -109,6 +110,9 @@ jobs:
               - 'packages/core/**'
             expo-eas:
               - 'packages/expo-eas/**'
+              - 'packages/core/**'
+            modrinth:
+              - 'packages/modrinth/**'
               - 'packages/core/**'
 
   ci-core:
@@ -494,3 +498,24 @@ jobs:
         working-directory: packages/expo-eas
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+  ci-modrinth:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.modrinth == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install
+      - run: bun run build
+        working-directory: packages/core
+      - run: bun run check
+        working-directory: packages/modrinth
+      - run: bun run test
+        working-directory: packages/modrinth
+        env:
+          MODRINTH_API_BASE_URL: ${{ secrets.MODRINTH_API_BASE_URL }}
+          MODRINTH_API_KEY: ${{ secrets.MODRINTH_API_KEY }}
+          MODRINTH_USER_AGENT: ${{ secrets.MODRINTH_USER_AGENT }}

@@ -1,0 +1,113 @@
+{
+  "description": "Add 400 BadRequest responses to operations that return them in practice but don't document them. Discovered via live API probing — Modrinth returns 400 with `{ error: 'invalid_input' | 'json_error', description }` for malformed base62 IDs (path params) and malformed JSON arrays (query params), but the spec omits these responses on the corresponding operations.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1version~1{id}/get/responses/400",
+      "value": {
+        "description": "Path parameter could not be parsed (e.g. invalid base62 encoding)",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/InvalidInputError" }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1versions/get/responses/400",
+      "value": {
+        "description": "Query parameter `ids` could not be parsed as a JSON array of strings",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/InvalidInputError" }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1users/get/responses/400",
+      "value": {
+        "description": "Query parameter `ids` could not be parsed as a JSON array of strings",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/InvalidInputError" }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1teams/get/responses/400",
+      "value": {
+        "description": "Query parameter `ids` could not be parsed as a JSON array of strings",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/InvalidInputError" }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1team~1{id}~1members/get/responses/400",
+      "value": {
+        "description": "Path parameter could not be parsed (e.g. invalid base62 encoding)",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/InvalidInputError" }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1report~1{id}/get/responses/400",
+      "value": {
+        "description": "Path parameter could not be parsed (e.g. invalid base62 encoding)",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/InvalidInputError" }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1reports/get/responses/400",
+      "value": {
+        "description": "Query parameter `ids` missing or could not be parsed as a JSON array of strings",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/InvalidInputError" }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1notification~1{id}/get/responses/400",
+      "value": {
+        "description": "Path parameter could not be parsed (e.g. invalid base62 encoding)",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/InvalidInputError" }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1thread~1{id}/get/responses/400",
+      "value": {
+        "description": "Path parameter could not be parsed (e.g. invalid base62 encoding)",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/InvalidInputError" }
+          }
+        }
+      }
+    }
+  ]
+}
