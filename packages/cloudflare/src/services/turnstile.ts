@@ -13,6 +13,16 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.Number,
+  message: Schema.String,
+}) {}
+T.applyErrorMatchers(NotFound, [{ status: 404 }]);
+
+// =============================================================================
 // SecretWidget
 // =============================================================================
 
@@ -201,7 +211,7 @@ export const GetWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetWidgetResponse>;
 
-export type GetWidgetError = DefaultErrors;
+export type GetWidgetError = DefaultErrors | NotFound;
 
 export const getWidget: API.OperationMethod<
   GetWidgetRequest,
@@ -211,7 +221,7 @@ export const getWidget: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWidgetRequest,
   output: GetWidgetResponse,
-  errors: [],
+  errors: [NotFound],
 }));
 
 export interface ListWidgetsRequest {
@@ -690,7 +700,7 @@ export const DeleteWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteWidgetResponse>;
 
-export type DeleteWidgetError = DefaultErrors;
+export type DeleteWidgetError = DefaultErrors | NotFound;
 
 export const deleteWidget: API.OperationMethod<
   DeleteWidgetRequest,
@@ -700,5 +710,5 @@ export const deleteWidget: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWidgetRequest,
   output: DeleteWidgetResponse,
-  errors: [],
+  errors: [NotFound],
 }));

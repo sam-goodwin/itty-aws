@@ -180,7 +180,7 @@ interface OperationPatch {
   errors: Record<
     string,
     Array<{
-      code: number;
+      code?: number;
       status?: number;
       message?: { includes?: string; matches?: string };
     }>

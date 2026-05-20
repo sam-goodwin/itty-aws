@@ -1,8 +1,13 @@
 import { describe, expect, it } from "vitest";
 import { buildRequestParts, getHttpTrait } from "@distilled.cloud/core/traits";
+import * as Effect from "effect/Effect";
 import * as Schema from "effect/Schema";
-import { transformCloudflareRequestParts } from "~/client/api";
+import {
+  matchCloudflareError,
+  transformCloudflareRequestParts,
+} from "~/client/api";
 import { CreateAssetUploadRequest, PutScriptRequest } from "~/services/workers";
+import { NotFound as TurnstileNotFound } from "~/services/turnstile";
 import {
   GetPhasResponse,
   PutPhasForAccountRequest,
@@ -59,6 +64,26 @@ describe("client api", () => {
       Authorization: "Bearer upload-session-jwt",
     });
   });
+
+  it("matches operation errors on non-json Cloudflare error responses", () =>
+    matchCloudflareError(
+      404,
+      { _nonJsonError: true, body: "widget not found" },
+      [TurnstileNotFound],
+    ).pipe(
+      Effect.flip,
+      Effect.map((error) => expect(error._tag).toBe("NotFound")),
+      Effect.runPromise,
+    ));
+
+  it("matches operation errors on non-envelope Cloudflare error responses", () =>
+    matchCloudflareError(404, { error: "widget not found" }, [
+      TurnstileNotFound,
+    ]).pipe(
+      Effect.flip,
+      Effect.map((error) => expect(error._tag).toBe("NotFound")),
+      Effect.runPromise,
+    ));
 
   it("encodes Worker script uploads with ratelimit bindings", () => {
     const httpTrait = getHttpTrait(PutScriptRequest.ast);

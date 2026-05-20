@@ -215,6 +215,9 @@ paths:
                   - secret
                   - sitekey
       x-distilled-response-path: result
+      x-distilled-errors:
+        NotFound:
+          - status: 404
     put:
       operationId: updateWidget
       description: "Update the configuration of a widget.  @example ```ts const widget
@@ -464,6 +467,9 @@ paths:
                   - secret
                   - sitekey
       x-distilled-response-path: result
+      x-distilled-errors:
+        NotFound:
+          - status: 404
   /accounts/{account_id}/challenges/widgets:
     get:
       operationId: listWidgets

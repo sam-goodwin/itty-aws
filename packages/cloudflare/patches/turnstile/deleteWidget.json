@@ -1,0 +1,5 @@
+{
+  "errors": {
+    "NotFound": [{ "status": 404 }]
+  }
+}
