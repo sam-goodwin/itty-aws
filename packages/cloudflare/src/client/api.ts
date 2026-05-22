@@ -220,6 +220,12 @@ function matcherSpecificity(matcher: ErrorMatcher): number {
   return score;
 }
 
+interface OperationErrorSchema {
+  schema: Schema.Top;
+  tag: string;
+  matchers: readonly ErrorMatcher[];
+}
+
 interface MatchedError {
   schema: Schema.Top;
   tag: string;
@@ -229,7 +235,7 @@ interface MatchedError {
  * Find matching error schema using annotations from the schema AST.
  */
 function findMatchingError(
-  errorSchemas: Map<string, Schema.Top>,
+  errorSchemas: readonly OperationErrorSchema[],
   code: number | undefined,
   status: number,
   message: string,
@@ -237,17 +243,16 @@ function findMatchingError(
   let bestMatch: MatchedError | undefined;
   let bestScore = 0;
 
-  for (const [name, schema] of errorSchemas) {
-    const ast = schema.ast;
-    const matchers = getErrorMatchers(ast);
-    if (!matchers || matchers.length === 0) continue;
-
-    for (const matcher of matchers) {
+  for (const errorSchema of errorSchemas) {
+    for (const matcher of errorSchema.matchers) {
       if (matchesExpression(matcher, code, status, message)) {
         const score = matcherSpecificity(matcher);
         if (score > bestScore) {
           bestScore = score;
-          bestMatch = { schema, tag: name };
+          bestMatch = {
+            schema: errorSchema.schema,
+            tag: errorSchema.tag,
+          };
         }
       }
     }
@@ -256,53 +261,69 @@ function findMatchingError(
   return bestMatch;
 }
 
+type OperationErrorMatcher = (
+  code: number | undefined,
+  status: number,
+  message: string,
+) => Effect.Effect<never, unknown> | undefined;
+
+const noOperationErrorMatcher: OperationErrorMatcher = () => undefined;
+const operationErrorMatcherCache = new WeakMap<
+  readonly ApiErrorClass[],
+  OperationErrorMatcher
+>();
+
 // Some Cloudflare endpoints return bare HTTP failures instead of the standard
 // `{ success: false, errors: [...] }` envelope. Generated operation schemas can
 // still declare status-based error matchers, so try those before falling back
 // to generic HTTP errors.
-function matchOperationError(
+function getOperationErrorMatcher(
   errors: readonly ApiErrorClass[] | undefined,
-  code: number | undefined,
-  status: number,
-  message: string,
-): Effect.Effect<never, unknown> | undefined {
-  if (!errors || errors.length === 0) return undefined;
+): OperationErrorMatcher {
+  if (!errors || errors.length === 0) return noOperationErrorMatcher;
 
-  const errorSchemas = new Map<string, Schema.Top>();
+  const cached = operationErrorMatcherCache.get(errors);
+  if (cached) return cached;
+
+  const errorSchemas: OperationErrorSchema[] = [];
   for (const errorSchema of errors) {
-    const identifier = extractTagFromAst(
-      (errorSchema as unknown as Schema.Top).ast,
-    );
-    if (identifier) {
-      errorSchemas.set(identifier, errorSchema as unknown as Schema.Top);
+    const schema = errorSchema as unknown as Schema.Top;
+    const identifier = extractTagFromAst(schema.ast);
+    const matchers = getErrorMatchers(schema.ast);
+    if (identifier && matchers && matchers.length > 0) {
+      errorSchemas.push({ schema, tag: identifier, matchers });
     }
   }
 
-  const matched = findMatchingError(errorSchemas, code, status, message);
-  if (!matched) return undefined;
+  const matcher: OperationErrorMatcher = (code, status, message) => {
+    const matched = findMatchingError(errorSchemas, code, status, message);
+    if (!matched) return undefined;
 
-  const errorData = {
-    _tag: matched.tag,
-    code: code ?? 0,
-    message,
+    const errorData = {
+      _tag: matched.tag,
+      code: code ?? 0,
+      message,
+    };
+    return Schema.decodeUnknownEffect(matched.schema)(errorData).pipe(
+      Effect.flatMap((decoded: unknown) => Effect.fail(decoded)),
+      Effect.catchIf(
+        (e: unknown) =>
+          typeof e === "object" &&
+          e !== null &&
+          "_tag" in e &&
+          (e as any)._tag === "SchemaError",
+        () =>
+          Effect.fail(
+            new UnknownCloudflareError({
+              code,
+              message,
+            }),
+          ),
+      ),
+    ) as Effect.Effect<never, unknown>;
   };
-  return Schema.decodeUnknownEffect(matched.schema)(errorData).pipe(
-    Effect.flatMap((decoded: unknown) => Effect.fail(decoded)),
-    Effect.catchIf(
-      (e: unknown) =>
-        typeof e === "object" &&
-        e !== null &&
-        "_tag" in e &&
-        (e as any)._tag === "SchemaError",
-      () =>
-        Effect.fail(
-          new UnknownCloudflareError({
-            code,
-            message,
-          }),
-        ),
-    ),
-  ) as Effect.Effect<never, unknown>;
+  operationErrorMatcherCache.set(errors, matcher);
+  return matcher;
 }
 
 /**
@@ -314,6 +335,8 @@ export const matchCloudflareError = (
   errors?: readonly ApiErrorClass[],
   headers?: Record<string, string | undefined>,
 ): Effect.Effect<never, unknown> => {
+  const matchOperationError = getOperationErrorMatcher(errors);
+
   // Handle non-JSON error responses (e.g., HTML from malformed URLs, 520 pages)
   const isNonJsonError =
     typeof errorBody === "object" &&
@@ -324,7 +347,7 @@ export const matchCloudflareError = (
     // Some Cloudflare endpoints return bare HTTP errors without the standard
     // `{ success: false, errors: [...] }` envelope. Give operation-specific
     // status matchers a chance before falling back to generic HTTP errors.
-    const matched = matchOperationError(errors, undefined, status, message);
+    const matched = matchOperationError(undefined, status, message);
     if (matched) return matched;
 
     // For 5xx errors, return a properly categorized error so retries work
@@ -374,7 +397,7 @@ export const matchCloudflareError = (
     // Preserve per-operation error typing for endpoints whose error responses
     // are JSON but not Cloudflare envelopes, such as Turnstile's missing-widget
     // 404 response.
-    const matched = matchOperationError(errors, undefined, status, bodyStr);
+    const matched = matchOperationError(undefined, status, bodyStr);
     if (matched) return matched;
 
     if (status >= 500) {
@@ -390,7 +413,7 @@ export const matchCloudflareError = (
     );
   }
 
-  const matched = matchOperationError(errors, errorCode, status, errorMessage);
+  const matched = matchOperationError(errorCode, status, errorMessage);
   if (matched) return matched;
 
   // Check global error codes before falling through to unknown
