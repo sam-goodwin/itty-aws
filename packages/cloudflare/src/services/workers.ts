@@ -2469,7 +2469,7 @@ export interface CreateBetaWorkerVersionRequest {
     | {
         name: string;
         type: "durable_object_namespace";
-        className?: string;
+        className: string;
         environment?: string;
         namespaceId?: string;
         scriptName?: string;
@@ -2529,7 +2529,7 @@ export interface CreateBetaWorkerVersionRequest {
         name: string;
         type: "workflow";
         workflowName: string;
-        className?: string;
+        className: string;
         scriptName?: string;
       }
     | { name: string; part: string; type: "wasm_module" }
@@ -2674,6 +2674,21 @@ export const CreateBetaWorkerVersionRequest =
             }),
           ),
           Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("workflow"),
+            workflowName: Schema.String,
+            className: Schema.String,
+            scriptName: Schema.optional(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              type: "type",
+              workflowName: "workflow_name",
+              className: "class_name",
+              scriptName: "script_name",
+            }),
+          ),
+          Schema.Struct({
             dataset: Schema.String,
             name: Schema.String,
             type: Schema.Literal("analytics_engine"),
@@ -2704,6 +2719,23 @@ export const CreateBetaWorkerVersionRequest =
               }),
             ),
           }),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("durable_object_namespace"),
+            className: Schema.String,
+            environment: Schema.optional(Schema.String),
+            namespaceId: Schema.optional(Schema.String),
+            scriptName: Schema.optional(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              type: "type",
+              className: "class_name",
+              environment: "environment",
+              namespaceId: "namespace_id",
+              scriptName: "script_name",
+            }),
+          ),
           Schema.Struct({
             id: Schema.String,
             name: Schema.String,
@@ -2799,21 +2831,6 @@ export const CreateBetaWorkerVersionRequest =
           ),
           Schema.Struct({
             name: Schema.String,
-            type: Schema.Literal("workflow"),
-            workflowName: Schema.String,
-            className: Schema.optional(Schema.String),
-            scriptName: Schema.optional(Schema.String),
-          }).pipe(
-            Schema.encodeKeys({
-              name: "name",
-              type: "type",
-              workflowName: "workflow_name",
-              className: "class_name",
-              scriptName: "script_name",
-            }),
-          ),
-          Schema.Struct({
-            name: Schema.String,
             part: Schema.String,
             type: Schema.Literal("wasm_module"),
           }),
@@ -2834,23 +2851,6 @@ export const CreateBetaWorkerVersionRequest =
             name: Schema.String,
             type: Schema.Literal("browser"),
           }),
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("durable_object_namespace"),
-            className: Schema.optional(Schema.String),
-            environment: Schema.optional(Schema.String),
-            namespaceId: Schema.optional(Schema.String),
-            scriptName: Schema.optional(Schema.String),
-          }).pipe(
-            Schema.encodeKeys({
-              name: "name",
-              type: "type",
-              className: "class_name",
-              environment: "environment",
-              namespaceId: "namespace_id",
-              scriptName: "script_name",
-            }),
-          ),
           Schema.Struct({
             name: Schema.String,
             type: Schema.Literal("inherit"),
@@ -6563,7 +6563,7 @@ export interface PutScriptRequest {
       | {
           name: string;
           type: "durable_object_namespace";
-          className?: string;
+          className: string;
           environment?: string;
           namespaceId?: string;
           scriptName?: string;
@@ -6623,7 +6623,7 @@ export interface PutScriptRequest {
           name: string;
           type: "workflow";
           workflowName: string;
-          className?: string;
+          className: string;
           scriptName?: string;
         }
       | { name: string; part: string; type: "wasm_module" }
@@ -6793,6 +6793,21 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           Schema.Struct({
             name: Schema.String,
+            type: Schema.Literal("workflow"),
+            workflowName: Schema.String,
+            className: Schema.String,
+            scriptName: Schema.optional(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              type: "type",
+              workflowName: "workflow_name",
+              className: "class_name",
+              scriptName: "script_name",
+            }),
+          ),
+          Schema.Struct({
+            name: Schema.String,
             type: Schema.Literal("ratelimit"),
             namespaceId: Schema.String,
             simple: Schema.Struct({
@@ -6838,6 +6853,23 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               }),
             ),
           }),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("durable_object_namespace"),
+            className: Schema.String,
+            environment: Schema.optional(Schema.String),
+            namespaceId: Schema.optional(Schema.String),
+            scriptName: Schema.optional(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              type: "type",
+              className: "class_name",
+              environment: "environment",
+              namespaceId: "namespace_id",
+              scriptName: "script_name",
+            }),
+          ),
           Schema.Struct({
             id: Schema.String,
             name: Schema.String,
@@ -6933,21 +6965,6 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           Schema.Struct({
             name: Schema.String,
-            type: Schema.Literal("workflow"),
-            workflowName: Schema.String,
-            className: Schema.optional(Schema.String),
-            scriptName: Schema.optional(Schema.String),
-          }).pipe(
-            Schema.encodeKeys({
-              name: "name",
-              type: "type",
-              workflowName: "workflow_name",
-              className: "class_name",
-              scriptName: "script_name",
-            }),
-          ),
-          Schema.Struct({
-            name: Schema.String,
             part: Schema.String,
             type: Schema.Literal("wasm_module"),
           }),
@@ -6968,23 +6985,6 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             name: Schema.String,
             type: Schema.Literal("browser"),
           }),
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("durable_object_namespace"),
-            className: Schema.optional(Schema.String),
-            environment: Schema.optional(Schema.String),
-            namespaceId: Schema.optional(Schema.String),
-            scriptName: Schema.optional(Schema.String),
-          }).pipe(
-            Schema.encodeKeys({
-              name: "name",
-              type: "type",
-              className: "class_name",
-              environment: "environment",
-              namespaceId: "namespace_id",
-              scriptName: "script_name",
-            }),
-          ),
           Schema.Struct({
             name: Schema.String,
             type: Schema.Literal("inherit"),
@@ -10245,7 +10245,7 @@ export interface PatchScriptScriptAndVersionSettingRequest {
       | {
           name: string;
           type: "durable_object_namespace";
-          className?: string;
+          className: string;
           environment?: string;
           namespaceId?: string;
           scriptName?: string;
@@ -10305,7 +10305,7 @@ export interface PatchScriptScriptAndVersionSettingRequest {
           name: string;
           type: "workflow";
           workflowName: string;
-          className?: string;
+          className: string;
           scriptName?: string;
         }
       | { name: string; part: string; type: "wasm_module" }
@@ -10422,6 +10422,21 @@ export const PatchScriptScriptAndVersionSettingRequest =
                 }),
               ),
               Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("workflow"),
+                workflowName: Schema.String,
+                className: Schema.String,
+                scriptName: Schema.optional(Schema.String),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  type: "type",
+                  workflowName: "workflow_name",
+                  className: "class_name",
+                  scriptName: "script_name",
+                }),
+              ),
+              Schema.Struct({
                 dataset: Schema.String,
                 name: Schema.String,
                 type: Schema.Literal("analytics_engine"),
@@ -10452,6 +10467,23 @@ export const PatchScriptScriptAndVersionSettingRequest =
                   }),
                 ),
               }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("durable_object_namespace"),
+                className: Schema.String,
+                environment: Schema.optional(Schema.String),
+                namespaceId: Schema.optional(Schema.String),
+                scriptName: Schema.optional(Schema.String),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  type: "type",
+                  className: "class_name",
+                  environment: "environment",
+                  namespaceId: "namespace_id",
+                  scriptName: "script_name",
+                }),
+              ),
               Schema.Struct({
                 id: Schema.String,
                 name: Schema.String,
@@ -10549,21 +10581,6 @@ export const PatchScriptScriptAndVersionSettingRequest =
               ),
               Schema.Struct({
                 name: Schema.String,
-                type: Schema.Literal("workflow"),
-                workflowName: Schema.String,
-                className: Schema.optional(Schema.String),
-                scriptName: Schema.optional(Schema.String),
-              }).pipe(
-                Schema.encodeKeys({
-                  name: "name",
-                  type: "type",
-                  workflowName: "workflow_name",
-                  className: "class_name",
-                  scriptName: "script_name",
-                }),
-              ),
-              Schema.Struct({
-                name: Schema.String,
                 part: Schema.String,
                 type: Schema.Literal("wasm_module"),
               }),
@@ -10584,23 +10601,6 @@ export const PatchScriptScriptAndVersionSettingRequest =
                 name: Schema.String,
                 type: Schema.Literal("browser"),
               }),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("durable_object_namespace"),
-                className: Schema.optional(Schema.String),
-                environment: Schema.optional(Schema.String),
-                namespaceId: Schema.optional(Schema.String),
-                scriptName: Schema.optional(Schema.String),
-              }).pipe(
-                Schema.encodeKeys({
-                  name: "name",
-                  type: "type",
-                  className: "class_name",
-                  environment: "environment",
-                  namespaceId: "namespace_id",
-                  scriptName: "script_name",
-                }),
-              ),
               Schema.Struct({
                 name: Schema.String,
                 type: Schema.Literal("inherit"),
@@ -13351,7 +13351,7 @@ export interface CreateScriptVersionRequest {
       | {
           name: string;
           type: "durable_object_namespace";
-          className?: string;
+          className: string;
           environment?: string;
           namespaceId?: string;
           scriptName?: string;
@@ -13411,7 +13411,7 @@ export interface CreateScriptVersionRequest {
           name: string;
           type: "workflow";
           workflowName: string;
-          className?: string;
+          className: string;
           scriptName?: string;
         }
       | { name: string; part: string; type: "wasm_module" }
@@ -13493,6 +13493,21 @@ export const CreateScriptVersionRequest =
               }),
             ),
             Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("workflow"),
+              workflowName: Schema.String,
+              className: Schema.String,
+              scriptName: Schema.optional(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                workflowName: "workflow_name",
+                className: "class_name",
+                scriptName: "script_name",
+              }),
+            ),
+            Schema.Struct({
               dataset: Schema.String,
               name: Schema.String,
               type: Schema.Literal("analytics_engine"),
@@ -13523,6 +13538,23 @@ export const CreateScriptVersionRequest =
                 }),
               ),
             }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("durable_object_namespace"),
+              className: Schema.String,
+              environment: Schema.optional(Schema.String),
+              namespaceId: Schema.optional(Schema.String),
+              scriptName: Schema.optional(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                className: "class_name",
+                environment: "environment",
+                namespaceId: "namespace_id",
+                scriptName: "script_name",
+              }),
+            ),
             Schema.Struct({
               id: Schema.String,
               name: Schema.String,
@@ -13618,21 +13650,6 @@ export const CreateScriptVersionRequest =
             ),
             Schema.Struct({
               name: Schema.String,
-              type: Schema.Literal("workflow"),
-              workflowName: Schema.String,
-              className: Schema.optional(Schema.String),
-              scriptName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                workflowName: "workflow_name",
-                className: "class_name",
-                scriptName: "script_name",
-              }),
-            ),
-            Schema.Struct({
-              name: Schema.String,
               part: Schema.String,
               type: Schema.Literal("wasm_module"),
             }),
@@ -13653,23 +13670,6 @@ export const CreateScriptVersionRequest =
               name: Schema.String,
               type: Schema.Literal("browser"),
             }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("durable_object_namespace"),
-              className: Schema.optional(Schema.String),
-              environment: Schema.optional(Schema.String),
-              namespaceId: Schema.optional(Schema.String),
-              scriptName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                className: "class_name",
-                environment: "environment",
-                namespaceId: "namespace_id",
-                scriptName: "script_name",
-              }),
-            ),
             Schema.Struct({
               name: Schema.String,
               type: Schema.Literal("inherit"),

@@ -394,6 +394,45 @@ function applyPropertyPatch(
 
   const [current, ...rest] = pathSegments;
 
+  // Handle discriminated union variant access:
+  //   "bindings[?type=durable_object_namespace]" → descend into property
+  //     "bindings", into its array element (a union), then narrow to the
+  //     variant whose literal property `type` equals "durable_object_namespace".
+  //   "[?type=durable_object_namespace]" → narrow the current union directly.
+  // This lets patches target a single discriminated-union variant by its tag,
+  // instead of hitting every variant that happens to share a property name.
+  const discMatch = current.match(/^(\w*)\[\?(\w+)=([^\]]+)\]$/);
+  if (discMatch) {
+    const [, fieldName, discKey, discValue] = discMatch;
+    let unionType: TypeInfo | undefined;
+    if (fieldName === "") {
+      unionType = typeInfo;
+    } else {
+      const prop = typeInfo.properties?.find((p) => p.name === fieldName);
+      if (!prop) return;
+      const arrayType = unwrapToArray(prop.type);
+      unionType = arrayType?.elementType ?? prop.type;
+    }
+    if (unionType?.kind !== "union" || !unionType.values) return;
+    const variant = unionType.values.find(
+      (v) =>
+        v.kind === "object" &&
+        v.properties?.some(
+          (p) =>
+            p.name === discKey &&
+            p.type.kind === "literal" &&
+            p.type.value === discValue,
+        ),
+    );
+    if (!variant) return;
+    if (rest.length === 0) {
+      applyPatchToTypeInfo(variant, patch);
+    } else {
+      applyPropertyPatch(variant, rest, patch);
+    }
+    return;
+  }
+
   // Handle array element access: "buckets[]" means descend into array element type
   if (current.endsWith("[]")) {
     const fieldName = current.slice(0, -2);

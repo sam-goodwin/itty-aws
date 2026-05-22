@@ -2601,6 +2601,7 @@ paths:
                         required:
                           - name
                           - type
+                          - class_name
                       - type: object
                         properties:
                           id:
@@ -2990,6 +2991,7 @@ paths:
                           - name
                           - type
                           - workflow_name
+                          - class_name
                       - type: object
                         properties:
                           name:
@@ -6275,6 +6277,7 @@ paths:
                             required:
                               - name
                               - type
+                              - class_name
                           - type: object
                             properties:
                               id:
@@ -6665,6 +6668,7 @@ paths:
                               - name
                               - type
                               - workflow_name
+                              - class_name
                           - type: object
                             properties:
                               name:
@@ -10385,6 +10389,7 @@ paths:
                             required:
                               - name
                               - type
+                              - class_name
                           - type: object
                             properties:
                               id:
@@ -10775,6 +10780,7 @@ paths:
                               - name
                               - type
                               - workflow_name
+                              - class_name
                           - type: object
                             properties:
                               name:
@@ -13789,6 +13795,7 @@ paths:
                             required:
                               - name
                               - type
+                              - class_name
                           - type: object
                             properties:
                               id:
@@ -14179,6 +14186,7 @@ paths:
                               - name
                               - type
                               - workflow_name
+                              - class_name
                           - type: object
                             properties:
                               name:
