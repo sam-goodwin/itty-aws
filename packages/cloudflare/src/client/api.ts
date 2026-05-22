@@ -256,6 +256,10 @@ function findMatchingError(
   return bestMatch;
 }
 
+// Some Cloudflare endpoints return bare HTTP failures instead of the standard
+// `{ success: false, errors: [...] }` envelope. Generated operation schemas can
+// still declare status-based error matchers, so try those before falling back
+// to generic HTTP errors.
 function matchOperationError(
   errors: readonly ApiErrorClass[] | undefined,
   code: number | undefined,
