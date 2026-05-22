@@ -8700,6 +8700,8 @@ paths:
                                 type: string
                               id:
                                 type: string
+                              internalEnv:
+                                type: string
                               raw:
                                 type: boolean
                             required:
@@ -8737,6 +8739,8 @@ paths:
                               environment:
                                 type: string
                               entrypoint:
+                                type: string
+                              cross_account_grant:
                                 type: string
                             required:
                               - type
@@ -8792,6 +8796,8 @@ paths:
                               name:
                                 type: string
                               index_name:
+                                type: string
+                              internalEnv:
                                 type: string
                               raw:
                                 type: boolean
@@ -9113,6 +9119,76 @@ paths:
                               - name
                               - namespace_id
                               - simple
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - artifacts
+                              name:
+                                type: string
+                              namespace:
+                                type: string
+                            required:
+                              - type
+                              - name
+                              - namespace
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - unsafe_hello_world
+                              name:
+                                type: string
+                              enable_timer:
+                                type: boolean
+                            required:
+                              - type
+                              - name
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - flagship
+                              name:
+                                type: string
+                              app_id:
+                                type: string
+                            required:
+                              - type
+                              - name
+                              - app_id
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - vpc_service
+                              name:
+                                type: string
+                              service_id:
+                                type: string
+                            required:
+                              - type
+                              - name
+                              - service_id
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - vpc_network
+                              name:
+                                type: string
+                              tunnel_id:
+                                type: string
+                              network_id:
+                                type: string
+                            required:
+                              - type
+                              - name
                           - type: object
                             properties:
                               type:
@@ -15141,6 +15217,8 @@ paths:
                                 type: string
                               id:
                                 type: string
+                              internalEnv:
+                                type: string
                               raw:
                                 type: boolean
                             required:
@@ -15178,6 +15256,8 @@ paths:
                               environment:
                                 type: string
                               entrypoint:
+                                type: string
+                              cross_account_grant:
                                 type: string
                             required:
                               - type
@@ -15233,6 +15313,8 @@ paths:
                               name:
                                 type: string
                               index_name:
+                                type: string
+                              internalEnv:
                                 type: string
                               raw:
                                 type: boolean
@@ -15554,6 +15636,76 @@ paths:
                               - name
                               - namespace_id
                               - simple
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - artifacts
+                              name:
+                                type: string
+                              namespace:
+                                type: string
+                            required:
+                              - type
+                              - name
+                              - namespace
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - unsafe_hello_world
+                              name:
+                                type: string
+                              enable_timer:
+                                type: boolean
+                            required:
+                              - type
+                              - name
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - flagship
+                              name:
+                                type: string
+                              app_id:
+                                type: string
+                            required:
+                              - type
+                              - name
+                              - app_id
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - vpc_service
+                              name:
+                                type: string
+                              service_id:
+                                type: string
+                            required:
+                              - type
+                              - name
+                              - service_id
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - vpc_network
+                              name:
+                                type: string
+                              tunnel_id:
+                                type: string
+                              network_id:
+                                type: string
+                            required:
+                              - type
+                              - name
                           - type: object
                             properties:
                               type:

@@ -8777,7 +8777,13 @@ export interface CreateScriptEdgePreviewRequest {
           jurisdiction?: string;
           raw?: boolean;
         }
-      | { type: "d1"; name: string; id: string; raw?: boolean }
+      | {
+          type: "d1";
+          name: string;
+          id: string;
+          internalEnv?: string;
+          raw?: boolean;
+        }
       | {
           type: "queue";
           name: string;
@@ -8791,11 +8797,18 @@ export interface CreateScriptEdgePreviewRequest {
           service: string;
           environment?: string;
           entrypoint?: string;
+          crossAccountGrant?: string;
         }
       | { type: "ai"; name: string; staging?: boolean; raw?: boolean }
       | { type: "browser"; name: string; raw?: boolean }
       | { type: "images"; name: string; raw?: boolean }
-      | { type: "vectorize"; name: string; indexName: string; raw?: boolean }
+      | {
+          type: "vectorize";
+          name: string;
+          indexName: string;
+          internalEnv?: string;
+          raw?: boolean;
+        }
       | {
           type: "workflow";
           name: string;
@@ -8846,6 +8859,16 @@ export interface CreateScriptEdgePreviewRequest {
           name: string;
           namespaceId: string;
           simple: { limit: number; period: "10" | "60" };
+        }
+      | { type: "artifacts"; name: string; namespace: string }
+      | { type: "unsafe_hello_world"; name: string; enableTimer?: boolean }
+      | { type: "flagship"; name: string; appId: string }
+      | { type: "vpc_service"; name: string; serviceId: string }
+      | {
+          type: "vpc_network";
+          name: string;
+          tunnelId?: string;
+          networkId?: string;
         }
       | { type: "inherit"; name: string }
     )[];
@@ -9042,6 +9065,7 @@ export const CreateScriptEdgePreviewRequest =
                 type: Schema.Literal("d1"),
                 name: Schema.String,
                 id: Schema.String,
+                internalEnv: Schema.optional(Schema.String),
                 raw: Schema.optional(Schema.Boolean),
               }),
               Schema.Struct({
@@ -9065,17 +9089,29 @@ export const CreateScriptEdgePreviewRequest =
                 service: Schema.String,
                 environment: Schema.optional(Schema.String),
                 entrypoint: Schema.optional(Schema.String),
-              }),
+                crossAccountGrant: Schema.optional(Schema.String),
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  service: "service",
+                  environment: "environment",
+                  entrypoint: "entrypoint",
+                  crossAccountGrant: "cross_account_grant",
+                }),
+              ),
               Schema.Struct({
                 type: Schema.Literal("vectorize"),
                 name: Schema.String,
                 indexName: Schema.String,
+                internalEnv: Schema.optional(Schema.String),
                 raw: Schema.optional(Schema.Boolean),
               }).pipe(
                 Schema.encodeKeys({
                   type: "type",
                   name: "name",
                   indexName: "index_name",
+                  internalEnv: "internalEnv",
                   raw: "raw",
                 }),
               ),
@@ -9159,6 +9195,33 @@ export const CreateScriptEdgePreviewRequest =
                 }),
               ),
               Schema.Struct({
+                type: Schema.Literal("artifacts"),
+                name: Schema.String,
+                namespace: Schema.String,
+              }),
+              Schema.Struct({
+                type: Schema.Literal("flagship"),
+                name: Schema.String,
+                appId: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  appId: "app_id",
+                }),
+              ),
+              Schema.Struct({
+                type: Schema.Literal("vpc_service"),
+                name: Schema.String,
+                serviceId: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  serviceId: "service_id",
+                }),
+              ),
+              Schema.Struct({
                 type: Schema.Literal("ai"),
                 name: Schema.String,
                 staging: Schema.optional(Schema.Boolean),
@@ -9218,6 +9281,30 @@ export const CreateScriptEdgePreviewRequest =
                 type: Schema.Literal("worker_loader"),
                 name: Schema.String,
               }),
+              Schema.Struct({
+                type: Schema.Literal("unsafe_hello_world"),
+                name: Schema.String,
+                enableTimer: Schema.optional(Schema.Boolean),
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  enableTimer: "enable_timer",
+                }),
+              ),
+              Schema.Struct({
+                type: Schema.Literal("vpc_network"),
+                name: Schema.String,
+                tunnelId: Schema.optional(Schema.String),
+                networkId: Schema.optional(Schema.String),
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  tunnelId: "tunnel_id",
+                  networkId: "network_id",
+                }),
+              ),
               Schema.Struct({
                 type: Schema.Literal("inherit"),
                 name: Schema.String,
@@ -14393,7 +14480,13 @@ export interface CreateServiceEdgePreviewRequest {
           jurisdiction?: string;
           raw?: boolean;
         }
-      | { type: "d1"; name: string; id: string; raw?: boolean }
+      | {
+          type: "d1";
+          name: string;
+          id: string;
+          internalEnv?: string;
+          raw?: boolean;
+        }
       | {
           type: "queue";
           name: string;
@@ -14407,11 +14500,18 @@ export interface CreateServiceEdgePreviewRequest {
           service: string;
           environment?: string;
           entrypoint?: string;
+          crossAccountGrant?: string;
         }
       | { type: "ai"; name: string; staging?: boolean; raw?: boolean }
       | { type: "browser"; name: string; raw?: boolean }
       | { type: "images"; name: string; raw?: boolean }
-      | { type: "vectorize"; name: string; indexName: string; raw?: boolean }
+      | {
+          type: "vectorize";
+          name: string;
+          indexName: string;
+          internalEnv?: string;
+          raw?: boolean;
+        }
       | {
           type: "workflow";
           name: string;
@@ -14462,6 +14562,16 @@ export interface CreateServiceEdgePreviewRequest {
           name: string;
           namespaceId: string;
           simple: { limit: number; period: "10" | "60" };
+        }
+      | { type: "artifacts"; name: string; namespace: string }
+      | { type: "unsafe_hello_world"; name: string; enableTimer?: boolean }
+      | { type: "flagship"; name: string; appId: string }
+      | { type: "vpc_service"; name: string; serviceId: string }
+      | {
+          type: "vpc_network";
+          name: string;
+          tunnelId?: string;
+          networkId?: string;
         }
       | { type: "inherit"; name: string }
     )[];
@@ -14659,6 +14769,7 @@ export const CreateServiceEdgePreviewRequest =
                 type: Schema.Literal("d1"),
                 name: Schema.String,
                 id: Schema.String,
+                internalEnv: Schema.optional(Schema.String),
                 raw: Schema.optional(Schema.Boolean),
               }),
               Schema.Struct({
@@ -14682,17 +14793,29 @@ export const CreateServiceEdgePreviewRequest =
                 service: Schema.String,
                 environment: Schema.optional(Schema.String),
                 entrypoint: Schema.optional(Schema.String),
-              }),
+                crossAccountGrant: Schema.optional(Schema.String),
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  service: "service",
+                  environment: "environment",
+                  entrypoint: "entrypoint",
+                  crossAccountGrant: "cross_account_grant",
+                }),
+              ),
               Schema.Struct({
                 type: Schema.Literal("vectorize"),
                 name: Schema.String,
                 indexName: Schema.String,
+                internalEnv: Schema.optional(Schema.String),
                 raw: Schema.optional(Schema.Boolean),
               }).pipe(
                 Schema.encodeKeys({
                   type: "type",
                   name: "name",
                   indexName: "index_name",
+                  internalEnv: "internalEnv",
                   raw: "raw",
                 }),
               ),
@@ -14776,6 +14899,33 @@ export const CreateServiceEdgePreviewRequest =
                 }),
               ),
               Schema.Struct({
+                type: Schema.Literal("artifacts"),
+                name: Schema.String,
+                namespace: Schema.String,
+              }),
+              Schema.Struct({
+                type: Schema.Literal("flagship"),
+                name: Schema.String,
+                appId: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  appId: "app_id",
+                }),
+              ),
+              Schema.Struct({
+                type: Schema.Literal("vpc_service"),
+                name: Schema.String,
+                serviceId: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  serviceId: "service_id",
+                }),
+              ),
+              Schema.Struct({
                 type: Schema.Literal("ai"),
                 name: Schema.String,
                 staging: Schema.optional(Schema.Boolean),
@@ -14835,6 +14985,30 @@ export const CreateServiceEdgePreviewRequest =
                 type: Schema.Literal("worker_loader"),
                 name: Schema.String,
               }),
+              Schema.Struct({
+                type: Schema.Literal("unsafe_hello_world"),
+                name: Schema.String,
+                enableTimer: Schema.optional(Schema.Boolean),
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  enableTimer: "enable_timer",
+                }),
+              ),
+              Schema.Struct({
+                type: Schema.Literal("vpc_network"),
+                name: Schema.String,
+                tunnelId: Schema.optional(Schema.String),
+                networkId: Schema.optional(Schema.String),
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  tunnelId: "tunnel_id",
+                  networkId: "network_id",
+                }),
+              ),
               Schema.Struct({
                 type: Schema.Literal("inherit"),
                 name: Schema.String,
