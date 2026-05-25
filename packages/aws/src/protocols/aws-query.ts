@@ -58,9 +58,13 @@ export const awsQueryProtocol: Protocol = (
   // Pre-compute encoder (done once at init)
   const encodeInput = S.encodeEffect(inputSchema);
 
-  // Pre-compute operation name and version from annotations
+  // Pre-compute operation name and version from annotations.
+  // RDS-family query services (RDS, ElastiCache, Redshift, Neptune, DocDB, …)
+  // name their input shapes "XxxMessage" (e.g. DescribeDBInstancesMessage), so
+  // we must strip "Message" in addition to "Request"/"Input" to recover the
+  // Action name.
   const identifier = getIdentifier(inputAst) ?? "";
-  const action = identifier.replace(/(?:Request|Input)$/, "");
+  const action = identifier.replace(/(?:Request|Input|Message)$/, "");
   const version = getServiceVersion(inputAst) ?? "";
 
   return {

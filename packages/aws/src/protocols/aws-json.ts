@@ -62,8 +62,10 @@ function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
 
     // Extract operation target from the input schema's identifier
     const identifier = getIdentifier(inputAst) ?? "";
-    // Remove "Request" or "Input" suffix to get operation name
-    const operationName = identifier.replace(/(?:Request|Input)$/, "");
+    // Remove "Request", "Input", or "Message" suffix to get operation name.
+    // RDS-family query services (RDS, ElastiCache, Redshift, …) name their
+    // input shapes "XxxMessage" rather than "XxxRequest".
+    const operationName = identifier.replace(/(?:Request|Input|Message)$/, "");
 
     // Build X-Amz-Target from the identifier structure
     const targetHeader = buildXAmzTarget(inputAst, operationName);

@@ -38,6 +38,9 @@ import {
   ModifyDBClusterSnapshotAttributeResult,
 } from "../../src/services/neptune.ts";
 
+// Import RDS for "Message"-suffixed input shape op-name derivation
+import { DescribeDBInstancesMessage } from "../../src/services/rds.ts";
+
 // Helper to build a request from an instance
 const buildRequest = <A>(schema: S.Schema<A>, instance: A) => {
   const operation: Operation<any, any, any> = {
@@ -140,6 +143,22 @@ describe("awsQuery protocol", () => {
         const params = parseFormBody(request.body as string);
         expect(params["MaxItems"]).toBe("100");
       }),
+    );
+
+    it.effect(
+      "should derive Action from a 'Message'-suffixed input shape (RDS family)",
+      () =>
+        // RDS-family query services (RDS, ElastiCache, Redshift, …) name their
+        // input shapes "XxxMessage" rather than "XxxRequest". The op-name must
+        // strip "Message" so the Action is "DescribeDBInstances", not
+        // "DescribeDBInstancesMessage" (which AWS rejects as an unknown op).
+        Effect.gen(function* () {
+          const request = yield* buildRequest(DescribeDBInstancesMessage, {});
+
+          const params = parseFormBody(request.body as string);
+          expect(params["Action"]).toBe("DescribeDBInstances");
+          expect(params["Version"]).toBe("2014-10-31");
+        }),
     );
   });
 

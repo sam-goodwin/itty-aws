@@ -57,7 +57,7 @@ export const ec2QueryProtocol: Protocol = (
 
   // Pre-compute operation name and version from annotations
   const identifier = getIdentifier(inputAst) ?? "";
-  const action = identifier.replace(/(?:Request|Input)$/, "");
+  const action = identifier.replace(/(?:Request|Input|Message)$/, "");
   const version = getServiceVersion(inputAst) ?? "";
 
   return {

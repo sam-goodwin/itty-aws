@@ -52,7 +52,7 @@ export const make = <Op extends Operation<any, any, any>>(
     // Extract metadata for error recording (DISTILLED_AWS_DEBUG) and error context
     const serviceSdkId = getAwsApiService(inputAst)?.sdkId;
     const operationName = getIdentifier(inputAst)?.replace(
-      /(?:Request|Input)$/,
+      /(?:Request|Input|Message)$/,
       "",
     );
 
