@@ -380,18 +380,19 @@ const matchError = (
     return Effect.fail(GLOBAL_ERROR_CODE_MAP[errorCode](errorMessage, headers));
   }
 
-  // Heuristic fallback: map by HTTP status, but only for non-retryable
-  // 4xx client errors. Envelope errors that didn't match any per-op or
-  // global error code still carry a meaningful HTTP status (400/404/etc.),
-  // so surface that as the typed status error instead of
-  // UnknownCloudflareError.
+  // Heuristic fallback: map by HTTP status. Envelope errors that didn't
+  // match any per-op or global error code still carry a meaningful HTTP
+  // status, and that status is more specific than UnknownCloudflareError.
   //
-  // We deliberately exclude 5xx and 429 here: the matching error classes
-  // (InternalServerError, ServiceUnavailable, TooManyRequests) carry
-  // retryable categories and the default `Retry.transient` policy will
-  // loop forever on an envelope-shaped 5xx that has no matching error
-  // code. For those, falling through to UnknownCloudflareError preserves
-  // the previous (non-retryable) behavior.
+  // In particular, Cloudflare often returns retryable 5xx / 429 envelopes
+  // with generic messages such as "An unknown error has occurred." Those
+  // must classify as the shared retryable status errors (InternalServerError,
+  // ServiceUnavailable, TooManyRequests, etc.) so callers can retry them
+  // precisely without catching every UnknownCloudflareError.
+  if (status >= 500 || status === 429) {
+    return Effect.fail(httpStatusError(status, errorMessage, headers));
+  }
+
   if (status >= 400 && status < 500 && status !== 429) {
     const StatusErrorClass =
       HTTP_STATUS_MAP[status as keyof typeof HTTP_STATUS_MAP];
