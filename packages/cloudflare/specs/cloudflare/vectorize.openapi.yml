@@ -146,6 +146,9 @@ paths:
                   name:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        NotFound:
+          - code: 3000
     delete:
       operationId: deleteIndex
       description: "Deletes the specified Vectorize Index.  @example ```ts const index
@@ -171,6 +174,9 @@ paths:
               schema:
                 type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        NotFound:
+          - code: 3000
   /accounts/{account_id}/vectorize/v2/indexes:
     get:
       operationId: listIndexes
@@ -322,6 +328,9 @@ paths:
                   name:
                     type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        IndexAlreadyExists:
+          - code: 3002
   /accounts/{account_id}/vectorize/v2/indexes/{indexName}/info:
     get:
       operationId: infoIndex
@@ -596,6 +605,9 @@ paths:
                           description: Specifies the indexed metadata property.
                     description: Array of indexed metadata properties.
       x-distilled-response-path: result
+      x-distilled-errors:
+        NotFound:
+          - code: 3000
   /accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/create:
     post:
       operationId: createIndexMetadataIndex
@@ -649,6 +661,9 @@ paths:
                     description: The unique identifier for the async mutation operation containing
                       the changeset.
       x-distilled-response-path: result
+      x-distilled-errors:
+        NotFound:
+          - code: 3000
   /accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/delete:
     post:
       operationId: deleteIndexMetadataIndex
@@ -695,6 +710,11 @@ paths:
                     description: The unique identifier for the async mutation operation containing
                       the changeset.
       x-distilled-response-path: result
+      x-distilled-errors:
+        NotFound:
+          - code: 3000
+        MetadataIndexNotFound:
+          - code: 40005
   /accounts/{account_id}/vectorize/v2/indexes/{indexName}/list:
     get:
       operationId: listVectorsIndex

@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "NotFound": [{ "code": 3000 }],
+    "MetadataIndexNotFound": [{ "code": 40005 }]
+  }
+}

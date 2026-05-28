@@ -1,0 +1,5 @@
+{
+  "errors": {
+    "IndexAlreadyExists": [{ "code": 3002 }]
+  }
+}
