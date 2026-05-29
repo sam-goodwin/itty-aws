@@ -22,6 +22,7 @@ import {
   computeResources,
   normalizeOperations,
   resolveTypeReference,
+  toCamelCase,
 } from "./model.ts";
 
 interface ParseOptions {
@@ -1188,7 +1189,13 @@ function parseInterface(
         description: comment,
       };
       // Own member overrides any inherited property of the same name.
-      const inheritedIdx = properties.findIndex((p) => p.name === propName);
+      // Compare by camelCased name so that Stainless duplicates like
+      // `notification_url` + `notificationUrl` collapse to one property
+      // (the later declaration wins, which is typically the camelCased one).
+      const ownCamel = toCamelCase(propName);
+      const inheritedIdx = properties.findIndex(
+        (p) => toCamelCase(p.name) === ownCamel,
+      );
       if (inheritedIdx >= 0) {
         properties[inheritedIdx] = own;
       } else {

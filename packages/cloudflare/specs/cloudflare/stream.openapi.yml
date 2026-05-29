@@ -3612,9 +3612,6 @@ paths:
                   modified:
                     type: string
                     description: The date and time the webhook was last modified.
-                  notification_url:
-                    type: string
-                    description: The URL where webhooks will be sent.
                   notificationUrl:
                     type: string
                     description: The URL where webhooks will be sent.
@@ -3641,9 +3638,6 @@ paths:
             schema:
               type: object
               properties:
-                notification_url:
-                  type: string
-                  description: "Body param: The URL where webhooks will be sent."
                 notificationUrl:
                   type: string
                   description: "Body param: The URL where webhooks will be sent."
@@ -3658,9 +3652,6 @@ paths:
                   modified:
                     type: string
                     description: The date and time the webhook was last modified.
-                  notification_url:
-                    type: string
-                    description: The URL where webhooks will be sent.
                   notificationUrl:
                     type: string
                     description: The URL where webhooks will be sent.
