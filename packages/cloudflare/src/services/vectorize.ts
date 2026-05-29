@@ -23,6 +23,30 @@ export class IndexAlreadyExists extends Schema.TaggedErrorClass<IndexAlreadyExis
 ) {}
 T.applyErrorMatchers(IndexAlreadyExists, [{ code: 3002 }]);
 
+export class IndexInvalidConfig extends Schema.TaggedErrorClass<IndexInvalidConfig>()(
+  "IndexInvalidConfig",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(IndexInvalidConfig, [{ code: 3003 }]);
+
+export class IndexInvalidName extends Schema.TaggedErrorClass<IndexInvalidName>()(
+  "IndexInvalidName",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(IndexInvalidName, [{ code: 3001 }]);
+
+export class MetadataIndexAlreadyExists extends Schema.TaggedErrorClass<MetadataIndexAlreadyExists>()(
+  "MetadataIndexAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(MetadataIndexAlreadyExists, [{ code: 40004 }]);
+
+export class MetadataIndexInvalidType extends Schema.TaggedErrorClass<MetadataIndexInvalidType>()(
+  "MetadataIndexInvalidType",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(MetadataIndexInvalidType, [{ code: 40026 }]);
+
 export class MetadataIndexNotFound extends Schema.TaggedErrorClass<MetadataIndexNotFound>()(
   "MetadataIndexNotFound",
   { code: Schema.Number, message: Schema.String },
@@ -356,7 +380,11 @@ export const CreateIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateIndexResponse>;
 
-export type CreateIndexError = DefaultErrors | IndexAlreadyExists;
+export type CreateIndexError =
+  | DefaultErrors
+  | IndexAlreadyExists
+  | IndexInvalidName
+  | IndexInvalidConfig;
 
 export const createIndex: API.OperationMethod<
   CreateIndexRequest,
@@ -366,7 +394,7 @@ export const createIndex: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateIndexRequest,
   output: CreateIndexResponse,
-  errors: [IndexAlreadyExists],
+  errors: [IndexAlreadyExists, IndexInvalidName, IndexInvalidConfig],
 }));
 
 export interface DeleteIndexRequest {
@@ -742,7 +770,11 @@ export const CreateIndexMetadataIndexResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateIndexMetadataIndexResponse>;
 
-export type CreateIndexMetadataIndexError = DefaultErrors | NotFound;
+export type CreateIndexMetadataIndexError =
+  | DefaultErrors
+  | NotFound
+  | MetadataIndexAlreadyExists
+  | MetadataIndexInvalidType;
 
 export const createIndexMetadataIndex: API.OperationMethod<
   CreateIndexMetadataIndexRequest,
@@ -752,7 +784,7 @@ export const createIndexMetadataIndex: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateIndexMetadataIndexRequest,
   output: CreateIndexMetadataIndexResponse,
-  errors: [NotFound],
+  errors: [NotFound, MetadataIndexAlreadyExists, MetadataIndexInvalidType],
 }));
 
 export interface DeleteIndexMetadataIndexRequest {

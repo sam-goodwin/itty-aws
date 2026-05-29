@@ -331,6 +331,10 @@ paths:
       x-distilled-errors:
         IndexAlreadyExists:
           - code: 3002
+        IndexInvalidName:
+          - code: 3001
+        IndexInvalidConfig:
+          - code: 3003
   /accounts/{account_id}/vectorize/v2/indexes/{indexName}/info:
     get:
       operationId: infoIndex
@@ -664,6 +668,10 @@ paths:
       x-distilled-errors:
         NotFound:
           - code: 3000
+        MetadataIndexAlreadyExists:
+          - code: 40004
+        MetadataIndexInvalidType:
+          - code: 40026
   /accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/delete:
     post:
       operationId: deleteIndexMetadataIndex
