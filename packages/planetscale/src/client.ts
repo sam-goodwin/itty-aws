@@ -5,7 +5,6 @@
  * error matching and credential handling.
  */
 import * as Effect from "effect/Effect";
-import * as Redacted from "effect/Redacted";
 import * as Schema from "effect/Schema";
 import { makeAPI } from "@distilled.cloud/core/client";
 import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
@@ -18,7 +17,7 @@ import {
 
 // Re-export for backwards compatibility (tests import UnknownPlanetScaleError from client)
 export { UnknownPlanetScaleError } from "./errors.ts";
-import { Credentials } from "./credentials.ts";
+import { Credentials, formatHeaders } from "./credentials.ts";
 
 // API Error Response Schema
 const ApiErrorResponse = Schema.Struct({
@@ -64,9 +63,7 @@ const matchError = (
 export const API = makeAPI<Credentials>({
   credentials: Credentials as any,
   getBaseUrl: (creds: any) => creds.apiBaseUrl,
-  getAuthHeaders: (creds: any) => ({
-    Authorization: `${Redacted.value(creds.tokenId)}:${Redacted.value(creds.token)}`,
-  }),
+  getAuthHeaders: (creds: any) => formatHeaders(creds),
   matchError,
   ParseError: PlanetScaleParseError as any,
   retry: Retry as any,
