@@ -973,10 +973,7 @@ paths:
                         type: array
                         items:
                           type: array
-                          items:
-                            oneOf:
-                              - type: number
-                              - type: string
+                          items: {}
                   success:
                     type: boolean
       x-distilled-pagination-class: DatabaseRawResponsesSinglePage

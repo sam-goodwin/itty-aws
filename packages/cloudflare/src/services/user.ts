@@ -1122,13 +1122,12 @@ export const PutSubscriptionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({ method: "PUT", path: "/user/subscriptions/{identifier}" }),
 ) as unknown as Schema.Schema<PutSubscriptionRequest>;
 
-export type PutSubscriptionResponse = string | null;
+export type PutSubscriptionResponse = unknown;
 
-export const PutSubscriptionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
-  [Schema.String, Schema.Null],
-).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<PutSubscriptionResponse>;
+export const PutSubscriptionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<PutSubscriptionResponse>;
 
 export type PutSubscriptionError = DefaultErrors;
 

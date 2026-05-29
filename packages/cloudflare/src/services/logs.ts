@@ -277,10 +277,10 @@ export const GetRayidRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "GET", path: "/zones/{zone_id}/logs/rayids/{RayID}" }),
 ) as unknown as Schema.Schema<GetRayidRequest>;
 
-export type GetRayidResponse = string;
+export type GetRayidResponse = unknown;
 
 export const GetRayidResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Schema<GetRayidResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetRayidResponse>;
 
 export type GetRayidError = DefaultErrors;
 
@@ -332,10 +332,10 @@ export const GetReceivedRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "GET", path: "/zones/{zone_id}/logs/received" }),
 ) as unknown as Schema.Schema<GetReceivedRequest>;
 
-export type GetReceivedResponse = string;
+export type GetReceivedResponse = unknown;
 
 export const GetReceivedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Schema<GetReceivedResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetReceivedResponse>;
 
 export type GetReceivedError = DefaultErrors;
 

@@ -4158,7 +4158,7 @@ export type GetWafPackageResponse =
         documentationUrl?: string | null;
         source?: { pointer?: string | null } | null;
       }[];
-      result: string | null;
+      result: unknown;
       success: true;
     }
   | { result?: unknown | null };
@@ -4217,7 +4217,7 @@ export const GetWafPackageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
         }),
       ),
     ),
-    result: Schema.Union([Schema.String, Schema.Null]),
+    result: Schema.Unknown,
     success: Schema.Literal(true),
   }),
   Schema.Struct({
@@ -4351,10 +4351,10 @@ export const GetWafPackageGroupRequest =
     }),
   ) as unknown as Schema.Schema<GetWafPackageGroupRequest>;
 
-export type GetWafPackageGroupResponse = string | null;
+export type GetWafPackageGroupResponse = unknown;
 
 export const GetWafPackageGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([Schema.String, Schema.Null]).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetWafPackageGroupResponse>;
 
@@ -4535,10 +4535,10 @@ export const PatchWafPackageGroupRequest =
     }),
   ) as unknown as Schema.Schema<PatchWafPackageGroupRequest>;
 
-export type PatchWafPackageGroupResponse = string | null;
+export type PatchWafPackageGroupResponse = unknown;
 
 export const PatchWafPackageGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([Schema.String, Schema.Null]).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchWafPackageGroupResponse>;
 
@@ -4578,10 +4578,10 @@ export const GetWafPackageRuleRequest =
     }),
   ) as unknown as Schema.Schema<GetWafPackageRuleRequest>;
 
-export type GetWafPackageRuleResponse = string | null;
+export type GetWafPackageRuleResponse = unknown;
 
 export const GetWafPackageRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([Schema.String, Schema.Null]).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetWafPackageRuleResponse>;
 

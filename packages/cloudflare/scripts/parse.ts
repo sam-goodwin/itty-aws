@@ -534,11 +534,15 @@ function tsTypeToTypeInfo(
       .filter((member) => !(member.getFlags() & ts.TypeFlags.Undefined))
       .map((member) => tsTypeToTypeInfo(member, checker, depth + 1, seen));
 
-    const knownValues = values.filter((value) => value.kind !== "unknown");
-    const candidates = knownValues.length > 0 ? knownValues : values;
-    const deduped = candidates.filter((value, index) => {
+    // A union containing `unknown` collapses to `unknown` — TypeScript's top
+    // type absorbs every other member (`unknown | string` is `unknown`).
+    if (values.some((value) => value.kind === "unknown")) {
+      return { kind: "unknown" };
+    }
+
+    const deduped = values.filter((value, index) => {
       const key = JSON.stringify(value);
-      return index === candidates.findIndex((other) => JSON.stringify(other) === key);
+      return index === values.findIndex((other) => JSON.stringify(other) === key);
     });
 
     if (deduped.length === 0) {
@@ -669,30 +673,24 @@ function typeNodeToTypeInfo(
       typeNodeToTypeInfo(t, checker, registry, seenTypeRefs),
     );
 
-    // De-duplicate and simplify unions
-    // Filter out unknown types if there are known types
-    const knownValues = values.filter((v) => v.kind !== "unknown");
-    if (knownValues.length > 0) {
-      // If we have known types, use only those (deduplicated)
-      const seen = new Set<string>();
-      const dedupedValues = knownValues.filter((v) => {
-        const key = JSON.stringify(v);
-        if (seen.has(key)) return false;
-        seen.add(key);
-        return true;
-      });
-      if (dedupedValues.length === 1) {
-        return dedupedValues[0];
-      }
-      return { kind: "union", values: dedupedValues };
-    }
-
-    // All unknowns - collapse to single unknown
-    if (values.every((v) => v.kind === "unknown")) {
+    // A union containing `unknown` collapses to `unknown` — TypeScript's top
+    // type absorbs every other member (`unknown | string` is `unknown`).
+    if (values.some((v) => v.kind === "unknown")) {
       return { kind: "unknown" };
     }
 
-    return { kind: "union", values };
+    // De-duplicate and simplify unions
+    const seen = new Set<string>();
+    const dedupedValues = values.filter((v) => {
+      const key = JSON.stringify(v);
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+    if (dedupedValues.length === 1) {
+      return dedupedValues[0];
+    }
+    return { kind: "union", values: dedupedValues };
   }
 
   // Array type

@@ -8482,14 +8482,12 @@ export const GetRegionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<GetRegionRequest>;
 
-export type GetRegionResponse = string | null;
+export type GetRegionResponse = unknown;
 
-export const GetRegionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-  Schema.String,
-  Schema.Null,
-]).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<GetRegionResponse>;
+export const GetRegionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetRegionResponse>;
 
 export type GetRegionError = DefaultErrors;
 
@@ -8533,14 +8531,12 @@ export const ListRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<ListRegionsRequest>;
 
-export type ListRegionsResponse = string | null;
+export type ListRegionsResponse = unknown;
 
-export const ListRegionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-  Schema.String,
-  Schema.Null,
-]).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<ListRegionsResponse>;
+export const ListRegionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<ListRegionsResponse>;
 
 export type ListRegionsError = DefaultErrors;
 

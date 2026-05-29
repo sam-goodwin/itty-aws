@@ -171,8 +171,7 @@ paths:
           description: Success
           content:
             application/json:
-              schema:
-                type: string
+              schema: {}
       x-distilled-response-path: result
       x-distilled-errors:
         NotFound:
@@ -498,8 +497,7 @@ paths:
                         id:
                           type: string
                           description: Identifier for a Vector
-                        metadata:
-                          type: "null"
+                        metadata: {}
                         namespace:
                           oneOf:
                             - type: string
@@ -603,6 +601,9 @@ paths:
                             - string
                             - number
                             - boolean
+                            - String
+                            - Number
+                            - Boolean
                           description: Specifies the type of indexed metadata property.
                         propertyName:
                           type: string

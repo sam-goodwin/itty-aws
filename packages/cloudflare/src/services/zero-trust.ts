@@ -63469,10 +63469,10 @@ export const DeleteDevicePostureIntegrationRequest =
     }),
   ) as unknown as Schema.Schema<DeleteDevicePostureIntegrationRequest>;
 
-export type DeleteDevicePostureIntegrationResponse = string;
+export type DeleteDevicePostureIntegrationResponse = unknown;
 
 export const DeleteDevicePostureIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteDevicePostureIntegrationResponse>;
 
@@ -64117,10 +64117,10 @@ export const CreateDeviceRevokeRequest =
     T.Http({ method: "POST", path: "/accounts/{account_id}/devices/revoke" }),
   ) as unknown as Schema.Schema<CreateDeviceRevokeRequest>;
 
-export type CreateDeviceRevokeResponse = string;
+export type CreateDeviceRevokeResponse = unknown;
 
 export const CreateDeviceRevokeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateDeviceRevokeResponse>;
 
@@ -64616,10 +64616,10 @@ export const CreateDeviceUnrevokeRequest =
     T.Http({ method: "POST", path: "/accounts/{account_id}/devices/unrevoke" }),
   ) as unknown as Schema.Schema<CreateDeviceUnrevokeRequest>;
 
-export type CreateDeviceUnrevokeResponse = string;
+export type CreateDeviceUnrevokeResponse = unknown;
 
 export const CreateDeviceUnrevokeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateDeviceUnrevokeResponse>;
 

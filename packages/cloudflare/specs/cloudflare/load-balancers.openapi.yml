@@ -9662,10 +9662,7 @@ paths:
           description: Success
           content:
             application/json:
-              schema:
-                oneOf:
-                  - type: string
-                nullable: true
+              schema: {}
       x-distilled-response-path: result
   /accounts/{account_id}/load_balancers/regions:
     get:
@@ -9704,10 +9701,7 @@ paths:
           description: Success
           content:
             application/json:
-              schema:
-                oneOf:
-                  - type: string
-                nullable: true
+              schema: {}
       x-distilled-response-path: result
   /accounts/{account_id}/load_balancers/search:
     get:

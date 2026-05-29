@@ -661,10 +661,7 @@ paths:
           description: Success
           content:
             application/json:
-              schema:
-                oneOf:
-                  - type: string
-                nullable: true
+              schema: {}
       x-distilled-response-path: result
     delete:
       operationId: deleteSubscription

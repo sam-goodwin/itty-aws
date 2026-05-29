@@ -415,9 +415,9 @@ export const DeleteV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<DeleteV1Request>;
 
-export type DeleteV1Response = string;
+export type DeleteV1Response = unknown;
 
-export const DeleteV1Response = /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(
+export const DeleteV1Response = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteV1Response>;
 
@@ -1003,10 +1003,10 @@ export const DeleteV1VariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   }),
 ) as unknown as Schema.Schema<DeleteV1VariantRequest>;
 
-export type DeleteV1VariantResponse = string;
+export type DeleteV1VariantResponse = unknown;
 
 export const DeleteV1VariantResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteV1VariantResponse>;
 

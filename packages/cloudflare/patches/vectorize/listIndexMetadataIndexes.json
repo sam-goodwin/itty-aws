@@ -1,5 +1,12 @@
 {
   "errors": {
     "NotFound": [{ "code": 3000 }]
+  },
+  "response": {
+    "properties": {
+      "metadataIndexes[].indexType": {
+        "addValues": ["String", "Number", "Boolean"]
+      }
+    }
   }
 }

@@ -650,7 +650,7 @@ export interface GetOperationResponse {
           lastUpdated?: string | null;
           parameterSchemas?: {
             parameters?: unknown[] | null;
-            responses?: null;
+            responses?: unknown | null;
           } | null;
         };
       }
@@ -718,7 +718,9 @@ export const GetOperationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   parameters: Schema.optional(
                     Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
                   ),
-                  responses: Schema.optional(Schema.Null),
+                  responses: Schema.optional(
+                    Schema.Union([Schema.Unknown, Schema.Null]),
+                  ),
                 }),
                 Schema.Null,
               ]),
@@ -1043,7 +1045,7 @@ export interface ListOperationsResponse {
             lastUpdated?: string | null;
             parameterSchemas?: {
               parameters?: unknown[] | null;
-              responses?: null;
+              responses?: unknown | null;
             } | null;
           };
         }
@@ -1124,7 +1126,9 @@ export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                             Schema.Null,
                           ]),
                         ),
-                        responses: Schema.optional(Schema.Null),
+                        responses: Schema.optional(
+                          Schema.Union([Schema.Unknown, Schema.Null]),
+                        ),
                       }),
                       Schema.Null,
                     ]),
@@ -1500,7 +1504,7 @@ export interface CreateOperationResponse {
           lastUpdated?: string | null;
           parameterSchemas?: {
             parameters?: unknown[] | null;
-            responses?: null;
+            responses?: unknown | null;
           } | null;
         };
       }
@@ -1569,7 +1573,9 @@ export const CreateOperationResponse =
                     parameters: Schema.optional(
                       Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
                     ),
-                    responses: Schema.optional(Schema.Null),
+                    responses: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
                   }),
                   Schema.Null,
                 ]),
@@ -2018,7 +2024,7 @@ export interface BulkCreateOperationsResponse {
             lastUpdated?: string | null;
             parameterSchemas?: {
               parameters?: unknown[] | null;
-              responses?: null;
+              responses?: unknown | null;
             } | null;
           };
         }
@@ -2093,7 +2099,9 @@ export const BulkCreateOperationsResponse =
                             Schema.Null,
                           ]),
                         ),
-                        responses: Schema.optional(Schema.Null),
+                        responses: Schema.optional(
+                          Schema.Union([Schema.Unknown, Schema.Null]),
+                        ),
                       }),
                       Schema.Null,
                     ]),
@@ -3567,7 +3575,7 @@ export interface ListUserSchemaOperationsResponse {
                 lastUpdated?: string | null;
                 parameterSchemas?: {
                   parameters?: unknown[] | null;
-                  responses?: null;
+                  responses?: unknown | null;
                 } | null;
               };
             }
@@ -3673,7 +3681,9 @@ export const ListUserSchemaOperationsResponse =
                               Schema.Null,
                             ]),
                           ),
-                          responses: Schema.optional(Schema.Null),
+                          responses: Schema.optional(
+                            Schema.Union([Schema.Unknown, Schema.Null]),
+                          ),
                         }),
                         Schema.Null,
                       ]),

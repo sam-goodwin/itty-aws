@@ -703,7 +703,6 @@ paths:
                                     items: {}
                                     description: An array containing the learned parameter schemas.
                                   responses:
-                                    type: "null"
                                     description: An empty response object. This field is required to yield a valid
                                       operation schema.
                                 description: An operation schema object containing a response.
@@ -1060,7 +1059,6 @@ paths:
                                     items: {}
                                     description: An array containing the learned parameter schemas.
                                   responses:
-                                    type: "null"
                                     description: An empty response object. This field is required to yield a valid
                                       operation schema.
                                 description: An operation schema object containing a response.
@@ -1305,7 +1303,6 @@ paths:
                                     items: {}
                                     description: An array containing the learned parameter schemas.
                                   responses:
-                                    type: "null"
                                     description: An empty response object. This field is required to yield a valid
                                       operation schema.
                                 description: An operation schema object containing a response.
@@ -1619,7 +1616,6 @@ paths:
                                     items: {}
                                     description: An array containing the learned parameter schemas.
                                   responses:
-                                    type: "null"
                                     description: An empty response object. This field is required to yield a valid
                                       operation schema.
                                 description: An operation schema object containing a response.
@@ -2753,7 +2749,6 @@ paths:
                                         items: {}
                                         description: An array containing the learned parameter schemas.
                                       responses:
-                                        type: "null"
                                         description: An empty response object. This field is required to yield a valid
                                           operation schema.
                                     description: An operation schema object containing a response.

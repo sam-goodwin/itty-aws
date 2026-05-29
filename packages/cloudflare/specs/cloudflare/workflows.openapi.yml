@@ -117,8 +117,7 @@ paths:
                                 retries:
                                   type: object
                                   properties:
-                                    delay:
-                                      type: number
+                                    delay: {}
                                     limit:
                                       type: number
                                     backoff:
@@ -229,11 +228,7 @@ paths:
                               type: boolean
                             name:
                               type: string
-                            output:
-                              oneOf:
-                                - type: string
-                                - type: number
-                                - type: boolean
+                            output: {}
                             start:
                               type: string
                             type:

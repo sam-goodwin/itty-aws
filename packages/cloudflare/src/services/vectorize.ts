@@ -413,10 +413,10 @@ export const DeleteIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<DeleteIndexRequest>;
 
-export type DeleteIndexResponse = string;
+export type DeleteIndexResponse = unknown;
 
 export const DeleteIndexResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteIndexResponse>;
 
@@ -573,7 +573,7 @@ export interface QueryIndexResponse {
   matches?:
     | {
         id?: string | null;
-        metadata?: null;
+        metadata?: unknown | null;
         namespace?: string | null;
         score?: number | null;
         values?: number[] | null;
@@ -588,7 +588,9 @@ export const QueryIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Array(
         Schema.Struct({
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          metadata: Schema.optional(Schema.Null),
+          metadata: Schema.optional(
+            Schema.Union([Schema.Unknown, Schema.Null]),
+          ),
           namespace: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
@@ -692,7 +694,14 @@ export interface ListIndexMetadataIndexesResponse {
   /** Array of indexed metadata properties. */
   metadataIndexes?:
     | {
-        indexType?: "string" | "number" | "boolean" | null;
+        indexType?:
+          | "string"
+          | "number"
+          | "boolean"
+          | "String"
+          | "Number"
+          | "Boolean"
+          | null;
         propertyName?: string | null;
       }[]
     | null;
@@ -706,7 +715,14 @@ export const ListIndexMetadataIndexesResponse =
           Schema.Struct({
             indexType: Schema.optional(
               Schema.Union([
-                Schema.Literals(["string", "number", "boolean"]),
+                Schema.Literals([
+                  "string",
+                  "number",
+                  "boolean",
+                  "String",
+                  "Number",
+                  "Boolean",
+                ]),
                 Schema.Null,
               ]),
             ),

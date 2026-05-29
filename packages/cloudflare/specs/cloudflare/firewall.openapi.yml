@@ -3537,10 +3537,7 @@ paths:
                           required:
                             - code
                             - message
-                      result:
-                        oneOf:
-                          - type: string
-                        nullable: true
+                      result: {}
                       success:
                         type: boolean
                         enum:
@@ -3650,10 +3647,7 @@ paths:
           description: Success
           content:
             application/json:
-              schema:
-                oneOf:
-                  - type: string
-                nullable: true
+              schema: {}
       x-distilled-response-path: result
     patch:
       operationId: patchWafPackageGroup
@@ -3700,10 +3694,7 @@ paths:
           description: Success
           content:
             application/json:
-              schema:
-                oneOf:
-                  - type: string
-                nullable: true
+              schema: {}
       x-distilled-response-path: result
   /zones/{zone_id}/firewall/waf/packages/{packageId}/groups:
     get:
@@ -3868,10 +3859,7 @@ paths:
           description: Success
           content:
             application/json:
-              schema:
-                oneOf:
-                  - type: string
-                nullable: true
+              schema: {}
       x-distilled-response-path: result
     patch:
       operationId: patchWafPackageRule

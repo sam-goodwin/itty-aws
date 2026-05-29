@@ -1102,10 +1102,7 @@ export interface RawDatabaseResponse {
       sizeAfter?: number | null;
       timings?: { sqlDurationMs?: number | null } | null;
     } | null;
-    results?: {
-      columns?: string[] | null;
-      rows?: (number | string)[][] | null;
-    } | null;
+    results?: { columns?: string[] | null; rows?: unknown[][] | null } | null;
     success?: boolean | null;
   }[];
 }
@@ -1187,9 +1184,7 @@ export const RawDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
             rows: Schema.optional(
               Schema.Union([
-                Schema.Array(
-                  Schema.Array(Schema.Union([Schema.Number, Schema.String])),
-                ),
+                Schema.Array(Schema.Array(Schema.Unknown)),
                 Schema.Null,
               ]),
             ),

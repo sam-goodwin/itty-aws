@@ -111,7 +111,7 @@ export interface GetInstanceResponse {
         }[];
         config: {
           retries: {
-            delay: number;
+            delay: unknown;
             limit: number;
             backoff?: "constant" | "linear" | "exponential" | null;
           };
@@ -138,7 +138,7 @@ export interface GetInstanceResponse {
         error: { message: string; name: string } | null;
         finished: boolean;
         name: string;
-        output: string | number | boolean;
+        output: unknown;
         start: string;
         type: "waitForEvent";
       }
@@ -190,7 +190,7 @@ export const GetInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         config: Schema.Struct({
           retries: Schema.Struct({
-            delay: Schema.Number,
+            delay: Schema.Unknown,
             limit: Schema.Number,
             backoff: Schema.optional(
               Schema.Union([
@@ -219,7 +219,7 @@ export const GetInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
         finished: Schema.Boolean,
         name: Schema.String,
-        output: Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
+        output: Schema.Unknown,
         start: Schema.String,
         type: Schema.Literal("waitForEvent"),
       }),
