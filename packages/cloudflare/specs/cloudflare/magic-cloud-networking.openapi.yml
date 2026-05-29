@@ -484,7 +484,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -496,19 +496,19 @@ paths:
               properties:
                 description:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 policy:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 update_mode:
                   type: string
                   enum:
                     - AUTO
                     - MANUAL
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -570,7 +570,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -582,19 +582,19 @@ paths:
               properties:
                 description:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 policy:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 update_mode:
                   type: string
                   enum:
                     - AUTO
                     - MANUAL
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -656,13 +656,13 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: delete_destination
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
       responses:
@@ -744,13 +744,13 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: forwarded
           in: header
           required: false
-          description: "Header param:"
+          description: Header param
           schema:
             type: string
       requestBody:
@@ -765,22 +765,22 @@ paths:
                   enum:
                     - NONE
                     - ZERO_TRUST_LIST
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 update_mode:
                   type: string
                   enum:
                     - AUTO
                     - MANUAL
-                  description: "Body param:"
+                  description: Body param
                 description:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 policy:
                   type: string
-                  description: "Body param:"
+                  description: Body param
               required:
                 - destination_type
                 - name
@@ -866,7 +866,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: destination_type
@@ -918,13 +918,13 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: status
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
       responses:
@@ -1095,7 +1095,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -1107,25 +1107,25 @@ paths:
               properties:
                 aws_arn:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 azure_subscription_id:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 azure_tenant_id:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 description:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 friendly_name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 gcp_project_id:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 gcp_service_account_email:
                   type: string
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -1294,7 +1294,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -1306,25 +1306,25 @@ paths:
               properties:
                 aws_arn:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 azure_subscription_id:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 azure_tenant_id:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 description:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 friendly_name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 gcp_project_id:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 gcp_service_account_email:
                   type: string
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -1516,19 +1516,19 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: cloudflare
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: desc
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: order_by
@@ -1540,7 +1540,7 @@ paths:
         - name: status
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
       responses:
@@ -1706,13 +1706,13 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: forwarded
           in: header
           required: false
-          description: "Header param:"
+          description: Header param
           schema:
             type: string
       requestBody:
@@ -1729,13 +1729,13 @@ paths:
                     - AZURE
                     - GOOGLE
                     - CLOUDFLARE
-                  description: "Body param:"
+                  description: Body param
                 friendly_name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 description:
                   type: string
-                  description: "Body param:"
+                  description: Body param
               required:
                 - cloud_type
                 - friendly_name
@@ -1908,13 +1908,13 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: v2
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
       responses:
@@ -2322,31 +2322,31 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: planned_resources
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: post_apply_resources
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: status
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: vpcs
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
       responses:
@@ -2669,7 +2669,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -2683,33 +2683,33 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 attached_vpcs:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 description:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 install_routes_in_cloud:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 install_routes_in_magic_wan:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 manage_hub_to_hub_attachments:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 manage_vpc_to_hub_attachments:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 vpc:
                   type: string
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -3030,7 +3030,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -3044,33 +3044,33 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 attached_vpcs:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 description:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 install_routes_in_cloud:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 install_routes_in_magic_wan:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 manage_hub_to_hub_attachments:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 manage_vpc_to_hub_attachments:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 vpc:
                   type: string
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -3391,19 +3391,19 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: destroy
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: force
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
       responses:
@@ -3427,13 +3427,13 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: desc
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: order_by
@@ -3445,13 +3445,13 @@ paths:
         - name: status
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: vpcs
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
       responses:
@@ -3769,13 +3769,13 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: forwarded
           in: header
           required: false
-          description: "Header param:"
+          description: Header param
           schema:
             type: string
       requestBody:
@@ -3791,61 +3791,62 @@ paths:
                     - AWS
                     - AZURE
                     - GOOGLE
-                  description: "Body param:"
+                  description: Body param
                 dynamic_routing:
                   type: boolean
-                  description: "Body param: if set to true, install_routes_in_cloud and
-                    install_routes_in_magic_wan should be set to false"
+                  description: "Body param: Enables BGP routing. When enabling this feature, set
+                    both install_routes_in_cloud and install_routes_in_magic_wan
+                    to false."
                 install_routes_in_cloud:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 install_routes_in_magic_wan:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 type:
                   type: string
                   enum:
                     - OnrampTypeSingle
                     - OnrampTypeHub
-                  description: "Body param:"
+                  description: Body param
                 adopted_hub_id:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 attached_hubs:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 attached_vpcs:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 cloud_asn:
                   type: number
-                  description: "Body param: the ASN to use on the cloud side. If unset or zero,
-                    the cloud's default will be used."
+                  description: "Body param: Sets the cloud-side ASN. If unset or zero, the cloud's
+                    default ASN takes effect."
                 description:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 hub_provider_id:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 manage_hub_to_hub_attachments:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 manage_vpc_to_hub_attachments:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 region:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 vpc:
                   type: string
-                  description: "Body param:"
+                  description: Body param
               required:
                 - cloud_type
                 - dynamic_routing
@@ -5025,7 +5026,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -5039,7 +5040,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
               required:
                 - prefixes
       responses:
@@ -5064,7 +5065,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -5078,7 +5079,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
               required:
                 - prefixes
       responses:
@@ -5105,7 +5106,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -5117,7 +5118,7 @@ paths:
               properties:
                 policy:
                   type: string
-                  description: "Body param:"
+                  description: Body param
               required:
                 - policy
       responses:
@@ -5141,13 +5142,13 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: v2
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
       responses:
@@ -5852,7 +5853,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: page
@@ -5868,19 +5869,19 @@ paths:
         - name: cloudflare
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: desc
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: managed
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: order_by
@@ -5892,25 +5893,25 @@ paths:
         - name: provider_id
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: region
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: resource_group
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: resource_id
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -5918,7 +5919,7 @@ paths:
         - name: resource_type
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -5984,7 +5985,7 @@ paths:
         - name: search
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -5992,7 +5993,7 @@ paths:
         - name: v2
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
       responses:
@@ -6697,13 +6698,13 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: desc
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: order_by
@@ -6715,25 +6716,25 @@ paths:
         - name: provider_id
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: region
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: resource_group
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: resource_id
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -6741,7 +6742,7 @@ paths:
         - name: resource_type
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -6807,7 +6808,7 @@ paths:
         - name: search
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -6815,7 +6816,7 @@ paths:
         - name: v2
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
       responses:

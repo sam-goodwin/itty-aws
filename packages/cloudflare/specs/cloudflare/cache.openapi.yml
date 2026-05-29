@@ -46,7 +46,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -301,6 +301,629 @@ paths:
                   - start_ts
                   - state
       x-distilled-response-path: result
+  /zones/{zone_id}/cache/origin_cloud_regions/{originIP}:
+    get:
+      operationId: getOriginCloudRegion
+      description: "Returns the cloud region mapping for a single origin IP address.
+        The IP path parameter is normalized before lookup (RFC 5952 for IPv6).
+        Returns 404 (code 1142) if the zone has no mappings or if the specified
+        IP has no mapping.  @example ```ts const originCloudRegion = await
+        client.cache.originCloudRegions.get('192.0.2.1', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: originIP
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - origin_public_cloud_region
+                  editable:
+                    type: boolean
+                    description: Whether the setting can be modified by the current user.
+                  value:
+                    type: object
+                    properties:
+                      origin-ip:
+                        type: string
+                        description: The origin IP address (IPv4 or IPv6, canonicalized).
+                      region:
+                        type: string
+                        description: Cloud vendor region identifier.
+                      vendor:
+                        type: string
+                        enum:
+                          - aws
+                          - azure
+                          - gcp
+                          - oci
+                        description: Cloud vendor hosting the origin.
+                      modified_on:
+                        type: string
+                        description: Time this mapping was last modified.
+                    required:
+                      - origin-ip
+                      - region
+                      - vendor
+                    description: A single origin IP-to-cloud-region mapping.
+                  modified_on:
+                    type: string
+                    description: Time the mapping was last modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteOriginCloudRegion
+      description: "Removes the cloud region mapping for a single origin IP address.
+        The IP path parameter is normalized before lookup. Returns the deleted
+        entry on success. Returns 404 (code 1163) if no mapping exists for the
+        specified IP. When the last mapping for the zone is removed the
+        underlying rule record is also deleted.  @example ```ts const
+        originCloudRegion = await client.cache.originCloudRegions.delete(
+        '192.0.2.1', { zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: originIP
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - origin_public_cloud_region
+                  editable:
+                    type: boolean
+                    description: Whether the setting can be modified by the current user.
+                  value:
+                    type: object
+                    properties:
+                      origin-ip:
+                        type: string
+                        description: The origin IP address (IPv4 or IPv6, canonicalized).
+                      region:
+                        type: string
+                        description: Cloud vendor region identifier.
+                      vendor:
+                        type: string
+                        enum:
+                          - aws
+                          - azure
+                          - gcp
+                          - oci
+                        description: Cloud vendor hosting the origin.
+                      modified_on:
+                        type: string
+                        description: Time this mapping was last modified.
+                    required:
+                      - origin-ip
+                      - region
+                      - vendor
+                    description: A single origin IP-to-cloud-region mapping.
+                  modified_on:
+                    type: string
+                    description: Time the mapping was last modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+  /zones/{zone_id}/cache/origin_cloud_regions:
+    get:
+      operationId: listOriginCloudRegions
+      description: "Returns all IP-to-cloud-region mappings configured for the zone.
+        Each mapping tells Cloudflare which cloud vendor and region hosts the
+        origin at that IP, enabling the edge to route via the nearest Tiered
+        Cache upper-tier co-located with that cloud provider. Returns an empty
+        array when no mappings exist.  @example ```ts const originCloudRegions =
+        await client.cache.originCloudRegions.list({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - origin_public_cloud_region
+                  editable:
+                    type: boolean
+                    description: Whether the setting can be modified by the current user.
+                  value:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        origin-ip:
+                          type: string
+                          description: The origin IP address (IPv4 or IPv6, canonicalized).
+                        region:
+                          type: string
+                          description: Cloud vendor region identifier.
+                        vendor:
+                          type: string
+                          enum:
+                            - aws
+                            - azure
+                            - gcp
+                            - oci
+                          description: Cloud vendor hosting the origin.
+                        modified_on:
+                          type: string
+                          description: Time this mapping was last modified.
+                      required:
+                        - origin-ip
+                        - region
+                        - vendor
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Time the mapping set was last modified. Null when no mappings
+                      exist.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+    post:
+      operationId: createOriginCloudRegion
+      description: "Adds a single IP-to-cloud-region mapping for the zone. The IP must
+        be a valid IPv4 or IPv6 address and is normalized to canonical form
+        before storage (RFC 5952 for IPv6). Returns 400 (code 1145) if a mapping
+        for that IP already exists — use PATCH to update an existing entry. The
+        vendor and region are validated against the list from `GET
+        /zones/{zone_id}/cache/origin_cloud_regions/supported_regions`.  @examp\
+        le ```ts const originCloudRegion = await
+        client.cache.originCloudRegions.create({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', ip: '192.0.2.1', region:
+        'us-east-1', vendor: 'aws', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ip:
+                  type: string
+                  description: "Body param: Origin IP address (IPv4 or IPv6). Normalized to
+                    canonical form before storage (RFC 5952 for IPv6)."
+                region:
+                  type: string
+                  description: "Body param: Cloud vendor region identifier. Must be a valid region
+                    for the specified vendor as returned by the
+                    supported_regions endpoint."
+                vendor:
+                  type: string
+                  enum:
+                    - aws
+                    - azure
+                    - gcp
+                    - oci
+                  description: "Body param: Cloud vendor hosting the origin. Must be one of the
+                    supported vendors."
+              required:
+                - ip
+                - region
+                - vendor
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - origin_public_cloud_region
+                  editable:
+                    type: boolean
+                    description: Whether the setting can be modified by the current user.
+                  value:
+                    type: object
+                    properties:
+                      origin-ip:
+                        type: string
+                        description: The origin IP address (IPv4 or IPv6, canonicalized).
+                      region:
+                        type: string
+                        description: Cloud vendor region identifier.
+                      vendor:
+                        type: string
+                        enum:
+                          - aws
+                          - azure
+                          - gcp
+                          - oci
+                        description: Cloud vendor hosting the origin.
+                      modified_on:
+                        type: string
+                        description: Time this mapping was last modified.
+                    required:
+                      - origin-ip
+                      - region
+                      - vendor
+                    description: A single origin IP-to-cloud-region mapping.
+                  modified_on:
+                    type: string
+                    description: Time the mapping was last modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+    patch:
+      operationId: patchOriginCloudRegion
+      description: "Adds or updates a single IP-to-cloud-region mapping for the zone.
+        Unlike POST, this operation is idempotent — if a mapping for the IP
+        already exists it is overwritten. Returns the complete updated list of
+        all mappings for the zone. Returns 403 (code 1164) when the zone has
+        reached the limit of 3,500 IP mappings.  @example ```ts const response =
+        await client.cache.originCloudRegions.edit( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', ip: '2001:db8::1', region:
+        'us-central1', vendor: 'gcp', }, ); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ip:
+                  type: string
+                  description: "Body param: Origin IP address (IPv4 or IPv6). Normalized to
+                    canonical form before storage (RFC 5952 for IPv6)."
+                region:
+                  type: string
+                  description: "Body param: Cloud vendor region identifier. Must be a valid region
+                    for the specified vendor as returned by the
+                    supported_regions endpoint."
+                vendor:
+                  type: string
+                  enum:
+                    - aws
+                    - azure
+                    - gcp
+                    - oci
+                  description: "Body param: Cloud vendor hosting the origin. Must be one of the
+                    supported vendors."
+              required:
+                - ip
+                - region
+                - vendor
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - origin_public_cloud_region
+                  editable:
+                    type: boolean
+                    description: Whether the setting can be modified by the current user.
+                  value:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        origin-ip:
+                          type: string
+                          description: The origin IP address (IPv4 or IPv6, canonicalized).
+                        region:
+                          type: string
+                          description: Cloud vendor region identifier.
+                        vendor:
+                          type: string
+                          enum:
+                            - aws
+                            - azure
+                            - gcp
+                            - oci
+                          description: Cloud vendor hosting the origin.
+                        modified_on:
+                          type: string
+                          description: Time this mapping was last modified.
+                      required:
+                        - origin-ip
+                        - region
+                        - vendor
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Time the mapping set was last modified. Null when no mappings
+                      exist.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+  /zones/{zone_id}/cache/origin_cloud_regions/batch:
+    patch:
+      operationId: bulkPatchOriginCloudRegions
+      description: "Adds or updates up to 100 IP-to-cloud-region mappings in a single
+        request. Each item is validated independently — valid items are applied
+        and invalid items are returned in the `failed` array. The vendor and
+        region for every item are validated against the list from `GET
+        /zones/{zone_id}/cache/origin_cloud_regions/supported_regions`.  @examp\
+        le ```ts const response = await
+        client.cache.originCloudRegions.bulkEdit({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', body: [ { ip: '192.0.2.1', region:
+        'us-east-1', vendor: 'aws', }, { ip: '2001:db8::1', region:
+        'us-central1', vendor: 'gcp', }, ], }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  ip:
+                    type: string
+                    description: Origin IP address (IPv4 or IPv6). Normalized to canonical form
+                      before storage (RFC 5952 for IPv6).
+                  region:
+                    type: string
+                    description: Cloud vendor region identifier. Must be a valid region for the
+                      specified vendor as returned by the supported_regions
+                      endpoint.
+                  vendor:
+                    type: string
+                    enum:
+                      - aws
+                      - azure
+                      - gcp
+                      - oci
+                    description: Cloud vendor hosting the origin. Must be one of the supported
+                      vendors.
+                required:
+                  - ip
+                  - region
+                  - vendor
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - origin_public_cloud_region
+                  editable:
+                    type: boolean
+                    description: Whether the setting can be modified by the current user.
+                  value:
+                    type: object
+                    properties:
+                      failed:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            origin-ip:
+                              type: string
+                              description: The origin IP address for this item.
+                            error:
+                              type: string
+                              description: Error message explaining why the item failed. Present only on
+                                failed items.
+                            region:
+                              type: string
+                              description: Cloud vendor region identifier. Present on succeeded items for
+                                patch operations.
+                            vendor:
+                              type: string
+                              description: Cloud vendor identifier. Present on succeeded items for patch
+                                operations.
+                          required:
+                            - origin-ip
+                        description: Items that could not be applied, with error details.
+                      succeeded:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            origin-ip:
+                              type: string
+                              description: The origin IP address for this item.
+                            error:
+                              type: string
+                              description: Error message explaining why the item failed. Present only on
+                                failed items.
+                            region:
+                              type: string
+                              description: Cloud vendor region identifier. Present on succeeded items for
+                                patch operations.
+                            vendor:
+                              type: string
+                              description: Cloud vendor identifier. Present on succeeded items for patch
+                                operations.
+                          required:
+                            - origin-ip
+                        description: Items that were successfully applied.
+                    required:
+                      - failed
+                      - succeeded
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Time the mapping set was last modified. Null when no items were
+                      successfully applied.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+    delete:
+      operationId: bulkDeleteOriginCloudRegions
+      description: "Removes up to 100 IP-to-cloud-region mappings in a single request.
+        Each IP is validated independently — successfully deleted items are
+        returned in the `succeeded` array and IPs that could not be found or are
+        invalid are returned in the `failed` array.  @example ```ts const
+        response = await client.cache.originCloudRegions.bulkDelete({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - origin_public_cloud_region
+                  editable:
+                    type: boolean
+                    description: Whether the setting can be modified by the current user.
+                  value:
+                    type: object
+                    properties:
+                      failed:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            origin-ip:
+                              type: string
+                              description: The origin IP address for this item.
+                            error:
+                              type: string
+                              description: Error message explaining why the item failed. Present only on
+                                failed items.
+                            region:
+                              type: string
+                              description: Cloud vendor region identifier. Present on succeeded items for
+                                patch operations.
+                            vendor:
+                              type: string
+                              description: Cloud vendor identifier. Present on succeeded items for patch
+                                operations.
+                          required:
+                            - origin-ip
+                        description: Items that could not be applied, with error details.
+                      succeeded:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            origin-ip:
+                              type: string
+                              description: The origin IP address for this item.
+                            error:
+                              type: string
+                              description: Error message explaining why the item failed. Present only on
+                                failed items.
+                            region:
+                              type: string
+                              description: Cloud vendor region identifier. Present on succeeded items for
+                                patch operations.
+                            vendor:
+                              type: string
+                              description: Cloud vendor identifier. Present on succeeded items for patch
+                                operations.
+                          required:
+                            - origin-ip
+                        description: Items that were successfully applied.
+                    required:
+                      - failed
+                      - succeeded
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Time the mapping set was last modified. Null when no items were
+                      successfully applied.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
   /zones/{zone_id}/cache/regional_tiered_cache:
     get:
       operationId: getRegionalTieredCache
@@ -408,6 +1031,45 @@ paths:
                   - id
                   - editable
                   - value
+      x-distilled-response-path: result
+  /zones/{zone_id}/cache/origin_cloud_regions/supported_regions:
+    get:
+      operationId: supportedRegionsOriginCloudRegion
+      description: "Returns the cloud vendors and regions that are valid values for
+        origin cloud region mappings. Each region includes the Tiered Cache
+        upper-tier colocation codes that will be used for cache routing when a
+        mapping targeting that region is active. Requires the zone to have
+        Tiered Cache enabled.  @example ```ts const response = await
+        client.cache.originCloudRegions.supportedRegions({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  obtained_codes:
+                    type: boolean
+                    description: Whether Cloudflare airport codes (IATA colo identifiers) were
+                      successfully resolved for the `upper_tier_colos` field on
+                      each region. When `false`, the `upper_tier_colos` arrays
+                      may be empty or incomplete.
+                  vendors:
+                    type: object
+                    additionalProperties: true
+                    description: Map of vendor name to list of supported regions.
+                required:
+                  - obtained_codes
+                  - vendors
       x-distilled-response-path: result
   /zones/{zone_id}/cache/tiered_cache_smart_topology_enable:
     get:

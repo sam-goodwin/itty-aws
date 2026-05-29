@@ -321,3 +321,405 @@ export const putDomain: API.OperationMethod<
   output: PutDomainResponse,
   errors: [],
 }));
+
+// =============================================================================
+// Registrar
+// =============================================================================
+
+export interface CheckRegistrarRequest {
+  /** Path param: Identifier */
+  accountId: string;
+  /** Body param: List of fully qualified domain names (FQDNs) to check for availability. Each domain must include the extension.  - Minimum: 1 domain - Maximum: 20 domains per request - Domains on unsuppor */
+  domains: string[];
+}
+
+export const CheckRegistrarRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  domains: Schema.Array(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/registrar/domain-check",
+  }),
+) as unknown as Schema.Schema<CheckRegistrarRequest>;
+
+export interface CheckRegistrarResponse {
+  /** Array of domain availability results. Domains on unsupported extensions are included with `registrable: false` and a `reason` field. Malformed domain names may be omitted. */
+  domains: {
+    name: string;
+    registrable: boolean;
+    pricing?: {
+      currency: string;
+      registrationCost: string;
+      renewalCost: string;
+    } | null;
+    reason?:
+      | "extension_not_supported_via_api"
+      | "extension_not_supported"
+      | "extension_disallows_registration"
+      | "domain_premium"
+      | "domain_unavailable"
+      | null;
+    tier?: "standard" | "premium" | null;
+  }[];
+}
+
+export const CheckRegistrarResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    domains: Schema.Array(
+      Schema.Struct({
+        name: Schema.String,
+        registrable: Schema.Boolean,
+        pricing: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              currency: Schema.String,
+              registrationCost: Schema.String,
+              renewalCost: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                currency: "currency",
+                registrationCost: "registration_cost",
+                renewalCost: "renewal_cost",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        reason: Schema.optional(
+          Schema.Union([
+            Schema.Literals([
+              "extension_not_supported_via_api",
+              "extension_not_supported",
+              "extension_disallows_registration",
+              "domain_premium",
+              "domain_unavailable",
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        tier: Schema.optional(
+          Schema.Union([Schema.Literals(["standard", "premium"]), Schema.Null]),
+        ),
+      }),
+    ),
+  },
+).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<CheckRegistrarResponse>;
+
+export type CheckRegistrarError = DefaultErrors;
+
+export const checkRegistrar: API.OperationMethod<
+  CheckRegistrarRequest,
+  CheckRegistrarResponse,
+  CheckRegistrarError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CheckRegistrarRequest,
+  output: CheckRegistrarResponse,
+  errors: [],
+}));
+
+export interface SearchRegistrarRequest {
+  /** Path param: Identifier */
+  accountId: string;
+  /** Query param: The search term to find domain suggestions. Accepts keywords, phrases, or full domain names.  - Phrases: "coffee shop" returns coffeeshop.com, mycoffeeshop.net, etc. - Domain names: "exam */
+  q: string;
+  /** Query param: Limits results to specific domain extensions from the supported set. If not specified, returns results across all supported extensions. Extensions not in the supported set are silently ig */
+  extensions?: string[];
+  /** Query param: Maximum number of domain suggestions to return. Defaults to 20 if not specified. */
+  limit?: number;
+}
+
+export const SearchRegistrarRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    q: Schema.String.pipe(T.HttpQuery("q")),
+    extensions: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("extensions"),
+    ),
+    limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/registrar/domain-search",
+  }),
+) as unknown as Schema.Schema<SearchRegistrarRequest>;
+
+export interface SearchRegistrarResponse {
+  /** Array of domain suggestions sorted by relevance. May be empty if no domains match the search criteria. */
+  domains: {
+    name: string;
+    registrable: boolean;
+    pricing?: {
+      currency: string;
+      registrationCost: string;
+      renewalCost: string;
+    } | null;
+    reason?:
+      | "extension_not_supported_via_api"
+      | "extension_not_supported"
+      | "extension_disallows_registration"
+      | "domain_premium"
+      | "domain_unavailable"
+      | null;
+    tier?: "standard" | "premium" | null;
+  }[];
+}
+
+export const SearchRegistrarResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domains: Schema.Array(
+      Schema.Struct({
+        name: Schema.String,
+        registrable: Schema.Boolean,
+        pricing: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              currency: Schema.String,
+              registrationCost: Schema.String,
+              renewalCost: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                currency: "currency",
+                registrationCost: "registration_cost",
+                renewalCost: "renewal_cost",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        reason: Schema.optional(
+          Schema.Union([
+            Schema.Literals([
+              "extension_not_supported_via_api",
+              "extension_not_supported",
+              "extension_disallows_registration",
+              "domain_premium",
+              "domain_unavailable",
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        tier: Schema.optional(
+          Schema.Union([Schema.Literals(["standard", "premium"]), Schema.Null]),
+        ),
+      }),
+    ),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<SearchRegistrarResponse>;
+
+export type SearchRegistrarError = DefaultErrors;
+
+export const searchRegistrar: API.OperationMethod<
+  SearchRegistrarRequest,
+  SearchRegistrarResponse,
+  SearchRegistrarError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SearchRegistrarRequest,
+  output: SearchRegistrarResponse,
+  errors: [],
+}));
+
+// =============================================================================
+// RegistrationStatus
+// =============================================================================
+
+export interface GetRegistrationStatusRequest {
+  domainName: string;
+  /** Identifier */
+  accountId: string;
+}
+
+export const GetRegistrationStatusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domainName: Schema.String.pipe(T.HttpPath("domainName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/registrar/registrations/{domainName}/registration-status",
+    }),
+  ) as unknown as Schema.Schema<GetRegistrationStatusRequest>;
+
+export interface GetRegistrationStatusResponse {
+  /** Whether the workflow has reached a terminal state. `true` when `state` is `succeeded` or `failed`. `false` for `pending`, `in_progress`, `action_required`, and `blocked`. */
+  completed: boolean;
+  createdAt: string;
+  links: { self: string; resource?: string | null };
+  /** Workflow lifecycle state.  - `pending`: Workflow has been created but not yet started processing. - `in_progress`: Actively processing. Continue polling `links.self`. The workflow has an internal dead */
+  state:
+    | "pending"
+    | "in_progress"
+    | "action_required"
+    | "blocked"
+    | "succeeded"
+    | "failed";
+  updatedAt: string;
+  /** Workflow-specific data for this workflow.  The workflow subject is identified by `context.domain_name` for domain-centric workflows. */
+  context?: Record<string, unknown> | null;
+  /** Error details when a workflow reaches the `failed` state. The specific error codes and messages depend on the workflow type (registration, update, etc.) and the underlying registry response. These wor */
+  error?: { code: string; message: string } | null;
+}
+
+export const GetRegistrationStatusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completed: Schema.Boolean,
+    createdAt: Schema.String,
+    links: Schema.Struct({
+      self: Schema.String,
+      resource: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+    state: Schema.Literals([
+      "pending",
+      "in_progress",
+      "action_required",
+      "blocked",
+      "succeeded",
+      "failed",
+    ]),
+    updatedAt: Schema.String,
+    context: Schema.optional(
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+    ),
+    error: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          code: Schema.String,
+          message: Schema.String,
+        }),
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        completed: "completed",
+        createdAt: "created_at",
+        links: "links",
+        state: "state",
+        updatedAt: "updated_at",
+        context: "context",
+        error: "error",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<GetRegistrationStatusResponse>;
+
+export type GetRegistrationStatusError = DefaultErrors;
+
+export const getRegistrationStatus: API.OperationMethod<
+  GetRegistrationStatusRequest,
+  GetRegistrationStatusResponse,
+  GetRegistrationStatusError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetRegistrationStatusRequest,
+  output: GetRegistrationStatusResponse,
+  errors: [],
+}));
+
+// =============================================================================
+// UpdateStatus
+// =============================================================================
+
+export interface GetUpdateStatusRequest {
+  domainName: string;
+  /** Identifier */
+  accountId: string;
+}
+
+export const GetUpdateStatusRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    domainName: Schema.String.pipe(T.HttpPath("domainName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/registrar/registrations/{domainName}/update-status",
+  }),
+) as unknown as Schema.Schema<GetUpdateStatusRequest>;
+
+export interface GetUpdateStatusResponse {
+  /** Whether the workflow has reached a terminal state. `true` when `state` is `succeeded` or `failed`. `false` for `pending`, `in_progress`, `action_required`, and `blocked`. */
+  completed: boolean;
+  createdAt: string;
+  links: { self: string; resource?: string | null };
+  /** Workflow lifecycle state.  - `pending`: Workflow has been created but not yet started processing. - `in_progress`: Actively processing. Continue polling `links.self`. The workflow has an internal dead */
+  state:
+    | "pending"
+    | "in_progress"
+    | "action_required"
+    | "blocked"
+    | "succeeded"
+    | "failed";
+  updatedAt: string;
+  /** Workflow-specific data for this workflow.  The workflow subject is identified by `context.domain_name` for domain-centric workflows. */
+  context?: Record<string, unknown> | null;
+  /** Error details when a workflow reaches the `failed` state. The specific error codes and messages depend on the workflow type (registration, update, etc.) and the underlying registry response. These wor */
+  error?: { code: string; message: string } | null;
+}
+
+export const GetUpdateStatusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completed: Schema.Boolean,
+    createdAt: Schema.String,
+    links: Schema.Struct({
+      self: Schema.String,
+      resource: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+    state: Schema.Literals([
+      "pending",
+      "in_progress",
+      "action_required",
+      "blocked",
+      "succeeded",
+      "failed",
+    ]),
+    updatedAt: Schema.String,
+    context: Schema.optional(
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+    ),
+    error: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          code: Schema.String,
+          message: Schema.String,
+        }),
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        completed: "completed",
+        createdAt: "created_at",
+        links: "links",
+        state: "state",
+        updatedAt: "updated_at",
+        context: "context",
+        error: "error",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<GetUpdateStatusResponse>;
+
+export type GetUpdateStatusError = DefaultErrors;
+
+export const getUpdateStatus: API.OperationMethod<
+  GetUpdateStatusRequest,
+  GetUpdateStatusResponse,
+  GetUpdateStatusError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetUpdateStatusRequest,
+  output: GetUpdateStatusResponse,
+  errors: [],
+}));

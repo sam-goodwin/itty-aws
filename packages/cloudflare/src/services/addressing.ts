@@ -375,7 +375,7 @@ export interface CreateAddressMapRequest {
   description?: string | null;
   /** Body param: Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
   enabled?: boolean | null;
-  /** Body param: */
+  /** Body param */
   ips?: string[];
   /** Body param: Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership. */
   memberships?: { identifier?: string; kind?: "zone" | "account" }[];
@@ -646,6 +646,7 @@ export interface DeleteAddressMapResponse {
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
+    totalPages?: number | null;
   } | null;
 }
 
@@ -713,12 +714,16 @@ export const DeleteAddressMapResponse =
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -764,7 +769,7 @@ export interface PutAddressMapAccountRequest {
   addressMapId: string;
   /** Path param: Identifier of a Cloudflare account. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -800,6 +805,7 @@ export interface PutAddressMapAccountResponse {
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
+    totalPages?: number | null;
   } | null;
 }
 
@@ -867,12 +873,16 @@ export const PutAddressMapAccountResponse =
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -941,6 +951,7 @@ export interface DeleteAddressMapAccountResponse {
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
+    totalPages?: number | null;
   } | null;
 }
 
@@ -1008,12 +1019,16 @@ export const DeleteAddressMapAccountResponse =
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -1054,7 +1069,7 @@ export interface PutAddressMapIpRequest {
   ipAddress: string;
   /** Path param: Identifier of a Cloudflare account. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -1092,6 +1107,7 @@ export interface PutAddressMapIpResponse {
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
+    totalPages?: number | null;
   } | null;
 }
 
@@ -1159,12 +1175,16 @@ export const PutAddressMapIpResponse =
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -1241,6 +1261,7 @@ export interface DeleteAddressMapIpResponse {
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
+    totalPages?: number | null;
   } | null;
 }
 
@@ -1308,12 +1329,16 @@ export const DeleteAddressMapIpResponse =
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -1361,7 +1386,7 @@ export interface PutAddressMapZoneRequest {
   zoneId: string;
   /** Path param: Identifier of a Cloudflare account. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -1398,6 +1423,7 @@ export interface PutAddressMapZoneResponse {
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
+    totalPages?: number | null;
   } | null;
 }
 
@@ -1465,12 +1491,16 @@ export const PutAddressMapZoneResponse =
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -1542,6 +1572,7 @@ export interface DeleteAddressMapZoneResponse {
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
+    totalPages?: number | null;
   } | null;
 }
 
@@ -1609,12 +1640,16 @@ export const DeleteAddressMapZoneResponse =
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -1651,15 +1686,13 @@ export const deleteAddressMapZone: API.OperationMethod<
 // =============================================================================
 
 export interface GetLoaDocumentRequest {
-  loaDocumentId: string | null;
+  loaDocumentId: string;
   /** Identifier of a Cloudflare account. */
   accountId: string;
 }
 
 export const GetLoaDocumentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  loaDocumentId: Schema.Union([Schema.String, Schema.Null]).pipe(
-    T.HttpPath("loaDocumentId"),
-  ),
+  loaDocumentId: Schema.String.pipe(T.HttpPath("loaDocumentId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({
@@ -2926,7 +2959,7 @@ export interface PatchPrefixBgpPrefixRequest {
   asnPrependCount?: number;
   /** Body param: Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefi */
   autoAdvertiseWithdraw?: boolean;
-  /** Body param: */
+  /** Body param */
   onDemand?: { advertised?: boolean };
 }
 

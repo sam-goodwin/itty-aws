@@ -499,7 +499,7 @@ export interface PatchClientCertificateRequest {
   clientCertificateId: string;
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   reactivate?: boolean;
 }
 

@@ -17,38 +17,40 @@ import { type DefaultErrors } from "../errors.ts";
 // =============================================================================
 
 const GetDatasetFieldBaseFields = {
-  datasetId: Schema.Union([
-    Schema.Literal("access_requests"),
-    Schema.Literal("audit_logs"),
-    Schema.Literal("audit_logs_v2"),
-    Schema.Literal("biso_user_actions"),
-    Schema.Literal("casb_findings"),
-    Schema.Literal("device_posture_results"),
-    Schema.Literal("dex_application_tests"),
-    Schema.Literal("dex_device_state_events"),
-    Schema.Literal("dlp_forensic_copies"),
-    Schema.Literal("dns_firewall_logs"),
-    Schema.Literal("dns_logs"),
-    Schema.Literal("email_security_alerts"),
-    Schema.Literal("firewall_events"),
-    Schema.Literal("gateway_dns"),
-    Schema.Literal("gateway_http"),
-    Schema.Literal("gateway_network"),
-    Schema.Literal("http_requests"),
-    Schema.Literal("ipsec_logs"),
-    Schema.Literal("magic_ids_detections"),
-    Schema.Literal("nel_reports"),
-    Schema.Literal("network_analytics_logs"),
-    Schema.Literal("page_shield_events"),
-    Schema.Literal("sinkhole_http_logs"),
-    Schema.Literal("spectrum_events"),
-    Schema.Literal("ssh_logs"),
-    Schema.Literal("warp_config_changes"),
-    Schema.Literal("warp_toggle_changes"),
-    Schema.Literal("workers_trace_events"),
-    Schema.Literal("zaraz_events"),
-    Schema.Literal("zero_trust_network_sessions"),
-    Schema.Null,
+  datasetId: Schema.Literals([
+    "access_requests",
+    "audit_logs",
+    "audit_logs_v2",
+    "biso_user_actions",
+    "casb_findings",
+    "device_posture_results",
+    "dex_application_tests",
+    "dex_device_state_events",
+    "dlp_forensic_copies",
+    "dns_firewall_logs",
+    "dns_logs",
+    "email_security_alerts",
+    "email_security_post_delivery_events",
+    "firewall_events",
+    "gateway_dns",
+    "gateway_http",
+    "gateway_network",
+    "http_requests",
+    "ipsec_logs",
+    "magic_ids_detections",
+    "mcp_portal_logs",
+    "mnm_flow_logs",
+    "nel_reports",
+    "network_analytics_logs",
+    "page_shield_events",
+    "sinkhole_http_logs",
+    "spectrum_events",
+    "ssh_logs",
+    "warp_config_changes",
+    "warp_toggle_changes",
+    "workers_trace_events",
+    "zaraz_events",
+    "zero_trust_network_sessions",
   ]).pipe(T.HttpPath("datasetId")),
 } as const;
 
@@ -66,6 +68,7 @@ interface GetDatasetFieldBaseRequest {
     | "dns_firewall_logs"
     | "dns_logs"
     | "email_security_alerts"
+    | "email_security_post_delivery_events"
     | "firewall_events"
     | "gateway_dns"
     | "gateway_http"
@@ -73,6 +76,8 @@ interface GetDatasetFieldBaseRequest {
     | "http_requests"
     | "ipsec_logs"
     | "magic_ids_detections"
+    | "mcp_portal_logs"
+    | "mnm_flow_logs"
     | "nel_reports"
     | "network_analytics_logs"
     | "page_shield_events"
@@ -83,8 +88,7 @@ interface GetDatasetFieldBaseRequest {
     | "warp_toggle_changes"
     | "workers_trace_events"
     | "zaraz_events"
-    | "zero_trust_network_sessions"
-    | null;
+    | "zero_trust_network_sessions";
 }
 
 export interface GetDatasetFieldForAccountRequest extends GetDatasetFieldBaseRequest {
@@ -155,38 +159,40 @@ export const getDatasetFieldForZone: API.OperationMethod<
 // =============================================================================
 
 const GetDatasetJobBaseFields = {
-  datasetId: Schema.Union([
-    Schema.Literal("access_requests"),
-    Schema.Literal("audit_logs"),
-    Schema.Literal("audit_logs_v2"),
-    Schema.Literal("biso_user_actions"),
-    Schema.Literal("casb_findings"),
-    Schema.Literal("device_posture_results"),
-    Schema.Literal("dex_application_tests"),
-    Schema.Literal("dex_device_state_events"),
-    Schema.Literal("dlp_forensic_copies"),
-    Schema.Literal("dns_firewall_logs"),
-    Schema.Literal("dns_logs"),
-    Schema.Literal("email_security_alerts"),
-    Schema.Literal("firewall_events"),
-    Schema.Literal("gateway_dns"),
-    Schema.Literal("gateway_http"),
-    Schema.Literal("gateway_network"),
-    Schema.Literal("http_requests"),
-    Schema.Literal("ipsec_logs"),
-    Schema.Literal("magic_ids_detections"),
-    Schema.Literal("nel_reports"),
-    Schema.Literal("network_analytics_logs"),
-    Schema.Literal("page_shield_events"),
-    Schema.Literal("sinkhole_http_logs"),
-    Schema.Literal("spectrum_events"),
-    Schema.Literal("ssh_logs"),
-    Schema.Literal("warp_config_changes"),
-    Schema.Literal("warp_toggle_changes"),
-    Schema.Literal("workers_trace_events"),
-    Schema.Literal("zaraz_events"),
-    Schema.Literal("zero_trust_network_sessions"),
-    Schema.Null,
+  datasetId: Schema.Literals([
+    "access_requests",
+    "audit_logs",
+    "audit_logs_v2",
+    "biso_user_actions",
+    "casb_findings",
+    "device_posture_results",
+    "dex_application_tests",
+    "dex_device_state_events",
+    "dlp_forensic_copies",
+    "dns_firewall_logs",
+    "dns_logs",
+    "email_security_alerts",
+    "email_security_post_delivery_events",
+    "firewall_events",
+    "gateway_dns",
+    "gateway_http",
+    "gateway_network",
+    "http_requests",
+    "ipsec_logs",
+    "magic_ids_detections",
+    "mcp_portal_logs",
+    "mnm_flow_logs",
+    "nel_reports",
+    "network_analytics_logs",
+    "page_shield_events",
+    "sinkhole_http_logs",
+    "spectrum_events",
+    "ssh_logs",
+    "warp_config_changes",
+    "warp_toggle_changes",
+    "workers_trace_events",
+    "zaraz_events",
+    "zero_trust_network_sessions",
   ]).pipe(T.HttpPath("datasetId")),
 } as const;
 
@@ -204,6 +210,7 @@ interface GetDatasetJobBaseRequest {
     | "dns_firewall_logs"
     | "dns_logs"
     | "email_security_alerts"
+    | "email_security_post_delivery_events"
     | "firewall_events"
     | "gateway_dns"
     | "gateway_http"
@@ -211,6 +218,8 @@ interface GetDatasetJobBaseRequest {
     | "http_requests"
     | "ipsec_logs"
     | "magic_ids_detections"
+    | "mcp_portal_logs"
+    | "mnm_flow_logs"
     | "nel_reports"
     | "network_analytics_logs"
     | "page_shield_events"
@@ -221,8 +230,7 @@ interface GetDatasetJobBaseRequest {
     | "warp_toggle_changes"
     | "workers_trace_events"
     | "zaraz_events"
-    | "zero_trust_network_sessions"
-    | null;
+    | "zero_trust_network_sessions";
 }
 
 export interface GetDatasetJobForAccountRequest extends GetDatasetJobBaseRequest {
@@ -273,6 +281,7 @@ export interface GetDatasetJobResponse {
       | "dns_firewall_logs"
       | "dns_logs"
       | "email_security_alerts"
+      | "email_security_post_delivery_events"
       | "firewall_events"
       | "gateway_dns"
       | "gateway_http"
@@ -280,6 +289,8 @@ export interface GetDatasetJobResponse {
       | "http_requests"
       | "ipsec_logs"
       | "magic_ids_detections"
+      | "mcp_portal_logs"
+      | "mnm_flow_logs"
       | "nel_reports"
       | "network_analytics_logs"
       | "page_shield_events"
@@ -310,13 +321,20 @@ export interface GetDatasetJobResponse {
       "cve-2021-44228"?: boolean | null;
       fieldDelimiter?: string | null;
       fieldNames?: string[] | null;
+      mergeSubrequests?: boolean | null;
       outputType?: "ndjson" | "csv" | null;
       recordDelimiter?: string | null;
       recordPrefix?: string | null;
       recordSuffix?: string | null;
       recordTemplate?: string | null;
       sampleRate?: number | null;
-      timestampFormat?: "unixnano" | "unix" | "rfc3339" | null;
+      timestampFormat?:
+        | "unixnano"
+        | "unix"
+        | "rfc3339"
+        | "rfc3339ms"
+        | "rfc3339ns"
+        | null;
     } | null;
   } | null)[];
 }
@@ -340,6 +358,7 @@ export const GetDatasetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Literal("dns_firewall_logs"),
             Schema.Literal("dns_logs"),
             Schema.Literal("email_security_alerts"),
+            Schema.Literal("email_security_post_delivery_events"),
             Schema.Literal("firewall_events"),
             Schema.Literal("gateway_dns"),
             Schema.Literal("gateway_http"),
@@ -347,6 +366,8 @@ export const GetDatasetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Literal("http_requests"),
             Schema.Literal("ipsec_logs"),
             Schema.Literal("magic_ids_detections"),
+            Schema.Literal("mcp_portal_logs"),
+            Schema.Literal("mnm_flow_logs"),
             Schema.Literal("nel_reports"),
             Schema.Literal("network_analytics_logs"),
             Schema.Literal("page_shield_events"),
@@ -413,6 +434,9 @@ export const GetDatasetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               fieldNames: Schema.optional(
                 Schema.Union([Schema.Array(Schema.String), Schema.Null]),
               ),
+              mergeSubrequests: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               outputType: Schema.optional(
                 Schema.Union([Schema.Literals(["ndjson", "csv"]), Schema.Null]),
               ),
@@ -433,7 +457,13 @@ export const GetDatasetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               timestampFormat: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["unixnano", "unix", "rfc3339"]),
+                  Schema.Literals([
+                    "unixnano",
+                    "unix",
+                    "rfc3339",
+                    "rfc3339ms",
+                    "rfc3339ns",
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -444,6 +474,7 @@ export const GetDatasetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 "cve-2021-44228": "CVE-2021-44228",
                 fieldDelimiter: "field_delimiter",
                 fieldNames: "field_names",
+                mergeSubrequests: "merge_subrequests",
                 outputType: "output_type",
                 recordDelimiter: "record_delimiter",
                 recordPrefix: "record_prefix",
@@ -784,6 +815,7 @@ export interface GetJobResponse {
     | "dns_firewall_logs"
     | "dns_logs"
     | "email_security_alerts"
+    | "email_security_post_delivery_events"
     | "firewall_events"
     | "gateway_dns"
     | "gateway_http"
@@ -791,6 +823,8 @@ export interface GetJobResponse {
     | "http_requests"
     | "ipsec_logs"
     | "magic_ids_detections"
+    | "mcp_portal_logs"
+    | "mnm_flow_logs"
     | "nel_reports"
     | "network_analytics_logs"
     | "page_shield_events"
@@ -834,13 +868,20 @@ export interface GetJobResponse {
     "cve-2021-44228"?: boolean | null;
     fieldDelimiter?: string | null;
     fieldNames?: string[] | null;
+    mergeSubrequests?: boolean | null;
     outputType?: "ndjson" | "csv" | null;
     recordDelimiter?: string | null;
     recordPrefix?: string | null;
     recordSuffix?: string | null;
     recordTemplate?: string | null;
     sampleRate?: number | null;
-    timestampFormat?: "unixnano" | "unix" | "rfc3339" | null;
+    timestampFormat?:
+      | "unixnano"
+      | "unix"
+      | "rfc3339"
+      | "rfc3339ms"
+      | "rfc3339ns"
+      | null;
   } | null;
 }
 
@@ -860,6 +901,7 @@ export const GetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Literal("dns_firewall_logs"),
       Schema.Literal("dns_logs"),
       Schema.Literal("email_security_alerts"),
+      Schema.Literal("email_security_post_delivery_events"),
       Schema.Literal("firewall_events"),
       Schema.Literal("gateway_dns"),
       Schema.Literal("gateway_http"),
@@ -867,6 +909,8 @@ export const GetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Literal("http_requests"),
       Schema.Literal("ipsec_logs"),
       Schema.Literal("magic_ids_detections"),
+      Schema.Literal("mcp_portal_logs"),
+      Schema.Literal("mnm_flow_logs"),
       Schema.Literal("nel_reports"),
       Schema.Literal("network_analytics_logs"),
       Schema.Literal("page_shield_events"),
@@ -921,6 +965,9 @@ export const GetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         fieldNames: Schema.optional(
           Schema.Union([Schema.Array(Schema.String), Schema.Null]),
         ),
+        mergeSubrequests: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
         outputType: Schema.optional(
           Schema.Union([Schema.Literals(["ndjson", "csv"]), Schema.Null]),
         ),
@@ -939,7 +986,13 @@ export const GetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         sampleRate: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         timestampFormat: Schema.optional(
           Schema.Union([
-            Schema.Literals(["unixnano", "unix", "rfc3339"]),
+            Schema.Literals([
+              "unixnano",
+              "unix",
+              "rfc3339",
+              "rfc3339ms",
+              "rfc3339ns",
+            ]),
             Schema.Null,
           ]),
         ),
@@ -950,6 +1003,7 @@ export const GetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           "cve-2021-44228": "CVE-2021-44228",
           fieldDelimiter: "field_delimiter",
           fieldNames: "field_names",
+          mergeSubrequests: "merge_subrequests",
           outputType: "output_type",
           recordDelimiter: "record_delimiter",
           recordPrefix: "record_prefix",
@@ -1055,6 +1109,7 @@ export interface ListJobsResponse {
       | "dns_firewall_logs"
       | "dns_logs"
       | "email_security_alerts"
+      | "email_security_post_delivery_events"
       | "firewall_events"
       | "gateway_dns"
       | "gateway_http"
@@ -1062,6 +1117,8 @@ export interface ListJobsResponse {
       | "http_requests"
       | "ipsec_logs"
       | "magic_ids_detections"
+      | "mcp_portal_logs"
+      | "mnm_flow_logs"
       | "nel_reports"
       | "network_analytics_logs"
       | "page_shield_events"
@@ -1092,13 +1149,20 @@ export interface ListJobsResponse {
       "cve-2021-44228"?: boolean | null;
       fieldDelimiter?: string | null;
       fieldNames?: string[] | null;
+      mergeSubrequests?: boolean | null;
       outputType?: "ndjson" | "csv" | null;
       recordDelimiter?: string | null;
       recordPrefix?: string | null;
       recordSuffix?: string | null;
       recordTemplate?: string | null;
       sampleRate?: number | null;
-      timestampFormat?: "unixnano" | "unix" | "rfc3339" | null;
+      timestampFormat?:
+        | "unixnano"
+        | "unix"
+        | "rfc3339"
+        | "rfc3339ms"
+        | "rfc3339ns"
+        | null;
     } | null;
   } | null)[];
 }
@@ -1122,6 +1186,7 @@ export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Literal("dns_firewall_logs"),
             Schema.Literal("dns_logs"),
             Schema.Literal("email_security_alerts"),
+            Schema.Literal("email_security_post_delivery_events"),
             Schema.Literal("firewall_events"),
             Schema.Literal("gateway_dns"),
             Schema.Literal("gateway_http"),
@@ -1129,6 +1194,8 @@ export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Literal("http_requests"),
             Schema.Literal("ipsec_logs"),
             Schema.Literal("magic_ids_detections"),
+            Schema.Literal("mcp_portal_logs"),
+            Schema.Literal("mnm_flow_logs"),
             Schema.Literal("nel_reports"),
             Schema.Literal("network_analytics_logs"),
             Schema.Literal("page_shield_events"),
@@ -1195,6 +1262,9 @@ export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               fieldNames: Schema.optional(
                 Schema.Union([Schema.Array(Schema.String), Schema.Null]),
               ),
+              mergeSubrequests: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               outputType: Schema.optional(
                 Schema.Union([Schema.Literals(["ndjson", "csv"]), Schema.Null]),
               ),
@@ -1215,7 +1285,13 @@ export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               timestampFormat: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["unixnano", "unix", "rfc3339"]),
+                  Schema.Literals([
+                    "unixnano",
+                    "unix",
+                    "rfc3339",
+                    "rfc3339ms",
+                    "rfc3339ns",
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -1226,6 +1302,7 @@ export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 "cve-2021-44228": "CVE-2021-44228",
                 fieldDelimiter: "field_delimiter",
                 fieldNames: "field_names",
+                mergeSubrequests: "merge_subrequests",
                 outputType: "output_type",
                 recordDelimiter: "record_delimiter",
                 recordPrefix: "record_prefix",
@@ -1310,6 +1387,7 @@ const CreateJobBaseFields = {
       Schema.Literal("dns_firewall_logs"),
       Schema.Literal("dns_logs"),
       Schema.Literal("email_security_alerts"),
+      Schema.Literal("email_security_post_delivery_events"),
       Schema.Literal("firewall_events"),
       Schema.Literal("gateway_dns"),
       Schema.Literal("gateway_http"),
@@ -1317,6 +1395,8 @@ const CreateJobBaseFields = {
       Schema.Literal("http_requests"),
       Schema.Literal("ipsec_logs"),
       Schema.Literal("magic_ids_detections"),
+      Schema.Literal("mcp_portal_logs"),
+      Schema.Literal("mnm_flow_logs"),
       Schema.Literal("nel_reports"),
       Schema.Literal("network_analytics_logs"),
       Schema.Literal("page_shield_events"),
@@ -1364,6 +1444,9 @@ const CreateJobBaseFields = {
           Schema.Union([Schema.String, Schema.Null]),
         ),
         fieldNames: Schema.optional(Schema.Array(Schema.String)),
+        mergeSubrequests: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
         outputType: Schema.optional(Schema.Literals(["ndjson", "csv"])),
         recordDelimiter: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
@@ -1379,7 +1462,13 @@ const CreateJobBaseFields = {
         ),
         sampleRate: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         timestampFormat: Schema.optional(
-          Schema.Literals(["unixnano", "unix", "rfc3339"]),
+          Schema.Literals([
+            "unixnano",
+            "unix",
+            "rfc3339",
+            "rfc3339ms",
+            "rfc3339ns",
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -1388,6 +1477,7 @@ const CreateJobBaseFields = {
           "cve-2021-44228": "CVE-2021-44228",
           fieldDelimiter: "field_delimiter",
           fieldNames: "field_names",
+          mergeSubrequests: "merge_subrequests",
           outputType: "output_type",
           recordDelimiter: "record_delimiter",
           recordPrefix: "record_prefix",
@@ -1420,6 +1510,7 @@ interface CreateJobBaseRequest {
     | "dns_firewall_logs"
     | "dns_logs"
     | "email_security_alerts"
+    | "email_security_post_delivery_events"
     | "firewall_events"
     | "gateway_dns"
     | "gateway_http"
@@ -1427,6 +1518,8 @@ interface CreateJobBaseRequest {
     | "http_requests"
     | "ipsec_logs"
     | "magic_ids_detections"
+    | "mcp_portal_logs"
+    | "mnm_flow_logs"
     | "nel_reports"
     | "network_analytics_logs"
     | "page_shield_events"
@@ -1464,13 +1557,19 @@ interface CreateJobBaseRequest {
     "cve-2021-44228"?: boolean | null;
     fieldDelimiter?: string | null;
     fieldNames?: string[];
+    mergeSubrequests?: boolean | null;
     outputType?: "ndjson" | "csv";
     recordDelimiter?: string | null;
     recordPrefix?: string | null;
     recordSuffix?: string | null;
     recordTemplate?: string | null;
     sampleRate?: number | null;
-    timestampFormat?: "unixnano" | "unix" | "rfc3339";
+    timestampFormat?:
+      | "unixnano"
+      | "unix"
+      | "rfc3339"
+      | "rfc3339ms"
+      | "rfc3339ns";
   } | null;
   /** Body param: Ownership challenge token to prove destination ownership. */
   ownershipChallenge?: string;
@@ -1549,6 +1648,7 @@ export interface CreateJobResponse {
     | "dns_firewall_logs"
     | "dns_logs"
     | "email_security_alerts"
+    | "email_security_post_delivery_events"
     | "firewall_events"
     | "gateway_dns"
     | "gateway_http"
@@ -1556,6 +1656,8 @@ export interface CreateJobResponse {
     | "http_requests"
     | "ipsec_logs"
     | "magic_ids_detections"
+    | "mcp_portal_logs"
+    | "mnm_flow_logs"
     | "nel_reports"
     | "network_analytics_logs"
     | "page_shield_events"
@@ -1599,13 +1701,20 @@ export interface CreateJobResponse {
     "cve-2021-44228"?: boolean | null;
     fieldDelimiter?: string | null;
     fieldNames?: string[] | null;
+    mergeSubrequests?: boolean | null;
     outputType?: "ndjson" | "csv" | null;
     recordDelimiter?: string | null;
     recordPrefix?: string | null;
     recordSuffix?: string | null;
     recordTemplate?: string | null;
     sampleRate?: number | null;
-    timestampFormat?: "unixnano" | "unix" | "rfc3339" | null;
+    timestampFormat?:
+      | "unixnano"
+      | "unix"
+      | "rfc3339"
+      | "rfc3339ms"
+      | "rfc3339ns"
+      | null;
   } | null;
 }
 
@@ -1625,6 +1734,7 @@ export const CreateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Literal("dns_firewall_logs"),
       Schema.Literal("dns_logs"),
       Schema.Literal("email_security_alerts"),
+      Schema.Literal("email_security_post_delivery_events"),
       Schema.Literal("firewall_events"),
       Schema.Literal("gateway_dns"),
       Schema.Literal("gateway_http"),
@@ -1632,6 +1742,8 @@ export const CreateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Literal("http_requests"),
       Schema.Literal("ipsec_logs"),
       Schema.Literal("magic_ids_detections"),
+      Schema.Literal("mcp_portal_logs"),
+      Schema.Literal("mnm_flow_logs"),
       Schema.Literal("nel_reports"),
       Schema.Literal("network_analytics_logs"),
       Schema.Literal("page_shield_events"),
@@ -1686,6 +1798,9 @@ export const CreateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         fieldNames: Schema.optional(
           Schema.Union([Schema.Array(Schema.String), Schema.Null]),
         ),
+        mergeSubrequests: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
         outputType: Schema.optional(
           Schema.Union([Schema.Literals(["ndjson", "csv"]), Schema.Null]),
         ),
@@ -1704,7 +1819,13 @@ export const CreateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         sampleRate: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         timestampFormat: Schema.optional(
           Schema.Union([
-            Schema.Literals(["unixnano", "unix", "rfc3339"]),
+            Schema.Literals([
+              "unixnano",
+              "unix",
+              "rfc3339",
+              "rfc3339ms",
+              "rfc3339ns",
+            ]),
             Schema.Null,
           ]),
         ),
@@ -1715,6 +1836,7 @@ export const CreateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           "cve-2021-44228": "CVE-2021-44228",
           fieldDelimiter: "field_delimiter",
           fieldNames: "field_names",
+          mergeSubrequests: "merge_subrequests",
           outputType: "output_type",
           recordDelimiter: "record_delimiter",
           recordPrefix: "record_prefix",
@@ -1811,6 +1933,9 @@ const UpdateJobBaseFields = {
           Schema.Union([Schema.String, Schema.Null]),
         ),
         fieldNames: Schema.optional(Schema.Array(Schema.String)),
+        mergeSubrequests: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
         outputType: Schema.optional(Schema.Literals(["ndjson", "csv"])),
         recordDelimiter: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
@@ -1826,7 +1951,13 @@ const UpdateJobBaseFields = {
         ),
         sampleRate: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         timestampFormat: Schema.optional(
-          Schema.Literals(["unixnano", "unix", "rfc3339"]),
+          Schema.Literals([
+            "unixnano",
+            "unix",
+            "rfc3339",
+            "rfc3339ms",
+            "rfc3339ns",
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -1835,6 +1966,7 @@ const UpdateJobBaseFields = {
           "cve-2021-44228": "CVE-2021-44228",
           fieldDelimiter: "field_delimiter",
           fieldNames: "field_names",
+          mergeSubrequests: "merge_subrequests",
           outputType: "output_type",
           recordDelimiter: "record_delimiter",
           recordPrefix: "record_prefix",
@@ -1879,13 +2011,19 @@ interface UpdateJobBaseRequest {
     "cve-2021-44228"?: boolean | null;
     fieldDelimiter?: string | null;
     fieldNames?: string[];
+    mergeSubrequests?: boolean | null;
     outputType?: "ndjson" | "csv";
     recordDelimiter?: string | null;
     recordPrefix?: string | null;
     recordSuffix?: string | null;
     recordTemplate?: string | null;
     sampleRate?: number | null;
-    timestampFormat?: "unixnano" | "unix" | "rfc3339";
+    timestampFormat?:
+      | "unixnano"
+      | "unix"
+      | "rfc3339"
+      | "rfc3339ms"
+      | "rfc3339ns";
   } | null;
   /** Body param: Ownership challenge token to prove destination ownership. */
   ownershipChallenge?: string;
@@ -1965,6 +2103,7 @@ export interface UpdateJobResponse {
     | "dns_firewall_logs"
     | "dns_logs"
     | "email_security_alerts"
+    | "email_security_post_delivery_events"
     | "firewall_events"
     | "gateway_dns"
     | "gateway_http"
@@ -1972,6 +2111,8 @@ export interface UpdateJobResponse {
     | "http_requests"
     | "ipsec_logs"
     | "magic_ids_detections"
+    | "mcp_portal_logs"
+    | "mnm_flow_logs"
     | "nel_reports"
     | "network_analytics_logs"
     | "page_shield_events"
@@ -2015,13 +2156,20 @@ export interface UpdateJobResponse {
     "cve-2021-44228"?: boolean | null;
     fieldDelimiter?: string | null;
     fieldNames?: string[] | null;
+    mergeSubrequests?: boolean | null;
     outputType?: "ndjson" | "csv" | null;
     recordDelimiter?: string | null;
     recordPrefix?: string | null;
     recordSuffix?: string | null;
     recordTemplate?: string | null;
     sampleRate?: number | null;
-    timestampFormat?: "unixnano" | "unix" | "rfc3339" | null;
+    timestampFormat?:
+      | "unixnano"
+      | "unix"
+      | "rfc3339"
+      | "rfc3339ms"
+      | "rfc3339ns"
+      | null;
   } | null;
 }
 
@@ -2041,6 +2189,7 @@ export const UpdateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Literal("dns_firewall_logs"),
       Schema.Literal("dns_logs"),
       Schema.Literal("email_security_alerts"),
+      Schema.Literal("email_security_post_delivery_events"),
       Schema.Literal("firewall_events"),
       Schema.Literal("gateway_dns"),
       Schema.Literal("gateway_http"),
@@ -2048,6 +2197,8 @@ export const UpdateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Literal("http_requests"),
       Schema.Literal("ipsec_logs"),
       Schema.Literal("magic_ids_detections"),
+      Schema.Literal("mcp_portal_logs"),
+      Schema.Literal("mnm_flow_logs"),
       Schema.Literal("nel_reports"),
       Schema.Literal("network_analytics_logs"),
       Schema.Literal("page_shield_events"),
@@ -2102,6 +2253,9 @@ export const UpdateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         fieldNames: Schema.optional(
           Schema.Union([Schema.Array(Schema.String), Schema.Null]),
         ),
+        mergeSubrequests: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
         outputType: Schema.optional(
           Schema.Union([Schema.Literals(["ndjson", "csv"]), Schema.Null]),
         ),
@@ -2120,7 +2274,13 @@ export const UpdateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         sampleRate: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         timestampFormat: Schema.optional(
           Schema.Union([
-            Schema.Literals(["unixnano", "unix", "rfc3339"]),
+            Schema.Literals([
+              "unixnano",
+              "unix",
+              "rfc3339",
+              "rfc3339ms",
+              "rfc3339ns",
+            ]),
             Schema.Null,
           ]),
         ),
@@ -2131,6 +2291,7 @@ export const UpdateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           "cve-2021-44228": "CVE-2021-44228",
           fieldDelimiter: "field_delimiter",
           fieldNames: "field_names",
+          mergeSubrequests: "merge_subrequests",
           outputType: "output_type",
           recordDelimiter: "record_delimiter",
           recordPrefix: "record_prefix",

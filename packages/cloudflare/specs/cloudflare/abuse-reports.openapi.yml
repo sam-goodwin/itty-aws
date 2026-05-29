@@ -548,6 +548,7 @@ paths:
             type: string
             enum:
               - legal_block
+              - misleading_interstitial
               - phishing_interstitial
               - network_block
               - rate_limit_cache
@@ -594,6 +595,7 @@ paths:
                           type: string
                           enum:
                             - legal_block
+                            - misleading_interstitial
                             - phishing_interstitial
                             - network_block
                             - rate_limit_cache
@@ -689,6 +691,7 @@ paths:
                     type: string
                     enum:
                       - legal_block
+                      - misleading_interstitial
                       - phishing_interstitial
                       - network_block
                       - rate_limit_cache

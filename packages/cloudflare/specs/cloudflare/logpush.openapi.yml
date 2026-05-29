@@ -28,6 +28,7 @@ paths:
               - dns_firewall_logs
               - dns_logs
               - email_security_alerts
+              - email_security_post_delivery_events
               - firewall_events
               - gateway_dns
               - gateway_http
@@ -35,6 +36,8 @@ paths:
               - http_requests
               - ipsec_logs
               - magic_ids_detections
+              - mcp_portal_logs
+              - mnm_flow_logs
               - nel_reports
               - network_analytics_logs
               - page_shield_events
@@ -46,7 +49,6 @@ paths:
               - workers_trace_events
               - zaraz_events
               - zero_trust_network_sessions
-            nullable: true
       responses:
         "200":
           description: Success
@@ -76,6 +78,7 @@ paths:
               - dns_firewall_logs
               - dns_logs
               - email_security_alerts
+              - email_security_post_delivery_events
               - firewall_events
               - gateway_dns
               - gateway_http
@@ -83,6 +86,8 @@ paths:
               - http_requests
               - ipsec_logs
               - magic_ids_detections
+              - mcp_portal_logs
+              - mnm_flow_logs
               - nel_reports
               - network_analytics_logs
               - page_shield_events
@@ -94,7 +99,6 @@ paths:
               - workers_trace_events
               - zaraz_events
               - zero_trust_network_sessions
-            nullable: true
       responses:
         "200":
           description: Success
@@ -122,6 +126,7 @@ paths:
                           - dns_firewall_logs
                           - dns_logs
                           - email_security_alerts
+                          - email_security_post_delivery_events
                           - firewall_events
                           - gateway_dns
                           - gateway_http
@@ -129,6 +134,8 @@ paths:
                           - http_requests
                           - ipsec_logs
                           - magic_ids_detections
+                          - mcp_portal_logs
+                          - mnm_flow_logs
                           - nel_reports
                           - network_analytics_logs
                           - page_shield_events
@@ -287,6 +294,13 @@ paths:
                                   moment, there is no option to add all fields
                                   at once, so you must specify all the fields
                                   names you are interested in.
+                              merge_subrequests:
+                                oneOf:
+                                  - type: boolean
+                                nullable: true
+                                description: If set to true, subrequests will be merged into the parent request.
+                                  Only supported for the `http_requests`
+                                  dataset.
                               output_type:
                                 type: string
                                 enum:
@@ -336,8 +350,10 @@ paths:
                                   - unixnano
                                   - unix
                                   - rfc3339
+                                  - rfc3339ms
+                                  - rfc3339ns
                                 description: String to specify the format for timestamps, such as `unixnano`,
-                                  `unix`, or `rfc3339`.
+                                  `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
                         nullable: true
                         description: The structured replacement for `logpull_options`. When including
                           this field, the `logpull_option` field will be
@@ -526,6 +542,7 @@ paths:
                       - dns_firewall_logs
                       - dns_logs
                       - email_security_alerts
+                      - email_security_post_delivery_events
                       - firewall_events
                       - gateway_dns
                       - gateway_http
@@ -533,6 +550,8 @@ paths:
                       - http_requests
                       - ipsec_logs
                       - magic_ids_detections
+                      - mcp_portal_logs
+                      - mnm_flow_logs
                       - nel_reports
                       - network_analytics_logs
                       - page_shield_events
@@ -691,6 +710,12 @@ paths:
                               moment, there is no option to add all fields at
                               once, so you must specify all the fields names you
                               are interested in.
+                          merge_subrequests:
+                            oneOf:
+                              - type: boolean
+                            nullable: true
+                            description: If set to true, subrequests will be merged into the parent request.
+                              Only supported for the `http_requests` dataset.
                           output_type:
                             type: string
                             enum:
@@ -739,8 +764,10 @@ paths:
                               - unixnano
                               - unix
                               - rfc3339
+                              - rfc3339ms
+                              - rfc3339ns
                             description: String to specify the format for timestamps, such as `unixnano`,
-                              `unix`, or `rfc3339`.
+                              `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
                     nullable: true
                     description: The structured replacement for `logpull_options`. When including
                       this field, the `logpull_option` field will be ignored.
@@ -912,6 +939,12 @@ paths:
                             moment, there is no option to add all fields at
                             once, so you must specify all the fields names you
                             are interested in.
+                        merge_subrequests:
+                          oneOf:
+                            - type: boolean
+                          nullable: true
+                          description: If set to true, subrequests will be merged into the parent request.
+                            Only supported for the `http_requests` dataset.
                         output_type:
                           type: string
                           enum:
@@ -960,8 +993,10 @@ paths:
                             - unixnano
                             - unix
                             - rfc3339
+                            - rfc3339ms
+                            - rfc3339ns
                           description: String to specify the format for timestamps, such as `unixnano`,
-                            `unix`, or `rfc3339`.
+                            `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
                   nullable: true
                   description: "Body param: The structured replacement for `logpull_options`. When
                     including this field, the `logpull_option` field will be
@@ -996,6 +1031,7 @@ paths:
                       - dns_firewall_logs
                       - dns_logs
                       - email_security_alerts
+                      - email_security_post_delivery_events
                       - firewall_events
                       - gateway_dns
                       - gateway_http
@@ -1003,6 +1039,8 @@ paths:
                       - http_requests
                       - ipsec_logs
                       - magic_ids_detections
+                      - mcp_portal_logs
+                      - mnm_flow_logs
                       - nel_reports
                       - network_analytics_logs
                       - page_shield_events
@@ -1161,6 +1199,12 @@ paths:
                               moment, there is no option to add all fields at
                               once, so you must specify all the fields names you
                               are interested in.
+                          merge_subrequests:
+                            oneOf:
+                              - type: boolean
+                            nullable: true
+                            description: If set to true, subrequests will be merged into the parent request.
+                              Only supported for the `http_requests` dataset.
                           output_type:
                             type: string
                             enum:
@@ -1209,8 +1253,10 @@ paths:
                               - unixnano
                               - unix
                               - rfc3339
+                              - rfc3339ms
+                              - rfc3339ns
                             description: String to specify the format for timestamps, such as `unixnano`,
-                              `unix`, or `rfc3339`.
+                              `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
                     nullable: true
                     description: The structured replacement for `logpull_options`. When including
                       this field, the `logpull_option` field will be ignored.
@@ -1265,6 +1311,7 @@ paths:
                           - dns_firewall_logs
                           - dns_logs
                           - email_security_alerts
+                          - email_security_post_delivery_events
                           - firewall_events
                           - gateway_dns
                           - gateway_http
@@ -1272,6 +1319,8 @@ paths:
                           - http_requests
                           - ipsec_logs
                           - magic_ids_detections
+                          - mcp_portal_logs
+                          - mnm_flow_logs
                           - nel_reports
                           - network_analytics_logs
                           - page_shield_events
@@ -1430,6 +1479,13 @@ paths:
                                   moment, there is no option to add all fields
                                   at once, so you must specify all the fields
                                   names you are interested in.
+                              merge_subrequests:
+                                oneOf:
+                                  - type: boolean
+                                nullable: true
+                                description: If set to true, subrequests will be merged into the parent request.
+                                  Only supported for the `http_requests`
+                                  dataset.
                               output_type:
                                 type: string
                                 enum:
@@ -1479,8 +1535,10 @@ paths:
                                   - unixnano
                                   - unix
                                   - rfc3339
+                                  - rfc3339ms
+                                  - rfc3339ns
                                 description: String to specify the format for timestamps, such as `unixnano`,
-                                  `unix`, or `rfc3339`.
+                                  `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
                         nullable: true
                         description: The structured replacement for `logpull_options`. When including
                           this field, the `logpull_option` field will be
@@ -1545,6 +1603,7 @@ paths:
                     - dns_firewall_logs
                     - dns_logs
                     - email_security_alerts
+                    - email_security_post_delivery_events
                     - firewall_events
                     - gateway_dns
                     - gateway_http
@@ -1552,6 +1611,8 @@ paths:
                     - http_requests
                     - ipsec_logs
                     - magic_ids_detections
+                    - mcp_portal_logs
+                    - mnm_flow_logs
                     - nel_reports
                     - network_analytics_logs
                     - page_shield_events
@@ -1688,6 +1749,12 @@ paths:
                             moment, there is no option to add all fields at
                             once, so you must specify all the fields names you
                             are interested in.
+                        merge_subrequests:
+                          oneOf:
+                            - type: boolean
+                          nullable: true
+                          description: If set to true, subrequests will be merged into the parent request.
+                            Only supported for the `http_requests` dataset.
                         output_type:
                           type: string
                           enum:
@@ -1736,8 +1803,10 @@ paths:
                             - unixnano
                             - unix
                             - rfc3339
+                            - rfc3339ms
+                            - rfc3339ns
                           description: String to specify the format for timestamps, such as `unixnano`,
-                            `unix`, or `rfc3339`.
+                            `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
                   nullable: true
                   description: "Body param: The structured replacement for `logpull_options`. When
                     including this field, the `logpull_option` field will be
@@ -1774,6 +1843,7 @@ paths:
                       - dns_firewall_logs
                       - dns_logs
                       - email_security_alerts
+                      - email_security_post_delivery_events
                       - firewall_events
                       - gateway_dns
                       - gateway_http
@@ -1781,6 +1851,8 @@ paths:
                       - http_requests
                       - ipsec_logs
                       - magic_ids_detections
+                      - mcp_portal_logs
+                      - mnm_flow_logs
                       - nel_reports
                       - network_analytics_logs
                       - page_shield_events
@@ -1939,6 +2011,12 @@ paths:
                               moment, there is no option to add all fields at
                               once, so you must specify all the fields names you
                               are interested in.
+                          merge_subrequests:
+                            oneOf:
+                              - type: boolean
+                            nullable: true
+                            description: If set to true, subrequests will be merged into the parent request.
+                              Only supported for the `http_requests` dataset.
                           output_type:
                             type: string
                             enum:
@@ -1987,8 +2065,10 @@ paths:
                               - unixnano
                               - unix
                               - rfc3339
+                              - rfc3339ms
+                              - rfc3339ns
                             description: String to specify the format for timestamps, such as `unixnano`,
-                              `unix`, or `rfc3339`.
+                              `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
                     nullable: true
                     description: The structured replacement for `logpull_options`. When including
                       this field, the `logpull_option` field will be ignored.

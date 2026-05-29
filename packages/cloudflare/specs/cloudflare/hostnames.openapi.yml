@@ -9,11 +9,7 @@ paths:
   /zones/{zone_id}/hostnames/settings/{settingId}:
     get:
       operationId: getSettingTls
-      description: "List the requested TLS setting for the hostnames under this
-        zone.  @example ```ts // Automatically fetches more pages as needed. for
-        await (const tlsGetResponse of client.hostnames.settings.tls.get(
-        'ciphers', { zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ...
-        } ```"
+      description: List the requested TLS setting for the hostnames under this zone.
       parameters:
         - name: settingId
           in: path
@@ -54,19 +50,39 @@ paths:
                   value:
                     oneOf:
                       - type: number
+                        enum:
+                          - 1
+                      - type: number
+                        enum:
+                          - 1.1
+                      - type: number
+                        enum:
+                          - 1.2
+                      - type: number
+                        enum:
+                          - 1.3
                       - type: string
+                        enum:
+                          - on
+                      - type: string
+                        enum:
+                          - off
                       - type: array
                         items:
                           type: string
-                    description: The tls setting value.
+                    description: 'The TLS setting value. The type depends on the `setting_id` used
+                      in the request path:  - `ciphers`: an array of allowed
+                      cipher suite strings in BoringSSL format (e.g.,
+                      `["ECDHE-RSA-AES128-GCM-SHA256", "AES128-GCM-SHA256"]`) -
+                      `min_tls_version`: a string indicating the minimum TLS
+                      version — one of `"1.0"`, `"1.1"`, `"1.2"`, or `"1.3"`
+                      (e.g., `"1.2"`) - `http2`: a string indicating whether
+                      HTTP/2 is enabled — `"on"` or `"off"` (e.g., `"on"`)'
       x-distilled-pagination-class: TLSGetResponsesSinglePage
   /zones/{zone_id}/hostnames/settings/{settingId}/{hostname}:
     put:
       operationId: putSettingTls
-      description: "Update the tls setting value for the hostname.  @example ```ts
-        const setting = await client.hostnames.settings.tls.update( 'ciphers',
-        'app.example.com', { zone_id: '023e105f4ecef8ad9ca31a8372d0c353', value:
-        [ 'ECDHE-RSA-AES128-GCM-SHA256', 'AES128-GCM-SHA256', ], }, ); ```"
+      description: Update the tls setting value for the hostname.
       parameters:
         - name: settingId
           in: path
@@ -98,11 +114,35 @@ paths:
                 value:
                   oneOf:
                     - type: number
+                      enum:
+                        - 1
+                    - type: number
+                      enum:
+                        - 1.1
+                    - type: number
+                      enum:
+                        - 1.2
+                    - type: number
+                      enum:
+                        - 1.3
                     - type: string
+                      enum:
+                        - on
+                    - type: string
+                      enum:
+                        - off
                     - type: array
                       items:
                         type: string
-                  description: "Body param: The tls setting value."
+                  description: 'Body param: The TLS setting value. The type depends on the
+                    `setting_id` used in the request path:  - `ciphers`: an
+                    array of allowed cipher suite strings in BoringSSL format
+                    (e.g., `["ECDHE-RSA-AES128-GCM-SHA256",
+                    "AES128-GCM-SHA256"]`) - `min_tls_version`: a string
+                    indicating the minimum TLS version — one of `"1.0"`,
+                    `"1.1"`, `"1.2"`, or `"1.3"` (e.g., `"1.2"`) - `http2`: a
+                    string indicating whether HTTP/2 is enabled — `"on"` or
+                    `"off"` (e.g., `"on"`)'
               required:
                 - value
       responses:
@@ -129,18 +169,38 @@ paths:
                   value:
                     oneOf:
                       - type: number
+                        enum:
+                          - 1
+                      - type: number
+                        enum:
+                          - 1.1
+                      - type: number
+                        enum:
+                          - 1.2
+                      - type: number
+                        enum:
+                          - 1.3
                       - type: string
+                        enum:
+                          - on
+                      - type: string
+                        enum:
+                          - off
                       - type: array
                         items:
                           type: string
-                    description: The tls setting value.
+                    description: 'The TLS setting value. The type depends on the `setting_id` used
+                      in the request path:  - `ciphers`: an array of allowed
+                      cipher suite strings in BoringSSL format (e.g.,
+                      `["ECDHE-RSA-AES128-GCM-SHA256", "AES128-GCM-SHA256"]`) -
+                      `min_tls_version`: a string indicating the minimum TLS
+                      version — one of `"1.0"`, `"1.1"`, `"1.2"`, or `"1.3"`
+                      (e.g., `"1.2"`) - `http2`: a string indicating whether
+                      HTTP/2 is enabled — `"on"` or `"off"` (e.g., `"on"`)'
       x-distilled-response-path: result
     delete:
       operationId: deleteSettingTls
-      description: "Delete the tls setting value for the hostname.  @example ```ts
-        const tls = await client.hostnames.settings.tls.delete( 'ciphers',
-        'app.example.com', { zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, );
-        ```"
+      description: Delete the tls setting value for the hostname.
       parameters:
         - name: settingId
           in: path
@@ -186,9 +246,32 @@ paths:
                   value:
                     oneOf:
                       - type: number
+                        enum:
+                          - 1
+                      - type: number
+                        enum:
+                          - 1.1
+                      - type: number
+                        enum:
+                          - 1.2
+                      - type: number
+                        enum:
+                          - 1.3
                       - type: string
+                        enum:
+                          - on
+                      - type: string
+                        enum:
+                          - off
                       - type: array
                         items:
                           type: string
-                    description: The tls setting value.
+                    description: 'The TLS setting value. The type depends on the `setting_id` used
+                      in the request path:  - `ciphers`: an array of allowed
+                      cipher suite strings in BoringSSL format (e.g.,
+                      `["ECDHE-RSA-AES128-GCM-SHA256", "AES128-GCM-SHA256"]`) -
+                      `min_tls_version`: a string indicating the minimum TLS
+                      version — one of `"1.0"`, `"1.1"`, `"1.2"`, or `"1.3"`
+                      (e.g., `"1.2"`) - `http2`: a string indicating whether
+                      HTTP/2 is enabled — `"on"` or `"off"` (e.g., `"on"`)'
       x-distilled-response-path: result

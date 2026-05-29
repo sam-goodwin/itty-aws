@@ -705,7 +705,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -2034,7 +2034,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -4054,7 +4054,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -6313,10 +6313,10 @@ paths:
                         - monitoring_only
                         - must_be_healthy
                     description: List of monitors in this group
-                  created_at:
+                  created_on:
                     type: string
                     description: The timestamp of when the monitor group was created
-                  updated_at:
+                  modified_on:
                     type: string
                     description: The timestamp of when the monitor group was last updated
                 required:
@@ -6329,10 +6329,9 @@ paths:
       description: "Modify a configured monitor group.  @example ```ts const
         monitorGroup = await client.loadBalancers.monitorGroups.update(
         '17b5962d775c646f3f9725cbc7a53df4', { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', id: 'id', description: 'Primary
-        datacenter monitors', members: [ { enabled: true, monitor_id:
-        'monitor_id', monitoring_only: false, must_be_healthy: true, }, ], }, );
-        ```"
+        '023e105f4ecef8ad9ca31a8372d0c353', description: 'Primary datacenter
+        monitors', members: [ { enabled: true, monitor_id: 'monitor_id',
+        monitoring_only: false, must_be_healthy: true, }, ], }, ); ```"
       parameters:
         - name: monitorGroupId
           in: path
@@ -6352,10 +6351,6 @@ paths:
             schema:
               type: object
               properties:
-                id:
-                  type: string
-                  description: "Body param: The ID of the Monitor Group to use for checking the
-                    health of origins within this pool."
                 description:
                   type: string
                   description: "Body param: A short description of the monitor group"
@@ -6386,7 +6381,6 @@ paths:
                       - must_be_healthy
                   description: "Body param: List of monitors in this group"
               required:
-                - id
                 - description
                 - members
       responses:
@@ -6436,10 +6430,10 @@ paths:
                         - monitoring_only
                         - must_be_healthy
                     description: List of monitors in this group
-                  created_at:
+                  created_on:
                     type: string
                     description: The timestamp of when the monitor group was created
-                  updated_at:
+                  modified_on:
                     type: string
                     description: The timestamp of when the monitor group was last updated
                 required:
@@ -6453,10 +6447,9 @@ paths:
         supplied properties.  @example ```ts const monitorGroup = await
         client.loadBalancers.monitorGroups.edit(
         '17b5962d775c646f3f9725cbc7a53df4', { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', id: 'id', description: 'Primary
-        datacenter monitors', members: [ { enabled: true, monitor_id:
-        'monitor_id', monitoring_only: false, must_be_healthy: true, }, ], }, );
-        ```"
+        '023e105f4ecef8ad9ca31a8372d0c353', description: 'Primary datacenter
+        monitors', members: [ { enabled: true, monitor_id: 'monitor_id',
+        monitoring_only: false, must_be_healthy: true, }, ], }, ); ```"
       parameters:
         - name: monitorGroupId
           in: path
@@ -6476,10 +6469,6 @@ paths:
             schema:
               type: object
               properties:
-                id:
-                  type: string
-                  description: "Body param: The ID of the Monitor Group to use for checking the
-                    health of origins within this pool."
                 description:
                   type: string
                   description: "Body param: A short description of the monitor group"
@@ -6510,7 +6499,6 @@ paths:
                       - must_be_healthy
                   description: "Body param: List of monitors in this group"
               required:
-                - id
                 - description
                 - members
       responses:
@@ -6560,10 +6548,10 @@ paths:
                         - monitoring_only
                         - must_be_healthy
                     description: List of monitors in this group
-                  created_at:
+                  created_on:
                     type: string
                     description: The timestamp of when the monitor group was created
-                  updated_at:
+                  modified_on:
                     type: string
                     description: The timestamp of when the monitor group was last updated
                 required:
@@ -6636,10 +6624,10 @@ paths:
                         - monitoring_only
                         - must_be_healthy
                     description: List of monitors in this group
-                  created_at:
+                  created_on:
                     type: string
                     description: The timestamp of when the monitor group was created
-                  updated_at:
+                  modified_on:
                     type: string
                     description: The timestamp of when the monitor group was last updated
                 required:
@@ -6708,10 +6696,10 @@ paths:
                         - monitoring_only
                         - must_be_healthy
                     description: List of monitors in this group
-                  created_at:
+                  created_on:
                     type: string
                     description: The timestamp of when the monitor group was created
-                  updated_at:
+                  modified_on:
                     type: string
                     description: The timestamp of when the monitor group was last updated
                 required:
@@ -6723,10 +6711,9 @@ paths:
       operationId: createMonitorGroup
       description: "Create a new monitor group.  @example ```ts const monitorGroup =
         await client.loadBalancers.monitorGroups.create({ account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', id: 'id', description: 'Primary
-        datacenter monitors', members: [ { enabled: true, monitor_id:
-        'monitor_id', monitoring_only: false, must_be_healthy: true, }, ], });
-        ```"
+        '023e105f4ecef8ad9ca31a8372d0c353', description: 'Primary datacenter
+        monitors', members: [ { enabled: true, monitor_id: 'monitor_id',
+        monitoring_only: false, must_be_healthy: true, }, ], }); ```"
       parameters:
         - name: account_id
           in: path
@@ -6741,10 +6728,6 @@ paths:
             schema:
               type: object
               properties:
-                id:
-                  type: string
-                  description: "Body param: The ID of the Monitor Group to use for checking the
-                    health of origins within this pool."
                 description:
                   type: string
                   description: "Body param: A short description of the monitor group"
@@ -6775,7 +6758,6 @@ paths:
                       - must_be_healthy
                   description: "Body param: List of monitors in this group"
               required:
-                - id
                 - description
                 - members
       responses:
@@ -6825,10 +6807,10 @@ paths:
                         - monitoring_only
                         - must_be_healthy
                     description: List of monitors in this group
-                  created_at:
+                  created_on:
                     type: string
                     description: The timestamp of when the monitor group was created
-                  updated_at:
+                  modified_on:
                     type: string
                     description: The timestamp of when the monitor group was last updated
                 required:
@@ -6836,6 +6818,48 @@ paths:
                   - description
                   - members
       x-distilled-response-path: result
+  /accounts/{account_id}/load_balancers/monitor_groups/{monitorGroupId}/references:
+    get:
+      operationId: getMonitorGroupReference
+      description: "Get the list of resources that reference the provided monitor
+        group.  @example ```ts // Automatically fetches more pages as needed.
+        for await (const referenceGetResponse of
+        client.loadBalancers.monitorGroups.references.get(
+        'f1aba936b94213e5b8dca0c0dbf1f9cc', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: monitorGroupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reference_type:
+                    type: string
+                    enum:
+                      - "*"
+                      - referral
+                      - referrer
+                  resource_id:
+                    type: string
+                  resource_name:
+                    type: string
+                  resource_type:
+                    type: string
+      x-distilled-pagination-class: ReferenceGetResponsesSinglePage
   /accounts/{account_id}/load_balancers/monitors/{monitorId}/preview:
     post:
       operationId: createMonitorPreview
@@ -7157,7 +7181,9 @@ paths:
                               - type: object
                                 properties:
                                   disable:
-                                    type: boolean
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
                                     description: If set true, disable notifications for this type of resource (pool
                                       or origin).
                                   healthy:
@@ -7175,7 +7201,9 @@ paths:
                               - type: object
                                 properties:
                                   disable:
-                                    type: boolean
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
                                     description: If set true, disable notifications for this type of resource (pool
                                       or origin).
                                   healthy:
@@ -7244,6 +7272,15 @@ paths:
                             Disabled origins will not receive traffic and are
                             excluded from health checks. The origin will only be
                             disabled for the current pool.
+                        flatten_cname:
+                          type: boolean
+                          description: Whether to flatten CNAME records for this origin, resolving them to
+                            A/AAAA records before returning to the client. When
+                            true (the default), the director resolves CNAME
+                            addresses to their underlying A/AAAA records. When
+                            false, the origin address is returned as a raw CNAME
+                            record without resolution. This setting mirrors the
+                            DNS API record flatten_cname setting.
                         header:
                           type: object
                           properties:
@@ -7328,6 +7365,15 @@ paths:
                           Disabled origins will not receive traffic and are
                           excluded from health checks. The origin will only be
                           disabled for the current pool.
+                      flatten_cname:
+                        type: boolean
+                        description: Whether to flatten CNAME records for this origin, resolving them to
+                          A/AAAA records before returning to the client. When
+                          true (the default), the director resolves CNAME
+                          addresses to their underlying A/AAAA records. When
+                          false, the origin address is returned as a raw CNAME
+                          record without resolution. This setting mirrors the
+                          DNS API record flatten_cname setting.
                       header:
                         type: object
                         properties:
@@ -7469,7 +7515,9 @@ paths:
                             - type: object
                               properties:
                                 disable:
-                                  type: boolean
+                                  oneOf:
+                                    - type: boolean
+                                  nullable: true
                                   description: If set true, disable notifications for this type of resource (pool
                                     or origin).
                                 healthy:
@@ -7487,7 +7535,9 @@ paths:
                             - type: object
                               properties:
                                 disable:
-                                  type: boolean
+                                  oneOf:
+                                    - type: boolean
+                                  nullable: true
                                   description: If set true, disable notifications for this type of resource (pool
                                     or origin).
                                 healthy:
@@ -7666,7 +7716,9 @@ paths:
                               - type: object
                                 properties:
                                   disable:
-                                    type: boolean
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
                                     description: If set true, disable notifications for this type of resource (pool
                                       or origin).
                                   healthy:
@@ -7684,7 +7736,9 @@ paths:
                               - type: object
                                 properties:
                                   disable:
-                                    type: boolean
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
                                     description: If set true, disable notifications for this type of resource (pool
                                       or origin).
                                   healthy:
@@ -7753,6 +7807,15 @@ paths:
                             Disabled origins will not receive traffic and are
                             excluded from health checks. The origin will only be
                             disabled for the current pool.
+                        flatten_cname:
+                          type: boolean
+                          description: Whether to flatten CNAME records for this origin, resolving them to
+                            A/AAAA records before returning to the client. When
+                            true (the default), the director resolves CNAME
+                            addresses to their underlying A/AAAA records. When
+                            false, the origin address is returned as a raw CNAME
+                            record without resolution. This setting mirrors the
+                            DNS API record flatten_cname setting.
                         header:
                           type: object
                           properties:
@@ -7924,7 +7987,9 @@ paths:
                             - type: object
                               properties:
                                 disable:
-                                  type: boolean
+                                  oneOf:
+                                    - type: boolean
+                                  nullable: true
                                   description: If set true, disable notifications for this type of resource (pool
                                     or origin).
                                 healthy:
@@ -7942,7 +8007,9 @@ paths:
                             - type: object
                               properties:
                                 disable:
-                                  type: boolean
+                                  oneOf:
+                                    - type: boolean
+                                  nullable: true
                                   description: If set true, disable notifications for this type of resource (pool
                                     or origin).
                                 healthy:
@@ -8005,6 +8072,15 @@ paths:
                           Disabled origins will not receive traffic and are
                           excluded from health checks. The origin will only be
                           disabled for the current pool.
+                      flatten_cname:
+                        type: boolean
+                        description: Whether to flatten CNAME records for this origin, resolving them to
+                          A/AAAA records before returning to the client. When
+                          true (the default), the director resolves CNAME
+                          addresses to their underlying A/AAAA records. When
+                          false, the origin address is returned as a raw CNAME
+                          record without resolution. This setting mirrors the
+                          DNS API record flatten_cname setting.
                       header:
                         type: object
                         properties:
@@ -8172,7 +8248,9 @@ paths:
                               - type: object
                                 properties:
                                   disable:
-                                    type: boolean
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
                                     description: If set true, disable notifications for this type of resource (pool
                                       or origin).
                                   healthy:
@@ -8190,7 +8268,9 @@ paths:
                               - type: object
                                 properties:
                                   disable:
-                                    type: boolean
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
                                     description: If set true, disable notifications for this type of resource (pool
                                       or origin).
                                   healthy:
@@ -8259,6 +8339,15 @@ paths:
                             Disabled origins will not receive traffic and are
                             excluded from health checks. The origin will only be
                             disabled for the current pool.
+                        flatten_cname:
+                          type: boolean
+                          description: Whether to flatten CNAME records for this origin, resolving them to
+                            A/AAAA records before returning to the client. When
+                            true (the default), the director resolves CNAME
+                            addresses to their underlying A/AAAA records. When
+                            false, the origin address is returned as a raw CNAME
+                            record without resolution. This setting mirrors the
+                            DNS API record flatten_cname setting.
                         header:
                           type: object
                           properties:
@@ -8476,7 +8565,9 @@ paths:
                               - type: object
                                 properties:
                                   disable:
-                                    type: boolean
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
                                     description: If set true, disable notifications for this type of resource (pool
                                       or origin).
                                   healthy:
@@ -8494,7 +8585,9 @@ paths:
                               - type: object
                                 properties:
                                   disable:
-                                    type: boolean
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
                                     description: If set true, disable notifications for this type of resource (pool
                                       or origin).
                                   healthy:
@@ -8563,6 +8656,15 @@ paths:
                             Disabled origins will not receive traffic and are
                             excluded from health checks. The origin will only be
                             disabled for the current pool.
+                        flatten_cname:
+                          type: boolean
+                          description: Whether to flatten CNAME records for this origin, resolving them to
+                            A/AAAA records before returning to the client. When
+                            true (the default), the director resolves CNAME
+                            addresses to their underlying A/AAAA records. When
+                            false, the origin address is returned as a raw CNAME
+                            record without resolution. This setting mirrors the
+                            DNS API record flatten_cname setting.
                         header:
                           type: object
                           properties:
@@ -8642,6 +8744,15 @@ paths:
                           Disabled origins will not receive traffic and are
                           excluded from health checks. The origin will only be
                           disabled for the current pool.
+                      flatten_cname:
+                        type: boolean
+                        description: Whether to flatten CNAME records for this origin, resolving them to
+                          A/AAAA records before returning to the client. When
+                          true (the default), the director resolves CNAME
+                          addresses to their underlying A/AAAA records. When
+                          false, the origin address is returned as a raw CNAME
+                          record without resolution. This setting mirrors the
+                          DNS API record flatten_cname setting.
                       header:
                         type: object
                         properties:
@@ -8760,7 +8871,9 @@ paths:
                             - type: object
                               properties:
                                 disable:
-                                  type: boolean
+                                  oneOf:
+                                    - type: boolean
+                                  nullable: true
                                   description: If set true, disable notifications for this type of resource (pool
                                     or origin).
                                 healthy:
@@ -8778,7 +8891,9 @@ paths:
                             - type: object
                               properties:
                                 disable:
-                                  type: boolean
+                                  oneOf:
+                                    - type: boolean
+                                  nullable: true
                                   description: If set true, disable notifications for this type of resource (pool
                                     or origin).
                                 healthy:
@@ -8957,7 +9072,9 @@ paths:
                               - type: object
                                 properties:
                                   disable:
-                                    type: boolean
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
                                     description: If set true, disable notifications for this type of resource (pool
                                       or origin).
                                   healthy:
@@ -8975,7 +9092,9 @@ paths:
                               - type: object
                                 properties:
                                   disable:
-                                    type: boolean
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
                                     description: If set true, disable notifications for this type of resource (pool
                                       or origin).
                                   healthy:
@@ -9044,6 +9163,15 @@ paths:
                             Disabled origins will not receive traffic and are
                             excluded from health checks. The origin will only be
                             disabled for the current pool.
+                        flatten_cname:
+                          type: boolean
+                          description: Whether to flatten CNAME records for this origin, resolving them to
+                            A/AAAA records before returning to the client. When
+                            true (the default), the director resolves CNAME
+                            addresses to their underlying A/AAAA records. When
+                            false, the origin address is returned as a raw CNAME
+                            record without resolution. This setting mirrors the
+                            DNS API record flatten_cname setting.
                         header:
                           type: object
                           properties:
@@ -9243,7 +9371,9 @@ paths:
                               - type: object
                                 properties:
                                   disable:
-                                    type: boolean
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
                                     description: If set true, disable notifications for this type of resource (pool
                                       or origin).
                                   healthy:
@@ -9261,7 +9391,9 @@ paths:
                               - type: object
                                 properties:
                                   disable:
-                                    type: boolean
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
                                     description: If set true, disable notifications for this type of resource (pool
                                       or origin).
                                   healthy:
@@ -9330,6 +9462,15 @@ paths:
                             Disabled origins will not receive traffic and are
                             excluded from health checks. The origin will only be
                             disabled for the current pool.
+                        flatten_cname:
+                          type: boolean
+                          description: Whether to flatten CNAME records for this origin, resolving them to
+                            A/AAAA records before returning to the client. When
+                            true (the default), the director resolves CNAME
+                            addresses to their underlying A/AAAA records. When
+                            false, the origin address is returned as a raw CNAME
+                            record without resolution. This setting mirrors the
+                            DNS API record flatten_cname setting.
                         header:
                           type: object
                           properties:

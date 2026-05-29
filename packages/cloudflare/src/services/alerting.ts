@@ -858,6 +858,7 @@ export interface GetPolicyResponse {
     | "clickhouse_alert_fw_anomaly"
     | "clickhouse_alert_fw_ent_anomaly"
     | "cloudforce_one_request_notification"
+    | "cni_maintenance_notification"
     | "custom_analytics"
     | "custom_bot_detection_alert"
     | "custom_ssl_certificate_event_type"
@@ -1002,6 +1003,7 @@ export const GetPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         "clickhouse_alert_fw_anomaly",
         "clickhouse_alert_fw_ent_anomaly",
         "cloudforce_one_request_notification",
+        "cni_maintenance_notification",
         "custom_analytics",
         "custom_bot_detection_alert",
         "custom_ssl_certificate_event_type",
@@ -1362,6 +1364,7 @@ export interface ListPoliciesResponse {
       | "clickhouse_alert_fw_anomaly"
       | "clickhouse_alert_fw_ent_anomaly"
       | "cloudforce_one_request_notification"
+      | "cni_maintenance_notification"
       | "custom_analytics"
       | "custom_bot_detection_alert"
       | "custom_ssl_certificate_event_type"
@@ -1506,6 +1509,7 @@ export const ListPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             "clickhouse_alert_fw_anomaly",
             "clickhouse_alert_fw_ent_anomaly",
             "cloudforce_one_request_notification",
+            "cni_maintenance_notification",
             "custom_analytics",
             "custom_bot_detection_alert",
             "custom_ssl_certificate_event_type",
@@ -1860,6 +1864,7 @@ export interface CreatePolicyRequest {
     | "clickhouse_alert_fw_anomaly"
     | "clickhouse_alert_fw_ent_anomaly"
     | "cloudforce_one_request_notification"
+    | "cni_maintenance_notification"
     | "custom_analytics"
     | "custom_bot_detection_alert"
     | "custom_ssl_certificate_event_type"
@@ -1998,6 +2003,7 @@ export const CreatePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "clickhouse_alert_fw_anomaly",
     "clickhouse_alert_fw_ent_anomaly",
     "cloudforce_one_request_notification",
+    "cni_maintenance_notification",
     "custom_analytics",
     "custom_bot_detection_alert",
     "custom_ssl_certificate_event_type",
@@ -2252,6 +2258,7 @@ export interface UpdatePolicyRequest {
     | "clickhouse_alert_fw_anomaly"
     | "clickhouse_alert_fw_ent_anomaly"
     | "cloudforce_one_request_notification"
+    | "cni_maintenance_notification"
     | "custom_analytics"
     | "custom_bot_detection_alert"
     | "custom_ssl_certificate_event_type"
@@ -2391,6 +2398,7 @@ export const UpdatePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "clickhouse_alert_fw_anomaly",
       "clickhouse_alert_fw_ent_anomaly",
       "cloudforce_one_request_notification",
+      "cni_maintenance_notification",
       "custom_analytics",
       "custom_bot_detection_alert",
       "custom_ssl_certificate_event_type",
@@ -2857,7 +2865,7 @@ export const listSilences: API.PaginatedOperationMethod<
 export interface CreateSilenceRequest {
   /** Path param: The account id */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: { endTime?: string; policyId?: string; startTime?: string }[];
 }
 
@@ -2922,7 +2930,7 @@ export const createSilence: API.OperationMethod<
 export interface UpdateSilenceRequest {
   /** Path param: The account id */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: { id?: string; endTime?: string; startTime?: string }[];
 }
 

@@ -319,7 +319,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 colos:
                   type: array
                   items:
@@ -352,7 +352,7 @@ paths:
                     wait_time:
                       type: number
                       description: Set the time (in seconds) to wait for a response to a probe.
-                  description: "Body param:"
+                  description: Body param
               required:
                 - targets
       responses:

@@ -124,6 +124,7 @@ paths:
                     properties:
                       name:
                         type: string
+                        description: Cookie name.
                       value:
                         type: string
                       domain:
@@ -169,7 +170,7 @@ paths:
                     [options](https://pptr.dev/api/puppeteer.page.setcookie)."
                 emulateMediaType:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 gotoOptions:
                   type: object
                   properties:
@@ -237,13 +238,13 @@ paths:
                 setExtraHTTPHeaders:
                   type: object
                   additionalProperties: true
-                  description: "Body param:"
+                  description: Body param
                 setJavaScriptEnabled:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 userAgent:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 viewport:
                   type: object
                   properties:
@@ -297,6 +298,1302 @@ paths:
               schema:
                 type: string
       x-distilled-response-path: result
+  /accounts/{account_id}/browser-rendering/crawl/{jobId}:
+    get:
+      operationId: getCrawl
+      description: "Returns the result of a crawl job.  @example ```ts const crawl =
+        await client.browserRendering.crawl.get('x', { account_id: 'account_id',
+        }); ```"
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cacheTTL
+          in: query
+          required: false
+          description: "Query param: Cache TTL default is 5s. Set to 0 to disable."
+          schema:
+            type: number
+        - name: cursor
+          in: query
+          required: false
+          description: "Query param: Cursor for pagination."
+          schema:
+            type: number
+        - name: limit
+          in: query
+          required: false
+          description: "Query param: Limit for pagination."
+          schema:
+            type: number
+        - name: status
+          in: query
+          required: false
+          description: "Query param: Filter by URL status."
+          schema:
+            type: string
+            enum:
+              - queued
+              - errored
+              - completed
+              - disallowed
+              - skipped
+              - cancelled
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Crawl job ID.
+                  browserSecondsUsed:
+                    type: number
+                    description: Total seconds spent in browser so far.
+                  finished:
+                    type: number
+                    description: Total number of URLs that have been crawled so far.
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        metadata:
+                          type: object
+                          properties:
+                            status:
+                              type: number
+                              description: HTTP status code of the crawled page.
+                            url:
+                              type: string
+                              description: Final URL of the crawled page.
+                            title:
+                              type: string
+                              description: Title of the crawled page.
+                          required:
+                            - status
+                            - url
+                        status:
+                          type: string
+                          enum:
+                            - queued
+                            - errored
+                            - completed
+                            - disallowed
+                            - skipped
+                            - cancelled
+                          description: Current status of the crawled URL.
+                        url:
+                          type: string
+                          description: Crawled URL.
+                        html:
+                          type: string
+                          description: HTML content of the crawled URL.
+                        json:
+                          type: object
+                          additionalProperties: true
+                          description: JSON of the content of the crawled URL.
+                        markdown:
+                          type: string
+                          description: Markdown of the content of the crawled URL.
+                      required:
+                        - metadata
+                        - status
+                        - url
+                    description: List of crawl job records.
+                  skipped:
+                    type: number
+                    description: Total number of URLs that were skipped due to
+                      include/exclude/subdomain filters. Skipped URLs are
+                      included in records but are not counted toward
+                      total/finished.
+                  status:
+                    type: string
+                    description: Current crawl job status.
+                  total:
+                    type: number
+                    description: Total current number of URLs in the crawl job.
+                  cursor:
+                    type: string
+                    description: Cursor for pagination.
+                required:
+                  - id
+                  - browserSecondsUsed
+                  - finished
+                  - records
+                  - skipped
+                  - status
+                  - total
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteCrawl
+      description: "Cancels an ongoing crawl job by setting its status to cancelled
+        and stopping all queued URLs.  @example ```ts const crawl = await
+        client.browserRendering.crawl.delete( 'job_id', { account_id:
+        'account_id' }, ); ```"
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job_id:
+                    type: string
+                    description: The ID of the cancelled job.
+                  message:
+                    type: string
+                    description: Cancellation confirmation message.
+                required:
+                  - job_id
+                  - message
+      x-distilled-response-path: result
+  /accounts/{account_id}/browser-rendering/crawl:
+    post:
+      operationId: createCrawl
+      description: "Starts a crawl job for the provided URL and its children. Check
+        available options like `gotoOptions` and `waitFor ` to control page load
+        behaviour.  @example ```ts const crawl = await
+        client.browserRendering.crawl.create({ account_id: 'account_id', url:
+        'https://example.com', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cacheTTL
+          in: query
+          required: false
+          description: "Query param: Cache TTL default is 5s. Set to 0 to disable."
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: "Body param: URL to navigate to, eg. `https://example.com`."
+                actionTimeout:
+                  type: number
+                  description: "Body param: The maximum duration allowed for the browser action to
+                    complete after the page has loaded (such as taking
+                    screenshots, extracting content, or generating PDFs). If
+                    this time limit is exceeded, the action stops and returns a
+                    timeout error."
+                addScriptTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      content:
+                        type: string
+                      type:
+                        type: string
+                      url:
+                        type: string
+                  description: "Body param: Adds a `<script>` tag into the page with the desired
+                    URL or content."
+                addStyleTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      content:
+                        type: string
+                      url:
+                        type: string
+                  description: 'Body param: Adds a `<link rel="stylesheet">` tag into the page
+                    with the desired URL or a `<style type="text/css">` tag with
+                    the content.'
+                allowRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Only allow requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                allowResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Only allow requests that match the provided resource
+                    types, eg. 'image' or 'script'."
+                authenticate:
+                  type: object
+                  properties:
+                    password:
+                      type: string
+                    username:
+                      type: string
+                  required:
+                    - password
+                    - username
+                  description: "Body param: Provide credentials for HTTP authentication."
+                bestAttempt:
+                  type: boolean
+                  description: "Body param: Attempt to proceed when 'awaited' events fail or
+                    timeout."
+                cookies:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: Cookie name.
+                      value:
+                        type: string
+                      domain:
+                        type: string
+                      expires:
+                        type: number
+                      httpOnly:
+                        type: boolean
+                      partitionKey:
+                        type: string
+                      path:
+                        type: string
+                      priority:
+                        type: string
+                        enum:
+                          - Low
+                          - Medium
+                          - High
+                      sameParty:
+                        type: boolean
+                      sameSite:
+                        type: string
+                        enum:
+                          - Strict
+                          - Lax
+                          - None
+                      secure:
+                        type: boolean
+                      sourcePort:
+                        type: number
+                      sourceScheme:
+                        type: string
+                        enum:
+                          - Unset
+                          - NonSecure
+                          - Secure
+                      url:
+                        type: string
+                    required:
+                      - name
+                      - value
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+                crawlPurposes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - search
+                      - ai-input
+                      - ai-train
+                  description: "Body param: List of crawl purposes to respect Content-Signal
+                    directives in robots.txt. Allowed values: 'search',
+                    'ai-input', 'ai-train'. Learn more:
+                    https://contentsignals.org/. Default: ['search', 'ai-input',
+                    'ai-train']."
+                depth:
+                  type: number
+                  description: "Body param: Maximum number of levels deep the crawler will
+                    traverse from the starting URL."
+                emulateMediaType:
+                  type: string
+                  description: Body param
+                formats:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - html
+                      - markdown
+                      - json
+                  description: "Body param: Formats to return. Default is `html`."
+                gotoOptions:
+                  type: object
+                  properties:
+                    referer:
+                      type: string
+                    referrerPolicy:
+                      type: string
+                    timeout:
+                      type: number
+                    waitUntil:
+                      oneOf:
+                        - type: string
+                          enum:
+                            - load
+                        - type: string
+                          enum:
+                            - domcontentloaded
+                        - type: string
+                          enum:
+                            - networkidle0
+                        - type: string
+                          enum:
+                            - networkidle2
+                        - type: array
+                          items:
+                            type: string
+                            enum:
+                              - load
+                              - domcontentloaded
+                              - networkidle0
+                              - networkidle2
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.gotooptions)."
+                jsonOptions:
+                  type: object
+                  properties:
+                    custom_ai:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          model:
+                            type: string
+                            description: AI model to use for the request. Must be formed as
+                              `<provider>/<model_name>`, e.g.
+                              `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`.
+                          authorization:
+                            type: string
+                            description: "Authorization token for the AI model: `Bearer <token>`. Not needed
+                              for workers-ai models."
+                        required:
+                          - model
+                      description: Optional list of custom AI models to use for the request. The
+                        models will be tried in the order provided, and in case
+                        a model returns an error, the next one will be used as
+                        fallback.
+                    prompt:
+                      type: string
+                    response_format:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        json_schema:
+                          oneOf:
+                            - type: object
+                              additionalProperties: true
+                          nullable: true
+                          description: "Schema for the response format. More information here:
+                            https://developers.cloudflare.com/workers-ai/json-m\
+                            ode/"
+                      required:
+                        - type
+                  description: "Body param: Options for JSON extraction."
+                limit:
+                  type: number
+                  description: "Body param: Maximum number of URLs to crawl."
+                maxAge:
+                  type: number
+                  description: "Body param: Maximum age of a resource that can be returned from
+                    cache in seconds. Default is 1 day."
+                modifiedSince:
+                  type: number
+                  description: "Body param: Unix timestamp (seconds since epoch) indicating to
+                    only crawl pages that were modified since this time. For
+                    sitemap URLs with a lastmod field, this is compared
+                    directly. For other URLs, the crawler will use
+                    If-Modified-Since header when fetching. URLs without
+                    modification information (no lastmod in sitemap and no
+                    Last-Modified header support) will be crawled. Note: This
+                    works in conjunction with maxAge - both filters must pass
+                    for a cached resource to be used. Must be within the last
+                    year and not in the future."
+                options:
+                  type: object
+                  properties:
+                    excludePatterns:
+                      type: array
+                      items:
+                        type: string
+                      description: "Exclude links matching the provided wildcard patterns in the crawl
+                        job. Example: 'https://example.com/privacy/  '."
+                    includeExternalLinks:
+                      type: boolean
+                      description: Include external links in the crawl job. If set to true,
+                        includeSubdomains is ignored.
+                    includePatterns:
+                      type: array
+                      items:
+                        type: string
+                      description: "Include only links matching the provided wildcard patterns in the
+                        crawl job. Include patterns are evaluated before exclude
+                        patterns. URLs that match any of the specified include
+                        patterns will be included in the crawl job. Example:
+                        'https://example.com/blog/  '."
+                    includeSubdomains:
+                      type: boolean
+                      description: Include links to subdomains in the crawl job. This option is
+                        ignored if includeExternalLinks is true.
+                  description: "Body param: Additional options for the crawler."
+                rejectRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Block undesired requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                rejectResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Block undesired requests that match the provided
+                    resource types, eg. 'image' or 'script'."
+                render:
+                  type: boolean
+                  enum:
+                    - true
+                  description: "Body param: Whether to render the page or fetch static content.
+                    True by default."
+                setExtraHTTPHeaders:
+                  type: object
+                  additionalProperties: true
+                  description: Body param
+                setJavaScriptEnabled:
+                  type: boolean
+                  description: Body param
+                source:
+                  type: string
+                  enum:
+                    - sitemaps
+                    - links
+                    - all
+                  description: "Body param: Source of links to crawl. 'sitemaps' - only crawl URLs
+                    from sitemaps, 'links' - only crawl URLs scraped from pages,
+                    'all' - crawl both sitemap and scraped links (default)."
+                viewport:
+                  type: object
+                  properties:
+                    height:
+                      type: number
+                    width:
+                      type: number
+                    deviceScaleFactor:
+                      type: number
+                    hasTouch:
+                      type: boolean
+                    isLandscape:
+                      type: boolean
+                    isMobile:
+                      type: boolean
+                  required:
+                    - height
+                    - width
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+                waitForSelector:
+                  type: object
+                  properties:
+                    selector:
+                      type: string
+                    hidden:
+                      type: boolean
+                      enum:
+                        - true
+                    timeout:
+                      type: number
+                    visible:
+                      type: boolean
+                      enum:
+                        - true
+                  required:
+                    - selector
+                  description: "Body param: Wait for the selector to appear in page. Check
+                    [options](https://pptr.dev/api/puppeteer.page.waitforselect\
+                    or)."
+                waitForTimeout:
+                  type: number
+                  description: "Body param: Waits for a specified timeout before continuing."
+              required:
+                - url
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+      x-distilled-response-path: result
+  /accounts/{account_id}/browser-rendering/devtools/browser:
+    post:
+      operationId: createDevtoolBrowser
+      description: "Get a browser session ID.  @example ```ts const browser = await
+        client.browserRendering.devtools.browser.create({ account_id:
+        'account_id', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: keep_alive
+          in: query
+          required: false
+          description: "Query param: Keep-alive time in milliseconds."
+          schema:
+            type: number
+        - name: lab
+          in: query
+          required: false
+          description: "Query param: Use experimental browser."
+          schema:
+            type: boolean
+        - name: recording
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: boolean
+        - name: targets
+          in: query
+          required: false
+          description: "Query param: Include browser targets in response."
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sessionId:
+                    type: string
+                    description: Browser session ID.
+                  webSocketDebuggerUrl:
+                    type: string
+                    description: WebSocket URL for the session.
+                required:
+                  - sessionId
+    get:
+      operationId: launchDevtoolBrowser
+      description: "Acquires and establishes a WebSocket connection to a browser
+        session.  @example ```ts await
+        client.browserRendering.devtools.browser.launch({ account_id:
+        'account_id', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: keep_alive
+          in: query
+          required: false
+          description: "Query param: Keep-alive time in ms (only valid when acquiring new
+            session)."
+          schema:
+            type: number
+        - name: lab
+          in: query
+          required: false
+          description: "Query param: Use experimental browser."
+          schema:
+            type: boolean
+        - name: recording
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+  /accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}:
+    delete:
+      operationId: deleteDevtoolBrowser
+      description: "Closes an existing browser session.  @example ```ts const browser
+        = await client.browserRendering.devtools.browser.delete(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id: 'account_id' }, );
+        ```"
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                      - closing
+                      - closed
+                required:
+                  - status
+    get:
+      operationId: connectDevtoolBrowser
+      description: "Establishes a WebSocket connection to an existing browser
+        session.  @example ```ts await
+        client.browserRendering.devtools.browser.connect(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id: 'account_id' }, );
+        ```"
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: keep_alive
+          in: query
+          required: false
+          description: "Query param: Keep-alive time in ms (only valid when acquiring new
+            session)."
+          schema:
+            type: number
+        - name: lab
+          in: query
+          required: false
+          description: "Query param: Use experimental browser."
+          schema:
+            type: boolean
+        - name: recording
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+  /accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/protocol:
+    get:
+      operationId: protocolDevtoolBrowser
+      description: "Returns the complete Chrome DevTools Protocol schema including all
+        domains, commands, events, and types. This schema describes the entire
+        CDP API surface.  @example ```ts const response = await
+        client.browserRendering.devtools.browser.protocol(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id: 'account_id' }, );
+        ```"
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  domains:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        domain:
+                          type: string
+                          description: Domain name.
+                        commands:
+                          type: array
+                          items:
+                            type: object
+                            additionalProperties: true
+                          description: Available commands.
+                        dependencies:
+                          type: array
+                          items:
+                            type: string
+                          description: Domain dependencies.
+                        events:
+                          type: array
+                          items:
+                            type: object
+                            additionalProperties: true
+                          description: Available events.
+                        experimental:
+                          type: boolean
+                          description: Whether this domain is experimental.
+                        types:
+                          type: array
+                          items:
+                            type: object
+                            additionalProperties: true
+                          description: Type definitions.
+                      required:
+                        - domain
+                    description: List of protocol domains.
+                  version:
+                    type: object
+                    properties:
+                      major:
+                        type: string
+                        description: Major version.
+                      minor:
+                        type: string
+                        description: Minor version.
+                    required:
+                      - major
+                      - minor
+                    description: Protocol version.
+                required:
+                  - domains
+  /accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/version:
+    get:
+      operationId: versionDevtoolBrowser
+      description: "Get browser version metadata.  @example ```ts const response =
+        await client.browserRendering.devtools.browser.version(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id: 'account_id' }, );
+        ```"
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Browser:
+                    type: string
+                    description: Browser name and version.
+                  Protocol-Version:
+                    type: string
+                    description: Chrome DevTools Protocol version.
+                  User-Agent:
+                    type: string
+                    description: User agent string.
+                  V8-Version:
+                    type: string
+                    description: V8 JavaScript engine version.
+                  WebKit-Version:
+                    type: string
+                    description: WebKit version.
+                  webSocketDebuggerUrl:
+                    type: string
+                    description: WebSocket URL for debugging the browser.
+                required:
+                  - Browser
+                  - Protocol-Version
+                  - User-Agent
+                  - V8-Version
+                  - WebKit-Version
+                  - webSocketDebuggerUrl
+  /accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/page/{targetId}:
+    get:
+      operationId: getDevtoolBrowserPage
+      description: "Establishes a WebSocket connection to a specific Chrome DevTools
+        target or page.  @example ```ts await
+        client.browserRendering.devtools.browser.page.get(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', 'target_id', { account_id:
+        'account_id' }, ); ```"
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: targetId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  /accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/list/{targetId}:
+    get:
+      operationId: getDevtoolBrowserTarget
+      description: "Returns the debuggable target with the given ID.  @example ```ts
+        const target = await
+        client.browserRendering.devtools.browser.targets.get(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', 'target_id', { account_id:
+        'account_id' }, ); ```"
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: targetId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Target ID.
+                  type:
+                    type: string
+                    description: Target type (page, background_page, worker, etc.).
+                  url:
+                    type: string
+                    description: URL of the target.
+                  description:
+                    type: string
+                    description: Target description.
+                  devtoolsFrontendUrl:
+                    type: string
+                    description: DevTools frontend URL.
+                  title:
+                    type: string
+                    description: Title of the target.
+                  webSocketDebuggerUrl:
+                    type: string
+                    description: WebSocket URL for debugging this target.
+                required:
+                  - id
+                  - type
+                  - url
+  /accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/list:
+    get:
+      operationId: listDevtoolBrowserTargets
+      description: "Returns a list of all debuggable targets including tabs, pages,
+        service workers, and other browser contexts.  @example ```ts const
+        targets = await client.browserRendering.devtools.browser.targets.list(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id: 'account_id' }, );
+        ```"
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: Target ID.
+                    type:
+                      type: string
+                      description: Target type (page, background_page, worker, etc.).
+                    url:
+                      type: string
+                      description: URL of the target.
+                    description:
+                      type: string
+                      description: Target description.
+                    devtoolsFrontendUrl:
+                      type: string
+                      description: DevTools frontend URL.
+                    title:
+                      type: string
+                      description: Title of the target.
+                    webSocketDebuggerUrl:
+                      type: string
+                      description: WebSocket URL for debugging this target.
+                  required:
+                    - id
+                    - type
+                    - url
+  /accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/new:
+    put:
+      operationId: createDevtoolBrowserTarget
+      description: "Opens a new tab in the browser. Optionally specify a URL to
+        navigate to.  @example ```ts const target = await
+        client.browserRendering.devtools.browser.targets.create(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id: 'account_id' }, );
+        ```"
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: url
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Target ID.
+                  type:
+                    type: string
+                    description: Target type (page, background_page, worker, etc.).
+                  url:
+                    type: string
+                    description: URL of the target.
+                  description:
+                    type: string
+                    description: Target description.
+                  devtoolsFrontendUrl:
+                    type: string
+                    description: DevTools frontend URL.
+                  title:
+                    type: string
+                    description: Title of the target.
+                  webSocketDebuggerUrl:
+                    type: string
+                    description: WebSocket URL for debugging this target.
+                required:
+                  - id
+                  - type
+                  - url
+  /accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/activate/{targetId}:
+    get:
+      operationId: activateDevtoolBrowserTarget
+      description: "Activates (brings to front) a specific browser target by its
+        ID.  @example ```ts const response = await
+        client.browserRendering.devtools.browser.targets.activate(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', 'target_id', { account_id:
+        'account_id' }, ); ```"
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: targetId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Target activated.
+                required:
+                  - message
+  /accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/close/{targetId}:
+    get:
+      operationId: closeDevtoolBrowserTarget
+      description: "Closes a specific browser target (tab, page, etc.) by its ID.
+        Returns 'Target is closing' on success or an error if the target is not
+        found.  @example ```ts const response = await
+        client.browserRendering.devtools.browser.targets.close(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', 'target_id', { account_id:
+        'account_id' }, ); ```"
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: targetId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Target is closing.
+                required:
+                  - message
+  /accounts/{account_id}/browser-rendering/devtools/session/{sessionId}:
+    get:
+      operationId: getDevtoolSession
+      description: "Get details for a specific browser session.  @example ```ts const
+        session = await client.browserRendering.devtools.session.get(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id: 'account_id' }, );
+        ```"
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sessionId:
+                    type: string
+                    description: Session ID.
+                  closeReason:
+                    type: string
+                    description: Reason for session closure.
+                  closeReasonText:
+                    type: string
+                    description: Human-readable close reason.
+                  connectionEndTime:
+                    type: number
+                    description: Connection end time.
+                  connectionId:
+                    type: string
+                    description: Connection ID.
+                  connectionStartTime:
+                    type: number
+                    description: Connection start time.
+                  devtoolsFrontendUrl:
+                    type: string
+                    description: DevTools frontend URL.
+                  endTime:
+                    type: number
+                    description: Session end time.
+                  lastUpdated:
+                    type: number
+                    description: Last updated timestamp.
+                  startTime:
+                    type: number
+                    description: Session start time.
+                  webSocketDebuggerUrl:
+                    type: string
+                    description: WebSocket URL for debugging this target.
+                required:
+                  - sessionId
+  /accounts/{account_id}/browser-rendering/devtools/session:
+    get:
+      operationId: listDevtoolSessions
+      description: "List active browser sessions.  @example ```ts const sessions =
+        await client.browserRendering.devtools.session.list({ account_id:
+        'account_id', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: number
+        - name: offset
+          in: query
+          required: false
+          description: Query param
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    sessionId:
+                      type: string
+                      description: Session ID.
+                    closeReason:
+                      type: string
+                      description: Reason for session closure.
+                    closeReasonText:
+                      type: string
+                      description: Human-readable close reason.
+                    connectionEndTime:
+                      type: number
+                      description: Connection end time.
+                    connectionId:
+                      type: string
+                      description: Connection ID.
+                    connectionStartTime:
+                      type: number
+                      description: Connection start time.
+                    devtoolsFrontendUrl:
+                      type: string
+                      description: DevTools frontend URL.
+                    endTime:
+                      type: number
+                      description: Session end time.
+                    lastUpdated:
+                      type: number
+                      description: Last updated timestamp.
+                    startTime:
+                      type: number
+                      description: Session start time.
+                    webSocketDebuggerUrl:
+                      type: string
+                      description: WebSocket URL for debugging this target.
+                  required:
+                    - sessionId
   /accounts/{account_id}/browser-rendering/json:
     post:
       operationId: createJson
@@ -416,6 +1713,7 @@ paths:
                     properties:
                       name:
                         type: string
+                        description: Cookie name.
                       value:
                         type: string
                       domain:
@@ -464,16 +1762,16 @@ paths:
                   items:
                     type: object
                     properties:
-                      authorization:
-                        type: string
-                        description: "Authorization token for the AI model: `Bearer <token>`."
                       model:
                         type: string
                         description: AI model to use for the request. Must be formed as
                           `<provider>/<model_name>`, e.g.
-                          `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`
+                          `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`.
+                      authorization:
+                        type: string
+                        description: "Authorization token for the AI model: `Bearer <token>`. Not needed
+                          for workers-ai models."
                     required:
-                      - authorization
                       - model
                   description: "Body param: Optional list of custom AI models to use for the
                     request. The models will be tried in the order provided, and
@@ -481,7 +1779,7 @@ paths:
                     as fallback."
                 emulateMediaType:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 gotoOptions:
                   type: object
                   properties:
@@ -517,7 +1815,7 @@ paths:
                     [options](https://pptr.dev/api/puppeteer.gotooptions)."
                 prompt:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 rejectRequestPattern:
                   type: array
                   items:
@@ -563,17 +1861,17 @@ paths:
                         https://developers.cloudflare.com/workers-ai/json-mode/"
                   required:
                     - type
-                  description: "Body param:"
+                  description: Body param
                 setExtraHTTPHeaders:
                   type: object
                   additionalProperties: true
-                  description: "Body param:"
+                  description: Body param
                 setJavaScriptEnabled:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 userAgent:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 viewport:
                   type: object
                   properties:
@@ -745,6 +2043,7 @@ paths:
                     properties:
                       name:
                         type: string
+                        description: Cookie name.
                       value:
                         type: string
                       domain:
@@ -790,10 +2089,10 @@ paths:
                     [options](https://pptr.dev/api/puppeteer.page.setcookie)."
                 emulateMediaType:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 excludeExternalLinks:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 gotoOptions:
                   type: object
                   properties:
@@ -861,13 +2160,13 @@ paths:
                 setExtraHTTPHeaders:
                   type: object
                   additionalProperties: true
-                  description: "Body param:"
+                  description: Body param
                 setJavaScriptEnabled:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 userAgent:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 viewport:
                   type: object
                   properties:
@@ -890,7 +2189,7 @@ paths:
                     [options](https://pptr.dev/api/puppeteer.page.setviewport)."
                 visibleLinksOnly:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 waitForSelector:
                   type: object
                   properties:
@@ -1043,6 +2342,7 @@ paths:
                     properties:
                       name:
                         type: string
+                        description: Cookie name.
                       value:
                         type: string
                       domain:
@@ -1088,7 +2388,7 @@ paths:
                     [options](https://pptr.dev/api/puppeteer.page.setcookie)."
                 emulateMediaType:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 gotoOptions:
                   type: object
                   properties:
@@ -1156,13 +2456,13 @@ paths:
                 setExtraHTTPHeaders:
                   type: object
                   additionalProperties: true
-                  description: "Body param:"
+                  description: Body param
                 setJavaScriptEnabled:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 userAgent:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 viewport:
                   type: object
                   properties:
@@ -1336,6 +2636,7 @@ paths:
                     properties:
                       name:
                         type: string
+                        description: Cookie name.
                       value:
                         type: string
                       domain:
@@ -1381,7 +2682,7 @@ paths:
                     [options](https://pptr.dev/api/puppeteer.page.setcookie)."
                 emulateMediaType:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 gotoOptions:
                   type: object
                   properties:
@@ -1537,13 +2838,13 @@ paths:
                 setExtraHTTPHeaders:
                   type: object
                   additionalProperties: true
-                  description: "Body param:"
+                  description: Body param
                 setJavaScriptEnabled:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 userAgent:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 viewport:
                   type: object
                   properties:
@@ -1629,7 +2930,7 @@ paths:
                         type: string
                     required:
                       - selector
-                  description: "Body param:"
+                  description: Body param
                 html:
                   type: string
                   description: "Body param: Set the content of the page, eg: `<h1>Hello
@@ -1721,6 +3022,7 @@ paths:
                     properties:
                       name:
                         type: string
+                        description: Cookie name.
                       value:
                         type: string
                       domain:
@@ -1766,7 +3068,7 @@ paths:
                     [options](https://pptr.dev/api/puppeteer.page.setcookie)."
                 emulateMediaType:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 gotoOptions:
                   type: object
                   properties:
@@ -1834,13 +3136,13 @@ paths:
                 setExtraHTTPHeaders:
                   type: object
                   additionalProperties: true
-                  description: "Body param:"
+                  description: Body param
                 setJavaScriptEnabled:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 userAgent:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 viewport:
                   type: object
                   properties:
@@ -1907,31 +3209,31 @@ paths:
                             properties:
                               name:
                                 type: string
-                                description: Attribute name
+                                description: Attribute name.
                               value:
                                 type: string
-                                description: Attribute value
+                                description: Attribute value.
                             required:
                               - name
                               - value
                         height:
                           type: number
-                          description: Element height
+                          description: Element height.
                         html:
                           type: string
-                          description: Html content
+                          description: HTML content.
                         left:
                           type: number
-                          description: Element left
+                          description: Element left.
                         text:
                           type: string
-                          description: Text content
+                          description: Text content.
                         top:
                           type: number
-                          description: Element top
+                          description: Element top.
                         width:
                           type: number
-                          description: Element width
+                          description: Element width.
                       required:
                         - attributes
                         - height
@@ -1942,7 +3244,7 @@ paths:
                         - width
                     selector:
                       type: string
-                      description: Selector
+                      description: Selector.
                   required:
                     - results
                     - selector
@@ -2067,6 +3369,7 @@ paths:
                     properties:
                       name:
                         type: string
+                        description: Cookie name.
                       value:
                         type: string
                       domain:
@@ -2112,7 +3415,7 @@ paths:
                     [options](https://pptr.dev/api/puppeteer.page.setcookie)."
                 emulateMediaType:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 gotoOptions:
                   type: object
                   properties:
@@ -2226,20 +3529,20 @@ paths:
                     ."
                 scrollPage:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 selector:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 setExtraHTTPHeaders:
                   type: object
                   additionalProperties: true
-                  description: "Body param:"
+                  description: Body param
                 setJavaScriptEnabled:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 userAgent:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 viewport:
                   type: object
                   properties:
@@ -2295,7 +3598,7 @@ paths:
                 properties:
                   success:
                     type: boolean
-                    description: Response status
+                    description: Response status.
                   errors:
                     type: array
                     items:
@@ -2303,10 +3606,10 @@ paths:
                       properties:
                         code:
                           type: number
-                          description: Error code
+                          description: Error code.
                         message:
                           type: string
-                          description: Error Message
+                          description: Error message.
                       required:
                         - code
                         - message
@@ -2431,6 +3734,7 @@ paths:
                     properties:
                       name:
                         type: string
+                        description: Cookie name.
                       value:
                         type: string
                       domain:
@@ -2476,7 +3780,7 @@ paths:
                     [options](https://pptr.dev/api/puppeteer.page.setcookie)."
                 emulateMediaType:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 gotoOptions:
                   type: object
                   properties:
@@ -2580,17 +3884,17 @@ paths:
                         - png
                         - jpeg
                         - webp
-                  description: "Body param:"
+                  description: Body param
                 setExtraHTTPHeaders:
                   type: object
                   additionalProperties: true
-                  description: "Body param:"
+                  description: Body param
                 setJavaScriptEnabled:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 userAgent:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 viewport:
                   type: object
                   properties:
@@ -2646,10 +3950,10 @@ paths:
                 properties:
                   content:
                     type: string
-                    description: HTML content
+                    description: HTML content.
                   screenshot:
                     type: string
-                    description: Base64 encoded image
+                    description: Base64 encoded image.
                 required:
                   - content
                   - screenshot

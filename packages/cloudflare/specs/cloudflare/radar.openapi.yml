@@ -314,6 +314,99 @@ paths:
                   - meta
                   - serie_0
       x-distilled-response-path: result
+  /radar/agent_readiness/summary/{dimension}:
+    get:
+      operationId: summaryAgentReadiness
+      parameters:
+        - name: dimension
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - CHECK
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      date:
+                        type: string
+                        description: Date of the returned scan (YYYY-MM-DD). May differ from the
+                          requested date if no scan exists for that exact date.
+                      domainCategories:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              description: Sub-category name.
+                            value:
+                              type: number
+                              description: Number of successfully scanned domains in this sub-category.
+                          required:
+                            - name
+                            - value
+                        description: Available domain sub-categories with their scan counts. Use as
+                          filter options for the domainCategory parameter.
+                      lastUpdated:
+                        type: string
+                        description: Timestamp of the last dataset update.
+                      normalization:
+                        type: string
+                        enum:
+                          - PERCENTAGE
+                          - MIN0_MAX
+                          - MIN_MAX
+                          - RAW_VALUES
+                          - PERCENTAGE_CHANGE
+                          - ROLLING_AVERAGE
+                          - OVERLAPPED_PERCENTAGE
+                          - RATIO
+                        description: Normalization method applied to the results. Refer to
+                          [Normalization
+                          methods](https://developers.cloudflare.com/radar/concepts/normalization/).
+                      successfulDomains:
+                        type: number
+                        description: Domains successfully scanned (excludes errors).
+                      totalDomains:
+                        type: number
+                        description: Total domains attempted in the scan.
+                      units:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                            - name
+                            - value
+                        description: Measurement units for the results.
+                    required:
+                      - date
+                      - domainCategories
+                      - lastUpdated
+                      - normalization
+                      - successfulDomains
+                      - totalDomains
+                      - units
+                  summary_0:
+                    type: object
+                    additionalProperties: true
+                required:
+                  - meta
+                  - summary_0
+      x-distilled-response-path: result
   /radar/ai/bots/timeseries:
     get:
       operationId: timeseriesAiTimeseriesGroup
@@ -1083,6 +1176,309 @@ paths:
                   - meta
                   - serie_0
       x-distilled-response-path: result
+  /radar/ai/markdown_for_agents/summary:
+    get:
+      operationId: summaryAiMarkdownForAgent
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      confidenceInfo:
+                        type: object
+                        properties:
+                          annotations:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                dataSource:
+                                  type: string
+                                  enum:
+                                    - ALL
+                                    - AI_BOTS
+                                    - AI_GATEWAY
+                                    - BGP
+                                    - BOTS
+                                    - CONNECTION_ANOMALY
+                                    - CT
+                                    - DNS
+                                    - DNS_MAGNITUDE
+                                    - DNS_AS112
+                                    - DOS
+                                    - EMAIL_ROUTING
+                                    - EMAIL_SECURITY
+                                    - FW
+                                    - FW_PG
+                                    - HTTP
+                                    - HTTP_CONTROL
+                                    - HTTP_CRAWLER_REFERER
+                                    - HTTP_ORIGINS
+                                    - IQI
+                                    - LEAKED_CREDENTIALS
+                                    - NET
+                                    - ROBOTS_TXT
+                                    - SPEED
+                                    - WORKERS_AI
+                                  description: Data source for annotations.
+                                description:
+                                  type: string
+                                endDate:
+                                  type: string
+                                eventType:
+                                  type: string
+                                  enum:
+                                    - EVENT
+                                    - GENERAL
+                                    - OUTAGE
+                                    - PARTIAL_PROJECTION
+                                    - PIPELINE
+                                    - TRAFFIC_ANOMALY
+                                  description: Event type for annotations.
+                                isInstantaneous:
+                                  type: boolean
+                                  description: Whether event is a single point in time or a time range.
+                                linkedUrl:
+                                  type: string
+                                startDate:
+                                  type: string
+                              required:
+                                - dataSource
+                                - description
+                                - endDate
+                                - eventType
+                                - isInstantaneous
+                                - linkedUrl
+                                - startDate
+                          level:
+                            type: number
+                            description: Provides an indication of how much confidence Cloudflare has in the
+                              data.
+                        required:
+                          - annotations
+                          - level
+                      dateRange:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            endTime:
+                              type: string
+                              description: Adjusted end of date range.
+                            startTime:
+                              type: string
+                              description: Adjusted start of date range.
+                          required:
+                            - endTime
+                            - startTime
+                      lastUpdated:
+                        type: string
+                        description: Timestamp of the last dataset update.
+                      normalization:
+                        type: string
+                        enum:
+                          - PERCENTAGE
+                          - MIN0_MAX
+                          - MIN_MAX
+                          - RAW_VALUES
+                          - PERCENTAGE_CHANGE
+                          - ROLLING_AVERAGE
+                          - OVERLAPPED_PERCENTAGE
+                          - RATIO
+                        description: Normalization method applied to the results. Refer to
+                          [Normalization
+                          methods](https://developers.cloudflare.com/radar/concepts/normalization/).
+                      units:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                            - name
+                            - value
+                        description: Measurement units for the results.
+                    required:
+                      - confidenceInfo
+                      - dateRange
+                      - lastUpdated
+                      - normalization
+                      - units
+                    description: Metadata for the results.
+                  summary_0:
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                        description: A numeric string that can include decimals and infinity values.
+                    required:
+                      - value
+                required:
+                  - meta
+                  - summary_0
+      x-distilled-response-path: result
+  /radar/ai/markdown_for_agents/timeseries:
+    get:
+      operationId: timeseriesAiMarkdownForAgent
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      aggInterval:
+                        type: string
+                        enum:
+                          - FIFTEEN_MINUTES
+                          - ONE_HOUR
+                          - ONE_DAY
+                          - ONE_WEEK
+                          - ONE_MONTH
+                        description: Aggregation interval of the results (e.g., in 15 minutes or 1 hour
+                          intervals). Refer to [Aggregation
+                          intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).
+                      confidenceInfo:
+                        type: object
+                        properties:
+                          annotations:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                dataSource:
+                                  type: string
+                                  enum:
+                                    - ALL
+                                    - AI_BOTS
+                                    - AI_GATEWAY
+                                    - BGP
+                                    - BOTS
+                                    - CONNECTION_ANOMALY
+                                    - CT
+                                    - DNS
+                                    - DNS_MAGNITUDE
+                                    - DNS_AS112
+                                    - DOS
+                                    - EMAIL_ROUTING
+                                    - EMAIL_SECURITY
+                                    - FW
+                                    - FW_PG
+                                    - HTTP
+                                    - HTTP_CONTROL
+                                    - HTTP_CRAWLER_REFERER
+                                    - HTTP_ORIGINS
+                                    - IQI
+                                    - LEAKED_CREDENTIALS
+                                    - NET
+                                    - ROBOTS_TXT
+                                    - SPEED
+                                    - WORKERS_AI
+                                  description: Data source for annotations.
+                                description:
+                                  type: string
+                                endDate:
+                                  type: string
+                                eventType:
+                                  type: string
+                                  enum:
+                                    - EVENT
+                                    - GENERAL
+                                    - OUTAGE
+                                    - PARTIAL_PROJECTION
+                                    - PIPELINE
+                                    - TRAFFIC_ANOMALY
+                                  description: Event type for annotations.
+                                isInstantaneous:
+                                  type: boolean
+                                  description: Whether event is a single point in time or a time range.
+                                linkedUrl:
+                                  type: string
+                                startDate:
+                                  type: string
+                              required:
+                                - dataSource
+                                - description
+                                - endDate
+                                - eventType
+                                - isInstantaneous
+                                - linkedUrl
+                                - startDate
+                          level:
+                            type: number
+                            description: Provides an indication of how much confidence Cloudflare has in the
+                              data.
+                        required:
+                          - annotations
+                          - level
+                      dateRange:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            endTime:
+                              type: string
+                              description: Adjusted end of date range.
+                            startTime:
+                              type: string
+                              description: Adjusted start of date range.
+                          required:
+                            - endTime
+                            - startTime
+                      lastUpdated:
+                        type: string
+                        description: Timestamp of the last dataset update.
+                      normalization:
+                        type: string
+                        enum:
+                          - PERCENTAGE
+                          - MIN0_MAX
+                          - MIN_MAX
+                          - RAW_VALUES
+                          - PERCENTAGE_CHANGE
+                          - ROLLING_AVERAGE
+                          - OVERLAPPED_PERCENTAGE
+                          - RATIO
+                        description: Normalization method applied to the results. Refer to
+                          [Normalization
+                          methods](https://developers.cloudflare.com/radar/concepts/normalization/).
+                      units:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                            - name
+                            - value
+                        description: Measurement units for the results.
+                    required:
+                      - aggInterval
+                      - confidenceInfo
+                      - dateRange
+                      - lastUpdated
+                      - normalization
+                      - units
+                    description: Metadata for the results.
+                required:
+                  - meta
+      x-distilled-response-path: result
   /radar/ai/bots/summary/{dimension}:
     get:
       operationId: summaryV2AiBot
@@ -1097,6 +1493,9 @@ paths:
               - CRAWL_PURPOSE
               - INDUSTRY
               - VERTICAL
+              - CONTENT_TYPE
+              - RESPONSE_STATUS
+              - RESPONSE_STATUS_CATEGORY
       responses:
         "200":
           description: Success
@@ -1242,41 +1641,59 @@ paths:
   /accounts/{account_id}/ai/tomarkdown:
     post:
       operationId: createAiToMarkdown
-      description: Convert Files into Markdown  @deprecated Use [AI > To
+      description: Converts uploaded files into Markdown format using Workers
+        AI.  @deprecated Use [AI > To
         Markdown](https://developers.cloudflare.com/api/resources/ai/subresources/to_markdown/)
         instead.
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  description: Body param
+              required:
+                - files
       responses:
         "200":
           description: Success
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  data:
-                    type: string
-                  format:
-                    type: string
-                  mimeType:
-                    type: string
-                  name:
-                    type: string
-                  tokens:
-                    type: string
-                required:
-                  - data
-                  - format
-                  - mimeType
-                  - name
-                  - tokens
-      x-distilled-pagination-class: ToMarkdownCreateResponsesSinglePage
+                type: array
+                items:
+                  type: object
+                  properties:
+                    data:
+                      type: string
+                    format:
+                      type: string
+                    mimeType:
+                      type: string
+                    name:
+                      type: string
+                    tokens:
+                      type: string
+                  required:
+                    - data
+                    - format
+                    - mimeType
+                    - name
+                    - tokens
+      x-distilled-response-path: result
   /radar/annotations:
     get:
       operationId: listAnnotations
@@ -8977,6 +9394,46 @@ paths:
                   - meta
                   - serie_0
       x-distilled-response-path: result
+  /radar/bgp/ips/top/ases:
+    get:
+      operationId: asesBgpIpTop
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  anchorTs:
+                    type: string
+                  asns:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        asn:
+                          type: number
+                        v4_24s:
+                          type: number
+                        v6_48s:
+                          type: number
+                      required:
+                        - asn
+                        - v4_24s
+                        - v6_48s
+                  country:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  metric:
+                    type: string
+                required:
+                  - anchorTs
+                  - asns
+                  - country
+                  - metric
+      x-distilled-response-path: result
   /radar/bgp/leaks/events:
     get:
       operationId: listBgpLeakEvents
@@ -9469,6 +9926,259 @@ paths:
                   - meta
                   - stats
       x-distilled-response-path: result
+  /radar/bgp/rpki/aspa/changes:
+    get:
+      operationId: changesBgpRpkiAspa
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  asnInfo:
+                    type: object
+                    properties:
+                      "13335":
+                        type: object
+                        properties:
+                          asn:
+                            type: number
+                            description: ASN number.
+                          country:
+                            type: string
+                            description: Alpha-2 country code.
+                          name:
+                            type: string
+                            description: AS name.
+                        required:
+                          - asn
+                          - country
+                          - name
+                    required:
+                      - "13335"
+                  changes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        customersAdded:
+                          type: number
+                          description: Number of new ASPA objects created.
+                        customersRemoved:
+                          type: number
+                          description: Number of ASPA objects deleted.
+                        date:
+                          type: string
+                          description: Date of the changes in ISO 8601 format.
+                        entries:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              customerAsn:
+                                type: number
+                                description: The customer ASN affected.
+                              providers:
+                                type: array
+                                items:
+                                  type: number
+                              type:
+                                type: string
+                                enum:
+                                  - CustomerAdded
+                                  - CustomerRemoved
+                                  - ProvidersAdded
+                                  - ProvidersRemoved
+                            required:
+                              - customerAsn
+                              - providers
+                              - type
+                        providersAdded:
+                          type: number
+                          description: Number of providers added to existing objects.
+                        providersRemoved:
+                          type: number
+                          description: Number of providers removed from existing objects.
+                        totalCount:
+                          type: number
+                          description: Running total of active ASPA objects after this day.
+                      required:
+                        - customersAdded
+                        - customersRemoved
+                        - date
+                        - entries
+                        - providersAdded
+                        - providersRemoved
+                        - totalCount
+                  meta:
+                    type: object
+                    properties:
+                      dataTime:
+                        type: string
+                        description: Timestamp of the underlying data.
+                      queryTime:
+                        type: string
+                        description: Timestamp when the query was executed.
+                    required:
+                      - dataTime
+                      - queryTime
+                required:
+                  - asnInfo
+                  - changes
+                  - meta
+      x-distilled-response-path: result
+  /radar/bgp/rpki/aspa/snapshot:
+    get:
+      operationId: snapshotBgpRpkiAspa
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  asnInfo:
+                    type: object
+                    properties:
+                      "13335":
+                        type: object
+                        properties:
+                          asn:
+                            type: number
+                            description: ASN number.
+                          country:
+                            type: string
+                            description: Alpha-2 country code.
+                          name:
+                            type: string
+                            description: AS name.
+                        required:
+                          - asn
+                          - country
+                          - name
+                    required:
+                      - "13335"
+                  aspaObjects:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        customerAsn:
+                          type: number
+                          description: The customer ASN publishing the ASPA object.
+                        providers:
+                          type: array
+                          items:
+                            type: number
+                      required:
+                        - customerAsn
+                        - providers
+                  meta:
+                    type: object
+                    properties:
+                      dataTime:
+                        type: string
+                        description: Timestamp of the underlying data.
+                      queryTime:
+                        type: string
+                        description: Timestamp when the query was executed.
+                      totalCount:
+                        type: number
+                        description: Total number of ASPA objects.
+                    required:
+                      - dataTime
+                      - queryTime
+                      - totalCount
+                required:
+                  - asnInfo
+                  - aspaObjects
+                  - meta
+      x-distilled-response-path: result
+  /radar/bgp/rpki/aspa/timeseries:
+    get:
+      operationId: timeseriesBgpRpkiAspa
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      dataTime:
+                        type: string
+                        description: Timestamp of the underlying data.
+                      queryTime:
+                        type: string
+                        description: Timestamp when the query was executed.
+                    required:
+                      - dataTime
+                      - queryTime
+                  serie_0:
+                    type: object
+                    properties:
+                      timestamps:
+                        type: array
+                        items:
+                          type: string
+                      values:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - timestamps
+                      - values
+                required:
+                  - meta
+                  - serie_0
+      x-distilled-response-path: result
+  /radar/bgp/rpki/roas/timeseries:
+    get:
+      operationId: timeseriesBgpRpkiRoa
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      dataTime:
+                        type: string
+                        description: Timestamp of the underlying data.
+                      queryTime:
+                        type: string
+                        description: Timestamp when the query was executed.
+                    required:
+                      - dataTime
+                      - queryTime
+                  serie_0:
+                    type: object
+                    properties:
+                      timestamps:
+                        type: array
+                        items:
+                          type: string
+                      values:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - timestamps
+                      - values
+                required:
+                  - meta
+                  - serie_0
+      x-distilled-response-path: result
   /radar/bgp/top/prefixes:
     get:
       operationId: prefixesBgpTop
@@ -9662,6 +10372,14 @@ paths:
                         type: array
                         items:
                           type: string
+                      signatureAgentUrl:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: The URL of the agent's [Web Bot
+                          Auth](https://blog.cloudflare.com/web-bot-auth/)
+                          resource. Null for bots not verified via request
+                          signature.
                     required:
                       - category
                       - description
@@ -10049,6 +10767,8 @@ paths:
               - CRAWL_REFER_RATIO
               - VERTICAL
               - INDUSTRY
+              - RESPONSE_STATUS
+              - RESPONSE_STATUS_CATEGORY
       responses:
         "200":
           description: Success
@@ -12930,7 +13650,7 @@ paths:
               properties:
                 datasetId:
                   type: number
-                  description: "Body param:"
+                  description: Body param
               required:
                 - datasetId
       responses:
@@ -19401,6 +20121,8 @@ paths:
                         type: string
                       confidenceLevel:
                         type: number
+                      continent:
+                        type: string
                       latitude:
                         type: string
                         description: A numeric string.
@@ -19416,6 +20138,7 @@ paths:
                     required:
                       - alpha2
                       - confidenceLevel
+                      - continent
                       - latitude
                       - longitude
                       - name
@@ -19442,6 +20165,8 @@ paths:
                       properties:
                         alpha2:
                           type: string
+                        continent:
+                          type: string
                         latitude:
                           type: string
                           description: A numeric string.
@@ -19450,11 +20175,18 @@ paths:
                           description: A numeric string.
                         name:
                           type: string
+                        region:
+                          type: string
+                        subregion:
+                          type: string
                       required:
                         - alpha2
+                        - continent
                         - latitude
                         - longitude
                         - name
+                        - region
+                        - subregion
                 required:
                   - locations
       x-distilled-response-path: result
@@ -19840,6 +20572,11 @@ paths:
                                   - COUNTRY
                                   - ADM1
                                 description: The type of the geolocation.
+                              code:
+                                type: string
+                              locale:
+                                type: string
+                                description: BCP 47 locale code used for the geolocation name translation
                             required:
                               - geoId
                               - latitude
@@ -19853,6 +20590,11 @@ paths:
                               - COUNTRY
                               - ADM1
                             description: The type of the geolocation.
+                          code:
+                            type: string
+                          locale:
+                            type: string
+                            description: BCP 47 locale code used for the geolocation name translation
                         required:
                           - geoId
                           - latitude
@@ -19867,6 +20609,11 @@ paths:
                           - COUNTRY
                           - ADM1
                         description: The type of the geolocation.
+                      code:
+                        type: string
+                      locale:
+                        type: string
+                        description: BCP 47 locale code used for the geolocation name translation
                     required:
                       - geoId
                       - latitude
@@ -19936,6 +20683,11 @@ paths:
                                     - COUNTRY
                                     - ADM1
                                   description: The type of the geolocation.
+                                code:
+                                  type: string
+                                locale:
+                                  type: string
+                                  description: BCP 47 locale code used for the geolocation name translation
                               required:
                                 - geoId
                                 - latitude
@@ -19949,6 +20701,11 @@ paths:
                                 - COUNTRY
                                 - ADM1
                               description: The type of the geolocation.
+                            code:
+                              type: string
+                            locale:
+                              type: string
+                              description: BCP 47 locale code used for the geolocation name translation
                           required:
                             - geoId
                             - latitude
@@ -19963,6 +20720,11 @@ paths:
                             - COUNTRY
                             - ADM1
                           description: The type of the geolocation.
+                        code:
+                          type: string
+                        locale:
+                          type: string
+                          description: BCP 47 locale code used for the geolocation name translation
                       required:
                         - geoId
                         - latitude
@@ -19987,6 +20749,9 @@ paths:
               - CRAWL_PURPOSE
               - INDUSTRY
               - VERTICAL
+              - CONTENT_TYPE
+              - RESPONSE_STATUS
+              - RESPONSE_STATUS_CATEGORY
       responses:
         "200":
           description: Success
@@ -20337,6 +21102,8 @@ paths:
               - CRAWL_REFER_RATIO
               - VERTICAL
               - INDUSTRY
+              - RESPONSE_STATUS
+              - RESPONSE_STATUS_CATEGORY
       responses:
         "200":
           description: Success
@@ -20819,7 +21586,180 @@ paths:
             type: string
             enum:
               - ADM1
+              - AS
+              - LOCATION
               - PRODUCT
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      aggInterval:
+                        type: string
+                        enum:
+                          - FIFTEEN_MINUTES
+                          - ONE_HOUR
+                          - ONE_DAY
+                          - ONE_WEEK
+                          - ONE_MONTH
+                        description: Aggregation interval of the results (e.g., in 15 minutes or 1 hour
+                          intervals). Refer to [Aggregation
+                          intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).
+                      confidenceInfo:
+                        type: object
+                        properties:
+                          annotations:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                dataSource:
+                                  type: string
+                                  enum:
+                                    - ALL
+                                    - AI_BOTS
+                                    - AI_GATEWAY
+                                    - BGP
+                                    - BOTS
+                                    - CONNECTION_ANOMALY
+                                    - CT
+                                    - DNS
+                                    - DNS_MAGNITUDE
+                                    - DNS_AS112
+                                    - DOS
+                                    - EMAIL_ROUTING
+                                    - EMAIL_SECURITY
+                                    - FW
+                                    - FW_PG
+                                    - HTTP
+                                    - HTTP_CONTROL
+                                    - HTTP_CRAWLER_REFERER
+                                    - HTTP_ORIGINS
+                                    - IQI
+                                    - LEAKED_CREDENTIALS
+                                    - NET
+                                    - ROBOTS_TXT
+                                    - SPEED
+                                    - WORKERS_AI
+                                  description: Data source for annotations.
+                                description:
+                                  type: string
+                                endDate:
+                                  type: string
+                                eventType:
+                                  type: string
+                                  enum:
+                                    - EVENT
+                                    - GENERAL
+                                    - OUTAGE
+                                    - PARTIAL_PROJECTION
+                                    - PIPELINE
+                                    - TRAFFIC_ANOMALY
+                                  description: Event type for annotations.
+                                isInstantaneous:
+                                  type: boolean
+                                  description: Whether event is a single point in time or a time range.
+                                linkedUrl:
+                                  type: string
+                                startDate:
+                                  type: string
+                              required:
+                                - dataSource
+                                - description
+                                - endDate
+                                - eventType
+                                - isInstantaneous
+                                - linkedUrl
+                                - startDate
+                          level:
+                            type: number
+                            description: Provides an indication of how much confidence Cloudflare has in the
+                              data.
+                        required:
+                          - annotations
+                          - level
+                      dateRange:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            endTime:
+                              type: string
+                              description: Adjusted end of date range.
+                            startTime:
+                              type: string
+                              description: Adjusted start of date range.
+                          required:
+                            - endTime
+                            - startTime
+                      lastUpdated:
+                        type: string
+                        description: Timestamp of the last dataset update.
+                      normalization:
+                        type: string
+                        enum:
+                          - PERCENTAGE
+                          - MIN0_MAX
+                          - MIN_MAX
+                          - RAW_VALUES
+                          - PERCENTAGE_CHANGE
+                          - ROLLING_AVERAGE
+                          - OVERLAPPED_PERCENTAGE
+                          - RATIO
+                        description: Normalization method applied to the results. Refer to
+                          [Normalization
+                          methods](https://developers.cloudflare.com/radar/concepts/normalization/).
+                      units:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                            - name
+                            - value
+                        description: Measurement units for the results.
+                    required:
+                      - aggInterval
+                      - confidenceInfo
+                      - dateRange
+                      - lastUpdated
+                      - normalization
+                      - units
+                    description: Metadata for the results.
+                  serie_0:
+                    type: object
+                    properties:
+                      timestamps:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - timestamps
+                required:
+                  - meta
+                  - serie_0
+      x-distilled-response-path: result
+  /radar/post_quantum/origin/timeseries_groups/{dimension}:
+    get:
+      operationId: timeseriesGroupsPostQuantumOrigin
+      parameters:
+        - name: dimension
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - KEY_AGREEMENT
       responses:
         "200":
           description: Success
@@ -21221,26 +22161,11 @@ paths:
                   serie_0:
                     type: object
                     properties:
-                      p25:
-                        type: array
-                        items:
-                          type: string
-                      p50:
-                        type: array
-                        items:
-                          type: string
-                      p75:
-                        type: array
-                        items:
-                          type: string
                       timestamps:
                         type: array
                         items:
                           type: string
                     required:
-                      - p25
-                      - p50
-                      - p75
                       - timestamps
                 required:
                   - meta
@@ -22472,17 +23397,20 @@ paths:
           schema:
             type: string
             enum:
-              - IP_VERSION
+              - AS
               - CACHE_HIT
               - DNSSEC
               - DNSSEC_AWARE
               - DNSSEC_E2E
+              - IP_VERSION
+              - LOCATION
               - MATCHING_ANSWER
               - PROTOCOL
               - QUERY_TYPE
               - RESPONSE_CODE
               - RESPONSE_TTL
               - TLD
+              - TLD_DNS_MAGNITUDE
       responses:
         "200":
           description: Success
@@ -23009,13 +23937,17 @@ paths:
             type: string
             enum:
               - ADM1
+              - API_TRAFFIC
+              - AS
               - BOT_CLASS
               - BROWSER
               - BROWSER_FAMILY
+              - CONTENT_TYPE
               - DEVICE_TYPE
               - HTTP_PROTOCOL
               - HTTP_VERSION
               - IP_VERSION
+              - LOCATION
               - OS
               - POST_QUANTUM
               - TLS_VERSION
@@ -28787,6 +29719,234 @@ paths:
                   - meta
                   - top_0
       x-distilled-response-path: result
+  /radar/post_quantum/origin/summary/{dimension}:
+    get:
+      operationId: summaryPostQuantumOrigin
+      parameters:
+        - name: dimension
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - KEY_AGREEMENT
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      confidenceInfo:
+                        type: object
+                        properties:
+                          annotations:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                dataSource:
+                                  type: string
+                                  enum:
+                                    - ALL
+                                    - AI_BOTS
+                                    - AI_GATEWAY
+                                    - BGP
+                                    - BOTS
+                                    - CONNECTION_ANOMALY
+                                    - CT
+                                    - DNS
+                                    - DNS_MAGNITUDE
+                                    - DNS_AS112
+                                    - DOS
+                                    - EMAIL_ROUTING
+                                    - EMAIL_SECURITY
+                                    - FW
+                                    - FW_PG
+                                    - HTTP
+                                    - HTTP_CONTROL
+                                    - HTTP_CRAWLER_REFERER
+                                    - HTTP_ORIGINS
+                                    - IQI
+                                    - LEAKED_CREDENTIALS
+                                    - NET
+                                    - ROBOTS_TXT
+                                    - SPEED
+                                    - WORKERS_AI
+                                  description: Data source for annotations.
+                                description:
+                                  type: string
+                                endDate:
+                                  type: string
+                                eventType:
+                                  type: string
+                                  enum:
+                                    - EVENT
+                                    - GENERAL
+                                    - OUTAGE
+                                    - PARTIAL_PROJECTION
+                                    - PIPELINE
+                                    - TRAFFIC_ANOMALY
+                                  description: Event type for annotations.
+                                isInstantaneous:
+                                  type: boolean
+                                  description: Whether event is a single point in time or a time range.
+                                linkedUrl:
+                                  type: string
+                                startDate:
+                                  type: string
+                              required:
+                                - dataSource
+                                - description
+                                - endDate
+                                - eventType
+                                - isInstantaneous
+                                - linkedUrl
+                                - startDate
+                          level:
+                            type: number
+                            description: Provides an indication of how much confidence Cloudflare has in the
+                              data.
+                        required:
+                          - annotations
+                          - level
+                      dateRange:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            endTime:
+                              type: string
+                              description: Adjusted end of date range.
+                            startTime:
+                              type: string
+                              description: Adjusted start of date range.
+                          required:
+                            - endTime
+                            - startTime
+                      lastUpdated:
+                        type: string
+                        description: Timestamp of the last dataset update.
+                      normalization:
+                        type: string
+                        enum:
+                          - PERCENTAGE
+                          - MIN0_MAX
+                          - MIN_MAX
+                          - RAW_VALUES
+                          - PERCENTAGE_CHANGE
+                          - ROLLING_AVERAGE
+                          - OVERLAPPED_PERCENTAGE
+                          - RATIO
+                        description: Normalization method applied to the results. Refer to
+                          [Normalization
+                          methods](https://developers.cloudflare.com/radar/concepts/normalization/).
+                      units:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                            - name
+                            - value
+                        description: Measurement units for the results.
+                    required:
+                      - confidenceInfo
+                      - dateRange
+                      - lastUpdated
+                      - normalization
+                      - units
+                    description: Metadata for the results.
+                  summary_0:
+                    type: object
+                    additionalProperties: true
+                required:
+                  - meta
+                  - summary_0
+      x-distilled-response-path: result
+  /radar/post_quantum/tls/support:
+    get:
+      operationId: supportPostQuantumTls
+      description: "Tests whether a hostname or IP address supports Post-Quantum (PQ)
+        TLS key exchange. Returns information about the negotiated key exchange
+        algorithm, whether it uses PQ cryptography, and any detected TLS
+        implementation bugs (Split ClientHello, HRR failure, etc.).  @example
+        ```ts const response = await client.radar.postQuantum.tls.support( {
+        host: 'cloudflare.com' }, ); ```"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                host:
+                  type: string
+                  description: Hostname or IP address to test for Post-Quantum TLS support,
+                    optionally with port (defaults to 443).
+              required:
+                - host
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bugs:
+                    type: object
+                    properties:
+                      hrrFailure:
+                        type: boolean
+                        description: Server sends a HelloRetryRequest but fails to complete the
+                          handshake after the client sends the second
+                          ClientHello. Often caused by non-compliant TLS 1.3
+                          implementations on shared hosting providers.
+                      splitClientHello:
+                        type: boolean
+                        description: Server rejects fragmented ClientHello caused by large PQ keyshare,
+                          but accepts classical (non-PQ) handshakes. Typically
+                          caused by middleboxes or firewalls that cannot
+                          reassemble split TLS ClientHello messages.
+                      unknownKeyshare:
+                        type: boolean
+                        description: Server cannot handle an unknown key exchange algorithm in the
+                          ClientHello keyshare extension. Compliant servers
+                          should respond with HelloRetryRequest for a supported
+                          algorithm.
+                    required:
+                      - hrrFailure
+                      - splitClientHello
+                      - unknownKeyshare
+                  host:
+                    type: string
+                    description: The host that was tested
+                  kex:
+                    type: number
+                    description: TLS CurveID of the negotiated key exchange
+                  kexName:
+                    type: string
+                    description: Human-readable name of the key exchange algorithm
+                  pq:
+                    type: boolean
+                    description: Whether the negotiated key exchange uses Post-Quantum cryptography
+                      (specifically X25519MLKEM768)
+                required:
+                  - bugs
+                  - host
+                  - kex
+                  - kexName
+                  - pq
+      x-distilled-response-path: result
   /radar/attacks/layer7/summary/mitigation_product:
     get:
       operationId: mitigationProductAttackLayer7Summary
@@ -31580,8 +32740,11 @@ paths:
     get:
       operationId: globalSearch
       description: "Searches for locations, autonomous systems, reports, bots,
-        certificate logs, certificate authorities, industries and
-        verticals  @example ```ts const response = await
+        certificate logs, certificate authorities, industries and verticals.
+        Location names can be localized by sending an `Accept-Language` HTTP
+        header with a BCP 47 language tag (e.g., `Accept-Language: pt-PT`). The
+        full quality-value chain is supported (e.g.,
+        `pt-PT,pt;q=0.9,en;q=0.8`).  @example ```ts const response = await
         client.radar.search.global({ query: 'United', }); ```"
       requestBody:
         required: true
@@ -31909,6 +33072,53 @@ paths:
                 required:
                   - meta
                   - summary_0
+      x-distilled-response-path: result
+  /radar/entities/asns/botnet_threat_feed:
+    get:
+      operationId: botnetThreatFeedEntityAsn
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ases:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        asn:
+                          type: number
+                        country:
+                          type: string
+                        name:
+                          type: string
+                        rank:
+                          type: number
+                        rankChange:
+                          type: number
+                      required:
+                        - asn
+                        - country
+                        - name
+                        - rank
+                  meta:
+                    type: object
+                    properties:
+                      date:
+                        type: string
+                      total:
+                        type: number
+                      compareDate:
+                        type: string
+                    required:
+                      - date
+                      - total
+                required:
+                  - ases
+                  - meta
       x-distilled-response-path: result
   /radar/traffic_anomalies:
     get:
@@ -33977,11 +35187,13 @@ paths:
           schema:
             type: string
             enum:
-              - IP_VERSION
+              - AS
               - CACHE_HIT
               - DNSSEC
               - DNSSEC_AWARE
               - DNSSEC_E2E
+              - IP_VERSION
+              - LOCATION
               - MATCHING_ANSWER
               - PROTOCOL
               - QUERY_TYPE
@@ -34461,13 +35673,17 @@ paths:
             type: string
             enum:
               - ADM1
+              - API_TRAFFIC
+              - AS
               - BOT_CLASS
               - BROWSER
               - BROWSER_FAMILY
+              - CONTENT_TYPE
               - DEVICE_TYPE
               - HTTP_PROTOCOL
               - HTTP_VERSION
               - IP_VERSION
+              - LOCATION
               - OS
               - POST_QUANTUM
               - TLS_VERSION
@@ -34778,6 +35994,8 @@ paths:
             type: string
             enum:
               - ADM1
+              - AS
+              - LOCATION
               - PRODUCT
       responses:
         "200":

@@ -133,7 +133,7 @@ paths:
               properties:
                 id:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 account:
                   type: string
                   description: "Body param: Customer account tag"
@@ -157,7 +157,7 @@ paths:
                     - conduit_name
                     - description
                     - mtu
-                  description: "Body param:"
+                  description: Body param
                 p2p_ip:
                   type: string
                   description: "Body param: Cloudflare end of the point-to-point link"
@@ -196,7 +196,7 @@ paths:
                   required:
                     - customer_asn
                     - extra_prefixes
-                  description: "Body param:"
+                  description: Body param
               required:
                 - id
                 - account
@@ -319,7 +319,7 @@ paths:
         - name: cursor
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             oneOf:
               - type: number
@@ -327,7 +327,7 @@ paths:
         - name: limit
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             oneOf:
               - type: number
@@ -466,7 +466,7 @@ paths:
                   description: "Body param: Customer account tag"
                 interconnect:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 magic:
                   type: object
                   properties:
@@ -480,7 +480,7 @@ paths:
                     - conduit_name
                     - description
                     - mtu
-                  description: "Body param:"
+                  description: Body param
                 bgp:
                   type: object
                   properties:
@@ -516,7 +516,7 @@ paths:
                   required:
                     - customer_asn
                     - extra_prefixes
-                  description: "Body param:"
+                  description: Body param
               required:
                 - account
                 - interconnect
@@ -730,7 +730,7 @@ paths:
         - name: cursor
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             oneOf:
               - type: number
@@ -738,7 +738,7 @@ paths:
         - name: limit
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             oneOf:
               - type: number
@@ -871,18 +871,18 @@ paths:
               properties:
                 account:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 slot_id:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 type:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 speed:
                   oneOf:
                     - type: string
                   nullable: true
-                  description: "Body param:"
+                  description: Body param
               required:
                 - account
                 - slot_id
@@ -1101,7 +1101,7 @@ paths:
                   oneOf:
                     - type: number
                   nullable: true
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -1198,7 +1198,7 @@ paths:
         - name: cursor
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             oneOf:
               - type: number
@@ -1206,7 +1206,7 @@ paths:
         - name: limit
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             oneOf:
               - type: number

@@ -221,6 +221,8 @@ export interface ListWidgetsRequest {
   perPage?: number;
   /** Query param: Direction to order widgets. */
   direction?: "asc" | "desc";
+  /** Query param: Filter widgets by field using case-insensitive substring matching. Format: `field:value`  Supported fields:  - `name` - Filter by widget name (e.g., `filter=name:login-form`) - `sitekey`  */
+  filter?: string;
   /** Query param: Field to order widgets by. */
   order?: "id" | "sitekey" | "name" | "created_on" | "modified_on";
 }
@@ -232,6 +234,7 @@ export const ListWidgetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
     T.HttpQuery("direction"),
   ),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   order: Schema.optional(
     Schema.Literals(["id", "sitekey", "name", "created_on", "modified_on"]),
   ).pipe(T.HttpQuery("order")),
@@ -343,13 +346,15 @@ export interface CreateWidgetRequest {
   accountId: string;
   /** Query param: Direction to order widgets. */
   direction?: "asc" | "desc";
+  /** Query param: Filter widgets by field using case-insensitive substring matching. Format: `field:value`  Supported fields:  - `name` - Filter by widget name (e.g., `filter=name:login-form`) - `sitekey`  */
+  filter?: string;
   /** Query param: Field to order widgets by. */
   order?: "id" | "sitekey" | "name" | "created_on" | "modified_on";
   /** Query param: Page number of paginated results. */
   page?: number;
   /** Query param: Number of items per page. */
   perPage?: number;
-  /** Body param: */
+  /** Body param */
   domains: string[];
   /** Body param: Widget Mode */
   mode: "non-interactive" | "invisible" | "managed";
@@ -372,6 +377,7 @@ export const CreateWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
     T.HttpQuery("direction"),
   ),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   order: Schema.optional(
     Schema.Literals(["id", "sitekey", "name", "created_on", "modified_on"]),
   ).pipe(T.HttpQuery("order")),
@@ -483,7 +489,7 @@ export interface UpdateWidgetRequest {
   sitekey: string;
   /** Path param: Identifier */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   domains: string[];
   /** Body param: Widget Mode */
   mode: "non-interactive" | "invisible" | "managed";

@@ -45,8 +45,11 @@ paths:
   /accounts/{account_id}/mtls_certificates/{mtlsCertificateId}:
     get:
       operationId: getMtlsCertificate
-      description: "Fetches a single mTLS certificate.  @example ```ts const
-        mtlsCertificate = await client.mtlsCertificates.get(
+      description: "Fetches a single mTLS certificate uploaded to your account. To get
+        a certificate issued by the Cloudflare managed CA, use the [Client
+        Certificate Details
+        endpoint](/api/resources/client_certificates/methods/get/).  @example
+        ```ts const mtlsCertificate = await client.mtlsCertificates.get(
         '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -94,6 +97,14 @@ paths:
                   signature:
                     type: string
                     description: The type of hash used for the certificate.
+                  type:
+                    type: string
+                    enum:
+                      - custom
+                      - gateway_managed
+                      - access_managed
+                    description: The type of the certificate, indicating how it was created and who
+                      manages it.
                   uploaded_on:
                     type: string
                     description: This is the time the certificate was uploaded.
@@ -150,6 +161,14 @@ paths:
                   signature:
                     type: string
                     description: The type of hash used for the certificate.
+                  type:
+                    type: string
+                    enum:
+                      - custom
+                      - gateway_managed
+                      - access_managed
+                    description: The type of the certificate, indicating how it was created and who
+                      manages it.
                   uploaded_on:
                     type: string
                     description: This is the time the certificate was uploaded.
@@ -157,17 +176,33 @@ paths:
   /accounts/{account_id}/mtls_certificates:
     get:
       operationId: listMtlsCertificates
-      description: "Lists all mTLS certificates.  @example ```ts // Automatically
-        fetches more pages as needed. for await (const mtlsCertificate of
-        client.mtlsCertificates.list( { account_id:
+      description: "Lists all mTLS certificates uploaded to your account, such as
+        Bring Your Own CA (BYO-CA) for mTLS. To list certificates issued by the
+        Cloudflare managed CA, use the [List Client Certificates
+        endpoint](/api/resources/client_certificates/methods/list/).  @example
+        ```ts // Automatically fetches more pages as needed. for await (const
+        mtlsCertificate of client.mtlsCertificates.list( { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: Identifier.
+          description: "Path param: Identifier."
           schema:
             type: string
+        - name: type
+          in: query
+          required: false
+          description: "Query param: Filters results by certificate type. Multiple types
+            can be comma-separated."
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - custom
+                - gateway_managed
+                - access_managed
       responses:
         "200":
           description: Success
@@ -201,6 +236,14 @@ paths:
                   signature:
                     type: string
                     description: The type of hash used for the certificate.
+                  type:
+                    type: string
+                    enum:
+                      - custom
+                      - gateway_managed
+                      - access_managed
+                    description: The type of the certificate, indicating how it was created and who
+                      manages it.
                   uploaded_on:
                     type: string
                     description: This is the time the certificate was uploaded.
@@ -208,28 +251,32 @@ paths:
     post:
       operationId: createMtlsCertificate
       description: "Upload a certificate that you want to use with mTLS-enabled
-        Cloudflare services.  @example ```ts const mtlsCertificate = await
-        client.mtlsCertificates.create({ account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', ca: true, certificates: '-----BEGIN
+        Cloudflare services, such as Bring Your Own CA (BYO-CA) for mTLS. To
+        create certificates issued by the Cloudflare managed CA, use the [Create
+        Client Certificate
+        endpoint](/api/resources/client_certificates/methods/create/).  @example
+        ```ts const mtlsCertificate = await client.mtlsCertificates.create({
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', ca: true, certificates:
+        '-----BEGIN
         CERTIFICATE-----\\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJ\
-        KoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzA\
-        RBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNj\
-        U5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGc\
-        mFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCC\
-        ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjC\
-        ZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt\
-        1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7E\
-        WLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4Y\
-        kGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWd\
-        RnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsY\
-        TEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEA\
-        wIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y\
-        7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9Dsh\
-        B78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm\
-        4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPW\
-        BORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpc\
-        VdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE\\n-----END
-        CERTIFICATE-----', }); ```"
+        KoZIhvcNAQEL\\nBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28x\
+        EzARBgNV\\nBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjEx\
+        MjIx\\nNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgM\
+        \\nDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4\\nY\
+        W1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwg\\nJFTdc\
+        G/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kC\\nM1sQspHHa\
+        VmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZ\\nCNGZEqoH5g6zh\
+        MPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9\\nK3kS+3uEwMdqR6Z3B\
+        luU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1Mx\\nuCBJ4ZaqOd2viV1WcP3oU\
+        3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcL\\nypXsuz7DjrJPtPUCAwEAAaNmM\
+        GQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7\\nz2czMB8GA1UdIwQYMBaAFP5JzLUaw\
+        NF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQE\\nAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBM\
+        A0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7\\nNDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTF\
+        s5EebpTGjhx/whNxwEZhB9HZ711\\n1Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdY\
+        pJ4ZcJTVBB7l98Rvgc7zfTi\\ni7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g\
+        1x8CyTDypgmugnep+xG\\n+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bI\
+        ZYwUBEe+bRHFomo\\nShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+L\
+        vmz2OT/Gui4\\nJhqeoTewsxndhDDE\\n-----END CERTIFICATE-----', }); ```"
       parameters:
         - name: account_id
           in: path
@@ -296,6 +343,14 @@ paths:
                   signature:
                     type: string
                     description: The type of hash used for the certificate.
+                  type:
+                    type: string
+                    enum:
+                      - custom
+                      - gateway_managed
+                      - access_managed
+                    description: The type of the certificate, indicating how it was created and who
+                      manages it.
                   updated_at:
                     type: string
                     description: This is the time the certificate was updated.

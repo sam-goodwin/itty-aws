@@ -788,6 +788,10 @@ paths:
                           - full
                           - strict
                         description: The type of TLS termination associated with the application.
+                      virtual_network_id:
+                        type: string
+                        description: Optional UUID of a virtual network for routing origin traffic
+                          through tunnel virtual networks.
                     required:
                       - id
                       - created_on
@@ -1001,6 +1005,10 @@ paths:
                     - strict
                   description: "Body param: The type of TLS termination associated with the
                     application."
+                virtual_network_id:
+                  type: string
+                  description: "Body param: Optional UUID of a virtual network for routing origin
+                    traffic through tunnel virtual networks."
               required:
                 - dns
                 - protocol
@@ -1156,6 +1164,10 @@ paths:
                           - full
                           - strict
                         description: The type of TLS termination associated with the application.
+                      virtual_network_id:
+                        type: string
+                        description: Optional UUID of a virtual network for routing origin traffic
+                          through tunnel virtual networks.
                     required:
                       - id
                       - created_on
@@ -1428,6 +1440,10 @@ paths:
                           - full
                           - strict
                         description: The type of TLS termination associated with the application.
+                      virtual_network_id:
+                        type: string
+                        description: Optional UUID of a virtual network for routing origin traffic
+                          through tunnel virtual networks.
                     required:
                       - id
                       - created_on
@@ -1636,6 +1652,10 @@ paths:
                     - strict
                   description: "Body param: The type of TLS termination associated with the
                     application."
+                virtual_network_id:
+                  type: string
+                  description: "Body param: Optional UUID of a virtual network for routing origin
+                    traffic through tunnel virtual networks."
               required:
                 - dns
                 - protocol
@@ -1791,6 +1811,10 @@ paths:
                           - full
                           - strict
                         description: The type of TLS termination associated with the application.
+                      virtual_network_id:
+                        type: string
+                        description: Optional UUID of a virtual network for routing origin traffic
+                          through tunnel virtual networks.
                     required:
                       - id
                       - created_on

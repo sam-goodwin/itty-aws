@@ -282,7 +282,7 @@ paths:
                     index."
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 description:
                   type: string
                   description: "Body param: Specifies the description of the index."

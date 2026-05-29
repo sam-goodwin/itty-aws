@@ -113,7 +113,7 @@ export interface PutConfigurationRequest {
   zoneId: string;
   /** Query param: Ensures that the configuration is written or retrieved in normalized fashion */
   normalize?: boolean;
-  /** Body param: */
+  /** Body param */
   authIdCharacteristics: (
     | { name: string; type: "header" | "cookie" }
     | { name: string; type: "jwt" }
@@ -495,7 +495,7 @@ export const patchDiscoveryOperation: API.OperationMethod<
 export interface BulkPatchDiscoveryOperationsRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: Record<string, unknown>;
 }
 
@@ -586,6 +586,818 @@ export const createExpressionTemplateFallthrough: API.OperationMethod<
 }));
 
 // =============================================================================
+// Label
+// =============================================================================
+
+export interface ListLabelsRequest {
+  /** Path param: Identifier. */
+  zoneId: string;
+  page?: number;
+  perPage?: number;
+  /** Query param: Direction to order results. */
+  direction?: "asc" | "desc";
+  /** Query param: Filter for labels where the name or description matches using substring match */
+  filter?: string;
+  /** Query param: Field to order by */
+  order?:
+    | "name"
+    | "description"
+    | "created_at"
+    | "last_updated"
+    | "mapped_resources.operations";
+  /** Query param: Filter for labels with source */
+  source?: "user" | "managed";
+  /** Query param: Include `mapped_resources` for each label */
+  withMappedResourceCounts?: boolean;
+}
+
+export const ListLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
+    T.HttpQuery("direction"),
+  ),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  order: Schema.optional(
+    Schema.Literals([
+      "name",
+      "description",
+      "created_at",
+      "last_updated",
+      "mapped_resources.operations",
+    ]),
+  ).pipe(T.HttpQuery("order")),
+  source: Schema.optional(Schema.Literals(["user", "managed"])).pipe(
+    T.HttpQuery("source"),
+  ),
+  withMappedResourceCounts: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("with_mapped_resource_counts"),
+  ),
+}).pipe(
+  T.Http({ method: "GET", path: "/zones/{zone_id}/api_gateway/labels" }),
+) as unknown as Schema.Schema<ListLabelsRequest>;
+
+export interface ListLabelsResponse {
+  result: {
+    createdAt: string;
+    description: string;
+    lastUpdated: string;
+    metadata: unknown;
+    name: string;
+    source: "user" | "managed";
+    mappedResources?: unknown | null;
+  }[];
+  resultInfo?: {
+    count?: number | null;
+    page?: number | null;
+    perPage?: number | null;
+    totalCount?: number | null;
+  } | null;
+}
+
+export const ListLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      createdAt: Schema.String,
+      description: Schema.String,
+      lastUpdated: Schema.String,
+      metadata: Schema.Unknown,
+      name: Schema.String,
+      source: Schema.Literals(["user", "managed"]),
+      mappedResources: Schema.optional(
+        Schema.Union([Schema.Unknown, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        createdAt: "created_at",
+        description: "description",
+        lastUpdated: "last_updated",
+        metadata: "metadata",
+        name: "name",
+        source: "source",
+        mappedResources: "mapped_resources",
+      }),
+    ),
+  ),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          count: "count",
+          page: "page",
+          perPage: "per_page",
+          totalCount: "total_count",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
+  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+) as unknown as Schema.Schema<ListLabelsResponse>;
+
+export type ListLabelsError = DefaultErrors;
+
+export const listLabels: API.PaginatedOperationMethod<
+  ListLabelsRequest,
+  ListLabelsResponse,
+  ListLabelsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListLabelsRequest,
+  output: ListLabelsResponse,
+  errors: [],
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "resultInfo.page",
+    items: "result",
+    pageSize: "perPage",
+  } as const,
+}));
+
+// =============================================================================
+// LabelManaged
+// =============================================================================
+
+export interface GetLabelManagedRequest {
+  name: string;
+  /** Path param: Identifier. */
+  zoneId: string;
+  /** Query param: Include `mapped_resources` for each label */
+  withMappedResourceCounts?: boolean;
+}
+
+export const GetLabelManagedRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    name: Schema.String.pipe(T.HttpPath("name")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    withMappedResourceCounts: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("with_mapped_resource_counts"),
+    ),
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/zones/{zone_id}/api_gateway/labels/managed/{name}",
+  }),
+) as unknown as Schema.Schema<GetLabelManagedRequest>;
+
+export interface GetLabelManagedResponse {
+  createdAt: string;
+  /** The description of the label */
+  description: string;
+  lastUpdated: string;
+  /** Metadata for the label */
+  metadata: unknown;
+  /** The name of the label */
+  name: string;
+  /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
+  source: "user" | "managed";
+  /** Provides counts of what resources are linked to this label */
+  mappedResources?: unknown | null;
+}
+
+export const GetLabelManagedResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAt: Schema.String,
+    description: Schema.String,
+    lastUpdated: Schema.String,
+    metadata: Schema.Unknown,
+    name: Schema.String,
+    source: Schema.Literals(["user", "managed"]),
+    mappedResources: Schema.optional(
+      Schema.Union([Schema.Unknown, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        createdAt: "created_at",
+        description: "description",
+        lastUpdated: "last_updated",
+        metadata: "metadata",
+        name: "name",
+        source: "source",
+        mappedResources: "mapped_resources",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<GetLabelManagedResponse>;
+
+export type GetLabelManagedError = DefaultErrors;
+
+export const getLabelManaged: API.OperationMethod<
+  GetLabelManagedRequest,
+  GetLabelManagedResponse,
+  GetLabelManagedError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetLabelManagedRequest,
+  output: GetLabelManagedResponse,
+  errors: [],
+}));
+
+// =============================================================================
+// LabelManagedResourceOperation
+// =============================================================================
+
+export interface PutLabelManagedResourceOperationRequest {
+  name: string;
+  /** Path param: Identifier. */
+  zoneId: string;
+  /** Body param: Operation IDs selector */
+  selector: { include: { operationIds: string[] } };
+}
+
+export const PutLabelManagedResourceOperationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    selector: Schema.Struct({
+      include: Schema.Struct({
+        operationIds: Schema.Array(Schema.String),
+      }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
+    }),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/api_gateway/labels/managed/{name}/resources/operation",
+    }),
+  ) as unknown as Schema.Schema<PutLabelManagedResourceOperationRequest>;
+
+export interface PutLabelManagedResourceOperationResponse {
+  createdAt: string;
+  /** The description of the label */
+  description: string;
+  lastUpdated: string;
+  /** Metadata for the label */
+  metadata: unknown;
+  /** The name of the label */
+  name: string;
+  /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
+  source: "user" | "managed";
+  /** Provides counts of what resources are linked to this label */
+  mappedResources?: unknown | null;
+}
+
+export const PutLabelManagedResourceOperationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAt: Schema.String,
+    description: Schema.String,
+    lastUpdated: Schema.String,
+    metadata: Schema.Unknown,
+    name: Schema.String,
+    source: Schema.Literals(["user", "managed"]),
+    mappedResources: Schema.optional(
+      Schema.Union([Schema.Unknown, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        createdAt: "created_at",
+        description: "description",
+        lastUpdated: "last_updated",
+        metadata: "metadata",
+        name: "name",
+        source: "source",
+        mappedResources: "mapped_resources",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<PutLabelManagedResourceOperationResponse>;
+
+export type PutLabelManagedResourceOperationError = DefaultErrors;
+
+export const putLabelManagedResourceOperation: API.OperationMethod<
+  PutLabelManagedResourceOperationRequest,
+  PutLabelManagedResourceOperationResponse,
+  PutLabelManagedResourceOperationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutLabelManagedResourceOperationRequest,
+  output: PutLabelManagedResourceOperationResponse,
+  errors: [],
+}));
+
+// =============================================================================
+// LabelUser
+// =============================================================================
+
+export interface GetLabelUserRequest {
+  name: string;
+  /** Path param: Identifier. */
+  zoneId: string;
+  /** Query param: Include `mapped_resources` for each label */
+  withMappedResourceCounts?: boolean;
+}
+
+export const GetLabelUserRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  withMappedResourceCounts: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("with_mapped_resource_counts"),
+  ),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/zones/{zone_id}/api_gateway/labels/user/{name}",
+  }),
+) as unknown as Schema.Schema<GetLabelUserRequest>;
+
+export interface GetLabelUserResponse {
+  createdAt: string;
+  /** The description of the label */
+  description: string;
+  lastUpdated: string;
+  /** Metadata for the label */
+  metadata: unknown;
+  /** The name of the label */
+  name: string;
+  /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
+  source: "user" | "managed";
+  /** Provides counts of what resources are linked to this label */
+  mappedResources?: unknown | null;
+}
+
+export const GetLabelUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdAt: Schema.String,
+  description: Schema.String,
+  lastUpdated: Schema.String,
+  metadata: Schema.Unknown,
+  name: Schema.String,
+  source: Schema.Literals(["user", "managed"]),
+  mappedResources: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      createdAt: "created_at",
+      description: "description",
+      lastUpdated: "last_updated",
+      metadata: "metadata",
+      name: "name",
+      source: "source",
+      mappedResources: "mapped_resources",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetLabelUserResponse>;
+
+export type GetLabelUserError = DefaultErrors;
+
+export const getLabelUser: API.OperationMethod<
+  GetLabelUserRequest,
+  GetLabelUserResponse,
+  GetLabelUserError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetLabelUserRequest,
+  output: GetLabelUserResponse,
+  errors: [],
+}));
+
+export interface PutLabelUserRequest {
+  name: string;
+  /** Path param: Identifier. */
+  zoneId: string;
+  /** Body param: The description of the label */
+  description?: string;
+  /** Body param: Metadata for the label */
+  metadata?: unknown;
+}
+
+export const PutLabelUserRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  description: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Unknown),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/zones/{zone_id}/api_gateway/labels/user/{name}",
+  }),
+) as unknown as Schema.Schema<PutLabelUserRequest>;
+
+export interface PutLabelUserResponse {
+  createdAt: string;
+  /** The description of the label */
+  description: string;
+  lastUpdated: string;
+  /** Metadata for the label */
+  metadata: unknown;
+  /** The name of the label */
+  name: string;
+  /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
+  source: "user" | "managed";
+}
+
+export const PutLabelUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdAt: Schema.String,
+  description: Schema.String,
+  lastUpdated: Schema.String,
+  metadata: Schema.Unknown,
+  name: Schema.String,
+  source: Schema.Literals(["user", "managed"]),
+})
+  .pipe(
+    Schema.encodeKeys({
+      createdAt: "created_at",
+      description: "description",
+      lastUpdated: "last_updated",
+      metadata: "metadata",
+      name: "name",
+      source: "source",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<PutLabelUserResponse>;
+
+export type PutLabelUserError = DefaultErrors;
+
+export const putLabelUser: API.OperationMethod<
+  PutLabelUserRequest,
+  PutLabelUserResponse,
+  PutLabelUserError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutLabelUserRequest,
+  output: PutLabelUserResponse,
+  errors: [],
+}));
+
+export interface PatchLabelUserRequest {
+  name: string;
+  /** Path param: Identifier. */
+  zoneId: string;
+  /** Body param: The description of the label */
+  description?: string;
+  /** Body param: Metadata for the label */
+  metadata?: unknown;
+}
+
+export const PatchLabelUserRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  description: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Unknown),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/zones/{zone_id}/api_gateway/labels/user/{name}",
+  }),
+) as unknown as Schema.Schema<PatchLabelUserRequest>;
+
+export interface PatchLabelUserResponse {
+  createdAt: string;
+  /** The description of the label */
+  description: string;
+  lastUpdated: string;
+  /** Metadata for the label */
+  metadata: unknown;
+  /** The name of the label */
+  name: string;
+  /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
+  source: "user" | "managed";
+}
+
+export const PatchLabelUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    createdAt: Schema.String,
+    description: Schema.String,
+    lastUpdated: Schema.String,
+    metadata: Schema.Unknown,
+    name: Schema.String,
+    source: Schema.Literals(["user", "managed"]),
+  },
+)
+  .pipe(
+    Schema.encodeKeys({
+      createdAt: "created_at",
+      description: "description",
+      lastUpdated: "last_updated",
+      metadata: "metadata",
+      name: "name",
+      source: "source",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<PatchLabelUserResponse>;
+
+export type PatchLabelUserError = DefaultErrors;
+
+export const patchLabelUser: API.OperationMethod<
+  PatchLabelUserRequest,
+  PatchLabelUserResponse,
+  PatchLabelUserError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchLabelUserRequest,
+  output: PatchLabelUserResponse,
+  errors: [],
+}));
+
+export interface DeleteLabelUserRequest {
+  name: string;
+  /** Identifier. */
+  zoneId: string;
+}
+
+export const DeleteLabelUserRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    name: Schema.String.pipe(T.HttpPath("name")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/zones/{zone_id}/api_gateway/labels/user/{name}",
+  }),
+) as unknown as Schema.Schema<DeleteLabelUserRequest>;
+
+export interface DeleteLabelUserResponse {
+  createdAt: string;
+  /** The description of the label */
+  description: string;
+  lastUpdated: string;
+  /** Metadata for the label */
+  metadata: unknown;
+  /** The name of the label */
+  name: string;
+  /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
+  source: "user" | "managed";
+}
+
+export const DeleteLabelUserResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAt: Schema.String,
+    description: Schema.String,
+    lastUpdated: Schema.String,
+    metadata: Schema.Unknown,
+    name: Schema.String,
+    source: Schema.Literals(["user", "managed"]),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        createdAt: "created_at",
+        description: "description",
+        lastUpdated: "last_updated",
+        metadata: "metadata",
+        name: "name",
+        source: "source",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<DeleteLabelUserResponse>;
+
+export type DeleteLabelUserError = DefaultErrors;
+
+export const deleteLabelUser: API.OperationMethod<
+  DeleteLabelUserRequest,
+  DeleteLabelUserResponse,
+  DeleteLabelUserError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteLabelUserRequest,
+  output: DeleteLabelUserResponse,
+  errors: [],
+}));
+
+export interface BulkCreateLabelUsersRequest {
+  /** Path param: Identifier. */
+  zoneId: string;
+  /** Body param */
+  body: { name: string; description?: string; metadata?: unknown }[];
+}
+
+export const BulkCreateLabelUsersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    body: Schema.Array(
+      Schema.Struct({
+        name: Schema.String,
+        description: Schema.optional(Schema.String),
+        metadata: Schema.optional(Schema.Unknown),
+      }),
+    ).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/zones/{zone_id}/api_gateway/labels/user",
+    }),
+  ) as unknown as Schema.Schema<BulkCreateLabelUsersRequest>;
+
+export interface BulkCreateLabelUsersResponse {
+  result: {
+    createdAt: string;
+    description: string;
+    lastUpdated: string;
+    metadata: unknown;
+    name: string;
+    source: "user" | "managed";
+  }[];
+}
+
+export const BulkCreateLabelUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.Array(
+      Schema.Struct({
+        createdAt: Schema.String,
+        description: Schema.String,
+        lastUpdated: Schema.String,
+        metadata: Schema.Unknown,
+        name: Schema.String,
+        source: Schema.Literals(["user", "managed"]),
+      }).pipe(
+        Schema.encodeKeys({
+          createdAt: "created_at",
+          description: "description",
+          lastUpdated: "last_updated",
+          metadata: "metadata",
+          name: "name",
+          source: "source",
+        }),
+      ),
+    ),
+  }) as unknown as Schema.Schema<BulkCreateLabelUsersResponse>;
+
+export type BulkCreateLabelUsersError = DefaultErrors;
+
+export const bulkCreateLabelUsers: API.PaginatedOperationMethod<
+  BulkCreateLabelUsersRequest,
+  BulkCreateLabelUsersResponse,
+  BulkCreateLabelUsersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: BulkCreateLabelUsersRequest,
+  output: BulkCreateLabelUsersResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+export interface BulkDeleteLabelUsersRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+
+export const BulkDeleteLabelUsersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/api_gateway/labels/user",
+    }),
+  ) as unknown as Schema.Schema<BulkDeleteLabelUsersRequest>;
+
+export interface BulkDeleteLabelUsersResponse {
+  result: {
+    createdAt: string;
+    description: string;
+    lastUpdated: string;
+    metadata: unknown;
+    name: string;
+    source: "user" | "managed";
+  }[];
+}
+
+export const BulkDeleteLabelUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.Array(
+      Schema.Struct({
+        createdAt: Schema.String,
+        description: Schema.String,
+        lastUpdated: Schema.String,
+        metadata: Schema.Unknown,
+        name: Schema.String,
+        source: Schema.Literals(["user", "managed"]),
+      }).pipe(
+        Schema.encodeKeys({
+          createdAt: "created_at",
+          description: "description",
+          lastUpdated: "last_updated",
+          metadata: "metadata",
+          name: "name",
+          source: "source",
+        }),
+      ),
+    ),
+  }) as unknown as Schema.Schema<BulkDeleteLabelUsersResponse>;
+
+export type BulkDeleteLabelUsersError = DefaultErrors;
+
+export const bulkDeleteLabelUsers: API.PaginatedOperationMethod<
+  BulkDeleteLabelUsersRequest,
+  BulkDeleteLabelUsersResponse,
+  BulkDeleteLabelUsersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: BulkDeleteLabelUsersRequest,
+  output: BulkDeleteLabelUsersResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+// =============================================================================
+// LabelUserResourceOperation
+// =============================================================================
+
+export interface PutLabelUserResourceOperationRequest {
+  name: string;
+  /** Path param: Identifier. */
+  zoneId: string;
+  /** Body param: Operation IDs selector */
+  selector: { include: { operationIds: string[] } };
+}
+
+export const PutLabelUserResourceOperationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    selector: Schema.Struct({
+      include: Schema.Struct({
+        operationIds: Schema.Array(Schema.String),
+      }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
+    }),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/api_gateway/labels/user/{name}/resources/operation",
+    }),
+  ) as unknown as Schema.Schema<PutLabelUserResourceOperationRequest>;
+
+export interface PutLabelUserResourceOperationResponse {
+  createdAt: string;
+  /** The description of the label */
+  description: string;
+  lastUpdated: string;
+  /** Metadata for the label */
+  metadata: unknown;
+  /** The name of the label */
+  name: string;
+  /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
+  source: "user" | "managed";
+  /** Provides counts of what resources are linked to this label */
+  mappedResources?: unknown | null;
+}
+
+export const PutLabelUserResourceOperationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAt: Schema.String,
+    description: Schema.String,
+    lastUpdated: Schema.String,
+    metadata: Schema.Unknown,
+    name: Schema.String,
+    source: Schema.Literals(["user", "managed"]),
+    mappedResources: Schema.optional(
+      Schema.Union([Schema.Unknown, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        createdAt: "created_at",
+        description: "description",
+        lastUpdated: "last_updated",
+        metadata: "metadata",
+        name: "name",
+        source: "source",
+        mappedResources: "mapped_resources",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<PutLabelUserResourceOperationResponse>;
+
+export type PutLabelUserResourceOperationError = DefaultErrors;
+
+export const putLabelUserResourceOperation: API.OperationMethod<
+  PutLabelUserResourceOperationRequest,
+  PutLabelUserResourceOperationResponse,
+  PutLabelUserResourceOperationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutLabelUserResourceOperationRequest,
+  output: PutLabelUserResourceOperationResponse,
+  errors: [],
+}));
+
+// =============================================================================
 // Operation
 // =============================================================================
 
@@ -595,6 +1407,8 @@ export interface GetOperationRequest {
   zoneId: string;
   /** Query param: Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the spe */
   feature?: ("thresholds" | "parameter_schemas" | "schema_info")[];
+  /** Query param: When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation ret */
+  withSchemas?: boolean;
 }
 
 export const GetOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -605,6 +1419,9 @@ export const GetOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Literals(["thresholds", "parameter_schemas", "schema_info"]),
     ),
   ).pipe(T.HttpQuery("feature")),
+  withSchemas: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("with_schemas"),
+  ),
 }).pipe(
   T.Http({
     method: "GET",
@@ -686,6 +1503,17 @@ export interface GetOperationResponse {
         } | null;
       }
     | null;
+  /** OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas. */
+  schemas?: {
+    learned?: {
+      parameters?: Record<string, unknown>[] | null;
+      requestBody?: Record<string, unknown> | null;
+    } | null;
+    uploaded?: {
+      parameters?: Record<string, unknown>[] | null;
+      requestBody?: Record<string, unknown> | null;
+    } | null;
+  } | null;
 }
 
 export const GetOperationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -936,6 +1764,51 @@ export const GetOperationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Null,
     ]),
   ),
+  schemas: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        learned: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              parameters: Schema.optional(
+                Schema.Union([
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                  Schema.Null,
+                ]),
+              ),
+              requestBody: Schema.optional(
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        uploaded: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              parameters: Schema.optional(
+                Schema.Union([
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                  Schema.Null,
+                ]),
+              ),
+              requestBody: Schema.optional(
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
 })
   .pipe(
     Schema.encodeKeys({
@@ -945,6 +1818,7 @@ export const GetOperationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       method: "method",
       operationId: "operation_id",
       features: "features",
+      schemas: "schemas",
     }),
   )
   .pipe(
@@ -1540,6 +2414,17 @@ export interface CreateOperationResponse {
         } | null;
       }
     | null;
+  /** OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas. */
+  schemas?: {
+    learned?: {
+      parameters?: Record<string, unknown>[] | null;
+      requestBody?: Record<string, unknown> | null;
+    } | null;
+    uploaded?: {
+      parameters?: Record<string, unknown>[] | null;
+      requestBody?: Record<string, unknown> | null;
+    } | null;
+  } | null;
 }
 
 export const CreateOperationResponse =
@@ -1809,6 +2694,51 @@ export const CreateOperationResponse =
         Schema.Null,
       ]),
     ),
+    schemas: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          learned: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                parameters: Schema.optional(
+                  Schema.Union([
+                    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                    Schema.Null,
+                  ]),
+                ),
+                requestBody: Schema.optional(
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          uploaded: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                parameters: Schema.optional(
+                  Schema.Union([
+                    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                    Schema.Null,
+                  ]),
+                ),
+                requestBody: Schema.optional(
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }),
+        Schema.Null,
+      ]),
+    ),
   })
     .pipe(
       Schema.encodeKeys({
@@ -1818,6 +2748,7 @@ export const CreateOperationResponse =
         method: "method",
         operationId: "operation_id",
         features: "features",
+        schemas: "schemas",
       }),
     )
     .pipe(
@@ -1948,7 +2879,7 @@ export const deleteOperation: API.OperationMethod<
 export interface BulkCreateOperationsRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: {
     endpoint: string;
     host: string;
@@ -2472,6 +3403,762 @@ export const bulkDeleteOperations: API.OperationMethod<
 }));
 
 // =============================================================================
+// OperationLabel
+// =============================================================================
+
+export interface CreateOperationLabelRequest {
+  operationId: string;
+  /** Path param: Identifier. */
+  zoneId: string;
+  /** Body param: List of managed label names. */
+  managed?: string[];
+  /** Body param: List of user label names. */
+  user?: string[];
+}
+
+export const CreateOperationLabelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationId: Schema.String.pipe(T.HttpPath("operationId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    managed: Schema.optional(Schema.Array(Schema.String)),
+    user: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/zones/{zone_id}/api_gateway/operations/{operationId}/labels",
+    }),
+  ) as unknown as Schema.Schema<CreateOperationLabelRequest>;
+
+export interface CreateOperationLabelResponse {
+  /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-n */
+  endpoint: string;
+  /** RFC3986-compliant host. */
+  host: string;
+  lastUpdated: string;
+  /** The HTTP method used to access the endpoint. */
+  method:
+    | "GET"
+    | "POST"
+    | "HEAD"
+    | "OPTIONS"
+    | "PUT"
+    | "DELETE"
+    | "CONNECT"
+    | "PATCH"
+    | "TRACE";
+  /** UUID. */
+  operationId: string;
+  labels?:
+    | {
+        createdAt: string;
+        description: string;
+        lastUpdated: string;
+        metadata: unknown;
+        name: string;
+        source: "user" | "managed";
+      }[]
+    | null;
+}
+
+export const CreateOperationLabelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpoint: Schema.String,
+    host: Schema.String,
+    lastUpdated: Schema.String,
+    method: Schema.Literals([
+      "GET",
+      "POST",
+      "HEAD",
+      "OPTIONS",
+      "PUT",
+      "DELETE",
+      "CONNECT",
+      "PATCH",
+      "TRACE",
+    ]),
+    operationId: Schema.String,
+    labels: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            createdAt: Schema.String,
+            description: Schema.String,
+            lastUpdated: Schema.String,
+            metadata: Schema.Unknown,
+            name: Schema.String,
+            source: Schema.Literals(["user", "managed"]),
+          }).pipe(
+            Schema.encodeKeys({
+              createdAt: "created_at",
+              description: "description",
+              lastUpdated: "last_updated",
+              metadata: "metadata",
+              name: "name",
+              source: "source",
+            }),
+          ),
+        ),
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        endpoint: "endpoint",
+        host: "host",
+        lastUpdated: "last_updated",
+        method: "method",
+        operationId: "operation_id",
+        labels: "labels",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<CreateOperationLabelResponse>;
+
+export type CreateOperationLabelError = DefaultErrors;
+
+export const createOperationLabel: API.OperationMethod<
+  CreateOperationLabelRequest,
+  CreateOperationLabelResponse,
+  CreateOperationLabelError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateOperationLabelRequest,
+  output: CreateOperationLabelResponse,
+  errors: [],
+}));
+
+export interface UpdateOperationLabelRequest {
+  operationId: string;
+  /** Path param: Identifier. */
+  zoneId: string;
+  /** Body param: List of managed label names. Omitting this property or passing an empty array will result in all managed labels being removed from the operation */
+  managed?: string[];
+  /** Body param: List of user label names. Omitting this property or passing an empty array will result in all user labels being removed from the operation */
+  user?: string[];
+}
+
+export const UpdateOperationLabelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationId: Schema.String.pipe(T.HttpPath("operationId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    managed: Schema.optional(Schema.Array(Schema.String)),
+    user: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/api_gateway/operations/{operationId}/labels",
+    }),
+  ) as unknown as Schema.Schema<UpdateOperationLabelRequest>;
+
+export interface UpdateOperationLabelResponse {
+  /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-n */
+  endpoint: string;
+  /** RFC3986-compliant host. */
+  host: string;
+  lastUpdated: string;
+  /** The HTTP method used to access the endpoint. */
+  method:
+    | "GET"
+    | "POST"
+    | "HEAD"
+    | "OPTIONS"
+    | "PUT"
+    | "DELETE"
+    | "CONNECT"
+    | "PATCH"
+    | "TRACE";
+  /** UUID. */
+  operationId: string;
+  labels?:
+    | {
+        createdAt: string;
+        description: string;
+        lastUpdated: string;
+        metadata: unknown;
+        name: string;
+        source: "user" | "managed";
+      }[]
+    | null;
+}
+
+export const UpdateOperationLabelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpoint: Schema.String,
+    host: Schema.String,
+    lastUpdated: Schema.String,
+    method: Schema.Literals([
+      "GET",
+      "POST",
+      "HEAD",
+      "OPTIONS",
+      "PUT",
+      "DELETE",
+      "CONNECT",
+      "PATCH",
+      "TRACE",
+    ]),
+    operationId: Schema.String,
+    labels: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            createdAt: Schema.String,
+            description: Schema.String,
+            lastUpdated: Schema.String,
+            metadata: Schema.Unknown,
+            name: Schema.String,
+            source: Schema.Literals(["user", "managed"]),
+          }).pipe(
+            Schema.encodeKeys({
+              createdAt: "created_at",
+              description: "description",
+              lastUpdated: "last_updated",
+              metadata: "metadata",
+              name: "name",
+              source: "source",
+            }),
+          ),
+        ),
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        endpoint: "endpoint",
+        host: "host",
+        lastUpdated: "last_updated",
+        method: "method",
+        operationId: "operation_id",
+        labels: "labels",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<UpdateOperationLabelResponse>;
+
+export type UpdateOperationLabelError = DefaultErrors;
+
+export const updateOperationLabel: API.OperationMethod<
+  UpdateOperationLabelRequest,
+  UpdateOperationLabelResponse,
+  UpdateOperationLabelError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateOperationLabelRequest,
+  output: UpdateOperationLabelResponse,
+  errors: [],
+}));
+
+export interface DeleteOperationLabelRequest {
+  operationId: string;
+  /** Identifier. */
+  zoneId: string;
+}
+
+export const DeleteOperationLabelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationId: Schema.String.pipe(T.HttpPath("operationId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/api_gateway/operations/{operationId}/labels",
+    }),
+  ) as unknown as Schema.Schema<DeleteOperationLabelRequest>;
+
+export interface DeleteOperationLabelResponse {
+  /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-n */
+  endpoint: string;
+  /** RFC3986-compliant host. */
+  host: string;
+  lastUpdated: string;
+  /** The HTTP method used to access the endpoint. */
+  method:
+    | "GET"
+    | "POST"
+    | "HEAD"
+    | "OPTIONS"
+    | "PUT"
+    | "DELETE"
+    | "CONNECT"
+    | "PATCH"
+    | "TRACE";
+  /** UUID. */
+  operationId: string;
+  labels?:
+    | {
+        createdAt: string;
+        description: string;
+        lastUpdated: string;
+        metadata: unknown;
+        name: string;
+        source: "user" | "managed";
+      }[]
+    | null;
+}
+
+export const DeleteOperationLabelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpoint: Schema.String,
+    host: Schema.String,
+    lastUpdated: Schema.String,
+    method: Schema.Literals([
+      "GET",
+      "POST",
+      "HEAD",
+      "OPTIONS",
+      "PUT",
+      "DELETE",
+      "CONNECT",
+      "PATCH",
+      "TRACE",
+    ]),
+    operationId: Schema.String,
+    labels: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            createdAt: Schema.String,
+            description: Schema.String,
+            lastUpdated: Schema.String,
+            metadata: Schema.Unknown,
+            name: Schema.String,
+            source: Schema.Literals(["user", "managed"]),
+          }).pipe(
+            Schema.encodeKeys({
+              createdAt: "created_at",
+              description: "description",
+              lastUpdated: "last_updated",
+              metadata: "metadata",
+              name: "name",
+              source: "source",
+            }),
+          ),
+        ),
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        endpoint: "endpoint",
+        host: "host",
+        lastUpdated: "last_updated",
+        method: "method",
+        operationId: "operation_id",
+        labels: "labels",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<DeleteOperationLabelResponse>;
+
+export type DeleteOperationLabelError = DefaultErrors;
+
+export const deleteOperationLabel: API.OperationMethod<
+  DeleteOperationLabelRequest,
+  DeleteOperationLabelResponse,
+  DeleteOperationLabelError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteOperationLabelRequest,
+  output: DeleteOperationLabelResponse,
+  errors: [],
+}));
+
+export interface BulkCreateOperationLabelsRequest {
+  /** Path param: Identifier. */
+  zoneId: string;
+  /** Body param: Operation IDs selector */
+  selector: { include: { operationIds: string[] } };
+  /** Body param */
+  managed?: { labels?: string[] };
+  /** Body param */
+  user?: { labels?: string[] };
+}
+
+export const BulkCreateOperationLabelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    selector: Schema.Struct({
+      include: Schema.Struct({
+        operationIds: Schema.Array(Schema.String),
+      }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
+    }),
+    managed: Schema.optional(
+      Schema.Struct({
+        labels: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    user: Schema.optional(
+      Schema.Struct({
+        labels: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/zones/{zone_id}/api_gateway/operations/labels",
+    }),
+  ) as unknown as Schema.Schema<BulkCreateOperationLabelsRequest>;
+
+export interface BulkCreateOperationLabelsResponse {
+  result: {
+    endpoint: string;
+    host: string;
+    lastUpdated: string;
+    method:
+      | "GET"
+      | "POST"
+      | "HEAD"
+      | "OPTIONS"
+      | "PUT"
+      | "DELETE"
+      | "CONNECT"
+      | "PATCH"
+      | "TRACE";
+    operationId: string;
+    labels?:
+      | {
+          createdAt: string;
+          description: string;
+          lastUpdated: string;
+          metadata: unknown;
+          name: string;
+          source: "user" | "managed";
+        }[]
+      | null;
+  }[];
+}
+
+export const BulkCreateOperationLabelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.Array(
+      Schema.Struct({
+        endpoint: Schema.String,
+        host: Schema.String,
+        lastUpdated: Schema.String,
+        method: Schema.Literals([
+          "GET",
+          "POST",
+          "HEAD",
+          "OPTIONS",
+          "PUT",
+          "DELETE",
+          "CONNECT",
+          "PATCH",
+          "TRACE",
+        ]),
+        operationId: Schema.String,
+        labels: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                createdAt: Schema.String,
+                description: Schema.String,
+                lastUpdated: Schema.String,
+                metadata: Schema.Unknown,
+                name: Schema.String,
+                source: Schema.Literals(["user", "managed"]),
+              }).pipe(
+                Schema.encodeKeys({
+                  createdAt: "created_at",
+                  description: "description",
+                  lastUpdated: "last_updated",
+                  metadata: "metadata",
+                  name: "name",
+                  source: "source",
+                }),
+              ),
+            ),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          endpoint: "endpoint",
+          host: "host",
+          lastUpdated: "last_updated",
+          method: "method",
+          operationId: "operation_id",
+          labels: "labels",
+        }),
+      ),
+    ),
+  }) as unknown as Schema.Schema<BulkCreateOperationLabelsResponse>;
+
+export type BulkCreateOperationLabelsError = DefaultErrors;
+
+export const bulkCreateOperationLabels: API.PaginatedOperationMethod<
+  BulkCreateOperationLabelsRequest,
+  BulkCreateOperationLabelsResponse,
+  BulkCreateOperationLabelsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: BulkCreateOperationLabelsRequest,
+  output: BulkCreateOperationLabelsResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+export interface BulkUpdateOperationLabelsRequest {
+  /** Path param: Identifier. */
+  zoneId: string;
+  /** Body param: Managed labels to replace for all affected operations */
+  managed: { labels: string[] };
+  /** Body param: Operation IDs selector */
+  selector: { include: { operationIds: string[] } };
+  /** Body param: User labels to replace for all affected operations */
+  user: { labels: string[] };
+}
+
+export const BulkUpdateOperationLabelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    managed: Schema.Struct({
+      labels: Schema.Array(Schema.String),
+    }),
+    selector: Schema.Struct({
+      include: Schema.Struct({
+        operationIds: Schema.Array(Schema.String),
+      }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
+    }),
+    user: Schema.Struct({
+      labels: Schema.Array(Schema.String),
+    }),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/api_gateway/operations/labels",
+    }),
+  ) as unknown as Schema.Schema<BulkUpdateOperationLabelsRequest>;
+
+export interface BulkUpdateOperationLabelsResponse {
+  result: {
+    endpoint: string;
+    host: string;
+    lastUpdated: string;
+    method:
+      | "GET"
+      | "POST"
+      | "HEAD"
+      | "OPTIONS"
+      | "PUT"
+      | "DELETE"
+      | "CONNECT"
+      | "PATCH"
+      | "TRACE";
+    operationId: string;
+    labels?:
+      | {
+          createdAt: string;
+          description: string;
+          lastUpdated: string;
+          metadata: unknown;
+          name: string;
+          source: "user" | "managed";
+        }[]
+      | null;
+  }[];
+}
+
+export const BulkUpdateOperationLabelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.Array(
+      Schema.Struct({
+        endpoint: Schema.String,
+        host: Schema.String,
+        lastUpdated: Schema.String,
+        method: Schema.Literals([
+          "GET",
+          "POST",
+          "HEAD",
+          "OPTIONS",
+          "PUT",
+          "DELETE",
+          "CONNECT",
+          "PATCH",
+          "TRACE",
+        ]),
+        operationId: Schema.String,
+        labels: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                createdAt: Schema.String,
+                description: Schema.String,
+                lastUpdated: Schema.String,
+                metadata: Schema.Unknown,
+                name: Schema.String,
+                source: Schema.Literals(["user", "managed"]),
+              }).pipe(
+                Schema.encodeKeys({
+                  createdAt: "created_at",
+                  description: "description",
+                  lastUpdated: "last_updated",
+                  metadata: "metadata",
+                  name: "name",
+                  source: "source",
+                }),
+              ),
+            ),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          endpoint: "endpoint",
+          host: "host",
+          lastUpdated: "last_updated",
+          method: "method",
+          operationId: "operation_id",
+          labels: "labels",
+        }),
+      ),
+    ),
+  }) as unknown as Schema.Schema<BulkUpdateOperationLabelsResponse>;
+
+export type BulkUpdateOperationLabelsError = DefaultErrors;
+
+export const bulkUpdateOperationLabels: API.PaginatedOperationMethod<
+  BulkUpdateOperationLabelsRequest,
+  BulkUpdateOperationLabelsResponse,
+  BulkUpdateOperationLabelsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: BulkUpdateOperationLabelsRequest,
+  output: BulkUpdateOperationLabelsResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+export interface BulkDeleteOperationLabelsRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+
+export const BulkDeleteOperationLabelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/api_gateway/operations/labels",
+    }),
+  ) as unknown as Schema.Schema<BulkDeleteOperationLabelsRequest>;
+
+export interface BulkDeleteOperationLabelsResponse {
+  result: {
+    endpoint: string;
+    host: string;
+    lastUpdated: string;
+    method:
+      | "GET"
+      | "POST"
+      | "HEAD"
+      | "OPTIONS"
+      | "PUT"
+      | "DELETE"
+      | "CONNECT"
+      | "PATCH"
+      | "TRACE";
+    operationId: string;
+    labels?:
+      | {
+          createdAt: string;
+          description: string;
+          lastUpdated: string;
+          metadata: unknown;
+          name: string;
+          source: "user" | "managed";
+        }[]
+      | null;
+  }[];
+}
+
+export const BulkDeleteOperationLabelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.Array(
+      Schema.Struct({
+        endpoint: Schema.String,
+        host: Schema.String,
+        lastUpdated: Schema.String,
+        method: Schema.Literals([
+          "GET",
+          "POST",
+          "HEAD",
+          "OPTIONS",
+          "PUT",
+          "DELETE",
+          "CONNECT",
+          "PATCH",
+          "TRACE",
+        ]),
+        operationId: Schema.String,
+        labels: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                createdAt: Schema.String,
+                description: Schema.String,
+                lastUpdated: Schema.String,
+                metadata: Schema.Unknown,
+                name: Schema.String,
+                source: Schema.Literals(["user", "managed"]),
+              }).pipe(
+                Schema.encodeKeys({
+                  createdAt: "created_at",
+                  description: "description",
+                  lastUpdated: "last_updated",
+                  metadata: "metadata",
+                  name: "name",
+                  source: "source",
+                }),
+              ),
+            ),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          endpoint: "endpoint",
+          host: "host",
+          lastUpdated: "last_updated",
+          method: "method",
+          operationId: "operation_id",
+          labels: "labels",
+        }),
+      ),
+    ),
+  }) as unknown as Schema.Schema<BulkDeleteOperationLabelsResponse>;
+
+export type BulkDeleteOperationLabelsError = DefaultErrors;
+
+export const bulkDeleteOperationLabels: API.PaginatedOperationMethod<
+  BulkDeleteOperationLabelsRequest,
+  BulkDeleteOperationLabelsResponse,
+  BulkDeleteOperationLabelsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: BulkDeleteOperationLabelsRequest,
+  output: BulkDeleteOperationLabelsResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+// =============================================================================
 // OperationSchemaValidation
 // =============================================================================
 
@@ -2605,7 +4292,7 @@ export const putOperationSchemaValidation: API.OperationMethod<
 export interface PatchOperationSchemaValidationRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   settingsMultipleRequest: Record<string, unknown>;
 }
 

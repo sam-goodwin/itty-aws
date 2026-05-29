@@ -98,6 +98,31 @@ paths:
                           - host
                           - scheme
                           - user
+                      - type: object
+                        properties:
+                          database:
+                            type: string
+                            description: Set the name of your origin database.
+                          scheme:
+                            type: string
+                            enum:
+                              - postgres
+                              - postgresql
+                              - mysql
+                            description: Specifies the URL scheme used to connect to your origin database.
+                          service_id:
+                            type: string
+                            description: The identifier of the Workers VPC Service to connect through.
+                              Hyperdrive will egress through the specified VPC
+                              Service to reach the origin database.
+                          user:
+                            type: string
+                            description: Set the user of your origin database.
+                        required:
+                          - database
+                          - scheme
+                          - service_id
+                          - user
                   caching:
                     oneOf:
                       - type: object
@@ -138,10 +163,16 @@ paths:
                         type: string
                         description: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify
                           the CA.
+                    description: mTLS configuration for the origin connection. Cannot be used with
+                      VPC Service origins; TLS must be managed on the VPC
+                      Service.
                   origin_connection_limit:
                     type: number
-                    description: The (soft) maximum number of connections the Hyperdrive is allowed
-                      to make to the origin database.
+                    description: "The (soft) maximum number of connections the Hyperdrive is allowed
+                      to make to the origin database.  Maximum allowed: 20 for
+                      free tier accounts, 100 for paid tier accounts. If not
+                      specified, defaults to 20 for free tier and 60 for paid
+                      tier. Contact Cloudflare if you need a higher limit."
                 required:
                   - id
                   - name
@@ -261,7 +292,37 @@ paths:
                         - password
                         - scheme
                         - user
-                  description: "Body param:"
+                    - type: object
+                      properties:
+                        database:
+                          type: string
+                          description: Set the name of your origin database.
+                        password:
+                          type: string
+                          description: Set the password needed to access your origin database. The API
+                            never returns this write-only value.
+                        scheme:
+                          type: string
+                          enum:
+                            - postgres
+                            - postgresql
+                            - mysql
+                          description: Specifies the URL scheme used to connect to your origin database.
+                        service_id:
+                          type: string
+                          description: The identifier of the Workers VPC Service to connect through.
+                            Hyperdrive will egress through the specified VPC
+                            Service to reach the origin database.
+                        user:
+                          type: string
+                          description: Set the user of your origin database.
+                      required:
+                        - database
+                        - password
+                        - scheme
+                        - service_id
+                        - user
+                  description: Body param
                 caching:
                   oneOf:
                     - type: object
@@ -282,7 +343,7 @@ paths:
                           type: number
                           description: Specify the number of seconds the cache may serve a stale response.
                             Defaults to 15 seconds if not specified.
-                  description: "Body param:"
+                  description: Body param
                 mtls:
                   type: object
                   properties:
@@ -296,11 +357,17 @@ paths:
                       type: string
                       description: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify
                         the CA.
-                  description: "Body param:"
+                  description: "Body param: mTLS configuration for the origin connection. Cannot
+                    be used with VPC Service origins; TLS must be managed on the
+                    VPC Service."
                 origin_connection_limit:
                   type: number
                   description: "Body param: The (soft) maximum number of connections the
-                    Hyperdrive is allowed to make to the origin database."
+                    Hyperdrive is allowed to make to the origin
+                    database.  Maximum allowed: 20 for free tier accounts, 100
+                    for paid tier accounts. If not specified, defaults to 20 for
+                    free tier and 60 for paid tier. Contact Cloudflare if you
+                    need a higher limit."
               required:
                 - name
                 - origin
@@ -377,6 +444,31 @@ paths:
                           - host
                           - scheme
                           - user
+                      - type: object
+                        properties:
+                          database:
+                            type: string
+                            description: Set the name of your origin database.
+                          scheme:
+                            type: string
+                            enum:
+                              - postgres
+                              - postgresql
+                              - mysql
+                            description: Specifies the URL scheme used to connect to your origin database.
+                          service_id:
+                            type: string
+                            description: The identifier of the Workers VPC Service to connect through.
+                              Hyperdrive will egress through the specified VPC
+                              Service to reach the origin database.
+                          user:
+                            type: string
+                            description: Set the user of your origin database.
+                        required:
+                          - database
+                          - scheme
+                          - service_id
+                          - user
                   caching:
                     oneOf:
                       - type: object
@@ -417,10 +509,16 @@ paths:
                         type: string
                         description: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify
                           the CA.
+                    description: mTLS configuration for the origin connection. Cannot be used with
+                      VPC Service origins; TLS must be managed on the VPC
+                      Service.
                   origin_connection_limit:
                     type: number
-                    description: The (soft) maximum number of connections the Hyperdrive is allowed
-                      to make to the origin database.
+                    description: "The (soft) maximum number of connections the Hyperdrive is allowed
+                      to make to the origin database.  Maximum allowed: 20 for
+                      free tier accounts, 100 for paid tier accounts. If not
+                      specified, defaults to 20 for free tier and 60 for paid
+                      tier. Contact Cloudflare if you need a higher limit."
                 required:
                   - id
                   - name
@@ -486,7 +584,7 @@ paths:
                           type: number
                           description: Specify the number of seconds the cache may serve a stale response.
                             Defaults to 15 seconds if not specified.
-                  description: "Body param:"
+                  description: Body param
                 mtls:
                   type: object
                   properties:
@@ -500,7 +598,9 @@ paths:
                       type: string
                       description: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify
                         the CA.
-                  description: "Body param:"
+                  description: "Body param: mTLS configuration for the origin connection. Cannot
+                    be used with VPC Service origins; TLS must be managed on the
+                    VPC Service."
                 name:
                   type: string
                   description: "Body param: The name of the Hyperdrive configuration. Used to
@@ -557,11 +657,27 @@ paths:
                         - access_client_id
                         - access_client_secret
                         - host
-                  description: "Body param:"
+                    - type: object
+                      properties:
+                        service_id:
+                          type: string
+                          description: The identifier of the Workers VPC Service to connect through.
+                            Hyperdrive will egress through the specified VPC
+                            Service to reach the origin database.
+                      required:
+                        - service_id
+                  description: "Body param: Connect to a database through a Workers VPC Service.
+                    TLS settings (mTLS, sslmode) cannot be configured on the
+                    Hyperdrive when using a VPC Service origin; TLS must be
+                    managed on the VPC Service itself."
                 origin_connection_limit:
                   type: number
                   description: "Body param: The (soft) maximum number of connections the
-                    Hyperdrive is allowed to make to the origin database."
+                    Hyperdrive is allowed to make to the origin
+                    database.  Maximum allowed: 20 for free tier accounts, 100
+                    for paid tier accounts. If not specified, defaults to 20 for
+                    free tier and 60 for paid tier. Contact Cloudflare if you
+                    need a higher limit."
       responses:
         "200":
           description: Success
@@ -635,6 +751,31 @@ paths:
                           - host
                           - scheme
                           - user
+                      - type: object
+                        properties:
+                          database:
+                            type: string
+                            description: Set the name of your origin database.
+                          scheme:
+                            type: string
+                            enum:
+                              - postgres
+                              - postgresql
+                              - mysql
+                            description: Specifies the URL scheme used to connect to your origin database.
+                          service_id:
+                            type: string
+                            description: The identifier of the Workers VPC Service to connect through.
+                              Hyperdrive will egress through the specified VPC
+                              Service to reach the origin database.
+                          user:
+                            type: string
+                            description: Set the user of your origin database.
+                        required:
+                          - database
+                          - scheme
+                          - service_id
+                          - user
                   caching:
                     oneOf:
                       - type: object
@@ -675,10 +816,16 @@ paths:
                         type: string
                         description: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify
                           the CA.
+                    description: mTLS configuration for the origin connection. Cannot be used with
+                      VPC Service origins; TLS must be managed on the VPC
+                      Service.
                   origin_connection_limit:
                     type: number
-                    description: The (soft) maximum number of connections the Hyperdrive is allowed
-                      to make to the origin database.
+                    description: "The (soft) maximum number of connections the Hyperdrive is allowed
+                      to make to the origin database.  Maximum allowed: 20 for
+                      free tier accounts, 100 for paid tier accounts. If not
+                      specified, defaults to 20 for free tier and 60 for paid
+                      tier. Contact Cloudflare if you need a higher limit."
                 required:
                   - id
                   - name
@@ -824,6 +971,31 @@ paths:
                           - host
                           - scheme
                           - user
+                      - type: object
+                        properties:
+                          database:
+                            type: string
+                            description: Set the name of your origin database.
+                          scheme:
+                            type: string
+                            enum:
+                              - postgres
+                              - postgresql
+                              - mysql
+                            description: Specifies the URL scheme used to connect to your origin database.
+                          service_id:
+                            type: string
+                            description: The identifier of the Workers VPC Service to connect through.
+                              Hyperdrive will egress through the specified VPC
+                              Service to reach the origin database.
+                          user:
+                            type: string
+                            description: Set the user of your origin database.
+                        required:
+                          - database
+                          - scheme
+                          - service_id
+                          - user
                   caching:
                     oneOf:
                       - type: object
@@ -864,10 +1036,16 @@ paths:
                         type: string
                         description: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify
                           the CA.
+                    description: mTLS configuration for the origin connection. Cannot be used with
+                      VPC Service origins; TLS must be managed on the VPC
+                      Service.
                   origin_connection_limit:
                     type: number
-                    description: The (soft) maximum number of connections the Hyperdrive is allowed
-                      to make to the origin database.
+                    description: "The (soft) maximum number of connections the Hyperdrive is allowed
+                      to make to the origin database.  Maximum allowed: 20 for
+                      free tier accounts, 100 for paid tier accounts. If not
+                      specified, defaults to 20 for free tier and 60 for paid
+                      tier. Contact Cloudflare if you need a higher limit."
                 required:
                   - id
                   - name
@@ -979,7 +1157,37 @@ paths:
                         - password
                         - scheme
                         - user
-                  description: "Body param:"
+                    - type: object
+                      properties:
+                        database:
+                          type: string
+                          description: Set the name of your origin database.
+                        password:
+                          type: string
+                          description: Set the password needed to access your origin database. The API
+                            never returns this write-only value.
+                        scheme:
+                          type: string
+                          enum:
+                            - postgres
+                            - postgresql
+                            - mysql
+                          description: Specifies the URL scheme used to connect to your origin database.
+                        service_id:
+                          type: string
+                          description: The identifier of the Workers VPC Service to connect through.
+                            Hyperdrive will egress through the specified VPC
+                            Service to reach the origin database.
+                        user:
+                          type: string
+                          description: Set the user of your origin database.
+                      required:
+                        - database
+                        - password
+                        - scheme
+                        - service_id
+                        - user
+                  description: Body param
                 caching:
                   oneOf:
                     - type: object
@@ -1000,7 +1208,7 @@ paths:
                           type: number
                           description: Specify the number of seconds the cache may serve a stale response.
                             Defaults to 15 seconds if not specified.
-                  description: "Body param:"
+                  description: Body param
                 mtls:
                   type: object
                   properties:
@@ -1014,11 +1222,17 @@ paths:
                       type: string
                       description: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify
                         the CA.
-                  description: "Body param:"
+                  description: "Body param: mTLS configuration for the origin connection. Cannot
+                    be used with VPC Service origins; TLS must be managed on the
+                    VPC Service."
                 origin_connection_limit:
                   type: number
                   description: "Body param: The (soft) maximum number of connections the
-                    Hyperdrive is allowed to make to the origin database."
+                    Hyperdrive is allowed to make to the origin
+                    database.  Maximum allowed: 20 for free tier accounts, 100
+                    for paid tier accounts. If not specified, defaults to 20 for
+                    free tier and 60 for paid tier. Contact Cloudflare if you
+                    need a higher limit."
               required:
                 - name
                 - origin
@@ -1095,6 +1309,31 @@ paths:
                           - host
                           - scheme
                           - user
+                      - type: object
+                        properties:
+                          database:
+                            type: string
+                            description: Set the name of your origin database.
+                          scheme:
+                            type: string
+                            enum:
+                              - postgres
+                              - postgresql
+                              - mysql
+                            description: Specifies the URL scheme used to connect to your origin database.
+                          service_id:
+                            type: string
+                            description: The identifier of the Workers VPC Service to connect through.
+                              Hyperdrive will egress through the specified VPC
+                              Service to reach the origin database.
+                          user:
+                            type: string
+                            description: Set the user of your origin database.
+                        required:
+                          - database
+                          - scheme
+                          - service_id
+                          - user
                   caching:
                     oneOf:
                       - type: object
@@ -1135,10 +1374,16 @@ paths:
                         type: string
                         description: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify
                           the CA.
+                    description: mTLS configuration for the origin connection. Cannot be used with
+                      VPC Service origins; TLS must be managed on the VPC
+                      Service.
                   origin_connection_limit:
                     type: number
-                    description: The (soft) maximum number of connections the Hyperdrive is allowed
-                      to make to the origin database.
+                    description: "The (soft) maximum number of connections the Hyperdrive is allowed
+                      to make to the origin database.  Maximum allowed: 20 for
+                      free tier accounts, 100 for paid tier accounts. If not
+                      specified, defaults to 20 for free tier and 60 for paid
+                      tier. Contact Cloudflare if you need a higher limit."
                 required:
                   - id
                   - name

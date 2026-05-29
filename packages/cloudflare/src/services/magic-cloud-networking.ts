@@ -1022,19 +1022,19 @@ export const listCatalogSyncs: API.PaginatedOperationMethod<
 }));
 
 export interface CreateCatalogSyncRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Header param: */
+  /** Header param */
   forwarded?: string;
-  /** Body param: */
+  /** Body param */
   destinationType: "NONE" | "ZERO_TRUST_LIST";
-  /** Body param: */
+  /** Body param */
   name: string;
-  /** Body param: */
+  /** Body param */
   updateMode: "AUTO" | "MANUAL";
-  /** Body param: */
+  /** Body param */
   description?: string;
-  /** Body param: */
+  /** Body param */
   policy?: string;
 }
 
@@ -1134,15 +1134,15 @@ export const createCatalogSync: API.OperationMethod<
 
 export interface UpdateCatalogSyncRequest {
   syncId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   description?: string;
-  /** Body param: */
+  /** Body param */
   name?: string;
-  /** Body param: */
+  /** Body param */
   policy?: string;
-  /** Body param: */
+  /** Body param */
   updateMode?: "AUTO" | "MANUAL";
 }
 
@@ -1240,15 +1240,15 @@ export const updateCatalogSync: API.OperationMethod<
 
 export interface PatchCatalogSyncRequest {
   syncId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   description?: string;
-  /** Body param: */
+  /** Body param */
   name?: string;
-  /** Body param: */
+  /** Body param */
   policy?: string;
-  /** Body param: */
+  /** Body param */
   updateMode?: "AUTO" | "MANUAL";
 }
 
@@ -1346,9 +1346,9 @@ export const patchCatalogSync: API.OperationMethod<
 
 export interface DeleteCatalogSyncRequest {
   syncId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   deleteDestination?: boolean;
 }
 
@@ -1431,7 +1431,7 @@ export const refreshCatalogSync: API.OperationMethod<
 // =============================================================================
 
 export interface ListCatalogSyncPrebuiltPoliciesRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Query param: Specify type of destination, omit to return all. */
   destinationType?: "NONE" | "ZERO_TRUST_LIST";
@@ -1503,9 +1503,9 @@ export const listCatalogSyncPrebuiltPolicies: API.PaginatedOperationMethod<
 
 export interface GetCloudIntegrationRequest {
   providerId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   status?: boolean;
 }
 
@@ -1734,15 +1734,15 @@ export const getCloudIntegration: API.OperationMethod<
 }));
 
 export interface ListCloudIntegrationsRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   cloudflare?: boolean;
-  /** Query param: */
+  /** Query param */
   desc?: boolean;
   /** Query param: One of ["updated_at", "id", "cloud_type", "name"]. */
   orderBy?: string;
-  /** Query param: */
+  /** Query param */
   status?: boolean;
 }
 
@@ -1985,15 +1985,15 @@ export const listCloudIntegrations: API.PaginatedOperationMethod<
 }));
 
 export interface CreateCloudIntegrationRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Header param: */
+  /** Header param */
   forwarded?: string;
-  /** Body param: */
+  /** Body param */
   cloudType: "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
-  /** Body param: */
+  /** Body param */
   friendlyName: string;
-  /** Body param: */
+  /** Body param */
   description?: string;
 }
 
@@ -2230,21 +2230,21 @@ export const createCloudIntegration: API.OperationMethod<
 
 export interface UpdateCloudIntegrationRequest {
   providerId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   awsArn?: string;
-  /** Body param: */
+  /** Body param */
   azureSubscriptionId?: string;
-  /** Body param: */
+  /** Body param */
   azureTenantId?: string;
-  /** Body param: */
+  /** Body param */
   description?: string;
-  /** Body param: */
+  /** Body param */
   friendlyName?: string;
-  /** Body param: */
+  /** Body param */
   gcpProjectId?: string;
-  /** Body param: */
+  /** Body param */
   gcpServiceAccountEmail?: string;
 }
 
@@ -2489,21 +2489,21 @@ export const updateCloudIntegration: API.OperationMethod<
 
 export interface PatchCloudIntegrationRequest {
   providerId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   awsArn?: string;
-  /** Body param: */
+  /** Body param */
   azureSubscriptionId?: string;
-  /** Body param: */
+  /** Body param */
   azureTenantId?: string;
-  /** Body param: */
+  /** Body param */
   description?: string;
-  /** Body param: */
+  /** Body param */
   friendlyName?: string;
-  /** Body param: */
+  /** Body param */
   gcpProjectId?: string;
-  /** Body param: */
+  /** Body param */
   gcpServiceAccountEmail?: string;
 }
 
@@ -2788,9 +2788,9 @@ export const deleteCloudIntegration: API.OperationMethod<
 
 export interface DiscoverCloudIntegrationRequest {
   providerId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   v2?: boolean;
 }
 
@@ -3618,15 +3618,15 @@ export const discoverCloudIntegration: API.OperationMethod<
 
 export interface GetOnRampRequest {
   onrampId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   plannedResources?: boolean;
-  /** Query param: */
+  /** Query param */
   postApplyResources?: boolean;
-  /** Query param: */
+  /** Query param */
   status?: boolean;
-  /** Query param: */
+  /** Query param */
   vpcs?: boolean;
 }
 
@@ -4098,15 +4098,15 @@ export const getOnRamp: API.OperationMethod<
 }));
 
 export interface ListOnRampsRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   desc?: boolean;
   /** Query param: One of ["updated_at", "id", "cloud_type", "name"]. */
   orderBy?: string;
-  /** Query param: */
+  /** Query param */
   status?: boolean;
-  /** Query param: */
+  /** Query param */
   vpcs?: boolean;
 }
 
@@ -4587,41 +4587,41 @@ export const listOnRamps: API.PaginatedOperationMethod<
 }));
 
 export interface CreateOnRampRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Header param: */
+  /** Header param */
   forwarded?: string;
-  /** Body param: */
+  /** Body param */
   cloudType: "AWS" | "AZURE" | "GOOGLE";
-  /** Body param: if set to true, install_routes_in_cloud and install_routes_in_magic_wan should be set to false */
+  /** Body param: Enables BGP routing. When enabling this feature, set both install_routes_in_cloud and install_routes_in_magic_wan to false. */
   dynamicRouting: boolean;
-  /** Body param: */
+  /** Body param */
   installRoutesInCloud: boolean;
-  /** Body param: */
+  /** Body param */
   installRoutesInMagicWan: boolean;
-  /** Body param: */
+  /** Body param */
   name: string;
-  /** Body param: */
+  /** Body param */
   type: "OnrampTypeSingle" | "OnrampTypeHub";
-  /** Body param: */
+  /** Body param */
   adoptedHubId?: string;
-  /** Body param: */
+  /** Body param */
   attachedHubs?: string[];
-  /** Body param: */
+  /** Body param */
   attachedVpcs?: string[];
-  /** Body param: the ASN to use on the cloud side. If unset or zero, the cloud's default will be used. */
+  /** Body param: Sets the cloud-side ASN. If unset or zero, the cloud's default ASN takes effect. */
   cloudAsn?: number;
-  /** Body param: */
+  /** Body param */
   description?: string;
-  /** Body param: */
+  /** Body param */
   hubProviderId?: string;
-  /** Body param: */
+  /** Body param */
   manageHubToHubAttachments?: boolean;
-  /** Body param: */
+  /** Body param */
   manageVpcToHubAttachments?: boolean;
-  /** Body param: */
+  /** Body param */
   region?: string;
-  /** Body param: */
+  /** Body param */
   vpc?: string;
 }
 
@@ -5120,25 +5120,25 @@ export const createOnRamp: API.OperationMethod<
 
 export interface UpdateOnRampRequest {
   onrampId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   attachedHubs?: string[];
-  /** Body param: */
+  /** Body param */
   attachedVpcs?: string[];
-  /** Body param: */
+  /** Body param */
   description?: string;
-  /** Body param: */
+  /** Body param */
   installRoutesInCloud?: boolean;
-  /** Body param: */
+  /** Body param */
   installRoutesInMagicWan?: boolean;
-  /** Body param: */
+  /** Body param */
   manageHubToHubAttachments?: boolean;
-  /** Body param: */
+  /** Body param */
   manageVpcToHubAttachments?: boolean;
-  /** Body param: */
+  /** Body param */
   name?: string;
-  /** Body param: */
+  /** Body param */
   vpc?: string;
 }
 
@@ -5623,25 +5623,25 @@ export const updateOnRamp: API.OperationMethod<
 
 export interface PatchOnRampRequest {
   onrampId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   attachedHubs?: string[];
-  /** Body param: */
+  /** Body param */
   attachedVpcs?: string[];
-  /** Body param: */
+  /** Body param */
   description?: string;
-  /** Body param: */
+  /** Body param */
   installRoutesInCloud?: boolean;
-  /** Body param: */
+  /** Body param */
   installRoutesInMagicWan?: boolean;
-  /** Body param: */
+  /** Body param */
   manageHubToHubAttachments?: boolean;
-  /** Body param: */
+  /** Body param */
   manageVpcToHubAttachments?: boolean;
-  /** Body param: */
+  /** Body param */
   name?: string;
-  /** Body param: */
+  /** Body param */
   vpc?: string;
 }
 
@@ -6126,11 +6126,11 @@ export const patchOnRamp: API.OperationMethod<
 
 export interface DeleteOnRampRequest {
   onrampId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   destroy?: boolean;
-  /** Query param: */
+  /** Query param */
   force?: boolean;
 }
 
@@ -7885,9 +7885,9 @@ export const listOnRampAddressSpaces: API.OperationMethod<
 }));
 
 export interface PutOnRampAddressSpaceRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   prefixes: string[];
 }
 
@@ -7927,9 +7927,9 @@ export const putOnRampAddressSpace: API.OperationMethod<
 }));
 
 export interface PatchOnRampAddressSpaceRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   prefixes: string[];
 }
 
@@ -7973,9 +7973,9 @@ export const patchOnRampAddressSpace: API.OperationMethod<
 // =============================================================================
 
 export interface PolicyPreviewResourceRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   policy: string;
 }
 
@@ -8016,9 +8016,9 @@ export const policyPreviewResource: API.OperationMethod<
 
 export interface GetResourceRequest {
   resourceId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   v2?: boolean;
 }
 
@@ -8973,27 +8973,27 @@ export const getResource: API.OperationMethod<
 }));
 
 export interface ListResourcesRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
   page?: number;
   perPage?: number;
-  /** Query param: */
+  /** Query param */
   cloudflare?: boolean;
-  /** Query param: */
+  /** Query param */
   desc?: boolean;
-  /** Query param: */
+  /** Query param */
   managed?: boolean;
   /** Query param: One of ["id", "resource_type", "region"]. */
   orderBy?: string;
-  /** Query param: */
+  /** Query param */
   providerId?: string;
-  /** Query param: */
+  /** Query param */
   region?: string;
-  /** Query param: */
+  /** Query param */
   resourceGroup?: string;
-  /** Query param: */
+  /** Query param */
   resourceId?: string[];
-  /** Query param: */
+  /** Query param */
   resourceType?: (
     | "aws_customer_gateway"
     | "aws_egress_only_internet_gateway"
@@ -9053,9 +9053,9 @@ export interface ListResourcesRequest {
     | "cloudflare_static_route"
     | "cloudflare_ipsec_tunnel"
   )[];
-  /** Query param: */
+  /** Query param */
   search?: string[];
-  /** Query param: */
+  /** Query param */
   v2?: boolean;
 }
 
@@ -9965,21 +9965,21 @@ export const listResources: API.PaginatedOperationMethod<
 }));
 
 export interface ExportResourceRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   desc?: boolean;
   /** Query param: One of ["id", "resource_type", "region"]. */
   orderBy?: string;
-  /** Query param: */
+  /** Query param */
   providerId?: string;
-  /** Query param: */
+  /** Query param */
   region?: string;
-  /** Query param: */
+  /** Query param */
   resourceGroup?: string;
-  /** Query param: */
+  /** Query param */
   resourceId?: string[];
-  /** Query param: */
+  /** Query param */
   resourceType?: (
     | "aws_customer_gateway"
     | "aws_egress_only_internet_gateway"
@@ -10039,9 +10039,9 @@ export interface ExportResourceRequest {
     | "cloudflare_static_route"
     | "cloudflare_ipsec_tunnel"
   )[];
-  /** Query param: */
+  /** Query param */
   search?: string[];
-  /** Query param: */
+  /** Query param */
   v2?: boolean;
 }
 

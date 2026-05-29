@@ -257,7 +257,7 @@ paths:
                     - format
                     - path
                     - type
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
                   description: "Body param: Defines the name of the pipeline."
@@ -301,7 +301,7 @@ paths:
                         required:
                           - format
                           - type
-                  description: "Body param:"
+                  description: Body param
               required:
                 - destination
                 - name
@@ -751,7 +751,7 @@ paths:
                     - format
                     - path
                     - type
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
                   description: "Body param: Defines the name of the pipeline."
@@ -795,7 +795,7 @@ paths:
                         required:
                           - format
                           - type
-                  description: "Body param:"
+                  description: Body param
               required:
                 - destination
                 - name
@@ -984,18 +984,6 @@ paths:
                           bucket:
                             type: string
                             description: R2 Bucket to write to
-                          credentials:
-                            type: object
-                            properties:
-                              access_key_id:
-                                type: string
-                                description: Cloudflare Account ID for the bucket
-                              secret_access_key:
-                                type: string
-                                description: Cloudflare Account ID for the bucket
-                            required:
-                              - access_key_id
-                              - secret_access_key
                           file_naming:
                             type: object
                             properties:
@@ -1046,12 +1034,8 @@ paths:
                         required:
                           - account_id
                           - bucket
-                          - credentials
                       - type: object
                         properties:
-                          token:
-                            type: string
-                            description: Authentication token
                           account_id:
                             type: string
                             description: Cloudflare Account ID
@@ -1080,7 +1064,6 @@ paths:
                             description: Rolling policy for file sinks (when & why to close a file and open
                               a new one).
                         required:
-                          - token
                           - account_id
                           - bucket
                           - table_name
@@ -1366,7 +1349,7 @@ paths:
           - code: 2
     delete:
       operationId: deleteSink
-      description: "Delete Pipeline in Account.  @example ```ts await
+      description: "Delete Pipeline in Account.  @example ```ts const sink = await
         client.pipelines.sinks.delete( '0223105f4ecef8ad9ca31a8372d0c353', {
         account_id: '0123105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -1391,6 +1374,10 @@ paths:
       responses:
         "200":
           description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
   /accounts/{account_id}/pipelines/v1/sinks:
     get:
       operationId: listSinks
@@ -1418,7 +1405,7 @@ paths:
         - name: pipeline_id
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
       responses:
@@ -1455,18 +1442,6 @@ paths:
                           bucket:
                             type: string
                             description: R2 Bucket to write to
-                          credentials:
-                            type: object
-                            properties:
-                              access_key_id:
-                                type: string
-                                description: Cloudflare Account ID for the bucket
-                              secret_access_key:
-                                type: string
-                                description: Cloudflare Account ID for the bucket
-                            required:
-                              - access_key_id
-                              - secret_access_key
                           file_naming:
                             type: object
                             properties:
@@ -1517,12 +1492,8 @@ paths:
                         required:
                           - account_id
                           - bucket
-                          - credentials
                       - type: object
                         properties:
-                          token:
-                            type: string
-                            description: Authentication token
                           account_id:
                             type: string
                             description: Cloudflare Account ID
@@ -1551,7 +1522,6 @@ paths:
                             description: Rolling policy for file sinks (when & why to close a file and open
                               a new one).
                         required:
-                          - token
                           - account_id
                           - bucket
                           - table_name
@@ -2013,7 +1983,7 @@ paths:
                           nullable: true
                       required:
                         - type
-                  description: "Body param:"
+                  description: Body param
                 schema:
                   type: object
                   properties:
@@ -2238,7 +2208,7 @@ paths:
                       oneOf:
                         - type: boolean
                       nullable: true
-                  description: "Body param:"
+                  description: Body param
               required:
                 - name
                 - type
@@ -3148,7 +3118,7 @@ paths:
                   required:
                     - authentication
                     - enabled
-                  description: "Body param:"
+                  description: Body param
                 worker_binding:
                   type: object
                   properties:
@@ -3157,7 +3127,7 @@ paths:
                       description: Indicates that the worker binding is enabled.
                   required:
                     - enabled
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -3267,7 +3237,7 @@ paths:
           - code: 1016
     delete:
       operationId: deleteStream
-      description: "Delete Stream in Account.  @example ```ts await
+      description: "Delete Stream in Account.  @example ```ts const stream = await
         client.pipelines.streams.delete( '033e105f4ecef8ad9ca31a8372d0c353', {
         account_id: '0123105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -3292,6 +3262,10 @@ paths:
       responses:
         "200":
           description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
       x-distilled-errors:
         PipelineNotExists:
           - code: 1000
@@ -3718,7 +3692,7 @@ paths:
                           nullable: true
                       required:
                         - type
-                  description: "Body param:"
+                  description: Body param
                 http:
                   type: object
                   properties:
@@ -3739,7 +3713,7 @@ paths:
                   required:
                     - authentication
                     - enabled
-                  description: "Body param:"
+                  description: Body param
                 schema:
                   type: object
                   properties:
@@ -3964,7 +3938,7 @@ paths:
                       oneOf:
                         - type: boolean
                       nullable: true
-                  description: "Body param:"
+                  description: Body param
                 worker_binding:
                   type: object
                   properties:
@@ -3973,7 +3947,7 @@ paths:
                       description: Indicates that the worker binding is enabled.
                   required:
                     - enabled
-                  description: "Body param:"
+                  description: Body param
               required:
                 - name
       responses:
@@ -4381,6 +4355,9 @@ paths:
                         - type
                         - version
                     description: List of streams and sinks used by this pipeline.
+                  failure_reason:
+                    type: string
+                    description: Indicates the reason for the failure of the Pipeline.
                 required:
                   - id
                   - created_at
@@ -4395,7 +4372,7 @@ paths:
           - code: 1000
     delete:
       operationId: deleteV1Pipeline
-      description: "Delete Pipeline in Account.  @example ```ts await
+      description: "Delete Pipeline in Account.  @example ```ts const response = await
         client.pipelines.deleteV1( '043e105f4ecef8ad9ca31a8372d0c353', {
         account_id: '0123105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -4413,6 +4390,10 @@ paths:
       responses:
         "200":
           description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
       x-distilled-errors:
         PipelineNotExists:
           - code: 1000

@@ -8,7 +8,7 @@ x-distilled-service: url-normalization
 paths:
   /zones/{zone_id}/url_normalization:
     get:
-      operationId: getURLNormalization
+      operationId: getUrlNormalization
       description: "Fetches the current URL Normalization settings.  @example ```ts
         const urlNormalization = await client.urlNormalization.get({ zone_id:
         '9f1839b6152d298aca64c4e906b6d074', }); ```"
@@ -45,7 +45,7 @@ paths:
                   - type
       x-distilled-response-path: result
     put:
-      operationId: putURLNormalization
+      operationId: putUrlNormalization
       description: "Updates the URL Normalization settings.  @example ```ts const
         urlNormalization = await client.urlNormalization.update({ zone_id:
         '9f1839b6152d298aca64c4e906b6d074', scope: 'incoming', type:
@@ -107,7 +107,7 @@ paths:
                   - type
       x-distilled-response-path: result
     delete:
-      operationId: deleteURLNormalization
+      operationId: deleteUrlNormalization
       description: "Deletes the URL Normalization settings.  @example ```ts await
         client.urlNormalization.delete({ zone_id:
         '9f1839b6152d298aca64c4e906b6d074', }); ```"

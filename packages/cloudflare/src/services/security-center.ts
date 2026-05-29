@@ -13,6 +13,163 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// ByInsightInsightAuditLog
+// =============================================================================
+
+const ListByInsightInsightAuditLogBaseFields = {
+  issueId: Schema.String.pipe(T.HttpPath("issueId")),
+} as const;
+
+interface ListByInsightInsightAuditLogBaseRequest {
+  issueId: string;
+}
+
+export interface ListByInsightInsightAuditLogForAccountRequest extends ListByInsightInsightAuditLogBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface ListByInsightInsightAuditLogForZoneRequest extends ListByInsightInsightAuditLogBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const ListByInsightInsightAuditLogForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...ListByInsightInsightAuditLogBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/security-center/insights/{issueId}/audit-log",
+    }),
+  ) as unknown as Schema.Schema<ListByInsightInsightAuditLogForAccountRequest>;
+
+export const ListByInsightInsightAuditLogForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...ListByInsightInsightAuditLogBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/security-center/insights/{issueId}/audit-log",
+    }),
+  ) as unknown as Schema.Schema<ListByInsightInsightAuditLogForZoneRequest>;
+
+export interface ListByInsightInsightAuditLogResponse {
+  result: {
+    id?: string | null;
+    changedAt?: string | null;
+    changedBy?: string | null;
+    currentValue?: string | null;
+    fieldChanged?: "status" | "user_classification" | null;
+    issueId?: string | null;
+    previousValue?: string | null;
+    rationale?: string | null;
+    zoneId?: number | null;
+  }[];
+  resultInfo?: {
+    count?: number | null;
+    cursor?: string | null;
+    perPage?: number | null;
+  } | null;
+}
+
+export const ListByInsightInsightAuditLogResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        changedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        changedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        currentValue: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        fieldChanged: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["status", "user_classification"]),
+            Schema.Null,
+          ]),
+        ),
+        issueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        previousValue: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        rationale: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        zoneId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          changedAt: "changed_at",
+          changedBy: "changed_by",
+          currentValue: "current_value",
+          fieldChanged: "field_changed",
+          issueId: "issue_id",
+          previousValue: "previous_value",
+          rationale: "rationale",
+          zoneId: "zone_id",
+        }),
+      ),
+    ),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            cursor: "cursor",
+            perPage: "per_page",
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+  ) as unknown as Schema.Schema<ListByInsightInsightAuditLogResponse>;
+
+export type ListByInsightInsightAuditLogError = DefaultErrors;
+
+export const listByInsightInsightAuditLogForAccount: API.PaginatedOperationMethod<
+  ListByInsightInsightAuditLogForAccountRequest,
+  ListByInsightInsightAuditLogResponse,
+  ListByInsightInsightAuditLogError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListByInsightInsightAuditLogForAccountRequest,
+  output: ListByInsightInsightAuditLogResponse,
+  errors: [],
+  pagination: {
+    mode: "cursor",
+    inputToken: "cursor",
+    outputToken: "resultInfo.cursor",
+    items: "result",
+    pageSize: "perPage",
+  } as const,
+}));
+
+export const listByInsightInsightAuditLogForZone: API.PaginatedOperationMethod<
+  ListByInsightInsightAuditLogForZoneRequest,
+  ListByInsightInsightAuditLogResponse,
+  ListByInsightInsightAuditLogError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListByInsightInsightAuditLogForZoneRequest,
+  output: ListByInsightInsightAuditLogResponse,
+  errors: [],
+  pagination: {
+    mode: "cursor",
+    inputToken: "cursor",
+    outputToken: "resultInfo.cursor",
+    items: "result",
+    pageSize: "perPage",
+  } as const,
+}));
+
+// =============================================================================
 // Insight
 // =============================================================================
 
@@ -61,6 +218,7 @@ export interface ListInsightsResponse {
             | {
                 id?: string | null;
                 dismissed?: boolean | null;
+                hasExtendedContext?: boolean | null;
                 issueClass?: string | null;
                 issueType?:
                   | "compliance_violation"
@@ -78,8 +236,14 @@ export interface ListInsightsResponse {
                 resolveText?: string | null;
                 severity?: "Low" | "Moderate" | "Critical" | null;
                 since?: string | null;
+                status?: "active" | "resolved" | null;
                 subject?: string | null;
                 timestamp?: string | null;
+                userClassification?:
+                  | "false_positive"
+                  | "accept_risk"
+                  | "other"
+                  | null;
               }[]
             | null;
           page?: number | null;
@@ -110,6 +274,9 @@ export const ListInsightsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       Schema.Union([Schema.String, Schema.Null]),
                     ),
                     dismissed: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                    hasExtendedContext: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
                     ),
                     issueClass: Schema.optional(
@@ -161,16 +328,31 @@ export const ListInsightsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     since: Schema.optional(
                       Schema.Union([Schema.String, Schema.Null]),
                     ),
+                    status: Schema.optional(
+                      Schema.Union([
+                        Schema.Literals(["active", "resolved"]),
+                        Schema.Null,
+                      ]),
+                    ),
                     subject: Schema.optional(
                       Schema.Union([Schema.String, Schema.Null]),
                     ),
                     timestamp: Schema.optional(
                       Schema.Union([Schema.String, Schema.Null]),
                     ),
+                    userClassification: Schema.optional(
+                      Schema.Union([
+                        Schema.Literal("false_positive"),
+                        Schema.Literal("accept_risk"),
+                        Schema.Literal("other"),
+                        Schema.Null,
+                      ]),
+                    ),
                   }).pipe(
                     Schema.encodeKeys({
                       id: "id",
                       dismissed: "dismissed",
+                      hasExtendedContext: "has_extended_context",
                       issueClass: "issue_class",
                       issueType: "issue_type",
                       payload: "payload",
@@ -178,8 +360,10 @@ export const ListInsightsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       resolveText: "resolve_text",
                       severity: "severity",
                       since: "since",
+                      status: "status",
                       subject: "subject",
                       timestamp: "timestamp",
+                      userClassification: "user_classification",
                     }),
                   ),
                 ),
@@ -270,7 +454,7 @@ const DismissInsightBaseFields = {
 
 interface DismissInsightBaseRequest {
   issueId: string;
-  /** Body param: */
+  /** Body param */
   dismiss?: boolean;
 }
 
@@ -406,6 +590,159 @@ export const dismissInsightForZone: API.OperationMethod<
 }));
 
 // =============================================================================
+// InsightAuditLog
+// =============================================================================
+
+const ListInsightAuditLogsBaseFields = {} as const;
+
+interface ListInsightAuditLogsBaseRequest {}
+
+export interface ListInsightAuditLogsForAccountRequest extends ListInsightAuditLogsBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface ListInsightAuditLogsForZoneRequest extends ListInsightAuditLogsBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const ListInsightAuditLogsForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...ListInsightAuditLogsBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/security-center/insights/audit-log",
+    }),
+  ) as unknown as Schema.Schema<ListInsightAuditLogsForAccountRequest>;
+
+export const ListInsightAuditLogsForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...ListInsightAuditLogsBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/security-center/insights/audit-log",
+    }),
+  ) as unknown as Schema.Schema<ListInsightAuditLogsForZoneRequest>;
+
+export interface ListInsightAuditLogsResponse {
+  result: {
+    id?: string | null;
+    changedAt?: string | null;
+    changedBy?: string | null;
+    currentValue?: string | null;
+    fieldChanged?: "status" | "user_classification" | null;
+    issueId?: string | null;
+    previousValue?: string | null;
+    rationale?: string | null;
+    zoneId?: number | null;
+  }[];
+  resultInfo?: {
+    count?: number | null;
+    cursor?: string | null;
+    perPage?: number | null;
+  } | null;
+}
+
+export const ListInsightAuditLogsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        changedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        changedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        currentValue: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        fieldChanged: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["status", "user_classification"]),
+            Schema.Null,
+          ]),
+        ),
+        issueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        previousValue: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        rationale: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        zoneId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          changedAt: "changed_at",
+          changedBy: "changed_by",
+          currentValue: "current_value",
+          fieldChanged: "field_changed",
+          issueId: "issue_id",
+          previousValue: "previous_value",
+          rationale: "rationale",
+          zoneId: "zone_id",
+        }),
+      ),
+    ),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            cursor: "cursor",
+            perPage: "per_page",
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+  ) as unknown as Schema.Schema<ListInsightAuditLogsResponse>;
+
+export type ListInsightAuditLogsError = DefaultErrors;
+
+export const listInsightAuditLogsForAccount: API.PaginatedOperationMethod<
+  ListInsightAuditLogsForAccountRequest,
+  ListInsightAuditLogsResponse,
+  ListInsightAuditLogsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListInsightAuditLogsForAccountRequest,
+  output: ListInsightAuditLogsResponse,
+  errors: [],
+  pagination: {
+    mode: "cursor",
+    inputToken: "cursor",
+    outputToken: "resultInfo.cursor",
+    items: "result",
+    pageSize: "perPage",
+  } as const,
+}));
+
+export const listInsightAuditLogsForZone: API.PaginatedOperationMethod<
+  ListInsightAuditLogsForZoneRequest,
+  ListInsightAuditLogsResponse,
+  ListInsightAuditLogsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListInsightAuditLogsForZoneRequest,
+  output: ListInsightAuditLogsResponse,
+  errors: [],
+  pagination: {
+    mode: "cursor",
+    inputToken: "cursor",
+    outputToken: "resultInfo.cursor",
+    items: "result",
+    pageSize: "perPage",
+  } as const,
+}));
+
+// =============================================================================
 // InsightClass
 // =============================================================================
 
@@ -480,6 +817,202 @@ export const getInsightClassForZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInsightClassForZoneRequest,
   output: GetInsightClassResponse,
+  errors: [],
+}));
+
+// =============================================================================
+// InsightClassification
+// =============================================================================
+
+const PatchInsightClassificationBaseFields = {
+  issueId: Schema.String.pipe(T.HttpPath("issueId")),
+  classification: Schema.optional(
+    Schema.Union([
+      Schema.Literal("false_positive"),
+      Schema.Literal("accept_risk"),
+      Schema.Literal("other"),
+      Schema.Null,
+    ]),
+  ),
+  rationale: Schema.optional(Schema.String),
+} as const;
+
+interface PatchInsightClassificationBaseRequest {
+  issueId: string;
+  /** Body param: User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
+  classification?: "false_positive" | "accept_risk" | "other" | null;
+  /** Body param: Rationale for the classification change. Required when classification is 'accept_risk' or 'other'. */
+  rationale?: string;
+}
+
+export interface PatchInsightClassificationForAccountRequest extends PatchInsightClassificationBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface PatchInsightClassificationForZoneRequest extends PatchInsightClassificationBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const PatchInsightClassificationForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...PatchInsightClassificationBaseFields,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/security-center/insights/{issueId}/classification",
+    }),
+  ) as unknown as Schema.Schema<PatchInsightClassificationForAccountRequest>;
+
+export const PatchInsightClassificationForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...PatchInsightClassificationBaseFields,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/zones/{zone_id}/security-center/insights/{issueId}/classification",
+    }),
+  ) as unknown as Schema.Schema<PatchInsightClassificationForZoneRequest>;
+
+export interface PatchInsightClassificationResponse {
+  errors: {
+    code: number;
+    message: string;
+    documentationUrl?: string | null;
+    source?: { pointer?: string | null } | null;
+  }[];
+  messages: {
+    code: number;
+    message: string;
+    documentationUrl?: string | null;
+    source?: { pointer?: string | null } | null;
+  }[];
+  /** Whether the API call was successful. */
+  success: true;
+}
+
+export const PatchInsightClassificationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errors: Schema.Array(
+      Schema.Struct({
+        code: Schema.Number,
+        message: Schema.String,
+        documentationUrl: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        source: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              pointer: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          code: "code",
+          message: "message",
+          documentationUrl: "documentation_url",
+          source: "source",
+        }),
+      ),
+    ),
+    messages: Schema.Array(
+      Schema.Struct({
+        code: Schema.Number,
+        message: Schema.String,
+        documentationUrl: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        source: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              pointer: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          code: "code",
+          message: "message",
+          documentationUrl: "documentation_url",
+          source: "source",
+        }),
+      ),
+    ),
+    success: Schema.Literal(true),
+  }) as unknown as Schema.Schema<PatchInsightClassificationResponse>;
+
+export type PatchInsightClassificationError = DefaultErrors;
+
+export const patchInsightClassificationForAccount: API.OperationMethod<
+  PatchInsightClassificationForAccountRequest,
+  PatchInsightClassificationResponse,
+  PatchInsightClassificationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchInsightClassificationForAccountRequest,
+  output: PatchInsightClassificationResponse,
+  errors: [],
+}));
+
+export const patchInsightClassificationForZone: API.OperationMethod<
+  PatchInsightClassificationForZoneRequest,
+  PatchInsightClassificationResponse,
+  PatchInsightClassificationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchInsightClassificationForZoneRequest,
+  output: PatchInsightClassificationResponse,
+  errors: [],
+}));
+
+// =============================================================================
+// InsightContext
+// =============================================================================
+
+export interface GetInsightContextRequest {
+  issueId: string;
+  /** Identifier. */
+  accountId: string;
+}
+
+export const GetInsightContextRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueId: Schema.String.pipe(T.HttpPath("issueId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/security-center/insights/{issueId}/context",
+    }),
+  ) as unknown as Schema.Schema<GetInsightContextRequest>;
+
+export type GetInsightContextResponse = Record<string, unknown>;
+
+export const GetInsightContextResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetInsightContextResponse>;
+
+export type GetInsightContextError = DefaultErrors;
+
+export const getInsightContext: API.OperationMethod<
+  GetInsightContextRequest,
+  GetInsightContextResponse,
+  GetInsightContextError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetInsightContextRequest,
+  output: GetInsightContextResponse,
   errors: [],
 }));
 

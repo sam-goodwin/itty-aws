@@ -125,13 +125,13 @@ export interface CreateRuleRequest {
   rulesetId: string;
   /** Path param: Identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   host?: string;
   /** Body param: Whether the rule includes or excludes traffic from being measured. */
   inclusive?: boolean;
   /** Body param: Whether the rule is paused or not. */
   isPaused?: boolean;
-  /** Body param: */
+  /** Body param */
   paths?: string[];
 }
 
@@ -214,13 +214,13 @@ export interface UpdateRuleRequest {
   ruleId: string;
   /** Path param: Identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   host?: string;
   /** Body param: Whether the rule includes or excludes traffic from being measured. */
   inclusive?: boolean;
   /** Body param: Whether the rule is paused or not. */
   isPaused?: boolean;
-  /** Body param: */
+  /** Body param */
   paths?: string[];
 }
 

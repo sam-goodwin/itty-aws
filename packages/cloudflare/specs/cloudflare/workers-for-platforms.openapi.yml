@@ -355,6 +355,42 @@ paths:
                                   - invocation_logs
                             nullable: true
                             description: Log settings for the Worker.
+                          traces:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  destinations:
+                                    type: array
+                                    items:
+                                      type: string
+                                    description: A list of destinations where traces will be exported to.
+                                  enabled:
+                                    type: boolean
+                                    description: Whether traces are enabled for the Worker.
+                                  head_sampling_rate:
+                                    oneOf:
+                                      - type: number
+                                    nullable: true
+                                    description: The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+                                      Default is 1.
+                                  persist:
+                                    type: boolean
+                                    description: Whether trace persistence is enabled for the Worker.
+                                  propagation_policy:
+                                    type: string
+                                    enum:
+                                      - authenticated
+                                      - accept
+                                    description: Controls how inbound trace context (traceparent/tracestate) headers
+                                      on incoming requests are handled.
+                                      "authenticated" (default) honors inbound
+                                      trace context only when accompanied by a
+                                      valid trace auth token. "accept"
+                                      unconditionally accepts inbound trace
+                                      context. Requires the trace propagation
+                                      feature to be enabled.
+                            nullable: true
+                            description: Trace settings for the Worker.
                         required:
                           - enabled
                         description: Observability settings for the Worker.
@@ -439,17 +475,142 @@ paths:
                                   Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                             required:
                               - host
+                          - type: object
+                            properties:
+                              mode:
+                                type: string
+                                enum:
+                                  - targeted
+                                description: Targeted placement mode.
+                              region:
+                                type: string
+                                description: Cloud region for targeted placement in format 'provider:region'.
+                              last_analyzed_at:
+                                type: string
+                                description: The last time the script was analyzed for [Smart
+                                  Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                              status:
+                                type: string
+                                enum:
+                                  - SUCCESS
+                                  - UNSUPPORTED_APPLICATION
+                                  - INSUFFICIENT_INVOCATIONS
+                                description: Status of [Smart
+                                  Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                            required:
+                              - mode
+                              - region
+                          - type: object
+                            properties:
+                              hostname:
+                                type: string
+                                description: HTTP hostname for targeted placement.
+                              mode:
+                                type: string
+                                enum:
+                                  - targeted
+                                description: Targeted placement mode.
+                              last_analyzed_at:
+                                type: string
+                                description: The last time the script was analyzed for [Smart
+                                  Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                              status:
+                                type: string
+                                enum:
+                                  - SUCCESS
+                                  - UNSUPPORTED_APPLICATION
+                                  - INSUFFICIENT_INVOCATIONS
+                                description: Status of [Smart
+                                  Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                            required:
+                              - hostname
+                              - mode
+                          - type: object
+                            properties:
+                              host:
+                                type: string
+                                description: TCP host and port for targeted placement.
+                              mode:
+                                type: string
+                                enum:
+                                  - targeted
+                                description: Targeted placement mode.
+                              last_analyzed_at:
+                                type: string
+                                description: The last time the script was analyzed for [Smart
+                                  Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                              status:
+                                type: string
+                                enum:
+                                  - SUCCESS
+                                  - UNSUPPORTED_APPLICATION
+                                  - INSUFFICIENT_INVOCATIONS
+                                description: Status of [Smart
+                                  Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                            required:
+                              - host
+                              - mode
+                          - type: object
+                            properties:
+                              mode:
+                                type: string
+                                enum:
+                                  - targeted
+                                description: Targeted placement mode.
+                              target:
+                                type: array
+                                items:
+                                  oneOf:
+                                    - type: object
+                                      properties:
+                                        region:
+                                          type: string
+                                          description: Cloud region in format 'provider:region'.
+                                      required:
+                                        - region
+                                    - type: object
+                                      properties:
+                                        hostname:
+                                          type: string
+                                          description: HTTP hostname for targeted placement.
+                                      required:
+                                        - hostname
+                                    - type: object
+                                      properties:
+                                        host:
+                                          type: string
+                                          description: TCP host:port for targeted placement.
+                                      required:
+                                        - host
+                                description: Array of placement targets (currently limited to single target).
+                              last_analyzed_at:
+                                type: string
+                                description: The last time the script was analyzed for [Smart
+                                  Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                              status:
+                                type: string
+                                enum:
+                                  - SUCCESS
+                                  - UNSUPPORTED_APPLICATION
+                                  - INSUFFICIENT_INVOCATIONS
+                                description: Status of [Smart
+                                  Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                            required:
+                              - mode
+                              - target
                         description: Configuration for [Smart
                           Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-                          Specify either mode for Smart Placement, or one of
-                          region/hostname/host for targeted placement.
+                          Specify mode='smart' for Smart Placement, or one of
+                          region/hostname/host.
                       placement_mode:
                         type: string
                         enum:
                           - smart
-                        description: "@deprecated Enables [Smart
+                          - targeted
+                        description: "@deprecated Configuration for [Smart
                           Placement](https://developers.cloudflare.com/workers/\
-                          configuration/smart-placement)."
+                          configuration/smart-placement). Specify mode='smart'
+                          for Smart Placement, or one of region/hostname/host."
                       placement_status:
                         type: string
                         enum:
@@ -522,6 +683,17 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: bindings_inherit
+          in: query
+          required: false
+          description: 'Query param: When set to "strict", the upload will fail if any
+            `inherit` type bindings cannot be resolved against the previous
+            version of the script. Without this, unresolvable inherit bindings
+            are silently dropped.'
+          schema:
+            type: string
+            enum:
+              - strict
       requestBody:
         required: true
         content:
@@ -605,6 +777,53 @@ paths:
                               - type
                           - type: object
                             properties:
+                              instance_name:
+                                type: string
+                                description: The user-chosen instance name. Must exist at deploy time. The
+                                  worker can search, chat, update, and manage
+                                  items/jobs on this instance.
+                              name:
+                                type: string
+                                description: A JavaScript variable name for the binding.
+                              type:
+                                type: string
+                                enum:
+                                  - ai_search
+                                description: The kind of resource that the binding provides.
+                              namespace:
+                                type: string
+                                description: The namespace the instance belongs to. Defaults to "default" if
+                                  omitted. Customers who don't use namespaces
+                                  can simply omit this field.
+                            required:
+                              - instance_name
+                              - name
+                              - type
+                          - type: object
+                            properties:
+                              name:
+                                type: string
+                                description: A JavaScript variable name for the binding.
+                              namespace:
+                                type: string
+                                description: The user-chosen namespace name. Must exist before deploy --
+                                  Wrangler handles auto-creation on deploy
+                                  failure (R2 bucket pattern). The "default"
+                                  namespace is auto-created by config-api for
+                                  new accounts. Grants full access (CRUD +
+                                  search + chat) to all instances within the
+                                  namespace.
+                              type:
+                                type: string
+                                enum:
+                                  - ai_search_namespace
+                                description: The kind of resource that the binding provides.
+                            required:
+                              - name
+                              - namespace
+                              - type
+                          - type: object
+                            properties:
                               dataset:
                                 type: string
                                 description: The name of the dataset to bind to.
@@ -648,7 +867,7 @@ paths:
                               - type
                           - type: object
                             properties:
-                              id:
+                              database_id:
                                 type: string
                                 description: Identifier of the D1 database to bind to.
                               name:
@@ -659,8 +878,11 @@ paths:
                                 enum:
                                   - d1
                                 description: The kind of resource that the binding provides.
+                              id:
+                                type: string
+                                description: "@deprecated This property has been renamed to `database_id`."
                             required:
-                              - id
+                              - database_id
                               - name
                               - type
                           - type: object
@@ -700,12 +922,21 @@ paths:
                                   params:
                                     type: array
                                     items:
-                                      type: string
+                                      type: object
+                                      properties:
+                                        name:
+                                          type: string
+                                          description: Name of the parameter.
+                                      required:
+                                        - name
                                     description: Pass information from the Dispatch Worker to the Outbound Worker
                                       through the parameters.
                                   worker:
                                     type: object
                                     properties:
+                                      entrypoint:
+                                        type: string
+                                        description: Entrypoint to invoke on the outbound worker.
                                       environment:
                                         type: string
                                         description: Environment of the outbound worker.
@@ -731,6 +962,9 @@ paths:
                               class_name:
                                 type: string
                                 description: The exported class name of the Durable Object.
+                              dispatch_namespace:
+                                type: string
+                                description: The dispatch namespace the Durable Object script belongs to.
                               environment:
                                 type: string
                                 description: The environment of the script_name to bind to.
@@ -803,7 +1037,6 @@ paths:
                           - type: object
                             properties:
                               json:
-                                type: string
                                 description: JSON data to use.
                               name:
                                 type: string
@@ -833,6 +1066,19 @@ paths:
                             required:
                               - name
                               - namespace_id
+                              - type
+                          - type: object
+                            properties:
+                              name:
+                                type: string
+                                description: A JavaScript variable name for the binding.
+                              type:
+                                type: string
+                                enum:
+                                  - media
+                                description: The kind of resource that the binding provides.
+                            required:
+                              - name
                               - type
                           - type: object
                             properties:
@@ -904,6 +1150,44 @@ paths:
                               - type
                           - type: object
                             properties:
+                              name:
+                                type: string
+                                description: A JavaScript variable name for the binding.
+                              namespace_id:
+                                type: string
+                                description: Identifier of the rate limit namespace to bind to.
+                              simple:
+                                type: object
+                                properties:
+                                  limit:
+                                    type: number
+                                    description: The limit (requests per period).
+                                  period:
+                                    type: number
+                                    description: The period in seconds.
+                                  mitigation_timeout:
+                                    type: number
+                                    description: Duration in seconds to apply the mitigation action after the rate
+                                      limit is exceeded. Valid values are 0
+                                      (disabled), 10, or multiples of 60 up to
+                                      86400. Must be greater than or equal to
+                                      the period when non-zero.
+                                required:
+                                  - limit
+                                  - period
+                                description: The rate limit configuration.
+                              type:
+                                type: string
+                                enum:
+                                  - ratelimit
+                                description: The kind of resource that the binding provides.
+                            required:
+                              - name
+                              - namespace_id
+                              - simple
+                              - type
+                          - type: object
+                            properties:
                               bucket_name:
                                 type: string
                                 description: R2 bucket to bind to.
@@ -920,6 +1204,7 @@ paths:
                                 enum:
                                   - eu
                                   - fedramp
+                                  - fedramp-high
                                 description: The
                                   [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
                                   of the R2 bucket.
@@ -983,6 +1268,9 @@ paths:
                                 enum:
                                   - service
                                 description: The kind of resource that the binding provides.
+                              entrypoint:
+                                type: string
+                                description: Entrypoint to invoke on the target Worker.
                               environment:
                                 type: string
                                 description: Optional environment if the Worker utilizes one.
@@ -1058,6 +1346,23 @@ paths:
                               - name
                               - secret_name
                               - store_id
+                              - type
+                          - type: object
+                            properties:
+                              app_id:
+                                type: string
+                                description: ID of the Flagship app to bind to for feature flag evaluation.
+                              name:
+                                type: string
+                                description: A JavaScript variable name for the binding.
+                              type:
+                                type: string
+                                enum:
+                                  - flagship
+                                description: The kind of resource that the binding provides.
+                            required:
+                              - app_id
+                              - name
                               - type
                           - type: object
                             properties:
@@ -1154,6 +1459,45 @@ paths:
                               - name
                               - part
                               - type
+                          - type: object
+                            properties:
+                              name:
+                                type: string
+                                description: A JavaScript variable name for the binding.
+                              service_id:
+                                type: string
+                                description: Identifier of the VPC service to bind to.
+                              type:
+                                type: string
+                                enum:
+                                  - vpc_service
+                                description: The kind of resource that the binding provides.
+                            required:
+                              - name
+                              - service_id
+                              - type
+                          - type: object
+                            properties:
+                              name:
+                                type: string
+                                description: A JavaScript variable name for the binding.
+                              type:
+                                type: string
+                                enum:
+                                  - vpc_network
+                                description: The kind of resource that the binding provides.
+                              network_id:
+                                type: string
+                                description: Identifier of the network to bind to. Only "cf1:network" is
+                                  currently supported. Mutually exclusive with
+                                  tunnel_id.
+                              tunnel_id:
+                                type: string
+                                description: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with
+                                  network_id.
+                            required:
+                              - name
+                              - type
                       description: "List of bindings attached to a Worker. You can find more about
                         bindings on our docs:
                         https://developers.cloudflare.com/workers/configuration\
@@ -1191,6 +1535,9 @@ paths:
                         cpu_ms:
                           type: number
                           description: The amount of CPU time this Worker can use in milliseconds.
+                        subrequests:
+                          type: number
+                          description: The number of subrequests this Worker can make per request.
                       description: Limits to apply for this Worker.
                     logpush:
                       type: boolean
@@ -1353,6 +1700,42 @@ paths:
                                 - invocation_logs
                           nullable: true
                           description: Log settings for the Worker.
+                        traces:
+                          oneOf:
+                            - type: object
+                              properties:
+                                destinations:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: A list of destinations where traces will be exported to.
+                                enabled:
+                                  type: boolean
+                                  description: Whether traces are enabled for the Worker.
+                                head_sampling_rate:
+                                  oneOf:
+                                    - type: number
+                                  nullable: true
+                                  description: The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+                                    Default is 1.
+                                persist:
+                                  type: boolean
+                                  description: Whether trace persistence is enabled for the Worker.
+                                propagation_policy:
+                                  type: string
+                                  enum:
+                                    - authenticated
+                                    - accept
+                                  description: Controls how inbound trace context (traceparent/tracestate) headers
+                                    on incoming requests are handled.
+                                    "authenticated" (default) honors inbound
+                                    trace context only when accompanied by a
+                                    valid trace auth token. "accept"
+                                    unconditionally accepts inbound trace
+                                    context. Requires the trace propagation
+                                    feature to be enabled.
+                          nullable: true
+                          description: Trace settings for the Worker.
                       required:
                         - enabled
                       description: Observability settings for the Worker.
@@ -1389,10 +1772,85 @@ paths:
                               description: TCP host and port for targeted placement.
                           required:
                             - host
+                        - type: object
+                          properties:
+                            mode:
+                              type: string
+                              enum:
+                                - targeted
+                              description: Targeted placement mode.
+                            region:
+                              type: string
+                              description: Cloud region for targeted placement in format 'provider:region'.
+                          required:
+                            - mode
+                            - region
+                        - type: object
+                          properties:
+                            hostname:
+                              type: string
+                              description: HTTP hostname for targeted placement.
+                            mode:
+                              type: string
+                              enum:
+                                - targeted
+                              description: Targeted placement mode.
+                          required:
+                            - hostname
+                            - mode
+                        - type: object
+                          properties:
+                            host:
+                              type: string
+                              description: TCP host and port for targeted placement.
+                            mode:
+                              type: string
+                              enum:
+                                - targeted
+                              description: Targeted placement mode.
+                          required:
+                            - host
+                            - mode
+                        - type: object
+                          properties:
+                            mode:
+                              type: string
+                              enum:
+                                - targeted
+                              description: Targeted placement mode.
+                            target:
+                              type: array
+                              items:
+                                oneOf:
+                                  - type: object
+                                    properties:
+                                      region:
+                                        type: string
+                                        description: Cloud region in format 'provider:region'.
+                                    required:
+                                      - region
+                                  - type: object
+                                    properties:
+                                      hostname:
+                                        type: string
+                                        description: HTTP hostname for targeted placement.
+                                    required:
+                                      - hostname
+                                  - type: object
+                                    properties:
+                                      host:
+                                        type: string
+                                        description: TCP host:port for targeted placement.
+                                    required:
+                                      - host
+                              description: Array of placement targets (currently limited to single target).
+                          required:
+                            - mode
+                            - target
                       description: Configuration for [Smart
                         Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-                        Specify either mode for Smart Placement, or one of
-                        region/hostname/host for targeted placement.
+                        Specify mode='smart' for Smart Placement, or one of
+                        region/hostname/host.
                     tags:
                       type: array
                       items:
@@ -1560,6 +2018,41 @@ paths:
                               - invocation_logs
                         nullable: true
                         description: Log settings for the Worker.
+                      traces:
+                        oneOf:
+                          - type: object
+                            properties:
+                              destinations:
+                                type: array
+                                items:
+                                  type: string
+                                description: A list of destinations where traces will be exported to.
+                              enabled:
+                                type: boolean
+                                description: Whether traces are enabled for the Worker.
+                              head_sampling_rate:
+                                oneOf:
+                                  - type: number
+                                nullable: true
+                                description: The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+                                  Default is 1.
+                              persist:
+                                type: boolean
+                                description: Whether trace persistence is enabled for the Worker.
+                              propagation_policy:
+                                type: string
+                                enum:
+                                  - authenticated
+                                  - accept
+                                description: Controls how inbound trace context (traceparent/tracestate) headers
+                                  on incoming requests are handled.
+                                  "authenticated" (default) honors inbound trace
+                                  context only when accompanied by a valid trace
+                                  auth token. "accept" unconditionally accepts
+                                  inbound trace context. Requires the trace
+                                  propagation feature to be enabled.
+                        nullable: true
+                        description: Trace settings for the Worker.
                     required:
                       - enabled
                     description: Observability settings for the Worker.
@@ -1644,14 +2137,138 @@ paths:
                               Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                         required:
                           - host
+                      - type: object
+                        properties:
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                            description: Targeted placement mode.
+                          region:
+                            type: string
+                            description: Cloud region for targeted placement in format 'provider:region'.
+                          last_analyzed_at:
+                            type: string
+                            description: The last time the script was analyzed for [Smart
+                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                          status:
+                            type: string
+                            enum:
+                              - SUCCESS
+                              - UNSUPPORTED_APPLICATION
+                              - INSUFFICIENT_INVOCATIONS
+                            description: Status of [Smart
+                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                        required:
+                          - mode
+                          - region
+                      - type: object
+                        properties:
+                          hostname:
+                            type: string
+                            description: HTTP hostname for targeted placement.
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                            description: Targeted placement mode.
+                          last_analyzed_at:
+                            type: string
+                            description: The last time the script was analyzed for [Smart
+                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                          status:
+                            type: string
+                            enum:
+                              - SUCCESS
+                              - UNSUPPORTED_APPLICATION
+                              - INSUFFICIENT_INVOCATIONS
+                            description: Status of [Smart
+                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                        required:
+                          - hostname
+                          - mode
+                      - type: object
+                        properties:
+                          host:
+                            type: string
+                            description: TCP host and port for targeted placement.
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                            description: Targeted placement mode.
+                          last_analyzed_at:
+                            type: string
+                            description: The last time the script was analyzed for [Smart
+                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                          status:
+                            type: string
+                            enum:
+                              - SUCCESS
+                              - UNSUPPORTED_APPLICATION
+                              - INSUFFICIENT_INVOCATIONS
+                            description: Status of [Smart
+                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                        required:
+                          - host
+                          - mode
+                      - type: object
+                        properties:
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                            description: Targeted placement mode.
+                          target:
+                            type: array
+                            items:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    region:
+                                      type: string
+                                      description: Cloud region in format 'provider:region'.
+                                  required:
+                                    - region
+                                - type: object
+                                  properties:
+                                    hostname:
+                                      type: string
+                                      description: HTTP hostname for targeted placement.
+                                  required:
+                                    - hostname
+                                - type: object
+                                  properties:
+                                    host:
+                                      type: string
+                                      description: TCP host:port for targeted placement.
+                                  required:
+                                    - host
+                            description: Array of placement targets (currently limited to single target).
+                          last_analyzed_at:
+                            type: string
+                            description: The last time the script was analyzed for [Smart
+                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                          status:
+                            type: string
+                            enum:
+                              - SUCCESS
+                              - UNSUPPORTED_APPLICATION
+                              - INSUFFICIENT_INVOCATIONS
+                            description: Status of [Smart
+                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                        required:
+                          - mode
+                          - target
                     description: Configuration for [Smart
                       Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-                      Specify either mode for Smart Placement, or one of
-                      region/hostname/host for targeted placement.
+                      Specify mode='smart' for Smart Placement, or one of
+                      region/hostname/host.
                   placement_mode:
                     type: string
                     enum:
                       - smart
+                      - targeted
                     description: "@deprecated"
                   placement_status:
                     type: string
@@ -1850,6 +2467,52 @@ paths:
                       - type
                   - type: object
                     properties:
+                      instance_name:
+                        type: string
+                        description: The user-chosen instance name. Must exist at deploy time. The
+                          worker can search, chat, update, and manage items/jobs
+                          on this instance.
+                      name:
+                        type: string
+                        description: A JavaScript variable name for the binding.
+                      type:
+                        type: string
+                        enum:
+                          - ai_search
+                        description: The kind of resource that the binding provides.
+                      namespace:
+                        type: string
+                        description: The namespace the instance belongs to. Defaults to "default" if
+                          omitted. Customers who don't use namespaces can simply
+                          omit this field.
+                    required:
+                      - instance_name
+                      - name
+                      - type
+                  - type: object
+                    properties:
+                      name:
+                        type: string
+                        description: A JavaScript variable name for the binding.
+                      namespace:
+                        type: string
+                        description: The user-chosen namespace name. Must exist before deploy --
+                          Wrangler handles auto-creation on deploy failure (R2
+                          bucket pattern). The "default" namespace is
+                          auto-created by config-api for new accounts. Grants
+                          full access (CRUD + search + chat) to all instances
+                          within the namespace.
+                      type:
+                        type: string
+                        enum:
+                          - ai_search_namespace
+                        description: The kind of resource that the binding provides.
+                    required:
+                      - name
+                      - namespace
+                      - type
+                  - type: object
+                    properties:
                       dataset:
                         type: string
                         description: The name of the dataset to bind to.
@@ -1893,7 +2556,7 @@ paths:
                       - type
                   - type: object
                     properties:
-                      id:
+                      database_id:
                         type: string
                         description: Identifier of the D1 database to bind to.
                       name:
@@ -1904,8 +2567,11 @@ paths:
                         enum:
                           - d1
                         description: The kind of resource that the binding provides.
+                      id:
+                        type: string
+                        description: "@deprecated This property has been renamed to `database_id`."
                     required:
-                      - id
+                      - database_id
                       - name
                       - type
                   - type: object
@@ -1945,12 +2611,21 @@ paths:
                           params:
                             type: array
                             items:
-                              type: string
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                  description: Name of the parameter.
+                              required:
+                                - name
                             description: Pass information from the Dispatch Worker to the Outbound Worker
                               through the parameters.
                           worker:
                             type: object
                             properties:
+                              entrypoint:
+                                type: string
+                                description: Entrypoint to invoke on the outbound worker.
                               environment:
                                 type: string
                                 description: Environment of the outbound worker.
@@ -1976,6 +2651,9 @@ paths:
                       class_name:
                         type: string
                         description: The exported class name of the Durable Object.
+                      dispatch_namespace:
+                        type: string
+                        description: The dispatch namespace the Durable Object script belongs to.
                       environment:
                         type: string
                         description: The environment of the script_name to bind to.
@@ -2047,7 +2725,6 @@ paths:
                   - type: object
                     properties:
                       json:
-                        type: string
                         description: JSON data to use.
                       name:
                         type: string
@@ -2077,6 +2754,19 @@ paths:
                     required:
                       - name
                       - namespace_id
+                      - type
+                  - type: object
+                    properties:
+                      name:
+                        type: string
+                        description: A JavaScript variable name for the binding.
+                      type:
+                        type: string
+                        enum:
+                          - media
+                        description: The kind of resource that the binding provides.
+                    required:
+                      - name
                       - type
                   - type: object
                     properties:
@@ -2148,6 +2838,43 @@ paths:
                       - type
                   - type: object
                     properties:
+                      name:
+                        type: string
+                        description: A JavaScript variable name for the binding.
+                      namespace_id:
+                        type: string
+                        description: Identifier of the rate limit namespace to bind to.
+                      simple:
+                        type: object
+                        properties:
+                          limit:
+                            type: number
+                            description: The limit (requests per period).
+                          period:
+                            type: number
+                            description: The period in seconds.
+                          mitigation_timeout:
+                            type: number
+                            description: Duration in seconds to apply the mitigation action after the rate
+                              limit is exceeded. Valid values are 0 (disabled),
+                              10, or multiples of 60 up to 86400. Must be
+                              greater than or equal to the period when non-zero.
+                        required:
+                          - limit
+                          - period
+                        description: The rate limit configuration.
+                      type:
+                        type: string
+                        enum:
+                          - ratelimit
+                        description: The kind of resource that the binding provides.
+                    required:
+                      - name
+                      - namespace_id
+                      - simple
+                      - type
+                  - type: object
+                    properties:
                       bucket_name:
                         type: string
                         description: R2 bucket to bind to.
@@ -2164,6 +2891,7 @@ paths:
                         enum:
                           - eu
                           - fedramp
+                          - fedramp-high
                         description: The
                           [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
                           of the R2 bucket.
@@ -2223,6 +2951,9 @@ paths:
                         enum:
                           - service
                         description: The kind of resource that the binding provides.
+                      entrypoint:
+                        type: string
+                        description: Entrypoint to invoke on the target Worker.
                       environment:
                         type: string
                         description: Optional environment if the Worker utilizes one.
@@ -2298,6 +3029,23 @@ paths:
                       - name
                       - secret_name
                       - store_id
+                      - type
+                  - type: object
+                    properties:
+                      app_id:
+                        type: string
+                        description: ID of the Flagship app to bind to for feature flag evaluation.
+                      name:
+                        type: string
+                        description: A JavaScript variable name for the binding.
+                      type:
+                        type: string
+                        enum:
+                          - flagship
+                        description: The kind of resource that the binding provides.
+                    required:
+                      - app_id
+                      - name
                       - type
                   - type: object
                     properties:
@@ -2384,6 +3132,45 @@ paths:
                     required:
                       - name
                       - part
+                      - type
+                  - type: object
+                    properties:
+                      name:
+                        type: string
+                        description: A JavaScript variable name for the binding.
+                      service_id:
+                        type: string
+                        description: Identifier of the VPC service to bind to.
+                      type:
+                        type: string
+                        enum:
+                          - vpc_service
+                        description: The kind of resource that the binding provides.
+                    required:
+                      - name
+                      - service_id
+                      - type
+                  - type: object
+                    properties:
+                      name:
+                        type: string
+                        description: A JavaScript variable name for the binding.
+                      type:
+                        type: string
+                        enum:
+                          - vpc_network
+                        description: The kind of resource that the binding provides.
+                      network_id:
+                        type: string
+                        description: Identifier of the network to bind to. Only "cf1:network" is
+                          currently supported. Mutually exclusive with
+                          tunnel_id.
+                      tunnel_id:
+                        type: string
+                        description: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with
+                          network_id.
+                    required:
+                      - name
                       - type
       x-distilled-pagination-class: BindingGetResponsesSinglePage
   /accounts/{account_id}/workers/dispatch/namespaces/{dispatchNamespace}/scripts/{scriptName}/content:
@@ -2606,6 +3393,41 @@ paths:
                               - invocation_logs
                         nullable: true
                         description: Log settings for the Worker.
+                      traces:
+                        oneOf:
+                          - type: object
+                            properties:
+                              destinations:
+                                type: array
+                                items:
+                                  type: string
+                                description: A list of destinations where traces will be exported to.
+                              enabled:
+                                type: boolean
+                                description: Whether traces are enabled for the Worker.
+                              head_sampling_rate:
+                                oneOf:
+                                  - type: number
+                                nullable: true
+                                description: The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+                                  Default is 1.
+                              persist:
+                                type: boolean
+                                description: Whether trace persistence is enabled for the Worker.
+                              propagation_policy:
+                                type: string
+                                enum:
+                                  - authenticated
+                                  - accept
+                                description: Controls how inbound trace context (traceparent/tracestate) headers
+                                  on incoming requests are handled.
+                                  "authenticated" (default) honors inbound trace
+                                  context only when accompanied by a valid trace
+                                  auth token. "accept" unconditionally accepts
+                                  inbound trace context. Requires the trace
+                                  propagation feature to be enabled.
+                        nullable: true
+                        description: Trace settings for the Worker.
                     required:
                       - enabled
                     description: Observability settings for the Worker.
@@ -2690,17 +3512,142 @@ paths:
                               Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                         required:
                           - host
+                      - type: object
+                        properties:
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                            description: Targeted placement mode.
+                          region:
+                            type: string
+                            description: Cloud region for targeted placement in format 'provider:region'.
+                          last_analyzed_at:
+                            type: string
+                            description: The last time the script was analyzed for [Smart
+                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                          status:
+                            type: string
+                            enum:
+                              - SUCCESS
+                              - UNSUPPORTED_APPLICATION
+                              - INSUFFICIENT_INVOCATIONS
+                            description: Status of [Smart
+                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                        required:
+                          - mode
+                          - region
+                      - type: object
+                        properties:
+                          hostname:
+                            type: string
+                            description: HTTP hostname for targeted placement.
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                            description: Targeted placement mode.
+                          last_analyzed_at:
+                            type: string
+                            description: The last time the script was analyzed for [Smart
+                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                          status:
+                            type: string
+                            enum:
+                              - SUCCESS
+                              - UNSUPPORTED_APPLICATION
+                              - INSUFFICIENT_INVOCATIONS
+                            description: Status of [Smart
+                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                        required:
+                          - hostname
+                          - mode
+                      - type: object
+                        properties:
+                          host:
+                            type: string
+                            description: TCP host and port for targeted placement.
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                            description: Targeted placement mode.
+                          last_analyzed_at:
+                            type: string
+                            description: The last time the script was analyzed for [Smart
+                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                          status:
+                            type: string
+                            enum:
+                              - SUCCESS
+                              - UNSUPPORTED_APPLICATION
+                              - INSUFFICIENT_INVOCATIONS
+                            description: Status of [Smart
+                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                        required:
+                          - host
+                          - mode
+                      - type: object
+                        properties:
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                            description: Targeted placement mode.
+                          target:
+                            type: array
+                            items:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    region:
+                                      type: string
+                                      description: Cloud region in format 'provider:region'.
+                                  required:
+                                    - region
+                                - type: object
+                                  properties:
+                                    hostname:
+                                      type: string
+                                      description: HTTP hostname for targeted placement.
+                                  required:
+                                    - hostname
+                                - type: object
+                                  properties:
+                                    host:
+                                      type: string
+                                      description: TCP host:port for targeted placement.
+                                  required:
+                                    - host
+                            description: Array of placement targets (currently limited to single target).
+                          last_analyzed_at:
+                            type: string
+                            description: The last time the script was analyzed for [Smart
+                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                          status:
+                            type: string
+                            enum:
+                              - SUCCESS
+                              - UNSUPPORTED_APPLICATION
+                              - INSUFFICIENT_INVOCATIONS
+                            description: Status of [Smart
+                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+                        required:
+                          - mode
+                          - target
                     description: Configuration for [Smart
                       Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-                      Specify either mode for Smart Placement, or one of
-                      region/hostname/host for targeted placement.
+                      Specify mode='smart' for Smart Placement, or one of
+                      region/hostname/host.
                   placement_mode:
                     type: string
                     enum:
                       - smart
-                    description: "@deprecated Enables [Smart
+                      - targeted
+                    description: "@deprecated Configuration for [Smart
                       Placement](https://developers.cloudflare.com/workers/conf\
-                      iguration/smart-placement)."
+                      iguration/smart-placement). Specify mode='smart' for Smart
+                      Placement, or one of region/hostname/host."
                   placement_status:
                     type: string
                     enum:
@@ -3092,6 +4039,61 @@ paths:
                       - type
                       - usages
       x-distilled-response-path: result
+  /accounts/{account_id}/workers/dispatch/namespaces/{dispatchNamespace}/scripts/{scriptName}/secrets-bulk:
+    patch:
+      operationId: bulkUpdateDispatchNamespaceScriptSecrets
+      description: "Create, update, or delete multiple secrets on a script in a single
+        operation using JSON Merge Patch (RFC 7396).  Usage:  - To create or
+        update a secret, set its value to a secret object. - To delete a secret,
+        set its value to `null`. - Secrets not included in the request are left
+        unchanged.  @example ```ts const response = await
+        client.workersForPlatforms.dispatch.namespaces.scripts.secrets.bulkUpda\
+        te( 'my-dispatch-namespace', 'this-is_my_script-01', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: dispatchNamespace
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: scriptName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                secrets:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param: Map of secret names to secret values:  - Set to a
+                    secret object to create or update. - Set to `null` to
+                    delete. - Omit to leave unchanged."
+                version_tags:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param: Optional version tags to apply to the new script
+                    version."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
   /accounts/{account_id}/workers/dispatch/namespaces/{dispatchNamespace}/scripts/{scriptName}/settings:
     get:
       operationId: getDispatchNamespaceScriptSetting
@@ -3144,6 +4146,52 @@ paths:
                             - type
                         - type: object
                           properties:
+                            instance_name:
+                              type: string
+                              description: The user-chosen instance name. Must exist at deploy time. The
+                                worker can search, chat, update, and manage
+                                items/jobs on this instance.
+                            name:
+                              type: string
+                              description: A JavaScript variable name for the binding.
+                            type:
+                              type: string
+                              enum:
+                                - ai_search
+                              description: The kind of resource that the binding provides.
+                            namespace:
+                              type: string
+                              description: The namespace the instance belongs to. Defaults to "default" if
+                                omitted. Customers who don't use namespaces can
+                                simply omit this field.
+                          required:
+                            - instance_name
+                            - name
+                            - type
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              description: A JavaScript variable name for the binding.
+                            namespace:
+                              type: string
+                              description: The user-chosen namespace name. Must exist before deploy --
+                                Wrangler handles auto-creation on deploy failure
+                                (R2 bucket pattern). The "default" namespace is
+                                auto-created by config-api for new accounts.
+                                Grants full access (CRUD + search + chat) to all
+                                instances within the namespace.
+                            type:
+                              type: string
+                              enum:
+                                - ai_search_namespace
+                              description: The kind of resource that the binding provides.
+                          required:
+                            - name
+                            - namespace
+                            - type
+                        - type: object
+                          properties:
                             dataset:
                               type: string
                               description: The name of the dataset to bind to.
@@ -3187,7 +4235,7 @@ paths:
                             - type
                         - type: object
                           properties:
-                            id:
+                            database_id:
                               type: string
                               description: Identifier of the D1 database to bind to.
                             name:
@@ -3198,8 +4246,11 @@ paths:
                               enum:
                                 - d1
                               description: The kind of resource that the binding provides.
+                            id:
+                              type: string
+                              description: "@deprecated This property has been renamed to `database_id`."
                           required:
-                            - id
+                            - database_id
                             - name
                             - type
                         - type: object
@@ -3239,12 +4290,21 @@ paths:
                                 params:
                                   type: array
                                   items:
-                                    type: string
+                                    type: object
+                                    properties:
+                                      name:
+                                        type: string
+                                        description: Name of the parameter.
+                                    required:
+                                      - name
                                   description: Pass information from the Dispatch Worker to the Outbound Worker
                                     through the parameters.
                                 worker:
                                   type: object
                                   properties:
+                                    entrypoint:
+                                      type: string
+                                      description: Entrypoint to invoke on the outbound worker.
                                     environment:
                                       type: string
                                       description: Environment of the outbound worker.
@@ -3270,6 +4330,9 @@ paths:
                             class_name:
                               type: string
                               description: The exported class name of the Durable Object.
+                            dispatch_namespace:
+                              type: string
+                              description: The dispatch namespace the Durable Object script belongs to.
                             environment:
                               type: string
                               description: The environment of the script_name to bind to.
@@ -3341,7 +4404,6 @@ paths:
                         - type: object
                           properties:
                             json:
-                              type: string
                               description: JSON data to use.
                             name:
                               type: string
@@ -3371,6 +4433,19 @@ paths:
                           required:
                             - name
                             - namespace_id
+                            - type
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              description: A JavaScript variable name for the binding.
+                            type:
+                              type: string
+                              enum:
+                                - media
+                              description: The kind of resource that the binding provides.
+                          required:
+                            - name
                             - type
                         - type: object
                           properties:
@@ -3442,6 +4517,44 @@ paths:
                             - type
                         - type: object
                           properties:
+                            name:
+                              type: string
+                              description: A JavaScript variable name for the binding.
+                            namespace_id:
+                              type: string
+                              description: Identifier of the rate limit namespace to bind to.
+                            simple:
+                              type: object
+                              properties:
+                                limit:
+                                  type: number
+                                  description: The limit (requests per period).
+                                period:
+                                  type: number
+                                  description: The period in seconds.
+                                mitigation_timeout:
+                                  type: number
+                                  description: Duration in seconds to apply the mitigation action after the rate
+                                    limit is exceeded. Valid values are 0
+                                    (disabled), 10, or multiples of 60 up to
+                                    86400. Must be greater than or equal to the
+                                    period when non-zero.
+                              required:
+                                - limit
+                                - period
+                              description: The rate limit configuration.
+                            type:
+                              type: string
+                              enum:
+                                - ratelimit
+                              description: The kind of resource that the binding provides.
+                          required:
+                            - name
+                            - namespace_id
+                            - simple
+                            - type
+                        - type: object
+                          properties:
                             bucket_name:
                               type: string
                               description: R2 bucket to bind to.
@@ -3458,6 +4571,7 @@ paths:
                               enum:
                                 - eu
                                 - fedramp
+                                - fedramp-high
                               description: The
                                 [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
                                 of the R2 bucket.
@@ -3517,6 +4631,9 @@ paths:
                               enum:
                                 - service
                               description: The kind of resource that the binding provides.
+                            entrypoint:
+                              type: string
+                              description: Entrypoint to invoke on the target Worker.
                             environment:
                               type: string
                               description: Optional environment if the Worker utilizes one.
@@ -3592,6 +4709,23 @@ paths:
                             - name
                             - secret_name
                             - store_id
+                            - type
+                        - type: object
+                          properties:
+                            app_id:
+                              type: string
+                              description: ID of the Flagship app to bind to for feature flag evaluation.
+                            name:
+                              type: string
+                              description: A JavaScript variable name for the binding.
+                            type:
+                              type: string
+                              enum:
+                                - flagship
+                              description: The kind of resource that the binding provides.
+                          required:
+                            - app_id
+                            - name
                             - type
                         - type: object
                           properties:
@@ -3680,6 +4814,45 @@ paths:
                             - name
                             - part
                             - type
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              description: A JavaScript variable name for the binding.
+                            service_id:
+                              type: string
+                              description: Identifier of the VPC service to bind to.
+                            type:
+                              type: string
+                              enum:
+                                - vpc_service
+                              description: The kind of resource that the binding provides.
+                          required:
+                            - name
+                            - service_id
+                            - type
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              description: A JavaScript variable name for the binding.
+                            type:
+                              type: string
+                              enum:
+                                - vpc_network
+                              description: The kind of resource that the binding provides.
+                            network_id:
+                              type: string
+                              description: Identifier of the network to bind to. Only "cf1:network" is
+                                currently supported. Mutually exclusive with
+                                tunnel_id.
+                            tunnel_id:
+                              type: string
+                              description: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with
+                                network_id.
+                          required:
+                            - name
+                            - type
                     description: "List of bindings attached to a Worker. You can find more about
                       bindings on our docs:
                       https://developers.cloudflare.com/workers/configuration/m\
@@ -3703,6 +4876,9 @@ paths:
                       cpu_ms:
                         type: number
                         description: The amount of CPU time this Worker can use in milliseconds.
+                      subrequests:
+                        type: number
+                        description: The number of subrequests this Worker can make per request.
                     description: Limits to apply for this Worker.
                   logpush:
                     type: boolean
@@ -3750,6 +4926,41 @@ paths:
                               - invocation_logs
                         nullable: true
                         description: Log settings for the Worker.
+                      traces:
+                        oneOf:
+                          - type: object
+                            properties:
+                              destinations:
+                                type: array
+                                items:
+                                  type: string
+                                description: A list of destinations where traces will be exported to.
+                              enabled:
+                                type: boolean
+                                description: Whether traces are enabled for the Worker.
+                              head_sampling_rate:
+                                oneOf:
+                                  - type: number
+                                nullable: true
+                                description: The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+                                  Default is 1.
+                              persist:
+                                type: boolean
+                                description: Whether trace persistence is enabled for the Worker.
+                              propagation_policy:
+                                type: string
+                                enum:
+                                  - authenticated
+                                  - accept
+                                description: Controls how inbound trace context (traceparent/tracestate) headers
+                                  on incoming requests are handled.
+                                  "authenticated" (default) honors inbound trace
+                                  context only when accompanied by a valid trace
+                                  auth token. "accept" unconditionally accepts
+                                  inbound trace context. Requires the trace
+                                  propagation feature to be enabled.
+                        nullable: true
+                        description: Trace settings for the Worker.
                     required:
                       - enabled
                     description: Observability settings for the Worker.
@@ -3786,10 +4997,85 @@ paths:
                             description: TCP host and port for targeted placement.
                         required:
                           - host
+                      - type: object
+                        properties:
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                            description: Targeted placement mode.
+                          region:
+                            type: string
+                            description: Cloud region for targeted placement in format 'provider:region'.
+                        required:
+                          - mode
+                          - region
+                      - type: object
+                        properties:
+                          hostname:
+                            type: string
+                            description: HTTP hostname for targeted placement.
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                            description: Targeted placement mode.
+                        required:
+                          - hostname
+                          - mode
+                      - type: object
+                        properties:
+                          host:
+                            type: string
+                            description: TCP host and port for targeted placement.
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                            description: Targeted placement mode.
+                        required:
+                          - host
+                          - mode
+                      - type: object
+                        properties:
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                            description: Targeted placement mode.
+                          target:
+                            type: array
+                            items:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    region:
+                                      type: string
+                                      description: Cloud region in format 'provider:region'.
+                                  required:
+                                    - region
+                                - type: object
+                                  properties:
+                                    hostname:
+                                      type: string
+                                      description: HTTP hostname for targeted placement.
+                                  required:
+                                    - hostname
+                                - type: object
+                                  properties:
+                                    host:
+                                      type: string
+                                      description: TCP host:port for targeted placement.
+                                  required:
+                                    - host
+                            description: Array of placement targets (currently limited to single target).
+                        required:
+                          - mode
+                          - target
                     description: Configuration for [Smart
                       Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-                      Specify either mode for Smart Placement, or one of
-                      region/hostname/host for targeted placement.
+                      Specify mode='smart' for Smart Placement, or one of
+                      region/hostname/host.
                   tags:
                     oneOf:
                       - type: array
@@ -3877,6 +5163,53 @@ paths:
                               - type
                           - type: object
                             properties:
+                              instance_name:
+                                type: string
+                                description: The user-chosen instance name. Must exist at deploy time. The
+                                  worker can search, chat, update, and manage
+                                  items/jobs on this instance.
+                              name:
+                                type: string
+                                description: A JavaScript variable name for the binding.
+                              type:
+                                type: string
+                                enum:
+                                  - ai_search
+                                description: The kind of resource that the binding provides.
+                              namespace:
+                                type: string
+                                description: The namespace the instance belongs to. Defaults to "default" if
+                                  omitted. Customers who don't use namespaces
+                                  can simply omit this field.
+                            required:
+                              - instance_name
+                              - name
+                              - type
+                          - type: object
+                            properties:
+                              name:
+                                type: string
+                                description: A JavaScript variable name for the binding.
+                              namespace:
+                                type: string
+                                description: The user-chosen namespace name. Must exist before deploy --
+                                  Wrangler handles auto-creation on deploy
+                                  failure (R2 bucket pattern). The "default"
+                                  namespace is auto-created by config-api for
+                                  new accounts. Grants full access (CRUD +
+                                  search + chat) to all instances within the
+                                  namespace.
+                              type:
+                                type: string
+                                enum:
+                                  - ai_search_namespace
+                                description: The kind of resource that the binding provides.
+                            required:
+                              - name
+                              - namespace
+                              - type
+                          - type: object
+                            properties:
                               dataset:
                                 type: string
                                 description: The name of the dataset to bind to.
@@ -3920,7 +5253,7 @@ paths:
                               - type
                           - type: object
                             properties:
-                              id:
+                              database_id:
                                 type: string
                                 description: Identifier of the D1 database to bind to.
                               name:
@@ -3931,8 +5264,11 @@ paths:
                                 enum:
                                   - d1
                                 description: The kind of resource that the binding provides.
+                              id:
+                                type: string
+                                description: "@deprecated This property has been renamed to `database_id`."
                             required:
-                              - id
+                              - database_id
                               - name
                               - type
                           - type: object
@@ -3972,12 +5308,21 @@ paths:
                                   params:
                                     type: array
                                     items:
-                                      type: string
+                                      type: object
+                                      properties:
+                                        name:
+                                          type: string
+                                          description: Name of the parameter.
+                                      required:
+                                        - name
                                     description: Pass information from the Dispatch Worker to the Outbound Worker
                                       through the parameters.
                                   worker:
                                     type: object
                                     properties:
+                                      entrypoint:
+                                        type: string
+                                        description: Entrypoint to invoke on the outbound worker.
                                       environment:
                                         type: string
                                         description: Environment of the outbound worker.
@@ -4003,6 +5348,9 @@ paths:
                               class_name:
                                 type: string
                                 description: The exported class name of the Durable Object.
+                              dispatch_namespace:
+                                type: string
+                                description: The dispatch namespace the Durable Object script belongs to.
                               environment:
                                 type: string
                                 description: The environment of the script_name to bind to.
@@ -4075,7 +5423,6 @@ paths:
                           - type: object
                             properties:
                               json:
-                                type: string
                                 description: JSON data to use.
                               name:
                                 type: string
@@ -4105,6 +5452,19 @@ paths:
                             required:
                               - name
                               - namespace_id
+                              - type
+                          - type: object
+                            properties:
+                              name:
+                                type: string
+                                description: A JavaScript variable name for the binding.
+                              type:
+                                type: string
+                                enum:
+                                  - media
+                                description: The kind of resource that the binding provides.
+                            required:
+                              - name
                               - type
                           - type: object
                             properties:
@@ -4176,6 +5536,44 @@ paths:
                               - type
                           - type: object
                             properties:
+                              name:
+                                type: string
+                                description: A JavaScript variable name for the binding.
+                              namespace_id:
+                                type: string
+                                description: Identifier of the rate limit namespace to bind to.
+                              simple:
+                                type: object
+                                properties:
+                                  limit:
+                                    type: number
+                                    description: The limit (requests per period).
+                                  period:
+                                    type: number
+                                    description: The period in seconds.
+                                  mitigation_timeout:
+                                    type: number
+                                    description: Duration in seconds to apply the mitigation action after the rate
+                                      limit is exceeded. Valid values are 0
+                                      (disabled), 10, or multiples of 60 up to
+                                      86400. Must be greater than or equal to
+                                      the period when non-zero.
+                                required:
+                                  - limit
+                                  - period
+                                description: The rate limit configuration.
+                              type:
+                                type: string
+                                enum:
+                                  - ratelimit
+                                description: The kind of resource that the binding provides.
+                            required:
+                              - name
+                              - namespace_id
+                              - simple
+                              - type
+                          - type: object
+                            properties:
                               bucket_name:
                                 type: string
                                 description: R2 bucket to bind to.
@@ -4192,6 +5590,7 @@ paths:
                                 enum:
                                   - eu
                                   - fedramp
+                                  - fedramp-high
                                 description: The
                                   [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
                                   of the R2 bucket.
@@ -4255,6 +5654,9 @@ paths:
                                 enum:
                                   - service
                                 description: The kind of resource that the binding provides.
+                              entrypoint:
+                                type: string
+                                description: Entrypoint to invoke on the target Worker.
                               environment:
                                 type: string
                                 description: Optional environment if the Worker utilizes one.
@@ -4330,6 +5732,23 @@ paths:
                               - name
                               - secret_name
                               - store_id
+                              - type
+                          - type: object
+                            properties:
+                              app_id:
+                                type: string
+                                description: ID of the Flagship app to bind to for feature flag evaluation.
+                              name:
+                                type: string
+                                description: A JavaScript variable name for the binding.
+                              type:
+                                type: string
+                                enum:
+                                  - flagship
+                                description: The kind of resource that the binding provides.
+                            required:
+                              - app_id
+                              - name
                               - type
                           - type: object
                             properties:
@@ -4426,6 +5845,45 @@ paths:
                               - name
                               - part
                               - type
+                          - type: object
+                            properties:
+                              name:
+                                type: string
+                                description: A JavaScript variable name for the binding.
+                              service_id:
+                                type: string
+                                description: Identifier of the VPC service to bind to.
+                              type:
+                                type: string
+                                enum:
+                                  - vpc_service
+                                description: The kind of resource that the binding provides.
+                            required:
+                              - name
+                              - service_id
+                              - type
+                          - type: object
+                            properties:
+                              name:
+                                type: string
+                                description: A JavaScript variable name for the binding.
+                              type:
+                                type: string
+                                enum:
+                                  - vpc_network
+                                description: The kind of resource that the binding provides.
+                              network_id:
+                                type: string
+                                description: Identifier of the network to bind to. Only "cf1:network" is
+                                  currently supported. Mutually exclusive with
+                                  tunnel_id.
+                              tunnel_id:
+                                type: string
+                                description: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with
+                                  network_id.
+                            required:
+                              - name
+                              - type
                       description: "List of bindings attached to a Worker. You can find more about
                         bindings on our docs:
                         https://developers.cloudflare.com/workers/configuration\
@@ -4449,6 +5907,9 @@ paths:
                         cpu_ms:
                           type: number
                           description: The amount of CPU time this Worker can use in milliseconds.
+                        subrequests:
+                          type: number
+                          description: The number of subrequests this Worker can make per request.
                       description: Limits to apply for this Worker.
                     logpush:
                       type: boolean
@@ -4606,6 +6067,42 @@ paths:
                                 - invocation_logs
                           nullable: true
                           description: Log settings for the Worker.
+                        traces:
+                          oneOf:
+                            - type: object
+                              properties:
+                                destinations:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: A list of destinations where traces will be exported to.
+                                enabled:
+                                  type: boolean
+                                  description: Whether traces are enabled for the Worker.
+                                head_sampling_rate:
+                                  oneOf:
+                                    - type: number
+                                  nullable: true
+                                  description: The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+                                    Default is 1.
+                                persist:
+                                  type: boolean
+                                  description: Whether trace persistence is enabled for the Worker.
+                                propagation_policy:
+                                  type: string
+                                  enum:
+                                    - authenticated
+                                    - accept
+                                  description: Controls how inbound trace context (traceparent/tracestate) headers
+                                    on incoming requests are handled.
+                                    "authenticated" (default) honors inbound
+                                    trace context only when accompanied by a
+                                    valid trace auth token. "accept"
+                                    unconditionally accepts inbound trace
+                                    context. Requires the trace propagation
+                                    feature to be enabled.
+                          nullable: true
+                          description: Trace settings for the Worker.
                       required:
                         - enabled
                       description: Observability settings for the Worker.
@@ -4642,10 +6139,85 @@ paths:
                               description: TCP host and port for targeted placement.
                           required:
                             - host
+                        - type: object
+                          properties:
+                            mode:
+                              type: string
+                              enum:
+                                - targeted
+                              description: Targeted placement mode.
+                            region:
+                              type: string
+                              description: Cloud region for targeted placement in format 'provider:region'.
+                          required:
+                            - mode
+                            - region
+                        - type: object
+                          properties:
+                            hostname:
+                              type: string
+                              description: HTTP hostname for targeted placement.
+                            mode:
+                              type: string
+                              enum:
+                                - targeted
+                              description: Targeted placement mode.
+                          required:
+                            - hostname
+                            - mode
+                        - type: object
+                          properties:
+                            host:
+                              type: string
+                              description: TCP host and port for targeted placement.
+                            mode:
+                              type: string
+                              enum:
+                                - targeted
+                              description: Targeted placement mode.
+                          required:
+                            - host
+                            - mode
+                        - type: object
+                          properties:
+                            mode:
+                              type: string
+                              enum:
+                                - targeted
+                              description: Targeted placement mode.
+                            target:
+                              type: array
+                              items:
+                                oneOf:
+                                  - type: object
+                                    properties:
+                                      region:
+                                        type: string
+                                        description: Cloud region in format 'provider:region'.
+                                    required:
+                                      - region
+                                  - type: object
+                                    properties:
+                                      hostname:
+                                        type: string
+                                        description: HTTP hostname for targeted placement.
+                                    required:
+                                      - hostname
+                                  - type: object
+                                    properties:
+                                      host:
+                                        type: string
+                                        description: TCP host:port for targeted placement.
+                                    required:
+                                      - host
+                              description: Array of placement targets (currently limited to single target).
+                          required:
+                            - mode
+                            - target
                       description: Configuration for [Smart
                         Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-                        Specify either mode for Smart Placement, or one of
-                        region/hostname/host for targeted placement.
+                        Specify mode='smart' for Smart Placement, or one of
+                        region/hostname/host.
                     tags:
                       oneOf:
                         - type: array
@@ -4679,7 +6251,10 @@ paths:
                         - bundled
                         - unbound
                       description: Usage model for the Worker invocations.
-                  description: "Body param:"
+                  description: "Body param: Script and version settings for Workers for Platforms
+                    namespace scripts. Same as script-and-version-settings-item
+                    but without annotations, which are not supported for
+                    namespace scripts."
       responses:
         "200":
           description: Success
@@ -4704,6 +6279,52 @@ paths:
                               description: The kind of resource that the binding provides.
                           required:
                             - name
+                            - type
+                        - type: object
+                          properties:
+                            instance_name:
+                              type: string
+                              description: The user-chosen instance name. Must exist at deploy time. The
+                                worker can search, chat, update, and manage
+                                items/jobs on this instance.
+                            name:
+                              type: string
+                              description: A JavaScript variable name for the binding.
+                            type:
+                              type: string
+                              enum:
+                                - ai_search
+                              description: The kind of resource that the binding provides.
+                            namespace:
+                              type: string
+                              description: The namespace the instance belongs to. Defaults to "default" if
+                                omitted. Customers who don't use namespaces can
+                                simply omit this field.
+                          required:
+                            - instance_name
+                            - name
+                            - type
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              description: A JavaScript variable name for the binding.
+                            namespace:
+                              type: string
+                              description: The user-chosen namespace name. Must exist before deploy --
+                                Wrangler handles auto-creation on deploy failure
+                                (R2 bucket pattern). The "default" namespace is
+                                auto-created by config-api for new accounts.
+                                Grants full access (CRUD + search + chat) to all
+                                instances within the namespace.
+                            type:
+                              type: string
+                              enum:
+                                - ai_search_namespace
+                              description: The kind of resource that the binding provides.
+                          required:
+                            - name
+                            - namespace
                             - type
                         - type: object
                           properties:
@@ -4750,7 +6371,7 @@ paths:
                             - type
                         - type: object
                           properties:
-                            id:
+                            database_id:
                               type: string
                               description: Identifier of the D1 database to bind to.
                             name:
@@ -4761,8 +6382,11 @@ paths:
                               enum:
                                 - d1
                               description: The kind of resource that the binding provides.
+                            id:
+                              type: string
+                              description: "@deprecated This property has been renamed to `database_id`."
                           required:
-                            - id
+                            - database_id
                             - name
                             - type
                         - type: object
@@ -4802,12 +6426,21 @@ paths:
                                 params:
                                   type: array
                                   items:
-                                    type: string
+                                    type: object
+                                    properties:
+                                      name:
+                                        type: string
+                                        description: Name of the parameter.
+                                    required:
+                                      - name
                                   description: Pass information from the Dispatch Worker to the Outbound Worker
                                     through the parameters.
                                 worker:
                                   type: object
                                   properties:
+                                    entrypoint:
+                                      type: string
+                                      description: Entrypoint to invoke on the outbound worker.
                                     environment:
                                       type: string
                                       description: Environment of the outbound worker.
@@ -4833,6 +6466,9 @@ paths:
                             class_name:
                               type: string
                               description: The exported class name of the Durable Object.
+                            dispatch_namespace:
+                              type: string
+                              description: The dispatch namespace the Durable Object script belongs to.
                             environment:
                               type: string
                               description: The environment of the script_name to bind to.
@@ -4904,7 +6540,6 @@ paths:
                         - type: object
                           properties:
                             json:
-                              type: string
                               description: JSON data to use.
                             name:
                               type: string
@@ -4934,6 +6569,19 @@ paths:
                           required:
                             - name
                             - namespace_id
+                            - type
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              description: A JavaScript variable name for the binding.
+                            type:
+                              type: string
+                              enum:
+                                - media
+                              description: The kind of resource that the binding provides.
+                          required:
+                            - name
                             - type
                         - type: object
                           properties:
@@ -5005,6 +6653,44 @@ paths:
                             - type
                         - type: object
                           properties:
+                            name:
+                              type: string
+                              description: A JavaScript variable name for the binding.
+                            namespace_id:
+                              type: string
+                              description: Identifier of the rate limit namespace to bind to.
+                            simple:
+                              type: object
+                              properties:
+                                limit:
+                                  type: number
+                                  description: The limit (requests per period).
+                                period:
+                                  type: number
+                                  description: The period in seconds.
+                                mitigation_timeout:
+                                  type: number
+                                  description: Duration in seconds to apply the mitigation action after the rate
+                                    limit is exceeded. Valid values are 0
+                                    (disabled), 10, or multiples of 60 up to
+                                    86400. Must be greater than or equal to the
+                                    period when non-zero.
+                              required:
+                                - limit
+                                - period
+                              description: The rate limit configuration.
+                            type:
+                              type: string
+                              enum:
+                                - ratelimit
+                              description: The kind of resource that the binding provides.
+                          required:
+                            - name
+                            - namespace_id
+                            - simple
+                            - type
+                        - type: object
+                          properties:
                             bucket_name:
                               type: string
                               description: R2 bucket to bind to.
@@ -5021,6 +6707,7 @@ paths:
                               enum:
                                 - eu
                                 - fedramp
+                                - fedramp-high
                               description: The
                                 [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
                                 of the R2 bucket.
@@ -5080,6 +6767,9 @@ paths:
                               enum:
                                 - service
                               description: The kind of resource that the binding provides.
+                            entrypoint:
+                              type: string
+                              description: Entrypoint to invoke on the target Worker.
                             environment:
                               type: string
                               description: Optional environment if the Worker utilizes one.
@@ -5155,6 +6845,23 @@ paths:
                             - name
                             - secret_name
                             - store_id
+                            - type
+                        - type: object
+                          properties:
+                            app_id:
+                              type: string
+                              description: ID of the Flagship app to bind to for feature flag evaluation.
+                            name:
+                              type: string
+                              description: A JavaScript variable name for the binding.
+                            type:
+                              type: string
+                              enum:
+                                - flagship
+                              description: The kind of resource that the binding provides.
+                          required:
+                            - app_id
+                            - name
                             - type
                         - type: object
                           properties:
@@ -5243,6 +6950,45 @@ paths:
                             - name
                             - part
                             - type
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              description: A JavaScript variable name for the binding.
+                            service_id:
+                              type: string
+                              description: Identifier of the VPC service to bind to.
+                            type:
+                              type: string
+                              enum:
+                                - vpc_service
+                              description: The kind of resource that the binding provides.
+                          required:
+                            - name
+                            - service_id
+                            - type
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              description: A JavaScript variable name for the binding.
+                            type:
+                              type: string
+                              enum:
+                                - vpc_network
+                              description: The kind of resource that the binding provides.
+                            network_id:
+                              type: string
+                              description: Identifier of the network to bind to. Only "cf1:network" is
+                                currently supported. Mutually exclusive with
+                                tunnel_id.
+                            tunnel_id:
+                              type: string
+                              description: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with
+                                network_id.
+                          required:
+                            - name
+                            - type
                     description: "List of bindings attached to a Worker. You can find more about
                       bindings on our docs:
                       https://developers.cloudflare.com/workers/configuration/m\
@@ -5266,6 +7012,9 @@ paths:
                       cpu_ms:
                         type: number
                         description: The amount of CPU time this Worker can use in milliseconds.
+                      subrequests:
+                        type: number
+                        description: The number of subrequests this Worker can make per request.
                     description: Limits to apply for this Worker.
                   logpush:
                     type: boolean
@@ -5313,6 +7062,41 @@ paths:
                               - invocation_logs
                         nullable: true
                         description: Log settings for the Worker.
+                      traces:
+                        oneOf:
+                          - type: object
+                            properties:
+                              destinations:
+                                type: array
+                                items:
+                                  type: string
+                                description: A list of destinations where traces will be exported to.
+                              enabled:
+                                type: boolean
+                                description: Whether traces are enabled for the Worker.
+                              head_sampling_rate:
+                                oneOf:
+                                  - type: number
+                                nullable: true
+                                description: The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+                                  Default is 1.
+                              persist:
+                                type: boolean
+                                description: Whether trace persistence is enabled for the Worker.
+                              propagation_policy:
+                                type: string
+                                enum:
+                                  - authenticated
+                                  - accept
+                                description: Controls how inbound trace context (traceparent/tracestate) headers
+                                  on incoming requests are handled.
+                                  "authenticated" (default) honors inbound trace
+                                  context only when accompanied by a valid trace
+                                  auth token. "accept" unconditionally accepts
+                                  inbound trace context. Requires the trace
+                                  propagation feature to be enabled.
+                        nullable: true
+                        description: Trace settings for the Worker.
                     required:
                       - enabled
                     description: Observability settings for the Worker.
@@ -5349,10 +7133,85 @@ paths:
                             description: TCP host and port for targeted placement.
                         required:
                           - host
+                      - type: object
+                        properties:
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                            description: Targeted placement mode.
+                          region:
+                            type: string
+                            description: Cloud region for targeted placement in format 'provider:region'.
+                        required:
+                          - mode
+                          - region
+                      - type: object
+                        properties:
+                          hostname:
+                            type: string
+                            description: HTTP hostname for targeted placement.
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                            description: Targeted placement mode.
+                        required:
+                          - hostname
+                          - mode
+                      - type: object
+                        properties:
+                          host:
+                            type: string
+                            description: TCP host and port for targeted placement.
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                            description: Targeted placement mode.
+                        required:
+                          - host
+                          - mode
+                      - type: object
+                        properties:
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                            description: Targeted placement mode.
+                          target:
+                            type: array
+                            items:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    region:
+                                      type: string
+                                      description: Cloud region in format 'provider:region'.
+                                  required:
+                                    - region
+                                - type: object
+                                  properties:
+                                    hostname:
+                                      type: string
+                                      description: HTTP hostname for targeted placement.
+                                  required:
+                                    - hostname
+                                - type: object
+                                  properties:
+                                    host:
+                                      type: string
+                                      description: TCP host:port for targeted placement.
+                                  required:
+                                    - host
+                            description: Array of placement targets (currently limited to single target).
+                        required:
+                          - mode
+                          - target
                     description: Configuration for [Smart
                       Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-                      Specify either mode for Smart Placement, or one of
-                      region/hostname/host for targeted placement.
+                      Specify mode='smart' for Smart Placement, or one of
+                      region/hostname/host.
                   tags:
                     oneOf:
                       - type: array

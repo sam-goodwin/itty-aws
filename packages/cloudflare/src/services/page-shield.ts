@@ -643,7 +643,7 @@ export interface GetPolicyResponse {
   /** Identifier */
   id: string;
   /** The action to take if the expression matches */
-  action: "allow" | "log";
+  action: "allow" | "log" | "add_reporting_directives";
   /** A description for the policy */
   description: string;
   /** Whether the policy is enabled */
@@ -656,7 +656,7 @@ export interface GetPolicyResponse {
 
 export const GetPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  action: Schema.Literals(["allow", "log"]),
+  action: Schema.Literals(["allow", "log", "add_reporting_directives"]),
   description: Schema.String,
   enabled: Schema.Boolean,
   expression: Schema.String,
@@ -692,7 +692,7 @@ export const ListPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ListPoliciesResponse {
   result: {
     id: string;
-    action: "allow" | "log";
+    action: "allow" | "log" | "add_reporting_directives";
     description: string;
     enabled: boolean;
     expression: string;
@@ -704,7 +704,7 @@ export const ListPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
-      action: Schema.Literals(["allow", "log"]),
+      action: Schema.Literals(["allow", "log", "add_reporting_directives"]),
       description: Schema.String,
       enabled: Schema.Boolean,
       expression: Schema.String,
@@ -734,7 +734,7 @@ export interface CreatePolicyRequest {
   /** Path param: Identifier */
   zoneId: string;
   /** Body param: The action to take if the expression matches */
-  action: "allow" | "log";
+  action: "allow" | "log" | "add_reporting_directives";
   /** Body param: A description for the policy */
   description: string;
   /** Body param: Whether the policy is enabled */
@@ -747,7 +747,7 @@ export interface CreatePolicyRequest {
 
 export const CreatePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  action: Schema.Literals(["allow", "log"]),
+  action: Schema.Literals(["allow", "log", "add_reporting_directives"]),
   description: Schema.String,
   enabled: Schema.Boolean,
   expression: Schema.String,
@@ -760,7 +760,7 @@ export interface CreatePolicyResponse {
   /** Identifier */
   id: string;
   /** The action to take if the expression matches */
-  action: "allow" | "log";
+  action: "allow" | "log" | "add_reporting_directives";
   /** A description for the policy */
   description: string;
   /** Whether the policy is enabled */
@@ -773,7 +773,7 @@ export interface CreatePolicyResponse {
 
 export const CreatePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  action: Schema.Literals(["allow", "log"]),
+  action: Schema.Literals(["allow", "log", "add_reporting_directives"]),
   description: Schema.String,
   enabled: Schema.Boolean,
   expression: Schema.String,
@@ -800,7 +800,7 @@ export interface UpdatePolicyRequest {
   /** Path param: Identifier */
   zoneId: string;
   /** Body param: The action to take if the expression matches */
-  action?: "allow" | "log";
+  action?: "allow" | "log" | "add_reporting_directives";
   /** Body param: A description for the policy */
   description?: string;
   /** Body param: Whether the policy is enabled */
@@ -814,7 +814,9 @@ export interface UpdatePolicyRequest {
 export const UpdatePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   policyId: Schema.String.pipe(T.HttpPath("policyId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  action: Schema.optional(Schema.Literals(["allow", "log"])),
+  action: Schema.optional(
+    Schema.Literals(["allow", "log", "add_reporting_directives"]),
+  ),
   description: Schema.optional(Schema.String),
   enabled: Schema.optional(Schema.Boolean),
   expression: Schema.optional(Schema.String),
@@ -830,7 +832,7 @@ export interface UpdatePolicyResponse {
   /** Identifier */
   id: string;
   /** The action to take if the expression matches */
-  action: "allow" | "log";
+  action: "allow" | "log" | "add_reporting_directives";
   /** A description for the policy */
   description: string;
   /** Whether the policy is enabled */
@@ -843,7 +845,7 @@ export interface UpdatePolicyResponse {
 
 export const UpdatePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  action: Schema.Literals(["allow", "log"]),
+  action: Schema.Literals(["allow", "log", "add_reporting_directives"]),
   description: Schema.String,
   enabled: Schema.Boolean,
   expression: Schema.String,
@@ -930,7 +932,7 @@ export interface GetScriptResponse {
   urlContainsCdnCgiPath: boolean;
   /** The cryptomining score of the JavaScript content. */
   cryptominingScore?: number | null;
-  /** The dataflow score of the JavaScript content. */
+  /** @deprecated The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
   dataflowScore?: number | null;
   domainReportedMalicious?: boolean | null;
   /** The timestamp of when the script was last fetched. */
@@ -946,7 +948,7 @@ export interface GetScriptResponse {
   maliciousUrlCategories?: string[] | null;
   /** The malware score of the JavaScript content. */
   malwareScore?: number | null;
-  /** The obfuscation score of the JavaScript content. */
+  /** @deprecated The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
   obfuscationScore?: number | null;
   pageUrls?: string[] | null;
   urlReportedMalicious?: boolean | null;

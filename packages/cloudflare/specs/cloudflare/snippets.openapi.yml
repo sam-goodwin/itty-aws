@@ -19,7 +19,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: The unique ID of the zone.
+          description: Use this field to specify the unique ID of the zone.
           schema:
             type: string
       responses:
@@ -33,7 +33,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: The unique ID of the zone.
+          description: Use this field to specify the unique ID of the zone.
           schema:
             type: string
       responses:
@@ -41,33 +41,8 @@ paths:
           description: Success
           content:
             application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                    description: The unique ID of the rule.
-                  expression:
-                    type: string
-                    description: The expression defining which traffic will match the rule.
-                  last_updated:
-                    type: string
-                    description: The timestamp of when the rule was last modified.
-                  snippet_name:
-                    type: string
-                    description: The identifying name of the snippet.
-                  description:
-                    type: string
-                    description: An informative description of the rule.
-                  enabled:
-                    type: boolean
-                    description: Whether the rule should be executed.
-                required:
-                  - id
-                  - expression
-                  - last_updated
-                  - snippet_name
-      x-distilled-pagination-class: RuleListResponsesSinglePage
+              schema: {}
+      x-distilled-response-path: result
     put:
       operationId: putRule
       description: Updates all snippet rules belonging to the zone.
@@ -75,7 +50,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: "Path param: The unique ID of the zone."
+          description: "Path param: Use this field to specify the unique ID of the zone."
           schema:
             type: string
       requestBody:
@@ -92,20 +67,21 @@ paths:
                     properties:
                       expression:
                         type: string
-                        description: The expression defining which traffic will match the rule.
+                        description: Define the expression that determines which traffic matches the
+                          rule.
                       snippet_name:
                         type: string
-                        description: The identifying name of the snippet.
+                        description: Identify the snippet.
                       description:
                         type: string
-                        description: An informative description of the rule.
+                        description: Provide an informative description of the rule.
                       enabled:
                         type: boolean
-                        description: Whether the rule should be executed.
+                        description: Indicate whether to execute the rule.
                     required:
                       - expression
                       - snippet_name
-                  description: "Body param: A list of snippet rules."
+                  description: "Body param: Lists snippet rules."
               required:
                 - rules
       responses:
@@ -113,33 +89,8 @@ paths:
           description: Success
           content:
             application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                    description: The unique ID of the rule.
-                  expression:
-                    type: string
-                    description: The expression defining which traffic will match the rule.
-                  last_updated:
-                    type: string
-                    description: The timestamp of when the rule was last modified.
-                  snippet_name:
-                    type: string
-                    description: The identifying name of the snippet.
-                  description:
-                    type: string
-                    description: An informative description of the rule.
-                  enabled:
-                    type: boolean
-                    description: Whether the rule should be executed.
-                required:
-                  - id
-                  - expression
-                  - last_updated
-                  - snippet_name
-      x-distilled-pagination-class: RuleUpdateResponsesSinglePage
+              schema: {}
+      x-distilled-response-path: result
     delete:
       operationId: deleteRule
       description: Deletes all snippet rules belonging to the zone.
@@ -147,7 +98,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: The unique ID of the zone.
+          description: Use this field to specify the unique ID of the zone.
           schema:
             type: string
       responses:
@@ -155,33 +106,8 @@ paths:
           description: Success
           content:
             application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                    description: The unique ID of the rule.
-                  expression:
-                    type: string
-                    description: The expression defining which traffic will match the rule.
-                  last_updated:
-                    type: string
-                    description: The timestamp of when the rule was last modified.
-                  snippet_name:
-                    type: string
-                    description: The identifying name of the snippet.
-                  description:
-                    type: string
-                    description: An informative description of the rule.
-                  enabled:
-                    type: boolean
-                    description: Whether the rule should be executed.
-                required:
-                  - id
-                  - expression
-                  - last_updated
-                  - snippet_name
-      x-distilled-pagination-class: RuleDeleteResponsesSinglePage
+              schema: {}
+      x-distilled-response-path: result
   /zones/{zone_id}/snippets/{snippetName}:
     get:
       operationId: getSnippet
@@ -195,7 +121,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: The unique ID of the zone.
+          description: Use this field to specify the unique ID of the zone.
           schema:
             type: string
       responses:
@@ -208,13 +134,13 @@ paths:
                 properties:
                   created_on:
                     type: string
-                    description: The timestamp of when the snippet was created.
+                    description: Indicates when the snippet was created.
                   snippet_name:
                     type: string
-                    description: The identifying name of the snippet.
+                    description: Identify the snippet.
                   modified_on:
                     type: string
-                    description: The timestamp of when the snippet was last modified.
+                    description: Indicates when the snippet was last modified.
                 required:
                   - created_on
                   - snippet_name
@@ -231,7 +157,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: "Path param: The unique ID of the zone."
+          description: "Path param: Use this field to specify the unique ID of the zone."
           schema:
             type: string
       requestBody:
@@ -246,10 +172,11 @@ paths:
                   properties:
                     main_module:
                       type: string
-                      description: Name of the file that contains the main module of the snippet.
+                      description: Specify the name of the file that contains the main module of the
+                        snippet.
                   required:
                     - main_module
-                  description: "Body param: Metadata about the snippet."
+                  description: "Body param: Provide metadata about the snippet."
               required:
                 - metadata
       responses:
@@ -262,13 +189,13 @@ paths:
                 properties:
                   created_on:
                     type: string
-                    description: The timestamp of when the snippet was created.
+                    description: Indicates when the snippet was created.
                   snippet_name:
                     type: string
-                    description: The identifying name of the snippet.
+                    description: Identify the snippet.
                   modified_on:
                     type: string
-                    description: The timestamp of when the snippet was last modified.
+                    description: Indicates when the snippet was last modified.
                 required:
                   - created_on
                   - snippet_name
@@ -285,7 +212,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: The unique ID of the zone.
+          description: Use this field to specify the unique ID of the zone.
           schema:
             type: string
       responses:
@@ -293,10 +220,7 @@ paths:
           description: Success
           content:
             application/json:
-              schema:
-                oneOf:
-                  - type: string
-                nullable: true
+              schema: {}
       x-distilled-response-path: result
   /zones/{zone_id}/snippets:
     get:
@@ -306,7 +230,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: "Path param: The unique ID of the zone."
+          description: "Path param: Use this field to specify the unique ID of the zone."
           schema:
             type: string
         - name: page
@@ -329,13 +253,13 @@ paths:
                 properties:
                   created_on:
                     type: string
-                    description: The timestamp of when the snippet was created.
+                    description: Indicates when the snippet was created.
                   snippet_name:
                     type: string
-                    description: The identifying name of the snippet.
+                    description: Identify the snippet.
                   modified_on:
                     type: string
-                    description: The timestamp of when the snippet was last modified.
+                    description: Indicates when the snippet was last modified.
                 required:
                   - created_on
                   - snippet_name

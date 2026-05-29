@@ -13,50 +13,50 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
-// URLNormalization
+// UrlNormalization
 // =============================================================================
 
-export interface GetURLNormalizationRequest {
+export interface GetUrlNormalizationRequest {
   /** The unique ID of the zone. */
   zoneId: string;
 }
 
-export const GetURLNormalizationRequest =
+export const GetUrlNormalizationRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
     T.Http({ method: "GET", path: "/zones/{zone_id}/url_normalization" }),
-  ) as unknown as Schema.Schema<GetURLNormalizationRequest>;
+  ) as unknown as Schema.Schema<GetUrlNormalizationRequest>;
 
-export interface GetURLNormalizationResponse {
+export interface GetUrlNormalizationResponse {
   /** The scope of the URL normalization. */
   scope: "incoming" | "both" | "none";
   /** The type of URL normalization performed by Cloudflare. */
   type: "cloudflare" | "rfc3986";
 }
 
-export const GetURLNormalizationResponse =
+export const GetUrlNormalizationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.Literals(["incoming", "both", "none"]),
     type: Schema.Literals(["cloudflare", "rfc3986"]),
   }).pipe(
     T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetURLNormalizationResponse>;
+  ) as unknown as Schema.Schema<GetUrlNormalizationResponse>;
 
-export type GetURLNormalizationError = DefaultErrors;
+export type GetUrlNormalizationError = DefaultErrors;
 
-export const getURLNormalization: API.OperationMethod<
-  GetURLNormalizationRequest,
-  GetURLNormalizationResponse,
-  GetURLNormalizationError,
+export const getUrlNormalization: API.OperationMethod<
+  GetUrlNormalizationRequest,
+  GetUrlNormalizationResponse,
+  GetUrlNormalizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetURLNormalizationRequest,
-  output: GetURLNormalizationResponse,
+  input: GetUrlNormalizationRequest,
+  output: GetUrlNormalizationResponse,
   errors: [],
 }));
 
-export interface PutURLNormalizationRequest {
+export interface PutUrlNormalizationRequest {
   /** Path param: The unique ID of the zone. */
   zoneId: string;
   /** Body param: The scope of the URL normalization. */
@@ -65,69 +65,69 @@ export interface PutURLNormalizationRequest {
   type: "cloudflare" | "rfc3986";
 }
 
-export const PutURLNormalizationRequest =
+export const PutUrlNormalizationRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     scope: Schema.Literals(["incoming", "both", "none"]),
     type: Schema.Literals(["cloudflare", "rfc3986"]),
   }).pipe(
     T.Http({ method: "PUT", path: "/zones/{zone_id}/url_normalization" }),
-  ) as unknown as Schema.Schema<PutURLNormalizationRequest>;
+  ) as unknown as Schema.Schema<PutUrlNormalizationRequest>;
 
-export interface PutURLNormalizationResponse {
+export interface PutUrlNormalizationResponse {
   /** The scope of the URL normalization. */
   scope: "incoming" | "both" | "none";
   /** The type of URL normalization performed by Cloudflare. */
   type: "cloudflare" | "rfc3986";
 }
 
-export const PutURLNormalizationResponse =
+export const PutUrlNormalizationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.Literals(["incoming", "both", "none"]),
     type: Schema.Literals(["cloudflare", "rfc3986"]),
   }).pipe(
     T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<PutURLNormalizationResponse>;
+  ) as unknown as Schema.Schema<PutUrlNormalizationResponse>;
 
-export type PutURLNormalizationError = DefaultErrors;
+export type PutUrlNormalizationError = DefaultErrors;
 
-export const putURLNormalization: API.OperationMethod<
-  PutURLNormalizationRequest,
-  PutURLNormalizationResponse,
-  PutURLNormalizationError,
+export const putUrlNormalization: API.OperationMethod<
+  PutUrlNormalizationRequest,
+  PutUrlNormalizationResponse,
+  PutUrlNormalizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PutURLNormalizationRequest,
-  output: PutURLNormalizationResponse,
+  input: PutUrlNormalizationRequest,
+  output: PutUrlNormalizationResponse,
   errors: [],
 }));
 
-export interface DeleteURLNormalizationRequest {
+export interface DeleteUrlNormalizationRequest {
   /** The unique ID of the zone. */
   zoneId: string;
 }
 
-export const DeleteURLNormalizationRequest =
+export const DeleteUrlNormalizationRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
     T.Http({ method: "DELETE", path: "/zones/{zone_id}/url_normalization" }),
-  ) as unknown as Schema.Schema<DeleteURLNormalizationRequest>;
+  ) as unknown as Schema.Schema<DeleteUrlNormalizationRequest>;
 
-export type DeleteURLNormalizationResponse = unknown;
+export type DeleteUrlNormalizationResponse = unknown;
 
-export const DeleteURLNormalizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteURLNormalizationResponse>;
+export const DeleteUrlNormalizationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteUrlNormalizationResponse>;
 
-export type DeleteURLNormalizationError = DefaultErrors;
+export type DeleteUrlNormalizationError = DefaultErrors;
 
-export const deleteURLNormalization: API.OperationMethod<
-  DeleteURLNormalizationRequest,
-  DeleteURLNormalizationResponse,
-  DeleteURLNormalizationError,
+export const deleteUrlNormalization: API.OperationMethod<
+  DeleteUrlNormalizationRequest,
+  DeleteUrlNormalizationResponse,
+  DeleteUrlNormalizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteURLNormalizationRequest,
-  output: DeleteURLNormalizationResponse,
+  input: DeleteUrlNormalizationRequest,
+  output: DeleteUrlNormalizationResponse,
   errors: [],
 }));

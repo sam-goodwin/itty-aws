@@ -122,13 +122,13 @@ export interface ListAttackSurfaceReportIssuesRequest {
   accountId: string;
   page?: number;
   perPage?: number;
-  /** Query param: */
+  /** Query param */
   dismissed?: boolean;
-  /** Query param: */
+  /** Query param */
   issueClass?: string[];
-  /** Query param: */
+  /** Query param */
   issueClassNeq?: string[];
-  /** Query param: */
+  /** Query param */
   issueType?: (
     | "compliance_violation"
     | "email_security"
@@ -137,7 +137,7 @@ export interface ListAttackSurfaceReportIssuesRequest {
     | "weak_authentication"
     | "configuration_suggestion"
   )[];
-  /** Query param: */
+  /** Query param */
   issueTypeNeq?: (
     | "compliance_violation"
     | "email_security"
@@ -146,17 +146,17 @@ export interface ListAttackSurfaceReportIssuesRequest {
     | "weak_authentication"
     | "configuration_suggestion"
   )[];
-  /** Query param: */
+  /** Query param */
   product?: string[];
-  /** Query param: */
+  /** Query param */
   productNeq?: string[];
-  /** Query param: */
+  /** Query param */
   severity?: ("low" | "moderate" | "critical")[];
-  /** Query param: */
+  /** Query param */
   severityNeq?: ("low" | "moderate" | "critical")[];
-  /** Query param: */
+  /** Query param */
   subject?: string[];
-  /** Query param: */
+  /** Query param */
   subjectNeq?: string[];
 }
 
@@ -230,6 +230,7 @@ export interface ListAttackSurfaceReportIssuesResponse {
             | {
                 id?: string | null;
                 dismissed?: boolean | null;
+                hasExtendedContext?: boolean | null;
                 issueClass?: string | null;
                 issueType?:
                   | "compliance_violation"
@@ -247,8 +248,14 @@ export interface ListAttackSurfaceReportIssuesResponse {
                 resolveText?: string | null;
                 severity?: "Low" | "Moderate" | "Critical" | null;
                 since?: string | null;
+                status?: "active" | "resolved" | null;
                 subject?: string | null;
                 timestamp?: string | null;
+                userClassification?:
+                  | "false_positive"
+                  | "accept_risk"
+                  | "other"
+                  | null;
               }[]
             | null;
           page?: number | null;
@@ -282,6 +289,9 @@ export const ListAttackSurfaceReportIssuesResponse =
                         Schema.Union([Schema.String, Schema.Null]),
                       ),
                       dismissed: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      hasExtendedContext: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
                       ),
                       issueClass: Schema.optional(
@@ -333,16 +343,31 @@ export const ListAttackSurfaceReportIssuesResponse =
                       since: Schema.optional(
                         Schema.Union([Schema.String, Schema.Null]),
                       ),
+                      status: Schema.optional(
+                        Schema.Union([
+                          Schema.Literals(["active", "resolved"]),
+                          Schema.Null,
+                        ]),
+                      ),
                       subject: Schema.optional(
                         Schema.Union([Schema.String, Schema.Null]),
                       ),
                       timestamp: Schema.optional(
                         Schema.Union([Schema.String, Schema.Null]),
                       ),
+                      userClassification: Schema.optional(
+                        Schema.Union([
+                          Schema.Literal("false_positive"),
+                          Schema.Literal("accept_risk"),
+                          Schema.Literal("other"),
+                          Schema.Null,
+                        ]),
+                      ),
                     }).pipe(
                       Schema.encodeKeys({
                         id: "id",
                         dismissed: "dismissed",
+                        hasExtendedContext: "has_extended_context",
                         issueClass: "issue_class",
                         issueType: "issue_type",
                         payload: "payload",
@@ -350,8 +375,10 @@ export const ListAttackSurfaceReportIssuesResponse =
                         resolveText: "resolve_text",
                         severity: "severity",
                         since: "since",
+                        status: "status",
                         subject: "subject",
                         timestamp: "timestamp",
+                        userClassification: "user_classification",
                       }),
                     ),
                   ),
@@ -422,13 +449,13 @@ export const listAttackSurfaceReportIssues: API.PaginatedOperationMethod<
 export interface ClassAttackSurfaceReportIssueRequest {
   /** Path param: Identifier. */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   dismissed?: boolean;
-  /** Query param: */
+  /** Query param */
   issueClass?: string[];
-  /** Query param: */
+  /** Query param */
   issueClassNeq?: string[];
-  /** Query param: */
+  /** Query param */
   issueType?: (
     | "compliance_violation"
     | "email_security"
@@ -437,7 +464,7 @@ export interface ClassAttackSurfaceReportIssueRequest {
     | "weak_authentication"
     | "configuration_suggestion"
   )[];
-  /** Query param: */
+  /** Query param */
   issueTypeNeq?: (
     | "compliance_violation"
     | "email_security"
@@ -446,17 +473,17 @@ export interface ClassAttackSurfaceReportIssueRequest {
     | "weak_authentication"
     | "configuration_suggestion"
   )[];
-  /** Query param: */
+  /** Query param */
   product?: string[];
-  /** Query param: */
+  /** Query param */
   productNeq?: string[];
-  /** Query param: */
+  /** Query param */
   severity?: ("low" | "moderate" | "critical")[];
-  /** Query param: */
+  /** Query param */
   severityNeq?: ("low" | "moderate" | "critical")[];
-  /** Query param: */
+  /** Query param */
   subject?: string[];
-  /** Query param: */
+  /** Query param */
   subjectNeq?: string[];
 }
 
@@ -551,7 +578,7 @@ export interface DismissAttackSurfaceReportIssueRequest {
   issueId: string;
   /** Path param: Identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   dismiss?: boolean;
 }
 
@@ -657,13 +684,13 @@ export const dismissAttackSurfaceReportIssue: API.OperationMethod<
 export interface SeverityAttackSurfaceReportIssueRequest {
   /** Path param: Identifier. */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   dismissed?: boolean;
-  /** Query param: */
+  /** Query param */
   issueClass?: string[];
-  /** Query param: */
+  /** Query param */
   issueClassNeq?: string[];
-  /** Query param: */
+  /** Query param */
   issueType?: (
     | "compliance_violation"
     | "email_security"
@@ -672,7 +699,7 @@ export interface SeverityAttackSurfaceReportIssueRequest {
     | "weak_authentication"
     | "configuration_suggestion"
   )[];
-  /** Query param: */
+  /** Query param */
   issueTypeNeq?: (
     | "compliance_violation"
     | "email_security"
@@ -681,17 +708,17 @@ export interface SeverityAttackSurfaceReportIssueRequest {
     | "weak_authentication"
     | "configuration_suggestion"
   )[];
-  /** Query param: */
+  /** Query param */
   product?: string[];
-  /** Query param: */
+  /** Query param */
   productNeq?: string[];
-  /** Query param: */
+  /** Query param */
   severity?: ("low" | "moderate" | "critical")[];
-  /** Query param: */
+  /** Query param */
   severityNeq?: ("low" | "moderate" | "critical")[];
-  /** Query param: */
+  /** Query param */
   subject?: string[];
-  /** Query param: */
+  /** Query param */
   subjectNeq?: string[];
 }
 
@@ -785,13 +812,13 @@ export const severityAttackSurfaceReportIssue: API.OperationMethod<
 export interface TypeAttackSurfaceReportIssueRequest {
   /** Path param: Identifier. */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   dismissed?: boolean;
-  /** Query param: */
+  /** Query param */
   issueClass?: string[];
-  /** Query param: */
+  /** Query param */
   issueClassNeq?: string[];
-  /** Query param: */
+  /** Query param */
   issueType?: (
     | "compliance_violation"
     | "email_security"
@@ -800,7 +827,7 @@ export interface TypeAttackSurfaceReportIssueRequest {
     | "weak_authentication"
     | "configuration_suggestion"
   )[];
-  /** Query param: */
+  /** Query param */
   issueTypeNeq?: (
     | "compliance_violation"
     | "email_security"
@@ -809,17 +836,17 @@ export interface TypeAttackSurfaceReportIssueRequest {
     | "weak_authentication"
     | "configuration_suggestion"
   )[];
-  /** Query param: */
+  /** Query param */
   product?: string[];
-  /** Query param: */
+  /** Query param */
   productNeq?: string[];
-  /** Query param: */
+  /** Query param */
   severity?: ("low" | "moderate" | "critical")[];
-  /** Query param: */
+  /** Query param */
   severityNeq?: ("low" | "moderate" | "critical")[];
-  /** Query param: */
+  /** Query param */
   subject?: string[];
-  /** Query param: */
+  /** Query param */
   subjectNeq?: string[];
 }
 
@@ -964,9 +991,9 @@ export interface ListDnsRequest {
   accountId: string;
   page?: number;
   perPage?: number;
-  /** Query param: */
+  /** Query param */
   ipv4?: string;
-  /** Query param: */
+  /** Query param */
   startEndParams?: { end?: string; start?: string };
 }
 
@@ -1107,13 +1134,16 @@ export const listDns: API.PaginatedOperationMethod<
 export interface GetDomainRequest {
   /** Path param: Identifier. */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   domain?: string;
+  /** Query param: Skip DNS resolution lookups for faster response. */
+  skipDns?: boolean;
 }
 
 export const GetDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   domain: Schema.optional(Schema.String).pipe(T.HttpQuery("domain")),
+  skipDns: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("skip_dns")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/intel/domain" }),
 ) as unknown as Schema.Schema<GetDomainRequest>;
@@ -1518,7 +1548,7 @@ export const getDomainBulk: API.OperationMethod<
 export interface GetDomainHistoryRequest {
   /** Path param: Identifier. */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   domain?: string;
 }
 
@@ -1628,6 +1658,29 @@ export interface GetIndicatorFeedResponse {
   isDownloadable?: boolean | null;
   /** Whether the indicator feed is exposed to customers */
   isPublic?: boolean | null;
+  /** Summary of indicator counts from the last successful upload to this feed. Populated by the custom-threat-feeds loader at the end of each successful load. Absent (omitted) when no upload has completed  */
+  lastUploadSummary?: {
+    persisted?: {
+      domainsAdded?: number | null;
+      domainsRemoved?: number | null;
+      ipsAdded?: number | null;
+      ipsRemoved?: number | null;
+      urlsAdded?: number | null;
+      urlsRemoved?: number | null;
+    } | null;
+    skipped?: {
+      allowlistedDomains?: number | null;
+      expiredIndicators?: number | null;
+      invalidIndicators?: number | null;
+    } | null;
+    uploaded?: {
+      domains?: number | null;
+      ips?: number | null;
+      urls?: number | null;
+    } | null;
+  } | null;
+  /** Human-readable error message describing why the latest upload failed. Populated only when `latest_upload_status` is `Error`. Returns one of a small fixed set of category-level messages (invalid domain */
+  latestUploadError?: string | null;
   /** Status of the latest snapshot uploaded */
   latestUploadStatus?:
     | "Mirroring"
@@ -1642,7 +1695,7 @@ export interface GetIndicatorFeedResponse {
   /** The name of the indicator feed */
   name?: string | null;
   /** The unique identifier for the provider */
-  providerId?: string | null;
+  providerId?: number | null;
   /** The provider of the indicator feed */
   providerName?: string | null;
 }
@@ -1659,6 +1712,88 @@ export const GetIndicatorFeedResponse =
       Schema.Union([Schema.Boolean, Schema.Null]),
     ),
     isPublic: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    lastUploadSummary: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          persisted: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                domainsAdded: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                domainsRemoved: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                ipsAdded: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                ipsRemoved: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                urlsAdded: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                urlsRemoved: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  domainsAdded: "domains_added",
+                  domainsRemoved: "domains_removed",
+                  ipsAdded: "ips_added",
+                  ipsRemoved: "ips_removed",
+                  urlsAdded: "urls_added",
+                  urlsRemoved: "urls_removed",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          skipped: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                allowlistedDomains: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                expiredIndicators: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                invalidIndicators: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  allowlistedDomains: "allowlisted_domains",
+                  expiredIndicators: "expired_indicators",
+                  invalidIndicators: "invalid_indicators",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          uploaded: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                domains: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                ips: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                urls: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }),
+        Schema.Null,
+      ]),
+    ),
+    latestUploadError: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
     latestUploadStatus: Schema.optional(
       Schema.Union([
         Schema.Literals([
@@ -1674,7 +1809,7 @@ export const GetIndicatorFeedResponse =
     ),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    providerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    providerId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     providerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -1685,6 +1820,8 @@ export const GetIndicatorFeedResponse =
         isAttributable: "is_attributable",
         isDownloadable: "is_downloadable",
         isPublic: "is_public",
+        lastUploadSummary: "last_upload_summary",
+        latestUploadError: "latest_upload_error",
         latestUploadStatus: "latest_upload_status",
         modifiedOn: "modified_on",
         name: "name",
@@ -2241,9 +2378,9 @@ export const putIndicatorFeedSnapshot: API.OperationMethod<
 export interface GetIpRequest {
   /** Path param: Identifier. */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   ipv4?: string;
-  /** Query param: */
+  /** Query param */
   ipv6?: string;
 }
 
@@ -2338,56 +2475,6 @@ export const getIp: API.OperationMethod<
 }));
 
 // =============================================================================
-// IpList
-// =============================================================================
-
-export interface GetIpListRequest {
-  /** Identifier. */
-  accountId: string;
-}
-
-export const GetIpListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/intel/ip-list" }),
-) as unknown as Schema.Schema<GetIpListRequest>;
-
-export interface GetIpListResponse {
-  result: {
-    id?: number | null;
-    description?: string | null;
-    name?: string | null;
-  }[];
-}
-
-export const GetIpListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
-  ),
-}) as unknown as Schema.Schema<GetIpListResponse>;
-
-export type GetIpListError = DefaultErrors;
-
-export const getIpList: API.PaginatedOperationMethod<
-  GetIpListRequest,
-  GetIpListResponse,
-  GetIpListError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: GetIpListRequest,
-  output: GetIpListResponse,
-  errors: [],
-  pagination: {
-    mode: "single",
-    items: "result",
-  } as const,
-}));
-
-// =============================================================================
 // Miscategorization
 // =============================================================================
 
@@ -2398,7 +2485,7 @@ export interface CreateMiscategorizationRequest {
   contentAdds?: number[];
   /** Body param: Content category IDs to remove. */
   contentRemoves?: number[];
-  /** Body param: */
+  /** Body param */
   indicatorType?: "domain" | "ipv4" | "ipv6" | "url";
   /** Body param: Provide only if indicator_type is `ipv4` or `ipv6`. */
   ip?: string | null;
@@ -2530,7 +2617,7 @@ export const createMiscategorization: API.OperationMethod<
 // =============================================================================
 
 export interface ListSinkholesRequest {
-  /** Identifier */
+  /** Identifier. */
   accountId: string;
 }
 
@@ -2600,7 +2687,7 @@ export const listSinkholes: API.PaginatedOperationMethod<
 export interface GetWhoiRequest {
   /** Path param: Use to uniquely identify or reference the resource. */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   domain?: string;
 }
 

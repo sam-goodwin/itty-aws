@@ -1455,6 +1455,9 @@ paths:
                   id:
                     type: string
                     description: Identifier of the user.
+                  email:
+                    type: string
+                    description: Current email address of the user.
                   betas:
                     type: array
                     items:
@@ -1533,6 +1536,9 @@ paths:
                       - type: string
                     nullable: true
                     description: The zipcode or postal code where the user lives.
+                required:
+                  - id
+                  - email
       x-distilled-response-path: result
     patch:
       operationId: patchUser
@@ -1581,6 +1587,9 @@ paths:
                   id:
                     type: string
                     description: Identifier of the user.
+                  email:
+                    type: string
+                    description: Current email address of the user.
                   betas:
                     type: array
                     items:
@@ -1659,4 +1668,7 @@ paths:
                       - type: string
                     nullable: true
                     description: The zipcode or postal code where the user lives.
+                required:
+                  - id
+                  - email
       x-distilled-response-path: result

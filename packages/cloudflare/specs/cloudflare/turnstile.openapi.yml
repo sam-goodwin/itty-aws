@@ -245,7 +245,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 mode:
                   type: string
                   enum:
@@ -497,6 +497,18 @@ paths:
             enum:
               - asc
               - desc
+        - name: filter
+          in: query
+          required: false
+          description: "Query param: Filter widgets by field using case-insensitive
+            substring matching. Format: `field:value`  Supported fields:  -
+            `name` - Filter by widget name (e.g., `filter=name:login-form`) -
+            `sitekey` - Filter by sitekey (e.g.,
+            `filter=sitekey:0x4AAA`)  Returns 400 Bad Request if the field is
+            unsupported or format is invalid. An empty filter value returns all
+            results."
+          schema:
+            type: string
         - name: order
           in: query
           required: false
@@ -606,6 +618,18 @@ paths:
             enum:
               - asc
               - desc
+        - name: filter
+          in: query
+          required: false
+          description: "Query param: Filter widgets by field using case-insensitive
+            substring matching. Format: `field:value`  Supported fields:  -
+            `name` - Filter by widget name (e.g., `filter=name:login-form`) -
+            `sitekey` - Filter by sitekey (e.g.,
+            `filter=sitekey:0x4AAA`)  Returns 400 Bad Request if the field is
+            unsupported or format is invalid. An empty filter value returns all
+            results."
+          schema:
+            type: string
         - name: order
           in: query
           required: false
@@ -641,7 +665,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 mode:
                   type: string
                   enum:

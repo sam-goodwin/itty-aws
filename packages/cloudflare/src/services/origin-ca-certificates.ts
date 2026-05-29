@@ -13,24 +13,24 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
-// OriginCACertificate
+// OriginCaCertificate
 // =============================================================================
 
-export interface GetOriginCACertificateRequest {
+export interface GetOriginCaCertificateRequest {
   certificateId: string;
 }
 
-export const GetOriginCACertificateRequest =
+export const GetOriginCaCertificateRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
   }).pipe(
     T.Http({ method: "GET", path: "/certificates/{certificateId}" }),
-  ) as unknown as Schema.Schema<GetOriginCACertificateRequest>;
+  ) as unknown as Schema.Schema<GetOriginCaCertificateRequest>;
 
-export interface GetOriginCACertificateResponse {
+export interface GetOriginCaCertificateResponse {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
   csr: string;
-  /** Array of hostnames or wildcard names (e.g., \ .example.com) bound to the certificate. */
+  /** Array of hostnames or wildcard names bound to the certificate. Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wil */
   hostnames: string[];
   /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
   requestType: "origin-rsa" | "origin-ecc" | "keyless-certificate";
@@ -44,7 +44,7 @@ export interface GetOriginCACertificateResponse {
   expiresOn?: string | null;
 }
 
-export const GetOriginCACertificateResponse =
+export const GetOriginCaCertificateResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     csr: Schema.String,
     hostnames: Schema.Array(Schema.String),
@@ -79,22 +79,22 @@ export const GetOriginCACertificateResponse =
     )
     .pipe(
       T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetOriginCACertificateResponse>;
+    ) as unknown as Schema.Schema<GetOriginCaCertificateResponse>;
 
-export type GetOriginCACertificateError = DefaultErrors;
+export type GetOriginCaCertificateError = DefaultErrors;
 
-export const getOriginCACertificate: API.OperationMethod<
-  GetOriginCACertificateRequest,
-  GetOriginCACertificateResponse,
-  GetOriginCACertificateError,
+export const getOriginCaCertificate: API.OperationMethod<
+  GetOriginCaCertificateRequest,
+  GetOriginCaCertificateResponse,
+  GetOriginCaCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOriginCACertificateRequest,
-  output: GetOriginCACertificateResponse,
+  input: GetOriginCaCertificateRequest,
+  output: GetOriginCaCertificateResponse,
   errors: [],
 }));
 
-export interface ListOriginCACertificatesRequest {
+export interface ListOriginCaCertificatesRequest {
   page?: number;
   perPage?: number;
   /** Identifier. */
@@ -105,7 +105,7 @@ export interface ListOriginCACertificatesRequest {
   offset?: number;
 }
 
-export const ListOriginCACertificatesRequest =
+export const ListOriginCaCertificatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -114,9 +114,9 @@ export const ListOriginCACertificatesRequest =
     offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
   }).pipe(
     T.Http({ method: "GET", path: "/certificates" }),
-  ) as unknown as Schema.Schema<ListOriginCACertificatesRequest>;
+  ) as unknown as Schema.Schema<ListOriginCaCertificatesRequest>;
 
-export interface ListOriginCACertificatesResponse {
+export interface ListOriginCaCertificatesResponse {
   result: {
     csr: string;
     hostnames: string[];
@@ -134,7 +134,7 @@ export interface ListOriginCACertificatesResponse {
   } | null;
 }
 
-export const ListOriginCACertificatesResponse =
+export const ListOriginCaCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
@@ -193,18 +193,18 @@ export const ListOriginCACertificatesResponse =
     ),
   }).pipe(
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
-  ) as unknown as Schema.Schema<ListOriginCACertificatesResponse>;
+  ) as unknown as Schema.Schema<ListOriginCaCertificatesResponse>;
 
-export type ListOriginCACertificatesError = DefaultErrors;
+export type ListOriginCaCertificatesError = DefaultErrors;
 
-export const listOriginCACertificates: API.PaginatedOperationMethod<
-  ListOriginCACertificatesRequest,
-  ListOriginCACertificatesResponse,
-  ListOriginCACertificatesError,
+export const listOriginCaCertificates: API.PaginatedOperationMethod<
+  ListOriginCaCertificatesRequest,
+  ListOriginCaCertificatesResponse,
+  ListOriginCaCertificatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListOriginCACertificatesRequest,
-  output: ListOriginCACertificatesResponse,
+  input: ListOriginCaCertificatesRequest,
+  output: ListOriginCaCertificatesResponse,
   errors: [],
   pagination: {
     mode: "page",
@@ -215,10 +215,10 @@ export const listOriginCACertificates: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export interface CreateOriginCACertificateRequest {
+export interface CreateOriginCaCertificateRequest {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
   csr: string;
-  /** Array of hostnames or wildcard names (e.g., \ .example.com) bound to the certificate. */
+  /** Array of hostnames or wildcard names bound to the certificate. Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wil */
   hostnames: string[];
   /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
   requestType: "origin-rsa" | "origin-ecc" | "keyless-certificate";
@@ -226,7 +226,7 @@ export interface CreateOriginCACertificateRequest {
   requestedValidity?: "7" | "30" | "90" | "365" | "730" | "1095" | "5475";
 }
 
-export const CreateOriginCACertificateRequest =
+export const CreateOriginCaCertificateRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     csr: Schema.String,
     hostnames: Schema.Array(Schema.String),
@@ -246,12 +246,12 @@ export const CreateOriginCACertificateRequest =
       requestedValidity: "requested_validity",
     }),
     T.Http({ method: "POST", path: "/certificates" }),
-  ) as unknown as Schema.Schema<CreateOriginCACertificateRequest>;
+  ) as unknown as Schema.Schema<CreateOriginCaCertificateRequest>;
 
-export interface CreateOriginCACertificateResponse {
+export interface CreateOriginCaCertificateResponse {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
   csr: string;
-  /** Array of hostnames or wildcard names (e.g., \ .example.com) bound to the certificate. */
+  /** Array of hostnames or wildcard names bound to the certificate. Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wil */
   hostnames: string[];
   /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
   requestType: "origin-rsa" | "origin-ecc" | "keyless-certificate";
@@ -265,7 +265,7 @@ export interface CreateOriginCACertificateResponse {
   expiresOn?: string | null;
 }
 
-export const CreateOriginCACertificateResponse =
+export const CreateOriginCaCertificateResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     csr: Schema.String,
     hostnames: Schema.Array(Schema.String),
@@ -300,40 +300,40 @@ export const CreateOriginCACertificateResponse =
     )
     .pipe(
       T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateOriginCACertificateResponse>;
+    ) as unknown as Schema.Schema<CreateOriginCaCertificateResponse>;
 
-export type CreateOriginCACertificateError = DefaultErrors;
+export type CreateOriginCaCertificateError = DefaultErrors;
 
-export const createOriginCACertificate: API.OperationMethod<
-  CreateOriginCACertificateRequest,
-  CreateOriginCACertificateResponse,
-  CreateOriginCACertificateError,
+export const createOriginCaCertificate: API.OperationMethod<
+  CreateOriginCaCertificateRequest,
+  CreateOriginCaCertificateResponse,
+  CreateOriginCaCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateOriginCACertificateRequest,
-  output: CreateOriginCACertificateResponse,
+  input: CreateOriginCaCertificateRequest,
+  output: CreateOriginCaCertificateResponse,
   errors: [],
 }));
 
-export interface DeleteOriginCACertificateRequest {
+export interface DeleteOriginCaCertificateRequest {
   certificateId: string;
 }
 
-export const DeleteOriginCACertificateRequest =
+export const DeleteOriginCaCertificateRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
   }).pipe(
     T.Http({ method: "DELETE", path: "/certificates/{certificateId}" }),
-  ) as unknown as Schema.Schema<DeleteOriginCACertificateRequest>;
+  ) as unknown as Schema.Schema<DeleteOriginCaCertificateRequest>;
 
-export interface DeleteOriginCACertificateResponse {
+export interface DeleteOriginCaCertificateResponse {
   /** Identifier. */
   id?: string | null;
   /** When the certificate was revoked. */
   revokedAt?: string | null;
 }
 
-export const DeleteOriginCACertificateResponse =
+export const DeleteOriginCaCertificateResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     revokedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -341,17 +341,17 @@ export const DeleteOriginCACertificateResponse =
     .pipe(Schema.encodeKeys({ id: "id", revokedAt: "revoked_at" }))
     .pipe(
       T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DeleteOriginCACertificateResponse>;
+    ) as unknown as Schema.Schema<DeleteOriginCaCertificateResponse>;
 
-export type DeleteOriginCACertificateError = DefaultErrors;
+export type DeleteOriginCaCertificateError = DefaultErrors;
 
-export const deleteOriginCACertificate: API.OperationMethod<
-  DeleteOriginCACertificateRequest,
-  DeleteOriginCACertificateResponse,
-  DeleteOriginCACertificateError,
+export const deleteOriginCaCertificate: API.OperationMethod<
+  DeleteOriginCaCertificateRequest,
+  DeleteOriginCaCertificateResponse,
+  DeleteOriginCaCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteOriginCACertificateRequest,
-  output: DeleteOriginCACertificateResponse,
+  input: DeleteOriginCaCertificateRequest,
+  output: DeleteOriginCaCertificateResponse,
   errors: [],
 }));

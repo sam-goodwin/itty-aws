@@ -1267,7 +1267,7 @@ export const putHistory: API.OperationMethod<
 export interface GetHistoryConfigRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Query param: Comma separated list of Zaraz configuration IDs */
+  /** Query param: Comma separated list of Zaraz configuration IDs. */
   ids: number[];
 }
 
@@ -1384,7 +1384,7 @@ export const getWorkflow: API.OperationMethod<
 export interface PutZarazRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: Zaraz workflow */
+  /** Body param: Zaraz workflow. */
   workflow: "realtime" | "preview";
 }
 

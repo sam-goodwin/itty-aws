@@ -17,7 +17,7 @@ import { type DefaultErrors } from "../errors.ts";
 // =============================================================================
 
 export interface PurgeCacheRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
   /** Body param: For more information on cache tags and purging by tags, please refer to [purge by cache-tags documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/). */
   tags?: string[];
@@ -236,7 +236,7 @@ export const statusCacheReserve: API.OperationMethod<
 export interface ClearCacheReserveRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -295,6 +295,617 @@ export const clearCacheReserve: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClearCacheReserveRequest,
   output: ClearCacheReserveResponse,
+  errors: [],
+}));
+
+// =============================================================================
+// OriginCloudRegion
+// =============================================================================
+
+export interface GetOriginCloudRegionRequest {
+  originIP: string;
+  /** Identifier. */
+  zoneId: string;
+}
+
+export const GetOriginCloudRegionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originIP: Schema.String.pipe(T.HttpPath("originIP")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/cache/origin_cloud_regions/{originIP}",
+    }),
+  ) as unknown as Schema.Schema<GetOriginCloudRegionRequest>;
+
+export interface GetOriginCloudRegionResponse {
+  id: "origin_public_cloud_region";
+  /** Whether the setting can be modified by the current user. */
+  editable: boolean;
+  /** A single origin IP-to-cloud-region mapping. */
+  value: {
+    originIp: string;
+    region: string;
+    vendor: "aws" | "azure" | "gcp" | "oci";
+    modifiedOn?: string | null;
+  };
+  /** Time the mapping was last modified. */
+  modifiedOn?: string | null;
+}
+
+export const GetOriginCloudRegionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.Literal("origin_public_cloud_region"),
+    editable: Schema.Boolean,
+    value: Schema.Struct({
+      originIp: Schema.String,
+      region: Schema.String,
+      vendor: Schema.Literals(["aws", "azure", "gcp", "oci"]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        originIp: "origin-ip",
+        region: "region",
+        vendor: "vendor",
+        modifiedOn: "modified_on",
+      }),
+    ),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        editable: "editable",
+        value: "value",
+        modifiedOn: "modified_on",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<GetOriginCloudRegionResponse>;
+
+export type GetOriginCloudRegionError = DefaultErrors;
+
+export const getOriginCloudRegion: API.OperationMethod<
+  GetOriginCloudRegionRequest,
+  GetOriginCloudRegionResponse,
+  GetOriginCloudRegionError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetOriginCloudRegionRequest,
+  output: GetOriginCloudRegionResponse,
+  errors: [],
+}));
+
+export interface ListOriginCloudRegionsRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+
+export const ListOriginCloudRegionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/cache/origin_cloud_regions",
+    }),
+  ) as unknown as Schema.Schema<ListOriginCloudRegionsRequest>;
+
+export interface ListOriginCloudRegionsResponse {
+  id: "origin_public_cloud_region";
+  /** Whether the setting can be modified by the current user. */
+  editable: boolean;
+  value: {
+    originIp: string;
+    region: string;
+    vendor: "aws" | "azure" | "gcp" | "oci";
+    modifiedOn?: string | null;
+  }[];
+  /** Time the mapping set was last modified. Null when no mappings exist. */
+  modifiedOn?: string | null;
+}
+
+export const ListOriginCloudRegionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.Literal("origin_public_cloud_region"),
+    editable: Schema.Boolean,
+    value: Schema.Array(
+      Schema.Struct({
+        originIp: Schema.String,
+        region: Schema.String,
+        vendor: Schema.Literals(["aws", "azure", "gcp", "oci"]),
+        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          originIp: "origin-ip",
+          region: "region",
+          vendor: "vendor",
+          modifiedOn: "modified_on",
+        }),
+      ),
+    ),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        editable: "editable",
+        value: "value",
+        modifiedOn: "modified_on",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<ListOriginCloudRegionsResponse>;
+
+export type ListOriginCloudRegionsError = DefaultErrors;
+
+export const listOriginCloudRegions: API.OperationMethod<
+  ListOriginCloudRegionsRequest,
+  ListOriginCloudRegionsResponse,
+  ListOriginCloudRegionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListOriginCloudRegionsRequest,
+  output: ListOriginCloudRegionsResponse,
+  errors: [],
+}));
+
+export interface CreateOriginCloudRegionRequest {
+  /** Path param: Identifier. */
+  zoneId: string;
+  /** Body param: Origin IP address (IPv4 or IPv6). Normalized to canonical form before storage (RFC 5952 for IPv6). */
+  ip: string;
+  /** Body param: Cloud vendor region identifier. Must be a valid region for the specified vendor as returned by the supported_regions endpoint. */
+  region: string;
+  /** Body param: Cloud vendor hosting the origin. Must be one of the supported vendors. */
+  vendor: "aws" | "azure" | "gcp" | "oci";
+}
+
+export const CreateOriginCloudRegionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ip: Schema.String,
+    region: Schema.String,
+    vendor: Schema.Literals(["aws", "azure", "gcp", "oci"]),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/zones/{zone_id}/cache/origin_cloud_regions",
+    }),
+  ) as unknown as Schema.Schema<CreateOriginCloudRegionRequest>;
+
+export interface CreateOriginCloudRegionResponse {
+  id: "origin_public_cloud_region";
+  /** Whether the setting can be modified by the current user. */
+  editable: boolean;
+  /** A single origin IP-to-cloud-region mapping. */
+  value: {
+    originIp: string;
+    region: string;
+    vendor: "aws" | "azure" | "gcp" | "oci";
+    modifiedOn?: string | null;
+  };
+  /** Time the mapping was last modified. */
+  modifiedOn?: string | null;
+}
+
+export const CreateOriginCloudRegionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.Literal("origin_public_cloud_region"),
+    editable: Schema.Boolean,
+    value: Schema.Struct({
+      originIp: Schema.String,
+      region: Schema.String,
+      vendor: Schema.Literals(["aws", "azure", "gcp", "oci"]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        originIp: "origin-ip",
+        region: "region",
+        vendor: "vendor",
+        modifiedOn: "modified_on",
+      }),
+    ),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        editable: "editable",
+        value: "value",
+        modifiedOn: "modified_on",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<CreateOriginCloudRegionResponse>;
+
+export type CreateOriginCloudRegionError = DefaultErrors;
+
+export const createOriginCloudRegion: API.OperationMethod<
+  CreateOriginCloudRegionRequest,
+  CreateOriginCloudRegionResponse,
+  CreateOriginCloudRegionError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateOriginCloudRegionRequest,
+  output: CreateOriginCloudRegionResponse,
+  errors: [],
+}));
+
+export interface PatchOriginCloudRegionRequest {
+  /** Path param: Identifier. */
+  zoneId: string;
+  /** Body param: Origin IP address (IPv4 or IPv6). Normalized to canonical form before storage (RFC 5952 for IPv6). */
+  ip: string;
+  /** Body param: Cloud vendor region identifier. Must be a valid region for the specified vendor as returned by the supported_regions endpoint. */
+  region: string;
+  /** Body param: Cloud vendor hosting the origin. Must be one of the supported vendors. */
+  vendor: "aws" | "azure" | "gcp" | "oci";
+}
+
+export const PatchOriginCloudRegionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ip: Schema.String,
+    region: Schema.String,
+    vendor: Schema.Literals(["aws", "azure", "gcp", "oci"]),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/zones/{zone_id}/cache/origin_cloud_regions",
+    }),
+  ) as unknown as Schema.Schema<PatchOriginCloudRegionRequest>;
+
+export interface PatchOriginCloudRegionResponse {
+  id: "origin_public_cloud_region";
+  /** Whether the setting can be modified by the current user. */
+  editable: boolean;
+  value: {
+    originIp: string;
+    region: string;
+    vendor: "aws" | "azure" | "gcp" | "oci";
+    modifiedOn?: string | null;
+  }[];
+  /** Time the mapping set was last modified. Null when no mappings exist. */
+  modifiedOn?: string | null;
+}
+
+export const PatchOriginCloudRegionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.Literal("origin_public_cloud_region"),
+    editable: Schema.Boolean,
+    value: Schema.Array(
+      Schema.Struct({
+        originIp: Schema.String,
+        region: Schema.String,
+        vendor: Schema.Literals(["aws", "azure", "gcp", "oci"]),
+        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          originIp: "origin-ip",
+          region: "region",
+          vendor: "vendor",
+          modifiedOn: "modified_on",
+        }),
+      ),
+    ),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        editable: "editable",
+        value: "value",
+        modifiedOn: "modified_on",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<PatchOriginCloudRegionResponse>;
+
+export type PatchOriginCloudRegionError = DefaultErrors;
+
+export const patchOriginCloudRegion: API.OperationMethod<
+  PatchOriginCloudRegionRequest,
+  PatchOriginCloudRegionResponse,
+  PatchOriginCloudRegionError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchOriginCloudRegionRequest,
+  output: PatchOriginCloudRegionResponse,
+  errors: [],
+}));
+
+export interface DeleteOriginCloudRegionRequest {
+  originIP: string;
+  /** Identifier. */
+  zoneId: string;
+}
+
+export const DeleteOriginCloudRegionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originIP: Schema.String.pipe(T.HttpPath("originIP")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/cache/origin_cloud_regions/{originIP}",
+    }),
+  ) as unknown as Schema.Schema<DeleteOriginCloudRegionRequest>;
+
+export interface DeleteOriginCloudRegionResponse {
+  id: "origin_public_cloud_region";
+  /** Whether the setting can be modified by the current user. */
+  editable: boolean;
+  /** A single origin IP-to-cloud-region mapping. */
+  value: {
+    originIp: string;
+    region: string;
+    vendor: "aws" | "azure" | "gcp" | "oci";
+    modifiedOn?: string | null;
+  };
+  /** Time the mapping was last modified. */
+  modifiedOn?: string | null;
+}
+
+export const DeleteOriginCloudRegionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.Literal("origin_public_cloud_region"),
+    editable: Schema.Boolean,
+    value: Schema.Struct({
+      originIp: Schema.String,
+      region: Schema.String,
+      vendor: Schema.Literals(["aws", "azure", "gcp", "oci"]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        originIp: "origin-ip",
+        region: "region",
+        vendor: "vendor",
+        modifiedOn: "modified_on",
+      }),
+    ),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        editable: "editable",
+        value: "value",
+        modifiedOn: "modified_on",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<DeleteOriginCloudRegionResponse>;
+
+export type DeleteOriginCloudRegionError = DefaultErrors;
+
+export const deleteOriginCloudRegion: API.OperationMethod<
+  DeleteOriginCloudRegionRequest,
+  DeleteOriginCloudRegionResponse,
+  DeleteOriginCloudRegionError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteOriginCloudRegionRequest,
+  output: DeleteOriginCloudRegionResponse,
+  errors: [],
+}));
+
+export interface BulkPatchOriginCloudRegionsRequest {
+  /** Path param: Identifier. */
+  zoneId: string;
+  /** Body param */
+  body: {
+    ip: string;
+    region: string;
+    vendor: "aws" | "azure" | "gcp" | "oci";
+  }[];
+}
+
+export const BulkPatchOriginCloudRegionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    body: Schema.Array(
+      Schema.Struct({
+        ip: Schema.String,
+        region: Schema.String,
+        vendor: Schema.Literals(["aws", "azure", "gcp", "oci"]),
+      }),
+    ).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/zones/{zone_id}/cache/origin_cloud_regions/batch",
+    }),
+  ) as unknown as Schema.Schema<BulkPatchOriginCloudRegionsRequest>;
+
+export interface BulkPatchOriginCloudRegionsResponse {
+  id: "origin_public_cloud_region";
+  /** Whether the setting can be modified by the current user. */
+  editable: boolean;
+  value: {
+    failed: {
+      originIp: string;
+      error?: string | null;
+      region?: string | null;
+      vendor?: string | null;
+    }[];
+    succeeded: {
+      originIp: string;
+      error?: string | null;
+      region?: string | null;
+      vendor?: string | null;
+    }[];
+  };
+  /** Time the mapping set was last modified. Null when no items were successfully applied. */
+  modifiedOn?: string | null;
+}
+
+export const BulkPatchOriginCloudRegionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.Literal("origin_public_cloud_region"),
+    editable: Schema.Boolean,
+    value: Schema.Struct({
+      failed: Schema.Array(
+        Schema.Struct({
+          originIp: Schema.String,
+          error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          vendor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            originIp: "origin-ip",
+            error: "error",
+            region: "region",
+            vendor: "vendor",
+          }),
+        ),
+      ),
+      succeeded: Schema.Array(
+        Schema.Struct({
+          originIp: Schema.String,
+          error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          vendor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            originIp: "origin-ip",
+            error: "error",
+            region: "region",
+            vendor: "vendor",
+          }),
+        ),
+      ),
+    }),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        editable: "editable",
+        value: "value",
+        modifiedOn: "modified_on",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<BulkPatchOriginCloudRegionsResponse>;
+
+export type BulkPatchOriginCloudRegionsError = DefaultErrors;
+
+export const bulkPatchOriginCloudRegions: API.OperationMethod<
+  BulkPatchOriginCloudRegionsRequest,
+  BulkPatchOriginCloudRegionsResponse,
+  BulkPatchOriginCloudRegionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BulkPatchOriginCloudRegionsRequest,
+  output: BulkPatchOriginCloudRegionsResponse,
+  errors: [],
+}));
+
+export interface BulkDeleteOriginCloudRegionsRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+
+export const BulkDeleteOriginCloudRegionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/cache/origin_cloud_regions/batch",
+    }),
+  ) as unknown as Schema.Schema<BulkDeleteOriginCloudRegionsRequest>;
+
+export interface BulkDeleteOriginCloudRegionsResponse {
+  id: "origin_public_cloud_region";
+  /** Whether the setting can be modified by the current user. */
+  editable: boolean;
+  value: {
+    failed: {
+      originIp: string;
+      error?: string | null;
+      region?: string | null;
+      vendor?: string | null;
+    }[];
+    succeeded: {
+      originIp: string;
+      error?: string | null;
+      region?: string | null;
+      vendor?: string | null;
+    }[];
+  };
+  /** Time the mapping set was last modified. Null when no items were successfully applied. */
+  modifiedOn?: string | null;
+}
+
+export const BulkDeleteOriginCloudRegionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.Literal("origin_public_cloud_region"),
+    editable: Schema.Boolean,
+    value: Schema.Struct({
+      failed: Schema.Array(
+        Schema.Struct({
+          originIp: Schema.String,
+          error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          vendor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            originIp: "origin-ip",
+            error: "error",
+            region: "region",
+            vendor: "vendor",
+          }),
+        ),
+      ),
+      succeeded: Schema.Array(
+        Schema.Struct({
+          originIp: Schema.String,
+          error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          vendor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            originIp: "origin-ip",
+            error: "error",
+            region: "region",
+            vendor: "vendor",
+          }),
+        ),
+      ),
+    }),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        editable: "editable",
+        value: "value",
+        modifiedOn: "modified_on",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<BulkDeleteOriginCloudRegionsResponse>;
+
+export type BulkDeleteOriginCloudRegionsError = DefaultErrors;
+
+export const bulkDeleteOriginCloudRegions: API.OperationMethod<
+  BulkDeleteOriginCloudRegionsRequest,
+  BulkDeleteOriginCloudRegionsResponse,
+  BulkDeleteOriginCloudRegionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BulkDeleteOriginCloudRegionsRequest,
+  output: BulkDeleteOriginCloudRegionsResponse,
   errors: [],
 }));
 
@@ -418,6 +1029,60 @@ export const patchRegionalTieredCache: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionalTieredCacheRequest,
   output: PatchRegionalTieredCacheResponse,
+  errors: [],
+}));
+
+// =============================================================================
+// RegionsOriginCloudRegion
+// =============================================================================
+
+export interface SupportedRegionsOriginCloudRegionRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+
+export const SupportedRegionsOriginCloudRegionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/cache/origin_cloud_regions/supported_regions",
+    }),
+  ) as unknown as Schema.Schema<SupportedRegionsOriginCloudRegionRequest>;
+
+export interface SupportedRegionsOriginCloudRegionResponse {
+  /** Whether Cloudflare airport codes (IATA colo identifiers) were successfully resolved for the `upper_tier_colos` field on each region. When `false`, the `upper_tier_colos` arrays may be empty or incompl */
+  obtainedCodes: boolean;
+  /** Map of vendor name to list of supported regions. */
+  vendors: Record<string, unknown>;
+}
+
+export const SupportedRegionsOriginCloudRegionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    obtainedCodes: Schema.Boolean,
+    vendors: Schema.Record(Schema.String, Schema.Unknown),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        obtainedCodes: "obtained_codes",
+        vendors: "vendors",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<SupportedRegionsOriginCloudRegionResponse>;
+
+export type SupportedRegionsOriginCloudRegionError = DefaultErrors;
+
+export const supportedRegionsOriginCloudRegion: API.OperationMethod<
+  SupportedRegionsOriginCloudRegionRequest,
+  SupportedRegionsOriginCloudRegionResponse,
+  SupportedRegionsOriginCloudRegionError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SupportedRegionsOriginCloudRegionRequest,
+  output: SupportedRegionsOriginCloudRegionResponse,
   errors: [],
 }));
 

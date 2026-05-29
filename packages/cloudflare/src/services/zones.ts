@@ -93,6 +93,7 @@ export interface GetCustomNameserverResponse {
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
+    totalPages?: number | null;
   } | null;
 }
 
@@ -162,12 +163,16 @@ export const GetCustomNameserverResponse =
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -240,6 +245,542 @@ export const putCustomNameserver: API.PaginatedOperationMethod<
     mode: "single",
     items: "result",
   } as const,
+}));
+
+// =============================================================================
+// Environment
+// =============================================================================
+
+export interface ListEnvironmentsRequest {
+  /** Identifier of the zone. */
+  zoneId: string;
+}
+
+export const ListEnvironmentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/environments" }),
+  ) as unknown as Schema.Schema<ListEnvironmentsRequest>;
+
+export interface ListEnvironmentsResponse {
+  environments: {
+    expression: string;
+    lockedOnDeployment: boolean | null;
+    name: string;
+    position: { after?: string | null; before?: string | null };
+    ref: string;
+    version: number | null;
+    httpApplicationId?: string | null;
+  }[];
+}
+
+export const ListEnvironmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environments: Schema.Array(
+      Schema.Struct({
+        expression: Schema.String,
+        lockedOnDeployment: Schema.Union([Schema.Boolean, Schema.Null]),
+        name: Schema.String,
+        position: Schema.Struct({
+          after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          before: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
+        ref: Schema.String,
+        version: Schema.Union([Schema.Number, Schema.Null]),
+        httpApplicationId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          expression: "expression",
+          lockedOnDeployment: "locked_on_deployment",
+          name: "name",
+          position: "position",
+          ref: "ref",
+          version: "version",
+          httpApplicationId: "http_application_id",
+        }),
+      ),
+    ),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<ListEnvironmentsResponse>;
+
+export type ListEnvironmentsError = DefaultErrors;
+
+export const listEnvironments: API.OperationMethod<
+  ListEnvironmentsRequest,
+  ListEnvironmentsResponse,
+  ListEnvironmentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListEnvironmentsRequest,
+  output: ListEnvironmentsResponse,
+  errors: [],
+}));
+
+export interface CreateEnvironmentRequest {
+  /** Path param: Identifier of the zone. */
+  zoneId: string;
+  /** Body param */
+  environments: {
+    expression: string;
+    lockedOnDeployment: boolean | null;
+    name: string;
+    position: { after?: string; before?: string };
+    ref: string;
+    version: number | null;
+    httpApplicationId?: string | null;
+  }[];
+}
+
+export const CreateEnvironmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    environments: Schema.Array(
+      Schema.Struct({
+        expression: Schema.String,
+        lockedOnDeployment: Schema.Union([Schema.Boolean, Schema.Null]),
+        name: Schema.String,
+        position: Schema.Struct({
+          after: Schema.optional(Schema.String),
+          before: Schema.optional(Schema.String),
+        }),
+        ref: Schema.String,
+        version: Schema.Union([Schema.Number, Schema.Null]),
+        httpApplicationId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          expression: "expression",
+          lockedOnDeployment: "locked_on_deployment",
+          name: "name",
+          position: "position",
+          ref: "ref",
+          version: "version",
+          httpApplicationId: "http_application_id",
+        }),
+      ),
+    ),
+  }).pipe(
+    T.Http({ method: "POST", path: "/zones/{zone_id}/environments" }),
+  ) as unknown as Schema.Schema<CreateEnvironmentRequest>;
+
+export interface CreateEnvironmentResponse {
+  environments: {
+    expression: string;
+    lockedOnDeployment: boolean | null;
+    name: string;
+    position: { after?: string | null; before?: string | null };
+    ref: string;
+    version: number | null;
+    httpApplicationId?: string | null;
+  }[];
+}
+
+export const CreateEnvironmentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environments: Schema.Array(
+      Schema.Struct({
+        expression: Schema.String,
+        lockedOnDeployment: Schema.Union([Schema.Boolean, Schema.Null]),
+        name: Schema.String,
+        position: Schema.Struct({
+          after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          before: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
+        ref: Schema.String,
+        version: Schema.Union([Schema.Number, Schema.Null]),
+        httpApplicationId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          expression: "expression",
+          lockedOnDeployment: "locked_on_deployment",
+          name: "name",
+          position: "position",
+          ref: "ref",
+          version: "version",
+          httpApplicationId: "http_application_id",
+        }),
+      ),
+    ),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateEnvironmentResponse>;
+
+export type CreateEnvironmentError = DefaultErrors;
+
+export const createEnvironment: API.OperationMethod<
+  CreateEnvironmentRequest,
+  CreateEnvironmentResponse,
+  CreateEnvironmentError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateEnvironmentRequest,
+  output: CreateEnvironmentResponse,
+  errors: [],
+}));
+
+export interface UpdateEnvironmentRequest {
+  /** Path param: Identifier of the zone. */
+  zoneId: string;
+  /** Body param */
+  environments: {
+    expression: string;
+    lockedOnDeployment: boolean | null;
+    name: string;
+    position: { after?: string; before?: string };
+    ref: string;
+    version: number | null;
+    httpApplicationId?: string | null;
+  }[];
+}
+
+export const UpdateEnvironmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    environments: Schema.Array(
+      Schema.Struct({
+        expression: Schema.String,
+        lockedOnDeployment: Schema.Union([Schema.Boolean, Schema.Null]),
+        name: Schema.String,
+        position: Schema.Struct({
+          after: Schema.optional(Schema.String),
+          before: Schema.optional(Schema.String),
+        }),
+        ref: Schema.String,
+        version: Schema.Union([Schema.Number, Schema.Null]),
+        httpApplicationId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          expression: "expression",
+          lockedOnDeployment: "locked_on_deployment",
+          name: "name",
+          position: "position",
+          ref: "ref",
+          version: "version",
+          httpApplicationId: "http_application_id",
+        }),
+      ),
+    ),
+  }).pipe(
+    T.Http({ method: "PUT", path: "/zones/{zone_id}/environments" }),
+  ) as unknown as Schema.Schema<UpdateEnvironmentRequest>;
+
+export interface UpdateEnvironmentResponse {
+  environments: {
+    expression: string;
+    lockedOnDeployment: boolean | null;
+    name: string;
+    position: { after?: string | null; before?: string | null };
+    ref: string;
+    version: number | null;
+    httpApplicationId?: string | null;
+  }[];
+}
+
+export const UpdateEnvironmentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environments: Schema.Array(
+      Schema.Struct({
+        expression: Schema.String,
+        lockedOnDeployment: Schema.Union([Schema.Boolean, Schema.Null]),
+        name: Schema.String,
+        position: Schema.Struct({
+          after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          before: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
+        ref: Schema.String,
+        version: Schema.Union([Schema.Number, Schema.Null]),
+        httpApplicationId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          expression: "expression",
+          lockedOnDeployment: "locked_on_deployment",
+          name: "name",
+          position: "position",
+          ref: "ref",
+          version: "version",
+          httpApplicationId: "http_application_id",
+        }),
+      ),
+    ),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<UpdateEnvironmentResponse>;
+
+export type UpdateEnvironmentError = DefaultErrors;
+
+export const updateEnvironment: API.OperationMethod<
+  UpdateEnvironmentRequest,
+  UpdateEnvironmentResponse,
+  UpdateEnvironmentError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateEnvironmentRequest,
+  output: UpdateEnvironmentResponse,
+  errors: [],
+}));
+
+export interface PatchEnvironmentRequest {
+  /** Path param: Identifier of the zone. */
+  zoneId: string;
+  /** Body param */
+  environments: {
+    expression: string;
+    lockedOnDeployment: boolean | null;
+    name: string;
+    position: { after?: string; before?: string };
+    ref: string;
+    version: number | null;
+    httpApplicationId?: string | null;
+  }[];
+}
+
+export const PatchEnvironmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    environments: Schema.Array(
+      Schema.Struct({
+        expression: Schema.String,
+        lockedOnDeployment: Schema.Union([Schema.Boolean, Schema.Null]),
+        name: Schema.String,
+        position: Schema.Struct({
+          after: Schema.optional(Schema.String),
+          before: Schema.optional(Schema.String),
+        }),
+        ref: Schema.String,
+        version: Schema.Union([Schema.Number, Schema.Null]),
+        httpApplicationId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          expression: "expression",
+          lockedOnDeployment: "locked_on_deployment",
+          name: "name",
+          position: "position",
+          ref: "ref",
+          version: "version",
+          httpApplicationId: "http_application_id",
+        }),
+      ),
+    ),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "/zones/{zone_id}/environments" }),
+  ) as unknown as Schema.Schema<PatchEnvironmentRequest>;
+
+export interface PatchEnvironmentResponse {
+  environments: {
+    expression: string;
+    lockedOnDeployment: boolean | null;
+    name: string;
+    position: { after?: string | null; before?: string | null };
+    ref: string;
+    version: number | null;
+    httpApplicationId?: string | null;
+  }[];
+}
+
+export const PatchEnvironmentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environments: Schema.Array(
+      Schema.Struct({
+        expression: Schema.String,
+        lockedOnDeployment: Schema.Union([Schema.Boolean, Schema.Null]),
+        name: Schema.String,
+        position: Schema.Struct({
+          after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          before: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
+        ref: Schema.String,
+        version: Schema.Union([Schema.Number, Schema.Null]),
+        httpApplicationId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          expression: "expression",
+          lockedOnDeployment: "locked_on_deployment",
+          name: "name",
+          position: "position",
+          ref: "ref",
+          version: "version",
+          httpApplicationId: "http_application_id",
+        }),
+      ),
+    ),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<PatchEnvironmentResponse>;
+
+export type PatchEnvironmentError = DefaultErrors;
+
+export const patchEnvironment: API.OperationMethod<
+  PatchEnvironmentRequest,
+  PatchEnvironmentResponse,
+  PatchEnvironmentError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchEnvironmentRequest,
+  output: PatchEnvironmentResponse,
+  errors: [],
+}));
+
+export interface DeleteEnvironmentRequest {
+  environmentId: string;
+  /** Identifier of the zone. */
+  zoneId: string;
+}
+
+export const DeleteEnvironmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environmentId: Schema.String.pipe(T.HttpPath("environmentId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/environments/{environmentId}",
+    }),
+  ) as unknown as Schema.Schema<DeleteEnvironmentRequest>;
+
+export interface DeleteEnvironmentResponse {
+  environments: {
+    expression: string;
+    lockedOnDeployment: boolean | null;
+    name: string;
+    position: { after?: string | null; before?: string | null };
+    ref: string;
+    version: number | null;
+    httpApplicationId?: string | null;
+  }[];
+}
+
+export const DeleteEnvironmentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environments: Schema.Array(
+      Schema.Struct({
+        expression: Schema.String,
+        lockedOnDeployment: Schema.Union([Schema.Boolean, Schema.Null]),
+        name: Schema.String,
+        position: Schema.Struct({
+          after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          before: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
+        ref: Schema.String,
+        version: Schema.Union([Schema.Number, Schema.Null]),
+        httpApplicationId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          expression: "expression",
+          lockedOnDeployment: "locked_on_deployment",
+          name: "name",
+          position: "position",
+          ref: "ref",
+          version: "version",
+          httpApplicationId: "http_application_id",
+        }),
+      ),
+    ),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteEnvironmentResponse>;
+
+export type DeleteEnvironmentError = DefaultErrors;
+
+export const deleteEnvironment: API.OperationMethod<
+  DeleteEnvironmentRequest,
+  DeleteEnvironmentResponse,
+  DeleteEnvironmentError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteEnvironmentRequest,
+  output: DeleteEnvironmentResponse,
+  errors: [],
+}));
+
+export interface RollbackEnvironmentRequest {
+  environmentId: string;
+  /** Identifier of the zone. */
+  zoneId: string;
+}
+
+export const RollbackEnvironmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environmentId: Schema.String.pipe(T.HttpPath("environmentId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/zones/{zone_id}/environments/{environmentId}/rollback",
+    }),
+  ) as unknown as Schema.Schema<RollbackEnvironmentRequest>;
+
+export interface RollbackEnvironmentResponse {
+  environments: {
+    expression: string;
+    lockedOnDeployment: boolean | null;
+    name: string;
+    position: { after?: string | null; before?: string | null };
+    ref: string;
+    version: number | null;
+    httpApplicationId?: string | null;
+  }[];
+}
+
+export const RollbackEnvironmentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environments: Schema.Array(
+      Schema.Struct({
+        expression: Schema.String,
+        lockedOnDeployment: Schema.Union([Schema.Boolean, Schema.Null]),
+        name: Schema.String,
+        position: Schema.Struct({
+          after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          before: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
+        ref: Schema.String,
+        version: Schema.Union([Schema.Number, Schema.Null]),
+        httpApplicationId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          expression: "expression",
+          lockedOnDeployment: "locked_on_deployment",
+          name: "name",
+          position: "position",
+          ref: "ref",
+          version: "version",
+          httpApplicationId: "http_application_id",
+        }),
+      ),
+    ),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<RollbackEnvironmentResponse>;
+
+export type RollbackEnvironmentError = DefaultErrors;
+
+export const rollbackEnvironment: API.OperationMethod<
+  RollbackEnvironmentRequest,
+  RollbackEnvironmentResponse,
+  RollbackEnvironmentError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RollbackEnvironmentRequest,
+  output: RollbackEnvironmentResponse,
+  errors: [],
 }));
 
 // =============================================================================
@@ -838,6 +1379,12 @@ export type GetSettingResponse =
       modifiedOn?: string | null;
     }
   | {
+      id: "content_converter";
+      value: "off" | "on";
+      editable?: true | false | null;
+      modifiedOn?: string | null;
+    }
+  | {
       id: "ciphers";
       value: string[];
       editable?: true | false | null;
@@ -1044,6 +1591,12 @@ export type GetSettingResponse =
       modifiedOn?: string | null;
     }
   | {
+      id: "redirects_for_ai_training";
+      value: "off" | "on";
+      editable?: true | false | null;
+      modifiedOn?: string | null;
+    }
+  | {
       id: "replace_insecure_js";
       value: "on" | "off";
       editable?: true | false | null;
@@ -1071,6 +1624,12 @@ export type GetSettingResponse =
         wordpress: boolean;
         wpPlugin: boolean;
       };
+      editable?: true | false | null;
+      modifiedOn?: string | null;
+    }
+  | {
+      id: "search_for_agents";
+      value: "off" | "on";
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -1349,6 +1908,21 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.Literal("china_network_enabled"),
     value: Schema.Literals(["on", "off"]),
+    editable: Schema.optional(
+      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+    ),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      value: "value",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  ),
+  Schema.Struct({
+    id: Schema.Literal("content_converter"),
+    value: Schema.Literals(["off", "on"]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -1797,6 +2371,21 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     }),
   ),
   Schema.Struct({
+    id: Schema.Literal("redirects_for_ai_training"),
+    value: Schema.Literals(["off", "on"]),
+    editable: Schema.optional(
+      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+    ),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      value: "value",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  ),
+  Schema.Struct({
     id: Schema.Literal("replace_insecure_js"),
     value: Schema.Literals(["on", "off"]),
     editable: Schema.optional(
@@ -1860,6 +2449,21 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
         wpPlugin: "wp_plugin",
       }),
     ),
+    editable: Schema.optional(
+      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+    ),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      value: "value",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  ),
+  Schema.Struct({
+    id: Schema.Literal("search_for_agents"),
+    value: Schema.Literals(["off", "on"]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2294,6 +2898,12 @@ export type PatchSettingResponse =
       modifiedOn?: string | null;
     }
   | {
+      id: "content_converter";
+      value: "off" | "on";
+      editable?: true | false | null;
+      modifiedOn?: string | null;
+    }
+  | {
       id: "ciphers";
       value: string[];
       editable?: true | false | null;
@@ -2500,6 +3110,12 @@ export type PatchSettingResponse =
       modifiedOn?: string | null;
     }
   | {
+      id: "redirects_for_ai_training";
+      value: "off" | "on";
+      editable?: true | false | null;
+      modifiedOn?: string | null;
+    }
+  | {
       id: "replace_insecure_js";
       value: "on" | "off";
       editable?: true | false | null;
@@ -2527,6 +3143,12 @@ export type PatchSettingResponse =
         wordpress: boolean;
         wpPlugin: boolean;
       };
+      editable?: true | false | null;
+      modifiedOn?: string | null;
+    }
+  | {
+      id: "search_for_agents";
+      value: "off" | "on";
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -2805,6 +3427,21 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.Literal("china_network_enabled"),
     value: Schema.Literals(["on", "off"]),
+    editable: Schema.optional(
+      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+    ),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      value: "value",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  ),
+  Schema.Struct({
+    id: Schema.Literal("content_converter"),
+    value: Schema.Literals(["off", "on"]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3253,6 +3890,21 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     }),
   ),
   Schema.Struct({
+    id: Schema.Literal("redirects_for_ai_training"),
+    value: Schema.Literals(["off", "on"]),
+    editable: Schema.optional(
+      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+    ),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      value: "value",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  ),
+  Schema.Struct({
     id: Schema.Literal("replace_insecure_js"),
     value: Schema.Literals(["on", "off"]),
     editable: Schema.optional(
@@ -3316,6 +3968,21 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
         wpPlugin: "wp_plugin",
       }),
     ),
+    editable: Schema.optional(
+      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+    ),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      value: "value",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  ),
+  Schema.Struct({
+    id: Schema.Literal("search_for_agents"),
+    value: Schema.Literals(["off", "on"]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -4347,7 +5014,7 @@ export interface GetZoneResponse {
   };
   /** When the zone was last modified. */
   modifiedOn: string;
-  /** The domain name. */
+  /** The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters. */
   name: string;
   /** The name servers Cloudflare assigns to a zone. */
   nameServers: string[];
@@ -4803,7 +5470,7 @@ export const listZones: API.PaginatedOperationMethod<
 
 export interface CreateZoneRequest {
   account: { id?: string };
-  /** The domain name. */
+  /** The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters. */
   name: string;
   /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. */
   type?: "full" | "partial" | "secondary" | "internal";
@@ -4844,7 +5511,7 @@ export interface CreateZoneResponse {
   };
   /** When the zone was last modified. */
   modifiedOn: string;
-  /** The domain name. */
+  /** The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters. */
   name: string;
   /** The name servers Cloudflare assigns to a zone. */
   nameServers: string[];
@@ -5094,7 +5761,7 @@ export interface PatchZoneResponse {
   };
   /** When the zone was last modified. */
   modifiedOn: string;
-  /** The domain name. */
+  /** The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters. */
   name: string;
   /** The name servers Cloudflare assigns to a zone. */
   nameServers: string[];

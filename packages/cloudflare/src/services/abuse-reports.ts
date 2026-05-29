@@ -592,6 +592,7 @@ export interface ListMitigationsRequest {
   /** Query param: Filter by the type of mitigation. This filter parameter can be specified multiple times to include multiple types of mitigations in the result set, e.g. ?type=rate_limit_cache&type=legal_ */
   type?:
     | "legal_block"
+    | "misleading_interstitial"
     | "phishing_interstitial"
     | "network_block"
     | "rate_limit_cache"
@@ -638,6 +639,7 @@ export const ListMitigationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     type: Schema.optional(
       Schema.Literals([
         "legal_block",
+        "misleading_interstitial",
         "phishing_interstitial",
         "network_block",
         "rate_limit_cache",
@@ -670,6 +672,7 @@ export interface ListMitigationsResponse {
               | "removed";
             type:
               | "legal_block"
+              | "misleading_interstitial"
               | "phishing_interstitial"
               | "network_block"
               | "rate_limit_cache"
@@ -713,6 +716,7 @@ export const ListMitigationsResponse =
                   ]),
                   type: Schema.Literals([
                     "legal_block",
+                    "misleading_interstitial",
                     "phishing_interstitial",
                     "network_block",
                     "rate_limit_cache",
@@ -814,6 +818,7 @@ export interface ReviewMitigationResponse {
     status: "pending" | "active" | "in_review" | "cancelled" | "removed";
     type:
       | "legal_block"
+      | "misleading_interstitial"
       | "phishing_interstitial"
       | "network_block"
       | "rate_limit_cache"
@@ -839,6 +844,7 @@ export const ReviewMitigationResponse =
         ]),
         type: Schema.Literals([
           "legal_block",
+          "misleading_interstitial",
           "phishing_interstitial",
           "network_block",
           "rate_limit_cache",

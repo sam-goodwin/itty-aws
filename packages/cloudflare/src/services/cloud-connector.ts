@@ -93,7 +93,7 @@ export const listRules: API.PaginatedOperationMethod<
 export interface PutRuleRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   rules?: {
     id?: string;
     description?: string;

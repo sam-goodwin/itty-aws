@@ -2136,7 +2136,9 @@ export const GetUserRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface GetUserResponse {
   /** Identifier of the user. */
-  id?: string | null;
+  id: string;
+  /** Current email address of the user. */
+  email: string;
   /** Lists the betas that the user is participating in. */
   betas?: string[] | null;
   /** The country in which the user lives. */
@@ -2173,7 +2175,8 @@ export interface GetUserResponse {
 }
 
 export const GetUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  id: Schema.String,
+  email: Schema.String,
   betas: Schema.optional(
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
   ),
@@ -2220,6 +2223,7 @@ export const GetUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   .pipe(
     Schema.encodeKeys({
       id: "id",
+      email: "email",
       betas: "betas",
       country: "country",
       firstName: "first_name",
@@ -2282,7 +2286,9 @@ export const PatchUserRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PatchUserResponse {
   /** Identifier of the user. */
-  id?: string | null;
+  id: string;
+  /** Current email address of the user. */
+  email: string;
   /** Lists the betas that the user is participating in. */
   betas?: string[] | null;
   /** The country in which the user lives. */
@@ -2319,7 +2325,8 @@ export interface PatchUserResponse {
 }
 
 export const PatchUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  id: Schema.String,
+  email: Schema.String,
   betas: Schema.optional(
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
   ),
@@ -2366,6 +2373,7 @@ export const PatchUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   .pipe(
     Schema.encodeKeys({
       id: "id",
+      email: "email",
       betas: "betas",
       country: "country",
       firstName: "first_name",

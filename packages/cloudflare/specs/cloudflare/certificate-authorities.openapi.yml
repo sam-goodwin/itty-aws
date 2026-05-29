@@ -60,7 +60,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 mtls_certificate_id:
                   type: string
                   description: "Body param: The UUID for a certificate that was uploaded to the

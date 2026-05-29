@@ -272,7 +272,7 @@ export const listPayloads: API.PaginatedOperationMethod<
 export interface CreatePayloadRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: { payload: string }[];
 }
 

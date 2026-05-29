@@ -83,6 +83,7 @@ export interface GetPhasResponse {
     | "http_request_sanitize"
     | "http_request_sbfm"
     | "http_request_transform"
+    | "http_response_cache_settings"
     | "http_response_compression"
     | "http_response_firewall_managed"
     | "http_response_headers_transform"
@@ -614,6 +615,86 @@ export interface GetPhasResponse {
             lastUpdated: string;
             version: string;
             id?: string | null;
+            action?: "set_cache_control" | null;
+            actionParameters?: {
+              immutable?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              maxAge?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              mustRevalidate?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              mustUnderstand?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              noCache?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              noStore?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              noTransform?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              private?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              proxyRevalidate?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              public?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              sMaxage?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              staleIfError?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              staleWhileRevalidate?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+            } | null;
+            categories?: string[] | null;
+            description?: string | null;
+            enabled?: boolean | null;
+            exposedCredentialCheck?: {
+              passwordExpression: string;
+              usernameExpression: string;
+            } | null;
+            expression?: string | null;
+            logging?: { enabled: boolean } | null;
+            ratelimit?: {
+              characteristics: string[];
+              period: number;
+              countingExpression?: string | null;
+              mitigationTimeout?: number | null;
+              requestsPerPeriod?: number | null;
+              requestsToOrigin?: boolean | null;
+              scorePerPeriod?: number | null;
+              scoreResponseHeaderName?: string | null;
+            } | null;
+            ref?: string | null;
+          }
+        | {
+            lastUpdated: string;
+            version: string;
+            id?: string | null;
             action?: "set_cache_settings" | null;
             actionParameters?: {
               additionalCacheablePorts?: number[] | null;
@@ -687,7 +768,41 @@ export interface GetPhasResponse {
               serveStale?: {
                 disableStaleWhileUpdating?: boolean | null;
               } | null;
+              sharedDictionary?: { matchPattern: string } | null;
+              stripEtags?: boolean | null;
+              stripLastModified?: boolean | null;
+              stripSetCookie?: boolean | null;
             } | null;
+            categories?: string[] | null;
+            description?: string | null;
+            enabled?: boolean | null;
+            exposedCredentialCheck?: {
+              passwordExpression: string;
+              usernameExpression: string;
+            } | null;
+            expression?: string | null;
+            logging?: { enabled: boolean } | null;
+            ratelimit?: {
+              characteristics: string[];
+              period: number;
+              countingExpression?: string | null;
+              mitigationTimeout?: number | null;
+              requestsPerPeriod?: number | null;
+              requestsToOrigin?: boolean | null;
+              scorePerPeriod?: number | null;
+              scoreResponseHeaderName?: string | null;
+            } | null;
+            ref?: string | null;
+          }
+        | {
+            lastUpdated: string;
+            version: string;
+            id?: string | null;
+            action?: "set_cache_tags" | null;
+            actionParameters?:
+              | { operation: "add" | "remove" | "set"; values: string[] }
+              | { expression: string; operation: "add" | "remove" | "set" }
+              | null;
             categories?: string[] | null;
             description?: string | null;
             enabled?: boolean | null;
@@ -722,6 +837,7 @@ export interface GetPhasResponse {
                 js?: boolean | null;
               } | null;
               bic?: boolean | null;
+              contentConverter?: boolean | null;
               disableApps?: true | null;
               disablePayPerCrawl?: true | null;
               disableRum?: true | null;
@@ -732,6 +848,7 @@ export interface GetPhasResponse {
               mirage?: boolean | null;
               opportunisticEncryption?: boolean | null;
               polish?: "off" | "lossless" | "lossy" | "webp" | null;
+              redirectsForAiTraining?: boolean | null;
               requestBodyBuffering?: "none" | "standard" | "full" | null;
               responseBodyBuffering?: "none" | "standard" | null;
               rocketLoader?: boolean | null;
@@ -799,6 +916,7 @@ export interface GetPhasResponse {
                     | "http_request_sanitize"
                     | "http_request_sbfm"
                     | "http_request_transform"
+                    | "http_response_cache_settings"
                     | "http_response_compression"
                     | "http_response_firewall_managed"
                     | "http_response_headers_transform"
@@ -874,6 +992,7 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "http_request_sanitize",
     "http_request_sbfm",
     "http_request_transform",
+    "http_response_cache_settings",
     "http_response_compression",
     "http_response_firewall_managed",
     "http_response_headers_transform",
@@ -2822,6 +2941,334 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             version: Schema.String,
             id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             action: Schema.optional(
+              Schema.Union([Schema.Literal("set_cache_control"), Schema.Null]),
+            ),
+            actionParameters: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  immutable: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  maxAge: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  mustRevalidate: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  mustUnderstand: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  noCache: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  noStore: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  noTransform: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  private: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  proxyRevalidate: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  public: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  sMaxage: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  staleIfError: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  staleWhileRevalidate: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    immutable: "immutable",
+                    maxAge: "max-age",
+                    mustRevalidate: "must-revalidate",
+                    mustUnderstand: "must-understand",
+                    noCache: "no-cache",
+                    noStore: "no-store",
+                    noTransform: "no-transform",
+                    private: "private",
+                    proxyRevalidate: "proxy-revalidate",
+                    public: "public",
+                    sMaxage: "s-maxage",
+                    staleIfError: "stale-if-error",
+                    staleWhileRevalidate: "stale-while-revalidate",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            categories: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            description: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            enabled: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            exposedCredentialCheck: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  passwordExpression: SensitiveString,
+                  usernameExpression: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    passwordExpression: "password_expression",
+                    usernameExpression: "username_expression",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            expression: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            logging: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.Boolean,
+                }),
+                Schema.Null,
+              ]),
+            ),
+            ratelimit: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  characteristics: Schema.Array(Schema.String),
+                  period: Schema.Number,
+                  countingExpression: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  mitigationTimeout: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  requestsPerPeriod: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  requestsToOrigin: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  scorePerPeriod: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  scoreResponseHeaderName: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    characteristics: "characteristics",
+                    period: "period",
+                    countingExpression: "counting_expression",
+                    mitigationTimeout: "mitigation_timeout",
+                    requestsPerPeriod: "requests_per_period",
+                    requestsToOrigin: "requests_to_origin",
+                    scorePerPeriod: "score_per_period",
+                    scoreResponseHeaderName: "score_response_header_name",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }).pipe(
+            Schema.encodeKeys({
+              lastUpdated: "last_updated",
+              version: "version",
+              id: "id",
+              action: "action",
+              actionParameters: "action_parameters",
+              categories: "categories",
+              description: "description",
+              enabled: "enabled",
+              exposedCredentialCheck: "exposed_credential_check",
+              expression: "expression",
+              logging: "logging",
+              ratelimit: "ratelimit",
+              ref: "ref",
+            }),
+          ),
+          Schema.Struct({
+            lastUpdated: Schema.String,
+            version: Schema.String,
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            action: Schema.optional(
               Schema.Union([Schema.Literal("set_cache_settings"), Schema.Null]),
             ),
             actionParameters: Schema.optional(
@@ -3143,6 +3590,25 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       Schema.Null,
                     ]),
                   ),
+                  sharedDictionary: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        matchPattern: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({ matchPattern: "match_pattern" }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  stripEtags: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  stripLastModified: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  stripSetCookie: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
                 }).pipe(
                   Schema.encodeKeys({
                     additionalCacheablePorts: "additional_cacheable_ports",
@@ -3156,8 +3622,124 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     readTimeout: "read_timeout",
                     respectStrongEtags: "respect_strong_etags",
                     serveStale: "serve_stale",
+                    sharedDictionary: "shared_dictionary",
+                    stripEtags: "strip_etags",
+                    stripLastModified: "strip_last_modified",
+                    stripSetCookie: "strip_set_cookie",
                   }),
                 ),
+                Schema.Null,
+              ]),
+            ),
+            categories: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            description: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            enabled: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            exposedCredentialCheck: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  passwordExpression: SensitiveString,
+                  usernameExpression: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    passwordExpression: "password_expression",
+                    usernameExpression: "username_expression",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            expression: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            logging: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.Boolean,
+                }),
+                Schema.Null,
+              ]),
+            ),
+            ratelimit: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  characteristics: Schema.Array(Schema.String),
+                  period: Schema.Number,
+                  countingExpression: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  mitigationTimeout: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  requestsPerPeriod: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  requestsToOrigin: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  scorePerPeriod: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  scoreResponseHeaderName: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    characteristics: "characteristics",
+                    period: "period",
+                    countingExpression: "counting_expression",
+                    mitigationTimeout: "mitigation_timeout",
+                    requestsPerPeriod: "requests_per_period",
+                    requestsToOrigin: "requests_to_origin",
+                    scorePerPeriod: "score_per_period",
+                    scoreResponseHeaderName: "score_response_header_name",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }).pipe(
+            Schema.encodeKeys({
+              lastUpdated: "last_updated",
+              version: "version",
+              id: "id",
+              action: "action",
+              actionParameters: "action_parameters",
+              categories: "categories",
+              description: "description",
+              enabled: "enabled",
+              exposedCredentialCheck: "exposed_credential_check",
+              expression: "expression",
+              logging: "logging",
+              ratelimit: "ratelimit",
+              ref: "ref",
+            }),
+          ),
+          Schema.Struct({
+            lastUpdated: Schema.String,
+            version: Schema.String,
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            action: Schema.optional(
+              Schema.Union([Schema.Literal("set_cache_tags"), Schema.Null]),
+            ),
+            actionParameters: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["add", "remove", "set"]),
+                    values: Schema.Array(Schema.String),
+                  }),
+                  Schema.Struct({
+                    expression: Schema.String,
+                    operation: Schema.Literals(["add", "remove", "set"]),
+                  }),
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -3283,6 +3865,9 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   bic: Schema.optional(
                     Schema.Union([Schema.Boolean, Schema.Null]),
                   ),
+                  contentConverter: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
                   disableApps: Schema.optional(
                     Schema.Union([Schema.Literal(true), Schema.Null]),
                   ),
@@ -3315,6 +3900,9 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       Schema.Literals(["off", "lossless", "lossy", "webp"]),
                       Schema.Null,
                     ]),
+                  ),
+                  redirectsForAiTraining: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
                   ),
                   requestBodyBuffering: Schema.optional(
                     Schema.Union([
@@ -3367,6 +3955,7 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     automaticHttpsRewrites: "automatic_https_rewrites",
                     autominify: "autominify",
                     bic: "bic",
+                    contentConverter: "content_converter",
                     disableApps: "disable_apps",
                     disablePayPerCrawl: "disable_pay_per_crawl",
                     disableRum: "disable_rum",
@@ -3377,6 +3966,7 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     mirage: "mirage",
                     opportunisticEncryption: "opportunistic_encryption",
                     polish: "polish",
+                    redirectsForAiTraining: "redirects_for_ai_training",
                     requestBodyBuffering: "request_body_buffering",
                     responseBodyBuffering: "response_body_buffering",
                     rocketLoader: "rocket_loader",
@@ -3512,6 +4102,7 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                           "http_request_sanitize",
                           "http_request_sbfm",
                           "http_request_transform",
+                          "http_response_cache_settings",
                           "http_response_compression",
                           "http_response_firewall_managed",
                           "http_response_headers_transform",
@@ -4897,6 +5488,229 @@ const PutPhasBaseFields = {
         ),
         Schema.Struct({
           id: Schema.optional(Schema.String),
+          action: Schema.optional(Schema.Literal("set_cache_control")),
+          actionParameters: Schema.optional(
+            Schema.Struct({
+              immutable: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              maxAge: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              mustRevalidate: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              mustUnderstand: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              noCache: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              noStore: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              noTransform: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              private: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              proxyRevalidate: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              public: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              sMaxage: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              staleIfError: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              staleWhileRevalidate: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                immutable: "immutable",
+                maxAge: "max-age",
+                mustRevalidate: "must-revalidate",
+                mustUnderstand: "must-understand",
+                noCache: "no-cache",
+                noStore: "no-store",
+                noTransform: "no-transform",
+                private: "private",
+                proxyRevalidate: "proxy-revalidate",
+                public: "public",
+                sMaxage: "s-maxage",
+                staleIfError: "stale-if-error",
+                staleWhileRevalidate: "stale-while-revalidate",
+              }),
+            ),
+          ),
+          description: Schema.optional(Schema.String),
+          enabled: Schema.optional(Schema.Boolean),
+          exposedCredentialCheck: Schema.optional(
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+          ),
+          expression: Schema.optional(Schema.String),
+          logging: Schema.optional(
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+          ),
+          ratelimit: Schema.optional(
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(Schema.String),
+              mitigationTimeout: Schema.optional(Schema.Number),
+              requestsPerPeriod: Schema.optional(Schema.Number),
+              requestsToOrigin: Schema.optional(Schema.Boolean),
+              scorePerPeriod: Schema.optional(Schema.Number),
+              scoreResponseHeaderName: Schema.optional(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+          ),
+          ref: Schema.optional(Schema.String),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            action: "action",
+            actionParameters: "action_parameters",
+            description: "description",
+            enabled: "enabled",
+            exposedCredentialCheck: "exposed_credential_check",
+            expression: "expression",
+            logging: "logging",
+            ratelimit: "ratelimit",
+            ref: "ref",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
           action: Schema.optional(Schema.Literal("set_cache_settings")),
           actionParameters: Schema.optional(
             Schema.Struct({
@@ -5071,6 +5885,14 @@ const PutPhasBaseFields = {
                   }),
                 ),
               ),
+              sharedDictionary: Schema.optional(
+                Schema.Struct({
+                  matchPattern: Schema.String,
+                }).pipe(Schema.encodeKeys({ matchPattern: "match_pattern" })),
+              ),
+              stripEtags: Schema.optional(Schema.Boolean),
+              stripLastModified: Schema.optional(Schema.Boolean),
+              stripSetCookie: Schema.optional(Schema.Boolean),
             }).pipe(
               Schema.encodeKeys({
                 additionalCacheablePorts: "additional_cacheable_ports",
@@ -5084,8 +5906,84 @@ const PutPhasBaseFields = {
                 readTimeout: "read_timeout",
                 respectStrongEtags: "respect_strong_etags",
                 serveStale: "serve_stale",
+                sharedDictionary: "shared_dictionary",
+                stripEtags: "strip_etags",
+                stripLastModified: "strip_last_modified",
+                stripSetCookie: "strip_set_cookie",
               }),
             ),
+          ),
+          description: Schema.optional(Schema.String),
+          enabled: Schema.optional(Schema.Boolean),
+          exposedCredentialCheck: Schema.optional(
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+          ),
+          expression: Schema.optional(Schema.String),
+          logging: Schema.optional(
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+          ),
+          ratelimit: Schema.optional(
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(Schema.String),
+              mitigationTimeout: Schema.optional(Schema.Number),
+              requestsPerPeriod: Schema.optional(Schema.Number),
+              requestsToOrigin: Schema.optional(Schema.Boolean),
+              scorePerPeriod: Schema.optional(Schema.Number),
+              scoreResponseHeaderName: Schema.optional(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+          ),
+          ref: Schema.optional(Schema.String),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            action: "action",
+            actionParameters: "action_parameters",
+            description: "description",
+            enabled: "enabled",
+            exposedCredentialCheck: "exposed_credential_check",
+            expression: "expression",
+            logging: "logging",
+            ratelimit: "ratelimit",
+            ref: "ref",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          action: Schema.optional(Schema.Literal("set_cache_tags")),
+          actionParameters: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                operation: Schema.Literals(["add", "remove", "set"]),
+                values: Schema.Array(Schema.String),
+              }),
+              Schema.Struct({
+                expression: Schema.String,
+                operation: Schema.Literals(["add", "remove", "set"]),
+              }),
+            ]),
           ),
           description: Schema.optional(Schema.String),
           enabled: Schema.optional(Schema.Boolean),
@@ -5158,6 +6056,7 @@ const PutPhasBaseFields = {
                 }),
               ),
               bic: Schema.optional(Schema.Boolean),
+              contentConverter: Schema.optional(Schema.Boolean),
               disableApps: Schema.optional(Schema.Literal(true)),
               disablePayPerCrawl: Schema.optional(Schema.Literal(true)),
               disableRum: Schema.optional(Schema.Literal(true)),
@@ -5170,6 +6069,7 @@ const PutPhasBaseFields = {
               polish: Schema.optional(
                 Schema.Literals(["off", "lossless", "lossy", "webp"]),
               ),
+              redirectsForAiTraining: Schema.optional(Schema.Boolean),
               requestBodyBuffering: Schema.optional(
                 Schema.Literals(["none", "standard", "full"]),
               ),
@@ -5203,6 +6103,7 @@ const PutPhasBaseFields = {
                 automaticHttpsRewrites: "automatic_https_rewrites",
                 autominify: "autominify",
                 bic: "bic",
+                contentConverter: "content_converter",
                 disableApps: "disable_apps",
                 disablePayPerCrawl: "disable_pay_per_crawl",
                 disableRum: "disable_rum",
@@ -5213,6 +6114,7 @@ const PutPhasBaseFields = {
                 mirage: "mirage",
                 opportunisticEncryption: "opportunistic_encryption",
                 polish: "polish",
+                redirectsForAiTraining: "redirects_for_ai_training",
                 requestBodyBuffering: "request_body_buffering",
                 responseBodyBuffering: "response_body_buffering",
                 rocketLoader: "rocket_loader",
@@ -5305,6 +6207,7 @@ const PutPhasBaseFields = {
                     "http_request_sanitize",
                     "http_request_sbfm",
                     "http_request_transform",
+                    "http_response_cache_settings",
                     "http_response_compression",
                     "http_response_firewall_managed",
                     "http_response_headers_transform",
@@ -5838,6 +6741,62 @@ interface PutPhasBaseRequest {
       }
     | {
         id?: string;
+        action?: "set_cache_control";
+        actionParameters?: {
+          immutable?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          maxAge?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          mustRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+          mustUnderstand?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+          noCache?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          noStore?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          noTransform?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+          private?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          proxyRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+          public?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          sMaxage?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          staleIfError?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+          staleWhileRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
         action?: "set_cache_settings";
         actionParameters?: {
           additionalCacheablePorts?: number[];
@@ -5885,7 +6844,37 @@ interface PutPhasBaseRequest {
           readTimeout?: number;
           respectStrongEtags?: boolean;
           serveStale?: { disableStaleWhileUpdating?: boolean };
+          sharedDictionary?: { matchPattern: string };
+          stripEtags?: boolean;
+          stripLastModified?: boolean;
+          stripSetCookie?: boolean;
         };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "set_cache_tags";
+        actionParameters?:
+          | { operation: "add" | "remove" | "set"; values: string[] }
+          | { expression: string; operation: "add" | "remove" | "set" };
         description?: string;
         enabled?: boolean;
         exposedCredentialCheck?: {
@@ -5913,6 +6902,7 @@ interface PutPhasBaseRequest {
           automaticHttpsRewrites?: boolean;
           autominify?: { css?: boolean; html?: boolean; js?: boolean };
           bic?: boolean;
+          contentConverter?: boolean;
           disableApps?: true;
           disablePayPerCrawl?: true;
           disableRum?: true;
@@ -5923,6 +6913,7 @@ interface PutPhasBaseRequest {
           mirage?: boolean;
           opportunisticEncryption?: boolean;
           polish?: "off" | "lossless" | "lossy" | "webp";
+          redirectsForAiTraining?: boolean;
           requestBodyBuffering?: "none" | "standard" | "full";
           responseBodyBuffering?: "none" | "standard";
           rocketLoader?: boolean;
@@ -5979,6 +6970,7 @@ interface PutPhasBaseRequest {
             | "http_request_sanitize"
             | "http_request_sbfm"
             | "http_request_transform"
+            | "http_response_cache_settings"
             | "http_response_compression"
             | "http_response_firewall_managed"
             | "http_response_headers_transform"
@@ -6081,6 +7073,7 @@ export interface PutPhasResponse {
     | "http_request_sanitize"
     | "http_request_sbfm"
     | "http_request_transform"
+    | "http_response_cache_settings"
     | "http_response_compression"
     | "http_response_firewall_managed"
     | "http_response_headers_transform"
@@ -6612,6 +7605,86 @@ export interface PutPhasResponse {
             lastUpdated: string;
             version: string;
             id?: string | null;
+            action?: "set_cache_control" | null;
+            actionParameters?: {
+              immutable?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              maxAge?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              mustRevalidate?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              mustUnderstand?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              noCache?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              noStore?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              noTransform?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              private?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              proxyRevalidate?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              public?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              sMaxage?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              staleIfError?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+              staleWhileRevalidate?: {
+                operation: "set" | "remove";
+                cloudflareOnly?: boolean | null;
+              } | null;
+            } | null;
+            categories?: string[] | null;
+            description?: string | null;
+            enabled?: boolean | null;
+            exposedCredentialCheck?: {
+              passwordExpression: string;
+              usernameExpression: string;
+            } | null;
+            expression?: string | null;
+            logging?: { enabled: boolean } | null;
+            ratelimit?: {
+              characteristics: string[];
+              period: number;
+              countingExpression?: string | null;
+              mitigationTimeout?: number | null;
+              requestsPerPeriod?: number | null;
+              requestsToOrigin?: boolean | null;
+              scorePerPeriod?: number | null;
+              scoreResponseHeaderName?: string | null;
+            } | null;
+            ref?: string | null;
+          }
+        | {
+            lastUpdated: string;
+            version: string;
+            id?: string | null;
             action?: "set_cache_settings" | null;
             actionParameters?: {
               additionalCacheablePorts?: number[] | null;
@@ -6685,7 +7758,41 @@ export interface PutPhasResponse {
               serveStale?: {
                 disableStaleWhileUpdating?: boolean | null;
               } | null;
+              sharedDictionary?: { matchPattern: string } | null;
+              stripEtags?: boolean | null;
+              stripLastModified?: boolean | null;
+              stripSetCookie?: boolean | null;
             } | null;
+            categories?: string[] | null;
+            description?: string | null;
+            enabled?: boolean | null;
+            exposedCredentialCheck?: {
+              passwordExpression: string;
+              usernameExpression: string;
+            } | null;
+            expression?: string | null;
+            logging?: { enabled: boolean } | null;
+            ratelimit?: {
+              characteristics: string[];
+              period: number;
+              countingExpression?: string | null;
+              mitigationTimeout?: number | null;
+              requestsPerPeriod?: number | null;
+              requestsToOrigin?: boolean | null;
+              scorePerPeriod?: number | null;
+              scoreResponseHeaderName?: string | null;
+            } | null;
+            ref?: string | null;
+          }
+        | {
+            lastUpdated: string;
+            version: string;
+            id?: string | null;
+            action?: "set_cache_tags" | null;
+            actionParameters?:
+              | { operation: "add" | "remove" | "set"; values: string[] }
+              | { expression: string; operation: "add" | "remove" | "set" }
+              | null;
             categories?: string[] | null;
             description?: string | null;
             enabled?: boolean | null;
@@ -6720,6 +7827,7 @@ export interface PutPhasResponse {
                 js?: boolean | null;
               } | null;
               bic?: boolean | null;
+              contentConverter?: boolean | null;
               disableApps?: true | null;
               disablePayPerCrawl?: true | null;
               disableRum?: true | null;
@@ -6730,6 +7838,7 @@ export interface PutPhasResponse {
               mirage?: boolean | null;
               opportunisticEncryption?: boolean | null;
               polish?: "off" | "lossless" | "lossy" | "webp" | null;
+              redirectsForAiTraining?: boolean | null;
               requestBodyBuffering?: "none" | "standard" | "full" | null;
               responseBodyBuffering?: "none" | "standard" | null;
               rocketLoader?: boolean | null;
@@ -6797,6 +7906,7 @@ export interface PutPhasResponse {
                     | "http_request_sanitize"
                     | "http_request_sbfm"
                     | "http_request_transform"
+                    | "http_response_cache_settings"
                     | "http_response_compression"
                     | "http_response_firewall_managed"
                     | "http_response_headers_transform"
@@ -6872,6 +7982,7 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "http_request_sanitize",
     "http_request_sbfm",
     "http_request_transform",
+    "http_response_cache_settings",
     "http_response_compression",
     "http_response_firewall_managed",
     "http_response_headers_transform",
@@ -8820,6 +9931,334 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             version: Schema.String,
             id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             action: Schema.optional(
+              Schema.Union([Schema.Literal("set_cache_control"), Schema.Null]),
+            ),
+            actionParameters: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  immutable: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  maxAge: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  mustRevalidate: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  mustUnderstand: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  noCache: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  noStore: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  noTransform: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  private: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  proxyRevalidate: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  public: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  sMaxage: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  staleIfError: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  staleWhileRevalidate: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        operation: Schema.Literals(["set", "remove"]),
+                        cloudflareOnly: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          operation: "operation",
+                          cloudflareOnly: "cloudflare_only",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    immutable: "immutable",
+                    maxAge: "max-age",
+                    mustRevalidate: "must-revalidate",
+                    mustUnderstand: "must-understand",
+                    noCache: "no-cache",
+                    noStore: "no-store",
+                    noTransform: "no-transform",
+                    private: "private",
+                    proxyRevalidate: "proxy-revalidate",
+                    public: "public",
+                    sMaxage: "s-maxage",
+                    staleIfError: "stale-if-error",
+                    staleWhileRevalidate: "stale-while-revalidate",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            categories: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            description: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            enabled: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            exposedCredentialCheck: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  passwordExpression: SensitiveString,
+                  usernameExpression: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    passwordExpression: "password_expression",
+                    usernameExpression: "username_expression",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            expression: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            logging: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.Boolean,
+                }),
+                Schema.Null,
+              ]),
+            ),
+            ratelimit: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  characteristics: Schema.Array(Schema.String),
+                  period: Schema.Number,
+                  countingExpression: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  mitigationTimeout: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  requestsPerPeriod: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  requestsToOrigin: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  scorePerPeriod: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  scoreResponseHeaderName: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    characteristics: "characteristics",
+                    period: "period",
+                    countingExpression: "counting_expression",
+                    mitigationTimeout: "mitigation_timeout",
+                    requestsPerPeriod: "requests_per_period",
+                    requestsToOrigin: "requests_to_origin",
+                    scorePerPeriod: "score_per_period",
+                    scoreResponseHeaderName: "score_response_header_name",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }).pipe(
+            Schema.encodeKeys({
+              lastUpdated: "last_updated",
+              version: "version",
+              id: "id",
+              action: "action",
+              actionParameters: "action_parameters",
+              categories: "categories",
+              description: "description",
+              enabled: "enabled",
+              exposedCredentialCheck: "exposed_credential_check",
+              expression: "expression",
+              logging: "logging",
+              ratelimit: "ratelimit",
+              ref: "ref",
+            }),
+          ),
+          Schema.Struct({
+            lastUpdated: Schema.String,
+            version: Schema.String,
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            action: Schema.optional(
               Schema.Union([Schema.Literal("set_cache_settings"), Schema.Null]),
             ),
             actionParameters: Schema.optional(
@@ -9141,6 +10580,25 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       Schema.Null,
                     ]),
                   ),
+                  sharedDictionary: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        matchPattern: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({ matchPattern: "match_pattern" }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  stripEtags: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  stripLastModified: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  stripSetCookie: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
                 }).pipe(
                   Schema.encodeKeys({
                     additionalCacheablePorts: "additional_cacheable_ports",
@@ -9154,8 +10612,124 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     readTimeout: "read_timeout",
                     respectStrongEtags: "respect_strong_etags",
                     serveStale: "serve_stale",
+                    sharedDictionary: "shared_dictionary",
+                    stripEtags: "strip_etags",
+                    stripLastModified: "strip_last_modified",
+                    stripSetCookie: "strip_set_cookie",
                   }),
                 ),
+                Schema.Null,
+              ]),
+            ),
+            categories: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            description: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            enabled: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            exposedCredentialCheck: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  passwordExpression: SensitiveString,
+                  usernameExpression: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    passwordExpression: "password_expression",
+                    usernameExpression: "username_expression",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            expression: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            logging: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.Boolean,
+                }),
+                Schema.Null,
+              ]),
+            ),
+            ratelimit: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  characteristics: Schema.Array(Schema.String),
+                  period: Schema.Number,
+                  countingExpression: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  mitigationTimeout: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  requestsPerPeriod: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  requestsToOrigin: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  scorePerPeriod: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  scoreResponseHeaderName: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    characteristics: "characteristics",
+                    period: "period",
+                    countingExpression: "counting_expression",
+                    mitigationTimeout: "mitigation_timeout",
+                    requestsPerPeriod: "requests_per_period",
+                    requestsToOrigin: "requests_to_origin",
+                    scorePerPeriod: "score_per_period",
+                    scoreResponseHeaderName: "score_response_header_name",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }).pipe(
+            Schema.encodeKeys({
+              lastUpdated: "last_updated",
+              version: "version",
+              id: "id",
+              action: "action",
+              actionParameters: "action_parameters",
+              categories: "categories",
+              description: "description",
+              enabled: "enabled",
+              exposedCredentialCheck: "exposed_credential_check",
+              expression: "expression",
+              logging: "logging",
+              ratelimit: "ratelimit",
+              ref: "ref",
+            }),
+          ),
+          Schema.Struct({
+            lastUpdated: Schema.String,
+            version: Schema.String,
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            action: Schema.optional(
+              Schema.Union([Schema.Literal("set_cache_tags"), Schema.Null]),
+            ),
+            actionParameters: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["add", "remove", "set"]),
+                    values: Schema.Array(Schema.String),
+                  }),
+                  Schema.Struct({
+                    expression: Schema.String,
+                    operation: Schema.Literals(["add", "remove", "set"]),
+                  }),
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -9281,6 +10855,9 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   bic: Schema.optional(
                     Schema.Union([Schema.Boolean, Schema.Null]),
                   ),
+                  contentConverter: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
                   disableApps: Schema.optional(
                     Schema.Union([Schema.Literal(true), Schema.Null]),
                   ),
@@ -9313,6 +10890,9 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       Schema.Literals(["off", "lossless", "lossy", "webp"]),
                       Schema.Null,
                     ]),
+                  ),
+                  redirectsForAiTraining: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
                   ),
                   requestBodyBuffering: Schema.optional(
                     Schema.Union([
@@ -9365,6 +10945,7 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     automaticHttpsRewrites: "automatic_https_rewrites",
                     autominify: "autominify",
                     bic: "bic",
+                    contentConverter: "content_converter",
                     disableApps: "disable_apps",
                     disablePayPerCrawl: "disable_pay_per_crawl",
                     disableRum: "disable_rum",
@@ -9375,6 +10956,7 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     mirage: "mirage",
                     opportunisticEncryption: "opportunistic_encryption",
                     polish: "polish",
+                    redirectsForAiTraining: "redirects_for_ai_training",
                     requestBodyBuffering: "request_body_buffering",
                     responseBodyBuffering: "response_body_buffering",
                     rocketLoader: "rocket_loader",
@@ -9510,6 +11092,7 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                           "http_request_sanitize",
                           "http_request_sbfm",
                           "http_request_transform",
+                          "http_response_cache_settings",
                           "http_response_compression",
                           "http_response_firewall_managed",
                           "http_response_headers_transform",
@@ -9763,6 +11346,7 @@ export interface GetPhasVersionResponse {
     | "http_request_sanitize"
     | "http_request_sbfm"
     | "http_request_transform"
+    | "http_response_cache_settings"
     | "http_response_compression"
     | "http_response_firewall_managed"
     | "http_response_headers_transform"
@@ -10287,6 +11871,86 @@ export interface GetPhasVersionResponse {
         lastUpdated: string;
         version: string;
         id?: string | null;
+        action?: "set_cache_control" | null;
+        actionParameters?: {
+          immutable?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          maxAge?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          mustRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          mustUnderstand?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noCache?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noStore?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noTransform?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          private?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          proxyRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          public?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          sMaxage?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          staleIfError?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          staleWhileRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+        } | null;
+        categories?: string[] | null;
+        description?: string | null;
+        enabled?: boolean | null;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        } | null;
+        expression?: string | null;
+        logging?: { enabled: boolean } | null;
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string | null;
+          mitigationTimeout?: number | null;
+          requestsPerPeriod?: number | null;
+          requestsToOrigin?: boolean | null;
+          scorePerPeriod?: number | null;
+          scoreResponseHeaderName?: string | null;
+        } | null;
+        ref?: string | null;
+      }
+    | {
+        lastUpdated: string;
+        version: string;
+        id?: string | null;
         action?: "set_cache_settings" | null;
         actionParameters?: {
           additionalCacheablePorts?: number[] | null;
@@ -10349,7 +12013,41 @@ export interface GetPhasVersionResponse {
           readTimeout?: number | null;
           respectStrongEtags?: boolean | null;
           serveStale?: { disableStaleWhileUpdating?: boolean | null } | null;
+          sharedDictionary?: { matchPattern: string } | null;
+          stripEtags?: boolean | null;
+          stripLastModified?: boolean | null;
+          stripSetCookie?: boolean | null;
         } | null;
+        categories?: string[] | null;
+        description?: string | null;
+        enabled?: boolean | null;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        } | null;
+        expression?: string | null;
+        logging?: { enabled: boolean } | null;
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string | null;
+          mitigationTimeout?: number | null;
+          requestsPerPeriod?: number | null;
+          requestsToOrigin?: boolean | null;
+          scorePerPeriod?: number | null;
+          scoreResponseHeaderName?: string | null;
+        } | null;
+        ref?: string | null;
+      }
+    | {
+        lastUpdated: string;
+        version: string;
+        id?: string | null;
+        action?: "set_cache_tags" | null;
+        actionParameters?:
+          | { operation: "add" | "remove" | "set"; values: string[] }
+          | { expression: string; operation: "add" | "remove" | "set" }
+          | null;
         categories?: string[] | null;
         description?: string | null;
         enabled?: boolean | null;
@@ -10384,6 +12082,7 @@ export interface GetPhasVersionResponse {
             js?: boolean | null;
           } | null;
           bic?: boolean | null;
+          contentConverter?: boolean | null;
           disableApps?: true | null;
           disablePayPerCrawl?: true | null;
           disableRum?: true | null;
@@ -10394,6 +12093,7 @@ export interface GetPhasVersionResponse {
           mirage?: boolean | null;
           opportunisticEncryption?: boolean | null;
           polish?: "off" | "lossless" | "lossy" | "webp" | null;
+          redirectsForAiTraining?: boolean | null;
           requestBodyBuffering?: "none" | "standard" | "full" | null;
           responseBodyBuffering?: "none" | "standard" | null;
           rocketLoader?: boolean | null;
@@ -10455,6 +12155,7 @@ export interface GetPhasVersionResponse {
                 | "http_request_sanitize"
                 | "http_request_sbfm"
                 | "http_request_transform"
+                | "http_response_cache_settings"
                 | "http_response_compression"
                 | "http_response_firewall_managed"
                 | "http_response_headers_transform"
@@ -10530,6 +12231,7 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       "http_request_sanitize",
       "http_request_sbfm",
       "http_request_transform",
+      "http_response_cache_settings",
       "http_response_compression",
       "http_response_firewall_managed",
       "http_response_headers_transform",
@@ -12435,6 +14137,332 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           version: Schema.String,
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           action: Schema.optional(
+            Schema.Union([Schema.Literal("set_cache_control"), Schema.Null]),
+          ),
+          actionParameters: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                immutable: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      operation: Schema.Literals(["set", "remove"]),
+                      cloudflareOnly: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        operation: "operation",
+                        cloudflareOnly: "cloudflare_only",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                maxAge: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      operation: Schema.Literals(["set", "remove"]),
+                      cloudflareOnly: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        operation: "operation",
+                        cloudflareOnly: "cloudflare_only",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                mustRevalidate: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      operation: Schema.Literals(["set", "remove"]),
+                      cloudflareOnly: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        operation: "operation",
+                        cloudflareOnly: "cloudflare_only",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                mustUnderstand: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      operation: Schema.Literals(["set", "remove"]),
+                      cloudflareOnly: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        operation: "operation",
+                        cloudflareOnly: "cloudflare_only",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                noCache: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      operation: Schema.Literals(["set", "remove"]),
+                      cloudflareOnly: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        operation: "operation",
+                        cloudflareOnly: "cloudflare_only",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                noStore: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      operation: Schema.Literals(["set", "remove"]),
+                      cloudflareOnly: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        operation: "operation",
+                        cloudflareOnly: "cloudflare_only",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                noTransform: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      operation: Schema.Literals(["set", "remove"]),
+                      cloudflareOnly: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        operation: "operation",
+                        cloudflareOnly: "cloudflare_only",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                private: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      operation: Schema.Literals(["set", "remove"]),
+                      cloudflareOnly: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        operation: "operation",
+                        cloudflareOnly: "cloudflare_only",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                proxyRevalidate: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      operation: Schema.Literals(["set", "remove"]),
+                      cloudflareOnly: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        operation: "operation",
+                        cloudflareOnly: "cloudflare_only",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                public: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      operation: Schema.Literals(["set", "remove"]),
+                      cloudflareOnly: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        operation: "operation",
+                        cloudflareOnly: "cloudflare_only",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                sMaxage: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      operation: Schema.Literals(["set", "remove"]),
+                      cloudflareOnly: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        operation: "operation",
+                        cloudflareOnly: "cloudflare_only",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                staleIfError: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      operation: Schema.Literals(["set", "remove"]),
+                      cloudflareOnly: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        operation: "operation",
+                        cloudflareOnly: "cloudflare_only",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                staleWhileRevalidate: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      operation: Schema.Literals(["set", "remove"]),
+                      cloudflareOnly: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        operation: "operation",
+                        cloudflareOnly: "cloudflare_only",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  immutable: "immutable",
+                  maxAge: "max-age",
+                  mustRevalidate: "must-revalidate",
+                  mustUnderstand: "must-understand",
+                  noCache: "no-cache",
+                  noStore: "no-store",
+                  noTransform: "no-transform",
+                  private: "private",
+                  proxyRevalidate: "proxy-revalidate",
+                  public: "public",
+                  sMaxage: "s-maxage",
+                  staleIfError: "stale-if-error",
+                  staleWhileRevalidate: "stale-while-revalidate",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          categories: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          exposedCredentialCheck: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                passwordExpression: SensitiveString,
+                usernameExpression: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  passwordExpression: "password_expression",
+                  usernameExpression: "username_expression",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          expression: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          logging: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                enabled: Schema.Boolean,
+              }),
+              Schema.Null,
+            ]),
+          ),
+          ratelimit: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                characteristics: Schema.Array(Schema.String),
+                period: Schema.Number,
+                countingExpression: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                mitigationTimeout: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                requestsPerPeriod: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                requestsToOrigin: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                scorePerPeriod: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                scoreResponseHeaderName: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  characteristics: "characteristics",
+                  period: "period",
+                  countingExpression: "counting_expression",
+                  mitigationTimeout: "mitigation_timeout",
+                  requestsPerPeriod: "requests_per_period",
+                  requestsToOrigin: "requests_to_origin",
+                  scorePerPeriod: "score_per_period",
+                  scoreResponseHeaderName: "score_response_header_name",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            lastUpdated: "last_updated",
+            version: "version",
+            id: "id",
+            action: "action",
+            actionParameters: "action_parameters",
+            categories: "categories",
+            description: "description",
+            enabled: "enabled",
+            exposedCredentialCheck: "exposed_credential_check",
+            expression: "expression",
+            logging: "logging",
+            ratelimit: "ratelimit",
+            ref: "ref",
+          }),
+        ),
+        Schema.Struct({
+          lastUpdated: Schema.String,
+          version: Schema.String,
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          action: Schema.optional(
             Schema.Union([Schema.Literal("set_cache_settings"), Schema.Null]),
           ),
           actionParameters: Schema.optional(
@@ -12741,6 +14769,25 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                     Schema.Null,
                   ]),
                 ),
+                sharedDictionary: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      matchPattern: Schema.String,
+                    }).pipe(
+                      Schema.encodeKeys({ matchPattern: "match_pattern" }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                stripEtags: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                stripLastModified: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                stripSetCookie: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
               }).pipe(
                 Schema.encodeKeys({
                   additionalCacheablePorts: "additional_cacheable_ports",
@@ -12754,8 +14801,122 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   readTimeout: "read_timeout",
                   respectStrongEtags: "respect_strong_etags",
                   serveStale: "serve_stale",
+                  sharedDictionary: "shared_dictionary",
+                  stripEtags: "strip_etags",
+                  stripLastModified: "strip_last_modified",
+                  stripSetCookie: "strip_set_cookie",
                 }),
               ),
+              Schema.Null,
+            ]),
+          ),
+          categories: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          exposedCredentialCheck: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                passwordExpression: SensitiveString,
+                usernameExpression: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  passwordExpression: "password_expression",
+                  usernameExpression: "username_expression",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          expression: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          logging: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                enabled: Schema.Boolean,
+              }),
+              Schema.Null,
+            ]),
+          ),
+          ratelimit: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                characteristics: Schema.Array(Schema.String),
+                period: Schema.Number,
+                countingExpression: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                mitigationTimeout: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                requestsPerPeriod: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                requestsToOrigin: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                scorePerPeriod: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                scoreResponseHeaderName: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  characteristics: "characteristics",
+                  period: "period",
+                  countingExpression: "counting_expression",
+                  mitigationTimeout: "mitigation_timeout",
+                  requestsPerPeriod: "requests_per_period",
+                  requestsToOrigin: "requests_to_origin",
+                  scorePerPeriod: "score_per_period",
+                  scoreResponseHeaderName: "score_response_header_name",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            lastUpdated: "last_updated",
+            version: "version",
+            id: "id",
+            action: "action",
+            actionParameters: "action_parameters",
+            categories: "categories",
+            description: "description",
+            enabled: "enabled",
+            exposedCredentialCheck: "exposed_credential_check",
+            expression: "expression",
+            logging: "logging",
+            ratelimit: "ratelimit",
+            ref: "ref",
+          }),
+        ),
+        Schema.Struct({
+          lastUpdated: Schema.String,
+          version: Schema.String,
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          action: Schema.optional(
+            Schema.Union([Schema.Literal("set_cache_tags"), Schema.Null]),
+          ),
+          actionParameters: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Struct({
+                  operation: Schema.Literals(["add", "remove", "set"]),
+                  values: Schema.Array(Schema.String),
+                }),
+                Schema.Struct({
+                  expression: Schema.String,
+                  operation: Schema.Literals(["add", "remove", "set"]),
+                }),
+              ]),
               Schema.Null,
             ]),
           ),
@@ -12879,6 +15040,9 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 bic: Schema.optional(
                   Schema.Union([Schema.Boolean, Schema.Null]),
                 ),
+                contentConverter: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
                 disableApps: Schema.optional(
                   Schema.Union([Schema.Literal(true), Schema.Null]),
                 ),
@@ -12911,6 +15075,9 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                     Schema.Literals(["off", "lossless", "lossy", "webp"]),
                     Schema.Null,
                   ]),
+                ),
+                redirectsForAiTraining: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
                 ),
                 requestBodyBuffering: Schema.optional(
                   Schema.Union([
@@ -12963,6 +15130,7 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   automaticHttpsRewrites: "automatic_https_rewrites",
                   autominify: "autominify",
                   bic: "bic",
+                  contentConverter: "content_converter",
                   disableApps: "disable_apps",
                   disablePayPerCrawl: "disable_pay_per_crawl",
                   disableRum: "disable_rum",
@@ -12973,6 +15141,7 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   mirage: "mirage",
                   opportunisticEncryption: "opportunistic_encryption",
                   polish: "polish",
+                  redirectsForAiTraining: "redirects_for_ai_training",
                   requestBodyBuffering: "request_body_buffering",
                   responseBodyBuffering: "response_body_buffering",
                   rocketLoader: "rocket_loader",
@@ -13106,6 +15275,7 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                         "http_request_sanitize",
                         "http_request_sbfm",
                         "http_request_transform",
+                        "http_response_cache_settings",
                         "http_response_compression",
                         "http_response_firewall_managed",
                         "http_response_headers_transform",
@@ -13347,6 +15517,7 @@ export interface ListPhasVersionsResponse {
       | "http_request_sanitize"
       | "http_request_sbfm"
       | "http_request_transform"
+      | "http_response_cache_settings"
       | "http_response_compression"
       | "http_response_firewall_managed"
       | "http_response_headers_transform"
@@ -13384,6 +15555,7 @@ export const ListPhasVersionsResponse =
           "http_request_sanitize",
           "http_request_sbfm",
           "http_request_transform",
+          "http_response_cache_settings",
           "http_response_compression",
           "http_response_firewall_managed",
           "http_response_headers_transform",
@@ -13650,6 +15822,7 @@ export interface CreateRuleResponse {
     | "http_request_sanitize"
     | "http_request_sbfm"
     | "http_request_transform"
+    | "http_response_cache_settings"
     | "http_response_compression"
     | "http_response_firewall_managed"
     | "http_response_headers_transform"
@@ -14174,6 +16347,86 @@ export interface CreateRuleResponse {
         lastUpdated: string;
         version: string;
         id?: string | null;
+        action?: "set_cache_control" | null;
+        actionParameters?: {
+          immutable?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          maxAge?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          mustRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          mustUnderstand?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noCache?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noStore?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noTransform?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          private?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          proxyRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          public?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          sMaxage?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          staleIfError?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          staleWhileRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+        } | null;
+        categories?: string[] | null;
+        description?: string | null;
+        enabled?: boolean | null;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        } | null;
+        expression?: string | null;
+        logging?: { enabled: boolean } | null;
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string | null;
+          mitigationTimeout?: number | null;
+          requestsPerPeriod?: number | null;
+          requestsToOrigin?: boolean | null;
+          scorePerPeriod?: number | null;
+          scoreResponseHeaderName?: string | null;
+        } | null;
+        ref?: string | null;
+      }
+    | {
+        lastUpdated: string;
+        version: string;
+        id?: string | null;
         action?: "set_cache_settings" | null;
         actionParameters?: {
           additionalCacheablePorts?: number[] | null;
@@ -14236,7 +16489,41 @@ export interface CreateRuleResponse {
           readTimeout?: number | null;
           respectStrongEtags?: boolean | null;
           serveStale?: { disableStaleWhileUpdating?: boolean | null } | null;
+          sharedDictionary?: { matchPattern: string } | null;
+          stripEtags?: boolean | null;
+          stripLastModified?: boolean | null;
+          stripSetCookie?: boolean | null;
         } | null;
+        categories?: string[] | null;
+        description?: string | null;
+        enabled?: boolean | null;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        } | null;
+        expression?: string | null;
+        logging?: { enabled: boolean } | null;
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string | null;
+          mitigationTimeout?: number | null;
+          requestsPerPeriod?: number | null;
+          requestsToOrigin?: boolean | null;
+          scorePerPeriod?: number | null;
+          scoreResponseHeaderName?: string | null;
+        } | null;
+        ref?: string | null;
+      }
+    | {
+        lastUpdated: string;
+        version: string;
+        id?: string | null;
+        action?: "set_cache_tags" | null;
+        actionParameters?:
+          | { operation: "add" | "remove" | "set"; values: string[] }
+          | { expression: string; operation: "add" | "remove" | "set" }
+          | null;
         categories?: string[] | null;
         description?: string | null;
         enabled?: boolean | null;
@@ -14271,6 +16558,7 @@ export interface CreateRuleResponse {
             js?: boolean | null;
           } | null;
           bic?: boolean | null;
+          contentConverter?: boolean | null;
           disableApps?: true | null;
           disablePayPerCrawl?: true | null;
           disableRum?: true | null;
@@ -14281,6 +16569,7 @@ export interface CreateRuleResponse {
           mirage?: boolean | null;
           opportunisticEncryption?: boolean | null;
           polish?: "off" | "lossless" | "lossy" | "webp" | null;
+          redirectsForAiTraining?: boolean | null;
           requestBodyBuffering?: "none" | "standard" | "full" | null;
           responseBodyBuffering?: "none" | "standard" | null;
           rocketLoader?: boolean | null;
@@ -14342,6 +16631,7 @@ export interface CreateRuleResponse {
                 | "http_request_sanitize"
                 | "http_request_sbfm"
                 | "http_request_transform"
+                | "http_response_cache_settings"
                 | "http_response_compression"
                 | "http_response_firewall_managed"
                 | "http_response_headers_transform"
@@ -14416,6 +16706,7 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "http_request_sanitize",
     "http_request_sbfm",
     "http_request_transform",
+    "http_response_cache_settings",
     "http_response_compression",
     "http_response_firewall_managed",
     "http_response_headers_transform",
@@ -16288,6 +18579,330 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         version: Schema.String,
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         action: Schema.optional(
+          Schema.Union([Schema.Literal("set_cache_control"), Schema.Null]),
+        ),
+        actionParameters: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              immutable: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              maxAge: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              mustRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              mustUnderstand: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noCache: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noStore: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noTransform: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              private: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              proxyRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              public: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              sMaxage: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              staleIfError: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              staleWhileRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                immutable: "immutable",
+                maxAge: "max-age",
+                mustRevalidate: "must-revalidate",
+                mustUnderstand: "must-understand",
+                noCache: "no-cache",
+                noStore: "no-store",
+                noTransform: "no-transform",
+                private: "private",
+                proxyRevalidate: "proxy-revalidate",
+                public: "public",
+                sMaxage: "s-maxage",
+                staleIfError: "stale-if-error",
+                staleWhileRevalidate: "stale-while-revalidate",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        categories: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        exposedCredentialCheck: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        logging: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ratelimit: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              mitigationTimeout: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsPerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsToOrigin: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              scorePerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              scoreResponseHeaderName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          lastUpdated: "last_updated",
+          version: "version",
+          id: "id",
+          action: "action",
+          actionParameters: "action_parameters",
+          categories: "categories",
+          description: "description",
+          enabled: "enabled",
+          exposedCredentialCheck: "exposed_credential_check",
+          expression: "expression",
+          logging: "logging",
+          ratelimit: "ratelimit",
+          ref: "ref",
+        }),
+      ),
+      Schema.Struct({
+        lastUpdated: Schema.String,
+        version: Schema.String,
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        action: Schema.optional(
           Schema.Union([Schema.Literal("set_cache_settings"), Schema.Null]),
         ),
         actionParameters: Schema.optional(
@@ -16587,6 +19202,23 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Null,
                 ]),
               ),
+              sharedDictionary: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    matchPattern: Schema.String,
+                  }).pipe(Schema.encodeKeys({ matchPattern: "match_pattern" })),
+                  Schema.Null,
+                ]),
+              ),
+              stripEtags: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              stripLastModified: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              stripSetCookie: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
             }).pipe(
               Schema.encodeKeys({
                 additionalCacheablePorts: "additional_cacheable_ports",
@@ -16600,8 +19232,120 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 readTimeout: "read_timeout",
                 respectStrongEtags: "respect_strong_etags",
                 serveStale: "serve_stale",
+                sharedDictionary: "shared_dictionary",
+                stripEtags: "strip_etags",
+                stripLastModified: "strip_last_modified",
+                stripSetCookie: "strip_set_cookie",
               }),
             ),
+            Schema.Null,
+          ]),
+        ),
+        categories: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        exposedCredentialCheck: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        logging: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ratelimit: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              mitigationTimeout: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsPerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsToOrigin: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              scorePerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              scoreResponseHeaderName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          lastUpdated: "last_updated",
+          version: "version",
+          id: "id",
+          action: "action",
+          actionParameters: "action_parameters",
+          categories: "categories",
+          description: "description",
+          enabled: "enabled",
+          exposedCredentialCheck: "exposed_credential_check",
+          expression: "expression",
+          logging: "logging",
+          ratelimit: "ratelimit",
+          ref: "ref",
+        }),
+      ),
+      Schema.Struct({
+        lastUpdated: Schema.String,
+        version: Schema.String,
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        action: Schema.optional(
+          Schema.Union([Schema.Literal("set_cache_tags"), Schema.Null]),
+        ),
+        actionParameters: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Struct({
+                operation: Schema.Literals(["add", "remove", "set"]),
+                values: Schema.Array(Schema.String),
+              }),
+              Schema.Struct({
+                expression: Schema.String,
+                operation: Schema.Literals(["add", "remove", "set"]),
+              }),
+            ]),
             Schema.Null,
           ]),
         ),
@@ -16721,6 +19465,9 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ]),
               ),
               bic: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+              contentConverter: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               disableApps: Schema.optional(
                 Schema.Union([Schema.Literal(true), Schema.Null]),
               ),
@@ -16753,6 +19500,9 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Literals(["off", "lossless", "lossy", "webp"]),
                   Schema.Null,
                 ]),
+              ),
+              redirectsForAiTraining: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
               ),
               requestBodyBuffering: Schema.optional(
                 Schema.Union([
@@ -16803,6 +19553,7 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 automaticHttpsRewrites: "automatic_https_rewrites",
                 autominify: "autominify",
                 bic: "bic",
+                contentConverter: "content_converter",
                 disableApps: "disable_apps",
                 disablePayPerCrawl: "disable_pay_per_crawl",
                 disableRum: "disable_rum",
@@ -16813,6 +19564,7 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 mirage: "mirage",
                 opportunisticEncryption: "opportunistic_encryption",
                 polish: "polish",
+                redirectsForAiTraining: "redirects_for_ai_training",
                 requestBodyBuffering: "request_body_buffering",
                 responseBodyBuffering: "response_body_buffering",
                 rocketLoader: "rocket_loader",
@@ -16944,6 +19696,7 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       "http_request_sanitize",
                       "http_request_sbfm",
                       "http_request_transform",
+                      "http_response_cache_settings",
                       "http_response_compression",
                       "http_response_firewall_managed",
                       "http_response_headers_transform",
@@ -17325,6 +20078,7 @@ export interface PatchRuleResponse {
     | "http_request_sanitize"
     | "http_request_sbfm"
     | "http_request_transform"
+    | "http_response_cache_settings"
     | "http_response_compression"
     | "http_response_firewall_managed"
     | "http_response_headers_transform"
@@ -17849,6 +20603,86 @@ export interface PatchRuleResponse {
         lastUpdated: string;
         version: string;
         id?: string | null;
+        action?: "set_cache_control" | null;
+        actionParameters?: {
+          immutable?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          maxAge?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          mustRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          mustUnderstand?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noCache?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noStore?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noTransform?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          private?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          proxyRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          public?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          sMaxage?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          staleIfError?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          staleWhileRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+        } | null;
+        categories?: string[] | null;
+        description?: string | null;
+        enabled?: boolean | null;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        } | null;
+        expression?: string | null;
+        logging?: { enabled: boolean } | null;
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string | null;
+          mitigationTimeout?: number | null;
+          requestsPerPeriod?: number | null;
+          requestsToOrigin?: boolean | null;
+          scorePerPeriod?: number | null;
+          scoreResponseHeaderName?: string | null;
+        } | null;
+        ref?: string | null;
+      }
+    | {
+        lastUpdated: string;
+        version: string;
+        id?: string | null;
         action?: "set_cache_settings" | null;
         actionParameters?: {
           additionalCacheablePorts?: number[] | null;
@@ -17911,7 +20745,41 @@ export interface PatchRuleResponse {
           readTimeout?: number | null;
           respectStrongEtags?: boolean | null;
           serveStale?: { disableStaleWhileUpdating?: boolean | null } | null;
+          sharedDictionary?: { matchPattern: string } | null;
+          stripEtags?: boolean | null;
+          stripLastModified?: boolean | null;
+          stripSetCookie?: boolean | null;
         } | null;
+        categories?: string[] | null;
+        description?: string | null;
+        enabled?: boolean | null;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        } | null;
+        expression?: string | null;
+        logging?: { enabled: boolean } | null;
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string | null;
+          mitigationTimeout?: number | null;
+          requestsPerPeriod?: number | null;
+          requestsToOrigin?: boolean | null;
+          scorePerPeriod?: number | null;
+          scoreResponseHeaderName?: string | null;
+        } | null;
+        ref?: string | null;
+      }
+    | {
+        lastUpdated: string;
+        version: string;
+        id?: string | null;
+        action?: "set_cache_tags" | null;
+        actionParameters?:
+          | { operation: "add" | "remove" | "set"; values: string[] }
+          | { expression: string; operation: "add" | "remove" | "set" }
+          | null;
         categories?: string[] | null;
         description?: string | null;
         enabled?: boolean | null;
@@ -17946,6 +20814,7 @@ export interface PatchRuleResponse {
             js?: boolean | null;
           } | null;
           bic?: boolean | null;
+          contentConverter?: boolean | null;
           disableApps?: true | null;
           disablePayPerCrawl?: true | null;
           disableRum?: true | null;
@@ -17956,6 +20825,7 @@ export interface PatchRuleResponse {
           mirage?: boolean | null;
           opportunisticEncryption?: boolean | null;
           polish?: "off" | "lossless" | "lossy" | "webp" | null;
+          redirectsForAiTraining?: boolean | null;
           requestBodyBuffering?: "none" | "standard" | "full" | null;
           responseBodyBuffering?: "none" | "standard" | null;
           rocketLoader?: boolean | null;
@@ -18017,6 +20887,7 @@ export interface PatchRuleResponse {
                 | "http_request_sanitize"
                 | "http_request_sbfm"
                 | "http_request_transform"
+                | "http_response_cache_settings"
                 | "http_response_compression"
                 | "http_response_firewall_managed"
                 | "http_response_headers_transform"
@@ -18091,6 +20962,7 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "http_request_sanitize",
     "http_request_sbfm",
     "http_request_transform",
+    "http_response_cache_settings",
     "http_response_compression",
     "http_response_firewall_managed",
     "http_response_headers_transform",
@@ -19963,6 +22835,330 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         version: Schema.String,
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         action: Schema.optional(
+          Schema.Union([Schema.Literal("set_cache_control"), Schema.Null]),
+        ),
+        actionParameters: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              immutable: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              maxAge: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              mustRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              mustUnderstand: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noCache: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noStore: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noTransform: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              private: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              proxyRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              public: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              sMaxage: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              staleIfError: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              staleWhileRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                immutable: "immutable",
+                maxAge: "max-age",
+                mustRevalidate: "must-revalidate",
+                mustUnderstand: "must-understand",
+                noCache: "no-cache",
+                noStore: "no-store",
+                noTransform: "no-transform",
+                private: "private",
+                proxyRevalidate: "proxy-revalidate",
+                public: "public",
+                sMaxage: "s-maxage",
+                staleIfError: "stale-if-error",
+                staleWhileRevalidate: "stale-while-revalidate",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        categories: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        exposedCredentialCheck: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        logging: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ratelimit: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              mitigationTimeout: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsPerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsToOrigin: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              scorePerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              scoreResponseHeaderName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          lastUpdated: "last_updated",
+          version: "version",
+          id: "id",
+          action: "action",
+          actionParameters: "action_parameters",
+          categories: "categories",
+          description: "description",
+          enabled: "enabled",
+          exposedCredentialCheck: "exposed_credential_check",
+          expression: "expression",
+          logging: "logging",
+          ratelimit: "ratelimit",
+          ref: "ref",
+        }),
+      ),
+      Schema.Struct({
+        lastUpdated: Schema.String,
+        version: Schema.String,
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        action: Schema.optional(
           Schema.Union([Schema.Literal("set_cache_settings"), Schema.Null]),
         ),
         actionParameters: Schema.optional(
@@ -20262,6 +23458,23 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Null,
                 ]),
               ),
+              sharedDictionary: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    matchPattern: Schema.String,
+                  }).pipe(Schema.encodeKeys({ matchPattern: "match_pattern" })),
+                  Schema.Null,
+                ]),
+              ),
+              stripEtags: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              stripLastModified: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              stripSetCookie: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
             }).pipe(
               Schema.encodeKeys({
                 additionalCacheablePorts: "additional_cacheable_ports",
@@ -20275,8 +23488,120 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 readTimeout: "read_timeout",
                 respectStrongEtags: "respect_strong_etags",
                 serveStale: "serve_stale",
+                sharedDictionary: "shared_dictionary",
+                stripEtags: "strip_etags",
+                stripLastModified: "strip_last_modified",
+                stripSetCookie: "strip_set_cookie",
               }),
             ),
+            Schema.Null,
+          ]),
+        ),
+        categories: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        exposedCredentialCheck: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        logging: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ratelimit: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              mitigationTimeout: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsPerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsToOrigin: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              scorePerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              scoreResponseHeaderName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          lastUpdated: "last_updated",
+          version: "version",
+          id: "id",
+          action: "action",
+          actionParameters: "action_parameters",
+          categories: "categories",
+          description: "description",
+          enabled: "enabled",
+          exposedCredentialCheck: "exposed_credential_check",
+          expression: "expression",
+          logging: "logging",
+          ratelimit: "ratelimit",
+          ref: "ref",
+        }),
+      ),
+      Schema.Struct({
+        lastUpdated: Schema.String,
+        version: Schema.String,
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        action: Schema.optional(
+          Schema.Union([Schema.Literal("set_cache_tags"), Schema.Null]),
+        ),
+        actionParameters: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Struct({
+                operation: Schema.Literals(["add", "remove", "set"]),
+                values: Schema.Array(Schema.String),
+              }),
+              Schema.Struct({
+                expression: Schema.String,
+                operation: Schema.Literals(["add", "remove", "set"]),
+              }),
+            ]),
             Schema.Null,
           ]),
         ),
@@ -20396,6 +23721,9 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ]),
               ),
               bic: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+              contentConverter: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               disableApps: Schema.optional(
                 Schema.Union([Schema.Literal(true), Schema.Null]),
               ),
@@ -20428,6 +23756,9 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Literals(["off", "lossless", "lossy", "webp"]),
                   Schema.Null,
                 ]),
+              ),
+              redirectsForAiTraining: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
               ),
               requestBodyBuffering: Schema.optional(
                 Schema.Union([
@@ -20478,6 +23809,7 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 automaticHttpsRewrites: "automatic_https_rewrites",
                 autominify: "autominify",
                 bic: "bic",
+                contentConverter: "content_converter",
                 disableApps: "disable_apps",
                 disablePayPerCrawl: "disable_pay_per_crawl",
                 disableRum: "disable_rum",
@@ -20488,6 +23820,7 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 mirage: "mirage",
                 opportunisticEncryption: "opportunistic_encryption",
                 polish: "polish",
+                redirectsForAiTraining: "redirects_for_ai_training",
                 requestBodyBuffering: "request_body_buffering",
                 responseBodyBuffering: "response_body_buffering",
                 rocketLoader: "rocket_loader",
@@ -20619,6 +23952,7 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       "http_request_sanitize",
                       "http_request_sbfm",
                       "http_request_transform",
+                      "http_response_cache_settings",
                       "http_response_compression",
                       "http_response_firewall_managed",
                       "http_response_headers_transform",
@@ -20863,6 +24197,7 @@ export interface DeleteRuleResponse {
     | "http_request_sanitize"
     | "http_request_sbfm"
     | "http_request_transform"
+    | "http_response_cache_settings"
     | "http_response_compression"
     | "http_response_firewall_managed"
     | "http_response_headers_transform"
@@ -21387,6 +24722,86 @@ export interface DeleteRuleResponse {
         lastUpdated: string;
         version: string;
         id?: string | null;
+        action?: "set_cache_control" | null;
+        actionParameters?: {
+          immutable?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          maxAge?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          mustRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          mustUnderstand?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noCache?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noStore?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noTransform?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          private?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          proxyRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          public?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          sMaxage?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          staleIfError?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          staleWhileRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+        } | null;
+        categories?: string[] | null;
+        description?: string | null;
+        enabled?: boolean | null;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        } | null;
+        expression?: string | null;
+        logging?: { enabled: boolean } | null;
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string | null;
+          mitigationTimeout?: number | null;
+          requestsPerPeriod?: number | null;
+          requestsToOrigin?: boolean | null;
+          scorePerPeriod?: number | null;
+          scoreResponseHeaderName?: string | null;
+        } | null;
+        ref?: string | null;
+      }
+    | {
+        lastUpdated: string;
+        version: string;
+        id?: string | null;
         action?: "set_cache_settings" | null;
         actionParameters?: {
           additionalCacheablePorts?: number[] | null;
@@ -21449,7 +24864,41 @@ export interface DeleteRuleResponse {
           readTimeout?: number | null;
           respectStrongEtags?: boolean | null;
           serveStale?: { disableStaleWhileUpdating?: boolean | null } | null;
+          sharedDictionary?: { matchPattern: string } | null;
+          stripEtags?: boolean | null;
+          stripLastModified?: boolean | null;
+          stripSetCookie?: boolean | null;
         } | null;
+        categories?: string[] | null;
+        description?: string | null;
+        enabled?: boolean | null;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        } | null;
+        expression?: string | null;
+        logging?: { enabled: boolean } | null;
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string | null;
+          mitigationTimeout?: number | null;
+          requestsPerPeriod?: number | null;
+          requestsToOrigin?: boolean | null;
+          scorePerPeriod?: number | null;
+          scoreResponseHeaderName?: string | null;
+        } | null;
+        ref?: string | null;
+      }
+    | {
+        lastUpdated: string;
+        version: string;
+        id?: string | null;
+        action?: "set_cache_tags" | null;
+        actionParameters?:
+          | { operation: "add" | "remove" | "set"; values: string[] }
+          | { expression: string; operation: "add" | "remove" | "set" }
+          | null;
         categories?: string[] | null;
         description?: string | null;
         enabled?: boolean | null;
@@ -21484,6 +24933,7 @@ export interface DeleteRuleResponse {
             js?: boolean | null;
           } | null;
           bic?: boolean | null;
+          contentConverter?: boolean | null;
           disableApps?: true | null;
           disablePayPerCrawl?: true | null;
           disableRum?: true | null;
@@ -21494,6 +24944,7 @@ export interface DeleteRuleResponse {
           mirage?: boolean | null;
           opportunisticEncryption?: boolean | null;
           polish?: "off" | "lossless" | "lossy" | "webp" | null;
+          redirectsForAiTraining?: boolean | null;
           requestBodyBuffering?: "none" | "standard" | "full" | null;
           responseBodyBuffering?: "none" | "standard" | null;
           rocketLoader?: boolean | null;
@@ -21555,6 +25006,7 @@ export interface DeleteRuleResponse {
                 | "http_request_sanitize"
                 | "http_request_sbfm"
                 | "http_request_transform"
+                | "http_response_cache_settings"
                 | "http_response_compression"
                 | "http_response_firewall_managed"
                 | "http_response_headers_transform"
@@ -21629,6 +25081,7 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "http_request_sanitize",
     "http_request_sbfm",
     "http_request_transform",
+    "http_response_cache_settings",
     "http_response_compression",
     "http_response_firewall_managed",
     "http_response_headers_transform",
@@ -23501,6 +26954,330 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         version: Schema.String,
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         action: Schema.optional(
+          Schema.Union([Schema.Literal("set_cache_control"), Schema.Null]),
+        ),
+        actionParameters: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              immutable: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              maxAge: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              mustRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              mustUnderstand: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noCache: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noStore: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noTransform: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              private: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              proxyRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              public: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              sMaxage: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              staleIfError: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              staleWhileRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                immutable: "immutable",
+                maxAge: "max-age",
+                mustRevalidate: "must-revalidate",
+                mustUnderstand: "must-understand",
+                noCache: "no-cache",
+                noStore: "no-store",
+                noTransform: "no-transform",
+                private: "private",
+                proxyRevalidate: "proxy-revalidate",
+                public: "public",
+                sMaxage: "s-maxage",
+                staleIfError: "stale-if-error",
+                staleWhileRevalidate: "stale-while-revalidate",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        categories: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        exposedCredentialCheck: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        logging: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ratelimit: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              mitigationTimeout: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsPerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsToOrigin: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              scorePerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              scoreResponseHeaderName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          lastUpdated: "last_updated",
+          version: "version",
+          id: "id",
+          action: "action",
+          actionParameters: "action_parameters",
+          categories: "categories",
+          description: "description",
+          enabled: "enabled",
+          exposedCredentialCheck: "exposed_credential_check",
+          expression: "expression",
+          logging: "logging",
+          ratelimit: "ratelimit",
+          ref: "ref",
+        }),
+      ),
+      Schema.Struct({
+        lastUpdated: Schema.String,
+        version: Schema.String,
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        action: Schema.optional(
           Schema.Union([Schema.Literal("set_cache_settings"), Schema.Null]),
         ),
         actionParameters: Schema.optional(
@@ -23800,6 +27577,23 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Null,
                 ]),
               ),
+              sharedDictionary: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    matchPattern: Schema.String,
+                  }).pipe(Schema.encodeKeys({ matchPattern: "match_pattern" })),
+                  Schema.Null,
+                ]),
+              ),
+              stripEtags: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              stripLastModified: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              stripSetCookie: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
             }).pipe(
               Schema.encodeKeys({
                 additionalCacheablePorts: "additional_cacheable_ports",
@@ -23813,8 +27607,120 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 readTimeout: "read_timeout",
                 respectStrongEtags: "respect_strong_etags",
                 serveStale: "serve_stale",
+                sharedDictionary: "shared_dictionary",
+                stripEtags: "strip_etags",
+                stripLastModified: "strip_last_modified",
+                stripSetCookie: "strip_set_cookie",
               }),
             ),
+            Schema.Null,
+          ]),
+        ),
+        categories: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        exposedCredentialCheck: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        logging: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ratelimit: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              mitigationTimeout: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsPerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsToOrigin: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              scorePerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              scoreResponseHeaderName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          lastUpdated: "last_updated",
+          version: "version",
+          id: "id",
+          action: "action",
+          actionParameters: "action_parameters",
+          categories: "categories",
+          description: "description",
+          enabled: "enabled",
+          exposedCredentialCheck: "exposed_credential_check",
+          expression: "expression",
+          logging: "logging",
+          ratelimit: "ratelimit",
+          ref: "ref",
+        }),
+      ),
+      Schema.Struct({
+        lastUpdated: Schema.String,
+        version: Schema.String,
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        action: Schema.optional(
+          Schema.Union([Schema.Literal("set_cache_tags"), Schema.Null]),
+        ),
+        actionParameters: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Struct({
+                operation: Schema.Literals(["add", "remove", "set"]),
+                values: Schema.Array(Schema.String),
+              }),
+              Schema.Struct({
+                expression: Schema.String,
+                operation: Schema.Literals(["add", "remove", "set"]),
+              }),
+            ]),
             Schema.Null,
           ]),
         ),
@@ -23934,6 +27840,9 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ]),
               ),
               bic: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+              contentConverter: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               disableApps: Schema.optional(
                 Schema.Union([Schema.Literal(true), Schema.Null]),
               ),
@@ -23966,6 +27875,9 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Literals(["off", "lossless", "lossy", "webp"]),
                   Schema.Null,
                 ]),
+              ),
+              redirectsForAiTraining: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
               ),
               requestBodyBuffering: Schema.optional(
                 Schema.Union([
@@ -24016,6 +27928,7 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 automaticHttpsRewrites: "automatic_https_rewrites",
                 autominify: "autominify",
                 bic: "bic",
+                contentConverter: "content_converter",
                 disableApps: "disable_apps",
                 disablePayPerCrawl: "disable_pay_per_crawl",
                 disableRum: "disable_rum",
@@ -24026,6 +27939,7 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 mirage: "mirage",
                 opportunisticEncryption: "opportunistic_encryption",
                 polish: "polish",
+                redirectsForAiTraining: "redirects_for_ai_training",
                 requestBodyBuffering: "request_body_buffering",
                 responseBodyBuffering: "response_body_buffering",
                 rocketLoader: "rocket_loader",
@@ -24157,6 +28071,7 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       "http_request_sanitize",
                       "http_request_sbfm",
                       "http_request_transform",
+                      "http_response_cache_settings",
                       "http_response_compression",
                       "http_response_firewall_managed",
                       "http_response_headers_transform",
@@ -24400,6 +28315,7 @@ export interface GetRulesetResponse {
     | "http_request_sanitize"
     | "http_request_sbfm"
     | "http_request_transform"
+    | "http_response_cache_settings"
     | "http_response_compression"
     | "http_response_firewall_managed"
     | "http_response_headers_transform"
@@ -24924,6 +28840,86 @@ export interface GetRulesetResponse {
         lastUpdated: string;
         version: string;
         id?: string | null;
+        action?: "set_cache_control" | null;
+        actionParameters?: {
+          immutable?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          maxAge?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          mustRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          mustUnderstand?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noCache?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noStore?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noTransform?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          private?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          proxyRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          public?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          sMaxage?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          staleIfError?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          staleWhileRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+        } | null;
+        categories?: string[] | null;
+        description?: string | null;
+        enabled?: boolean | null;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        } | null;
+        expression?: string | null;
+        logging?: { enabled: boolean } | null;
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string | null;
+          mitigationTimeout?: number | null;
+          requestsPerPeriod?: number | null;
+          requestsToOrigin?: boolean | null;
+          scorePerPeriod?: number | null;
+          scoreResponseHeaderName?: string | null;
+        } | null;
+        ref?: string | null;
+      }
+    | {
+        lastUpdated: string;
+        version: string;
+        id?: string | null;
         action?: "set_cache_settings" | null;
         actionParameters?: {
           additionalCacheablePorts?: number[] | null;
@@ -24986,7 +28982,41 @@ export interface GetRulesetResponse {
           readTimeout?: number | null;
           respectStrongEtags?: boolean | null;
           serveStale?: { disableStaleWhileUpdating?: boolean | null } | null;
+          sharedDictionary?: { matchPattern: string } | null;
+          stripEtags?: boolean | null;
+          stripLastModified?: boolean | null;
+          stripSetCookie?: boolean | null;
         } | null;
+        categories?: string[] | null;
+        description?: string | null;
+        enabled?: boolean | null;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        } | null;
+        expression?: string | null;
+        logging?: { enabled: boolean } | null;
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string | null;
+          mitigationTimeout?: number | null;
+          requestsPerPeriod?: number | null;
+          requestsToOrigin?: boolean | null;
+          scorePerPeriod?: number | null;
+          scoreResponseHeaderName?: string | null;
+        } | null;
+        ref?: string | null;
+      }
+    | {
+        lastUpdated: string;
+        version: string;
+        id?: string | null;
+        action?: "set_cache_tags" | null;
+        actionParameters?:
+          | { operation: "add" | "remove" | "set"; values: string[] }
+          | { expression: string; operation: "add" | "remove" | "set" }
+          | null;
         categories?: string[] | null;
         description?: string | null;
         enabled?: boolean | null;
@@ -25021,6 +29051,7 @@ export interface GetRulesetResponse {
             js?: boolean | null;
           } | null;
           bic?: boolean | null;
+          contentConverter?: boolean | null;
           disableApps?: true | null;
           disablePayPerCrawl?: true | null;
           disableRum?: true | null;
@@ -25031,6 +29062,7 @@ export interface GetRulesetResponse {
           mirage?: boolean | null;
           opportunisticEncryption?: boolean | null;
           polish?: "off" | "lossless" | "lossy" | "webp" | null;
+          redirectsForAiTraining?: boolean | null;
           requestBodyBuffering?: "none" | "standard" | "full" | null;
           responseBodyBuffering?: "none" | "standard" | null;
           rocketLoader?: boolean | null;
@@ -25092,6 +29124,7 @@ export interface GetRulesetResponse {
                 | "http_request_sanitize"
                 | "http_request_sbfm"
                 | "http_request_transform"
+                | "http_response_cache_settings"
                 | "http_response_compression"
                 | "http_response_firewall_managed"
                 | "http_response_headers_transform"
@@ -25166,6 +29199,7 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "http_request_sanitize",
     "http_request_sbfm",
     "http_request_transform",
+    "http_response_cache_settings",
     "http_response_compression",
     "http_response_firewall_managed",
     "http_response_headers_transform",
@@ -27038,6 +31072,330 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         version: Schema.String,
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         action: Schema.optional(
+          Schema.Union([Schema.Literal("set_cache_control"), Schema.Null]),
+        ),
+        actionParameters: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              immutable: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              maxAge: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              mustRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              mustUnderstand: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noCache: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noStore: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noTransform: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              private: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              proxyRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              public: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              sMaxage: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              staleIfError: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              staleWhileRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                immutable: "immutable",
+                maxAge: "max-age",
+                mustRevalidate: "must-revalidate",
+                mustUnderstand: "must-understand",
+                noCache: "no-cache",
+                noStore: "no-store",
+                noTransform: "no-transform",
+                private: "private",
+                proxyRevalidate: "proxy-revalidate",
+                public: "public",
+                sMaxage: "s-maxage",
+                staleIfError: "stale-if-error",
+                staleWhileRevalidate: "stale-while-revalidate",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        categories: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        exposedCredentialCheck: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        logging: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ratelimit: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              mitigationTimeout: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsPerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsToOrigin: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              scorePerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              scoreResponseHeaderName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          lastUpdated: "last_updated",
+          version: "version",
+          id: "id",
+          action: "action",
+          actionParameters: "action_parameters",
+          categories: "categories",
+          description: "description",
+          enabled: "enabled",
+          exposedCredentialCheck: "exposed_credential_check",
+          expression: "expression",
+          logging: "logging",
+          ratelimit: "ratelimit",
+          ref: "ref",
+        }),
+      ),
+      Schema.Struct({
+        lastUpdated: Schema.String,
+        version: Schema.String,
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        action: Schema.optional(
           Schema.Union([Schema.Literal("set_cache_settings"), Schema.Null]),
         ),
         actionParameters: Schema.optional(
@@ -27337,6 +31695,23 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Null,
                 ]),
               ),
+              sharedDictionary: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    matchPattern: Schema.String,
+                  }).pipe(Schema.encodeKeys({ matchPattern: "match_pattern" })),
+                  Schema.Null,
+                ]),
+              ),
+              stripEtags: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              stripLastModified: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              stripSetCookie: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
             }).pipe(
               Schema.encodeKeys({
                 additionalCacheablePorts: "additional_cacheable_ports",
@@ -27350,8 +31725,120 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 readTimeout: "read_timeout",
                 respectStrongEtags: "respect_strong_etags",
                 serveStale: "serve_stale",
+                sharedDictionary: "shared_dictionary",
+                stripEtags: "strip_etags",
+                stripLastModified: "strip_last_modified",
+                stripSetCookie: "strip_set_cookie",
               }),
             ),
+            Schema.Null,
+          ]),
+        ),
+        categories: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        exposedCredentialCheck: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        logging: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ratelimit: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              mitigationTimeout: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsPerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsToOrigin: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              scorePerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              scoreResponseHeaderName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          lastUpdated: "last_updated",
+          version: "version",
+          id: "id",
+          action: "action",
+          actionParameters: "action_parameters",
+          categories: "categories",
+          description: "description",
+          enabled: "enabled",
+          exposedCredentialCheck: "exposed_credential_check",
+          expression: "expression",
+          logging: "logging",
+          ratelimit: "ratelimit",
+          ref: "ref",
+        }),
+      ),
+      Schema.Struct({
+        lastUpdated: Schema.String,
+        version: Schema.String,
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        action: Schema.optional(
+          Schema.Union([Schema.Literal("set_cache_tags"), Schema.Null]),
+        ),
+        actionParameters: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Struct({
+                operation: Schema.Literals(["add", "remove", "set"]),
+                values: Schema.Array(Schema.String),
+              }),
+              Schema.Struct({
+                expression: Schema.String,
+                operation: Schema.Literals(["add", "remove", "set"]),
+              }),
+            ]),
             Schema.Null,
           ]),
         ),
@@ -27471,6 +31958,9 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ]),
               ),
               bic: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+              contentConverter: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               disableApps: Schema.optional(
                 Schema.Union([Schema.Literal(true), Schema.Null]),
               ),
@@ -27503,6 +31993,9 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Literals(["off", "lossless", "lossy", "webp"]),
                   Schema.Null,
                 ]),
+              ),
+              redirectsForAiTraining: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
               ),
               requestBodyBuffering: Schema.optional(
                 Schema.Union([
@@ -27553,6 +32046,7 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 automaticHttpsRewrites: "automatic_https_rewrites",
                 autominify: "autominify",
                 bic: "bic",
+                contentConverter: "content_converter",
                 disableApps: "disable_apps",
                 disablePayPerCrawl: "disable_pay_per_crawl",
                 disableRum: "disable_rum",
@@ -27563,6 +32057,7 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 mirage: "mirage",
                 opportunisticEncryption: "opportunistic_encryption",
                 polish: "polish",
+                redirectsForAiTraining: "redirects_for_ai_training",
                 requestBodyBuffering: "request_body_buffering",
                 responseBodyBuffering: "response_body_buffering",
                 rocketLoader: "rocket_loader",
@@ -27694,6 +32189,7 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       "http_request_sanitize",
                       "http_request_sbfm",
                       "http_request_transform",
+                      "http_response_cache_settings",
                       "http_response_compression",
                       "http_response_firewall_managed",
                       "http_response_headers_transform",
@@ -27922,6 +32418,7 @@ export interface ListRulesetsResponse {
       | "http_request_sanitize"
       | "http_request_sbfm"
       | "http_request_transform"
+      | "http_response_cache_settings"
       | "http_response_compression"
       | "http_response_firewall_managed"
       | "http_response_headers_transform"
@@ -27963,6 +32460,7 @@ export const ListRulesetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         "http_request_sanitize",
         "http_request_sbfm",
         "http_request_transform",
+        "http_response_cache_settings",
         "http_response_compression",
         "http_response_firewall_managed",
         "http_response_headers_transform",
@@ -28063,6 +32561,7 @@ const CreateRulesetBaseFields = {
     "http_request_sanitize",
     "http_request_sbfm",
     "http_request_transform",
+    "http_response_cache_settings",
     "http_response_compression",
     "http_response_firewall_managed",
     "http_response_headers_transform",
@@ -29273,6 +33772,229 @@ const CreateRulesetBaseFields = {
         ),
         Schema.Struct({
           id: Schema.optional(Schema.String),
+          action: Schema.optional(Schema.Literal("set_cache_control")),
+          actionParameters: Schema.optional(
+            Schema.Struct({
+              immutable: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              maxAge: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              mustRevalidate: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              mustUnderstand: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              noCache: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              noStore: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              noTransform: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              private: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              proxyRevalidate: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              public: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              sMaxage: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              staleIfError: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              staleWhileRevalidate: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                immutable: "immutable",
+                maxAge: "max-age",
+                mustRevalidate: "must-revalidate",
+                mustUnderstand: "must-understand",
+                noCache: "no-cache",
+                noStore: "no-store",
+                noTransform: "no-transform",
+                private: "private",
+                proxyRevalidate: "proxy-revalidate",
+                public: "public",
+                sMaxage: "s-maxage",
+                staleIfError: "stale-if-error",
+                staleWhileRevalidate: "stale-while-revalidate",
+              }),
+            ),
+          ),
+          description: Schema.optional(Schema.String),
+          enabled: Schema.optional(Schema.Boolean),
+          exposedCredentialCheck: Schema.optional(
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+          ),
+          expression: Schema.optional(Schema.String),
+          logging: Schema.optional(
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+          ),
+          ratelimit: Schema.optional(
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(Schema.String),
+              mitigationTimeout: Schema.optional(Schema.Number),
+              requestsPerPeriod: Schema.optional(Schema.Number),
+              requestsToOrigin: Schema.optional(Schema.Boolean),
+              scorePerPeriod: Schema.optional(Schema.Number),
+              scoreResponseHeaderName: Schema.optional(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+          ),
+          ref: Schema.optional(Schema.String),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            action: "action",
+            actionParameters: "action_parameters",
+            description: "description",
+            enabled: "enabled",
+            exposedCredentialCheck: "exposed_credential_check",
+            expression: "expression",
+            logging: "logging",
+            ratelimit: "ratelimit",
+            ref: "ref",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
           action: Schema.optional(Schema.Literal("set_cache_settings")),
           actionParameters: Schema.optional(
             Schema.Struct({
@@ -29447,6 +34169,14 @@ const CreateRulesetBaseFields = {
                   }),
                 ),
               ),
+              sharedDictionary: Schema.optional(
+                Schema.Struct({
+                  matchPattern: Schema.String,
+                }).pipe(Schema.encodeKeys({ matchPattern: "match_pattern" })),
+              ),
+              stripEtags: Schema.optional(Schema.Boolean),
+              stripLastModified: Schema.optional(Schema.Boolean),
+              stripSetCookie: Schema.optional(Schema.Boolean),
             }).pipe(
               Schema.encodeKeys({
                 additionalCacheablePorts: "additional_cacheable_ports",
@@ -29460,8 +34190,84 @@ const CreateRulesetBaseFields = {
                 readTimeout: "read_timeout",
                 respectStrongEtags: "respect_strong_etags",
                 serveStale: "serve_stale",
+                sharedDictionary: "shared_dictionary",
+                stripEtags: "strip_etags",
+                stripLastModified: "strip_last_modified",
+                stripSetCookie: "strip_set_cookie",
               }),
             ),
+          ),
+          description: Schema.optional(Schema.String),
+          enabled: Schema.optional(Schema.Boolean),
+          exposedCredentialCheck: Schema.optional(
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+          ),
+          expression: Schema.optional(Schema.String),
+          logging: Schema.optional(
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+          ),
+          ratelimit: Schema.optional(
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(Schema.String),
+              mitigationTimeout: Schema.optional(Schema.Number),
+              requestsPerPeriod: Schema.optional(Schema.Number),
+              requestsToOrigin: Schema.optional(Schema.Boolean),
+              scorePerPeriod: Schema.optional(Schema.Number),
+              scoreResponseHeaderName: Schema.optional(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+          ),
+          ref: Schema.optional(Schema.String),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            action: "action",
+            actionParameters: "action_parameters",
+            description: "description",
+            enabled: "enabled",
+            exposedCredentialCheck: "exposed_credential_check",
+            expression: "expression",
+            logging: "logging",
+            ratelimit: "ratelimit",
+            ref: "ref",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          action: Schema.optional(Schema.Literal("set_cache_tags")),
+          actionParameters: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                operation: Schema.Literals(["add", "remove", "set"]),
+                values: Schema.Array(Schema.String),
+              }),
+              Schema.Struct({
+                expression: Schema.String,
+                operation: Schema.Literals(["add", "remove", "set"]),
+              }),
+            ]),
           ),
           description: Schema.optional(Schema.String),
           enabled: Schema.optional(Schema.Boolean),
@@ -29534,6 +34340,7 @@ const CreateRulesetBaseFields = {
                 }),
               ),
               bic: Schema.optional(Schema.Boolean),
+              contentConverter: Schema.optional(Schema.Boolean),
               disableApps: Schema.optional(Schema.Literal(true)),
               disablePayPerCrawl: Schema.optional(Schema.Literal(true)),
               disableRum: Schema.optional(Schema.Literal(true)),
@@ -29546,6 +34353,7 @@ const CreateRulesetBaseFields = {
               polish: Schema.optional(
                 Schema.Literals(["off", "lossless", "lossy", "webp"]),
               ),
+              redirectsForAiTraining: Schema.optional(Schema.Boolean),
               requestBodyBuffering: Schema.optional(
                 Schema.Literals(["none", "standard", "full"]),
               ),
@@ -29579,6 +34387,7 @@ const CreateRulesetBaseFields = {
                 automaticHttpsRewrites: "automatic_https_rewrites",
                 autominify: "autominify",
                 bic: "bic",
+                contentConverter: "content_converter",
                 disableApps: "disable_apps",
                 disablePayPerCrawl: "disable_pay_per_crawl",
                 disableRum: "disable_rum",
@@ -29589,6 +34398,7 @@ const CreateRulesetBaseFields = {
                 mirage: "mirage",
                 opportunisticEncryption: "opportunistic_encryption",
                 polish: "polish",
+                redirectsForAiTraining: "redirects_for_ai_training",
                 requestBodyBuffering: "request_body_buffering",
                 responseBodyBuffering: "response_body_buffering",
                 rocketLoader: "rocket_loader",
@@ -29681,6 +34491,7 @@ const CreateRulesetBaseFields = {
                     "http_request_sanitize",
                     "http_request_sbfm",
                     "http_request_transform",
+                    "http_response_cache_settings",
                     "http_response_compression",
                     "http_response_firewall_managed",
                     "http_response_headers_transform",
@@ -29796,6 +34607,7 @@ interface CreateRulesetBaseRequest {
     | "http_request_sanitize"
     | "http_request_sbfm"
     | "http_request_transform"
+    | "http_response_cache_settings"
     | "http_response_compression"
     | "http_response_firewall_managed"
     | "http_response_headers_transform"
@@ -30240,6 +35052,62 @@ interface CreateRulesetBaseRequest {
       }
     | {
         id?: string;
+        action?: "set_cache_control";
+        actionParameters?: {
+          immutable?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          maxAge?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          mustRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+          mustUnderstand?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+          noCache?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          noStore?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          noTransform?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+          private?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          proxyRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+          public?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          sMaxage?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          staleIfError?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+          staleWhileRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
         action?: "set_cache_settings";
         actionParameters?: {
           additionalCacheablePorts?: number[];
@@ -30287,7 +35155,37 @@ interface CreateRulesetBaseRequest {
           readTimeout?: number;
           respectStrongEtags?: boolean;
           serveStale?: { disableStaleWhileUpdating?: boolean };
+          sharedDictionary?: { matchPattern: string };
+          stripEtags?: boolean;
+          stripLastModified?: boolean;
+          stripSetCookie?: boolean;
         };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "set_cache_tags";
+        actionParameters?:
+          | { operation: "add" | "remove" | "set"; values: string[] }
+          | { expression: string; operation: "add" | "remove" | "set" };
         description?: string;
         enabled?: boolean;
         exposedCredentialCheck?: {
@@ -30315,6 +35213,7 @@ interface CreateRulesetBaseRequest {
           automaticHttpsRewrites?: boolean;
           autominify?: { css?: boolean; html?: boolean; js?: boolean };
           bic?: boolean;
+          contentConverter?: boolean;
           disableApps?: true;
           disablePayPerCrawl?: true;
           disableRum?: true;
@@ -30325,6 +35224,7 @@ interface CreateRulesetBaseRequest {
           mirage?: boolean;
           opportunisticEncryption?: boolean;
           polish?: "off" | "lossless" | "lossy" | "webp";
+          redirectsForAiTraining?: boolean;
           requestBodyBuffering?: "none" | "standard" | "full";
           responseBodyBuffering?: "none" | "standard";
           rocketLoader?: boolean;
@@ -30381,6 +35281,7 @@ interface CreateRulesetBaseRequest {
             | "http_request_sanitize"
             | "http_request_sbfm"
             | "http_request_transform"
+            | "http_response_cache_settings"
             | "http_response_compression"
             | "http_response_firewall_managed"
             | "http_response_headers_transform"
@@ -30478,6 +35379,7 @@ export interface CreateRulesetResponse {
     | "http_request_sanitize"
     | "http_request_sbfm"
     | "http_request_transform"
+    | "http_response_cache_settings"
     | "http_response_compression"
     | "http_response_firewall_managed"
     | "http_response_headers_transform"
@@ -31002,6 +35904,86 @@ export interface CreateRulesetResponse {
         lastUpdated: string;
         version: string;
         id?: string | null;
+        action?: "set_cache_control" | null;
+        actionParameters?: {
+          immutable?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          maxAge?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          mustRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          mustUnderstand?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noCache?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noStore?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noTransform?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          private?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          proxyRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          public?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          sMaxage?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          staleIfError?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          staleWhileRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+        } | null;
+        categories?: string[] | null;
+        description?: string | null;
+        enabled?: boolean | null;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        } | null;
+        expression?: string | null;
+        logging?: { enabled: boolean } | null;
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string | null;
+          mitigationTimeout?: number | null;
+          requestsPerPeriod?: number | null;
+          requestsToOrigin?: boolean | null;
+          scorePerPeriod?: number | null;
+          scoreResponseHeaderName?: string | null;
+        } | null;
+        ref?: string | null;
+      }
+    | {
+        lastUpdated: string;
+        version: string;
+        id?: string | null;
         action?: "set_cache_settings" | null;
         actionParameters?: {
           additionalCacheablePorts?: number[] | null;
@@ -31064,7 +36046,41 @@ export interface CreateRulesetResponse {
           readTimeout?: number | null;
           respectStrongEtags?: boolean | null;
           serveStale?: { disableStaleWhileUpdating?: boolean | null } | null;
+          sharedDictionary?: { matchPattern: string } | null;
+          stripEtags?: boolean | null;
+          stripLastModified?: boolean | null;
+          stripSetCookie?: boolean | null;
         } | null;
+        categories?: string[] | null;
+        description?: string | null;
+        enabled?: boolean | null;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        } | null;
+        expression?: string | null;
+        logging?: { enabled: boolean } | null;
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string | null;
+          mitigationTimeout?: number | null;
+          requestsPerPeriod?: number | null;
+          requestsToOrigin?: boolean | null;
+          scorePerPeriod?: number | null;
+          scoreResponseHeaderName?: string | null;
+        } | null;
+        ref?: string | null;
+      }
+    | {
+        lastUpdated: string;
+        version: string;
+        id?: string | null;
+        action?: "set_cache_tags" | null;
+        actionParameters?:
+          | { operation: "add" | "remove" | "set"; values: string[] }
+          | { expression: string; operation: "add" | "remove" | "set" }
+          | null;
         categories?: string[] | null;
         description?: string | null;
         enabled?: boolean | null;
@@ -31099,6 +36115,7 @@ export interface CreateRulesetResponse {
             js?: boolean | null;
           } | null;
           bic?: boolean | null;
+          contentConverter?: boolean | null;
           disableApps?: true | null;
           disablePayPerCrawl?: true | null;
           disableRum?: true | null;
@@ -31109,6 +36126,7 @@ export interface CreateRulesetResponse {
           mirage?: boolean | null;
           opportunisticEncryption?: boolean | null;
           polish?: "off" | "lossless" | "lossy" | "webp" | null;
+          redirectsForAiTraining?: boolean | null;
           requestBodyBuffering?: "none" | "standard" | "full" | null;
           responseBodyBuffering?: "none" | "standard" | null;
           rocketLoader?: boolean | null;
@@ -31170,6 +36188,7 @@ export interface CreateRulesetResponse {
                 | "http_request_sanitize"
                 | "http_request_sbfm"
                 | "http_request_transform"
+                | "http_response_cache_settings"
                 | "http_response_compression"
                 | "http_response_firewall_managed"
                 | "http_response_headers_transform"
@@ -31244,6 +36263,7 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "http_request_sanitize",
     "http_request_sbfm",
     "http_request_transform",
+    "http_response_cache_settings",
     "http_response_compression",
     "http_response_firewall_managed",
     "http_response_headers_transform",
@@ -33116,6 +38136,330 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         version: Schema.String,
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         action: Schema.optional(
+          Schema.Union([Schema.Literal("set_cache_control"), Schema.Null]),
+        ),
+        actionParameters: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              immutable: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              maxAge: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              mustRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              mustUnderstand: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noCache: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noStore: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noTransform: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              private: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              proxyRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              public: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              sMaxage: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              staleIfError: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              staleWhileRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                immutable: "immutable",
+                maxAge: "max-age",
+                mustRevalidate: "must-revalidate",
+                mustUnderstand: "must-understand",
+                noCache: "no-cache",
+                noStore: "no-store",
+                noTransform: "no-transform",
+                private: "private",
+                proxyRevalidate: "proxy-revalidate",
+                public: "public",
+                sMaxage: "s-maxage",
+                staleIfError: "stale-if-error",
+                staleWhileRevalidate: "stale-while-revalidate",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        categories: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        exposedCredentialCheck: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        logging: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ratelimit: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              mitigationTimeout: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsPerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsToOrigin: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              scorePerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              scoreResponseHeaderName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          lastUpdated: "last_updated",
+          version: "version",
+          id: "id",
+          action: "action",
+          actionParameters: "action_parameters",
+          categories: "categories",
+          description: "description",
+          enabled: "enabled",
+          exposedCredentialCheck: "exposed_credential_check",
+          expression: "expression",
+          logging: "logging",
+          ratelimit: "ratelimit",
+          ref: "ref",
+        }),
+      ),
+      Schema.Struct({
+        lastUpdated: Schema.String,
+        version: Schema.String,
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        action: Schema.optional(
           Schema.Union([Schema.Literal("set_cache_settings"), Schema.Null]),
         ),
         actionParameters: Schema.optional(
@@ -33415,6 +38759,23 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Null,
                 ]),
               ),
+              sharedDictionary: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    matchPattern: Schema.String,
+                  }).pipe(Schema.encodeKeys({ matchPattern: "match_pattern" })),
+                  Schema.Null,
+                ]),
+              ),
+              stripEtags: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              stripLastModified: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              stripSetCookie: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
             }).pipe(
               Schema.encodeKeys({
                 additionalCacheablePorts: "additional_cacheable_ports",
@@ -33428,8 +38789,120 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 readTimeout: "read_timeout",
                 respectStrongEtags: "respect_strong_etags",
                 serveStale: "serve_stale",
+                sharedDictionary: "shared_dictionary",
+                stripEtags: "strip_etags",
+                stripLastModified: "strip_last_modified",
+                stripSetCookie: "strip_set_cookie",
               }),
             ),
+            Schema.Null,
+          ]),
+        ),
+        categories: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        exposedCredentialCheck: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        logging: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ratelimit: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              mitigationTimeout: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsPerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsToOrigin: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              scorePerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              scoreResponseHeaderName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          lastUpdated: "last_updated",
+          version: "version",
+          id: "id",
+          action: "action",
+          actionParameters: "action_parameters",
+          categories: "categories",
+          description: "description",
+          enabled: "enabled",
+          exposedCredentialCheck: "exposed_credential_check",
+          expression: "expression",
+          logging: "logging",
+          ratelimit: "ratelimit",
+          ref: "ref",
+        }),
+      ),
+      Schema.Struct({
+        lastUpdated: Schema.String,
+        version: Schema.String,
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        action: Schema.optional(
+          Schema.Union([Schema.Literal("set_cache_tags"), Schema.Null]),
+        ),
+        actionParameters: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Struct({
+                operation: Schema.Literals(["add", "remove", "set"]),
+                values: Schema.Array(Schema.String),
+              }),
+              Schema.Struct({
+                expression: Schema.String,
+                operation: Schema.Literals(["add", "remove", "set"]),
+              }),
+            ]),
             Schema.Null,
           ]),
         ),
@@ -33549,6 +39022,9 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ]),
               ),
               bic: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+              contentConverter: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               disableApps: Schema.optional(
                 Schema.Union([Schema.Literal(true), Schema.Null]),
               ),
@@ -33581,6 +39057,9 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Literals(["off", "lossless", "lossy", "webp"]),
                   Schema.Null,
                 ]),
+              ),
+              redirectsForAiTraining: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
               ),
               requestBodyBuffering: Schema.optional(
                 Schema.Union([
@@ -33631,6 +39110,7 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 automaticHttpsRewrites: "automatic_https_rewrites",
                 autominify: "autominify",
                 bic: "bic",
+                contentConverter: "content_converter",
                 disableApps: "disable_apps",
                 disablePayPerCrawl: "disable_pay_per_crawl",
                 disableRum: "disable_rum",
@@ -33641,6 +39121,7 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 mirage: "mirage",
                 opportunisticEncryption: "opportunistic_encryption",
                 polish: "polish",
+                redirectsForAiTraining: "redirects_for_ai_training",
                 requestBodyBuffering: "request_body_buffering",
                 responseBodyBuffering: "response_body_buffering",
                 rocketLoader: "rocket_loader",
@@ -33772,6 +39253,7 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       "http_request_sanitize",
                       "http_request_sbfm",
                       "http_request_transform",
+                      "http_response_cache_settings",
                       "http_response_compression",
                       "http_response_firewall_managed",
                       "http_response_headers_transform",
@@ -33970,6 +39452,7 @@ const UpdateRulesetBaseFields = {
       "http_request_sanitize",
       "http_request_sbfm",
       "http_request_transform",
+      "http_response_cache_settings",
       "http_response_compression",
       "http_response_firewall_managed",
       "http_response_headers_transform",
@@ -35180,6 +40663,229 @@ const UpdateRulesetBaseFields = {
         ),
         Schema.Struct({
           id: Schema.optional(Schema.String),
+          action: Schema.optional(Schema.Literal("set_cache_control")),
+          actionParameters: Schema.optional(
+            Schema.Struct({
+              immutable: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              maxAge: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              mustRevalidate: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              mustUnderstand: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              noCache: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              noStore: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              noTransform: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              private: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              proxyRevalidate: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              public: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              sMaxage: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              staleIfError: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+              staleWhileRevalidate: Schema.optional(
+                Schema.Struct({
+                  operation: Schema.Literals(["set", "remove"]),
+                  cloudflareOnly: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    operation: "operation",
+                    cloudflareOnly: "cloudflare_only",
+                  }),
+                ),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                immutable: "immutable",
+                maxAge: "max-age",
+                mustRevalidate: "must-revalidate",
+                mustUnderstand: "must-understand",
+                noCache: "no-cache",
+                noStore: "no-store",
+                noTransform: "no-transform",
+                private: "private",
+                proxyRevalidate: "proxy-revalidate",
+                public: "public",
+                sMaxage: "s-maxage",
+                staleIfError: "stale-if-error",
+                staleWhileRevalidate: "stale-while-revalidate",
+              }),
+            ),
+          ),
+          description: Schema.optional(Schema.String),
+          enabled: Schema.optional(Schema.Boolean),
+          exposedCredentialCheck: Schema.optional(
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+          ),
+          expression: Schema.optional(Schema.String),
+          logging: Schema.optional(
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+          ),
+          ratelimit: Schema.optional(
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(Schema.String),
+              mitigationTimeout: Schema.optional(Schema.Number),
+              requestsPerPeriod: Schema.optional(Schema.Number),
+              requestsToOrigin: Schema.optional(Schema.Boolean),
+              scorePerPeriod: Schema.optional(Schema.Number),
+              scoreResponseHeaderName: Schema.optional(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+          ),
+          ref: Schema.optional(Schema.String),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            action: "action",
+            actionParameters: "action_parameters",
+            description: "description",
+            enabled: "enabled",
+            exposedCredentialCheck: "exposed_credential_check",
+            expression: "expression",
+            logging: "logging",
+            ratelimit: "ratelimit",
+            ref: "ref",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
           action: Schema.optional(Schema.Literal("set_cache_settings")),
           actionParameters: Schema.optional(
             Schema.Struct({
@@ -35354,6 +41060,14 @@ const UpdateRulesetBaseFields = {
                   }),
                 ),
               ),
+              sharedDictionary: Schema.optional(
+                Schema.Struct({
+                  matchPattern: Schema.String,
+                }).pipe(Schema.encodeKeys({ matchPattern: "match_pattern" })),
+              ),
+              stripEtags: Schema.optional(Schema.Boolean),
+              stripLastModified: Schema.optional(Schema.Boolean),
+              stripSetCookie: Schema.optional(Schema.Boolean),
             }).pipe(
               Schema.encodeKeys({
                 additionalCacheablePorts: "additional_cacheable_ports",
@@ -35367,8 +41081,84 @@ const UpdateRulesetBaseFields = {
                 readTimeout: "read_timeout",
                 respectStrongEtags: "respect_strong_etags",
                 serveStale: "serve_stale",
+                sharedDictionary: "shared_dictionary",
+                stripEtags: "strip_etags",
+                stripLastModified: "strip_last_modified",
+                stripSetCookie: "strip_set_cookie",
               }),
             ),
+          ),
+          description: Schema.optional(Schema.String),
+          enabled: Schema.optional(Schema.Boolean),
+          exposedCredentialCheck: Schema.optional(
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+          ),
+          expression: Schema.optional(Schema.String),
+          logging: Schema.optional(
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+          ),
+          ratelimit: Schema.optional(
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(Schema.String),
+              mitigationTimeout: Schema.optional(Schema.Number),
+              requestsPerPeriod: Schema.optional(Schema.Number),
+              requestsToOrigin: Schema.optional(Schema.Boolean),
+              scorePerPeriod: Schema.optional(Schema.Number),
+              scoreResponseHeaderName: Schema.optional(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+          ),
+          ref: Schema.optional(Schema.String),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            action: "action",
+            actionParameters: "action_parameters",
+            description: "description",
+            enabled: "enabled",
+            exposedCredentialCheck: "exposed_credential_check",
+            expression: "expression",
+            logging: "logging",
+            ratelimit: "ratelimit",
+            ref: "ref",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          action: Schema.optional(Schema.Literal("set_cache_tags")),
+          actionParameters: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                operation: Schema.Literals(["add", "remove", "set"]),
+                values: Schema.Array(Schema.String),
+              }),
+              Schema.Struct({
+                expression: Schema.String,
+                operation: Schema.Literals(["add", "remove", "set"]),
+              }),
+            ]),
           ),
           description: Schema.optional(Schema.String),
           enabled: Schema.optional(Schema.Boolean),
@@ -35441,6 +41231,7 @@ const UpdateRulesetBaseFields = {
                 }),
               ),
               bic: Schema.optional(Schema.Boolean),
+              contentConverter: Schema.optional(Schema.Boolean),
               disableApps: Schema.optional(Schema.Literal(true)),
               disablePayPerCrawl: Schema.optional(Schema.Literal(true)),
               disableRum: Schema.optional(Schema.Literal(true)),
@@ -35453,6 +41244,7 @@ const UpdateRulesetBaseFields = {
               polish: Schema.optional(
                 Schema.Literals(["off", "lossless", "lossy", "webp"]),
               ),
+              redirectsForAiTraining: Schema.optional(Schema.Boolean),
               requestBodyBuffering: Schema.optional(
                 Schema.Literals(["none", "standard", "full"]),
               ),
@@ -35486,6 +41278,7 @@ const UpdateRulesetBaseFields = {
                 automaticHttpsRewrites: "automatic_https_rewrites",
                 autominify: "autominify",
                 bic: "bic",
+                contentConverter: "content_converter",
                 disableApps: "disable_apps",
                 disablePayPerCrawl: "disable_pay_per_crawl",
                 disableRum: "disable_rum",
@@ -35496,6 +41289,7 @@ const UpdateRulesetBaseFields = {
                 mirage: "mirage",
                 opportunisticEncryption: "opportunistic_encryption",
                 polish: "polish",
+                redirectsForAiTraining: "redirects_for_ai_training",
                 requestBodyBuffering: "request_body_buffering",
                 responseBodyBuffering: "response_body_buffering",
                 rocketLoader: "rocket_loader",
@@ -35588,6 +41382,7 @@ const UpdateRulesetBaseFields = {
                     "http_request_sanitize",
                     "http_request_sbfm",
                     "http_request_transform",
+                    "http_response_cache_settings",
                     "http_response_compression",
                     "http_response_firewall_managed",
                     "http_response_headers_transform",
@@ -35706,6 +41501,7 @@ interface UpdateRulesetBaseRequest {
     | "http_request_sanitize"
     | "http_request_sbfm"
     | "http_request_transform"
+    | "http_response_cache_settings"
     | "http_response_compression"
     | "http_response_firewall_managed"
     | "http_response_headers_transform"
@@ -36148,6 +41944,62 @@ interface UpdateRulesetBaseRequest {
       }
     | {
         id?: string;
+        action?: "set_cache_control";
+        actionParameters?: {
+          immutable?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          maxAge?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          mustRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+          mustUnderstand?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+          noCache?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          noStore?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          noTransform?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+          private?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          proxyRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+          public?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          sMaxage?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+          staleIfError?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+          staleWhileRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean;
+          };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
         action?: "set_cache_settings";
         actionParameters?: {
           additionalCacheablePorts?: number[];
@@ -36195,7 +42047,37 @@ interface UpdateRulesetBaseRequest {
           readTimeout?: number;
           respectStrongEtags?: boolean;
           serveStale?: { disableStaleWhileUpdating?: boolean };
+          sharedDictionary?: { matchPattern: string };
+          stripEtags?: boolean;
+          stripLastModified?: boolean;
+          stripSetCookie?: boolean;
         };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "set_cache_tags";
+        actionParameters?:
+          | { operation: "add" | "remove" | "set"; values: string[] }
+          | { expression: string; operation: "add" | "remove" | "set" };
         description?: string;
         enabled?: boolean;
         exposedCredentialCheck?: {
@@ -36223,6 +42105,7 @@ interface UpdateRulesetBaseRequest {
           automaticHttpsRewrites?: boolean;
           autominify?: { css?: boolean; html?: boolean; js?: boolean };
           bic?: boolean;
+          contentConverter?: boolean;
           disableApps?: true;
           disablePayPerCrawl?: true;
           disableRum?: true;
@@ -36233,6 +42116,7 @@ interface UpdateRulesetBaseRequest {
           mirage?: boolean;
           opportunisticEncryption?: boolean;
           polish?: "off" | "lossless" | "lossy" | "webp";
+          redirectsForAiTraining?: boolean;
           requestBodyBuffering?: "none" | "standard" | "full";
           responseBodyBuffering?: "none" | "standard";
           rocketLoader?: boolean;
@@ -36289,6 +42173,7 @@ interface UpdateRulesetBaseRequest {
             | "http_request_sanitize"
             | "http_request_sbfm"
             | "http_request_transform"
+            | "http_response_cache_settings"
             | "http_response_compression"
             | "http_response_firewall_managed"
             | "http_response_headers_transform"
@@ -36389,6 +42274,7 @@ export interface UpdateRulesetResponse {
     | "http_request_sanitize"
     | "http_request_sbfm"
     | "http_request_transform"
+    | "http_response_cache_settings"
     | "http_response_compression"
     | "http_response_firewall_managed"
     | "http_response_headers_transform"
@@ -36913,6 +42799,86 @@ export interface UpdateRulesetResponse {
         lastUpdated: string;
         version: string;
         id?: string | null;
+        action?: "set_cache_control" | null;
+        actionParameters?: {
+          immutable?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          maxAge?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          mustRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          mustUnderstand?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noCache?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noStore?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noTransform?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          private?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          proxyRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          public?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          sMaxage?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          staleIfError?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          staleWhileRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+        } | null;
+        categories?: string[] | null;
+        description?: string | null;
+        enabled?: boolean | null;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        } | null;
+        expression?: string | null;
+        logging?: { enabled: boolean } | null;
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string | null;
+          mitigationTimeout?: number | null;
+          requestsPerPeriod?: number | null;
+          requestsToOrigin?: boolean | null;
+          scorePerPeriod?: number | null;
+          scoreResponseHeaderName?: string | null;
+        } | null;
+        ref?: string | null;
+      }
+    | {
+        lastUpdated: string;
+        version: string;
+        id?: string | null;
         action?: "set_cache_settings" | null;
         actionParameters?: {
           additionalCacheablePorts?: number[] | null;
@@ -36975,7 +42941,41 @@ export interface UpdateRulesetResponse {
           readTimeout?: number | null;
           respectStrongEtags?: boolean | null;
           serveStale?: { disableStaleWhileUpdating?: boolean | null } | null;
+          sharedDictionary?: { matchPattern: string } | null;
+          stripEtags?: boolean | null;
+          stripLastModified?: boolean | null;
+          stripSetCookie?: boolean | null;
         } | null;
+        categories?: string[] | null;
+        description?: string | null;
+        enabled?: boolean | null;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        } | null;
+        expression?: string | null;
+        logging?: { enabled: boolean } | null;
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string | null;
+          mitigationTimeout?: number | null;
+          requestsPerPeriod?: number | null;
+          requestsToOrigin?: boolean | null;
+          scorePerPeriod?: number | null;
+          scoreResponseHeaderName?: string | null;
+        } | null;
+        ref?: string | null;
+      }
+    | {
+        lastUpdated: string;
+        version: string;
+        id?: string | null;
+        action?: "set_cache_tags" | null;
+        actionParameters?:
+          | { operation: "add" | "remove" | "set"; values: string[] }
+          | { expression: string; operation: "add" | "remove" | "set" }
+          | null;
         categories?: string[] | null;
         description?: string | null;
         enabled?: boolean | null;
@@ -37010,6 +43010,7 @@ export interface UpdateRulesetResponse {
             js?: boolean | null;
           } | null;
           bic?: boolean | null;
+          contentConverter?: boolean | null;
           disableApps?: true | null;
           disablePayPerCrawl?: true | null;
           disableRum?: true | null;
@@ -37020,6 +43021,7 @@ export interface UpdateRulesetResponse {
           mirage?: boolean | null;
           opportunisticEncryption?: boolean | null;
           polish?: "off" | "lossless" | "lossy" | "webp" | null;
+          redirectsForAiTraining?: boolean | null;
           requestBodyBuffering?: "none" | "standard" | "full" | null;
           responseBodyBuffering?: "none" | "standard" | null;
           rocketLoader?: boolean | null;
@@ -37081,6 +43083,7 @@ export interface UpdateRulesetResponse {
                 | "http_request_sanitize"
                 | "http_request_sbfm"
                 | "http_request_transform"
+                | "http_response_cache_settings"
                 | "http_response_compression"
                 | "http_response_firewall_managed"
                 | "http_response_headers_transform"
@@ -37155,6 +43158,7 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "http_request_sanitize",
     "http_request_sbfm",
     "http_request_transform",
+    "http_response_cache_settings",
     "http_response_compression",
     "http_response_firewall_managed",
     "http_response_headers_transform",
@@ -39027,6 +45031,330 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         version: Schema.String,
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         action: Schema.optional(
+          Schema.Union([Schema.Literal("set_cache_control"), Schema.Null]),
+        ),
+        actionParameters: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              immutable: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              maxAge: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              mustRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              mustUnderstand: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noCache: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noStore: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noTransform: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              private: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              proxyRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              public: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              sMaxage: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              staleIfError: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              staleWhileRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                immutable: "immutable",
+                maxAge: "max-age",
+                mustRevalidate: "must-revalidate",
+                mustUnderstand: "must-understand",
+                noCache: "no-cache",
+                noStore: "no-store",
+                noTransform: "no-transform",
+                private: "private",
+                proxyRevalidate: "proxy-revalidate",
+                public: "public",
+                sMaxage: "s-maxage",
+                staleIfError: "stale-if-error",
+                staleWhileRevalidate: "stale-while-revalidate",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        categories: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        exposedCredentialCheck: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        logging: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ratelimit: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              mitigationTimeout: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsPerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsToOrigin: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              scorePerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              scoreResponseHeaderName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          lastUpdated: "last_updated",
+          version: "version",
+          id: "id",
+          action: "action",
+          actionParameters: "action_parameters",
+          categories: "categories",
+          description: "description",
+          enabled: "enabled",
+          exposedCredentialCheck: "exposed_credential_check",
+          expression: "expression",
+          logging: "logging",
+          ratelimit: "ratelimit",
+          ref: "ref",
+        }),
+      ),
+      Schema.Struct({
+        lastUpdated: Schema.String,
+        version: Schema.String,
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        action: Schema.optional(
           Schema.Union([Schema.Literal("set_cache_settings"), Schema.Null]),
         ),
         actionParameters: Schema.optional(
@@ -39326,6 +45654,23 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Null,
                 ]),
               ),
+              sharedDictionary: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    matchPattern: Schema.String,
+                  }).pipe(Schema.encodeKeys({ matchPattern: "match_pattern" })),
+                  Schema.Null,
+                ]),
+              ),
+              stripEtags: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              stripLastModified: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              stripSetCookie: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
             }).pipe(
               Schema.encodeKeys({
                 additionalCacheablePorts: "additional_cacheable_ports",
@@ -39339,8 +45684,120 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 readTimeout: "read_timeout",
                 respectStrongEtags: "respect_strong_etags",
                 serveStale: "serve_stale",
+                sharedDictionary: "shared_dictionary",
+                stripEtags: "strip_etags",
+                stripLastModified: "strip_last_modified",
+                stripSetCookie: "strip_set_cookie",
               }),
             ),
+            Schema.Null,
+          ]),
+        ),
+        categories: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        exposedCredentialCheck: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        logging: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ratelimit: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              mitigationTimeout: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsPerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsToOrigin: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              scorePerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              scoreResponseHeaderName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          lastUpdated: "last_updated",
+          version: "version",
+          id: "id",
+          action: "action",
+          actionParameters: "action_parameters",
+          categories: "categories",
+          description: "description",
+          enabled: "enabled",
+          exposedCredentialCheck: "exposed_credential_check",
+          expression: "expression",
+          logging: "logging",
+          ratelimit: "ratelimit",
+          ref: "ref",
+        }),
+      ),
+      Schema.Struct({
+        lastUpdated: Schema.String,
+        version: Schema.String,
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        action: Schema.optional(
+          Schema.Union([Schema.Literal("set_cache_tags"), Schema.Null]),
+        ),
+        actionParameters: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Struct({
+                operation: Schema.Literals(["add", "remove", "set"]),
+                values: Schema.Array(Schema.String),
+              }),
+              Schema.Struct({
+                expression: Schema.String,
+                operation: Schema.Literals(["add", "remove", "set"]),
+              }),
+            ]),
             Schema.Null,
           ]),
         ),
@@ -39460,6 +45917,9 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ]),
               ),
               bic: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+              contentConverter: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               disableApps: Schema.optional(
                 Schema.Union([Schema.Literal(true), Schema.Null]),
               ),
@@ -39492,6 +45952,9 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Literals(["off", "lossless", "lossy", "webp"]),
                   Schema.Null,
                 ]),
+              ),
+              redirectsForAiTraining: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
               ),
               requestBodyBuffering: Schema.optional(
                 Schema.Union([
@@ -39542,6 +46005,7 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 automaticHttpsRewrites: "automatic_https_rewrites",
                 autominify: "autominify",
                 bic: "bic",
+                contentConverter: "content_converter",
                 disableApps: "disable_apps",
                 disablePayPerCrawl: "disable_pay_per_crawl",
                 disableRum: "disable_rum",
@@ -39552,6 +46016,7 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 mirage: "mirage",
                 opportunisticEncryption: "opportunistic_encryption",
                 polish: "polish",
+                redirectsForAiTraining: "redirects_for_ai_training",
                 requestBodyBuffering: "request_body_buffering",
                 responseBodyBuffering: "response_body_buffering",
                 rocketLoader: "rocket_loader",
@@ -39683,6 +46148,7 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       "http_request_sanitize",
                       "http_request_sbfm",
                       "http_request_transform",
+                      "http_response_cache_settings",
                       "http_response_compression",
                       "http_response_firewall_managed",
                       "http_response_headers_transform",
@@ -39997,6 +46463,7 @@ export interface GetVersionResponse {
     | "http_request_sanitize"
     | "http_request_sbfm"
     | "http_request_transform"
+    | "http_response_cache_settings"
     | "http_response_compression"
     | "http_response_firewall_managed"
     | "http_response_headers_transform"
@@ -40521,6 +46988,86 @@ export interface GetVersionResponse {
         lastUpdated: string;
         version: string;
         id?: string | null;
+        action?: "set_cache_control" | null;
+        actionParameters?: {
+          immutable?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          maxAge?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          mustRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          mustUnderstand?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noCache?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noStore?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          noTransform?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          private?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          proxyRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          public?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          sMaxage?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          staleIfError?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+          staleWhileRevalidate?: {
+            operation: "set" | "remove";
+            cloudflareOnly?: boolean | null;
+          } | null;
+        } | null;
+        categories?: string[] | null;
+        description?: string | null;
+        enabled?: boolean | null;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        } | null;
+        expression?: string | null;
+        logging?: { enabled: boolean } | null;
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string | null;
+          mitigationTimeout?: number | null;
+          requestsPerPeriod?: number | null;
+          requestsToOrigin?: boolean | null;
+          scorePerPeriod?: number | null;
+          scoreResponseHeaderName?: string | null;
+        } | null;
+        ref?: string | null;
+      }
+    | {
+        lastUpdated: string;
+        version: string;
+        id?: string | null;
         action?: "set_cache_settings" | null;
         actionParameters?: {
           additionalCacheablePorts?: number[] | null;
@@ -40583,7 +47130,41 @@ export interface GetVersionResponse {
           readTimeout?: number | null;
           respectStrongEtags?: boolean | null;
           serveStale?: { disableStaleWhileUpdating?: boolean | null } | null;
+          sharedDictionary?: { matchPattern: string } | null;
+          stripEtags?: boolean | null;
+          stripLastModified?: boolean | null;
+          stripSetCookie?: boolean | null;
         } | null;
+        categories?: string[] | null;
+        description?: string | null;
+        enabled?: boolean | null;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        } | null;
+        expression?: string | null;
+        logging?: { enabled: boolean } | null;
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string | null;
+          mitigationTimeout?: number | null;
+          requestsPerPeriod?: number | null;
+          requestsToOrigin?: boolean | null;
+          scorePerPeriod?: number | null;
+          scoreResponseHeaderName?: string | null;
+        } | null;
+        ref?: string | null;
+      }
+    | {
+        lastUpdated: string;
+        version: string;
+        id?: string | null;
+        action?: "set_cache_tags" | null;
+        actionParameters?:
+          | { operation: "add" | "remove" | "set"; values: string[] }
+          | { expression: string; operation: "add" | "remove" | "set" }
+          | null;
         categories?: string[] | null;
         description?: string | null;
         enabled?: boolean | null;
@@ -40618,6 +47199,7 @@ export interface GetVersionResponse {
             js?: boolean | null;
           } | null;
           bic?: boolean | null;
+          contentConverter?: boolean | null;
           disableApps?: true | null;
           disablePayPerCrawl?: true | null;
           disableRum?: true | null;
@@ -40628,6 +47210,7 @@ export interface GetVersionResponse {
           mirage?: boolean | null;
           opportunisticEncryption?: boolean | null;
           polish?: "off" | "lossless" | "lossy" | "webp" | null;
+          redirectsForAiTraining?: boolean | null;
           requestBodyBuffering?: "none" | "standard" | "full" | null;
           responseBodyBuffering?: "none" | "standard" | null;
           rocketLoader?: boolean | null;
@@ -40689,6 +47272,7 @@ export interface GetVersionResponse {
                 | "http_request_sanitize"
                 | "http_request_sbfm"
                 | "http_request_transform"
+                | "http_response_cache_settings"
                 | "http_response_compression"
                 | "http_response_firewall_managed"
                 | "http_response_headers_transform"
@@ -40763,6 +47347,7 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "http_request_sanitize",
     "http_request_sbfm",
     "http_request_transform",
+    "http_response_cache_settings",
     "http_response_compression",
     "http_response_firewall_managed",
     "http_response_headers_transform",
@@ -42635,6 +49220,330 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         version: Schema.String,
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         action: Schema.optional(
+          Schema.Union([Schema.Literal("set_cache_control"), Schema.Null]),
+        ),
+        actionParameters: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              immutable: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              maxAge: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              mustRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              mustUnderstand: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noCache: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noStore: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              noTransform: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              private: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              proxyRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              public: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              sMaxage: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              staleIfError: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              staleWhileRevalidate: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    operation: Schema.Literals(["set", "remove"]),
+                    cloudflareOnly: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      operation: "operation",
+                      cloudflareOnly: "cloudflare_only",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                immutable: "immutable",
+                maxAge: "max-age",
+                mustRevalidate: "must-revalidate",
+                mustUnderstand: "must-understand",
+                noCache: "no-cache",
+                noStore: "no-store",
+                noTransform: "no-transform",
+                private: "private",
+                proxyRevalidate: "proxy-revalidate",
+                public: "public",
+                sMaxage: "s-maxage",
+                staleIfError: "stale-if-error",
+                staleWhileRevalidate: "stale-while-revalidate",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        categories: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        exposedCredentialCheck: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        logging: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ratelimit: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              mitigationTimeout: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsPerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsToOrigin: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              scorePerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              scoreResponseHeaderName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          lastUpdated: "last_updated",
+          version: "version",
+          id: "id",
+          action: "action",
+          actionParameters: "action_parameters",
+          categories: "categories",
+          description: "description",
+          enabled: "enabled",
+          exposedCredentialCheck: "exposed_credential_check",
+          expression: "expression",
+          logging: "logging",
+          ratelimit: "ratelimit",
+          ref: "ref",
+        }),
+      ),
+      Schema.Struct({
+        lastUpdated: Schema.String,
+        version: Schema.String,
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        action: Schema.optional(
           Schema.Union([Schema.Literal("set_cache_settings"), Schema.Null]),
         ),
         actionParameters: Schema.optional(
@@ -42934,6 +49843,23 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Null,
                 ]),
               ),
+              sharedDictionary: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    matchPattern: Schema.String,
+                  }).pipe(Schema.encodeKeys({ matchPattern: "match_pattern" })),
+                  Schema.Null,
+                ]),
+              ),
+              stripEtags: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              stripLastModified: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              stripSetCookie: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
             }).pipe(
               Schema.encodeKeys({
                 additionalCacheablePorts: "additional_cacheable_ports",
@@ -42947,8 +49873,120 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 readTimeout: "read_timeout",
                 respectStrongEtags: "respect_strong_etags",
                 serveStale: "serve_stale",
+                sharedDictionary: "shared_dictionary",
+                stripEtags: "strip_etags",
+                stripLastModified: "strip_last_modified",
+                stripSetCookie: "strip_set_cookie",
               }),
             ),
+            Schema.Null,
+          ]),
+        ),
+        categories: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        exposedCredentialCheck: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              passwordExpression: SensitiveString,
+              usernameExpression: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                passwordExpression: "password_expression",
+                usernameExpression: "username_expression",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        logging: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              enabled: Schema.Boolean,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ratelimit: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              characteristics: Schema.Array(Schema.String),
+              period: Schema.Number,
+              countingExpression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              mitigationTimeout: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsPerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              requestsToOrigin: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              scorePerPeriod: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              scoreResponseHeaderName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                characteristics: "characteristics",
+                period: "period",
+                countingExpression: "counting_expression",
+                mitigationTimeout: "mitigation_timeout",
+                requestsPerPeriod: "requests_per_period",
+                requestsToOrigin: "requests_to_origin",
+                scorePerPeriod: "score_per_period",
+                scoreResponseHeaderName: "score_response_header_name",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          lastUpdated: "last_updated",
+          version: "version",
+          id: "id",
+          action: "action",
+          actionParameters: "action_parameters",
+          categories: "categories",
+          description: "description",
+          enabled: "enabled",
+          exposedCredentialCheck: "exposed_credential_check",
+          expression: "expression",
+          logging: "logging",
+          ratelimit: "ratelimit",
+          ref: "ref",
+        }),
+      ),
+      Schema.Struct({
+        lastUpdated: Schema.String,
+        version: Schema.String,
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        action: Schema.optional(
+          Schema.Union([Schema.Literal("set_cache_tags"), Schema.Null]),
+        ),
+        actionParameters: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Struct({
+                operation: Schema.Literals(["add", "remove", "set"]),
+                values: Schema.Array(Schema.String),
+              }),
+              Schema.Struct({
+                expression: Schema.String,
+                operation: Schema.Literals(["add", "remove", "set"]),
+              }),
+            ]),
             Schema.Null,
           ]),
         ),
@@ -43068,6 +50106,9 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ]),
               ),
               bic: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+              contentConverter: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               disableApps: Schema.optional(
                 Schema.Union([Schema.Literal(true), Schema.Null]),
               ),
@@ -43100,6 +50141,9 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   Schema.Literals(["off", "lossless", "lossy", "webp"]),
                   Schema.Null,
                 ]),
+              ),
+              redirectsForAiTraining: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
               ),
               requestBodyBuffering: Schema.optional(
                 Schema.Union([
@@ -43150,6 +50194,7 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 automaticHttpsRewrites: "automatic_https_rewrites",
                 autominify: "autominify",
                 bic: "bic",
+                contentConverter: "content_converter",
                 disableApps: "disable_apps",
                 disablePayPerCrawl: "disable_pay_per_crawl",
                 disableRum: "disable_rum",
@@ -43160,6 +50205,7 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 mirage: "mirage",
                 opportunisticEncryption: "opportunistic_encryption",
                 polish: "polish",
+                redirectsForAiTraining: "redirects_for_ai_training",
                 requestBodyBuffering: "request_body_buffering",
                 responseBodyBuffering: "response_body_buffering",
                 rocketLoader: "rocket_loader",
@@ -43291,6 +50337,7 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       "http_request_sanitize",
                       "http_request_sbfm",
                       "http_request_transform",
+                      "http_response_cache_settings",
                       "http_response_compression",
                       "http_response_firewall_managed",
                       "http_response_headers_transform",
@@ -43529,6 +50576,7 @@ export interface ListVersionsResponse {
       | "http_request_sanitize"
       | "http_request_sbfm"
       | "http_request_transform"
+      | "http_response_cache_settings"
       | "http_response_compression"
       | "http_response_firewall_managed"
       | "http_response_headers_transform"
@@ -43565,6 +50613,7 @@ export const ListVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         "http_request_sanitize",
         "http_request_sbfm",
         "http_request_transform",
+        "http_response_cache_settings",
         "http_response_compression",
         "http_response_firewall_managed",
         "http_response_headers_transform",

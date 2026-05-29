@@ -1024,7 +1024,7 @@ paths:
                         description: Defines the unique ID of the item in the List.
                     required:
                       - id
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success

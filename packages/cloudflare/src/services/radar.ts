@@ -11,6 +11,7 @@ import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
+import { UploadableSchema } from "../schemas.ts";
 
 // =============================================================================
 // AgentAiBotSummary
@@ -357,6 +358,93 @@ export const userAgentAiTimeseriesGroup: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UserAgentAiTimeseriesGroupRequest,
   output: UserAgentAiTimeseriesGroupResponse,
+  errors: [],
+}));
+
+// =============================================================================
+// AgentReadiness
+// =============================================================================
+
+export interface SummaryAgentReadinessRequest {
+  dimension: "CHECK";
+}
+
+export const SummaryAgentReadinessRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimension: Schema.Literal("CHECK").pipe(T.HttpPath("dimension")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/radar/agent_readiness/summary/{dimension}",
+    }),
+  ) as unknown as Schema.Schema<SummaryAgentReadinessRequest>;
+
+export interface SummaryAgentReadinessResponse {
+  meta: {
+    date: string;
+    domainCategories: { name: string; value: number }[];
+    lastUpdated: string;
+    normalization:
+      | "PERCENTAGE"
+      | "MIN0_MAX"
+      | "MIN_MAX"
+      | "RAW_VALUES"
+      | "PERCENTAGE_CHANGE"
+      | "ROLLING_AVERAGE"
+      | "OVERLAPPED_PERCENTAGE"
+      | "RATIO";
+    successfulDomains: number;
+    totalDomains: number;
+    units: { name: string; value: string }[];
+  };
+  summary_0: Record<string, unknown>;
+}
+
+export const SummaryAgentReadinessResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    meta: Schema.Struct({
+      date: Schema.String,
+      domainCategories: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          value: Schema.Number,
+        }),
+      ),
+      lastUpdated: Schema.String,
+      normalization: Schema.Literals([
+        "PERCENTAGE",
+        "MIN0_MAX",
+        "MIN_MAX",
+        "RAW_VALUES",
+        "PERCENTAGE_CHANGE",
+        "ROLLING_AVERAGE",
+        "OVERLAPPED_PERCENTAGE",
+        "RATIO",
+      ]),
+      successfulDomains: Schema.Number,
+      totalDomains: Schema.Number,
+      units: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          value: Schema.String,
+        }),
+      ),
+    }),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<SummaryAgentReadinessResponse>;
+
+export type SummaryAgentReadinessError = DefaultErrors;
+
+export const summaryAgentReadiness: API.OperationMethod<
+  SummaryAgentReadinessRequest,
+  SummaryAgentReadinessResponse,
+  SummaryAgentReadinessError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SummaryAgentReadinessRequest,
+  output: SummaryAgentReadinessResponse,
   errors: [],
 }));
 
@@ -1226,11 +1314,357 @@ export const taskAiInferenceTimeseriesGroupSummary: API.OperationMethod<
 }));
 
 // =============================================================================
+// AiMarkdownForAgent
+// =============================================================================
+
+export interface SummaryAiMarkdownForAgentRequest {}
+
+export const SummaryAiMarkdownForAgentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({ method: "GET", path: "/radar/ai/markdown_for_agents/summary" }),
+  ) as unknown as Schema.Schema<SummaryAiMarkdownForAgentRequest>;
+
+export interface SummaryAiMarkdownForAgentResponse {
+  /** Metadata for the results. */
+  meta: {
+    confidenceInfo: {
+      annotations: {
+        dataSource:
+          | "ALL"
+          | "AI_BOTS"
+          | "AI_GATEWAY"
+          | "BGP"
+          | "BOTS"
+          | "CONNECTION_ANOMALY"
+          | "CT"
+          | "DNS"
+          | "DNS_MAGNITUDE"
+          | "DNS_AS112"
+          | "DOS"
+          | "EMAIL_ROUTING"
+          | "EMAIL_SECURITY"
+          | "FW"
+          | "FW_PG"
+          | "HTTP"
+          | "HTTP_CONTROL"
+          | "HTTP_CRAWLER_REFERER"
+          | "HTTP_ORIGINS"
+          | "IQI"
+          | "LEAKED_CREDENTIALS"
+          | "NET"
+          | "ROBOTS_TXT"
+          | "SPEED"
+          | "WORKERS_AI";
+        description: string;
+        endDate: string;
+        eventType:
+          | "EVENT"
+          | "GENERAL"
+          | "OUTAGE"
+          | "PARTIAL_PROJECTION"
+          | "PIPELINE"
+          | "TRAFFIC_ANOMALY";
+        isInstantaneous: boolean;
+        linkedUrl: string;
+        startDate: string;
+      }[];
+      level: number;
+    };
+    dateRange: { endTime: string; startTime: string }[];
+    lastUpdated: string;
+    normalization:
+      | "PERCENTAGE"
+      | "MIN0_MAX"
+      | "MIN_MAX"
+      | "RAW_VALUES"
+      | "PERCENTAGE_CHANGE"
+      | "ROLLING_AVERAGE"
+      | "OVERLAPPED_PERCENTAGE"
+      | "RATIO";
+    units: { name: string; value: string }[];
+  };
+  summary_0: { value: string };
+}
+
+export const SummaryAiMarkdownForAgentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    meta: Schema.Struct({
+      confidenceInfo: Schema.Struct({
+        annotations: Schema.Array(
+          Schema.Struct({
+            dataSource: Schema.Literals([
+              "ALL",
+              "AI_BOTS",
+              "AI_GATEWAY",
+              "BGP",
+              "BOTS",
+              "CONNECTION_ANOMALY",
+              "CT",
+              "DNS",
+              "DNS_MAGNITUDE",
+              "DNS_AS112",
+              "DOS",
+              "EMAIL_ROUTING",
+              "EMAIL_SECURITY",
+              "FW",
+              "FW_PG",
+              "HTTP",
+              "HTTP_CONTROL",
+              "HTTP_CRAWLER_REFERER",
+              "HTTP_ORIGINS",
+              "IQI",
+              "LEAKED_CREDENTIALS",
+              "NET",
+              "ROBOTS_TXT",
+              "SPEED",
+              "WORKERS_AI",
+            ]),
+            description: Schema.String,
+            endDate: Schema.String,
+            eventType: Schema.Literals([
+              "EVENT",
+              "GENERAL",
+              "OUTAGE",
+              "PARTIAL_PROJECTION",
+              "PIPELINE",
+              "TRAFFIC_ANOMALY",
+            ]),
+            isInstantaneous: Schema.Boolean,
+            linkedUrl: Schema.String,
+            startDate: Schema.String,
+          }),
+        ),
+        level: Schema.Number,
+      }),
+      dateRange: Schema.Array(
+        Schema.Struct({
+          endTime: Schema.String,
+          startTime: Schema.String,
+        }),
+      ),
+      lastUpdated: Schema.String,
+      normalization: Schema.Literals([
+        "PERCENTAGE",
+        "MIN0_MAX",
+        "MIN_MAX",
+        "RAW_VALUES",
+        "PERCENTAGE_CHANGE",
+        "ROLLING_AVERAGE",
+        "OVERLAPPED_PERCENTAGE",
+        "RATIO",
+      ]),
+      units: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          value: Schema.String,
+        }),
+      ),
+    }),
+    summary_0: Schema.Struct({
+      value: Schema.String,
+    }),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<SummaryAiMarkdownForAgentResponse>;
+
+export type SummaryAiMarkdownForAgentError = DefaultErrors;
+
+export const summaryAiMarkdownForAgent: API.OperationMethod<
+  SummaryAiMarkdownForAgentRequest,
+  SummaryAiMarkdownForAgentResponse,
+  SummaryAiMarkdownForAgentError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SummaryAiMarkdownForAgentRequest,
+  output: SummaryAiMarkdownForAgentResponse,
+  errors: [],
+}));
+
+export interface TimeseriesAiMarkdownForAgentRequest {}
+
+export const TimeseriesAiMarkdownForAgentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({ method: "GET", path: "/radar/ai/markdown_for_agents/timeseries" }),
+  ) as unknown as Schema.Schema<TimeseriesAiMarkdownForAgentRequest>;
+
+export interface TimeseriesAiMarkdownForAgentResponse {
+  /** Metadata for the results. */
+  meta: {
+    aggInterval:
+      | "FIFTEEN_MINUTES"
+      | "ONE_HOUR"
+      | "ONE_DAY"
+      | "ONE_WEEK"
+      | "ONE_MONTH";
+    confidenceInfo: {
+      annotations: {
+        dataSource:
+          | "ALL"
+          | "AI_BOTS"
+          | "AI_GATEWAY"
+          | "BGP"
+          | "BOTS"
+          | "CONNECTION_ANOMALY"
+          | "CT"
+          | "DNS"
+          | "DNS_MAGNITUDE"
+          | "DNS_AS112"
+          | "DOS"
+          | "EMAIL_ROUTING"
+          | "EMAIL_SECURITY"
+          | "FW"
+          | "FW_PG"
+          | "HTTP"
+          | "HTTP_CONTROL"
+          | "HTTP_CRAWLER_REFERER"
+          | "HTTP_ORIGINS"
+          | "IQI"
+          | "LEAKED_CREDENTIALS"
+          | "NET"
+          | "ROBOTS_TXT"
+          | "SPEED"
+          | "WORKERS_AI";
+        description: string;
+        endDate: string;
+        eventType:
+          | "EVENT"
+          | "GENERAL"
+          | "OUTAGE"
+          | "PARTIAL_PROJECTION"
+          | "PIPELINE"
+          | "TRAFFIC_ANOMALY";
+        isInstantaneous: boolean;
+        linkedUrl: string;
+        startDate: string;
+      }[];
+      level: number;
+    };
+    dateRange: { endTime: string; startTime: string }[];
+    lastUpdated: string;
+    normalization:
+      | "PERCENTAGE"
+      | "MIN0_MAX"
+      | "MIN_MAX"
+      | "RAW_VALUES"
+      | "PERCENTAGE_CHANGE"
+      | "ROLLING_AVERAGE"
+      | "OVERLAPPED_PERCENTAGE"
+      | "RATIO";
+    units: { name: string; value: string }[];
+  };
+}
+
+export const TimeseriesAiMarkdownForAgentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    meta: Schema.Struct({
+      aggInterval: Schema.Literals([
+        "FIFTEEN_MINUTES",
+        "ONE_HOUR",
+        "ONE_DAY",
+        "ONE_WEEK",
+        "ONE_MONTH",
+      ]),
+      confidenceInfo: Schema.Struct({
+        annotations: Schema.Array(
+          Schema.Struct({
+            dataSource: Schema.Literals([
+              "ALL",
+              "AI_BOTS",
+              "AI_GATEWAY",
+              "BGP",
+              "BOTS",
+              "CONNECTION_ANOMALY",
+              "CT",
+              "DNS",
+              "DNS_MAGNITUDE",
+              "DNS_AS112",
+              "DOS",
+              "EMAIL_ROUTING",
+              "EMAIL_SECURITY",
+              "FW",
+              "FW_PG",
+              "HTTP",
+              "HTTP_CONTROL",
+              "HTTP_CRAWLER_REFERER",
+              "HTTP_ORIGINS",
+              "IQI",
+              "LEAKED_CREDENTIALS",
+              "NET",
+              "ROBOTS_TXT",
+              "SPEED",
+              "WORKERS_AI",
+            ]),
+            description: Schema.String,
+            endDate: Schema.String,
+            eventType: Schema.Literals([
+              "EVENT",
+              "GENERAL",
+              "OUTAGE",
+              "PARTIAL_PROJECTION",
+              "PIPELINE",
+              "TRAFFIC_ANOMALY",
+            ]),
+            isInstantaneous: Schema.Boolean,
+            linkedUrl: Schema.String,
+            startDate: Schema.String,
+          }),
+        ),
+        level: Schema.Number,
+      }),
+      dateRange: Schema.Array(
+        Schema.Struct({
+          endTime: Schema.String,
+          startTime: Schema.String,
+        }),
+      ),
+      lastUpdated: Schema.String,
+      normalization: Schema.Literals([
+        "PERCENTAGE",
+        "MIN0_MAX",
+        "MIN_MAX",
+        "RAW_VALUES",
+        "PERCENTAGE_CHANGE",
+        "ROLLING_AVERAGE",
+        "OVERLAPPED_PERCENTAGE",
+        "RATIO",
+      ]),
+      units: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          value: Schema.String,
+        }),
+      ),
+    }),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<TimeseriesAiMarkdownForAgentResponse>;
+
+export type TimeseriesAiMarkdownForAgentError = DefaultErrors;
+
+export const timeseriesAiMarkdownForAgent: API.OperationMethod<
+  TimeseriesAiMarkdownForAgentRequest,
+  TimeseriesAiMarkdownForAgentResponse,
+  TimeseriesAiMarkdownForAgentError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TimeseriesAiMarkdownForAgentRequest,
+  output: TimeseriesAiMarkdownForAgentResponse,
+  errors: [],
+}));
+
+// =============================================================================
 // AiTimeseriesGroup
 // =============================================================================
 
 export interface SummaryAiTimeseriesGroupRequest {
-  dimension: "USER_AGENT" | "CRAWL_PURPOSE" | "INDUSTRY" | "VERTICAL";
+  dimension:
+    | "USER_AGENT"
+    | "CRAWL_PURPOSE"
+    | "INDUSTRY"
+    | "VERTICAL"
+    | "CONTENT_TYPE"
+    | "RESPONSE_STATUS"
+    | "RESPONSE_STATUS_CATEGORY";
 }
 
 export const SummaryAiTimeseriesGroupRequest =
@@ -1240,6 +1674,9 @@ export const SummaryAiTimeseriesGroupRequest =
       "CRAWL_PURPOSE",
       "INDUSTRY",
       "VERTICAL",
+      "CONTENT_TYPE",
+      "RESPONSE_STATUS",
+      "RESPONSE_STATUS_CATEGORY",
     ]).pipe(T.HttpPath("dimension")),
   }).pipe(
     T.Http({ method: "GET", path: "/radar/ai/bots/summary/{dimension}" }),
@@ -1576,55 +2013,56 @@ export const timeseriesAiTimeseriesGroup: API.OperationMethod<
 // =============================================================================
 
 export interface CreateAiToMarkdownRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
+  /** Body param */
+  files: (File | Blob)[];
 }
 
 export const CreateAiToMarkdownRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    files: Schema.Array(UploadableSchema.pipe(T.HttpFormDataFile())),
   }).pipe(
-    T.Http({ method: "POST", path: "/accounts/{account_id}/ai/tomarkdown" }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/ai/tomarkdown",
+      contentType: "multipart",
+    }),
   ) as unknown as Schema.Schema<CreateAiToMarkdownRequest>;
 
-export interface CreateAiToMarkdownResponse {
-  result: {
-    data: string;
-    format: string;
-    mimeType: string;
-    name: string;
-    tokens: string;
-  }[];
-}
+export type CreateAiToMarkdownResponse = {
+  data: string;
+  format: string;
+  mimeType: string;
+  name: string;
+  tokens: string;
+}[];
 
 export const CreateAiToMarkdownResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        data: Schema.String,
-        format: Schema.String,
-        mimeType: Schema.String,
-        name: Schema.String,
-        tokens: Schema.String,
-      }),
-    ),
-  }) as unknown as Schema.Schema<CreateAiToMarkdownResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+    Schema.Struct({
+      data: Schema.String,
+      format: Schema.String,
+      mimeType: Schema.String,
+      name: Schema.String,
+      tokens: Schema.String,
+    }),
+  ).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateAiToMarkdownResponse>;
 
 export type CreateAiToMarkdownError = DefaultErrors;
 
-export const createAiToMarkdown: API.PaginatedOperationMethod<
+export const createAiToMarkdown: API.OperationMethod<
   CreateAiToMarkdownRequest,
   CreateAiToMarkdownResponse,
   CreateAiToMarkdownError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAiToMarkdownRequest,
   output: CreateAiToMarkdownResponse,
   errors: [],
-  pagination: {
-    mode: "single",
-    items: "result",
-  } as const,
 }));
 
 // =============================================================================
@@ -10062,6 +10500,53 @@ export const timeseriesBgpIp: API.OperationMethod<
 }));
 
 // =============================================================================
+// BgpIpTop
+// =============================================================================
+
+export interface AsesBgpIpTopRequest {}
+
+export const AsesBgpIpTopRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({ method: "GET", path: "/radar/bgp/ips/top/ases" }),
+) as unknown as Schema.Schema<AsesBgpIpTopRequest>;
+
+export interface AsesBgpIpTopResponse {
+  anchorTs: string;
+  asns: { asn: number; v4_24s: number; v6_48s: number }[];
+  country: string | null;
+  metric: string;
+}
+
+export const AsesBgpIpTopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  anchorTs: Schema.String,
+  asns: Schema.Array(
+    Schema.Struct({
+      asn: Schema.Number,
+      v4_24s: Schema.Number,
+      v6_48s: Schema.Number,
+    }),
+  ),
+  country: Schema.Union([Schema.String, Schema.Null]),
+  metric: Schema.String,
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<AsesBgpIpTopResponse>;
+
+export type AsesBgpIpTopError = DefaultErrors;
+
+export const asesBgpIpTop: API.OperationMethod<
+  AsesBgpIpTopRequest,
+  AsesBgpIpTopResponse,
+  AsesBgpIpTopError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: AsesBgpIpTopRequest,
+  output: AsesBgpIpTopResponse,
+  errors: [],
+}));
+
+// =============================================================================
 // BgpLeakEvent
 // =============================================================================
 
@@ -10655,6 +11140,223 @@ export const statsBgpRoute: API.OperationMethod<
 }));
 
 // =============================================================================
+// BgpRpkiAspa
+// =============================================================================
+
+export interface ChangesBgpRpkiAspaRequest {}
+
+export const ChangesBgpRpkiAspaRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({ method: "GET", path: "/radar/bgp/rpki/aspa/changes" }),
+  ) as unknown as Schema.Schema<ChangesBgpRpkiAspaRequest>;
+
+export interface ChangesBgpRpkiAspaResponse {
+  asnInfo: { "13335": { asn: number; country: string; name: string } };
+  changes: {
+    customersAdded: number;
+    customersRemoved: number;
+    date: string;
+    entries: {
+      customerAsn: number;
+      providers: number[];
+      type:
+        | "CustomerAdded"
+        | "CustomerRemoved"
+        | "ProvidersAdded"
+        | "ProvidersRemoved";
+    }[];
+    providersAdded: number;
+    providersRemoved: number;
+    totalCount: number;
+  }[];
+  meta: { dataTime: string; queryTime: string };
+}
+
+export const ChangesBgpRpkiAspaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    asnInfo: Schema.Struct({
+      "13335": Schema.Struct({
+        asn: Schema.Number,
+        country: Schema.String,
+        name: Schema.String,
+      }),
+    }),
+    changes: Schema.Array(
+      Schema.Struct({
+        customersAdded: Schema.Number,
+        customersRemoved: Schema.Number,
+        date: Schema.String,
+        entries: Schema.Array(
+          Schema.Struct({
+            customerAsn: Schema.Number,
+            providers: Schema.Array(Schema.Number),
+            type: Schema.Literals([
+              "CustomerAdded",
+              "CustomerRemoved",
+              "ProvidersAdded",
+              "ProvidersRemoved",
+            ]),
+          }),
+        ),
+        providersAdded: Schema.Number,
+        providersRemoved: Schema.Number,
+        totalCount: Schema.Number,
+      }),
+    ),
+    meta: Schema.Struct({
+      dataTime: Schema.String,
+      queryTime: Schema.String,
+    }),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<ChangesBgpRpkiAspaResponse>;
+
+export type ChangesBgpRpkiAspaError = DefaultErrors;
+
+export const changesBgpRpkiAspa: API.OperationMethod<
+  ChangesBgpRpkiAspaRequest,
+  ChangesBgpRpkiAspaResponse,
+  ChangesBgpRpkiAspaError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ChangesBgpRpkiAspaRequest,
+  output: ChangesBgpRpkiAspaResponse,
+  errors: [],
+}));
+
+export interface SnapshotBgpRpkiAspaRequest {}
+
+export const SnapshotBgpRpkiAspaRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({ method: "GET", path: "/radar/bgp/rpki/aspa/snapshot" }),
+  ) as unknown as Schema.Schema<SnapshotBgpRpkiAspaRequest>;
+
+export interface SnapshotBgpRpkiAspaResponse {
+  asnInfo: { "13335": { asn: number; country: string; name: string } };
+  aspaObjects: { customerAsn: number; providers: number[] }[];
+  meta: { dataTime: string; queryTime: string; totalCount: number };
+}
+
+export const SnapshotBgpRpkiAspaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    asnInfo: Schema.Struct({
+      "13335": Schema.Struct({
+        asn: Schema.Number,
+        country: Schema.String,
+        name: Schema.String,
+      }),
+    }),
+    aspaObjects: Schema.Array(
+      Schema.Struct({
+        customerAsn: Schema.Number,
+        providers: Schema.Array(Schema.Number),
+      }),
+    ),
+    meta: Schema.Struct({
+      dataTime: Schema.String,
+      queryTime: Schema.String,
+      totalCount: Schema.Number,
+    }),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<SnapshotBgpRpkiAspaResponse>;
+
+export type SnapshotBgpRpkiAspaError = DefaultErrors;
+
+export const snapshotBgpRpkiAspa: API.OperationMethod<
+  SnapshotBgpRpkiAspaRequest,
+  SnapshotBgpRpkiAspaResponse,
+  SnapshotBgpRpkiAspaError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SnapshotBgpRpkiAspaRequest,
+  output: SnapshotBgpRpkiAspaResponse,
+  errors: [],
+}));
+
+export interface TimeseriesBgpRpkiAspaRequest {}
+
+export const TimeseriesBgpRpkiAspaRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({ method: "GET", path: "/radar/bgp/rpki/aspa/timeseries" }),
+  ) as unknown as Schema.Schema<TimeseriesBgpRpkiAspaRequest>;
+
+export interface TimeseriesBgpRpkiAspaResponse {
+  meta: { dataTime: string; queryTime: string };
+  serie_0: { timestamps: string[]; values: string[] };
+}
+
+export const TimeseriesBgpRpkiAspaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    meta: Schema.Struct({
+      dataTime: Schema.String,
+      queryTime: Schema.String,
+    }),
+    serie_0: Schema.Struct({
+      timestamps: Schema.Array(Schema.String),
+      values: Schema.Array(Schema.String),
+    }),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<TimeseriesBgpRpkiAspaResponse>;
+
+export type TimeseriesBgpRpkiAspaError = DefaultErrors;
+
+export const timeseriesBgpRpkiAspa: API.OperationMethod<
+  TimeseriesBgpRpkiAspaRequest,
+  TimeseriesBgpRpkiAspaResponse,
+  TimeseriesBgpRpkiAspaError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TimeseriesBgpRpkiAspaRequest,
+  output: TimeseriesBgpRpkiAspaResponse,
+  errors: [],
+}));
+
+// =============================================================================
+// BgpRpkiRoa
+// =============================================================================
+
+export interface TimeseriesBgpRpkiRoaRequest {}
+
+export const TimeseriesBgpRpkiRoaRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({ method: "GET", path: "/radar/bgp/rpki/roas/timeseries" }),
+  ) as unknown as Schema.Schema<TimeseriesBgpRpkiRoaRequest>;
+
+export interface TimeseriesBgpRpkiRoaResponse {
+  meta: { dataTime: string; queryTime: string };
+  serie_0: { timestamps: string[]; values: string[] };
+}
+
+export const TimeseriesBgpRpkiRoaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    meta: Schema.Struct({
+      dataTime: Schema.String,
+      queryTime: Schema.String,
+    }),
+    serie_0: Schema.Struct({
+      timestamps: Schema.Array(Schema.String),
+      values: Schema.Array(Schema.String),
+    }),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<TimeseriesBgpRpkiRoaResponse>;
+
+export type TimeseriesBgpRpkiRoaError = DefaultErrors;
+
+export const timeseriesBgpRpkiRoa: API.OperationMethod<
+  TimeseriesBgpRpkiRoaRequest,
+  TimeseriesBgpRpkiRoaResponse,
+  TimeseriesBgpRpkiRoaError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TimeseriesBgpRpkiRoaRequest,
+  output: TimeseriesBgpRpkiRoaResponse,
+  errors: [],
+}));
+
+// =============================================================================
 // BgpTop
 // =============================================================================
 
@@ -10839,6 +11541,7 @@ export interface GetBotResponse {
     slug: string;
     userAgentPatterns: string[];
     userAgents: string[];
+    signatureAgentUrl?: string | null;
   };
 }
 
@@ -10853,6 +11556,9 @@ export const GetBotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String,
     userAgentPatterns: Schema.Array(Schema.String),
     userAgents: Schema.Array(Schema.String),
+    signatureAgentUrl: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
   }),
 }).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetBotResponse>;
 
@@ -11267,7 +11973,9 @@ export interface SummaryBotWebCrawlerRequest {
     | "REFERER"
     | "CRAWL_REFER_RATIO"
     | "VERTICAL"
-    | "INDUSTRY";
+    | "INDUSTRY"
+    | "RESPONSE_STATUS"
+    | "RESPONSE_STATUS_CATEGORY";
 }
 
 export const SummaryBotWebCrawlerRequest =
@@ -11279,6 +11987,8 @@ export const SummaryBotWebCrawlerRequest =
       "CRAWL_REFER_RATIO",
       "VERTICAL",
       "INDUSTRY",
+      "RESPONSE_STATUS",
+      "RESPONSE_STATUS_CATEGORY",
     ]).pipe(T.HttpPath("dimension")),
   }).pipe(
     T.Http({ method: "GET", path: "/radar/bots/crawlers/summary/{dimension}" }),
@@ -14349,7 +15059,7 @@ export const listDatasets: API.OperationMethod<
 export interface DownloadDatasetRequest {
   /** Query param: Format in which results will be returned. */
   format?: "JSON" | "CSV";
-  /** Body param: */
+  /** Body param */
   datasetId: number;
 }
 
@@ -21275,6 +21985,7 @@ export interface GetEntityLocationResponse {
   location: {
     alpha2: string;
     confidenceLevel: number;
+    continent: string;
     latitude: string;
     longitude: string;
     name: string;
@@ -21288,6 +21999,7 @@ export const GetEntityLocationResponse =
     location: Schema.Struct({
       alpha2: Schema.String,
       confidenceLevel: Schema.Number,
+      continent: Schema.String,
       latitude: Schema.String,
       longitude: Schema.String,
       name: Schema.String,
@@ -21321,9 +22033,12 @@ export const ListEntityLocationsRequest =
 export interface ListEntityLocationsResponse {
   locations: {
     alpha2: string;
+    continent: string;
     latitude: string;
     longitude: string;
     name: string;
+    region: string;
+    subregion: string;
   }[];
 }
 
@@ -21332,9 +22047,12 @@ export const ListEntityLocationsResponse =
     locations: Schema.Array(
       Schema.Struct({
         alpha2: Schema.String,
+        continent: Schema.String,
         latitude: Schema.String,
         longitude: Schema.String,
         name: Schema.String,
+        region: Schema.String,
+        subregion: Schema.String,
       }),
     ),
   }).pipe(
@@ -21741,10 +22459,16 @@ export interface GetGeolocationResponse {
         longitude: string;
         name: string;
         type: "CONTINENT" | "COUNTRY" | "ADM1";
+        code?: string | null;
+        locale?: string | null;
       };
       type: "CONTINENT" | "COUNTRY" | "ADM1";
+      code?: string | null;
+      locale?: string | null;
     };
     type: "CONTINENT" | "COUNTRY" | "ADM1";
+    code?: string | null;
+    locale?: string | null;
   };
 }
 
@@ -21766,10 +22490,16 @@ export const GetGeolocationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           longitude: Schema.String,
           name: Schema.String,
           type: Schema.Literals(["CONTINENT", "COUNTRY", "ADM1"]),
+          code: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          locale: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         }),
         type: Schema.Literals(["CONTINENT", "COUNTRY", "ADM1"]),
+        code: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        locale: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }),
       type: Schema.Literals(["CONTINENT", "COUNTRY", "ADM1"]),
+      code: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      locale: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
   },
 ).pipe(
@@ -21813,10 +22543,16 @@ export interface ListGeolocationsResponse {
         longitude: string;
         name: string;
         type: "CONTINENT" | "COUNTRY" | "ADM1";
+        code?: string | null;
+        locale?: string | null;
       };
       type: "CONTINENT" | "COUNTRY" | "ADM1";
+      code?: string | null;
+      locale?: string | null;
     };
     type: "CONTINENT" | "COUNTRY" | "ADM1";
+    code?: string | null;
+    locale?: string | null;
   }[];
 }
 
@@ -21839,10 +22575,16 @@ export const ListGeolocationsResponse =
             longitude: Schema.String,
             name: Schema.String,
             type: Schema.Literals(["CONTINENT", "COUNTRY", "ADM1"]),
+            code: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            locale: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           }),
           type: Schema.Literals(["CONTINENT", "COUNTRY", "ADM1"]),
+          code: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          locale: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         }),
         type: Schema.Literals(["CONTINENT", "COUNTRY", "ADM1"]),
+        code: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        locale: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }),
     ),
   }).pipe(
@@ -21867,7 +22609,14 @@ export const listGeolocations: API.OperationMethod<
 // =============================================================================
 
 export interface TimeseriesGroupsAiBotRequest {
-  dimension: "USER_AGENT" | "CRAWL_PURPOSE" | "INDUSTRY" | "VERTICAL";
+  dimension:
+    | "USER_AGENT"
+    | "CRAWL_PURPOSE"
+    | "INDUSTRY"
+    | "VERTICAL"
+    | "CONTENT_TYPE"
+    | "RESPONSE_STATUS"
+    | "RESPONSE_STATUS_CATEGORY";
 }
 
 export const TimeseriesGroupsAiBotRequest =
@@ -21877,6 +22626,9 @@ export const TimeseriesGroupsAiBotRequest =
       "CRAWL_PURPOSE",
       "INDUSTRY",
       "VERTICAL",
+      "CONTENT_TYPE",
+      "RESPONSE_STATUS",
+      "RESPONSE_STATUS_CATEGORY",
     ]).pipe(T.HttpPath("dimension")),
   }).pipe(
     T.Http({
@@ -22059,7 +22811,14 @@ export const timeseriesGroupsAiBot: API.OperationMethod<
 // =============================================================================
 
 export interface TimeseriesGroupsAiTimeseriesGroupRequest {
-  dimension: "USER_AGENT" | "CRAWL_PURPOSE" | "INDUSTRY" | "VERTICAL";
+  dimension:
+    | "USER_AGENT"
+    | "CRAWL_PURPOSE"
+    | "INDUSTRY"
+    | "VERTICAL"
+    | "CONTENT_TYPE"
+    | "RESPONSE_STATUS"
+    | "RESPONSE_STATUS_CATEGORY";
 }
 
 export const TimeseriesGroupsAiTimeseriesGroupRequest =
@@ -22069,6 +22828,9 @@ export const TimeseriesGroupsAiTimeseriesGroupRequest =
       "CRAWL_PURPOSE",
       "INDUSTRY",
       "VERTICAL",
+      "CONTENT_TYPE",
+      "RESPONSE_STATUS",
+      "RESPONSE_STATUS_CATEGORY",
     ]).pipe(T.HttpPath("dimension")),
   }).pipe(
     T.Http({
@@ -22449,7 +23211,9 @@ export interface TimeseriesGroupsBotWebCrawlerRequest {
     | "REFERER"
     | "CRAWL_REFER_RATIO"
     | "VERTICAL"
-    | "INDUSTRY";
+    | "INDUSTRY"
+    | "RESPONSE_STATUS"
+    | "RESPONSE_STATUS_CATEGORY";
 }
 
 export const TimeseriesGroupsBotWebCrawlerRequest =
@@ -22461,6 +23225,8 @@ export const TimeseriesGroupsBotWebCrawlerRequest =
       "CRAWL_REFER_RATIO",
       "VERTICAL",
       "INDUSTRY",
+      "RESPONSE_STATUS",
+      "RESPONSE_STATUS_CATEGORY",
     ]).pipe(T.HttpPath("dimension")),
   }).pipe(
     T.Http({
@@ -22929,12 +23695,12 @@ export const timeseriesGroupsCt: API.OperationMethod<
 // =============================================================================
 
 export interface TimeseriesGroupsNetflowRequest {
-  dimension: "ADM1" | "PRODUCT";
+  dimension: "ADM1" | "AS" | "LOCATION" | "PRODUCT";
 }
 
 export const TimeseriesGroupsNetflowRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dimension: Schema.Literals(["ADM1", "PRODUCT"]).pipe(
+    dimension: Schema.Literals(["ADM1", "AS", "LOCATION", "PRODUCT"]).pipe(
       T.HttpPath("dimension"),
     ),
   }).pipe(
@@ -23114,6 +23880,193 @@ export const timeseriesGroupsNetflow: API.OperationMethod<
 }));
 
 // =============================================================================
+// GroupsPostQuantumOrigin
+// =============================================================================
+
+export interface TimeseriesGroupsPostQuantumOriginRequest {
+  dimension: "KEY_AGREEMENT";
+}
+
+export const TimeseriesGroupsPostQuantumOriginRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimension: Schema.Literal("KEY_AGREEMENT").pipe(T.HttpPath("dimension")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/radar/post_quantum/origin/timeseries_groups/{dimension}",
+    }),
+  ) as unknown as Schema.Schema<TimeseriesGroupsPostQuantumOriginRequest>;
+
+export interface TimeseriesGroupsPostQuantumOriginResponse {
+  /** Metadata for the results. */
+  meta: {
+    aggInterval:
+      | "FIFTEEN_MINUTES"
+      | "ONE_HOUR"
+      | "ONE_DAY"
+      | "ONE_WEEK"
+      | "ONE_MONTH";
+    confidenceInfo: {
+      annotations: {
+        dataSource:
+          | "ALL"
+          | "AI_BOTS"
+          | "AI_GATEWAY"
+          | "BGP"
+          | "BOTS"
+          | "CONNECTION_ANOMALY"
+          | "CT"
+          | "DNS"
+          | "DNS_MAGNITUDE"
+          | "DNS_AS112"
+          | "DOS"
+          | "EMAIL_ROUTING"
+          | "EMAIL_SECURITY"
+          | "FW"
+          | "FW_PG"
+          | "HTTP"
+          | "HTTP_CONTROL"
+          | "HTTP_CRAWLER_REFERER"
+          | "HTTP_ORIGINS"
+          | "IQI"
+          | "LEAKED_CREDENTIALS"
+          | "NET"
+          | "ROBOTS_TXT"
+          | "SPEED"
+          | "WORKERS_AI";
+        description: string;
+        endDate: string;
+        eventType:
+          | "EVENT"
+          | "GENERAL"
+          | "OUTAGE"
+          | "PARTIAL_PROJECTION"
+          | "PIPELINE"
+          | "TRAFFIC_ANOMALY";
+        isInstantaneous: boolean;
+        linkedUrl: string;
+        startDate: string;
+      }[];
+      level: number;
+    };
+    dateRange: { endTime: string; startTime: string }[];
+    lastUpdated: string;
+    normalization:
+      | "PERCENTAGE"
+      | "MIN0_MAX"
+      | "MIN_MAX"
+      | "RAW_VALUES"
+      | "PERCENTAGE_CHANGE"
+      | "ROLLING_AVERAGE"
+      | "OVERLAPPED_PERCENTAGE"
+      | "RATIO";
+    units: { name: string; value: string }[];
+  };
+  serie_0: { timestamps: string[] };
+}
+
+export const TimeseriesGroupsPostQuantumOriginResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    meta: Schema.Struct({
+      aggInterval: Schema.Literals([
+        "FIFTEEN_MINUTES",
+        "ONE_HOUR",
+        "ONE_DAY",
+        "ONE_WEEK",
+        "ONE_MONTH",
+      ]),
+      confidenceInfo: Schema.Struct({
+        annotations: Schema.Array(
+          Schema.Struct({
+            dataSource: Schema.Literals([
+              "ALL",
+              "AI_BOTS",
+              "AI_GATEWAY",
+              "BGP",
+              "BOTS",
+              "CONNECTION_ANOMALY",
+              "CT",
+              "DNS",
+              "DNS_MAGNITUDE",
+              "DNS_AS112",
+              "DOS",
+              "EMAIL_ROUTING",
+              "EMAIL_SECURITY",
+              "FW",
+              "FW_PG",
+              "HTTP",
+              "HTTP_CONTROL",
+              "HTTP_CRAWLER_REFERER",
+              "HTTP_ORIGINS",
+              "IQI",
+              "LEAKED_CREDENTIALS",
+              "NET",
+              "ROBOTS_TXT",
+              "SPEED",
+              "WORKERS_AI",
+            ]),
+            description: Schema.String,
+            endDate: Schema.String,
+            eventType: Schema.Literals([
+              "EVENT",
+              "GENERAL",
+              "OUTAGE",
+              "PARTIAL_PROJECTION",
+              "PIPELINE",
+              "TRAFFIC_ANOMALY",
+            ]),
+            isInstantaneous: Schema.Boolean,
+            linkedUrl: Schema.String,
+            startDate: Schema.String,
+          }),
+        ),
+        level: Schema.Number,
+      }),
+      dateRange: Schema.Array(
+        Schema.Struct({
+          endTime: Schema.String,
+          startTime: Schema.String,
+        }),
+      ),
+      lastUpdated: Schema.String,
+      normalization: Schema.Literals([
+        "PERCENTAGE",
+        "MIN0_MAX",
+        "MIN_MAX",
+        "RAW_VALUES",
+        "PERCENTAGE_CHANGE",
+        "ROLLING_AVERAGE",
+        "OVERLAPPED_PERCENTAGE",
+        "RATIO",
+      ]),
+      units: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          value: Schema.String,
+        }),
+      ),
+    }),
+    serie_0: Schema.Struct({
+      timestamps: Schema.Array(Schema.String),
+    }),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<TimeseriesGroupsPostQuantumOriginResponse>;
+
+export type TimeseriesGroupsPostQuantumOriginError = DefaultErrors;
+
+export const timeseriesGroupsPostQuantumOrigin: API.OperationMethod<
+  TimeseriesGroupsPostQuantumOriginRequest,
+  TimeseriesGroupsPostQuantumOriginResponse,
+  TimeseriesGroupsPostQuantumOriginError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TimeseriesGroupsPostQuantumOriginRequest,
+  output: TimeseriesGroupsPostQuantumOriginResponse,
+  errors: [],
+}));
+
+// =============================================================================
 // GroupsQualityIqi
 // =============================================================================
 
@@ -23224,12 +24177,7 @@ export interface TimeseriesGroupsQualityIqiResponse {
       | "RATIO";
     units: { name: string; value: string }[];
   };
-  serie_0: {
-    p25: string[];
-    p50: string[];
-    p75: string[];
-    timestamps: string[];
-  };
+  serie_0: { timestamps: string[] };
 }
 
 export const TimeseriesGroupsQualityIqiResponse =
@@ -23314,9 +24262,6 @@ export const TimeseriesGroupsQualityIqiResponse =
       ),
     }),
     serie_0: Schema.Struct({
-      p25: Schema.Array(Schema.String),
-      p50: Schema.Array(Schema.String),
-      p75: Schema.Array(Schema.String),
       timestamps: Schema.Array(Schema.String),
     }),
   }).pipe(
@@ -24700,33 +25645,39 @@ export const timeseriesGroupsV2AttackLayer7: API.OperationMethod<
 
 export interface TimeseriesGroupsV2DnsRequest {
   dimension:
-    | "IP_VERSION"
+    | "AS"
     | "CACHE_HIT"
     | "DNSSEC"
     | "DNSSEC_AWARE"
     | "DNSSEC_E2E"
+    | "IP_VERSION"
+    | "LOCATION"
     | "MATCHING_ANSWER"
     | "PROTOCOL"
     | "QUERY_TYPE"
     | "RESPONSE_CODE"
     | "RESPONSE_TTL"
-    | "TLD";
+    | "TLD"
+    | "TLD_DNS_MAGNITUDE";
 }
 
 export const TimeseriesGroupsV2DnsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimension: Schema.Literals([
-      "IP_VERSION",
+      "AS",
       "CACHE_HIT",
       "DNSSEC",
       "DNSSEC_AWARE",
       "DNSSEC_E2E",
+      "IP_VERSION",
+      "LOCATION",
       "MATCHING_ANSWER",
       "PROTOCOL",
       "QUERY_TYPE",
       "RESPONSE_CODE",
       "RESPONSE_TTL",
       "TLD",
+      "TLD_DNS_MAGNITUDE",
     ]).pipe(T.HttpPath("dimension")),
   }).pipe(
     T.Http({ method: "GET", path: "/radar/dns/timeseries_groups/{dimension}" }),
@@ -25308,13 +26259,17 @@ export const timeseriesGroupsV2EmailSecurity: API.OperationMethod<
 export interface TimeseriesGroupsV2HttpRequest {
   dimension:
     | "ADM1"
+    | "API_TRAFFIC"
+    | "AS"
     | "BOT_CLASS"
     | "BROWSER"
     | "BROWSER_FAMILY"
+    | "CONTENT_TYPE"
     | "DEVICE_TYPE"
     | "HTTP_PROTOCOL"
     | "HTTP_VERSION"
     | "IP_VERSION"
+    | "LOCATION"
     | "OS"
     | "POST_QUANTUM"
     | "TLS_VERSION";
@@ -25324,13 +26279,17 @@ export const TimeseriesGroupsV2HttpRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimension: Schema.Literals([
       "ADM1",
+      "API_TRAFFIC",
+      "AS",
       "BOT_CLASS",
       "BROWSER",
       "BROWSER_FAMILY",
+      "CONTENT_TYPE",
       "DEVICE_TYPE",
       "HTTP_PROTOCOL",
       "HTTP_VERSION",
       "IP_VERSION",
+      "LOCATION",
       "OS",
       "POST_QUANTUM",
       "TLS_VERSION",
@@ -31678,6 +32637,238 @@ export const locationsNetflowTop: API.OperationMethod<
 }));
 
 // =============================================================================
+// PostQuantumOrigin
+// =============================================================================
+
+export interface SummaryPostQuantumOriginRequest {
+  dimension: "KEY_AGREEMENT";
+}
+
+export const SummaryPostQuantumOriginRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimension: Schema.Literal("KEY_AGREEMENT").pipe(T.HttpPath("dimension")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/radar/post_quantum/origin/summary/{dimension}",
+    }),
+  ) as unknown as Schema.Schema<SummaryPostQuantumOriginRequest>;
+
+export interface SummaryPostQuantumOriginResponse {
+  /** Metadata for the results. */
+  meta: {
+    confidenceInfo: {
+      annotations: {
+        dataSource:
+          | "ALL"
+          | "AI_BOTS"
+          | "AI_GATEWAY"
+          | "BGP"
+          | "BOTS"
+          | "CONNECTION_ANOMALY"
+          | "CT"
+          | "DNS"
+          | "DNS_MAGNITUDE"
+          | "DNS_AS112"
+          | "DOS"
+          | "EMAIL_ROUTING"
+          | "EMAIL_SECURITY"
+          | "FW"
+          | "FW_PG"
+          | "HTTP"
+          | "HTTP_CONTROL"
+          | "HTTP_CRAWLER_REFERER"
+          | "HTTP_ORIGINS"
+          | "IQI"
+          | "LEAKED_CREDENTIALS"
+          | "NET"
+          | "ROBOTS_TXT"
+          | "SPEED"
+          | "WORKERS_AI";
+        description: string;
+        endDate: string;
+        eventType:
+          | "EVENT"
+          | "GENERAL"
+          | "OUTAGE"
+          | "PARTIAL_PROJECTION"
+          | "PIPELINE"
+          | "TRAFFIC_ANOMALY";
+        isInstantaneous: boolean;
+        linkedUrl: string;
+        startDate: string;
+      }[];
+      level: number;
+    };
+    dateRange: { endTime: string; startTime: string }[];
+    lastUpdated: string;
+    normalization:
+      | "PERCENTAGE"
+      | "MIN0_MAX"
+      | "MIN_MAX"
+      | "RAW_VALUES"
+      | "PERCENTAGE_CHANGE"
+      | "ROLLING_AVERAGE"
+      | "OVERLAPPED_PERCENTAGE"
+      | "RATIO";
+    units: { name: string; value: string }[];
+  };
+  summary_0: Record<string, unknown>;
+}
+
+export const SummaryPostQuantumOriginResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    meta: Schema.Struct({
+      confidenceInfo: Schema.Struct({
+        annotations: Schema.Array(
+          Schema.Struct({
+            dataSource: Schema.Literals([
+              "ALL",
+              "AI_BOTS",
+              "AI_GATEWAY",
+              "BGP",
+              "BOTS",
+              "CONNECTION_ANOMALY",
+              "CT",
+              "DNS",
+              "DNS_MAGNITUDE",
+              "DNS_AS112",
+              "DOS",
+              "EMAIL_ROUTING",
+              "EMAIL_SECURITY",
+              "FW",
+              "FW_PG",
+              "HTTP",
+              "HTTP_CONTROL",
+              "HTTP_CRAWLER_REFERER",
+              "HTTP_ORIGINS",
+              "IQI",
+              "LEAKED_CREDENTIALS",
+              "NET",
+              "ROBOTS_TXT",
+              "SPEED",
+              "WORKERS_AI",
+            ]),
+            description: Schema.String,
+            endDate: Schema.String,
+            eventType: Schema.Literals([
+              "EVENT",
+              "GENERAL",
+              "OUTAGE",
+              "PARTIAL_PROJECTION",
+              "PIPELINE",
+              "TRAFFIC_ANOMALY",
+            ]),
+            isInstantaneous: Schema.Boolean,
+            linkedUrl: Schema.String,
+            startDate: Schema.String,
+          }),
+        ),
+        level: Schema.Number,
+      }),
+      dateRange: Schema.Array(
+        Schema.Struct({
+          endTime: Schema.String,
+          startTime: Schema.String,
+        }),
+      ),
+      lastUpdated: Schema.String,
+      normalization: Schema.Literals([
+        "PERCENTAGE",
+        "MIN0_MAX",
+        "MIN_MAX",
+        "RAW_VALUES",
+        "PERCENTAGE_CHANGE",
+        "ROLLING_AVERAGE",
+        "OVERLAPPED_PERCENTAGE",
+        "RATIO",
+      ]),
+      units: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          value: Schema.String,
+        }),
+      ),
+    }),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<SummaryPostQuantumOriginResponse>;
+
+export type SummaryPostQuantumOriginError = DefaultErrors;
+
+export const summaryPostQuantumOrigin: API.OperationMethod<
+  SummaryPostQuantumOriginRequest,
+  SummaryPostQuantumOriginResponse,
+  SummaryPostQuantumOriginError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SummaryPostQuantumOriginRequest,
+  output: SummaryPostQuantumOriginResponse,
+  errors: [],
+}));
+
+// =============================================================================
+// PostQuantumTl
+// =============================================================================
+
+export interface SupportPostQuantumTlsRequest {
+  /** Hostname or IP address to test for Post-Quantum TLS support, optionally with port (defaults to 443). */
+  host: string;
+}
+
+export const SupportPostQuantumTlsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    host: Schema.String,
+  }).pipe(
+    T.Http({ method: "GET", path: "/radar/post_quantum/tls/support" }),
+  ) as unknown as Schema.Schema<SupportPostQuantumTlsRequest>;
+
+export interface SupportPostQuantumTlsResponse {
+  bugs: {
+    hrrFailure: boolean;
+    splitClientHello: boolean;
+    unknownKeyshare: boolean;
+  };
+  /** The host that was tested */
+  host: string;
+  /** TLS CurveID of the negotiated key exchange */
+  kex: number;
+  /** Human-readable name of the key exchange algorithm */
+  kexName: string;
+  /** Whether the negotiated key exchange uses Post-Quantum cryptography (specifically X25519MLKEM768) */
+  pq: boolean;
+}
+
+export const SupportPostQuantumTlsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bugs: Schema.Struct({
+      hrrFailure: Schema.Boolean,
+      splitClientHello: Schema.Boolean,
+      unknownKeyshare: Schema.Boolean,
+    }),
+    host: Schema.String,
+    kex: Schema.Number,
+    kexName: Schema.String,
+    pq: Schema.Boolean,
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<SupportPostQuantumTlsResponse>;
+
+export type SupportPostQuantumTlsError = DefaultErrors;
+
+export const supportPostQuantumTls: API.OperationMethod<
+  SupportPostQuantumTlsRequest,
+  SupportPostQuantumTlsResponse,
+  SupportPostQuantumTlsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SupportPostQuantumTlsRequest,
+  output: SupportPostQuantumTlsResponse,
+  errors: [],
+}));
+
+// =============================================================================
 // ProductAttackLayer7Summary
 // =============================================================================
 
@@ -35085,6 +36276,61 @@ export const summaryTcpResetsTimeout: API.OperationMethod<
 }));
 
 // =============================================================================
+// ThreatFeedEntityAsn
+// =============================================================================
+
+export interface BotnetThreatFeedEntityAsnRequest {}
+
+export const BotnetThreatFeedEntityAsnRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({ method: "GET", path: "/radar/entities/asns/botnet_threat_feed" }),
+  ) as unknown as Schema.Schema<BotnetThreatFeedEntityAsnRequest>;
+
+export interface BotnetThreatFeedEntityAsnResponse {
+  ases: {
+    asn: number;
+    country: string;
+    name: string;
+    rank: number;
+    rankChange?: number | null;
+  }[];
+  meta: { date: string; total: number; compareDate?: string | null };
+}
+
+export const BotnetThreatFeedEntityAsnResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ases: Schema.Array(
+      Schema.Struct({
+        asn: Schema.Number,
+        country: Schema.String,
+        name: Schema.String,
+        rank: Schema.Number,
+        rankChange: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }),
+    ),
+    meta: Schema.Struct({
+      date: Schema.String,
+      total: Schema.Number,
+      compareDate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<BotnetThreatFeedEntityAsnResponse>;
+
+export type BotnetThreatFeedEntityAsnError = DefaultErrors;
+
+export const botnetThreatFeedEntityAsn: API.OperationMethod<
+  BotnetThreatFeedEntityAsnRequest,
+  BotnetThreatFeedEntityAsnResponse,
+  BotnetThreatFeedEntityAsnError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BotnetThreatFeedEntityAsnRequest,
+  output: BotnetThreatFeedEntityAsnResponse,
+  errors: [],
+}));
+
+// =============================================================================
 // TrafficAnomaly
 // =============================================================================
 
@@ -36681,7 +37927,14 @@ export const deviceTypeHttpTimeseriesGroup: API.OperationMethod<
 // =============================================================================
 
 export interface SummaryV2AiBotRequest {
-  dimension: "USER_AGENT" | "CRAWL_PURPOSE" | "INDUSTRY" | "VERTICAL";
+  dimension:
+    | "USER_AGENT"
+    | "CRAWL_PURPOSE"
+    | "INDUSTRY"
+    | "VERTICAL"
+    | "CONTENT_TYPE"
+    | "RESPONSE_STATUS"
+    | "RESPONSE_STATUS_CATEGORY";
 }
 
 export const SummaryV2AiBotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -36690,6 +37943,9 @@ export const SummaryV2AiBotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "CRAWL_PURPOSE",
     "INDUSTRY",
     "VERTICAL",
+    "CONTENT_TYPE",
+    "RESPONSE_STATUS",
+    "RESPONSE_STATUS_CATEGORY",
   ]).pipe(T.HttpPath("dimension")),
 }).pipe(
   T.Http({ method: "GET", path: "/radar/ai/bots/summary/{dimension}" }),
@@ -37581,11 +38837,13 @@ export const summaryV2AttackLayer7: API.OperationMethod<
 
 export interface SummaryV2DnsRequest {
   dimension:
-    | "IP_VERSION"
+    | "AS"
     | "CACHE_HIT"
     | "DNSSEC"
     | "DNSSEC_AWARE"
     | "DNSSEC_E2E"
+    | "IP_VERSION"
+    | "LOCATION"
     | "MATCHING_ANSWER"
     | "PROTOCOL"
     | "QUERY_TYPE"
@@ -37597,11 +38855,13 @@ export interface SummaryV2DnsRequest {
 
 export const SummaryV2DnsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dimension: Schema.Literals([
-    "IP_VERSION",
+    "AS",
     "CACHE_HIT",
     "DNSSEC",
     "DNSSEC_AWARE",
     "DNSSEC_E2E",
+    "IP_VERSION",
+    "LOCATION",
     "MATCHING_ANSWER",
     "PROTOCOL",
     "QUERY_TYPE",
@@ -38141,13 +39401,17 @@ export const summaryV2EmailSecurity: API.OperationMethod<
 export interface SummaryV2HttpRequest {
   dimension:
     | "ADM1"
+    | "API_TRAFFIC"
+    | "AS"
     | "BOT_CLASS"
     | "BROWSER"
     | "BROWSER_FAMILY"
+    | "CONTENT_TYPE"
     | "DEVICE_TYPE"
     | "HTTP_PROTOCOL"
     | "HTTP_VERSION"
     | "IP_VERSION"
+    | "LOCATION"
     | "OS"
     | "POST_QUANTUM"
     | "TLS_VERSION";
@@ -38156,13 +39420,17 @@ export interface SummaryV2HttpRequest {
 export const SummaryV2HttpRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dimension: Schema.Literals([
     "ADM1",
+    "API_TRAFFIC",
+    "AS",
     "BOT_CLASS",
     "BROWSER",
     "BROWSER_FAMILY",
+    "CONTENT_TYPE",
     "DEVICE_TYPE",
     "HTTP_PROTOCOL",
     "HTTP_VERSION",
     "IP_VERSION",
+    "LOCATION",
     "OS",
     "POST_QUANTUM",
     "TLS_VERSION",
@@ -38503,12 +39771,12 @@ export const summaryV2LeakedCredential: API.OperationMethod<
 // =============================================================================
 
 export interface SummaryV2NetflowRequest {
-  dimension: "ADM1" | "PRODUCT";
+  dimension: "ADM1" | "AS" | "LOCATION" | "PRODUCT";
 }
 
 export const SummaryV2NetflowRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dimension: Schema.Literals(["ADM1", "PRODUCT"]).pipe(
+    dimension: Schema.Literals(["ADM1", "AS", "LOCATION", "PRODUCT"]).pipe(
       T.HttpPath("dimension"),
     ),
   }).pipe(

@@ -10,7 +10,9 @@ paths:
   /accounts/{account_id}/slurper/jobs/abortAll:
     put:
       operationId: abortAllSuperSlurperJob
-      description: "Abort all jobs  @example ```ts const response = await
+      description: "Cancels all running R2 Super Slurper migration jobs for the
+        account. Any objects in the middle of a transfer will finish, but no new
+        objects will start transferring.  @example ```ts const response = await
         client.r2.superSlurper.jobs.abortAll( { account_id: 'account_id' }, );
         ```"
       parameters:
@@ -671,7 +673,7 @@ paths:
                           (86400) is specified.
                     required:
                       - allowed
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -1168,6 +1170,9 @@ paths:
                     type: boolean
                     description: Whether this bucket is publicly accessible at the specified custom
                       domain.
+                  zoneId:
+                    type: string
+                    description: Zone ID of the custom domain.
                   ciphers:
                     type: array
                     items:
@@ -1186,6 +1191,7 @@ paths:
                 required:
                   - domain
                   - enabled
+                  - zoneId
       x-distilled-response-path: result
       x-distilled-errors:
         NoSuchBucket:
@@ -1956,7 +1962,7 @@ paths:
                       - id
                       - conditions
                       - enabled
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -2155,7 +2161,7 @@ paths:
                       - id
                       - condition
                       - enabled
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -2255,6 +2261,422 @@ paths:
       x-distilled-errors:
         InvalidRoute:
           - code: 7003
+  /accounts/{account_id}/r2/buckets/{bucketName}/objects/{objectKey}:
+    get:
+      operationId: getBucketObject
+      description: "Retrieves an object from an R2 bucket. Returns the object body
+        along with metadata headers.  For most workloads, we recommend using
+        R2's [S3-compatible
+        API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with
+        an R2
+        binding](https://developers.cloudflare.com/r2/api/workers/workers-api-r\
+        eference/) instead.  @example ```ts const object = await
+        client.r2.buckets.objects.get( 'example-bucket',
+        'path/to/my-object.txt', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, );  const content = await
+        object.blob(); console.log(content); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: objectKey
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+        - name: If-Modified-Since
+          in: header
+          required: false
+          description: "Header param: Returns the object only if it has been modified
+            since the specified time. Must be formatted as an HTTP-date (RFC
+            7231), e.g. `Tue, 15 Jan 2024 10:30:00 GMT`."
+          schema:
+            type: string
+        - name: If-None-Match
+          in: header
+          required: false
+          description: "Header param: Returns the object only if its ETag does not match
+            the given value."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+    delete:
+      operationId: deleteBucketObject
+      description: "Deletes an object from an R2 bucket.  For most workloads, we
+        recommend using R2's [S3-compatible
+        API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with
+        an R2
+        binding](https://developers.cloudflare.com/r2/api/workers/workers-api-r\
+        eference/) instead.  @example ```ts const object = await
+        client.r2.buckets.objects.delete( 'example-bucket',
+        'path/to/my-object.txt', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: objectKey
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  key:
+                    type: string
+                    description: The key (name) of the deleted object.
+      x-distilled-response-path: result
+    put:
+      operationId: uploadBucketObject
+      description: "Uploads an object to an R2 bucket. The object body is provided as
+        the request body. Returns metadata about the uploaded object.  The
+        maximum upload size for this endpoint is 300 MB. For most workloads, we
+        recommend using R2's [S3-compatible
+        API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with
+        an R2
+        binding](https://developers.cloudflare.com/r2/api/workers/workers-api-r\
+        eference/) instead.  @example ```ts const response = await
+        client.r2.buckets.objects.upload( 'example-bucket',
+        'path/to/my-object.txt', fs.createReadStream('path/to/file'), {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: objectKey
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+        - name: cf-r2-storage-class
+          in: header
+          required: false
+          description: "Header param: Storage class for newly uploaded objects, unless
+            specified otherwise."
+          schema:
+            type: string
+            enum:
+              - Standard
+              - InfrequentAccess
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  etag:
+                    type: string
+                    description: The entity tag for the uploaded object.
+                  key:
+                    type: string
+                    description: The key (name) of the uploaded object.
+                  size:
+                    type: string
+                    description: The size of the uploaded object in bytes (as a string).
+                  storage_class:
+                    type: string
+                    enum:
+                      - Standard
+                      - InfrequentAccess
+                    description: Storage class for newly uploaded objects, unless specified
+                      otherwise.
+                  uploaded:
+                    type: string
+                    description: The date and time the object was uploaded.
+                  version:
+                    type: string
+                    description: The version UUID of the uploaded object.
+      x-distilled-response-path: result
+  /accounts/{account_id}/r2/buckets/{bucketName}/objects:
+    get:
+      operationId: listObjects
+      summary: List objects in an R2 bucket.
+      description: >
+        Lists objects in an R2 bucket. Returns object metadata including key,
+        size, etag,
+
+        last modified date, HTTP metadata, and custom metadata. Cursor-paginated
+        — call
+
+        `.items()` on the operation for an `Effect.Stream` of every object
+        across pages.
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          description: Name of the R2 bucket.
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+        - name: per_page
+          in: query
+          required: false
+          description: Maximum number of objects to return per page (1-1000).
+          schema:
+            type: number
+        - name: prefix
+          in: query
+          required: false
+          description: Restrict results to keys beginning with this prefix.
+          schema:
+            type: string
+        - name: delimiter
+          in: query
+          required: false
+          description: Single character used to group keys.
+          schema:
+            type: string
+        - name: cursor
+          in: query
+          required: false
+          description: Pagination cursor returned by a previous List Objects call.
+          schema:
+            type: string
+        - name: start_after
+          in: query
+          required: false
+          description: Returns keys lexicographically after this key.
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: Jurisdiction where objects in this bucket are guaranteed to be
+            stored.
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  key:
+                    type: string
+                    description: The object key (name).
+                  size:
+                    type: number
+                    description: Object size in bytes.
+                  etag:
+                    type: string
+                    description: Entity tag (raw hex digest, no surrounding quotes).
+                  last_modified:
+                    type: string
+                    description: When the object was last modified.
+                  storage_class:
+                    type: string
+                    enum:
+                      - Standard
+                      - InfrequentAccess
+                  ssec:
+                    type: boolean
+                    description: Whether the object is encrypted with a customer-supplied key.
+                  custom_metadata:
+                    description: Custom metadata key-value pairs.
+                  http_metadata:
+                    description: HTTP metadata associated with the object.
+      x-distilled-pagination-class: CursorPagination
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+        NoRoute:
+          - code: 10015
+    delete:
+      operationId: deleteObjects
+      summary: Bulk-delete objects from an R2 bucket.
+      description: >
+        Deletes multiple objects from an R2 bucket in a single request. Provide
+        a JSON
+
+        array of object keys in `keys`; up to 1000 keys per request. Per-key
+        errors are
+
+        reported in the response body without failing the request as a whole.
+
+
+        For prefix-based async deletion (returns a job descriptor), pass a
+        `prefix` query
+
+        parameter and an empty `keys` array.
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          description: Name of the R2 bucket.
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+        - name: prefix
+          in: query
+          required: false
+          description: >
+            When set, switches to "delete by prefix" mode and asynchronously
+            deletes every
+
+            object whose key begins with the given prefix. The response is a
+            prefix-delete
+
+            job descriptor instead of a per-key list. Pass an empty body when
+            using prefix
+
+            mode.
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: Jurisdiction where objects in this bucket are guaranteed to be
+            stored.
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          description: Key of the deleted object.
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                      jobType:
+                        type: string
+                        enum:
+                          - prefixDelete
+                      status:
+                        type: string
+                        enum:
+                          - ENQUEUED
+                          - RUNNING
+                          - COMPLETED
+                          - FAILED
+                          - CANCELLED
+                      startTime:
+                        type: string
+                      endTime:
+                        type: string
+                      prefixDelete:
+                        type: object
+                        properties:
+                          prefix:
+                            type: string
+                          deletedObjects:
+                            type: number
+                          isBucketClear:
+                            type: boolean
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+        NoRoute:
+          - code: 10015
   /accounts/{account_id}/r2/buckets/{bucketName}/sippy:
     get:
       operationId: getBucketSippy
@@ -2781,229 +3203,6 @@ paths:
           - code: 7003
         NoRoute:
           - code: 10015
-  /accounts/{account_id}/r2/buckets/{bucketName}/objects:
-    get:
-      operationId: listObjects
-      summary: List objects in an R2 bucket.
-      description: >
-        Lists objects in an R2 bucket. Returns object metadata including key,
-        size, etag,
-
-        last modified date, HTTP metadata, and custom metadata. Cursor-paginated
-        — call
-
-        `.items()` on the operation for an `Effect.Stream` of every object
-        across pages.
-      parameters:
-        - name: bucketName
-          in: path
-          required: true
-          description: Name of the R2 bucket.
-          schema:
-            type: string
-        - name: account_id
-          in: path
-          required: true
-          description: Account ID.
-          schema:
-            type: string
-        - name: per_page
-          in: query
-          required: false
-          description: Maximum number of objects to return per page (1-1000).
-          schema:
-            type: number
-        - name: prefix
-          in: query
-          required: false
-          description: Restrict results to keys beginning with this prefix.
-          schema:
-            type: string
-        - name: delimiter
-          in: query
-          required: false
-          description: Single character used to group keys.
-          schema:
-            type: string
-        - name: cursor
-          in: query
-          required: false
-          description: Pagination cursor returned by a previous List Objects call.
-          schema:
-            type: string
-        - name: start_after
-          in: query
-          required: false
-          description: Returns keys lexicographically after this key.
-          schema:
-            type: string
-        - name: cf-r2-jurisdiction
-          in: header
-          required: false
-          description: Jurisdiction where objects in this bucket are guaranteed to be
-            stored.
-          schema:
-            type: string
-            enum:
-              - default
-              - eu
-              - fedramp
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  key:
-                    type: string
-                    description: The object key (name).
-                  size:
-                    type: number
-                    description: Object size in bytes.
-                  etag:
-                    type: string
-                    description: Entity tag (raw hex digest, no surrounding quotes).
-                  last_modified:
-                    type: string
-                    description: When the object was last modified.
-                  storage_class:
-                    type: string
-                    enum:
-                      - Standard
-                      - InfrequentAccess
-                  ssec:
-                    type: boolean
-                    description: Whether the object is encrypted with a customer-supplied key.
-                  custom_metadata:
-                    description: Custom metadata key-value pairs.
-                  http_metadata:
-                    description: HTTP metadata associated with the object.
-      x-distilled-pagination-class: CursorPagination
-      x-distilled-errors:
-        NoSuchBucket:
-          - code: 10006
-        InvalidRoute:
-          - code: 7003
-        NoRoute:
-          - code: 10015
-    delete:
-      operationId: deleteObjects
-      summary: Bulk-delete objects from an R2 bucket.
-      description: >
-        Deletes multiple objects from an R2 bucket in a single request. Provide
-        a JSON
-
-        array of object keys in `keys`; up to 1000 keys per request. Per-key
-        errors are
-
-        reported in the response body without failing the request as a whole.
-
-
-        For prefix-based async deletion (returns a job descriptor), pass a
-        `prefix` query
-
-        parameter and an empty `keys` array.
-      parameters:
-        - name: bucketName
-          in: path
-          required: true
-          description: Name of the R2 bucket.
-          schema:
-            type: string
-        - name: account_id
-          in: path
-          required: true
-          description: Account ID.
-          schema:
-            type: string
-        - name: prefix
-          in: query
-          required: false
-          description: >
-            When set, switches to "delete by prefix" mode and asynchronously
-            deletes every
-
-            object whose key begins with the given prefix. The response is a
-            prefix-delete
-
-            job descriptor instead of a per-key list. Pass an empty body when
-            using prefix
-
-            mode.
-          schema:
-            type: string
-        - name: cf-r2-jurisdiction
-          in: header
-          required: false
-          description: Jurisdiction where objects in this bucket are guaranteed to be
-            stored.
-          schema:
-            type: string
-            enum:
-              - default
-              - eu
-              - fedramp
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                type: string
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - type: array
-                    items:
-                      type: object
-                      properties:
-                        key:
-                          type: string
-                          description: Key of the deleted object.
-                  - type: object
-                    properties:
-                      id:
-                        type: string
-                      jobType:
-                        type: string
-                        enum:
-                          - prefixDelete
-                      status:
-                        type: string
-                        enum:
-                          - ENQUEUED
-                          - RUNNING
-                          - COMPLETED
-                          - FAILED
-                          - CANCELLED
-                      startTime:
-                        type: string
-                      endTime:
-                        type: string
-                      prefixDelete:
-                        type: object
-                        properties:
-                          prefix:
-                            type: string
-                          deletedObjects:
-                            type: number
-                          isBucketClear:
-                            type: boolean
-      x-distilled-response-path: result
-      x-distilled-errors:
-        NoSuchBucket:
-          - code: 10006
-        InvalidRoute:
-          - code: 7003
-        NoRoute:
-          - code: 10015
   /accounts/{account_id}/slurper/source/connectivity-precheck:
     put:
       operationId: sourceSuperSlurperConnectivityPrecheck
@@ -3016,7 +3215,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -3028,7 +3227,7 @@ paths:
               properties:
                 bucket:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 secret:
                   type: object
                   properties:
@@ -3039,27 +3238,34 @@ paths:
                   required:
                     - accessKeyId
                     - secretAccessKey
-                  description: "Body param:"
+                  description: Body param
                 vendor:
                   type: string
                   enum:
                     - s3
-                  description: "Body param:"
+                  description: Body param
                 endpoint:
                   oneOf:
                     - type: string
                   nullable: true
-                  description: "Body param:"
+                  description: Body param
+                keys:
+                  oneOf:
+                    - type: array
+                      items:
+                        type: string
+                  nullable: true
+                  description: Body param
                 pathPrefix:
                   oneOf:
                     - type: string
                   nullable: true
-                  description: "Body param:"
+                  description: Body param
                 region:
                   oneOf:
                     - type: string
                   nullable: true
-                  description: "Body param:"
+                  description: Body param
               required:
                 - bucket
                 - secret
@@ -3090,7 +3296,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -3102,7 +3308,7 @@ paths:
               properties:
                 bucket:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 secret:
                   type: object
                   properties:
@@ -3113,19 +3319,19 @@ paths:
                   required:
                     - accessKeyId
                     - secretAccessKey
-                  description: "Body param:"
+                  description: Body param
                 vendor:
                   type: string
                   enum:
                     - r2
-                  description: "Body param:"
+                  description: Body param
                 jurisdiction:
                   type: string
                   enum:
                     - default
                     - eu
                     - fedramp
-                  description: "Body param:"
+                  description: Body param
               required:
                 - bucket
                 - secret
@@ -3147,7 +3353,8 @@ paths:
   /accounts/{account_id}/slurper/jobs/{jobId}:
     get:
       operationId: getSuperSlurperJob
-      description: "Get job details  @example ```ts const job = await
+      description: "Retrieves detailed status and configuration for a specific R2
+        Super Slurper migration job.  @example ```ts const job = await
         client.r2.superSlurper.jobs.get( 'job_id', { account_id: 'account_id' },
         ); ```"
       parameters:
@@ -3271,7 +3478,8 @@ paths:
   /accounts/{account_id}/slurper/jobs:
     get:
       operationId: listSuperSlurperJobs
-      description: "List jobs  @example ```ts // Automatically fetches more pages as
+      description: "Lists all R2 Super Slurper migration jobs for the account with
+        their status.  @example ```ts // Automatically fetches more pages as
         needed. for await (const jobListResponse of
         client.r2.superSlurper.jobs.list( { account_id: 'account_id' }, )) { //
         ... } ```"
@@ -3279,19 +3487,19 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: limit
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: number
         - name: offset
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: number
       responses:
@@ -3403,13 +3611,15 @@ paths:
       x-distilled-pagination-class: JobListResponsesSinglePage
     post:
       operationId: createSuperSlurperJob
-      description: "Create a job  @example ```ts const job = await
-        client.r2.superSlurper.jobs.create({ account_id: 'account_id', }); ```"
+      description: "Creates a new R2 Super Slurper migration job to transfer objects
+        from a source bucket (e.g. S3, GCS, R2) to R2.  @example ```ts const job
+        = await client.r2.superSlurper.jobs.create({ account_id: 'account_id',
+        }); ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -3421,7 +3631,7 @@ paths:
               properties:
                 overwrite:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
                 source:
                   oneOf:
                     - type: object
@@ -3445,6 +3655,12 @@ paths:
                         endpoint:
                           oneOf:
                             - type: string
+                          nullable: true
+                        keys:
+                          oneOf:
+                            - type: array
+                              items:
+                                type: string
                           nullable: true
                         pathPrefix:
                           oneOf:
@@ -3476,6 +3692,12 @@ paths:
                           type: string
                           enum:
                             - gcs
+                        keys:
+                          oneOf:
+                            - type: array
+                              items:
+                                type: string
+                          nullable: true
                         pathPrefix:
                           oneOf:
                             - type: string
@@ -3508,6 +3730,12 @@ paths:
                             - default
                             - eu
                             - fedramp
+                        keys:
+                          oneOf:
+                            - type: array
+                              items:
+                                type: string
+                          nullable: true
                         pathPrefix:
                           oneOf:
                             - type: string
@@ -3516,7 +3744,7 @@ paths:
                         - bucket
                         - secret
                         - vendor
-                  description: "Body param:"
+                  description: Body param
                 target:
                   type: object
                   properties:
@@ -3546,7 +3774,7 @@ paths:
                     - bucket
                     - secret
                     - vendor
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -3561,7 +3789,9 @@ paths:
   /accounts/{account_id}/slurper/jobs/{jobId}/abort:
     put:
       operationId: abortSuperSlurperJob
-      description: "Abort a job  @example ```ts const response = await
+      description: "Cancels a specific R2 Super Slurper migration job. Any objects in
+        the middle of a transfer will finish, but no new objects will start
+        transferring.  @example ```ts const response = await
         client.r2.superSlurper.jobs.abort( 'job_id', { account_id: 'account_id'
         }, ); ```"
       parameters:
@@ -3586,9 +3816,10 @@ paths:
   /accounts/{account_id}/slurper/jobs/{jobId}/pause:
     put:
       operationId: pauseSuperSlurperJob
-      description: "Pause a job  @example ```ts const response = await
-        client.r2.superSlurper.jobs.pause( 'job_id', { account_id: 'account_id'
-        }, ); ```"
+      description: "Pauses a running R2 Super Slurper migration job. The job can be
+        resumed later to continue transferring.  @example ```ts const response =
+        await client.r2.superSlurper.jobs.pause( 'job_id', { account_id:
+        'account_id' }, ); ```"
       parameters:
         - name: jobId
           in: path
@@ -3611,7 +3842,8 @@ paths:
   /accounts/{account_id}/slurper/jobs/{jobId}/progress:
     get:
       operationId: progressSuperSlurperJob
-      description: "Get job progress  @example ```ts const response = await
+      description: "Retrieves current progress metrics for an R2 Super Slurper
+        migration job  @example ```ts const response = await
         client.r2.superSlurper.jobs.progress( 'job_id', { account_id:
         'account_id' }, ); ```"
       parameters:
@@ -3656,7 +3888,8 @@ paths:
   /accounts/{account_id}/slurper/jobs/{jobId}/resume:
     put:
       operationId: resumeSuperSlurperJob
-      description: "Resume a job  @example ```ts const response = await
+      description: "Resumes a paused R2 Super Slurper migration job, continuing the
+        transfer from where it stopped.  @example ```ts const response = await
         client.r2.superSlurper.jobs.resume( 'job_id', { account_id: 'account_id'
         }, ); ```"
       parameters:
@@ -3681,8 +3914,9 @@ paths:
   /accounts/{account_id}/slurper/jobs/{jobId}/logs:
     get:
       operationId: listSuperSlurperJobLogs
-      description: "Get job logs  @example ```ts // Automatically fetches more pages
-        as needed. for await (const logListResponse of
+      description: "Gets log entries for an R2 Super Slurper migration job, showing
+        migration status changes, errors, etc.  @example ```ts // Automatically
+        fetches more pages as needed. for await (const logListResponse of
         client.r2.superSlurper.jobs.logs.list( 'job_id', { account_id:
         'account_id' }, )) { // ... } ```"
       parameters:
@@ -3694,19 +3928,19 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: limit
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: number
         - name: offset
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: number
       responses:

@@ -49,7 +49,7 @@ paths:
                     plain_text:
                       type: string
                       description: Request body as plain text
-                  description: "Body param:"
+                  description: Body param
                 context:
                   type: object
                   properties:

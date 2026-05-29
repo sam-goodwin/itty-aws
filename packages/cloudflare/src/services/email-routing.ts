@@ -383,6 +383,7 @@ export type GetDnsResponse =
         page?: number | null;
         perPage?: number | null;
         totalCount?: number | null;
+        totalPages?: number | null;
       } | null;
     }
   | {
@@ -432,6 +433,7 @@ export type GetDnsResponse =
         page?: number | null;
         perPage?: number | null;
         totalCount?: number | null;
+        totalPages?: number | null;
       } | null;
     };
 
@@ -614,12 +616,16 @@ export const GetDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -744,12 +750,16 @@ export const GetDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
           totalCount: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
           ),
+          totalPages: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             count: "count",
             page: "page",
             perPage: "per_page",
             totalCount: "total_count",
+            totalPages: "total_pages",
           }),
         ),
         Schema.Null,
@@ -1155,7 +1165,7 @@ export const getEmailRouting: API.OperationMethod<
 export interface EnableEmailRoutingRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -1248,7 +1258,7 @@ export const enableEmailRouting: API.OperationMethod<
 export interface DisableEmailRoutingRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 

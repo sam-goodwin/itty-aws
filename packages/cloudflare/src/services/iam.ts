@@ -1066,8 +1066,8 @@ export interface ListUserGroupsRequest {
   perPage?: number;
   /** Query param: ID of the user group to be fetched. */
   id?: string;
-  /** Query param: The sort order of returned user groups by name. Default sort order is ascending. To switch to descending, set this parameter to "desc" */
-  direction?: string;
+  /** Query param: The sort order of returned user groups by name (ascending or descending). */
+  direction?: "asc" | "desc";
   /** Query param: A string used for searching for user groups containing that substring. */
   fuzzyName?: string;
   /** Query param: Name of the user group to be fetched. */
@@ -1079,7 +1079,9 @@ export const ListUserGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
-  direction: Schema.optional(Schema.String).pipe(T.HttpQuery("direction")),
+  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
+    T.HttpQuery("direction"),
+  ),
   fuzzyName: Schema.optional(Schema.String).pipe(T.HttpQuery("fuzzyName")),
   name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
 }).pipe(
@@ -1267,7 +1269,7 @@ export interface CreateUserGroupRequest {
   /** Body param: Name of the User group. */
   name: string;
   /** Body param: Policies attached to the User group */
-  policies: {
+  policies?: {
     access: "allow" | "deny";
     permissionGroups: { id: string }[];
     resourceGroups: { id: string }[];
@@ -1278,25 +1280,27 @@ export const CreateUserGroupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     name: Schema.String,
-    policies: Schema.Array(
-      Schema.Struct({
-        access: Schema.Literals(["allow", "deny"]),
-        permissionGroups: Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
+    policies: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          access: Schema.Literals(["allow", "deny"]),
+          permissionGroups: Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+            }),
+          ),
+          resourceGroups: Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+            }),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            access: "access",
+            permissionGroups: "permission_groups",
+            resourceGroups: "resource_groups",
           }),
         ),
-        resourceGroups: Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-          }),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          access: "access",
-          permissionGroups: "permission_groups",
-          resourceGroups: "resource_groups",
-        }),
       ),
     ),
   },
@@ -1682,12 +1686,108 @@ export const deleteUserGroup: API.OperationMethod<
 // UserGroupMember
 // =============================================================================
 
+export interface GetUserGroupMemberRequest {
+  userGroupId: string;
+  memberId: string;
+  /** Account identifier tag. */
+  accountId: string;
+}
+
+export const GetUserGroupMemberRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userGroupId: Schema.String.pipe(T.HttpPath("userGroupId")),
+    memberId: Schema.String.pipe(T.HttpPath("memberId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/iam/user_groups/{userGroupId}/members/{memberId}",
+    }),
+  ) as unknown as Schema.Schema<GetUserGroupMemberRequest>;
+
+export interface GetUserGroupMemberResponse {
+  /** Account member identifier. */
+  id: string;
+  /** When the member was added to the user group. */
+  createdAt?: string | null;
+  /** The contact email address of the user. */
+  email?: string | null;
+  /** The member's status in the account. */
+  status?: "accepted" | "pending" | null;
+  /** Details of the user associated with this membership. */
+  user?: {
+    id?: string | null;
+    email?: string | null;
+    firstName?: string | null;
+    lastName?: string | null;
+  } | null;
+}
+
+export const GetUserGroupMemberResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null]),
+    ),
+    user: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          firstName: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          lastName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            email: "email",
+            firstName: "first_name",
+            lastName: "last_name",
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        email: "email",
+        status: "status",
+        user: "user",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<GetUserGroupMemberResponse>;
+
+export type GetUserGroupMemberError = DefaultErrors;
+
+export const getUserGroupMember: API.OperationMethod<
+  GetUserGroupMemberRequest,
+  GetUserGroupMemberResponse,
+  GetUserGroupMemberError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetUserGroupMemberRequest,
+  output: GetUserGroupMemberResponse,
+  errors: [],
+}));
+
 export interface ListUserGroupMembersRequest {
   userGroupId: string;
   /** Path param: Account identifier tag. */
   accountId: string;
   page?: number;
   perPage?: number;
+  /** Query param: The sort order of returned user group members by email. */
+  direction?: "asc" | "desc";
+  /** Query param: A string used for filtering members by partial email match. */
+  fuzzyEmail?: string;
 }
 
 export const ListUserGroupMembersRequest =
@@ -1696,6 +1796,10 @@ export const ListUserGroupMembersRequest =
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
+      T.HttpQuery("direction"),
+    ),
+    fuzzyEmail: Schema.optional(Schema.String).pipe(T.HttpQuery("fuzzyEmail")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1776,19 +1880,19 @@ export interface CreateUserGroupMemberRequest {
   userGroupId: string;
   /** Path param: Account identifier tag. */
   accountId: string;
-  /** Body param: */
-  body: { id: string }[];
+  /** Body param */
+  members: { id: string }[];
 }
 
 export const CreateUserGroupMemberRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userGroupId: Schema.String.pipe(T.HttpPath("userGroupId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    body: Schema.Array(
+    members: Schema.Array(
       Schema.Struct({
         id: Schema.String,
       }),
-    ).pipe(T.HttpBody()),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1797,36 +1901,41 @@ export const CreateUserGroupMemberRequest =
   ) as unknown as Schema.Schema<CreateUserGroupMemberRequest>;
 
 export interface CreateUserGroupMemberResponse {
-  /** Account member identifier. */
-  id: string;
-  /** The contact email address of the user. */
-  email?: string | null;
-  /** The member's status in the account. */
-  status?: "accepted" | "pending" | null;
+  result: {
+    id: string;
+    email?: string | null;
+    status?: "accepted" | "pending" | null;
+  }[];
 }
 
 export const CreateUserGroupMemberResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    status: Schema.optional(
-      Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null]),
+    result: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        status: Schema.optional(
+          Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null]),
+        ),
+      }),
     ),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateUserGroupMemberResponse>;
+  }) as unknown as Schema.Schema<CreateUserGroupMemberResponse>;
 
 export type CreateUserGroupMemberError = DefaultErrors | InvalidMember;
 
-export const createUserGroupMember: API.OperationMethod<
+export const createUserGroupMember: API.PaginatedOperationMethod<
   CreateUserGroupMemberRequest,
   CreateUserGroupMemberResponse,
   CreateUserGroupMemberError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreateUserGroupMemberRequest,
   output: CreateUserGroupMemberResponse,
   errors: [InvalidMember],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
 }));
 
 export interface UpdateUserGroupMemberRequest {
@@ -1834,18 +1943,18 @@ export interface UpdateUserGroupMemberRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
   /** Body param: Set/Replace members to a user group. */
-  body: { id: string }[];
+  members: { id: string }[];
 }
 
 export const UpdateUserGroupMemberRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userGroupId: Schema.String.pipe(T.HttpPath("userGroupId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    body: Schema.Array(
+    members: Schema.Array(
       Schema.Struct({
         id: Schema.String,
       }),
-    ).pipe(T.HttpBody()),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",

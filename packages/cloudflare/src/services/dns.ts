@@ -608,6 +608,7 @@ export interface ScanListRecordResponse {
         type: "A";
         comment?: string | null;
         content?: string | null;
+        privateRouting?: boolean | null;
         proxied?: boolean | null;
         settings?: {
           ipv4Only?: boolean | null;
@@ -628,6 +629,7 @@ export interface ScanListRecordResponse {
         type: "AAAA";
         comment?: string | null;
         content?: string | null;
+        privateRouting?: boolean | null;
         proxied?: boolean | null;
         settings?: {
           ipv4Only?: boolean | null;
@@ -1162,6 +1164,9 @@ export const ScanListRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           type: Schema.Literal("A"),
           comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          privateRouting: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
           proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
           settings: Schema.optional(
             Schema.Union([
@@ -1202,6 +1207,7 @@ export const ScanListRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             type: "type",
             comment: "comment",
             content: "content",
+            privateRouting: "private_routing",
             proxied: "proxied",
             settings: "settings",
             tags: "tags",
@@ -1220,6 +1226,9 @@ export const ScanListRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           type: Schema.Literal("AAAA"),
           comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          privateRouting: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
           proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
           settings: Schema.optional(
             Schema.Union([
@@ -1260,6 +1269,7 @@ export const ScanListRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             type: "type",
             comment: "comment",
             content: "content",
+            privateRouting: "private_routing",
             proxied: "proxied",
             settings: "settings",
             tags: "tags",
@@ -2673,9 +2683,9 @@ export const scanListRecord: API.PaginatedOperationMethod<
 // =============================================================================
 
 export interface ForceNotifyZoneTransferOutgoingRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -2734,6 +2744,7 @@ export type GetRecordResponse =
       type: "A";
       comment?: string | null;
       content?: string | null;
+      privateRouting?: boolean | null;
       proxied?: boolean | null;
       settings?: {
         ipv4Only?: boolean | null;
@@ -2754,6 +2765,7 @@ export type GetRecordResponse =
       type: "AAAA";
       comment?: string | null;
       content?: string | null;
+      privateRouting?: boolean | null;
       proxied?: boolean | null;
       settings?: {
         ipv4Only?: boolean | null;
@@ -3277,6 +3289,9 @@ export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     type: Schema.Literal("A"),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateRouting: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
     proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
@@ -3312,6 +3327,7 @@ export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       comment: "comment",
       content: "content",
+      privateRouting: "private_routing",
       proxied: "proxied",
       settings: "settings",
       tags: "tags",
@@ -3330,6 +3346,9 @@ export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     type: Schema.Literal("AAAA"),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateRouting: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
     proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
@@ -3365,6 +3384,7 @@ export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       comment: "comment",
       content: "content",
+      privateRouting: "private_routing",
       proxied: "proxied",
       settings: "settings",
       tags: "tags",
@@ -4622,7 +4642,7 @@ export interface ListRecordsRequest {
   zoneId: string;
   page?: number;
   perPage?: number;
-  /** Query param: */
+  /** Query param */
   comment?: {
     absent?: string;
     contains?: string;
@@ -4631,7 +4651,7 @@ export interface ListRecordsRequest {
     present?: string;
     startswith?: string;
   };
-  /** Query param: */
+  /** Query param */
   content?: {
     contains?: string;
     endswith?: string;
@@ -4642,7 +4662,7 @@ export interface ListRecordsRequest {
   direction?: "asc" | "desc";
   /** Query param: Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the in */
   match?: "any" | "all";
-  /** Query param: */
+  /** Query param */
   name?: {
     contains?: string;
     endswith?: string;
@@ -4655,7 +4675,7 @@ export interface ListRecordsRequest {
   proxied?: boolean;
   /** Query param: Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified an */
   search?: string;
-  /** Query param: */
+  /** Query param */
   tag?: {
     absent?: string;
     contains?: string;
@@ -4782,6 +4802,7 @@ export interface ListRecordsResponse {
         type: "A";
         comment?: string | null;
         content?: string | null;
+        privateRouting?: boolean | null;
         proxied?: boolean | null;
         settings?: {
           ipv4Only?: boolean | null;
@@ -4802,6 +4823,7 @@ export interface ListRecordsResponse {
         type: "AAAA";
         comment?: string | null;
         content?: string | null;
+        privateRouting?: boolean | null;
         proxied?: boolean | null;
         settings?: {
           ipv4Only?: boolean | null;
@@ -5341,6 +5363,9 @@ export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         type: Schema.Literal("A"),
         comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        privateRouting: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
         proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
         settings: Schema.optional(
           Schema.Union([
@@ -5381,6 +5406,7 @@ export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: "type",
           comment: "comment",
           content: "content",
+          privateRouting: "private_routing",
           proxied: "proxied",
           settings: "settings",
           tags: "tags",
@@ -5399,6 +5425,9 @@ export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         type: Schema.Literal("AAAA"),
         comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        privateRouting: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
         proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
         settings: Schema.optional(
           Schema.Union([
@@ -5439,6 +5468,7 @@ export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: "type",
           comment: "comment",
           content: "content",
+          privateRouting: "private_routing",
           proxied: "proxied",
           settings: "settings",
           tags: "tags",
@@ -6872,6 +6902,8 @@ export interface CreateRecordRequest {
   comment?: string;
   /** Body param: A valid IPv4 address. */
   content?: string;
+  /** Body param: Enables private network routing to the origin. */
+  privateRouting?: boolean;
   /** Body param: Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Body param: Settings for the DNS record. */
@@ -6887,6 +6919,7 @@ export const CreateRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.Literal("A"),
   comment: Schema.optional(Schema.String),
   content: Schema.optional(Schema.String),
+  privateRouting: Schema.optional(Schema.Boolean),
   proxied: Schema.optional(Schema.Boolean),
   settings: Schema.optional(
     Schema.Struct({
@@ -6898,6 +6931,17 @@ export const CreateRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   tags: Schema.optional(Schema.Array(Schema.String)),
 }).pipe(
+  Schema.encodeKeys({
+    name: "name",
+    ttl: "ttl",
+    type: "type",
+    comment: "comment",
+    content: "content",
+    privateRouting: "private_routing",
+    proxied: "proxied",
+    settings: "settings",
+    tags: "tags",
+  }),
   T.Http({ method: "POST", path: "/zones/{zone_id}/dns_records" }),
 ) as unknown as Schema.Schema<CreateRecordRequest>;
 
@@ -6908,6 +6952,7 @@ export type CreateRecordResponse =
       type: "A";
       comment?: string | null;
       content?: string | null;
+      privateRouting?: boolean | null;
       proxied?: boolean | null;
       settings?: {
         ipv4Only?: boolean | null;
@@ -6928,6 +6973,7 @@ export type CreateRecordResponse =
       type: "AAAA";
       comment?: string | null;
       content?: string | null;
+      privateRouting?: boolean | null;
       proxied?: boolean | null;
       settings?: {
         ipv4Only?: boolean | null;
@@ -7451,6 +7497,9 @@ export const CreateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     type: Schema.Literal("A"),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateRouting: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
     proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
@@ -7486,6 +7535,7 @@ export const CreateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       comment: "comment",
       content: "content",
+      privateRouting: "private_routing",
       proxied: "proxied",
       settings: "settings",
       tags: "tags",
@@ -7504,6 +7554,9 @@ export const CreateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     type: Schema.Literal("AAAA"),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateRouting: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
     proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
@@ -7539,6 +7592,7 @@ export const CreateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       comment: "comment",
       content: "content",
+      privateRouting: "private_routing",
       proxied: "proxied",
       settings: "settings",
       tags: "tags",
@@ -8805,6 +8859,8 @@ export interface UpdateRecordRequest {
   comment?: string;
   /** Body param: A valid IPv4 address. */
   content?: string;
+  /** Body param: Enables private network routing to the origin. */
+  privateRouting?: boolean;
   /** Body param: Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Body param: Settings for the DNS record. */
@@ -8821,6 +8877,7 @@ export const UpdateRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.Literal("A"),
   comment: Schema.optional(Schema.String),
   content: Schema.optional(Schema.String),
+  privateRouting: Schema.optional(Schema.Boolean),
   proxied: Schema.optional(Schema.Boolean),
   settings: Schema.optional(
     Schema.Struct({
@@ -8832,6 +8889,17 @@ export const UpdateRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   tags: Schema.optional(Schema.Array(Schema.String)),
 }).pipe(
+  Schema.encodeKeys({
+    name: "name",
+    ttl: "ttl",
+    type: "type",
+    comment: "comment",
+    content: "content",
+    privateRouting: "private_routing",
+    proxied: "proxied",
+    settings: "settings",
+    tags: "tags",
+  }),
   T.Http({ method: "PUT", path: "/zones/{zone_id}/dns_records/{dnsRecordId}" }),
 ) as unknown as Schema.Schema<UpdateRecordRequest>;
 
@@ -8842,6 +8910,7 @@ export type UpdateRecordResponse =
       type: "A";
       comment?: string | null;
       content?: string | null;
+      privateRouting?: boolean | null;
       proxied?: boolean | null;
       settings?: {
         ipv4Only?: boolean | null;
@@ -8862,6 +8931,7 @@ export type UpdateRecordResponse =
       type: "AAAA";
       comment?: string | null;
       content?: string | null;
+      privateRouting?: boolean | null;
       proxied?: boolean | null;
       settings?: {
         ipv4Only?: boolean | null;
@@ -9385,6 +9455,9 @@ export const UpdateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     type: Schema.Literal("A"),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateRouting: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
     proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
@@ -9420,6 +9493,7 @@ export const UpdateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       comment: "comment",
       content: "content",
+      privateRouting: "private_routing",
       proxied: "proxied",
       settings: "settings",
       tags: "tags",
@@ -9438,6 +9512,9 @@ export const UpdateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     type: Schema.Literal("AAAA"),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateRouting: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
     proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
@@ -9473,6 +9550,7 @@ export const UpdateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       comment: "comment",
       content: "content",
+      privateRouting: "private_routing",
       proxied: "proxied",
       settings: "settings",
       tags: "tags",
@@ -10739,6 +10817,8 @@ export interface PatchRecordRequest {
   comment?: string;
   /** Body param: A valid IPv4 address. */
   content?: string;
+  /** Body param: Enables private network routing to the origin. */
+  privateRouting?: boolean;
   /** Body param: Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
   /** Body param: Settings for the DNS record. */
@@ -10755,6 +10835,7 @@ export const PatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.Literal("A"),
   comment: Schema.optional(Schema.String),
   content: Schema.optional(Schema.String),
+  privateRouting: Schema.optional(Schema.Boolean),
   proxied: Schema.optional(Schema.Boolean),
   settings: Schema.optional(
     Schema.Struct({
@@ -10766,6 +10847,17 @@ export const PatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   tags: Schema.optional(Schema.Array(Schema.String)),
 }).pipe(
+  Schema.encodeKeys({
+    name: "name",
+    ttl: "ttl",
+    type: "type",
+    comment: "comment",
+    content: "content",
+    privateRouting: "private_routing",
+    proxied: "proxied",
+    settings: "settings",
+    tags: "tags",
+  }),
   T.Http({
     method: "PATCH",
     path: "/zones/{zone_id}/dns_records/{dnsRecordId}",
@@ -10779,6 +10871,7 @@ export type PatchRecordResponse =
       type: "A";
       comment?: string | null;
       content?: string | null;
+      privateRouting?: boolean | null;
       proxied?: boolean | null;
       settings?: {
         ipv4Only?: boolean | null;
@@ -10799,6 +10892,7 @@ export type PatchRecordResponse =
       type: "AAAA";
       comment?: string | null;
       content?: string | null;
+      privateRouting?: boolean | null;
       proxied?: boolean | null;
       settings?: {
         ipv4Only?: boolean | null;
@@ -11322,6 +11416,9 @@ export const PatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     type: Schema.Literal("A"),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateRouting: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
     proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
@@ -11357,6 +11454,7 @@ export const PatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       comment: "comment",
       content: "content",
+      privateRouting: "private_routing",
       proxied: "proxied",
       settings: "settings",
       tags: "tags",
@@ -11375,6 +11473,9 @@ export const PatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     type: Schema.Literal("AAAA"),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateRouting: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
     proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
@@ -11410,6 +11511,7 @@ export const PatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       comment: "comment",
       content: "content",
+      privateRouting: "private_routing",
       proxied: "proxied",
       settings: "settings",
       tags: "tags",
@@ -12705,9 +12807,9 @@ export const deleteRecord: API.OperationMethod<
 export interface BatchRecordRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   deletes?: { id: string }[];
-  /** Body param: */
+  /** Body param */
   patches?: (
     | {
         name: string;
@@ -12715,6 +12817,7 @@ export interface BatchRecordRequest {
         type: "A";
         comment?: string;
         content?: string;
+        privateRouting?: boolean;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -12726,6 +12829,7 @@ export interface BatchRecordRequest {
         type: "AAAA";
         comment?: string;
         content?: string;
+        privateRouting?: boolean;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -12997,7 +13101,7 @@ export interface BatchRecordRequest {
         id: string;
       }
   )[];
-  /** Body param: */
+  /** Body param */
   posts?: (
     | {
         name: string;
@@ -13005,6 +13109,7 @@ export interface BatchRecordRequest {
         type: "A";
         comment?: string;
         content?: string;
+        privateRouting?: boolean;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -13015,6 +13120,7 @@ export interface BatchRecordRequest {
         type: "AAAA";
         comment?: string;
         content?: string;
+        privateRouting?: boolean;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -13266,7 +13372,7 @@ export interface BatchRecordRequest {
         tags?: string[];
       }
   )[];
-  /** Body param: */
+  /** Body param */
   puts?: (
     | {
         name: string;
@@ -13274,6 +13380,7 @@ export interface BatchRecordRequest {
         type: "A";
         comment?: string;
         content?: string;
+        privateRouting?: boolean;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -13285,6 +13392,7 @@ export interface BatchRecordRequest {
         type: "AAAA";
         comment?: string;
         content?: string;
+        privateRouting?: boolean;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -13576,6 +13684,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literal("A"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
+          privateRouting: Schema.optional(Schema.Boolean),
           proxied: Schema.optional(Schema.Boolean),
           settings: Schema.optional(
             Schema.Struct({
@@ -13590,13 +13699,27 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           tags: Schema.optional(Schema.Array(Schema.String)),
           id: Schema.String,
-        }),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            ttl: "ttl",
+            type: "type",
+            comment: "comment",
+            content: "content",
+            privateRouting: "private_routing",
+            proxied: "proxied",
+            settings: "settings",
+            tags: "tags",
+            id: "id",
+          }),
+        ),
         Schema.Struct({
           name: Schema.String,
           ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("AAAA"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
+          privateRouting: Schema.optional(Schema.Boolean),
           proxied: Schema.optional(Schema.Boolean),
           settings: Schema.optional(
             Schema.Struct({
@@ -13611,7 +13734,20 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           tags: Schema.optional(Schema.Array(Schema.String)),
           id: Schema.String,
-        }),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            ttl: "ttl",
+            type: "type",
+            comment: "comment",
+            content: "content",
+            privateRouting: "private_routing",
+            proxied: "proxied",
+            settings: "settings",
+            tags: "tags",
+            id: "id",
+          }),
+        ),
         Schema.Struct({
           name: Schema.String,
           ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -14172,6 +14308,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literal("A"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
+          privateRouting: Schema.optional(Schema.Boolean),
           proxied: Schema.optional(Schema.Boolean),
           settings: Schema.optional(
             Schema.Struct({
@@ -14185,13 +14322,26 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
           ),
           tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            ttl: "ttl",
+            type: "type",
+            comment: "comment",
+            content: "content",
+            privateRouting: "private_routing",
+            proxied: "proxied",
+            settings: "settings",
+            tags: "tags",
+          }),
+        ),
         Schema.Struct({
           name: Schema.String,
           ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("AAAA"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
+          privateRouting: Schema.optional(Schema.Boolean),
           proxied: Schema.optional(Schema.Boolean),
           settings: Schema.optional(
             Schema.Struct({
@@ -14205,7 +14355,19 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
           ),
           tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            ttl: "ttl",
+            type: "type",
+            comment: "comment",
+            content: "content",
+            privateRouting: "private_routing",
+            proxied: "proxied",
+            settings: "settings",
+            tags: "tags",
+          }),
+        ),
         Schema.Struct({
           name: Schema.String,
           ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -14747,6 +14909,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literal("A"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
+          privateRouting: Schema.optional(Schema.Boolean),
           proxied: Schema.optional(Schema.Boolean),
           settings: Schema.optional(
             Schema.Struct({
@@ -14761,13 +14924,27 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           tags: Schema.optional(Schema.Array(Schema.String)),
           id: Schema.String,
-        }),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            ttl: "ttl",
+            type: "type",
+            comment: "comment",
+            content: "content",
+            privateRouting: "private_routing",
+            proxied: "proxied",
+            settings: "settings",
+            tags: "tags",
+            id: "id",
+          }),
+        ),
         Schema.Struct({
           name: Schema.String,
           ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("AAAA"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
+          privateRouting: Schema.optional(Schema.Boolean),
           proxied: Schema.optional(Schema.Boolean),
           settings: Schema.optional(
             Schema.Struct({
@@ -14782,7 +14959,20 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           tags: Schema.optional(Schema.Array(Schema.String)),
           id: Schema.String,
-        }),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            ttl: "ttl",
+            type: "type",
+            comment: "comment",
+            content: "content",
+            privateRouting: "private_routing",
+            proxied: "proxied",
+            settings: "settings",
+            tags: "tags",
+            id: "id",
+          }),
+        ),
         Schema.Struct({
           name: Schema.String,
           ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -15347,6 +15537,7 @@ export interface BatchRecordResponse {
             type: "A";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -15367,6 +15558,7 @@ export interface BatchRecordResponse {
             type: "AAAA";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -15850,6 +16042,7 @@ export interface BatchRecordResponse {
             type: "A";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -15870,6 +16063,7 @@ export interface BatchRecordResponse {
             type: "AAAA";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -16353,6 +16547,7 @@ export interface BatchRecordResponse {
             type: "A";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -16373,6 +16568,7 @@ export interface BatchRecordResponse {
             type: "AAAA";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -16856,6 +17052,7 @@ export interface BatchRecordResponse {
             type: "A";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -16876,6 +17073,7 @@ export interface BatchRecordResponse {
             type: "AAAA";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -17419,6 +17617,9 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             content: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            privateRouting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
             proxied: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
             ),
@@ -17461,6 +17662,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: "type",
               comment: "comment",
               content: "content",
+              privateRouting: "private_routing",
               proxied: "proxied",
               settings: "settings",
               tags: "tags",
@@ -17483,6 +17685,9 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             content: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            privateRouting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
             proxied: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
             ),
@@ -17525,6 +17730,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: "type",
               comment: "comment",
               content: "content",
+              privateRouting: "private_routing",
               proxied: "proxied",
               settings: "settings",
               tags: "tags",
@@ -19093,6 +19299,9 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             content: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            privateRouting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
             proxied: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
             ),
@@ -19135,6 +19344,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: "type",
               comment: "comment",
               content: "content",
+              privateRouting: "private_routing",
               proxied: "proxied",
               settings: "settings",
               tags: "tags",
@@ -19157,6 +19367,9 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             content: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            privateRouting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
             proxied: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
             ),
@@ -19199,6 +19412,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: "type",
               comment: "comment",
               content: "content",
+              privateRouting: "private_routing",
               proxied: "proxied",
               settings: "settings",
               tags: "tags",
@@ -20767,6 +20981,9 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             content: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            privateRouting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
             proxied: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
             ),
@@ -20809,6 +21026,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: "type",
               comment: "comment",
               content: "content",
+              privateRouting: "private_routing",
               proxied: "proxied",
               settings: "settings",
               tags: "tags",
@@ -20831,6 +21049,9 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             content: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            privateRouting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
             proxied: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
             ),
@@ -20873,6 +21094,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: "type",
               comment: "comment",
               content: "content",
+              privateRouting: "private_routing",
               proxied: "proxied",
               settings: "settings",
               tags: "tags",
@@ -22441,6 +22663,9 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             content: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            privateRouting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
             proxied: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
             ),
@@ -22483,6 +22708,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: "type",
               comment: "comment",
               content: "content",
+              privateRouting: "private_routing",
               proxied: "proxied",
               settings: "settings",
               tags: "tags",
@@ -22505,6 +22731,9 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             content: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            privateRouting: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
             proxied: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
             ),
@@ -22547,6 +22776,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               type: "type",
               comment: "comment",
               content: "content",
+              privateRouting: "private_routing",
               proxied: "proxied",
               settings: "settings",
               tags: "tags",
@@ -24156,7 +24386,7 @@ export const importRecord: API.OperationMethod<
 export interface ScanRecordRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -24210,7 +24440,7 @@ export const scanRecord: API.OperationMethod<
 export interface ScanReviewRecordRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   accepts?: (
     | {
         name: string;
@@ -24218,6 +24448,7 @@ export interface ScanReviewRecordRequest {
         type: "A";
         comment?: string;
         content?: string;
+        privateRouting?: boolean;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -24228,6 +24459,7 @@ export interface ScanReviewRecordRequest {
         type: "AAAA";
         comment?: string;
         content?: string;
+        privateRouting?: boolean;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -24479,7 +24711,7 @@ export interface ScanReviewRecordRequest {
         tags?: string[];
       }
   )[];
-  /** Body param: */
+  /** Body param */
   rejects?: { id: string }[];
 }
 
@@ -24495,6 +24727,7 @@ export const ScanReviewRecordRequest =
             type: Schema.Literal("A"),
             comment: Schema.optional(Schema.String),
             content: Schema.optional(Schema.String),
+            privateRouting: Schema.optional(Schema.Boolean),
             proxied: Schema.optional(Schema.Boolean),
             settings: Schema.optional(
               Schema.Struct({
@@ -24508,13 +24741,26 @@ export const ScanReviewRecordRequest =
               ),
             ),
             tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              ttl: "ttl",
+              type: "type",
+              comment: "comment",
+              content: "content",
+              privateRouting: "private_routing",
+              proxied: "proxied",
+              settings: "settings",
+              tags: "tags",
+            }),
+          ),
           Schema.Struct({
             name: Schema.String,
             ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("AAAA"),
             comment: Schema.optional(Schema.String),
             content: Schema.optional(Schema.String),
+            privateRouting: Schema.optional(Schema.Boolean),
             proxied: Schema.optional(Schema.Boolean),
             settings: Schema.optional(
               Schema.Struct({
@@ -24528,7 +24774,19 @@ export const ScanReviewRecordRequest =
               ),
             ),
             tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              ttl: "ttl",
+              type: "type",
+              comment: "comment",
+              content: "content",
+              privateRouting: "private_routing",
+              proxied: "proxied",
+              settings: "settings",
+              tags: "tags",
+            }),
+          ),
           Schema.Struct({
             name: Schema.String,
             ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -25084,6 +25342,7 @@ export interface ScanReviewRecordResponse {
             type: "A";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -25104,6 +25363,7 @@ export interface ScanReviewRecordResponse {
             type: "AAAA";
             comment?: string | null;
             content?: string | null;
+            privateRouting?: boolean | null;
             proxied?: boolean | null;
             settings?: {
               ipv4Only?: boolean | null;
@@ -25649,6 +25909,9 @@ export const ScanReviewRecordResponse =
               content: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
+              privateRouting: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               proxied: Schema.optional(
                 Schema.Union([Schema.Boolean, Schema.Null]),
               ),
@@ -25691,6 +25954,7 @@ export const ScanReviewRecordResponse =
                 type: "type",
                 comment: "comment",
                 content: "content",
+                privateRouting: "private_routing",
                 proxied: "proxied",
                 settings: "settings",
                 tags: "tags",
@@ -25713,6 +25977,9 @@ export const ScanReviewRecordResponse =
               content: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
+              privateRouting: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               proxied: Schema.optional(
                 Schema.Union([Schema.Boolean, Schema.Null]),
               ),
@@ -25755,6 +26022,7 @@ export const ScanReviewRecordResponse =
                 type: "type",
                 comment: "comment",
                 content: "content",
+                privateRouting: "private_routing",
                 proxied: "proxied",
                 settings: "settings",
                 tags: "tags",
@@ -27320,6 +27588,8 @@ export interface GetSettingAccountResponse {
     };
     zoneMode: "standard" | "cdn_only" | "dns_only";
   };
+  /** When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modi */
+  enforceDnsOnly?: boolean | null;
 }
 
 export const GetSettingAccountResponse =
@@ -27376,8 +27646,16 @@ export const GetSettingAccountResponse =
         zoneMode: "zone_mode",
       }),
     ),
+    enforceDnsOnly: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
   })
-    .pipe(Schema.encodeKeys({ zoneDefaults: "zone_defaults" }))
+    .pipe(
+      Schema.encodeKeys({
+        zoneDefaults: "zone_defaults",
+        enforceDnsOnly: "enforce_dns_only",
+      }),
+    )
     .pipe(
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetSettingAccountResponse>;
@@ -27398,7 +27676,9 @@ export const getSettingAccount: API.OperationMethod<
 export interface PatchSettingAccountRequest {
   /** Path param: Identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param: When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override d */
+  enforceDnsOnly?: boolean;
+  /** Body param */
   zoneDefaults?: {
     flattenAllCnames?: boolean;
     foundationDns?: boolean;
@@ -27429,6 +27709,7 @@ export interface PatchSettingAccountRequest {
 export const PatchSettingAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    enforceDnsOnly: Schema.optional(Schema.Boolean),
     zoneDefaults: Schema.optional(
       Schema.Struct({
         flattenAllCnames: Schema.optional(Schema.Boolean),
@@ -27492,7 +27773,10 @@ export const PatchSettingAccountRequest =
       ),
     ),
   }).pipe(
-    Schema.encodeKeys({ zoneDefaults: "zone_defaults" }),
+    Schema.encodeKeys({
+      enforceDnsOnly: "enforce_dns_only",
+      zoneDefaults: "zone_defaults",
+    }),
     T.Http({ method: "PATCH", path: "/accounts/{account_id}/dns_settings" }),
   ) as unknown as Schema.Schema<PatchSettingAccountRequest>;
 
@@ -27522,6 +27806,8 @@ export interface PatchSettingAccountResponse {
     };
     zoneMode: "standard" | "cdn_only" | "dns_only";
   };
+  /** When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modi */
+  enforceDnsOnly?: boolean | null;
 }
 
 export const PatchSettingAccountResponse =
@@ -27578,8 +27864,16 @@ export const PatchSettingAccountResponse =
         zoneMode: "zone_mode",
       }),
     ),
+    enforceDnsOnly: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
   })
-    .pipe(Schema.encodeKeys({ zoneDefaults: "zone_defaults" }))
+    .pipe(
+      Schema.encodeKeys({
+        zoneDefaults: "zone_defaults",
+        enforceDnsOnly: "enforce_dns_only",
+      }),
+    )
     .pipe(
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<PatchSettingAccountResponse>;
@@ -27674,7 +27968,7 @@ export interface ListSettingAccountViewsRequest {
   direction?: "asc" | "desc";
   /** Query param: Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. */
   match?: "any" | "all";
-  /** Query param: */
+  /** Query param */
   name?: {
     contains?: string;
     endswith?: string;
@@ -28521,7 +28815,7 @@ export const listZoneTransferAcls: API.PaginatedOperationMethod<
 }));
 
 export interface CreateZoneTransferAclRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones an */
   ipRange: string;
@@ -28576,7 +28870,7 @@ export const createZoneTransferAcl: API.OperationMethod<
 
 export interface UpdateZoneTransferAclRequest {
   aclId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones an */
   ipRange: string;
@@ -28675,9 +28969,9 @@ export const deleteZoneTransferAcl: API.OperationMethod<
 // =============================================================================
 
 export interface CreateZoneTransferForceAxfrRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -28790,7 +29084,7 @@ export const getZoneTransferIncoming: API.OperationMethod<
 }));
 
 export interface CreateZoneTransferIncomingRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
   /** Body param: How often should a secondary zone auto refresh regardless of DNS NOTIFY. Not applicable for primary zones. */
   autoRefreshSeconds: number;
@@ -28878,7 +29172,7 @@ export const createZoneTransferIncoming: API.OperationMethod<
 }));
 
 export interface UpdateZoneTransferIncomingRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
   /** Body param: How often should a secondary zone auto refresh regardless of DNS NOTIFY. Not applicable for primary zones. */
   autoRefreshSeconds: number;
@@ -29077,7 +29371,7 @@ export const getZoneTransferOutgoing: API.OperationMethod<
 }));
 
 export interface CreateZoneTransferOutgoingRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
   /** Body param: Zone name. */
   name: string;
@@ -29153,7 +29447,7 @@ export const createZoneTransferOutgoing: API.OperationMethod<
 }));
 
 export interface UpdateZoneTransferOutgoingRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
   /** Body param: Zone name. */
   name: string;
@@ -29267,9 +29561,9 @@ export const deleteZoneTransferOutgoing: API.OperationMethod<
 }));
 
 export interface EnableZoneTransferOutgoingRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -29305,9 +29599,9 @@ export const enableZoneTransferOutgoing: API.OperationMethod<
 }));
 
 export interface DisableZoneTransferOutgoingRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -29518,7 +29812,7 @@ export const listZoneTransferPeers: API.PaginatedOperationMethod<
 }));
 
 export interface CreateZoneTransferPeerRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: The name of the peer. */
   name: string;
@@ -29587,7 +29881,7 @@ export const createZoneTransferPeer: API.OperationMethod<
 
 export interface UpdateZoneTransferPeerRequest {
   peerId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: The name of the peer. */
   name: string;
@@ -29815,7 +30109,7 @@ export const listZoneTransferTsigs: API.PaginatedOperationMethod<
 }));
 
 export interface CreateZoneTransferTsigRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: TSIG algorithm. */
   algo: string;
@@ -29873,7 +30167,7 @@ export const createZoneTransferTsig: API.OperationMethod<
 
 export interface UpdateZoneTransferTsigRequest {
   tsigId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: TSIG algorithm. */
   algo: string;

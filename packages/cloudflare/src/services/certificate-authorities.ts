@@ -65,7 +65,7 @@ export const getHostnameAssociation: API.OperationMethod<
 export interface PutHostnameAssociationRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   hostnames?: string[];
   /** Body param: The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls_certificate_id is given, the hostnames will be associated to your active Cloudflare Man */
   mtlsCertificateId?: string;

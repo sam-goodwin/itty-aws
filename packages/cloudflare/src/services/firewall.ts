@@ -1482,7 +1482,7 @@ export const deleteLockdown: API.OperationMethod<
 export interface BulkPutRulesRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -1943,7 +1943,7 @@ export interface CreateRuleRequest {
     response?: { body?: string; contentType?: string };
     timeout?: number;
   };
-  /** Body param: */
+  /** Body param */
   filter: {
     description?: string;
     expression?: string;
@@ -2120,7 +2120,7 @@ export interface UpdateRuleRequest {
     response?: { body?: string; contentType?: string };
     timeout?: number;
   };
-  /** Body param: */
+  /** Body param */
   filter: {
     description?: string;
     expression?: string;
@@ -2553,7 +2553,7 @@ export const deleteRule: API.OperationMethod<
 export interface BulkPatchRulesRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 
@@ -3021,7 +3021,7 @@ export const listUaRules: API.PaginatedOperationMethod<
 export interface CreateUaRuleRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   configuration: { target?: "ua"; value?: string };
   /** Body param: The action to apply to a matched request. */
   mode:

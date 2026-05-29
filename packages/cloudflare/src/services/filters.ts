@@ -166,7 +166,7 @@ export const listFilters: API.PaginatedOperationMethod<
 export interface CreateFilterRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: {
     description?: string;
     expression?: string;
@@ -329,7 +329,7 @@ export const deleteFilter: API.OperationMethod<
 export interface BulkDeleteFiltersRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
-  /** Query param: */
+  /** Query param */
   id: string[];
 }
 
@@ -372,7 +372,7 @@ export const bulkDeleteFilters: API.OperationMethod<
 export interface BulkPutFiltersRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: {
     description?: string;
     expression?: string;

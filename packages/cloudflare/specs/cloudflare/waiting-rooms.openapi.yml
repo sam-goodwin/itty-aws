@@ -1378,7 +1378,7 @@ paths:
                   required:
                     - action
                     - expression
-                  description: "Body param:"
+                  description: Body param
               required:
                 - rules
       responses:
@@ -1462,7 +1462,7 @@ paths:
                     required:
                       - action
                       - expression
-                  description: "Body param:"
+                  description: Body param
               required:
                 - rules
       responses:
@@ -1663,8 +1663,9 @@ paths:
   /zones/{zone_id}/waiting_rooms/settings:
     get:
       operationId: getSetting
-      description: "Get zone-level Waiting Room settings  @example ```ts const setting
-        = await client.waitingRooms.settings.get({ zone_id:
+      description: "Gets the zone-level Waiting Room settings that apply as defaults
+        to all waiting rooms on the zone.  @example ```ts const setting = await
+        client.waitingRooms.settings.get({ zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: zone_id
@@ -1693,8 +1694,9 @@ paths:
       x-distilled-response-path: result
     put:
       operationId: putSetting
-      description: "Update zone-level Waiting Room settings  @example ```ts const
-        setting = await client.waitingRooms.settings.update({ zone_id:
+      description: "Fully updates zone-level Waiting Room settings, replacing the
+        existing configuration.  @example ```ts const setting = await
+        client.waitingRooms.settings.update({ zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: zone_id
@@ -1737,8 +1739,9 @@ paths:
       x-distilled-response-path: result
     patch:
       operationId: patchSetting
-      description: "Patch zone-level Waiting Room settings  @example ```ts const
-        response = await client.waitingRooms.settings.edit({ zone_id:
+      description: "Partially updates zone-level Waiting Room settings using PATCH
+        semantics.  @example ```ts const response = await
+        client.waitingRooms.settings.edit({ zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: zone_id

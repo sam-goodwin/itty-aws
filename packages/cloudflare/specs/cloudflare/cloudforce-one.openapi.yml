@@ -77,7 +77,8 @@ paths:
   /accounts/{account_id}/cloudforce-one/requests/{requestId}:
     get:
       operationId: getRequest
-      description: "Get a Request  @example ```ts const item = await
+      description: "Retrieves details for a specific Cloudforce One intelligence
+        request.  @example ```ts const item = await
         client.cloudforceOne.requests.get(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
@@ -276,7 +277,8 @@ paths:
       x-distilled-response-path: result
     delete:
       operationId: deleteRequest
-      description: "Delete a Request  @example ```ts const request = await
+      description: "Deletes a Cloudforce One intelligence request and all associated
+        data.  @example ```ts const request = await
         client.cloudforceOne.requests.delete(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
@@ -350,11 +352,11 @@ paths:
   /accounts/{account_id}/cloudforce-one/requests:
     post:
       operationId: listRequests
-      description: "List Requests  @example ```ts // Automatically fetches more pages
-        as needed. for await (const listItem of
-        client.cloudforceOne.requests.list( { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', page: 0, per_page: 10, }, )) { //
-        ... } ```"
+      description: "Lists Cloudforce One intelligence requests with filtering and
+        pagination.  @example ```ts // Automatically fetches more pages as
+        needed. for await (const listItem of client.cloudforceOne.requests.list(
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353', page: 0, per_page: 10,
+        }, )) { // ... } ```"
       parameters:
         - name: account_id
           in: path
@@ -594,8 +596,9 @@ paths:
   /accounts/{account_id}/cloudforce-one/requests/constants:
     get:
       operationId: constantsRequest
-      description: "Get Request Priority, Status, and TLP constants  @example ```ts
-        const requestConstants = await client.cloudforceOne.requests.constants({
+      description: "Retrieves constant values used in Cloudforce One requests,
+        including valid statuses and types.  @example ```ts const
+        requestConstants = await client.cloudforceOne.requests.constants({
         account_id: '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: account_id
@@ -645,7 +648,8 @@ paths:
   /accounts/{account_id}/cloudforce-one/requests/quota:
     get:
       operationId: quotaRequest
-      description: "Get Request Quota  @example ```ts const quota = await
+      description: "Retrieves quota usage for Cloudforce One standard
+        requests.  @example ```ts const quota = await
         client.cloudforceOne.requests.quota({ account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
@@ -680,8 +684,9 @@ paths:
   /accounts/{account_id}/cloudforce-one/requests/types:
     get:
       operationId: typesRequest
-      description: "Get Request Types  @example ```ts // Automatically fetches more
-        pages as needed. for await (const requestTypesResponse of
+      description: "Lists available request types for Cloudforce One intelligence
+        requests.  @example ```ts // Automatically fetches more pages as needed.
+        for await (const requestTypesResponse of
         client.cloudforceOne.requests.types( { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
@@ -702,8 +707,9 @@ paths:
   /accounts/{account_id}/cloudforce-one/requests/{requestId}/asset/{assetId}:
     get:
       operationId: getRequestAsset
-      description: "Get a Request Asset  @example ```ts // Automatically fetches more
-        pages as needed. for await (const assetGetResponse of
+      description: "Retrieves an asset attached to a Cloudforce One intelligence
+        request.  @example ```ts // Automatically fetches more pages as needed.
+        for await (const assetGetResponse of
         client.cloudforceOne.requests.assets.get(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415',
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
@@ -754,7 +760,8 @@ paths:
       x-distilled-pagination-class: AssetGetResponsesSinglePage
     put:
       operationId: updateRequestAsset
-      description: "Update a Request Asset  @example ```ts const asset = await
+      description: "Updates an asset in a Cloudforce One intelligence
+        request.  @example ```ts const asset = await
         client.cloudforceOne.requests.assets.update(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415',
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
@@ -815,7 +822,8 @@ paths:
       x-distilled-response-path: result
     delete:
       operationId: deleteRequestAsset
-      description: "Delete a Request Asset  @example ```ts const asset = await
+      description: "Removes an asset from a Cloudforce One intelligence
+        request.  @example ```ts const asset = await
         client.cloudforceOne.requests.assets.delete(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415',
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
@@ -895,8 +903,9 @@ paths:
   /accounts/{account_id}/cloudforce-one/requests/{requestId}/asset:
     post:
       operationId: createRequestAsset
-      description: "List Request Assets  @example ```ts // Automatically fetches more
-        pages as needed. for await (const assetCreateResponse of
+      description: "Lists assets attached to a Cloudforce One intelligence
+        request.  @example ```ts // Automatically fetches more pages as needed.
+        for await (const assetCreateResponse of
         client.cloudforceOne.requests.assets.create(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', page: 0, per_page: 10, }, )) { //
@@ -959,8 +968,9 @@ paths:
   /accounts/{account_id}/cloudforce-one/requests/{requestId}/message:
     post:
       operationId: getRequestMessage
-      description: "List Request Messages  @example ```ts // Automatically fetches
-        more pages as needed. for await (const message of
+      description: "Lists messages in a Cloudforce One intelligence request
+        conversation.  @example ```ts // Automatically fetches more pages as
+        needed. for await (const message of
         client.cloudforceOne.requests.message.get(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', page: 0, per_page: 10, }, )) { //
@@ -1034,7 +1044,8 @@ paths:
   /accounts/{account_id}/cloudforce-one/requests/{requestId}/message/new:
     post:
       operationId: createRequestMessage
-      description: "Create a New Request Message  @example ```ts const message = await
+      description: "Adds a message to a Cloudforce One intelligence request
+        conversation.  @example ```ts const message = await
         client.cloudforceOne.requests.message.create(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
@@ -1086,7 +1097,8 @@ paths:
   /accounts/{account_id}/cloudforce-one/requests/{requestId}/message/{messageId}:
     put:
       operationId: updateRequestMessage
-      description: "Update a Request Message  @example ```ts const message = await
+      description: "Updates a message in a Cloudforce One intelligence request
+        thread.  @example ```ts const message = await
         client.cloudforceOne.requests.message.update(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', 0, { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
@@ -1142,7 +1154,8 @@ paths:
       x-distilled-response-path: result
     delete:
       operationId: deleteRequestMessage
-      description: "Delete a Request Message  @example ```ts const message = await
+      description: "Removes a message from a Cloudforce One intelligence request
+        thread.  @example ```ts const message = await
         client.cloudforceOne.requests.message.delete(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', 0, { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
@@ -1221,8 +1234,9 @@ paths:
   /accounts/{account_id}/cloudforce-one/requests/priority/{priorityId}:
     get:
       operationId: getRequestPriority
-      description: "Get a Priority Intelligence Requirement  @example ```ts const item
-        = await client.cloudforceOne.requests.priority.get(
+      description: "Retrieves a specific priority intelligence request from Cloudforce
+        One.  @example ```ts const item = await
+        client.cloudforceOne.requests.priority.get(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -1305,8 +1319,9 @@ paths:
       x-distilled-response-path: result
     put:
       operationId: updateRequestPriority
-      description: "Update a Priority Intelligence Requirement  @example ```ts const
-        item = await client.cloudforceOne.requests.priority.update(
+      description: "Updates a priority intelligence request in Cloudforce
+        One.  @example ```ts const item = await
+        client.cloudforceOne.requests.priority.update(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', labels: ['DoS', 'CVE'], priority: 1,
         requirement: 'DoS attacks carried out by CVEs', tlp: 'clear', }, ); ```"
@@ -1422,8 +1437,9 @@ paths:
       x-distilled-response-path: result
     delete:
       operationId: deleteRequestPriority
-      description: "Delete a Priority Intelligence Requirement  @example ```ts const
-        priority = await client.cloudforceOne.requests.priority.delete(
+      description: "Deletes a priority intelligence request from Cloudforce
+        One.  @example ```ts const priority = await
+        client.cloudforceOne.requests.priority.delete(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -1496,11 +1512,11 @@ paths:
   /accounts/{account_id}/cloudforce-one/requests/priority/new:
     post:
       operationId: createRequestPriority
-      description: "Create a New Priority Intelligence Requirement  @example ```ts
-        const priority = await client.cloudforceOne.requests.priority.create({
-        account_id: '023e105f4ecef8ad9ca31a8372d0c353', labels: ['DoS', 'CVE'],
-        priority: 1, requirement: 'DoS attacks carried out by CVEs', tlp:
-        'clear', }); ```"
+      description: "Creates a new priority intelligence request in Cloudforce
+        One.  @example ```ts const priority = await
+        client.cloudforceOne.requests.priority.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', labels: ['DoS', 'CVE'], priority: 1,
+        requirement: 'DoS attacks carried out by CVEs', tlp: 'clear', }); ```"
       parameters:
         - name: account_id
           in: path
@@ -1589,8 +1605,9 @@ paths:
   /accounts/{account_id}/cloudforce-one/requests/priority/quota:
     get:
       operationId: quotaRequestPriority
-      description: "Get Priority Intelligence Requirement Quota  @example ```ts const
-        quota = await client.cloudforceOne.requests.priority.quota({ account_id:
+      description: "Retrieves quota usage for Cloudforce One priority
+        requests.  @example ```ts const quota = await
+        client.cloudforceOne.requests.priority.quota({ account_id:
         '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: account_id
@@ -1923,6 +1940,8 @@ paths:
                     type: string
                   category:
                     type: string
+                  datasetId:
+                    type: string
                   date:
                     type: string
                   event:
@@ -1938,6 +1957,10 @@ paths:
                   killChain:
                     type: number
                   mitreAttack:
+                    type: array
+                    items:
+                      type: string
+                  mitreCapec:
                     type: array
                     items:
                       type: string
@@ -1983,6 +2006,7 @@ paths:
                   - attacker
                   - attackerCountry
                   - category
+                  - datasetId
                   - date
                   - event
                   - hasChildren
@@ -1991,6 +2015,7 @@ paths:
                   - indicatorTypeId
                   - killChain
                   - mitreAttack
+                  - mitreCapec
                   - numReferenced
                   - numReferences
                   - rawId
@@ -2007,7 +2032,8 @@ paths:
       operationId: patchThreatEvent
       description: "Updates an event  @example ```ts const response = await
         client.cloudforceOne.threatEvents.edit('event_id', { account_id:
-        'account_id', }); ```"
+        'account_id', datasetId: '9b769969-a211-466c-8ac3-cb91266a066a', });
+        ```"
       parameters:
         - name: eventId
           in: path
@@ -2021,44 +2047,44 @@ paths:
           schema:
             type: string
       requestBody:
-        required: false
+        required: true
         content:
           application/json:
             schema:
               type: object
               properties:
+                datasetId:
+                  type: string
+                  description: "Body param: Dataset ID containing the event to update."
                 attacker:
                   oneOf:
                     - type: string
                   nullable: true
-                  description: "Body param:"
+                  description: Body param
                 attackerCountry:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 category:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 createdAt:
                   type: string
-                  description: "Body param:"
-                datasetId:
-                  type: string
-                  description: "Body param:"
+                  description: Body param
                 date:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 event:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 indicator:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 indicatorType:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 insight:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 raw:
                   type: object
                   properties:
@@ -2071,16 +2097,18 @@ paths:
                       type: string
                     tlp:
                       type: string
-                  description: "Body param:"
+                  description: Body param
                 targetCountry:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 targetIndustry:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 tlp:
                   type: string
-                  description: "Body param:"
+                  description: Body param
+              required:
+                - datasetId
       responses:
         "200":
           description: Success
@@ -2094,6 +2122,8 @@ paths:
                   attackerCountry:
                     type: string
                   category:
+                    type: string
+                  datasetId:
                     type: string
                   date:
                     type: string
@@ -2110,6 +2140,10 @@ paths:
                   killChain:
                     type: number
                   mitreAttack:
+                    type: array
+                    items:
+                      type: string
+                  mitreCapec:
                     type: array
                     items:
                       type: string
@@ -2155,6 +2189,7 @@ paths:
                   - attacker
                   - attackerCountry
                   - category
+                  - datasetId
                   - date
                   - event
                   - hasChildren
@@ -2163,6 +2198,7 @@ paths:
                   - indicatorTypeId
                   - killChain
                   - mitreAttack
+                  - mitreCapec
                   - numReferenced
                   - numReferences
                   - rawId
@@ -2175,50 +2211,18 @@ paths:
                   - targetIndustry
                   - tlp
                   - uuid
-    delete:
-      operationId: deleteThreatEvent
-      description: "The `datasetId` parameter must be defined. To list existing
-        datasets (and their IDs) in your account, use the [`List
-        Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_o\
-        ne/subresources/threat_events/subresources/datasets/methods/list/)
-        endpoint.  @example ```ts const threatEvent = await
-        client.cloudforceOne.threatEvents.delete( 'event_id', { account_id:
-        'account_id' }, ); ```"
-      parameters:
-        - name: eventId
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: account_id
-          in: path
-          required: true
-          description: Account ID.
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  uuid:
-                    type: string
-                required:
-                  - uuid
   /accounts/{account_id}/cloudforce-one/events:
     get:
       operationId: listThreatEvents
-      description: "When `datasetId` is unspecified, events will be listed from the
-        `Cloudforce One Threat Events` dataset. To list existing datasets (and
-        their IDs), use the [`List
+      description: "Use `datasetId=all` or `datasetId= ` to query all event datasets
+        for the account (limited to 10). When `datasetId` is unspecified, events
+        are listed from the default Cloudforce One Threat Events dataset. To
+        list existing datasets, use the [`List
         Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_o\
         ne/subresources/threat_events/subresources/datasets/methods/list/)
-        endpoint). Also, must provide query parameters.  @example ```ts const
-        threatEvents = await client.cloudforceOne.threatEvents.list({
-        account_id: 'account_id', }); ```"
+        endpoint.  @example ```ts const threatEvents = await
+        client.cloudforceOne.threatEvents.list({ account_id: 'account_id', });
+        ```"
       parameters:
         - name: account_id
           in: path
@@ -2226,10 +2230,22 @@ paths:
           description: "Path param: Account ID."
           schema:
             type: string
+        - name: cursor
+          in: query
+          required: false
+          description: "Query param: Cursor for pagination. When provided, filters are
+            embedded in the cursor so you only need to pass cursor and pageSize.
+            Returned in the previous response's result_info.cursor field. Use
+            cursor-based pagination for deep pagination (beyond 100,000 records)
+            or for optimal performance."
+          schema:
+            type: string
         - name: datasetId
           in: query
           required: false
-          description: "Query param:"
+          description: "Query param: Dataset IDs to query events from (array of UUIDs), or
+            special value 'all' or '\\ ' to query all event datasets for the
+            account. If not provided, uses the default dataset."
           schema:
             type: array
             items:
@@ -2237,22 +2253,23 @@ paths:
         - name: forceRefresh
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: boolean
         - name: format
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
             enum:
               - json
               - stix2
+              - taxii
         - name: order
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
             enum:
@@ -2261,25 +2278,27 @@ paths:
         - name: orderBy
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: page
           in: query
           required: false
-          description: "Query param:"
+          description: "Query param: Page number (1-indexed) for offset-based pagination.
+            Limited to offset of 100,000 records. For deep pagination, use
+            cursor-based pagination instead."
           schema:
             type: number
         - name: pageSize
           in: query
           required: false
-          description: "Query param:"
+          description: "Query param: Number of results per page. Maximum 25,000."
           schema:
             type: number
         - name: search
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: array
             items:
@@ -2287,6 +2306,10 @@ paths:
               properties:
                 field:
                   type: string
+                  description: "Event field to search on. Allowed: attacker, attackerCountry,
+                    category, createdAt, date, event, indicator, indicatorType,
+                    killChain, mitreAttack, tags, targetCountry, targetIndustry,
+                    tlp, uuid."
                 op:
                   type: string
                   enum:
@@ -2302,6 +2325,8 @@ paths:
                     - endsWith
                     - in
                     - find
+                  description: Search operator. Use 'in' for bulk lookup of up to 100 values at
+                    once, e.g. {field:'tags', op:'in', value:['malware','apt']}.
                 value:
                   oneOf:
                     - type: string
@@ -2311,6 +2336,8 @@ paths:
                         oneOf:
                           - type: string
                           - type: number
+                  description: Search value. String or number for most operators. Array for 'in'
+                    operator (max 100 items).
       responses:
         "200":
           description: Success
@@ -2327,6 +2354,8 @@ paths:
                       type: string
                     category:
                       type: string
+                    datasetId:
+                      type: string
                     date:
                       type: string
                     event:
@@ -2342,6 +2371,10 @@ paths:
                     killChain:
                       type: number
                     mitreAttack:
+                      type: array
+                      items:
+                        type: string
+                    mitreCapec:
                       type: array
                       items:
                         type: string
@@ -2387,6 +2420,7 @@ paths:
                     - attacker
                     - attackerCountry
                     - category
+                    - datasetId
                     - date
                     - event
                     - hasChildren
@@ -2395,6 +2429,7 @@ paths:
                     - indicatorTypeId
                     - killChain
                     - mitreAttack
+                    - mitreCapec
                     - numReferenced
                     - numReferences
                     - rawId
@@ -2436,13 +2471,13 @@ paths:
               properties:
                 category:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 date:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 event:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 raw:
                   type: object
                   properties:
@@ -2457,24 +2492,24 @@ paths:
                       type: string
                   required:
                     - data
-                  description: "Body param:"
+                  description: Body param
                 tlp:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 attacker:
                   oneOf:
                     - type: string
                   nullable: true
-                  description: "Body param:"
+                  description: Body param
                 attackerCountry:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 datasetId:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 indicator:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 indicators:
                   type: array
                   items:
@@ -2493,26 +2528,21 @@ paths:
                     indicators per event for complex scenarios."
                 indicatorType:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 insight:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 tags:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 targetCountry:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 targetIndustry:
                   type: string
-                  description: "Body param:"
-                uuid:
-                  type: string
-                  description: "Body param: Optional UUID for the event. Only used when
-                    preserveUuid=true in bulk create. Must be a valid UUID
-                    format."
+                  description: Body param
               required:
                 - category
                 - date
@@ -2533,6 +2563,8 @@ paths:
                     type: string
                   category:
                     type: string
+                  datasetId:
+                    type: string
                   date:
                     type: string
                   event:
@@ -2548,6 +2580,10 @@ paths:
                   killChain:
                     type: number
                   mitreAttack:
+                    type: array
+                    items:
+                      type: string
+                  mitreCapec:
                     type: array
                     items:
                       type: string
@@ -2593,6 +2629,7 @@ paths:
                   - attacker
                   - attackerCountry
                   - category
+                  - datasetId
                   - date
                   - event
                   - hasChildren
@@ -2601,6 +2638,7 @@ paths:
                   - indicatorTypeId
                   - killChain
                   - mitreAttack
+                  - mitreCapec
                   - numReferenced
                   - numReferences
                   - rawId
@@ -2707,26 +2745,21 @@ paths:
                         type: string
                       targetIndustry:
                         type: string
-                      uuid:
-                        type: string
-                        description: Optional UUID for the event. Only used when preserveUuid=true in
-                          bulk create. Must be a valid UUID format.
                     required:
                       - category
                       - date
                       - event
                       - raw
                       - tlp
-                  description: "Body param:"
+                  description: Body param
                 datasetId:
                   type: string
-                  description: "Body param:"
-                preserveUuid:
+                  description: Body param
+                includeCreatedEvents:
                   type: boolean
-                  description: "Body param: When true, use provided UUIDs from event data instead
-                    of generating new ones. Used for migration scenarios where
-                    original UUIDs must be preserved. Duplicate UUIDs will be
-                    skipped."
+                  description: "Body param: When true, response includes array of created event
+                    UUIDs and shard IDs. Useful for tracking which events were
+                    created and where."
               required:
                 - data
                 - datasetId
@@ -2750,13 +2783,29 @@ paths:
                   queuedIndicatorsCount:
                     type: number
                     description: Number of indicators queued for async processing
-                  skippedEventsCount:
-                    type: number
-                    description: Number of events skipped due to duplicate UUID (only when
-                      preserveUuid=true)
                   createBulkEventsRequestId:
                     type: string
                     description: Correlation ID for async indicator processing
+                  createdEvents:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        eventIndex:
+                          type: number
+                          description: Original index in the input data array
+                        shardId:
+                          type: string
+                          description: Dataset ID of the shard where the event was created
+                        uuid:
+                          type: string
+                          description: UUID of the created event
+                      required:
+                        - eventIndex
+                        - shardId
+                        - uuid
+                    description: Array of created events with UUIDs and shard locations. Only
+                      present when includeCreatedEvents=true
                   errors:
                     type: array
                     items:
@@ -2777,7 +2826,6 @@ paths:
                   - createdTagsCount
                   - errorCount
                   - queuedIndicatorsCount
-                  - skippedEventsCount
   /accounts/{account_id}/cloudforce-one/events/attackers:
     get:
       operationId: listThreatEventAttackers
@@ -2857,6 +2905,10 @@ paths:
                     type: array
                     items:
                       type: string
+                  mitreCapec:
+                    type: array
+                    items:
+                      type: string
                   shortname:
                     type: string
                 required:
@@ -2890,18 +2942,23 @@ paths:
               properties:
                 killChain:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 mitreAttack:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
+                mitreCapec:
+                  type: array
+                  items:
+                    type: string
+                  description: Body param
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 shortname:
                   type: string
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -2917,6 +2974,10 @@ paths:
                   uuid:
                     type: string
                   mitreAttack:
+                    type: array
+                    items:
+                      type: string
+                  mitreCapec:
                     type: array
                     items:
                       type: string
@@ -2998,6 +3059,10 @@ paths:
                       type: array
                       items:
                         type: string
+                    mitreCapec:
+                      type: array
+                      items:
+                        type: string
                     shortname:
                       type: string
                   required:
@@ -3026,18 +3091,23 @@ paths:
               properties:
                 killChain:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 mitreAttack:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
+                mitreCapec:
+                  type: array
+                  items:
+                    type: string
+                  description: Body param
                 shortname:
                   type: string
-                  description: "Body param:"
+                  description: Body param
               required:
                 - killChain
                 - name
@@ -3056,6 +3126,10 @@ paths:
                   uuid:
                     type: string
                   mitreAttack:
+                    type: array
+                    items:
+                      type: string
+                  mitreCapec:
                     type: array
                     items:
                       type: string
@@ -3094,11 +3168,14 @@ paths:
                       items:
                         type: object
                         properties:
+                          alpha2:
+                            type: string
                           alpha3:
                             type: string
                           name:
                             type: string
                         required:
+                          - alpha2
                           - alpha3
                           - name
                     success:
@@ -3148,7 +3225,7 @@ paths:
       description: "Updates an existing dataset  @example ```ts const response = await
         client.cloudforceOne.threatEvents.datasets.edit(
         '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id: 'account_id',
-        isPublic: true, name: 'x' }, ); ```"
+        isPublic: true, name: 'x', }, ); ```"
       parameters:
         - name: datasetId
           in: path
@@ -3282,7 +3359,8 @@ paths:
   /accounts/{account_id}/cloudforce-one/events/raw/{datasetId}/{eventId}:
     get:
       operationId: rawThreatEventDataset
-      description: "Reads data for a raw event  @example ```ts const response = await
+      description: "Retrieves the raw data associated with an event. Searches across
+        all shards in the dataset.  @example ```ts const response = await
         client.cloudforceOne.threatEvents.datasets.raw( 'dataset_id',
         'event_id', { account_id: 'account_id' }, ); ```"
       parameters:
@@ -3311,12 +3389,13 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: string
+                    type: number
                   accountId:
                     type: number
                   created:
                     type: string
-                  data: {}
+                  data:
+                    type: string
                   source:
                     type: string
                   tlp:
@@ -3357,7 +3436,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
               required:
                 - tags
       responses:
@@ -3515,13 +3594,13 @@ paths:
               type: object
               properties:
                 data:
-                  description: "Body param:"
+                  description: Body param
                 source:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 tlp:
                   type: string
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -3589,58 +3668,58 @@ paths:
               properties:
                 value:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 activeDuration:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 actorCategory:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 aliasGroupNames:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 aliasGroupNamesInternal:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 analyticPriority:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 attributionConfidence:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 attributionOrganization:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 categoryUuid:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 externalReferenceLinks:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 internalDescription:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 motive:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 opsecLevel:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 originCountryISO:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 priority:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 sophisticationLevel:
                   type: string
-                  description: "Body param:"
+                  description: Body param
               required:
                 - value
       responses:

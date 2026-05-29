@@ -308,6 +308,9 @@ paths:
                       total_count:
                         type: number
                         description: Total results available without any search parameters.
+                      total_pages:
+                        type: number
+                        description: The number of total pages in the entire result set.
                 required:
                   - errors
                   - messages
@@ -427,7 +430,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 memberships:
                   type: array
                   items:
@@ -625,6 +628,9 @@ paths:
                       total_count:
                         type: number
                         description: Total results available without any search parameters.
+                      total_pages:
+                        type: number
+                        description: The number of total pages in the entire result set.
                 required:
                   - errors
                   - messages
@@ -730,6 +736,9 @@ paths:
                       total_count:
                         type: number
                         description: Total results available without any search parameters.
+                      total_pages:
+                        type: number
+                        description: The number of total pages in the entire result set.
                 required:
                   - errors
                   - messages
@@ -846,6 +855,9 @@ paths:
                       total_count:
                         type: number
                         description: Total results available without any search parameters.
+                      total_pages:
+                        type: number
+                        description: The number of total pages in the entire result set.
                 required:
                   - errors
                   - messages
@@ -959,6 +971,9 @@ paths:
                       total_count:
                         type: number
                         description: Total results available without any search parameters.
+                      total_pages:
+                        type: number
+                        description: The number of total pages in the entire result set.
                 required:
                   - errors
                   - messages
@@ -1080,6 +1095,9 @@ paths:
                       total_count:
                         type: number
                         description: Total results available without any search parameters.
+                      total_pages:
+                        type: number
+                        description: The number of total pages in the entire result set.
                 required:
                   - errors
                   - messages
@@ -1191,6 +1209,9 @@ paths:
                       total_count:
                         type: number
                         description: Total results available without any search parameters.
+                      total_pages:
+                        type: number
+                        description: The number of total pages in the entire result set.
                 required:
                   - errors
                   - messages
@@ -1224,9 +1245,7 @@ paths:
           in: path
           required: true
           schema:
-            oneOf:
-              - type: string
-            nullable: true
+            type: string
         - name: account_id
           in: path
           required: true
@@ -2141,7 +2160,7 @@ paths:
                   properties:
                     advertised:
                       type: boolean
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success

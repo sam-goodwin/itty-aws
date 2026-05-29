@@ -306,7 +306,7 @@ export interface CreateIndexRequest {
           | "openai/text-embedding-ada-002"
           | "cohere/embed-multilingual-v2.0";
       };
-  /** Body param: */
+  /** Body param */
   name: string;
   /** Body param: Specifies the description of the index. */
   description?: string;

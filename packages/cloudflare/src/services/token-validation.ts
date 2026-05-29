@@ -314,7 +314,7 @@ export const listConfigurations: API.PaginatedOperationMethod<
 export interface CreateConfigurationRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   credentials: {
     keys: (
       | {
@@ -342,13 +342,13 @@ export interface CreateConfigurationRequest {
         }
     )[];
   };
-  /** Body param: */
+  /** Body param */
   description: string;
-  /** Body param: */
+  /** Body param */
   title: string;
-  /** Body param: */
+  /** Body param */
   tokenSources: string[];
-  /** Body param: */
+  /** Body param */
   tokenType: "JWT";
 }
 
@@ -526,11 +526,11 @@ export interface PatchConfigurationRequest {
   configId: string;
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   description?: string;
-  /** Body param: */
+  /** Body param */
   title?: string;
-  /** Body param: */
+  /** Body param */
   tokenSources?: string[];
 }
 
@@ -554,6 +554,8 @@ export const PatchConfigurationRequest =
   ) as unknown as Schema.Schema<PatchConfigurationRequest>;
 
 export interface PatchConfigurationResponse {
+  /** UUID. */
+  id?: string | null;
   description?: string | null;
   title?: string | null;
   tokenSources?: string[] | null;
@@ -561,6 +563,7 @@ export interface PatchConfigurationResponse {
 
 export const PatchConfigurationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     tokenSources: Schema.optional(
@@ -569,6 +572,7 @@ export const PatchConfigurationResponse =
   })
     .pipe(
       Schema.encodeKeys({
+        id: "id",
         description: "description",
         title: "title",
         tokenSources: "token_sources",
@@ -641,7 +645,7 @@ export interface PutConfigurationCredentialRequest {
   configId: string;
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   keys: (
     | {
         alg: "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
@@ -1465,7 +1469,7 @@ export const deleteRule: API.OperationMethod<
 export interface BulkCreateRulesRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: {
     action: "log" | "block";
     description: string;
@@ -1614,7 +1618,7 @@ export const bulkCreateRules: API.PaginatedOperationMethod<
 export interface BulkPatchRulesRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: {
     id: string;
     action?: "log" | "block";

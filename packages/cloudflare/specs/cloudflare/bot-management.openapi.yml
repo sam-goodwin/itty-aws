@@ -43,6 +43,15 @@ paths:
                           - off
                           - policy_only
                         description: Specifies the Robots Access Control License variant to use.
+                      content_bots_protection:
+                        type: string
+                        enum:
+                          - block
+                          - disabled
+                        description: Enable rule to block content bots. When enabled, blocks automated
+                          traffic with low bot scores, excluding safe verified
+                          bot categories. Exceptions should be managed via skip
+                          rules.
                       crawler_protection:
                         type: string
                         enum:
@@ -110,6 +119,15 @@ paths:
                           - off
                           - policy_only
                         description: Specifies the Robots Access Control License variant to use.
+                      content_bots_protection:
+                        type: string
+                        enum:
+                          - block
+                          - disabled
+                        description: Enable rule to block content bots. When enabled, blocks automated
+                          traffic with low bot scores, excluding safe verified
+                          bot categories. Exceptions should be managed via skip
+                          rules.
                       crawler_protection:
                         type: string
                         enum:
@@ -184,6 +202,15 @@ paths:
                           - off
                           - policy_only
                         description: Specifies the Robots Access Control License variant to use.
+                      content_bots_protection:
+                        type: string
+                        enum:
+                          - block
+                          - disabled
+                        description: Enable rule to block content bots. When enabled, blocks automated
+                          traffic with low bot scores, excluding safe verified
+                          bot categories. Exceptions should be managed via skip
+                          rules.
                       crawler_protection:
                         type: string
                         enum:
@@ -271,6 +298,15 @@ paths:
                           - off
                           - policy_only
                         description: Specifies the Robots Access Control License variant to use.
+                      content_bots_protection:
+                        type: string
+                        enum:
+                          - block
+                          - disabled
+                        description: Enable rule to block content bots. When enabled, blocks automated
+                          traffic with low bot scores, excluding safe verified
+                          bot categories. Exceptions should be managed via skip
+                          rules.
                       crawler_protection:
                         type: string
                         enum:
@@ -383,6 +419,15 @@ paths:
                     - policy_only
                   description: "Body param: Specifies the Robots Access Control License variant to
                     use."
+                content_bots_protection:
+                  type: string
+                  enum:
+                    - block
+                    - disabled
+                  description: "Body param: Enable rule to block content bots. When enabled,
+                    blocks automated traffic with low bot scores, excluding safe
+                    verified bot categories. Exceptions should be managed via
+                    skip rules."
                 crawler_protection:
                   type: string
                   enum:
@@ -428,6 +473,15 @@ paths:
                           - off
                           - policy_only
                         description: Specifies the Robots Access Control License variant to use.
+                      content_bots_protection:
+                        type: string
+                        enum:
+                          - block
+                          - disabled
+                        description: Enable rule to block content bots. When enabled, blocks automated
+                          traffic with low bot scores, excluding safe verified
+                          bot categories. Exceptions should be managed via skip
+                          rules.
                       crawler_protection:
                         type: string
                         enum:
@@ -495,6 +549,15 @@ paths:
                           - off
                           - policy_only
                         description: Specifies the Robots Access Control License variant to use.
+                      content_bots_protection:
+                        type: string
+                        enum:
+                          - block
+                          - disabled
+                        description: Enable rule to block content bots. When enabled, blocks automated
+                          traffic with low bot scores, excluding safe verified
+                          bot categories. Exceptions should be managed via skip
+                          rules.
                       crawler_protection:
                         type: string
                         enum:
@@ -569,6 +632,15 @@ paths:
                           - off
                           - policy_only
                         description: Specifies the Robots Access Control License variant to use.
+                      content_bots_protection:
+                        type: string
+                        enum:
+                          - block
+                          - disabled
+                        description: Enable rule to block content bots. When enabled, blocks automated
+                          traffic with low bot scores, excluding safe verified
+                          bot categories. Exceptions should be managed via skip
+                          rules.
                       crawler_protection:
                         type: string
                         enum:
@@ -656,6 +728,15 @@ paths:
                           - off
                           - policy_only
                         description: Specifies the Robots Access Control License variant to use.
+                      content_bots_protection:
+                        type: string
+                        enum:
+                          - block
+                          - disabled
+                        description: Enable rule to block content bots. When enabled, blocks automated
+                          traffic with low bot scores, excluding safe verified
+                          bot categories. Exceptions should be managed via skip
+                          rules.
                       crawler_protection:
                         type: string
                         enum:

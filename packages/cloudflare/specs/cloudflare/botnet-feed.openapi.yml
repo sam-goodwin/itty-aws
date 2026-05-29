@@ -77,7 +77,7 @@ paths:
         - name: date
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
       responses:

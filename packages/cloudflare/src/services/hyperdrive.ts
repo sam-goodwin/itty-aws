@@ -89,6 +89,12 @@ export interface GetConfigResponse {
         host: string;
         scheme: "postgres" | "postgresql" | "mysql";
         user: string;
+      }
+    | {
+        database: string;
+        scheme: "postgres" | "postgresql" | "mysql";
+        serviceId: string;
+        user: string;
       };
   caching?:
     | { disabled?: boolean | null }
@@ -102,12 +108,13 @@ export interface GetConfigResponse {
   createdOn?: string | null;
   /** Defines the last modified time of the Hyperdrive configuration. */
   modifiedOn?: string | null;
+  /** mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
   mtls?: {
     caCertificateId?: string | null;
     mtlsCertificateId?: string | null;
     sslmode?: string | null;
   } | null;
-  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.  Maximum allowed: 20 for free tier accounts, 100 for paid tier accounts. If not specified, defaults t */
   originConnectionLimit?: number | null;
 }
 
@@ -134,6 +141,19 @@ export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         database: "database",
         host: "host",
         scheme: "scheme",
+        user: "user",
+      }),
+    ),
+    Schema.Struct({
+      database: Schema.String,
+      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      serviceId: Schema.String,
+      user: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        database: "database",
+        scheme: "scheme",
+        serviceId: "service_id",
         user: "user",
       }),
     ),
@@ -257,6 +277,12 @@ export interface ListConfigsResponse {
           host: string;
           scheme: "postgres" | "postgresql" | "mysql";
           user: string;
+        }
+      | {
+          database: string;
+          scheme: "postgres" | "postgresql" | "mysql";
+          serviceId: string;
+          user: string;
         };
     caching?:
       | { disabled?: boolean | null }
@@ -302,6 +328,19 @@ export const ListConfigsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             database: "database",
             host: "host",
             scheme: "scheme",
+            user: "user",
+          }),
+        ),
+        Schema.Struct({
+          database: Schema.String,
+          scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+          serviceId: Schema.String,
+          user: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            database: "database",
+            scheme: "scheme",
+            serviceId: "service_id",
             user: "user",
           }),
         ),
@@ -402,7 +441,7 @@ export interface CreateConfigRequest {
   accountId: string;
   /** Body param: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
   name: string;
-  /** Body param: */
+  /** Body param */
   origin:
     | {
         database: string;
@@ -420,18 +459,25 @@ export interface CreateConfigRequest {
         password: string;
         scheme: "postgres" | "postgresql" | "mysql";
         user: string;
+      }
+    | {
+        database: string;
+        password: string;
+        scheme: "postgres" | "postgresql" | "mysql";
+        serviceId: string;
+        user: string;
       };
-  /** Body param: */
+  /** Body param */
   caching?:
     | { disabled?: boolean }
     | { disabled?: boolean; maxAge?: number; staleWhileRevalidate?: number };
-  /** Body param: */
+  /** Body param: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
   mtls?: {
     caCertificateId?: string;
     mtlsCertificateId?: string;
     sslmode?: string;
   };
-  /** Body param: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  /** Body param: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.  Maximum allowed: 20 for free tier accounts, 100 for paid tier accounts. If not specified */
   originConnectionLimit?: number;
 }
 
@@ -466,6 +512,21 @@ export const CreateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
       user: Schema.String,
     }),
+    Schema.Struct({
+      database: Schema.String,
+      password: SensitiveString,
+      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      serviceId: Schema.String,
+      user: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        database: "database",
+        password: "password",
+        scheme: "scheme",
+        serviceId: "service_id",
+        user: "user",
+      }),
+    ),
   ]),
   caching: Schema.optional(
     Schema.Union([
@@ -529,6 +590,12 @@ export interface CreateConfigResponse {
         host: string;
         scheme: "postgres" | "postgresql" | "mysql";
         user: string;
+      }
+    | {
+        database: string;
+        scheme: "postgres" | "postgresql" | "mysql";
+        serviceId: string;
+        user: string;
       };
   caching?:
     | { disabled?: boolean | null }
@@ -542,12 +609,13 @@ export interface CreateConfigResponse {
   createdOn?: string | null;
   /** Defines the last modified time of the Hyperdrive configuration. */
   modifiedOn?: string | null;
+  /** mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
   mtls?: {
     caCertificateId?: string | null;
     mtlsCertificateId?: string | null;
     sslmode?: string | null;
   } | null;
-  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.  Maximum allowed: 20 for free tier accounts, 100 for paid tier accounts. If not specified, defaults t */
   originConnectionLimit?: number | null;
 }
 
@@ -574,6 +642,19 @@ export const CreateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         database: "database",
         host: "host",
         scheme: "scheme",
+        user: "user",
+      }),
+    ),
+    Schema.Struct({
+      database: Schema.String,
+      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      serviceId: Schema.String,
+      user: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        database: "database",
+        scheme: "scheme",
+        serviceId: "service_id",
         user: "user",
       }),
     ),
@@ -674,7 +755,7 @@ export interface UpdateConfigRequest {
   accountId: string;
   /** Body param: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
   name: string;
-  /** Body param: */
+  /** Body param */
   origin:
     | {
         database: string;
@@ -692,18 +773,25 @@ export interface UpdateConfigRequest {
         password: string;
         scheme: "postgres" | "postgresql" | "mysql";
         user: string;
+      }
+    | {
+        database: string;
+        password: string;
+        scheme: "postgres" | "postgresql" | "mysql";
+        serviceId: string;
+        user: string;
       };
-  /** Body param: */
+  /** Body param */
   caching?:
     | { disabled?: boolean }
     | { disabled?: boolean; maxAge?: number; staleWhileRevalidate?: number };
-  /** Body param: */
+  /** Body param: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
   mtls?: {
     caCertificateId?: string;
     mtlsCertificateId?: string;
     sslmode?: string;
   };
-  /** Body param: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  /** Body param: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.  Maximum allowed: 20 for free tier accounts, 100 for paid tier accounts. If not specified */
   originConnectionLimit?: number;
 }
 
@@ -739,6 +827,21 @@ export const UpdateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
       user: Schema.String,
     }),
+    Schema.Struct({
+      database: Schema.String,
+      password: SensitiveString,
+      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      serviceId: Schema.String,
+      user: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        database: "database",
+        password: "password",
+        scheme: "scheme",
+        serviceId: "service_id",
+        user: "user",
+      }),
+    ),
   ]),
   caching: Schema.optional(
     Schema.Union([
@@ -805,6 +908,12 @@ export interface UpdateConfigResponse {
         host: string;
         scheme: "postgres" | "postgresql" | "mysql";
         user: string;
+      }
+    | {
+        database: string;
+        scheme: "postgres" | "postgresql" | "mysql";
+        serviceId: string;
+        user: string;
       };
   caching?:
     | { disabled?: boolean | null }
@@ -818,12 +927,13 @@ export interface UpdateConfigResponse {
   createdOn?: string | null;
   /** Defines the last modified time of the Hyperdrive configuration. */
   modifiedOn?: string | null;
+  /** mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
   mtls?: {
     caCertificateId?: string | null;
     mtlsCertificateId?: string | null;
     sslmode?: string | null;
   } | null;
-  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.  Maximum allowed: 20 for free tier accounts, 100 for paid tier accounts. If not specified, defaults t */
   originConnectionLimit?: number | null;
 }
 
@@ -850,6 +960,19 @@ export const UpdateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         database: "database",
         host: "host",
         scheme: "scheme",
+        user: "user",
+      }),
+    ),
+    Schema.Struct({
+      database: Schema.String,
+      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      serviceId: Schema.String,
+      user: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        database: "database",
+        scheme: "scheme",
+        serviceId: "service_id",
         user: "user",
       }),
     ),
@@ -950,11 +1073,11 @@ export interface PatchConfigRequest {
   hyperdriveId: string;
   /** Path param: Define configurations using a unique string identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   caching?:
     | { disabled?: boolean }
     | { disabled?: boolean; maxAge?: number; staleWhileRevalidate?: number };
-  /** Body param: */
+  /** Body param: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
   mtls?: {
     caCertificateId?: string;
     mtlsCertificateId?: string;
@@ -962,7 +1085,7 @@ export interface PatchConfigRequest {
   };
   /** Body param: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
   name?: string;
-  /** Body param: */
+  /** Body param: Connect to a database through a Workers VPC Service. TLS settings (mTLS, sslmode) cannot be configured on the Hyperdrive when using a VPC Service origin; TLS must be managed on the VPC Ser */
   origin?:
     | {
         database?: string;
@@ -971,8 +1094,9 @@ export interface PatchConfigRequest {
         user?: string;
       }
     | { host: string; port: number }
-    | { accessClientId: string; accessClientSecret: string; host: string };
-  /** Body param: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+    | { accessClientId: string; accessClientSecret: string; host: string }
+    | { serviceId: string };
+  /** Body param: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.  Maximum allowed: 20 for free tier accounts, 100 for paid tier accounts. If not specified */
   originConnectionLimit?: number;
 }
 
@@ -1029,6 +1153,9 @@ export const PatchConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         port: Schema.Number,
       }),
       Schema.Struct({
+        serviceId: Schema.String,
+      }).pipe(Schema.encodeKeys({ serviceId: "service_id" })),
+      Schema.Struct({
         database: Schema.optional(Schema.String),
         password: Schema.optional(SensitiveString),
         scheme: Schema.optional(
@@ -1072,6 +1199,12 @@ export interface PatchConfigResponse {
         host: string;
         scheme: "postgres" | "postgresql" | "mysql";
         user: string;
+      }
+    | {
+        database: string;
+        scheme: "postgres" | "postgresql" | "mysql";
+        serviceId: string;
+        user: string;
       };
   caching?:
     | { disabled?: boolean | null }
@@ -1085,12 +1218,13 @@ export interface PatchConfigResponse {
   createdOn?: string | null;
   /** Defines the last modified time of the Hyperdrive configuration. */
   modifiedOn?: string | null;
+  /** mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
   mtls?: {
     caCertificateId?: string | null;
     mtlsCertificateId?: string | null;
     sslmode?: string | null;
   } | null;
-  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.  Maximum allowed: 20 for free tier accounts, 100 for paid tier accounts. If not specified, defaults t */
   originConnectionLimit?: number | null;
 }
 
@@ -1117,6 +1251,19 @@ export const PatchConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         database: "database",
         host: "host",
         scheme: "scheme",
+        user: "user",
+      }),
+    ),
+    Schema.Struct({
+      database: Schema.String,
+      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      serviceId: Schema.String,
+      user: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        database: "database",
+        scheme: "scheme",
+        serviceId: "service_id",
         user: "user",
       }),
     ),

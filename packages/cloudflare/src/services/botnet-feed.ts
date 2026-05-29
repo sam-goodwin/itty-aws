@@ -103,7 +103,7 @@ export interface DayReportAsnRequest {
   asnId: number;
   /** Path param: Identifier. */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   date?: string;
 }
 

@@ -522,11 +522,11 @@ export interface GetResourceResponse {
   /** Resource Type. */
   resourceType:
     | "custom-ruleset"
-    | "widget"
     | "gateway-policy"
     | "gateway-destination-ip"
     | "gateway-block-page-settings"
-    | "gateway-extended-email-matching";
+    | "gateway-extended-email-matching"
+    | "idp-federation-grant";
   /** Resource Version. */
   resourceVersion: number;
   /** Resource Status. */
@@ -542,11 +542,11 @@ export const GetResourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceId: Schema.String,
   resourceType: Schema.Literals([
     "custom-ruleset",
-    "widget",
     "gateway-policy",
     "gateway-destination-ip",
     "gateway-block-page-settings",
     "gateway-extended-email-matching",
+    "idp-federation-grant",
   ]),
   resourceVersion: Schema.Number,
   status: Schema.Literals(["active", "deleting", "deleted"]),
@@ -590,11 +590,11 @@ export interface ListResourcesRequest {
   /** Query param: Filter share resources by resource_type. */
   resourceType?:
     | "custom-ruleset"
-    | "widget"
     | "gateway-policy"
     | "gateway-destination-ip"
     | "gateway-block-page-settings"
-    | "gateway-extended-email-matching";
+    | "gateway-extended-email-matching"
+    | "idp-federation-grant";
   /** Query param: Filter share resources by status. */
   status?: "active" | "deleting" | "deleted";
 }
@@ -607,11 +607,11 @@ export const ListResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceType: Schema.optional(
     Schema.Literals([
       "custom-ruleset",
-      "widget",
       "gateway-policy",
       "gateway-destination-ip",
       "gateway-block-page-settings",
       "gateway-extended-email-matching",
+      "idp-federation-grant",
     ]),
   ).pipe(T.HttpQuery("resource_type")),
   status: Schema.optional(
@@ -634,11 +634,11 @@ export interface ListResourcesResponse {
     resourceId: string;
     resourceType:
       | "custom-ruleset"
-      | "widget"
       | "gateway-policy"
       | "gateway-destination-ip"
       | "gateway-block-page-settings"
-      | "gateway-extended-email-matching";
+      | "gateway-extended-email-matching"
+      | "idp-federation-grant";
     resourceVersion: number;
     status: "active" | "deleting" | "deleted";
   }[];
@@ -661,11 +661,11 @@ export const ListResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       resourceId: Schema.String,
       resourceType: Schema.Literals([
         "custom-ruleset",
-        "widget",
         "gateway-policy",
         "gateway-destination-ip",
         "gateway-block-page-settings",
         "gateway-extended-email-matching",
+        "idp-federation-grant",
       ]),
       resourceVersion: Schema.Number,
       status: Schema.Literals(["active", "deleting", "deleted"]),
@@ -738,11 +738,11 @@ export interface CreateResourceRequest {
   /** Body param: Resource Type. */
   resourceType:
     | "custom-ruleset"
-    | "widget"
     | "gateway-policy"
     | "gateway-destination-ip"
     | "gateway-block-page-settings"
-    | "gateway-extended-email-matching";
+    | "gateway-extended-email-matching"
+    | "idp-federation-grant";
 }
 
 export const CreateResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -753,11 +753,11 @@ export const CreateResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceId: Schema.String,
   resourceType: Schema.Literals([
     "custom-ruleset",
-    "widget",
     "gateway-policy",
     "gateway-destination-ip",
     "gateway-block-page-settings",
     "gateway-extended-email-matching",
+    "idp-federation-grant",
   ]),
 }).pipe(
   Schema.encodeKeys({
@@ -788,11 +788,11 @@ export interface CreateResourceResponse {
   /** Resource Type. */
   resourceType:
     | "custom-ruleset"
-    | "widget"
     | "gateway-policy"
     | "gateway-destination-ip"
     | "gateway-block-page-settings"
-    | "gateway-extended-email-matching";
+    | "gateway-extended-email-matching"
+    | "idp-federation-grant";
   /** Resource Version. */
   resourceVersion: number;
   /** Resource Status. */
@@ -809,11 +809,11 @@ export const CreateResourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceId: Schema.String,
     resourceType: Schema.Literals([
       "custom-ruleset",
-      "widget",
       "gateway-policy",
       "gateway-destination-ip",
       "gateway-block-page-settings",
       "gateway-extended-email-matching",
+      "idp-federation-grant",
     ]),
     resourceVersion: Schema.Number,
     status: Schema.Literals(["active", "deleting", "deleted"]),
@@ -886,11 +886,11 @@ export interface UpdateResourceResponse {
   /** Resource Type. */
   resourceType:
     | "custom-ruleset"
-    | "widget"
     | "gateway-policy"
     | "gateway-destination-ip"
     | "gateway-block-page-settings"
-    | "gateway-extended-email-matching";
+    | "gateway-extended-email-matching"
+    | "idp-federation-grant";
   /** Resource Version. */
   resourceVersion: number;
   /** Resource Status. */
@@ -907,11 +907,11 @@ export const UpdateResourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceId: Schema.String,
     resourceType: Schema.Literals([
       "custom-ruleset",
-      "widget",
       "gateway-policy",
       "gateway-destination-ip",
       "gateway-block-page-settings",
       "gateway-extended-email-matching",
+      "idp-federation-grant",
     ]),
     resourceVersion: Schema.Number,
     status: Schema.Literals(["active", "deleting", "deleted"]),
@@ -981,11 +981,11 @@ export interface DeleteResourceResponse {
   /** Resource Type. */
   resourceType:
     | "custom-ruleset"
-    | "widget"
     | "gateway-policy"
     | "gateway-destination-ip"
     | "gateway-block-page-settings"
-    | "gateway-extended-email-matching";
+    | "gateway-extended-email-matching"
+    | "idp-federation-grant";
   /** Resource Version. */
   resourceVersion: number;
   /** Resource Status. */
@@ -1002,11 +1002,11 @@ export const DeleteResourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceId: Schema.String,
     resourceType: Schema.Literals([
       "custom-ruleset",
-      "widget",
       "gateway-policy",
       "gateway-destination-ip",
       "gateway-block-page-settings",
       "gateway-extended-email-matching",
+      "idp-federation-grant",
     ]),
     resourceVersion: Schema.Number,
     status: Schema.Literals(["active", "deleting", "deleted"]),
@@ -1107,11 +1107,11 @@ export interface GetResourceSharingResponse {
         resourceId: string;
         resourceType:
           | "custom-ruleset"
-          | "widget"
           | "gateway-policy"
           | "gateway-destination-ip"
           | "gateway-block-page-settings"
-          | "gateway-extended-email-matching";
+          | "gateway-extended-email-matching"
+          | "idp-federation-grant";
         resourceVersion: number;
         status: "active" | "deleting" | "deleted";
       }[]
@@ -1156,11 +1156,11 @@ export const GetResourceSharingResponse =
             resourceId: Schema.String,
             resourceType: Schema.Literals([
               "custom-ruleset",
-              "widget",
               "gateway-policy",
               "gateway-destination-ip",
               "gateway-block-page-settings",
               "gateway-extended-email-matching",
+              "idp-federation-grant",
             ]),
             resourceVersion: Schema.Number,
             status: Schema.Literals(["active", "deleting", "deleted"]),
@@ -1236,14 +1236,16 @@ export interface ListResourceSharingsRequest {
   /** Query param: Filter share resources by resource_types. */
   resourceTypes?: (
     | "custom-ruleset"
-    | "widget"
     | "gateway-policy"
     | "gateway-destination-ip"
     | "gateway-block-page-settings"
     | "gateway-extended-email-matching"
+    | "idp-federation-grant"
   )[];
   /** Query param: Filter shares by status. */
   status?: "active" | "deleting" | "deleted";
+  /** Query param: Filter shares by tag. Each value is either `key=value` (matches shares whose tags contain that key/value pair) or `key` alone (matches shares that have any value for that key). May be rep */
+  tag?: string[];
   /** Query param: Filter shares by target_type. */
   targetType?: "account" | "organization";
 }
@@ -1272,17 +1274,18 @@ export const ListResourceSharingsRequest =
       Schema.Array(
         Schema.Literals([
           "custom-ruleset",
-          "widget",
           "gateway-policy",
           "gateway-destination-ip",
           "gateway-block-page-settings",
           "gateway-extended-email-matching",
+          "idp-federation-grant",
         ]),
       ),
     ).pipe(T.HttpQuery("resource_types")),
     status: Schema.optional(
       Schema.Literals(["active", "deleting", "deleted"]),
     ).pipe(T.HttpQuery("status")),
+    tag: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("tag")),
     targetType: Schema.optional(
       Schema.Literals(["account", "organization"]),
     ).pipe(T.HttpQuery("target_type")),
@@ -1316,11 +1319,11 @@ export interface ListResourceSharingsResponse {
           resourceId: string;
           resourceType:
             | "custom-ruleset"
-            | "widget"
             | "gateway-policy"
             | "gateway-destination-ip"
             | "gateway-block-page-settings"
-            | "gateway-extended-email-matching";
+            | "gateway-extended-email-matching"
+            | "idp-federation-grant";
           resourceVersion: number;
           status: "active" | "deleting" | "deleted";
         }[]
@@ -1374,11 +1377,11 @@ export const ListResourceSharingsResponse =
                 resourceId: Schema.String,
                 resourceType: Schema.Literals([
                   "custom-ruleset",
-                  "widget",
                   "gateway-policy",
                   "gateway-destination-ip",
                   "gateway-block-page-settings",
                   "gateway-extended-email-matching",
+                  "idp-federation-grant",
                 ]),
                 resourceVersion: Schema.Number,
                 status: Schema.Literals(["active", "deleting", "deleted"]),
@@ -1468,20 +1471,20 @@ export interface CreateResourceSharingRequest {
   accountId: string;
   /** Body param: The name of the share. */
   name: string;
-  /** Body param: */
+  /** Body param */
   recipients: { accountId?: string; organizationId?: string }[];
-  /** Body param: */
+  /** Body param */
   resources: {
     meta: unknown;
     resourceAccountId: string;
     resourceId: string;
     resourceType:
       | "custom-ruleset"
-      | "widget"
       | "gateway-policy"
       | "gateway-destination-ip"
       | "gateway-block-page-settings"
-      | "gateway-extended-email-matching";
+      | "gateway-extended-email-matching"
+      | "idp-federation-grant";
   }[];
 }
 
@@ -1507,11 +1510,11 @@ export const CreateResourceSharingRequest =
         resourceId: Schema.String,
         resourceType: Schema.Literals([
           "custom-ruleset",
-          "widget",
           "gateway-policy",
           "gateway-destination-ip",
           "gateway-block-page-settings",
           "gateway-extended-email-matching",
+          "idp-federation-grant",
         ]),
       }).pipe(
         Schema.encodeKeys({
@@ -1563,11 +1566,11 @@ export interface CreateResourceSharingResponse {
         resourceId: string;
         resourceType:
           | "custom-ruleset"
-          | "widget"
           | "gateway-policy"
           | "gateway-destination-ip"
           | "gateway-block-page-settings"
-          | "gateway-extended-email-matching";
+          | "gateway-extended-email-matching"
+          | "idp-federation-grant";
         resourceVersion: number;
         status: "active" | "deleting" | "deleted";
       }[]
@@ -1612,11 +1615,11 @@ export const CreateResourceSharingResponse =
             resourceId: Schema.String,
             resourceType: Schema.Literals([
               "custom-ruleset",
-              "widget",
               "gateway-policy",
               "gateway-destination-ip",
               "gateway-block-page-settings",
               "gateway-extended-email-matching",
+              "idp-federation-grant",
             ]),
             resourceVersion: Schema.Number,
             status: Schema.Literals(["active", "deleting", "deleted"]),
@@ -1728,11 +1731,11 @@ export interface UpdateResourceSharingResponse {
         resourceId: string;
         resourceType:
           | "custom-ruleset"
-          | "widget"
           | "gateway-policy"
           | "gateway-destination-ip"
           | "gateway-block-page-settings"
-          | "gateway-extended-email-matching";
+          | "gateway-extended-email-matching"
+          | "idp-federation-grant";
         resourceVersion: number;
         status: "active" | "deleting" | "deleted";
       }[]
@@ -1777,11 +1780,11 @@ export const UpdateResourceSharingResponse =
             resourceId: Schema.String,
             resourceType: Schema.Literals([
               "custom-ruleset",
-              "widget",
               "gateway-policy",
               "gateway-destination-ip",
               "gateway-block-page-settings",
               "gateway-extended-email-matching",
+              "idp-federation-grant",
             ]),
             resourceVersion: Schema.Number,
             status: Schema.Literals(["active", "deleting", "deleted"]),
@@ -1893,11 +1896,11 @@ export interface DeleteResourceSharingResponse {
         resourceId: string;
         resourceType:
           | "custom-ruleset"
-          | "widget"
           | "gateway-policy"
           | "gateway-destination-ip"
           | "gateway-block-page-settings"
-          | "gateway-extended-email-matching";
+          | "gateway-extended-email-matching"
+          | "idp-federation-grant";
         resourceVersion: number;
         status: "active" | "deleting" | "deleted";
       }[]
@@ -1942,11 +1945,11 @@ export const DeleteResourceSharingResponse =
             resourceId: Schema.String,
             resourceType: Schema.Literals([
               "custom-ruleset",
-              "widget",
               "gateway-policy",
               "gateway-destination-ip",
               "gateway-block-page-settings",
               "gateway-extended-email-matching",
+              "idp-federation-grant",
             ]),
             resourceVersion: Schema.Number,
             status: Schema.Literals(["active", "deleting", "deleted"]),

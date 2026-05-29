@@ -99,6 +99,15 @@ paths:
                     type: string
                     description: Specifies the timestamp the resource was created as an ISO8601
                       string.
+                  jurisdiction:
+                    type: string
+                    enum:
+                      - eu
+                      - fedramp
+                    nullable: true
+                    description: Specify the location to restrict the D1 database to run and store
+                      data. If this option is present, the location hint is
+                      ignored.
                   name:
                     type: string
                     description: D1 database name.
@@ -150,6 +159,22 @@ paths:
                   description: "Body param: Specify the region to create the D1 primary, if
                     available. If this option is omitted, the D1 will be created
                     as close as possible to the current user."
+                read_replication:
+                  type: object
+                  properties:
+                    mode:
+                      type: string
+                      enum:
+                        - auto
+                        - disabled
+                      description: The read replication mode for the database. Use 'auto' to create
+                        replicas and allow D1 automatically place them around
+                        the world, or 'disabled' to not use any database
+                        replicas (it can take a few hours for all replicas to be
+                        deleted).
+                  required:
+                    - mode
+                  description: "Body param: Configuration for D1 read replication."
               required:
                 - name
       responses:
@@ -167,6 +192,15 @@ paths:
                   file_size:
                     type: number
                     description: The D1 database's size, in bytes.
+                  jurisdiction:
+                    type: string
+                    enum:
+                      - eu
+                      - fedramp
+                    nullable: true
+                    description: Specify the location to restrict the D1 database to run and store
+                      data. If this option is present, the location hint is
+                      ignored.
                   name:
                     type: string
                     description: D1 database name.
@@ -180,11 +214,10 @@ paths:
                         enum:
                           - auto
                           - disabled
-                        description: The read replication mode for the database. Use 'auto' to create
-                          replicas and allow D1 automatically place them around
-                          the world, or 'disabled' to not use any database
-                          replicas (it can take a few hours for all replicas to
-                          be deleted).
+                        description: The read replication mode for the database. Mode 'auto' denotes
+                          that D1 creates replicas and automatically places them
+                          around the world. Mode 'disabled' denotes that no
+                          database replicas are used.
                     required:
                       - mode
                     description: Configuration for D1 read replication.
@@ -234,6 +267,15 @@ paths:
                   file_size:
                     type: number
                     description: The D1 database's size, in bytes.
+                  jurisdiction:
+                    type: string
+                    enum:
+                      - eu
+                      - fedramp
+                    nullable: true
+                    description: Specify the location to restrict the D1 database to run and store
+                      data. If this option is present, the location hint is
+                      ignored.
                   name:
                     type: string
                     description: D1 database name.
@@ -247,11 +289,10 @@ paths:
                         enum:
                           - auto
                           - disabled
-                        description: The read replication mode for the database. Use 'auto' to create
-                          replicas and allow D1 automatically place them around
-                          the world, or 'disabled' to not use any database
-                          replicas (it can take a few hours for all replicas to
-                          be deleted).
+                        description: The read replication mode for the database. Mode 'auto' denotes
+                          that D1 creates replicas and automatically places them
+                          around the world. Mode 'disabled' denotes that no
+                          database replicas are used.
                     required:
                       - mode
                     description: Configuration for D1 read replication.
@@ -326,6 +367,15 @@ paths:
                   file_size:
                     type: number
                     description: The D1 database's size, in bytes.
+                  jurisdiction:
+                    type: string
+                    enum:
+                      - eu
+                      - fedramp
+                    nullable: true
+                    description: Specify the location to restrict the D1 database to run and store
+                      data. If this option is present, the location hint is
+                      ignored.
                   name:
                     type: string
                     description: D1 database name.
@@ -339,11 +389,10 @@ paths:
                         enum:
                           - auto
                           - disabled
-                        description: The read replication mode for the database. Use 'auto' to create
-                          replicas and allow D1 automatically place them around
-                          the world, or 'disabled' to not use any database
-                          replicas (it can take a few hours for all replicas to
-                          be deleted).
+                        description: The read replication mode for the database. Mode 'auto' denotes
+                          that D1 creates replicas and automatically places them
+                          around the world. Mode 'disabled' denotes that no
+                          database replicas are used.
                     required:
                       - mode
                     description: Configuration for D1 read replication.
@@ -416,6 +465,15 @@ paths:
                   file_size:
                     type: number
                     description: The D1 database's size, in bytes.
+                  jurisdiction:
+                    type: string
+                    enum:
+                      - eu
+                      - fedramp
+                    nullable: true
+                    description: Specify the location to restrict the D1 database to run and store
+                      data. If this option is present, the location hint is
+                      ignored.
                   name:
                     type: string
                     description: D1 database name.
@@ -429,11 +487,10 @@ paths:
                         enum:
                           - auto
                           - disabled
-                        description: The read replication mode for the database. Use 'auto' to create
-                          replicas and allow D1 automatically place them around
-                          the world, or 'disabled' to not use any database
-                          replicas (it can take a few hours for all replicas to
-                          be deleted).
+                        description: The read replication mode for the database. Mode 'auto' denotes
+                          that D1 creates replicas and automatically places them
+                          around the world. Mode 'disabled' denotes that no
+                          database replicas are used.
                     required:
                       - mode
                     description: Configuration for D1 read replication.
@@ -538,7 +595,7 @@ paths:
                       description: "Filter the export to just one or more tables. Passing an empty
                         array is the same as not passing anything and means:
                         export all tables."
-                  description: "Body param:"
+                  description: Body param
               required:
                 - output_format
       responses:
@@ -783,7 +840,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
               required:
                 - sql
       responses:
@@ -894,7 +951,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
               required:
                 - sql
       responses:

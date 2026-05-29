@@ -806,7 +806,7 @@ export const listV1Variants: API.OperationMethod<
 export interface CreateV1VariantRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   id: string;
   /** Body param: Allows you to define image resizing sizes for different use cases. */
   options: {
@@ -1034,13 +1034,15 @@ export const deleteV1Variant: API.OperationMethod<
 export interface ListV2sRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
-  /** Query param: Continuation token for a next page. List images V2 returns continuation_token */
+  /** Query param: Continuation token to fetch next page. Passed as a query param when requesting List V2 api endpoint. */
   continuationToken?: string | null;
   /** Query param: Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set */
   creator?: string | null;
-  /** Query param: Number of items per page. */
+  /** Query param */
+  meta?: { "<field>[<operator>]"?: string };
+  /** Query param: Number of items per page */
   perPage?: number;
-  /** Query param: Sorting order by upload time. */
+  /** Query param: Sorting order by upload time */
   sortOrder?: "asc" | "desc";
 }
 
@@ -1052,6 +1054,11 @@ export const ListV2sRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])).pipe(
     T.HttpQuery("creator"),
   ),
+  meta: Schema.optional(
+    Schema.Struct({
+      "<field>[<operator>]": Schema.optional(Schema.String),
+    }),
+  ).pipe(T.HttpQuery("meta")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   sortOrder: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
     T.HttpQuery("sort_order"),

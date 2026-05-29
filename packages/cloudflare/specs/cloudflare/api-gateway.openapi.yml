@@ -9,10 +9,10 @@ paths:
   /zones/{zone_id}/api_gateway/configuration:
     get:
       operationId: getConfiguration
-      description: "Retrieve information about specific configuration
-        properties  @example ```ts const configuration = await
-        client.apiGateway.configurations.get({ zone_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      description: "Gets the current API Shield configuration settings for a zone,
+        including validation behavior and enforcement mode.  @example ```ts
+        const configuration = await client.apiGateway.configurations.get({
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: zone_id
           in: path
@@ -86,8 +86,10 @@ paths:
           - code: 10403
     put:
       operationId: putConfiguration
-      description: "Update configuration properties  @example ```ts const
-        configuration = await client.apiGateway.configurations.update({ zone_id:
+      description: "Updates API Shield configuration settings for a zone. Can modify
+        validation strictness, enforcement mode, and other global
+        settings.  @example ```ts const configuration = await
+        client.apiGateway.configurations.update({ zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353', auth_id_characteristics: [ { name:
         'authorization', type: 'header' }, ], }); ```"
       parameters:
@@ -152,7 +154,7 @@ paths:
                         required:
                           - name
                           - type
-                  description: "Body param:"
+                  description: Body param
               required:
                 - auth_id_characteristics
       responses:
@@ -535,8 +537,9 @@ paths:
   /zones/{zone_id}/api_gateway/expression-template/fallthrough:
     post:
       operationId: createExpressionTemplateFallthrough
-      description: "Generate fallthrough WAF expression template from a set of API
-        hosts  @example ```ts const fallthrough = await
+      description: "Creates an expression template fallthrough rule for API Shield.
+        Used for configuring default behavior when no other expression templates
+        match.  @example ```ts const fallthrough = await
         client.apiGateway.expressionTemplate.fallthrough.create( { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353', hosts: ['{zone}.domain1.tld',
         'domain2.tld'], }, ); ```"
@@ -582,11 +585,700 @@ paths:
       x-distilled-errors:
         InvalidObjectIdentifier:
           - code: 7003
+  /zones/{zone_id}/api_gateway/labels:
+    get:
+      operationId: listLabels
+      description: "Retrieve all labels  @example ```ts // Automatically fetches more
+        pages as needed. for await (const labelListResponse of
+        client.apiGateway.labels.list( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: direction
+          in: query
+          required: false
+          description: "Query param: Direction to order results."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: filter
+          in: query
+          required: false
+          description: "Query param: Filter for labels where the name or description
+            matches using substring match"
+          schema:
+            type: string
+        - name: order
+          in: query
+          required: false
+          description: "Query param: Field to order by"
+          schema:
+            type: string
+            enum:
+              - name
+              - description
+              - created_at
+              - last_updated
+              - mapped_resources.operations
+        - name: source
+          in: query
+          required: false
+          description: "Query param: Filter for labels with source"
+          schema:
+            type: string
+            enum:
+              - user
+              - managed
+        - name: with_mapped_resource_counts
+          in: query
+          required: false
+          description: "Query param: Include `mapped_resources` for each label"
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  description:
+                    type: string
+                    description: The description of the label
+                  last_updated:
+                    type: string
+                  metadata:
+                    description: Metadata for the label
+                  name:
+                    type: string
+                    description: The name of the label
+                  source:
+                    type: string
+                    enum:
+                      - user
+                      - managed
+                    description: "- `user` - label is owned by the user - `managed` - label is owned
+                      by cloudflare"
+                  mapped_resources:
+                    description: Provides counts of what resources are linked to this label
+                required:
+                  - created_at
+                  - description
+                  - last_updated
+                  - metadata
+                  - name
+                  - source
+      x-distilled-pagination-class: LabelListResponsesV4PagePaginationArray
+  /zones/{zone_id}/api_gateway/labels/managed/{name}:
+    get:
+      operationId: getLabelManaged
+      description: "Retrieve managed label  @example ```ts const managed = await
+        client.apiGateway.labels.managed.get( 'login', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: with_mapped_resource_counts
+          in: query
+          required: false
+          description: "Query param: Include `mapped_resources` for each label"
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  description:
+                    type: string
+                    description: The description of the label
+                  last_updated:
+                    type: string
+                  metadata:
+                    description: Metadata for the label
+                  name:
+                    type: string
+                    description: The name of the label
+                  source:
+                    type: string
+                    enum:
+                      - user
+                      - managed
+                    description: "- `user` - label is owned by the user - `managed` - label is owned
+                      by cloudflare"
+                  mapped_resources:
+                    description: Provides counts of what resources are linked to this label
+                required:
+                  - created_at
+                  - description
+                  - last_updated
+                  - metadata
+                  - name
+                  - source
+      x-distilled-response-path: result
+  /zones/{zone_id}/api_gateway/labels/managed/{name}/resources/operation:
+    put:
+      operationId: putLabelManagedResourceOperation
+      description: "Replace all operations(s) attached to a managed label  @example
+        ```ts const operation = await
+        client.apiGateway.labels.managed.resources.operation.update( 'login', {
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353', selector: { include: {
+        operation_ids: [ 'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', ], }, }, }, );
+        ```"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                selector:
+                  type: object
+                  properties:
+                    include:
+                      type: object
+                      properties:
+                        operation_ids:
+                          type: array
+                          items:
+                            type: string
+                      required:
+                        - operation_ids
+                  required:
+                    - include
+                  description: "Body param: Operation IDs selector"
+              required:
+                - selector
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  description:
+                    type: string
+                    description: The description of the label
+                  last_updated:
+                    type: string
+                  metadata:
+                    description: Metadata for the label
+                  name:
+                    type: string
+                    description: The name of the label
+                  source:
+                    type: string
+                    enum:
+                      - user
+                      - managed
+                    description: "- `user` - label is owned by the user - `managed` - label is owned
+                      by cloudflare"
+                  mapped_resources:
+                    description: Provides counts of what resources are linked to this label
+                required:
+                  - created_at
+                  - description
+                  - last_updated
+                  - metadata
+                  - name
+                  - source
+      x-distilled-response-path: result
+  /zones/{zone_id}/api_gateway/labels/user/{name}:
+    get:
+      operationId: getLabelUser
+      description: "Retrieve user label  @example ```ts const user = await
+        client.apiGateway.labels.user.get( 'login', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: with_mapped_resource_counts
+          in: query
+          required: false
+          description: "Query param: Include `mapped_resources` for each label"
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  description:
+                    type: string
+                    description: The description of the label
+                  last_updated:
+                    type: string
+                  metadata:
+                    description: Metadata for the label
+                  name:
+                    type: string
+                    description: The name of the label
+                  source:
+                    type: string
+                    enum:
+                      - user
+                      - managed
+                    description: "- `user` - label is owned by the user - `managed` - label is owned
+                      by cloudflare"
+                  mapped_resources:
+                    description: Provides counts of what resources are linked to this label
+                required:
+                  - created_at
+                  - description
+                  - last_updated
+                  - metadata
+                  - name
+                  - source
+      x-distilled-response-path: result
+    put:
+      operationId: putLabelUser
+      description: "Update all fields on a label  @example ```ts const user = await
+        client.apiGateway.labels.user.update( 'login', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: "Body param: The description of the label"
+                metadata:
+                  description: "Body param: Metadata for the label"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  description:
+                    type: string
+                    description: The description of the label
+                  last_updated:
+                    type: string
+                  metadata:
+                    description: Metadata for the label
+                  name:
+                    type: string
+                    description: The name of the label
+                  source:
+                    type: string
+                    enum:
+                      - user
+                      - managed
+                    description: "- `user` - label is owned by the user - `managed` - label is owned
+                      by cloudflare"
+                required:
+                  - created_at
+                  - description
+                  - last_updated
+                  - metadata
+                  - name
+                  - source
+      x-distilled-response-path: result
+    patch:
+      operationId: patchLabelUser
+      description: "Update certain fields on a label  @example ```ts const response =
+        await client.apiGateway.labels.user.edit( 'login', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: "Body param: The description of the label"
+                metadata:
+                  description: "Body param: Metadata for the label"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  description:
+                    type: string
+                    description: The description of the label
+                  last_updated:
+                    type: string
+                  metadata:
+                    description: Metadata for the label
+                  name:
+                    type: string
+                    description: The name of the label
+                  source:
+                    type: string
+                    enum:
+                      - user
+                      - managed
+                    description: "- `user` - label is owned by the user - `managed` - label is owned
+                      by cloudflare"
+                required:
+                  - created_at
+                  - description
+                  - last_updated
+                  - metadata
+                  - name
+                  - source
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteLabelUser
+      description: "Delete user label  @example ```ts const user = await
+        client.apiGateway.labels.user.delete( 'login', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  description:
+                    type: string
+                    description: The description of the label
+                  last_updated:
+                    type: string
+                  metadata:
+                    description: Metadata for the label
+                  name:
+                    type: string
+                    description: The name of the label
+                  source:
+                    type: string
+                    enum:
+                      - user
+                      - managed
+                    description: "- `user` - label is owned by the user - `managed` - label is owned
+                      by cloudflare"
+                required:
+                  - created_at
+                  - description
+                  - last_updated
+                  - metadata
+                  - name
+                  - source
+      x-distilled-response-path: result
+  /zones/{zone_id}/api_gateway/labels/user:
+    post:
+      operationId: bulkCreateLabelUsers
+      description: "Create user labels  @example ```ts // Automatically fetches more
+        pages as needed. for await (const userBulkCreateResponse of
+        client.apiGateway.labels.user.bulkCreate( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', body: [{ name: 'login' }], }, )) {
+        // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: The name of the label
+                  description:
+                    type: string
+                    description: The description of the label
+                  metadata:
+                    description: Metadata for the label
+                required:
+                  - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  description:
+                    type: string
+                    description: The description of the label
+                  last_updated:
+                    type: string
+                  metadata:
+                    description: Metadata for the label
+                  name:
+                    type: string
+                    description: The name of the label
+                  source:
+                    type: string
+                    enum:
+                      - user
+                      - managed
+                    description: "- `user` - label is owned by the user - `managed` - label is owned
+                      by cloudflare"
+                required:
+                  - created_at
+                  - description
+                  - last_updated
+                  - metadata
+                  - name
+                  - source
+      x-distilled-pagination-class: UserBulkCreateResponsesSinglePage
+    delete:
+      operationId: bulkDeleteLabelUsers
+      description: "Delete user labels  @example ```ts // Automatically fetches more
+        pages as needed. for await (const userBulkDeleteResponse of
+        client.apiGateway.labels.user.bulkDelete( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  description:
+                    type: string
+                    description: The description of the label
+                  last_updated:
+                    type: string
+                  metadata:
+                    description: Metadata for the label
+                  name:
+                    type: string
+                    description: The name of the label
+                  source:
+                    type: string
+                    enum:
+                      - user
+                      - managed
+                    description: "- `user` - label is owned by the user - `managed` - label is owned
+                      by cloudflare"
+                required:
+                  - created_at
+                  - description
+                  - last_updated
+                  - metadata
+                  - name
+                  - source
+      x-distilled-pagination-class: UserBulkDeleteResponsesSinglePage
+  /zones/{zone_id}/api_gateway/labels/user/{name}/resources/operation:
+    put:
+      operationId: putLabelUserResourceOperation
+      description: "Replace all operations(s) attached to a user label  @example ```ts
+        const operation = await
+        client.apiGateway.labels.user.resources.operation.update( 'login', {
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353', selector: { include: {
+        operation_ids: [ 'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', ], }, }, }, );
+        ```"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                selector:
+                  type: object
+                  properties:
+                    include:
+                      type: object
+                      properties:
+                        operation_ids:
+                          type: array
+                          items:
+                            type: string
+                      required:
+                        - operation_ids
+                  required:
+                    - include
+                  description: "Body param: Operation IDs selector"
+              required:
+                - selector
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  description:
+                    type: string
+                    description: The description of the label
+                  last_updated:
+                    type: string
+                  metadata:
+                    description: Metadata for the label
+                  name:
+                    type: string
+                    description: The name of the label
+                  source:
+                    type: string
+                    enum:
+                      - user
+                      - managed
+                    description: "- `user` - label is owned by the user - `managed` - label is owned
+                      by cloudflare"
+                  mapped_resources:
+                    description: Provides counts of what resources are linked to this label
+                required:
+                  - created_at
+                  - description
+                  - last_updated
+                  - metadata
+                  - name
+                  - source
+      x-distilled-response-path: result
   /zones/{zone_id}/api_gateway/operations/{operationId}:
     get:
       operationId: getOperation
-      description: "Retrieve information about an operation  @example ```ts const
-        operation = await client.apiGateway.operations.get(
+      description: "Gets detailed information about a specific API operation in API
+        Shield, including its schema validation settings and traffic
+        statistics.  @example ```ts const operation = await
+        client.apiGateway.operations.get(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
@@ -616,6 +1308,15 @@ paths:
                 - thresholds
                 - parameter_schemas
                 - schema_info
+        - name: with_schemas
+          in: query
+          required: false
+          description: "Query param: When true, includes OpenAPI schemas (both uploaded
+            and learned) for the operation in the response. Due to the
+            conversion overhead, this parameter is only supported on
+            single-operation retrieval."
+          schema:
+            type: boolean
       responses:
         "200":
           description: Success
@@ -797,6 +1498,53 @@ paths:
                                   - block
                                 nullable: true
                                 description: Action taken on requests failing validation.
+                  schemas:
+                    type: object
+                    properties:
+                      learned:
+                        oneOf:
+                          - type: object
+                            properties:
+                              parameters:
+                                type: array
+                                items:
+                                  type: object
+                                  additionalProperties: true
+                                description: OpenAPI parameter objects describing path, query, header, or cookie
+                                  parameters.
+                              requestBody:
+                                type: object
+                                additionalProperties: true
+                                description: OpenAPI request body object describing the expected request
+                                  payload.
+                        nullable: true
+                        description: An OpenAPI operation object fragment containing schema information
+                          for an operation. May include parameter definitions,
+                          request body specifications, and a component schema
+                          extension.
+                      uploaded:
+                        oneOf:
+                          - type: object
+                            properties:
+                              parameters:
+                                type: array
+                                items:
+                                  type: object
+                                  additionalProperties: true
+                                description: OpenAPI parameter objects describing path, query, header, or cookie
+                                  parameters.
+                              requestBody:
+                                type: object
+                                additionalProperties: true
+                                description: OpenAPI request body object describing the expected request
+                                  payload.
+                        nullable: true
+                        description: An OpenAPI operation object fragment containing schema information
+                          for an operation. May include parameter definitions,
+                          request body specifications, and a component schema
+                          extension.
+                    description: OpenAPI JSON schemas for an operation, including both user-uploaded
+                      and Cloudflare-learned schemas.
                 required:
                   - endpoint
                   - host
@@ -811,7 +1559,9 @@ paths:
           - code: 10404
     delete:
       operationId: deleteOperation
-      description: "Delete an operation  @example ```ts const operation = await
+      description: "Removes a single API operation from API Shield endpoint
+        management. The operation will no longer be tracked or protected by API
+        Shield rules.  @example ```ts const operation = await
         client.apiGateway.operations.delete(
         'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
@@ -890,9 +1640,11 @@ paths:
   /zones/{zone_id}/api_gateway/operations:
     get:
       operationId: listOperations
-      description: "Retrieve information about all operations on a zone  @example
-        ```ts // Automatically fetches more pages as needed. for await (const
-        operationListResponse of client.apiGateway.operations.list( { zone_id:
+      description: "Lists all API operations tracked by API Shield for a zone with
+        pagination. Returns operation details including method, path, and
+        feature configurations.  @example ```ts // Automatically fetches more
+        pages as needed. for await (const operationListResponse of
+        client.apiGateway.operations.list( { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
         - name: zone_id
@@ -1406,7 +2158,9 @@ paths:
       x-distilled-pagination-class: OperationBulkCreateResponsesSinglePage
     delete:
       operationId: bulkDeleteOperations
-      description: "Delete multiple operations  @example ```ts const response = await
+      description: "Bulk removes multiple API operations from API Shield endpoint
+        management in a single request. Efficient for cleaning up unused
+        endpoints.  @example ```ts const response = await
         client.apiGateway.operations.bulkDelete({ zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
@@ -1710,6 +2464,53 @@ paths:
                                   - block
                                 nullable: true
                                 description: Action taken on requests failing validation.
+                  schemas:
+                    type: object
+                    properties:
+                      learned:
+                        oneOf:
+                          - type: object
+                            properties:
+                              parameters:
+                                type: array
+                                items:
+                                  type: object
+                                  additionalProperties: true
+                                description: OpenAPI parameter objects describing path, query, header, or cookie
+                                  parameters.
+                              requestBody:
+                                type: object
+                                additionalProperties: true
+                                description: OpenAPI request body object describing the expected request
+                                  payload.
+                        nullable: true
+                        description: An OpenAPI operation object fragment containing schema information
+                          for an operation. May include parameter definitions,
+                          request body specifications, and a component schema
+                          extension.
+                      uploaded:
+                        oneOf:
+                          - type: object
+                            properties:
+                              parameters:
+                                type: array
+                                items:
+                                  type: object
+                                  additionalProperties: true
+                                description: OpenAPI parameter objects describing path, query, header, or cookie
+                                  parameters.
+                              requestBody:
+                                type: object
+                                additionalProperties: true
+                                description: OpenAPI request body object describing the expected request
+                                  payload.
+                        nullable: true
+                        description: An OpenAPI operation object fragment containing schema information
+                          for an operation. May include parameter definitions,
+                          request body specifications, and a component schema
+                          extension.
+                    description: OpenAPI JSON schemas for an operation, including both user-uploaded
+                      and Cloudflare-learned schemas.
                 required:
                   - endpoint
                   - host
@@ -1720,6 +2521,691 @@ paths:
       x-distilled-errors:
         InvalidObjectIdentifier:
           - code: 7003
+  /zones/{zone_id}/api_gateway/operations/{operationId}/labels:
+    post:
+      operationId: createOperationLabel
+      description: "Attach label(s) on an operation in endpoint management  @example
+        ```ts const label = await client.apiGateway.operations.labels.create(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: operationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                managed:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: List of managed label names."
+                user:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: List of user label names."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  endpoint:
+                    type: string
+                    description: "The endpoint which can contain path parameter templates in curly
+                      braces, each will be replaced from left to right with
+                      {varN}, starting with {var1}, during insertion. This will
+                      further be Cloudflare-normalized upon insertion. See:
+                      https://developers.cloudflare.com/rules/normalization/how\
+                      -it-works/."
+                  host:
+                    type: string
+                    description: RFC3986-compliant host.
+                  last_updated:
+                    type: string
+                  method:
+                    type: string
+                    enum:
+                      - GET
+                      - POST
+                      - HEAD
+                      - OPTIONS
+                      - PUT
+                      - DELETE
+                      - CONNECT
+                      - PATCH
+                      - TRACE
+                    description: The HTTP method used to access the endpoint.
+                  operation_id:
+                    type: string
+                    description: UUID.
+                  labels:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        created_at:
+                          type: string
+                        description:
+                          type: string
+                          description: The description of the label
+                        last_updated:
+                          type: string
+                        metadata:
+                          description: Metadata for the label
+                        name:
+                          type: string
+                          description: The name of the label
+                        source:
+                          type: string
+                          enum:
+                            - user
+                            - managed
+                          description: "- `user` - label is owned by the user - `managed` - label is owned
+                            by cloudflare"
+                      required:
+                        - created_at
+                        - description
+                        - last_updated
+                        - metadata
+                        - name
+                        - source
+                required:
+                  - endpoint
+                  - host
+                  - last_updated
+                  - method
+                  - operation_id
+      x-distilled-response-path: result
+    put:
+      operationId: updateOperationLabel
+      description: "Replace label(s) on an operation in endpoint management  @example
+        ```ts const label = await client.apiGateway.operations.labels.update(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: operationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                managed:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: List of managed label names. Omitting this property or
+                    passing an empty array will result in all managed labels
+                    being removed from the operation"
+                user:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: List of user label names. Omitting this property or
+                    passing an empty array will result in all user labels being
+                    removed from the operation"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  endpoint:
+                    type: string
+                    description: "The endpoint which can contain path parameter templates in curly
+                      braces, each will be replaced from left to right with
+                      {varN}, starting with {var1}, during insertion. This will
+                      further be Cloudflare-normalized upon insertion. See:
+                      https://developers.cloudflare.com/rules/normalization/how\
+                      -it-works/."
+                  host:
+                    type: string
+                    description: RFC3986-compliant host.
+                  last_updated:
+                    type: string
+                  method:
+                    type: string
+                    enum:
+                      - GET
+                      - POST
+                      - HEAD
+                      - OPTIONS
+                      - PUT
+                      - DELETE
+                      - CONNECT
+                      - PATCH
+                      - TRACE
+                    description: The HTTP method used to access the endpoint.
+                  operation_id:
+                    type: string
+                    description: UUID.
+                  labels:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        created_at:
+                          type: string
+                        description:
+                          type: string
+                          description: The description of the label
+                        last_updated:
+                          type: string
+                        metadata:
+                          description: Metadata for the label
+                        name:
+                          type: string
+                          description: The name of the label
+                        source:
+                          type: string
+                          enum:
+                            - user
+                            - managed
+                          description: "- `user` - label is owned by the user - `managed` - label is owned
+                            by cloudflare"
+                      required:
+                        - created_at
+                        - description
+                        - last_updated
+                        - metadata
+                        - name
+                        - source
+                required:
+                  - endpoint
+                  - host
+                  - last_updated
+                  - method
+                  - operation_id
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteOperationLabel
+      description: "Remove label(s) on an operation in endpoint management  @example
+        ```ts const label = await client.apiGateway.operations.labels.delete(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: operationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  endpoint:
+                    type: string
+                    description: "The endpoint which can contain path parameter templates in curly
+                      braces, each will be replaced from left to right with
+                      {varN}, starting with {var1}, during insertion. This will
+                      further be Cloudflare-normalized upon insertion. See:
+                      https://developers.cloudflare.com/rules/normalization/how\
+                      -it-works/."
+                  host:
+                    type: string
+                    description: RFC3986-compliant host.
+                  last_updated:
+                    type: string
+                  method:
+                    type: string
+                    enum:
+                      - GET
+                      - POST
+                      - HEAD
+                      - OPTIONS
+                      - PUT
+                      - DELETE
+                      - CONNECT
+                      - PATCH
+                      - TRACE
+                    description: The HTTP method used to access the endpoint.
+                  operation_id:
+                    type: string
+                    description: UUID.
+                  labels:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        created_at:
+                          type: string
+                        description:
+                          type: string
+                          description: The description of the label
+                        last_updated:
+                          type: string
+                        metadata:
+                          description: Metadata for the label
+                        name:
+                          type: string
+                          description: The name of the label
+                        source:
+                          type: string
+                          enum:
+                            - user
+                            - managed
+                          description: "- `user` - label is owned by the user - `managed` - label is owned
+                            by cloudflare"
+                      required:
+                        - created_at
+                        - description
+                        - last_updated
+                        - metadata
+                        - name
+                        - source
+                required:
+                  - endpoint
+                  - host
+                  - last_updated
+                  - method
+                  - operation_id
+      x-distilled-response-path: result
+  /zones/{zone_id}/api_gateway/operations/labels:
+    post:
+      operationId: bulkCreateOperationLabels
+      description: "Bulk attach label(s) on operation(s) in endpoint
+        management  @example ```ts // Automatically fetches more pages as
+        needed. for await (const labelBulkCreateResponse of
+        client.apiGateway.operations.labels.bulkCreate( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', selector: { include: {
+        operation_ids: [ 'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', ], }, }, }, ))
+        { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                selector:
+                  type: object
+                  properties:
+                    include:
+                      type: object
+                      properties:
+                        operation_ids:
+                          type: array
+                          items:
+                            type: string
+                      required:
+                        - operation_ids
+                  required:
+                    - include
+                  description: "Body param: Operation IDs selector"
+                managed:
+                  type: object
+                  properties:
+                    labels:
+                      type: array
+                      items:
+                        type: string
+                      description: List of managed label names.
+                  description: Body param
+                user:
+                  type: object
+                  properties:
+                    labels:
+                      type: array
+                      items:
+                        type: string
+                      description: List of user label names.
+                  description: Body param
+              required:
+                - selector
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  endpoint:
+                    type: string
+                    description: "The endpoint which can contain path parameter templates in curly
+                      braces, each will be replaced from left to right with
+                      {varN}, starting with {var1}, during insertion. This will
+                      further be Cloudflare-normalized upon insertion. See:
+                      https://developers.cloudflare.com/rules/normalization/how\
+                      -it-works/."
+                  host:
+                    type: string
+                    description: RFC3986-compliant host.
+                  last_updated:
+                    type: string
+                  method:
+                    type: string
+                    enum:
+                      - GET
+                      - POST
+                      - HEAD
+                      - OPTIONS
+                      - PUT
+                      - DELETE
+                      - CONNECT
+                      - PATCH
+                      - TRACE
+                    description: The HTTP method used to access the endpoint.
+                  operation_id:
+                    type: string
+                    description: UUID.
+                  labels:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        created_at:
+                          type: string
+                        description:
+                          type: string
+                          description: The description of the label
+                        last_updated:
+                          type: string
+                        metadata:
+                          description: Metadata for the label
+                        name:
+                          type: string
+                          description: The name of the label
+                        source:
+                          type: string
+                          enum:
+                            - user
+                            - managed
+                          description: "- `user` - label is owned by the user - `managed` - label is owned
+                            by cloudflare"
+                      required:
+                        - created_at
+                        - description
+                        - last_updated
+                        - metadata
+                        - name
+                        - source
+                required:
+                  - endpoint
+                  - host
+                  - last_updated
+                  - method
+                  - operation_id
+      x-distilled-pagination-class: LabelBulkCreateResponsesSinglePage
+    put:
+      operationId: bulkUpdateOperationLabels
+      description: "Bulk replace label(s) on operation(s) in endpoint
+        management  @example ```ts // Automatically fetches more pages as
+        needed. for await (const labelBulkUpdateResponse of
+        client.apiGateway.operations.labels.bulkUpdate( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', managed: { labels: ['login'] },
+        selector: { include: { operation_ids: [
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', ], }, }, user: { labels:
+        ['login'] }, }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                managed:
+                  type: object
+                  properties:
+                    labels:
+                      type: array
+                      items:
+                        type: string
+                      description: List of managed label names. Providing an empty array will result
+                        in all managed labels being removed from all affected
+                        operations
+                  required:
+                    - labels
+                  description: "Body param: Managed labels to replace for all affected operations"
+                selector:
+                  type: object
+                  properties:
+                    include:
+                      type: object
+                      properties:
+                        operation_ids:
+                          type: array
+                          items:
+                            type: string
+                      required:
+                        - operation_ids
+                  required:
+                    - include
+                  description: "Body param: Operation IDs selector"
+                user:
+                  type: object
+                  properties:
+                    labels:
+                      type: array
+                      items:
+                        type: string
+                      description: List of user label names. Providing an empty array will result in
+                        all user labels being removed from all affected
+                        operations
+                  required:
+                    - labels
+                  description: "Body param: User labels to replace for all affected operations"
+              required:
+                - managed
+                - selector
+                - user
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  endpoint:
+                    type: string
+                    description: "The endpoint which can contain path parameter templates in curly
+                      braces, each will be replaced from left to right with
+                      {varN}, starting with {var1}, during insertion. This will
+                      further be Cloudflare-normalized upon insertion. See:
+                      https://developers.cloudflare.com/rules/normalization/how\
+                      -it-works/."
+                  host:
+                    type: string
+                    description: RFC3986-compliant host.
+                  last_updated:
+                    type: string
+                  method:
+                    type: string
+                    enum:
+                      - GET
+                      - POST
+                      - HEAD
+                      - OPTIONS
+                      - PUT
+                      - DELETE
+                      - CONNECT
+                      - PATCH
+                      - TRACE
+                    description: The HTTP method used to access the endpoint.
+                  operation_id:
+                    type: string
+                    description: UUID.
+                  labels:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        created_at:
+                          type: string
+                        description:
+                          type: string
+                          description: The description of the label
+                        last_updated:
+                          type: string
+                        metadata:
+                          description: Metadata for the label
+                        name:
+                          type: string
+                          description: The name of the label
+                        source:
+                          type: string
+                          enum:
+                            - user
+                            - managed
+                          description: "- `user` - label is owned by the user - `managed` - label is owned
+                            by cloudflare"
+                      required:
+                        - created_at
+                        - description
+                        - last_updated
+                        - metadata
+                        - name
+                        - source
+                required:
+                  - endpoint
+                  - host
+                  - last_updated
+                  - method
+                  - operation_id
+      x-distilled-pagination-class: LabelBulkUpdateResponsesSinglePage
+    delete:
+      operationId: bulkDeleteOperationLabels
+      description: "Bulk remove label(s) on operation(s) in endpoint
+        management  @example ```ts // Automatically fetches more pages as
+        needed. for await (const labelBulkDeleteResponse of
+        client.apiGateway.operations.labels.bulkDelete( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  endpoint:
+                    type: string
+                    description: "The endpoint which can contain path parameter templates in curly
+                      braces, each will be replaced from left to right with
+                      {varN}, starting with {var1}, during insertion. This will
+                      further be Cloudflare-normalized upon insertion. See:
+                      https://developers.cloudflare.com/rules/normalization/how\
+                      -it-works/."
+                  host:
+                    type: string
+                    description: RFC3986-compliant host.
+                  last_updated:
+                    type: string
+                  method:
+                    type: string
+                    enum:
+                      - GET
+                      - POST
+                      - HEAD
+                      - OPTIONS
+                      - PUT
+                      - DELETE
+                      - CONNECT
+                      - PATCH
+                      - TRACE
+                    description: The HTTP method used to access the endpoint.
+                  operation_id:
+                    type: string
+                    description: UUID.
+                  labels:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        created_at:
+                          type: string
+                        description:
+                          type: string
+                          description: The description of the label
+                        last_updated:
+                          type: string
+                        metadata:
+                          description: Metadata for the label
+                        name:
+                          type: string
+                          description: The name of the label
+                        source:
+                          type: string
+                          enum:
+                            - user
+                            - managed
+                          description: "- `user` - label is owned by the user - `managed` - label is owned
+                            by cloudflare"
+                      required:
+                        - created_at
+                        - description
+                        - last_updated
+                        - metadata
+                        - name
+                        - source
+                required:
+                  - endpoint
+                  - host
+                  - last_updated
+                  - method
+                  - operation_id
+      x-distilled-pagination-class: LabelBulkDeleteResponsesSinglePage
   /zones/{zone_id}/api_gateway/operations/{operationId}/schema_validation:
     get:
       operationId: getOperationSchemaValidation
@@ -1865,7 +3351,7 @@ paths:
                 settings_multiple_request:
                   type: object
                   additionalProperties: true
-                  description: "Body param:"
+                  description: Body param
               required:
                 - settings_multiple_request
       responses:
@@ -2145,8 +3631,9 @@ paths:
   /zones/{zone_id}/api_gateway/user_schemas/{schemaId}:
     get:
       operationId: getUserSchema
-      description: Retrieve information about a specific schema on a zone  @deprecated
-        Use [Schema Validation
+      description: Gets detailed information about a specific uploaded OpenAPI schema,
+        including its contents and validation configuration.  @deprecated Use
+        [Schema Validation
         API](https://developers.cloudflare.com/api/resources/schema_validation/)
         instead.
       parameters:
@@ -2208,7 +3695,9 @@ paths:
           - code: 19400
     patch:
       operationId: patchUserSchema
-      description: Enable validation for a schema  @deprecated Use [Schema Validation
+      description: Activates schema validation for an uploaded OpenAPI schema.
+        Requests to matching endpoints will be validated against the schema
+        definitions.  @deprecated Use [Schema Validation
         API](https://developers.cloudflare.com/api/resources/schema_validation/)
         instead.
       parameters:
@@ -2275,7 +3764,9 @@ paths:
           - code: 19400
     delete:
       operationId: deleteUserSchema
-      description: Delete a schema  @deprecated Use [Schema Validation
+      description: Permanently removes an uploaded OpenAPI schema from API Shield
+        schema validation. Operations using this schema will lose their
+        validation rules.  @deprecated Use [Schema Validation
         API](https://developers.cloudflare.com/api/resources/schema_validation/)
         instead.
       parameters:
@@ -2353,8 +3844,9 @@ paths:
   /zones/{zone_id}/api_gateway/user_schemas:
     get:
       operationId: listUserSchemas
-      description: Retrieve information about all schemas on a zone  @deprecated Use
-        [Schema Validation
+      description: Lists all OpenAPI schemas uploaded to API Shield for the zone,
+        including their validation status and associated
+        operations.  @deprecated Use [Schema Validation
         API](https://developers.cloudflare.com/api/resources/schema_validation/)
         instead.
       parameters:
@@ -2531,7 +4023,9 @@ paths:
   /zones/{zone_id}/api_gateway/user_schemas/hosts:
     get:
       operationId: listUserSchemaHosts
-      description: Retrieve schema hosts in a zone  @deprecated Use [Schema Validation
+      description: Lists all unique hosts found in uploaded OpenAPI schemas for the
+        zone. Useful for understanding which domains have schema
+        coverage.  @deprecated Use [Schema Validation
         API](https://developers.cloudflare.com/api/resources/schema_validation/)
         instead.
       parameters:

@@ -74,6 +74,54 @@ paths:
                   hostname:
                     type: string
                     description: The custom hostname that will point to your hostname via CNAME.
+                  created_at:
+                    type: string
+                    description: This is the time the hostname was created.
+                  custom_metadata:
+                    type: object
+                    additionalProperties: true
+                    description: Unique key/value metadata for this hostname. These are per-hostname
+                      (customer) settings.
+                  custom_origin_server:
+                    type: string
+                    description: a valid hostname that’s been added to your DNS zone as an A, AAAA,
+                      or CNAME record.
+                  custom_origin_sni:
+                    type: string
+                    description: A hostname that will be sent to your custom origin server as SNI
+                      for TLS handshake. This can be a valid subdomain of the
+                      zone or custom origin server name or the string
+                      ':request_host_header:' which will cause the host header
+                      in the request to be used as SNI. Not configurable with
+                      default/fallback origin server.
+                  ownership_verification:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: DNS Name for record.
+                      type:
+                        type: string
+                        enum:
+                          - txt
+                        description: DNS Record type.
+                      value:
+                        type: string
+                        description: Content for the record.
+                    description: This is a record which can be placed to activate a hostname.
+                  ownership_verification_http:
+                    type: object
+                    properties:
+                      http_body:
+                        type: string
+                        description: Token to be served.
+                      http_url:
+                        type: string
+                        description: The HTTP URL that will be checked during custom hostname
+                          verification and where the customer should host the
+                          token.
+                    description: This presents the token to be served by the given http url to
+                      activate a hostname.
                   ssl:
                     type: object
                     properties:
@@ -108,6 +156,42 @@ paths:
                       custom_key:
                         type: string
                         description: The key for a custom uploaded certificate.
+                      dcv_delegation_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            cname:
+                              type: string
+                              description: The CNAME record hostname for DCV delegation.
+                            cname_target:
+                              type: string
+                              description: The CNAME record target value for DCV delegation.
+                            emails:
+                              type: array
+                              items:
+                                type: string
+                              description: The set of email addresses that the certificate authority (CA) will
+                                use to complete domain validation.
+                            http_body:
+                              type: string
+                              description: The content that the certificate authority (CA) will expect to find
+                                at the http_url during the domain validation.
+                            http_url:
+                              type: string
+                              description: The url that will be checked during domain validation.
+                            status:
+                              type: string
+                              description: Status of the validation record.
+                            txt_name:
+                              type: string
+                              description: The hostname that the certificate authority (CA) will check for a
+                                TXT record during domain validation .
+                            txt_value:
+                              type: string
+                              description: The TXT record that the certificate authority (CA) will check
+                                during domain validation.
+                        description: DCV Delegation records for domain validation.
                       expires_on:
                         type: string
                         description: The time the custom certificate expires on.
@@ -216,6 +300,12 @@ paths:
                         items:
                           type: object
                           properties:
+                            cname:
+                              type: string
+                              description: The CNAME record hostname for DCV delegation.
+                            cname_target:
+                              type: string
+                              description: The CNAME record target value for DCV delegation.
                             emails:
                               type: array
                               items:
@@ -229,6 +319,9 @@ paths:
                             http_url:
                               type: string
                               description: The url that will be checked during domain validation.
+                            status:
+                              type: string
+                              description: Status of the validation record.
                             txt_name:
                               type: string
                               description: The hostname that the certificate authority (CA) will check for a
@@ -240,54 +333,6 @@ paths:
                       wildcard:
                         type: boolean
                         description: Indicates whether the certificate covers a wildcard.
-                  created_at:
-                    type: string
-                    description: This is the time the hostname was created.
-                  custom_metadata:
-                    type: object
-                    additionalProperties: true
-                    description: Unique key/value metadata for this hostname. These are per-hostname
-                      (customer) settings.
-                  custom_origin_server:
-                    type: string
-                    description: a valid hostname that’s been added to your DNS zone as an A, AAAA,
-                      or CNAME record.
-                  custom_origin_sni:
-                    type: string
-                    description: A hostname that will be sent to your custom origin server as SNI
-                      for TLS handshake. This can be a valid subdomain of the
-                      zone or custom origin server name or the string
-                      ':request_host_header:' which will cause the host header
-                      in the request to be used as SNI. Not configurable with
-                      default/fallback origin server.
-                  ownership_verification:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                        description: DNS Name for record.
-                      type:
-                        type: string
-                        enum:
-                          - txt
-                        description: DNS Record type.
-                      value:
-                        type: string
-                        description: Content for the record.
-                    description: This is a record which can be placed to activate a hostname.
-                  ownership_verification_http:
-                    type: object
-                    properties:
-                      http_body:
-                        type: string
-                        description: Token to be served.
-                      http_url:
-                        type: string
-                        description: The HTTP URL that will be checked during custom hostname
-                          verification and where the customer should host the
-                          token.
-                    description: This presents the token to be served by the given http url to
-                      activate a hostname.
                   status:
                     type: string
                     enum:
@@ -317,7 +362,6 @@ paths:
                 required:
                   - id
                   - hostname
-                  - ssl
       x-distilled-response-path: result
     delete:
       operationId: deleteCertificatePackCertificate
@@ -366,8 +410,10 @@ paths:
   /zones/{zone_id}/custom_hostnames/{customHostnameId}:
     get:
       operationId: getCustomHostname
-      description: "Custom Hostname Details  @example ```ts const customHostname =
-        await client.customHostnames.get( '023e105f4ecef8ad9ca31a8372d0c353', {
+      description: "Retrieves detailed information about a specific custom hostname,
+        including SSL certificate status, ownership verification, and origin
+        configuration.  @example ```ts const customHostname = await
+        client.customHostnames.get( '023e105f4ecef8ad9ca31a8372d0c353', {
         zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: customHostnameId
@@ -395,6 +441,54 @@ paths:
                   hostname:
                     type: string
                     description: The custom hostname that will point to your hostname via CNAME.
+                  created_at:
+                    type: string
+                    description: This is the time the hostname was created.
+                  custom_metadata:
+                    type: object
+                    additionalProperties: true
+                    description: Unique key/value metadata for this hostname. These are per-hostname
+                      (customer) settings.
+                  custom_origin_server:
+                    type: string
+                    description: a valid hostname that’s been added to your DNS zone as an A, AAAA,
+                      or CNAME record.
+                  custom_origin_sni:
+                    type: string
+                    description: A hostname that will be sent to your custom origin server as SNI
+                      for TLS handshake. This can be a valid subdomain of the
+                      zone or custom origin server name or the string
+                      ':request_host_header:' which will cause the host header
+                      in the request to be used as SNI. Not configurable with
+                      default/fallback origin server.
+                  ownership_verification:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: DNS Name for record.
+                      type:
+                        type: string
+                        enum:
+                          - txt
+                        description: DNS Record type.
+                      value:
+                        type: string
+                        description: Content for the record.
+                    description: This is a record which can be placed to activate a hostname.
+                  ownership_verification_http:
+                    type: object
+                    properties:
+                      http_body:
+                        type: string
+                        description: Token to be served.
+                      http_url:
+                        type: string
+                        description: The HTTP URL that will be checked during custom hostname
+                          verification and where the customer should host the
+                          token.
+                    description: This presents the token to be served by the given http url to
+                      activate a hostname.
                   ssl:
                     type: object
                     properties:
@@ -429,6 +523,42 @@ paths:
                       custom_key:
                         type: string
                         description: The key for a custom uploaded certificate.
+                      dcv_delegation_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            cname:
+                              type: string
+                              description: The CNAME record hostname for DCV delegation.
+                            cname_target:
+                              type: string
+                              description: The CNAME record target value for DCV delegation.
+                            emails:
+                              type: array
+                              items:
+                                type: string
+                              description: The set of email addresses that the certificate authority (CA) will
+                                use to complete domain validation.
+                            http_body:
+                              type: string
+                              description: The content that the certificate authority (CA) will expect to find
+                                at the http_url during the domain validation.
+                            http_url:
+                              type: string
+                              description: The url that will be checked during domain validation.
+                            status:
+                              type: string
+                              description: Status of the validation record.
+                            txt_name:
+                              type: string
+                              description: The hostname that the certificate authority (CA) will check for a
+                                TXT record during domain validation .
+                            txt_value:
+                              type: string
+                              description: The TXT record that the certificate authority (CA) will check
+                                during domain validation.
+                        description: DCV Delegation records for domain validation.
                       expires_on:
                         type: string
                         description: The time the custom certificate expires on.
@@ -537,6 +667,12 @@ paths:
                         items:
                           type: object
                           properties:
+                            cname:
+                              type: string
+                              description: The CNAME record hostname for DCV delegation.
+                            cname_target:
+                              type: string
+                              description: The CNAME record target value for DCV delegation.
                             emails:
                               type: array
                               items:
@@ -550,6 +686,9 @@ paths:
                             http_url:
                               type: string
                               description: The url that will be checked during domain validation.
+                            status:
+                              type: string
+                              description: Status of the validation record.
                             txt_name:
                               type: string
                               description: The hostname that the certificate authority (CA) will check for a
@@ -561,54 +700,6 @@ paths:
                       wildcard:
                         type: boolean
                         description: Indicates whether the certificate covers a wildcard.
-                  created_at:
-                    type: string
-                    description: This is the time the hostname was created.
-                  custom_metadata:
-                    type: object
-                    additionalProperties: true
-                    description: Unique key/value metadata for this hostname. These are per-hostname
-                      (customer) settings.
-                  custom_origin_server:
-                    type: string
-                    description: a valid hostname that’s been added to your DNS zone as an A, AAAA,
-                      or CNAME record.
-                  custom_origin_sni:
-                    type: string
-                    description: A hostname that will be sent to your custom origin server as SNI
-                      for TLS handshake. This can be a valid subdomain of the
-                      zone or custom origin server name or the string
-                      ':request_host_header:' which will cause the host header
-                      in the request to be used as SNI. Not configurable with
-                      default/fallback origin server.
-                  ownership_verification:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                        description: DNS Name for record.
-                      type:
-                        type: string
-                        enum:
-                          - txt
-                        description: DNS Record type.
-                      value:
-                        type: string
-                        description: Content for the record.
-                    description: This is a record which can be placed to activate a hostname.
-                  ownership_verification_http:
-                    type: object
-                    properties:
-                      http_body:
-                        type: string
-                        description: Token to be served.
-                      http_url:
-                        type: string
-                        description: The HTTP URL that will be checked during custom hostname
-                          verification and where the customer should host the
-                          token.
-                    description: This presents the token to be served by the given http url to
-                      activate a hostname.
                   status:
                     type: string
                     enum:
@@ -638,7 +729,6 @@ paths:
                 required:
                   - id
                   - hostname
-                  - ssl
       x-distilled-response-path: result
     patch:
       operationId: patchCustomHostname
@@ -734,6 +824,9 @@ paths:
                     custom_certificate:
                       type: string
                       description: If a custom uploaded certificate is used.
+                    custom_csr_id:
+                      type: string
+                      description: The identifier for the Custom CSR that was used.
                     custom_key:
                       type: string
                       description: The key for a custom uploaded certificate.
@@ -805,6 +898,54 @@ paths:
                   hostname:
                     type: string
                     description: The custom hostname that will point to your hostname via CNAME.
+                  created_at:
+                    type: string
+                    description: This is the time the hostname was created.
+                  custom_metadata:
+                    type: object
+                    additionalProperties: true
+                    description: Unique key/value metadata for this hostname. These are per-hostname
+                      (customer) settings.
+                  custom_origin_server:
+                    type: string
+                    description: a valid hostname that’s been added to your DNS zone as an A, AAAA,
+                      or CNAME record.
+                  custom_origin_sni:
+                    type: string
+                    description: A hostname that will be sent to your custom origin server as SNI
+                      for TLS handshake. This can be a valid subdomain of the
+                      zone or custom origin server name or the string
+                      ':request_host_header:' which will cause the host header
+                      in the request to be used as SNI. Not configurable with
+                      default/fallback origin server.
+                  ownership_verification:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: DNS Name for record.
+                      type:
+                        type: string
+                        enum:
+                          - txt
+                        description: DNS Record type.
+                      value:
+                        type: string
+                        description: Content for the record.
+                    description: This is a record which can be placed to activate a hostname.
+                  ownership_verification_http:
+                    type: object
+                    properties:
+                      http_body:
+                        type: string
+                        description: Token to be served.
+                      http_url:
+                        type: string
+                        description: The HTTP URL that will be checked during custom hostname
+                          verification and where the customer should host the
+                          token.
+                    description: This presents the token to be served by the given http url to
+                      activate a hostname.
                   ssl:
                     type: object
                     properties:
@@ -839,6 +980,42 @@ paths:
                       custom_key:
                         type: string
                         description: The key for a custom uploaded certificate.
+                      dcv_delegation_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            cname:
+                              type: string
+                              description: The CNAME record hostname for DCV delegation.
+                            cname_target:
+                              type: string
+                              description: The CNAME record target value for DCV delegation.
+                            emails:
+                              type: array
+                              items:
+                                type: string
+                              description: The set of email addresses that the certificate authority (CA) will
+                                use to complete domain validation.
+                            http_body:
+                              type: string
+                              description: The content that the certificate authority (CA) will expect to find
+                                at the http_url during the domain validation.
+                            http_url:
+                              type: string
+                              description: The url that will be checked during domain validation.
+                            status:
+                              type: string
+                              description: Status of the validation record.
+                            txt_name:
+                              type: string
+                              description: The hostname that the certificate authority (CA) will check for a
+                                TXT record during domain validation .
+                            txt_value:
+                              type: string
+                              description: The TXT record that the certificate authority (CA) will check
+                                during domain validation.
+                        description: DCV Delegation records for domain validation.
                       expires_on:
                         type: string
                         description: The time the custom certificate expires on.
@@ -947,6 +1124,12 @@ paths:
                         items:
                           type: object
                           properties:
+                            cname:
+                              type: string
+                              description: The CNAME record hostname for DCV delegation.
+                            cname_target:
+                              type: string
+                              description: The CNAME record target value for DCV delegation.
                             emails:
                               type: array
                               items:
@@ -960,6 +1143,9 @@ paths:
                             http_url:
                               type: string
                               description: The url that will be checked during domain validation.
+                            status:
+                              type: string
+                              description: Status of the validation record.
                             txt_name:
                               type: string
                               description: The hostname that the certificate authority (CA) will check for a
@@ -971,54 +1157,6 @@ paths:
                       wildcard:
                         type: boolean
                         description: Indicates whether the certificate covers a wildcard.
-                  created_at:
-                    type: string
-                    description: This is the time the hostname was created.
-                  custom_metadata:
-                    type: object
-                    additionalProperties: true
-                    description: Unique key/value metadata for this hostname. These are per-hostname
-                      (customer) settings.
-                  custom_origin_server:
-                    type: string
-                    description: a valid hostname that’s been added to your DNS zone as an A, AAAA,
-                      or CNAME record.
-                  custom_origin_sni:
-                    type: string
-                    description: A hostname that will be sent to your custom origin server as SNI
-                      for TLS handshake. This can be a valid subdomain of the
-                      zone or custom origin server name or the string
-                      ':request_host_header:' which will cause the host header
-                      in the request to be used as SNI. Not configurable with
-                      default/fallback origin server.
-                  ownership_verification:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                        description: DNS Name for record.
-                      type:
-                        type: string
-                        enum:
-                          - txt
-                        description: DNS Record type.
-                      value:
-                        type: string
-                        description: Content for the record.
-                    description: This is a record which can be placed to activate a hostname.
-                  ownership_verification_http:
-                    type: object
-                    properties:
-                      http_body:
-                        type: string
-                        description: Token to be served.
-                      http_url:
-                        type: string
-                        description: The HTTP URL that will be checked during custom hostname
-                          verification and where the customer should host the
-                          token.
-                    description: This presents the token to be served by the given http url to
-                      activate a hostname.
                   status:
                     type: string
                     enum:
@@ -1048,14 +1186,14 @@ paths:
                 required:
                   - id
                   - hostname
-                  - ssl
       x-distilled-response-path: result
     delete:
       operationId: deleteCustomHostname
-      description: "Delete Custom Hostname (and any issued SSL certificates)  @example
-        ```ts const customHostname = await client.customHostnames.delete(
-        '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
-        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      description: "Permanently deletes a custom hostname and revokes any SSL
+        certificates that were issued for it. This action cannot be
+        undone.  @example ```ts const customHostname = await
+        client.customHostnames.delete( '023e105f4ecef8ad9ca31a8372d0c353', {
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: customHostnameId
           in: path
@@ -1112,6 +1250,23 @@ paths:
             parameter cannot be used with the 'hostname' parameter."
           schema:
             type: string
+        - name: certificate_authority
+          in: query
+          required: false
+          description: "Query param: Filter by the certificate authority that issued the
+            SSL certificate."
+          schema:
+            type: string
+            enum:
+              - google
+              - lets_encrypt
+              - ssl_com
+        - name: custom_origin_server
+          in: query
+          required: false
+          description: "Query param: Filter by custom origin server name."
+          schema:
+            type: string
         - name: direction
           in: query
           required: false
@@ -1124,10 +1279,37 @@ paths:
         - name: hostname
           in: query
           required: false
-          description: "Query param: Fully qualified domain name to match against. This
-            parameter cannot be used with the 'id' parameter."
+          description: Query param
+          schema:
+            type: object
+            properties:
+              contain:
+                type: string
+                description: Filters hostnames by a substring match on the hostname value. This
+                  parameter cannot be used with the 'id' parameter.
+        - name: hostname_status
+          in: query
+          required: false
+          description: "Query param: Filter by the hostname's activation status."
           schema:
             type: string
+            enum:
+              - active
+              - pending
+              - active_redeploying
+              - moved
+              - pending_deletion
+              - deleted
+              - pending_blocked
+              - pending_migration
+              - pending_provisioned
+              - test_pending
+              - test_active
+              - test_active_apex
+              - test_blocked
+              - test_failed
+              - provisioned
+              - blocked
         - name: order
           in: query
           required: false
@@ -1147,6 +1329,41 @@ paths:
             enum:
               - 0
               - 1
+        - name: ssl_status
+          in: query
+          required: false
+          description: "Query param: Filter by SSL certificate status."
+          schema:
+            type: string
+            enum:
+              - initializing
+              - pending_validation
+              - deleted
+              - pending_issuance
+              - pending_deployment
+              - pending_deletion
+              - pending_expiration
+              - expired
+              - active
+              - initializing_timed_out
+              - validation_timed_out
+              - issuance_timed_out
+              - deployment_timed_out
+              - deletion_timed_out
+              - pending_cleanup
+              - staging_deployment
+              - staging_active
+              - deactivating
+              - inactive
+              - backup_issued
+              - holding_deployment
+        - name: wildcard
+          in: query
+          required: false
+          description: "Query param: Filter by whether the custom hostname is a wildcard
+            hostname."
+          schema:
+            type: boolean
       responses:
         "200":
           description: Success
@@ -1161,6 +1378,54 @@ paths:
                   hostname:
                     type: string
                     description: The custom hostname that will point to your hostname via CNAME.
+                  created_at:
+                    type: string
+                    description: This is the time the hostname was created.
+                  custom_metadata:
+                    type: object
+                    additionalProperties: true
+                    description: Unique key/value metadata for this hostname. These are per-hostname
+                      (customer) settings.
+                  custom_origin_server:
+                    type: string
+                    description: a valid hostname that’s been added to your DNS zone as an A, AAAA,
+                      or CNAME record.
+                  custom_origin_sni:
+                    type: string
+                    description: A hostname that will be sent to your custom origin server as SNI
+                      for TLS handshake. This can be a valid subdomain of the
+                      zone or custom origin server name or the string
+                      ':request_host_header:' which will cause the host header
+                      in the request to be used as SNI. Not configurable with
+                      default/fallback origin server.
+                  ownership_verification:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: DNS Name for record.
+                      type:
+                        type: string
+                        enum:
+                          - txt
+                        description: DNS Record type.
+                      value:
+                        type: string
+                        description: Content for the record.
+                    description: This is a record which can be placed to activate a hostname.
+                  ownership_verification_http:
+                    type: object
+                    properties:
+                      http_body:
+                        type: string
+                        description: Token to be served.
+                      http_url:
+                        type: string
+                        description: The HTTP URL that will be checked during custom hostname
+                          verification and where the customer should host the
+                          token.
+                    description: This presents the token to be served by the given http url to
+                      activate a hostname.
                   ssl:
                     type: object
                     properties:
@@ -1195,6 +1460,42 @@ paths:
                       custom_key:
                         type: string
                         description: The key for a custom uploaded certificate.
+                      dcv_delegation_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            cname:
+                              type: string
+                              description: The CNAME record hostname for DCV delegation.
+                            cname_target:
+                              type: string
+                              description: The CNAME record target value for DCV delegation.
+                            emails:
+                              type: array
+                              items:
+                                type: string
+                              description: The set of email addresses that the certificate authority (CA) will
+                                use to complete domain validation.
+                            http_body:
+                              type: string
+                              description: The content that the certificate authority (CA) will expect to find
+                                at the http_url during the domain validation.
+                            http_url:
+                              type: string
+                              description: The url that will be checked during domain validation.
+                            status:
+                              type: string
+                              description: Status of the validation record.
+                            txt_name:
+                              type: string
+                              description: The hostname that the certificate authority (CA) will check for a
+                                TXT record during domain validation .
+                            txt_value:
+                              type: string
+                              description: The TXT record that the certificate authority (CA) will check
+                                during domain validation.
+                        description: DCV Delegation records for domain validation.
                       expires_on:
                         type: string
                         description: The time the custom certificate expires on.
@@ -1303,6 +1604,12 @@ paths:
                         items:
                           type: object
                           properties:
+                            cname:
+                              type: string
+                              description: The CNAME record hostname for DCV delegation.
+                            cname_target:
+                              type: string
+                              description: The CNAME record target value for DCV delegation.
                             emails:
                               type: array
                               items:
@@ -1316,6 +1623,9 @@ paths:
                             http_url:
                               type: string
                               description: The url that will be checked during domain validation.
+                            status:
+                              type: string
+                              description: Status of the validation record.
                             txt_name:
                               type: string
                               description: The hostname that the certificate authority (CA) will check for a
@@ -1327,54 +1637,6 @@ paths:
                       wildcard:
                         type: boolean
                         description: Indicates whether the certificate covers a wildcard.
-                  created_at:
-                    type: string
-                    description: This is the time the hostname was created.
-                  custom_metadata:
-                    type: object
-                    additionalProperties: true
-                    description: Unique key/value metadata for this hostname. These are per-hostname
-                      (customer) settings.
-                  custom_origin_server:
-                    type: string
-                    description: a valid hostname that’s been added to your DNS zone as an A, AAAA,
-                      or CNAME record.
-                  custom_origin_sni:
-                    type: string
-                    description: A hostname that will be sent to your custom origin server as SNI
-                      for TLS handshake. This can be a valid subdomain of the
-                      zone or custom origin server name or the string
-                      ':request_host_header:' which will cause the host header
-                      in the request to be used as SNI. Not configurable with
-                      default/fallback origin server.
-                  ownership_verification:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                        description: DNS Name for record.
-                      type:
-                        type: string
-                        enum:
-                          - txt
-                        description: DNS Record type.
-                      value:
-                        type: string
-                        description: Content for the record.
-                    description: This is a record which can be placed to activate a hostname.
-                  ownership_verification_http:
-                    type: object
-                    properties:
-                      http_body:
-                        type: string
-                        description: Token to be served.
-                      http_url:
-                        type: string
-                        description: The HTTP URL that will be checked during custom hostname
-                          verification and where the customer should host the
-                          token.
-                    description: This presents the token to be served by the given http url to
-                      activate a hostname.
                   status:
                     type: string
                     enum:
@@ -1404,7 +1666,6 @@ paths:
                 required:
                   - id
                   - hostname
-                  - ssl
       x-distilled-pagination-class: CustomHostnameListResponsesV4PagePaginationArray
     post:
       operationId: createCustomHostname
@@ -1490,6 +1751,9 @@ paths:
                     custom_certificate:
                       type: string
                       description: If a custom uploaded certificate is used.
+                    custom_csr_id:
+                      type: string
+                      description: The identifier for the Custom CSR that was used.
                     custom_key:
                       type: string
                       description: The key for a custom uploaded certificate.
@@ -1563,6 +1827,54 @@ paths:
                   hostname:
                     type: string
                     description: The custom hostname that will point to your hostname via CNAME.
+                  created_at:
+                    type: string
+                    description: This is the time the hostname was created.
+                  custom_metadata:
+                    type: object
+                    additionalProperties: true
+                    description: Unique key/value metadata for this hostname. These are per-hostname
+                      (customer) settings.
+                  custom_origin_server:
+                    type: string
+                    description: a valid hostname that’s been added to your DNS zone as an A, AAAA,
+                      or CNAME record.
+                  custom_origin_sni:
+                    type: string
+                    description: A hostname that will be sent to your custom origin server as SNI
+                      for TLS handshake. This can be a valid subdomain of the
+                      zone or custom origin server name or the string
+                      ':request_host_header:' which will cause the host header
+                      in the request to be used as SNI. Not configurable with
+                      default/fallback origin server.
+                  ownership_verification:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: DNS Name for record.
+                      type:
+                        type: string
+                        enum:
+                          - txt
+                        description: DNS Record type.
+                      value:
+                        type: string
+                        description: Content for the record.
+                    description: This is a record which can be placed to activate a hostname.
+                  ownership_verification_http:
+                    type: object
+                    properties:
+                      http_body:
+                        type: string
+                        description: Token to be served.
+                      http_url:
+                        type: string
+                        description: The HTTP URL that will be checked during custom hostname
+                          verification and where the customer should host the
+                          token.
+                    description: This presents the token to be served by the given http url to
+                      activate a hostname.
                   ssl:
                     type: object
                     properties:
@@ -1597,6 +1909,42 @@ paths:
                       custom_key:
                         type: string
                         description: The key for a custom uploaded certificate.
+                      dcv_delegation_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            cname:
+                              type: string
+                              description: The CNAME record hostname for DCV delegation.
+                            cname_target:
+                              type: string
+                              description: The CNAME record target value for DCV delegation.
+                            emails:
+                              type: array
+                              items:
+                                type: string
+                              description: The set of email addresses that the certificate authority (CA) will
+                                use to complete domain validation.
+                            http_body:
+                              type: string
+                              description: The content that the certificate authority (CA) will expect to find
+                                at the http_url during the domain validation.
+                            http_url:
+                              type: string
+                              description: The url that will be checked during domain validation.
+                            status:
+                              type: string
+                              description: Status of the validation record.
+                            txt_name:
+                              type: string
+                              description: The hostname that the certificate authority (CA) will check for a
+                                TXT record during domain validation .
+                            txt_value:
+                              type: string
+                              description: The TXT record that the certificate authority (CA) will check
+                                during domain validation.
+                        description: DCV Delegation records for domain validation.
                       expires_on:
                         type: string
                         description: The time the custom certificate expires on.
@@ -1705,6 +2053,12 @@ paths:
                         items:
                           type: object
                           properties:
+                            cname:
+                              type: string
+                              description: The CNAME record hostname for DCV delegation.
+                            cname_target:
+                              type: string
+                              description: The CNAME record target value for DCV delegation.
                             emails:
                               type: array
                               items:
@@ -1718,6 +2072,9 @@ paths:
                             http_url:
                               type: string
                               description: The url that will be checked during domain validation.
+                            status:
+                              type: string
+                              description: Status of the validation record.
                             txt_name:
                               type: string
                               description: The hostname that the certificate authority (CA) will check for a
@@ -1729,54 +2086,6 @@ paths:
                       wildcard:
                         type: boolean
                         description: Indicates whether the certificate covers a wildcard.
-                  created_at:
-                    type: string
-                    description: This is the time the hostname was created.
-                  custom_metadata:
-                    type: object
-                    additionalProperties: true
-                    description: Unique key/value metadata for this hostname. These are per-hostname
-                      (customer) settings.
-                  custom_origin_server:
-                    type: string
-                    description: a valid hostname that’s been added to your DNS zone as an A, AAAA,
-                      or CNAME record.
-                  custom_origin_sni:
-                    type: string
-                    description: A hostname that will be sent to your custom origin server as SNI
-                      for TLS handshake. This can be a valid subdomain of the
-                      zone or custom origin server name or the string
-                      ':request_host_header:' which will cause the host header
-                      in the request to be used as SNI. Not configurable with
-                      default/fallback origin server.
-                  ownership_verification:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                        description: DNS Name for record.
-                      type:
-                        type: string
-                        enum:
-                          - txt
-                        description: DNS Record type.
-                      value:
-                        type: string
-                        description: Content for the record.
-                    description: This is a record which can be placed to activate a hostname.
-                  ownership_verification_http:
-                    type: object
-                    properties:
-                      http_body:
-                        type: string
-                        description: Token to be served.
-                      http_url:
-                        type: string
-                        description: The HTTP URL that will be checked during custom hostname
-                          verification and where the customer should host the
-                          token.
-                    description: This presents the token to be served by the given http url to
-                      activate a hostname.
                   status:
                     type: string
                     enum:
@@ -1806,12 +2115,13 @@ paths:
                 required:
                   - id
                   - hostname
-                  - ssl
       x-distilled-response-path: result
   /zones/{zone_id}/custom_hostnames/fallback_origin:
     get:
       operationId: getFallbackOrigin
-      description: "Get Fallback Origin for Custom Hostnames  @example ```ts const
+      description: "Retrieves the current fallback origin configuration for custom
+        hostnames on a zone. The fallback origin handles traffic when specific
+        custom hostname origins are unavailable.  @example ```ts const
         fallbackOrigin = await client.customHostnames.fallbackOrigin.get({
         zone_id: '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
@@ -1858,10 +2168,12 @@ paths:
       x-distilled-response-path: result
     put:
       operationId: putFallbackOrigin
-      description: "Update Fallback Origin for Custom Hostnames  @example ```ts const
-        fallbackOrigin = await client.customHostnames.fallbackOrigin.update({
-        zone_id: '023e105f4ecef8ad9ca31a8372d0c353', origin:
-        'fallback.example.com', }); ```"
+      description: "Updates the fallback origin configuration for custom hostnames on
+        a zone. Sets the default origin server for custom hostname
+        traffic.  @example ```ts const fallbackOrigin = await
+        client.customHostnames.fallbackOrigin.update({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', origin: 'fallback.example.com', });
+        ```"
       parameters:
         - name: zone_id
           in: path
@@ -1919,9 +2231,11 @@ paths:
       x-distilled-response-path: result
     delete:
       operationId: deleteFallbackOrigin
-      description: "Delete Fallback Origin for Custom Hostnames  @example ```ts const
-        fallbackOrigin = await client.customHostnames.fallbackOrigin.delete({
-        zone_id: '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      description: "Removes the fallback origin configuration for custom hostnames on
+        a zone. Custom hostnames without specific origins will no longer have a
+        fallback.  @example ```ts const fallbackOrigin = await
+        client.customHostnames.fallbackOrigin.delete({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
       parameters:
         - name: zone_id
           in: path

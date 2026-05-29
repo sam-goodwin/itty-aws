@@ -126,8 +126,9 @@ export type GetConsumerResponse =
   | {
       consumerId?: string | null;
       createdOn?: string | null;
-      queueId?: string | null;
-      script?: string | null;
+      deadLetterQueue?: string | null;
+      queueName?: string | null;
+      scriptName?: string | null;
       settings?: {
         batchSize?: number | null;
         maxConcurrency?: number | null;
@@ -140,7 +141,8 @@ export type GetConsumerResponse =
   | {
       consumerId?: string | null;
       createdOn?: string | null;
-      queueId?: string | null;
+      deadLetterQueue?: string | null;
+      queueName?: string | null;
       settings?: {
         batchSize?: number | null;
         maxRetries?: number | null;
@@ -154,8 +156,11 @@ export const GetConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    deadLetterQueue: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scriptName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -193,8 +198,9 @@ export const GetConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.encodeKeys({
       consumerId: "consumer_id",
       createdOn: "created_on",
-      queueId: "queue_id",
-      script: "script",
+      deadLetterQueue: "dead_letter_queue",
+      queueName: "queue_name",
+      scriptName: "script_name",
       settings: "settings",
       type: "type",
     }),
@@ -202,7 +208,10 @@ export const GetConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    deadLetterQueue: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -236,7 +245,8 @@ export const GetConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.encodeKeys({
       consumerId: "consumer_id",
       createdOn: "created_on",
-      queueId: "queue_id",
+      deadLetterQueue: "dead_letter_queue",
+      queueName: "queue_name",
       settings: "settings",
       type: "type",
     }),
@@ -284,8 +294,9 @@ export interface ListConsumersResponse {
     | {
         consumerId?: string | null;
         createdOn?: string | null;
-        queueId?: string | null;
-        script?: string | null;
+        deadLetterQueue?: string | null;
+        queueName?: string | null;
+        scriptName?: string | null;
         settings?: {
           batchSize?: number | null;
           maxConcurrency?: number | null;
@@ -298,7 +309,8 @@ export interface ListConsumersResponse {
     | {
         consumerId?: string | null;
         createdOn?: string | null;
-        queueId?: string | null;
+        deadLetterQueue?: string | null;
+        queueName?: string | null;
         settings?: {
           batchSize?: number | null;
           maxRetries?: number | null;
@@ -316,8 +328,11 @@ export const ListConsumersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        deadLetterQueue: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        scriptName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         settings: Schema.optional(
           Schema.Union([
             Schema.Struct({
@@ -355,8 +370,9 @@ export const ListConsumersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.encodeKeys({
           consumerId: "consumer_id",
           createdOn: "created_on",
-          queueId: "queue_id",
-          script: "script",
+          deadLetterQueue: "dead_letter_queue",
+          queueName: "queue_name",
+          scriptName: "script_name",
           settings: "settings",
           type: "type",
         }),
@@ -364,7 +380,10 @@ export const ListConsumersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        deadLetterQueue: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         settings: Schema.optional(
           Schema.Union([
             Schema.Struct({
@@ -398,7 +417,8 @@ export const ListConsumersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.encodeKeys({
           consumerId: "consumer_id",
           createdOn: "created_on",
-          queueId: "queue_id",
+          deadLetterQueue: "dead_letter_queue",
+          queueName: "queue_name",
           settings: "settings",
           type: "type",
         }),
@@ -432,11 +452,13 @@ export interface CreateConsumerRequest {
   queueId: string;
   /** Path param: A Resource identifier. */
   accountId: string;
-  /** Body param: */
-  deadLetterQueue?: string;
   /** Body param: Name of a Worker */
-  scriptName?: string;
-  /** Body param: */
+  scriptName: string;
+  /** Body param */
+  type: "worker" | "http_pull";
+  /** Body param */
+  deadLetterQueue?: string;
+  /** Body param */
   settings?: {
     batchSize?: number;
     maxConcurrency?: number;
@@ -444,15 +466,14 @@ export interface CreateConsumerRequest {
     maxWaitTimeMs?: number;
     retryDelay?: number;
   };
-  /** Body param: */
-  type: "worker" | "http_pull";
 }
 
 export const CreateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  scriptName: Schema.String,
+  type: Schema.Literals(["worker", "http_pull"]),
   deadLetterQueue: Schema.optional(Schema.String),
-  scriptName: Schema.optional(Schema.String),
   settings: Schema.optional(
     Schema.Struct({
       batchSize: Schema.optional(Schema.Number),
@@ -470,13 +491,12 @@ export const CreateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-  type: Schema.Literals(["worker", "http_pull"]),
 }).pipe(
   Schema.encodeKeys({
-    deadLetterQueue: "dead_letter_queue",
     scriptName: "script_name",
-    settings: "settings",
     type: "type",
+    deadLetterQueue: "dead_letter_queue",
+    settings: "settings",
   }),
   T.Http({
     method: "POST",
@@ -488,8 +508,9 @@ export type CreateConsumerResponse =
   | {
       consumerId?: string | null;
       createdOn?: string | null;
-      queueId?: string | null;
-      script?: string | null;
+      deadLetterQueue?: string | null;
+      queueName?: string | null;
+      scriptName?: string | null;
       settings?: {
         batchSize?: number | null;
         maxConcurrency?: number | null;
@@ -502,7 +523,8 @@ export type CreateConsumerResponse =
   | {
       consumerId?: string | null;
       createdOn?: string | null;
-      queueId?: string | null;
+      deadLetterQueue?: string | null;
+      queueName?: string | null;
       settings?: {
         batchSize?: number | null;
         maxRetries?: number | null;
@@ -516,8 +538,11 @@ export const CreateConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    deadLetterQueue: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scriptName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -555,8 +580,9 @@ export const CreateConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.encodeKeys({
       consumerId: "consumer_id",
       createdOn: "created_on",
-      queueId: "queue_id",
-      script: "script",
+      deadLetterQueue: "dead_letter_queue",
+      queueName: "queue_name",
+      scriptName: "script_name",
       settings: "settings",
       type: "type",
     }),
@@ -564,7 +590,10 @@ export const CreateConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    deadLetterQueue: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -598,7 +627,8 @@ export const CreateConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.encodeKeys({
       consumerId: "consumer_id",
       createdOn: "created_on",
-      queueId: "queue_id",
+      deadLetterQueue: "dead_letter_queue",
+      queueName: "queue_name",
       settings: "settings",
       type: "type",
     }),
@@ -639,11 +669,13 @@ export interface UpdateConsumerRequest {
   consumerId: string;
   /** Path param: A Resource identifier. */
   accountId: string;
-  /** Body param: */
-  deadLetterQueue?: string;
   /** Body param: Name of a Worker */
-  scriptName?: string;
-  /** Body param: */
+  scriptName: string;
+  /** Body param */
+  type: "worker";
+  /** Body param */
+  deadLetterQueue?: string;
+  /** Body param */
   settings?: {
     batchSize?: number;
     maxConcurrency?: number;
@@ -651,16 +683,15 @@ export interface UpdateConsumerRequest {
     maxWaitTimeMs?: number;
     retryDelay?: number;
   };
-  /** Body param: */
-  type?: "worker";
 }
 
 export const UpdateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   consumerId: Schema.String.pipe(T.HttpPath("consumerId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  scriptName: Schema.String,
+  type: Schema.Literal("worker"),
   deadLetterQueue: Schema.optional(Schema.String),
-  scriptName: Schema.optional(Schema.String),
   settings: Schema.optional(
     Schema.Struct({
       batchSize: Schema.optional(Schema.Number),
@@ -678,13 +709,12 @@ export const UpdateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-  type: Schema.optional(Schema.Literal("worker")),
 }).pipe(
   Schema.encodeKeys({
-    deadLetterQueue: "dead_letter_queue",
     scriptName: "script_name",
-    settings: "settings",
     type: "type",
+    deadLetterQueue: "dead_letter_queue",
+    settings: "settings",
   }),
   T.Http({
     method: "PUT",
@@ -696,8 +726,9 @@ export type UpdateConsumerResponse =
   | {
       consumerId?: string | null;
       createdOn?: string | null;
-      queueId?: string | null;
-      script?: string | null;
+      deadLetterQueue?: string | null;
+      queueName?: string | null;
+      scriptName?: string | null;
       settings?: {
         batchSize?: number | null;
         maxConcurrency?: number | null;
@@ -710,7 +741,8 @@ export type UpdateConsumerResponse =
   | {
       consumerId?: string | null;
       createdOn?: string | null;
-      queueId?: string | null;
+      deadLetterQueue?: string | null;
+      queueName?: string | null;
       settings?: {
         batchSize?: number | null;
         maxRetries?: number | null;
@@ -724,8 +756,11 @@ export const UpdateConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    deadLetterQueue: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scriptName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -763,8 +798,9 @@ export const UpdateConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.encodeKeys({
       consumerId: "consumer_id",
       createdOn: "created_on",
-      queueId: "queue_id",
-      script: "script",
+      deadLetterQueue: "dead_letter_queue",
+      queueName: "queue_name",
+      scriptName: "script_name",
       settings: "settings",
       type: "type",
     }),
@@ -772,7 +808,10 @@ export const UpdateConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    deadLetterQueue: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     settings: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -806,7 +845,8 @@ export const UpdateConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.encodeKeys({
       consumerId: "consumer_id",
       createdOn: "created_on",
-      queueId: "queue_id",
+      deadLetterQueue: "dead_letter_queue",
+      queueName: "queue_name",
       settings: "settings",
       type: "type",
     }),
@@ -942,7 +982,7 @@ export interface BulkPushMessagesRequest {
   accountId: string;
   /** Body param: The number of seconds to wait for attempting to deliver this batch to consumers */
   delaySeconds?: number;
-  /** Body param: */
+  /** Body param */
   messages?: (
     | { body?: string; contentType?: "text"; delaySeconds?: number }
     | { body?: unknown; contentType?: "json"; delaySeconds?: number }
@@ -991,57 +1031,43 @@ export const BulkPushMessagesRequest =
   ) as unknown as Schema.Schema<BulkPushMessagesRequest>;
 
 export interface BulkPushMessagesResponse {
-  errors?:
-    | {
-        code: number;
-        message: string;
-        documentationUrl?: string | null;
-        source?: { pointer?: string | null } | null;
-      }[]
-    | null;
-  messages?: string[] | null;
-  /** Indicates if the API call was successful or not. */
-  success?: true | null;
+  metadata?: {
+    metrics?: {
+      backlogBytes: number;
+      backlogCount: number;
+      oldestMessageTimestampMs: number;
+    } | null;
+  } | null;
 }
 
 export const BulkPushMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.optional(
+    metadata: Schema.optional(
       Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            code: Schema.Number,
-            message: Schema.String,
-            documentationUrl: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            source: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  pointer: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
+        Schema.Struct({
+          metrics: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                backlogBytes: Schema.Number,
+                backlogCount: Schema.Number,
+                oldestMessageTimestampMs: Schema.Number,
+              }).pipe(
+                Schema.encodeKeys({
+                  backlogBytes: "backlog_bytes",
+                  backlogCount: "backlog_count",
+                  oldestMessageTimestampMs: "oldest_message_timestamp_ms",
                 }),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              code: "code",
-              message: "message",
-              documentationUrl: "documentation_url",
-              source: "source",
-            }),
+              ),
+              Schema.Null,
+            ]),
           ),
-        ),
+        }),
         Schema.Null,
       ]),
     ),
-    messages: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    success: Schema.optional(Schema.Union([Schema.Literal(true), Schema.Null])),
-  }) as unknown as Schema.Schema<BulkPushMessagesResponse>;
+  }).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<BulkPushMessagesResponse>;
 
 export type BulkPushMessagesError =
   | DefaultErrors
@@ -1087,7 +1113,7 @@ export const PullMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<PullMessageRequest>;
 
 export interface PullMessageResponse {
-  /** The number of unacknowledged messages in the queue */
+  /** The number of unacknowledged messages in the queue. */
   messageBacklogCount?: number | null;
   messages?:
     | {
@@ -1099,6 +1125,13 @@ export interface PullMessageResponse {
         timestampMs?: number | null;
       }[]
     | null;
+  metadata?: {
+    metrics?: {
+      backlogBytes: number;
+      backlogCount: number;
+      oldestMessageTimestampMs: number;
+    } | null;
+  } | null;
 }
 
 export const PullMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1133,11 +1166,35 @@ export const PullMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Null,
     ]),
   ),
+  metadata: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        metrics: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              backlogBytes: Schema.Number,
+              backlogCount: Schema.Number,
+              oldestMessageTimestampMs: Schema.Number,
+            }).pipe(
+              Schema.encodeKeys({
+                backlogBytes: "backlog_bytes",
+                backlogCount: "backlog_count",
+                oldestMessageTimestampMs: "oldest_message_timestamp_ms",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
 })
   .pipe(
     Schema.encodeKeys({
       messageBacklogCount: "message_backlog_count",
       messages: "messages",
+      metadata: "metadata",
     }),
   )
   .pipe(
@@ -1166,9 +1223,9 @@ export interface PushMessageRequest {
   queueId: string;
   /** Path param: A Resource identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body?: string;
-  /** Body param: */
+  /** Body param */
   contentType?: "text";
   /** Body param: The number of seconds to wait for attempting to deliver this message to consumers */
   delaySeconds?: number;
@@ -1193,56 +1250,42 @@ export const PushMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<PushMessageRequest>;
 
 export interface PushMessageResponse {
-  errors?:
-    | {
-        code: number;
-        message: string;
-        documentationUrl?: string | null;
-        source?: { pointer?: string | null } | null;
-      }[]
-    | null;
-  messages?: string[] | null;
-  /** Indicates if the API call was successful or not. */
-  success?: true | null;
+  metadata?: {
+    metrics?: {
+      backlogBytes: number;
+      backlogCount: number;
+      oldestMessageTimestampMs: number;
+    } | null;
+  } | null;
 }
 
 export const PushMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  errors: Schema.optional(
+  metadata: Schema.optional(
     Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
+      Schema.Struct({
+        metrics: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              backlogBytes: Schema.Number,
+              backlogCount: Schema.Number,
+              oldestMessageTimestampMs: Schema.Number,
+            }).pipe(
+              Schema.encodeKeys({
+                backlogBytes: "backlog_bytes",
+                backlogCount: "backlog_count",
+                oldestMessageTimestampMs: "oldest_message_timestamp_ms",
               }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
+            ),
+            Schema.Null,
+          ]),
         ),
-      ),
+      }),
       Schema.Null,
     ]),
   ),
-  messages: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-  success: Schema.optional(Schema.Union([Schema.Literal(true), Schema.Null])),
-}) as unknown as Schema.Schema<PushMessageResponse>;
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<PushMessageResponse>;
 
 export type PushMessageError =
   | DefaultErrors
@@ -1265,9 +1308,9 @@ export interface AckMessageRequest {
   queueId: string;
   /** Path param: A Resource identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   acks?: { leaseId?: string }[];
-  /** Body param: */
+  /** Body param */
   retries?: { delaySeconds?: number; leaseId?: string }[];
 }
 
@@ -1306,14 +1349,15 @@ export interface AckMessageResponse {
   ackCount?: number | null;
   /** The number of messages that were succesfully retried. */
   retryCount?: number | null;
-  warnings?: string[] | null;
+  /** Map of lease IDs to warning messages encountered during acknowledgement. */
+  warnings?: Record<string, unknown> | null;
 }
 
 export const AckMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ackCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   retryCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   warnings: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
   ),
 }).pipe(
   T.ResponsePath("result"),
@@ -1335,6 +1379,67 @@ export const ackMessage: API.OperationMethod<
   input: AckMessageRequest,
   output: AckMessageResponse,
   errors: [InvalidRequestBody, InvalidQueueId, QueueNotFound, InvalidRoute],
+}));
+
+// =============================================================================
+// MetricsQueue
+// =============================================================================
+
+export interface GetMetricsQueueRequest {
+  queueId: string;
+  /** A Resource identifier. */
+  accountId: string;
+}
+
+export const GetMetricsQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    queueId: Schema.String.pipe(T.HttpPath("queueId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/queues/{queueId}/metrics",
+  }),
+) as unknown as Schema.Schema<GetMetricsQueueRequest>;
+
+export interface GetMetricsQueueResponse {
+  /** The size in bytes of unacknowledged messages in the queue. */
+  backlogBytes: number;
+  /** The number of unacknowledged messages in the queue. */
+  backlogCount: number;
+  /** Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown. */
+  oldestMessageTimestampMs: number;
+}
+
+export const GetMetricsQueueResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backlogBytes: Schema.Number,
+    backlogCount: Schema.Number,
+    oldestMessageTimestampMs: Schema.Number,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        backlogBytes: "backlog_bytes",
+        backlogCount: "backlog_count",
+        oldestMessageTimestampMs: "oldest_message_timestamp_ms",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<GetMetricsQueueResponse>;
+
+export type GetMetricsQueueError = DefaultErrors;
+
+export const getMetricsQueue: API.OperationMethod<
+  GetMetricsQueueRequest,
+  GetMetricsQueueResponse,
+  GetMetricsQueueError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetMetricsQueueRequest,
+  output: GetMetricsQueueResponse,
+  errors: [],
 }));
 
 // =============================================================================
@@ -1369,8 +1474,9 @@ export interface StartPurgeResponse {
         | {
             consumerId?: string | null;
             createdOn?: string | null;
-            queueId?: string | null;
-            script?: string | null;
+            deadLetterQueue?: string | null;
+            queueName?: string | null;
+            scriptName?: string | null;
             settings?: {
               batchSize?: number | null;
               maxConcurrency?: number | null;
@@ -1383,7 +1489,8 @@ export interface StartPurgeResponse {
         | {
             consumerId?: string | null;
             createdOn?: string | null;
-            queueId?: string | null;
+            deadLetterQueue?: string | null;
+            queueName?: string | null;
             settings?: {
               batchSize?: number | null;
               maxRetries?: number | null;
@@ -1425,10 +1532,15 @@ export const StartPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             createdOn: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-            queueId: Schema.optional(
+            deadLetterQueue: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-            script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            queueName: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            scriptName: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
             settings: Schema.optional(
               Schema.Union([
                 Schema.Struct({
@@ -1466,8 +1578,9 @@ export const StartPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.encodeKeys({
               consumerId: "consumer_id",
               createdOn: "created_on",
-              queueId: "queue_id",
-              script: "script",
+              deadLetterQueue: "dead_letter_queue",
+              queueName: "queue_name",
+              scriptName: "script_name",
               settings: "settings",
               type: "type",
             }),
@@ -1479,7 +1592,10 @@ export const StartPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             createdOn: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-            queueId: Schema.optional(
+            deadLetterQueue: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            queueName: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
             settings: Schema.optional(
@@ -1515,7 +1631,8 @@ export const StartPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.encodeKeys({
               consumerId: "consumer_id",
               createdOn: "created_on",
-              queueId: "queue_id",
+              deadLetterQueue: "dead_letter_queue",
+              queueName: "queue_name",
               settings: "settings",
               type: "type",
             }),
@@ -1681,8 +1798,9 @@ export interface GetQueueResponse {
         | {
             consumerId?: string | null;
             createdOn?: string | null;
-            queueId?: string | null;
-            script?: string | null;
+            deadLetterQueue?: string | null;
+            queueName?: string | null;
+            scriptName?: string | null;
             settings?: {
               batchSize?: number | null;
               maxConcurrency?: number | null;
@@ -1695,7 +1813,8 @@ export interface GetQueueResponse {
         | {
             consumerId?: string | null;
             createdOn?: string | null;
-            queueId?: string | null;
+            deadLetterQueue?: string | null;
+            queueName?: string | null;
             settings?: {
               batchSize?: number | null;
               maxRetries?: number | null;
@@ -1737,10 +1856,15 @@ export const GetQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             createdOn: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-            queueId: Schema.optional(
+            deadLetterQueue: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-            script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            queueName: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            scriptName: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
             settings: Schema.optional(
               Schema.Union([
                 Schema.Struct({
@@ -1778,8 +1902,9 @@ export const GetQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.encodeKeys({
               consumerId: "consumer_id",
               createdOn: "created_on",
-              queueId: "queue_id",
-              script: "script",
+              deadLetterQueue: "dead_letter_queue",
+              queueName: "queue_name",
+              scriptName: "script_name",
               settings: "settings",
               type: "type",
             }),
@@ -1791,7 +1916,10 @@ export const GetQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             createdOn: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-            queueId: Schema.optional(
+            deadLetterQueue: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            queueName: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
             settings: Schema.optional(
@@ -1827,7 +1955,8 @@ export const GetQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.encodeKeys({
               consumerId: "consumer_id",
               createdOn: "created_on",
-              queueId: "queue_id",
+              deadLetterQueue: "dead_letter_queue",
+              queueName: "queue_name",
               settings: "settings",
               type: "type",
             }),
@@ -1941,8 +2070,9 @@ export interface ListQueuesResponse {
           | {
               consumerId?: string | null;
               createdOn?: string | null;
-              queueId?: string | null;
-              script?: string | null;
+              deadLetterQueue?: string | null;
+              queueName?: string | null;
+              scriptName?: string | null;
               settings?: {
                 batchSize?: number | null;
                 maxConcurrency?: number | null;
@@ -1955,7 +2085,8 @@ export interface ListQueuesResponse {
           | {
               consumerId?: string | null;
               createdOn?: string | null;
-              queueId?: string | null;
+              deadLetterQueue?: string | null;
+              queueName?: string | null;
               settings?: {
                 batchSize?: number | null;
                 maxRetries?: number | null;
@@ -2000,10 +2131,13 @@ export const ListQueuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 createdOn: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
-                queueId: Schema.optional(
+                deadLetterQueue: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
-                script: Schema.optional(
+                queueName: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                scriptName: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
                 settings: Schema.optional(
@@ -2043,8 +2177,9 @@ export const ListQueuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.encodeKeys({
                   consumerId: "consumer_id",
                   createdOn: "created_on",
-                  queueId: "queue_id",
-                  script: "script",
+                  deadLetterQueue: "dead_letter_queue",
+                  queueName: "queue_name",
+                  scriptName: "script_name",
                   settings: "settings",
                   type: "type",
                 }),
@@ -2056,7 +2191,10 @@ export const ListQueuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 createdOn: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
-                queueId: Schema.optional(
+                deadLetterQueue: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                queueName: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
                 settings: Schema.optional(
@@ -2092,7 +2230,8 @@ export const ListQueuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.encodeKeys({
                   consumerId: "consumer_id",
                   createdOn: "created_on",
-                  queueId: "queue_id",
+                  deadLetterQueue: "dead_letter_queue",
+                  queueName: "queue_name",
                   settings: "settings",
                   type: "type",
                 }),
@@ -2197,7 +2336,7 @@ export const listQueues: API.PaginatedOperationMethod<
 export interface CreateQueueRequest {
   /** Path param: A Resource identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   queueName: string;
 }
 
@@ -2215,8 +2354,9 @@ export interface CreateQueueResponse {
         | {
             consumerId?: string | null;
             createdOn?: string | null;
-            queueId?: string | null;
-            script?: string | null;
+            deadLetterQueue?: string | null;
+            queueName?: string | null;
+            scriptName?: string | null;
             settings?: {
               batchSize?: number | null;
               maxConcurrency?: number | null;
@@ -2229,7 +2369,8 @@ export interface CreateQueueResponse {
         | {
             consumerId?: string | null;
             createdOn?: string | null;
-            queueId?: string | null;
+            deadLetterQueue?: string | null;
+            queueName?: string | null;
             settings?: {
               batchSize?: number | null;
               maxRetries?: number | null;
@@ -2271,10 +2412,15 @@ export const CreateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             createdOn: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-            queueId: Schema.optional(
+            deadLetterQueue: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-            script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            queueName: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            scriptName: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
             settings: Schema.optional(
               Schema.Union([
                 Schema.Struct({
@@ -2312,8 +2458,9 @@ export const CreateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.encodeKeys({
               consumerId: "consumer_id",
               createdOn: "created_on",
-              queueId: "queue_id",
-              script: "script",
+              deadLetterQueue: "dead_letter_queue",
+              queueName: "queue_name",
+              scriptName: "script_name",
               settings: "settings",
               type: "type",
             }),
@@ -2325,7 +2472,10 @@ export const CreateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             createdOn: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-            queueId: Schema.optional(
+            deadLetterQueue: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            queueName: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
             settings: Schema.optional(
@@ -2361,7 +2511,8 @@ export const CreateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.encodeKeys({
               consumerId: "consumer_id",
               createdOn: "created_on",
-              queueId: "queue_id",
+              deadLetterQueue: "dead_letter_queue",
+              queueName: "queue_name",
               settings: "settings",
               type: "type",
             }),
@@ -2467,9 +2618,9 @@ export interface UpdateQueueRequest {
   queueId: string;
   /** Path param: A Resource identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   queueName?: string;
-  /** Body param: */
+  /** Body param */
   settings?: {
     deliveryDelay?: number;
     deliveryPaused?: boolean;
@@ -2505,8 +2656,9 @@ export interface UpdateQueueResponse {
         | {
             consumerId?: string | null;
             createdOn?: string | null;
-            queueId?: string | null;
-            script?: string | null;
+            deadLetterQueue?: string | null;
+            queueName?: string | null;
+            scriptName?: string | null;
             settings?: {
               batchSize?: number | null;
               maxConcurrency?: number | null;
@@ -2519,7 +2671,8 @@ export interface UpdateQueueResponse {
         | {
             consumerId?: string | null;
             createdOn?: string | null;
-            queueId?: string | null;
+            deadLetterQueue?: string | null;
+            queueName?: string | null;
             settings?: {
               batchSize?: number | null;
               maxRetries?: number | null;
@@ -2561,10 +2714,15 @@ export const UpdateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             createdOn: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-            queueId: Schema.optional(
+            deadLetterQueue: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-            script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            queueName: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            scriptName: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
             settings: Schema.optional(
               Schema.Union([
                 Schema.Struct({
@@ -2602,8 +2760,9 @@ export const UpdateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.encodeKeys({
               consumerId: "consumer_id",
               createdOn: "created_on",
-              queueId: "queue_id",
-              script: "script",
+              deadLetterQueue: "dead_letter_queue",
+              queueName: "queue_name",
+              scriptName: "script_name",
               settings: "settings",
               type: "type",
             }),
@@ -2615,7 +2774,10 @@ export const UpdateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             createdOn: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-            queueId: Schema.optional(
+            deadLetterQueue: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            queueName: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
             settings: Schema.optional(
@@ -2651,7 +2813,8 @@ export const UpdateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.encodeKeys({
               consumerId: "consumer_id",
               createdOn: "created_on",
-              queueId: "queue_id",
+              deadLetterQueue: "dead_letter_queue",
+              queueName: "queue_name",
               settings: "settings",
               type: "type",
             }),
@@ -2757,9 +2920,9 @@ export interface PatchQueueRequest {
   queueId: string;
   /** Path param: A Resource identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   queueName?: string;
-  /** Body param: */
+  /** Body param */
   settings?: {
     deliveryDelay?: number;
     deliveryPaused?: boolean;
@@ -2795,8 +2958,9 @@ export interface PatchQueueResponse {
         | {
             consumerId?: string | null;
             createdOn?: string | null;
-            queueId?: string | null;
-            script?: string | null;
+            deadLetterQueue?: string | null;
+            queueName?: string | null;
+            scriptName?: string | null;
             settings?: {
               batchSize?: number | null;
               maxConcurrency?: number | null;
@@ -2809,7 +2973,8 @@ export interface PatchQueueResponse {
         | {
             consumerId?: string | null;
             createdOn?: string | null;
-            queueId?: string | null;
+            deadLetterQueue?: string | null;
+            queueName?: string | null;
             settings?: {
               batchSize?: number | null;
               maxRetries?: number | null;
@@ -2851,10 +3016,15 @@ export const PatchQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             createdOn: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-            queueId: Schema.optional(
+            deadLetterQueue: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-            script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            queueName: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            scriptName: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
             settings: Schema.optional(
               Schema.Union([
                 Schema.Struct({
@@ -2892,8 +3062,9 @@ export const PatchQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.encodeKeys({
               consumerId: "consumer_id",
               createdOn: "created_on",
-              queueId: "queue_id",
-              script: "script",
+              deadLetterQueue: "dead_letter_queue",
+              queueName: "queue_name",
+              scriptName: "script_name",
               settings: "settings",
               type: "type",
             }),
@@ -2905,7 +3076,10 @@ export const PatchQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             createdOn: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
-            queueId: Schema.optional(
+            deadLetterQueue: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            queueName: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
             settings: Schema.optional(
@@ -2941,7 +3115,8 @@ export const PatchQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.encodeKeys({
               consumerId: "consumer_id",
               createdOn: "created_on",
-              queueId: "queue_id",
+              deadLetterQueue: "dead_letter_queue",
+              queueName: "queue_name",
               settings: "settings",
               type: "type",
             }),

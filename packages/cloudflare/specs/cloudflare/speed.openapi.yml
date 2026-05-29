@@ -542,7 +542,7 @@ paths:
         - name: start
           in: query
           required: true
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: tz
@@ -554,7 +554,7 @@ paths:
         - name: end
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
       responses:
@@ -1451,6 +1451,16 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: frequency
+          in: query
+          required: false
+          description: "Query param: The frequency of the scheduled test. Defaults to
+            WEEKLY for free plans, DAILY for paid plans."
+          schema:
+            type: string
+            enum:
+              - DAILY
+              - WEEKLY
         - name: region
           in: query
           required: false

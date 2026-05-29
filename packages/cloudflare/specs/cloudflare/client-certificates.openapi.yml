@@ -130,7 +130,7 @@ paths:
               properties:
                 reactivate:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -435,8 +435,8 @@ paths:
       description: "Create a new API Shield mTLS Client Certificate  @example ```ts
         const clientCertificate = await client.clientCertificates.create({
         zone_id: '023e105f4ecef8ad9ca31a8372d0c353', csr: '-----BEGIN
-        CERTIFICATE REQUEST-----\\\\nMIICY....\\\\n-----END CERTIFICATE
-        REQUEST-----\\\\n', validity_days: 3650, }); ```"
+        CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE
+        REQUEST-----', validity_days: 3650, }); ```"
       parameters:
         - name: zone_id
           in: path

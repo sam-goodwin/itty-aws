@@ -911,11 +911,11 @@ export interface TrendPageRequest {
     | "us-east4"
     | "us-south1"
     | "us-west1";
-  /** Query param: */
+  /** Query param */
   start: string;
   /** Query param: The timezone of the start and end timestamps. */
   tz: string;
-  /** Query param: */
+  /** Query param */
   end?: string;
 }
 
@@ -2242,6 +2242,8 @@ export interface CreateScheduleRequest {
   url: string;
   /** Path param: Identifier. */
   zoneId: string;
+  /** Query param: The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans. */
+  frequency?: "DAILY" | "WEEKLY";
   /** Query param: A test region. */
   region?:
     | "asia-east1"
@@ -2270,6 +2272,9 @@ export interface CreateScheduleRequest {
 export const CreateScheduleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpPath("url")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  frequency: Schema.optional(Schema.Literals(["DAILY", "WEEKLY"])).pipe(
+    T.HttpQuery("frequency"),
+  ),
   region: Schema.optional(
     Schema.Literals([
       "asia-east1",

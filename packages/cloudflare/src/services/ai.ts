@@ -47,7 +47,7 @@ T.applyErrorMatchers(ModelSchemaNotFound, [{ code: 6002 }]);
 
 export interface RunAiRequest {
   modelName: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Body param: The text that you want to classify */
   text: string;
@@ -324,15 +324,15 @@ export const listFinetunes: API.OperationMethod<
 }));
 
 export interface CreateFinetuneRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   model: string;
-  /** Body param: */
+  /** Body param */
   name: string;
-  /** Body param: */
+  /** Body param */
   description?: string;
-  /** Body param: */
+  /** Body param */
   public?: boolean;
 }
 
@@ -404,20 +404,20 @@ export const createFinetune: API.OperationMethod<
 
 export interface CreateFinetuneAssetRequest {
   finetuneId: string;
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
-  file?: File | Blob;
-  /** Body param: */
-  fileName?: string;
+  /** Body param: File to upload */
+  file: File | Blob;
+  /** Body param: Name of the file (adapter_config.json or adapter_model.safetensors) */
+  fileName: string;
 }
 
 export const CreateFinetuneAssetRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     finetuneId: Schema.String.pipe(T.HttpPath("finetuneId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    file: Schema.optional(UploadableSchema.pipe(T.HttpFormDataFile())),
-    fileName: Schema.optional(Schema.String),
+    file: UploadableSchema.pipe(T.HttpFormDataFile()),
+    fileName: Schema.String,
   }).pipe(
     Schema.encodeKeys({ file: "file", fileName: "file_name" }),
     T.Http({
@@ -457,7 +457,7 @@ export const createFinetuneAsset: API.OperationMethod<
 // =============================================================================
 
 export interface ListFinetunePublicsRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Query param: Pagination Limit */
   limit?: number;
@@ -541,12 +541,14 @@ export const listFinetunePublics: API.PaginatedOperationMethod<
 // =============================================================================
 
 export interface ListModelsRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
   page?: number;
   perPage?: number;
   /** Query param: Filter by Author */
   author?: string;
+  /** Query param: If set, return models in the requested marketplace format instead of the default response. */
+  format?: "openrouter";
   /** Query param: Filter to hide experimental models */
   hideExperimental?: boolean;
   /** Query param: Search */
@@ -562,6 +564,9 @@ export const ListModelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   author: Schema.optional(Schema.String).pipe(T.HttpQuery("author")),
+  format: Schema.optional(Schema.Literal("openrouter")).pipe(
+    T.HttpQuery("format"),
+  ),
   hideExperimental: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("hide_experimental"),
   ),
@@ -631,7 +636,7 @@ export const listModels: API.PaginatedOperationMethod<
 // =============================================================================
 
 export interface GetModelSchemaRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
   /** Query param: Model Name */
   model: string;
@@ -644,12 +649,27 @@ export const GetModelSchemaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "GET", path: "/accounts/{account_id}/ai/models/schema" }),
 ) as unknown as Schema.Schema<GetModelSchemaRequest>;
 
-export type GetModelSchemaResponse = unknown;
+export interface GetModelSchemaResponse {
+  input: { additionalProperties: boolean; description: string; type: string };
+  output: { additionalProperties: boolean; description: string; type: string };
+}
 
-export const GetModelSchemaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetModelSchemaResponse>;
+export const GetModelSchemaResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    input: Schema.Struct({
+      additionalProperties: Schema.Boolean,
+      description: Schema.String,
+      type: Schema.String,
+    }),
+    output: Schema.Struct({
+      additionalProperties: Schema.Boolean,
+      description: Schema.String,
+      type: Schema.String,
+    }),
+  },
+).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<GetModelSchemaResponse>;
 
 export type GetModelSchemaError =
   | DefaultErrors
@@ -757,53 +777,56 @@ export const supportedToMarkdown: API.PaginatedOperationMethod<
 }));
 
 export interface TransformToMarkdownRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
+  /** Body param */
+  file: { files: (File | Blob)[] };
 }
 
 export const TransformToMarkdownRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    file: Schema.Struct({
+      files: Schema.Array(UploadableSchema.pipe(T.HttpFormDataFile())),
+    }),
   }).pipe(
-    T.Http({ method: "POST", path: "/accounts/{account_id}/ai/tomarkdown" }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/ai/tomarkdown",
+      contentType: "multipart",
+    }),
   ) as unknown as Schema.Schema<TransformToMarkdownRequest>;
 
-export interface TransformToMarkdownResponse {
-  result: {
-    data: string;
-    format: string;
-    mimeType: string;
-    name: string;
-    tokens: string;
-  }[];
-}
+export type TransformToMarkdownResponse = {
+  data: string;
+  format: string;
+  mimeType: string;
+  name: string;
+  tokens: string;
+}[];
 
 export const TransformToMarkdownResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        data: Schema.String,
-        format: Schema.String,
-        mimeType: Schema.String,
-        name: Schema.String,
-        tokens: Schema.String,
-      }),
-    ),
-  }) as unknown as Schema.Schema<TransformToMarkdownResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+    Schema.Struct({
+      data: Schema.String,
+      format: Schema.String,
+      mimeType: Schema.String,
+      name: Schema.String,
+      tokens: Schema.String,
+    }),
+  ).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<TransformToMarkdownResponse>;
 
 export type TransformToMarkdownError = DefaultErrors;
 
-export const transformToMarkdown: API.PaginatedOperationMethod<
+export const transformToMarkdown: API.OperationMethod<
   TransformToMarkdownRequest,
   TransformToMarkdownResponse,
   TransformToMarkdownError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TransformToMarkdownRequest,
   output: TransformToMarkdownResponse,
   errors: [],
-  pagination: {
-    mode: "single",
-    items: "result",
-  } as const,
 }));

@@ -692,6 +692,9 @@ paths:
                       content:
                         type: string
                         description: A valid IPv4 address.
+                      private_routing:
+                        type: boolean
+                        description: Enables private network routing to the origin.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -779,6 +782,9 @@ paths:
                       content:
                         type: string
                         description: A valid IPv6 address.
+                      private_routing:
+                        type: boolean
+                        description: Enables private network routing to the origin.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -962,8 +968,11 @@ paths:
                         description: A valid mail server hostname.
                       priority:
                         type: number
-                        description: Required for MX, SRV and URI records; unused by other record types.
-                          Records with lower priorities are preferred.
+                        description: Required for MX and URI records; ignored for other record types
+                          (but may still be returned by the API). Records with
+                          lower priorities are preferred. This field is to be
+                          deprecated in favor of the priority field within the
+                          data map.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -2274,8 +2283,11 @@ paths:
                             description: The port of the service.
                           priority:
                             type: number
-                            description: Required for MX, SRV and URI records; unused by other record types.
-                              Records with lower priorities are preferred.
+                            description: Required for MX and URI records; ignored for other record types
+                              (but may still be returned by the API). Records
+                              with lower priorities are preferred. This field is
+                              to be deprecated in favor of the priority field
+                              within the data map.
                           target:
                             type: string
                             description: A valid hostname.
@@ -2685,8 +2697,11 @@ paths:
                         description: Components of a URI record.
                       priority:
                         type: number
-                        description: Required for MX, SRV and URI records; unused by other record types.
-                          Records with lower priorities are preferred.
+                        description: Required for MX and URI records; ignored for other record types
+                          (but may still be returned by the API). Records with
+                          lower priorities are preferred. This field is to be
+                          deprecated in favor of the priority field within the
+                          data map.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -2801,6 +2816,9 @@ paths:
                           content:
                             type: string
                             description: A valid IPv4 address.
+                          private_routing:
+                            type: boolean
+                            description: Enables private network routing to the origin.
                           proxied:
                             type: boolean
                             description: Whether the record is receiving the performance and security
@@ -2862,6 +2880,9 @@ paths:
                           content:
                             type: string
                             description: A valid IPv6 address.
+                          private_routing:
+                            type: boolean
+                            description: Enables private network routing to the origin.
                           proxied:
                             type: boolean
                             description: Whether the record is receiving the performance and security
@@ -2994,8 +3015,11 @@ paths:
                             description: A valid mail server hostname.
                           priority:
                             type: number
-                            description: Required for MX, SRV and URI records; unused by other record types.
-                              Records with lower priorities are preferred.
+                            description: Required for MX and URI records; ignored for other record types
+                              (but may still be returned by the API). Records
+                              with lower priorities are preferred. This field is
+                              to be deprecated in favor of the priority field
+                              within the data map.
                           proxied:
                             type: boolean
                             description: Whether the record is receiving the performance and security
@@ -3936,8 +3960,11 @@ paths:
                                 description: The port of the service.
                               priority:
                                 type: number
-                                description: Required for MX, SRV and URI records; unused by other record types.
+                                description: Required for MX and URI records; ignored for other record types
+                                  (but may still be returned by the API).
                                   Records with lower priorities are preferred.
+                                  This field is to be deprecated in favor of the
+                                  priority field within the data map.
                               target:
                                 type: string
                                 description: A valid hostname.
@@ -4231,8 +4258,11 @@ paths:
                             description: Components of a URI record.
                           priority:
                             type: number
-                            description: Required for MX, SRV and URI records; unused by other record types.
-                              Records with lower priorities are preferred.
+                            description: Required for MX and URI records; ignored for other record types
+                              (but may still be returned by the API). Records
+                              with lower priorities are preferred. This field is
+                              to be deprecated in favor of the priority field
+                              within the data map.
                           proxied:
                             type: boolean
                             description: Whether the record is receiving the performance and security
@@ -4267,7 +4297,7 @@ paths:
                           - name
                           - ttl
                           - type
-                  description: "Body param:"
+                  description: Body param
                 rejects:
                   type: array
                   items:
@@ -4278,7 +4308,7 @@ paths:
                         description: Identifier.
                     required:
                       - id
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -4318,6 +4348,9 @@ paths:
                             content:
                               type: string
                               description: A valid IPv4 address.
+                            private_routing:
+                              type: boolean
+                              description: Enables private network routing to the origin.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -4408,6 +4441,9 @@ paths:
                             content:
                               type: string
                               description: A valid IPv6 address.
+                            private_routing:
+                              type: boolean
+                              description: Enables private network routing to the origin.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -4598,8 +4634,11 @@ paths:
                               description: A valid mail server hostname.
                             priority:
                               type: number
-                              description: Required for MX, SRV and URI records; unused by other record types.
-                                Records with lower priorities are preferred.
+                              description: Required for MX and URI records; ignored for other record types
+                                (but may still be returned by the API). Records
+                                with lower priorities are preferred. This field
+                                is to be deprecated in favor of the priority
+                                field within the data map.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -5950,8 +5989,11 @@ paths:
                                   description: The port of the service.
                                 priority:
                                   type: number
-                                  description: Required for MX, SRV and URI records; unused by other record types.
+                                  description: Required for MX and URI records; ignored for other record types
+                                    (but may still be returned by the API).
                                     Records with lower priorities are preferred.
+                                    This field is to be deprecated in favor of
+                                    the priority field within the data map.
                                 target:
                                   type: string
                                   description: A valid hostname.
@@ -6373,8 +6415,11 @@ paths:
                               description: Components of a URI record.
                             priority:
                               type: number
-                              description: Required for MX, SRV and URI records; unused by other record types.
-                                Records with lower priorities are preferred.
+                              description: Required for MX and URI records; ignored for other record types
+                                (but may still be returned by the API). Records
+                                with lower priorities are preferred. This field
+                                is to be deprecated in favor of the priority
+                                field within the data map.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -6454,7 +6499,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -6521,6 +6566,9 @@ paths:
                       content:
                         type: string
                         description: A valid IPv4 address.
+                      private_routing:
+                        type: boolean
+                        description: Enables private network routing to the origin.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -6608,6 +6656,9 @@ paths:
                       content:
                         type: string
                         description: A valid IPv6 address.
+                      private_routing:
+                        type: boolean
+                        description: Enables private network routing to the origin.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -6791,8 +6842,11 @@ paths:
                         description: A valid mail server hostname.
                       priority:
                         type: number
-                        description: Required for MX, SRV and URI records; unused by other record types.
-                          Records with lower priorities are preferred.
+                        description: Required for MX and URI records; ignored for other record types
+                          (but may still be returned by the API). Records with
+                          lower priorities are preferred. This field is to be
+                          deprecated in favor of the priority field within the
+                          data map.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -8103,8 +8157,11 @@ paths:
                             description: The port of the service.
                           priority:
                             type: number
-                            description: Required for MX, SRV and URI records; unused by other record types.
-                              Records with lower priorities are preferred.
+                            description: Required for MX and URI records; ignored for other record types
+                              (but may still be returned by the API). Records
+                              with lower priorities are preferred. This field is
+                              to be deprecated in favor of the priority field
+                              within the data map.
                           target:
                             type: string
                             description: A valid hostname.
@@ -8514,8 +8571,11 @@ paths:
                         description: Components of a URI record.
                       priority:
                         type: number
-                        description: Required for MX, SRV and URI records; unused by other record types.
-                          Records with lower priorities are preferred.
+                        description: Required for MX and URI records; ignored for other record types
+                          (but may still be returned by the API). Records with
+                          lower priorities are preferred. This field is to be
+                          deprecated in favor of the priority field within the
+                          data map.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -8632,6 +8692,9 @@ paths:
                 content:
                   type: string
                   description: "Body param: A valid IPv4 address."
+                private_routing:
+                  type: boolean
+                  description: "Body param: Enables private network routing to the origin."
                 proxied:
                   type: boolean
                   description: "Body param: Whether the record is receiving the performance and
@@ -8699,6 +8762,9 @@ paths:
                       content:
                         type: string
                         description: A valid IPv4 address.
+                      private_routing:
+                        type: boolean
+                        description: Enables private network routing to the origin.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -8786,6 +8852,9 @@ paths:
                       content:
                         type: string
                         description: A valid IPv6 address.
+                      private_routing:
+                        type: boolean
+                        description: Enables private network routing to the origin.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -8969,8 +9038,11 @@ paths:
                         description: A valid mail server hostname.
                       priority:
                         type: number
-                        description: Required for MX, SRV and URI records; unused by other record types.
-                          Records with lower priorities are preferred.
+                        description: Required for MX and URI records; ignored for other record types
+                          (but may still be returned by the API). Records with
+                          lower priorities are preferred. This field is to be
+                          deprecated in favor of the priority field within the
+                          data map.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -10281,8 +10353,11 @@ paths:
                             description: The port of the service.
                           priority:
                             type: number
-                            description: Required for MX, SRV and URI records; unused by other record types.
-                              Records with lower priorities are preferred.
+                            description: Required for MX and URI records; ignored for other record types
+                              (but may still be returned by the API). Records
+                              with lower priorities are preferred. This field is
+                              to be deprecated in favor of the priority field
+                              within the data map.
                           target:
                             type: string
                             description: A valid hostname.
@@ -10692,8 +10767,11 @@ paths:
                         description: Components of a URI record.
                       priority:
                         type: number
-                        description: Required for MX, SRV and URI records; unused by other record types.
-                          Records with lower priorities are preferred.
+                        description: Required for MX and URI records; ignored for other record types
+                          (but may still be returned by the API). Records with
+                          lower priorities are preferred. This field is to be
+                          deprecated in favor of the priority field within the
+                          data map.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -10810,6 +10888,9 @@ paths:
                 content:
                   type: string
                   description: "Body param: A valid IPv4 address."
+                private_routing:
+                  type: boolean
+                  description: "Body param: Enables private network routing to the origin."
                 proxied:
                   type: boolean
                   description: "Body param: Whether the record is receiving the performance and
@@ -10877,6 +10958,9 @@ paths:
                       content:
                         type: string
                         description: A valid IPv4 address.
+                      private_routing:
+                        type: boolean
+                        description: Enables private network routing to the origin.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -10964,6 +11048,9 @@ paths:
                       content:
                         type: string
                         description: A valid IPv6 address.
+                      private_routing:
+                        type: boolean
+                        description: Enables private network routing to the origin.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -11147,8 +11234,11 @@ paths:
                         description: A valid mail server hostname.
                       priority:
                         type: number
-                        description: Required for MX, SRV and URI records; unused by other record types.
-                          Records with lower priorities are preferred.
+                        description: Required for MX and URI records; ignored for other record types
+                          (but may still be returned by the API). Records with
+                          lower priorities are preferred. This field is to be
+                          deprecated in favor of the priority field within the
+                          data map.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -12459,8 +12549,11 @@ paths:
                             description: The port of the service.
                           priority:
                             type: number
-                            description: Required for MX, SRV and URI records; unused by other record types.
-                              Records with lower priorities are preferred.
+                            description: Required for MX and URI records; ignored for other record types
+                              (but may still be returned by the API). Records
+                              with lower priorities are preferred. This field is
+                              to be deprecated in favor of the priority field
+                              within the data map.
                           target:
                             type: string
                             description: A valid hostname.
@@ -12870,8 +12963,11 @@ paths:
                         description: Components of a URI record.
                       priority:
                         type: number
-                        description: Required for MX, SRV and URI records; unused by other record types.
-                          Records with lower priorities are preferred.
+                        description: Required for MX and URI records; ignored for other record types
+                          (but may still be returned by the API). Records with
+                          lower priorities are preferred. This field is to be
+                          deprecated in favor of the priority field within the
+                          data map.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -12990,7 +13086,7 @@ paths:
         - name: comment
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -13021,7 +13117,7 @@ paths:
         - name: content
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -13066,7 +13162,7 @@ paths:
         - name: name
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -13117,7 +13213,7 @@ paths:
         - name: tag
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -13227,6 +13323,9 @@ paths:
                       content:
                         type: string
                         description: A valid IPv4 address.
+                      private_routing:
+                        type: boolean
+                        description: Enables private network routing to the origin.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -13314,6 +13413,9 @@ paths:
                       content:
                         type: string
                         description: A valid IPv6 address.
+                      private_routing:
+                        type: boolean
+                        description: Enables private network routing to the origin.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -13497,8 +13599,11 @@ paths:
                         description: A valid mail server hostname.
                       priority:
                         type: number
-                        description: Required for MX, SRV and URI records; unused by other record types.
-                          Records with lower priorities are preferred.
+                        description: Required for MX and URI records; ignored for other record types
+                          (but may still be returned by the API). Records with
+                          lower priorities are preferred. This field is to be
+                          deprecated in favor of the priority field within the
+                          data map.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -14809,8 +14914,11 @@ paths:
                             description: The port of the service.
                           priority:
                             type: number
-                            description: Required for MX, SRV and URI records; unused by other record types.
-                              Records with lower priorities are preferred.
+                            description: Required for MX and URI records; ignored for other record types
+                              (but may still be returned by the API). Records
+                              with lower priorities are preferred. This field is
+                              to be deprecated in favor of the priority field
+                              within the data map.
                           target:
                             type: string
                             description: A valid hostname.
@@ -15220,8 +15328,11 @@ paths:
                         description: Components of a URI record.
                       priority:
                         type: number
-                        description: Required for MX, SRV and URI records; unused by other record types.
-                          Records with lower priorities are preferred.
+                        description: Required for MX and URI records; ignored for other record types
+                          (but may still be returned by the API). Records with
+                          lower priorities are preferred. This field is to be
+                          deprecated in favor of the priority field within the
+                          data map.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -15332,6 +15443,9 @@ paths:
                 content:
                   type: string
                   description: "Body param: A valid IPv4 address."
+                private_routing:
+                  type: boolean
+                  description: "Body param: Enables private network routing to the origin."
                 proxied:
                   type: boolean
                   description: "Body param: Whether the record is receiving the performance and
@@ -15399,6 +15513,9 @@ paths:
                       content:
                         type: string
                         description: A valid IPv4 address.
+                      private_routing:
+                        type: boolean
+                        description: Enables private network routing to the origin.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -15486,6 +15603,9 @@ paths:
                       content:
                         type: string
                         description: A valid IPv6 address.
+                      private_routing:
+                        type: boolean
+                        description: Enables private network routing to the origin.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -15669,8 +15789,11 @@ paths:
                         description: A valid mail server hostname.
                       priority:
                         type: number
-                        description: Required for MX, SRV and URI records; unused by other record types.
-                          Records with lower priorities are preferred.
+                        description: Required for MX and URI records; ignored for other record types
+                          (but may still be returned by the API). Records with
+                          lower priorities are preferred. This field is to be
+                          deprecated in favor of the priority field within the
+                          data map.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -16981,8 +17104,11 @@ paths:
                             description: The port of the service.
                           priority:
                             type: number
-                            description: Required for MX, SRV and URI records; unused by other record types.
-                              Records with lower priorities are preferred.
+                            description: Required for MX and URI records; ignored for other record types
+                              (but may still be returned by the API). Records
+                              with lower priorities are preferred. This field is
+                              to be deprecated in favor of the priority field
+                              within the data map.
                           target:
                             type: string
                             description: A valid hostname.
@@ -17392,8 +17518,11 @@ paths:
                         description: Components of a URI record.
                       priority:
                         type: number
-                        description: Required for MX, SRV and URI records; unused by other record types.
-                          Records with lower priorities are preferred.
+                        description: Required for MX and URI records; ignored for other record types
+                          (but may still be returned by the API). Records with
+                          lower priorities are preferred. This field is to be
+                          deprecated in favor of the priority field within the
+                          data map.
                       proxied:
                         type: boolean
                         description: Whether the record is receiving the performance and security
@@ -17495,7 +17624,7 @@ paths:
                         description: Identifier.
                     required:
                       - id
-                  description: "Body param:"
+                  description: Body param
                 patches:
                   type: array
                   items:
@@ -17527,6 +17656,9 @@ paths:
                           content:
                             type: string
                             description: A valid IPv4 address.
+                          private_routing:
+                            type: boolean
+                            description: Enables private network routing to the origin.
                           proxied:
                             type: boolean
                             description: Whether the record is receiving the performance and security
@@ -17592,6 +17724,9 @@ paths:
                           content:
                             type: string
                             description: A valid IPv6 address.
+                          private_routing:
+                            type: boolean
+                            description: Enables private network routing to the origin.
                           proxied:
                             type: boolean
                             description: Whether the record is receiving the performance and security
@@ -17732,8 +17867,11 @@ paths:
                             description: A valid mail server hostname.
                           priority:
                             type: number
-                            description: Required for MX, SRV and URI records; unused by other record types.
-                              Records with lower priorities are preferred.
+                            description: Required for MX and URI records; ignored for other record types
+                              (but may still be returned by the API). Records
+                              with lower priorities are preferred. This field is
+                              to be deprecated in favor of the priority field
+                              within the data map.
                           proxied:
                             type: boolean
                             description: Whether the record is receiving the performance and security
@@ -18726,8 +18864,11 @@ paths:
                                 description: The port of the service.
                               priority:
                                 type: number
-                                description: Required for MX, SRV and URI records; unused by other record types.
+                                description: Required for MX and URI records; ignored for other record types
+                                  (but may still be returned by the API).
                                   Records with lower priorities are preferred.
+                                  This field is to be deprecated in favor of the
+                                  priority field within the data map.
                               target:
                                 type: string
                                 description: A valid hostname.
@@ -19037,8 +19178,11 @@ paths:
                             description: Components of a URI record.
                           priority:
                             type: number
-                            description: Required for MX, SRV and URI records; unused by other record types.
-                              Records with lower priorities are preferred.
+                            description: Required for MX and URI records; ignored for other record types
+                              (but may still be returned by the API). Records
+                              with lower priorities are preferred. This field is
+                              to be deprecated in favor of the priority field
+                              within the data map.
                           proxied:
                             type: boolean
                             description: Whether the record is receiving the performance and security
@@ -19077,7 +19221,7 @@ paths:
                           - ttl
                           - type
                           - id
-                  description: "Body param:"
+                  description: Body param
                 posts:
                   type: array
                   items:
@@ -19109,6 +19253,9 @@ paths:
                           content:
                             type: string
                             description: A valid IPv4 address.
+                          private_routing:
+                            type: boolean
+                            description: Enables private network routing to the origin.
                           proxied:
                             type: boolean
                             description: Whether the record is receiving the performance and security
@@ -19170,6 +19317,9 @@ paths:
                           content:
                             type: string
                             description: A valid IPv6 address.
+                          private_routing:
+                            type: boolean
+                            description: Enables private network routing to the origin.
                           proxied:
                             type: boolean
                             description: Whether the record is receiving the performance and security
@@ -19302,8 +19452,11 @@ paths:
                             description: A valid mail server hostname.
                           priority:
                             type: number
-                            description: Required for MX, SRV and URI records; unused by other record types.
-                              Records with lower priorities are preferred.
+                            description: Required for MX and URI records; ignored for other record types
+                              (but may still be returned by the API). Records
+                              with lower priorities are preferred. This field is
+                              to be deprecated in favor of the priority field
+                              within the data map.
                           proxied:
                             type: boolean
                             description: Whether the record is receiving the performance and security
@@ -20244,8 +20397,11 @@ paths:
                                 description: The port of the service.
                               priority:
                                 type: number
-                                description: Required for MX, SRV and URI records; unused by other record types.
+                                description: Required for MX and URI records; ignored for other record types
+                                  (but may still be returned by the API).
                                   Records with lower priorities are preferred.
+                                  This field is to be deprecated in favor of the
+                                  priority field within the data map.
                               target:
                                 type: string
                                 description: A valid hostname.
@@ -20539,8 +20695,11 @@ paths:
                             description: Components of a URI record.
                           priority:
                             type: number
-                            description: Required for MX, SRV and URI records; unused by other record types.
-                              Records with lower priorities are preferred.
+                            description: Required for MX and URI records; ignored for other record types
+                              (but may still be returned by the API). Records
+                              with lower priorities are preferred. This field is
+                              to be deprecated in favor of the priority field
+                              within the data map.
                           proxied:
                             type: boolean
                             description: Whether the record is receiving the performance and security
@@ -20575,7 +20734,7 @@ paths:
                           - name
                           - ttl
                           - type
-                  description: "Body param:"
+                  description: Body param
                 puts:
                   type: array
                   items:
@@ -20607,6 +20766,9 @@ paths:
                           content:
                             type: string
                             description: A valid IPv4 address.
+                          private_routing:
+                            type: boolean
+                            description: Enables private network routing to the origin.
                           proxied:
                             type: boolean
                             description: Whether the record is receiving the performance and security
@@ -20672,6 +20834,9 @@ paths:
                           content:
                             type: string
                             description: A valid IPv6 address.
+                          private_routing:
+                            type: boolean
+                            description: Enables private network routing to the origin.
                           proxied:
                             type: boolean
                             description: Whether the record is receiving the performance and security
@@ -20812,8 +20977,11 @@ paths:
                             description: A valid mail server hostname.
                           priority:
                             type: number
-                            description: Required for MX, SRV and URI records; unused by other record types.
-                              Records with lower priorities are preferred.
+                            description: Required for MX and URI records; ignored for other record types
+                              (but may still be returned by the API). Records
+                              with lower priorities are preferred. This field is
+                              to be deprecated in favor of the priority field
+                              within the data map.
                           proxied:
                             type: boolean
                             description: Whether the record is receiving the performance and security
@@ -21806,8 +21974,11 @@ paths:
                                 description: The port of the service.
                               priority:
                                 type: number
-                                description: Required for MX, SRV and URI records; unused by other record types.
+                                description: Required for MX and URI records; ignored for other record types
+                                  (but may still be returned by the API).
                                   Records with lower priorities are preferred.
+                                  This field is to be deprecated in favor of the
+                                  priority field within the data map.
                               target:
                                 type: string
                                 description: A valid hostname.
@@ -22117,8 +22288,11 @@ paths:
                             description: Components of a URI record.
                           priority:
                             type: number
-                            description: Required for MX, SRV and URI records; unused by other record types.
-                              Records with lower priorities are preferred.
+                            description: Required for MX and URI records; ignored for other record types
+                              (but may still be returned by the API). Records
+                              with lower priorities are preferred. This field is
+                              to be deprecated in favor of the priority field
+                              within the data map.
                           proxied:
                             type: boolean
                             description: Whether the record is receiving the performance and security
@@ -22157,7 +22331,7 @@ paths:
                           - ttl
                           - type
                           - id
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -22197,6 +22371,9 @@ paths:
                             content:
                               type: string
                               description: A valid IPv4 address.
+                            private_routing:
+                              type: boolean
+                              description: Enables private network routing to the origin.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -22287,6 +22464,9 @@ paths:
                             content:
                               type: string
                               description: A valid IPv6 address.
+                            private_routing:
+                              type: boolean
+                              description: Enables private network routing to the origin.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -22477,8 +22657,11 @@ paths:
                               description: A valid mail server hostname.
                             priority:
                               type: number
-                              description: Required for MX, SRV and URI records; unused by other record types.
-                                Records with lower priorities are preferred.
+                              description: Required for MX and URI records; ignored for other record types
+                                (but may still be returned by the API). Records
+                                with lower priorities are preferred. This field
+                                is to be deprecated in favor of the priority
+                                field within the data map.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -23829,8 +24012,11 @@ paths:
                                   description: The port of the service.
                                 priority:
                                   type: number
-                                  description: Required for MX, SRV and URI records; unused by other record types.
+                                  description: Required for MX and URI records; ignored for other record types
+                                    (but may still be returned by the API).
                                     Records with lower priorities are preferred.
+                                    This field is to be deprecated in favor of
+                                    the priority field within the data map.
                                 target:
                                   type: string
                                   description: A valid hostname.
@@ -24252,8 +24438,11 @@ paths:
                               description: Components of a URI record.
                             priority:
                               type: number
-                              description: Required for MX, SRV and URI records; unused by other record types.
-                                Records with lower priorities are preferred.
+                              description: Required for MX and URI records; ignored for other record types
+                                (but may still be returned by the API). Records
+                                with lower priorities are preferred. This field
+                                is to be deprecated in favor of the priority
+                                field within the data map.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -24348,6 +24537,9 @@ paths:
                             content:
                               type: string
                               description: A valid IPv4 address.
+                            private_routing:
+                              type: boolean
+                              description: Enables private network routing to the origin.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -24438,6 +24630,9 @@ paths:
                             content:
                               type: string
                               description: A valid IPv6 address.
+                            private_routing:
+                              type: boolean
+                              description: Enables private network routing to the origin.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -24628,8 +24823,11 @@ paths:
                               description: A valid mail server hostname.
                             priority:
                               type: number
-                              description: Required for MX, SRV and URI records; unused by other record types.
-                                Records with lower priorities are preferred.
+                              description: Required for MX and URI records; ignored for other record types
+                                (but may still be returned by the API). Records
+                                with lower priorities are preferred. This field
+                                is to be deprecated in favor of the priority
+                                field within the data map.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -25980,8 +26178,11 @@ paths:
                                   description: The port of the service.
                                 priority:
                                   type: number
-                                  description: Required for MX, SRV and URI records; unused by other record types.
+                                  description: Required for MX and URI records; ignored for other record types
+                                    (but may still be returned by the API).
                                     Records with lower priorities are preferred.
+                                    This field is to be deprecated in favor of
+                                    the priority field within the data map.
                                 target:
                                   type: string
                                   description: A valid hostname.
@@ -26403,8 +26604,11 @@ paths:
                               description: Components of a URI record.
                             priority:
                               type: number
-                              description: Required for MX, SRV and URI records; unused by other record types.
-                                Records with lower priorities are preferred.
+                              description: Required for MX and URI records; ignored for other record types
+                                (but may still be returned by the API). Records
+                                with lower priorities are preferred. This field
+                                is to be deprecated in favor of the priority
+                                field within the data map.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -26499,6 +26703,9 @@ paths:
                             content:
                               type: string
                               description: A valid IPv4 address.
+                            private_routing:
+                              type: boolean
+                              description: Enables private network routing to the origin.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -26589,6 +26796,9 @@ paths:
                             content:
                               type: string
                               description: A valid IPv6 address.
+                            private_routing:
+                              type: boolean
+                              description: Enables private network routing to the origin.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -26779,8 +26989,11 @@ paths:
                               description: A valid mail server hostname.
                             priority:
                               type: number
-                              description: Required for MX, SRV and URI records; unused by other record types.
-                                Records with lower priorities are preferred.
+                              description: Required for MX and URI records; ignored for other record types
+                                (but may still be returned by the API). Records
+                                with lower priorities are preferred. This field
+                                is to be deprecated in favor of the priority
+                                field within the data map.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -28131,8 +28344,11 @@ paths:
                                   description: The port of the service.
                                 priority:
                                   type: number
-                                  description: Required for MX, SRV and URI records; unused by other record types.
+                                  description: Required for MX and URI records; ignored for other record types
+                                    (but may still be returned by the API).
                                     Records with lower priorities are preferred.
+                                    This field is to be deprecated in favor of
+                                    the priority field within the data map.
                                 target:
                                   type: string
                                   description: A valid hostname.
@@ -28554,8 +28770,11 @@ paths:
                               description: Components of a URI record.
                             priority:
                               type: number
-                              description: Required for MX, SRV and URI records; unused by other record types.
-                                Records with lower priorities are preferred.
+                              description: Required for MX and URI records; ignored for other record types
+                                (but may still be returned by the API). Records
+                                with lower priorities are preferred. This field
+                                is to be deprecated in favor of the priority
+                                field within the data map.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -28650,6 +28869,9 @@ paths:
                             content:
                               type: string
                               description: A valid IPv4 address.
+                            private_routing:
+                              type: boolean
+                              description: Enables private network routing to the origin.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -28740,6 +28962,9 @@ paths:
                             content:
                               type: string
                               description: A valid IPv6 address.
+                            private_routing:
+                              type: boolean
+                              description: Enables private network routing to the origin.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -28930,8 +29155,11 @@ paths:
                               description: A valid mail server hostname.
                             priority:
                               type: number
-                              description: Required for MX, SRV and URI records; unused by other record types.
-                                Records with lower priorities are preferred.
+                              description: Required for MX and URI records; ignored for other record types
+                                (but may still be returned by the API). Records
+                                with lower priorities are preferred. This field
+                                is to be deprecated in favor of the priority
+                                field within the data map.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -30282,8 +30510,11 @@ paths:
                                   description: The port of the service.
                                 priority:
                                   type: number
-                                  description: Required for MX, SRV and URI records; unused by other record types.
+                                  description: Required for MX and URI records; ignored for other record types
+                                    (but may still be returned by the API).
                                     Records with lower priorities are preferred.
+                                    This field is to be deprecated in favor of
+                                    the priority field within the data map.
                                 target:
                                   type: string
                                   description: A valid hostname.
@@ -30705,8 +30936,11 @@ paths:
                               description: Components of a URI record.
                             priority:
                               type: number
-                              description: Required for MX, SRV and URI records; unused by other record types.
-                                Records with lower priorities are preferred.
+                              description: Required for MX and URI records; ignored for other record types
+                                (but may still be returned by the API). Records
+                                with lower priorities are preferred. This field
+                                is to be deprecated in favor of the priority
+                                field within the data map.
                             proxied:
                               type: boolean
                               description: Whether the record is receiving the performance and security
@@ -31006,6 +31240,15 @@ paths:
                       - secondary_overrides
                       - soa
                       - zone_mode
+                  enforce_dns_only:
+                    type: boolean
+                    description: When enabled, forces all proxied DNS records in the account to
+                      behave as DNS-only at the edge, regardless of each
+                      record's individual proxy setting. Note that this
+                      account-level override does not modify the records
+                      themselves; it only affects how they are served at the
+                      edge. See more on [Enforce
+                      DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
                 required:
                   - zone_defaults
       x-distilled-response-path: result
@@ -31028,6 +31271,16 @@ paths:
             schema:
               type: object
               properties:
+                enforce_dns_only:
+                  type: boolean
+                  description: "Body param: When enabled, forces all proxied DNS records in the
+                    account to behave as DNS-only at the edge, regardless of
+                    each record's individual proxy setting. Note that this
+                    account-level override does not modify the records
+                    themselves; it only affects how they are served at the edge.
+                    See more on [Enforce
+                    DNS-only](https://developers.cloudflare.com/dns/proxy-statu\
+                    s/enforce-dns-only)."
                 zone_defaults:
                   type: object
                   properties:
@@ -31114,7 +31367,7 @@ paths:
                         - cdn_only
                         - dns_only
                       description: Whether the zone mode is a regular or CDN/DNS only zone.
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -31221,6 +31474,15 @@ paths:
                       - secondary_overrides
                       - soa
                       - zone_mode
+                  enforce_dns_only:
+                    type: boolean
+                    description: When enabled, forces all proxied DNS records in the account to
+                      behave as DNS-only at the edge, regardless of each
+                      record's individual proxy setting. Note that this
+                      account-level override does not modify the records
+                      themselves; it only affects how they are served at the
+                      edge. See more on [Enforce
+                      DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
                 required:
                   - zone_defaults
       x-distilled-response-path: result
@@ -31417,7 +31679,7 @@ paths:
         - name: name
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -32014,7 +32276,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -32140,7 +32402,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -32201,7 +32463,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -32277,7 +32539,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -32350,7 +32612,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -32490,7 +32752,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -32554,7 +32816,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -32639,7 +32901,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -32666,7 +32928,7 @@ paths:
         - name: zone_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -32770,7 +33032,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -32926,7 +33188,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -33037,7 +33299,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -33162,7 +33424,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:

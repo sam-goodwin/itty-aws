@@ -6,6 +6,64 @@ servers:
   - url: https://api.cloudflare.com/client/v4
 x-distilled-service: security-center
 paths:
+  /{accountOrZone}/{accountOrZoneId}/security-center/insights/{issueId}/audit-log:
+    get:
+      operationId: listByInsightInsightAuditLog
+      parameters:
+        - name: issueId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUIDv7 identifier for the audit log entry, time-ordered.
+                  changed_at:
+                    type: string
+                    description: The timestamp when the change occurred.
+                  changed_by:
+                    type: string
+                    description: The actor that made the change. 'system' for automated changes, or
+                      a user identifier.
+                  current_value:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: The value of the field after the change. Null if the field was
+                      cleared.
+                  field_changed:
+                    type: string
+                    enum:
+                      - status
+                      - user_classification
+                    description: The field that was changed.
+                  issue_id:
+                    type: string
+                    description: The ID of the insight this audit log entry relates to.
+                  previous_value:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: The value of the field before the change. Null if the field was not
+                      previously set.
+                  rationale:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Optional rationale provided for the change.
+                  zone_id:
+                    type: number
+                    description: The zone ID associated with the insight. Only present for
+                      zone-level insights.
+      x-distilled-pagination-class: AuditLogListByInsightResponsesCursorPagination
   /{accountOrZone}/{accountOrZoneId}/security-center/insights:
     get:
       operationId: listInsights
@@ -19,7 +77,7 @@ paths:
                 properties:
                   count:
                     type: number
-                    description: Total number of results
+                    description: Indicates the total number of results.
                   issues:
                     type: array
                     items:
@@ -29,6 +87,10 @@ paths:
                           type: string
                         dismissed:
                           type: boolean
+                        has_extended_context:
+                          type: boolean
+                          description: Indicates whether the insight has a large payload that requires
+                            fetching via the context endpoint.
                         issue_class:
                           type: string
                         issue_type:
@@ -45,7 +107,7 @@ paths:
                           properties:
                             detection_method:
                               type: string
-                              description: Method used to detect insight
+                              description: Describes the method used to detect insight.
                             zone_tag:
                               type: string
                         resolve_link:
@@ -60,21 +122,40 @@ paths:
                             - Critical
                         since:
                           type: string
+                        status:
+                          type: string
+                          enum:
+                            - active
+                            - resolved
+                          description: The current status of the insight.
                         subject:
                           type: string
                         timestamp:
                           type: string
+                        user_classification:
+                          type: string
+                          enum:
+                            - false_positive
+                            - accept_risk
+                            - other
+                          nullable: true
+                          description: User-defined classification for the insight. Can be
+                            'false_positive', 'accept_risk', 'other', or null.
                   page:
                     type: number
-                    description: Current page within paginated list of results
+                    description: Specifies the current page within paginated list of results.
                   per_page:
                     type: number
-                    description: Number of results per page of results
+                    description: Sets the number of results per page of results.
       x-distilled-pagination-class: InsightListResponsesV4PagePagination
   /{accountOrZone}/{accountOrZoneId}/security-center/insights/{issueId}/dismiss:
     put:
       operationId: dismissInsight
-      description: Archive Security Center Insight
+      description: "Archives a Security Center insight for an account or zone,
+        removing it from the active insights list while preserving historical
+        data.  @example ```ts const response = await
+        client.securityCenter.insights.dismiss('issue_id', { account_id:
+        'account_id', }); ```"
       parameters:
         - name: issueId
           in: path
@@ -104,7 +185,7 @@ paths:
               properties:
                 dismiss:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -160,6 +241,58 @@ paths:
                   - errors
                   - messages
                   - success
+  /{accountOrZone}/{accountOrZoneId}/security-center/insights/audit-log:
+    get:
+      operationId: listInsightAuditLogs
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUIDv7 identifier for the audit log entry, time-ordered.
+                  changed_at:
+                    type: string
+                    description: The timestamp when the change occurred.
+                  changed_by:
+                    type: string
+                    description: The actor that made the change. 'system' for automated changes, or
+                      a user identifier.
+                  current_value:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: The value of the field after the change. Null if the field was
+                      cleared.
+                  field_changed:
+                    type: string
+                    enum:
+                      - status
+                      - user_classification
+                    description: The field that was changed.
+                  issue_id:
+                    type: string
+                    description: The ID of the insight this audit log entry relates to.
+                  previous_value:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: The value of the field before the change. Null if the field was not
+                      previously set.
+                  rationale:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Optional rationale provided for the change.
+                  zone_id:
+                    type: number
+                    description: The zone ID associated with the insight. Only present for
+                      zone-level insights.
+      x-distilled-pagination-class: AuditLogListResponsesCursorPagination
   /{accountOrZone}/{accountOrZoneId}/security-center/insights/class:
     get:
       operationId: getInsightClass
@@ -177,6 +310,139 @@ paths:
                       type: number
                     value:
                       type: string
+      x-distilled-response-path: result
+  /{accountOrZone}/{accountOrZoneId}/security-center/insights/{issueId}/classification:
+    patch:
+      operationId: patchInsightClassification
+      description: "Updates the user classification for a Security Center insight.
+        Valid values are 'false_positive' or 'accept_risk'. To reset, set
+        classification to null. Cannot change directly between classification
+        values - must reset to null first.  @example ```ts const classification
+        = await client.securityCenter.insights.classification.update(
+        'issue_id', { account_id: 'account_id' }, ); ```"
+      parameters:
+        - name: issueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                classification:
+                  type: string
+                  enum:
+                    - false_positive
+                    - accept_risk
+                    - other
+                  nullable: true
+                  description: "Body param: User-defined classification for the insight. Can be
+                    'false_positive', 'accept_risk', 'other', or null."
+                rationale:
+                  type: string
+                  description: "Body param: Rationale for the classification change. Required when
+                    classification is 'accept_risk' or 'other'."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful.
+                required:
+                  - errors
+                  - messages
+                  - success
+  /accounts/{account_id}/security-center/insights/{issueId}/context:
+    get:
+      operationId: getInsightContext
+      description: "Returns the full context payload for an insight. This endpoint is
+        used for insights with large payloads that are not included inline in
+        the list response.  @example ```ts const context = await
+        client.securityCenter.insights.context.get( 'issue_id', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: issueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
       x-distilled-response-path: result
   /{accountOrZone}/{accountOrZoneId}/security-center/insights/severity:
     get:

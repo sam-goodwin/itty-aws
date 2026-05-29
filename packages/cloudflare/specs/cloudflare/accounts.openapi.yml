@@ -105,7 +105,7 @@ paths:
                   enum:
                     - standard
                     - enterprise
-                  description: "Body param:"
+                  description: Body param
                 managed_by:
                   type: object
                   additionalProperties: true
@@ -363,14 +363,9 @@ paths:
   /accounts/{account_id}/logs/audit:
     get:
       operationId: listLogAudits
-      description: "Gets a list of audit logs for an account. <br /> <br /> This is
-        the beta release of Audit Logs Version 2. Since this is a beta version,
-        there may be gaps or missing entries in the available audit logs. Be
-        aware of the following limitations. <br /> <ul> <li>Audit logs are
-        available only for the past 30 days. <br /></li> <li>Error handling is
-        not yet implemented. <br /> </li> </ul>  @example ```ts // Automatically
-        fetches more pages as needed. for await (const auditListResponse of
-        client.accounts.logs.audit.list( { account_id:
+      description: "Gets a list of audit logs for an account.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        auditListResponse of client.accounts.logs.audit.list( { account_id:
         'a67e14daa5f8dceeb91fe5449ba496ef', before: '2024-10-31', since:
         '2024-10-30', }, )) { // ... } ```"
       parameters:
@@ -404,7 +399,7 @@ paths:
         - name: id
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -416,7 +411,7 @@ paths:
         - name: account_name
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -428,7 +423,7 @@ paths:
         - name: action_result
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -443,7 +438,7 @@ paths:
         - name: action_type
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -460,7 +455,7 @@ paths:
         - name: actor_context
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -478,7 +473,7 @@ paths:
         - name: actor_email
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -490,7 +485,7 @@ paths:
         - name: actor_id
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -503,7 +498,7 @@ paths:
         - name: actor_ip_address
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -515,7 +510,7 @@ paths:
         - name: actor_token_id
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -528,7 +523,7 @@ paths:
         - name: actor_token_name
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -541,7 +536,7 @@ paths:
         - name: actor_type
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -558,7 +553,7 @@ paths:
         - name: audit_log_id
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -587,7 +582,7 @@ paths:
         - name: raw_cf_ray_id
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -599,7 +594,7 @@ paths:
         - name: raw_method
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -611,7 +606,7 @@ paths:
         - name: raw_status_code
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -624,7 +619,7 @@ paths:
         - name: raw_uri
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -636,7 +631,7 @@ paths:
         - name: resource_id
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -648,7 +643,7 @@ paths:
         - name: resource_product
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -661,7 +656,7 @@ paths:
         - name: resource_scope
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -673,13 +668,14 @@ paths:
                     - accounts
                     - user
                     - zones
+                    - memberships
                 description: Filters out audit logs by the resource scope, specifying whether
-                  the resource is associated with an user, an account, or a
-                  zone.
+                  the resource is associated with an user, an account, a zone,
+                  or a membership.
         - name: resource_type
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -692,7 +688,7 @@ paths:
         - name: zone_id
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -704,7 +700,7 @@ paths:
         - name: zone_name
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -773,11 +769,10 @@ paths:
                         description: The IP address of the request that performed the action.
                       token_id:
                         type: string
-                        description: Filters by the API token ID when the actor context is an api_token.
+                        description: The API token ID when the actor context is an api_token or oauth.
                       token_name:
                         type: string
-                        description: Filters by the API token name when the actor context is an
-                          api_token.
+                        description: The API token name when the actor context is an api_token or oauth.
                       type:
                         type: string
                         enum:
@@ -1600,7 +1595,10 @@ paths:
                   enum:
                     - accepted
                     - pending
-                  description: "Body param:"
+                  description: "Body param: Status of the member invitation. If not provided
+                    during creation, defaults to 'pending'. Changing from
+                    'accepted' back to 'pending' will trigger a replacement of
+                    the member resource in Terraform."
               required:
                 - email
                 - roles
@@ -2736,7 +2734,7 @@ paths:
                             type: string
                           description: List of IPv4/IPv6 CIDR addresses.
                       description: Client IP restrictions.
-                  description: "Body param:"
+                  description: Body param
                 expires_on:
                   type: string
                   description: "Body param: The expiration time on or after which the JWT MUST NOT
@@ -3123,7 +3121,7 @@ paths:
                             type: string
                           description: List of IPv4/IPv6 CIDR addresses.
                       description: Client IP restrictions.
-                  description: "Body param:"
+                  description: Body param
                 expires_on:
                   type: string
                   description: "Body param: The expiration time on or after which the JWT MUST NOT

@@ -817,7 +817,7 @@ export const deleteSettingOperation: API.OperationMethod<
 export interface BulkPatchSettingOperationsRequest {
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   body: Record<string, unknown>;
 }
 

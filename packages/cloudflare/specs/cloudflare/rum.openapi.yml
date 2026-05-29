@@ -202,7 +202,7 @@ paths:
               properties:
                 host:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 inclusive:
                   type: boolean
                   description: "Body param: Whether the rule includes or excludes traffic from
@@ -214,7 +214,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -279,7 +279,7 @@ paths:
               properties:
                 host:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 inclusive:
                   type: boolean
                   description: "Body param: Whether the rule includes or excludes traffic from
@@ -291,7 +291,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success

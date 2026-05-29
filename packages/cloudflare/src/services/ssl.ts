@@ -139,6 +139,19 @@ export interface GetCertificatePackResponse {
   certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | null;
   /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
   cloudflareBranding?: boolean | null;
+  /** DCV Delegation records for domain validation. */
+  dcvDelegationRecords?:
+    | {
+        cname?: string | null;
+        cnameTarget?: string | null;
+        emails?: string[] | null;
+        httpBody?: string | null;
+        httpUrl?: string | null;
+        status?: string | null;
+        txtName?: string | null;
+        txtValue?: string | null;
+      }[]
+    | null;
   /** Identifier of the primary certificate in a pack. */
   primaryCertificate?: string | null;
   /** Domain validation errors that have been received by the certificate authority (CA). */
@@ -148,9 +161,12 @@ export interface GetCertificatePackResponse {
   /** Certificates' validation records. */
   validationRecords?:
     | {
+        cname?: string | null;
+        cnameTarget?: string | null;
         emails?: string[] | null;
         httpBody?: string | null;
         httpUrl?: string | null;
+        status?: string | null;
         txtName?: string | null;
         txtValue?: string | null;
       }[]
@@ -250,6 +266,46 @@ export const GetCertificatePackResponse =
     cloudflareBranding: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
     ),
+    dcvDelegationRecords: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            cname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            cnameTarget: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            emails: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            httpBody: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            httpUrl: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            txtName: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            txtValue: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              cname: "cname",
+              cnameTarget: "cname_target",
+              emails: "emails",
+              httpBody: "http_body",
+              httpUrl: "http_url",
+              status: "status",
+              txtName: "txt_name",
+              txtValue: "txt_value",
+            }),
+          ),
+        ),
+        Schema.Null,
+      ]),
+    ),
     primaryCertificate: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
     ),
@@ -272,6 +328,10 @@ export const GetCertificatePackResponse =
       Schema.Union([
         Schema.Array(
           Schema.Struct({
+            cname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            cnameTarget: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
             emails: Schema.optional(
               Schema.Union([Schema.Array(Schema.String), Schema.Null]),
             ),
@@ -281,6 +341,7 @@ export const GetCertificatePackResponse =
             httpUrl: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             txtName: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
@@ -289,9 +350,12 @@ export const GetCertificatePackResponse =
             ),
           }).pipe(
             Schema.encodeKeys({
+              cname: "cname",
+              cnameTarget: "cname_target",
               emails: "emails",
               httpBody: "http_body",
               httpUrl: "http_url",
+              status: "status",
               txtName: "txt_name",
               txtValue: "txt_value",
             }),
@@ -313,6 +377,7 @@ export const GetCertificatePackResponse =
         type: "type",
         certificateAuthority: "certificate_authority",
         cloudflareBranding: "cloudflare_branding",
+        dcvDelegationRecords: "dcv_delegation_records",
         primaryCertificate: "primary_certificate",
         validationErrors: "validation_errors",
         validationMethod: "validation_method",
@@ -340,6 +405,10 @@ export const getCertificatePack: API.OperationMethod<
 export interface ListCertificatePacksRequest {
   /** Path param: Identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
+  /** Query param: Specify the deployment environment for the certificate packs. */
+  deploy?: "staging" | "production";
   /** Query param: Include Certificate Packs of all statuses, not just active ones. */
   status?: "all";
 }
@@ -347,6 +416,11 @@ export interface ListCertificatePacksRequest {
 export const ListCertificatePacksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    deploy: Schema.optional(Schema.Literals(["staging", "production"])).pipe(
+      T.HttpQuery("deploy"),
+    ),
     status: Schema.optional(Schema.Literal("all")).pipe(T.HttpQuery("status")),
   }).pipe(
     T.Http({ method: "GET", path: "/zones/{zone_id}/ssl/certificate_packs" }),
@@ -405,20 +479,41 @@ export interface ListCertificatePacksResponse {
       | "legacy_custom";
     certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | null;
     cloudflareBranding?: boolean | null;
+    dcvDelegationRecords?:
+      | {
+          cname?: string | null;
+          cnameTarget?: string | null;
+          emails?: string[] | null;
+          httpBody?: string | null;
+          httpUrl?: string | null;
+          status?: string | null;
+          txtName?: string | null;
+          txtValue?: string | null;
+        }[]
+      | null;
     primaryCertificate?: string | null;
     validationErrors?: { message?: string | null }[] | null;
     validationMethod?: "txt" | "http" | "email" | null;
     validationRecords?:
       | {
+          cname?: string | null;
+          cnameTarget?: string | null;
           emails?: string[] | null;
           httpBody?: string | null;
           httpUrl?: string | null;
+          status?: string | null;
           txtName?: string | null;
           txtValue?: string | null;
         }[]
       | null;
     validityDays?: "14" | "30" | "90" | "365" | null;
   }[];
+  resultInfo?: {
+    count?: number | null;
+    page?: number | null;
+    perPage?: number | null;
+    totalCount?: number | null;
+  } | null;
 }
 
 export const ListCertificatePacksResponse =
@@ -524,6 +619,50 @@ export const ListCertificatePacksResponse =
         cloudflareBranding: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
         ),
+        dcvDelegationRecords: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                cname: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                cnameTarget: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                emails: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                httpBody: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                httpUrl: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                status: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                txtName: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                txtValue: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  cname: "cname",
+                  cnameTarget: "cname_target",
+                  emails: "emails",
+                  httpBody: "http_body",
+                  httpUrl: "http_url",
+                  status: "status",
+                  txtName: "txt_name",
+                  txtValue: "txt_value",
+                }),
+              ),
+            ),
+            Schema.Null,
+          ]),
+        ),
         primaryCertificate: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
         ),
@@ -549,6 +688,12 @@ export const ListCertificatePacksResponse =
           Schema.Union([
             Schema.Array(
               Schema.Struct({
+                cname: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                cnameTarget: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
                 emails: Schema.optional(
                   Schema.Union([Schema.Array(Schema.String), Schema.Null]),
                 ),
@@ -556,6 +701,9 @@ export const ListCertificatePacksResponse =
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
                 httpUrl: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                status: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
                 txtName: Schema.optional(
@@ -566,9 +714,12 @@ export const ListCertificatePacksResponse =
                 ),
               }).pipe(
                 Schema.encodeKeys({
+                  cname: "cname",
+                  cnameTarget: "cname_target",
                   emails: "emails",
                   httpBody: "http_body",
                   httpUrl: "http_url",
+                  status: "status",
                   txtName: "txt_name",
                   txtValue: "txt_value",
                 }),
@@ -592,6 +743,7 @@ export const ListCertificatePacksResponse =
           type: "type",
           certificateAuthority: "certificate_authority",
           cloudflareBranding: "cloudflare_branding",
+          dcvDelegationRecords: "dcv_delegation_records",
           primaryCertificate: "primary_certificate",
           validationErrors: "validation_errors",
           validationMethod: "validation_method",
@@ -600,7 +752,29 @@ export const ListCertificatePacksResponse =
         }),
       ),
     ),
-  }) as unknown as Schema.Schema<ListCertificatePacksResponse>;
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          totalCount: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            page: "page",
+            perPage: "per_page",
+            totalCount: "total_count",
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+  ) as unknown as Schema.Schema<ListCertificatePacksResponse>;
 
 export type ListCertificatePacksError = DefaultErrors;
 
@@ -614,8 +788,11 @@ export const listCertificatePacks: API.PaginatedOperationMethod<
   output: ListCertificatePacksResponse,
   errors: [],
   pagination: {
-    mode: "single",
+    mode: "page",
+    inputToken: "page",
+    outputToken: "resultInfo.page",
     items: "result",
+    pageSize: "perPage",
   } as const,
 }));
 
@@ -723,6 +900,19 @@ export interface CreateCertificatePackResponse {
   certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | null;
   /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
   cloudflareBranding?: boolean | null;
+  /** DCV Delegation records for domain validation. */
+  dcvDelegationRecords?:
+    | {
+        cname?: string | null;
+        cnameTarget?: string | null;
+        emails?: string[] | null;
+        httpBody?: string | null;
+        httpUrl?: string | null;
+        status?: string | null;
+        txtName?: string | null;
+        txtValue?: string | null;
+      }[]
+    | null;
   /** Identifier of the primary certificate in a pack. */
   primaryCertificate?: string | null;
   /** Domain validation errors that have been received by the certificate authority (CA). */
@@ -732,9 +922,12 @@ export interface CreateCertificatePackResponse {
   /** Certificates' validation records. */
   validationRecords?:
     | {
+        cname?: string | null;
+        cnameTarget?: string | null;
         emails?: string[] | null;
         httpBody?: string | null;
         httpUrl?: string | null;
+        status?: string | null;
         txtName?: string | null;
         txtValue?: string | null;
       }[]
@@ -834,6 +1027,46 @@ export const CreateCertificatePackResponse =
     cloudflareBranding: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
     ),
+    dcvDelegationRecords: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            cname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            cnameTarget: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            emails: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            httpBody: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            httpUrl: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            txtName: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            txtValue: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              cname: "cname",
+              cnameTarget: "cname_target",
+              emails: "emails",
+              httpBody: "http_body",
+              httpUrl: "http_url",
+              status: "status",
+              txtName: "txt_name",
+              txtValue: "txt_value",
+            }),
+          ),
+        ),
+        Schema.Null,
+      ]),
+    ),
     primaryCertificate: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
     ),
@@ -856,6 +1089,10 @@ export const CreateCertificatePackResponse =
       Schema.Union([
         Schema.Array(
           Schema.Struct({
+            cname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            cnameTarget: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
             emails: Schema.optional(
               Schema.Union([Schema.Array(Schema.String), Schema.Null]),
             ),
@@ -865,6 +1102,7 @@ export const CreateCertificatePackResponse =
             httpUrl: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             txtName: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
@@ -873,9 +1111,12 @@ export const CreateCertificatePackResponse =
             ),
           }).pipe(
             Schema.encodeKeys({
+              cname: "cname",
+              cnameTarget: "cname_target",
               emails: "emails",
               httpBody: "http_body",
               httpUrl: "http_url",
+              status: "status",
               txtName: "txt_name",
               txtValue: "txt_value",
             }),
@@ -897,6 +1138,7 @@ export const CreateCertificatePackResponse =
         type: "type",
         certificateAuthority: "certificate_authority",
         cloudflareBranding: "cloudflare_branding",
+        dcvDelegationRecords: "dcv_delegation_records",
         primaryCertificate: "primary_certificate",
         validationErrors: "validation_errors",
         validationMethod: "validation_method",
@@ -1001,6 +1243,19 @@ export interface PatchCertificatePackResponse {
   certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | null;
   /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
   cloudflareBranding?: boolean | null;
+  /** DCV Delegation records for domain validation. */
+  dcvDelegationRecords?:
+    | {
+        cname?: string | null;
+        cnameTarget?: string | null;
+        emails?: string[] | null;
+        httpBody?: string | null;
+        httpUrl?: string | null;
+        status?: string | null;
+        txtName?: string | null;
+        txtValue?: string | null;
+      }[]
+    | null;
   /** Identifier of the primary certificate in a pack. */
   primaryCertificate?: string | null;
   /** Domain validation errors that have been received by the certificate authority (CA). */
@@ -1010,9 +1265,12 @@ export interface PatchCertificatePackResponse {
   /** Certificates' validation records. */
   validationRecords?:
     | {
+        cname?: string | null;
+        cnameTarget?: string | null;
         emails?: string[] | null;
         httpBody?: string | null;
         httpUrl?: string | null;
+        status?: string | null;
         txtName?: string | null;
         txtValue?: string | null;
       }[]
@@ -1112,6 +1370,46 @@ export const PatchCertificatePackResponse =
     cloudflareBranding: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
     ),
+    dcvDelegationRecords: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            cname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            cnameTarget: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            emails: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            httpBody: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            httpUrl: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            txtName: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            txtValue: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              cname: "cname",
+              cnameTarget: "cname_target",
+              emails: "emails",
+              httpBody: "http_body",
+              httpUrl: "http_url",
+              status: "status",
+              txtName: "txt_name",
+              txtValue: "txt_value",
+            }),
+          ),
+        ),
+        Schema.Null,
+      ]),
+    ),
     primaryCertificate: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
     ),
@@ -1134,6 +1432,10 @@ export const PatchCertificatePackResponse =
       Schema.Union([
         Schema.Array(
           Schema.Struct({
+            cname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            cnameTarget: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
             emails: Schema.optional(
               Schema.Union([Schema.Array(Schema.String), Schema.Null]),
             ),
@@ -1143,6 +1445,7 @@ export const PatchCertificatePackResponse =
             httpUrl: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
+            status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             txtName: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
             ),
@@ -1151,9 +1454,12 @@ export const PatchCertificatePackResponse =
             ),
           }).pipe(
             Schema.encodeKeys({
+              cname: "cname",
+              cnameTarget: "cname_target",
               emails: "emails",
               httpBody: "http_body",
               httpUrl: "http_url",
+              status: "status",
               txtName: "txt_name",
               txtValue: "txt_value",
             }),
@@ -1175,6 +1481,7 @@ export const PatchCertificatePackResponse =
         type: "type",
         certificateAuthority: "certificate_authority",
         cloudflareBranding: "cloudflare_branding",
+        dcvDelegationRecords: "dcv_delegation_records",
         primaryCertificate: "primary_certificate",
         validationErrors: "validation_errors",
         validationMethod: "validation_method",

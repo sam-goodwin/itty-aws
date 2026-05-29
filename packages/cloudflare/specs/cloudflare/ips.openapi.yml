@@ -8,7 +8,7 @@ x-distilled-service: ips
 paths:
   /ips:
     get:
-      operationId: listIPs
+      operationId: listIps
       responses:
         "200":
           description: Success

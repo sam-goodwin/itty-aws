@@ -13,42 +13,42 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
-// DCVDelegation
+// DcvDelegation
 // =============================================================================
 
-export interface GetDCVDelegationRequest {
+export interface GetDcvDelegationRequest {
   /** Identifier. */
   zoneId: string;
 }
 
-export const GetDCVDelegationRequest =
+export const GetDcvDelegationRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
     T.Http({ method: "GET", path: "/zones/{zone_id}/dcv_delegation/uuid" }),
-  ) as unknown as Schema.Schema<GetDCVDelegationRequest>;
+  ) as unknown as Schema.Schema<GetDcvDelegationRequest>;
 
-export interface GetDCVDelegationResponse {
+export interface GetDcvDelegationResponse {
   /** The DCV Delegation unique identifier. */
   uuid?: string | null;
 }
 
-export const GetDCVDelegationResponse =
+export const GetDcvDelegationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(
     T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetDCVDelegationResponse>;
+  ) as unknown as Schema.Schema<GetDcvDelegationResponse>;
 
-export type GetDCVDelegationError = DefaultErrors;
+export type GetDcvDelegationError = DefaultErrors;
 
-export const getDCVDelegation: API.OperationMethod<
-  GetDCVDelegationRequest,
-  GetDCVDelegationResponse,
-  GetDCVDelegationError,
+export const getDcvDelegation: API.OperationMethod<
+  GetDcvDelegationRequest,
+  GetDcvDelegationResponse,
+  GetDcvDelegationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetDCVDelegationRequest,
-  output: GetDCVDelegationResponse,
+  input: GetDcvDelegationRequest,
+  output: GetDcvDelegationResponse,
   errors: [],
 }));

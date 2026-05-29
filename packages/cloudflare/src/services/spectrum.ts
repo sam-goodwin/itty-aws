@@ -516,6 +516,7 @@ export type GetAppResponse =
       originPort?: number | string | null;
       proxyProtocol?: "off" | "v1" | "v2" | "simple" | null;
       tls?: "off" | "flexible" | "full" | "strict" | null;
+      virtualNetworkId?: string | null;
     }
   | {
       id: string;
@@ -602,6 +603,9 @@ export const GetAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
         Schema.Null,
       ]),
     ),
+    virtualNetworkId: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
   }).pipe(
     Schema.encodeKeys({
       id: "id",
@@ -618,6 +622,7 @@ export const GetAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       originPort: "origin_port",
       proxyProtocol: "proxy_protocol",
       tls: "tls",
+      virtualNetworkId: "virtual_network_id",
     }),
   ),
   Schema.Struct({
@@ -711,6 +716,7 @@ export interface ListAppsResponse {
         originPort?: number | string | null;
         proxyProtocol?: "off" | "v1" | "v2" | "simple" | null;
         tls?: "off" | "flexible" | "full" | "strict" | null;
+        virtualNetworkId?: string | null;
       }
     | {
         id: string;
@@ -812,6 +818,9 @@ export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Null,
           ]),
         ),
+        virtualNetworkId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
       }).pipe(
         Schema.encodeKeys({
           id: "id",
@@ -828,6 +837,7 @@ export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           originPort: "origin_port",
           proxyProtocol: "proxy_protocol",
           tls: "tls",
+          virtualNetworkId: "virtual_network_id",
         }),
       ),
       Schema.Struct({
@@ -925,6 +935,8 @@ export interface CreateAppRequest {
   proxyProtocol?: "off" | "v1" | "v2" | "simple";
   /** Body param: The type of TLS termination associated with the application. */
   tls?: "off" | "flexible" | "full" | "strict";
+  /** Body param: Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
+  virtualNetworkId?: string;
 }
 
 export const CreateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -962,6 +974,7 @@ export const CreateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Literals(["off", "v1", "v2", "simple"]),
   ),
   tls: Schema.optional(Schema.Literals(["off", "flexible", "full", "strict"])),
+  virtualNetworkId: Schema.optional(Schema.String),
 }).pipe(
   Schema.encodeKeys({
     dns: "dns",
@@ -975,6 +988,7 @@ export const CreateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originPort: "origin_port",
     proxyProtocol: "proxy_protocol",
     tls: "tls",
+    virtualNetworkId: "virtual_network_id",
   }),
   T.Http({ method: "POST", path: "/zones/{zone_id}/spectrum/apps" }),
 ) as unknown as Schema.Schema<CreateAppRequest>;
@@ -1005,6 +1019,7 @@ export type CreateAppResponse =
       originPort?: number | string | null;
       proxyProtocol?: "off" | "v1" | "v2" | "simple" | null;
       tls?: "off" | "flexible" | "full" | "strict" | null;
+      virtualNetworkId?: string | null;
     }
   | {
       id: string;
@@ -1091,6 +1106,9 @@ export const CreateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
         Schema.Null,
       ]),
     ),
+    virtualNetworkId: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
   }).pipe(
     Schema.encodeKeys({
       id: "id",
@@ -1107,6 +1125,7 @@ export const CreateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       originPort: "origin_port",
       proxyProtocol: "proxy_protocol",
       tls: "tls",
+      virtualNetworkId: "virtual_network_id",
     }),
   ),
   Schema.Struct({
@@ -1178,6 +1197,8 @@ export interface UpdateAppRequest {
   proxyProtocol?: "off" | "v1" | "v2" | "simple";
   /** Body param: The type of TLS termination associated with the application. */
   tls?: "off" | "flexible" | "full" | "strict";
+  /** Body param: Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
+  virtualNetworkId?: string;
 }
 
 export const UpdateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1216,6 +1237,7 @@ export const UpdateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Literals(["off", "v1", "v2", "simple"]),
   ),
   tls: Schema.optional(Schema.Literals(["off", "flexible", "full", "strict"])),
+  virtualNetworkId: Schema.optional(Schema.String),
 }).pipe(
   Schema.encodeKeys({
     dns: "dns",
@@ -1229,6 +1251,7 @@ export const UpdateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originPort: "origin_port",
     proxyProtocol: "proxy_protocol",
     tls: "tls",
+    virtualNetworkId: "virtual_network_id",
   }),
   T.Http({ method: "PUT", path: "/zones/{zone_id}/spectrum/apps/{appId}" }),
 ) as unknown as Schema.Schema<UpdateAppRequest>;
@@ -1259,6 +1282,7 @@ export type UpdateAppResponse =
       originPort?: number | string | null;
       proxyProtocol?: "off" | "v1" | "v2" | "simple" | null;
       tls?: "off" | "flexible" | "full" | "strict" | null;
+      virtualNetworkId?: string | null;
     }
   | {
       id: string;
@@ -1345,6 +1369,9 @@ export const UpdateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
         Schema.Null,
       ]),
     ),
+    virtualNetworkId: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
   }).pipe(
     Schema.encodeKeys({
       id: "id",
@@ -1361,6 +1388,7 @@ export const UpdateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       originPort: "origin_port",
       proxyProtocol: "proxy_protocol",
       tls: "tls",
+      virtualNetworkId: "virtual_network_id",
     }),
   ),
   Schema.Struct({

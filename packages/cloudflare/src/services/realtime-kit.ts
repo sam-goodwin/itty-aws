@@ -681,9 +681,9 @@ export const getApp: API.OperationMethod<
 }));
 
 export interface PostAppRequest {
-  /** Path param: */
+  /** Path param */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   name: string;
 }
 
@@ -927,9 +927,9 @@ export interface StartLivestreamingAMeetingLivestreamRequest {
   meetingId: string;
   /** Path param: The account identifier tag. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   name?: string | null;
-  /** Body param: */
+  /** Body param */
   videoConfig?: { height?: number; width?: number };
 }
 
@@ -2317,7 +2317,7 @@ export interface GetMeetingByIdMeetingRequest {
   meetingId: string;
   /** Path param: The account identifier tag. */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   name?: string;
 }
 
@@ -6718,9 +6718,9 @@ export interface KickParticipantsActiveSessionRequest {
   meetingId: string;
   /** Path param: The account identifier tag. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   customParticipantIds: string[];
-  /** Body param: */
+  /** Body param */
   participantIds: string[];
 }
 
@@ -7082,7 +7082,7 @@ export interface CreatePresetRequest {
   appId: string;
   /** Path param: The account identifier tag. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   config: {
     maxScreenshareCount: number;
     maxVideoStreams: { desktop: number; mobile: number };
@@ -7095,7 +7095,7 @@ export interface CreatePresetRequest {
   };
   /** Body param: Name of the preset */
   name: string;
-  /** Body param: */
+  /** Body param */
   ui: {
     designTokens: {
       borderRadius: "rounded";
@@ -7128,7 +7128,7 @@ export interface CreatePresetRequest {
     };
     configDiff?: unknown;
   };
-  /** Body param: */
+  /** Body param */
   permissions?: {
     acceptWaitingRequests: boolean;
     canAcceptProductionRequests: boolean;
@@ -7821,7 +7821,7 @@ export interface PatchPresetRequest {
   presetId: string;
   /** Path param: The account identifier tag. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   config?: {
     maxScreenshareCount?: number;
     maxVideoStreams?: { desktop?: number; mobile?: number };
@@ -7833,7 +7833,7 @@ export interface PatchPresetRequest {
   };
   /** Body param: Name of the preset */
   name?: string;
-  /** Body param: */
+  /** Body param */
   permissions?: {
     acceptWaitingRequests?: boolean;
     canAcceptProductionRequests?: boolean;
@@ -7884,7 +7884,7 @@ export interface PatchPresetRequest {
     showParticipantList?: boolean;
     waitingRoomType?: "SKIP" | "ON_PRIVILEGED_USER_ENTRY" | "SKIP_ON_ACCEPT";
   };
-  /** Body param: */
+  /** Body param */
   ui?: {
     configDiff?: unknown;
     designTokens?: {
@@ -9418,9 +9418,9 @@ export interface GetRecordingsRecordingRequest {
   perPage?: number;
   /** Query param: The search query string. You can search using the meeting ID or title. */
   search?: string;
-  /** Query param: */
+  /** Query param */
   sortBy?: "invokedTime";
-  /** Query param: */
+  /** Query param */
   sortOrder?: "ASC" | "DESC";
   /** Query param: The start time range for which you want to retrieve the meetings. The time must be specified in ISO format. */
   startTime?: string;
@@ -9700,11 +9700,11 @@ export interface StartRecordingsRecordingRequest {
   maxSeconds?: number;
   /** Body param: ID of the meeting to record. */
   meetingId?: string;
-  /** Body param: */
+  /** Body param */
   realtimekitBucketConfig?: { enabled: boolean };
-  /** Body param: */
+  /** Body param */
   rtmpOutConfig?: { rtmpUrl?: string };
-  /** Body param: */
+  /** Body param */
   storageConfig?: {
     type: "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
     accessKey?: string;
@@ -9721,7 +9721,7 @@ export interface StartRecordingsRecordingRequest {
   } | null;
   /** Body param: Pass a custom url to record arbitary screen */
   url?: string;
-  /** Body param: */
+  /** Body param */
   videoConfig?: {
     codec?: "H264" | "VP8";
     exportFile?: boolean;
@@ -10136,7 +10136,7 @@ export interface PauseResumeStopRecordingRecordingRequest {
   recordingId: string;
   /** Path param: The account identifier tag. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   action: "stop" | "pause" | "resume";
 }
 
@@ -11130,9 +11130,9 @@ export interface GetSessionParticipantsSessionRequest {
   perPage?: number;
   /** Query param: The search query string. You can search using the meeting ID or title. */
   search?: string;
-  /** Query param: */
+  /** Query param */
   sortBy?: "joinedAt" | "duration";
-  /** Query param: */
+  /** Query param */
   sortOrder?: "ASC" | "DESC";
   /** Query param: In breakout room sessions, the view parameter can be set to `raw` for session specific duration for participants or `consolidated` to accumulate breakout room durations. */
   view?: "raw" | "consolidated";
@@ -11276,19 +11276,19 @@ export interface GetSessionsSessionRequest {
   endTime?: string;
   /** Query param: The page number from which you want your page search results to be displayed. */
   pageNo?: number;
-  /** Query param: */
+  /** Query param */
   participants?: string;
   /** Query param: Number of results per page */
   perPage?: number;
   /** Query param: Search string that matches sessions based on meeting title, meeting ID, and session ID */
   search?: string;
-  /** Query param: */
+  /** Query param */
   sortBy?: "minutesConsumed" | "createdAt";
-  /** Query param: */
+  /** Query param */
   sortOrder?: "ASC" | "DESC";
   /** Query param: The start time range for which you want to retrieve the meetings. The time must be specified in ISO format. */
   startTime?: string;
-  /** Query param: */
+  /** Query param */
   status?: "LIVE" | "ENDED";
 }
 
@@ -11600,7 +11600,7 @@ export interface StartTrackRecordingRecordingRequest {
   appId: string;
   /** Path param: The account identifier tag. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   layers: Record<string, unknown>;
   /** Body param: ID of the meeting to record. */
   meetingId: string;
@@ -12058,7 +12058,7 @@ export interface EditWebhookWebhookRequest {
   webhookId: string;
   /** Path param: The account identifier tag. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   enabled?: boolean;
   /** Body param: Events that the webhook will get triggered by */
   events?: (

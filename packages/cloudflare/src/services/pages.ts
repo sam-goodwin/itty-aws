@@ -5548,8 +5548,10 @@ export const createProjectDeployment: API.OperationMethod<
 export interface DeleteProjectDeploymentRequest {
   projectName: string;
   deploymentId: string;
-  /** Identifier. */
+  /** Path param: Identifier. */
   accountId: string;
+  /** Query param: Allow deletion of aliased non-production deployments when a normal delete would be rejected. */
+  force?: boolean;
 }
 
 export const DeleteProjectDeploymentRequest =
@@ -5557,6 +5559,7 @@ export const DeleteProjectDeploymentRequest =
     projectName: Schema.String.pipe(T.HttpPath("projectName")),
     deploymentId: Schema.String.pipe(T.HttpPath("deploymentId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
     T.Http({
       method: "DELETE",

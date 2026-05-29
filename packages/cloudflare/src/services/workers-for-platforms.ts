@@ -347,6 +347,13 @@ export interface GetDispatchNamespaceScriptResponse {
         headSamplingRate?: number | null;
         persist?: boolean | null;
       } | null;
+      traces?: {
+        destinations?: string[] | null;
+        enabled?: boolean | null;
+        headSamplingRate?: number | null;
+        persist?: boolean | null;
+        propagationPolicy?: "authenticated" | "accept" | null;
+      } | null;
     } | null;
     placement?:
       | {
@@ -385,8 +392,52 @@ export interface GetDispatchNamespaceScriptResponse {
             | "INSUFFICIENT_INVOCATIONS"
             | null;
         }
+      | {
+          mode: "targeted";
+          region: string;
+          lastAnalyzedAt?: string | null;
+          status?:
+            | "SUCCESS"
+            | "UNSUPPORTED_APPLICATION"
+            | "INSUFFICIENT_INVOCATIONS"
+            | null;
+        }
+      | {
+          hostname: string;
+          mode: "targeted";
+          lastAnalyzedAt?: string | null;
+          status?:
+            | "SUCCESS"
+            | "UNSUPPORTED_APPLICATION"
+            | "INSUFFICIENT_INVOCATIONS"
+            | null;
+        }
+      | {
+          host: string;
+          mode: "targeted";
+          lastAnalyzedAt?: string | null;
+          status?:
+            | "SUCCESS"
+            | "UNSUPPORTED_APPLICATION"
+            | "INSUFFICIENT_INVOCATIONS"
+            | null;
+        }
+      | {
+          mode: "targeted";
+          target: (
+            | { region: string }
+            | { hostname: string }
+            | { host: string }
+          )[];
+          lastAnalyzedAt?: string | null;
+          status?:
+            | "SUCCESS"
+            | "UNSUPPORTED_APPLICATION"
+            | "INSUFFICIENT_INVOCATIONS"
+            | null;
+        }
       | null;
-    placementMode?: "smart" | null;
+    placementMode?: "smart" | "targeted" | null;
     placementStatus?:
       | "SUCCESS"
       | "UNSUPPORTED_APPLICATION"
@@ -496,11 +547,48 @@ export const GetDispatchNamespaceScriptResponse =
                     Schema.Null,
                   ]),
                 ),
+                traces: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      destinations: Schema.optional(
+                        Schema.Union([
+                          Schema.Array(Schema.String),
+                          Schema.Null,
+                        ]),
+                      ),
+                      enabled: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      headSamplingRate: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      persist: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      propagationPolicy: Schema.optional(
+                        Schema.Union([
+                          Schema.Literals(["authenticated", "accept"]),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        destinations: "destinations",
+                        enabled: "enabled",
+                        headSamplingRate: "head_sampling_rate",
+                        persist: "persist",
+                        propagationPolicy: "propagation_policy",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
               }).pipe(
                 Schema.encodeKeys({
                   enabled: "enabled",
                   headSamplingRate: "head_sampling_rate",
                   logs: "logs",
+                  traces: "traces",
                 }),
               ),
               Schema.Null,
@@ -509,6 +597,114 @@ export const GetDispatchNamespaceScriptResponse =
           placement: Schema.optional(
             Schema.Union([
               Schema.Union([
+                Schema.Struct({
+                  mode: Schema.Literal("targeted"),
+                  region: Schema.String,
+                  lastAnalyzedAt: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  status: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals([
+                        "SUCCESS",
+                        "UNSUPPORTED_APPLICATION",
+                        "INSUFFICIENT_INVOCATIONS",
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    mode: "mode",
+                    region: "region",
+                    lastAnalyzedAt: "last_analyzed_at",
+                    status: "status",
+                  }),
+                ),
+                Schema.Struct({
+                  hostname: Schema.String,
+                  mode: Schema.Literal("targeted"),
+                  lastAnalyzedAt: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  status: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals([
+                        "SUCCESS",
+                        "UNSUPPORTED_APPLICATION",
+                        "INSUFFICIENT_INVOCATIONS",
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    hostname: "hostname",
+                    mode: "mode",
+                    lastAnalyzedAt: "last_analyzed_at",
+                    status: "status",
+                  }),
+                ),
+                Schema.Struct({
+                  host: Schema.String,
+                  mode: Schema.Literal("targeted"),
+                  lastAnalyzedAt: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  status: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals([
+                        "SUCCESS",
+                        "UNSUPPORTED_APPLICATION",
+                        "INSUFFICIENT_INVOCATIONS",
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    host: "host",
+                    mode: "mode",
+                    lastAnalyzedAt: "last_analyzed_at",
+                    status: "status",
+                  }),
+                ),
+                Schema.Struct({
+                  mode: Schema.Literal("targeted"),
+                  target: Schema.Array(
+                    Schema.Union([
+                      Schema.Struct({
+                        region: Schema.String,
+                      }),
+                      Schema.Struct({
+                        hostname: Schema.String,
+                      }),
+                      Schema.Struct({
+                        host: Schema.String,
+                      }),
+                    ]),
+                  ),
+                  lastAnalyzedAt: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  status: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals([
+                        "SUCCESS",
+                        "UNSUPPORTED_APPLICATION",
+                        "INSUFFICIENT_INVOCATIONS",
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    mode: "mode",
+                    target: "target",
+                    lastAnalyzedAt: "last_analyzed_at",
+                    status: "status",
+                  }),
+                ),
                 Schema.Struct({
                   mode: Schema.Literal("smart"),
                   lastAnalyzedAt: Schema.optional(
@@ -602,7 +798,7 @@ export const GetDispatchNamespaceScriptResponse =
             ]),
           ),
           placementMode: Schema.optional(
-            Schema.Union([Schema.Literal("smart"), Schema.Null]),
+            Schema.Union([Schema.Literals(["smart", "targeted"]), Schema.Null]),
           ),
           placementStatus: Schema.optional(
             Schema.Union([
@@ -699,6 +895,8 @@ export interface PutDispatchNamespaceScriptRequest {
   scriptName: string;
   /** Path param: Identifier. */
   accountId: string;
+  /** Query param: When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the script. Without this, unresolvable inherit bindings are si */
+  bindingsInherit?: "strict";
   /** Body param: JSON-encoded metadata about the uploaded parts and Worker configuration. */
   metadata: {
     assets?: {
@@ -718,24 +916,36 @@ export interface PutDispatchNamespaceScriptRequest {
     };
     bindings?: (
       | { name: string; type: "ai" }
+      | {
+          instanceName: string;
+          name: string;
+          type: "ai_search";
+          namespace?: string;
+        }
+      | { name: string; namespace: string; type: "ai_search_namespace" }
       | { dataset: string; name: string; type: "analytics_engine" }
       | { name: string; type: "assets" }
       | { name: string; type: "browser" }
-      | { id: string; name: string; type: "d1" }
+      | { databaseId: string; name: string; type: "d1"; id?: string }
       | { name: string; part: string; type: "data_blob" }
       | {
           name: string;
           namespace: string;
           type: "dispatch_namespace";
           outbound?: {
-            params?: string[];
-            worker?: { environment?: string; service?: string };
+            params?: { name: string }[];
+            worker?: {
+              entrypoint?: string;
+              environment?: string;
+              service?: string;
+            };
           };
         }
       | {
           name: string;
           type: "durable_object_namespace";
           className?: string;
+          dispatchNamespace?: string;
           environment?: string;
           namespaceId?: string;
           scriptName?: string;
@@ -743,17 +953,24 @@ export interface PutDispatchNamespaceScriptRequest {
       | { id: string; name: string; type: "hyperdrive" }
       | { name: string; type: "inherit"; oldName?: string; versionId?: string }
       | { name: string; type: "images" }
-      | { json: string; name: string; type: "json" }
+      | { json: unknown; name: string; type: "json" }
       | { name: string; namespaceId: string; type: "kv_namespace" }
+      | { name: string; type: "media" }
       | { certificateId: string; name: string; type: "mtls_certificate" }
       | { name: string; text: string; type: "plain_text" }
       | { name: string; pipeline: string; type: "pipelines" }
       | { name: string; queueName: string; type: "queue" }
       | {
+          name: string;
+          namespaceId: string;
+          simple: { limit: number; period: number; mitigationTimeout?: number };
+          type: "ratelimit";
+        }
+      | {
           bucketName: string;
           name: string;
           type: "r2_bucket";
-          jurisdiction?: "eu" | "fedramp";
+          jurisdiction?: "eu" | "fedramp" | "fedramp-high";
         }
       | { name: string; text: string; type: "secret_text" }
       | {
@@ -763,7 +980,13 @@ export interface PutDispatchNamespaceScriptRequest {
           allowedSenderAddresses?: string[];
           destinationAddress?: string;
         }
-      | { name: string; service: string; type: "service"; environment?: string }
+      | {
+          name: string;
+          service: string;
+          type: "service";
+          entrypoint?: string;
+          environment?: string;
+        }
       | { name: string; part: string; type: "text_blob" }
       | { indexName: string; name: string; type: "vectorize" }
       | { name: string; type: "version_metadata" }
@@ -773,6 +996,7 @@ export interface PutDispatchNamespaceScriptRequest {
           storeId: string;
           type: "secrets_store_secret";
         }
+      | { appId: string; name: string; type: "flagship" }
       | {
           algorithm: unknown;
           format: "raw" | "pkcs8" | "spki" | "jwk";
@@ -799,13 +1023,20 @@ export interface PutDispatchNamespaceScriptRequest {
           scriptName?: string;
         }
       | { name: string; part: string; type: "wasm_module" }
+      | { name: string; serviceId: string; type: "vpc_service" }
+      | {
+          name: string;
+          type: "vpc_network";
+          networkId?: string;
+          tunnelId?: string;
+        }
     )[];
     bodyPart?: string;
     compatibilityDate?: string;
     compatibilityFlags?: string[];
     keepAssets?: boolean;
     keepBindings?: string[];
-    limits?: { cpuMs?: number };
+    limits?: { cpuMs?: number; subrequests?: number };
     logpush?: boolean;
     mainModule?: string;
     migrations?:
@@ -847,12 +1078,30 @@ export interface PutDispatchNamespaceScriptRequest {
         headSamplingRate?: number | null;
         persist?: boolean;
       } | null;
+      traces?: {
+        destinations?: string[];
+        enabled?: boolean;
+        headSamplingRate?: number | null;
+        persist?: boolean;
+        propagationPolicy?: "authenticated" | "accept";
+      } | null;
     };
     placement?:
       | { mode: "smart" }
       | { region: string }
       | { hostname: string }
-      | { host: string };
+      | { host: string }
+      | { mode: "targeted"; region: string }
+      | { hostname: string; mode: "targeted" }
+      | { host: string; mode: "targeted" }
+      | {
+          mode: "targeted";
+          target: (
+            | { region: string }
+            | { hostname: string }
+            | { host: string }
+          )[];
+        };
     tags?: string[];
     tailConsumers?:
       | { service: string; environment?: string; namespace?: string }[]
@@ -868,6 +1117,9 @@ export const PutDispatchNamespaceScriptRequest =
     dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
     scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    bindingsInherit: Schema.optional(Schema.Literal("strict")).pipe(
+      T.HttpQuery("bindings_inherit"),
+    ),
     metadata: Schema.Struct({
       assets: Schema.optional(
         Schema.Struct({
@@ -943,6 +1195,29 @@ export const PutDispatchNamespaceScriptRequest =
             ),
             Schema.Struct({
               name: Schema.String,
+              namespaceId: Schema.String,
+              simple: Schema.Struct({
+                limit: Schema.Number,
+                period: Schema.Number,
+                mitigationTimeout: Schema.optional(Schema.Number),
+              }).pipe(
+                Schema.encodeKeys({
+                  limit: "limit",
+                  period: "period",
+                  mitigationTimeout: "mitigation_timeout",
+                }),
+              ),
+              type: Schema.Literal("ratelimit"),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                namespaceId: "namespace_id",
+                simple: "simple",
+                type: "type",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
               secretName: Schema.String,
               storeId: Schema.String,
               type: Schema.Literal("secrets_store_secret"),
@@ -955,15 +1230,41 @@ export const PutDispatchNamespaceScriptRequest =
               }),
             ),
             Schema.Struct({
+              instanceName: Schema.String,
+              name: Schema.String,
+              type: Schema.Literal("ai_search"),
+              namespace: Schema.optional(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                instanceName: "instance_name",
+                name: "name",
+                type: "type",
+                namespace: "namespace",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              namespace: Schema.String,
+              type: Schema.Literal("ai_search_namespace"),
+            }),
+            Schema.Struct({
               dataset: Schema.String,
               name: Schema.String,
               type: Schema.Literal("analytics_engine"),
             }),
             Schema.Struct({
-              id: Schema.String,
+              databaseId: Schema.String,
               name: Schema.String,
               type: Schema.Literal("d1"),
-            }),
+              id: Schema.optional(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                databaseId: "database_id",
+                name: "name",
+                type: "type",
+                id: "id",
+              }),
+            ),
             Schema.Struct({
               name: Schema.String,
               part: Schema.String,
@@ -975,9 +1276,16 @@ export const PutDispatchNamespaceScriptRequest =
               type: Schema.Literal("dispatch_namespace"),
               outbound: Schema.optional(
                 Schema.Struct({
-                  params: Schema.optional(Schema.Array(Schema.String)),
+                  params: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                      }),
+                    ),
+                  ),
                   worker: Schema.optional(
                     Schema.Struct({
+                      entrypoint: Schema.optional(Schema.String),
                       environment: Schema.optional(Schema.String),
                       service: Schema.optional(Schema.String),
                     }),
@@ -991,7 +1299,7 @@ export const PutDispatchNamespaceScriptRequest =
               type: Schema.Literal("hyperdrive"),
             }),
             Schema.Struct({
-              json: Schema.String,
+              json: Schema.Unknown,
               name: Schema.String,
               type: Schema.Literal("json"),
             }),
@@ -1042,7 +1350,9 @@ export const PutDispatchNamespaceScriptRequest =
               bucketName: Schema.String,
               name: Schema.String,
               type: Schema.Literal("r2_bucket"),
-              jurisdiction: Schema.optional(Schema.Literals(["eu", "fedramp"])),
+              jurisdiction: Schema.optional(
+                Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+              ),
             }).pipe(
               Schema.encodeKeys({
                 bucketName: "bucket_name",
@@ -1060,6 +1370,7 @@ export const PutDispatchNamespaceScriptRequest =
               name: Schema.String,
               service: Schema.String,
               type: Schema.Literal("service"),
+              entrypoint: Schema.optional(Schema.String),
               environment: Schema.optional(Schema.String),
             }),
             Schema.Struct({
@@ -1074,6 +1385,17 @@ export const PutDispatchNamespaceScriptRequest =
             }).pipe(
               Schema.encodeKeys({
                 indexName: "index_name",
+                name: "name",
+                type: "type",
+              }),
+            ),
+            Schema.Struct({
+              appId: Schema.String,
+              name: Schema.String,
+              type: Schema.Literal("flagship"),
+            }).pipe(
+              Schema.encodeKeys({
+                appId: "app_id",
                 name: "name",
                 type: "type",
               }),
@@ -1100,6 +1422,17 @@ export const PutDispatchNamespaceScriptRequest =
             }),
             Schema.Struct({
               name: Schema.String,
+              serviceId: Schema.String,
+              type: Schema.Literal("vpc_service"),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                serviceId: "service_id",
+                type: "type",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
               type: Schema.Literal("ai"),
             }),
             Schema.Struct({
@@ -1114,6 +1447,7 @@ export const PutDispatchNamespaceScriptRequest =
               name: Schema.String,
               type: Schema.Literal("durable_object_namespace"),
               className: Schema.optional(Schema.String),
+              dispatchNamespace: Schema.optional(Schema.String),
               environment: Schema.optional(Schema.String),
               namespaceId: Schema.optional(Schema.String),
               scriptName: Schema.optional(Schema.String),
@@ -1122,6 +1456,7 @@ export const PutDispatchNamespaceScriptRequest =
                 name: "name",
                 type: "type",
                 className: "class_name",
+                dispatchNamespace: "dispatch_namespace",
                 environment: "environment",
                 namespaceId: "namespace_id",
                 scriptName: "script_name",
@@ -1146,6 +1481,10 @@ export const PutDispatchNamespaceScriptRequest =
             }),
             Schema.Struct({
               name: Schema.String,
+              type: Schema.Literal("media"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
               type: Schema.Literal("send_email"),
               allowedDestinationAddresses: Schema.optional(
                 Schema.Array(Schema.String),
@@ -1167,6 +1506,19 @@ export const PutDispatchNamespaceScriptRequest =
               name: Schema.String,
               type: Schema.Literal("version_metadata"),
             }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("vpc_network"),
+              networkId: Schema.optional(Schema.String),
+              tunnelId: Schema.optional(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                networkId: "network_id",
+                tunnelId: "tunnel_id",
+              }),
+            ),
           ]),
         ),
       ),
@@ -1178,7 +1530,10 @@ export const PutDispatchNamespaceScriptRequest =
       limits: Schema.optional(
         Schema.Struct({
           cpuMs: Schema.optional(Schema.Number),
-        }).pipe(Schema.encodeKeys({ cpuMs: "cpu_ms" })),
+          subrequests: Schema.optional(Schema.Number),
+        }).pipe(
+          Schema.encodeKeys({ cpuMs: "cpu_ms", subrequests: "subrequests" }),
+        ),
       ),
       logpush: Schema.optional(Schema.Boolean),
       mainModule: Schema.optional(Schema.String),
@@ -1306,16 +1661,69 @@ export const PutDispatchNamespaceScriptRequest =
               Schema.Null,
             ]),
           ),
+          traces: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                destinations: Schema.optional(Schema.Array(Schema.String)),
+                enabled: Schema.optional(Schema.Boolean),
+                headSamplingRate: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                persist: Schema.optional(Schema.Boolean),
+                propagationPolicy: Schema.optional(
+                  Schema.Literals(["authenticated", "accept"]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  destinations: "destinations",
+                  enabled: "enabled",
+                  headSamplingRate: "head_sampling_rate",
+                  persist: "persist",
+                  propagationPolicy: "propagation_policy",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             enabled: "enabled",
             headSamplingRate: "head_sampling_rate",
             logs: "logs",
+            traces: "traces",
           }),
         ),
       ),
       placement: Schema.optional(
         Schema.Union([
+          Schema.Struct({
+            mode: Schema.Literal("targeted"),
+            region: Schema.String,
+          }),
+          Schema.Struct({
+            hostname: Schema.String,
+            mode: Schema.Literal("targeted"),
+          }),
+          Schema.Struct({
+            host: Schema.String,
+            mode: Schema.Literal("targeted"),
+          }),
+          Schema.Struct({
+            mode: Schema.Literal("targeted"),
+            target: Schema.Array(
+              Schema.Union([
+                Schema.Struct({
+                  region: Schema.String,
+                }),
+                Schema.Struct({
+                  hostname: Schema.String,
+                }),
+                Schema.Struct({
+                  host: Schema.String,
+                }),
+              ]),
+            ),
+          }),
           Schema.Struct({
             mode: Schema.Literal("smart"),
           }),
@@ -1418,8 +1826,15 @@ export interface PutDispatchNamespaceScriptResponse {
       headSamplingRate?: number | null;
       persist?: boolean | null;
     } | null;
+    traces?: {
+      destinations?: string[] | null;
+      enabled?: boolean | null;
+      headSamplingRate?: number | null;
+      persist?: boolean | null;
+      propagationPolicy?: "authenticated" | "accept" | null;
+    } | null;
   } | null;
-  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted place */
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?:
     | {
         mode: "smart";
@@ -1457,9 +1872,53 @@ export interface PutDispatchNamespaceScriptResponse {
           | "INSUFFICIENT_INVOCATIONS"
           | null;
       }
+    | {
+        mode: "targeted";
+        region: string;
+        lastAnalyzedAt?: string | null;
+        status?:
+          | "SUCCESS"
+          | "UNSUPPORTED_APPLICATION"
+          | "INSUFFICIENT_INVOCATIONS"
+          | null;
+      }
+    | {
+        hostname: string;
+        mode: "targeted";
+        lastAnalyzedAt?: string | null;
+        status?:
+          | "SUCCESS"
+          | "UNSUPPORTED_APPLICATION"
+          | "INSUFFICIENT_INVOCATIONS"
+          | null;
+      }
+    | {
+        host: string;
+        mode: "targeted";
+        lastAnalyzedAt?: string | null;
+        status?:
+          | "SUCCESS"
+          | "UNSUPPORTED_APPLICATION"
+          | "INSUFFICIENT_INVOCATIONS"
+          | null;
+      }
+    | {
+        mode: "targeted";
+        target: (
+          | { region: string }
+          | { hostname: string }
+          | { host: string }
+        )[];
+        lastAnalyzedAt?: string | null;
+        status?:
+          | "SUCCESS"
+          | "UNSUPPORTED_APPLICATION"
+          | "INSUFFICIENT_INVOCATIONS"
+          | null;
+      }
     | null;
   /** @deprecated */
-  placementMode?: "smart" | null;
+  placementMode?: "smart" | "targeted" | null;
   /** @deprecated */
   placementStatus?:
     | "SUCCESS"
@@ -1552,11 +2011,45 @@ export const PutDispatchNamespaceScriptResponse =
               Schema.Null,
             ]),
           ),
+          traces: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                destinations: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                enabled: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                headSamplingRate: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                persist: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                propagationPolicy: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.Null,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  destinations: "destinations",
+                  enabled: "enabled",
+                  headSamplingRate: "head_sampling_rate",
+                  persist: "persist",
+                  propagationPolicy: "propagation_policy",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             enabled: "enabled",
             headSamplingRate: "head_sampling_rate",
             logs: "logs",
+            traces: "traces",
           }),
         ),
         Schema.Null,
@@ -1565,6 +2058,114 @@ export const PutDispatchNamespaceScriptResponse =
     placement: Schema.optional(
       Schema.Union([
         Schema.Union([
+          Schema.Struct({
+            mode: Schema.Literal("targeted"),
+            region: Schema.String,
+            lastAnalyzedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            status: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              mode: "mode",
+              region: "region",
+              lastAnalyzedAt: "last_analyzed_at",
+              status: "status",
+            }),
+          ),
+          Schema.Struct({
+            hostname: Schema.String,
+            mode: Schema.Literal("targeted"),
+            lastAnalyzedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            status: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              hostname: "hostname",
+              mode: "mode",
+              lastAnalyzedAt: "last_analyzed_at",
+              status: "status",
+            }),
+          ),
+          Schema.Struct({
+            host: Schema.String,
+            mode: Schema.Literal("targeted"),
+            lastAnalyzedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            status: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              host: "host",
+              mode: "mode",
+              lastAnalyzedAt: "last_analyzed_at",
+              status: "status",
+            }),
+          ),
+          Schema.Struct({
+            mode: Schema.Literal("targeted"),
+            target: Schema.Array(
+              Schema.Union([
+                Schema.Struct({
+                  region: Schema.String,
+                }),
+                Schema.Struct({
+                  hostname: Schema.String,
+                }),
+                Schema.Struct({
+                  host: Schema.String,
+                }),
+              ]),
+            ),
+            lastAnalyzedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            status: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              mode: "mode",
+              target: "target",
+              lastAnalyzedAt: "last_analyzed_at",
+              status: "status",
+            }),
+          ),
           Schema.Struct({
             mode: Schema.Literal("smart"),
             lastAnalyzedAt: Schema.optional(
@@ -1658,7 +2259,7 @@ export const PutDispatchNamespaceScriptResponse =
       ]),
     ),
     placementMode: Schema.optional(
-      Schema.Union([Schema.Literal("smart"), Schema.Null]),
+      Schema.Union([Schema.Literals(["smart", "targeted"]), Schema.Null]),
     ),
     placementStatus: Schema.optional(
       Schema.Union([
@@ -1865,18 +2466,26 @@ export const GetDispatchNamespaceScriptBindingRequest =
 export interface GetDispatchNamespaceScriptBindingResponse {
   result: (
     | { name: string; type: "ai" }
+    | {
+        instanceName: string;
+        name: string;
+        type: "ai_search";
+        namespace?: string | null;
+      }
+    | { name: string; namespace: string; type: "ai_search_namespace" }
     | { dataset: string; name: string; type: "analytics_engine" }
     | { name: string; type: "assets" }
     | { name: string; type: "browser" }
-    | { id: string; name: string; type: "d1" }
+    | { databaseId: string; name: string; type: "d1"; id?: string | null }
     | { name: string; part: string; type: "data_blob" }
     | {
         name: string;
         namespace: string;
         type: "dispatch_namespace";
         outbound?: {
-          params?: string[] | null;
+          params?: { name: string }[] | null;
           worker?: {
+            entrypoint?: string | null;
             environment?: string | null;
             service?: string | null;
           } | null;
@@ -1886,6 +2495,7 @@ export interface GetDispatchNamespaceScriptBindingResponse {
         name: string;
         type: "durable_object_namespace";
         className?: string | null;
+        dispatchNamespace?: string | null;
         environment?: string | null;
         namespaceId?: string | null;
         scriptName?: string | null;
@@ -1898,17 +2508,28 @@ export interface GetDispatchNamespaceScriptBindingResponse {
         versionId?: string | null;
       }
     | { name: string; type: "images" }
-    | { json: string; name: string; type: "json" }
+    | { json: unknown; name: string; type: "json" }
     | { name: string; namespaceId: string; type: "kv_namespace" }
+    | { name: string; type: "media" }
     | { certificateId: string; name: string; type: "mtls_certificate" }
     | { name: string; text: string; type: "plain_text" }
     | { name: string; pipeline: string; type: "pipelines" }
     | { name: string; queueName: string; type: "queue" }
     | {
+        name: string;
+        namespaceId: string;
+        simple: {
+          limit: number;
+          period: number;
+          mitigationTimeout?: number | null;
+        };
+        type: "ratelimit";
+      }
+    | {
         bucketName: string;
         name: string;
         type: "r2_bucket";
-        jurisdiction?: "eu" | "fedramp" | null;
+        jurisdiction?: "eu" | "fedramp" | "fedramp-high" | null;
       }
     | { name: string; type: "secret_text" }
     | {
@@ -1922,6 +2543,7 @@ export interface GetDispatchNamespaceScriptBindingResponse {
         name: string;
         service: string;
         type: "service";
+        entrypoint?: string | null;
         environment?: string | null;
       }
     | { name: string; part: string; type: "text_blob" }
@@ -1933,6 +2555,7 @@ export interface GetDispatchNamespaceScriptBindingResponse {
         storeId: string;
         type: "secrets_store_secret";
       }
+    | { appId: string; name: string; type: "flagship" }
     | {
         algorithm: unknown;
         format: "raw" | "pkcs8" | "spki" | "jwk";
@@ -1957,6 +2580,13 @@ export interface GetDispatchNamespaceScriptBindingResponse {
         scriptName?: string | null;
       }
     | { name: string; part: string; type: "wasm_module" }
+    | { name: string; serviceId: string; type: "vpc_service" }
+    | {
+        name: string;
+        type: "vpc_network";
+        networkId?: string | null;
+        tunnelId?: string | null;
+      }
   )[];
 }
 
@@ -1984,6 +2614,31 @@ export const GetDispatchNamespaceScriptBindingResponse =
         }),
         Schema.Struct({
           name: Schema.String,
+          namespaceId: Schema.String,
+          simple: Schema.Struct({
+            limit: Schema.Number,
+            period: Schema.Number,
+            mitigationTimeout: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              limit: "limit",
+              period: "period",
+              mitigationTimeout: "mitigation_timeout",
+            }),
+          ),
+          type: Schema.Literal("ratelimit"),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            namespaceId: "namespace_id",
+            simple: "simple",
+            type: "type",
+          }),
+        ),
+        Schema.Struct({
+          name: Schema.String,
           secretName: Schema.String,
           storeId: Schema.String,
           type: Schema.Literal("secrets_store_secret"),
@@ -1996,15 +2651,43 @@ export const GetDispatchNamespaceScriptBindingResponse =
           }),
         ),
         Schema.Struct({
+          instanceName: Schema.String,
+          name: Schema.String,
+          type: Schema.Literal("ai_search"),
+          namespace: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            instanceName: "instance_name",
+            name: "name",
+            type: "type",
+            namespace: "namespace",
+          }),
+        ),
+        Schema.Struct({
+          name: Schema.String,
+          namespace: Schema.String,
+          type: Schema.Literal("ai_search_namespace"),
+        }),
+        Schema.Struct({
           dataset: Schema.String,
           name: Schema.String,
           type: Schema.Literal("analytics_engine"),
         }),
         Schema.Struct({
-          id: Schema.String,
+          databaseId: Schema.String,
           name: Schema.String,
           type: Schema.Literal("d1"),
-        }),
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            databaseId: "database_id",
+            name: "name",
+            type: "type",
+            id: "id",
+          }),
+        ),
         Schema.Struct({
           name: Schema.String,
           part: Schema.String,
@@ -2018,11 +2701,21 @@ export const GetDispatchNamespaceScriptBindingResponse =
             Schema.Union([
               Schema.Struct({
                 params: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                  Schema.Union([
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
                 ),
                 worker: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
+                      entrypoint: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
                       environment: Schema.optional(
                         Schema.Union([Schema.String, Schema.Null]),
                       ),
@@ -2044,7 +2737,7 @@ export const GetDispatchNamespaceScriptBindingResponse =
           type: Schema.Literal("hyperdrive"),
         }),
         Schema.Struct({
-          json: Schema.String,
+          json: Schema.Unknown,
           name: Schema.String,
           type: Schema.Literal("json"),
         }),
@@ -2096,7 +2789,10 @@ export const GetDispatchNamespaceScriptBindingResponse =
           name: Schema.String,
           type: Schema.Literal("r2_bucket"),
           jurisdiction: Schema.optional(
-            Schema.Union([Schema.Literals(["eu", "fedramp"]), Schema.Null]),
+            Schema.Union([
+              Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -2110,6 +2806,9 @@ export const GetDispatchNamespaceScriptBindingResponse =
           name: Schema.String,
           service: Schema.String,
           type: Schema.Literal("service"),
+          entrypoint: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
           environment: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
@@ -2129,6 +2828,13 @@ export const GetDispatchNamespaceScriptBindingResponse =
             name: "name",
             type: "type",
           }),
+        ),
+        Schema.Struct({
+          appId: Schema.String,
+          name: Schema.String,
+          type: Schema.Literal("flagship"),
+        }).pipe(
+          Schema.encodeKeys({ appId: "app_id", name: "name", type: "type" }),
         ),
         Schema.Struct({
           name: Schema.String,
@@ -2156,6 +2862,17 @@ export const GetDispatchNamespaceScriptBindingResponse =
         }),
         Schema.Struct({
           name: Schema.String,
+          serviceId: Schema.String,
+          type: Schema.Literal("vpc_service"),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            serviceId: "service_id",
+            type: "type",
+          }),
+        ),
+        Schema.Struct({
+          name: Schema.String,
           type: Schema.Literal("ai"),
         }),
         Schema.Struct({
@@ -2172,6 +2889,9 @@ export const GetDispatchNamespaceScriptBindingResponse =
           className: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
+          dispatchNamespace: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
           environment: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
@@ -2186,6 +2906,7 @@ export const GetDispatchNamespaceScriptBindingResponse =
             name: "name",
             type: "type",
             className: "class_name",
+            dispatchNamespace: "dispatch_namespace",
             environment: "environment",
             namespaceId: "namespace_id",
             scriptName: "script_name",
@@ -2209,6 +2930,10 @@ export const GetDispatchNamespaceScriptBindingResponse =
         Schema.Struct({
           name: Schema.String,
           type: Schema.Literal("images"),
+        }),
+        Schema.Struct({
+          name: Schema.String,
+          type: Schema.Literal("media"),
         }),
         Schema.Struct({
           name: Schema.String,
@@ -2239,6 +2964,21 @@ export const GetDispatchNamespaceScriptBindingResponse =
           name: Schema.String,
           type: Schema.Literal("version_metadata"),
         }),
+        Schema.Struct({
+          name: Schema.String,
+          type: Schema.Literal("vpc_network"),
+          networkId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          tunnelId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            name: "name",
+            type: "type",
+            networkId: "network_id",
+            tunnelId: "tunnel_id",
+          }),
+        ),
       ]),
     ),
   }) as unknown as Schema.Schema<GetDispatchNamespaceScriptBindingResponse>;
@@ -2382,8 +3122,15 @@ export interface PutDispatchNamespaceScriptContentResponse {
       headSamplingRate?: number | null;
       persist?: boolean | null;
     } | null;
+    traces?: {
+      destinations?: string[] | null;
+      enabled?: boolean | null;
+      headSamplingRate?: number | null;
+      persist?: boolean | null;
+      propagationPolicy?: "authenticated" | "accept" | null;
+    } | null;
   } | null;
-  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted place */
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?:
     | {
         mode: "smart";
@@ -2421,9 +3168,53 @@ export interface PutDispatchNamespaceScriptContentResponse {
           | "INSUFFICIENT_INVOCATIONS"
           | null;
       }
+    | {
+        mode: "targeted";
+        region: string;
+        lastAnalyzedAt?: string | null;
+        status?:
+          | "SUCCESS"
+          | "UNSUPPORTED_APPLICATION"
+          | "INSUFFICIENT_INVOCATIONS"
+          | null;
+      }
+    | {
+        hostname: string;
+        mode: "targeted";
+        lastAnalyzedAt?: string | null;
+        status?:
+          | "SUCCESS"
+          | "UNSUPPORTED_APPLICATION"
+          | "INSUFFICIENT_INVOCATIONS"
+          | null;
+      }
+    | {
+        host: string;
+        mode: "targeted";
+        lastAnalyzedAt?: string | null;
+        status?:
+          | "SUCCESS"
+          | "UNSUPPORTED_APPLICATION"
+          | "INSUFFICIENT_INVOCATIONS"
+          | null;
+      }
+    | {
+        mode: "targeted";
+        target: (
+          | { region: string }
+          | { hostname: string }
+          | { host: string }
+        )[];
+        lastAnalyzedAt?: string | null;
+        status?:
+          | "SUCCESS"
+          | "UNSUPPORTED_APPLICATION"
+          | "INSUFFICIENT_INVOCATIONS"
+          | null;
+      }
     | null;
-  /** @deprecated Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
-  placementMode?: "smart" | null;
+  /** @deprecated Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
+  placementMode?: "smart" | "targeted" | null;
   /** @deprecated Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   placementStatus?:
     | "SUCCESS"
@@ -2514,11 +3305,45 @@ export const PutDispatchNamespaceScriptContentResponse =
               Schema.Null,
             ]),
           ),
+          traces: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                destinations: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                enabled: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                headSamplingRate: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                persist: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                propagationPolicy: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.Null,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  destinations: "destinations",
+                  enabled: "enabled",
+                  headSamplingRate: "head_sampling_rate",
+                  persist: "persist",
+                  propagationPolicy: "propagation_policy",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             enabled: "enabled",
             headSamplingRate: "head_sampling_rate",
             logs: "logs",
+            traces: "traces",
           }),
         ),
         Schema.Null,
@@ -2527,6 +3352,114 @@ export const PutDispatchNamespaceScriptContentResponse =
     placement: Schema.optional(
       Schema.Union([
         Schema.Union([
+          Schema.Struct({
+            mode: Schema.Literal("targeted"),
+            region: Schema.String,
+            lastAnalyzedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            status: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              mode: "mode",
+              region: "region",
+              lastAnalyzedAt: "last_analyzed_at",
+              status: "status",
+            }),
+          ),
+          Schema.Struct({
+            hostname: Schema.String,
+            mode: Schema.Literal("targeted"),
+            lastAnalyzedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            status: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              hostname: "hostname",
+              mode: "mode",
+              lastAnalyzedAt: "last_analyzed_at",
+              status: "status",
+            }),
+          ),
+          Schema.Struct({
+            host: Schema.String,
+            mode: Schema.Literal("targeted"),
+            lastAnalyzedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            status: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              host: "host",
+              mode: "mode",
+              lastAnalyzedAt: "last_analyzed_at",
+              status: "status",
+            }),
+          ),
+          Schema.Struct({
+            mode: Schema.Literal("targeted"),
+            target: Schema.Array(
+              Schema.Union([
+                Schema.Struct({
+                  region: Schema.String,
+                }),
+                Schema.Struct({
+                  hostname: Schema.String,
+                }),
+                Schema.Struct({
+                  host: Schema.String,
+                }),
+              ]),
+            ),
+            lastAnalyzedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            status: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              mode: "mode",
+              target: "target",
+              lastAnalyzedAt: "last_analyzed_at",
+              status: "status",
+            }),
+          ),
           Schema.Struct({
             mode: Schema.Literal("smart"),
             lastAnalyzedAt: Schema.optional(
@@ -2620,7 +3553,7 @@ export const PutDispatchNamespaceScriptContentResponse =
       ]),
     ),
     placementMode: Schema.optional(
-      Schema.Union([Schema.Literal("smart"), Schema.Null]),
+      Schema.Union([Schema.Literals(["smart", "targeted"]), Schema.Null]),
     ),
     placementStatus: Schema.optional(
       Schema.Union([
@@ -3013,6 +3946,55 @@ export const deleteDispatchNamespaceScriptSecret: API.OperationMethod<
   errors: [],
 }));
 
+export interface BulkUpdateDispatchNamespaceScriptSecretsRequest {
+  dispatchNamespace: string;
+  scriptName: string;
+  /** Path param: Identifier. */
+  accountId: string;
+  /** Body param: Map of secret names to secret values:  - Set to a secret object to create or update. - Set to `null` to delete. - Omit to leave unchanged. */
+  secrets?: Record<string, unknown>;
+  /** Body param: Optional version tags to apply to the new script version. */
+  versionTags?: Record<string, unknown>;
+}
+
+export const BulkUpdateDispatchNamespaceScriptSecretsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    secrets: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    versionTags: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).pipe(
+    Schema.encodeKeys({ secrets: "secrets", versionTags: "version_tags" }),
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatchNamespace}/scripts/{scriptName}/secrets-bulk",
+    }),
+  ) as unknown as Schema.Schema<BulkUpdateDispatchNamespaceScriptSecretsRequest>;
+
+export type BulkUpdateDispatchNamespaceScriptSecretsResponse = Record<
+  string,
+  unknown
+>;
+
+export const BulkUpdateDispatchNamespaceScriptSecretsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown).pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<BulkUpdateDispatchNamespaceScriptSecretsResponse>;
+
+export type BulkUpdateDispatchNamespaceScriptSecretsError = DefaultErrors;
+
+export const bulkUpdateDispatchNamespaceScriptSecrets: API.OperationMethod<
+  BulkUpdateDispatchNamespaceScriptSecretsRequest,
+  BulkUpdateDispatchNamespaceScriptSecretsResponse,
+  BulkUpdateDispatchNamespaceScriptSecretsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BulkUpdateDispatchNamespaceScriptSecretsRequest,
+  output: BulkUpdateDispatchNamespaceScriptSecretsResponse,
+  errors: [],
+}));
+
 // =============================================================================
 // DispatchNamespaceScriptSetting
 // =============================================================================
@@ -3041,18 +4023,26 @@ export interface GetDispatchNamespaceScriptSettingResponse {
   bindings?:
     | (
         | { name: string; type: "ai" }
+        | {
+            instanceName: string;
+            name: string;
+            type: "ai_search";
+            namespace?: string | null;
+          }
+        | { name: string; namespace: string; type: "ai_search_namespace" }
         | { dataset: string; name: string; type: "analytics_engine" }
         | { name: string; type: "assets" }
         | { name: string; type: "browser" }
-        | { id: string; name: string; type: "d1" }
+        | { databaseId: string; name: string; type: "d1"; id?: string | null }
         | { name: string; part: string; type: "data_blob" }
         | {
             name: string;
             namespace: string;
             type: "dispatch_namespace";
             outbound?: {
-              params?: string[] | null;
+              params?: { name: string }[] | null;
               worker?: {
+                entrypoint?: string | null;
                 environment?: string | null;
                 service?: string | null;
               } | null;
@@ -3062,6 +4052,7 @@ export interface GetDispatchNamespaceScriptSettingResponse {
             name: string;
             type: "durable_object_namespace";
             className?: string | null;
+            dispatchNamespace?: string | null;
             environment?: string | null;
             namespaceId?: string | null;
             scriptName?: string | null;
@@ -3074,17 +4065,28 @@ export interface GetDispatchNamespaceScriptSettingResponse {
             versionId?: string | null;
           }
         | { name: string; type: "images" }
-        | { json: string; name: string; type: "json" }
+        | { json: unknown; name: string; type: "json" }
         | { name: string; namespaceId: string; type: "kv_namespace" }
+        | { name: string; type: "media" }
         | { certificateId: string; name: string; type: "mtls_certificate" }
         | { name: string; text: string; type: "plain_text" }
         | { name: string; pipeline: string; type: "pipelines" }
         | { name: string; queueName: string; type: "queue" }
         | {
+            name: string;
+            namespaceId: string;
+            simple: {
+              limit: number;
+              period: number;
+              mitigationTimeout?: number | null;
+            };
+            type: "ratelimit";
+          }
+        | {
             bucketName: string;
             name: string;
             type: "r2_bucket";
-            jurisdiction?: "eu" | "fedramp" | null;
+            jurisdiction?: "eu" | "fedramp" | "fedramp-high" | null;
           }
         | { name: string; type: "secret_text" }
         | {
@@ -3098,6 +4100,7 @@ export interface GetDispatchNamespaceScriptSettingResponse {
             name: string;
             service: string;
             type: "service";
+            entrypoint?: string | null;
             environment?: string | null;
           }
         | { name: string; part: string; type: "text_blob" }
@@ -3109,6 +4112,7 @@ export interface GetDispatchNamespaceScriptSettingResponse {
             storeId: string;
             type: "secrets_store_secret";
           }
+        | { appId: string; name: string; type: "flagship" }
         | {
             algorithm: unknown;
             format: "raw" | "pkcs8" | "spki" | "jwk";
@@ -3133,6 +4137,13 @@ export interface GetDispatchNamespaceScriptSettingResponse {
             scriptName?: string | null;
           }
         | { name: string; part: string; type: "wasm_module" }
+        | { name: string; serviceId: string; type: "vpc_service" }
+        | {
+            name: string;
+            type: "vpc_network";
+            networkId?: string | null;
+            tunnelId?: string | null;
+          }
       )[]
     | null;
   /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
@@ -3140,7 +4151,7 @@ export interface GetDispatchNamespaceScriptSettingResponse {
   /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
   compatibilityFlags?: string[] | null;
   /** Limits to apply for this Worker. */
-  limits?: { cpuMs?: number | null } | null;
+  limits?: { cpuMs?: number | null; subrequests?: number | null } | null;
   /** Whether Logpush is turned on for the Worker. */
   logpush?: boolean | null;
   /** Observability settings for the Worker. */
@@ -3154,13 +4165,31 @@ export interface GetDispatchNamespaceScriptSettingResponse {
       headSamplingRate?: number | null;
       persist?: boolean | null;
     } | null;
+    traces?: {
+      destinations?: string[] | null;
+      enabled?: boolean | null;
+      headSamplingRate?: number | null;
+      persist?: boolean | null;
+      propagationPolicy?: "authenticated" | "accept" | null;
+    } | null;
   } | null;
-  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted place */
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?:
     | { mode: "smart" }
     | { region: string }
     | { hostname: string }
     | { host: string }
+    | { mode: "targeted"; region: string }
+    | { hostname: string; mode: "targeted" }
+    | { host: string; mode: "targeted" }
+    | {
+        mode: "targeted";
+        target: (
+          | { region: string }
+          | { hostname: string }
+          | { host: string }
+        )[];
+      }
     | null;
   /** Tags associated with the Worker. */
   tags?: string[] | null;
@@ -3202,6 +4231,31 @@ export const GetDispatchNamespaceScriptSettingResponse =
             }),
             Schema.Struct({
               name: Schema.String,
+              namespaceId: Schema.String,
+              simple: Schema.Struct({
+                limit: Schema.Number,
+                period: Schema.Number,
+                mitigationTimeout: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  limit: "limit",
+                  period: "period",
+                  mitigationTimeout: "mitigation_timeout",
+                }),
+              ),
+              type: Schema.Literal("ratelimit"),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                namespaceId: "namespace_id",
+                simple: "simple",
+                type: "type",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
               secretName: Schema.String,
               storeId: Schema.String,
               type: Schema.Literal("secrets_store_secret"),
@@ -3214,15 +4268,43 @@ export const GetDispatchNamespaceScriptSettingResponse =
               }),
             ),
             Schema.Struct({
+              instanceName: Schema.String,
+              name: Schema.String,
+              type: Schema.Literal("ai_search"),
+              namespace: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                instanceName: "instance_name",
+                name: "name",
+                type: "type",
+                namespace: "namespace",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              namespace: Schema.String,
+              type: Schema.Literal("ai_search_namespace"),
+            }),
+            Schema.Struct({
               dataset: Schema.String,
               name: Schema.String,
               type: Schema.Literal("analytics_engine"),
             }),
             Schema.Struct({
-              id: Schema.String,
+              databaseId: Schema.String,
               name: Schema.String,
               type: Schema.Literal("d1"),
-            }),
+              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            }).pipe(
+              Schema.encodeKeys({
+                databaseId: "database_id",
+                name: "name",
+                type: "type",
+                id: "id",
+              }),
+            ),
             Schema.Struct({
               name: Schema.String,
               part: Schema.String,
@@ -3236,11 +4318,21 @@ export const GetDispatchNamespaceScriptSettingResponse =
                 Schema.Union([
                   Schema.Struct({
                     params: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.String,
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
                     ),
                     worker: Schema.optional(
                       Schema.Union([
                         Schema.Struct({
+                          entrypoint: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
                           environment: Schema.optional(
                             Schema.Union([Schema.String, Schema.Null]),
                           ),
@@ -3262,7 +4354,7 @@ export const GetDispatchNamespaceScriptSettingResponse =
               type: Schema.Literal("hyperdrive"),
             }),
             Schema.Struct({
-              json: Schema.String,
+              json: Schema.Unknown,
               name: Schema.String,
               type: Schema.Literal("json"),
             }),
@@ -3314,7 +4406,10 @@ export const GetDispatchNamespaceScriptSettingResponse =
               name: Schema.String,
               type: Schema.Literal("r2_bucket"),
               jurisdiction: Schema.optional(
-                Schema.Union([Schema.Literals(["eu", "fedramp"]), Schema.Null]),
+                Schema.Union([
+                  Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                  Schema.Null,
+                ]),
               ),
             }).pipe(
               Schema.encodeKeys({
@@ -3328,6 +4423,9 @@ export const GetDispatchNamespaceScriptSettingResponse =
               name: Schema.String,
               service: Schema.String,
               type: Schema.Literal("service"),
+              entrypoint: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
               environment: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
@@ -3344,6 +4442,17 @@ export const GetDispatchNamespaceScriptSettingResponse =
             }).pipe(
               Schema.encodeKeys({
                 indexName: "index_name",
+                name: "name",
+                type: "type",
+              }),
+            ),
+            Schema.Struct({
+              appId: Schema.String,
+              name: Schema.String,
+              type: Schema.Literal("flagship"),
+            }).pipe(
+              Schema.encodeKeys({
+                appId: "app_id",
                 name: "name",
                 type: "type",
               }),
@@ -3374,6 +4483,17 @@ export const GetDispatchNamespaceScriptSettingResponse =
             }),
             Schema.Struct({
               name: Schema.String,
+              serviceId: Schema.String,
+              type: Schema.Literal("vpc_service"),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                serviceId: "service_id",
+                type: "type",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
               type: Schema.Literal("ai"),
             }),
             Schema.Struct({
@@ -3390,6 +4510,9 @@ export const GetDispatchNamespaceScriptSettingResponse =
               className: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
+              dispatchNamespace: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
               environment: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
@@ -3404,6 +4527,7 @@ export const GetDispatchNamespaceScriptSettingResponse =
                 name: "name",
                 type: "type",
                 className: "class_name",
+                dispatchNamespace: "dispatch_namespace",
                 environment: "environment",
                 namespaceId: "namespace_id",
                 scriptName: "script_name",
@@ -3429,6 +4553,10 @@ export const GetDispatchNamespaceScriptSettingResponse =
             Schema.Struct({
               name: Schema.String,
               type: Schema.Literal("images"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("media"),
             }),
             Schema.Struct({
               name: Schema.String,
@@ -3459,6 +4587,23 @@ export const GetDispatchNamespaceScriptSettingResponse =
               name: Schema.String,
               type: Schema.Literal("version_metadata"),
             }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("vpc_network"),
+              networkId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              tunnelId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                networkId: "network_id",
+                tunnelId: "tunnel_id",
+              }),
+            ),
           ]),
         ),
         Schema.Null,
@@ -3474,7 +4619,12 @@ export const GetDispatchNamespaceScriptSettingResponse =
       Schema.Union([
         Schema.Struct({
           cpuMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }).pipe(Schema.encodeKeys({ cpuMs: "cpu_ms" })),
+          subrequests: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({ cpuMs: "cpu_ms", subrequests: "subrequests" }),
+        ),
         Schema.Null,
       ]),
     ),
@@ -3512,11 +4662,45 @@ export const GetDispatchNamespaceScriptSettingResponse =
               Schema.Null,
             ]),
           ),
+          traces: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                destinations: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                enabled: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                headSamplingRate: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                persist: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                propagationPolicy: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.Null,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  destinations: "destinations",
+                  enabled: "enabled",
+                  headSamplingRate: "head_sampling_rate",
+                  persist: "persist",
+                  propagationPolicy: "propagation_policy",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             enabled: "enabled",
             headSamplingRate: "head_sampling_rate",
             logs: "logs",
+            traces: "traces",
           }),
         ),
         Schema.Null,
@@ -3525,6 +4709,34 @@ export const GetDispatchNamespaceScriptSettingResponse =
     placement: Schema.optional(
       Schema.Union([
         Schema.Union([
+          Schema.Struct({
+            mode: Schema.Literal("targeted"),
+            region: Schema.String,
+          }),
+          Schema.Struct({
+            hostname: Schema.String,
+            mode: Schema.Literal("targeted"),
+          }),
+          Schema.Struct({
+            host: Schema.String,
+            mode: Schema.Literal("targeted"),
+          }),
+          Schema.Struct({
+            mode: Schema.Literal("targeted"),
+            target: Schema.Array(
+              Schema.Union([
+                Schema.Struct({
+                  region: Schema.String,
+                }),
+                Schema.Struct({
+                  hostname: Schema.String,
+                }),
+                Schema.Struct({
+                  host: Schema.String,
+                }),
+              ]),
+            ),
+          }),
           Schema.Struct({
             mode: Schema.Literal("smart"),
           }),
@@ -3603,28 +4815,40 @@ export interface PatchDispatchNamespaceScriptSettingRequest {
   scriptName: string;
   /** Path param: Identifier. */
   accountId: string;
-  /** Body param: */
+  /** Body param: Script and version settings for Workers for Platforms namespace scripts. Same as script-and-version-settings-item but without annotations, which are not supported for namespace scripts. */
   settings?: {
     bindings?: (
       | { name: string; type: "ai" }
+      | {
+          instanceName: string;
+          name: string;
+          type: "ai_search";
+          namespace?: string;
+        }
+      | { name: string; namespace: string; type: "ai_search_namespace" }
       | { dataset: string; name: string; type: "analytics_engine" }
       | { name: string; type: "assets" }
       | { name: string; type: "browser" }
-      | { id: string; name: string; type: "d1" }
+      | { databaseId: string; name: string; type: "d1"; id?: string }
       | { name: string; part: string; type: "data_blob" }
       | {
           name: string;
           namespace: string;
           type: "dispatch_namespace";
           outbound?: {
-            params?: string[];
-            worker?: { environment?: string; service?: string };
+            params?: { name: string }[];
+            worker?: {
+              entrypoint?: string;
+              environment?: string;
+              service?: string;
+            };
           };
         }
       | {
           name: string;
           type: "durable_object_namespace";
           className?: string;
+          dispatchNamespace?: string;
           environment?: string;
           namespaceId?: string;
           scriptName?: string;
@@ -3632,17 +4856,24 @@ export interface PatchDispatchNamespaceScriptSettingRequest {
       | { id: string; name: string; type: "hyperdrive" }
       | { name: string; type: "inherit"; oldName?: string; versionId?: string }
       | { name: string; type: "images" }
-      | { json: string; name: string; type: "json" }
+      | { json: unknown; name: string; type: "json" }
       | { name: string; namespaceId: string; type: "kv_namespace" }
+      | { name: string; type: "media" }
       | { certificateId: string; name: string; type: "mtls_certificate" }
       | { name: string; text: string; type: "plain_text" }
       | { name: string; pipeline: string; type: "pipelines" }
       | { name: string; queueName: string; type: "queue" }
       | {
+          name: string;
+          namespaceId: string;
+          simple: { limit: number; period: number; mitigationTimeout?: number };
+          type: "ratelimit";
+        }
+      | {
           bucketName: string;
           name: string;
           type: "r2_bucket";
-          jurisdiction?: "eu" | "fedramp";
+          jurisdiction?: "eu" | "fedramp" | "fedramp-high";
         }
       | { name: string; text: string; type: "secret_text" }
       | {
@@ -3652,7 +4883,13 @@ export interface PatchDispatchNamespaceScriptSettingRequest {
           allowedSenderAddresses?: string[];
           destinationAddress?: string;
         }
-      | { name: string; service: string; type: "service"; environment?: string }
+      | {
+          name: string;
+          service: string;
+          type: "service";
+          entrypoint?: string;
+          environment?: string;
+        }
       | { name: string; part: string; type: "text_blob" }
       | { indexName: string; name: string; type: "vectorize" }
       | { name: string; type: "version_metadata" }
@@ -3662,6 +4899,7 @@ export interface PatchDispatchNamespaceScriptSettingRequest {
           storeId: string;
           type: "secrets_store_secret";
         }
+      | { appId: string; name: string; type: "flagship" }
       | {
           algorithm: unknown;
           format: "raw" | "pkcs8" | "spki" | "jwk";
@@ -3688,10 +4926,17 @@ export interface PatchDispatchNamespaceScriptSettingRequest {
           scriptName?: string;
         }
       | { name: string; part: string; type: "wasm_module" }
+      | { name: string; serviceId: string; type: "vpc_service" }
+      | {
+          name: string;
+          type: "vpc_network";
+          networkId?: string;
+          tunnelId?: string;
+        }
     )[];
     compatibilityDate?: string;
     compatibilityFlags?: string[];
-    limits?: { cpuMs?: number };
+    limits?: { cpuMs?: number; subrequests?: number };
     logpush?: boolean;
     migrations?:
       | {
@@ -3732,12 +4977,30 @@ export interface PatchDispatchNamespaceScriptSettingRequest {
         headSamplingRate?: number | null;
         persist?: boolean;
       } | null;
+      traces?: {
+        destinations?: string[];
+        enabled?: boolean;
+        headSamplingRate?: number | null;
+        persist?: boolean;
+        propagationPolicy?: "authenticated" | "accept";
+      } | null;
     };
     placement?:
       | { mode: "smart" }
       | { region: string }
       | { hostname: string }
-      | { host: string };
+      | { host: string }
+      | { mode: "targeted"; region: string }
+      | { hostname: string; mode: "targeted" }
+      | { host: string; mode: "targeted" }
+      | {
+          mode: "targeted";
+          target: (
+            | { region: string }
+            | { hostname: string }
+            | { host: string }
+          )[];
+        };
     tags?: string[] | null;
     tailConsumers?:
       | { service: string; environment?: string; namespace?: string }[]
@@ -3788,6 +5051,29 @@ export const PatchDispatchNamespaceScriptSettingRequest =
               ),
               Schema.Struct({
                 name: Schema.String,
+                namespaceId: Schema.String,
+                simple: Schema.Struct({
+                  limit: Schema.Number,
+                  period: Schema.Number,
+                  mitigationTimeout: Schema.optional(Schema.Number),
+                }).pipe(
+                  Schema.encodeKeys({
+                    limit: "limit",
+                    period: "period",
+                    mitigationTimeout: "mitigation_timeout",
+                  }),
+                ),
+                type: Schema.Literal("ratelimit"),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  namespaceId: "namespace_id",
+                  simple: "simple",
+                  type: "type",
+                }),
+              ),
+              Schema.Struct({
+                name: Schema.String,
                 secretName: Schema.String,
                 storeId: Schema.String,
                 type: Schema.Literal("secrets_store_secret"),
@@ -3800,15 +5086,41 @@ export const PatchDispatchNamespaceScriptSettingRequest =
                 }),
               ),
               Schema.Struct({
+                instanceName: Schema.String,
+                name: Schema.String,
+                type: Schema.Literal("ai_search"),
+                namespace: Schema.optional(Schema.String),
+              }).pipe(
+                Schema.encodeKeys({
+                  instanceName: "instance_name",
+                  name: "name",
+                  type: "type",
+                  namespace: "namespace",
+                }),
+              ),
+              Schema.Struct({
+                name: Schema.String,
+                namespace: Schema.String,
+                type: Schema.Literal("ai_search_namespace"),
+              }),
+              Schema.Struct({
                 dataset: Schema.String,
                 name: Schema.String,
                 type: Schema.Literal("analytics_engine"),
               }),
               Schema.Struct({
-                id: Schema.String,
+                databaseId: Schema.String,
                 name: Schema.String,
                 type: Schema.Literal("d1"),
-              }),
+                id: Schema.optional(Schema.String),
+              }).pipe(
+                Schema.encodeKeys({
+                  databaseId: "database_id",
+                  name: "name",
+                  type: "type",
+                  id: "id",
+                }),
+              ),
               Schema.Struct({
                 name: Schema.String,
                 part: Schema.String,
@@ -3820,9 +5132,16 @@ export const PatchDispatchNamespaceScriptSettingRequest =
                 type: Schema.Literal("dispatch_namespace"),
                 outbound: Schema.optional(
                   Schema.Struct({
-                    params: Schema.optional(Schema.Array(Schema.String)),
+                    params: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                        }),
+                      ),
+                    ),
                     worker: Schema.optional(
                       Schema.Struct({
+                        entrypoint: Schema.optional(Schema.String),
                         environment: Schema.optional(Schema.String),
                         service: Schema.optional(Schema.String),
                       }),
@@ -3836,7 +5155,7 @@ export const PatchDispatchNamespaceScriptSettingRequest =
                 type: Schema.Literal("hyperdrive"),
               }),
               Schema.Struct({
-                json: Schema.String,
+                json: Schema.Unknown,
                 name: Schema.String,
                 type: Schema.Literal("json"),
               }),
@@ -3888,7 +5207,7 @@ export const PatchDispatchNamespaceScriptSettingRequest =
                 name: Schema.String,
                 type: Schema.Literal("r2_bucket"),
                 jurisdiction: Schema.optional(
-                  Schema.Literals(["eu", "fedramp"]),
+                  Schema.Literals(["eu", "fedramp", "fedramp-high"]),
                 ),
               }).pipe(
                 Schema.encodeKeys({
@@ -3907,6 +5226,7 @@ export const PatchDispatchNamespaceScriptSettingRequest =
                 name: Schema.String,
                 service: Schema.String,
                 type: Schema.Literal("service"),
+                entrypoint: Schema.optional(Schema.String),
                 environment: Schema.optional(Schema.String),
               }),
               Schema.Struct({
@@ -3921,6 +5241,17 @@ export const PatchDispatchNamespaceScriptSettingRequest =
               }).pipe(
                 Schema.encodeKeys({
                   indexName: "index_name",
+                  name: "name",
+                  type: "type",
+                }),
+              ),
+              Schema.Struct({
+                appId: Schema.String,
+                name: Schema.String,
+                type: Schema.Literal("flagship"),
+              }).pipe(
+                Schema.encodeKeys({
+                  appId: "app_id",
                   name: "name",
                   type: "type",
                 }),
@@ -3947,6 +5278,17 @@ export const PatchDispatchNamespaceScriptSettingRequest =
               }),
               Schema.Struct({
                 name: Schema.String,
+                serviceId: Schema.String,
+                type: Schema.Literal("vpc_service"),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  serviceId: "service_id",
+                  type: "type",
+                }),
+              ),
+              Schema.Struct({
+                name: Schema.String,
                 type: Schema.Literal("ai"),
               }),
               Schema.Struct({
@@ -3961,6 +5303,7 @@ export const PatchDispatchNamespaceScriptSettingRequest =
                 name: Schema.String,
                 type: Schema.Literal("durable_object_namespace"),
                 className: Schema.optional(Schema.String),
+                dispatchNamespace: Schema.optional(Schema.String),
                 environment: Schema.optional(Schema.String),
                 namespaceId: Schema.optional(Schema.String),
                 scriptName: Schema.optional(Schema.String),
@@ -3969,6 +5312,7 @@ export const PatchDispatchNamespaceScriptSettingRequest =
                   name: "name",
                   type: "type",
                   className: "class_name",
+                  dispatchNamespace: "dispatch_namespace",
                   environment: "environment",
                   namespaceId: "namespace_id",
                   scriptName: "script_name",
@@ -3993,6 +5337,10 @@ export const PatchDispatchNamespaceScriptSettingRequest =
               }),
               Schema.Struct({
                 name: Schema.String,
+                type: Schema.Literal("media"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
                 type: Schema.Literal("send_email"),
                 allowedDestinationAddresses: Schema.optional(
                   Schema.Array(Schema.String),
@@ -4014,6 +5362,19 @@ export const PatchDispatchNamespaceScriptSettingRequest =
                 name: Schema.String,
                 type: Schema.Literal("version_metadata"),
               }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("vpc_network"),
+                networkId: Schema.optional(Schema.String),
+                tunnelId: Schema.optional(Schema.String),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  type: "type",
+                  networkId: "network_id",
+                  tunnelId: "tunnel_id",
+                }),
+              ),
             ]),
           ),
         ),
@@ -4022,7 +5383,10 @@ export const PatchDispatchNamespaceScriptSettingRequest =
         limits: Schema.optional(
           Schema.Struct({
             cpuMs: Schema.optional(Schema.Number),
-          }).pipe(Schema.encodeKeys({ cpuMs: "cpu_ms" })),
+            subrequests: Schema.optional(Schema.Number),
+          }).pipe(
+            Schema.encodeKeys({ cpuMs: "cpu_ms", subrequests: "subrequests" }),
+          ),
         ),
         logpush: Schema.optional(Schema.Boolean),
         migrations: Schema.optional(
@@ -4151,16 +5515,69 @@ export const PatchDispatchNamespaceScriptSettingRequest =
                 Schema.Null,
               ]),
             ),
+            traces: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  destinations: Schema.optional(Schema.Array(Schema.String)),
+                  enabled: Schema.optional(Schema.Boolean),
+                  headSamplingRate: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  persist: Schema.optional(Schema.Boolean),
+                  propagationPolicy: Schema.optional(
+                    Schema.Literals(["authenticated", "accept"]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    destinations: "destinations",
+                    enabled: "enabled",
+                    headSamplingRate: "head_sampling_rate",
+                    persist: "persist",
+                    propagationPolicy: "propagation_policy",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
           }).pipe(
             Schema.encodeKeys({
               enabled: "enabled",
               headSamplingRate: "head_sampling_rate",
               logs: "logs",
+              traces: "traces",
             }),
           ),
         ),
         placement: Schema.optional(
           Schema.Union([
+            Schema.Struct({
+              mode: Schema.Literal("targeted"),
+              region: Schema.String,
+            }),
+            Schema.Struct({
+              hostname: Schema.String,
+              mode: Schema.Literal("targeted"),
+            }),
+            Schema.Struct({
+              host: Schema.String,
+              mode: Schema.Literal("targeted"),
+            }),
+            Schema.Struct({
+              mode: Schema.Literal("targeted"),
+              target: Schema.Array(
+                Schema.Union([
+                  Schema.Struct({
+                    region: Schema.String,
+                  }),
+                  Schema.Struct({
+                    hostname: Schema.String,
+                  }),
+                  Schema.Struct({
+                    host: Schema.String,
+                  }),
+                ]),
+              ),
+            }),
             Schema.Struct({
               mode: Schema.Literal("smart"),
             }),
@@ -4222,18 +5639,26 @@ export interface PatchDispatchNamespaceScriptSettingResponse {
   bindings?:
     | (
         | { name: string; type: "ai" }
+        | {
+            instanceName: string;
+            name: string;
+            type: "ai_search";
+            namespace?: string | null;
+          }
+        | { name: string; namespace: string; type: "ai_search_namespace" }
         | { dataset: string; name: string; type: "analytics_engine" }
         | { name: string; type: "assets" }
         | { name: string; type: "browser" }
-        | { id: string; name: string; type: "d1" }
+        | { databaseId: string; name: string; type: "d1"; id?: string | null }
         | { name: string; part: string; type: "data_blob" }
         | {
             name: string;
             namespace: string;
             type: "dispatch_namespace";
             outbound?: {
-              params?: string[] | null;
+              params?: { name: string }[] | null;
               worker?: {
+                entrypoint?: string | null;
                 environment?: string | null;
                 service?: string | null;
               } | null;
@@ -4243,6 +5668,7 @@ export interface PatchDispatchNamespaceScriptSettingResponse {
             name: string;
             type: "durable_object_namespace";
             className?: string | null;
+            dispatchNamespace?: string | null;
             environment?: string | null;
             namespaceId?: string | null;
             scriptName?: string | null;
@@ -4255,17 +5681,28 @@ export interface PatchDispatchNamespaceScriptSettingResponse {
             versionId?: string | null;
           }
         | { name: string; type: "images" }
-        | { json: string; name: string; type: "json" }
+        | { json: unknown; name: string; type: "json" }
         | { name: string; namespaceId: string; type: "kv_namespace" }
+        | { name: string; type: "media" }
         | { certificateId: string; name: string; type: "mtls_certificate" }
         | { name: string; text: string; type: "plain_text" }
         | { name: string; pipeline: string; type: "pipelines" }
         | { name: string; queueName: string; type: "queue" }
         | {
+            name: string;
+            namespaceId: string;
+            simple: {
+              limit: number;
+              period: number;
+              mitigationTimeout?: number | null;
+            };
+            type: "ratelimit";
+          }
+        | {
             bucketName: string;
             name: string;
             type: "r2_bucket";
-            jurisdiction?: "eu" | "fedramp" | null;
+            jurisdiction?: "eu" | "fedramp" | "fedramp-high" | null;
           }
         | { name: string; type: "secret_text" }
         | {
@@ -4279,6 +5716,7 @@ export interface PatchDispatchNamespaceScriptSettingResponse {
             name: string;
             service: string;
             type: "service";
+            entrypoint?: string | null;
             environment?: string | null;
           }
         | { name: string; part: string; type: "text_blob" }
@@ -4290,6 +5728,7 @@ export interface PatchDispatchNamespaceScriptSettingResponse {
             storeId: string;
             type: "secrets_store_secret";
           }
+        | { appId: string; name: string; type: "flagship" }
         | {
             algorithm: unknown;
             format: "raw" | "pkcs8" | "spki" | "jwk";
@@ -4314,6 +5753,13 @@ export interface PatchDispatchNamespaceScriptSettingResponse {
             scriptName?: string | null;
           }
         | { name: string; part: string; type: "wasm_module" }
+        | { name: string; serviceId: string; type: "vpc_service" }
+        | {
+            name: string;
+            type: "vpc_network";
+            networkId?: string | null;
+            tunnelId?: string | null;
+          }
       )[]
     | null;
   /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
@@ -4321,7 +5767,7 @@ export interface PatchDispatchNamespaceScriptSettingResponse {
   /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
   compatibilityFlags?: string[] | null;
   /** Limits to apply for this Worker. */
-  limits?: { cpuMs?: number | null } | null;
+  limits?: { cpuMs?: number | null; subrequests?: number | null } | null;
   /** Whether Logpush is turned on for the Worker. */
   logpush?: boolean | null;
   /** Observability settings for the Worker. */
@@ -4335,13 +5781,31 @@ export interface PatchDispatchNamespaceScriptSettingResponse {
       headSamplingRate?: number | null;
       persist?: boolean | null;
     } | null;
+    traces?: {
+      destinations?: string[] | null;
+      enabled?: boolean | null;
+      headSamplingRate?: number | null;
+      persist?: boolean | null;
+      propagationPolicy?: "authenticated" | "accept" | null;
+    } | null;
   } | null;
-  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted place */
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?:
     | { mode: "smart" }
     | { region: string }
     | { hostname: string }
     | { host: string }
+    | { mode: "targeted"; region: string }
+    | { hostname: string; mode: "targeted" }
+    | { host: string; mode: "targeted" }
+    | {
+        mode: "targeted";
+        target: (
+          | { region: string }
+          | { hostname: string }
+          | { host: string }
+        )[];
+      }
     | null;
   /** Tags associated with the Worker. */
   tags?: string[] | null;
@@ -4383,6 +5847,31 @@ export const PatchDispatchNamespaceScriptSettingResponse =
             }),
             Schema.Struct({
               name: Schema.String,
+              namespaceId: Schema.String,
+              simple: Schema.Struct({
+                limit: Schema.Number,
+                period: Schema.Number,
+                mitigationTimeout: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  limit: "limit",
+                  period: "period",
+                  mitigationTimeout: "mitigation_timeout",
+                }),
+              ),
+              type: Schema.Literal("ratelimit"),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                namespaceId: "namespace_id",
+                simple: "simple",
+                type: "type",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
               secretName: Schema.String,
               storeId: Schema.String,
               type: Schema.Literal("secrets_store_secret"),
@@ -4395,15 +5884,43 @@ export const PatchDispatchNamespaceScriptSettingResponse =
               }),
             ),
             Schema.Struct({
+              instanceName: Schema.String,
+              name: Schema.String,
+              type: Schema.Literal("ai_search"),
+              namespace: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                instanceName: "instance_name",
+                name: "name",
+                type: "type",
+                namespace: "namespace",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              namespace: Schema.String,
+              type: Schema.Literal("ai_search_namespace"),
+            }),
+            Schema.Struct({
               dataset: Schema.String,
               name: Schema.String,
               type: Schema.Literal("analytics_engine"),
             }),
             Schema.Struct({
-              id: Schema.String,
+              databaseId: Schema.String,
               name: Schema.String,
               type: Schema.Literal("d1"),
-            }),
+              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            }).pipe(
+              Schema.encodeKeys({
+                databaseId: "database_id",
+                name: "name",
+                type: "type",
+                id: "id",
+              }),
+            ),
             Schema.Struct({
               name: Schema.String,
               part: Schema.String,
@@ -4417,11 +5934,21 @@ export const PatchDispatchNamespaceScriptSettingResponse =
                 Schema.Union([
                   Schema.Struct({
                     params: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.String,
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
                     ),
                     worker: Schema.optional(
                       Schema.Union([
                         Schema.Struct({
+                          entrypoint: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
                           environment: Schema.optional(
                             Schema.Union([Schema.String, Schema.Null]),
                           ),
@@ -4443,7 +5970,7 @@ export const PatchDispatchNamespaceScriptSettingResponse =
               type: Schema.Literal("hyperdrive"),
             }),
             Schema.Struct({
-              json: Schema.String,
+              json: Schema.Unknown,
               name: Schema.String,
               type: Schema.Literal("json"),
             }),
@@ -4495,7 +6022,10 @@ export const PatchDispatchNamespaceScriptSettingResponse =
               name: Schema.String,
               type: Schema.Literal("r2_bucket"),
               jurisdiction: Schema.optional(
-                Schema.Union([Schema.Literals(["eu", "fedramp"]), Schema.Null]),
+                Schema.Union([
+                  Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                  Schema.Null,
+                ]),
               ),
             }).pipe(
               Schema.encodeKeys({
@@ -4509,6 +6039,9 @@ export const PatchDispatchNamespaceScriptSettingResponse =
               name: Schema.String,
               service: Schema.String,
               type: Schema.Literal("service"),
+              entrypoint: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
               environment: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
@@ -4525,6 +6058,17 @@ export const PatchDispatchNamespaceScriptSettingResponse =
             }).pipe(
               Schema.encodeKeys({
                 indexName: "index_name",
+                name: "name",
+                type: "type",
+              }),
+            ),
+            Schema.Struct({
+              appId: Schema.String,
+              name: Schema.String,
+              type: Schema.Literal("flagship"),
+            }).pipe(
+              Schema.encodeKeys({
+                appId: "app_id",
                 name: "name",
                 type: "type",
               }),
@@ -4555,6 +6099,17 @@ export const PatchDispatchNamespaceScriptSettingResponse =
             }),
             Schema.Struct({
               name: Schema.String,
+              serviceId: Schema.String,
+              type: Schema.Literal("vpc_service"),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                serviceId: "service_id",
+                type: "type",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
               type: Schema.Literal("ai"),
             }),
             Schema.Struct({
@@ -4571,6 +6126,9 @@ export const PatchDispatchNamespaceScriptSettingResponse =
               className: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
+              dispatchNamespace: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
               environment: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
@@ -4585,6 +6143,7 @@ export const PatchDispatchNamespaceScriptSettingResponse =
                 name: "name",
                 type: "type",
                 className: "class_name",
+                dispatchNamespace: "dispatch_namespace",
                 environment: "environment",
                 namespaceId: "namespace_id",
                 scriptName: "script_name",
@@ -4610,6 +6169,10 @@ export const PatchDispatchNamespaceScriptSettingResponse =
             Schema.Struct({
               name: Schema.String,
               type: Schema.Literal("images"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("media"),
             }),
             Schema.Struct({
               name: Schema.String,
@@ -4640,6 +6203,23 @@ export const PatchDispatchNamespaceScriptSettingResponse =
               name: Schema.String,
               type: Schema.Literal("version_metadata"),
             }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("vpc_network"),
+              networkId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              tunnelId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                networkId: "network_id",
+                tunnelId: "tunnel_id",
+              }),
+            ),
           ]),
         ),
         Schema.Null,
@@ -4655,7 +6235,12 @@ export const PatchDispatchNamespaceScriptSettingResponse =
       Schema.Union([
         Schema.Struct({
           cpuMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }).pipe(Schema.encodeKeys({ cpuMs: "cpu_ms" })),
+          subrequests: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({ cpuMs: "cpu_ms", subrequests: "subrequests" }),
+        ),
         Schema.Null,
       ]),
     ),
@@ -4693,11 +6278,45 @@ export const PatchDispatchNamespaceScriptSettingResponse =
               Schema.Null,
             ]),
           ),
+          traces: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                destinations: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                enabled: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                headSamplingRate: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                persist: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                propagationPolicy: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.Null,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  destinations: "destinations",
+                  enabled: "enabled",
+                  headSamplingRate: "head_sampling_rate",
+                  persist: "persist",
+                  propagationPolicy: "propagation_policy",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             enabled: "enabled",
             headSamplingRate: "head_sampling_rate",
             logs: "logs",
+            traces: "traces",
           }),
         ),
         Schema.Null,
@@ -4706,6 +6325,34 @@ export const PatchDispatchNamespaceScriptSettingResponse =
     placement: Schema.optional(
       Schema.Union([
         Schema.Union([
+          Schema.Struct({
+            mode: Schema.Literal("targeted"),
+            region: Schema.String,
+          }),
+          Schema.Struct({
+            hostname: Schema.String,
+            mode: Schema.Literal("targeted"),
+          }),
+          Schema.Struct({
+            host: Schema.String,
+            mode: Schema.Literal("targeted"),
+          }),
+          Schema.Struct({
+            mode: Schema.Literal("targeted"),
+            target: Schema.Array(
+              Schema.Union([
+                Schema.Struct({
+                  region: Schema.String,
+                }),
+                Schema.Struct({
+                  hostname: Schema.String,
+                }),
+                Schema.Struct({
+                  host: Schema.String,
+                }),
+              ]),
+            ),
+          }),
           Schema.Struct({
             mode: Schema.Literal("smart"),
           }),

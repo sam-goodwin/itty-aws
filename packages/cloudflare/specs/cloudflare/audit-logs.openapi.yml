@@ -37,7 +37,7 @@ paths:
         - name: action
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -47,7 +47,7 @@ paths:
         - name: actor
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:
@@ -96,7 +96,7 @@ paths:
         - name: zone
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: object
             properties:

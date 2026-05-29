@@ -76,7 +76,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -98,7 +98,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 warp_devices:
                   type: array
                   items:
@@ -119,7 +119,7 @@ paths:
                       - id
                       - name
                       - router_ip
-                  description: "Body param:"
+                  description: Body param
               required:
                 - default_sampling
                 - name
@@ -180,7 +180,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -202,7 +202,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 warp_devices:
                   type: array
                   items:
@@ -223,7 +223,7 @@ paths:
                       - id
                       - name
                       - router_ip
-                  description: "Body param:"
+                  description: Body param
               required:
                 - default_sampling
                 - name
@@ -283,7 +283,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -305,7 +305,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Body param:"
+                  description: Body param
                 warp_devices:
                   type: array
                   items:
@@ -326,7 +326,7 @@ paths:
                       - id
                       - name
                       - router_ip
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -517,6 +517,9 @@ paths:
               schema:
                 type: object
                 properties:
+                  id:
+                    type: string
+                    description: The id of the rule. Must be unique.
                   automatic_advertisement:
                     oneOf:
                       - type: boolean
@@ -542,9 +545,6 @@ paths:
                       - zscore
                       - advanced_ddos
                     description: MNM rule type.
-                  id:
-                    type: string
-                    description: The id of the rule. Must be unique.
                   bandwidth_threshold:
                     type: number
                     description: The number of bits per second for the rule. When this value is
@@ -595,6 +595,7 @@ paths:
                     nullable: true
                     description: Target of the zscore rule analysis.
                 required:
+                  - id
                   - automatic_advertisement
                   - name
                   - prefixes
@@ -606,7 +607,8 @@ paths:
         const magicNetworkMonitoringRule = await
         client.magicNetworkMonitoring.rules.edit(
         '2890e6fa406311ed9b5a23f70f6fb8cf', { account_id:
-        '6f91088a406011ed95aed352566e8d4c' }, ); ```"
+        '6f91088a406011ed95aed352566e8d4c', automatic_advertisement: true, name:
+        'my_rule_1', prefixes: ['203.0.113.1/32'], type: 'zscore', }, ); ```"
       parameters:
         - name: ruleId
           in: path
@@ -616,11 +618,11 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
-        required: false
+        required: true
         content:
           application/json:
             schema:
@@ -634,7 +636,25 @@ paths:
                     automatically advertise the IP Prefixes within the rule via
                     Magic Transit when the rule is triggered. Only available for
                     users of Magic Transit."
-                bandwidth:
+                name:
+                  type: string
+                  description: "Body param: The name of the rule. Must be unique. Supports
+                    characters A-Z, a-z, 0-9, underscore (\\_), dash (-), period
+                    (.), and tilde (~). You can’t have a space in the rule name.
+                    Max 256 characters."
+                prefixes:
+                  type: array
+                  items:
+                    type: string
+                  description: Body param
+                type:
+                  type: string
+                  enum:
+                    - threshold
+                    - zscore
+                    - advanced_ddos
+                  description: "Body param: MNM rule type."
+                bandwidth_threshold:
                   type: number
                   description: "Body param: The number of bits per second for the rule. When this
                     value is exceeded for the set duration, an alert
@@ -654,22 +674,40 @@ paths:
                     exceeded to send an alert notification. The final value must
                     be equivalent to one of the following 8 values
                     ["1m","5m","10m","15m","20m","30m","45m","60m"].'
-                name:
-                  type: string
-                  description: "Body param: The name of the rule. Must be unique. Supports
-                    characters A-Z, a-z, 0-9, underscore (\\_), dash (-), period
-                    (.), and tilde (~). You can’t have a space in the rule name.
-                    Max 256 characters."
                 packet_threshold:
                   type: number
                   description: "Body param: The number of packets per second for the rule. When
                     this value is exceeded for the set duration, an alert
                     notification is sent. Minimum of 1 and no maximum."
-                prefixes:
-                  type: array
-                  items:
-                    type: string
-                  description: "Body param:"
+                prefix_match:
+                  type: string
+                  enum:
+                    - exact
+                    - subnet
+                    - supernet
+                  nullable: true
+                  description: "Body param: Prefix match type to be applied for a prefix auto
+                    advertisement when using an advanced_ddos rule."
+                zscore_sensitivity:
+                  type: string
+                  enum:
+                    - low
+                    - medium
+                    - high
+                  nullable: true
+                  description: "Body param: Level of sensitivity set for zscore rules."
+                zscore_target:
+                  type: string
+                  enum:
+                    - bits
+                    - packets
+                  nullable: true
+                  description: "Body param: Target of the zscore rule analysis."
+              required:
+                - automatic_advertisement
+                - name
+                - prefixes
+                - type
       responses:
         "200":
           description: Success
@@ -678,6 +716,9 @@ paths:
               schema:
                 type: object
                 properties:
+                  id:
+                    type: string
+                    description: The id of the rule. Must be unique.
                   automatic_advertisement:
                     oneOf:
                       - type: boolean
@@ -703,9 +744,6 @@ paths:
                       - zscore
                       - advanced_ddos
                     description: MNM rule type.
-                  id:
-                    type: string
-                    description: The id of the rule. Must be unique.
                   bandwidth_threshold:
                     type: number
                     description: The number of bits per second for the rule. When this value is
@@ -756,6 +794,7 @@ paths:
                     nullable: true
                     description: Target of the zscore rule analysis.
                 required:
+                  - id
                   - automatic_advertisement
                   - name
                   - prefixes
@@ -787,6 +826,9 @@ paths:
               schema:
                 type: object
                 properties:
+                  id:
+                    type: string
+                    description: The id of the rule. Must be unique.
                   automatic_advertisement:
                     oneOf:
                       - type: boolean
@@ -812,9 +854,6 @@ paths:
                       - zscore
                       - advanced_ddos
                     description: MNM rule type.
-                  id:
-                    type: string
-                    description: The id of the rule. Must be unique.
                   bandwidth_threshold:
                     type: number
                     description: The number of bits per second for the rule. When this value is
@@ -865,6 +904,7 @@ paths:
                     nullable: true
                     description: Target of the zscore rule analysis.
                 required:
+                  - id
                   - automatic_advertisement
                   - name
                   - prefixes
@@ -892,6 +932,9 @@ paths:
                 oneOf:
                   - type: object
                     properties:
+                      id:
+                        type: string
+                        description: The id of the rule. Must be unique.
                       automatic_advertisement:
                         oneOf:
                           - type: boolean
@@ -917,9 +960,6 @@ paths:
                           - zscore
                           - advanced_ddos
                         description: MNM rule type.
-                      id:
-                        type: string
-                        description: The id of the rule. Must be unique.
                       bandwidth_threshold:
                         type: number
                         description: The number of bits per second for the rule. When this value is
@@ -970,6 +1010,7 @@ paths:
                         nullable: true
                         description: Target of the zscore rule analysis.
                     required:
+                      - id
                       - automatic_advertisement
                       - name
                       - prefixes
@@ -982,13 +1023,13 @@ paths:
         supports creating a single rule per API request.  @example ```ts const
         magicNetworkMonitoringRule = await
         client.magicNetworkMonitoring.rules.create({ account_id:
-        '6f91088a406011ed95aed352566e8d4c', duration: '1m', name: 'my_rule_1',
-        }); ```"
+        '6f91088a406011ed95aed352566e8d4c', automatic_advertisement: true, name:
+        'my_rule_1', prefixes: ['203.0.113.1/32'], type: 'zscore', }); ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -998,6 +1039,37 @@ paths:
             schema:
               type: object
               properties:
+                automatic_advertisement:
+                  oneOf:
+                    - type: boolean
+                  nullable: true
+                  description: "Body param: Toggle on if you would like Cloudflare to
+                    automatically advertise the IP Prefixes within the rule via
+                    Magic Transit when the rule is triggered. Only available for
+                    users of Magic Transit."
+                name:
+                  type: string
+                  description: "Body param: The name of the rule. Must be unique. Supports
+                    characters A-Z, a-z, 0-9, underscore (\\_), dash (-), period
+                    (.), and tilde (~). You can’t have a space in the rule name.
+                    Max 256 characters."
+                prefixes:
+                  type: array
+                  items:
+                    type: string
+                  description: Body param
+                type:
+                  type: string
+                  enum:
+                    - threshold
+                    - zscore
+                    - advanced_ddos
+                  description: "Body param: MNM rule type."
+                bandwidth_threshold:
+                  type: number
+                  description: "Body param: The number of bits per second for the rule. When this
+                    value is exceeded for the set duration, an alert
+                    notification is sent. Minimum of 1 and no maximum."
                 duration:
                   type: string
                   enum:
@@ -1013,38 +1085,40 @@ paths:
                     exceeded to send an alert notification. The final value must
                     be equivalent to one of the following 8 values
                     ["1m","5m","10m","15m","20m","30m","45m","60m"].'
-                name:
-                  type: string
-                  description: "Body param: The name of the rule. Must be unique. Supports
-                    characters A-Z, a-z, 0-9, underscore (\\_), dash (-), period
-                    (.), and tilde (~). You can’t have a space in the rule name.
-                    Max 256 characters."
-                automatic_advertisement:
-                  oneOf:
-                    - type: boolean
-                  nullable: true
-                  description: "Body param: Toggle on if you would like Cloudflare to
-                    automatically advertise the IP Prefixes within the rule via
-                    Magic Transit when the rule is triggered. Only available for
-                    users of Magic Transit."
-                bandwidth:
-                  type: number
-                  description: "Body param: The number of bits per second for the rule. When this
-                    value is exceeded for the set duration, an alert
-                    notification is sent. Minimum of 1 and no maximum."
                 packet_threshold:
                   type: number
                   description: "Body param: The number of packets per second for the rule. When
                     this value is exceeded for the set duration, an alert
                     notification is sent. Minimum of 1 and no maximum."
-                prefixes:
-                  type: array
-                  items:
-                    type: string
-                  description: "Body param:"
+                prefix_match:
+                  type: string
+                  enum:
+                    - exact
+                    - subnet
+                    - supernet
+                  nullable: true
+                  description: "Body param: Prefix match type to be applied for a prefix auto
+                    advertisement when using an advanced_ddos rule."
+                zscore_sensitivity:
+                  type: string
+                  enum:
+                    - low
+                    - medium
+                    - high
+                  nullable: true
+                  description: "Body param: Level of sensitivity set for zscore rules."
+                zscore_target:
+                  type: string
+                  enum:
+                    - bits
+                    - packets
+                  nullable: true
+                  description: "Body param: Target of the zscore rule analysis."
               required:
-                - duration
+                - automatic_advertisement
                 - name
+                - prefixes
+                - type
       responses:
         "200":
           description: Success
@@ -1053,6 +1127,9 @@ paths:
               schema:
                 type: object
                 properties:
+                  id:
+                    type: string
+                    description: The id of the rule. Must be unique.
                   automatic_advertisement:
                     oneOf:
                       - type: boolean
@@ -1078,9 +1155,6 @@ paths:
                       - zscore
                       - advanced_ddos
                     description: MNM rule type.
-                  id:
-                    type: string
-                    description: The id of the rule. Must be unique.
                   bandwidth_threshold:
                     type: number
                     description: The number of bits per second for the rule. When this value is
@@ -1131,6 +1205,7 @@ paths:
                     nullable: true
                     description: Target of the zscore rule analysis.
                 required:
+                  - id
                   - automatic_advertisement
                   - name
                   - prefixes
@@ -1141,13 +1216,13 @@ paths:
       description: "Update network monitoring rules for account.  @example ```ts const
         magicNetworkMonitoringRule = await
         client.magicNetworkMonitoring.rules.update({ account_id:
-        '6f91088a406011ed95aed352566e8d4c', duration: '1m', name: 'my_rule_1',
-        }); ```"
+        '6f91088a406011ed95aed352566e8d4c', automatic_advertisement: true, name:
+        'my_rule_1', prefixes: ['203.0.113.1/32'], type: 'zscore', }); ```"
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -1157,6 +1232,37 @@ paths:
             schema:
               type: object
               properties:
+                automatic_advertisement:
+                  oneOf:
+                    - type: boolean
+                  nullable: true
+                  description: "Body param: Toggle on if you would like Cloudflare to
+                    automatically advertise the IP Prefixes within the rule via
+                    Magic Transit when the rule is triggered. Only available for
+                    users of Magic Transit."
+                name:
+                  type: string
+                  description: "Body param: The name of the rule. Must be unique. Supports
+                    characters A-Z, a-z, 0-9, underscore (\\_), dash (-), period
+                    (.), and tilde (~). You can’t have a space in the rule name.
+                    Max 256 characters."
+                prefixes:
+                  type: array
+                  items:
+                    type: string
+                  description: Body param
+                type:
+                  type: string
+                  enum:
+                    - threshold
+                    - zscore
+                    - advanced_ddos
+                  description: "Body param: MNM rule type."
+                bandwidth_threshold:
+                  type: number
+                  description: "Body param: The number of bits per second for the rule. When this
+                    value is exceeded for the set duration, an alert
+                    notification is sent. Minimum of 1 and no maximum."
                 duration:
                   type: string
                   enum:
@@ -1172,41 +1278,40 @@ paths:
                     exceeded to send an alert notification. The final value must
                     be equivalent to one of the following 8 values
                     ["1m","5m","10m","15m","20m","30m","45m","60m"].'
-                name:
-                  type: string
-                  description: "Body param: The name of the rule. Must be unique. Supports
-                    characters A-Z, a-z, 0-9, underscore (\\_), dash (-), period
-                    (.), and tilde (~). You can’t have a space in the rule name.
-                    Max 256 characters."
-                id:
-                  type: string
-                  description: "Body param: The id of the rule. Must be unique."
-                automatic_advertisement:
-                  oneOf:
-                    - type: boolean
-                  nullable: true
-                  description: "Body param: Toggle on if you would like Cloudflare to
-                    automatically advertise the IP Prefixes within the rule via
-                    Magic Transit when the rule is triggered. Only available for
-                    users of Magic Transit."
-                bandwidth:
-                  type: number
-                  description: "Body param: The number of bits per second for the rule. When this
-                    value is exceeded for the set duration, an alert
-                    notification is sent. Minimum of 1 and no maximum."
                 packet_threshold:
                   type: number
                   description: "Body param: The number of packets per second for the rule. When
                     this value is exceeded for the set duration, an alert
                     notification is sent. Minimum of 1 and no maximum."
-                prefixes:
-                  type: array
-                  items:
-                    type: string
-                  description: "Body param:"
+                prefix_match:
+                  type: string
+                  enum:
+                    - exact
+                    - subnet
+                    - supernet
+                  nullable: true
+                  description: "Body param: Prefix match type to be applied for a prefix auto
+                    advertisement when using an advanced_ddos rule."
+                zscore_sensitivity:
+                  type: string
+                  enum:
+                    - low
+                    - medium
+                    - high
+                  nullable: true
+                  description: "Body param: Level of sensitivity set for zscore rules."
+                zscore_target:
+                  type: string
+                  enum:
+                    - bits
+                    - packets
+                  nullable: true
+                  description: "Body param: Target of the zscore rule analysis."
               required:
-                - duration
+                - automatic_advertisement
                 - name
+                - prefixes
+                - type
       responses:
         "200":
           description: Success
@@ -1215,6 +1320,9 @@ paths:
               schema:
                 type: object
                 properties:
+                  id:
+                    type: string
+                    description: The id of the rule. Must be unique.
                   automatic_advertisement:
                     oneOf:
                       - type: boolean
@@ -1240,9 +1348,6 @@ paths:
                       - zscore
                       - advanced_ddos
                     description: MNM rule type.
-                  id:
-                    type: string
-                    description: The id of the rule. Must be unique.
                   bandwidth_threshold:
                     type: number
                     description: The number of bits per second for the rule. When this value is
@@ -1293,6 +1398,7 @@ paths:
                     nullable: true
                     description: Target of the zscore rule analysis.
                 required:
+                  - id
                   - automatic_advertisement
                   - name
                   - prefixes
@@ -1314,7 +1420,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:

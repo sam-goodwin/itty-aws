@@ -105,7 +105,8 @@ paths:
                               - 128
                               - 256
                               - 512
-                            description: Sets the target file size for compaction in megabytes.
+                            description: Sets the target file size for compaction in megabytes. Defaults to
+                              "128".
                         required:
                           - state
                           - target_size_mb
@@ -119,10 +120,12 @@ paths:
                               snapshots older than this age. Format:
                               <number><unit> where unit is d (days), h (hours),
                               m (minutes), or s (seconds). Examples: "7d" (7
-                              days), "48h" (48 hours), "2880m" (2,880 minutes).'
+                              days), "48h" (48 hours), "2880m" (2,880 minutes).
+                              Defaults to "7d".'
                           min_snapshots_to_keep:
                             type: number
-                            description: Specifies the minimum number of snapshots to retain.
+                            description: Specifies the minimum number of snapshots to retain. Defaults to
+                              100.
                           state:
                             type: string
                             enum:
@@ -235,7 +238,8 @@ paths:
                           - 128
                           - 256
                           - 512
-                        description: Sets the target file size for compaction in megabytes.
+                        description: Sets the target file size for compaction in megabytes. Defaults to
+                          "128".
                     required:
                       - state
                       - target_size_mb
@@ -249,10 +253,11 @@ paths:
                           snapshots older than this age. Format: <number><unit>
                           where unit is d (days), h (hours), m (minutes), or s
                           (seconds). Examples: "7d" (7 days), "48h" (48 hours),
-                          "2880m" (2,880 minutes).'
+                          "2880m" (2,880 minutes). Defaults to "7d".'
                       min_snapshots_to_keep:
                         type: number
-                        description: Specifies the minimum number of snapshots to retain.
+                        description: Specifies the minimum number of snapshots to retain. Defaults to
+                          100.
                       state:
                         type: string
                         enum:
@@ -614,7 +619,8 @@ paths:
                               - 128
                               - 256
                               - 512
-                            description: Sets the target file size for compaction in megabytes.
+                            description: Sets the target file size for compaction in megabytes. Defaults to
+                              "128".
                         required:
                           - state
                           - target_size_mb
@@ -628,10 +634,12 @@ paths:
                               snapshots older than this age. Format:
                               <number><unit> where unit is d (days), h (hours),
                               m (minutes), or s (seconds). Examples: "7d" (7
-                              days), "48h" (48 hours), "2880m" (2,880 minutes).'
+                              days), "48h" (48 hours), "2880m" (2,880 minutes).
+                              Defaults to "7d".'
                           min_snapshots_to_keep:
                             type: number
-                            description: Specifies the minimum number of snapshots to retain.
+                            description: Specifies the minimum number of snapshots to retain. Defaults to
+                              100.
                           state:
                             type: string
                             enum:
@@ -755,7 +763,8 @@ paths:
                           - 128
                           - 256
                           - 512
-                        description: Sets the target file size for compaction in megabytes.
+                        description: Sets the target file size for compaction in megabytes. Defaults to
+                          "128".
                     required:
                       - state
                       - target_size_mb
@@ -769,10 +778,11 @@ paths:
                           snapshots older than this age. Format: <number><unit>
                           where unit is d (days), h (hours), m (minutes), or s
                           (seconds). Examples: "7d" (7 days), "48h" (48 hours),
-                          "2880m" (2,880 minutes).'
+                          "2880m" (2,880 minutes). Defaults to "7d".'
                       min_snapshots_to_keep:
                         type: number
-                        description: Specifies the minimum number of snapshots to retain.
+                        description: Specifies the minimum number of snapshots to retain. Defaults to
+                          100.
                       state:
                         type: string
                         enum:
@@ -864,7 +874,8 @@ paths:
                                   - 128
                                   - 256
                                   - 512
-                                description: Sets the target file size for compaction in megabytes.
+                                description: Sets the target file size for compaction in megabytes. Defaults to
+                                  "128".
                             required:
                               - state
                               - target_size_mb
@@ -879,10 +890,11 @@ paths:
                                   <number><unit> where unit is d (days), h
                                   (hours), m (minutes), or s (seconds).
                                   Examples: "7d" (7 days), "48h" (48 hours),
-                                  "2880m" (2,880 minutes).'
+                                  "2880m" (2,880 minutes). Defaults to "7d".'
                               min_snapshots_to_keep:
                                 type: number
-                                description: Specifies the minimum number of snapshots to retain.
+                                description: Specifies the minimum number of snapshots to retain. Defaults to
+                                  100.
                               state:
                                 type: string
                                 enum:
@@ -978,7 +990,8 @@ paths:
                                         - 128
                                         - 256
                                         - 512
-                                      description: Sets the target file size for compaction in megabytes.
+                                      description: Sets the target file size for compaction in megabytes. Defaults to
+                                        "128".
                                   required:
                                     - state
                                     - target_size_mb
@@ -993,10 +1006,12 @@ paths:
                                         <number><unit> where unit is d (days), h
                                         (hours), m (minutes), or s (seconds).
                                         Examples: "7d" (7 days), "48h" (48
-                                        hours), "2880m" (2,880 minutes).'
+                                        hours), "2880m" (2,880 minutes).
+                                        Defaults to "7d".'
                                     min_snapshots_to_keep:
                                       type: number
-                                      description: Specifies the minimum number of snapshots to retain.
+                                      description: Specifies the minimum number of snapshots to retain. Defaults to
+                                        100.
                                     state:
                                       type: string
                                       enum:

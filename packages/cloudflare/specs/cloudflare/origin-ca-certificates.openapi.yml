@@ -8,7 +8,7 @@ x-distilled-service: origin-ca-certificates
 paths:
   /certificates/{certificateId}:
     get:
-      operationId: getOriginCACertificate
+      operationId: getOriginCaCertificate
       description: Get an existing Origin CA certificate by its serial number. You can
         use an Origin CA Key as your User Service Key or an API token when
         calling this endpoint ([see above](#requests)).  @example ```ts const
@@ -35,8 +35,16 @@ paths:
                     type: array
                     items:
                       type: string
-                    description: Array of hostnames or wildcard names (e.g., \ .example.com) bound
-                      to the certificate.
+                    description: Array of hostnames or wildcard names bound to the certificate.
+                      Hostnames must be fully qualified domain names (FQDNs)
+                      belonging to zones on your account (e.g., `example.com` or
+                      `sub.example.com`). Wildcards are supported only as a ` .`
+                      prefix for a single level (e.g., ` .example.com`). Double
+                      wildcards (` . .example.com`) and interior wildcards
+                      (`foo. .example.com`) are not allowed. The wildcard suffix
+                      must be a multi-label domain (` .example.com` is valid,
+                      but ` .com` is not). Unicode/IDN hostnames are accepted
+                      and automatically converted to punycode.
                   request_type:
                     type: string
                     enum:
@@ -73,7 +81,7 @@ paths:
                   - requested_validity
       x-distilled-response-path: result
     delete:
-      operationId: deleteOriginCACertificate
+      operationId: deleteOriginCaCertificate
       description: Revoke an existing Origin CA certificate by its serial number. You
         can use an Origin CA Key as your User Service Key or an API token when
         calling this endpoint ([see above](#requests)).  @example ```ts const
@@ -102,7 +110,7 @@ paths:
       x-distilled-response-path: result
   /certificates:
     get:
-      operationId: listOriginCACertificates
+      operationId: listOriginCaCertificates
       description: "List all existing Origin CA certificates for a given zone. You can
         use an Origin CA Key as your User Service Key or an API token when
         calling this endpoint ([see above](#requests)).  @example ```ts //
@@ -153,8 +161,16 @@ paths:
                     type: array
                     items:
                       type: string
-                    description: Array of hostnames or wildcard names (e.g., \ .example.com) bound
-                      to the certificate.
+                    description: Array of hostnames or wildcard names bound to the certificate.
+                      Hostnames must be fully qualified domain names (FQDNs)
+                      belonging to zones on your account (e.g., `example.com` or
+                      `sub.example.com`). Wildcards are supported only as a ` .`
+                      prefix for a single level (e.g., ` .example.com`). Double
+                      wildcards (` . .example.com`) and interior wildcards
+                      (`foo. .example.com`) are not allowed. The wildcard suffix
+                      must be a multi-label domain (` .example.com` is valid,
+                      but ` .com` is not). Unicode/IDN hostnames are accepted
+                      and automatically converted to punycode.
                   request_type:
                     type: string
                     enum:
@@ -191,7 +207,7 @@ paths:
                   - requested_validity
       x-distilled-pagination-class: OriginCACertificatesV4PagePaginationArray
     post:
-      operationId: createOriginCACertificate
+      operationId: createOriginCaCertificate
       description: "Create an Origin CA certificate. You can use an Origin CA Key as
         your User Service Key or an API token when calling this endpoint ([see
         above](#requests)).  @example ```ts const originCACertificate = await
@@ -210,8 +226,9 @@ paths:
         Mxunu+kez+BDlu7bTT2io0uXMRHue4i6quH\\nyc5ibxvbJMjR7dqbcanVE10/34oprzXQs\
         J/VmSuZNXtjbtSKDlmcpw6To/eeAJ+J\\nhXykcUihvHyG4A1m2R6qpANBjnA0pHexfwM/S\
         gfzvpbvUg0T1ubmer8BgTwCKIWs\\ndcWYTthM51JIqRBfNqy4QcBnX+GY05yltEEswQI55\
-        wdiS3CjTTA67sdbcQ==\\n-----END CERTIFICATE REQUEST-----', hostnames:
-        ['example.com', ' .example.com'], request_type: 'origin-rsa', }); ```"
+        wdiS3CjTTA67sdbcQ==\\n-----END CERTIFICATE REQUEST-----', hostnames: [
+        'example.com', ' .example.com', 'sub.example.com', ], request_type:
+        'origin-rsa', }); ```"
       requestBody:
         required: true
         content:
@@ -226,8 +243,16 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: Array of hostnames or wildcard names (e.g., \ .example.com) bound
-                    to the certificate.
+                  description: Array of hostnames or wildcard names bound to the certificate.
+                    Hostnames must be fully qualified domain names (FQDNs)
+                    belonging to zones on your account (e.g., `example.com` or
+                    `sub.example.com`). Wildcards are supported only as a ` .`
+                    prefix for a single level (e.g., ` .example.com`). Double
+                    wildcards (` . .example.com`) and interior wildcards (`foo.
+                    .example.com`) are not allowed. The wildcard suffix must be
+                    a multi-label domain (` .example.com` is valid, but ` .com`
+                    is not). Unicode/IDN hostnames are accepted and
+                    automatically converted to punycode.
                 request_type:
                   type: string
                   enum:
@@ -267,8 +292,16 @@ paths:
                     type: array
                     items:
                       type: string
-                    description: Array of hostnames or wildcard names (e.g., \ .example.com) bound
-                      to the certificate.
+                    description: Array of hostnames or wildcard names bound to the certificate.
+                      Hostnames must be fully qualified domain names (FQDNs)
+                      belonging to zones on your account (e.g., `example.com` or
+                      `sub.example.com`). Wildcards are supported only as a ` .`
+                      prefix for a single level (e.g., ` .example.com`). Double
+                      wildcards (` . .example.com`) and interior wildcards
+                      (`foo. .example.com`) are not allowed. The wildcard suffix
+                      must be a multi-label domain (` .example.com` is valid,
+                      but ` .com` is not). Unicode/IDN hostnames are accepted
+                      and automatically converted to punycode.
                   request_type:
                     type: string
                     enum:

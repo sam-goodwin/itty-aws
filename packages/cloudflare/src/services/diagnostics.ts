@@ -391,11 +391,11 @@ export const deleteEndpointHealthcheck: API.OperationMethod<
 export interface CreateTracerouteRequest {
   /** Path param: Identifier */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   targets: string[];
   /** Body param: If no source colo names specified, all colos will be used. China colos are unavailable for traceroutes. */
   colos?: string[];
-  /** Body param: */
+  /** Body param */
   options?: {
     maxTtl?: number;
     packetType?: "icmp" | "tcp" | "udp" | "gre" | "gre+icmp";

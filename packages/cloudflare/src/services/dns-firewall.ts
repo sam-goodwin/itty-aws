@@ -574,7 +574,7 @@ export interface CreateDnsFirewallRequest {
   accountId: string;
   /** Body param: DNS Firewall cluster name */
   name: string;
-  /** Body param: */
+  /** Body param */
   upstreamIps: string[];
   /** Body param: Attack mitigation settings */
   attackMitigation?: {
@@ -761,7 +761,7 @@ export interface PatchDnsFirewallRequest {
   ratelimit?: number | null;
   /** Body param: Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt) */
   retries?: number;
-  /** Body param: */
+  /** Body param */
   upstreamIps?: string[];
 }
 

@@ -23,9 +23,9 @@ export interface ListAuditLogsRequest {
   perPage?: number;
   /** Query param: Finds a specific log by its ID. */
   id?: string;
-  /** Query param: */
+  /** Query param */
   action?: { type?: string };
-  /** Query param: */
+  /** Query param */
   actor?: { email?: string; ip?: string };
   /** Query param: Limits the returned results to logs older than the specified date. A `full-date` that conforms to RFC3339. */
   before?: unknown;
@@ -37,7 +37,7 @@ export interface ListAuditLogsRequest {
   hideUserLogs?: boolean;
   /** Query param: Limits the returned results to logs newer than the specified date. A `full-date` that conforms to RFC3339. */
   since?: unknown;
-  /** Query param: */
+  /** Query param */
   zone?: { name?: string };
 }
 

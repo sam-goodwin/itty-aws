@@ -634,6 +634,7 @@ paths:
                     enum:
                       - allow
                       - log
+                      - add_reporting_directives
                     description: The action to take if the expression matches
                   description:
                     type: string
@@ -686,6 +687,7 @@ paths:
                   enum:
                     - allow
                     - log
+                    - add_reporting_directives
                   description: "Body param: The action to take if the expression matches"
                 description:
                   type: string
@@ -717,6 +719,7 @@ paths:
                     enum:
                       - allow
                       - log
+                      - add_reporting_directives
                     description: The action to take if the expression matches
                   description:
                     type: string
@@ -789,6 +792,7 @@ paths:
                     enum:
                       - allow
                       - log
+                      - add_reporting_directives
                     description: The action to take if the expression matches
                   description:
                     type: string
@@ -838,6 +842,7 @@ paths:
                   enum:
                     - allow
                     - log
+                    - add_reporting_directives
                   description: "Body param: The action to take if the expression matches"
                 description:
                   type: string
@@ -875,6 +880,7 @@ paths:
                     enum:
                       - allow
                       - log
+                      - add_reporting_directives
                     description: The action to take if the expression matches
                   description:
                     type: string
@@ -948,7 +954,9 @@ paths:
                     oneOf:
                       - type: number
                     nullable: true
-                    description: The dataflow score of the JavaScript content.
+                    description: "@deprecated The dataflow score of the JavaScript content. This
+                      field has been deprecated in favour of
+                      js_integrity_score."
                   domain_reported_malicious:
                     type: boolean
                   fetched_at:
@@ -990,7 +998,9 @@ paths:
                     oneOf:
                       - type: number
                     nullable: true
-                    description: The obfuscation score of the JavaScript content.
+                    description: "@deprecated The obfuscation score of the JavaScript content. This
+                      field has been deprecated in favour of
+                      js_integrity_score."
                   page_urls:
                     type: array
                     items:
@@ -1012,7 +1022,9 @@ paths:
                               oneOf:
                                 - type: number
                               nullable: true
-                              description: The dataflow score of the JavaScript content.
+                              description: "@deprecated The dataflow score of the JavaScript content. This
+                                field has been deprecated in favour of
+                                js_integrity_score."
                             fetched_at:
                               oneOf:
                                 - type: string
@@ -1042,7 +1054,9 @@ paths:
                               oneOf:
                                 - type: number
                               nullable: true
-                              description: The obfuscation score of the JavaScript content.
+                              description: "@deprecated The obfuscation score of the JavaScript content. This
+                                field has been deprecated in favour of
+                                js_integrity_score."
                     nullable: true
                 required:
                   - id
@@ -1208,7 +1222,9 @@ paths:
                     oneOf:
                       - type: number
                     nullable: true
-                    description: The dataflow score of the JavaScript content.
+                    description: "@deprecated The dataflow score of the JavaScript content. This
+                      field has been deprecated in favour of
+                      js_integrity_score."
                   domain_reported_malicious:
                     type: boolean
                   fetched_at:
@@ -1250,7 +1266,9 @@ paths:
                     oneOf:
                       - type: number
                     nullable: true
-                    description: The obfuscation score of the JavaScript content.
+                    description: "@deprecated The obfuscation score of the JavaScript content. This
+                      field has been deprecated in favour of
+                      js_integrity_score."
                   page_urls:
                     type: array
                     items:

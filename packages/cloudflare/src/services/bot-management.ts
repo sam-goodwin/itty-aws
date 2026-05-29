@@ -32,6 +32,7 @@ export type GetBotManagementResponse =
   | {
       aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
       cfRobotsVariant?: "off" | "policy_only" | null;
+      contentBotsProtection?: "block" | "disabled" | null;
       crawlerProtection?: "enabled" | "disabled" | null;
       enableJs?: boolean | null;
       fightMode?: boolean | null;
@@ -49,6 +50,7 @@ export type GetBotManagementResponse =
   | {
       aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
       cfRobotsVariant?: "off" | "policy_only" | null;
+      contentBotsProtection?: "block" | "disabled" | null;
       crawlerProtection?: "enabled" | "disabled" | null;
       enableJs?: boolean | null;
       isRobotsTxtManaged?: boolean | null;
@@ -65,6 +67,7 @@ export type GetBotManagementResponse =
   | {
       aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
       cfRobotsVariant?: "off" | "policy_only" | null;
+      contentBotsProtection?: "block" | "disabled" | null;
       crawlerProtection?: "enabled" | "disabled" | null;
       enableJs?: boolean | null;
       isRobotsTxtManaged?: boolean | null;
@@ -81,6 +84,7 @@ export type GetBotManagementResponse =
       autoUpdateModel?: boolean | null;
       bmCookieEnabled?: boolean | null;
       cfRobotsVariant?: "off" | "policy_only" | null;
+      contentBotsProtection?: "block" | "disabled" | null;
       crawlerProtection?: "enabled" | "disabled" | null;
       enableJs?: boolean | null;
       isRobotsTxtManaged?: boolean | null;
@@ -107,6 +111,9 @@ export const GetBotManagementResponse =
       ),
       cfRobotsVariant: Schema.optional(
         Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.Null]),
+      ),
+      contentBotsProtection: Schema.optional(
+        Schema.Union([Schema.Literals(["block", "disabled"]), Schema.Null]),
       ),
       crawlerProtection: Schema.optional(
         Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
@@ -157,6 +164,7 @@ export const GetBotManagementResponse =
       Schema.encodeKeys({
         aiBotsProtection: "ai_bots_protection",
         cfRobotsVariant: "cf_robots_variant",
+        contentBotsProtection: "content_bots_protection",
         crawlerProtection: "crawler_protection",
         enableJs: "enable_js",
         fightMode: "fight_mode",
@@ -174,6 +182,9 @@ export const GetBotManagementResponse =
       ),
       cfRobotsVariant: Schema.optional(
         Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.Null]),
+      ),
+      contentBotsProtection: Schema.optional(
+        Schema.Union([Schema.Literals(["block", "disabled"]), Schema.Null]),
       ),
       crawlerProtection: Schema.optional(
         Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
@@ -222,6 +233,7 @@ export const GetBotManagementResponse =
       Schema.encodeKeys({
         aiBotsProtection: "ai_bots_protection",
         cfRobotsVariant: "cf_robots_variant",
+        contentBotsProtection: "content_bots_protection",
         crawlerProtection: "crawler_protection",
         enableJs: "enable_js",
         isRobotsTxtManaged: "is_robots_txt_managed",
@@ -242,6 +254,9 @@ export const GetBotManagementResponse =
       ),
       cfRobotsVariant: Schema.optional(
         Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.Null]),
+      ),
+      contentBotsProtection: Schema.optional(
+        Schema.Union([Schema.Literals(["block", "disabled"]), Schema.Null]),
       ),
       crawlerProtection: Schema.optional(
         Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
@@ -288,6 +303,7 @@ export const GetBotManagementResponse =
       Schema.encodeKeys({
         aiBotsProtection: "ai_bots_protection",
         cfRobotsVariant: "cf_robots_variant",
+        contentBotsProtection: "content_bots_protection",
         crawlerProtection: "crawler_protection",
         enableJs: "enable_js",
         isRobotsTxtManaged: "is_robots_txt_managed",
@@ -315,6 +331,9 @@ export const GetBotManagementResponse =
       ),
       cfRobotsVariant: Schema.optional(
         Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.Null]),
+      ),
+      contentBotsProtection: Schema.optional(
+        Schema.Union([Schema.Literals(["block", "disabled"]), Schema.Null]),
       ),
       crawlerProtection: Schema.optional(
         Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
@@ -369,6 +388,7 @@ export const GetBotManagementResponse =
         autoUpdateModel: "auto_update_model",
         bmCookieEnabled: "bm_cookie_enabled",
         cfRobotsVariant: "cf_robots_variant",
+        contentBotsProtection: "content_bots_protection",
         crawlerProtection: "crawler_protection",
         enableJs: "enable_js",
         isRobotsTxtManaged: "is_robots_txt_managed",
@@ -401,6 +421,8 @@ export interface PutBotManagementRequest {
   aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages";
   /** Body param: Specifies the Robots Access Control License variant to use. */
   cfRobotsVariant?: "off" | "policy_only";
+  /** Body param: Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules. */
+  contentBotsProtection?: "block" | "disabled";
   /** Body param: Enable rule to punish AI Scrapers and Crawlers via a link maze. */
   crawlerProtection?: "enabled" | "disabled";
   /** Body param: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/ */
@@ -418,6 +440,9 @@ export const PutBotManagementRequest =
       Schema.Literals(["block", "disabled", "only_on_ad_pages"]),
     ),
     cfRobotsVariant: Schema.optional(Schema.Literals(["off", "policy_only"])),
+    contentBotsProtection: Schema.optional(
+      Schema.Literals(["block", "disabled"]),
+    ),
     crawlerProtection: Schema.optional(
       Schema.Literals(["enabled", "disabled"]),
     ),
@@ -428,6 +453,7 @@ export const PutBotManagementRequest =
     Schema.encodeKeys({
       aiBotsProtection: "ai_bots_protection",
       cfRobotsVariant: "cf_robots_variant",
+      contentBotsProtection: "content_bots_protection",
       crawlerProtection: "crawler_protection",
       enableJs: "enable_js",
       fightMode: "fight_mode",
@@ -440,6 +466,7 @@ export type PutBotManagementResponse =
   | {
       aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
       cfRobotsVariant?: "off" | "policy_only" | null;
+      contentBotsProtection?: "block" | "disabled" | null;
       crawlerProtection?: "enabled" | "disabled" | null;
       enableJs?: boolean | null;
       fightMode?: boolean | null;
@@ -457,6 +484,7 @@ export type PutBotManagementResponse =
   | {
       aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
       cfRobotsVariant?: "off" | "policy_only" | null;
+      contentBotsProtection?: "block" | "disabled" | null;
       crawlerProtection?: "enabled" | "disabled" | null;
       enableJs?: boolean | null;
       isRobotsTxtManaged?: boolean | null;
@@ -473,6 +501,7 @@ export type PutBotManagementResponse =
   | {
       aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
       cfRobotsVariant?: "off" | "policy_only" | null;
+      contentBotsProtection?: "block" | "disabled" | null;
       crawlerProtection?: "enabled" | "disabled" | null;
       enableJs?: boolean | null;
       isRobotsTxtManaged?: boolean | null;
@@ -489,6 +518,7 @@ export type PutBotManagementResponse =
       autoUpdateModel?: boolean | null;
       bmCookieEnabled?: boolean | null;
       cfRobotsVariant?: "off" | "policy_only" | null;
+      contentBotsProtection?: "block" | "disabled" | null;
       crawlerProtection?: "enabled" | "disabled" | null;
       enableJs?: boolean | null;
       isRobotsTxtManaged?: boolean | null;
@@ -515,6 +545,9 @@ export const PutBotManagementResponse =
       ),
       cfRobotsVariant: Schema.optional(
         Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.Null]),
+      ),
+      contentBotsProtection: Schema.optional(
+        Schema.Union([Schema.Literals(["block", "disabled"]), Schema.Null]),
       ),
       crawlerProtection: Schema.optional(
         Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
@@ -565,6 +598,7 @@ export const PutBotManagementResponse =
       Schema.encodeKeys({
         aiBotsProtection: "ai_bots_protection",
         cfRobotsVariant: "cf_robots_variant",
+        contentBotsProtection: "content_bots_protection",
         crawlerProtection: "crawler_protection",
         enableJs: "enable_js",
         fightMode: "fight_mode",
@@ -582,6 +616,9 @@ export const PutBotManagementResponse =
       ),
       cfRobotsVariant: Schema.optional(
         Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.Null]),
+      ),
+      contentBotsProtection: Schema.optional(
+        Schema.Union([Schema.Literals(["block", "disabled"]), Schema.Null]),
       ),
       crawlerProtection: Schema.optional(
         Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
@@ -630,6 +667,7 @@ export const PutBotManagementResponse =
       Schema.encodeKeys({
         aiBotsProtection: "ai_bots_protection",
         cfRobotsVariant: "cf_robots_variant",
+        contentBotsProtection: "content_bots_protection",
         crawlerProtection: "crawler_protection",
         enableJs: "enable_js",
         isRobotsTxtManaged: "is_robots_txt_managed",
@@ -650,6 +688,9 @@ export const PutBotManagementResponse =
       ),
       cfRobotsVariant: Schema.optional(
         Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.Null]),
+      ),
+      contentBotsProtection: Schema.optional(
+        Schema.Union([Schema.Literals(["block", "disabled"]), Schema.Null]),
       ),
       crawlerProtection: Schema.optional(
         Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
@@ -696,6 +737,7 @@ export const PutBotManagementResponse =
       Schema.encodeKeys({
         aiBotsProtection: "ai_bots_protection",
         cfRobotsVariant: "cf_robots_variant",
+        contentBotsProtection: "content_bots_protection",
         crawlerProtection: "crawler_protection",
         enableJs: "enable_js",
         isRobotsTxtManaged: "is_robots_txt_managed",
@@ -723,6 +765,9 @@ export const PutBotManagementResponse =
       ),
       cfRobotsVariant: Schema.optional(
         Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.Null]),
+      ),
+      contentBotsProtection: Schema.optional(
+        Schema.Union([Schema.Literals(["block", "disabled"]), Schema.Null]),
       ),
       crawlerProtection: Schema.optional(
         Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
@@ -777,6 +822,7 @@ export const PutBotManagementResponse =
         autoUpdateModel: "auto_update_model",
         bmCookieEnabled: "bm_cookie_enabled",
         cfRobotsVariant: "cf_robots_variant",
+        contentBotsProtection: "content_bots_protection",
         crawlerProtection: "crawler_protection",
         enableJs: "enable_js",
         isRobotsTxtManaged: "is_robots_txt_managed",

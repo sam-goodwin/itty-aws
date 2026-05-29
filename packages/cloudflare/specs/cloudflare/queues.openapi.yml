@@ -44,10 +44,12 @@ paths:
                         description: A Resource identifier.
                       created_on:
                         type: string
-                      queue_id:
+                      dead_letter_queue:
                         type: string
-                        description: A Resource identifier.
-                      script:
+                        description: Name of the dead letter queue, or empty string if not configured
+                      queue_name:
+                        type: string
+                      script_name:
                         type: string
                         description: Name of a Worker
                       settings:
@@ -83,9 +85,11 @@ paths:
                         description: A Resource identifier.
                       created_on:
                         type: string
-                      queue_id:
+                      dead_letter_queue:
                         type: string
-                        description: A Resource identifier.
+                        description: Name of the dead letter queue, or empty string if not configured
+                      queue_name:
+                        type: string
                       settings:
                         type: object
                         properties:
@@ -124,7 +128,8 @@ paths:
         exist.  @example ```ts const consumer = await
         client.queues.consumers.update( '023e105f4ecef8ad9ca31a8372d0c353',
         '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+        '023e105f4ecef8ad9ca31a8372d0c353', script_name: 'my-consumer-worker',
+        type: 'worker', }, ); ```"
       parameters:
         - name: queueId
           in: path
@@ -143,18 +148,23 @@ paths:
           schema:
             type: string
       requestBody:
-        required: false
+        required: true
         content:
           application/json:
             schema:
               type: object
               properties:
-                dead_letter_queue:
-                  type: string
-                  description: "Body param:"
                 script_name:
                   type: string
                   description: "Body param: Name of a Worker"
+                type:
+                  type: string
+                  enum:
+                    - worker
+                  description: Body param
+                dead_letter_queue:
+                  type: string
+                  description: Body param
                 settings:
                   type: object
                   properties:
@@ -177,12 +187,10 @@ paths:
                       type: number
                       description: The number of seconds to delay before making the message available
                         for another attempt.
-                  description: "Body param:"
-                type:
-                  type: string
-                  enum:
-                    - worker
-                  description: "Body param:"
+                  description: Body param
+              required:
+                - script_name
+                - type
       responses:
         "200":
           description: Success
@@ -197,10 +205,12 @@ paths:
                         description: A Resource identifier.
                       created_on:
                         type: string
-                      queue_id:
+                      dead_letter_queue:
                         type: string
-                        description: A Resource identifier.
-                      script:
+                        description: Name of the dead letter queue, or empty string if not configured
+                      queue_name:
+                        type: string
+                      script_name:
                         type: string
                         description: Name of a Worker
                       settings:
@@ -236,9 +246,11 @@ paths:
                         description: A Resource identifier.
                       created_on:
                         type: string
-                      queue_id:
+                      dead_letter_queue:
                         type: string
-                        description: A Resource identifier.
+                        description: Name of the dead letter queue, or empty string if not configured
+                      queue_name:
+                        type: string
                       settings:
                         type: object
                         properties:
@@ -381,10 +393,12 @@ paths:
                         description: A Resource identifier.
                       created_on:
                         type: string
-                      queue_id:
+                      dead_letter_queue:
                         type: string
-                        description: A Resource identifier.
-                      script:
+                        description: Name of the dead letter queue, or empty string if not configured
+                      queue_name:
+                        type: string
+                      script_name:
                         type: string
                         description: Name of a Worker
                       settings:
@@ -420,9 +434,11 @@ paths:
                         description: A Resource identifier.
                       created_on:
                         type: string
-                      queue_id:
+                      dead_letter_queue:
                         type: string
-                        description: A Resource identifier.
+                        description: Name of the dead letter queue, or empty string if not configured
+                      queue_name:
+                        type: string
                       settings:
                         type: object
                         properties:
@@ -458,7 +474,8 @@ paths:
       description: "Creates a new consumer for a Queue  @example ```ts const consumer
         = await client.queues.consumers.create(
         '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+        '023e105f4ecef8ad9ca31a8372d0c353', script_name: 'my-consumer-worker',
+        type: 'worker', }, ); ```"
       parameters:
         - name: queueId
           in: path
@@ -478,12 +495,18 @@ paths:
             schema:
               type: object
               properties:
-                dead_letter_queue:
-                  type: string
-                  description: "Body param:"
                 script_name:
                   type: string
                   description: "Body param: Name of a Worker"
+                type:
+                  type: string
+                  enum:
+                    - worker
+                    - http_pull
+                  description: Body param
+                dead_letter_queue:
+                  type: string
+                  description: Body param
                 settings:
                   type: object
                   properties:
@@ -506,14 +529,9 @@ paths:
                       type: number
                       description: The number of seconds to delay before making the message available
                         for another attempt.
-                  description: "Body param:"
-                type:
-                  type: string
-                  enum:
-                    - worker
-                    - http_pull
-                  description: "Body param:"
+                  description: Body param
               required:
+                - script_name
                 - type
       responses:
         "200":
@@ -529,10 +547,12 @@ paths:
                         description: A Resource identifier.
                       created_on:
                         type: string
-                      queue_id:
+                      dead_letter_queue:
                         type: string
-                        description: A Resource identifier.
-                      script:
+                        description: Name of the dead letter queue, or empty string if not configured
+                      queue_name:
+                        type: string
+                      script_name:
                         type: string
                         description: Name of a Worker
                       settings:
@@ -568,9 +588,11 @@ paths:
                         description: A Resource identifier.
                       created_on:
                         type: string
-                      queue_id:
+                      dead_letter_queue:
                         type: string
-                        description: A Resource identifier.
+                        description: Name of the dead letter queue, or empty string if not configured
+                      queue_name:
+                        type: string
                       settings:
                         type: object
                         properties:
@@ -667,7 +689,7 @@ paths:
                             type: number
                             description: The number of seconds to wait for attempting to deliver this
                               message to consumers
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -676,34 +698,29 @@ paths:
               schema:
                 type: object
                 properties:
-                  errors:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        code:
-                          type: number
-                        message:
-                          type: string
-                        documentation_url:
-                          type: string
-                        source:
-                          type: object
-                          properties:
-                            pointer:
-                              type: string
-                      required:
-                        - code
-                        - message
-                  messages:
-                    type: array
-                    items:
-                      type: string
-                  success:
-                    type: boolean
-                    enum:
-                      - true
-                    description: Indicates if the API call was successful or not.
+                  metadata:
+                    type: object
+                    properties:
+                      metrics:
+                        type: object
+                        properties:
+                          backlog_bytes:
+                            type: number
+                            description: The size in bytes of unacknowledged messages in the queue.
+                          backlog_count:
+                            type: number
+                            description: The number of unacknowledged messages in the queue.
+                          oldest_message_timestamp_ms:
+                            type: number
+                            description: Unix timestamp in milliseconds of the oldest unacknowledged message
+                              in the queue. Returns 0 if unknown.
+                        required:
+                          - backlog_bytes
+                          - backlog_count
+                          - oldest_message_timestamp_ms
+                        description: Best-effort metrics for the queue. Values may be approximate due to
+                          the distributed nature of queues.
+      x-distilled-response-path: result
       x-distilled-errors:
         InvalidMessageBody:
           - code: 10207
@@ -756,7 +773,7 @@ paths:
                 properties:
                   message_backlog_count:
                     type: number
-                    description: The number of unacknowledged messages in the queue
+                    description: The number of unacknowledged messages in the queue.
                   messages:
                     type: array
                     items:
@@ -776,6 +793,28 @@ paths:
                         metadata: {}
                         timestamp_ms:
                           type: number
+                  metadata:
+                    type: object
+                    properties:
+                      metrics:
+                        type: object
+                        properties:
+                          backlog_bytes:
+                            type: number
+                            description: The size in bytes of unacknowledged messages in the queue.
+                          backlog_count:
+                            type: number
+                            description: The number of unacknowledged messages in the queue.
+                          oldest_message_timestamp_ms:
+                            type: number
+                            description: Unix timestamp in milliseconds of the oldest unacknowledged message
+                              in the queue. Returns 0 if unknown.
+                        required:
+                          - backlog_bytes
+                          - backlog_count
+                          - oldest_message_timestamp_ms
+                        description: Best-effort metrics for the queue. Values may be approximate due to
+                          the distributed nature of queues.
       x-distilled-response-path: result
       x-distilled-errors:
         InvalidRequestBody:
@@ -816,12 +855,12 @@ paths:
               properties:
                 body:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 content_type:
                   type: string
                   enum:
                     - text
-                  description: "Body param:"
+                  description: Body param
                 delay_seconds:
                   type: number
                   description: "Body param: The number of seconds to wait for attempting to
@@ -834,34 +873,29 @@ paths:
               schema:
                 type: object
                 properties:
-                  errors:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        code:
-                          type: number
-                        message:
-                          type: string
-                        documentation_url:
-                          type: string
-                        source:
-                          type: object
-                          properties:
-                            pointer:
-                              type: string
-                      required:
-                        - code
-                        - message
-                  messages:
-                    type: array
-                    items:
-                      type: string
-                  success:
-                    type: boolean
-                    enum:
-                      - true
-                    description: Indicates if the API call was successful or not.
+                  metadata:
+                    type: object
+                    properties:
+                      metrics:
+                        type: object
+                        properties:
+                          backlog_bytes:
+                            type: number
+                            description: The size in bytes of unacknowledged messages in the queue.
+                          backlog_count:
+                            type: number
+                            description: The number of unacknowledged messages in the queue.
+                          oldest_message_timestamp_ms:
+                            type: number
+                            description: Unix timestamp in milliseconds of the oldest unacknowledged message
+                              in the queue. Returns 0 if unknown.
+                        required:
+                          - backlog_bytes
+                          - backlog_count
+                          - oldest_message_timestamp_ms
+                        description: Best-effort metrics for the queue. Values may be approximate due to
+                          the distributed nature of queues.
+      x-distilled-response-path: result
       x-distilled-errors:
         InvalidMessageBody:
           - code: 10207
@@ -905,7 +939,7 @@ paths:
                         description: An ID that represents an "in-flight" message that has been pulled
                           from a Queue. You must hold on to this ID and use it
                           to acknowledge this message.
-                  description: "Body param:"
+                  description: Body param
                 retries:
                   type: array
                   items:
@@ -920,7 +954,7 @@ paths:
                         description: An ID that represents an "in-flight" message that has been pulled
                           from a Queue. You must hold on to this ID and use it
                           to acknowledge this message.
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -936,9 +970,10 @@ paths:
                     type: number
                     description: The number of messages that were succesfully retried.
                   warnings:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties: true
+                    description: Map of lease IDs to warning messages encountered during
+                      acknowledgement.
       x-distilled-response-path: result
       x-distilled-errors:
         InvalidRequestBody:
@@ -952,6 +987,48 @@ paths:
               includes: Queue does not exist
         InvalidRoute:
           - code: 7003
+  /accounts/{account_id}/queues/{queueId}/metrics:
+    get:
+      operationId: getMetricsQueue
+      description: "Return best-effort metrics for a queue. Values may be approximate
+        due to the distributed nature of queues.  @example ```ts const response
+        = await client.queues.getMetrics( '023e105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: A Resource identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  backlog_bytes:
+                    type: number
+                    description: The size in bytes of unacknowledged messages in the queue.
+                  backlog_count:
+                    type: number
+                    description: The number of unacknowledged messages in the queue.
+                  oldest_message_timestamp_ms:
+                    type: number
+                    description: Unix timestamp in milliseconds of the oldest unacknowledged message
+                      in the queue. Returns 0 if unknown.
+                required:
+                  - backlog_bytes
+                  - backlog_count
+                  - oldest_message_timestamp_ms
+      x-distilled-response-path: result
   /accounts/{account_id}/queues/{queueId}/purge:
     post:
       operationId: startPurge
@@ -1000,10 +1077,12 @@ paths:
                               description: A Resource identifier.
                             created_on:
                               type: string
-                            queue_id:
+                            dead_letter_queue:
                               type: string
-                              description: A Resource identifier.
-                            script:
+                              description: Name of the dead letter queue, or empty string if not configured
+                            queue_name:
+                              type: string
+                            script_name:
                               type: string
                               description: Name of a Worker
                             settings:
@@ -1039,9 +1118,11 @@ paths:
                               description: A Resource identifier.
                             created_on:
                               type: string
-                            queue_id:
+                            dead_letter_queue:
                               type: string
-                              description: A Resource identifier.
+                              description: Name of the dead letter queue, or empty string if not configured
+                            queue_name:
+                              type: string
                             settings:
                               type: object
                               properties:
@@ -1190,10 +1271,12 @@ paths:
                               description: A Resource identifier.
                             created_on:
                               type: string
-                            queue_id:
+                            dead_letter_queue:
                               type: string
-                              description: A Resource identifier.
-                            script:
+                              description: Name of the dead letter queue, or empty string if not configured
+                            queue_name:
+                              type: string
+                            script_name:
                               type: string
                               description: Name of a Worker
                             settings:
@@ -1229,9 +1312,11 @@ paths:
                               description: A Resource identifier.
                             created_on:
                               type: string
-                            queue_id:
+                            dead_letter_queue:
                               type: string
-                              description: A Resource identifier.
+                              description: Name of the dead letter queue, or empty string if not configured
+                            queue_name:
+                              type: string
                             settings:
                               type: object
                               properties:
@@ -1333,7 +1418,7 @@ paths:
               properties:
                 queue_name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 settings:
                   type: object
                   properties:
@@ -1347,7 +1432,7 @@ paths:
                       type: number
                       description: Number of seconds after which an unconsumed message will be
                         delayed.
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -1367,10 +1452,12 @@ paths:
                               description: A Resource identifier.
                             created_on:
                               type: string
-                            queue_id:
+                            dead_letter_queue:
                               type: string
-                              description: A Resource identifier.
-                            script:
+                              description: Name of the dead letter queue, or empty string if not configured
+                            queue_name:
+                              type: string
+                            script_name:
                               type: string
                               description: Name of a Worker
                             settings:
@@ -1406,9 +1493,11 @@ paths:
                               description: A Resource identifier.
                             created_on:
                               type: string
-                            queue_id:
+                            dead_letter_queue:
                               type: string
-                              description: A Resource identifier.
+                              description: Name of the dead letter queue, or empty string if not configured
+                            queue_name:
+                              type: string
                             settings:
                               type: object
                               properties:
@@ -1510,7 +1599,7 @@ paths:
               properties:
                 queue_name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 settings:
                   type: object
                   properties:
@@ -1524,7 +1613,7 @@ paths:
                       type: number
                       description: Number of seconds after which an unconsumed message will be
                         delayed.
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -1544,10 +1633,12 @@ paths:
                               description: A Resource identifier.
                             created_on:
                               type: string
-                            queue_id:
+                            dead_letter_queue:
                               type: string
-                              description: A Resource identifier.
-                            script:
+                              description: Name of the dead letter queue, or empty string if not configured
+                            queue_name:
+                              type: string
+                            script_name:
                               type: string
                               description: Name of a Worker
                             settings:
@@ -1583,9 +1674,11 @@ paths:
                               description: A Resource identifier.
                             created_on:
                               type: string
-                            queue_id:
+                            dead_letter_queue:
                               type: string
-                              description: A Resource identifier.
+                              description: Name of the dead letter queue, or empty string if not configured
+                            queue_name:
+                              type: string
                             settings:
                               type: object
                               properties:
@@ -1750,10 +1843,12 @@ paths:
                               description: A Resource identifier.
                             created_on:
                               type: string
-                            queue_id:
+                            dead_letter_queue:
                               type: string
-                              description: A Resource identifier.
-                            script:
+                              description: Name of the dead letter queue, or empty string if not configured
+                            queue_name:
+                              type: string
+                            script_name:
                               type: string
                               description: Name of a Worker
                             settings:
@@ -1789,9 +1884,11 @@ paths:
                               description: A Resource identifier.
                             created_on:
                               type: string
-                            queue_id:
+                            dead_letter_queue:
                               type: string
-                              description: A Resource identifier.
+                              description: Name of the dead letter queue, or empty string if not configured
+                            queue_name:
+                              type: string
                             settings:
                               type: object
                               properties:
@@ -1884,7 +1981,7 @@ paths:
               properties:
                 queue_name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
               required:
                 - queue_name
       responses:
@@ -1906,10 +2003,12 @@ paths:
                               description: A Resource identifier.
                             created_on:
                               type: string
-                            queue_id:
+                            dead_letter_queue:
                               type: string
-                              description: A Resource identifier.
-                            script:
+                              description: Name of the dead letter queue, or empty string if not configured
+                            queue_name:
+                              type: string
+                            script_name:
                               type: string
                               description: Name of a Worker
                             settings:
@@ -1945,9 +2044,11 @@ paths:
                               description: A Resource identifier.
                             created_on:
                               type: string
-                            queue_id:
+                            dead_letter_queue:
                               type: string
-                              description: A Resource identifier.
+                              description: Name of the dead letter queue, or empty string if not configured
+                            queue_name:
+                              type: string
                             settings:
                               type: object
                               properties:

@@ -415,19 +415,16 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: number
         - name: cursor
           in: query
           required: false
           schema:
             type: string
-        - name: limit
-          in: query
-          required: false
-          description: "Query param: Limits the number of keys returned in the response.
-            The cursor attribute may be used to iterate over the next batch of
-            keys if there are more than the limit."
-          schema:
-            type: number
         - name: prefix
           in: query
           required: false
@@ -457,7 +454,7 @@ paths:
                     description: Arbitrary JSON that is associated with a key.
                 required:
                   - name
-      x-distilled-pagination-class: KeysCursorPaginationAfter
+      x-distilled-pagination-class: KeysCursorLimitPagination
   /accounts/{account_id}/storage/kv/namespaces/{namespaceId}/metadata/{keyName}:
     get:
       operationId: getNamespaceMetadata
@@ -589,7 +586,10 @@ paths:
               type: object
               properties:
                 value:
-                  type: string
+                  oneOf:
+                    - type: string
+                    - type: string
+                      format: binary
                   description: "Body param: A byte sequence to be stored, up to 25 MiB in length."
                 metadata:
                   description: "Body param: Associates arbitrary JSON data with a key/value pair."

@@ -25,7 +25,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -211,7 +211,7 @@ paths:
   /accounts/{account_id}/ai/authors/search:
     get:
       operationId: listAuthors
-      description: Author Search
+      description: Searches Workers AI models by author or organization name.
       parameters:
         - name: account_id
           in: path
@@ -228,7 +228,8 @@ paths:
   /accounts/{account_id}/ai/finetunes:
     get:
       operationId: listFinetunes
-      description: List Finetunes
+      description: Lists all fine-tuning jobs created by the account, including status
+        and metrics.
       parameters:
         - name: account_id
           in: path
@@ -269,12 +270,13 @@ paths:
           - code: 7003
     post:
       operationId: createFinetune
-      description: Create a new Finetune
+      description: Creates a new fine-tuning job for a Workers AI model using custom
+        training data.
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -286,16 +288,16 @@ paths:
               properties:
                 model:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 description:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 public:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
               required:
                 - model
                 - name
@@ -337,7 +339,7 @@ paths:
   /accounts/{account_id}/ai/finetunes/{finetuneId}/finetune-assets:
     post:
       operationId: createFinetuneAsset
-      description: Upload a Finetune Asset
+      description: Uploads training data assets for a Workers AI fine-tuning job.
       parameters:
         - name: finetuneId
           in: path
@@ -347,11 +349,11 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
-        required: false
+        required: true
         content:
           multipart/form-data:
             schema:
@@ -360,10 +362,14 @@ paths:
                 file:
                   type: string
                   format: binary
-                  description: "Body param:"
+                  description: "Body param: File to upload"
                 file_name:
                   type: string
-                  description: "Body param:"
+                  description: "Body param: Name of the file (adapter_config.json or
+                    adapter_model.safetensors)"
+              required:
+                - file
+                - file_name
       responses:
         "200":
           description: Success
@@ -384,12 +390,13 @@ paths:
   /accounts/{account_id}/ai/finetunes/public:
     get:
       operationId: listFinetunePublics
-      description: List Public Finetunes
+      description: Lists publicly available fine-tuned models that can be used with
+        Workers AI.
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: limit
@@ -443,12 +450,12 @@ paths:
   /accounts/{account_id}/ai/models/search:
     get:
       operationId: listModels
-      description: Model Search
+      description: Searches Workers AI models by name or description.
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: page
@@ -467,6 +474,15 @@ paths:
           description: "Query param: Filter by Author"
           schema:
             type: string
+        - name: format
+          in: query
+          required: false
+          description: "Query param: If set, return models in the requested marketplace
+            format instead of the default response."
+          schema:
+            type: string
+            enum:
+              - openrouter
         - name: hide_experimental
           in: query
           required: false
@@ -501,12 +517,13 @@ paths:
   /accounts/{account_id}/ai/models/schema:
     get:
       operationId: getModelSchema
-      description: Get Model Schema
+      description: Retrieves the input and output JSON schema definition for a Workers
+        AI model.
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: model
@@ -520,7 +537,38 @@ paths:
           description: Success
           content:
             application/json:
-              schema: {}
+              schema:
+                type: object
+                properties:
+                  input:
+                    type: object
+                    properties:
+                      additionalProperties:
+                        type: boolean
+                      description:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                      - additionalProperties
+                      - description
+                      - type
+                  output:
+                    type: object
+                    properties:
+                      additionalProperties:
+                        type: boolean
+                      description:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                      - additionalProperties
+                      - description
+                      - type
+                required:
+                  - input
+                  - output
       x-distilled-response-path: result
       x-distilled-errors:
         ModelNotSupported:
@@ -532,7 +580,8 @@ paths:
   /accounts/{account_id}/ai/tasks/search:
     get:
       operationId: listTasks
-      description: Task Search
+      description: Searches Workers AI models by task type (e.g., text-generation,
+        embeddings).
       parameters:
         - name: account_id
           in: path
@@ -549,7 +598,7 @@ paths:
   /accounts/{account_id}/ai/tomarkdown/supported:
     get:
       operationId: supportedToMarkdown
-      description: Get all converted formats supported
+      description: Lists all file formats supported for conversion to Markdown.
       parameters:
         - name: account_id
           in: path
@@ -575,36 +624,58 @@ paths:
   /accounts/{account_id}/ai/tomarkdown:
     post:
       operationId: transformToMarkdown
-      description: Convert Files into Markdown
+      description: Converts uploaded files into Markdown format using Workers AI.
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: object
+                  properties:
+                    files:
+                      type: array
+                      items:
+                        type: string
+                        format: binary
+                  required:
+                    - files
+                  description: Body param
+              required:
+                - file
       responses:
         "200":
           description: Success
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  data:
-                    type: string
-                  format:
-                    type: string
-                  mimeType:
-                    type: string
-                  name:
-                    type: string
-                  tokens:
-                    type: string
-                required:
-                  - data
-                  - format
-                  - mimeType
-                  - name
-                  - tokens
-      x-distilled-pagination-class: ToMarkdownTransformResponsesSinglePage
+                type: array
+                items:
+                  type: object
+                  properties:
+                    data:
+                      type: string
+                    format:
+                      type: string
+                    mimeType:
+                      type: string
+                    name:
+                      type: string
+                    tokens:
+                      type: string
+                  required:
+                    - data
+                    - format
+                    - mimeType
+                    - name
+                    - tokens
+      x-distilled-response-path: result

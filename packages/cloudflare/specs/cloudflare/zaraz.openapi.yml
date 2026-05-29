@@ -72,7 +72,7 @@ paths:
                         description: Removing URL query params enabled.
                       hideUserAgent:
                         type: boolean
-                        description: Removing sensitive data from User Aagent string enabled.
+                        description: Removing sensitive data from User Agent string enabled.
                       initPath:
                         type: string
                         description: Custom endpoint for Zaraz init script.
@@ -136,15 +136,15 @@ paths:
                           accept_all:
                             type: object
                             additionalProperties: true
-                            description: Object where keys are language codes
+                            description: Object where keys are language codes.
                           confirm_my_choices:
                             type: object
                             additionalProperties: true
-                            description: Object where keys are language codes
+                            description: Object where keys are language codes.
                           reject_all:
                             type: object
                             additionalProperties: true
-                            description: Object where keys are language codes
+                            description: Object where keys are language codes.
                         required:
                           - accept_all
                           - confirm_my_choices
@@ -160,7 +160,7 @@ paths:
                       consentModalIntroHTMLWithTranslations:
                         type: object
                         additionalProperties: true
-                        description: Object where keys are language codes
+                        description: Object where keys are language codes.
                       cookieName:
                         type: string
                       customCSS:
@@ -174,11 +174,11 @@ paths:
                       purposes:
                         type: object
                         additionalProperties: true
-                        description: Object where keys are purpose alpha-numeric IDs
+                        description: Object where keys are purpose alpha-numeric IDs.
                       purposesWithTranslations:
                         type: object
                         additionalProperties: true
-                        description: Object where keys are purpose alpha-numeric IDs
+                        description: Object where keys are purpose alpha-numeric IDs.
                       tcfCompliant:
                         type: boolean
                     required:
@@ -261,7 +261,7 @@ paths:
                       description: Removing URL query params enabled.
                     hideUserAgent:
                       type: boolean
-                      description: Removing sensitive data from User Aagent string enabled.
+                      description: Removing sensitive data from User Agent string enabled.
                     initPath:
                       type: string
                       description: Custom endpoint for Zaraz init script.
@@ -326,15 +326,15 @@ paths:
                         accept_all:
                           type: object
                           additionalProperties: true
-                          description: Object where keys are language codes
+                          description: Object where keys are language codes.
                         confirm_my_choices:
                           type: object
                           additionalProperties: true
-                          description: Object where keys are language codes
+                          description: Object where keys are language codes.
                         reject_all:
                           type: object
                           additionalProperties: true
-                          description: Object where keys are language codes
+                          description: Object where keys are language codes.
                       required:
                         - accept_all
                         - confirm_my_choices
@@ -350,7 +350,7 @@ paths:
                     consentModalIntroHTMLWithTranslations:
                       type: object
                       additionalProperties: true
-                      description: Object where keys are language codes
+                      description: Object where keys are language codes.
                     cookieName:
                       type: string
                     customCSS:
@@ -364,11 +364,11 @@ paths:
                     purposes:
                       type: object
                       additionalProperties: true
-                      description: Object where keys are purpose alpha-numeric IDs
+                      description: Object where keys are purpose alpha-numeric IDs.
                     purposesWithTranslations:
                       type: object
                       additionalProperties: true
-                      description: Object where keys are purpose alpha-numeric IDs
+                      description: Object where keys are purpose alpha-numeric IDs.
                     tcfCompliant:
                       type: boolean
                   required:
@@ -436,7 +436,7 @@ paths:
                         description: Removing URL query params enabled.
                       hideUserAgent:
                         type: boolean
-                        description: Removing sensitive data from User Aagent string enabled.
+                        description: Removing sensitive data from User Agent string enabled.
                       initPath:
                         type: string
                         description: Custom endpoint for Zaraz init script.
@@ -500,15 +500,15 @@ paths:
                           accept_all:
                             type: object
                             additionalProperties: true
-                            description: Object where keys are language codes
+                            description: Object where keys are language codes.
                           confirm_my_choices:
                             type: object
                             additionalProperties: true
-                            description: Object where keys are language codes
+                            description: Object where keys are language codes.
                           reject_all:
                             type: object
                             additionalProperties: true
-                            description: Object where keys are language codes
+                            description: Object where keys are language codes.
                         required:
                           - accept_all
                           - confirm_my_choices
@@ -524,7 +524,7 @@ paths:
                       consentModalIntroHTMLWithTranslations:
                         type: object
                         additionalProperties: true
-                        description: Object where keys are language codes
+                        description: Object where keys are language codes.
                       cookieName:
                         type: string
                       customCSS:
@@ -538,11 +538,11 @@ paths:
                       purposes:
                         type: object
                         additionalProperties: true
-                        description: Object where keys are purpose alpha-numeric IDs
+                        description: Object where keys are purpose alpha-numeric IDs.
                       purposesWithTranslations:
                         type: object
                         additionalProperties: true
-                        description: Object where keys are purpose alpha-numeric IDs
+                        description: Object where keys are purpose alpha-numeric IDs.
                       tcfCompliant:
                         type: boolean
                     required:
@@ -624,7 +624,7 @@ paths:
                         description: Removing URL query params enabled.
                       hideUserAgent:
                         type: boolean
-                        description: Removing sensitive data from User Aagent string enabled.
+                        description: Removing sensitive data from User Agent string enabled.
                       initPath:
                         type: string
                         description: Custom endpoint for Zaraz init script.
@@ -688,15 +688,15 @@ paths:
                           accept_all:
                             type: object
                             additionalProperties: true
-                            description: Object where keys are language codes
+                            description: Object where keys are language codes.
                           confirm_my_choices:
                             type: object
                             additionalProperties: true
-                            description: Object where keys are language codes
+                            description: Object where keys are language codes.
                           reject_all:
                             type: object
                             additionalProperties: true
-                            description: Object where keys are language codes
+                            description: Object where keys are language codes.
                         required:
                           - accept_all
                           - confirm_my_choices
@@ -712,7 +712,7 @@ paths:
                       consentModalIntroHTMLWithTranslations:
                         type: object
                         additionalProperties: true
-                        description: Object where keys are language codes
+                        description: Object where keys are language codes.
                       cookieName:
                         type: string
                       customCSS:
@@ -726,11 +726,11 @@ paths:
                       purposes:
                         type: object
                         additionalProperties: true
-                        description: Object where keys are purpose alpha-numeric IDs
+                        description: Object where keys are purpose alpha-numeric IDs.
                       purposesWithTranslations:
                         type: object
                         additionalProperties: true
-                        description: Object where keys are purpose alpha-numeric IDs
+                        description: Object where keys are purpose alpha-numeric IDs.
                       tcfCompliant:
                         type: boolean
                     required:
@@ -813,7 +813,7 @@ paths:
                         description: Removing URL query params enabled.
                       hideUserAgent:
                         type: boolean
-                        description: Removing sensitive data from User Aagent string enabled.
+                        description: Removing sensitive data from User Agent string enabled.
                       initPath:
                         type: string
                         description: Custom endpoint for Zaraz init script.
@@ -877,15 +877,15 @@ paths:
                           accept_all:
                             type: object
                             additionalProperties: true
-                            description: Object where keys are language codes
+                            description: Object where keys are language codes.
                           confirm_my_choices:
                             type: object
                             additionalProperties: true
-                            description: Object where keys are language codes
+                            description: Object where keys are language codes.
                           reject_all:
                             type: object
                             additionalProperties: true
-                            description: Object where keys are language codes
+                            description: Object where keys are language codes.
                         required:
                           - accept_all
                           - confirm_my_choices
@@ -901,7 +901,7 @@ paths:
                       consentModalIntroHTMLWithTranslations:
                         type: object
                         additionalProperties: true
-                        description: Object where keys are language codes
+                        description: Object where keys are language codes.
                       cookieName:
                         type: string
                       customCSS:
@@ -915,11 +915,11 @@ paths:
                       purposes:
                         type: object
                         additionalProperties: true
-                        description: Object where keys are purpose alpha-numeric IDs
+                        description: Object where keys are purpose alpha-numeric IDs.
                       purposesWithTranslations:
                         type: object
                         additionalProperties: true
-                        description: Object where keys are purpose alpha-numeric IDs
+                        description: Object where keys are purpose alpha-numeric IDs.
                       tcfCompliant:
                         type: boolean
                     required:
@@ -995,21 +995,21 @@ paths:
                 properties:
                   id:
                     type: number
-                    description: ID of the configuration
+                    description: ID of the configuration.
                   createdAt:
                     type: string
-                    description: Date and time the configuration was created
+                    description: Date and time the configuration was created.
                   description:
                     type: string
                     description: Configuration description provided by the user who published this
-                      configuration
+                      configuration.
                   updatedAt:
                     type: string
-                    description: Date and time the configuration was last updated
+                    description: Date and time the configuration was last updated.
                   userId:
                     type: string
                     description: Alpha-numeric ID of the account user who published the
-                      configuration
+                      configuration.
                 required:
                   - id
                   - createdAt
@@ -1087,7 +1087,7 @@ paths:
                         description: Removing URL query params enabled.
                       hideUserAgent:
                         type: boolean
-                        description: Removing sensitive data from User Aagent string enabled.
+                        description: Removing sensitive data from User Agent string enabled.
                       initPath:
                         type: string
                         description: Custom endpoint for Zaraz init script.
@@ -1151,15 +1151,15 @@ paths:
                           accept_all:
                             type: object
                             additionalProperties: true
-                            description: Object where keys are language codes
+                            description: Object where keys are language codes.
                           confirm_my_choices:
                             type: object
                             additionalProperties: true
-                            description: Object where keys are language codes
+                            description: Object where keys are language codes.
                           reject_all:
                             type: object
                             additionalProperties: true
-                            description: Object where keys are language codes
+                            description: Object where keys are language codes.
                         required:
                           - accept_all
                           - confirm_my_choices
@@ -1175,7 +1175,7 @@ paths:
                       consentModalIntroHTMLWithTranslations:
                         type: object
                         additionalProperties: true
-                        description: Object where keys are language codes
+                        description: Object where keys are language codes.
                       cookieName:
                         type: string
                       customCSS:
@@ -1189,11 +1189,11 @@ paths:
                       purposes:
                         type: object
                         additionalProperties: true
-                        description: Object where keys are purpose alpha-numeric IDs
+                        description: Object where keys are purpose alpha-numeric IDs.
                       purposesWithTranslations:
                         type: object
                         additionalProperties: true
-                        description: Object where keys are purpose alpha-numeric IDs
+                        description: Object where keys are purpose alpha-numeric IDs.
                       tcfCompliant:
                         type: boolean
                     required:
@@ -1228,7 +1228,7 @@ paths:
         - name: ids
           in: query
           required: true
-          description: "Query param: Comma separated list of Zaraz configuration IDs"
+          description: "Query param: Comma separated list of Zaraz configuration IDs."
           schema:
             type: array
             items:

@@ -108,9 +108,9 @@ export const getCni: API.OperationMethod<
 export interface ListCnisRequest {
   /** Path param: Customer account tag */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   cursor?: number | null;
-  /** Query param: */
+  /** Query param */
   limit?: number | null;
   /** Query param: If specified, only show CNIs associated with the specified slot */
   slot?: string | null;
@@ -221,11 +221,11 @@ export interface CreateCniRequest {
   accountId: string;
   /** Body param: Customer account tag */
   account: string;
-  /** Body param: */
+  /** Body param */
   interconnect: string;
-  /** Body param: */
+  /** Body param */
   magic: { conduitName: string; description: string; mtu: number };
-  /** Body param: */
+  /** Body param */
   bgp?: {
     customerAsn: number;
     extraPrefixes: string[];
@@ -345,7 +345,7 @@ export interface UpdateCniRequest {
   cni: string;
   /** Path param: Customer account tag */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   id: string;
   /** Body param: Customer account tag */
   account: string;
@@ -353,11 +353,11 @@ export interface UpdateCniRequest {
   custIp: string;
   /** Body param: Interconnect identifier hosting this CNI */
   interconnect: string;
-  /** Body param: */
+  /** Body param */
   magic: { conduitName: string; description: string; mtu: number };
   /** Body param: Cloudflare end of the point-to-point link */
   p2pIp: string;
-  /** Body param: */
+  /** Body param */
   bgp?: {
     customerAsn: number;
     extraPrefixes: string[];
@@ -643,9 +643,9 @@ export const getInterconnect: API.OperationMethod<
 export interface ListInterconnectsRequest {
   /** Path param: Customer account tag */
   accountId: string;
-  /** Query param: */
+  /** Query param */
   cursor?: number | null;
-  /** Query param: */
+  /** Query param */
   limit?: number | null;
   /** Query param: If specified, only show interconnects located at the given site */
   site?: string | null;
@@ -784,13 +784,13 @@ export const listInterconnects: API.OperationMethod<
 export interface CreateInterconnectRequest {
   /** Path param: Customer account tag */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   account: string;
-  /** Body param: */
+  /** Body param */
   slotId: string;
-  /** Body param: */
+  /** Body param */
   type: string;
-  /** Body param: */
+  /** Body param */
   speed?: string | null;
 }
 
@@ -1080,7 +1080,7 @@ export const getSetting: API.OperationMethod<
 export interface PutSettingRequest {
   /** Path param: Account tag to update settings for */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   defaultAsn?: number | null;
 }
 
@@ -1174,9 +1174,9 @@ export interface ListSlotsRequest {
   accountId: string;
   /** Query param: If specified, only show slots with the given text in their address field */
   addressContains?: string | null;
-  /** Query param: */
+  /** Query param */
   cursor?: number | null;
-  /** Query param: */
+  /** Query param */
   limit?: number | null;
   /** Query param: If specified, only show slots with a specific occupied/unoccupied state */
   occupied?: boolean | null;

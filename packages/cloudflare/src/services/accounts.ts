@@ -476,7 +476,7 @@ export interface UpdateAccountRequest {
   id: string;
   /** Body param: Account name */
   name: string;
-  /** Body param: */
+  /** Body param */
   type?: "standard" | "enterprise";
   /** Body param: Parent container details */
   managedBy?: unknown;
@@ -663,55 +663,55 @@ export interface ListLogAuditsRequest {
   before: string;
   /** Query param: Limits the returned results to logs newer than the specified date. This can be a date string 2019-04-30 (interpreted in UTC) or an absolute timestamp that conforms to RFC3339. */
   since: string;
-  /** Query param: */
+  /** Query param */
   id?: { not?: string[] };
-  /** Query param: */
+  /** Query param */
   accountName?: { not?: string[] };
-  /** Query param: */
+  /** Query param */
   actionResult?: { not?: ("success" | "failure")[] };
-  /** Query param: */
+  /** Query param */
   actionType?: { not?: ("create" | "delete" | "view" | "update")[] };
-  /** Query param: */
+  /** Query param */
   actorContext?: {
     not?: ("api_key" | "api_token" | "dash" | "oauth" | "origin_ca_key")[];
   };
-  /** Query param: */
+  /** Query param */
   actorEmail?: { not?: string[] };
-  /** Query param: */
+  /** Query param */
   actorId?: { not?: string[] };
-  /** Query param: */
+  /** Query param */
   actorIpAddress?: { not?: string[] };
-  /** Query param: */
+  /** Query param */
   actorTokenId?: { not?: string[] };
-  /** Query param: */
+  /** Query param */
   actorTokenName?: { not?: string[] };
-  /** Query param: */
+  /** Query param */
   actorType?: { not?: ("account" | "cloudflare_admin" | "system" | "user")[] };
-  /** Query param: */
+  /** Query param */
   auditLogId?: { not?: string[] };
   /** Query param: Sets sorting order. */
   direction?: "desc" | "asc";
   /** Query param: The number limits the objects to return. The cursor attribute may be used to iterate over the next batch of objects if there are more than the limit. */
   limit?: number;
-  /** Query param: */
+  /** Query param */
   rawCfRayId?: { not?: string[] };
-  /** Query param: */
+  /** Query param */
   rawMethod?: { not?: string[] };
-  /** Query param: */
+  /** Query param */
   rawStatusCode?: { not?: number[] };
-  /** Query param: */
+  /** Query param */
   rawUri?: { not?: string[] };
-  /** Query param: */
+  /** Query param */
   resourceId?: { not?: string[] };
-  /** Query param: */
+  /** Query param */
   resourceProduct?: { not?: string[] };
-  /** Query param: */
-  resourceScope?: { not?: ("accounts" | "user" | "zones")[] };
-  /** Query param: */
+  /** Query param */
+  resourceScope?: { not?: ("accounts" | "user" | "zones" | "memberships")[] };
+  /** Query param */
   resourceType?: { not?: string[] };
-  /** Query param: */
+  /** Query param */
   zoneId?: { not?: string[] };
-  /** Query param: */
+  /** Query param */
   zoneName?: { not?: string[] };
 }
 
@@ -835,7 +835,9 @@ export const ListLogAuditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceScope: Schema.optional(
     Schema.Struct({
       not: Schema.optional(
-        Schema.Array(Schema.Literals(["accounts", "user", "zones"])),
+        Schema.Array(
+          Schema.Literals(["accounts", "user", "zones", "memberships"]),
+        ),
       ),
     }),
   ).pipe(T.HttpQuery("resource_scope")),
@@ -1828,7 +1830,7 @@ export interface CreateMemberRequest {
   email: string;
   /** Body param: Array of roles associated with this member. */
   roles: string[];
-  /** Body param: */
+  /** Body param: Status of the member invitation. If not provided during creation, defaults to 'pending'. Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Ter */
   status?: "accepted" | "pending";
 }
 
@@ -4049,7 +4051,7 @@ export interface CreateTokenRequest {
     permissionGroups: { id: string; meta?: { key?: string; value?: string } }[];
     resources: Record<string, unknown>;
   }[];
-  /** Body param: */
+  /** Body param */
   condition?: { requestIp?: { in?: string[]; notIn?: string[] } };
   /** Body param: The expiration time on or after which the JWT MUST NOT be accepted for processing. */
   expiresOn?: string;
@@ -4265,7 +4267,7 @@ export interface UpdateTokenRequest {
     permissionGroups: { id: string; meta?: { key?: string; value?: string } }[];
     resources: Record<string, unknown>;
   }[];
-  /** Body param: */
+  /** Body param */
   condition?: { requestIp?: { in?: string[]; notIn?: string[] } };
   /** Body param: The expiration time on or after which the JWT MUST NOT be accepted for processing. */
   expiresOn?: string;
@@ -4731,7 +4733,7 @@ export interface PutTokenValueRequest {
   tokenId: string;
   /** Path param: Account identifier tag. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: unknown;
 }
 

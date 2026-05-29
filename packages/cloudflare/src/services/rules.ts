@@ -808,7 +808,7 @@ export interface CreateListItemRequest {
   listId: string;
   /** Path param: The Account ID for this resource. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: (
     | { ip: string; comment?: string }
     | {
@@ -921,7 +921,7 @@ export interface UpdateListItemRequest {
   listId: string;
   /** Path param: The Account ID for this resource. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   body: (
     | { ip: string; comment?: string }
     | {
@@ -1034,7 +1034,7 @@ export interface DeleteListItemRequest {
   listId: string;
   /** Path param: The Account ID for this resource. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   items?: { id: string }[];
 }
 

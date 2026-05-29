@@ -9,7 +9,7 @@ paths:
   /accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}:
     get:
       operationId: getInstance
-      description: Get logs and status from instance
+      description: Retrieves logs and execution status for a specific workflow instance.
       parameters:
         - name: workflowName
           in: path
@@ -24,8 +24,29 @@ paths:
         - name: account_id
           in: path
           required: true
+          description: Path param
           schema:
             type: string
+        - name: order
+          in: query
+          required: false
+          description: 'Query param: Step ordering: "asc" (default, oldest first) or
+            "desc" (newest first).'
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: simple
+          in: query
+          required: false
+          description: "Query param: When true, omits step details and returns only
+            metadata with step_count."
+          schema:
+            type: boolean
+            enum:
+              - true
+              - false
       responses:
         "200":
           description: Success
@@ -73,6 +94,8 @@ paths:
                       - complete
                       - waitingForPause
                       - waiting
+                  step_count:
+                    type: number
                   steps:
                     type: array
                     items:
@@ -117,7 +140,11 @@ paths:
                                 retries:
                                   type: object
                                   properties:
-                                    delay: {}
+                                    delay:
+                                      oneOf:
+                                        - type: string
+                                        - type: number
+                                      description: Specifies the delay duration.
                                     limit:
                                       type: number
                                     backoff:
@@ -129,7 +156,14 @@ paths:
                                   required:
                                     - delay
                                     - limit
-                                timeout: {}
+                                timeout:
+                                  description: Specifies the timeout duration.
+                                sensitive:
+                                  type: string
+                                  enum:
+                                    - output
+                                  description: When set to 'output', step output is redacted from log and step
+                                    output responses.
                               required:
                                 - retries
                                 - timeout
@@ -139,7 +173,10 @@ paths:
                               nullable: true
                             name:
                               type: string
-                            output: {}
+                            output:
+                              oneOf:
+                                - type: string
+                              nullable: true
                             start:
                               type: string
                             success:
@@ -228,19 +265,19 @@ paths:
                               type: boolean
                             name:
                               type: string
-                            output: {}
                             start:
                               type: string
                             type:
                               type: string
                               enum:
                                 - waitForEvent
+                            output:
+                              type: string
                           required:
                             - end
                             - error
                             - finished
                             - name
-                            - output
                             - start
                             - type
                   success:
@@ -270,6 +307,7 @@ paths:
                   - queued
                   - start
                   - status
+                  - step_count
                   - steps
                   - success
                   - trigger
@@ -285,7 +323,7 @@ paths:
   /accounts/{account_id}/workflows/{workflowName}/instances:
     get:
       operationId: listInstances
-      description: List of workflow instances
+      description: Lists all instances of a workflow with their execution status.
       parameters:
         - name: workflowName
           in: path
@@ -295,7 +333,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: page
@@ -311,8 +349,8 @@ paths:
         - name: cursor
           in: query
           required: false
-          description: "Query param: `page` and `cursor` are mutually exclusive, use one
-            or the other."
+          description: "Query param: Opaque token for cursor-based pagination. Mutually
+            exclusive with `page`."
           schema:
             type: string
         - name: date_end
@@ -330,8 +368,7 @@ paths:
         - name: direction
           in: query
           required: false
-          description: "Query param: should only be used when `cursor` is used, defines a
-            new direction for the cursor"
+          description: "Query param: Defines the direction for cursor-based pagination."
           schema:
             type: string
             enum:
@@ -340,7 +377,7 @@ paths:
         - name: status
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
             enum:
@@ -410,7 +447,7 @@ paths:
           - code: 10002
     post:
       operationId: createInstance
-      description: Create a new workflow instance
+      description: Creates a new instance of a workflow, starting its execution.
       parameters:
         - name: workflowName
           in: path
@@ -420,7 +457,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -432,7 +469,7 @@ paths:
               properties:
                 instance_id:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 instance_retention:
                   type: object
                   properties:
@@ -440,15 +477,17 @@ paths:
                       oneOf:
                         - type: number
                         - type: string
-                      description: Duration in milliseconds or as a string like '5 minutes'
+                      description: Specifies the duration in milliseconds or as a string like '5
+                        minutes'.
                     success_retention:
                       oneOf:
                         - type: number
                         - type: string
-                      description: Duration in milliseconds or as a string like '5 minutes'
-                  description: "Body param:"
+                      description: Specifies the duration in milliseconds or as a string like '5
+                        minutes'.
+                  description: Body param
                 params:
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -492,7 +531,7 @@ paths:
   /accounts/{account_id}/workflows/{workflowName}/instances/batch:
     post:
       operationId: bulkInstance
-      description: Batch create new Workflow instances
+      description: Creates multiple workflow instances in a single batch operation.
       parameters:
         - name: workflowName
           in: path
@@ -502,7 +541,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -523,12 +562,14 @@ paths:
                         oneOf:
                           - type: number
                           - type: string
-                        description: Duration in milliseconds or as a string like '5 minutes'
+                        description: Specifies the duration in milliseconds or as a string like '5
+                          minutes'.
                       success_retention:
                         oneOf:
                           - type: number
                           - type: string
-                        description: Duration in milliseconds or as a string like '5 minutes'
+                        description: Specifies the duration in milliseconds or as a string like '5
+                          minutes'.
                   params: {}
       responses:
         "200":
@@ -573,7 +614,8 @@ paths:
   /accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}/events/{eventType}:
     post:
       operationId: createInstanceEvent
-      description: Send event to instance
+      description: Sends an event to a running workflow instance to trigger state
+        transitions.
       parameters:
         - name: workflowName
           in: path
@@ -593,7 +635,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -620,7 +662,8 @@ paths:
   /accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}/status:
     patch:
       operationId: patchInstanceStatus
-      description: Change status of instance
+      description: Changes the execution status of a workflow instance (e.g., pause,
+        resume, terminate).
       parameters:
         - name: workflowName
           in: path
@@ -635,7 +678,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -653,6 +696,23 @@ paths:
                     - terminate
                     - restart
                   description: "Body param: Apply action to instance."
+                from:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    count:
+                      type: number
+                    type:
+                      type: string
+                      enum:
+                        - do
+                        - sleep
+                        - waitForEvent
+                  required:
+                    - name
+                  description: 'Body param: Step to restart from. Only applicable when status is
+                    "restart".'
               required:
                 - status
       responses:
@@ -693,7 +753,7 @@ paths:
   /accounts/{account_id}/workflows/{workflowName}/versions/{versionId}:
     get:
       operationId: getVersion
-      description: Get Workflow version details
+      description: Retrieves details for a specific deployed workflow version.
       parameters:
         - name: workflowName
           in: path
@@ -724,14 +784,29 @@ paths:
                     type: string
                   created_on:
                     type: string
+                  has_dag:
+                    type: boolean
+                  language:
+                    type: string
+                    enum:
+                      - javascript
+                      - python
+                    description: The programming language of the workflow implementation
                   modified_on:
                     type: string
                   workflow_id:
                     type: string
+                  limits:
+                    type: object
+                    properties:
+                      steps:
+                        type: number
                 required:
                   - id
                   - class_name
                   - created_on
+                  - has_dag
+                  - language
                   - modified_on
                   - workflow_id
       x-distilled-response-path: result
@@ -745,7 +820,7 @@ paths:
   /accounts/{account_id}/workflows/{workflowName}/versions:
     get:
       operationId: listVersions
-      description: List deployed Workflow versions
+      description: Lists all deployed versions of a workflow.
       parameters:
         - name: workflowName
           in: path
@@ -755,7 +830,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: page
@@ -782,14 +857,29 @@ paths:
                     type: string
                   created_on:
                     type: string
+                  has_dag:
+                    type: boolean
+                  language:
+                    type: string
+                    enum:
+                      - javascript
+                      - python
+                    description: The programming language of the workflow implementation
                   modified_on:
                     type: string
                   workflow_id:
                     type: string
+                  limits:
+                    type: object
+                    properties:
+                      steps:
+                        type: number
                 required:
                   - id
                   - class_name
                   - created_on
+                  - has_dag
+                  - language
                   - modified_on
                   - workflow_id
       x-distilled-pagination-class: VersionListResponsesV4PagePaginationArray
@@ -801,7 +891,7 @@ paths:
   /accounts/{account_id}/workflows/{workflowName}:
     get:
       operationId: getWorkflow
-      description: Get Workflow details
+      description: Retrieves configuration and metadata for a specific workflow.
       parameters:
         - name: workflowName
           in: path
@@ -873,7 +963,7 @@ paths:
           - code: 7003
     put:
       operationId: putWorkflow
-      description: Create/modify Workflow
+      description: Creates a new workflow or updates an existing workflow definition.
       parameters:
         - name: workflowName
           in: path
@@ -883,7 +973,7 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
       requestBody:
@@ -895,10 +985,16 @@ paths:
               properties:
                 class_name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 script_name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
+                limits:
+                  type: object
+                  properties:
+                    steps:
+                      type: number
+                  description: Body param
               required:
                 - class_name
                 - script_name
@@ -989,12 +1085,12 @@ paths:
   /accounts/{account_id}/workflows:
     get:
       operationId: listWorkflows
-      description: List all Workflows
+      description: Lists all workflows configured for the account.
       parameters:
         - name: account_id
           in: path
           required: true
-          description: "Path param:"
+          description: Path param
           schema:
             type: string
         - name: page

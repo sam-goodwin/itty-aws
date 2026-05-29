@@ -1287,7 +1287,7 @@ export interface CreateRuleRequest {
   waitingRoomId: string;
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   rules: {
     action: "bypass_waiting_room";
     expression: string;
@@ -1371,7 +1371,7 @@ export interface UpdateRuleRequest {
   waitingRoomId: string;
   /** Path param: Identifier. */
   zoneId: string;
-  /** Body param: */
+  /** Body param */
   rules: {
     action: "bypass_waiting_room";
     expression: string;

@@ -1664,7 +1664,7 @@ paths:
                     ref:
                       type: string
                       description: A short reference tag. Allows you to select related filters.
-                  description: "Body param:"
+                  description: Body param
               required:
                 - action
                 - filter
@@ -2130,7 +2130,7 @@ paths:
                     ref:
                       type: string
                       description: A short reference tag. Allows you to select related filters.
-                  description: "Body param:"
+                  description: Body param
               required:
                 - action
                 - filter
@@ -2795,7 +2795,7 @@ paths:
                     value:
                       type: string
                       description: the user agent to exactly match
-                  description: "Body param:"
+                  description: Body param
                 mode:
                   type: string
                   enum:

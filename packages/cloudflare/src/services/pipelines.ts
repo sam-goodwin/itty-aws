@@ -381,7 +381,7 @@ export const listPipelines: API.OperationMethod<
 export interface CreatePipelineRequest {
   /** Path param: Specifies the public ID of the account. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   destination: {
     batch: { maxBytes?: number; maxDurationS?: number; maxRows?: number };
     compression: { type?: "none" | "gzip" | "deflate" };
@@ -401,7 +401,7 @@ export interface CreatePipelineRequest {
   };
   /** Body param: Defines the name of the pipeline. */
   name: string;
-  /** Body param: */
+  /** Body param */
   source: (
     | {
         format: "json";
@@ -582,7 +582,7 @@ export interface UpdatePipelineRequest {
   pipelineName: string;
   /** Path param: Specifies the public ID of the account. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   destination: {
     batch: { maxBytes?: number; maxDurationS?: number; maxRows?: number };
     compression: { type?: "none" | "gzip" | "deflate" };
@@ -602,7 +602,7 @@ export interface UpdatePipelineRequest {
   };
   /** Body param: Defines the name of the pipeline. */
   name: string;
-  /** Body param: */
+  /** Body param */
   source: (
     | {
         format: "json";
@@ -853,7 +853,6 @@ export interface GetSinkResponse {
     | {
         accountId: string;
         bucket: string;
-        credentials: { accessKeyId: string; secretAccessKey: string };
         fileNaming?: {
           prefix?: string | null;
           strategy?: "serial" | "uuid" | "uuid_v7" | "ulid" | null;
@@ -869,7 +868,6 @@ export interface GetSinkResponse {
         } | null;
       }
     | {
-        token: string;
         accountId: string;
         bucket: string;
         tableName: string;
@@ -1009,7 +1007,6 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Union([
         Schema.Struct({
-          token: Schema.String,
           accountId: Schema.String,
           bucket: Schema.String,
           tableName: Schema.String,
@@ -1040,7 +1037,6 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
         }).pipe(
           Schema.encodeKeys({
-            token: "token",
             accountId: "account_id",
             bucket: "bucket",
             tableName: "table_name",
@@ -1051,15 +1047,6 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           accountId: Schema.String,
           bucket: Schema.String,
-          credentials: Schema.Struct({
-            accessKeyId: SensitiveString,
-            secretAccessKey: SensitiveString,
-          }).pipe(
-            Schema.encodeKeys({
-              accessKeyId: "access_key_id",
-              secretAccessKey: "secret_access_key",
-            }),
-          ),
           fileNaming: Schema.optional(
             Schema.Union([
               Schema.Struct({
@@ -1119,7 +1106,6 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.encodeKeys({
             accountId: "account_id",
             bucket: "bucket",
-            credentials: "credentials",
             fileNaming: "file_naming",
             jurisdiction: "jurisdiction",
             partitioning: "partitioning",
@@ -1511,7 +1497,7 @@ export interface ListSinksRequest {
   accountId: string;
   page?: number;
   perPage?: number;
-  /** Query param: */
+  /** Query param */
   pipelineId?: string;
 }
 
@@ -1535,7 +1521,6 @@ export interface ListSinksResponse {
       | {
           accountId: string;
           bucket: string;
-          credentials: { accessKeyId: string; secretAccessKey: string };
           fileNaming?: {
             prefix?: string | null;
             strategy?: "serial" | "uuid" | "uuid_v7" | "ulid" | null;
@@ -1551,7 +1536,6 @@ export interface ListSinksResponse {
           } | null;
         }
       | {
-          token: string;
           accountId: string;
           bucket: string;
           tableName: string;
@@ -1700,7 +1684,6 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([
           Schema.Union([
             Schema.Struct({
-              token: Schema.String,
               accountId: Schema.String,
               bucket: Schema.String,
               tableName: Schema.String,
@@ -1731,7 +1714,6 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
             }).pipe(
               Schema.encodeKeys({
-                token: "token",
                 accountId: "account_id",
                 bucket: "bucket",
                 tableName: "table_name",
@@ -1742,15 +1724,6 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Struct({
               accountId: Schema.String,
               bucket: Schema.String,
-              credentials: Schema.Struct({
-                accessKeyId: SensitiveString,
-                secretAccessKey: SensitiveString,
-              }).pipe(
-                Schema.encodeKeys({
-                  accessKeyId: "access_key_id",
-                  secretAccessKey: "secret_access_key",
-                }),
-              ),
               fileNaming: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
@@ -1810,7 +1783,6 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               Schema.encodeKeys({
                 accountId: "account_id",
                 bucket: "bucket",
-                credentials: "credentials",
                 fileNaming: "file_naming",
                 jurisdiction: "jurisdiction",
                 partitioning: "partitioning",
@@ -2265,7 +2237,7 @@ export interface CreateSinkRequest {
           intervalSeconds?: number;
         };
       };
-  /** Body param: */
+  /** Body param */
   format?:
     | {
         type: "json";
@@ -2278,7 +2250,7 @@ export interface CreateSinkRequest {
         compression?: "uncompressed" | "snappy" | "gzip" | "zstd" | "lz4";
         rowGroupBytes?: number | null;
       };
-  /** Body param: */
+  /** Body param */
   schema?: {
     fields?: (
       | {
@@ -3405,7 +3377,9 @@ export const DeleteSinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteSinkResponse = unknown;
 
 export const DeleteSinkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteSinkResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteSinkResponse>;
 
 export type DeleteSinkError = DefaultErrors;
 
@@ -4679,7 +4653,7 @@ export interface CreateStreamRequest {
   accountId: string;
   /** Body param: Specifies the name of the Stream. */
   name: string;
-  /** Body param: */
+  /** Body param */
   format?:
     | {
         type: "json";
@@ -4692,13 +4666,13 @@ export interface CreateStreamRequest {
         compression?: "uncompressed" | "snappy" | "gzip" | "zstd" | "lz4";
         rowGroupBytes?: number | null;
       };
-  /** Body param: */
+  /** Body param */
   http?: {
     authentication: boolean;
     enabled: boolean;
     cors?: { origins?: string[] };
   };
-  /** Body param: */
+  /** Body param */
   schema?: {
     fields?: (
       | {
@@ -4782,7 +4756,7 @@ export interface CreateStreamRequest {
         };
     inferred?: boolean | null;
   };
-  /** Body param: */
+  /** Body param */
   workerBinding?: { enabled: boolean };
 }
 
@@ -5616,13 +5590,13 @@ export interface PatchStreamRequest {
   streamId: string;
   /** Path param: Specifies the public ID of the account. */
   accountId: string;
-  /** Body param: */
+  /** Body param */
   http?: {
     authentication: boolean;
     enabled: boolean;
     cors?: { origins?: string[] };
   };
-  /** Body param: */
+  /** Body param */
   workerBinding?: { enabled: boolean };
 }
 
@@ -5824,7 +5798,9 @@ export const DeleteStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteStreamResponse = unknown;
 
 export const DeleteStreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteStreamResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteStreamResponse>;
 
 export type DeleteStreamError = DefaultErrors | PipelineNotExists;
 
@@ -5878,6 +5854,8 @@ export interface GetV1PipelineResponse {
     type: "stream" | "sink";
     version: number;
   }[];
+  /** Indicates the reason for the failure of the Pipeline. */
+  failureReason?: string | null;
 }
 
 export const GetV1PipelineResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5896,6 +5874,7 @@ export const GetV1PipelineResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       version: Schema.Number,
     }),
   ),
+  failureReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 })
   .pipe(
     Schema.encodeKeys({
@@ -5906,6 +5885,7 @@ export const GetV1PipelineResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       sql: "sql",
       status: "status",
       tables: "tables",
+      failureReason: "failure_reason",
     }),
   )
   .pipe(
@@ -6120,7 +6100,9 @@ export const DeleteV1PipelineRequest =
 export type DeleteV1PipelineResponse = unknown;
 
 export const DeleteV1PipelineResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteV1PipelineResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteV1PipelineResponse>;
 
 export type DeleteV1PipelineError = DefaultErrors | PipelineNotExists;
 

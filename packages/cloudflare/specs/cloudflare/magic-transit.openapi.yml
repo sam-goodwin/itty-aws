@@ -46,6 +46,12 @@ paths:
                       name:
                         type: string
                         description: Display name for the app.
+                      source_subnets:
+                        type: array
+                        items:
+                          type: string
+                        description: IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are
+                          currently unsupported)
                       type:
                         type: string
                         description: Category of the app.
@@ -70,6 +76,12 @@ paths:
                       name:
                         type: string
                         description: Display name for the app.
+                      source_subnets:
+                        type: array
+                        items:
+                          type: string
+                        description: IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are
+                          currently unsupported)
                       type:
                         type: string
                         description: Category of the app.
@@ -113,6 +125,12 @@ paths:
                     type: string
                   description: "Body param: IPv4 CIDRs to associate with traffic decisions. (IPv6
                     CIDRs are currently unsupported)"
+                source_subnets:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: IPv4 CIDRs to associate with traffic decisions. (IPv6
+                    CIDRs are currently unsupported)"
               required:
                 - name
                 - type
@@ -141,6 +159,12 @@ paths:
                   name:
                     type: string
                     description: Display name for the app.
+                  source_subnets:
+                    type: array
+                    items:
+                      type: string
+                    description: IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are
+                      currently unsupported)
                   type:
                     type: string
                     description: Category of the app.
@@ -186,6 +210,12 @@ paths:
                 name:
                   type: string
                   description: "Body param: Display name for the app."
+                source_subnets:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: IPv4 CIDRs to associate with traffic decisions. (IPv6
+                    CIDRs are currently unsupported)"
                 type:
                   type: string
                   description: "Body param: Category of the app."
@@ -214,6 +244,12 @@ paths:
                   name:
                     type: string
                     description: Display name for the app.
+                  source_subnets:
+                    type: array
+                    items:
+                      type: string
+                    description: IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are
+                      currently unsupported)
                   type:
                     type: string
                     description: Category of the app.
@@ -258,6 +294,12 @@ paths:
                 name:
                   type: string
                   description: "Body param: Display name for the app."
+                source_subnets:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: IPv4 CIDRs to associate with traffic decisions. (IPv6
+                    CIDRs are currently unsupported)"
                 type:
                   type: string
                   description: "Body param: Category of the app."
@@ -286,6 +328,12 @@ paths:
                   name:
                     type: string
                     description: Display name for the app.
+                  source_subnets:
+                    type: array
+                    items:
+                      type: string
+                    description: IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are
+                      currently unsupported)
                   type:
                     type: string
                     description: Category of the app.
@@ -334,6 +382,12 @@ paths:
                   name:
                     type: string
                     description: Display name for the app.
+                  source_subnets:
+                    type: array
+                    items:
+                      type: string
+                    description: IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are
+                      currently unsupported)
                   type:
                     type: string
                     description: Category of the app.
@@ -384,7 +438,10 @@ paths:
                       automatic_return_routing:
                         type: boolean
                         description: True if automatic stateful return routing should be enabled for a
-                          tunnel, false otherwise.
+                          tunnel, false otherwise. Requires the
+                          `coupler_integration` account flag to be enabled;
+                          requests setting this to `true` without that flag will
+                          be rejected.
                       colo_name:
                         type: string
                         description: The name of the interconnect. The name cannot share a name with
@@ -476,6 +533,10 @@ paths:
                         type: string
                         description: The name of the interconnect. The name cannot share a name with
                           other tunnels.
+                      virtual_port_reservation_id:
+                        type: string
+                        description: An identifier that correlates this interconnect with the
+                          corresponding V2 CNI interconnect resource.
       x-distilled-response-path: result
     put:
       operationId: putCfInterconnect
@@ -515,7 +576,9 @@ paths:
                 automatic_return_routing:
                   type: boolean
                   description: "Body param: True if automatic stateful return routing should be
-                    enabled for a tunnel, false otherwise."
+                    enabled for a tunnel, false otherwise. Requires the
+                    `coupler_integration` account flag to be enabled; requests
+                    setting this to `true` without that flag will be rejected."
                 description:
                   type: string
                   description: "Body param: An optional description of the interconnect."
@@ -567,7 +630,7 @@ paths:
                         - request
                       description: The type of healthcheck to run, reply or request. The default value
                         is `reply`.
-                  description: "Body param:"
+                  description: Body param
                 interface_address:
                   type: string
                   description: "Body param: A 31-bit prefix (/31 in CIDR notation) supporting two
@@ -587,6 +650,10 @@ paths:
                   type: number
                   description: "Body param: The Maximum Transmission Unit (MTU) in bytes for the
                     interconnect. The minimum value is 576."
+                name:
+                  type: string
+                  description: "Body param: The name of the interconnect. The name cannot share a
+                    name with other tunnels."
       responses:
         "200":
           description: Success
@@ -606,7 +673,10 @@ paths:
                       automatic_return_routing:
                         type: boolean
                         description: True if automatic stateful return routing should be enabled for a
-                          tunnel, false otherwise.
+                          tunnel, false otherwise. Requires the
+                          `coupler_integration` account flag to be enabled;
+                          requests setting this to `true` without that flag will
+                          be rejected.
                       colo_name:
                         type: string
                         description: The name of the interconnect. The name cannot share a name with
@@ -698,6 +768,10 @@ paths:
                         type: string
                         description: The name of the interconnect. The name cannot share a name with
                           other tunnels.
+                      virtual_port_reservation_id:
+                        type: string
+                        description: An identifier that correlates this interconnect with the
+                          corresponding V2 CNI interconnect resource.
       x-distilled-response-path: result
   /accounts/{account_id}/magic/cf_interconnects:
     get:
@@ -739,7 +813,10 @@ paths:
                         automatic_return_routing:
                           type: boolean
                           description: True if automatic stateful return routing should be enabled for a
-                            tunnel, false otherwise.
+                            tunnel, false otherwise. Requires the
+                            `coupler_integration` account flag to be enabled;
+                            requests setting this to `true` without that flag
+                            will be rejected.
                         colo_name:
                           type: string
                           description: The name of the interconnect. The name cannot share a name with
@@ -833,6 +910,10 @@ paths:
                           type: string
                           description: The name of the interconnect. The name cannot share a name with
                             other tunnels.
+                        virtual_port_reservation_id:
+                          type: string
+                          description: An identifier that correlates this interconnect with the
+                            corresponding V2 CNI interconnect resource.
       x-distilled-response-path: result
     put:
       operationId: bulkPutCfInterconnects
@@ -882,7 +963,10 @@ paths:
                         automatic_return_routing:
                           type: boolean
                           description: True if automatic stateful return routing should be enabled for a
-                            tunnel, false otherwise.
+                            tunnel, false otherwise. Requires the
+                            `coupler_integration` account flag to be enabled;
+                            requests setting this to `true` without that flag
+                            will be rejected.
                         colo_name:
                           type: string
                           description: The name of the interconnect. The name cannot share a name with
@@ -976,6 +1060,10 @@ paths:
                           type: string
                           description: The name of the interconnect. The name cannot share a name with
                             other tunnels.
+                        virtual_port_reservation_id:
+                          type: string
+                          description: An identifier that correlates this interconnect with the
+                            corresponding V2 CNI interconnect resource.
       x-distilled-response-path: result
   /accounts/{account_id}/magic/connectors/{connectorId}:
     get:
@@ -1007,8 +1095,26 @@ paths:
                     type: string
                   activated:
                     type: boolean
+                  interrupt_window_days_of_week:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - Sunday
+                        - Monday
+                        - Tuesday
+                        - Wednesday
+                        - Thursday
+                        - Friday
+                        - Saturday
+                    description: Allowed days of the week for upgrades. Default is all days.
                   interrupt_window_duration_hours:
                     type: number
+                  interrupt_window_embargo_dates:
+                    type: array
+                    items:
+                      type: string
+                    description: List of dates (YYYY-MM-DD) when upgrades are blocked.
                   interrupt_window_hour_of_day:
                     type: number
                   last_updated:
@@ -1024,6 +1130,11 @@ paths:
                         type: string
                       serial_number:
                         type: string
+                      type:
+                        type: string
+                        enum:
+                          - MANAGED
+                          - LICENSED
                     required:
                       - id
                   last_heartbeat:
@@ -1035,7 +1146,9 @@ paths:
                 required:
                   - id
                   - activated
+                  - interrupt_window_days_of_week
                   - interrupt_window_duration_hours
+                  - interrupt_window_embargo_dates
                   - interrupt_window_hour_of_day
                   - last_updated
                   - notes
@@ -1068,22 +1181,41 @@ paths:
               properties:
                 activated:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
+                interrupt_window_days_of_week:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - Sunday
+                      - Monday
+                      - Tuesday
+                      - Wednesday
+                      - Thursday
+                      - Friday
+                      - Saturday
+                  description: "Body param: Allowed days of the week for upgrades. Default is all
+                    days."
                 interrupt_window_duration_hours:
                   type: number
-                  description: "Body param:"
+                  description: Body param
+                interrupt_window_embargo_dates:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: List of dates (YYYY-MM-DD) when upgrades are blocked."
                 interrupt_window_hour_of_day:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 notes:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 provision_license:
                   type: boolean
                   description: "Body param: When true, regenerate license key for the connector."
                 timezone:
                   type: string
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -1096,8 +1228,26 @@ paths:
                     type: string
                   activated:
                     type: boolean
+                  interrupt_window_days_of_week:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - Sunday
+                        - Monday
+                        - Tuesday
+                        - Wednesday
+                        - Thursday
+                        - Friday
+                        - Saturday
+                    description: Allowed days of the week for upgrades. Default is all days.
                   interrupt_window_duration_hours:
                     type: number
+                  interrupt_window_embargo_dates:
+                    type: array
+                    items:
+                      type: string
+                    description: List of dates (YYYY-MM-DD) when upgrades are blocked.
                   interrupt_window_hour_of_day:
                     type: number
                   last_updated:
@@ -1113,6 +1263,11 @@ paths:
                         type: string
                       serial_number:
                         type: string
+                      type:
+                        type: string
+                        enum:
+                          - MANAGED
+                          - LICENSED
                     required:
                       - id
                   last_heartbeat:
@@ -1124,7 +1279,9 @@ paths:
                 required:
                   - id
                   - activated
+                  - interrupt_window_days_of_week
                   - interrupt_window_duration_hours
+                  - interrupt_window_embargo_dates
                   - interrupt_window_hour_of_day
                   - last_updated
                   - notes
@@ -1157,22 +1314,41 @@ paths:
               properties:
                 activated:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
+                interrupt_window_days_of_week:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - Sunday
+                      - Monday
+                      - Tuesday
+                      - Wednesday
+                      - Thursday
+                      - Friday
+                      - Saturday
+                  description: "Body param: Allowed days of the week for upgrades. Default is all
+                    days."
                 interrupt_window_duration_hours:
                   type: number
-                  description: "Body param:"
+                  description: Body param
+                interrupt_window_embargo_dates:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: List of dates (YYYY-MM-DD) when upgrades are blocked."
                 interrupt_window_hour_of_day:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 notes:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 provision_license:
                   type: boolean
                   description: "Body param: When true, regenerate license key for the connector."
                 timezone:
                   type: string
-                  description: "Body param:"
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -1185,8 +1361,26 @@ paths:
                     type: string
                   activated:
                     type: boolean
+                  interrupt_window_days_of_week:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - Sunday
+                        - Monday
+                        - Tuesday
+                        - Wednesday
+                        - Thursday
+                        - Friday
+                        - Saturday
+                    description: Allowed days of the week for upgrades. Default is all days.
                   interrupt_window_duration_hours:
                     type: number
+                  interrupt_window_embargo_dates:
+                    type: array
+                    items:
+                      type: string
+                    description: List of dates (YYYY-MM-DD) when upgrades are blocked.
                   interrupt_window_hour_of_day:
                     type: number
                   last_updated:
@@ -1202,6 +1396,11 @@ paths:
                         type: string
                       serial_number:
                         type: string
+                      type:
+                        type: string
+                        enum:
+                          - MANAGED
+                          - LICENSED
                     required:
                       - id
                   last_heartbeat:
@@ -1213,7 +1412,9 @@ paths:
                 required:
                   - id
                   - activated
+                  - interrupt_window_days_of_week
                   - interrupt_window_duration_hours
+                  - interrupt_window_embargo_dates
                   - interrupt_window_hour_of_day
                   - last_updated
                   - notes
@@ -1248,8 +1449,26 @@ paths:
                     type: string
                   activated:
                     type: boolean
+                  interrupt_window_days_of_week:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - Sunday
+                        - Monday
+                        - Tuesday
+                        - Wednesday
+                        - Thursday
+                        - Friday
+                        - Saturday
+                    description: Allowed days of the week for upgrades. Default is all days.
                   interrupt_window_duration_hours:
                     type: number
+                  interrupt_window_embargo_dates:
+                    type: array
+                    items:
+                      type: string
+                    description: List of dates (YYYY-MM-DD) when upgrades are blocked.
                   interrupt_window_hour_of_day:
                     type: number
                   last_updated:
@@ -1265,6 +1484,11 @@ paths:
                         type: string
                       serial_number:
                         type: string
+                      type:
+                        type: string
+                        enum:
+                          - MANAGED
+                          - LICENSED
                     required:
                       - id
                   last_heartbeat:
@@ -1276,7 +1500,9 @@ paths:
                 required:
                   - id
                   - activated
+                  - interrupt_window_days_of_week
                   - interrupt_window_duration_hours
+                  - interrupt_window_embargo_dates
                   - interrupt_window_hour_of_day
                   - last_updated
                   - notes
@@ -1293,9 +1519,18 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: Account identifier
+          description: "Path param: Account identifier"
           schema:
             type: string
+        - name: device_type
+          in: query
+          required: false
+          description: "Query param: Filter connectors by device type."
+          schema:
+            type: string
+            enum:
+              - MANAGED
+              - LICENSED
       responses:
         "200":
           description: Success
@@ -1308,8 +1543,26 @@ paths:
                     type: string
                   activated:
                     type: boolean
+                  interrupt_window_days_of_week:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - Sunday
+                        - Monday
+                        - Tuesday
+                        - Wednesday
+                        - Thursday
+                        - Friday
+                        - Saturday
+                    description: Allowed days of the week for upgrades. Default is all days.
                   interrupt_window_duration_hours:
                     type: number
+                  interrupt_window_embargo_dates:
+                    type: array
+                    items:
+                      type: string
+                    description: List of dates (YYYY-MM-DD) when upgrades are blocked.
                   interrupt_window_hour_of_day:
                     type: number
                   last_updated:
@@ -1325,6 +1578,11 @@ paths:
                         type: string
                       serial_number:
                         type: string
+                      type:
+                        type: string
+                        enum:
+                          - MANAGED
+                          - LICENSED
                     required:
                       - id
                   last_heartbeat:
@@ -1336,7 +1594,9 @@ paths:
                 required:
                   - id
                   - activated
+                  - interrupt_window_days_of_week
                   - interrupt_window_duration_hours
+                  - interrupt_window_embargo_dates
                   - interrupt_window_hour_of_day
                   - last_updated
                   - notes
@@ -1376,19 +1636,38 @@ paths:
                     must be provided."
                 activated:
                   type: boolean
-                  description: "Body param:"
+                  description: Body param
+                interrupt_window_days_of_week:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - Sunday
+                      - Monday
+                      - Tuesday
+                      - Wednesday
+                      - Thursday
+                      - Friday
+                      - Saturday
+                  description: "Body param: Allowed days of the week for upgrades. Default is all
+                    days."
                 interrupt_window_duration_hours:
                   type: number
-                  description: "Body param:"
+                  description: Body param
+                interrupt_window_embargo_dates:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: List of dates (YYYY-MM-DD) when upgrades are blocked."
                 interrupt_window_hour_of_day:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 notes:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 timezone:
                   type: string
-                  description: "Body param:"
+                  description: Body param
               required:
                 - device
       responses:
@@ -1403,8 +1682,26 @@ paths:
                     type: string
                   activated:
                     type: boolean
+                  interrupt_window_days_of_week:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - Sunday
+                        - Monday
+                        - Tuesday
+                        - Wednesday
+                        - Thursday
+                        - Friday
+                        - Saturday
+                    description: Allowed days of the week for upgrades. Default is all days.
                   interrupt_window_duration_hours:
                     type: number
+                  interrupt_window_embargo_dates:
+                    type: array
+                    items:
+                      type: string
+                    description: List of dates (YYYY-MM-DD) when upgrades are blocked.
                   interrupt_window_hour_of_day:
                     type: number
                   last_updated:
@@ -1420,6 +1717,11 @@ paths:
                         type: string
                       serial_number:
                         type: string
+                      type:
+                        type: string
+                        enum:
+                          - MANAGED
+                          - LICENSED
                     required:
                       - id
                   last_heartbeat:
@@ -1431,7 +1733,9 @@ paths:
                 required:
                   - id
                   - activated
+                  - interrupt_window_days_of_week
                   - interrupt_window_duration_hours
+                  - interrupt_window_embargo_dates
                   - interrupt_window_hour_of_day
                   - last_updated
                   - notes
@@ -1629,6 +1933,9 @@ paths:
                   t:
                     type: number
                     description: Time the Event was recorded (seconds since the Unix epoch)
+                  v:
+                    type: string
+                    description: Version
                 required:
                   - e
                   - n
@@ -1656,19 +1963,19 @@ paths:
         - name: from
           in: query
           required: true
-          description: "Query param:"
+          description: Query param
           schema:
             type: number
         - name: to
           in: query
           required: true
-          description: "Query param:"
+          description: Query param
           schema:
             type: number
         - name: cursor
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: k
@@ -1680,7 +1987,7 @@ paths:
         - name: limit
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: number
       responses:
@@ -1910,6 +2217,9 @@ paths:
                         t:
                           type: number
                           description: Time the Event was recorded (seconds since the Unix epoch)
+                        v:
+                          type: string
+                          description: Version
                       required:
                         - e
                         - n
@@ -2026,6 +2336,9 @@ paths:
                   cpu_time_user_ms:
                     type: number
                     description: Time spent in user mode (milliseconds)
+                  delta:
+                    type: number
+                    description: Number of network operations applied during state transition
                   dhcp_leases:
                     type: array
                     items:
@@ -2049,9 +2362,6 @@ paths:
                         mac_address:
                           type: string
                           description: MAC Address of the device the IP Address was leased to
-                        connector_id:
-                          type: string
-                          description: Connector identifier
                       required:
                         - client_id
                         - expiry_time
@@ -2106,9 +2416,6 @@ paths:
                         writes_merged:
                           type: number
                           description: Writes merged
-                        connector_id:
-                          type: string
-                          description: Connector identifier
                         discards:
                           type: number
                           description: Discards completed successfully
@@ -2142,6 +2449,10 @@ paths:
                         - weighted_time_in_progress_ms
                         - writes
                         - writes_merged
+                  epsilon:
+                    type: number
+                    description: Simulated number of network operations applied during state
+                      transition
                   ha_state:
                     type: string
                     description: Name of high availability state
@@ -2160,9 +2471,6 @@ paths:
                         operstate:
                           type: string
                           description: UP/DOWN state of the network interface
-                        connector_id:
-                          type: string
-                          description: Connector identifier
                         ip_addresses:
                           type: array
                           items:
@@ -2174,9 +2482,6 @@ paths:
                               ip_address:
                                 type: string
                                 description: IP address of the network interface
-                              connector_id:
-                                type: string
-                                description: Connector identifier
                             required:
                               - interface_name
                               - ip_address
@@ -2440,9 +2745,9 @@ paths:
                         available_bytes:
                           type: number
                           description: Available disk size (bytes)
-                        connector_id:
-                          type: string
-                          description: Connector identifier
+                        available_inodes:
+                          type: number
+                          description: Available inodes on filesystem
                         is_read_only:
                           type: boolean
                           description: Determines whether the disk is read-only
@@ -2452,6 +2757,9 @@ paths:
                         total_bytes:
                           type: number
                           description: Total disk size (bytes)
+                        total_inodes:
+                          type: number
+                          description: Total inodes on filesystem
                       required:
                         - file_system
                         - kind
@@ -2513,9 +2821,6 @@ paths:
                         sent_packets:
                           type: number
                           description: Total packets transmitted
-                        connector_id:
-                          type: string
-                          description: Connector identifier
                       required:
                         - name
                         - recv_bytes
@@ -2534,6 +2839,9 @@ paths:
                         - sent_errs
                         - sent_fifo
                         - sent_packets
+                  platform:
+                    type: string
+                    description: Platform identifier
                   snmp_icmp_in_addr_mask_reps:
                     type: number
                     description: Number of ICMP Address Mask Reply messages received
@@ -2746,9 +3054,6 @@ paths:
                         label:
                           type: string
                           description: Sensor identifier for the component
-                        connector_id:
-                          type: string
-                          description: Connector identifier
                         critical_celcius:
                           type: number
                           description: Critical failure temperature of the component (degrees Celsius)
@@ -2778,12 +3083,15 @@ paths:
                         tunnel_id:
                           type: string
                           description: Tunnel identifier
-                        connector_id:
-                          type: string
-                          description: Connector identifier
                         probed_mtu:
                           type: number
                           description: MTU as measured between the two ends of the tunnel
+                        recent_healthy_pings:
+                          type: number
+                          description: Number of recent healthy pings for this tunnel
+                        recent_unhealthy_pings:
+                          type: number
+                          description: Number of recent unhealthy pings for this tunnel
                       required:
                         - health_state
                         - health_value
@@ -2825,25 +3133,25 @@ paths:
         - name: from
           in: query
           required: true
-          description: "Query param:"
+          description: Query param
           schema:
             type: number
         - name: to
           in: query
           required: true
-          description: "Query param:"
+          description: Query param
           schema:
             type: number
         - name: cursor
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: string
         - name: limit
           in: query
           required: false
-          description: "Query param:"
+          description: Query param
           schema:
             type: number
       responses:
@@ -2986,6 +3294,9 @@ paths:
                         cpu_time_user_ms:
                           type: number
                           description: Time spent in user mode (milliseconds)
+                        delta:
+                          type: number
+                          description: Number of network operations applied during state transition
                         dhcp_leases:
                           type: array
                           items:
@@ -3009,9 +3320,6 @@ paths:
                               mac_address:
                                 type: string
                                 description: MAC Address of the device the IP Address was leased to
-                              connector_id:
-                                type: string
-                                description: Connector identifier
                             required:
                               - client_id
                               - expiry_time
@@ -3066,9 +3374,6 @@ paths:
                               writes_merged:
                                 type: number
                                 description: Writes merged
-                              connector_id:
-                                type: string
-                                description: Connector identifier
                               discards:
                                 type: number
                                 description: Discards completed successfully
@@ -3102,6 +3407,10 @@ paths:
                               - weighted_time_in_progress_ms
                               - writes
                               - writes_merged
+                        epsilon:
+                          type: number
+                          description: Simulated number of network operations applied during state
+                            transition
                         ha_state:
                           type: string
                           description: Name of high availability state
@@ -3121,9 +3430,6 @@ paths:
                               operstate:
                                 type: string
                                 description: UP/DOWN state of the network interface
-                              connector_id:
-                                type: string
-                                description: Connector identifier
                               ip_addresses:
                                 type: array
                                 items:
@@ -3135,9 +3441,6 @@ paths:
                                     ip_address:
                                       type: string
                                       description: IP address of the network interface
-                                    connector_id:
-                                      type: string
-                                      description: Connector identifier
                                   required:
                                     - interface_name
                                     - ip_address
@@ -3401,9 +3704,9 @@ paths:
                               available_bytes:
                                 type: number
                                 description: Available disk size (bytes)
-                              connector_id:
-                                type: string
-                                description: Connector identifier
+                              available_inodes:
+                                type: number
+                                description: Available inodes on filesystem
                               is_read_only:
                                 type: boolean
                                 description: Determines whether the disk is read-only
@@ -3413,6 +3716,9 @@ paths:
                               total_bytes:
                                 type: number
                                 description: Total disk size (bytes)
+                              total_inodes:
+                                type: number
+                                description: Total inodes on filesystem
                             required:
                               - file_system
                               - kind
@@ -3474,9 +3780,6 @@ paths:
                               sent_packets:
                                 type: number
                                 description: Total packets transmitted
-                              connector_id:
-                                type: string
-                                description: Connector identifier
                             required:
                               - name
                               - recv_bytes
@@ -3495,6 +3798,9 @@ paths:
                               - sent_errs
                               - sent_fifo
                               - sent_packets
+                        platform:
+                          type: string
+                          description: Platform identifier
                         snmp_icmp_in_addr_mask_reps:
                           type: number
                           description: Number of ICMP Address Mask Reply messages received
@@ -3707,9 +4013,6 @@ paths:
                               label:
                                 type: string
                                 description: Sensor identifier for the component
-                              connector_id:
-                                type: string
-                                description: Connector identifier
                               critical_celcius:
                                 type: number
                                 description: Critical failure temperature of the component (degrees Celsius)
@@ -3739,12 +4042,15 @@ paths:
                               tunnel_id:
                                 type: string
                                 description: Tunnel identifier
-                              connector_id:
-                                type: string
-                                description: Connector identifier
                               probed_mtu:
                                 type: number
                                 description: MTU as measured between the two ends of the tunnel
+                              recent_healthy_pings:
+                                type: number
+                                description: Number of recent healthy pings for this tunnel
+                              recent_unhealthy_pings:
+                                type: number
+                                description: Number of recent unhealthy pings for this tunnel
                             required:
                               - health_state
                               - health_value
@@ -3880,7 +4186,10 @@ paths:
                       automatic_return_routing:
                         type: boolean
                         description: True if automatic stateful return routing should be enabled for a
-                          tunnel, false otherwise.
+                          tunnel, false otherwise. Requires the
+                          `coupler_integration` account flag to be enabled;
+                          requests setting this to `true` without that flag will
+                          be rejected.
                       bgp:
                         type: object
                         properties:
@@ -4089,7 +4398,9 @@ paths:
                 automatic_return_routing:
                   type: boolean
                   description: "Body param: True if automatic stateful return routing should be
-                    enabled for a tunnel, false otherwise."
+                    enabled for a tunnel, false otherwise. Requires the
+                    `coupler_integration` account flag to be enabled; requests
+                    setting this to `true` without that flag will be rejected."
                 description:
                   type: string
                   description: "Body param: An optional description of the GRE tunnel."
@@ -4143,7 +4454,7 @@ paths:
                         - request
                       description: The type of healthcheck to run, reply or request. The default value
                         is `reply`.
-                  description: "Body param:"
+                  description: Body param
                 interface_address6:
                   type: string
                   description: "Body param: A 127 bit IPV6 prefix from within the virtual_subnet6
@@ -4202,7 +4513,10 @@ paths:
                       automatic_return_routing:
                         type: boolean
                         description: True if automatic stateful return routing should be enabled for a
-                          tunnel, false otherwise.
+                          tunnel, false otherwise. Requires the
+                          `coupler_integration` account flag to be enabled;
+                          requests setting this to `true` without that flag will
+                          be rejected.
                       bgp:
                         type: object
                         properties:
@@ -4416,7 +4730,10 @@ paths:
                       automatic_return_routing:
                         type: boolean
                         description: True if automatic stateful return routing should be enabled for a
-                          tunnel, false otherwise.
+                          tunnel, false otherwise. Requires the
+                          `coupler_integration` account flag to be enabled;
+                          requests setting this to `true` without that flag will
+                          be rejected.
                       bgp:
                         type: object
                         properties:
@@ -4623,7 +4940,10 @@ paths:
                         automatic_return_routing:
                           type: boolean
                           description: True if automatic stateful return routing should be enabled for a
-                            tunnel, false otherwise.
+                            tunnel, false otherwise. Requires the
+                            `coupler_integration` account flag to be enabled;
+                            requests setting this to `true` without that flag
+                            will be rejected.
                         bgp:
                           type: object
                           properties:
@@ -4831,7 +5151,9 @@ paths:
                 automatic_return_routing:
                   type: boolean
                   description: "Body param: True if automatic stateful return routing should be
-                    enabled for a tunnel, false otherwise."
+                    enabled for a tunnel, false otherwise. Requires the
+                    `coupler_integration` account flag to be enabled; requests
+                    setting this to `true` without that flag will be rejected."
                 bgp:
                   type: object
                   properties:
@@ -4864,7 +5186,7 @@ paths:
                         be rejected."
                   required:
                     - customer_asn
-                  description: "Body param:"
+                  description: Body param
                 description:
                   type: string
                   description: "Body param: An optional description of the GRE tunnel."
@@ -4918,7 +5240,7 @@ paths:
                         - request
                       description: The type of healthcheck to run, reply or request. The default value
                         is `reply`.
-                  description: "Body param:"
+                  description: Body param
                 interface_address6:
                   type: string
                   description: "Body param: A 127 bit IPV6 prefix from within the virtual_subnet6
@@ -4971,7 +5293,9 @@ paths:
                   automatic_return_routing:
                     type: boolean
                     description: True if automatic stateful return routing should be enabled for a
-                      tunnel, false otherwise.
+                      tunnel, false otherwise. Requires the
+                      `coupler_integration` account flag to be enabled; requests
+                      setting this to `true` without that flag will be rejected.
                   bgp:
                     type: object
                     properties:
@@ -5185,7 +5509,10 @@ paths:
                         automatic_return_routing:
                           type: boolean
                           description: True if automatic stateful return routing should be enabled for a
-                            tunnel, false otherwise.
+                            tunnel, false otherwise. Requires the
+                            `coupler_integration` account flag to be enabled;
+                            requests setting this to `true` without that flag
+                            will be rejected.
                         bgp:
                           type: object
                           properties:
@@ -5401,7 +5728,10 @@ paths:
                       automatic_return_routing:
                         type: boolean
                         description: True if automatic stateful return routing should be enabled for a
-                          tunnel, false otherwise.
+                          tunnel, false otherwise. Requires the
+                          `coupler_integration` account flag to be enabled;
+                          requests setting this to `true` without that flag will
+                          be rejected.
                       bgp:
                         type: object
                         properties:
@@ -5626,7 +5956,9 @@ paths:
                 automatic_return_routing:
                   type: boolean
                   description: "Body param: True if automatic stateful return routing should be
-                    enabled for a tunnel, false otherwise."
+                    enabled for a tunnel, false otherwise. Requires the
+                    `coupler_integration` account flag to be enabled; requests
+                    setting this to `true` without that flag will be rejected."
                 bgp:
                   type: object
                   properties:
@@ -5659,7 +5991,7 @@ paths:
                         be rejected."
                   required:
                     - customer_asn
-                  description: "Body param:"
+                  description: Body param
                 custom_remote_identities:
                   type: object
                   properties:
@@ -5674,7 +6006,7 @@ paths:
                         same custom fqdn_id. However, if another IPsec tunnel
                         has the same value then the two tunnels cannot have the
                         same cloudflare_endpoint.
-                  description: "Body param:"
+                  description: Body param
                 customer_endpoint:
                   type: string
                   description: "Body param: The IP address assigned to the customer side of the
@@ -5733,7 +6065,7 @@ paths:
                         - request
                       description: The type of healthcheck to run, reply or request. The default value
                         is `reply`.
-                  description: "Body param:"
+                  description: Body param
                 interface_address6:
                   type: string
                   description: "Body param: A 127 bit IPV6 prefix from within the virtual_subnet6
@@ -5791,7 +6123,10 @@ paths:
                       automatic_return_routing:
                         type: boolean
                         description: True if automatic stateful return routing should be enabled for a
-                          tunnel, false otherwise.
+                          tunnel, false otherwise. Requires the
+                          `coupler_integration` account flag to be enabled;
+                          requests setting this to `true` without that flag will
+                          be rejected.
                       bgp:
                         type: object
                         properties:
@@ -6027,7 +6362,10 @@ paths:
                       automatic_return_routing:
                         type: boolean
                         description: True if automatic stateful return routing should be enabled for a
-                          tunnel, false otherwise.
+                          tunnel, false otherwise. Requires the
+                          `coupler_integration` account flag to be enabled;
+                          requests setting this to `true` without that flag will
+                          be rejected.
                       bgp:
                         type: object
                         properties:
@@ -6256,7 +6594,10 @@ paths:
                         automatic_return_routing:
                           type: boolean
                           description: True if automatic stateful return routing should be enabled for a
-                            tunnel, false otherwise.
+                            tunnel, false otherwise. Requires the
+                            `coupler_integration` account flag to be enabled;
+                            requests setting this to `true` without that flag
+                            will be rejected.
                         bgp:
                           type: object
                           properties:
@@ -6481,7 +6822,9 @@ paths:
                 automatic_return_routing:
                   type: boolean
                   description: "Body param: True if automatic stateful return routing should be
-                    enabled for a tunnel, false otherwise."
+                    enabled for a tunnel, false otherwise. Requires the
+                    `coupler_integration` account flag to be enabled; requests
+                    setting this to `true` without that flag will be rejected."
                 bgp:
                   type: object
                   properties:
@@ -6514,7 +6857,7 @@ paths:
                         be rejected."
                   required:
                     - customer_asn
-                  description: "Body param:"
+                  description: Body param
                 custom_remote_identities:
                   type: object
                   properties:
@@ -6529,7 +6872,7 @@ paths:
                         same custom fqdn_id. However, if another IPsec tunnel
                         has the same value then the two tunnels cannot have the
                         same cloudflare_endpoint.
-                  description: "Body param:"
+                  description: Body param
                 customer_endpoint:
                   type: string
                   description: "Body param: The IP address assigned to the customer side of the
@@ -6588,7 +6931,7 @@ paths:
                         - request
                       description: The type of healthcheck to run, reply or request. The default value
                         is `reply`.
-                  description: "Body param:"
+                  description: Body param
                 interface_address6:
                   type: string
                   description: "Body param: A 127 bit IPV6 prefix from within the virtual_subnet6
@@ -6640,7 +6983,9 @@ paths:
                   automatic_return_routing:
                     type: boolean
                     description: True if automatic stateful return routing should be enabled for a
-                      tunnel, false otherwise.
+                      tunnel, false otherwise. Requires the
+                      `coupler_integration` account flag to be enabled; requests
+                      setting this to `true` without that flag will be rejected.
                   bgp:
                     type: object
                     properties:
@@ -6876,7 +7221,10 @@ paths:
                         automatic_return_routing:
                           type: boolean
                           description: True if automatic stateful return routing should be enabled for a
-                            tunnel, false otherwise.
+                            tunnel, false otherwise. Requires the
+                            `coupler_integration` account flag to be enabled;
+                            requests setting this to `true` without that flag
+                            will be rejected.
                         bgp:
                           type: object
                           properties:
@@ -7934,7 +8282,7 @@ paths:
                       - nexthop
                       - prefix
                       - priority
-                  description: "Body param:"
+                  description: Body param
               required:
                 - routes
       responses:
@@ -8604,7 +8952,7 @@ paths:
                   description: "Body param: Magic Connector identifier tag."
                 description:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 location:
                   type: object
                   properties:
@@ -8689,7 +9037,7 @@ paths:
                   description: "Body param: Magic Connector identifier tag."
                 description:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 location:
                   type: object
                   properties:
@@ -8887,7 +9235,7 @@ paths:
                   description: "Body param: Magic Connector identifier tag."
                 description:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 ha_mode:
                   type: boolean
                   description: "Body param: Site high availability mode. If set to true, the site
@@ -9146,7 +9494,7 @@ paths:
                         subnets on this LAN are allowed.
                   required:
                     - lan_id
-                  description: "Body param:"
+                  description: Body param
                 lan_2:
                   type: object
                   properties:
@@ -9179,7 +9527,7 @@ paths:
                         subnets on this LAN are allowed.
                   required:
                     - lan_id
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
                   description: "Body param: The name of the ACL."
@@ -9191,7 +9539,7 @@ paths:
                       - tcp
                       - udp
                       - icmp
-                  description: "Body param:"
+                  description: Body param
                 unidirectional:
                   type: boolean
                   description: 'Body param: The desired traffic direction for this ACL policy. If
@@ -9375,7 +9723,7 @@ paths:
                         subnets on this LAN are allowed.
                   required:
                     - lan_id
-                  description: "Body param:"
+                  description: Body param
                 lan_2:
                   type: object
                   properties:
@@ -9408,7 +9756,7 @@ paths:
                         subnets on this LAN are allowed.
                   required:
                     - lan_id
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
                   description: "Body param: The name of the ACL."
@@ -9420,7 +9768,7 @@ paths:
                       - tcp
                       - udp
                       - icmp
-                  description: "Body param:"
+                  description: Body param
                 unidirectional:
                   type: boolean
                   description: 'Body param: The desired traffic direction for this ACL policy. If
@@ -9840,7 +10188,7 @@ paths:
                         subnets on this LAN are allowed.
                   required:
                     - lan_id
-                  description: "Body param:"
+                  description: Body param
                 lan_2:
                   type: object
                   properties:
@@ -9873,7 +10221,7 @@ paths:
                         subnets on this LAN are allowed.
                   required:
                     - lan_id
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
                   description: "Body param: The name of the ACL."
@@ -9895,7 +10243,7 @@ paths:
                       - tcp
                       - udp
                       - icmp
-                  description: "Body param:"
+                  description: Body param
                 unidirectional:
                   type: boolean
                   description: 'Body param: The desired traffic direction for this ACL policy. If
@@ -10046,10 +10394,18 @@ paths:
                   id:
                     type: string
                     description: Identifier
+                  bond_id:
+                    type: number
                   ha_link:
                     type: boolean
                     description: mark true to use this LAN for HA probing. only works for site with
                       HA turned on. only one LAN can be set as the ha_link.
+                  is_breakout:
+                    type: boolean
+                    description: mark true to use this LAN for source-based breakout traffic
+                  is_prioritized:
+                    type: boolean
+                    description: mark true to use this LAN for source-based prioritized traffic
                   name:
                     type: string
                   nat:
@@ -10100,6 +10456,42 @@ paths:
                       dhcp_server:
                         type: object
                         properties:
+                          dhcp_options:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                code:
+                                  type: number
+                                  description: DHCP option number (1-254). Options 0 and 255 are reserved by RFC
+                                    2132. Options 3, 6, and 51 are not allowed
+                                    because they conflict with connector-managed
+                                    configuration.
+                                type:
+                                  type: string
+                                  enum:
+                                    - text
+                                    - hex
+                                    - ip
+                                    - byte
+                                    - short
+                                    - integer
+                                  description: 'The type of the option value. text: a string (max 255 bytes). hex:
+                                    colon-separated hex bytes (e.g.
+                                    "01:04:aa:bb:cc", max 255 bytes). ip: an
+                                    IPv4 address (e.g. "10.20.30.40"). byte: an
+                                    unsigned integer 0-255 (1 byte). short: an
+                                    unsigned integer 0-65535 (2 bytes). integer:
+                                    an unsigned integer 0-4294967295 (4 bytes).'
+                                value:
+                                  type: string
+                                  description: The option value, interpreted according to the type field.
+                              required:
+                                - code
+                                - type
+                                - value
+                            description: Optional list of custom DHCP options to include in DHCP responses.
+                              Only valid when DHCP server is enabled.
                           dhcp_pool_end:
                             type: string
                             description: A valid IPv4 address.
@@ -10163,19 +10555,30 @@ paths:
             schema:
               type: object
               properties:
+                bond_id:
+                  type: number
+                  description: Body param
+                is_breakout:
+                  type: boolean
+                  description: "Body param: mark true to use this LAN for source-based breakout
+                    traffic"
+                is_prioritized:
+                  type: boolean
+                  description: "Body param: mark true to use this LAN for source-based prioritized
+                    traffic"
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 nat:
                   type: object
                   properties:
                     static_prefix:
                       type: string
                       description: A valid CIDR notation representing an IP range.
-                  description: "Body param:"
+                  description: Body param
                 physport:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 routed_subnets:
                   type: array
                   items:
@@ -10196,7 +10599,7 @@ paths:
                     required:
                       - next_hop
                       - prefix
-                  description: "Body param:"
+                  description: Body param
                 static_addressing:
                   type: object
                   properties:
@@ -10214,6 +10617,42 @@ paths:
                     dhcp_server:
                       type: object
                       properties:
+                        dhcp_options:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              code:
+                                type: number
+                                description: DHCP option number (1-254). Options 0 and 255 are reserved by RFC
+                                  2132. Options 3, 6, and 51 are not allowed
+                                  because they conflict with connector-managed
+                                  configuration.
+                              type:
+                                type: string
+                                enum:
+                                  - text
+                                  - hex
+                                  - ip
+                                  - byte
+                                  - short
+                                  - integer
+                                description: 'The type of the option value. text: a string (max 255 bytes). hex:
+                                  colon-separated hex bytes (e.g.
+                                  "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4
+                                  address (e.g. "10.20.30.40"). byte: an
+                                  unsigned integer 0-255 (1 byte). short: an
+                                  unsigned integer 0-65535 (2 bytes). integer:
+                                  an unsigned integer 0-4294967295 (4 bytes).'
+                              value:
+                                type: string
+                                description: The option value, interpreted according to the type field.
+                            required:
+                              - code
+                              - type
+                              - value
+                          description: Optional list of custom DHCP options to include in DHCP responses.
+                            Only valid when DHCP server is enabled.
                         dhcp_pool_end:
                           type: string
                           description: A valid IPv4 address.
@@ -10257,10 +10696,18 @@ paths:
                   id:
                     type: string
                     description: Identifier
+                  bond_id:
+                    type: number
                   ha_link:
                     type: boolean
                     description: mark true to use this LAN for HA probing. only works for site with
                       HA turned on. only one LAN can be set as the ha_link.
+                  is_breakout:
+                    type: boolean
+                    description: mark true to use this LAN for source-based breakout traffic
+                  is_prioritized:
+                    type: boolean
+                    description: mark true to use this LAN for source-based prioritized traffic
                   name:
                     type: string
                   nat:
@@ -10311,6 +10758,42 @@ paths:
                       dhcp_server:
                         type: object
                         properties:
+                          dhcp_options:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                code:
+                                  type: number
+                                  description: DHCP option number (1-254). Options 0 and 255 are reserved by RFC
+                                    2132. Options 3, 6, and 51 are not allowed
+                                    because they conflict with connector-managed
+                                    configuration.
+                                type:
+                                  type: string
+                                  enum:
+                                    - text
+                                    - hex
+                                    - ip
+                                    - byte
+                                    - short
+                                    - integer
+                                  description: 'The type of the option value. text: a string (max 255 bytes). hex:
+                                    colon-separated hex bytes (e.g.
+                                    "01:04:aa:bb:cc", max 255 bytes). ip: an
+                                    IPv4 address (e.g. "10.20.30.40"). byte: an
+                                    unsigned integer 0-255 (1 byte). short: an
+                                    unsigned integer 0-65535 (2 bytes). integer:
+                                    an unsigned integer 0-4294967295 (4 bytes).'
+                                value:
+                                  type: string
+                                  description: The option value, interpreted according to the type field.
+                              required:
+                                - code
+                                - type
+                                - value
+                            description: Optional list of custom DHCP options to include in DHCP responses.
+                              Only valid when DHCP server is enabled.
                           dhcp_pool_end:
                             type: string
                             description: A valid IPv4 address.
@@ -10374,19 +10857,30 @@ paths:
             schema:
               type: object
               properties:
+                bond_id:
+                  type: number
+                  description: Body param
+                is_breakout:
+                  type: boolean
+                  description: "Body param: mark true to use this LAN for source-based breakout
+                    traffic"
+                is_prioritized:
+                  type: boolean
+                  description: "Body param: mark true to use this LAN for source-based prioritized
+                    traffic"
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 nat:
                   type: object
                   properties:
                     static_prefix:
                       type: string
                       description: A valid CIDR notation representing an IP range.
-                  description: "Body param:"
+                  description: Body param
                 physport:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 routed_subnets:
                   type: array
                   items:
@@ -10407,7 +10901,7 @@ paths:
                     required:
                       - next_hop
                       - prefix
-                  description: "Body param:"
+                  description: Body param
                 static_addressing:
                   type: object
                   properties:
@@ -10425,6 +10919,42 @@ paths:
                     dhcp_server:
                       type: object
                       properties:
+                        dhcp_options:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              code:
+                                type: number
+                                description: DHCP option number (1-254). Options 0 and 255 are reserved by RFC
+                                  2132. Options 3, 6, and 51 are not allowed
+                                  because they conflict with connector-managed
+                                  configuration.
+                              type:
+                                type: string
+                                enum:
+                                  - text
+                                  - hex
+                                  - ip
+                                  - byte
+                                  - short
+                                  - integer
+                                description: 'The type of the option value. text: a string (max 255 bytes). hex:
+                                  colon-separated hex bytes (e.g.
+                                  "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4
+                                  address (e.g. "10.20.30.40"). byte: an
+                                  unsigned integer 0-255 (1 byte). short: an
+                                  unsigned integer 0-65535 (2 bytes). integer:
+                                  an unsigned integer 0-4294967295 (4 bytes).'
+                              value:
+                                type: string
+                                description: The option value, interpreted according to the type field.
+                            required:
+                              - code
+                              - type
+                              - value
+                          description: Optional list of custom DHCP options to include in DHCP responses.
+                            Only valid when DHCP server is enabled.
                         dhcp_pool_end:
                           type: string
                           description: A valid IPv4 address.
@@ -10468,10 +10998,18 @@ paths:
                   id:
                     type: string
                     description: Identifier
+                  bond_id:
+                    type: number
                   ha_link:
                     type: boolean
                     description: mark true to use this LAN for HA probing. only works for site with
                       HA turned on. only one LAN can be set as the ha_link.
+                  is_breakout:
+                    type: boolean
+                    description: mark true to use this LAN for source-based breakout traffic
+                  is_prioritized:
+                    type: boolean
+                    description: mark true to use this LAN for source-based prioritized traffic
                   name:
                     type: string
                   nat:
@@ -10522,6 +11060,42 @@ paths:
                       dhcp_server:
                         type: object
                         properties:
+                          dhcp_options:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                code:
+                                  type: number
+                                  description: DHCP option number (1-254). Options 0 and 255 are reserved by RFC
+                                    2132. Options 3, 6, and 51 are not allowed
+                                    because they conflict with connector-managed
+                                    configuration.
+                                type:
+                                  type: string
+                                  enum:
+                                    - text
+                                    - hex
+                                    - ip
+                                    - byte
+                                    - short
+                                    - integer
+                                  description: 'The type of the option value. text: a string (max 255 bytes). hex:
+                                    colon-separated hex bytes (e.g.
+                                    "01:04:aa:bb:cc", max 255 bytes). ip: an
+                                    IPv4 address (e.g. "10.20.30.40"). byte: an
+                                    unsigned integer 0-255 (1 byte). short: an
+                                    unsigned integer 0-65535 (2 bytes). integer:
+                                    an unsigned integer 0-4294967295 (4 bytes).'
+                                value:
+                                  type: string
+                                  description: The option value, interpreted according to the type field.
+                              required:
+                                - code
+                                - type
+                                - value
+                            description: Optional list of custom DHCP options to include in DHCP responses.
+                              Only valid when DHCP server is enabled.
                           dhcp_pool_end:
                             type: string
                             description: A valid IPv4 address.
@@ -10589,10 +11163,18 @@ paths:
                   id:
                     type: string
                     description: Identifier
+                  bond_id:
+                    type: number
                   ha_link:
                     type: boolean
                     description: mark true to use this LAN for HA probing. only works for site with
                       HA turned on. only one LAN can be set as the ha_link.
+                  is_breakout:
+                    type: boolean
+                    description: mark true to use this LAN for source-based breakout traffic
+                  is_prioritized:
+                    type: boolean
+                    description: mark true to use this LAN for source-based prioritized traffic
                   name:
                     type: string
                   nat:
@@ -10643,6 +11225,42 @@ paths:
                       dhcp_server:
                         type: object
                         properties:
+                          dhcp_options:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                code:
+                                  type: number
+                                  description: DHCP option number (1-254). Options 0 and 255 are reserved by RFC
+                                    2132. Options 3, 6, and 51 are not allowed
+                                    because they conflict with connector-managed
+                                    configuration.
+                                type:
+                                  type: string
+                                  enum:
+                                    - text
+                                    - hex
+                                    - ip
+                                    - byte
+                                    - short
+                                    - integer
+                                  description: 'The type of the option value. text: a string (max 255 bytes). hex:
+                                    colon-separated hex bytes (e.g.
+                                    "01:04:aa:bb:cc", max 255 bytes). ip: an
+                                    IPv4 address (e.g. "10.20.30.40"). byte: an
+                                    unsigned integer 0-255 (1 byte). short: an
+                                    unsigned integer 0-65535 (2 bytes). integer:
+                                    an unsigned integer 0-4294967295 (4 bytes).'
+                                value:
+                                  type: string
+                                  description: The option value, interpreted according to the type field.
+                              required:
+                                - code
+                                - type
+                                - value
+                            description: Optional list of custom DHCP options to include in DHCP responses.
+                              Only valid when DHCP server is enabled.
                           dhcp_pool_end:
                             type: string
                             description: A valid IPv4 address.
@@ -10706,10 +11324,18 @@ paths:
                   id:
                     type: string
                     description: Identifier
+                  bond_id:
+                    type: number
                   ha_link:
                     type: boolean
                     description: mark true to use this LAN for HA probing. only works for site with
                       HA turned on. only one LAN can be set as the ha_link.
+                  is_breakout:
+                    type: boolean
+                    description: mark true to use this LAN for source-based breakout traffic
+                  is_prioritized:
+                    type: boolean
+                    description: mark true to use this LAN for source-based prioritized traffic
                   name:
                     type: string
                   nat:
@@ -10760,6 +11386,42 @@ paths:
                       dhcp_server:
                         type: object
                         properties:
+                          dhcp_options:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                code:
+                                  type: number
+                                  description: DHCP option number (1-254). Options 0 and 255 are reserved by RFC
+                                    2132. Options 3, 6, and 51 are not allowed
+                                    because they conflict with connector-managed
+                                    configuration.
+                                type:
+                                  type: string
+                                  enum:
+                                    - text
+                                    - hex
+                                    - ip
+                                    - byte
+                                    - short
+                                    - integer
+                                  description: 'The type of the option value. text: a string (max 255 bytes). hex:
+                                    colon-separated hex bytes (e.g.
+                                    "01:04:aa:bb:cc", max 255 bytes). ip: an
+                                    IPv4 address (e.g. "10.20.30.40"). byte: an
+                                    unsigned integer 0-255 (1 byte). short: an
+                                    unsigned integer 0-65535 (2 bytes). integer:
+                                    an unsigned integer 0-4294967295 (4 bytes).'
+                                value:
+                                  type: string
+                                  description: The option value, interpreted according to the type field.
+                              required:
+                                - code
+                                - type
+                                - value
+                            description: Optional list of custom DHCP options to include in DHCP responses.
+                              Only valid when DHCP server is enabled.
                           dhcp_pool_end:
                             type: string
                             description: A valid IPv4 address.
@@ -10800,7 +11462,7 @@ paths:
         address.  @example ```ts // Automatically fetches more pages as needed.
         for await (const lan of client.magicTransit.sites.lans.create(
         '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', physport: 1, }, )) { // ... } ```"
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
       parameters:
         - name: siteId
           in: path
@@ -10814,30 +11476,41 @@ paths:
           schema:
             type: string
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
               type: object
               properties:
-                physport:
+                bond_id:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 ha_link:
                   type: boolean
                   description: "Body param: mark true to use this LAN for HA probing. only works
                     for site with HA turned on. only one LAN can be set as the
                     ha_link."
+                is_breakout:
+                  type: boolean
+                  description: "Body param: mark true to use this LAN for source-based breakout
+                    traffic"
+                is_prioritized:
+                  type: boolean
+                  description: "Body param: mark true to use this LAN for source-based prioritized
+                    traffic"
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 nat:
                   type: object
                   properties:
                     static_prefix:
                       type: string
                       description: A valid CIDR notation representing an IP range.
-                  description: "Body param:"
+                  description: Body param
+                physport:
+                  type: number
+                  description: Body param
                 routed_subnets:
                   type: array
                   items:
@@ -10858,7 +11531,7 @@ paths:
                     required:
                       - next_hop
                       - prefix
-                  description: "Body param:"
+                  description: Body param
                 static_addressing:
                   type: object
                   properties:
@@ -10876,6 +11549,42 @@ paths:
                     dhcp_server:
                       type: object
                       properties:
+                        dhcp_options:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              code:
+                                type: number
+                                description: DHCP option number (1-254). Options 0 and 255 are reserved by RFC
+                                  2132. Options 3, 6, and 51 are not allowed
+                                  because they conflict with connector-managed
+                                  configuration.
+                              type:
+                                type: string
+                                enum:
+                                  - text
+                                  - hex
+                                  - ip
+                                  - byte
+                                  - short
+                                  - integer
+                                description: 'The type of the option value. text: a string (max 255 bytes). hex:
+                                  colon-separated hex bytes (e.g.
+                                  "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4
+                                  address (e.g. "10.20.30.40"). byte: an
+                                  unsigned integer 0-255 (1 byte). short: an
+                                  unsigned integer 0-65535 (2 bytes). integer:
+                                  an unsigned integer 0-4294967295 (4 bytes).'
+                              value:
+                                type: string
+                                description: The option value, interpreted according to the type field.
+                            required:
+                              - code
+                              - type
+                              - value
+                          description: Optional list of custom DHCP options to include in DHCP responses.
+                            Only valid when DHCP server is enabled.
                         dhcp_pool_end:
                           type: string
                           description: A valid IPv4 address.
@@ -10908,8 +11617,6 @@ paths:
                 vlan_tag:
                   type: number
                   description: "Body param: VLAN ID. Use zero for untagged."
-              required:
-                - physport
       responses:
         "200":
           description: Success
@@ -10921,10 +11628,18 @@ paths:
                   id:
                     type: string
                     description: Identifier
+                  bond_id:
+                    type: number
                   ha_link:
                     type: boolean
                     description: mark true to use this LAN for HA probing. only works for site with
                       HA turned on. only one LAN can be set as the ha_link.
+                  is_breakout:
+                    type: boolean
+                    description: mark true to use this LAN for source-based breakout traffic
+                  is_prioritized:
+                    type: boolean
+                    description: mark true to use this LAN for source-based prioritized traffic
                   name:
                     type: string
                   nat:
@@ -10975,6 +11690,42 @@ paths:
                       dhcp_server:
                         type: object
                         properties:
+                          dhcp_options:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                code:
+                                  type: number
+                                  description: DHCP option number (1-254). Options 0 and 255 are reserved by RFC
+                                    2132. Options 3, 6, and 51 are not allowed
+                                    because they conflict with connector-managed
+                                    configuration.
+                                type:
+                                  type: string
+                                  enum:
+                                    - text
+                                    - hex
+                                    - ip
+                                    - byte
+                                    - short
+                                    - integer
+                                  description: 'The type of the option value. text: a string (max 255 bytes). hex:
+                                    colon-separated hex bytes (e.g.
+                                    "01:04:aa:bb:cc", max 255 bytes). ip: an
+                                    IPv4 address (e.g. "10.20.30.40"). byte: an
+                                    unsigned integer 0-255 (1 byte). short: an
+                                    unsigned integer 0-65535 (2 bytes). integer:
+                                    an unsigned integer 0-4294967295 (4 bytes).'
+                                value:
+                                  type: string
+                                  description: The option value, interpreted according to the type field.
+                              required:
+                                - code
+                                - type
+                                - value
+                            description: Optional list of custom DHCP options to include in DHCP responses.
+                              Only valid when DHCP server is enabled.
                           dhcp_pool_end:
                             type: string
                             description: A valid IPv4 address.
@@ -11114,13 +11865,13 @@ paths:
               properties:
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 physport:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 priority:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 static_addressing:
                   type: object
                   properties:
@@ -11223,13 +11974,13 @@ paths:
               properties:
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 physport:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 priority:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 static_addressing:
                   type: object
                   properties:
@@ -11470,13 +12221,13 @@ paths:
               properties:
                 physport:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 name:
                   type: string
-                  description: "Body param:"
+                  description: Body param
                 priority:
                   type: number
-                  description: "Body param:"
+                  description: Body param
                 static_addressing:
                   type: object
                   properties:

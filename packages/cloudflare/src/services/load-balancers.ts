@@ -1176,7 +1176,7 @@ export const listLoadBalancers: API.PaginatedOperationMethod<
 }));
 
 export interface CreateLoadBalancerRequest {
-  /** Path param: */
+  /** Path param */
   zoneId: string;
   /** Body param: A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
   defaultPools: string[];
@@ -2090,7 +2090,7 @@ export const createLoadBalancer: API.OperationMethod<
 
 export interface UpdateLoadBalancerRequest {
   loadBalancerId: string;
-  /** Path param: */
+  /** Path param */
   zoneId: string;
   /** Body param: A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
   defaultPools: string[];
@@ -3012,7 +3012,7 @@ export const updateLoadBalancer: API.OperationMethod<
 
 export interface PatchLoadBalancerRequest {
   loadBalancerId: string;
-  /** Path param: */
+  /** Path param */
   zoneId: string;
   /** Body param: Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For exa */
   adaptiveRouting?: { failoverAcrossPools?: boolean };
@@ -4896,9 +4896,9 @@ export interface GetMonitorGroupResponse {
     updatedAt?: string | null;
   }[];
   /** The timestamp of when the monitor group was created */
-  createdAt?: string | null;
+  createdOn?: string | null;
   /** The timestamp of when the monitor group was last updated */
-  updatedAt?: string | null;
+  modifiedOn?: string | null;
 }
 
 export const GetMonitorGroupResponse =
@@ -4924,16 +4924,16 @@ export const GetMonitorGroupResponse =
         }),
       ),
     ),
-    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
         id: "id",
         description: "description",
         members: "members",
-        createdAt: "created_at",
-        updatedAt: "updated_at",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
       }),
     )
     .pipe(
@@ -4980,8 +4980,8 @@ export interface ListMonitorGroupsResponse {
       createdAt?: string | null;
       updatedAt?: string | null;
     }[];
-    createdAt?: string | null;
-    updatedAt?: string | null;
+    createdOn?: string | null;
+    modifiedOn?: string | null;
   }[];
 }
 
@@ -5014,15 +5014,15 @@ export const ListMonitorGroupsResponse =
             }),
           ),
         ),
-        createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
           id: "id",
           description: "description",
           members: "members",
-          createdAt: "created_at",
-          updatedAt: "updated_at",
+          createdOn: "created_on",
+          modifiedOn: "modified_on",
         }),
       ),
     ),
@@ -5048,8 +5048,6 @@ export const listMonitorGroups: API.PaginatedOperationMethod<
 export interface CreateMonitorGroupRequest {
   /** Path param: Identifier. */
   accountId: string;
-  /** Body param: The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  id: string;
   /** Body param: A short description of the monitor group */
   description: string;
   /** Body param: List of monitors in this group */
@@ -5064,7 +5062,6 @@ export interface CreateMonitorGroupRequest {
 export const CreateMonitorGroupRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    id: Schema.String,
     description: Schema.String,
     members: Schema.Array(
       Schema.Struct({
@@ -5103,9 +5100,9 @@ export interface CreateMonitorGroupResponse {
     updatedAt?: string | null;
   }[];
   /** The timestamp of when the monitor group was created */
-  createdAt?: string | null;
+  createdOn?: string | null;
   /** The timestamp of when the monitor group was last updated */
-  updatedAt?: string | null;
+  modifiedOn?: string | null;
 }
 
 export const CreateMonitorGroupResponse =
@@ -5131,16 +5128,16 @@ export const CreateMonitorGroupResponse =
         }),
       ),
     ),
-    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
         id: "id",
         description: "description",
         members: "members",
-        createdAt: "created_at",
-        updatedAt: "updated_at",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
       }),
     )
     .pipe(
@@ -5164,8 +5161,6 @@ export interface UpdateMonitorGroupRequest {
   monitorGroupId: string;
   /** Path param: Identifier. */
   accountId: string;
-  /** Body param: The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  id: string;
   /** Body param: A short description of the monitor group */
   description: string;
   /** Body param: List of monitors in this group */
@@ -5181,7 +5176,6 @@ export const UpdateMonitorGroupRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    id: Schema.String,
     description: Schema.String,
     members: Schema.Array(
       Schema.Struct({
@@ -5220,9 +5214,9 @@ export interface UpdateMonitorGroupResponse {
     updatedAt?: string | null;
   }[];
   /** The timestamp of when the monitor group was created */
-  createdAt?: string | null;
+  createdOn?: string | null;
   /** The timestamp of when the monitor group was last updated */
-  updatedAt?: string | null;
+  modifiedOn?: string | null;
 }
 
 export const UpdateMonitorGroupResponse =
@@ -5248,16 +5242,16 @@ export const UpdateMonitorGroupResponse =
         }),
       ),
     ),
-    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
         id: "id",
         description: "description",
         members: "members",
-        createdAt: "created_at",
-        updatedAt: "updated_at",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
       }),
     )
     .pipe(
@@ -5281,8 +5275,6 @@ export interface PatchMonitorGroupRequest {
   monitorGroupId: string;
   /** Path param: Identifier. */
   accountId: string;
-  /** Body param: The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  id: string;
   /** Body param: A short description of the monitor group */
   description: string;
   /** Body param: List of monitors in this group */
@@ -5298,7 +5290,6 @@ export const PatchMonitorGroupRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    id: Schema.String,
     description: Schema.String,
     members: Schema.Array(
       Schema.Struct({
@@ -5337,9 +5328,9 @@ export interface PatchMonitorGroupResponse {
     updatedAt?: string | null;
   }[];
   /** The timestamp of when the monitor group was created */
-  createdAt?: string | null;
+  createdOn?: string | null;
   /** The timestamp of when the monitor group was last updated */
-  updatedAt?: string | null;
+  modifiedOn?: string | null;
 }
 
 export const PatchMonitorGroupResponse =
@@ -5365,16 +5356,16 @@ export const PatchMonitorGroupResponse =
         }),
       ),
     ),
-    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
         id: "id",
         description: "description",
         members: "members",
-        createdAt: "created_at",
-        updatedAt: "updated_at",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
       }),
     )
     .pipe(
@@ -5426,9 +5417,9 @@ export interface DeleteMonitorGroupResponse {
     updatedAt?: string | null;
   }[];
   /** The timestamp of when the monitor group was created */
-  createdAt?: string | null;
+  createdOn?: string | null;
   /** The timestamp of when the monitor group was last updated */
-  updatedAt?: string | null;
+  modifiedOn?: string | null;
 }
 
 export const DeleteMonitorGroupResponse =
@@ -5454,16 +5445,16 @@ export const DeleteMonitorGroupResponse =
         }),
       ),
     ),
-    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
         id: "id",
         description: "description",
         members: "members",
-        createdAt: "created_at",
-        updatedAt: "updated_at",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
       }),
     )
     .pipe(
@@ -5481,6 +5472,81 @@ export const deleteMonitorGroup: API.OperationMethod<
   input: DeleteMonitorGroupRequest,
   output: DeleteMonitorGroupResponse,
   errors: [],
+}));
+
+// =============================================================================
+// MonitorGroupReference
+// =============================================================================
+
+export interface GetMonitorGroupReferenceRequest {
+  monitorGroupId: string;
+  /** Identifier. */
+  accountId: string;
+}
+
+export const GetMonitorGroupReferenceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/load_balancers/monitor_groups/{monitorGroupId}/references",
+    }),
+  ) as unknown as Schema.Schema<GetMonitorGroupReferenceRequest>;
+
+export interface GetMonitorGroupReferenceResponse {
+  result: {
+    referenceType?: "*" | "referral" | "referrer" | null;
+    resourceId?: string | null;
+    resourceName?: string | null;
+    resourceType?: string | null;
+  }[];
+}
+
+export const GetMonitorGroupReferenceResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.Array(
+      Schema.Struct({
+        referenceType: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["*", "referral", "referrer"]),
+            Schema.Null,
+          ]),
+        ),
+        resourceId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        resourceName: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        resourceType: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          referenceType: "reference_type",
+          resourceId: "resource_id",
+          resourceName: "resource_name",
+          resourceType: "resource_type",
+        }),
+      ),
+    ),
+  }) as unknown as Schema.Schema<GetMonitorGroupReferenceResponse>;
+
+export type GetMonitorGroupReferenceError = DefaultErrors;
+
+export const getMonitorGroupReference: API.PaginatedOperationMethod<
+  GetMonitorGroupReferenceRequest,
+  GetMonitorGroupReferenceResponse,
+  GetMonitorGroupReferenceError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: GetMonitorGroupReferenceRequest,
+  output: GetMonitorGroupReferenceResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
 }));
 
 // =============================================================================
@@ -5777,6 +5843,7 @@ export interface GetPoolResponse {
         address?: string | null;
         disabledAt?: string | null;
         enabled?: boolean | null;
+        flattenCname?: boolean | null;
         header?: { host?: string[] | null } | null;
         name?: string | null;
         port?: number | null;
@@ -5914,6 +5981,9 @@ export const GetPoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Union([Schema.String, Schema.Null]),
           ),
           enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          flattenCname: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
           header: Schema.optional(
             Schema.Union([
               Schema.Struct({
@@ -5935,6 +6005,7 @@ export const GetPoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             address: "address",
             disabledAt: "disabled_at",
             enabled: "enabled",
+            flattenCname: "flatten_cname",
             header: "header",
             name: "name",
             port: "port",
@@ -6059,6 +6130,7 @@ export interface ListPoolsResponse {
           address?: string | null;
           disabledAt?: string | null;
           enabled?: boolean | null;
+          flattenCname?: boolean | null;
           header?: { host?: string[] | null } | null;
           name?: string | null;
           port?: number | null;
@@ -6205,6 +6277,9 @@ export const ListPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               enabled: Schema.optional(
                 Schema.Union([Schema.Boolean, Schema.Null]),
               ),
+              flattenCname: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               header: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
@@ -6228,6 +6303,7 @@ export const ListPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 address: "address",
                 disabledAt: "disabled_at",
                 enabled: "enabled",
+                flattenCname: "flatten_cname",
                 header: "header",
                 name: "name",
                 port: "port",
@@ -6291,6 +6367,7 @@ export interface CreatePoolRequest {
   origins: {
     address?: string;
     enabled?: boolean;
+    flattenCname?: boolean;
     header?: { host?: string[] };
     name?: string;
     port?: number;
@@ -6322,8 +6399,8 @@ export interface CreatePoolRequest {
   notificationEmail?: string;
   /** Body param: Filter pool and origin health notifications by resource type or health status. Use null to reset. */
   notificationFilter?: {
-    origin?: { disable?: boolean; healthy?: boolean | null } | null;
-    pool?: { disable?: boolean; healthy?: boolean | null } | null;
+    origin?: { disable?: boolean | null; healthy?: boolean | null } | null;
+    pool?: { disable?: boolean | null; healthy?: boolean | null } | null;
   } | null;
   /** Body param: Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
   originSteering?: {
@@ -6342,6 +6419,7 @@ export const CreatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       address: Schema.optional(Schema.String),
       enabled: Schema.optional(Schema.Boolean),
+      flattenCname: Schema.optional(Schema.Boolean),
       header: Schema.optional(
         Schema.Struct({
           host: Schema.optional(Schema.Array(Schema.String)),
@@ -6355,6 +6433,7 @@ export const CreatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.encodeKeys({
         address: "address",
         enabled: "enabled",
+        flattenCname: "flatten_cname",
         header: "header",
         name: "name",
         port: "port",
@@ -6395,7 +6474,9 @@ export const CreatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         origin: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              disable: Schema.optional(Schema.Boolean),
+              disable: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               healthy: Schema.optional(
                 Schema.Union([Schema.Boolean, Schema.Null]),
               ),
@@ -6406,7 +6487,9 @@ export const CreatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         pool: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              disable: Schema.optional(Schema.Boolean),
+              disable: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               healthy: Schema.optional(
                 Schema.Union([Schema.Boolean, Schema.Null]),
               ),
@@ -6527,6 +6610,7 @@ export interface CreatePoolResponse {
         address?: string | null;
         disabledAt?: string | null;
         enabled?: boolean | null;
+        flattenCname?: boolean | null;
         header?: { host?: string[] | null } | null;
         name?: string | null;
         port?: number | null;
@@ -6664,6 +6748,9 @@ export const CreatePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Union([Schema.String, Schema.Null]),
           ),
           enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          flattenCname: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
           header: Schema.optional(
             Schema.Union([
               Schema.Struct({
@@ -6685,6 +6772,7 @@ export const CreatePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             address: "address",
             disabledAt: "disabled_at",
             enabled: "enabled",
+            flattenCname: "flatten_cname",
             header: "header",
             name: "name",
             port: "port",
@@ -6747,6 +6835,7 @@ export interface UpdatePoolRequest {
   origins: {
     address?: string;
     enabled?: boolean;
+    flattenCname?: boolean;
     header?: { host?: string[] };
     name?: string;
     port?: number;
@@ -6797,8 +6886,8 @@ export interface UpdatePoolRequest {
   notificationEmail?: string;
   /** Body param: Filter pool and origin health notifications by resource type or health status. Use null to reset. */
   notificationFilter?: {
-    origin?: { disable?: boolean; healthy?: boolean | null } | null;
-    pool?: { disable?: boolean; healthy?: boolean | null } | null;
+    origin?: { disable?: boolean | null; healthy?: boolean | null } | null;
+    pool?: { disable?: boolean | null; healthy?: boolean | null } | null;
   } | null;
   /** Body param: Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
   originSteering?: {
@@ -6818,6 +6907,7 @@ export const UpdatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       address: Schema.optional(Schema.String),
       enabled: Schema.optional(Schema.Boolean),
+      flattenCname: Schema.optional(Schema.Boolean),
       header: Schema.optional(
         Schema.Struct({
           host: Schema.optional(Schema.Array(Schema.String)),
@@ -6831,6 +6921,7 @@ export const UpdatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.encodeKeys({
         address: "address",
         enabled: "enabled",
+        flattenCname: "flatten_cname",
         header: "header",
         name: "name",
         port: "port",
@@ -6894,7 +6985,9 @@ export const UpdatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         origin: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              disable: Schema.optional(Schema.Boolean),
+              disable: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               healthy: Schema.optional(
                 Schema.Union([Schema.Boolean, Schema.Null]),
               ),
@@ -6905,7 +6998,9 @@ export const UpdatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         pool: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              disable: Schema.optional(Schema.Boolean),
+              disable: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               healthy: Schema.optional(
                 Schema.Union([Schema.Boolean, Schema.Null]),
               ),
@@ -7027,6 +7122,7 @@ export interface UpdatePoolResponse {
         address?: string | null;
         disabledAt?: string | null;
         enabled?: boolean | null;
+        flattenCname?: boolean | null;
         header?: { host?: string[] | null } | null;
         name?: string | null;
         port?: number | null;
@@ -7164,6 +7260,9 @@ export const UpdatePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Union([Schema.String, Schema.Null]),
           ),
           enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          flattenCname: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
           header: Schema.optional(
             Schema.Union([
               Schema.Struct({
@@ -7185,6 +7284,7 @@ export const UpdatePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             address: "address",
             disabledAt: "disabled_at",
             enabled: "enabled",
+            flattenCname: "flatten_cname",
             header: "header",
             name: "name",
             port: "port",
@@ -7287,8 +7387,8 @@ export interface PatchPoolRequest {
   notificationEmail?: string;
   /** Body param: Filter pool and origin health notifications by resource type or health status. Use null to reset. */
   notificationFilter?: {
-    origin?: { disable?: boolean; healthy?: boolean | null } | null;
-    pool?: { disable?: boolean; healthy?: boolean | null } | null;
+    origin?: { disable?: boolean | null; healthy?: boolean | null } | null;
+    pool?: { disable?: boolean | null; healthy?: boolean | null } | null;
   } | null;
   /** Body param: Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
   originSteering?: {
@@ -7302,6 +7402,7 @@ export interface PatchPoolRequest {
   origins?: {
     address?: string;
     enabled?: boolean;
+    flattenCname?: boolean;
     header?: { host?: string[] };
     name?: string;
     port?: number;
@@ -7369,7 +7470,9 @@ export const PatchPoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         origin: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              disable: Schema.optional(Schema.Boolean),
+              disable: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               healthy: Schema.optional(
                 Schema.Union([Schema.Boolean, Schema.Null]),
               ),
@@ -7380,7 +7483,9 @@ export const PatchPoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         pool: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              disable: Schema.optional(Schema.Boolean),
+              disable: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
               healthy: Schema.optional(
                 Schema.Union([Schema.Boolean, Schema.Null]),
               ),
@@ -7412,6 +7517,7 @@ export const PatchPoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         address: Schema.optional(Schema.String),
         enabled: Schema.optional(Schema.Boolean),
+        flattenCname: Schema.optional(Schema.Boolean),
         header: Schema.optional(
           Schema.Struct({
             host: Schema.optional(Schema.Array(Schema.String)),
@@ -7425,6 +7531,7 @@ export const PatchPoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.encodeKeys({
           address: "address",
           enabled: "enabled",
+          flattenCname: "flatten_cname",
           header: "header",
           name: "name",
           port: "port",
@@ -7529,6 +7636,7 @@ export interface PatchPoolResponse {
         address?: string | null;
         disabledAt?: string | null;
         enabled?: boolean | null;
+        flattenCname?: boolean | null;
         header?: { host?: string[] | null } | null;
         name?: string | null;
         port?: number | null;
@@ -7666,6 +7774,9 @@ export const PatchPoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Union([Schema.String, Schema.Null]),
           ),
           enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          flattenCname: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
           header: Schema.optional(
             Schema.Union([
               Schema.Struct({
@@ -7687,6 +7798,7 @@ export const PatchPoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             address: "address",
             disabledAt: "disabled_at",
             enabled: "enabled",
+            flattenCname: "flatten_cname",
             header: "header",
             name: "name",
             port: "port",
@@ -7853,6 +7965,7 @@ export interface BulkPatchPoolsResponse {
           address?: string | null;
           disabledAt?: string | null;
           enabled?: boolean | null;
+          flattenCname?: boolean | null;
           header?: { host?: string[] | null } | null;
           name?: string | null;
           port?: number | null;
@@ -8007,6 +8120,9 @@ export const BulkPatchPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 enabled: Schema.optional(
                   Schema.Union([Schema.Boolean, Schema.Null]),
                 ),
+                flattenCname: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
                 header: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
@@ -8037,6 +8153,7 @@ export const BulkPatchPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   address: "address",
                   disabledAt: "disabled_at",
                   enabled: "enabled",
+                  flattenCname: "flatten_cname",
                   header: "header",
                   name: "name",
                   port: "port",
