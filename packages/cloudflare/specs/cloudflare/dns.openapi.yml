@@ -8684,6 +8684,26 @@ paths:
                   type: string
                   enum:
                     - A
+                    - AAAA
+                    - CNAME
+                    - MX
+                    - NS
+                    - OPENPGPKEY
+                    - PTR
+                    - TXT
+                    - CAA
+                    - CERT
+                    - DNSKEY
+                    - DS
+                    - HTTPS
+                    - LOC
+                    - NAPTR
+                    - SMIMEA
+                    - SRV
+                    - SSHFP
+                    - SVCB
+                    - TLSA
+                    - URI
                   description: "Body param: Record type."
                 comment:
                   type: string
@@ -8718,6 +8738,13 @@ paths:
                         proxied records and it has no effect on whether
                         Cloudflare communicates with the origin using IPv4 or
                         IPv6.
+                    flatten_cname:
+                      type: boolean
+                      description: If enabled, causes the CNAME record to be resolved externally and
+                        the resulting address records (e.g., A and AAAA) to be
+                        returned instead of the CNAME record itself. This
+                        setting is unavailable for proxied records, since they
+                        are always flattened.
                   description: "Body param: Settings for the DNS record."
                 tags:
                   type: array
@@ -8725,6 +8752,132 @@ paths:
                     type: string
                   description: "Body param: Custom tags for the DNS record. This field has no
                     effect on DNS responses."
+                priority:
+                  type: number
+                  description: "Body param: Required for MX, SRV and URI records; unused by other
+                    record types. Records with lower priorities are preferred."
+                data:
+                  type: object
+                  properties:
+                    flags:
+                      oneOf:
+                        - type: number
+                        - type: string
+                      description: Flags for the CAA record.
+                    tag:
+                      type: string
+                      description: "Name of the property controlled by this record (e.g.: issue,
+                        issuewild, iodef)."
+                    value:
+                      type: string
+                      description: Value of the record. This field's semantics depend on the chosen
+                        tag.
+                    algorithm:
+                      type: number
+                      description: Algorithm.
+                    certificate:
+                      type: string
+                      description: Certificate.
+                    key_tag:
+                      type: number
+                      description: Key Tag.
+                    type:
+                      type: number
+                      description: Type.
+                    protocol:
+                      type: number
+                      description: Protocol.
+                    public_key:
+                      type: string
+                      description: Public Key.
+                    digest:
+                      type: string
+                      description: Digest.
+                    digest_type:
+                      type: number
+                      description: Digest Type.
+                    priority:
+                      type: number
+                      description: Priority.
+                    target:
+                      type: string
+                      description: Target.
+                    altitude:
+                      type: number
+                      description: Altitude of location in meters.
+                    lat_degrees:
+                      type: number
+                      description: Degrees of latitude.
+                    lat_direction:
+                      type: string
+                      enum:
+                        - N
+                        - S
+                      description: Latitude direction.
+                    lat_minutes:
+                      type: number
+                      description: Minutes of latitude.
+                    lat_seconds:
+                      type: number
+                      description: Seconds of latitude.
+                    long_degrees:
+                      type: number
+                      description: Degrees of longitude.
+                    long_direction:
+                      type: string
+                      enum:
+                        - E
+                        - W
+                      description: Longitude direction.
+                    long_minutes:
+                      type: number
+                      description: Minutes of longitude.
+                    long_seconds:
+                      type: number
+                      description: Seconds of longitude.
+                    precision_horz:
+                      type: number
+                      description: Horizontal precision of location.
+                    precision_vert:
+                      type: number
+                      description: Vertical precision of location.
+                    size:
+                      type: number
+                      description: Size of location in meters.
+                    order:
+                      type: number
+                      description: Order.
+                    preference:
+                      type: number
+                      description: Preference.
+                    regex:
+                      type: string
+                      description: Regex.
+                    replacement:
+                      type: string
+                      description: Replacement.
+                    service:
+                      type: string
+                      description: Service.
+                    matching_type:
+                      type: number
+                      description: Matching Type.
+                    selector:
+                      type: number
+                      description: Selector.
+                    usage:
+                      type: number
+                      description: Usage.
+                    port:
+                      type: number
+                      description: The port of the service.
+                    weight:
+                      type: number
+                      description: The record weight.
+                    fingerprint:
+                      type: string
+                      description: Fingerprint.
+                  description: "Body param: Components of a CAA record."
               required:
                 - name
                 - ttl
@@ -10880,6 +11033,26 @@ paths:
                   type: string
                   enum:
                     - A
+                    - AAAA
+                    - CNAME
+                    - MX
+                    - NS
+                    - OPENPGPKEY
+                    - PTR
+                    - TXT
+                    - CAA
+                    - CERT
+                    - DNSKEY
+                    - DS
+                    - HTTPS
+                    - LOC
+                    - NAPTR
+                    - SMIMEA
+                    - SRV
+                    - SSHFP
+                    - SVCB
+                    - TLSA
+                    - URI
                   description: "Body param: Record type."
                 comment:
                   type: string
@@ -10914,6 +11087,13 @@ paths:
                         proxied records and it has no effect on whether
                         Cloudflare communicates with the origin using IPv4 or
                         IPv6.
+                    flatten_cname:
+                      type: boolean
+                      description: If enabled, causes the CNAME record to be resolved externally and
+                        the resulting address records (e.g., A and AAAA) to be
+                        returned instead of the CNAME record itself. This
+                        setting is unavailable for proxied records, since they
+                        are always flattened.
                   description: "Body param: Settings for the DNS record."
                 tags:
                   type: array
@@ -10921,6 +11101,132 @@ paths:
                     type: string
                   description: "Body param: Custom tags for the DNS record. This field has no
                     effect on DNS responses."
+                priority:
+                  type: number
+                  description: "Body param: Required for MX, SRV and URI records; unused by other
+                    record types. Records with lower priorities are preferred."
+                data:
+                  type: object
+                  properties:
+                    flags:
+                      oneOf:
+                        - type: number
+                        - type: string
+                      description: Flags for the CAA record.
+                    tag:
+                      type: string
+                      description: "Name of the property controlled by this record (e.g.: issue,
+                        issuewild, iodef)."
+                    value:
+                      type: string
+                      description: Value of the record. This field's semantics depend on the chosen
+                        tag.
+                    algorithm:
+                      type: number
+                      description: Algorithm.
+                    certificate:
+                      type: string
+                      description: Certificate.
+                    key_tag:
+                      type: number
+                      description: Key Tag.
+                    type:
+                      type: number
+                      description: Type.
+                    protocol:
+                      type: number
+                      description: Protocol.
+                    public_key:
+                      type: string
+                      description: Public Key.
+                    digest:
+                      type: string
+                      description: Digest.
+                    digest_type:
+                      type: number
+                      description: Digest Type.
+                    priority:
+                      type: number
+                      description: Priority.
+                    target:
+                      type: string
+                      description: Target.
+                    altitude:
+                      type: number
+                      description: Altitude of location in meters.
+                    lat_degrees:
+                      type: number
+                      description: Degrees of latitude.
+                    lat_direction:
+                      type: string
+                      enum:
+                        - N
+                        - S
+                      description: Latitude direction.
+                    lat_minutes:
+                      type: number
+                      description: Minutes of latitude.
+                    lat_seconds:
+                      type: number
+                      description: Seconds of latitude.
+                    long_degrees:
+                      type: number
+                      description: Degrees of longitude.
+                    long_direction:
+                      type: string
+                      enum:
+                        - E
+                        - W
+                      description: Longitude direction.
+                    long_minutes:
+                      type: number
+                      description: Minutes of longitude.
+                    long_seconds:
+                      type: number
+                      description: Seconds of longitude.
+                    precision_horz:
+                      type: number
+                      description: Horizontal precision of location.
+                    precision_vert:
+                      type: number
+                      description: Vertical precision of location.
+                    size:
+                      type: number
+                      description: Size of location in meters.
+                    order:
+                      type: number
+                      description: Order.
+                    preference:
+                      type: number
+                      description: Preference.
+                    regex:
+                      type: string
+                      description: Regex.
+                    replacement:
+                      type: string
+                      description: Replacement.
+                    service:
+                      type: string
+                      description: Service.
+                    matching_type:
+                      type: number
+                      description: Matching Type.
+                    selector:
+                      type: number
+                      description: Selector.
+                    usage:
+                      type: number
+                      description: Usage.
+                    port:
+                      type: number
+                      description: The port of the service.
+                    weight:
+                      type: number
+                      description: The record weight.
+                    fingerprint:
+                      type: string
+                      description: Fingerprint.
+                  description: "Body param: Components of a CAA record."
               required:
                 - name
                 - ttl
@@ -15435,6 +15741,26 @@ paths:
                   type: string
                   enum:
                     - A
+                    - AAAA
+                    - CNAME
+                    - MX
+                    - NS
+                    - OPENPGPKEY
+                    - PTR
+                    - TXT
+                    - CAA
+                    - CERT
+                    - DNSKEY
+                    - DS
+                    - HTTPS
+                    - LOC
+                    - NAPTR
+                    - SMIMEA
+                    - SRV
+                    - SSHFP
+                    - SVCB
+                    - TLSA
+                    - URI
                   description: "Body param: Record type."
                 comment:
                   type: string
@@ -15469,6 +15795,13 @@ paths:
                         proxied records and it has no effect on whether
                         Cloudflare communicates with the origin using IPv4 or
                         IPv6.
+                    flatten_cname:
+                      type: boolean
+                      description: If enabled, causes the CNAME record to be resolved externally and
+                        the resulting address records (e.g., A and AAAA) to be
+                        returned instead of the CNAME record itself. This
+                        setting is unavailable for proxied records, since they
+                        are always flattened.
                   description: "Body param: Settings for the DNS record."
                 tags:
                   type: array
@@ -15476,6 +15809,132 @@ paths:
                     type: string
                   description: "Body param: Custom tags for the DNS record. This field has no
                     effect on DNS responses."
+                priority:
+                  type: number
+                  description: "Body param: Required for MX, SRV and URI records; unused by other
+                    record types. Records with lower priorities are preferred."
+                data:
+                  type: object
+                  properties:
+                    flags:
+                      oneOf:
+                        - type: number
+                        - type: string
+                      description: Flags for the CAA record.
+                    tag:
+                      type: string
+                      description: "Name of the property controlled by this record (e.g.: issue,
+                        issuewild, iodef)."
+                    value:
+                      type: string
+                      description: Value of the record. This field's semantics depend on the chosen
+                        tag.
+                    algorithm:
+                      type: number
+                      description: Algorithm.
+                    certificate:
+                      type: string
+                      description: Certificate.
+                    key_tag:
+                      type: number
+                      description: Key Tag.
+                    type:
+                      type: number
+                      description: Type.
+                    protocol:
+                      type: number
+                      description: Protocol.
+                    public_key:
+                      type: string
+                      description: Public Key.
+                    digest:
+                      type: string
+                      description: Digest.
+                    digest_type:
+                      type: number
+                      description: Digest Type.
+                    priority:
+                      type: number
+                      description: Priority.
+                    target:
+                      type: string
+                      description: Target.
+                    altitude:
+                      type: number
+                      description: Altitude of location in meters.
+                    lat_degrees:
+                      type: number
+                      description: Degrees of latitude.
+                    lat_direction:
+                      type: string
+                      enum:
+                        - N
+                        - S
+                      description: Latitude direction.
+                    lat_minutes:
+                      type: number
+                      description: Minutes of latitude.
+                    lat_seconds:
+                      type: number
+                      description: Seconds of latitude.
+                    long_degrees:
+                      type: number
+                      description: Degrees of longitude.
+                    long_direction:
+                      type: string
+                      enum:
+                        - E
+                        - W
+                      description: Longitude direction.
+                    long_minutes:
+                      type: number
+                      description: Minutes of longitude.
+                    long_seconds:
+                      type: number
+                      description: Seconds of longitude.
+                    precision_horz:
+                      type: number
+                      description: Horizontal precision of location.
+                    precision_vert:
+                      type: number
+                      description: Vertical precision of location.
+                    size:
+                      type: number
+                      description: Size of location in meters.
+                    order:
+                      type: number
+                      description: Order.
+                    preference:
+                      type: number
+                      description: Preference.
+                    regex:
+                      type: string
+                      description: Regex.
+                    replacement:
+                      type: string
+                      description: Replacement.
+                    service:
+                      type: string
+                      description: Service.
+                    matching_type:
+                      type: number
+                      description: Matching Type.
+                    selector:
+                      type: number
+                      description: Selector.
+                    usage:
+                      type: number
+                      description: Usage.
+                    port:
+                      type: number
+                      description: The port of the service.
+                    weight:
+                      type: number
+                      description: The record weight.
+                    fingerprint:
+                      type: string
+                      description: Fingerprint.
+                  description: "Body param: Components of a CAA record."
               required:
                 - name
                 - ttl

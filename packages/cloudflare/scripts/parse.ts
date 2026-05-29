@@ -13,6 +13,7 @@ import {
   type ParsedInterface,
   type ParsedOperation,
   type ParsedProperty,
+  type PropertyInfo,
   type ServiceInfo,
   type TypeInfo,
   type TypeRegistry,
@@ -1233,25 +1234,36 @@ function findParamsInterface(
       result = parseInterface(node, checker, registry);
     }
 
-    // Handle type aliases that are unions (e.g., `type FooParams = FooParams.A | FooParams.B`)
-    // Resolve by finding the first variant's interface in the namespace
+    // Handle type aliases that are unions (e.g., `type FooParams = FooParams.A | FooParams.B`).
+    // Cloudflare models polymorphic request bodies as a union of per-variant
+    // interfaces — DNS records are the canonical case, where `type` discriminates
+    // A/AAAA/CNAME/MX/.../URI and each variant carries its own body fields.
+    // Merge every variant into one interface so the discriminant becomes a union
+    // of literals and variant-specific fields become optional. (Historically this
+    // grabbed only the first variant, silently dropping every other record type.)
     if (
       !result &&
       ts.isTypeAliasDeclaration(node) &&
       node.name.getText() === paramsTypeName &&
       ts.isUnionTypeNode(node.type)
     ) {
-      // Get the first variant's type name (e.g., "AbuseReportCreateParams.AbuseReportsDmcaReport")
+      const variants: ParsedInterface[] = [];
       for (const member of node.type.types) {
         if (ts.isTypeReferenceNode(member)) {
           const variantName = member.typeName.getText();
-          // Try to find this variant interface in the registry
           const variantInterface = registry.types.get(variantName);
           if (variantInterface) {
-            result = variantInterface;
-            return;
+            variants.push(variantInterface);
           }
         }
+      }
+      if (variants.length === 1) {
+        result = variants[0];
+        return;
+      }
+      if (variants.length > 1) {
+        result = mergeParamsInterfaces(paramsTypeName, variants);
+        return;
       }
     }
 
@@ -1265,6 +1277,142 @@ function findParamsInterface(
 
   visit(sourceFile);
   return result;
+}
+
+/**
+ * Merge the variant interfaces of a union-typed params alias (e.g.
+ * `RecordCreateParams = RecordCreateParams.ARecord | ...`) into a single
+ * interface. A property present in every variant with an identical type stays
+ * required; otherwise it becomes optional, and differing types are unioned
+ * (object-typed fields are deep-merged, so the discriminant `type` becomes a
+ * union of literals and a field like `priority` — present only on MX/SRV/URI —
+ * becomes an optional number). This lets the generated request schema accept
+ * any variant of a polymorphic body instead of just the first.
+ */
+function mergeParamsInterfaces(
+  name: string,
+  variants: ParsedInterface[],
+): ParsedInterface {
+  const total = variants.length;
+  const order: string[] = [];
+  const acc = new Map<
+    string,
+    {
+      types: TypeInfo[];
+      present: number;
+      required: number;
+      location?: ParsedProperty["location"];
+      description?: string;
+    }
+  >();
+  for (const variant of variants) {
+    for (const prop of variant.properties) {
+      let entry = acc.get(prop.name);
+      if (!entry) {
+        entry = { types: [], present: 0, required: 0 };
+        acc.set(prop.name, entry);
+        order.push(prop.name);
+      }
+      entry.types.push(prop.type);
+      entry.present += 1;
+      if (prop.required) entry.required += 1;
+      if (!entry.location && prop.location) entry.location = prop.location;
+      if (!entry.description && prop.description) {
+        entry.description = prop.description;
+      }
+    }
+  }
+  const properties: ParsedProperty[] = order.map((propName) => {
+    const entry = acc.get(propName)!;
+    return {
+      name: propName,
+      type: mergeTypeInfos(entry.types),
+      location: entry.location,
+      // Required only when present and required across every variant.
+      required: entry.present === total && entry.required === total,
+      description: entry.description,
+    };
+  });
+  return { name, properties };
+}
+
+/**
+ * Combine the TypeInfos drawn from one property across union variants into a
+ * single TypeInfo. Identical types collapse; object types deep-merge (keys
+ * unioned, each optional unless required in every object); everything else
+ * becomes a deduplicated union with nested unions flattened.
+ */
+function mergeTypeInfos(types: TypeInfo[]): TypeInfo {
+  // Flatten nested unions so dedup/merge happens at the leaf level.
+  const flat: TypeInfo[] = [];
+  for (const t of types) {
+    if (t.kind === "union" && t.values) {
+      flat.push(...t.values);
+    } else {
+      flat.push(t);
+    }
+  }
+
+  // If every contributor is an object, deep-merge into one object so the result
+  // is a single struct with the union of keys rather than a union of structs.
+  if (
+    flat.length > 0 &&
+    flat.every((t) => t.kind === "object" && t.properties)
+  ) {
+    const objs = flat as (TypeInfo & { properties: PropertyInfo[] })[];
+    const order: string[] = [];
+    const acc = new Map<
+      string,
+      {
+        types: TypeInfo[];
+        present: number;
+        required: number;
+        description?: string;
+        wireKey?: string;
+      }
+    >();
+    for (const obj of objs) {
+      for (const p of obj.properties) {
+        let entry = acc.get(p.name);
+        if (!entry) {
+          entry = { types: [], present: 0, required: 0 };
+          acc.set(p.name, entry);
+          order.push(p.name);
+        }
+        entry.types.push(p.type);
+        entry.present += 1;
+        if (p.required) entry.required += 1;
+        if (!entry.description && p.description) entry.description = p.description;
+        if (!entry.wireKey && p.wireKey) entry.wireKey = p.wireKey;
+      }
+    }
+    const total = objs.length;
+    const properties: PropertyInfo[] = order.map((n) => {
+      const entry = acc.get(n)!;
+      return {
+        name: n,
+        type: mergeTypeInfos(entry.types),
+        required: entry.present === total && entry.required === total,
+        description: entry.description,
+        wireKey: entry.wireKey,
+      };
+    });
+    const named = objs.find((o) => o.name)?.name;
+    return named
+      ? { kind: "object", properties, name: named }
+      : { kind: "object", properties };
+  }
+
+  // Otherwise dedupe and union.
+  const seen = new Set<string>();
+  const deduped = flat.filter((t) => {
+    const key = JSON.stringify(t);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+  if (deduped.length === 1) return deduped[0]!;
+  return { kind: "union", values: deduped };
 }
 
 /**
