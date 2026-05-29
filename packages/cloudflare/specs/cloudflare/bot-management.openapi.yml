@@ -449,6 +449,53 @@ paths:
                   description: "Body param: Enable cloudflare managed robots.txt. If an existing
                     robots.txt is detected, then managed robots.txt will be
                     prepended to the existing robots.txt."
+                optimize_wordpress:
+                  type: boolean
+                  description: "Body param: Whether to optimize Super Bot Fight Mode protections
+                    for Wordpress."
+                sbfm_definitely_automated:
+                  type: string
+                  enum:
+                    - allow
+                    - block
+                    - managed_challenge
+                  description: "Body param: Super Bot Fight Mode (SBFM) action to take on
+                    definitely automated requests."
+                sbfm_static_resource_protection:
+                  type: boolean
+                  description: "Body param: Super Bot Fight Mode (SBFM) to enable static resource
+                    protection. Enable if static resources on your application
+                    need bot protection. Note: Static resource protection can
+                    also result in legitimate traffic being blocked."
+                sbfm_verified_bots:
+                  type: string
+                  enum:
+                    - allow
+                    - block
+                  description: "Body param: Super Bot Fight Mode (SBFM) action to take on verified
+                    bots requests."
+                sbfm_likely_automated:
+                  type: string
+                  enum:
+                    - allow
+                    - block
+                    - managed_challenge
+                  description: "Body param: Super Bot Fight Mode (SBFM) action to take on likely
+                    automated requests."
+                auto_update_model:
+                  type: boolean
+                  description: "Body param: Automatically update to the newest bot detection
+                    models created by Cloudflare as they are released. [Learn
+                    more.](https://developers.cloudflare.com/bots/reference/mac\
+                    hine-learning-models#model-versions-and-release-notes)"
+                bm_cookie_enabled:
+                  type: boolean
+                  description: "Body param: Indicates that the bot management cookie can be placed
+                    on end user devices accessing the site. Defaults to true"
+                suppress_session_score:
+                  type: boolean
+                  description: "Body param: Whether to disable tracking the highest bot score for
+                    a session in the Bot Management cookie."
       responses:
         "200":
           description: Success

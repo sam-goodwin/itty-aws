@@ -161,6 +161,7 @@ paths:
                   type: string
                   enum:
                     - worker
+                    - http_pull
                   description: Body param
                 dead_letter_queue:
                   type: string
@@ -187,9 +188,13 @@ paths:
                       type: number
                       description: The number of seconds to delay before making the message available
                         for another attempt.
+                    visibility_timeout_ms:
+                      type: number
+                      description: The number of milliseconds that a message is exclusively leased.
+                        After the timeout, the message becomes available for
+                        another attempt.
                   description: Body param
               required:
-                - script_name
                 - type
       responses:
         "200":
@@ -529,9 +534,13 @@ paths:
                       type: number
                       description: The number of seconds to delay before making the message available
                         for another attempt.
+                    visibility_timeout_ms:
+                      type: number
+                      description: The number of milliseconds that a message is exclusively leased.
+                        After the timeout, the message becomes available for
+                        another attempt.
                   description: Body param
               required:
-                - script_name
                 - type
       responses:
         "200":
@@ -860,6 +869,7 @@ paths:
                   type: string
                   enum:
                     - text
+                    - json
                   description: Body param
                 delay_seconds:
                   type: number

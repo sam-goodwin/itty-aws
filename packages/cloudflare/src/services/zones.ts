@@ -2801,12 +2801,15 @@ export interface PatchSettingRequest {
   zoneId: string;
   /** Body param: ssl-recommender enrollment setting. */
   enabled?: boolean;
+  /** Body param: Value of the zone setting. */
+  value?: unknown;
 }
 
 export const PatchSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   settingId: Schema.String.pipe(T.HttpPath("settingId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   enabled: Schema.optional(Schema.Boolean),
+  value: Schema.optional(Schema.Unknown),
 }).pipe(
   T.Http({ method: "PATCH", path: "/zones/{zone_id}/settings/{settingId}" }),
 ) as unknown as Schema.Schema<PatchSettingRequest>;

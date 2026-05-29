@@ -7798,8 +7798,21 @@ paths:
                   description: "Body param: The RFC 3339 offset timestamp from which to query
                     backwards for packets. Must be within the last 24h. When
                     this field is empty, defaults to time of request."
+                colo_name:
+                  type: string
+                  description: "Body param: The name of the data center used for the packet
+                    capture. This can be a specific colo (ord02) or a multi-colo
+                    name (ORD). This field only applies to `full` packet
+                    captures."
+                destination_conf:
+                  type: string
+                  description: "Body param: The full URI for the bucket. This field only applies
+                    to `full` packet captures."
+                byte_limit:
+                  type: number
+                  description: "Body param: The maximum number of bytes to capture. This field
+                    only applies to `full` packet captures."
               required:
-                - packet_limit
                 - system
                 - time_limit
                 - type

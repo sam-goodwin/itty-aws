@@ -431,6 +431,22 @@ export interface PutBotManagementRequest {
   fightMode?: boolean;
   /** Body param: Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt. */
   isRobotsTxtManaged?: boolean;
+  /** Body param: Whether to optimize Super Bot Fight Mode protections for Wordpress. */
+  optimizeWordpress?: boolean;
+  /** Body param: Super Bot Fight Mode (SBFM) action to take on definitely automated requests. */
+  sbfmDefinitelyAutomated?: "allow" | "block" | "managed_challenge";
+  /** Body param: Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in le */
+  sbfmStaticResourceProtection?: boolean;
+  /** Body param: Super Bot Fight Mode (SBFM) action to take on verified bots requests. */
+  sbfmVerifiedBots?: "allow" | "block";
+  /** Body param: Super Bot Fight Mode (SBFM) action to take on likely automated requests. */
+  sbfmLikelyAutomated?: "allow" | "block" | "managed_challenge";
+  /** Body param: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#m */
+  autoUpdateModel?: boolean;
+  /** Body param: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true */
+  bmCookieEnabled?: boolean;
+  /** Body param: Whether to disable tracking the highest bot score for a session in the Bot Management cookie. */
+  suppressSessionScore?: boolean;
 }
 
 export const PutBotManagementRequest =
@@ -449,6 +465,18 @@ export const PutBotManagementRequest =
     enableJs: Schema.optional(Schema.Boolean),
     fightMode: Schema.optional(Schema.Boolean),
     isRobotsTxtManaged: Schema.optional(Schema.Boolean),
+    optimizeWordpress: Schema.optional(Schema.Boolean),
+    sbfmDefinitelyAutomated: Schema.optional(
+      Schema.Literals(["allow", "block", "managed_challenge"]),
+    ),
+    sbfmStaticResourceProtection: Schema.optional(Schema.Boolean),
+    sbfmVerifiedBots: Schema.optional(Schema.Literals(["allow", "block"])),
+    sbfmLikelyAutomated: Schema.optional(
+      Schema.Literals(["allow", "block", "managed_challenge"]),
+    ),
+    autoUpdateModel: Schema.optional(Schema.Boolean),
+    bmCookieEnabled: Schema.optional(Schema.Boolean),
+    suppressSessionScore: Schema.optional(Schema.Boolean),
   }).pipe(
     Schema.encodeKeys({
       aiBotsProtection: "ai_bots_protection",
@@ -458,6 +486,14 @@ export const PutBotManagementRequest =
       enableJs: "enable_js",
       fightMode: "fight_mode",
       isRobotsTxtManaged: "is_robots_txt_managed",
+      optimizeWordpress: "optimize_wordpress",
+      sbfmDefinitelyAutomated: "sbfm_definitely_automated",
+      sbfmStaticResourceProtection: "sbfm_static_resource_protection",
+      sbfmVerifiedBots: "sbfm_verified_bots",
+      sbfmLikelyAutomated: "sbfm_likely_automated",
+      autoUpdateModel: "auto_update_model",
+      bmCookieEnabled: "bm_cookie_enabled",
+      suppressSessionScore: "suppress_session_score",
     }),
     T.Http({ method: "PUT", path: "/zones/{zone_id}/bot_management" }),
   ) as unknown as Schema.Schema<PutBotManagementRequest>;

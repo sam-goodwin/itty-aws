@@ -15923,9 +15923,28 @@ export interface PutScriptSecretRequest {
   /** Body param: A JavaScript variable name for the binding. */
   name: string;
   /** Body param: The secret value to use. */
-  text: string;
+  text?: string;
   /** Body param: The kind of resource that the binding provides. */
-  type: "secret_text";
+  type: "secret_text" | "secret_key";
+  /** Body param: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
+  algorithm?: unknown;
+  /** Body param: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
+  format?: "raw" | "pkcs8" | "spki" | "jwk";
+  /** Body param: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
+  usages?: (
+    | "encrypt"
+    | "decrypt"
+    | "sign"
+    | "verify"
+    | "deriveKey"
+    | "deriveBits"
+    | "wrapKey"
+    | "unwrapKey"
+  )[];
+  /** Body param: Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
+  keyBase64?: string;
+  /** Body param: Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
+  keyJwk?: unknown;
 }
 
 export const PutScriptSecretRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -15933,10 +15952,38 @@ export const PutScriptSecretRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     name: Schema.String,
-    text: Schema.String,
-    type: Schema.Literal("secret_text"),
+    text: Schema.optional(Schema.String),
+    type: Schema.Literals(["secret_text", "secret_key"]),
+    algorithm: Schema.optional(Schema.Unknown),
+    format: Schema.optional(Schema.Literals(["raw", "pkcs8", "spki", "jwk"])),
+    usages: Schema.optional(
+      Schema.Array(
+        Schema.Literals([
+          "encrypt",
+          "decrypt",
+          "sign",
+          "verify",
+          "deriveKey",
+          "deriveBits",
+          "wrapKey",
+          "unwrapKey",
+        ]),
+      ),
+    ),
+    keyBase64: Schema.optional(Schema.String),
+    keyJwk: Schema.optional(Schema.Unknown),
   },
 ).pipe(
+  Schema.encodeKeys({
+    name: "name",
+    text: "text",
+    type: "type",
+    algorithm: "algorithm",
+    format: "format",
+    usages: "usages",
+    keyBase64: "key_base64",
+    keyJwk: "key_jwk",
+  }),
   T.Http({
     method: "PUT",
     path: "/accounts/{account_id}/workers/scripts/{scriptName}/secrets",

@@ -15621,23 +15621,777 @@ export const listPhasVersionsForZone: API.PaginatedOperationMethod<
 const CreateRuleBaseFields = {
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
   id: Schema.optional(Schema.String),
-  action: Schema.optional(Schema.Literal("block")),
+  action: Schema.optional(
+    Schema.Literals([
+      "block",
+      "challenge",
+      "compress_response",
+      "ddos_dynamic",
+      "execute",
+      "force_connection_close",
+      "js_challenge",
+      "log",
+      "log_custom_field",
+      "managed_challenge",
+      "redirect",
+      "rewrite",
+      "route",
+      "score",
+      "serve_error",
+      "set_cache_control",
+      "set_cache_settings",
+      "set_cache_tags",
+      "set_config",
+      "skip",
+    ]),
+  ),
   actionParameters: Schema.optional(
-    Schema.Struct({
-      response: Schema.optional(
-        Schema.Struct({
-          content: Schema.String,
-          contentType: Schema.String,
-          statusCode: Schema.Number,
-        }).pipe(
-          Schema.encodeKeys({
-            content: "content",
-            contentType: "content_type",
-            statusCode: "status_code",
+    Schema.Union([
+      Schema.Struct({
+        operation: Schema.Literals(["add", "remove", "set"]),
+        values: Schema.Array(Schema.String),
+      }),
+      Schema.Struct({
+        expression: Schema.String,
+        operation: Schema.Literals(["add", "remove", "set"]),
+      }),
+      Schema.Struct({
+        algorithms: Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(
+              Schema.Literals([
+                "none",
+                "auto",
+                "default",
+                "gzip",
+                "brotli",
+                "zstd",
+              ]),
+            ),
           }),
         ),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        matchedData: Schema.optional(
+          Schema.Struct({
+            publicKey: Schema.String,
+          }).pipe(Schema.encodeKeys({ publicKey: "public_key" })),
+        ),
+        overrides: Schema.optional(
+          Schema.Struct({
+            action: Schema.optional(Schema.String),
+            categories: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  category: Schema.String,
+                  action: Schema.optional(Schema.String),
+                  enabled: Schema.optional(Schema.Boolean),
+                  sensitivityLevel: Schema.optional(
+                    Schema.Literals(["default", "medium", "low", "eoff"]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    category: "category",
+                    action: "action",
+                    enabled: "enabled",
+                    sensitivityLevel: "sensitivity_level",
+                  }),
+                ),
+              ),
+            ),
+            enabled: Schema.optional(Schema.Boolean),
+            rules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.String,
+                  action: Schema.optional(Schema.String),
+                  enabled: Schema.optional(Schema.Boolean),
+                  scoreThreshold: Schema.optional(Schema.Number),
+                  sensitivityLevel: Schema.optional(
+                    Schema.Literals(["default", "medium", "low", "eoff"]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    id: "id",
+                    action: "action",
+                    enabled: "enabled",
+                    scoreThreshold: "score_threshold",
+                    sensitivityLevel: "sensitivity_level",
+                  }),
+                ),
+              ),
+            ),
+            sensitivityLevel: Schema.optional(
+              Schema.Literals(["default", "medium", "low", "eoff"]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              action: "action",
+              categories: "categories",
+              enabled: "enabled",
+              rules: "rules",
+              sensitivityLevel: "sensitivity_level",
+            }),
+          ),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          matchedData: "matched_data",
+          overrides: "overrides",
+        }),
       ),
-    }),
+      Schema.Struct({
+        increment: Schema.Number,
+      }),
+      Schema.Struct({
+        content: Schema.String,
+        contentType: Schema.optional(
+          Schema.Literals([
+            "application/json",
+            "text/html",
+            "text/plain",
+            "text/xml",
+          ]),
+        ),
+        statusCode: Schema.optional(Schema.Number),
+      }).pipe(
+        Schema.encodeKeys({
+          content: "content",
+          contentType: "content_type",
+          statusCode: "status_code",
+        }),
+      ),
+      Schema.Struct({
+        assetName: Schema.String,
+        contentType: Schema.optional(
+          Schema.Literals([
+            "application/json",
+            "text/html",
+            "text/plain",
+            "text/xml",
+          ]),
+        ),
+        statusCode: Schema.optional(Schema.Number),
+      }).pipe(
+        Schema.encodeKeys({
+          assetName: "asset_name",
+          contentType: "content_type",
+          statusCode: "status_code",
+        }),
+      ),
+      Schema.Struct({
+        response: Schema.optional(
+          Schema.Struct({
+            content: Schema.String,
+            contentType: Schema.String,
+            statusCode: Schema.Number,
+          }).pipe(
+            Schema.encodeKeys({
+              content: "content",
+              contentType: "content_type",
+              statusCode: "status_code",
+            }),
+          ),
+        ),
+      }),
+      Schema.Struct({
+        cookieFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+            }),
+          ),
+        ),
+        rawResponseFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              preserveDuplicates: Schema.optional(Schema.Boolean),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                preserveDuplicates: "preserve_duplicates",
+              }),
+            ),
+          ),
+        ),
+        requestFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+            }),
+          ),
+        ),
+        responseFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              preserveDuplicates: Schema.optional(Schema.Boolean),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                preserveDuplicates: "preserve_duplicates",
+              }),
+            ),
+          ),
+        ),
+        transformedRequestFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+            }),
+          ),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          cookieFields: "cookie_fields",
+          rawResponseFields: "raw_response_fields",
+          requestFields: "request_fields",
+          responseFields: "response_fields",
+          transformedRequestFields: "transformed_request_fields",
+        }),
+      ),
+      Schema.Struct({
+        fromList: Schema.optional(
+          Schema.Struct({
+            key: Schema.String,
+            name: Schema.String,
+          }),
+        ),
+        fromValue: Schema.optional(
+          Schema.Struct({
+            targetUrl: Schema.Struct({
+              expression: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+            preserveQueryString: Schema.optional(Schema.Boolean),
+            statusCode: Schema.optional(
+              Schema.Literals(["301", "302", "303", "307", "308"]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              targetUrl: "target_url",
+              preserveQueryString: "preserve_query_string",
+              statusCode: "status_code",
+            }),
+          ),
+        ),
+      }).pipe(
+        Schema.encodeKeys({ fromList: "from_list", fromValue: "from_value" }),
+      ),
+      Schema.Struct({
+        headers: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        uri: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              path: Schema.Struct({
+                expression: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            }),
+            Schema.Struct({
+              query: Schema.Struct({
+                expression: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            }),
+          ]),
+        ),
+      }),
+      Schema.Struct({
+        hostHeader: Schema.optional(Schema.String),
+        origin: Schema.optional(
+          Schema.Struct({
+            host: Schema.optional(Schema.String),
+            port: Schema.optional(Schema.Number),
+          }),
+        ),
+        sni: Schema.optional(
+          Schema.Struct({
+            value: Schema.String,
+          }),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          hostHeader: "host_header",
+          origin: "origin",
+          sni: "sni",
+        }),
+      ),
+      Schema.Struct({
+        immutable: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        maxAge: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        mustRevalidate: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        mustUnderstand: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        noCache: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        noStore: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        noTransform: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        private: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        proxyRevalidate: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        public: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        sMaxage: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        staleIfError: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        staleWhileRevalidate: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          immutable: "immutable",
+          maxAge: "max-age",
+          mustRevalidate: "must-revalidate",
+          mustUnderstand: "must-understand",
+          noCache: "no-cache",
+          noStore: "no-store",
+          noTransform: "no-transform",
+          private: "private",
+          proxyRevalidate: "proxy-revalidate",
+          public: "public",
+          sMaxage: "s-maxage",
+          staleIfError: "stale-if-error",
+          staleWhileRevalidate: "stale-while-revalidate",
+        }),
+      ),
+      Schema.Struct({
+        additionalCacheablePorts: Schema.optional(Schema.Array(Schema.Number)),
+        browserTtl: Schema.optional(
+          Schema.Struct({
+            mode: Schema.Literals([
+              "respect_origin",
+              "bypass_by_default",
+              "override_origin",
+              "bypass",
+            ]),
+            default: Schema.optional(Schema.Number),
+          }),
+        ),
+        cache: Schema.optional(Schema.Boolean),
+        cacheKey: Schema.optional(
+          Schema.Struct({
+            cacheByDeviceType: Schema.optional(Schema.Boolean),
+            cacheDeceptionArmor: Schema.optional(Schema.Boolean),
+            customKey: Schema.optional(
+              Schema.Struct({
+                cookie: Schema.optional(
+                  Schema.Struct({
+                    checkPresence: Schema.optional(Schema.Array(Schema.String)),
+                    include: Schema.optional(Schema.Array(Schema.String)),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      checkPresence: "check_presence",
+                      include: "include",
+                    }),
+                  ),
+                ),
+                header: Schema.optional(
+                  Schema.Struct({
+                    checkPresence: Schema.optional(Schema.Array(Schema.String)),
+                    contains: Schema.optional(
+                      Schema.Record(Schema.String, Schema.Unknown),
+                    ),
+                    excludeOrigin: Schema.optional(Schema.Boolean),
+                    include: Schema.optional(Schema.Array(Schema.String)),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      checkPresence: "check_presence",
+                      contains: "contains",
+                      excludeOrigin: "exclude_origin",
+                      include: "include",
+                    }),
+                  ),
+                ),
+                host: Schema.optional(
+                  Schema.Struct({
+                    resolved: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                queryString: Schema.optional(
+                  Schema.Struct({
+                    exclude: Schema.optional(
+                      Schema.Struct({
+                        all: Schema.optional(Schema.Literal(true)),
+                        list: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                    include: Schema.optional(
+                      Schema.Struct({
+                        all: Schema.optional(Schema.Literal(true)),
+                        list: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                  }),
+                ),
+                user: Schema.optional(
+                  Schema.Struct({
+                    deviceType: Schema.optional(Schema.Boolean),
+                    geo: Schema.optional(Schema.Boolean),
+                    lang: Schema.optional(Schema.Boolean),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      deviceType: "device_type",
+                      geo: "geo",
+                      lang: "lang",
+                    }),
+                  ),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  cookie: "cookie",
+                  header: "header",
+                  host: "host",
+                  queryString: "query_string",
+                  user: "user",
+                }),
+              ),
+            ),
+            ignoreQueryStringsOrder: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              cacheByDeviceType: "cache_by_device_type",
+              cacheDeceptionArmor: "cache_deception_armor",
+              customKey: "custom_key",
+              ignoreQueryStringsOrder: "ignore_query_strings_order",
+            }),
+          ),
+        ),
+        cacheReserve: Schema.optional(
+          Schema.Struct({
+            eligible: Schema.Boolean,
+            minimumFileSize: Schema.optional(Schema.Number),
+          }).pipe(
+            Schema.encodeKeys({
+              eligible: "eligible",
+              minimumFileSize: "minimum_file_size",
+            }),
+          ),
+        ),
+        edgeTtl: Schema.optional(
+          Schema.Struct({
+            mode: Schema.Literals([
+              "respect_origin",
+              "bypass_by_default",
+              "override_origin",
+            ]),
+            default: Schema.optional(Schema.Number),
+            statusCodeTtl: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  value: Schema.Number,
+                  statusCode: Schema.optional(Schema.Number),
+                  statusCodeRange: Schema.optional(
+                    Schema.Struct({
+                      from: Schema.optional(Schema.Number),
+                      to: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    value: "value",
+                    statusCode: "status_code",
+                    statusCodeRange: "status_code_range",
+                  }),
+                ),
+              ),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              mode: "mode",
+              default: "default",
+              statusCodeTtl: "status_code_ttl",
+            }),
+          ),
+        ),
+        originCacheControl: Schema.optional(Schema.Boolean),
+        originErrorPagePassthru: Schema.optional(Schema.Boolean),
+        readTimeout: Schema.optional(Schema.Number),
+        respectStrongEtags: Schema.optional(Schema.Boolean),
+        serveStale: Schema.optional(
+          Schema.Struct({
+            disableStaleWhileUpdating: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              disableStaleWhileUpdating: "disable_stale_while_updating",
+            }),
+          ),
+        ),
+        sharedDictionary: Schema.optional(
+          Schema.Struct({
+            matchPattern: Schema.String,
+          }).pipe(Schema.encodeKeys({ matchPattern: "match_pattern" })),
+        ),
+        stripEtags: Schema.optional(Schema.Boolean),
+        stripLastModified: Schema.optional(Schema.Boolean),
+        stripSetCookie: Schema.optional(Schema.Boolean),
+      }).pipe(
+        Schema.encodeKeys({
+          additionalCacheablePorts: "additional_cacheable_ports",
+          browserTtl: "browser_ttl",
+          cache: "cache",
+          cacheKey: "cache_key",
+          cacheReserve: "cache_reserve",
+          edgeTtl: "edge_ttl",
+          originCacheControl: "origin_cache_control",
+          originErrorPagePassthru: "origin_error_page_passthru",
+          readTimeout: "read_timeout",
+          respectStrongEtags: "respect_strong_etags",
+          serveStale: "serve_stale",
+          sharedDictionary: "shared_dictionary",
+          stripEtags: "strip_etags",
+          stripLastModified: "strip_last_modified",
+          stripSetCookie: "strip_set_cookie",
+        }),
+      ),
+      Schema.Struct({
+        automaticHttpsRewrites: Schema.optional(Schema.Boolean),
+        autominify: Schema.optional(
+          Schema.Struct({
+            css: Schema.optional(Schema.Boolean),
+            html: Schema.optional(Schema.Boolean),
+            js: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        bic: Schema.optional(Schema.Boolean),
+        contentConverter: Schema.optional(Schema.Boolean),
+        disableApps: Schema.optional(Schema.Literal(true)),
+        disablePayPerCrawl: Schema.optional(Schema.Literal(true)),
+        disableRum: Schema.optional(Schema.Literal(true)),
+        disableZaraz: Schema.optional(Schema.Literal(true)),
+        emailObfuscation: Schema.optional(Schema.Boolean),
+        fonts: Schema.optional(Schema.Boolean),
+        hotlinkProtection: Schema.optional(Schema.Boolean),
+        mirage: Schema.optional(Schema.Boolean),
+        opportunisticEncryption: Schema.optional(Schema.Boolean),
+        polish: Schema.optional(
+          Schema.Literals(["off", "lossless", "lossy", "webp"]),
+        ),
+        redirectsForAiTraining: Schema.optional(Schema.Boolean),
+        requestBodyBuffering: Schema.optional(
+          Schema.Literals(["none", "standard", "full"]),
+        ),
+        responseBodyBuffering: Schema.optional(
+          Schema.Literals(["none", "standard"]),
+        ),
+        rocketLoader: Schema.optional(Schema.Boolean),
+        securityLevel: Schema.optional(
+          Schema.Literals([
+            "off",
+            "essentially_off",
+            "low",
+            "medium",
+            "high",
+            "under_attack",
+          ]),
+        ),
+        serverSideExcludes: Schema.optional(Schema.Boolean),
+        ssl: Schema.optional(
+          Schema.Literals(["off", "flexible", "full", "strict", "origin_pull"]),
+        ),
+        sxg: Schema.optional(Schema.Boolean),
+      }).pipe(
+        Schema.encodeKeys({
+          automaticHttpsRewrites: "automatic_https_rewrites",
+          autominify: "autominify",
+          bic: "bic",
+          contentConverter: "content_converter",
+          disableApps: "disable_apps",
+          disablePayPerCrawl: "disable_pay_per_crawl",
+          disableRum: "disable_rum",
+          disableZaraz: "disable_zaraz",
+          emailObfuscation: "email_obfuscation",
+          fonts: "fonts",
+          hotlinkProtection: "hotlink_protection",
+          mirage: "mirage",
+          opportunisticEncryption: "opportunistic_encryption",
+          polish: "polish",
+          redirectsForAiTraining: "redirects_for_ai_training",
+          requestBodyBuffering: "request_body_buffering",
+          responseBodyBuffering: "response_body_buffering",
+          rocketLoader: "rocket_loader",
+          securityLevel: "security_level",
+          serverSideExcludes: "server_side_excludes",
+          ssl: "ssl",
+          sxg: "sxg",
+        }),
+      ),
+      Schema.Struct({
+        phase: Schema.optional(Schema.Literal("current")),
+        phases: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "ddos_l4",
+              "ddos_l7",
+              "http_config_settings",
+              "http_custom_errors",
+              "http_log_custom_fields",
+              "http_ratelimit",
+              "http_request_cache_settings",
+              "http_request_dynamic_redirect",
+              "http_request_firewall_custom",
+              "http_request_firewall_managed",
+              "http_request_late_transform",
+              "http_request_origin",
+              "http_request_redirect",
+              "http_request_sanitize",
+              "http_request_sbfm",
+              "http_request_transform",
+              "http_response_cache_settings",
+              "http_response_compression",
+              "http_response_firewall_managed",
+              "http_response_headers_transform",
+              "magic_transit",
+              "magic_transit_ids_managed",
+              "magic_transit_managed",
+              "magic_transit_ratelimit",
+            ]),
+          ),
+        ),
+        products: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "bic",
+              "hot",
+              "rateLimit",
+              "securityLevel",
+              "uaBlock",
+              "waf",
+              "zoneLockdown",
+            ]),
+          ),
+        ),
+        rules: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        ruleset: Schema.optional(Schema.Literal("current")),
+        rulesets: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ]),
   ),
   description: Schema.optional(Schema.String),
   enabled: Schema.optional(Schema.Boolean),
@@ -15659,17 +16413,11 @@ const CreateRuleBaseFields = {
     }),
   ),
   position: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        before: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        after: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        index: Schema.optional(Schema.Number),
-      }),
-    ]),
+    Schema.Struct({
+      before: Schema.optional(Schema.String),
+      after: Schema.optional(Schema.String),
+      index: Schema.optional(Schema.Number),
+    }),
   ),
   ratelimit: Schema.optional(
     Schema.Struct({
@@ -15702,11 +16450,258 @@ interface CreateRuleBaseRequest {
   /** Body param: The unique ID of the rule. */
   id?: string;
   /** Body param: The action to perform when the rule matches. */
-  action?: "block";
+  action?:
+    | "block"
+    | "challenge"
+    | "compress_response"
+    | "ddos_dynamic"
+    | "execute"
+    | "force_connection_close"
+    | "js_challenge"
+    | "log"
+    | "log_custom_field"
+    | "managed_challenge"
+    | "redirect"
+    | "rewrite"
+    | "route"
+    | "score"
+    | "serve_error"
+    | "set_cache_control"
+    | "set_cache_settings"
+    | "set_cache_tags"
+    | "set_config"
+    | "skip";
   /** Body param: The parameters configuring the rule's action. */
-  actionParameters?: {
-    response?: { content: string; contentType: string; statusCode: number };
-  };
+  actionParameters?:
+    | {
+        response?: { content: string; contentType: string; statusCode: number };
+      }
+    | {
+        algorithms: {
+          name?: "none" | "auto" | "default" | "gzip" | "brotli" | "zstd";
+        }[];
+      }
+    | {
+        id: string;
+        matchedData?: { publicKey: string };
+        overrides?: {
+          action?: string;
+          categories?: {
+            category: string;
+            action?: string;
+            enabled?: boolean;
+            sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+          }[];
+          enabled?: boolean;
+          rules?: {
+            id: string;
+            action?: string;
+            enabled?: boolean;
+            scoreThreshold?: number;
+            sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+          }[];
+          sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+        };
+      }
+    | {
+        cookieFields?: { name: string }[];
+        rawResponseFields?: { name: string; preserveDuplicates?: boolean }[];
+        requestFields?: { name: string }[];
+        responseFields?: { name: string; preserveDuplicates?: boolean }[];
+        transformedRequestFields?: { name: string }[];
+      }
+    | {
+        fromList?: { key: string; name: string };
+        fromValue?: {
+          targetUrl: { expression?: string; value?: string };
+          preserveQueryString?: boolean;
+          statusCode?: "301" | "302" | "303" | "307" | "308";
+        };
+      }
+    | {
+        headers?: Record<string, unknown>;
+        uri?:
+          | { path: { expression?: string; value?: string } }
+          | { query: { expression?: string; value?: string } };
+      }
+    | {
+        hostHeader?: string;
+        origin?: { host?: string; port?: number };
+        sni?: { value: string };
+      }
+    | { increment: number }
+    | {
+        content: string;
+        contentType?:
+          | "application/json"
+          | "text/html"
+          | "text/plain"
+          | "text/xml";
+        statusCode?: number;
+      }
+    | {
+        assetName: string;
+        contentType?:
+          | "application/json"
+          | "text/html"
+          | "text/plain"
+          | "text/xml";
+        statusCode?: number;
+      }
+    | {
+        immutable?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+        maxAge?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+        mustRevalidate?: {
+          operation: "set" | "remove";
+          cloudflareOnly?: boolean;
+        };
+        mustUnderstand?: {
+          operation: "set" | "remove";
+          cloudflareOnly?: boolean;
+        };
+        noCache?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+        noStore?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+        noTransform?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+        private?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+        proxyRevalidate?: {
+          operation: "set" | "remove";
+          cloudflareOnly?: boolean;
+        };
+        public?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+        sMaxage?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+        staleIfError?: {
+          operation: "set" | "remove";
+          cloudflareOnly?: boolean;
+        };
+        staleWhileRevalidate?: {
+          operation: "set" | "remove";
+          cloudflareOnly?: boolean;
+        };
+      }
+    | {
+        additionalCacheablePorts?: number[];
+        browserTtl?: {
+          mode:
+            | "respect_origin"
+            | "bypass_by_default"
+            | "override_origin"
+            | "bypass";
+          default?: number;
+        };
+        cache?: boolean;
+        cacheKey?: {
+          cacheByDeviceType?: boolean;
+          cacheDeceptionArmor?: boolean;
+          customKey?: {
+            cookie?: { checkPresence?: string[]; include?: string[] };
+            header?: {
+              checkPresence?: string[];
+              contains?: Record<string, unknown>;
+              excludeOrigin?: boolean;
+              include?: string[];
+            };
+            host?: { resolved?: boolean };
+            queryString?: {
+              exclude?: { all?: true; list?: string[] };
+              include?: { all?: true; list?: string[] };
+            };
+            user?: { deviceType?: boolean; geo?: boolean; lang?: boolean };
+          };
+          ignoreQueryStringsOrder?: boolean;
+        };
+        cacheReserve?: { eligible: boolean; minimumFileSize?: number };
+        edgeTtl?: {
+          mode: "respect_origin" | "bypass_by_default" | "override_origin";
+          default?: number;
+          statusCodeTtl?: {
+            value: number;
+            statusCode?: number;
+            statusCodeRange?: { from?: number; to?: number };
+          }[];
+        };
+        originCacheControl?: boolean;
+        originErrorPagePassthru?: boolean;
+        readTimeout?: number;
+        respectStrongEtags?: boolean;
+        serveStale?: { disableStaleWhileUpdating?: boolean };
+        sharedDictionary?: { matchPattern: string };
+        stripEtags?: boolean;
+        stripLastModified?: boolean;
+        stripSetCookie?: boolean;
+      }
+    | { operation: "add" | "remove" | "set"; values: string[] }
+    | { expression: string; operation: "add" | "remove" | "set" }
+    | {
+        automaticHttpsRewrites?: boolean;
+        autominify?: { css?: boolean; html?: boolean; js?: boolean };
+        bic?: boolean;
+        contentConverter?: boolean;
+        disableApps?: true;
+        disablePayPerCrawl?: true;
+        disableRum?: true;
+        disableZaraz?: true;
+        emailObfuscation?: boolean;
+        fonts?: boolean;
+        hotlinkProtection?: boolean;
+        mirage?: boolean;
+        opportunisticEncryption?: boolean;
+        polish?: "off" | "lossless" | "lossy" | "webp";
+        redirectsForAiTraining?: boolean;
+        requestBodyBuffering?: "none" | "standard" | "full";
+        responseBodyBuffering?: "none" | "standard";
+        rocketLoader?: boolean;
+        securityLevel?:
+          | "off"
+          | "essentially_off"
+          | "low"
+          | "medium"
+          | "high"
+          | "under_attack";
+        serverSideExcludes?: boolean;
+        ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull";
+        sxg?: boolean;
+      }
+    | {
+        phase?: "current";
+        phases?: (
+          | "ddos_l4"
+          | "ddos_l7"
+          | "http_config_settings"
+          | "http_custom_errors"
+          | "http_log_custom_fields"
+          | "http_ratelimit"
+          | "http_request_cache_settings"
+          | "http_request_dynamic_redirect"
+          | "http_request_firewall_custom"
+          | "http_request_firewall_managed"
+          | "http_request_late_transform"
+          | "http_request_origin"
+          | "http_request_redirect"
+          | "http_request_sanitize"
+          | "http_request_sbfm"
+          | "http_request_transform"
+          | "http_response_cache_settings"
+          | "http_response_compression"
+          | "http_response_firewall_managed"
+          | "http_response_headers_transform"
+          | "magic_transit"
+          | "magic_transit_ids_managed"
+          | "magic_transit_managed"
+          | "magic_transit_ratelimit"
+        )[];
+        products?: (
+          | "bic"
+          | "hot"
+          | "rateLimit"
+          | "securityLevel"
+          | "uaBlock"
+          | "waf"
+          | "zoneLockdown"
+        )[];
+        rules?: Record<string, unknown>;
+        ruleset?: "current";
+        rulesets?: string[];
+      };
   /** Body param: An informative description of the rule. */
   description?: string;
   /** Body param: Whether the rule should be executed. */
@@ -15721,7 +16716,7 @@ interface CreateRuleBaseRequest {
   /** Body param: An object configuring the rule's logging behavior. */
   logging?: { enabled: boolean };
   /** Body param: An object configuring where the rule will be placed. */
-  position?: { before?: string } | { after?: string } | { index?: number };
+  position?: { before?: string; after?: string; index?: number };
   /** Body param: An object configuring the rule's rate limit behavior. */
   ratelimit?: {
     characteristics: string[];
@@ -19876,23 +20871,777 @@ const PatchRuleBaseFields = {
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
   id: Schema.optional(Schema.String),
-  action: Schema.optional(Schema.Literal("block")),
+  action: Schema.optional(
+    Schema.Literals([
+      "block",
+      "challenge",
+      "compress_response",
+      "ddos_dynamic",
+      "execute",
+      "force_connection_close",
+      "js_challenge",
+      "log",
+      "log_custom_field",
+      "managed_challenge",
+      "redirect",
+      "rewrite",
+      "route",
+      "score",
+      "serve_error",
+      "set_cache_control",
+      "set_cache_settings",
+      "set_cache_tags",
+      "set_config",
+      "skip",
+    ]),
+  ),
   actionParameters: Schema.optional(
-    Schema.Struct({
-      response: Schema.optional(
-        Schema.Struct({
-          content: Schema.String,
-          contentType: Schema.String,
-          statusCode: Schema.Number,
-        }).pipe(
-          Schema.encodeKeys({
-            content: "content",
-            contentType: "content_type",
-            statusCode: "status_code",
+    Schema.Union([
+      Schema.Struct({
+        operation: Schema.Literals(["add", "remove", "set"]),
+        values: Schema.Array(Schema.String),
+      }),
+      Schema.Struct({
+        expression: Schema.String,
+        operation: Schema.Literals(["add", "remove", "set"]),
+      }),
+      Schema.Struct({
+        algorithms: Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(
+              Schema.Literals([
+                "none",
+                "auto",
+                "default",
+                "gzip",
+                "brotli",
+                "zstd",
+              ]),
+            ),
           }),
         ),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        matchedData: Schema.optional(
+          Schema.Struct({
+            publicKey: Schema.String,
+          }).pipe(Schema.encodeKeys({ publicKey: "public_key" })),
+        ),
+        overrides: Schema.optional(
+          Schema.Struct({
+            action: Schema.optional(Schema.String),
+            categories: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  category: Schema.String,
+                  action: Schema.optional(Schema.String),
+                  enabled: Schema.optional(Schema.Boolean),
+                  sensitivityLevel: Schema.optional(
+                    Schema.Literals(["default", "medium", "low", "eoff"]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    category: "category",
+                    action: "action",
+                    enabled: "enabled",
+                    sensitivityLevel: "sensitivity_level",
+                  }),
+                ),
+              ),
+            ),
+            enabled: Schema.optional(Schema.Boolean),
+            rules: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.String,
+                  action: Schema.optional(Schema.String),
+                  enabled: Schema.optional(Schema.Boolean),
+                  scoreThreshold: Schema.optional(Schema.Number),
+                  sensitivityLevel: Schema.optional(
+                    Schema.Literals(["default", "medium", "low", "eoff"]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    id: "id",
+                    action: "action",
+                    enabled: "enabled",
+                    scoreThreshold: "score_threshold",
+                    sensitivityLevel: "sensitivity_level",
+                  }),
+                ),
+              ),
+            ),
+            sensitivityLevel: Schema.optional(
+              Schema.Literals(["default", "medium", "low", "eoff"]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              action: "action",
+              categories: "categories",
+              enabled: "enabled",
+              rules: "rules",
+              sensitivityLevel: "sensitivity_level",
+            }),
+          ),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          matchedData: "matched_data",
+          overrides: "overrides",
+        }),
       ),
-    }),
+      Schema.Struct({
+        increment: Schema.Number,
+      }),
+      Schema.Struct({
+        content: Schema.String,
+        contentType: Schema.optional(
+          Schema.Literals([
+            "application/json",
+            "text/html",
+            "text/plain",
+            "text/xml",
+          ]),
+        ),
+        statusCode: Schema.optional(Schema.Number),
+      }).pipe(
+        Schema.encodeKeys({
+          content: "content",
+          contentType: "content_type",
+          statusCode: "status_code",
+        }),
+      ),
+      Schema.Struct({
+        assetName: Schema.String,
+        contentType: Schema.optional(
+          Schema.Literals([
+            "application/json",
+            "text/html",
+            "text/plain",
+            "text/xml",
+          ]),
+        ),
+        statusCode: Schema.optional(Schema.Number),
+      }).pipe(
+        Schema.encodeKeys({
+          assetName: "asset_name",
+          contentType: "content_type",
+          statusCode: "status_code",
+        }),
+      ),
+      Schema.Struct({
+        response: Schema.optional(
+          Schema.Struct({
+            content: Schema.String,
+            contentType: Schema.String,
+            statusCode: Schema.Number,
+          }).pipe(
+            Schema.encodeKeys({
+              content: "content",
+              contentType: "content_type",
+              statusCode: "status_code",
+            }),
+          ),
+        ),
+      }),
+      Schema.Struct({
+        cookieFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+            }),
+          ),
+        ),
+        rawResponseFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              preserveDuplicates: Schema.optional(Schema.Boolean),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                preserveDuplicates: "preserve_duplicates",
+              }),
+            ),
+          ),
+        ),
+        requestFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+            }),
+          ),
+        ),
+        responseFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              preserveDuplicates: Schema.optional(Schema.Boolean),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                preserveDuplicates: "preserve_duplicates",
+              }),
+            ),
+          ),
+        ),
+        transformedRequestFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+            }),
+          ),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          cookieFields: "cookie_fields",
+          rawResponseFields: "raw_response_fields",
+          requestFields: "request_fields",
+          responseFields: "response_fields",
+          transformedRequestFields: "transformed_request_fields",
+        }),
+      ),
+      Schema.Struct({
+        fromList: Schema.optional(
+          Schema.Struct({
+            key: Schema.String,
+            name: Schema.String,
+          }),
+        ),
+        fromValue: Schema.optional(
+          Schema.Struct({
+            targetUrl: Schema.Struct({
+              expression: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+            preserveQueryString: Schema.optional(Schema.Boolean),
+            statusCode: Schema.optional(
+              Schema.Literals(["301", "302", "303", "307", "308"]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              targetUrl: "target_url",
+              preserveQueryString: "preserve_query_string",
+              statusCode: "status_code",
+            }),
+          ),
+        ),
+      }).pipe(
+        Schema.encodeKeys({ fromList: "from_list", fromValue: "from_value" }),
+      ),
+      Schema.Struct({
+        headers: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        uri: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              path: Schema.Struct({
+                expression: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            }),
+            Schema.Struct({
+              query: Schema.Struct({
+                expression: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            }),
+          ]),
+        ),
+      }),
+      Schema.Struct({
+        hostHeader: Schema.optional(Schema.String),
+        origin: Schema.optional(
+          Schema.Struct({
+            host: Schema.optional(Schema.String),
+            port: Schema.optional(Schema.Number),
+          }),
+        ),
+        sni: Schema.optional(
+          Schema.Struct({
+            value: Schema.String,
+          }),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          hostHeader: "host_header",
+          origin: "origin",
+          sni: "sni",
+        }),
+      ),
+      Schema.Struct({
+        immutable: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        maxAge: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        mustRevalidate: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        mustUnderstand: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        noCache: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        noStore: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        noTransform: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        private: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        proxyRevalidate: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        public: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        sMaxage: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        staleIfError: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+        staleWhileRevalidate: Schema.optional(
+          Schema.Struct({
+            operation: Schema.Literals(["set", "remove"]),
+            cloudflareOnly: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              operation: "operation",
+              cloudflareOnly: "cloudflare_only",
+            }),
+          ),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          immutable: "immutable",
+          maxAge: "max-age",
+          mustRevalidate: "must-revalidate",
+          mustUnderstand: "must-understand",
+          noCache: "no-cache",
+          noStore: "no-store",
+          noTransform: "no-transform",
+          private: "private",
+          proxyRevalidate: "proxy-revalidate",
+          public: "public",
+          sMaxage: "s-maxage",
+          staleIfError: "stale-if-error",
+          staleWhileRevalidate: "stale-while-revalidate",
+        }),
+      ),
+      Schema.Struct({
+        additionalCacheablePorts: Schema.optional(Schema.Array(Schema.Number)),
+        browserTtl: Schema.optional(
+          Schema.Struct({
+            mode: Schema.Literals([
+              "respect_origin",
+              "bypass_by_default",
+              "override_origin",
+              "bypass",
+            ]),
+            default: Schema.optional(Schema.Number),
+          }),
+        ),
+        cache: Schema.optional(Schema.Boolean),
+        cacheKey: Schema.optional(
+          Schema.Struct({
+            cacheByDeviceType: Schema.optional(Schema.Boolean),
+            cacheDeceptionArmor: Schema.optional(Schema.Boolean),
+            customKey: Schema.optional(
+              Schema.Struct({
+                cookie: Schema.optional(
+                  Schema.Struct({
+                    checkPresence: Schema.optional(Schema.Array(Schema.String)),
+                    include: Schema.optional(Schema.Array(Schema.String)),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      checkPresence: "check_presence",
+                      include: "include",
+                    }),
+                  ),
+                ),
+                header: Schema.optional(
+                  Schema.Struct({
+                    checkPresence: Schema.optional(Schema.Array(Schema.String)),
+                    contains: Schema.optional(
+                      Schema.Record(Schema.String, Schema.Unknown),
+                    ),
+                    excludeOrigin: Schema.optional(Schema.Boolean),
+                    include: Schema.optional(Schema.Array(Schema.String)),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      checkPresence: "check_presence",
+                      contains: "contains",
+                      excludeOrigin: "exclude_origin",
+                      include: "include",
+                    }),
+                  ),
+                ),
+                host: Schema.optional(
+                  Schema.Struct({
+                    resolved: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                queryString: Schema.optional(
+                  Schema.Struct({
+                    exclude: Schema.optional(
+                      Schema.Struct({
+                        all: Schema.optional(Schema.Literal(true)),
+                        list: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                    include: Schema.optional(
+                      Schema.Struct({
+                        all: Schema.optional(Schema.Literal(true)),
+                        list: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                  }),
+                ),
+                user: Schema.optional(
+                  Schema.Struct({
+                    deviceType: Schema.optional(Schema.Boolean),
+                    geo: Schema.optional(Schema.Boolean),
+                    lang: Schema.optional(Schema.Boolean),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      deviceType: "device_type",
+                      geo: "geo",
+                      lang: "lang",
+                    }),
+                  ),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  cookie: "cookie",
+                  header: "header",
+                  host: "host",
+                  queryString: "query_string",
+                  user: "user",
+                }),
+              ),
+            ),
+            ignoreQueryStringsOrder: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              cacheByDeviceType: "cache_by_device_type",
+              cacheDeceptionArmor: "cache_deception_armor",
+              customKey: "custom_key",
+              ignoreQueryStringsOrder: "ignore_query_strings_order",
+            }),
+          ),
+        ),
+        cacheReserve: Schema.optional(
+          Schema.Struct({
+            eligible: Schema.Boolean,
+            minimumFileSize: Schema.optional(Schema.Number),
+          }).pipe(
+            Schema.encodeKeys({
+              eligible: "eligible",
+              minimumFileSize: "minimum_file_size",
+            }),
+          ),
+        ),
+        edgeTtl: Schema.optional(
+          Schema.Struct({
+            mode: Schema.Literals([
+              "respect_origin",
+              "bypass_by_default",
+              "override_origin",
+            ]),
+            default: Schema.optional(Schema.Number),
+            statusCodeTtl: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  value: Schema.Number,
+                  statusCode: Schema.optional(Schema.Number),
+                  statusCodeRange: Schema.optional(
+                    Schema.Struct({
+                      from: Schema.optional(Schema.Number),
+                      to: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    value: "value",
+                    statusCode: "status_code",
+                    statusCodeRange: "status_code_range",
+                  }),
+                ),
+              ),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              mode: "mode",
+              default: "default",
+              statusCodeTtl: "status_code_ttl",
+            }),
+          ),
+        ),
+        originCacheControl: Schema.optional(Schema.Boolean),
+        originErrorPagePassthru: Schema.optional(Schema.Boolean),
+        readTimeout: Schema.optional(Schema.Number),
+        respectStrongEtags: Schema.optional(Schema.Boolean),
+        serveStale: Schema.optional(
+          Schema.Struct({
+            disableStaleWhileUpdating: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              disableStaleWhileUpdating: "disable_stale_while_updating",
+            }),
+          ),
+        ),
+        sharedDictionary: Schema.optional(
+          Schema.Struct({
+            matchPattern: Schema.String,
+          }).pipe(Schema.encodeKeys({ matchPattern: "match_pattern" })),
+        ),
+        stripEtags: Schema.optional(Schema.Boolean),
+        stripLastModified: Schema.optional(Schema.Boolean),
+        stripSetCookie: Schema.optional(Schema.Boolean),
+      }).pipe(
+        Schema.encodeKeys({
+          additionalCacheablePorts: "additional_cacheable_ports",
+          browserTtl: "browser_ttl",
+          cache: "cache",
+          cacheKey: "cache_key",
+          cacheReserve: "cache_reserve",
+          edgeTtl: "edge_ttl",
+          originCacheControl: "origin_cache_control",
+          originErrorPagePassthru: "origin_error_page_passthru",
+          readTimeout: "read_timeout",
+          respectStrongEtags: "respect_strong_etags",
+          serveStale: "serve_stale",
+          sharedDictionary: "shared_dictionary",
+          stripEtags: "strip_etags",
+          stripLastModified: "strip_last_modified",
+          stripSetCookie: "strip_set_cookie",
+        }),
+      ),
+      Schema.Struct({
+        automaticHttpsRewrites: Schema.optional(Schema.Boolean),
+        autominify: Schema.optional(
+          Schema.Struct({
+            css: Schema.optional(Schema.Boolean),
+            html: Schema.optional(Schema.Boolean),
+            js: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        bic: Schema.optional(Schema.Boolean),
+        contentConverter: Schema.optional(Schema.Boolean),
+        disableApps: Schema.optional(Schema.Literal(true)),
+        disablePayPerCrawl: Schema.optional(Schema.Literal(true)),
+        disableRum: Schema.optional(Schema.Literal(true)),
+        disableZaraz: Schema.optional(Schema.Literal(true)),
+        emailObfuscation: Schema.optional(Schema.Boolean),
+        fonts: Schema.optional(Schema.Boolean),
+        hotlinkProtection: Schema.optional(Schema.Boolean),
+        mirage: Schema.optional(Schema.Boolean),
+        opportunisticEncryption: Schema.optional(Schema.Boolean),
+        polish: Schema.optional(
+          Schema.Literals(["off", "lossless", "lossy", "webp"]),
+        ),
+        redirectsForAiTraining: Schema.optional(Schema.Boolean),
+        requestBodyBuffering: Schema.optional(
+          Schema.Literals(["none", "standard", "full"]),
+        ),
+        responseBodyBuffering: Schema.optional(
+          Schema.Literals(["none", "standard"]),
+        ),
+        rocketLoader: Schema.optional(Schema.Boolean),
+        securityLevel: Schema.optional(
+          Schema.Literals([
+            "off",
+            "essentially_off",
+            "low",
+            "medium",
+            "high",
+            "under_attack",
+          ]),
+        ),
+        serverSideExcludes: Schema.optional(Schema.Boolean),
+        ssl: Schema.optional(
+          Schema.Literals(["off", "flexible", "full", "strict", "origin_pull"]),
+        ),
+        sxg: Schema.optional(Schema.Boolean),
+      }).pipe(
+        Schema.encodeKeys({
+          automaticHttpsRewrites: "automatic_https_rewrites",
+          autominify: "autominify",
+          bic: "bic",
+          contentConverter: "content_converter",
+          disableApps: "disable_apps",
+          disablePayPerCrawl: "disable_pay_per_crawl",
+          disableRum: "disable_rum",
+          disableZaraz: "disable_zaraz",
+          emailObfuscation: "email_obfuscation",
+          fonts: "fonts",
+          hotlinkProtection: "hotlink_protection",
+          mirage: "mirage",
+          opportunisticEncryption: "opportunistic_encryption",
+          polish: "polish",
+          redirectsForAiTraining: "redirects_for_ai_training",
+          requestBodyBuffering: "request_body_buffering",
+          responseBodyBuffering: "response_body_buffering",
+          rocketLoader: "rocket_loader",
+          securityLevel: "security_level",
+          serverSideExcludes: "server_side_excludes",
+          ssl: "ssl",
+          sxg: "sxg",
+        }),
+      ),
+      Schema.Struct({
+        phase: Schema.optional(Schema.Literal("current")),
+        phases: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "ddos_l4",
+              "ddos_l7",
+              "http_config_settings",
+              "http_custom_errors",
+              "http_log_custom_fields",
+              "http_ratelimit",
+              "http_request_cache_settings",
+              "http_request_dynamic_redirect",
+              "http_request_firewall_custom",
+              "http_request_firewall_managed",
+              "http_request_late_transform",
+              "http_request_origin",
+              "http_request_redirect",
+              "http_request_sanitize",
+              "http_request_sbfm",
+              "http_request_transform",
+              "http_response_cache_settings",
+              "http_response_compression",
+              "http_response_firewall_managed",
+              "http_response_headers_transform",
+              "magic_transit",
+              "magic_transit_ids_managed",
+              "magic_transit_managed",
+              "magic_transit_ratelimit",
+            ]),
+          ),
+        ),
+        products: Schema.optional(
+          Schema.Array(
+            Schema.Literals([
+              "bic",
+              "hot",
+              "rateLimit",
+              "securityLevel",
+              "uaBlock",
+              "waf",
+              "zoneLockdown",
+            ]),
+          ),
+        ),
+        rules: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        ruleset: Schema.optional(Schema.Literal("current")),
+        rulesets: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ]),
   ),
   description: Schema.optional(Schema.String),
   enabled: Schema.optional(Schema.Boolean),
@@ -19914,17 +21663,11 @@ const PatchRuleBaseFields = {
     }),
   ),
   position: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        before: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        after: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        index: Schema.optional(Schema.Number),
-      }),
-    ]),
+    Schema.Struct({
+      before: Schema.optional(Schema.String),
+      after: Schema.optional(Schema.String),
+      index: Schema.optional(Schema.Number),
+    }),
   ),
   ratelimit: Schema.optional(
     Schema.Struct({
@@ -19958,11 +21701,258 @@ interface PatchRuleBaseRequest {
   /** Body param: The unique ID of the rule. */
   id?: string;
   /** Body param: The action to perform when the rule matches. */
-  action?: "block";
+  action?:
+    | "block"
+    | "challenge"
+    | "compress_response"
+    | "ddos_dynamic"
+    | "execute"
+    | "force_connection_close"
+    | "js_challenge"
+    | "log"
+    | "log_custom_field"
+    | "managed_challenge"
+    | "redirect"
+    | "rewrite"
+    | "route"
+    | "score"
+    | "serve_error"
+    | "set_cache_control"
+    | "set_cache_settings"
+    | "set_cache_tags"
+    | "set_config"
+    | "skip";
   /** Body param: The parameters configuring the rule's action. */
-  actionParameters?: {
-    response?: { content: string; contentType: string; statusCode: number };
-  };
+  actionParameters?:
+    | {
+        response?: { content: string; contentType: string; statusCode: number };
+      }
+    | {
+        algorithms: {
+          name?: "none" | "auto" | "default" | "gzip" | "brotli" | "zstd";
+        }[];
+      }
+    | {
+        id: string;
+        matchedData?: { publicKey: string };
+        overrides?: {
+          action?: string;
+          categories?: {
+            category: string;
+            action?: string;
+            enabled?: boolean;
+            sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+          }[];
+          enabled?: boolean;
+          rules?: {
+            id: string;
+            action?: string;
+            enabled?: boolean;
+            scoreThreshold?: number;
+            sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+          }[];
+          sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+        };
+      }
+    | {
+        cookieFields?: { name: string }[];
+        rawResponseFields?: { name: string; preserveDuplicates?: boolean }[];
+        requestFields?: { name: string }[];
+        responseFields?: { name: string; preserveDuplicates?: boolean }[];
+        transformedRequestFields?: { name: string }[];
+      }
+    | {
+        fromList?: { key: string; name: string };
+        fromValue?: {
+          targetUrl: { expression?: string; value?: string };
+          preserveQueryString?: boolean;
+          statusCode?: "301" | "302" | "303" | "307" | "308";
+        };
+      }
+    | {
+        headers?: Record<string, unknown>;
+        uri?:
+          | { path: { expression?: string; value?: string } }
+          | { query: { expression?: string; value?: string } };
+      }
+    | {
+        hostHeader?: string;
+        origin?: { host?: string; port?: number };
+        sni?: { value: string };
+      }
+    | { increment: number }
+    | {
+        content: string;
+        contentType?:
+          | "application/json"
+          | "text/html"
+          | "text/plain"
+          | "text/xml";
+        statusCode?: number;
+      }
+    | {
+        assetName: string;
+        contentType?:
+          | "application/json"
+          | "text/html"
+          | "text/plain"
+          | "text/xml";
+        statusCode?: number;
+      }
+    | {
+        immutable?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+        maxAge?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+        mustRevalidate?: {
+          operation: "set" | "remove";
+          cloudflareOnly?: boolean;
+        };
+        mustUnderstand?: {
+          operation: "set" | "remove";
+          cloudflareOnly?: boolean;
+        };
+        noCache?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+        noStore?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+        noTransform?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+        private?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+        proxyRevalidate?: {
+          operation: "set" | "remove";
+          cloudflareOnly?: boolean;
+        };
+        public?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+        sMaxage?: { operation: "set" | "remove"; cloudflareOnly?: boolean };
+        staleIfError?: {
+          operation: "set" | "remove";
+          cloudflareOnly?: boolean;
+        };
+        staleWhileRevalidate?: {
+          operation: "set" | "remove";
+          cloudflareOnly?: boolean;
+        };
+      }
+    | {
+        additionalCacheablePorts?: number[];
+        browserTtl?: {
+          mode:
+            | "respect_origin"
+            | "bypass_by_default"
+            | "override_origin"
+            | "bypass";
+          default?: number;
+        };
+        cache?: boolean;
+        cacheKey?: {
+          cacheByDeviceType?: boolean;
+          cacheDeceptionArmor?: boolean;
+          customKey?: {
+            cookie?: { checkPresence?: string[]; include?: string[] };
+            header?: {
+              checkPresence?: string[];
+              contains?: Record<string, unknown>;
+              excludeOrigin?: boolean;
+              include?: string[];
+            };
+            host?: { resolved?: boolean };
+            queryString?: {
+              exclude?: { all?: true; list?: string[] };
+              include?: { all?: true; list?: string[] };
+            };
+            user?: { deviceType?: boolean; geo?: boolean; lang?: boolean };
+          };
+          ignoreQueryStringsOrder?: boolean;
+        };
+        cacheReserve?: { eligible: boolean; minimumFileSize?: number };
+        edgeTtl?: {
+          mode: "respect_origin" | "bypass_by_default" | "override_origin";
+          default?: number;
+          statusCodeTtl?: {
+            value: number;
+            statusCode?: number;
+            statusCodeRange?: { from?: number; to?: number };
+          }[];
+        };
+        originCacheControl?: boolean;
+        originErrorPagePassthru?: boolean;
+        readTimeout?: number;
+        respectStrongEtags?: boolean;
+        serveStale?: { disableStaleWhileUpdating?: boolean };
+        sharedDictionary?: { matchPattern: string };
+        stripEtags?: boolean;
+        stripLastModified?: boolean;
+        stripSetCookie?: boolean;
+      }
+    | { operation: "add" | "remove" | "set"; values: string[] }
+    | { expression: string; operation: "add" | "remove" | "set" }
+    | {
+        automaticHttpsRewrites?: boolean;
+        autominify?: { css?: boolean; html?: boolean; js?: boolean };
+        bic?: boolean;
+        contentConverter?: boolean;
+        disableApps?: true;
+        disablePayPerCrawl?: true;
+        disableRum?: true;
+        disableZaraz?: true;
+        emailObfuscation?: boolean;
+        fonts?: boolean;
+        hotlinkProtection?: boolean;
+        mirage?: boolean;
+        opportunisticEncryption?: boolean;
+        polish?: "off" | "lossless" | "lossy" | "webp";
+        redirectsForAiTraining?: boolean;
+        requestBodyBuffering?: "none" | "standard" | "full";
+        responseBodyBuffering?: "none" | "standard";
+        rocketLoader?: boolean;
+        securityLevel?:
+          | "off"
+          | "essentially_off"
+          | "low"
+          | "medium"
+          | "high"
+          | "under_attack";
+        serverSideExcludes?: boolean;
+        ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull";
+        sxg?: boolean;
+      }
+    | {
+        phase?: "current";
+        phases?: (
+          | "ddos_l4"
+          | "ddos_l7"
+          | "http_config_settings"
+          | "http_custom_errors"
+          | "http_log_custom_fields"
+          | "http_ratelimit"
+          | "http_request_cache_settings"
+          | "http_request_dynamic_redirect"
+          | "http_request_firewall_custom"
+          | "http_request_firewall_managed"
+          | "http_request_late_transform"
+          | "http_request_origin"
+          | "http_request_redirect"
+          | "http_request_sanitize"
+          | "http_request_sbfm"
+          | "http_request_transform"
+          | "http_response_cache_settings"
+          | "http_response_compression"
+          | "http_response_firewall_managed"
+          | "http_response_headers_transform"
+          | "magic_transit"
+          | "magic_transit_ids_managed"
+          | "magic_transit_managed"
+          | "magic_transit_ratelimit"
+        )[];
+        products?: (
+          | "bic"
+          | "hot"
+          | "rateLimit"
+          | "securityLevel"
+          | "uaBlock"
+          | "waf"
+          | "zoneLockdown"
+        )[];
+        rules?: Record<string, unknown>;
+        ruleset?: "current";
+        rulesets?: string[];
+      };
   /** Body param: An informative description of the rule. */
   description?: string;
   /** Body param: Whether the rule should be executed. */
@@ -19977,7 +21967,7 @@ interface PatchRuleBaseRequest {
   /** Body param: An object configuring the rule's logging behavior. */
   logging?: { enabled: boolean };
   /** Body param: An object configuring where the rule will be placed. */
-  position?: { before?: string } | { after?: string } | { index?: number };
+  position?: { before?: string; after?: string; index?: number };
   /** Body param: An object configuring the rule's rate limit behavior. */
   ratelimit?: {
     characteristics: string[];

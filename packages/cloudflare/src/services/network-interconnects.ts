@@ -787,26 +787,61 @@ export interface CreateInterconnectRequest {
   /** Body param */
   account: string;
   /** Body param */
-  slotId: string;
+  slotId?: string;
   /** Body param */
   type: string;
   /** Body param */
   speed?: string | null;
+  /** Body param: Bandwidth structure as visible through the customer-facing API. */
+  bandwidth?:
+    | "50M"
+    | "100M"
+    | "200M"
+    | "300M"
+    | "400M"
+    | "500M"
+    | "1G"
+    | "2G"
+    | "5G"
+    | "10G"
+    | "20G"
+    | "50G";
+  /** Body param: Pairing key provided by GCP */
+  pairingKey?: string;
 }
 
 export const CreateInterconnectRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     account: Schema.String,
-    slotId: Schema.String,
+    slotId: Schema.optional(Schema.String),
     type: Schema.String,
     speed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    bandwidth: Schema.optional(
+      Schema.Literals([
+        "50M",
+        "100M",
+        "200M",
+        "300M",
+        "400M",
+        "500M",
+        "1G",
+        "2G",
+        "5G",
+        "10G",
+        "20G",
+        "50G",
+      ]),
+    ),
+    pairingKey: Schema.optional(Schema.String),
   }).pipe(
     Schema.encodeKeys({
       account: "account",
       slotId: "slot_id",
       type: "type",
       speed: "speed",
+      bandwidth: "bandwidth",
+      pairingKey: "pairing_key",
     }),
     T.Http({
       method: "POST",

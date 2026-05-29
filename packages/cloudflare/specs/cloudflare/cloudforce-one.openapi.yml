@@ -2459,7 +2459,6 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: "Path param: Account ID."
           schema:
             type: string
       requestBody:

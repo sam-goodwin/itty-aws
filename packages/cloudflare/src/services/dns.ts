@@ -6931,7 +6931,7 @@ export interface CreateRecordRequest {
   settings?: { ipv4Only?: boolean; ipv6Only?: boolean; flattenCname?: boolean };
   /** Body param: Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[];
-  /** Body param: Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred. */
+  /** Body param: Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor */
   priority?: number;
   /** Body param: Components of a CAA record. */
   data?: {
@@ -7110,6 +7110,8 @@ export const CreateRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proxied: "proxied",
     settings: "settings",
     tags: "tags",
+    priority: "priority",
+    data: "data",
   }),
   T.Http({ method: "POST", path: "/zones/{zone_id}/dns_records" }),
 ) as unknown as Schema.Schema<CreateRecordRequest>;
@@ -9057,7 +9059,7 @@ export interface UpdateRecordRequest {
   settings?: { ipv4Only?: boolean; ipv6Only?: boolean; flattenCname?: boolean };
   /** Body param: Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[];
-  /** Body param: Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred. */
+  /** Body param: Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor */
   priority?: number;
   /** Body param: Components of a CAA record. */
   data?: {
@@ -9237,6 +9239,8 @@ export const UpdateRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proxied: "proxied",
     settings: "settings",
     tags: "tags",
+    priority: "priority",
+    data: "data",
   }),
   T.Http({ method: "PUT", path: "/zones/{zone_id}/dns_records/{dnsRecordId}" }),
 ) as unknown as Schema.Schema<UpdateRecordRequest>;
@@ -11184,7 +11188,7 @@ export interface PatchRecordRequest {
   settings?: { ipv4Only?: boolean; ipv6Only?: boolean; flattenCname?: boolean };
   /** Body param: Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[];
-  /** Body param: Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred. */
+  /** Body param: Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor */
   priority?: number;
   /** Body param: Components of a CAA record. */
   data?: {
@@ -11364,6 +11368,8 @@ export const PatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proxied: "proxied",
     settings: "settings",
     tags: "tags",
+    priority: "priority",
+    data: "data",
   }),
   T.Http({
     method: "PATCH",

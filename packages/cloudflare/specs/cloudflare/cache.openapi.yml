@@ -64,6 +64,46 @@ paths:
                     tags, please refer to [purge by cache-tags documentation
                     page](https://developers.cloudflare.com/cache/how-to/purge-\
                     cache/purge-by-tags/)."
+                hosts:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: For more information purging by hostnames, please
+                    refer to [purge by hostname documentation
+                    page](https://developers.cloudflare.com/cache/how-to/purge-\
+                    cache/purge-by-hostname/)."
+                prefixes:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: For more information on purging by prefixes, please
+                    refer to [purge by prefix documentation
+                    page](https://developers.cloudflare.com/cache/how-to/purge-\
+                    cache/purge_by_prefix/)."
+                purge_everything:
+                  type: boolean
+                  description: "Body param: For more information, please refer to [purge
+                    everything documentation
+                    page](https://developers.cloudflare.com/cache/how-to/purge-\
+                    cache/purge-everything/)."
+                files:
+                  oneOf:
+                    - type: array
+                      items:
+                        type: string
+                    - type: array
+                      items:
+                        type: object
+                        properties:
+                          headers:
+                            type: object
+                            additionalProperties: true
+                          url:
+                            type: string
+                  description: "Body param: For more information on purging files, please refer to
+                    [purge by single-file documentation
+                    page](https://developers.cloudflare.com/cache/how-to/purge-\
+                    cache/purge-by-single-file/)."
       responses:
         "200":
           description: Success

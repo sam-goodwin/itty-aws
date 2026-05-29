@@ -287,72 +287,34 @@ paths:
               type: object
               properties:
                 host:
-                  oneOf:
-                    - type: object
+                  type: object
+                  properties:
+                    ipv4:
+                      type: string
+                    network:
+                      type: object
                       properties:
-                        ipv4:
+                        tunnel_id:
                           type: string
-                        network:
-                          type: object
-                          properties:
-                            tunnel_id:
-                              type: string
-                          required:
-                            - tunnel_id
                       required:
-                        - ipv4
-                        - network
-                    - type: object
+                        - tunnel_id
+                    ipv6:
+                      type: string
+                    hostname:
+                      type: string
+                    resolver_network:
+                      type: object
                       properties:
-                        ipv6:
+                        tunnel_id:
                           type: string
-                        network:
-                          type: object
-                          properties:
-                            tunnel_id:
-                              type: string
-                          required:
-                            - tunnel_id
+                        resolver_ips:
+                          oneOf:
+                            - type: array
+                              items:
+                                type: string
+                          nullable: true
                       required:
-                        - ipv6
-                        - network
-                    - type: object
-                      properties:
-                        ipv4:
-                          type: string
-                        ipv6:
-                          type: string
-                        network:
-                          type: object
-                          properties:
-                            tunnel_id:
-                              type: string
-                          required:
-                            - tunnel_id
-                      required:
-                        - ipv4
-                        - ipv6
-                        - network
-                    - type: object
-                      properties:
-                        hostname:
-                          type: string
-                        resolver_network:
-                          type: object
-                          properties:
-                            tunnel_id:
-                              type: string
-                            resolver_ips:
-                              oneOf:
-                                - type: array
-                                  items:
-                                    type: string
-                              nullable: true
-                          required:
-                            - tunnel_id
-                      required:
-                        - hostname
-                        - resolver_network
+                        - tunnel_id
                   description: Body param
                 name:
                   type: string
@@ -390,6 +352,18 @@ paths:
                   nullable: true
                   description: "Body param: TLS settings for a connectivity service.  If omitted,
                     the default mode (`verify_full`) is used."
+                app_protocol:
+                  type: string
+                  enum:
+                    - postgresql
+                    - mysql
+                  nullable: true
+                  description: Body param
+                tcp_port:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: Body param
               required:
                 - host
                 - name
@@ -949,72 +923,34 @@ paths:
               type: object
               properties:
                 host:
-                  oneOf:
-                    - type: object
+                  type: object
+                  properties:
+                    ipv4:
+                      type: string
+                    network:
+                      type: object
                       properties:
-                        ipv4:
+                        tunnel_id:
                           type: string
-                        network:
-                          type: object
-                          properties:
-                            tunnel_id:
-                              type: string
-                          required:
-                            - tunnel_id
                       required:
-                        - ipv4
-                        - network
-                    - type: object
+                        - tunnel_id
+                    ipv6:
+                      type: string
+                    hostname:
+                      type: string
+                    resolver_network:
+                      type: object
                       properties:
-                        ipv6:
+                        tunnel_id:
                           type: string
-                        network:
-                          type: object
-                          properties:
-                            tunnel_id:
-                              type: string
-                          required:
-                            - tunnel_id
+                        resolver_ips:
+                          oneOf:
+                            - type: array
+                              items:
+                                type: string
+                          nullable: true
                       required:
-                        - ipv6
-                        - network
-                    - type: object
-                      properties:
-                        ipv4:
-                          type: string
-                        ipv6:
-                          type: string
-                        network:
-                          type: object
-                          properties:
-                            tunnel_id:
-                              type: string
-                          required:
-                            - tunnel_id
-                      required:
-                        - ipv4
-                        - ipv6
-                        - network
-                    - type: object
-                      properties:
-                        hostname:
-                          type: string
-                        resolver_network:
-                          type: object
-                          properties:
-                            tunnel_id:
-                              type: string
-                            resolver_ips:
-                              oneOf:
-                                - type: array
-                                  items:
-                                    type: string
-                              nullable: true
-                          required:
-                            - tunnel_id
-                      required:
-                        - hostname
-                        - resolver_network
+                        - tunnel_id
                   description: Body param
                 name:
                   type: string
@@ -1052,6 +988,18 @@ paths:
                   nullable: true
                   description: "Body param: TLS settings for a connectivity service.  If omitted,
                     the default mode (`verify_full`) is used."
+                app_protocol:
+                  type: string
+                  enum:
+                    - postgresql
+                    - mysql
+                  nullable: true
+                  description: Body param
+                tcp_port:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: Body param
               required:
                 - host
                 - name

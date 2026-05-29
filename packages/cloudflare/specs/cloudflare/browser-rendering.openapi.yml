@@ -28,7 +28,7 @@ paths:
           schema:
             type: number
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -288,8 +288,10 @@ paths:
                 waitForTimeout:
                   type: number
                   description: "Body param: Waits for a specified timeout before continuing."
-              required:
-                - url
+                html:
+                  type: string
+                  description: "Body param: Set the content of the page, eg: `<h1>Hello
+                    World!!</h1>`. Either `html` or `url` must be set."
       responses:
         "200":
           description: Success
@@ -818,6 +820,7 @@ paths:
                   type: boolean
                   enum:
                     - true
+                    - false
                   description: "Body param: Whether to render the page or fetch static content.
                     True by default."
                 setExtraHTTPHeaders:
@@ -1616,7 +1619,7 @@ paths:
           schema:
             type: number
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1915,8 +1918,9 @@ paths:
                 waitForTimeout:
                   type: number
                   description: "Body param: Waits for a specified timeout before continuing."
-              required:
-                - html
+                url:
+                  type: string
+                  description: "Body param: URL to navigate to, eg. `https://example.com`."
       responses:
         "200":
           description: Success
@@ -1946,7 +1950,7 @@ paths:
           schema:
             type: number
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2213,8 +2217,9 @@ paths:
                 waitForTimeout:
                   type: number
                   description: "Body param: Waits for a specified timeout before continuing."
-              required:
-                - html
+                url:
+                  type: string
+                  description: "Body param: URL to navigate to, eg. `https://example.com`."
       responses:
         "200":
           description: Success
@@ -2246,7 +2251,7 @@ paths:
           schema:
             type: number
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2506,8 +2511,10 @@ paths:
                 waitForTimeout:
                   type: number
                   description: "Body param: Waits for a specified timeout before continuing."
-              required:
-                - url
+                html:
+                  type: string
+                  description: "Body param: Set the content of the page, eg: `<h1>Hello
+                    World!!</h1>`. Either `html` or `url` must be set."
       responses:
         "200":
           description: Success
@@ -2539,7 +2546,7 @@ paths:
           schema:
             type: number
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2888,8 +2895,9 @@ paths:
                 waitForTimeout:
                   type: number
                   description: "Body param: Waits for a specified timeout before continuing."
-              required:
-                - html
+                url:
+                  type: string
+                  description: "Body param: URL to navigate to, eg. `https://example.com`."
       responses:
         "200":
           description: Success
@@ -3186,9 +3194,11 @@ paths:
                 waitForTimeout:
                   type: number
                   description: "Body param: Waits for a specified timeout before continuing."
+                url:
+                  type: string
+                  description: "Body param: URL to navigate to, eg. `https://example.com`."
               required:
                 - elements
-                - html
       responses:
         "200":
           description: Success
@@ -3272,7 +3282,7 @@ paths:
           schema:
             type: number
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3586,8 +3596,9 @@ paths:
                 waitForTimeout:
                   type: number
                   description: "Body param: Waits for a specified timeout before continuing."
-              required:
-                - html
+                url:
+                  type: string
+                  description: "Body param: URL to navigate to, eg. `https://example.com`."
       responses:
         "200":
           description: Success
@@ -3637,7 +3648,7 @@ paths:
           schema:
             type: number
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3938,8 +3949,9 @@ paths:
                 waitForTimeout:
                   type: number
                   description: "Body param: Waits for a specified timeout before continuing."
-              required:
-                - html
+                url:
+                  type: string
+                  description: "Body param: URL to navigate to, eg. `https://example.com`."
       responses:
         "200":
           description: Success

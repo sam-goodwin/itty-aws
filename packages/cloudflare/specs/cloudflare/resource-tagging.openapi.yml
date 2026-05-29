@@ -1010,7 +1010,6 @@ paths:
               required:
                 - resource_id
                 - resource_type
-                - worker_id
       responses:
         "200":
           description: Success
@@ -3922,12 +3921,17 @@ paths:
                     - dns_record
                     - managed_client_certificate
                     - zone
+                    - access_application_policy
                   description: "Body param: Enum for base zone-level resource types (those with no
                     extra required fields)."
                 tags:
                   type: object
                   additionalProperties: true
                   description: "Body param: Contains key-value pairs of tags."
+                access_application_id:
+                  type: string
+                  description: "Body param: Access application ID is required only for
+                    access_application_policy resources"
               required:
                 - resource_id
                 - resource_type

@@ -29990,23 +29990,25 @@ export const listAccessApplicationsForZone: API.PaginatedOperationMethod<
 }));
 
 const CreateAccessApplicationBaseFields = {
-  domain: Schema.String,
-  type: Schema.Literals([
-    "self_hosted",
-    "saas",
-    "ssh",
-    "vnc",
-    "app_launcher",
-    "warp",
-    "biso",
-    "bookmark",
-    "dash_sso",
-    "infrastructure",
-    "rdp",
-    "mcp",
-    "mcp_portal",
-    "proxy_endpoint",
-  ]),
+  domain: Schema.optional(Schema.String),
+  type: Schema.optional(
+    Schema.Literals([
+      "self_hosted",
+      "saas",
+      "ssh",
+      "vnc",
+      "app_launcher",
+      "warp",
+      "biso",
+      "bookmark",
+      "dash_sso",
+      "infrastructure",
+      "rdp",
+      "mcp",
+      "mcp_portal",
+      "proxy_endpoint",
+    ]),
+  ),
   allowAuthenticateViaWarp: Schema.optional(Schema.Boolean),
   allowIframe: Schema.optional(Schema.Boolean),
   allowedIdps: Schema.optional(Schema.Array(Schema.String)),
@@ -30145,59 +30147,539 @@ const CreateAccessApplicationBaseFields = {
   optionsPreflightBypass: Schema.optional(Schema.Boolean),
   pathCookieAttribute: Schema.optional(Schema.Boolean),
   policies: Schema.optional(
-    Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          precedence: Schema.optional(Schema.Number),
-        }),
-        Schema.String,
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          approvalGroups: Schema.optional(
-            Schema.Array(
+    Schema.Union([
+      Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            precedence: Schema.optional(Schema.Number),
+          }),
+          Schema.String,
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            approvalGroups: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  approvalsNeeded: Schema.Number,
+                  emailAddresses: Schema.optional(Schema.Array(Schema.String)),
+                  emailListUuid: Schema.optional(Schema.String),
+                }).pipe(
+                  Schema.encodeKeys({
+                    approvalsNeeded: "approvals_needed",
+                    emailAddresses: "email_addresses",
+                    emailListUuid: "email_list_uuid",
+                  }),
+                ),
+              ),
+            ),
+            approvalRequired: Schema.optional(Schema.Boolean),
+            connectionRules: Schema.optional(
               Schema.Struct({
-                approvalsNeeded: Schema.Number,
-                emailAddresses: Schema.optional(Schema.Array(Schema.String)),
-                emailListUuid: Schema.optional(Schema.String),
+                rdp: Schema.optional(
+                  Schema.Struct({
+                    allowedClipboardLocalToRemoteFormats: Schema.optional(
+                      Schema.Array(Schema.Literal("text")),
+                    ),
+                    allowedClipboardRemoteToLocalFormats: Schema.optional(
+                      Schema.Array(Schema.Literal("text")),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      allowedClipboardLocalToRemoteFormats:
+                        "allowed_clipboard_local_to_remote_formats",
+                      allowedClipboardRemoteToLocalFormats:
+                        "allowed_clipboard_remote_to_local_formats",
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            isolationRequired: Schema.optional(Schema.Boolean),
+            mfaConfig: Schema.optional(
+              Schema.Struct({
+                allowedAuthenticators: Schema.optional(
+                  Schema.Array(
+                    Schema.Literals(["totp", "biometrics", "security_key"]),
+                  ),
+                ),
+                mfaDisabled: Schema.optional(Schema.Boolean),
+                sessionDuration: Schema.optional(Schema.String),
               }).pipe(
                 Schema.encodeKeys({
-                  approvalsNeeded: "approvals_needed",
-                  emailAddresses: "email_addresses",
-                  emailListUuid: "email_list_uuid",
+                  allowedAuthenticators: "allowed_authenticators",
+                  mfaDisabled: "mfa_disabled",
+                  sessionDuration: "session_duration",
                 }),
               ),
             ),
+            precedence: Schema.optional(Schema.Number),
+            purposeJustificationPrompt: Schema.optional(Schema.String),
+            purposeJustificationRequired: Schema.optional(Schema.Boolean),
+            sessionDuration: Schema.optional(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              approvalGroups: "approval_groups",
+              approvalRequired: "approval_required",
+              connectionRules: "connection_rules",
+              isolationRequired: "isolation_required",
+              mfaConfig: "mfa_config",
+              precedence: "precedence",
+              purposeJustificationPrompt: "purpose_justification_prompt",
+              purposeJustificationRequired: "purpose_justification_required",
+              sessionDuration: "session_duration",
+            }),
           ),
-          approvalRequired: Schema.optional(Schema.Boolean),
-          connectionRules: Schema.optional(
-            Schema.Struct({
-              rdp: Schema.optional(
-                Schema.Struct({
-                  allowedClipboardLocalToRemoteFormats: Schema.optional(
-                    Schema.Array(Schema.Literal("text")),
-                  ),
-                  allowedClipboardRemoteToLocalFormats: Schema.optional(
-                    Schema.Array(Schema.Literal("text")),
-                  ),
+        ]),
+      ),
+      Schema.Array(
+        Schema.Struct({
+          decision: Schema.Literals([
+            "allow",
+            "deny",
+            "non_identity",
+            "bypass",
+          ]),
+          include: Schema.Array(
+            Schema.Union([
+              Schema.Struct({
+                group: Schema.Struct({
+                  id: Schema.String,
+                }),
+              }),
+              Schema.Struct({
+                anyValidServiceToken: Schema.Unknown,
+              }).pipe(
+                Schema.encodeKeys({
+                  anyValidServiceToken: "any_valid_service_token",
+                }),
+              ),
+              Schema.Struct({
+                authContext: Schema.Struct({
+                  id: Schema.String,
+                  acId: Schema.String,
+                  identityProviderId: Schema.String,
                 }).pipe(
                   Schema.encodeKeys({
-                    allowedClipboardLocalToRemoteFormats:
-                      "allowed_clipboard_local_to_remote_formats",
-                    allowedClipboardRemoteToLocalFormats:
-                      "allowed_clipboard_remote_to_local_formats",
+                    id: "id",
+                    acId: "ac_id",
+                    identityProviderId: "identity_provider_id",
+                  }),
+                ),
+              }).pipe(Schema.encodeKeys({ authContext: "auth_context" })),
+              Schema.Struct({
+                authMethod: Schema.Struct({
+                  authMethod: Schema.String,
+                }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+              }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+              Schema.Struct({
+                azureAD: Schema.Struct({
+                  id: Schema.String,
+                  identityProviderId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    id: "id",
+                    identityProviderId: "identity_provider_id",
+                  }),
+                ),
+              }),
+              Schema.Struct({
+                certificate: Schema.Unknown,
+              }),
+              Schema.Struct({
+                commonName: Schema.Struct({
+                  commonName: Schema.String,
+                }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+              }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+              Schema.Struct({
+                geo: Schema.Struct({
+                  countryCode: Schema.String,
+                }).pipe(Schema.encodeKeys({ countryCode: "country_code" })),
+              }),
+              Schema.Struct({
+                devicePosture: Schema.Struct({
+                  integrationUid: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ integrationUid: "integration_uid" }),
+                ),
+              }).pipe(Schema.encodeKeys({ devicePosture: "device_posture" })),
+              Schema.Struct({
+                emailDomain: Schema.Struct({
+                  domain: Schema.String,
+                }),
+              }).pipe(Schema.encodeKeys({ emailDomain: "email_domain" })),
+              Schema.Struct({
+                emailList: Schema.Struct({
+                  id: Schema.String,
+                }),
+              }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
+              Schema.Struct({
+                email: Schema.Struct({
+                  email: Schema.String,
+                }),
+              }),
+              Schema.Struct({
+                everyone: Schema.Unknown,
+              }),
+              Schema.Struct({
+                externalEvaluation: Schema.Struct({
+                  evaluateUrl: Schema.String,
+                  keysUrl: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    evaluateUrl: "evaluate_url",
+                    keysUrl: "keys_url",
+                  }),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  externalEvaluation: "external_evaluation",
+                }),
+              ),
+              Schema.Struct({
+                githubOrganization: Schema.Struct({
+                  identityProviderId: Schema.String,
+                  name: Schema.String,
+                  team: Schema.optional(Schema.String),
+                }).pipe(
+                  Schema.encodeKeys({
+                    identityProviderId: "identity_provider_id",
+                    name: "name",
+                    team: "team",
+                  }),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  githubOrganization: "github-organization",
+                }),
+              ),
+              Schema.Struct({
+                gsuite: Schema.Struct({
+                  email: Schema.String,
+                  identityProviderId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    email: "email",
+                    identityProviderId: "identity_provider_id",
+                  }),
+                ),
+              }),
+              Schema.Struct({
+                loginMethod: Schema.Struct({
+                  id: Schema.String,
+                }),
+              }).pipe(Schema.encodeKeys({ loginMethod: "login_method" })),
+              Schema.Struct({
+                ipList: Schema.Struct({
+                  id: Schema.String,
+                }),
+              }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+              Schema.Struct({
+                ip: Schema.Struct({
+                  ip: Schema.String,
+                }),
+              }),
+              Schema.Struct({
+                okta: Schema.Struct({
+                  identityProviderId: Schema.String,
+                  name: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    identityProviderId: "identity_provider_id",
+                    name: "name",
+                  }),
+                ),
+              }),
+              Schema.Struct({
+                saml: Schema.Struct({
+                  attributeName: Schema.String,
+                  attributeValue: Schema.String,
+                  identityProviderId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    attributeName: "attribute_name",
+                    attributeValue: "attribute_value",
+                    identityProviderId: "identity_provider_id",
+                  }),
+                ),
+              }),
+              Schema.Struct({
+                oidc: Schema.Struct({
+                  claimName: Schema.String,
+                  claimValue: Schema.String,
+                  identityProviderId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    claimName: "claim_name",
+                    claimValue: "claim_value",
+                    identityProviderId: "identity_provider_id",
+                  }),
+                ),
+              }),
+              Schema.Struct({
+                serviceToken: Schema.Struct({
+                  tokenId: Schema.String,
+                }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+              }).pipe(Schema.encodeKeys({ serviceToken: "service_token" })),
+              Schema.Struct({
+                linkedAppToken: Schema.Struct({
+                  appUid: Schema.String,
+                }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+              }).pipe(
+                Schema.encodeKeys({ linkedAppToken: "linked_app_token" }),
+              ),
+              Schema.Struct({
+                userRiskScore: Schema.Struct({
+                  userRiskScore: Schema.Array(
+                    Schema.Literals(["low", "medium", "high", "unscored"]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({ userRiskScore: "user_risk_score" }),
+                ),
+              }).pipe(Schema.encodeKeys({ userRiskScore: "user_risk_score" })),
+              Schema.Struct({
+                cloudflareAccountMember: Schema.Struct({
+                  accountId: Schema.optional(Schema.String),
+                }).pipe(Schema.encodeKeys({ accountId: "account_id" })),
+              }).pipe(
+                Schema.encodeKeys({
+                  cloudflareAccountMember: "cloudflare_account_member",
+                }),
+              ),
+            ]),
+          ),
+          name: Schema.String,
+          connectionRules: Schema.optional(
+            Schema.Struct({
+              ssh: Schema.optional(
+                Schema.Struct({
+                  usernames: Schema.Array(Schema.String),
+                  allowEmailAlias: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    usernames: "usernames",
+                    allowEmailAlias: "allow_email_alias",
                   }),
                 ),
               ),
             }),
           ),
-          isolationRequired: Schema.optional(Schema.Boolean),
+          exclude: Schema.optional(
+            Schema.Array(
+              Schema.Union([
+                Schema.Struct({
+                  group: Schema.Struct({
+                    id: Schema.String,
+                  }),
+                }),
+                Schema.Struct({
+                  anyValidServiceToken: Schema.Unknown,
+                }).pipe(
+                  Schema.encodeKeys({
+                    anyValidServiceToken: "any_valid_service_token",
+                  }),
+                ),
+                Schema.Struct({
+                  authContext: Schema.Struct({
+                    id: Schema.String,
+                    acId: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      acId: "ac_id",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }).pipe(Schema.encodeKeys({ authContext: "auth_context" })),
+                Schema.Struct({
+                  authMethod: Schema.Struct({
+                    authMethod: Schema.String,
+                  }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                Schema.Struct({
+                  azureAD: Schema.Struct({
+                    id: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  certificate: Schema.Unknown,
+                }),
+                Schema.Struct({
+                  commonName: Schema.Struct({
+                    commonName: Schema.String,
+                  }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                Schema.Struct({
+                  geo: Schema.Struct({
+                    countryCode: Schema.String,
+                  }).pipe(Schema.encodeKeys({ countryCode: "country_code" })),
+                }),
+                Schema.Struct({
+                  devicePosture: Schema.Struct({
+                    integrationUid: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({ integrationUid: "integration_uid" }),
+                  ),
+                }).pipe(Schema.encodeKeys({ devicePosture: "device_posture" })),
+                Schema.Struct({
+                  emailDomain: Schema.Struct({
+                    domain: Schema.String,
+                  }),
+                }).pipe(Schema.encodeKeys({ emailDomain: "email_domain" })),
+                Schema.Struct({
+                  emailList: Schema.Struct({
+                    id: Schema.String,
+                  }),
+                }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
+                Schema.Struct({
+                  email: Schema.Struct({
+                    email: Schema.String,
+                  }),
+                }),
+                Schema.Struct({
+                  everyone: Schema.Unknown,
+                }),
+                Schema.Struct({
+                  externalEvaluation: Schema.Struct({
+                    evaluateUrl: Schema.String,
+                    keysUrl: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      evaluateUrl: "evaluate_url",
+                      keysUrl: "keys_url",
+                    }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    externalEvaluation: "external_evaluation",
+                  }),
+                ),
+                Schema.Struct({
+                  githubOrganization: Schema.Struct({
+                    identityProviderId: Schema.String,
+                    name: Schema.String,
+                    team: Schema.optional(Schema.String),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      identityProviderId: "identity_provider_id",
+                      name: "name",
+                      team: "team",
+                    }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    githubOrganization: "github-organization",
+                  }),
+                ),
+                Schema.Struct({
+                  gsuite: Schema.Struct({
+                    email: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      email: "email",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  loginMethod: Schema.Struct({
+                    id: Schema.String,
+                  }),
+                }).pipe(Schema.encodeKeys({ loginMethod: "login_method" })),
+                Schema.Struct({
+                  ipList: Schema.Struct({
+                    id: Schema.String,
+                  }),
+                }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+                Schema.Struct({
+                  ip: Schema.Struct({
+                    ip: Schema.String,
+                  }),
+                }),
+                Schema.Struct({
+                  okta: Schema.Struct({
+                    identityProviderId: Schema.String,
+                    name: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      identityProviderId: "identity_provider_id",
+                      name: "name",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  saml: Schema.Struct({
+                    attributeName: Schema.String,
+                    attributeValue: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      attributeName: "attribute_name",
+                      attributeValue: "attribute_value",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  oidc: Schema.Struct({
+                    claimName: Schema.String,
+                    claimValue: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      claimName: "claim_name",
+                      claimValue: "claim_value",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  serviceToken: Schema.Struct({
+                    tokenId: Schema.String,
+                  }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+                }).pipe(Schema.encodeKeys({ serviceToken: "service_token" })),
+                Schema.Struct({
+                  linkedAppToken: Schema.Struct({
+                    appUid: Schema.String,
+                  }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+                }).pipe(
+                  Schema.encodeKeys({ linkedAppToken: "linked_app_token" }),
+                ),
+                Schema.Struct({
+                  userRiskScore: Schema.Struct({
+                    userRiskScore: Schema.Array(
+                      Schema.Literals(["low", "medium", "high", "unscored"]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({ userRiskScore: "user_risk_score" }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({ userRiskScore: "user_risk_score" }),
+                ),
+                Schema.Struct({
+                  cloudflareAccountMember: Schema.Struct({
+                    accountId: Schema.optional(Schema.String),
+                  }).pipe(Schema.encodeKeys({ accountId: "account_id" })),
+                }).pipe(
+                  Schema.encodeKeys({
+                    cloudflareAccountMember: "cloudflare_account_member",
+                  }),
+                ),
+              ]),
+            ),
+          ),
           mfaConfig: Schema.optional(
             Schema.Struct({
               allowedAuthenticators: Schema.optional(
-                Schema.Array(
-                  Schema.Literals(["totp", "biometrics", "security_key"]),
-                ),
+                Schema.Array(Schema.Literal("ssh_piv_key")),
               ),
               mfaDisabled: Schema.optional(Schema.Boolean),
               sessionDuration: Schema.optional(Schema.String),
@@ -30209,26 +30691,231 @@ const CreateAccessApplicationBaseFields = {
               }),
             ),
           ),
-          precedence: Schema.optional(Schema.Number),
-          purposeJustificationPrompt: Schema.optional(Schema.String),
-          purposeJustificationRequired: Schema.optional(Schema.Boolean),
-          sessionDuration: Schema.optional(Schema.String),
+          require: Schema.optional(
+            Schema.Array(
+              Schema.Union([
+                Schema.Struct({
+                  group: Schema.Struct({
+                    id: Schema.String,
+                  }),
+                }),
+                Schema.Struct({
+                  anyValidServiceToken: Schema.Unknown,
+                }).pipe(
+                  Schema.encodeKeys({
+                    anyValidServiceToken: "any_valid_service_token",
+                  }),
+                ),
+                Schema.Struct({
+                  authContext: Schema.Struct({
+                    id: Schema.String,
+                    acId: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      acId: "ac_id",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }).pipe(Schema.encodeKeys({ authContext: "auth_context" })),
+                Schema.Struct({
+                  authMethod: Schema.Struct({
+                    authMethod: Schema.String,
+                  }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                Schema.Struct({
+                  azureAD: Schema.Struct({
+                    id: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  certificate: Schema.Unknown,
+                }),
+                Schema.Struct({
+                  commonName: Schema.Struct({
+                    commonName: Schema.String,
+                  }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                Schema.Struct({
+                  geo: Schema.Struct({
+                    countryCode: Schema.String,
+                  }).pipe(Schema.encodeKeys({ countryCode: "country_code" })),
+                }),
+                Schema.Struct({
+                  devicePosture: Schema.Struct({
+                    integrationUid: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({ integrationUid: "integration_uid" }),
+                  ),
+                }).pipe(Schema.encodeKeys({ devicePosture: "device_posture" })),
+                Schema.Struct({
+                  emailDomain: Schema.Struct({
+                    domain: Schema.String,
+                  }),
+                }).pipe(Schema.encodeKeys({ emailDomain: "email_domain" })),
+                Schema.Struct({
+                  emailList: Schema.Struct({
+                    id: Schema.String,
+                  }),
+                }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
+                Schema.Struct({
+                  email: Schema.Struct({
+                    email: Schema.String,
+                  }),
+                }),
+                Schema.Struct({
+                  everyone: Schema.Unknown,
+                }),
+                Schema.Struct({
+                  externalEvaluation: Schema.Struct({
+                    evaluateUrl: Schema.String,
+                    keysUrl: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      evaluateUrl: "evaluate_url",
+                      keysUrl: "keys_url",
+                    }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    externalEvaluation: "external_evaluation",
+                  }),
+                ),
+                Schema.Struct({
+                  githubOrganization: Schema.Struct({
+                    identityProviderId: Schema.String,
+                    name: Schema.String,
+                    team: Schema.optional(Schema.String),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      identityProviderId: "identity_provider_id",
+                      name: "name",
+                      team: "team",
+                    }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    githubOrganization: "github-organization",
+                  }),
+                ),
+                Schema.Struct({
+                  gsuite: Schema.Struct({
+                    email: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      email: "email",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  loginMethod: Schema.Struct({
+                    id: Schema.String,
+                  }),
+                }).pipe(Schema.encodeKeys({ loginMethod: "login_method" })),
+                Schema.Struct({
+                  ipList: Schema.Struct({
+                    id: Schema.String,
+                  }),
+                }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+                Schema.Struct({
+                  ip: Schema.Struct({
+                    ip: Schema.String,
+                  }),
+                }),
+                Schema.Struct({
+                  okta: Schema.Struct({
+                    identityProviderId: Schema.String,
+                    name: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      identityProviderId: "identity_provider_id",
+                      name: "name",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  saml: Schema.Struct({
+                    attributeName: Schema.String,
+                    attributeValue: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      attributeName: "attribute_name",
+                      attributeValue: "attribute_value",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  oidc: Schema.Struct({
+                    claimName: Schema.String,
+                    claimValue: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      claimName: "claim_name",
+                      claimValue: "claim_value",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  serviceToken: Schema.Struct({
+                    tokenId: Schema.String,
+                  }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+                }).pipe(Schema.encodeKeys({ serviceToken: "service_token" })),
+                Schema.Struct({
+                  linkedAppToken: Schema.Struct({
+                    appUid: Schema.String,
+                  }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+                }).pipe(
+                  Schema.encodeKeys({ linkedAppToken: "linked_app_token" }),
+                ),
+                Schema.Struct({
+                  userRiskScore: Schema.Struct({
+                    userRiskScore: Schema.Array(
+                      Schema.Literals(["low", "medium", "high", "unscored"]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({ userRiskScore: "user_risk_score" }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({ userRiskScore: "user_risk_score" }),
+                ),
+                Schema.Struct({
+                  cloudflareAccountMember: Schema.Struct({
+                    accountId: Schema.optional(Schema.String),
+                  }).pipe(Schema.encodeKeys({ accountId: "account_id" })),
+                }).pipe(
+                  Schema.encodeKeys({
+                    cloudflareAccountMember: "cloudflare_account_member",
+                  }),
+                ),
+              ]),
+            ),
+          ),
         }).pipe(
           Schema.encodeKeys({
-            id: "id",
-            approvalGroups: "approval_groups",
-            approvalRequired: "approval_required",
+            decision: "decision",
+            include: "include",
+            name: "name",
             connectionRules: "connection_rules",
-            isolationRequired: "isolation_required",
+            exclude: "exclude",
             mfaConfig: "mfa_config",
-            precedence: "precedence",
-            purposeJustificationPrompt: "purpose_justification_prompt",
-            purposeJustificationRequired: "purpose_justification_required",
-            sessionDuration: "session_duration",
+            require: "require",
           }),
         ),
-      ]),
-    ),
+      ),
+    ]),
   ),
   readServiceTokensFromHeader: Schema.optional(Schema.String),
   sameSiteCookieAttribute: Schema.optional(Schema.String),
@@ -30366,13 +31053,220 @@ const CreateAccessApplicationBaseFields = {
   skipInterstitial: Schema.optional(Schema.Boolean),
   tags: Schema.optional(Schema.Array(Schema.String)),
   useClientlessIsolationAppLauncherUrl: Schema.optional(Schema.Boolean),
+  saasApp: Schema.optional(
+    Schema.Struct({
+      authType: Schema.optional(Schema.Literals(["saml", "oidc"])),
+      consumerServiceUrl: Schema.optional(Schema.String),
+      customAttributes: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            friendlyName: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            nameFormat: Schema.optional(
+              Schema.Literals([
+                "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+                "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+                "urn:oasis:names:tc:SAML:2.0:attrname-format:uri",
+              ]),
+            ),
+            required: Schema.optional(Schema.Boolean),
+            source: Schema.optional(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                nameByIdp: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      idpId: Schema.optional(Schema.String),
+                      sourceName: Schema.optional(Schema.String),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        idpId: "idp_id",
+                        sourceName: "source_name",
+                      }),
+                    ),
+                  ),
+                ),
+              }).pipe(
+                Schema.encodeKeys({ name: "name", nameByIdp: "name_by_idp" }),
+              ),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              friendlyName: "friendly_name",
+              name: "name",
+              nameFormat: "name_format",
+              required: "required",
+              source: "source",
+            }),
+          ),
+        ),
+      ),
+      defaultRelayState: Schema.optional(Schema.String),
+      idpEntityId: Schema.optional(Schema.String),
+      nameIdFormat: Schema.optional(Schema.Literals(["id", "email"])),
+      nameIdTransformJsonata: Schema.optional(Schema.String),
+      publicKey: Schema.optional(Schema.String),
+      samlAttributeTransformJsonata: Schema.optional(Schema.String),
+      spEntityId: Schema.optional(Schema.String),
+      ssoEndpoint: Schema.optional(Schema.String),
+      accessTokenLifetime: Schema.optional(Schema.String),
+      allowPkceWithoutClientSecret: Schema.optional(Schema.Boolean),
+      appLauncherUrl: Schema.optional(Schema.String),
+      clientId: Schema.optional(Schema.String),
+      clientSecret: Schema.optional(SensitiveString),
+      customClaims: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            required: Schema.optional(Schema.Boolean),
+            scope: Schema.optional(
+              Schema.Literals(["groups", "profile", "email", "openid"]),
+            ),
+            source: Schema.optional(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                nameByIdp: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Unknown),
+                ),
+              }).pipe(
+                Schema.encodeKeys({ name: "name", nameByIdp: "name_by_idp" }),
+              ),
+            ),
+          }),
+        ),
+      ),
+      grantTypes: Schema.optional(
+        Schema.Array(
+          Schema.Literals([
+            "authorization_code",
+            "authorization_code_with_pkce",
+            "refresh_tokens",
+            "hybrid",
+            "implicit",
+          ]),
+        ),
+      ),
+      groupFilterRegex: Schema.optional(Schema.String),
+      hybridAndImplicitOptions: Schema.optional(
+        Schema.Struct({
+          returnAccessTokenFromAuthorizationEndpoint: Schema.optional(
+            Schema.Boolean,
+          ),
+          returnIdTokenFromAuthorizationEndpoint: Schema.optional(
+            Schema.Boolean,
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            returnAccessTokenFromAuthorizationEndpoint:
+              "return_access_token_from_authorization_endpoint",
+            returnIdTokenFromAuthorizationEndpoint:
+              "return_id_token_from_authorization_endpoint",
+          }),
+        ),
+      ),
+      redirectUris: Schema.optional(Schema.Array(Schema.String)),
+      refreshTokenOptions: Schema.optional(
+        Schema.Struct({
+          lifetime: Schema.optional(Schema.String),
+        }),
+      ),
+      scopes: Schema.optional(
+        Schema.Array(Schema.Literals(["openid", "groups", "email", "profile"])),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        authType: "auth_type",
+        consumerServiceUrl: "consumer_service_url",
+        customAttributes: "custom_attributes",
+        defaultRelayState: "default_relay_state",
+        idpEntityId: "idp_entity_id",
+        nameIdFormat: "name_id_format",
+        nameIdTransformJsonata: "name_id_transform_jsonata",
+        publicKey: "public_key",
+        samlAttributeTransformJsonata: "saml_attribute_transform_jsonata",
+        spEntityId: "sp_entity_id",
+        ssoEndpoint: "sso_endpoint",
+        accessTokenLifetime: "access_token_lifetime",
+        allowPkceWithoutClientSecret: "allow_pkce_without_client_secret",
+        appLauncherUrl: "app_launcher_url",
+        clientId: "client_id",
+        clientSecret: "client_secret",
+        customClaims: "custom_claims",
+        grantTypes: "grant_types",
+        groupFilterRegex: "group_filter_regex",
+        hybridAndImplicitOptions: "hybrid_and_implicit_options",
+        redirectUris: "redirect_uris",
+        refreshTokenOptions: "refresh_token_options",
+        scopes: "scopes",
+      }),
+    ),
+  ),
+  appLauncherLogoUrl: Schema.optional(Schema.String),
+  bgColor: Schema.optional(Schema.String),
+  footerLinks: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.String,
+        url: Schema.String,
+      }),
+    ),
+  ),
+  headerBgColor: Schema.optional(Schema.String),
+  landingPageDesign: Schema.optional(
+    Schema.Struct({
+      buttonColor: Schema.optional(Schema.String),
+      buttonTextColor: Schema.optional(Schema.String),
+      imageUrl: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      title: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        buttonColor: "button_color",
+        buttonTextColor: "button_text_color",
+        imageUrl: "image_url",
+        message: "message",
+        title: "title",
+      }),
+    ),
+  ),
+  skipAppLauncherLoginPage: Schema.optional(Schema.Boolean),
+  targetCriteria: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          port: Schema.Number,
+          protocol: Schema.Literal("SSH"),
+          targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
+        }).pipe(
+          Schema.encodeKeys({
+            port: "port",
+            protocol: "protocol",
+            targetAttributes: "target_attributes",
+          }),
+        ),
+      ),
+      Schema.Array(
+        Schema.Struct({
+          port: Schema.Number,
+          protocol: Schema.Literal("RDP"),
+          targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
+        }).pipe(
+          Schema.encodeKeys({
+            port: "port",
+            protocol: "protocol",
+            targetAttributes: "target_attributes",
+          }),
+        ),
+      ),
+    ]),
+  ),
 } as const;
 
 interface CreateAccessApplicationBaseRequest {
   /** Body param: The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher. */
-  domain: string;
+  domain?: string;
   /** Body param: The application type. */
-  type:
+  type?:
     | "self_hosted"
     | "saas"
     | "ssh"
@@ -30469,35 +31363,220 @@ interface CreateAccessApplicationBaseRequest {
   /** Body param: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default */
   pathCookieAttribute?: boolean;
   /** Body param: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application. Reusable a */
-  policies?: (
-    | { id?: string; precedence?: number }
-    | string
+  policies?:
+    | (
+        | { id?: string; precedence?: number }
+        | string
+        | {
+            id?: string;
+            approvalGroups?: {
+              approvalsNeeded: number;
+              emailAddresses?: string[];
+              emailListUuid?: string;
+            }[];
+            approvalRequired?: boolean;
+            connectionRules?: {
+              rdp?: {
+                allowedClipboardLocalToRemoteFormats?: "text"[];
+                allowedClipboardRemoteToLocalFormats?: "text"[];
+              };
+            };
+            isolationRequired?: boolean;
+            mfaConfig?: {
+              allowedAuthenticators?: (
+                | "totp"
+                | "biometrics"
+                | "security_key"
+              )[];
+              mfaDisabled?: boolean;
+              sessionDuration?: string;
+            };
+            precedence?: number;
+            purposeJustificationPrompt?: string;
+            purposeJustificationRequired?: boolean;
+            sessionDuration?: string;
+          }
+      )[]
     | {
-        id?: string;
-        approvalGroups?: {
-          approvalsNeeded: number;
-          emailAddresses?: string[];
-          emailListUuid?: string;
-        }[];
-        approvalRequired?: boolean;
+        decision: "allow" | "deny" | "non_identity" | "bypass";
+        include: (
+          | { group: { id: string } }
+          | { anyValidServiceToken: unknown }
+          | {
+              authContext: {
+                id: string;
+                acId: string;
+                identityProviderId: string;
+              };
+            }
+          | { authMethod: { authMethod: string } }
+          | { azureAD: { id: string; identityProviderId: string } }
+          | { certificate: unknown }
+          | { commonName: { commonName: string } }
+          | { geo: { countryCode: string } }
+          | { devicePosture: { integrationUid: string } }
+          | { emailDomain: { domain: string } }
+          | { emailList: { id: string } }
+          | { email: { email: string } }
+          | { everyone: unknown }
+          | { externalEvaluation: { evaluateUrl: string; keysUrl: string } }
+          | {
+              githubOrganization: {
+                identityProviderId: string;
+                name: string;
+                team?: string;
+              };
+            }
+          | { gsuite: { email: string; identityProviderId: string } }
+          | { loginMethod: { id: string } }
+          | { ipList: { id: string } }
+          | { ip: { ip: string } }
+          | { okta: { identityProviderId: string; name: string } }
+          | {
+              saml: {
+                attributeName: string;
+                attributeValue: string;
+                identityProviderId: string;
+              };
+            }
+          | {
+              oidc: {
+                claimName: string;
+                claimValue: string;
+                identityProviderId: string;
+              };
+            }
+          | { serviceToken: { tokenId: string } }
+          | { linkedAppToken: { appUid: string } }
+          | {
+              userRiskScore: {
+                userRiskScore: ("low" | "medium" | "high" | "unscored")[];
+              };
+            }
+          | { cloudflareAccountMember: { accountId?: string } }
+        )[];
+        name: string;
         connectionRules?: {
-          rdp?: {
-            allowedClipboardLocalToRemoteFormats?: "text"[];
-            allowedClipboardRemoteToLocalFormats?: "text"[];
-          };
+          ssh?: { usernames: string[]; allowEmailAlias?: boolean };
         };
-        isolationRequired?: boolean;
+        exclude?: (
+          | { group: { id: string } }
+          | { anyValidServiceToken: unknown }
+          | {
+              authContext: {
+                id: string;
+                acId: string;
+                identityProviderId: string;
+              };
+            }
+          | { authMethod: { authMethod: string } }
+          | { azureAD: { id: string; identityProviderId: string } }
+          | { certificate: unknown }
+          | { commonName: { commonName: string } }
+          | { geo: { countryCode: string } }
+          | { devicePosture: { integrationUid: string } }
+          | { emailDomain: { domain: string } }
+          | { emailList: { id: string } }
+          | { email: { email: string } }
+          | { everyone: unknown }
+          | { externalEvaluation: { evaluateUrl: string; keysUrl: string } }
+          | {
+              githubOrganization: {
+                identityProviderId: string;
+                name: string;
+                team?: string;
+              };
+            }
+          | { gsuite: { email: string; identityProviderId: string } }
+          | { loginMethod: { id: string } }
+          | { ipList: { id: string } }
+          | { ip: { ip: string } }
+          | { okta: { identityProviderId: string; name: string } }
+          | {
+              saml: {
+                attributeName: string;
+                attributeValue: string;
+                identityProviderId: string;
+              };
+            }
+          | {
+              oidc: {
+                claimName: string;
+                claimValue: string;
+                identityProviderId: string;
+              };
+            }
+          | { serviceToken: { tokenId: string } }
+          | { linkedAppToken: { appUid: string } }
+          | {
+              userRiskScore: {
+                userRiskScore: ("low" | "medium" | "high" | "unscored")[];
+              };
+            }
+          | { cloudflareAccountMember: { accountId?: string } }
+        )[];
         mfaConfig?: {
-          allowedAuthenticators?: ("totp" | "biometrics" | "security_key")[];
+          allowedAuthenticators?: "ssh_piv_key"[];
           mfaDisabled?: boolean;
           sessionDuration?: string;
         };
-        precedence?: number;
-        purposeJustificationPrompt?: string;
-        purposeJustificationRequired?: boolean;
-        sessionDuration?: string;
-      }
-  )[];
+        require?: (
+          | { group: { id: string } }
+          | { anyValidServiceToken: unknown }
+          | {
+              authContext: {
+                id: string;
+                acId: string;
+                identityProviderId: string;
+              };
+            }
+          | { authMethod: { authMethod: string } }
+          | { azureAD: { id: string; identityProviderId: string } }
+          | { certificate: unknown }
+          | { commonName: { commonName: string } }
+          | { geo: { countryCode: string } }
+          | { devicePosture: { integrationUid: string } }
+          | { emailDomain: { domain: string } }
+          | { emailList: { id: string } }
+          | { email: { email: string } }
+          | { everyone: unknown }
+          | { externalEvaluation: { evaluateUrl: string; keysUrl: string } }
+          | {
+              githubOrganization: {
+                identityProviderId: string;
+                name: string;
+                team?: string;
+              };
+            }
+          | { gsuite: { email: string; identityProviderId: string } }
+          | { loginMethod: { id: string } }
+          | { ipList: { id: string } }
+          | { ip: { ip: string } }
+          | { okta: { identityProviderId: string; name: string } }
+          | {
+              saml: {
+                attributeName: string;
+                attributeValue: string;
+                identityProviderId: string;
+              };
+            }
+          | {
+              oidc: {
+                claimName: string;
+                claimValue: string;
+                identityProviderId: string;
+              };
+            }
+          | { serviceToken: { tokenId: string } }
+          | { linkedAppToken: { appUid: string } }
+          | {
+              userRiskScore: {
+                userRiskScore: ("low" | "medium" | "high" | "unscored")[];
+              };
+            }
+          | { cloudflareAccountMember: { accountId?: string } }
+        )[];
+      }[];
   /** Body param: Allows matching Access Service Tokens passed HTTP in a single header with this name. This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers. The */
   readServiceTokensFromHeader?: string;
   /** Body param: Sets the SameSite cookie setting, which provides increased security against CSRF attacks. */
@@ -30562,6 +31641,88 @@ interface CreateAccessApplicationBaseRequest {
   tags?: string[];
   /** Body param: Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clien */
   useClientlessIsolationAppLauncherUrl?: boolean;
+  /** Body param */
+  saasApp?: {
+    authType?: "saml" | "oidc";
+    consumerServiceUrl?: string;
+    customAttributes?: {
+      friendlyName?: string;
+      name?: string;
+      nameFormat?:
+        | "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"
+        | "urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
+        | "urn:oasis:names:tc:SAML:2.0:attrname-format:uri";
+      required?: boolean;
+      source?: {
+        name?: string;
+        nameByIdp?: { idpId?: string; sourceName?: string }[];
+      };
+    }[];
+    defaultRelayState?: string;
+    idpEntityId?: string;
+    nameIdFormat?: "id" | "email";
+    nameIdTransformJsonata?: string;
+    publicKey?: string;
+    samlAttributeTransformJsonata?: string;
+    spEntityId?: string;
+    ssoEndpoint?: string;
+    accessTokenLifetime?: string;
+    allowPkceWithoutClientSecret?: boolean;
+    appLauncherUrl?: string;
+    clientId?: string;
+    clientSecret?: string;
+    customClaims?: {
+      name?: string;
+      required?: boolean;
+      scope?: "groups" | "profile" | "email" | "openid";
+      source?: { name?: string; nameByIdp?: Record<string, unknown> };
+    }[];
+    grantTypes?: (
+      | "authorization_code"
+      | "authorization_code_with_pkce"
+      | "refresh_tokens"
+      | "hybrid"
+      | "implicit"
+    )[];
+    groupFilterRegex?: string;
+    hybridAndImplicitOptions?: {
+      returnAccessTokenFromAuthorizationEndpoint?: boolean;
+      returnIdTokenFromAuthorizationEndpoint?: boolean;
+    };
+    redirectUris?: string[];
+    refreshTokenOptions?: { lifetime?: string };
+    scopes?: ("openid" | "groups" | "email" | "profile")[];
+  };
+  /** Body param: The image URL of the logo shown in the App Launcher header. */
+  appLauncherLogoUrl?: string;
+  /** Body param: The background color of the App Launcher page. */
+  bgColor?: string;
+  /** Body param: The links in the App Launcher footer. */
+  footerLinks?: { name: string; url: string }[];
+  /** Body param: The background color of the App Launcher header. */
+  headerBgColor?: string;
+  /** Body param: The design of the App Launcher landing page shown to users when they log in. */
+  landingPageDesign?: {
+    buttonColor?: string;
+    buttonTextColor?: string;
+    imageUrl?: string;
+    message?: string;
+    title?: string;
+  };
+  /** Body param: Determines when to skip the App Launcher landing page. */
+  skipAppLauncherLoginPage?: boolean;
+  /** Body param */
+  targetCriteria?:
+    | {
+        port: number;
+        protocol: "SSH";
+        targetAttributes: Record<string, unknown>;
+      }[]
+    | {
+        port: number;
+        protocol: "RDP";
+        targetAttributes: Record<string, unknown>;
+      }[];
 }
 
 export interface CreateAccessApplicationForAccountRequest extends CreateAccessApplicationBaseRequest {
@@ -30612,6 +31773,14 @@ export const CreateAccessApplicationForAccountRequest =
       tags: "tags",
       useClientlessIsolationAppLauncherUrl:
         "use_clientless_isolation_app_launcher_url",
+      saasApp: "saas_app",
+      appLauncherLogoUrl: "app_launcher_logo_url",
+      bgColor: "bg_color",
+      footerLinks: "footer_links",
+      headerBgColor: "header_bg_color",
+      landingPageDesign: "landing_page_design",
+      skipAppLauncherLoginPage: "skip_app_launcher_login_page",
+      targetCriteria: "target_criteria",
     }),
     T.Http({ method: "POST", path: "/accounts/{account_id}/access/apps" }),
   ) as unknown as Schema.Schema<CreateAccessApplicationForAccountRequest>;
@@ -30654,6 +31823,14 @@ export const CreateAccessApplicationForZoneRequest =
       tags: "tags",
       useClientlessIsolationAppLauncherUrl:
         "use_clientless_isolation_app_launcher_url",
+      saasApp: "saas_app",
+      appLauncherLogoUrl: "app_launcher_logo_url",
+      bgColor: "bg_color",
+      footerLinks: "footer_links",
+      headerBgColor: "header_bg_color",
+      landingPageDesign: "landing_page_design",
+      skipAppLauncherLoginPage: "skip_app_launcher_login_page",
+      targetCriteria: "target_criteria",
     }),
     T.Http({ method: "POST", path: "/zones/{zone_id}/access/apps" }),
   ) as unknown as Schema.Schema<CreateAccessApplicationForZoneRequest>;
@@ -44065,23 +45242,25 @@ export const createAccessApplicationForZone: API.OperationMethod<
 
 const UpdateAccessApplicationBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
-  domain: Schema.String,
-  type: Schema.Literals([
-    "self_hosted",
-    "saas",
-    "ssh",
-    "vnc",
-    "app_launcher",
-    "warp",
-    "biso",
-    "bookmark",
-    "dash_sso",
-    "infrastructure",
-    "rdp",
-    "mcp",
-    "mcp_portal",
-    "proxy_endpoint",
-  ]),
+  domain: Schema.optional(Schema.String),
+  type: Schema.optional(
+    Schema.Literals([
+      "self_hosted",
+      "saas",
+      "ssh",
+      "vnc",
+      "app_launcher",
+      "warp",
+      "biso",
+      "bookmark",
+      "dash_sso",
+      "infrastructure",
+      "rdp",
+      "mcp",
+      "mcp_portal",
+      "proxy_endpoint",
+    ]),
+  ),
   allowAuthenticateViaWarp: Schema.optional(Schema.Boolean),
   allowIframe: Schema.optional(Schema.Boolean),
   allowedIdps: Schema.optional(Schema.Array(Schema.String)),
@@ -44220,59 +45399,539 @@ const UpdateAccessApplicationBaseFields = {
   optionsPreflightBypass: Schema.optional(Schema.Boolean),
   pathCookieAttribute: Schema.optional(Schema.Boolean),
   policies: Schema.optional(
-    Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          precedence: Schema.optional(Schema.Number),
-        }),
-        Schema.String,
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          approvalGroups: Schema.optional(
-            Schema.Array(
+    Schema.Union([
+      Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            precedence: Schema.optional(Schema.Number),
+          }),
+          Schema.String,
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            approvalGroups: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  approvalsNeeded: Schema.Number,
+                  emailAddresses: Schema.optional(Schema.Array(Schema.String)),
+                  emailListUuid: Schema.optional(Schema.String),
+                }).pipe(
+                  Schema.encodeKeys({
+                    approvalsNeeded: "approvals_needed",
+                    emailAddresses: "email_addresses",
+                    emailListUuid: "email_list_uuid",
+                  }),
+                ),
+              ),
+            ),
+            approvalRequired: Schema.optional(Schema.Boolean),
+            connectionRules: Schema.optional(
               Schema.Struct({
-                approvalsNeeded: Schema.Number,
-                emailAddresses: Schema.optional(Schema.Array(Schema.String)),
-                emailListUuid: Schema.optional(Schema.String),
+                rdp: Schema.optional(
+                  Schema.Struct({
+                    allowedClipboardLocalToRemoteFormats: Schema.optional(
+                      Schema.Array(Schema.Literal("text")),
+                    ),
+                    allowedClipboardRemoteToLocalFormats: Schema.optional(
+                      Schema.Array(Schema.Literal("text")),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      allowedClipboardLocalToRemoteFormats:
+                        "allowed_clipboard_local_to_remote_formats",
+                      allowedClipboardRemoteToLocalFormats:
+                        "allowed_clipboard_remote_to_local_formats",
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            isolationRequired: Schema.optional(Schema.Boolean),
+            mfaConfig: Schema.optional(
+              Schema.Struct({
+                allowedAuthenticators: Schema.optional(
+                  Schema.Array(
+                    Schema.Literals(["totp", "biometrics", "security_key"]),
+                  ),
+                ),
+                mfaDisabled: Schema.optional(Schema.Boolean),
+                sessionDuration: Schema.optional(Schema.String),
               }).pipe(
                 Schema.encodeKeys({
-                  approvalsNeeded: "approvals_needed",
-                  emailAddresses: "email_addresses",
-                  emailListUuid: "email_list_uuid",
+                  allowedAuthenticators: "allowed_authenticators",
+                  mfaDisabled: "mfa_disabled",
+                  sessionDuration: "session_duration",
                 }),
               ),
             ),
+            precedence: Schema.optional(Schema.Number),
+            purposeJustificationPrompt: Schema.optional(Schema.String),
+            purposeJustificationRequired: Schema.optional(Schema.Boolean),
+            sessionDuration: Schema.optional(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              approvalGroups: "approval_groups",
+              approvalRequired: "approval_required",
+              connectionRules: "connection_rules",
+              isolationRequired: "isolation_required",
+              mfaConfig: "mfa_config",
+              precedence: "precedence",
+              purposeJustificationPrompt: "purpose_justification_prompt",
+              purposeJustificationRequired: "purpose_justification_required",
+              sessionDuration: "session_duration",
+            }),
           ),
-          approvalRequired: Schema.optional(Schema.Boolean),
-          connectionRules: Schema.optional(
-            Schema.Struct({
-              rdp: Schema.optional(
-                Schema.Struct({
-                  allowedClipboardLocalToRemoteFormats: Schema.optional(
-                    Schema.Array(Schema.Literal("text")),
-                  ),
-                  allowedClipboardRemoteToLocalFormats: Schema.optional(
-                    Schema.Array(Schema.Literal("text")),
-                  ),
+        ]),
+      ),
+      Schema.Array(
+        Schema.Struct({
+          decision: Schema.Literals([
+            "allow",
+            "deny",
+            "non_identity",
+            "bypass",
+          ]),
+          include: Schema.Array(
+            Schema.Union([
+              Schema.Struct({
+                group: Schema.Struct({
+                  id: Schema.String,
+                }),
+              }),
+              Schema.Struct({
+                anyValidServiceToken: Schema.Unknown,
+              }).pipe(
+                Schema.encodeKeys({
+                  anyValidServiceToken: "any_valid_service_token",
+                }),
+              ),
+              Schema.Struct({
+                authContext: Schema.Struct({
+                  id: Schema.String,
+                  acId: Schema.String,
+                  identityProviderId: Schema.String,
                 }).pipe(
                   Schema.encodeKeys({
-                    allowedClipboardLocalToRemoteFormats:
-                      "allowed_clipboard_local_to_remote_formats",
-                    allowedClipboardRemoteToLocalFormats:
-                      "allowed_clipboard_remote_to_local_formats",
+                    id: "id",
+                    acId: "ac_id",
+                    identityProviderId: "identity_provider_id",
+                  }),
+                ),
+              }).pipe(Schema.encodeKeys({ authContext: "auth_context" })),
+              Schema.Struct({
+                authMethod: Schema.Struct({
+                  authMethod: Schema.String,
+                }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+              }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+              Schema.Struct({
+                azureAD: Schema.Struct({
+                  id: Schema.String,
+                  identityProviderId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    id: "id",
+                    identityProviderId: "identity_provider_id",
+                  }),
+                ),
+              }),
+              Schema.Struct({
+                certificate: Schema.Unknown,
+              }),
+              Schema.Struct({
+                commonName: Schema.Struct({
+                  commonName: Schema.String,
+                }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+              }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+              Schema.Struct({
+                geo: Schema.Struct({
+                  countryCode: Schema.String,
+                }).pipe(Schema.encodeKeys({ countryCode: "country_code" })),
+              }),
+              Schema.Struct({
+                devicePosture: Schema.Struct({
+                  integrationUid: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({ integrationUid: "integration_uid" }),
+                ),
+              }).pipe(Schema.encodeKeys({ devicePosture: "device_posture" })),
+              Schema.Struct({
+                emailDomain: Schema.Struct({
+                  domain: Schema.String,
+                }),
+              }).pipe(Schema.encodeKeys({ emailDomain: "email_domain" })),
+              Schema.Struct({
+                emailList: Schema.Struct({
+                  id: Schema.String,
+                }),
+              }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
+              Schema.Struct({
+                email: Schema.Struct({
+                  email: Schema.String,
+                }),
+              }),
+              Schema.Struct({
+                everyone: Schema.Unknown,
+              }),
+              Schema.Struct({
+                externalEvaluation: Schema.Struct({
+                  evaluateUrl: Schema.String,
+                  keysUrl: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    evaluateUrl: "evaluate_url",
+                    keysUrl: "keys_url",
+                  }),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  externalEvaluation: "external_evaluation",
+                }),
+              ),
+              Schema.Struct({
+                githubOrganization: Schema.Struct({
+                  identityProviderId: Schema.String,
+                  name: Schema.String,
+                  team: Schema.optional(Schema.String),
+                }).pipe(
+                  Schema.encodeKeys({
+                    identityProviderId: "identity_provider_id",
+                    name: "name",
+                    team: "team",
+                  }),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  githubOrganization: "github-organization",
+                }),
+              ),
+              Schema.Struct({
+                gsuite: Schema.Struct({
+                  email: Schema.String,
+                  identityProviderId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    email: "email",
+                    identityProviderId: "identity_provider_id",
+                  }),
+                ),
+              }),
+              Schema.Struct({
+                loginMethod: Schema.Struct({
+                  id: Schema.String,
+                }),
+              }).pipe(Schema.encodeKeys({ loginMethod: "login_method" })),
+              Schema.Struct({
+                ipList: Schema.Struct({
+                  id: Schema.String,
+                }),
+              }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+              Schema.Struct({
+                ip: Schema.Struct({
+                  ip: Schema.String,
+                }),
+              }),
+              Schema.Struct({
+                okta: Schema.Struct({
+                  identityProviderId: Schema.String,
+                  name: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    identityProviderId: "identity_provider_id",
+                    name: "name",
+                  }),
+                ),
+              }),
+              Schema.Struct({
+                saml: Schema.Struct({
+                  attributeName: Schema.String,
+                  attributeValue: Schema.String,
+                  identityProviderId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    attributeName: "attribute_name",
+                    attributeValue: "attribute_value",
+                    identityProviderId: "identity_provider_id",
+                  }),
+                ),
+              }),
+              Schema.Struct({
+                oidc: Schema.Struct({
+                  claimName: Schema.String,
+                  claimValue: Schema.String,
+                  identityProviderId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    claimName: "claim_name",
+                    claimValue: "claim_value",
+                    identityProviderId: "identity_provider_id",
+                  }),
+                ),
+              }),
+              Schema.Struct({
+                serviceToken: Schema.Struct({
+                  tokenId: Schema.String,
+                }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+              }).pipe(Schema.encodeKeys({ serviceToken: "service_token" })),
+              Schema.Struct({
+                linkedAppToken: Schema.Struct({
+                  appUid: Schema.String,
+                }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+              }).pipe(
+                Schema.encodeKeys({ linkedAppToken: "linked_app_token" }),
+              ),
+              Schema.Struct({
+                userRiskScore: Schema.Struct({
+                  userRiskScore: Schema.Array(
+                    Schema.Literals(["low", "medium", "high", "unscored"]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({ userRiskScore: "user_risk_score" }),
+                ),
+              }).pipe(Schema.encodeKeys({ userRiskScore: "user_risk_score" })),
+              Schema.Struct({
+                cloudflareAccountMember: Schema.Struct({
+                  accountId: Schema.optional(Schema.String),
+                }).pipe(Schema.encodeKeys({ accountId: "account_id" })),
+              }).pipe(
+                Schema.encodeKeys({
+                  cloudflareAccountMember: "cloudflare_account_member",
+                }),
+              ),
+            ]),
+          ),
+          name: Schema.String,
+          connectionRules: Schema.optional(
+            Schema.Struct({
+              ssh: Schema.optional(
+                Schema.Struct({
+                  usernames: Schema.Array(Schema.String),
+                  allowEmailAlias: Schema.optional(Schema.Boolean),
+                }).pipe(
+                  Schema.encodeKeys({
+                    usernames: "usernames",
+                    allowEmailAlias: "allow_email_alias",
                   }),
                 ),
               ),
             }),
           ),
-          isolationRequired: Schema.optional(Schema.Boolean),
+          exclude: Schema.optional(
+            Schema.Array(
+              Schema.Union([
+                Schema.Struct({
+                  group: Schema.Struct({
+                    id: Schema.String,
+                  }),
+                }),
+                Schema.Struct({
+                  anyValidServiceToken: Schema.Unknown,
+                }).pipe(
+                  Schema.encodeKeys({
+                    anyValidServiceToken: "any_valid_service_token",
+                  }),
+                ),
+                Schema.Struct({
+                  authContext: Schema.Struct({
+                    id: Schema.String,
+                    acId: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      acId: "ac_id",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }).pipe(Schema.encodeKeys({ authContext: "auth_context" })),
+                Schema.Struct({
+                  authMethod: Schema.Struct({
+                    authMethod: Schema.String,
+                  }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                Schema.Struct({
+                  azureAD: Schema.Struct({
+                    id: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  certificate: Schema.Unknown,
+                }),
+                Schema.Struct({
+                  commonName: Schema.Struct({
+                    commonName: Schema.String,
+                  }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                Schema.Struct({
+                  geo: Schema.Struct({
+                    countryCode: Schema.String,
+                  }).pipe(Schema.encodeKeys({ countryCode: "country_code" })),
+                }),
+                Schema.Struct({
+                  devicePosture: Schema.Struct({
+                    integrationUid: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({ integrationUid: "integration_uid" }),
+                  ),
+                }).pipe(Schema.encodeKeys({ devicePosture: "device_posture" })),
+                Schema.Struct({
+                  emailDomain: Schema.Struct({
+                    domain: Schema.String,
+                  }),
+                }).pipe(Schema.encodeKeys({ emailDomain: "email_domain" })),
+                Schema.Struct({
+                  emailList: Schema.Struct({
+                    id: Schema.String,
+                  }),
+                }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
+                Schema.Struct({
+                  email: Schema.Struct({
+                    email: Schema.String,
+                  }),
+                }),
+                Schema.Struct({
+                  everyone: Schema.Unknown,
+                }),
+                Schema.Struct({
+                  externalEvaluation: Schema.Struct({
+                    evaluateUrl: Schema.String,
+                    keysUrl: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      evaluateUrl: "evaluate_url",
+                      keysUrl: "keys_url",
+                    }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    externalEvaluation: "external_evaluation",
+                  }),
+                ),
+                Schema.Struct({
+                  githubOrganization: Schema.Struct({
+                    identityProviderId: Schema.String,
+                    name: Schema.String,
+                    team: Schema.optional(Schema.String),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      identityProviderId: "identity_provider_id",
+                      name: "name",
+                      team: "team",
+                    }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    githubOrganization: "github-organization",
+                  }),
+                ),
+                Schema.Struct({
+                  gsuite: Schema.Struct({
+                    email: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      email: "email",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  loginMethod: Schema.Struct({
+                    id: Schema.String,
+                  }),
+                }).pipe(Schema.encodeKeys({ loginMethod: "login_method" })),
+                Schema.Struct({
+                  ipList: Schema.Struct({
+                    id: Schema.String,
+                  }),
+                }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+                Schema.Struct({
+                  ip: Schema.Struct({
+                    ip: Schema.String,
+                  }),
+                }),
+                Schema.Struct({
+                  okta: Schema.Struct({
+                    identityProviderId: Schema.String,
+                    name: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      identityProviderId: "identity_provider_id",
+                      name: "name",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  saml: Schema.Struct({
+                    attributeName: Schema.String,
+                    attributeValue: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      attributeName: "attribute_name",
+                      attributeValue: "attribute_value",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  oidc: Schema.Struct({
+                    claimName: Schema.String,
+                    claimValue: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      claimName: "claim_name",
+                      claimValue: "claim_value",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  serviceToken: Schema.Struct({
+                    tokenId: Schema.String,
+                  }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+                }).pipe(Schema.encodeKeys({ serviceToken: "service_token" })),
+                Schema.Struct({
+                  linkedAppToken: Schema.Struct({
+                    appUid: Schema.String,
+                  }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+                }).pipe(
+                  Schema.encodeKeys({ linkedAppToken: "linked_app_token" }),
+                ),
+                Schema.Struct({
+                  userRiskScore: Schema.Struct({
+                    userRiskScore: Schema.Array(
+                      Schema.Literals(["low", "medium", "high", "unscored"]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({ userRiskScore: "user_risk_score" }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({ userRiskScore: "user_risk_score" }),
+                ),
+                Schema.Struct({
+                  cloudflareAccountMember: Schema.Struct({
+                    accountId: Schema.optional(Schema.String),
+                  }).pipe(Schema.encodeKeys({ accountId: "account_id" })),
+                }).pipe(
+                  Schema.encodeKeys({
+                    cloudflareAccountMember: "cloudflare_account_member",
+                  }),
+                ),
+              ]),
+            ),
+          ),
           mfaConfig: Schema.optional(
             Schema.Struct({
               allowedAuthenticators: Schema.optional(
-                Schema.Array(
-                  Schema.Literals(["totp", "biometrics", "security_key"]),
-                ),
+                Schema.Array(Schema.Literal("ssh_piv_key")),
               ),
               mfaDisabled: Schema.optional(Schema.Boolean),
               sessionDuration: Schema.optional(Schema.String),
@@ -44284,26 +45943,231 @@ const UpdateAccessApplicationBaseFields = {
               }),
             ),
           ),
-          precedence: Schema.optional(Schema.Number),
-          purposeJustificationPrompt: Schema.optional(Schema.String),
-          purposeJustificationRequired: Schema.optional(Schema.Boolean),
-          sessionDuration: Schema.optional(Schema.String),
+          require: Schema.optional(
+            Schema.Array(
+              Schema.Union([
+                Schema.Struct({
+                  group: Schema.Struct({
+                    id: Schema.String,
+                  }),
+                }),
+                Schema.Struct({
+                  anyValidServiceToken: Schema.Unknown,
+                }).pipe(
+                  Schema.encodeKeys({
+                    anyValidServiceToken: "any_valid_service_token",
+                  }),
+                ),
+                Schema.Struct({
+                  authContext: Schema.Struct({
+                    id: Schema.String,
+                    acId: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      acId: "ac_id",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }).pipe(Schema.encodeKeys({ authContext: "auth_context" })),
+                Schema.Struct({
+                  authMethod: Schema.Struct({
+                    authMethod: Schema.String,
+                  }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                Schema.Struct({
+                  azureAD: Schema.Struct({
+                    id: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  certificate: Schema.Unknown,
+                }),
+                Schema.Struct({
+                  commonName: Schema.Struct({
+                    commonName: Schema.String,
+                  }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                Schema.Struct({
+                  geo: Schema.Struct({
+                    countryCode: Schema.String,
+                  }).pipe(Schema.encodeKeys({ countryCode: "country_code" })),
+                }),
+                Schema.Struct({
+                  devicePosture: Schema.Struct({
+                    integrationUid: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({ integrationUid: "integration_uid" }),
+                  ),
+                }).pipe(Schema.encodeKeys({ devicePosture: "device_posture" })),
+                Schema.Struct({
+                  emailDomain: Schema.Struct({
+                    domain: Schema.String,
+                  }),
+                }).pipe(Schema.encodeKeys({ emailDomain: "email_domain" })),
+                Schema.Struct({
+                  emailList: Schema.Struct({
+                    id: Schema.String,
+                  }),
+                }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
+                Schema.Struct({
+                  email: Schema.Struct({
+                    email: Schema.String,
+                  }),
+                }),
+                Schema.Struct({
+                  everyone: Schema.Unknown,
+                }),
+                Schema.Struct({
+                  externalEvaluation: Schema.Struct({
+                    evaluateUrl: Schema.String,
+                    keysUrl: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      evaluateUrl: "evaluate_url",
+                      keysUrl: "keys_url",
+                    }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    externalEvaluation: "external_evaluation",
+                  }),
+                ),
+                Schema.Struct({
+                  githubOrganization: Schema.Struct({
+                    identityProviderId: Schema.String,
+                    name: Schema.String,
+                    team: Schema.optional(Schema.String),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      identityProviderId: "identity_provider_id",
+                      name: "name",
+                      team: "team",
+                    }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    githubOrganization: "github-organization",
+                  }),
+                ),
+                Schema.Struct({
+                  gsuite: Schema.Struct({
+                    email: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      email: "email",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  loginMethod: Schema.Struct({
+                    id: Schema.String,
+                  }),
+                }).pipe(Schema.encodeKeys({ loginMethod: "login_method" })),
+                Schema.Struct({
+                  ipList: Schema.Struct({
+                    id: Schema.String,
+                  }),
+                }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+                Schema.Struct({
+                  ip: Schema.Struct({
+                    ip: Schema.String,
+                  }),
+                }),
+                Schema.Struct({
+                  okta: Schema.Struct({
+                    identityProviderId: Schema.String,
+                    name: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      identityProviderId: "identity_provider_id",
+                      name: "name",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  saml: Schema.Struct({
+                    attributeName: Schema.String,
+                    attributeValue: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      attributeName: "attribute_name",
+                      attributeValue: "attribute_value",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  oidc: Schema.Struct({
+                    claimName: Schema.String,
+                    claimValue: Schema.String,
+                    identityProviderId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      claimName: "claim_name",
+                      claimValue: "claim_value",
+                      identityProviderId: "identity_provider_id",
+                    }),
+                  ),
+                }),
+                Schema.Struct({
+                  serviceToken: Schema.Struct({
+                    tokenId: Schema.String,
+                  }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+                }).pipe(Schema.encodeKeys({ serviceToken: "service_token" })),
+                Schema.Struct({
+                  linkedAppToken: Schema.Struct({
+                    appUid: Schema.String,
+                  }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+                }).pipe(
+                  Schema.encodeKeys({ linkedAppToken: "linked_app_token" }),
+                ),
+                Schema.Struct({
+                  userRiskScore: Schema.Struct({
+                    userRiskScore: Schema.Array(
+                      Schema.Literals(["low", "medium", "high", "unscored"]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({ userRiskScore: "user_risk_score" }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({ userRiskScore: "user_risk_score" }),
+                ),
+                Schema.Struct({
+                  cloudflareAccountMember: Schema.Struct({
+                    accountId: Schema.optional(Schema.String),
+                  }).pipe(Schema.encodeKeys({ accountId: "account_id" })),
+                }).pipe(
+                  Schema.encodeKeys({
+                    cloudflareAccountMember: "cloudflare_account_member",
+                  }),
+                ),
+              ]),
+            ),
+          ),
         }).pipe(
           Schema.encodeKeys({
-            id: "id",
-            approvalGroups: "approval_groups",
-            approvalRequired: "approval_required",
+            decision: "decision",
+            include: "include",
+            name: "name",
             connectionRules: "connection_rules",
-            isolationRequired: "isolation_required",
+            exclude: "exclude",
             mfaConfig: "mfa_config",
-            precedence: "precedence",
-            purposeJustificationPrompt: "purpose_justification_prompt",
-            purposeJustificationRequired: "purpose_justification_required",
-            sessionDuration: "session_duration",
+            require: "require",
           }),
         ),
-      ]),
-    ),
+      ),
+    ]),
   ),
   readServiceTokensFromHeader: Schema.optional(Schema.String),
   sameSiteCookieAttribute: Schema.optional(Schema.String),
@@ -44441,14 +46305,221 @@ const UpdateAccessApplicationBaseFields = {
   skipInterstitial: Schema.optional(Schema.Boolean),
   tags: Schema.optional(Schema.Array(Schema.String)),
   useClientlessIsolationAppLauncherUrl: Schema.optional(Schema.Boolean),
+  saasApp: Schema.optional(
+    Schema.Struct({
+      authType: Schema.optional(Schema.Literals(["saml", "oidc"])),
+      consumerServiceUrl: Schema.optional(Schema.String),
+      customAttributes: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            friendlyName: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            nameFormat: Schema.optional(
+              Schema.Literals([
+                "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+                "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+                "urn:oasis:names:tc:SAML:2.0:attrname-format:uri",
+              ]),
+            ),
+            required: Schema.optional(Schema.Boolean),
+            source: Schema.optional(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                nameByIdp: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      idpId: Schema.optional(Schema.String),
+                      sourceName: Schema.optional(Schema.String),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        idpId: "idp_id",
+                        sourceName: "source_name",
+                      }),
+                    ),
+                  ),
+                ),
+              }).pipe(
+                Schema.encodeKeys({ name: "name", nameByIdp: "name_by_idp" }),
+              ),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              friendlyName: "friendly_name",
+              name: "name",
+              nameFormat: "name_format",
+              required: "required",
+              source: "source",
+            }),
+          ),
+        ),
+      ),
+      defaultRelayState: Schema.optional(Schema.String),
+      idpEntityId: Schema.optional(Schema.String),
+      nameIdFormat: Schema.optional(Schema.Literals(["id", "email"])),
+      nameIdTransformJsonata: Schema.optional(Schema.String),
+      publicKey: Schema.optional(Schema.String),
+      samlAttributeTransformJsonata: Schema.optional(Schema.String),
+      spEntityId: Schema.optional(Schema.String),
+      ssoEndpoint: Schema.optional(Schema.String),
+      accessTokenLifetime: Schema.optional(Schema.String),
+      allowPkceWithoutClientSecret: Schema.optional(Schema.Boolean),
+      appLauncherUrl: Schema.optional(Schema.String),
+      clientId: Schema.optional(Schema.String),
+      clientSecret: Schema.optional(SensitiveString),
+      customClaims: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            required: Schema.optional(Schema.Boolean),
+            scope: Schema.optional(
+              Schema.Literals(["groups", "profile", "email", "openid"]),
+            ),
+            source: Schema.optional(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                nameByIdp: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Unknown),
+                ),
+              }).pipe(
+                Schema.encodeKeys({ name: "name", nameByIdp: "name_by_idp" }),
+              ),
+            ),
+          }),
+        ),
+      ),
+      grantTypes: Schema.optional(
+        Schema.Array(
+          Schema.Literals([
+            "authorization_code",
+            "authorization_code_with_pkce",
+            "refresh_tokens",
+            "hybrid",
+            "implicit",
+          ]),
+        ),
+      ),
+      groupFilterRegex: Schema.optional(Schema.String),
+      hybridAndImplicitOptions: Schema.optional(
+        Schema.Struct({
+          returnAccessTokenFromAuthorizationEndpoint: Schema.optional(
+            Schema.Boolean,
+          ),
+          returnIdTokenFromAuthorizationEndpoint: Schema.optional(
+            Schema.Boolean,
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            returnAccessTokenFromAuthorizationEndpoint:
+              "return_access_token_from_authorization_endpoint",
+            returnIdTokenFromAuthorizationEndpoint:
+              "return_id_token_from_authorization_endpoint",
+          }),
+        ),
+      ),
+      redirectUris: Schema.optional(Schema.Array(Schema.String)),
+      refreshTokenOptions: Schema.optional(
+        Schema.Struct({
+          lifetime: Schema.optional(Schema.String),
+        }),
+      ),
+      scopes: Schema.optional(
+        Schema.Array(Schema.Literals(["openid", "groups", "email", "profile"])),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        authType: "auth_type",
+        consumerServiceUrl: "consumer_service_url",
+        customAttributes: "custom_attributes",
+        defaultRelayState: "default_relay_state",
+        idpEntityId: "idp_entity_id",
+        nameIdFormat: "name_id_format",
+        nameIdTransformJsonata: "name_id_transform_jsonata",
+        publicKey: "public_key",
+        samlAttributeTransformJsonata: "saml_attribute_transform_jsonata",
+        spEntityId: "sp_entity_id",
+        ssoEndpoint: "sso_endpoint",
+        accessTokenLifetime: "access_token_lifetime",
+        allowPkceWithoutClientSecret: "allow_pkce_without_client_secret",
+        appLauncherUrl: "app_launcher_url",
+        clientId: "client_id",
+        clientSecret: "client_secret",
+        customClaims: "custom_claims",
+        grantTypes: "grant_types",
+        groupFilterRegex: "group_filter_regex",
+        hybridAndImplicitOptions: "hybrid_and_implicit_options",
+        redirectUris: "redirect_uris",
+        refreshTokenOptions: "refresh_token_options",
+        scopes: "scopes",
+      }),
+    ),
+  ),
+  appLauncherLogoUrl: Schema.optional(Schema.String),
+  bgColor: Schema.optional(Schema.String),
+  footerLinks: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.String,
+        url: Schema.String,
+      }),
+    ),
+  ),
+  headerBgColor: Schema.optional(Schema.String),
+  landingPageDesign: Schema.optional(
+    Schema.Struct({
+      buttonColor: Schema.optional(Schema.String),
+      buttonTextColor: Schema.optional(Schema.String),
+      imageUrl: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      title: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        buttonColor: "button_color",
+        buttonTextColor: "button_text_color",
+        imageUrl: "image_url",
+        message: "message",
+        title: "title",
+      }),
+    ),
+  ),
+  skipAppLauncherLoginPage: Schema.optional(Schema.Boolean),
+  targetCriteria: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          port: Schema.Number,
+          protocol: Schema.Literal("SSH"),
+          targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
+        }).pipe(
+          Schema.encodeKeys({
+            port: "port",
+            protocol: "protocol",
+            targetAttributes: "target_attributes",
+          }),
+        ),
+      ),
+      Schema.Array(
+        Schema.Struct({
+          port: Schema.Number,
+          protocol: Schema.Literal("RDP"),
+          targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
+        }).pipe(
+          Schema.encodeKeys({
+            port: "port",
+            protocol: "protocol",
+            targetAttributes: "target_attributes",
+          }),
+        ),
+      ),
+    ]),
+  ),
 } as const;
 
 interface UpdateAccessApplicationBaseRequest {
   appId: string;
   /** Body param: The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher. */
-  domain: string;
+  domain?: string;
   /** Body param: The application type. */
-  type:
+  type?:
     | "self_hosted"
     | "saas"
     | "ssh"
@@ -44545,35 +46616,220 @@ interface UpdateAccessApplicationBaseRequest {
   /** Body param: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default */
   pathCookieAttribute?: boolean;
   /** Body param: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application. Reusable a */
-  policies?: (
-    | { id?: string; precedence?: number }
-    | string
+  policies?:
+    | (
+        | { id?: string; precedence?: number }
+        | string
+        | {
+            id?: string;
+            approvalGroups?: {
+              approvalsNeeded: number;
+              emailAddresses?: string[];
+              emailListUuid?: string;
+            }[];
+            approvalRequired?: boolean;
+            connectionRules?: {
+              rdp?: {
+                allowedClipboardLocalToRemoteFormats?: "text"[];
+                allowedClipboardRemoteToLocalFormats?: "text"[];
+              };
+            };
+            isolationRequired?: boolean;
+            mfaConfig?: {
+              allowedAuthenticators?: (
+                | "totp"
+                | "biometrics"
+                | "security_key"
+              )[];
+              mfaDisabled?: boolean;
+              sessionDuration?: string;
+            };
+            precedence?: number;
+            purposeJustificationPrompt?: string;
+            purposeJustificationRequired?: boolean;
+            sessionDuration?: string;
+          }
+      )[]
     | {
-        id?: string;
-        approvalGroups?: {
-          approvalsNeeded: number;
-          emailAddresses?: string[];
-          emailListUuid?: string;
-        }[];
-        approvalRequired?: boolean;
+        decision: "allow" | "deny" | "non_identity" | "bypass";
+        include: (
+          | { group: { id: string } }
+          | { anyValidServiceToken: unknown }
+          | {
+              authContext: {
+                id: string;
+                acId: string;
+                identityProviderId: string;
+              };
+            }
+          | { authMethod: { authMethod: string } }
+          | { azureAD: { id: string; identityProviderId: string } }
+          | { certificate: unknown }
+          | { commonName: { commonName: string } }
+          | { geo: { countryCode: string } }
+          | { devicePosture: { integrationUid: string } }
+          | { emailDomain: { domain: string } }
+          | { emailList: { id: string } }
+          | { email: { email: string } }
+          | { everyone: unknown }
+          | { externalEvaluation: { evaluateUrl: string; keysUrl: string } }
+          | {
+              githubOrganization: {
+                identityProviderId: string;
+                name: string;
+                team?: string;
+              };
+            }
+          | { gsuite: { email: string; identityProviderId: string } }
+          | { loginMethod: { id: string } }
+          | { ipList: { id: string } }
+          | { ip: { ip: string } }
+          | { okta: { identityProviderId: string; name: string } }
+          | {
+              saml: {
+                attributeName: string;
+                attributeValue: string;
+                identityProviderId: string;
+              };
+            }
+          | {
+              oidc: {
+                claimName: string;
+                claimValue: string;
+                identityProviderId: string;
+              };
+            }
+          | { serviceToken: { tokenId: string } }
+          | { linkedAppToken: { appUid: string } }
+          | {
+              userRiskScore: {
+                userRiskScore: ("low" | "medium" | "high" | "unscored")[];
+              };
+            }
+          | { cloudflareAccountMember: { accountId?: string } }
+        )[];
+        name: string;
         connectionRules?: {
-          rdp?: {
-            allowedClipboardLocalToRemoteFormats?: "text"[];
-            allowedClipboardRemoteToLocalFormats?: "text"[];
-          };
+          ssh?: { usernames: string[]; allowEmailAlias?: boolean };
         };
-        isolationRequired?: boolean;
+        exclude?: (
+          | { group: { id: string } }
+          | { anyValidServiceToken: unknown }
+          | {
+              authContext: {
+                id: string;
+                acId: string;
+                identityProviderId: string;
+              };
+            }
+          | { authMethod: { authMethod: string } }
+          | { azureAD: { id: string; identityProviderId: string } }
+          | { certificate: unknown }
+          | { commonName: { commonName: string } }
+          | { geo: { countryCode: string } }
+          | { devicePosture: { integrationUid: string } }
+          | { emailDomain: { domain: string } }
+          | { emailList: { id: string } }
+          | { email: { email: string } }
+          | { everyone: unknown }
+          | { externalEvaluation: { evaluateUrl: string; keysUrl: string } }
+          | {
+              githubOrganization: {
+                identityProviderId: string;
+                name: string;
+                team?: string;
+              };
+            }
+          | { gsuite: { email: string; identityProviderId: string } }
+          | { loginMethod: { id: string } }
+          | { ipList: { id: string } }
+          | { ip: { ip: string } }
+          | { okta: { identityProviderId: string; name: string } }
+          | {
+              saml: {
+                attributeName: string;
+                attributeValue: string;
+                identityProviderId: string;
+              };
+            }
+          | {
+              oidc: {
+                claimName: string;
+                claimValue: string;
+                identityProviderId: string;
+              };
+            }
+          | { serviceToken: { tokenId: string } }
+          | { linkedAppToken: { appUid: string } }
+          | {
+              userRiskScore: {
+                userRiskScore: ("low" | "medium" | "high" | "unscored")[];
+              };
+            }
+          | { cloudflareAccountMember: { accountId?: string } }
+        )[];
         mfaConfig?: {
-          allowedAuthenticators?: ("totp" | "biometrics" | "security_key")[];
+          allowedAuthenticators?: "ssh_piv_key"[];
           mfaDisabled?: boolean;
           sessionDuration?: string;
         };
-        precedence?: number;
-        purposeJustificationPrompt?: string;
-        purposeJustificationRequired?: boolean;
-        sessionDuration?: string;
-      }
-  )[];
+        require?: (
+          | { group: { id: string } }
+          | { anyValidServiceToken: unknown }
+          | {
+              authContext: {
+                id: string;
+                acId: string;
+                identityProviderId: string;
+              };
+            }
+          | { authMethod: { authMethod: string } }
+          | { azureAD: { id: string; identityProviderId: string } }
+          | { certificate: unknown }
+          | { commonName: { commonName: string } }
+          | { geo: { countryCode: string } }
+          | { devicePosture: { integrationUid: string } }
+          | { emailDomain: { domain: string } }
+          | { emailList: { id: string } }
+          | { email: { email: string } }
+          | { everyone: unknown }
+          | { externalEvaluation: { evaluateUrl: string; keysUrl: string } }
+          | {
+              githubOrganization: {
+                identityProviderId: string;
+                name: string;
+                team?: string;
+              };
+            }
+          | { gsuite: { email: string; identityProviderId: string } }
+          | { loginMethod: { id: string } }
+          | { ipList: { id: string } }
+          | { ip: { ip: string } }
+          | { okta: { identityProviderId: string; name: string } }
+          | {
+              saml: {
+                attributeName: string;
+                attributeValue: string;
+                identityProviderId: string;
+              };
+            }
+          | {
+              oidc: {
+                claimName: string;
+                claimValue: string;
+                identityProviderId: string;
+              };
+            }
+          | { serviceToken: { tokenId: string } }
+          | { linkedAppToken: { appUid: string } }
+          | {
+              userRiskScore: {
+                userRiskScore: ("low" | "medium" | "high" | "unscored")[];
+              };
+            }
+          | { cloudflareAccountMember: { accountId?: string } }
+        )[];
+      }[];
   /** Body param: Allows matching Access Service Tokens passed HTTP in a single header with this name. This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers. The */
   readServiceTokensFromHeader?: string;
   /** Body param: Sets the SameSite cookie setting, which provides increased security against CSRF attacks. */
@@ -44638,6 +46894,88 @@ interface UpdateAccessApplicationBaseRequest {
   tags?: string[];
   /** Body param: Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clien */
   useClientlessIsolationAppLauncherUrl?: boolean;
+  /** Body param */
+  saasApp?: {
+    authType?: "saml" | "oidc";
+    consumerServiceUrl?: string;
+    customAttributes?: {
+      friendlyName?: string;
+      name?: string;
+      nameFormat?:
+        | "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"
+        | "urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
+        | "urn:oasis:names:tc:SAML:2.0:attrname-format:uri";
+      required?: boolean;
+      source?: {
+        name?: string;
+        nameByIdp?: { idpId?: string; sourceName?: string }[];
+      };
+    }[];
+    defaultRelayState?: string;
+    idpEntityId?: string;
+    nameIdFormat?: "id" | "email";
+    nameIdTransformJsonata?: string;
+    publicKey?: string;
+    samlAttributeTransformJsonata?: string;
+    spEntityId?: string;
+    ssoEndpoint?: string;
+    accessTokenLifetime?: string;
+    allowPkceWithoutClientSecret?: boolean;
+    appLauncherUrl?: string;
+    clientId?: string;
+    clientSecret?: string;
+    customClaims?: {
+      name?: string;
+      required?: boolean;
+      scope?: "groups" | "profile" | "email" | "openid";
+      source?: { name?: string; nameByIdp?: Record<string, unknown> };
+    }[];
+    grantTypes?: (
+      | "authorization_code"
+      | "authorization_code_with_pkce"
+      | "refresh_tokens"
+      | "hybrid"
+      | "implicit"
+    )[];
+    groupFilterRegex?: string;
+    hybridAndImplicitOptions?: {
+      returnAccessTokenFromAuthorizationEndpoint?: boolean;
+      returnIdTokenFromAuthorizationEndpoint?: boolean;
+    };
+    redirectUris?: string[];
+    refreshTokenOptions?: { lifetime?: string };
+    scopes?: ("openid" | "groups" | "email" | "profile")[];
+  };
+  /** Body param: The image URL of the logo shown in the App Launcher header. */
+  appLauncherLogoUrl?: string;
+  /** Body param: The background color of the App Launcher page. */
+  bgColor?: string;
+  /** Body param: The links in the App Launcher footer. */
+  footerLinks?: { name: string; url: string }[];
+  /** Body param: The background color of the App Launcher header. */
+  headerBgColor?: string;
+  /** Body param: The design of the App Launcher landing page shown to users when they log in. */
+  landingPageDesign?: {
+    buttonColor?: string;
+    buttonTextColor?: string;
+    imageUrl?: string;
+    message?: string;
+    title?: string;
+  };
+  /** Body param: Determines when to skip the App Launcher landing page. */
+  skipAppLauncherLoginPage?: boolean;
+  /** Body param */
+  targetCriteria?:
+    | {
+        port: number;
+        protocol: "SSH";
+        targetAttributes: Record<string, unknown>;
+      }[]
+    | {
+        port: number;
+        protocol: "RDP";
+        targetAttributes: Record<string, unknown>;
+      }[];
 }
 
 export interface UpdateAccessApplicationForAccountRequest extends UpdateAccessApplicationBaseRequest {
@@ -44688,6 +47026,14 @@ export const UpdateAccessApplicationForAccountRequest =
       tags: "tags",
       useClientlessIsolationAppLauncherUrl:
         "use_clientless_isolation_app_launcher_url",
+      saasApp: "saas_app",
+      appLauncherLogoUrl: "app_launcher_logo_url",
+      bgColor: "bg_color",
+      footerLinks: "footer_links",
+      headerBgColor: "header_bg_color",
+      landingPageDesign: "landing_page_design",
+      skipAppLauncherLoginPage: "skip_app_launcher_login_page",
+      targetCriteria: "target_criteria",
     }),
     T.Http({
       method: "PUT",
@@ -44733,6 +47079,14 @@ export const UpdateAccessApplicationForZoneRequest =
       tags: "tags",
       useClientlessIsolationAppLauncherUrl:
         "use_clientless_isolation_app_launcher_url",
+      saasApp: "saas_app",
+      appLauncherLogoUrl: "app_launcher_logo_url",
+      bgColor: "bg_color",
+      footerLinks: "footer_links",
+      headerBgColor: "header_bg_color",
+      landingPageDesign: "landing_page_design",
+      skipAppLauncherLoginPage: "skip_app_launcher_login_page",
+      targetCriteria: "target_criteria",
     }),
     T.Http({ method: "PUT", path: "/zones/{zone_id}/access/apps/{appId}" }),
   ) as unknown as Schema.Schema<UpdateAccessApplicationForZoneRequest>;
@@ -99871,11 +102225,11 @@ export interface UpdateDlpEntryRequest {
   /** Path param */
   accountId: string;
   /** Body param */
-  name: string;
+  name?: string;
   /** Body param */
-  pattern: { regex: string; validation?: "luhn" };
+  pattern?: { regex: string; validation?: "luhn" };
   /** Body param */
-  type: "custom";
+  type: "custom" | "predefined" | "integration";
   /** Body param */
   description?: string | null;
   /** Body param */
@@ -99885,12 +102239,14 @@ export interface UpdateDlpEntryRequest {
 export const UpdateDlpEntryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   entryId: Schema.String.pipe(T.HttpPath("entryId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  name: Schema.String,
-  pattern: Schema.Struct({
-    regex: Schema.String,
-    validation: Schema.optional(Schema.Literal("luhn")),
-  }),
-  type: Schema.Literal("custom"),
+  name: Schema.optional(Schema.String),
+  pattern: Schema.optional(
+    Schema.Struct({
+      regex: Schema.String,
+      validation: Schema.optional(Schema.Literal("luhn")),
+    }),
+  ),
+  type: Schema.Literals(["custom", "predefined", "integration"]),
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   enabled: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -119436,14 +121792,14 @@ export interface CreateGatewayProxyEndpointRequest {
   /** Body param: Specify the name of the proxy endpoint. */
   name: string;
   /** Body param: The proxy endpoint kind */
-  kind?: "ip";
+  kind?: "ip" | "identity";
 }
 
 export const CreateGatewayProxyEndpointRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     name: Schema.String,
-    kind: Schema.optional(Schema.Literal("ip")),
+    kind: Schema.optional(Schema.Literals(["ip", "identity"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -128216,6 +130572,39 @@ const CreateIdentityProviderBaseFields = {
       Schema.Literals(["login", "select_account", "none"]),
     ),
     supportGroups: Schema.optional(Schema.Boolean),
+    centrifyAccount: Schema.optional(Schema.String),
+    centrifyAppId: Schema.optional(Schema.String),
+    appsDomain: Schema.optional(Schema.String),
+    authUrl: Schema.optional(Schema.String),
+    certsUrl: Schema.optional(Schema.String),
+    pkceEnabled: Schema.optional(Schema.Boolean),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+    tokenUrl: Schema.optional(Schema.String),
+    authorizationServerId: Schema.optional(Schema.String),
+    oktaAccount: Schema.optional(Schema.String),
+    oneloginAccount: Schema.optional(Schema.String),
+    pingEnvId: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Array(Schema.String)),
+    emailAttributeName: Schema.optional(Schema.String),
+    enableEncryption: Schema.optional(Schema.Boolean),
+    headerAttributes: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          attributeName: Schema.optional(Schema.String),
+          headerName: Schema.optional(Schema.String),
+        }).pipe(
+          Schema.encodeKeys({
+            attributeName: "attribute_name",
+            headerName: "header_name",
+          }),
+        ),
+      ),
+    ),
+    idpPublicCerts: Schema.optional(Schema.Array(Schema.String)),
+    issuerUrl: Schema.optional(Schema.String),
+    signRequest: Schema.optional(Schema.Boolean),
+    ssoTargetUrl: Schema.optional(Schema.String),
+    restrictToAccountMembers: Schema.optional(Schema.Boolean),
   }).pipe(
     Schema.encodeKeys({
       claims: "claims",
@@ -128226,6 +130615,27 @@ const CreateIdentityProviderBaseFields = {
       emailClaimName: "email_claim_name",
       prompt: "prompt",
       supportGroups: "support_groups",
+      centrifyAccount: "centrify_account",
+      centrifyAppId: "centrify_app_id",
+      appsDomain: "apps_domain",
+      authUrl: "auth_url",
+      certsUrl: "certs_url",
+      pkceEnabled: "pkce_enabled",
+      scopes: "scopes",
+      tokenUrl: "token_url",
+      authorizationServerId: "authorization_server_id",
+      oktaAccount: "okta_account",
+      oneloginAccount: "onelogin_account",
+      pingEnvId: "ping_env_id",
+      attributes: "attributes",
+      emailAttributeName: "email_attribute_name",
+      enableEncryption: "enable_encryption",
+      headerAttributes: "header_attributes",
+      idpPublicCerts: "idp_public_certs",
+      issuerUrl: "issuer_url",
+      signRequest: "sign_request",
+      ssoTargetUrl: "sso_target_url",
+      restrictToAccountMembers: "restrict_to_account_members",
     }),
   ),
   name: Schema.String,
@@ -128277,6 +130687,27 @@ interface CreateIdentityProviderBaseRequest {
     emailClaimName?: string;
     prompt?: "login" | "select_account" | "none";
     supportGroups?: boolean;
+    centrifyAccount?: string;
+    centrifyAppId?: string;
+    appsDomain?: string;
+    authUrl?: string;
+    certsUrl?: string;
+    pkceEnabled?: boolean;
+    scopes?: string[];
+    tokenUrl?: string;
+    authorizationServerId?: string;
+    oktaAccount?: string;
+    oneloginAccount?: string;
+    pingEnvId?: string;
+    attributes?: string[];
+    emailAttributeName?: string;
+    enableEncryption?: boolean;
+    headerAttributes?: { attributeName?: string; headerName?: string }[];
+    idpPublicCerts?: string[];
+    issuerUrl?: string;
+    signRequest?: boolean;
+    ssoTargetUrl?: string;
+    restrictToAccountMembers?: boolean;
   };
   /** Body param: The name of the identity provider, shown to users on the login page. */
   name: string;
@@ -130583,6 +133014,39 @@ const UpdateIdentityProviderBaseFields = {
       Schema.Literals(["login", "select_account", "none"]),
     ),
     supportGroups: Schema.optional(Schema.Boolean),
+    centrifyAccount: Schema.optional(Schema.String),
+    centrifyAppId: Schema.optional(Schema.String),
+    appsDomain: Schema.optional(Schema.String),
+    authUrl: Schema.optional(Schema.String),
+    certsUrl: Schema.optional(Schema.String),
+    pkceEnabled: Schema.optional(Schema.Boolean),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+    tokenUrl: Schema.optional(Schema.String),
+    authorizationServerId: Schema.optional(Schema.String),
+    oktaAccount: Schema.optional(Schema.String),
+    oneloginAccount: Schema.optional(Schema.String),
+    pingEnvId: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Array(Schema.String)),
+    emailAttributeName: Schema.optional(Schema.String),
+    enableEncryption: Schema.optional(Schema.Boolean),
+    headerAttributes: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          attributeName: Schema.optional(Schema.String),
+          headerName: Schema.optional(Schema.String),
+        }).pipe(
+          Schema.encodeKeys({
+            attributeName: "attribute_name",
+            headerName: "header_name",
+          }),
+        ),
+      ),
+    ),
+    idpPublicCerts: Schema.optional(Schema.Array(Schema.String)),
+    issuerUrl: Schema.optional(Schema.String),
+    signRequest: Schema.optional(Schema.Boolean),
+    ssoTargetUrl: Schema.optional(Schema.String),
+    restrictToAccountMembers: Schema.optional(Schema.Boolean),
   }).pipe(
     Schema.encodeKeys({
       claims: "claims",
@@ -130593,6 +133057,27 @@ const UpdateIdentityProviderBaseFields = {
       emailClaimName: "email_claim_name",
       prompt: "prompt",
       supportGroups: "support_groups",
+      centrifyAccount: "centrify_account",
+      centrifyAppId: "centrify_app_id",
+      appsDomain: "apps_domain",
+      authUrl: "auth_url",
+      certsUrl: "certs_url",
+      pkceEnabled: "pkce_enabled",
+      scopes: "scopes",
+      tokenUrl: "token_url",
+      authorizationServerId: "authorization_server_id",
+      oktaAccount: "okta_account",
+      oneloginAccount: "onelogin_account",
+      pingEnvId: "ping_env_id",
+      attributes: "attributes",
+      emailAttributeName: "email_attribute_name",
+      enableEncryption: "enable_encryption",
+      headerAttributes: "header_attributes",
+      idpPublicCerts: "idp_public_certs",
+      issuerUrl: "issuer_url",
+      signRequest: "sign_request",
+      ssoTargetUrl: "sso_target_url",
+      restrictToAccountMembers: "restrict_to_account_members",
     }),
   ),
   name: Schema.String,
@@ -130645,6 +133130,27 @@ interface UpdateIdentityProviderBaseRequest {
     emailClaimName?: string;
     prompt?: "login" | "select_account" | "none";
     supportGroups?: boolean;
+    centrifyAccount?: string;
+    centrifyAppId?: string;
+    appsDomain?: string;
+    authUrl?: string;
+    certsUrl?: string;
+    pkceEnabled?: boolean;
+    scopes?: string[];
+    tokenUrl?: string;
+    authorizationServerId?: string;
+    oktaAccount?: string;
+    oneloginAccount?: string;
+    pingEnvId?: string;
+    attributes?: string[];
+    emailAttributeName?: string;
+    enableEncryption?: boolean;
+    headerAttributes?: { attributeName?: string; headerName?: string }[];
+    idpPublicCerts?: string[];
+    issuerUrl?: string;
+    signRequest?: boolean;
+    ssoTargetUrl?: string;
+    restrictToAccountMembers?: boolean;
   };
   /** Body param: The name of the identity provider, shown to users on the login page. */
   name: string;

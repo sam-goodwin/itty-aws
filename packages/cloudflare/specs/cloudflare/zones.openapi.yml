@@ -2921,6 +2921,8 @@ paths:
                 enabled:
                   type: boolean
                   description: "Body param: ssl-recommender enrollment setting."
+                value:
+                  description: "Body param: Value of the zone setting."
       responses:
         "200":
           description: Success

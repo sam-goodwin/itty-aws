@@ -3970,10 +3970,48 @@ paths:
                   type: string
                   enum:
                     - secret_text
+                    - secret_key
                   description: "Body param: The kind of resource that the binding provides."
+                algorithm:
+                  description: "Body param: Algorithm-specific key parameters. [Learn
+                    more](https://developer.mozilla.org/en-US/docs/Web/API/Subt\
+                    leCrypto/importKey#algorithm)."
+                format:
+                  type: string
+                  enum:
+                    - raw
+                    - pkcs8
+                    - spki
+                    - jwk
+                  description: "Body param: Data format of the key. [Learn
+                    more](https://developer.mozilla.org/en-US/docs/Web/API/Subt\
+                    leCrypto/importKey#format)."
+                usages:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - encrypt
+                      - decrypt
+                      - sign
+                      - verify
+                      - deriveKey
+                      - deriveBits
+                      - wrapKey
+                      - unwrapKey
+                  description: "Body param: Allowed operations with the key. [Learn
+                    more](https://developer.mozilla.org/en-US/docs/Web/API/Subt\
+                    leCrypto/importKey#keyUsages)."
+                key_base64:
+                  type: string
+                  description: 'Body param: Base64-encoded key data. Required if `format` is
+                    "raw", "pkcs8", or "spki".'
+                key_jwk:
+                  description: 'Body param: Key data in [JSON Web
+                    Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key)
+                    format. Required if `format` is "jwk".'
               required:
                 - name
-                - text
                 - type
       responses:
         "200":

@@ -916,13 +916,15 @@ export interface CreateAppRequest {
   /** Body param: The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`. */
   protocol: string;
   /** Body param: Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol */
-  trafficType: "direct" | "http" | "https";
+  trafficType?: "direct" | "http" | "https";
   /** Body param: Enables Argo Smart Routing for this application. Notes: Only available for TCP applications with traffic_type set to "direct". */
   argoSmartRouting?: boolean;
   /** Body param: The anycast edge IP configuration for the hostname of this application. */
-  edgeIps?:
-    | { connectivity?: "all" | "ipv4" | "ipv6"; type?: "dynamic" }
-    | { ips?: string[]; type?: "static" };
+  edgeIps?: {
+    connectivity?: "all" | "ipv4" | "ipv6";
+    type?: "dynamic" | "static";
+    ips?: string[];
+  };
   /** Body param: Enables IP Access Rules for this application. Notes: Only available for TCP applications. */
   ipFirewall?: boolean;
   /** Body param: List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
@@ -946,19 +948,14 @@ export const CreateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.Literals(["CNAME", "ADDRESS"])),
   }),
   protocol: Schema.String,
-  trafficType: Schema.Literals(["direct", "http", "https"]),
+  trafficType: Schema.optional(Schema.Literals(["direct", "http", "https"])),
   argoSmartRouting: Schema.optional(Schema.Boolean),
   edgeIps: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        connectivity: Schema.optional(Schema.Literals(["all", "ipv4", "ipv6"])),
-        type: Schema.optional(Schema.Literal("dynamic")),
-      }),
-      Schema.Struct({
-        ips: Schema.optional(Schema.Array(Schema.String)),
-        type: Schema.optional(Schema.Literal("static")),
-      }),
-    ]),
+    Schema.Struct({
+      connectivity: Schema.optional(Schema.Literals(["all", "ipv4", "ipv6"])),
+      type: Schema.optional(Schema.Literals(["dynamic", "static"])),
+      ips: Schema.optional(Schema.Array(Schema.String)),
+    }),
   ),
   ipFirewall: Schema.optional(Schema.Boolean),
   originDirect: Schema.optional(Schema.Array(Schema.String)),
@@ -1178,13 +1175,15 @@ export interface UpdateAppRequest {
   /** Body param: The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`. */
   protocol: string;
   /** Body param: Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol */
-  trafficType: "direct" | "http" | "https";
+  trafficType?: "direct" | "http" | "https";
   /** Body param: Enables Argo Smart Routing for this application. Notes: Only available for TCP applications with traffic_type set to "direct". */
   argoSmartRouting?: boolean;
   /** Body param: The anycast edge IP configuration for the hostname of this application. */
-  edgeIps?:
-    | { connectivity?: "all" | "ipv4" | "ipv6"; type?: "dynamic" }
-    | { ips?: string[]; type?: "static" };
+  edgeIps?: {
+    connectivity?: "all" | "ipv4" | "ipv6";
+    type?: "dynamic" | "static";
+    ips?: string[];
+  };
   /** Body param: Enables IP Access Rules for this application. Notes: Only available for TCP applications. */
   ipFirewall?: boolean;
   /** Body param: List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
@@ -1209,19 +1208,14 @@ export const UpdateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.Literals(["CNAME", "ADDRESS"])),
   }),
   protocol: Schema.String,
-  trafficType: Schema.Literals(["direct", "http", "https"]),
+  trafficType: Schema.optional(Schema.Literals(["direct", "http", "https"])),
   argoSmartRouting: Schema.optional(Schema.Boolean),
   edgeIps: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        connectivity: Schema.optional(Schema.Literals(["all", "ipv4", "ipv6"])),
-        type: Schema.optional(Schema.Literal("dynamic")),
-      }),
-      Schema.Struct({
-        ips: Schema.optional(Schema.Array(Schema.String)),
-        type: Schema.optional(Schema.Literal("static")),
-      }),
-    ]),
+    Schema.Struct({
+      connectivity: Schema.optional(Schema.Literals(["all", "ipv4", "ipv6"])),
+      type: Schema.optional(Schema.Literals(["dynamic", "static"])),
+      ips: Schema.optional(Schema.Array(Schema.String)),
+    }),
   ),
   ipFirewall: Schema.optional(Schema.Boolean),
   originDirect: Schema.optional(Schema.Array(Schema.String)),

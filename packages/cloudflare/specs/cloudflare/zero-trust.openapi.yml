@@ -21750,7 +21750,7 @@ paths:
           schema:
             type: string
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -22026,79 +22026,879 @@ paths:
                     the application path. If disabled, the JWT will scope to the
                     hostname by default"
                 policies:
-                  type: array
-                  items:
-                    oneOf:
-                      - type: object
+                  oneOf:
+                    - type: array
+                      items:
+                        oneOf:
+                          - type: object
+                            properties:
+                              id:
+                                type: string
+                                description: The UUID of the policy
+                              precedence:
+                                type: number
+                                description: The order of execution for this policy. Must be unique for each
+                                  policy within an app.
+                          - type: string
+                          - type: object
+                            properties:
+                              id:
+                                type: string
+                                description: The UUID of the policy
+                              approval_groups:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    approvals_needed:
+                                      type: number
+                                      description: The number of approvals needed to obtain access.
+                                    email_addresses:
+                                      type: array
+                                      items:
+                                        type: string
+                                      description: A list of emails that can approve the access request.
+                                    email_list_uuid:
+                                      type: string
+                                      description: The UUID of an re-usable email list.
+                                  required:
+                                    - approvals_needed
+                                description: Administrators who can approve a temporary authentication request.
+                              approval_required:
+                                type: boolean
+                                description: Requires the user to request access from an administrator at the
+                                  start of each session.
+                              connection_rules:
+                                type: object
+                                properties:
+                                  rdp:
+                                    type: object
+                                    properties:
+                                      allowed_clipboard_local_to_remote_formats:
+                                        type: array
+                                        items:
+                                          type: string
+                                          enum:
+                                            - text
+                                        description: Clipboard formats allowed when copying from local machine to remote
+                                          RDP session.
+                                      allowed_clipboard_remote_to_local_formats:
+                                        type: array
+                                        items:
+                                          type: string
+                                          enum:
+                                            - text
+                                        description: Clipboard formats allowed when copying from remote RDP session to
+                                          local machine.
+                                    description: The RDP-specific rules that define clipboard behavior for RDP
+                                      connections.
+                                description: The rules that define how users may connect to targets secured by
+                                  your application.
+                              isolation_required:
+                                type: boolean
+                                description: Require this application to be served in an isolated browser for
+                                  users matching this policy. 'Client Web
+                                  Isolation' must be on for the account in order
+                                  to use this feature.
+                              mfa_config:
+                                type: object
+                                properties:
+                                  allowed_authenticators:
+                                    type: array
+                                    items:
+                                      type: string
+                                      enum:
+                                        - totp
+                                        - biometrics
+                                        - security_key
+                                    description: Lists the MFA methods that users can authenticate with.
+                                  mfa_disabled:
+                                    type: boolean
+                                    description: Indicates whether to disable MFA for this resource. This option is
+                                      available at the application and policy
+                                      level.
+                                  session_duration:
+                                    type: string
+                                    description: "Defines the duration of an MFA session. Must be in minutes (m) or
+                                      hours (h). Minimum: 0m. Maximum: 720h (30
+                                      days). Examples:`5m` or `24h`."
+                                description: Configures multi-factor authentication (MFA) settings.
+                              precedence:
+                                type: number
+                                description: The order of execution for this policy. Must be unique for each
+                                  policy within an app.
+                              purpose_justification_prompt:
+                                type: string
+                                description: A custom message that will appear on the purpose justification
+                                  screen.
+                              purpose_justification_required:
+                                type: boolean
+                                description: Require users to enter a justification when they log in to the
+                                  application.
+                              session_duration:
+                                type: string
+                                description: "The amount of time that tokens issued for the application will be
+                                  valid. Must be in the format `300ms` or
+                                  `2h45m`. Valid time units are: ns, us (or µs),
+                                  ms, s, m, h."
+                    - type: array
+                      items:
+                        type: object
                         properties:
-                          id:
+                          decision:
                             type: string
-                            description: The UUID of the policy
-                          precedence:
-                            type: number
-                            description: The order of execution for this policy. Must be unique for each
-                              policy within an app.
-                      - type: string
-                      - type: object
-                        properties:
-                          id:
-                            type: string
-                            description: The UUID of the policy
-                          approval_groups:
+                            enum:
+                              - allow
+                              - deny
+                              - non_identity
+                              - bypass
+                            description: The action Access will take if a user matches this policy.
+                              Infrastructure application policies can only use
+                              the Allow action.
+                          include:
                             type: array
                             items:
-                              type: object
-                              properties:
-                                approvals_needed:
-                                  type: number
-                                  description: The number of approvals needed to obtain access.
-                                email_addresses:
-                                  type: array
-                                  items:
-                                    type: string
-                                  description: A list of emails that can approve the access request.
-                                email_list_uuid:
-                                  type: string
-                                  description: The UUID of an re-usable email list.
-                              required:
-                                - approvals_needed
-                            description: Administrators who can approve a temporary authentication request.
-                          approval_required:
-                            type: boolean
-                            description: Requires the user to request access from an administrator at the
-                              start of each session.
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    group:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created Access group.
+                                      required:
+                                        - id
+                                  required:
+                                    - group
+                                - type: object
+                                  properties:
+                                    any_valid_service_token:
+                                      type: object
+                                      additionalProperties: true
+                                      description: An empty object which matches on all service tokens.
+                                  required:
+                                    - any_valid_service_token
+                                - type: object
+                                  properties:
+                                    auth_context:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an Authentication context.
+                                        ac_id:
+                                          type: string
+                                          description: The ACID of an Authentication context.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Azure identity provider.
+                                      required:
+                                        - id
+                                        - ac_id
+                                        - identity_provider_id
+                                  required:
+                                    - auth_context
+                                - type: object
+                                  properties:
+                                    auth_method:
+                                      type: object
+                                      properties:
+                                        auth_method:
+                                          type: string
+                                          description: The type of authentication method
+                                            https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+                                      required:
+                                        - auth_method
+                                  required:
+                                    - auth_method
+                                - type: object
+                                  properties:
+                                    azureAD:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an Azure group.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Azure identity provider.
+                                      required:
+                                        - id
+                                        - identity_provider_id
+                                  required:
+                                    - azureAD
+                                - type: object
+                                  properties:
+                                    certificate:
+                                      type: object
+                                      additionalProperties: true
+                                  required:
+                                    - certificate
+                                - type: object
+                                  properties:
+                                    common_name:
+                                      type: object
+                                      properties:
+                                        common_name:
+                                          type: string
+                                          description: The common name to match.
+                                      required:
+                                        - common_name
+                                  required:
+                                    - common_name
+                                - type: object
+                                  properties:
+                                    geo:
+                                      type: object
+                                      properties:
+                                        country_code:
+                                          type: string
+                                          description: The country code that should be matched.
+                                      required:
+                                        - country_code
+                                  required:
+                                    - geo
+                                - type: object
+                                  properties:
+                                    device_posture:
+                                      type: object
+                                      properties:
+                                        integration_uid:
+                                          type: string
+                                          description: The ID of a device posture integration.
+                                      required:
+                                        - integration_uid
+                                  required:
+                                    - device_posture
+                                - type: object
+                                  properties:
+                                    email_domain:
+                                      type: object
+                                      properties:
+                                        domain:
+                                          type: string
+                                          description: The email domain to match.
+                                      required:
+                                        - domain
+                                  required:
+                                    - email_domain
+                                - type: object
+                                  properties:
+                                    email_list:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created email list.
+                                      required:
+                                        - id
+                                  required:
+                                    - email_list
+                                - type: object
+                                  properties:
+                                    email:
+                                      type: object
+                                      properties:
+                                        email:
+                                          type: string
+                                          description: The email of the user.
+                                      required:
+                                        - email
+                                  required:
+                                    - email
+                                - type: object
+                                  properties:
+                                    everyone:
+                                      type: object
+                                      additionalProperties: true
+                                      description: An empty object which matches on all users.
+                                  required:
+                                    - everyone
+                                - type: object
+                                  properties:
+                                    external_evaluation:
+                                      type: object
+                                      properties:
+                                        evaluate_url:
+                                          type: string
+                                          description: The API endpoint containing your business logic.
+                                        keys_url:
+                                          type: string
+                                          description: The API endpoint containing the key that Access uses to verify that
+                                            the response came from your API.
+                                      required:
+                                        - evaluate_url
+                                        - keys_url
+                                  required:
+                                    - external_evaluation
+                                - type: object
+                                  properties:
+                                    github-organization:
+                                      type: object
+                                      properties:
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Github identity provider.
+                                        name:
+                                          type: string
+                                          description: The name of the organization.
+                                        team:
+                                          type: string
+                                          description: The name of the team
+                                      required:
+                                        - identity_provider_id
+                                        - name
+                                  required:
+                                    - github-organization
+                                - type: object
+                                  properties:
+                                    gsuite:
+                                      type: object
+                                      properties:
+                                        email:
+                                          type: string
+                                          description: The email of the Google Workspace group.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Google Workspace identity provider.
+                                      required:
+                                        - email
+                                        - identity_provider_id
+                                  required:
+                                    - gsuite
+                                - type: object
+                                  properties:
+                                    login_method:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an identity provider.
+                                      required:
+                                        - id
+                                  required:
+                                    - login_method
+                                - type: object
+                                  properties:
+                                    ip_list:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created IP list.
+                                      required:
+                                        - id
+                                  required:
+                                    - ip_list
+                                - type: object
+                                  properties:
+                                    ip:
+                                      type: object
+                                      properties:
+                                        ip:
+                                          type: string
+                                          description: An IPv4 or IPv6 CIDR block.
+                                      required:
+                                        - ip
+                                  required:
+                                    - ip
+                                - type: object
+                                  properties:
+                                    okta:
+                                      type: object
+                                      properties:
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Okta identity provider.
+                                        name:
+                                          type: string
+                                          description: The name of the Okta group.
+                                      required:
+                                        - identity_provider_id
+                                        - name
+                                  required:
+                                    - okta
+                                - type: object
+                                  properties:
+                                    saml:
+                                      type: object
+                                      properties:
+                                        attribute_name:
+                                          type: string
+                                          description: The name of the SAML attribute.
+                                        attribute_value:
+                                          type: string
+                                          description: The SAML attribute value to look for.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your SAML identity provider.
+                                      required:
+                                        - attribute_name
+                                        - attribute_value
+                                        - identity_provider_id
+                                  required:
+                                    - saml
+                                - type: object
+                                  properties:
+                                    oidc:
+                                      type: object
+                                      properties:
+                                        claim_name:
+                                          type: string
+                                          description: The name of the OIDC claim.
+                                        claim_value:
+                                          type: string
+                                          description: The OIDC claim value to look for.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your OIDC identity provider.
+                                      required:
+                                        - claim_name
+                                        - claim_value
+                                        - identity_provider_id
+                                  required:
+                                    - oidc
+                                - type: object
+                                  properties:
+                                    service_token:
+                                      type: object
+                                      properties:
+                                        token_id:
+                                          type: string
+                                          description: The ID of a Service Token.
+                                      required:
+                                        - token_id
+                                  required:
+                                    - service_token
+                                - type: object
+                                  properties:
+                                    linked_app_token:
+                                      type: object
+                                      properties:
+                                        app_uid:
+                                          type: string
+                                          description: The ID of an Access OIDC SaaS application
+                                      required:
+                                        - app_uid
+                                  required:
+                                    - linked_app_token
+                                - type: object
+                                  properties:
+                                    user_risk_score:
+                                      type: object
+                                      properties:
+                                        user_risk_score:
+                                          type: array
+                                          items:
+                                            type: string
+                                            enum:
+                                              - low
+                                              - medium
+                                              - high
+                                              - unscored
+                                          description: A list of risk score levels to match. Values can be low, medium,
+                                            high, or unscored.
+                                      required:
+                                        - user_risk_score
+                                  required:
+                                    - user_risk_score
+                                - type: object
+                                  properties:
+                                    cloudflare_account_member:
+                                      type: object
+                                      properties:
+                                        account_id:
+                                          type: string
+                                          description: Identifier.
+                                  required:
+                                    - cloudflare_account_member
+                            description: Rules evaluated with an OR logical operator. A user needs to meet
+                              only one of the Include rules.
+                          name:
+                            type: string
+                            description: The name of the Access policy.
                           connection_rules:
                             type: object
                             properties:
-                              rdp:
+                              ssh:
                                 type: object
                                 properties:
-                                  allowed_clipboard_local_to_remote_formats:
+                                  usernames:
                                     type: array
                                     items:
                                       type: string
-                                      enum:
-                                        - text
-                                    description: Clipboard formats allowed when copying from local machine to remote
-                                      RDP session.
-                                  allowed_clipboard_remote_to_local_formats:
-                                    type: array
-                                    items:
-                                      type: string
-                                      enum:
-                                        - text
-                                    description: Clipboard formats allowed when copying from remote RDP session to
-                                      local machine.
-                                description: The RDP-specific rules that define clipboard behavior for RDP
-                                  connections.
-                            description: The rules that define how users may connect to targets secured by
-                              your application.
-                          isolation_required:
-                            type: boolean
-                            description: Require this application to be served in an isolated browser for
-                              users matching this policy. 'Client Web Isolation'
-                              must be on for the account in order to use this
-                              feature.
+                                    description: Contains the Unix usernames that may be used when connecting over
+                                      SSH.
+                                  allow_email_alias:
+                                    type: boolean
+                                    description: Enables using Identity Provider email alias as SSH username.
+                                required:
+                                  - usernames
+                                description: The SSH-specific rules that define how users may connect to the
+                                  targets secured by your application.
+                            description: The rules that define how users may connect to the targets secured
+                              by your application.
+                          exclude:
+                            type: array
+                            items:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    group:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created Access group.
+                                      required:
+                                        - id
+                                  required:
+                                    - group
+                                - type: object
+                                  properties:
+                                    any_valid_service_token:
+                                      type: object
+                                      additionalProperties: true
+                                      description: An empty object which matches on all service tokens.
+                                  required:
+                                    - any_valid_service_token
+                                - type: object
+                                  properties:
+                                    auth_context:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an Authentication context.
+                                        ac_id:
+                                          type: string
+                                          description: The ACID of an Authentication context.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Azure identity provider.
+                                      required:
+                                        - id
+                                        - ac_id
+                                        - identity_provider_id
+                                  required:
+                                    - auth_context
+                                - type: object
+                                  properties:
+                                    auth_method:
+                                      type: object
+                                      properties:
+                                        auth_method:
+                                          type: string
+                                          description: The type of authentication method
+                                            https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+                                      required:
+                                        - auth_method
+                                  required:
+                                    - auth_method
+                                - type: object
+                                  properties:
+                                    azureAD:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an Azure group.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Azure identity provider.
+                                      required:
+                                        - id
+                                        - identity_provider_id
+                                  required:
+                                    - azureAD
+                                - type: object
+                                  properties:
+                                    certificate:
+                                      type: object
+                                      additionalProperties: true
+                                  required:
+                                    - certificate
+                                - type: object
+                                  properties:
+                                    common_name:
+                                      type: object
+                                      properties:
+                                        common_name:
+                                          type: string
+                                          description: The common name to match.
+                                      required:
+                                        - common_name
+                                  required:
+                                    - common_name
+                                - type: object
+                                  properties:
+                                    geo:
+                                      type: object
+                                      properties:
+                                        country_code:
+                                          type: string
+                                          description: The country code that should be matched.
+                                      required:
+                                        - country_code
+                                  required:
+                                    - geo
+                                - type: object
+                                  properties:
+                                    device_posture:
+                                      type: object
+                                      properties:
+                                        integration_uid:
+                                          type: string
+                                          description: The ID of a device posture integration.
+                                      required:
+                                        - integration_uid
+                                  required:
+                                    - device_posture
+                                - type: object
+                                  properties:
+                                    email_domain:
+                                      type: object
+                                      properties:
+                                        domain:
+                                          type: string
+                                          description: The email domain to match.
+                                      required:
+                                        - domain
+                                  required:
+                                    - email_domain
+                                - type: object
+                                  properties:
+                                    email_list:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created email list.
+                                      required:
+                                        - id
+                                  required:
+                                    - email_list
+                                - type: object
+                                  properties:
+                                    email:
+                                      type: object
+                                      properties:
+                                        email:
+                                          type: string
+                                          description: The email of the user.
+                                      required:
+                                        - email
+                                  required:
+                                    - email
+                                - type: object
+                                  properties:
+                                    everyone:
+                                      type: object
+                                      additionalProperties: true
+                                      description: An empty object which matches on all users.
+                                  required:
+                                    - everyone
+                                - type: object
+                                  properties:
+                                    external_evaluation:
+                                      type: object
+                                      properties:
+                                        evaluate_url:
+                                          type: string
+                                          description: The API endpoint containing your business logic.
+                                        keys_url:
+                                          type: string
+                                          description: The API endpoint containing the key that Access uses to verify that
+                                            the response came from your API.
+                                      required:
+                                        - evaluate_url
+                                        - keys_url
+                                  required:
+                                    - external_evaluation
+                                - type: object
+                                  properties:
+                                    github-organization:
+                                      type: object
+                                      properties:
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Github identity provider.
+                                        name:
+                                          type: string
+                                          description: The name of the organization.
+                                        team:
+                                          type: string
+                                          description: The name of the team
+                                      required:
+                                        - identity_provider_id
+                                        - name
+                                  required:
+                                    - github-organization
+                                - type: object
+                                  properties:
+                                    gsuite:
+                                      type: object
+                                      properties:
+                                        email:
+                                          type: string
+                                          description: The email of the Google Workspace group.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Google Workspace identity provider.
+                                      required:
+                                        - email
+                                        - identity_provider_id
+                                  required:
+                                    - gsuite
+                                - type: object
+                                  properties:
+                                    login_method:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an identity provider.
+                                      required:
+                                        - id
+                                  required:
+                                    - login_method
+                                - type: object
+                                  properties:
+                                    ip_list:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created IP list.
+                                      required:
+                                        - id
+                                  required:
+                                    - ip_list
+                                - type: object
+                                  properties:
+                                    ip:
+                                      type: object
+                                      properties:
+                                        ip:
+                                          type: string
+                                          description: An IPv4 or IPv6 CIDR block.
+                                      required:
+                                        - ip
+                                  required:
+                                    - ip
+                                - type: object
+                                  properties:
+                                    okta:
+                                      type: object
+                                      properties:
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Okta identity provider.
+                                        name:
+                                          type: string
+                                          description: The name of the Okta group.
+                                      required:
+                                        - identity_provider_id
+                                        - name
+                                  required:
+                                    - okta
+                                - type: object
+                                  properties:
+                                    saml:
+                                      type: object
+                                      properties:
+                                        attribute_name:
+                                          type: string
+                                          description: The name of the SAML attribute.
+                                        attribute_value:
+                                          type: string
+                                          description: The SAML attribute value to look for.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your SAML identity provider.
+                                      required:
+                                        - attribute_name
+                                        - attribute_value
+                                        - identity_provider_id
+                                  required:
+                                    - saml
+                                - type: object
+                                  properties:
+                                    oidc:
+                                      type: object
+                                      properties:
+                                        claim_name:
+                                          type: string
+                                          description: The name of the OIDC claim.
+                                        claim_value:
+                                          type: string
+                                          description: The OIDC claim value to look for.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your OIDC identity provider.
+                                      required:
+                                        - claim_name
+                                        - claim_value
+                                        - identity_provider_id
+                                  required:
+                                    - oidc
+                                - type: object
+                                  properties:
+                                    service_token:
+                                      type: object
+                                      properties:
+                                        token_id:
+                                          type: string
+                                          description: The ID of a Service Token.
+                                      required:
+                                        - token_id
+                                  required:
+                                    - service_token
+                                - type: object
+                                  properties:
+                                    linked_app_token:
+                                      type: object
+                                      properties:
+                                        app_uid:
+                                          type: string
+                                          description: The ID of an Access OIDC SaaS application
+                                      required:
+                                        - app_uid
+                                  required:
+                                    - linked_app_token
+                                - type: object
+                                  properties:
+                                    user_risk_score:
+                                      type: object
+                                      properties:
+                                        user_risk_score:
+                                          type: array
+                                          items:
+                                            type: string
+                                            enum:
+                                              - low
+                                              - medium
+                                              - high
+                                              - unscored
+                                          description: A list of risk score levels to match. Values can be low, medium,
+                                            high, or unscored.
+                                      required:
+                                        - user_risk_score
+                                  required:
+                                    - user_risk_score
+                                - type: object
+                                  properties:
+                                    cloudflare_account_member:
+                                      type: object
+                                      properties:
+                                        account_id:
+                                          type: string
+                                          description: Identifier.
+                                  required:
+                                    - cloudflare_account_member
+                            description: Rules evaluated with a NOT logical operator. To match the policy, a
+                              user cannot meet any of the Exclude rules.
                           mfa_config:
                             type: object
                             properties:
@@ -22107,10 +22907,10 @@ paths:
                                 items:
                                   type: string
                                   enum:
-                                    - totp
-                                    - biometrics
-                                    - security_key
-                                description: Lists the MFA methods that users can authenticate with.
+                                    - ssh_piv_key
+                                description: Lists the MFA methods that users can authenticate with. For
+                                  infrastructure applications, only
+                                  `ssh_piv_key` is supported.
                               mfa_disabled:
                                 type: boolean
                                 description: Indicates whether to disable MFA for this resource. This option is
@@ -22119,26 +22919,373 @@ paths:
                                 type: string
                                 description: "Defines the duration of an MFA session. Must be in minutes (m) or
                                   hours (h). Minimum: 0m. Maximum: 720h (30
-                                  days). Examples:`5m` or `24h`."
-                            description: Configures multi-factor authentication (MFA) settings.
-                          precedence:
-                            type: number
-                            description: The order of execution for this policy. Must be unique for each
-                              policy within an app.
-                          purpose_justification_prompt:
-                            type: string
-                            description: A custom message that will appear on the purpose justification
-                              screen.
-                          purpose_justification_required:
-                            type: boolean
-                            description: Require users to enter a justification when they log in to the
-                              application.
-                          session_duration:
-                            type: string
-                            description: "The amount of time that tokens issued for the application will be
-                              valid. Must be in the format `300ms` or `2h45m`.
-                              Valid time units are: ns, us (or µs), ms, s, m,
-                              h."
+                                  days). Examples: `5m` or `24h`."
+                            description: Configures multi-factor authentication (MFA) settings for
+                              infrastructure applications.
+                          require:
+                            type: array
+                            items:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    group:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created Access group.
+                                      required:
+                                        - id
+                                  required:
+                                    - group
+                                - type: object
+                                  properties:
+                                    any_valid_service_token:
+                                      type: object
+                                      additionalProperties: true
+                                      description: An empty object which matches on all service tokens.
+                                  required:
+                                    - any_valid_service_token
+                                - type: object
+                                  properties:
+                                    auth_context:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an Authentication context.
+                                        ac_id:
+                                          type: string
+                                          description: The ACID of an Authentication context.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Azure identity provider.
+                                      required:
+                                        - id
+                                        - ac_id
+                                        - identity_provider_id
+                                  required:
+                                    - auth_context
+                                - type: object
+                                  properties:
+                                    auth_method:
+                                      type: object
+                                      properties:
+                                        auth_method:
+                                          type: string
+                                          description: The type of authentication method
+                                            https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+                                      required:
+                                        - auth_method
+                                  required:
+                                    - auth_method
+                                - type: object
+                                  properties:
+                                    azureAD:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an Azure group.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Azure identity provider.
+                                      required:
+                                        - id
+                                        - identity_provider_id
+                                  required:
+                                    - azureAD
+                                - type: object
+                                  properties:
+                                    certificate:
+                                      type: object
+                                      additionalProperties: true
+                                  required:
+                                    - certificate
+                                - type: object
+                                  properties:
+                                    common_name:
+                                      type: object
+                                      properties:
+                                        common_name:
+                                          type: string
+                                          description: The common name to match.
+                                      required:
+                                        - common_name
+                                  required:
+                                    - common_name
+                                - type: object
+                                  properties:
+                                    geo:
+                                      type: object
+                                      properties:
+                                        country_code:
+                                          type: string
+                                          description: The country code that should be matched.
+                                      required:
+                                        - country_code
+                                  required:
+                                    - geo
+                                - type: object
+                                  properties:
+                                    device_posture:
+                                      type: object
+                                      properties:
+                                        integration_uid:
+                                          type: string
+                                          description: The ID of a device posture integration.
+                                      required:
+                                        - integration_uid
+                                  required:
+                                    - device_posture
+                                - type: object
+                                  properties:
+                                    email_domain:
+                                      type: object
+                                      properties:
+                                        domain:
+                                          type: string
+                                          description: The email domain to match.
+                                      required:
+                                        - domain
+                                  required:
+                                    - email_domain
+                                - type: object
+                                  properties:
+                                    email_list:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created email list.
+                                      required:
+                                        - id
+                                  required:
+                                    - email_list
+                                - type: object
+                                  properties:
+                                    email:
+                                      type: object
+                                      properties:
+                                        email:
+                                          type: string
+                                          description: The email of the user.
+                                      required:
+                                        - email
+                                  required:
+                                    - email
+                                - type: object
+                                  properties:
+                                    everyone:
+                                      type: object
+                                      additionalProperties: true
+                                      description: An empty object which matches on all users.
+                                  required:
+                                    - everyone
+                                - type: object
+                                  properties:
+                                    external_evaluation:
+                                      type: object
+                                      properties:
+                                        evaluate_url:
+                                          type: string
+                                          description: The API endpoint containing your business logic.
+                                        keys_url:
+                                          type: string
+                                          description: The API endpoint containing the key that Access uses to verify that
+                                            the response came from your API.
+                                      required:
+                                        - evaluate_url
+                                        - keys_url
+                                  required:
+                                    - external_evaluation
+                                - type: object
+                                  properties:
+                                    github-organization:
+                                      type: object
+                                      properties:
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Github identity provider.
+                                        name:
+                                          type: string
+                                          description: The name of the organization.
+                                        team:
+                                          type: string
+                                          description: The name of the team
+                                      required:
+                                        - identity_provider_id
+                                        - name
+                                  required:
+                                    - github-organization
+                                - type: object
+                                  properties:
+                                    gsuite:
+                                      type: object
+                                      properties:
+                                        email:
+                                          type: string
+                                          description: The email of the Google Workspace group.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Google Workspace identity provider.
+                                      required:
+                                        - email
+                                        - identity_provider_id
+                                  required:
+                                    - gsuite
+                                - type: object
+                                  properties:
+                                    login_method:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an identity provider.
+                                      required:
+                                        - id
+                                  required:
+                                    - login_method
+                                - type: object
+                                  properties:
+                                    ip_list:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created IP list.
+                                      required:
+                                        - id
+                                  required:
+                                    - ip_list
+                                - type: object
+                                  properties:
+                                    ip:
+                                      type: object
+                                      properties:
+                                        ip:
+                                          type: string
+                                          description: An IPv4 or IPv6 CIDR block.
+                                      required:
+                                        - ip
+                                  required:
+                                    - ip
+                                - type: object
+                                  properties:
+                                    okta:
+                                      type: object
+                                      properties:
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Okta identity provider.
+                                        name:
+                                          type: string
+                                          description: The name of the Okta group.
+                                      required:
+                                        - identity_provider_id
+                                        - name
+                                  required:
+                                    - okta
+                                - type: object
+                                  properties:
+                                    saml:
+                                      type: object
+                                      properties:
+                                        attribute_name:
+                                          type: string
+                                          description: The name of the SAML attribute.
+                                        attribute_value:
+                                          type: string
+                                          description: The SAML attribute value to look for.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your SAML identity provider.
+                                      required:
+                                        - attribute_name
+                                        - attribute_value
+                                        - identity_provider_id
+                                  required:
+                                    - saml
+                                - type: object
+                                  properties:
+                                    oidc:
+                                      type: object
+                                      properties:
+                                        claim_name:
+                                          type: string
+                                          description: The name of the OIDC claim.
+                                        claim_value:
+                                          type: string
+                                          description: The OIDC claim value to look for.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your OIDC identity provider.
+                                      required:
+                                        - claim_name
+                                        - claim_value
+                                        - identity_provider_id
+                                  required:
+                                    - oidc
+                                - type: object
+                                  properties:
+                                    service_token:
+                                      type: object
+                                      properties:
+                                        token_id:
+                                          type: string
+                                          description: The ID of a Service Token.
+                                      required:
+                                        - token_id
+                                  required:
+                                    - service_token
+                                - type: object
+                                  properties:
+                                    linked_app_token:
+                                      type: object
+                                      properties:
+                                        app_uid:
+                                          type: string
+                                          description: The ID of an Access OIDC SaaS application
+                                      required:
+                                        - app_uid
+                                  required:
+                                    - linked_app_token
+                                - type: object
+                                  properties:
+                                    user_risk_score:
+                                      type: object
+                                      properties:
+                                        user_risk_score:
+                                          type: array
+                                          items:
+                                            type: string
+                                            enum:
+                                              - low
+                                              - medium
+                                              - high
+                                              - unscored
+                                          description: A list of risk score levels to match. Values can be low, medium,
+                                            high, or unscored.
+                                      required:
+                                        - user_risk_score
+                                  required:
+                                    - user_risk_score
+                                - type: object
+                                  properties:
+                                    cloudflare_account_member:
+                                      type: object
+                                      properties:
+                                        account_id:
+                                          type: string
+                                          description: Identifier.
+                                  required:
+                                    - cloudflare_account_member
+                            description: Rules evaluated with an AND logical operator. To match the policy,
+                              a user must meet all of the Require rules.
+                        required:
+                          - decision
+                          - include
+                          - name
                   description: "Body param: The policies that Access applies to the application,
                     in ascending order of precedence. Items can reference
                     existing policies or create new policies exclusive to the
@@ -22453,9 +23600,294 @@ paths:
                     access private domains without connecting to Gateway. The
                     option requires Clientless Browser Isolation to be set up
                     with policies that allow users of this application."
-              required:
-                - domain
-                - type
+                saas_app:
+                  type: object
+                  properties:
+                    auth_type:
+                      type: string
+                      enum:
+                        - saml
+                        - oidc
+                      description: Optional identifier indicating the authentication protocol used for
+                        the saas app. Required for OIDC. Default if unset is
+                        "saml"
+                    consumer_service_url:
+                      type: string
+                      description: The service provider's endpoint that is responsible for receiving
+                        and parsing a SAML assertion.
+                    custom_attributes:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          friendly_name:
+                            type: string
+                            description: The SAML FriendlyName of the attribute.
+                          name:
+                            type: string
+                            description: The name of the attribute.
+                          name_format:
+                            type: string
+                            enum:
+                              - urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified
+                              - urn:oasis:names:tc:SAML:2.0:attrname-format:basic
+                              - urn:oasis:names:tc:SAML:2.0:attrname-format:uri
+                            description: A globally unique name for an identity or service provider.
+                          required:
+                            type: boolean
+                            description: If the attribute is required when building a SAML assertion.
+                          source:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                                description: The name of the IdP attribute.
+                              name_by_idp:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    idp_id:
+                                      type: string
+                                      description: The UID of the IdP.
+                                    source_name:
+                                      type: string
+                                      description: The name of the IdP provided attribute.
+                                description: A mapping from IdP ID to attribute name.
+                    default_relay_state:
+                      type: string
+                      description: The URL that the user will be redirected to after a successful
+                        login for IDP initiated logins.
+                    idp_entity_id:
+                      type: string
+                      description: The unique identifier for your SaaS application.
+                    name_id_format:
+                      type: string
+                      enum:
+                        - id
+                        - email
+                      description: The format of the name identifier sent to the SaaS application.
+                    name_id_transform_jsonata:
+                      type: string
+                      description: A [JSONata](https://jsonata.org/) expression that transforms an
+                        application's user identities into a NameID value for
+                        its SAML assertion. This expression should evaluate to a
+                        singular string. The output of this expression can
+                        override the `name_id_format` setting.
+                    public_key:
+                      type: string
+                      description: The Access public certificate that will be used to verify your
+                        identity.
+                    saml_attribute_transform_jsonata:
+                      type: string
+                      description: A [JSONata] (https://jsonata.org/) expression that transforms an
+                        application's user identities into attribute assertions
+                        in the SAML response. The expression can transform id,
+                        email, name, and groups values. It can also transform
+                        fields listed in the saml_attributes or oidc_fields of
+                        the identity provider used to authenticate. The output
+                        of this expression must be a JSON object.
+                    sp_entity_id:
+                      type: string
+                      description: A globally unique name for an identity or service provider.
+                    sso_endpoint:
+                      type: string
+                      description: The endpoint where your SaaS application will send login requests.
+                    access_token_lifetime:
+                      type: string
+                      description: The lifetime of the OIDC Access Token after creation. Valid units
+                        are m,h. Must be greater than or equal to 1m and less
+                        than or equal to 24h.
+                    allow_pkce_without_client_secret:
+                      type: boolean
+                      description: If client secret should be required on the token endpoint when
+                        authorization_code_with_pkce grant is used.
+                    app_launcher_url:
+                      type: string
+                      description: The URL where this applications tile redirects users
+                    client_id:
+                      type: string
+                      description: The application client id
+                    client_secret:
+                      type: string
+                      description: The application client secret, only returned on POST request.
+                    custom_claims:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the claim.
+                          required:
+                            type: boolean
+                            description: If the claim is required when building an OIDC token.
+                          scope:
+                            type: string
+                            enum:
+                              - groups
+                              - profile
+                              - email
+                              - openid
+                            description: The scope of the claim.
+                          source:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                                description: The name of the IdP claim.
+                              name_by_idp:
+                                type: object
+                                additionalProperties: true
+                                description: A mapping from IdP ID to claim name.
+                    grant_types:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - authorization_code
+                          - authorization_code_with_pkce
+                          - refresh_tokens
+                          - hybrid
+                          - implicit
+                      description: The OIDC flows supported by this application
+                    group_filter_regex:
+                      type: string
+                      description: A regex to filter Cloudflare groups returned in ID token and
+                        userinfo endpoint
+                    hybrid_and_implicit_options:
+                      type: object
+                      properties:
+                        return_access_token_from_authorization_endpoint:
+                          type: boolean
+                          description: If an Access Token should be returned from the OIDC Authorization
+                            endpoint
+                        return_id_token_from_authorization_endpoint:
+                          type: boolean
+                          description: If an ID Token should be returned from the OIDC Authorization
+                            endpoint
+                    redirect_uris:
+                      type: array
+                      items:
+                        type: string
+                      description: The permitted URL's for Cloudflare to return Authorization codes
+                        and Access/ID tokens
+                    refresh_token_options:
+                      type: object
+                      properties:
+                        lifetime:
+                          type: string
+                          description: How long a refresh token will be valid for after creation. Valid
+                            units are m,h,d. Must be longer than 1m.
+                    scopes:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - openid
+                          - groups
+                          - email
+                          - profile
+                      description: Define the user information shared with access, "offline_access"
+                        scope will be automatically enabled if refresh tokens
+                        are enabled
+                  description: Body param
+                app_launcher_logo_url:
+                  type: string
+                  description: "Body param: The image URL of the logo shown in the App Launcher
+                    header."
+                bg_color:
+                  type: string
+                  description: "Body param: The background color of the App Launcher page."
+                footer_links:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: The hypertext in the footer link.
+                      url:
+                        type: string
+                        description: the hyperlink in the footer link.
+                    required:
+                      - name
+                      - url
+                  description: "Body param: The links in the App Launcher footer."
+                header_bg_color:
+                  type: string
+                  description: "Body param: The background color of the App Launcher header."
+                landing_page_design:
+                  type: object
+                  properties:
+                    button_color:
+                      type: string
+                      description: The background color of the log in button on the landing page.
+                    button_text_color:
+                      type: string
+                      description: The color of the text in the log in button on the landing page.
+                    image_url:
+                      type: string
+                      description: The URL of the image shown on the landing page.
+                    message:
+                      type: string
+                      description: The message shown on the landing page.
+                    title:
+                      type: string
+                      description: The title shown on the landing page.
+                  description: "Body param: The design of the App Launcher landing page shown to
+                    users when they log in."
+                skip_app_launcher_login_page:
+                  type: boolean
+                  description: "Body param: Determines when to skip the App Launcher landing
+                    page."
+                target_criteria:
+                  oneOf:
+                    - type: array
+                      items:
+                        type: object
+                        properties:
+                          port:
+                            type: number
+                            description: The port that the targets use for the chosen communication
+                              protocol. A port cannot be assigned to multiple
+                              protocols.
+                          protocol:
+                            type: string
+                            enum:
+                              - SSH
+                            description: The communication protocol your application secures.
+                          target_attributes:
+                            type: object
+                            additionalProperties: true
+                            description: Contains a map of target attribute keys to target attribute values.
+                        required:
+                          - port
+                          - protocol
+                          - target_attributes
+                    - type: array
+                      items:
+                        type: object
+                        properties:
+                          port:
+                            type: number
+                            description: The port that the targets use for the chosen communication
+                              protocol. A port cannot be assigned to multiple
+                              protocols.
+                          protocol:
+                            type: string
+                            enum:
+                              - RDP
+                            description: The communication protocol your application secures.
+                          target_attributes:
+                            type: object
+                            additionalProperties: true
+                            description: Contains a map of target attribute keys to target attribute values.
+                        required:
+                          - port
+                          - protocol
+                          - target_attributes
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -62203,7 +63635,7 @@ paths:
           schema:
             type: string
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -62479,79 +63911,879 @@ paths:
                     the application path. If disabled, the JWT will scope to the
                     hostname by default"
                 policies:
-                  type: array
-                  items:
-                    oneOf:
-                      - type: object
+                  oneOf:
+                    - type: array
+                      items:
+                        oneOf:
+                          - type: object
+                            properties:
+                              id:
+                                type: string
+                                description: The UUID of the policy
+                              precedence:
+                                type: number
+                                description: The order of execution for this policy. Must be unique for each
+                                  policy within an app.
+                          - type: string
+                          - type: object
+                            properties:
+                              id:
+                                type: string
+                                description: The UUID of the policy
+                              approval_groups:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    approvals_needed:
+                                      type: number
+                                      description: The number of approvals needed to obtain access.
+                                    email_addresses:
+                                      type: array
+                                      items:
+                                        type: string
+                                      description: A list of emails that can approve the access request.
+                                    email_list_uuid:
+                                      type: string
+                                      description: The UUID of an re-usable email list.
+                                  required:
+                                    - approvals_needed
+                                description: Administrators who can approve a temporary authentication request.
+                              approval_required:
+                                type: boolean
+                                description: Requires the user to request access from an administrator at the
+                                  start of each session.
+                              connection_rules:
+                                type: object
+                                properties:
+                                  rdp:
+                                    type: object
+                                    properties:
+                                      allowed_clipboard_local_to_remote_formats:
+                                        type: array
+                                        items:
+                                          type: string
+                                          enum:
+                                            - text
+                                        description: Clipboard formats allowed when copying from local machine to remote
+                                          RDP session.
+                                      allowed_clipboard_remote_to_local_formats:
+                                        type: array
+                                        items:
+                                          type: string
+                                          enum:
+                                            - text
+                                        description: Clipboard formats allowed when copying from remote RDP session to
+                                          local machine.
+                                    description: The RDP-specific rules that define clipboard behavior for RDP
+                                      connections.
+                                description: The rules that define how users may connect to targets secured by
+                                  your application.
+                              isolation_required:
+                                type: boolean
+                                description: Require this application to be served in an isolated browser for
+                                  users matching this policy. 'Client Web
+                                  Isolation' must be on for the account in order
+                                  to use this feature.
+                              mfa_config:
+                                type: object
+                                properties:
+                                  allowed_authenticators:
+                                    type: array
+                                    items:
+                                      type: string
+                                      enum:
+                                        - totp
+                                        - biometrics
+                                        - security_key
+                                    description: Lists the MFA methods that users can authenticate with.
+                                  mfa_disabled:
+                                    type: boolean
+                                    description: Indicates whether to disable MFA for this resource. This option is
+                                      available at the application and policy
+                                      level.
+                                  session_duration:
+                                    type: string
+                                    description: "Defines the duration of an MFA session. Must be in minutes (m) or
+                                      hours (h). Minimum: 0m. Maximum: 720h (30
+                                      days). Examples:`5m` or `24h`."
+                                description: Configures multi-factor authentication (MFA) settings.
+                              precedence:
+                                type: number
+                                description: The order of execution for this policy. Must be unique for each
+                                  policy within an app.
+                              purpose_justification_prompt:
+                                type: string
+                                description: A custom message that will appear on the purpose justification
+                                  screen.
+                              purpose_justification_required:
+                                type: boolean
+                                description: Require users to enter a justification when they log in to the
+                                  application.
+                              session_duration:
+                                type: string
+                                description: "The amount of time that tokens issued for the application will be
+                                  valid. Must be in the format `300ms` or
+                                  `2h45m`. Valid time units are: ns, us (or µs),
+                                  ms, s, m, h."
+                    - type: array
+                      items:
+                        type: object
                         properties:
-                          id:
+                          decision:
                             type: string
-                            description: The UUID of the policy
-                          precedence:
-                            type: number
-                            description: The order of execution for this policy. Must be unique for each
-                              policy within an app.
-                      - type: string
-                      - type: object
-                        properties:
-                          id:
-                            type: string
-                            description: The UUID of the policy
-                          approval_groups:
+                            enum:
+                              - allow
+                              - deny
+                              - non_identity
+                              - bypass
+                            description: The action Access will take if a user matches this policy.
+                              Infrastructure application policies can only use
+                              the Allow action.
+                          include:
                             type: array
                             items:
-                              type: object
-                              properties:
-                                approvals_needed:
-                                  type: number
-                                  description: The number of approvals needed to obtain access.
-                                email_addresses:
-                                  type: array
-                                  items:
-                                    type: string
-                                  description: A list of emails that can approve the access request.
-                                email_list_uuid:
-                                  type: string
-                                  description: The UUID of an re-usable email list.
-                              required:
-                                - approvals_needed
-                            description: Administrators who can approve a temporary authentication request.
-                          approval_required:
-                            type: boolean
-                            description: Requires the user to request access from an administrator at the
-                              start of each session.
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    group:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created Access group.
+                                      required:
+                                        - id
+                                  required:
+                                    - group
+                                - type: object
+                                  properties:
+                                    any_valid_service_token:
+                                      type: object
+                                      additionalProperties: true
+                                      description: An empty object which matches on all service tokens.
+                                  required:
+                                    - any_valid_service_token
+                                - type: object
+                                  properties:
+                                    auth_context:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an Authentication context.
+                                        ac_id:
+                                          type: string
+                                          description: The ACID of an Authentication context.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Azure identity provider.
+                                      required:
+                                        - id
+                                        - ac_id
+                                        - identity_provider_id
+                                  required:
+                                    - auth_context
+                                - type: object
+                                  properties:
+                                    auth_method:
+                                      type: object
+                                      properties:
+                                        auth_method:
+                                          type: string
+                                          description: The type of authentication method
+                                            https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+                                      required:
+                                        - auth_method
+                                  required:
+                                    - auth_method
+                                - type: object
+                                  properties:
+                                    azureAD:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an Azure group.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Azure identity provider.
+                                      required:
+                                        - id
+                                        - identity_provider_id
+                                  required:
+                                    - azureAD
+                                - type: object
+                                  properties:
+                                    certificate:
+                                      type: object
+                                      additionalProperties: true
+                                  required:
+                                    - certificate
+                                - type: object
+                                  properties:
+                                    common_name:
+                                      type: object
+                                      properties:
+                                        common_name:
+                                          type: string
+                                          description: The common name to match.
+                                      required:
+                                        - common_name
+                                  required:
+                                    - common_name
+                                - type: object
+                                  properties:
+                                    geo:
+                                      type: object
+                                      properties:
+                                        country_code:
+                                          type: string
+                                          description: The country code that should be matched.
+                                      required:
+                                        - country_code
+                                  required:
+                                    - geo
+                                - type: object
+                                  properties:
+                                    device_posture:
+                                      type: object
+                                      properties:
+                                        integration_uid:
+                                          type: string
+                                          description: The ID of a device posture integration.
+                                      required:
+                                        - integration_uid
+                                  required:
+                                    - device_posture
+                                - type: object
+                                  properties:
+                                    email_domain:
+                                      type: object
+                                      properties:
+                                        domain:
+                                          type: string
+                                          description: The email domain to match.
+                                      required:
+                                        - domain
+                                  required:
+                                    - email_domain
+                                - type: object
+                                  properties:
+                                    email_list:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created email list.
+                                      required:
+                                        - id
+                                  required:
+                                    - email_list
+                                - type: object
+                                  properties:
+                                    email:
+                                      type: object
+                                      properties:
+                                        email:
+                                          type: string
+                                          description: The email of the user.
+                                      required:
+                                        - email
+                                  required:
+                                    - email
+                                - type: object
+                                  properties:
+                                    everyone:
+                                      type: object
+                                      additionalProperties: true
+                                      description: An empty object which matches on all users.
+                                  required:
+                                    - everyone
+                                - type: object
+                                  properties:
+                                    external_evaluation:
+                                      type: object
+                                      properties:
+                                        evaluate_url:
+                                          type: string
+                                          description: The API endpoint containing your business logic.
+                                        keys_url:
+                                          type: string
+                                          description: The API endpoint containing the key that Access uses to verify that
+                                            the response came from your API.
+                                      required:
+                                        - evaluate_url
+                                        - keys_url
+                                  required:
+                                    - external_evaluation
+                                - type: object
+                                  properties:
+                                    github-organization:
+                                      type: object
+                                      properties:
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Github identity provider.
+                                        name:
+                                          type: string
+                                          description: The name of the organization.
+                                        team:
+                                          type: string
+                                          description: The name of the team
+                                      required:
+                                        - identity_provider_id
+                                        - name
+                                  required:
+                                    - github-organization
+                                - type: object
+                                  properties:
+                                    gsuite:
+                                      type: object
+                                      properties:
+                                        email:
+                                          type: string
+                                          description: The email of the Google Workspace group.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Google Workspace identity provider.
+                                      required:
+                                        - email
+                                        - identity_provider_id
+                                  required:
+                                    - gsuite
+                                - type: object
+                                  properties:
+                                    login_method:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an identity provider.
+                                      required:
+                                        - id
+                                  required:
+                                    - login_method
+                                - type: object
+                                  properties:
+                                    ip_list:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created IP list.
+                                      required:
+                                        - id
+                                  required:
+                                    - ip_list
+                                - type: object
+                                  properties:
+                                    ip:
+                                      type: object
+                                      properties:
+                                        ip:
+                                          type: string
+                                          description: An IPv4 or IPv6 CIDR block.
+                                      required:
+                                        - ip
+                                  required:
+                                    - ip
+                                - type: object
+                                  properties:
+                                    okta:
+                                      type: object
+                                      properties:
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Okta identity provider.
+                                        name:
+                                          type: string
+                                          description: The name of the Okta group.
+                                      required:
+                                        - identity_provider_id
+                                        - name
+                                  required:
+                                    - okta
+                                - type: object
+                                  properties:
+                                    saml:
+                                      type: object
+                                      properties:
+                                        attribute_name:
+                                          type: string
+                                          description: The name of the SAML attribute.
+                                        attribute_value:
+                                          type: string
+                                          description: The SAML attribute value to look for.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your SAML identity provider.
+                                      required:
+                                        - attribute_name
+                                        - attribute_value
+                                        - identity_provider_id
+                                  required:
+                                    - saml
+                                - type: object
+                                  properties:
+                                    oidc:
+                                      type: object
+                                      properties:
+                                        claim_name:
+                                          type: string
+                                          description: The name of the OIDC claim.
+                                        claim_value:
+                                          type: string
+                                          description: The OIDC claim value to look for.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your OIDC identity provider.
+                                      required:
+                                        - claim_name
+                                        - claim_value
+                                        - identity_provider_id
+                                  required:
+                                    - oidc
+                                - type: object
+                                  properties:
+                                    service_token:
+                                      type: object
+                                      properties:
+                                        token_id:
+                                          type: string
+                                          description: The ID of a Service Token.
+                                      required:
+                                        - token_id
+                                  required:
+                                    - service_token
+                                - type: object
+                                  properties:
+                                    linked_app_token:
+                                      type: object
+                                      properties:
+                                        app_uid:
+                                          type: string
+                                          description: The ID of an Access OIDC SaaS application
+                                      required:
+                                        - app_uid
+                                  required:
+                                    - linked_app_token
+                                - type: object
+                                  properties:
+                                    user_risk_score:
+                                      type: object
+                                      properties:
+                                        user_risk_score:
+                                          type: array
+                                          items:
+                                            type: string
+                                            enum:
+                                              - low
+                                              - medium
+                                              - high
+                                              - unscored
+                                          description: A list of risk score levels to match. Values can be low, medium,
+                                            high, or unscored.
+                                      required:
+                                        - user_risk_score
+                                  required:
+                                    - user_risk_score
+                                - type: object
+                                  properties:
+                                    cloudflare_account_member:
+                                      type: object
+                                      properties:
+                                        account_id:
+                                          type: string
+                                          description: Identifier.
+                                  required:
+                                    - cloudflare_account_member
+                            description: Rules evaluated with an OR logical operator. A user needs to meet
+                              only one of the Include rules.
+                          name:
+                            type: string
+                            description: The name of the Access policy.
                           connection_rules:
                             type: object
                             properties:
-                              rdp:
+                              ssh:
                                 type: object
                                 properties:
-                                  allowed_clipboard_local_to_remote_formats:
+                                  usernames:
                                     type: array
                                     items:
                                       type: string
-                                      enum:
-                                        - text
-                                    description: Clipboard formats allowed when copying from local machine to remote
-                                      RDP session.
-                                  allowed_clipboard_remote_to_local_formats:
-                                    type: array
-                                    items:
-                                      type: string
-                                      enum:
-                                        - text
-                                    description: Clipboard formats allowed when copying from remote RDP session to
-                                      local machine.
-                                description: The RDP-specific rules that define clipboard behavior for RDP
-                                  connections.
-                            description: The rules that define how users may connect to targets secured by
-                              your application.
-                          isolation_required:
-                            type: boolean
-                            description: Require this application to be served in an isolated browser for
-                              users matching this policy. 'Client Web Isolation'
-                              must be on for the account in order to use this
-                              feature.
+                                    description: Contains the Unix usernames that may be used when connecting over
+                                      SSH.
+                                  allow_email_alias:
+                                    type: boolean
+                                    description: Enables using Identity Provider email alias as SSH username.
+                                required:
+                                  - usernames
+                                description: The SSH-specific rules that define how users may connect to the
+                                  targets secured by your application.
+                            description: The rules that define how users may connect to the targets secured
+                              by your application.
+                          exclude:
+                            type: array
+                            items:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    group:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created Access group.
+                                      required:
+                                        - id
+                                  required:
+                                    - group
+                                - type: object
+                                  properties:
+                                    any_valid_service_token:
+                                      type: object
+                                      additionalProperties: true
+                                      description: An empty object which matches on all service tokens.
+                                  required:
+                                    - any_valid_service_token
+                                - type: object
+                                  properties:
+                                    auth_context:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an Authentication context.
+                                        ac_id:
+                                          type: string
+                                          description: The ACID of an Authentication context.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Azure identity provider.
+                                      required:
+                                        - id
+                                        - ac_id
+                                        - identity_provider_id
+                                  required:
+                                    - auth_context
+                                - type: object
+                                  properties:
+                                    auth_method:
+                                      type: object
+                                      properties:
+                                        auth_method:
+                                          type: string
+                                          description: The type of authentication method
+                                            https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+                                      required:
+                                        - auth_method
+                                  required:
+                                    - auth_method
+                                - type: object
+                                  properties:
+                                    azureAD:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an Azure group.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Azure identity provider.
+                                      required:
+                                        - id
+                                        - identity_provider_id
+                                  required:
+                                    - azureAD
+                                - type: object
+                                  properties:
+                                    certificate:
+                                      type: object
+                                      additionalProperties: true
+                                  required:
+                                    - certificate
+                                - type: object
+                                  properties:
+                                    common_name:
+                                      type: object
+                                      properties:
+                                        common_name:
+                                          type: string
+                                          description: The common name to match.
+                                      required:
+                                        - common_name
+                                  required:
+                                    - common_name
+                                - type: object
+                                  properties:
+                                    geo:
+                                      type: object
+                                      properties:
+                                        country_code:
+                                          type: string
+                                          description: The country code that should be matched.
+                                      required:
+                                        - country_code
+                                  required:
+                                    - geo
+                                - type: object
+                                  properties:
+                                    device_posture:
+                                      type: object
+                                      properties:
+                                        integration_uid:
+                                          type: string
+                                          description: The ID of a device posture integration.
+                                      required:
+                                        - integration_uid
+                                  required:
+                                    - device_posture
+                                - type: object
+                                  properties:
+                                    email_domain:
+                                      type: object
+                                      properties:
+                                        domain:
+                                          type: string
+                                          description: The email domain to match.
+                                      required:
+                                        - domain
+                                  required:
+                                    - email_domain
+                                - type: object
+                                  properties:
+                                    email_list:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created email list.
+                                      required:
+                                        - id
+                                  required:
+                                    - email_list
+                                - type: object
+                                  properties:
+                                    email:
+                                      type: object
+                                      properties:
+                                        email:
+                                          type: string
+                                          description: The email of the user.
+                                      required:
+                                        - email
+                                  required:
+                                    - email
+                                - type: object
+                                  properties:
+                                    everyone:
+                                      type: object
+                                      additionalProperties: true
+                                      description: An empty object which matches on all users.
+                                  required:
+                                    - everyone
+                                - type: object
+                                  properties:
+                                    external_evaluation:
+                                      type: object
+                                      properties:
+                                        evaluate_url:
+                                          type: string
+                                          description: The API endpoint containing your business logic.
+                                        keys_url:
+                                          type: string
+                                          description: The API endpoint containing the key that Access uses to verify that
+                                            the response came from your API.
+                                      required:
+                                        - evaluate_url
+                                        - keys_url
+                                  required:
+                                    - external_evaluation
+                                - type: object
+                                  properties:
+                                    github-organization:
+                                      type: object
+                                      properties:
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Github identity provider.
+                                        name:
+                                          type: string
+                                          description: The name of the organization.
+                                        team:
+                                          type: string
+                                          description: The name of the team
+                                      required:
+                                        - identity_provider_id
+                                        - name
+                                  required:
+                                    - github-organization
+                                - type: object
+                                  properties:
+                                    gsuite:
+                                      type: object
+                                      properties:
+                                        email:
+                                          type: string
+                                          description: The email of the Google Workspace group.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Google Workspace identity provider.
+                                      required:
+                                        - email
+                                        - identity_provider_id
+                                  required:
+                                    - gsuite
+                                - type: object
+                                  properties:
+                                    login_method:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an identity provider.
+                                      required:
+                                        - id
+                                  required:
+                                    - login_method
+                                - type: object
+                                  properties:
+                                    ip_list:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created IP list.
+                                      required:
+                                        - id
+                                  required:
+                                    - ip_list
+                                - type: object
+                                  properties:
+                                    ip:
+                                      type: object
+                                      properties:
+                                        ip:
+                                          type: string
+                                          description: An IPv4 or IPv6 CIDR block.
+                                      required:
+                                        - ip
+                                  required:
+                                    - ip
+                                - type: object
+                                  properties:
+                                    okta:
+                                      type: object
+                                      properties:
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Okta identity provider.
+                                        name:
+                                          type: string
+                                          description: The name of the Okta group.
+                                      required:
+                                        - identity_provider_id
+                                        - name
+                                  required:
+                                    - okta
+                                - type: object
+                                  properties:
+                                    saml:
+                                      type: object
+                                      properties:
+                                        attribute_name:
+                                          type: string
+                                          description: The name of the SAML attribute.
+                                        attribute_value:
+                                          type: string
+                                          description: The SAML attribute value to look for.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your SAML identity provider.
+                                      required:
+                                        - attribute_name
+                                        - attribute_value
+                                        - identity_provider_id
+                                  required:
+                                    - saml
+                                - type: object
+                                  properties:
+                                    oidc:
+                                      type: object
+                                      properties:
+                                        claim_name:
+                                          type: string
+                                          description: The name of the OIDC claim.
+                                        claim_value:
+                                          type: string
+                                          description: The OIDC claim value to look for.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your OIDC identity provider.
+                                      required:
+                                        - claim_name
+                                        - claim_value
+                                        - identity_provider_id
+                                  required:
+                                    - oidc
+                                - type: object
+                                  properties:
+                                    service_token:
+                                      type: object
+                                      properties:
+                                        token_id:
+                                          type: string
+                                          description: The ID of a Service Token.
+                                      required:
+                                        - token_id
+                                  required:
+                                    - service_token
+                                - type: object
+                                  properties:
+                                    linked_app_token:
+                                      type: object
+                                      properties:
+                                        app_uid:
+                                          type: string
+                                          description: The ID of an Access OIDC SaaS application
+                                      required:
+                                        - app_uid
+                                  required:
+                                    - linked_app_token
+                                - type: object
+                                  properties:
+                                    user_risk_score:
+                                      type: object
+                                      properties:
+                                        user_risk_score:
+                                          type: array
+                                          items:
+                                            type: string
+                                            enum:
+                                              - low
+                                              - medium
+                                              - high
+                                              - unscored
+                                          description: A list of risk score levels to match. Values can be low, medium,
+                                            high, or unscored.
+                                      required:
+                                        - user_risk_score
+                                  required:
+                                    - user_risk_score
+                                - type: object
+                                  properties:
+                                    cloudflare_account_member:
+                                      type: object
+                                      properties:
+                                        account_id:
+                                          type: string
+                                          description: Identifier.
+                                  required:
+                                    - cloudflare_account_member
+                            description: Rules evaluated with a NOT logical operator. To match the policy, a
+                              user cannot meet any of the Exclude rules.
                           mfa_config:
                             type: object
                             properties:
@@ -62560,10 +64792,10 @@ paths:
                                 items:
                                   type: string
                                   enum:
-                                    - totp
-                                    - biometrics
-                                    - security_key
-                                description: Lists the MFA methods that users can authenticate with.
+                                    - ssh_piv_key
+                                description: Lists the MFA methods that users can authenticate with. For
+                                  infrastructure applications, only
+                                  `ssh_piv_key` is supported.
                               mfa_disabled:
                                 type: boolean
                                 description: Indicates whether to disable MFA for this resource. This option is
@@ -62572,26 +64804,373 @@ paths:
                                 type: string
                                 description: "Defines the duration of an MFA session. Must be in minutes (m) or
                                   hours (h). Minimum: 0m. Maximum: 720h (30
-                                  days). Examples:`5m` or `24h`."
-                            description: Configures multi-factor authentication (MFA) settings.
-                          precedence:
-                            type: number
-                            description: The order of execution for this policy. Must be unique for each
-                              policy within an app.
-                          purpose_justification_prompt:
-                            type: string
-                            description: A custom message that will appear on the purpose justification
-                              screen.
-                          purpose_justification_required:
-                            type: boolean
-                            description: Require users to enter a justification when they log in to the
-                              application.
-                          session_duration:
-                            type: string
-                            description: "The amount of time that tokens issued for the application will be
-                              valid. Must be in the format `300ms` or `2h45m`.
-                              Valid time units are: ns, us (or µs), ms, s, m,
-                              h."
+                                  days). Examples: `5m` or `24h`."
+                            description: Configures multi-factor authentication (MFA) settings for
+                              infrastructure applications.
+                          require:
+                            type: array
+                            items:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    group:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created Access group.
+                                      required:
+                                        - id
+                                  required:
+                                    - group
+                                - type: object
+                                  properties:
+                                    any_valid_service_token:
+                                      type: object
+                                      additionalProperties: true
+                                      description: An empty object which matches on all service tokens.
+                                  required:
+                                    - any_valid_service_token
+                                - type: object
+                                  properties:
+                                    auth_context:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an Authentication context.
+                                        ac_id:
+                                          type: string
+                                          description: The ACID of an Authentication context.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Azure identity provider.
+                                      required:
+                                        - id
+                                        - ac_id
+                                        - identity_provider_id
+                                  required:
+                                    - auth_context
+                                - type: object
+                                  properties:
+                                    auth_method:
+                                      type: object
+                                      properties:
+                                        auth_method:
+                                          type: string
+                                          description: The type of authentication method
+                                            https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+                                      required:
+                                        - auth_method
+                                  required:
+                                    - auth_method
+                                - type: object
+                                  properties:
+                                    azureAD:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an Azure group.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Azure identity provider.
+                                      required:
+                                        - id
+                                        - identity_provider_id
+                                  required:
+                                    - azureAD
+                                - type: object
+                                  properties:
+                                    certificate:
+                                      type: object
+                                      additionalProperties: true
+                                  required:
+                                    - certificate
+                                - type: object
+                                  properties:
+                                    common_name:
+                                      type: object
+                                      properties:
+                                        common_name:
+                                          type: string
+                                          description: The common name to match.
+                                      required:
+                                        - common_name
+                                  required:
+                                    - common_name
+                                - type: object
+                                  properties:
+                                    geo:
+                                      type: object
+                                      properties:
+                                        country_code:
+                                          type: string
+                                          description: The country code that should be matched.
+                                      required:
+                                        - country_code
+                                  required:
+                                    - geo
+                                - type: object
+                                  properties:
+                                    device_posture:
+                                      type: object
+                                      properties:
+                                        integration_uid:
+                                          type: string
+                                          description: The ID of a device posture integration.
+                                      required:
+                                        - integration_uid
+                                  required:
+                                    - device_posture
+                                - type: object
+                                  properties:
+                                    email_domain:
+                                      type: object
+                                      properties:
+                                        domain:
+                                          type: string
+                                          description: The email domain to match.
+                                      required:
+                                        - domain
+                                  required:
+                                    - email_domain
+                                - type: object
+                                  properties:
+                                    email_list:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created email list.
+                                      required:
+                                        - id
+                                  required:
+                                    - email_list
+                                - type: object
+                                  properties:
+                                    email:
+                                      type: object
+                                      properties:
+                                        email:
+                                          type: string
+                                          description: The email of the user.
+                                      required:
+                                        - email
+                                  required:
+                                    - email
+                                - type: object
+                                  properties:
+                                    everyone:
+                                      type: object
+                                      additionalProperties: true
+                                      description: An empty object which matches on all users.
+                                  required:
+                                    - everyone
+                                - type: object
+                                  properties:
+                                    external_evaluation:
+                                      type: object
+                                      properties:
+                                        evaluate_url:
+                                          type: string
+                                          description: The API endpoint containing your business logic.
+                                        keys_url:
+                                          type: string
+                                          description: The API endpoint containing the key that Access uses to verify that
+                                            the response came from your API.
+                                      required:
+                                        - evaluate_url
+                                        - keys_url
+                                  required:
+                                    - external_evaluation
+                                - type: object
+                                  properties:
+                                    github-organization:
+                                      type: object
+                                      properties:
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Github identity provider.
+                                        name:
+                                          type: string
+                                          description: The name of the organization.
+                                        team:
+                                          type: string
+                                          description: The name of the team
+                                      required:
+                                        - identity_provider_id
+                                        - name
+                                  required:
+                                    - github-organization
+                                - type: object
+                                  properties:
+                                    gsuite:
+                                      type: object
+                                      properties:
+                                        email:
+                                          type: string
+                                          description: The email of the Google Workspace group.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Google Workspace identity provider.
+                                      required:
+                                        - email
+                                        - identity_provider_id
+                                  required:
+                                    - gsuite
+                                - type: object
+                                  properties:
+                                    login_method:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of an identity provider.
+                                      required:
+                                        - id
+                                  required:
+                                    - login_method
+                                - type: object
+                                  properties:
+                                    ip_list:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: string
+                                          description: The ID of a previously created IP list.
+                                      required:
+                                        - id
+                                  required:
+                                    - ip_list
+                                - type: object
+                                  properties:
+                                    ip:
+                                      type: object
+                                      properties:
+                                        ip:
+                                          type: string
+                                          description: An IPv4 or IPv6 CIDR block.
+                                      required:
+                                        - ip
+                                  required:
+                                    - ip
+                                - type: object
+                                  properties:
+                                    okta:
+                                      type: object
+                                      properties:
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your Okta identity provider.
+                                        name:
+                                          type: string
+                                          description: The name of the Okta group.
+                                      required:
+                                        - identity_provider_id
+                                        - name
+                                  required:
+                                    - okta
+                                - type: object
+                                  properties:
+                                    saml:
+                                      type: object
+                                      properties:
+                                        attribute_name:
+                                          type: string
+                                          description: The name of the SAML attribute.
+                                        attribute_value:
+                                          type: string
+                                          description: The SAML attribute value to look for.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your SAML identity provider.
+                                      required:
+                                        - attribute_name
+                                        - attribute_value
+                                        - identity_provider_id
+                                  required:
+                                    - saml
+                                - type: object
+                                  properties:
+                                    oidc:
+                                      type: object
+                                      properties:
+                                        claim_name:
+                                          type: string
+                                          description: The name of the OIDC claim.
+                                        claim_value:
+                                          type: string
+                                          description: The OIDC claim value to look for.
+                                        identity_provider_id:
+                                          type: string
+                                          description: The ID of your OIDC identity provider.
+                                      required:
+                                        - claim_name
+                                        - claim_value
+                                        - identity_provider_id
+                                  required:
+                                    - oidc
+                                - type: object
+                                  properties:
+                                    service_token:
+                                      type: object
+                                      properties:
+                                        token_id:
+                                          type: string
+                                          description: The ID of a Service Token.
+                                      required:
+                                        - token_id
+                                  required:
+                                    - service_token
+                                - type: object
+                                  properties:
+                                    linked_app_token:
+                                      type: object
+                                      properties:
+                                        app_uid:
+                                          type: string
+                                          description: The ID of an Access OIDC SaaS application
+                                      required:
+                                        - app_uid
+                                  required:
+                                    - linked_app_token
+                                - type: object
+                                  properties:
+                                    user_risk_score:
+                                      type: object
+                                      properties:
+                                        user_risk_score:
+                                          type: array
+                                          items:
+                                            type: string
+                                            enum:
+                                              - low
+                                              - medium
+                                              - high
+                                              - unscored
+                                          description: A list of risk score levels to match. Values can be low, medium,
+                                            high, or unscored.
+                                      required:
+                                        - user_risk_score
+                                  required:
+                                    - user_risk_score
+                                - type: object
+                                  properties:
+                                    cloudflare_account_member:
+                                      type: object
+                                      properties:
+                                        account_id:
+                                          type: string
+                                          description: Identifier.
+                                  required:
+                                    - cloudflare_account_member
+                            description: Rules evaluated with an AND logical operator. To match the policy,
+                              a user must meet all of the Require rules.
+                        required:
+                          - decision
+                          - include
+                          - name
                   description: "Body param: The policies that Access applies to the application,
                     in ascending order of precedence. Items can reference
                     existing policies or create new policies exclusive to the
@@ -62906,9 +65485,294 @@ paths:
                     access private domains without connecting to Gateway. The
                     option requires Clientless Browser Isolation to be set up
                     with policies that allow users of this application."
-              required:
-                - domain
-                - type
+                saas_app:
+                  type: object
+                  properties:
+                    auth_type:
+                      type: string
+                      enum:
+                        - saml
+                        - oidc
+                      description: Optional identifier indicating the authentication protocol used for
+                        the saas app. Required for OIDC. Default if unset is
+                        "saml"
+                    consumer_service_url:
+                      type: string
+                      description: The service provider's endpoint that is responsible for receiving
+                        and parsing a SAML assertion.
+                    custom_attributes:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          friendly_name:
+                            type: string
+                            description: The SAML FriendlyName of the attribute.
+                          name:
+                            type: string
+                            description: The name of the attribute.
+                          name_format:
+                            type: string
+                            enum:
+                              - urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified
+                              - urn:oasis:names:tc:SAML:2.0:attrname-format:basic
+                              - urn:oasis:names:tc:SAML:2.0:attrname-format:uri
+                            description: A globally unique name for an identity or service provider.
+                          required:
+                            type: boolean
+                            description: If the attribute is required when building a SAML assertion.
+                          source:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                                description: The name of the IdP attribute.
+                              name_by_idp:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    idp_id:
+                                      type: string
+                                      description: The UID of the IdP.
+                                    source_name:
+                                      type: string
+                                      description: The name of the IdP provided attribute.
+                                description: A mapping from IdP ID to attribute name.
+                    default_relay_state:
+                      type: string
+                      description: The URL that the user will be redirected to after a successful
+                        login for IDP initiated logins.
+                    idp_entity_id:
+                      type: string
+                      description: The unique identifier for your SaaS application.
+                    name_id_format:
+                      type: string
+                      enum:
+                        - id
+                        - email
+                      description: The format of the name identifier sent to the SaaS application.
+                    name_id_transform_jsonata:
+                      type: string
+                      description: A [JSONata](https://jsonata.org/) expression that transforms an
+                        application's user identities into a NameID value for
+                        its SAML assertion. This expression should evaluate to a
+                        singular string. The output of this expression can
+                        override the `name_id_format` setting.
+                    public_key:
+                      type: string
+                      description: The Access public certificate that will be used to verify your
+                        identity.
+                    saml_attribute_transform_jsonata:
+                      type: string
+                      description: A [JSONata] (https://jsonata.org/) expression that transforms an
+                        application's user identities into attribute assertions
+                        in the SAML response. The expression can transform id,
+                        email, name, and groups values. It can also transform
+                        fields listed in the saml_attributes or oidc_fields of
+                        the identity provider used to authenticate. The output
+                        of this expression must be a JSON object.
+                    sp_entity_id:
+                      type: string
+                      description: A globally unique name for an identity or service provider.
+                    sso_endpoint:
+                      type: string
+                      description: The endpoint where your SaaS application will send login requests.
+                    access_token_lifetime:
+                      type: string
+                      description: The lifetime of the OIDC Access Token after creation. Valid units
+                        are m,h. Must be greater than or equal to 1m and less
+                        than or equal to 24h.
+                    allow_pkce_without_client_secret:
+                      type: boolean
+                      description: If client secret should be required on the token endpoint when
+                        authorization_code_with_pkce grant is used.
+                    app_launcher_url:
+                      type: string
+                      description: The URL where this applications tile redirects users
+                    client_id:
+                      type: string
+                      description: The application client id
+                    client_secret:
+                      type: string
+                      description: The application client secret, only returned on POST request.
+                    custom_claims:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the claim.
+                          required:
+                            type: boolean
+                            description: If the claim is required when building an OIDC token.
+                          scope:
+                            type: string
+                            enum:
+                              - groups
+                              - profile
+                              - email
+                              - openid
+                            description: The scope of the claim.
+                          source:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                                description: The name of the IdP claim.
+                              name_by_idp:
+                                type: object
+                                additionalProperties: true
+                                description: A mapping from IdP ID to claim name.
+                    grant_types:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - authorization_code
+                          - authorization_code_with_pkce
+                          - refresh_tokens
+                          - hybrid
+                          - implicit
+                      description: The OIDC flows supported by this application
+                    group_filter_regex:
+                      type: string
+                      description: A regex to filter Cloudflare groups returned in ID token and
+                        userinfo endpoint
+                    hybrid_and_implicit_options:
+                      type: object
+                      properties:
+                        return_access_token_from_authorization_endpoint:
+                          type: boolean
+                          description: If an Access Token should be returned from the OIDC Authorization
+                            endpoint
+                        return_id_token_from_authorization_endpoint:
+                          type: boolean
+                          description: If an ID Token should be returned from the OIDC Authorization
+                            endpoint
+                    redirect_uris:
+                      type: array
+                      items:
+                        type: string
+                      description: The permitted URL's for Cloudflare to return Authorization codes
+                        and Access/ID tokens
+                    refresh_token_options:
+                      type: object
+                      properties:
+                        lifetime:
+                          type: string
+                          description: How long a refresh token will be valid for after creation. Valid
+                            units are m,h,d. Must be longer than 1m.
+                    scopes:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - openid
+                          - groups
+                          - email
+                          - profile
+                      description: Define the user information shared with access, "offline_access"
+                        scope will be automatically enabled if refresh tokens
+                        are enabled
+                  description: Body param
+                app_launcher_logo_url:
+                  type: string
+                  description: "Body param: The image URL of the logo shown in the App Launcher
+                    header."
+                bg_color:
+                  type: string
+                  description: "Body param: The background color of the App Launcher page."
+                footer_links:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: The hypertext in the footer link.
+                      url:
+                        type: string
+                        description: the hyperlink in the footer link.
+                    required:
+                      - name
+                      - url
+                  description: "Body param: The links in the App Launcher footer."
+                header_bg_color:
+                  type: string
+                  description: "Body param: The background color of the App Launcher header."
+                landing_page_design:
+                  type: object
+                  properties:
+                    button_color:
+                      type: string
+                      description: The background color of the log in button on the landing page.
+                    button_text_color:
+                      type: string
+                      description: The color of the text in the log in button on the landing page.
+                    image_url:
+                      type: string
+                      description: The URL of the image shown on the landing page.
+                    message:
+                      type: string
+                      description: The message shown on the landing page.
+                    title:
+                      type: string
+                      description: The title shown on the landing page.
+                  description: "Body param: The design of the App Launcher landing page shown to
+                    users when they log in."
+                skip_app_launcher_login_page:
+                  type: boolean
+                  description: "Body param: Determines when to skip the App Launcher landing
+                    page."
+                target_criteria:
+                  oneOf:
+                    - type: array
+                      items:
+                        type: object
+                        properties:
+                          port:
+                            type: number
+                            description: The port that the targets use for the chosen communication
+                              protocol. A port cannot be assigned to multiple
+                              protocols.
+                          protocol:
+                            type: string
+                            enum:
+                              - SSH
+                            description: The communication protocol your application secures.
+                          target_attributes:
+                            type: object
+                            additionalProperties: true
+                            description: Contains a map of target attribute keys to target attribute values.
+                        required:
+                          - port
+                          - protocol
+                          - target_attributes
+                    - type: array
+                      items:
+                        type: object
+                        properties:
+                          port:
+                            type: number
+                            description: The port that the targets use for the chosen communication
+                              protocol. A port cannot be assigned to multiple
+                              protocols.
+                          protocol:
+                            type: string
+                            enum:
+                              - RDP
+                            description: The communication protocol your application secures.
+                          target_attributes:
+                            type: object
+                            additionalProperties: true
+                            description: Contains a map of target attribute keys to target attribute values.
+                        required:
+                          - port
+                          - protocol
+                          - target_attributes
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -124599,6 +127463,8 @@ paths:
                   type: string
                   enum:
                     - custom
+                    - predefined
+                    - integration
                   description: Body param
                 description:
                   oneOf:
@@ -124609,8 +127475,6 @@ paths:
                   type: boolean
                   description: Body param
               required:
-                - name
-                - pattern
                 - type
       responses:
         "200":
@@ -140107,6 +142971,7 @@ paths:
                   type: string
                   enum:
                     - ip
+                    - identity
                   description: "Body param: The proxy endpoint kind"
               required:
                 - name
@@ -146604,6 +149469,102 @@ paths:
                     support_groups:
                       type: boolean
                       description: Should Cloudflare try to load groups from your account
+                    centrify_account:
+                      type: string
+                      description: Your centrify account url
+                    centrify_app_id:
+                      type: string
+                      description: Your centrify app id
+                    apps_domain:
+                      type: string
+                      description: Your companies TLD
+                    auth_url:
+                      type: string
+                      description: The authorization_endpoint URL of your IdP
+                    certs_url:
+                      type: string
+                      description: The jwks_uri endpoint of your IdP to allow the IdP keys to sign the
+                        tokens
+                    pkce_enabled:
+                      type: boolean
+                      description: Enable Proof Key for Code Exchange (PKCE)
+                    scopes:
+                      type: array
+                      items:
+                        type: string
+                      description: OAuth scopes
+                    token_url:
+                      type: string
+                      description: The token_endpoint URL of your IdP
+                    authorization_server_id:
+                      type: string
+                      description: Your okta authorization server id
+                    okta_account:
+                      type: string
+                      description: Your okta account url
+                    onelogin_account:
+                      type: string
+                      description: Your OneLogin account url
+                    ping_env_id:
+                      type: string
+                      description: Your PingOne environment identifier
+                    attributes:
+                      type: array
+                      items:
+                        type: string
+                      description: A list of SAML attribute names that will be added to your signed
+                        JWT token and can be used in SAML policy rules.
+                    email_attribute_name:
+                      type: string
+                      description: The attribute name for email in the SAML response.
+                    enable_encryption:
+                      type: boolean
+                      description: "Enable SAML assertion encryption. When enabled, the Identity
+                        Provider will encrypt SAML assertions using the
+                        certificate from the assigned certificate set.  To
+                        enable encryption:  1. Create a certificate set via POST
+                        to `/identity_providers/{id}/saml_certificate` 2. Set
+                        this field to `true` and include
+                        `saml_certificate_set_id` in the PUT request 3.
+                        Configure the public certificate in your external
+                        Identity Provider  Note: Requires
+                        `saml_certificate_set_id` to be set when `true`."
+                    header_attributes:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          attribute_name:
+                            type: string
+                            description: attribute name from the IDP
+                          header_name:
+                            type: string
+                            description: header that will be added on the request to the origin
+                      description: Add a list of attribute names that will be returned in the response
+                        header from the Access callback.
+                    idp_public_certs:
+                      type: array
+                      items:
+                        type: string
+                      description: X509 certificate to verify the signature in the SAML authentication
+                        response
+                    issuer_url:
+                      type: string
+                      description: IdP Entity ID or Issuer URL
+                    sign_request:
+                      type: boolean
+                      description: Sign the SAML authentication request with Access credentials. To
+                        verify the signature, use the public key from the Access
+                        certs endpoints.
+                    sso_target_url:
+                      type: string
+                      description: URL to send the SAML authentication requests to
+                    restrict_to_account_members:
+                      type: boolean
+                      description: When enabled, only users who are members of your Cloudflare account
+                        can authenticate through this identity provider. When
+                        disabled, any user with a Cloudflare account can
+                        authenticate, subject to your Access policies.
                   description: "Body param: The configuration parameters for the identity
                     provider. To view the required parameters for a specific
                     provider, refer to our [developer
@@ -151615,6 +154576,102 @@ paths:
                     support_groups:
                       type: boolean
                       description: Should Cloudflare try to load groups from your account
+                    centrify_account:
+                      type: string
+                      description: Your centrify account url
+                    centrify_app_id:
+                      type: string
+                      description: Your centrify app id
+                    apps_domain:
+                      type: string
+                      description: Your companies TLD
+                    auth_url:
+                      type: string
+                      description: The authorization_endpoint URL of your IdP
+                    certs_url:
+                      type: string
+                      description: The jwks_uri endpoint of your IdP to allow the IdP keys to sign the
+                        tokens
+                    pkce_enabled:
+                      type: boolean
+                      description: Enable Proof Key for Code Exchange (PKCE)
+                    scopes:
+                      type: array
+                      items:
+                        type: string
+                      description: OAuth scopes
+                    token_url:
+                      type: string
+                      description: The token_endpoint URL of your IdP
+                    authorization_server_id:
+                      type: string
+                      description: Your okta authorization server id
+                    okta_account:
+                      type: string
+                      description: Your okta account url
+                    onelogin_account:
+                      type: string
+                      description: Your OneLogin account url
+                    ping_env_id:
+                      type: string
+                      description: Your PingOne environment identifier
+                    attributes:
+                      type: array
+                      items:
+                        type: string
+                      description: A list of SAML attribute names that will be added to your signed
+                        JWT token and can be used in SAML policy rules.
+                    email_attribute_name:
+                      type: string
+                      description: The attribute name for email in the SAML response.
+                    enable_encryption:
+                      type: boolean
+                      description: "Enable SAML assertion encryption. When enabled, the Identity
+                        Provider will encrypt SAML assertions using the
+                        certificate from the assigned certificate set.  To
+                        enable encryption:  1. Create a certificate set via POST
+                        to `/identity_providers/{id}/saml_certificate` 2. Set
+                        this field to `true` and include
+                        `saml_certificate_set_id` in the PUT request 3.
+                        Configure the public certificate in your external
+                        Identity Provider  Note: Requires
+                        `saml_certificate_set_id` to be set when `true`."
+                    header_attributes:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          attribute_name:
+                            type: string
+                            description: attribute name from the IDP
+                          header_name:
+                            type: string
+                            description: header that will be added on the request to the origin
+                      description: Add a list of attribute names that will be returned in the response
+                        header from the Access callback.
+                    idp_public_certs:
+                      type: array
+                      items:
+                        type: string
+                      description: X509 certificate to verify the signature in the SAML authentication
+                        response
+                    issuer_url:
+                      type: string
+                      description: IdP Entity ID or Issuer URL
+                    sign_request:
+                      type: boolean
+                      description: Sign the SAML authentication request with Access credentials. To
+                        verify the signature, use the public key from the Access
+                        certs endpoints.
+                    sso_target_url:
+                      type: string
+                      description: URL to send the SAML authentication requests to
+                    restrict_to_account_members:
+                      type: boolean
+                      description: When enabled, only users who are members of your Cloudflare account
+                        can authenticate through this identity provider. When
+                        disabled, any user with a Cloudflare account can
+                        authenticate, subject to your Access policies.
                   description: "Body param: The configuration parameters for the identity
                     provider. To view the required parameters for a specific
                     provider, refer to our [developer

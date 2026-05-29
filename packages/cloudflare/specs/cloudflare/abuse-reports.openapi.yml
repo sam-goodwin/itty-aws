@@ -146,6 +146,13 @@ paths:
                   type: string
                   enum:
                     - abuse_dmca
+                    - abuse_trademark
+                    - abuse_general
+                    - abuse_phishing
+                    - abuse_children
+                    - abuse_threat
+                    - abuse_registrar_whois
+                    - abuse_ncsei
                   description: "Body param: The report type for submitted reports."
                 address1:
                   type: string
@@ -186,6 +193,7 @@ paths:
                   type: string
                   enum:
                     - send
+                    - send-anon
                   description: "Body param: Notification type based on the abuse type. NOTE:
                     Copyright (DMCA) and Trademark reports cannot be anonymous."
                 name:
@@ -202,6 +210,8 @@ paths:
                   type: string
                   enum:
                     - send
+                    - send-anon
+                    - none
                   description: "Body param: Notification type based on the abuse type. NOTE:
                     Copyright (DMCA) and Trademark reports cannot be anonymous."
                 signature:
@@ -246,21 +256,118 @@ paths:
                 title:
                   type: string
                   description: "Body param: Text not exceeding 255 characters"
+                justification:
+                  type: string
+                  description: "Body param: A detailed description of the infringement, including
+                    any necessary access details and the exact steps needed to
+                    view the content, not exceeding 5000 characters."
+                trademark_number:
+                  type: string
+                  description: "Body param: Text not exceeding 1000 characters"
+                trademark_office:
+                  type: string
+                  description: "Body param: Text not exceeding 1000 characters"
+                trademark_symbol:
+                  type: string
+                  description: "Body param: Text not exceeding 1000 characters"
+                destination_ips:
+                  type: string
+                  description: "Body param: A list of IP addresses separated by ‘\\n’ (new line
+                    character). The list of destination IPs should not exceed 30
+                    IP addresses. Each one of the IP addresses ought to be
+                    unique."
+                ports_protocols:
+                  type: string
+                  description: "Body param: A comma separated list of ports and protocols e.g.
+                    80/TCP, 22/UDP. The total size of the field should not
+                    exceed 2000 characters. Each individual port/protocol should
+                    not exceed 100 characters. The list should not have more
+                    than 30 unique ports and protocols."
+                source_ips:
+                  type: string
+                  description: "Body param: A list of IP addresses separated by ‘\\n’ (new line
+                    character). The list of source IPs should not exceed 30 IP
+                    addresses. Each one of the IP addresses ought to be unique."
+                ncmec_notification:
+                  type: string
+                  enum:
+                    - send
+                    - send-anon
+                  description: "Body param: Notification type based on the abuse type. NOTE:
+                    Copyright (DMCA) and Trademark reports cannot be anonymous."
+                reg_who_request:
+                  type: object
+                  properties:
+                    reg_who_good_faith_affirmation:
+                      type: boolean
+                      description: Affirmation that the request is made in good faith per RDP 10.2.4.
+                        Must be true.
+                    reg_who_lawful_processing_agreement:
+                      type: boolean
+                      description: Agreement to process data lawfully per RDP 10.2.5. Must be true.
+                    reg_who_legal_basis:
+                      type: string
+                      description: Legal rights and rationale for the request per RDP 10.2.3. Required
+                        for all WHOIS requests.
+                    reg_who_request_type:
+                      type: string
+                      enum:
+                        - disclosure
+                        - invalid_whois
+                      description: The type of WHOIS data request per RDP procedure.
+                    reg_who_requested_data_elements:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - registrant_name
+                          - registrant_organization
+                          - registrant_email
+                          - registrant_phone
+                          - registrant_address
+                          - registrant_address_country
+                          - registrant_address_postal_code
+                          - admin_name
+                          - admin_organization
+                          - admin_email
+                          - admin_phone
+                          - admin_address
+                          - tech_name
+                          - tech_organization
+                          - tech_email
+                          - tech_phone
+                          - tech_address
+                      description: The specific WHOIS data elements being requested per RDP 10.2.2.
+                        Required for all WHOIS requests.
+                    reg_who_authorization_statement:
+                      type: string
+                      description: Optional authorization statement or power of attorney per RDP
+                        10.2.1.3.
+                    reg_who_requestor_type:
+                      type: string
+                      enum:
+                        - government
+                        - corporation
+                        - individual
+                      description: The nature of the requestor per RDP 10.2.1.2.
+                  required:
+                    - reg_who_good_faith_affirmation
+                    - reg_who_lawful_processing_agreement
+                    - reg_who_legal_basis
+                    - reg_who_request_type
+                    - reg_who_requested_data_elements
+                  description: "Body param: RDP-mandated fields for registrar WHOIS data
+                    disclosure requests."
+                ncsei_subject_representation:
+                  type: boolean
+                  description: "Body param: If the submitter is the target of NCSEI in the URLs of
+                    the abuse report."
               required:
                 - act
-                - address1
-                - agent_name
-                - agree
-                - city
-                - country
                 - email
                 - email2
-                - host_notification
                 - name
-                - original_work
                 - owner_notification
-                - signature
-                - state
                 - urls
       responses:
         "200":

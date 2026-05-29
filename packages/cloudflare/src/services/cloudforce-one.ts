@@ -2636,7 +2636,6 @@ export const listThreatEvents: API.OperationMethod<
 }));
 
 export interface CreateThreatEventRequest {
-  /** Path param: Account ID. */
   accountId: string;
   /** Body param */
   category: string;

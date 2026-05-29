@@ -1079,6 +1079,44 @@ paths:
                     required:
                       - id
                   description: "Body param: Roles assigned to this member."
+                policies:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      access:
+                        type: string
+                        enum:
+                          - allow
+                          - deny
+                        description: Allow or deny operations against the resources.
+                      permission_groups:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Identifier of the group.
+                          required:
+                            - id
+                        description: A set of permission groups that are specified to the policy.
+                      resource_groups:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Identifier of the group.
+                          required:
+                            - id
+                        description: A list of resource groups that the policy applies to.
+                    required:
+                      - access
+                      - permission_groups
+                      - resource_groups
+                  description: "Body param: Array of policies associated with this member."
       responses:
         "200":
           description: Success
@@ -1599,9 +1637,46 @@ paths:
                     during creation, defaults to 'pending'. Changing from
                     'accepted' back to 'pending' will trigger a replacement of
                     the member resource in Terraform."
+                policies:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      access:
+                        type: string
+                        enum:
+                          - allow
+                          - deny
+                        description: Allow or deny operations against the resources.
+                      permission_groups:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Identifier of the group.
+                          required:
+                            - id
+                        description: A set of permission groups that are specified to the policy.
+                      resource_groups:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Identifier of the group.
+                          required:
+                            - id
+                        description: A list of resource groups that the policy applies to.
+                    required:
+                      - access
+                      - permission_groups
+                      - resource_groups
+                  description: "Body param: Array of policies associated with this member."
               required:
                 - email
-                - roles
       responses:
         "200":
           description: Success

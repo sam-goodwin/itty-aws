@@ -596,7 +596,7 @@ export interface PutAccountTagRequest {
     | "worker"
     | "worker_version";
   /** Body param: Worker ID is required only for worker_version resources */
-  workerId: string;
+  workerId?: string;
   /** Body param: Contains key-value pairs of tags. */
   tags?: Record<string, unknown>;
 }
@@ -627,7 +627,7 @@ export const PutAccountTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "worker",
     "worker_version",
   ]),
-  workerId: Schema.String,
+  workerId: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
 }).pipe(
   Schema.encodeKeys({
@@ -2503,9 +2503,12 @@ export interface PutZoneTagRequest {
     | "custom_hostname"
     | "dns_record"
     | "managed_client_certificate"
-    | "zone";
+    | "zone"
+    | "access_application_policy";
   /** Body param: Contains key-value pairs of tags. */
   tags?: Record<string, unknown>;
+  /** Body param: Access application ID is required only for access_application_policy resources */
+  accessApplicationId?: string;
 }
 
 export const PutZoneTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2519,13 +2522,16 @@ export const PutZoneTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "dns_record",
     "managed_client_certificate",
     "zone",
+    "access_application_policy",
   ]),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  accessApplicationId: Schema.optional(Schema.String),
 }).pipe(
   Schema.encodeKeys({
     resourceId: "resource_id",
     resourceType: "resource_type",
     tags: "tags",
+    accessApplicationId: "access_application_id",
   }),
   T.Http({ method: "PUT", path: "/zones/{zone_id}/tags" }),
 ) as unknown as Schema.Schema<PutZoneTagRequest>;

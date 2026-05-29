@@ -905,41 +905,31 @@ paths:
                     Notes: Only available for TCP applications with traffic_type
                     set to "direct".'
                 edge_ips:
-                  oneOf:
-                    - type: object
-                      properties:
-                        connectivity:
-                          type: string
-                          enum:
-                            - all
-                            - ipv4
-                            - ipv6
-                          description: The IP versions supported for inbound connections on Spectrum
-                            anycast IPs.
-                        type:
-                          type: string
-                          enum:
-                            - dynamic
-                          description: The type of edge IP configuration specified. Dynamically allocated
-                            edge IPs use Spectrum anycast IPs in accordance with
-                            the connectivity you specify. Only valid with CNAME
-                            DNS names.
-                    - type: object
-                      properties:
-                        ips:
-                          type: array
-                          items:
-                            type: string
-                          description: The array of customer owned IPs we broadcast via anycast for this
-                            hostname and application.
-                        type:
-                          type: string
-                          enum:
-                            - static
-                          description: The type of edge IP configuration specified. Statically allocated
-                            edge IPs use customer IPs in accordance with the ips
-                            array you specify. Only valid with ADDRESS DNS
-                            names.
+                  type: object
+                  properties:
+                    connectivity:
+                      type: string
+                      enum:
+                        - all
+                        - ipv4
+                        - ipv6
+                      description: The IP versions supported for inbound connections on Spectrum
+                        anycast IPs.
+                    type:
+                      type: string
+                      enum:
+                        - dynamic
+                        - static
+                      description: The type of edge IP configuration specified. Dynamically allocated
+                        edge IPs use Spectrum anycast IPs in accordance with the
+                        connectivity you specify. Only valid with CNAME DNS
+                        names.
+                    ips:
+                      type: array
+                      items:
+                        type: string
+                      description: The array of customer owned IPs we broadcast via anycast for this
+                        hostname and application.
                   description: "Body param: The anycast edge IP configuration for the hostname of
                     this application."
                 ip_firewall:
@@ -1012,7 +1002,6 @@ paths:
               required:
                 - dns
                 - protocol
-                - traffic_type
       responses:
         "200":
           description: Success
@@ -1552,41 +1541,31 @@ paths:
                     Notes: Only available for TCP applications with traffic_type
                     set to "direct".'
                 edge_ips:
-                  oneOf:
-                    - type: object
-                      properties:
-                        connectivity:
-                          type: string
-                          enum:
-                            - all
-                            - ipv4
-                            - ipv6
-                          description: The IP versions supported for inbound connections on Spectrum
-                            anycast IPs.
-                        type:
-                          type: string
-                          enum:
-                            - dynamic
-                          description: The type of edge IP configuration specified. Dynamically allocated
-                            edge IPs use Spectrum anycast IPs in accordance with
-                            the connectivity you specify. Only valid with CNAME
-                            DNS names.
-                    - type: object
-                      properties:
-                        ips:
-                          type: array
-                          items:
-                            type: string
-                          description: The array of customer owned IPs we broadcast via anycast for this
-                            hostname and application.
-                        type:
-                          type: string
-                          enum:
-                            - static
-                          description: The type of edge IP configuration specified. Statically allocated
-                            edge IPs use customer IPs in accordance with the ips
-                            array you specify. Only valid with ADDRESS DNS
-                            names.
+                  type: object
+                  properties:
+                    connectivity:
+                      type: string
+                      enum:
+                        - all
+                        - ipv4
+                        - ipv6
+                      description: The IP versions supported for inbound connections on Spectrum
+                        anycast IPs.
+                    type:
+                      type: string
+                      enum:
+                        - dynamic
+                        - static
+                      description: The type of edge IP configuration specified. Dynamically allocated
+                        edge IPs use Spectrum anycast IPs in accordance with the
+                        connectivity you specify. Only valid with CNAME DNS
+                        names.
+                    ips:
+                      type: array
+                      items:
+                        type: string
+                      description: The array of customer owned IPs we broadcast via anycast for this
+                        hostname and application.
                   description: "Body param: The anycast edge IP configuration for the hostname of
                     this application."
                 ip_firewall:
@@ -1659,7 +1638,6 @@ paths:
               required:
                 - dns
                 - protocol
-                - traffic_type
       responses:
         "200":
           description: Success

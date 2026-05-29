@@ -682,15 +682,23 @@ paths:
                   type: string
                   enum:
                     - init
+                    - ingest
+                    - poll
                   description: "Body param: Indicates you have a new SQL file to upload."
                 etag:
                   type: string
                   description: "Body param: Required when action is 'init' or 'ingest'. An md5
                     hash of the file you're uploading. Used to check if it
                     already exists, and validate its contents before ingesting."
+                filename:
+                  type: string
+                  description: "Body param: The filename you have successfully uploaded."
+                current_bookmark:
+                  type: string
+                  description: "Body param: This identifies the currently-running import, checking
+                    its status."
               required:
                 - action
-                - etag
       responses:
         "200":
           description: Success
@@ -826,7 +834,7 @@ paths:
           schema:
             type: string
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -841,8 +849,22 @@ paths:
                   items:
                     type: string
                   description: Body param
-              required:
-                - sql
+                batch:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      sql:
+                        type: string
+                        description: Your SQL query. Supports multiple statements, joined by semicolons,
+                          which will be executed as a batch.
+                      params:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - sql
+                  description: Body param
       responses:
         "200":
           description: Success
@@ -937,7 +959,7 @@ paths:
           schema:
             type: string
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -952,8 +974,22 @@ paths:
                   items:
                     type: string
                   description: Body param
-              required:
-                - sql
+                batch:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      sql:
+                        type: string
+                        description: Your SQL query. Supports multiple statements, joined by semicolons,
+                          which will be executed as a batch.
+                      params:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - sql
+                  description: Body param
       responses:
         "200":
           description: Success

@@ -795,17 +795,29 @@ export interface ImportDatabaseRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
   /** Body param: Indicates you have a new SQL file to upload. */
-  action: "init";
+  action: "init" | "ingest" | "poll";
   /** Body param: Required when action is 'init' or 'ingest'. An md5 hash of the file you're uploading. Used to check if it already exists, and validate its contents before ingesting. */
-  etag: string;
+  etag?: string;
+  /** Body param: The filename you have successfully uploaded. */
+  filename?: string;
+  /** Body param: This identifies the currently-running import, checking its status. */
+  currentBookmark?: string;
 }
 
 export const ImportDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  action: Schema.Literal("init"),
-  etag: Schema.String,
+  action: Schema.Literals(["init", "ingest", "poll"]),
+  etag: Schema.optional(Schema.String),
+  filename: Schema.optional(Schema.String),
+  currentBookmark: Schema.optional(Schema.String),
 }).pipe(
+  Schema.encodeKeys({
+    action: "action",
+    etag: "etag",
+    filename: "filename",
+    currentBookmark: "current_bookmark",
+  }),
   T.Http({
     method: "POST",
     path: "/accounts/{account_id}/d1/database/{databaseId}/import",
@@ -991,16 +1003,26 @@ export interface QueryDatabaseRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
   /** Body param: Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
-  sql: string;
+  sql?: string;
   /** Body param */
   params?: string[];
+  /** Body param */
+  batch?: { sql: string; params?: string[] }[];
 }
 
 export const QueryDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  sql: Schema.String,
+  sql: Schema.optional(Schema.String),
   params: Schema.optional(Schema.Array(Schema.String)),
+  batch: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        sql: Schema.String,
+        params: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+  ),
 }).pipe(
   T.Http({
     method: "POST",
@@ -1127,16 +1149,26 @@ export interface RawDatabaseRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
   /** Body param: Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
-  sql: string;
+  sql?: string;
   /** Body param */
   params?: string[];
+  /** Body param */
+  batch?: { sql: string; params?: string[] }[];
 }
 
 export const RawDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  sql: Schema.String,
+  sql: Schema.optional(Schema.String),
   params: Schema.optional(Schema.Array(Schema.String)),
+  batch: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        sql: Schema.String,
+        params: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+  ),
 }).pipe(
   T.Http({
     method: "POST",

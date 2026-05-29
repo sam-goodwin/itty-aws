@@ -21,12 +21,43 @@ export interface PurgeCacheRequest {
   zoneId: string;
   /** Body param: For more information on cache tags and purging by tags, please refer to [purge by cache-tags documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/). */
   tags?: string[];
+  /** Body param: For more information purging by hostnames, please refer to [purge by hostname documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/). */
+  hosts?: string[];
+  /** Body param: For more information on purging by prefixes, please refer to [purge by prefix documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/). */
+  prefixes?: string[];
+  /** Body param: For more information, please refer to [purge everything documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/). */
+  purgeEverything?: boolean;
+  /** Body param: For more information on purging files, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/). */
+  files?: string[] | { headers?: Record<string, unknown>; url?: string }[];
 }
 
 export const PurgeCacheRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   tags: Schema.optional(Schema.Array(Schema.String)),
+  hosts: Schema.optional(Schema.Array(Schema.String)),
+  prefixes: Schema.optional(Schema.Array(Schema.String)),
+  purgeEverything: Schema.optional(Schema.Boolean),
+  files: Schema.optional(
+    Schema.Union([
+      Schema.Array(Schema.String),
+      Schema.Array(
+        Schema.Struct({
+          headers: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          url: Schema.optional(Schema.String),
+        }),
+      ),
+    ]),
+  ),
 }).pipe(
+  Schema.encodeKeys({
+    tags: "tags",
+    hosts: "hosts",
+    prefixes: "prefixes",
+    purgeEverything: "purge_everything",
+    files: "files",
+  }),
   T.Http({ method: "POST", path: "/zones/{zone_id}/purge_cache" }),
 ) as unknown as Schema.Schema<PurgeCacheRequest>;
 

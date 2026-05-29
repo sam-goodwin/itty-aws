@@ -453,7 +453,7 @@ export interface CreateConsumerRequest {
   /** Path param: A Resource identifier. */
   accountId: string;
   /** Body param: Name of a Worker */
-  scriptName: string;
+  scriptName?: string;
   /** Body param */
   type: "worker" | "http_pull";
   /** Body param */
@@ -465,13 +465,14 @@ export interface CreateConsumerRequest {
     maxRetries?: number;
     maxWaitTimeMs?: number;
     retryDelay?: number;
+    visibilityTimeoutMs?: number;
   };
 }
 
 export const CreateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  scriptName: Schema.String,
+  scriptName: Schema.optional(Schema.String),
   type: Schema.Literals(["worker", "http_pull"]),
   deadLetterQueue: Schema.optional(Schema.String),
   settings: Schema.optional(
@@ -481,6 +482,7 @@ export const CreateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       maxRetries: Schema.optional(Schema.Number),
       maxWaitTimeMs: Schema.optional(Schema.Number),
       retryDelay: Schema.optional(Schema.Number),
+      visibilityTimeoutMs: Schema.optional(Schema.Number),
     }).pipe(
       Schema.encodeKeys({
         batchSize: "batch_size",
@@ -488,6 +490,7 @@ export const CreateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         maxRetries: "max_retries",
         maxWaitTimeMs: "max_wait_time_ms",
         retryDelay: "retry_delay",
+        visibilityTimeoutMs: "visibility_timeout_ms",
       }),
     ),
   ),
@@ -670,9 +673,9 @@ export interface UpdateConsumerRequest {
   /** Path param: A Resource identifier. */
   accountId: string;
   /** Body param: Name of a Worker */
-  scriptName: string;
+  scriptName?: string;
   /** Body param */
-  type: "worker";
+  type: "worker" | "http_pull";
   /** Body param */
   deadLetterQueue?: string;
   /** Body param */
@@ -682,6 +685,7 @@ export interface UpdateConsumerRequest {
     maxRetries?: number;
     maxWaitTimeMs?: number;
     retryDelay?: number;
+    visibilityTimeoutMs?: number;
   };
 }
 
@@ -689,8 +693,8 @@ export const UpdateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   consumerId: Schema.String.pipe(T.HttpPath("consumerId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  scriptName: Schema.String,
-  type: Schema.Literal("worker"),
+  scriptName: Schema.optional(Schema.String),
+  type: Schema.Literals(["worker", "http_pull"]),
   deadLetterQueue: Schema.optional(Schema.String),
   settings: Schema.optional(
     Schema.Struct({
@@ -699,6 +703,7 @@ export const UpdateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       maxRetries: Schema.optional(Schema.Number),
       maxWaitTimeMs: Schema.optional(Schema.Number),
       retryDelay: Schema.optional(Schema.Number),
+      visibilityTimeoutMs: Schema.optional(Schema.Number),
     }).pipe(
       Schema.encodeKeys({
         batchSize: "batch_size",
@@ -706,6 +711,7 @@ export const UpdateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         maxRetries: "max_retries",
         maxWaitTimeMs: "max_wait_time_ms",
         retryDelay: "retry_delay",
+        visibilityTimeoutMs: "visibility_timeout_ms",
       }),
     ),
   ),
@@ -1226,7 +1232,7 @@ export interface PushMessageRequest {
   /** Body param */
   body?: string;
   /** Body param */
-  contentType?: "text";
+  contentType?: "text" | "json";
   /** Body param: The number of seconds to wait for attempting to deliver this message to consumers */
   delaySeconds?: number;
 }
@@ -1235,7 +1241,7 @@ export const PushMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   body: Schema.optional(Schema.String),
-  contentType: Schema.optional(Schema.Literal("text")),
+  contentType: Schema.optional(Schema.Literals(["text", "json"])),
   delaySeconds: Schema.optional(Schema.Number),
 }).pipe(
   Schema.encodeKeys({

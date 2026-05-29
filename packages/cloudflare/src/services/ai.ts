@@ -50,14 +50,242 @@ export interface RunAiRequest {
   /** Path param */
   accountId: string;
   /** Body param: The text that you want to classify */
-  text: string;
+  text?: string | string[];
+  /** Body param: A text description of the image you want to generate */
+  prompt?: string;
+  /** Body param: Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt */
+  guidance?: number;
+  /** Body param: The height of the generated image in pixels */
+  height?: number;
+  /** Body param: For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values */
+  image?: number[] | string;
+  /** Body param: For use with img2img tasks. A base64-encoded string of the input image */
+  imageB64?: string;
+  /** Body param: An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values */
+  mask?: number[];
+  /** Body param: Text describing elements to avoid in the generated image */
+  negativePrompt?: string;
+  /** Body param: The number of diffusion steps; higher values can improve quality but take longer */
+  numSteps?: number;
+  /** Body param: Random seed for reproducibility of the image generation */
+  seed?: number;
+  /** Body param: A value between 0 and 1 indicating how strongly to apply the transformation during img2img tasks; lower values make the output closer to the input image */
+  strength?: number;
+  /** Body param: The width of the generated image in pixels */
+  width?: number;
+  /** Body param: The speech language (e.g., 'en' for English, 'fr' for French). Defaults to 'en' if not specified */
+  lang?: string;
+  /** Body param: An array of integers that represent the audio data constrained to 8-bit unsigned integer values */
+  audio?: number[];
+  /** Body param: The language of the recorded audio */
+  sourceLang?: string;
+  /** Body param: The language to translate the transcription into. Currently only English is supported. */
+  targetLang?: string;
+  /** Body param: Decreases the likelihood of the model repeating the same lines verbatim. */
+  frequencyPenalty?: number;
+  /** Body param: Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model. */
+  lora?: string;
+  /** Body param: The maximum number of tokens to generate in the response. */
+  maxTokens?: number;
+  /** Body param: Increases the likelihood of the model introducing new topics. */
+  presencePenalty?: number;
+  /** Body param: If true, a chat template is not applied and you must adhere to the specific model's expected formatting. */
+  raw?: boolean;
+  /** Body param: Penalty for repeated tokens; higher values discourage repetition. */
+  repetitionPenalty?: number;
+  /** Body param */
+  responseFormat?: {
+    jsonSchema?: unknown;
+    type?: "json_object" | "json_schema";
+  };
+  /** Body param: If true, the response will be streamed back incrementally using SSE, Server Sent Events. */
+  stream?: boolean;
+  /** Body param: Controls the randomness of the output; higher values produce more random results. */
+  temperature?: number;
+  /** Body param: Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises. */
+  topK?: number;
+  /** Body param: Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creati */
+  topP?: number;
+  /** Body param: An array of message objects representing the conversation history. */
+  messages?:
+    | { content: string | { text?: string; type?: string }[]; role: string }[]
+    | {
+        content:
+          | string
+          | { type: string; imageUrl?: { url: string }; text?: string }[];
+        role: string;
+      }[];
+  /** Body param */
+  functions?: { code: string; name: string }[];
+  /** Body param: A list of tools available for the assistant to use. */
+  tools?: (
+    | {
+        description: string;
+        name: string;
+        parameters: {
+          properties: Record<string, unknown>;
+          type: string;
+          required?: string[];
+        };
+      }
+    | { code: string; name: string }
+  )[];
+  /** Body param: The text that you want the model to summarize */
+  inputText?: string;
+  /** Body param: The maximum length of the generated summary in tokens */
+  maxLength?: number;
+  /** Body param: Whether to ignore the EOS token and continue generating tokens after the EOS token is generated. */
+  ignoreEos?: boolean;
 }
 
 export const RunAiRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   modelName: Schema.String.pipe(T.HttpPath("modelName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  text: Schema.String,
+  text: Schema.optional(
+    Schema.Union([Schema.String, Schema.Array(Schema.String)]),
+  ),
+  prompt: Schema.optional(Schema.String),
+  guidance: Schema.optional(Schema.Number),
+  height: Schema.optional(Schema.Number),
+  image: Schema.optional(
+    Schema.Union([Schema.Array(Schema.Number), Schema.String]),
+  ),
+  imageB64: Schema.optional(Schema.String),
+  mask: Schema.optional(Schema.Array(Schema.Number)),
+  negativePrompt: Schema.optional(Schema.String),
+  numSteps: Schema.optional(Schema.Number),
+  seed: Schema.optional(Schema.Number),
+  strength: Schema.optional(Schema.Number),
+  width: Schema.optional(Schema.Number),
+  lang: Schema.optional(Schema.String),
+  audio: Schema.optional(Schema.Array(Schema.Number)),
+  sourceLang: Schema.optional(Schema.String),
+  targetLang: Schema.optional(Schema.String),
+  frequencyPenalty: Schema.optional(Schema.Number),
+  lora: Schema.optional(Schema.String),
+  maxTokens: Schema.optional(Schema.Number),
+  presencePenalty: Schema.optional(Schema.Number),
+  raw: Schema.optional(Schema.Boolean),
+  repetitionPenalty: Schema.optional(Schema.Number),
+  responseFormat: Schema.optional(
+    Schema.Struct({
+      jsonSchema: Schema.optional(Schema.Unknown),
+      type: Schema.optional(Schema.Literals(["json_object", "json_schema"])),
+    }).pipe(Schema.encodeKeys({ jsonSchema: "json_schema", type: "type" })),
+  ),
+  stream: Schema.optional(Schema.Boolean),
+  temperature: Schema.optional(Schema.Number),
+  topK: Schema.optional(Schema.Number),
+  topP: Schema.optional(Schema.Number),
+  messages: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          content: Schema.Union([
+            Schema.String,
+            Schema.Array(
+              Schema.Struct({
+                text: Schema.optional(Schema.String),
+                type: Schema.optional(Schema.String),
+              }),
+            ),
+          ]),
+          role: Schema.String,
+        }),
+      ),
+      Schema.Array(
+        Schema.Struct({
+          content: Schema.Union([
+            Schema.String,
+            Schema.Array(
+              Schema.Struct({
+                type: Schema.String,
+                imageUrl: Schema.optional(
+                  Schema.Struct({
+                    url: Schema.String,
+                  }),
+                ),
+                text: Schema.optional(Schema.String),
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  imageUrl: "image_url",
+                  text: "text",
+                }),
+              ),
+            ),
+          ]),
+          role: Schema.String,
+        }),
+      ),
+    ]),
+  ),
+  functions: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        code: Schema.String,
+        name: Schema.String,
+      }),
+    ),
+  ),
+  tools: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Struct({
+          description: Schema.String,
+          name: Schema.String,
+          parameters: Schema.Struct({
+            properties: Schema.Record(Schema.String, Schema.Unknown),
+            type: Schema.String,
+            required: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        }),
+        Schema.Struct({
+          code: Schema.String,
+          name: Schema.String,
+        }),
+      ]),
+    ),
+  ),
+  inputText: Schema.optional(Schema.String),
+  maxLength: Schema.optional(Schema.Number),
+  ignoreEos: Schema.optional(Schema.Boolean),
 }).pipe(
+  Schema.encodeKeys({
+    text: "text",
+    prompt: "prompt",
+    guidance: "guidance",
+    height: "height",
+    image: "image",
+    imageB64: "image_b64",
+    mask: "mask",
+    negativePrompt: "negative_prompt",
+    numSteps: "num_steps",
+    seed: "seed",
+    strength: "strength",
+    width: "width",
+    lang: "lang",
+    audio: "audio",
+    sourceLang: "source_lang",
+    targetLang: "target_lang",
+    frequencyPenalty: "frequency_penalty",
+    lora: "lora",
+    maxTokens: "max_tokens",
+    presencePenalty: "presence_penalty",
+    raw: "raw",
+    repetitionPenalty: "repetition_penalty",
+    responseFormat: "response_format",
+    stream: "stream",
+    temperature: "temperature",
+    topK: "top_k",
+    topP: "top_p",
+    messages: "messages",
+    functions: "functions",
+    tools: "tools",
+    inputText: "input_text",
+    maxLength: "max_length",
+    ignoreEos: "ignore_eos",
+  }),
   T.Http({ method: "POST", path: "/accounts/{account_id}/ai/run/{modelName}" }),
 ) as unknown as Schema.Schema<RunAiRequest>;
 
