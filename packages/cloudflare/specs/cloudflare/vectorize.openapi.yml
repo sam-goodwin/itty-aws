@@ -149,7 +149,7 @@ paths:
       x-distilled-errors:
         NotFound:
           - code: 3000
-        IndexDeleted:
+        Gone:
           - code: 3005
     delete:
       operationId: deleteIndex
@@ -178,6 +178,8 @@ paths:
       x-distilled-errors:
         NotFound:
           - code: 3000
+        Gone:
+          - code: 3005
   /accounts/{account_id}/vectorize/v2/indexes:
     get:
       operationId: listIndexes

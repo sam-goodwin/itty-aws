@@ -17,17 +17,17 @@ import { UploadableSchema } from "../schemas.ts";
 // Errors
 // =============================================================================
 
+export class Gone extends Schema.TaggedErrorClass<Gone>()("Gone", {
+  code: Schema.Number,
+  message: Schema.String,
+}) {}
+T.applyErrorMatchers(Gone, [{ code: 3005 }]);
+
 export class IndexAlreadyExists extends Schema.TaggedErrorClass<IndexAlreadyExists>()(
   "IndexAlreadyExists",
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(IndexAlreadyExists, [{ code: 3002 }]);
-
-export class IndexDeleted extends Schema.TaggedErrorClass<IndexDeleted>()(
-  "IndexDeleted",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(IndexDeleted, [{ code: 3005 }]);
 
 export class IndexInvalidConfig extends Schema.TaggedErrorClass<IndexInvalidConfig>()(
   "IndexInvalidConfig",
@@ -213,7 +213,7 @@ export const GetIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetIndexResponse>;
 
-export type GetIndexError = DefaultErrors | NotFound | IndexDeleted;
+export type GetIndexError = DefaultErrors | NotFound | Gone;
 
 export const getIndex: API.OperationMethod<
   GetIndexRequest,
@@ -223,7 +223,7 @@ export const getIndex: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIndexRequest,
   output: GetIndexResponse,
-  errors: [NotFound, IndexDeleted],
+  errors: [NotFound, Gone],
 }));
 
 export interface ListIndexesRequest {
@@ -426,7 +426,7 @@ export const DeleteIndexResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteIndexResponse>;
 
-export type DeleteIndexError = DefaultErrors | NotFound;
+export type DeleteIndexError = DefaultErrors | NotFound | Gone;
 
 export const deleteIndex: API.OperationMethod<
   DeleteIndexRequest,
@@ -436,7 +436,7 @@ export const deleteIndex: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIndexRequest,
   output: DeleteIndexResponse,
-  errors: [NotFound],
+  errors: [NotFound, Gone],
 }));
 
 export interface InfoIndexRequest {
