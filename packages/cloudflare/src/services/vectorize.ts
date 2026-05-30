@@ -844,6 +844,7 @@ export const DeleteIndexMetadataIndexResponse =
 export type DeleteIndexMetadataIndexError =
   | DefaultErrors
   | NotFound
+  | Gone
   | MetadataIndexNotFound;
 
 export const deleteIndexMetadataIndex: API.OperationMethod<
@@ -854,7 +855,7 @@ export const deleteIndexMetadataIndex: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIndexMetadataIndexRequest,
   output: DeleteIndexMetadataIndexResponse,
-  errors: [NotFound, MetadataIndexNotFound],
+  errors: [NotFound, Gone, MetadataIndexNotFound],
 }));
 
 // =============================================================================
