@@ -23,6 +23,12 @@ export class IndexAlreadyExists extends Schema.TaggedErrorClass<IndexAlreadyExis
 ) {}
 T.applyErrorMatchers(IndexAlreadyExists, [{ code: 3002 }]);
 
+export class IndexDeleted extends Schema.TaggedErrorClass<IndexDeleted>()(
+  "IndexDeleted",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(IndexDeleted, [{ code: 3005 }]);
+
 export class IndexInvalidConfig extends Schema.TaggedErrorClass<IndexInvalidConfig>()(
   "IndexInvalidConfig",
   { code: Schema.Number, message: Schema.String },
@@ -207,7 +213,7 @@ export const GetIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetIndexResponse>;
 
-export type GetIndexError = DefaultErrors | NotFound;
+export type GetIndexError = DefaultErrors | NotFound | IndexDeleted;
 
 export const getIndex: API.OperationMethod<
   GetIndexRequest,
@@ -217,7 +223,7 @@ export const getIndex: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIndexRequest,
   output: GetIndexResponse,
-  errors: [NotFound],
+  errors: [NotFound, IndexDeleted],
 }));
 
 export interface ListIndexesRequest {

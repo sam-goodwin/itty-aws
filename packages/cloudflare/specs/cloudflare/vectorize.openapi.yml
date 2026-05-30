@@ -149,6 +149,8 @@ paths:
       x-distilled-errors:
         NotFound:
           - code: 3000
+        IndexDeleted:
+          - code: 3005
     delete:
       operationId: deleteIndex
       description: "Deletes the specified Vectorize Index.  @example ```ts const index
