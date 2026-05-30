@@ -700,7 +700,14 @@ export interface ListIndexMetadataIndexesResponse {
   /** Array of indexed metadata properties. */
   metadataIndexes?:
     | {
-        indexType?: "string" | "number" | "boolean" | null;
+        indexType?:
+          | "string"
+          | "number"
+          | "boolean"
+          | "String"
+          | "Number"
+          | "Boolean"
+          | null;
         propertyName?: string | null;
       }[]
     | null;
@@ -714,7 +721,14 @@ export const ListIndexMetadataIndexesResponse =
           Schema.Struct({
             indexType: Schema.optional(
               Schema.Union([
-                Schema.Literals(["string", "number", "boolean"]),
+                Schema.Literals([
+                  "string",
+                  "number",
+                  "boolean",
+                  "String",
+                  "Number",
+                  "Boolean",
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -730,7 +744,7 @@ export const ListIndexMetadataIndexesResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ListIndexMetadataIndexesResponse>;
 
-export type ListIndexMetadataIndexesError = DefaultErrors | NotFound;
+export type ListIndexMetadataIndexesError = DefaultErrors | NotFound | Gone;
 
 export const listIndexMetadataIndexes: API.OperationMethod<
   ListIndexMetadataIndexesRequest,
@@ -740,7 +754,7 @@ export const listIndexMetadataIndexes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListIndexMetadataIndexesRequest,
   output: ListIndexMetadataIndexesResponse,
-  errors: [NotFound],
+  errors: [NotFound, Gone],
 }));
 
 export interface CreateIndexMetadataIndexRequest {

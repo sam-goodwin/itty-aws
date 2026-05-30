@@ -605,6 +605,9 @@ paths:
                             - string
                             - number
                             - boolean
+                            - String
+                            - Number
+                            - Boolean
                           description: Specifies the type of indexed metadata property.
                         propertyName:
                           type: string
@@ -614,6 +617,8 @@ paths:
       x-distilled-errors:
         NotFound:
           - code: 3000
+        Gone:
+          - code: 3005
   /accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/create:
     post:
       operationId: createIndexMetadataIndex
