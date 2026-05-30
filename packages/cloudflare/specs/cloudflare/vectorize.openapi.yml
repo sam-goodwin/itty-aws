@@ -601,9 +601,6 @@ paths:
                             - string
                             - number
                             - boolean
-                            - String
-                            - Number
-                            - Boolean
                           description: Specifies the type of indexed metadata property.
                         propertyName:
                           type: string

@@ -694,14 +694,7 @@ export interface ListIndexMetadataIndexesResponse {
   /** Array of indexed metadata properties. */
   metadataIndexes?:
     | {
-        indexType?:
-          | "string"
-          | "number"
-          | "boolean"
-          | "String"
-          | "Number"
-          | "Boolean"
-          | null;
+        indexType?: "string" | "number" | "boolean" | null;
         propertyName?: string | null;
       }[]
     | null;
@@ -715,14 +708,7 @@ export const ListIndexMetadataIndexesResponse =
           Schema.Struct({
             indexType: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "string",
-                  "number",
-                  "boolean",
-                  "String",
-                  "Number",
-                  "Boolean",
-                ]),
+                Schema.Literals(["string", "number", "boolean"]),
                 Schema.Null,
               ]),
             ),
