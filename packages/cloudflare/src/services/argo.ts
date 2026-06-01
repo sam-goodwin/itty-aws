@@ -51,7 +51,7 @@ export interface GetSmartRoutingResponse {
   /** Specifies if the setting is editable. */
   editable: boolean;
   /** Specifies the enablement value of Argo Smart Routing. */
-  value: "on" | "off";
+  value: "on" | "off" | (string & {});
   /** Specifies the time when the setting was last modified. */
   modifiedOn?: string | null;
 }
@@ -60,7 +60,7 @@ export const GetSmartRoutingResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     editable: Schema.Boolean,
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -95,13 +95,13 @@ export interface PatchSmartRoutingRequest {
   /** Path param: Specifies the zone associated with the API call. */
   zoneId: string;
   /** Body param: Specifies the enablement value of Argo Smart Routing. */
-  value: "on" | "off";
+  value: "on" | "off" | (string & {});
 }
 
 export const PatchSmartRoutingRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
   }).pipe(
     T.Http({ method: "PATCH", path: "/zones/{zone_id}/argo/smart_routing" }),
   ) as unknown as Schema.Schema<PatchSmartRoutingRequest>;
@@ -112,7 +112,7 @@ export interface PatchSmartRoutingResponse {
   /** Specifies if the setting is editable. */
   editable: boolean;
   /** Specifies the enablement value of Argo Smart Routing. */
-  value: "on" | "off";
+  value: "on" | "off" | (string & {});
   /** Specifies the time when the setting was last modified. */
   modifiedOn?: string | null;
 }
@@ -121,7 +121,7 @@ export const PatchSmartRoutingResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     editable: Schema.Boolean,
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -174,7 +174,7 @@ export interface GetTieredCachingResponse {
   /** Whether the setting is editable. */
   editable: boolean;
   /** Value of the Tiered Cache zone setting. */
-  value: "on" | "off";
+  value: "on" | "off" | (string & {});
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
@@ -183,7 +183,7 @@ export const GetTieredCachingResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Literal("tiered_caching"),
     editable: Schema.Boolean,
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -215,13 +215,13 @@ export interface PatchTieredCachingRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: Enables Tiered Caching. */
-  value: "on" | "off";
+  value: "on" | "off" | (string & {});
 }
 
 export const PatchTieredCachingRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
   }).pipe(
     T.Http({ method: "PATCH", path: "/zones/{zone_id}/argo/tiered_caching" }),
   ) as unknown as Schema.Schema<PatchTieredCachingRequest>;
@@ -232,7 +232,7 @@ export interface PatchTieredCachingResponse {
   /** Whether the setting is editable. */
   editable: boolean;
   /** Value of the Tiered Cache zone setting. */
-  value: "on" | "off";
+  value: "on" | "off" | (string & {});
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
@@ -241,7 +241,7 @@ export const PatchTieredCachingResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Literal("tiered_caching"),
     editable: Schema.Boolean,
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(

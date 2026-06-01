@@ -66,6 +66,7 @@ export interface GetAccessRuleResponse {
     | "whitelist"
     | "js_challenge"
     | "managed_challenge"
+    | (string & {})
   )[];
   /** The rule configuration. */
   configuration:
@@ -80,7 +81,8 @@ export interface GetAccessRuleResponse {
     | "challenge"
     | "whitelist"
     | "js_challenge"
-    | "managed_challenge";
+    | "managed_challenge"
+    | (string & {});
   /** The timestamp of when the rule was created. */
   createdOn?: string | null;
   /** The timestamp of when the rule was last modified. */
@@ -91,19 +93,22 @@ export interface GetAccessRuleResponse {
   scope?: {
     id?: string | null;
     email?: string | null;
-    type?: "user" | "organization" | null;
+    type?: "user" | "organization" | (string & {}) | null;
   } | null;
 }
 
 export const GetAccessRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   allowedModes: Schema.Array(
-    Schema.Literals([
-      "block",
-      "challenge",
-      "whitelist",
-      "js_challenge",
-      "managed_challenge",
+    Schema.Union([
+      Schema.Literals([
+        "block",
+        "challenge",
+        "whitelist",
+        "js_challenge",
+        "managed_challenge",
+      ]),
+      Schema.String,
     ]),
   ),
   configuration: Schema.Union([
@@ -138,12 +143,15 @@ export const GetAccessRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
   ]),
-  mode: Schema.Literals([
-    "block",
-    "challenge",
-    "whitelist",
-    "js_challenge",
-    "managed_challenge",
+  mode: Schema.Union([
+    Schema.Literals([
+      "block",
+      "challenge",
+      "whitelist",
+      "js_challenge",
+      "managed_challenge",
+    ]),
+    Schema.String,
   ]),
   createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -155,7 +163,10 @@ export const GetAccessRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         type: Schema.optional(
           Schema.Union([
-            Schema.Literals(["user", "organization"]),
+            Schema.Union([
+              Schema.Literals(["user", "organization"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -249,6 +260,7 @@ export interface ListAccessRulesResponse {
       | "whitelist"
       | "js_challenge"
       | "managed_challenge"
+      | (string & {})
     )[];
     configuration:
       | { target?: "ip" | null; value?: string | null }
@@ -261,14 +273,15 @@ export interface ListAccessRulesResponse {
       | "challenge"
       | "whitelist"
       | "js_challenge"
-      | "managed_challenge";
+      | "managed_challenge"
+      | (string & {});
     createdOn?: string | null;
     modifiedOn?: string | null;
     notes?: string | null;
     scope?: {
       id?: string | null;
       email?: string | null;
-      type?: "user" | "organization" | null;
+      type?: "user" | "organization" | (string & {}) | null;
     } | null;
   }[];
   resultInfo?: {
@@ -285,12 +298,15 @@ export const ListAccessRulesResponse =
       Schema.Struct({
         id: Schema.String,
         allowedModes: Schema.Array(
-          Schema.Literals([
-            "block",
-            "challenge",
-            "whitelist",
-            "js_challenge",
-            "managed_challenge",
+          Schema.Union([
+            Schema.Literals([
+              "block",
+              "challenge",
+              "whitelist",
+              "js_challenge",
+              "managed_challenge",
+            ]),
+            Schema.String,
           ]),
         ),
         configuration: Schema.Union([
@@ -325,12 +341,15 @@ export const ListAccessRulesResponse =
             value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           }),
         ]),
-        mode: Schema.Literals([
-          "block",
-          "challenge",
-          "whitelist",
-          "js_challenge",
-          "managed_challenge",
+        mode: Schema.Union([
+          Schema.Literals([
+            "block",
+            "challenge",
+            "whitelist",
+            "js_challenge",
+            "managed_challenge",
+          ]),
+          Schema.String,
         ]),
         createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -344,7 +363,10 @@ export const ListAccessRulesResponse =
               ),
               type: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["user", "organization"]),
+                  Schema.Union([
+                    Schema.Literals(["user", "organization"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -450,12 +472,15 @@ const CreateAccessRuleBaseFields = {
       value: Schema.optional(Schema.String),
     }),
   ]),
-  mode: Schema.Literals([
-    "block",
-    "challenge",
-    "whitelist",
-    "js_challenge",
-    "managed_challenge",
+  mode: Schema.Union([
+    Schema.Literals([
+      "block",
+      "challenge",
+      "whitelist",
+      "js_challenge",
+      "managed_challenge",
+    ]),
+    Schema.String,
   ]),
   notes: Schema.optional(Schema.String),
 } as const;
@@ -474,7 +499,8 @@ interface CreateAccessRuleBaseRequest {
     | "challenge"
     | "whitelist"
     | "js_challenge"
-    | "managed_challenge";
+    | "managed_challenge"
+    | (string & {});
   /** Body param: An informative summary of the rule, typically used as a reminder or explanation. */
   notes?: string;
 }
@@ -521,6 +547,7 @@ export interface CreateAccessRuleResponse {
     | "whitelist"
     | "js_challenge"
     | "managed_challenge"
+    | (string & {})
   )[];
   /** The rule configuration. */
   configuration:
@@ -535,7 +562,8 @@ export interface CreateAccessRuleResponse {
     | "challenge"
     | "whitelist"
     | "js_challenge"
-    | "managed_challenge";
+    | "managed_challenge"
+    | (string & {});
   /** The timestamp of when the rule was created. */
   createdOn?: string | null;
   /** The timestamp of when the rule was last modified. */
@@ -546,7 +574,7 @@ export interface CreateAccessRuleResponse {
   scope?: {
     id?: string | null;
     email?: string | null;
-    type?: "user" | "organization" | null;
+    type?: "user" | "organization" | (string & {}) | null;
   } | null;
 }
 
@@ -554,12 +582,15 @@ export const CreateAccessRuleResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     allowedModes: Schema.Array(
-      Schema.Literals([
-        "block",
-        "challenge",
-        "whitelist",
-        "js_challenge",
-        "managed_challenge",
+      Schema.Union([
+        Schema.Literals([
+          "block",
+          "challenge",
+          "whitelist",
+          "js_challenge",
+          "managed_challenge",
+        ]),
+        Schema.String,
       ]),
     ),
     configuration: Schema.Union([
@@ -594,12 +625,15 @@ export const CreateAccessRuleResponse =
         value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }),
     ]),
-    mode: Schema.Literals([
-      "block",
-      "challenge",
-      "whitelist",
-      "js_challenge",
-      "managed_challenge",
+    mode: Schema.Union([
+      Schema.Literals([
+        "block",
+        "challenge",
+        "whitelist",
+        "js_challenge",
+        "managed_challenge",
+      ]),
+      Schema.String,
     ]),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -611,7 +645,10 @@ export const CreateAccessRuleResponse =
           email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           type: Schema.optional(
             Schema.Union([
-              Schema.Literals(["user", "organization"]),
+              Schema.Union([
+                Schema.Literals(["user", "organization"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -684,12 +721,15 @@ const PatchAccessRuleBaseFields = {
       value: Schema.optional(Schema.String),
     }),
   ]),
-  mode: Schema.Literals([
-    "block",
-    "challenge",
-    "whitelist",
-    "js_challenge",
-    "managed_challenge",
+  mode: Schema.Union([
+    Schema.Literals([
+      "block",
+      "challenge",
+      "whitelist",
+      "js_challenge",
+      "managed_challenge",
+    ]),
+    Schema.String,
   ]),
   notes: Schema.optional(Schema.String),
 } as const;
@@ -709,7 +749,8 @@ interface PatchAccessRuleBaseRequest {
     | "challenge"
     | "whitelist"
     | "js_challenge"
-    | "managed_challenge";
+    | "managed_challenge"
+    | (string & {});
   /** Body param: An informative summary of the rule, typically used as a reminder or explanation. */
   notes?: string;
 }
@@ -756,6 +797,7 @@ export interface PatchAccessRuleResponse {
     | "whitelist"
     | "js_challenge"
     | "managed_challenge"
+    | (string & {})
   )[];
   /** The rule configuration. */
   configuration:
@@ -770,7 +812,8 @@ export interface PatchAccessRuleResponse {
     | "challenge"
     | "whitelist"
     | "js_challenge"
-    | "managed_challenge";
+    | "managed_challenge"
+    | (string & {});
   /** The timestamp of when the rule was created. */
   createdOn?: string | null;
   /** The timestamp of when the rule was last modified. */
@@ -781,7 +824,7 @@ export interface PatchAccessRuleResponse {
   scope?: {
     id?: string | null;
     email?: string | null;
-    type?: "user" | "organization" | null;
+    type?: "user" | "organization" | (string & {}) | null;
   } | null;
 }
 
@@ -789,12 +832,15 @@ export const PatchAccessRuleResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     allowedModes: Schema.Array(
-      Schema.Literals([
-        "block",
-        "challenge",
-        "whitelist",
-        "js_challenge",
-        "managed_challenge",
+      Schema.Union([
+        Schema.Literals([
+          "block",
+          "challenge",
+          "whitelist",
+          "js_challenge",
+          "managed_challenge",
+        ]),
+        Schema.String,
       ]),
     ),
     configuration: Schema.Union([
@@ -829,12 +875,15 @@ export const PatchAccessRuleResponse =
         value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }),
     ]),
-    mode: Schema.Literals([
-      "block",
-      "challenge",
-      "whitelist",
-      "js_challenge",
-      "managed_challenge",
+    mode: Schema.Union([
+      Schema.Literals([
+        "block",
+        "challenge",
+        "whitelist",
+        "js_challenge",
+        "managed_challenge",
+      ]),
+      Schema.String,
     ]),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -846,7 +895,10 @@ export const PatchAccessRuleResponse =
           email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           type: Schema.optional(
             Schema.Union([
-              Schema.Literals(["user", "organization"]),
+              Schema.Union([
+                Schema.Literals(["user", "organization"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -1504,6 +1556,7 @@ export interface BulkPutRulesResponse {
       | "allow"
       | "log"
       | "bypass"
+      | (string & {})
       | null;
     description?: string | null;
     filter?:
@@ -1527,6 +1580,7 @@ export interface BulkPutRulesResponse {
           | "securityLevel"
           | "rateLimit"
           | "waf"
+          | (string & {})
         )[]
       | null;
     ref?: string | null;
@@ -1539,14 +1593,17 @@ export const BulkPutRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       action: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "block",
-            "challenge",
-            "js_challenge",
-            "managed_challenge",
-            "allow",
-            "log",
-            "bypass",
+          Schema.Union([
+            Schema.Literals([
+              "block",
+              "challenge",
+              "js_challenge",
+              "managed_challenge",
+              "allow",
+              "log",
+              "bypass",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -1581,14 +1638,17 @@ export const BulkPutRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       products: Schema.optional(
         Schema.Union([
           Schema.Array(
-            Schema.Literals([
-              "zoneLockdown",
-              "uaBlock",
-              "bic",
-              "hot",
-              "securityLevel",
-              "rateLimit",
-              "waf",
+            Schema.Union([
+              Schema.Literals([
+                "zoneLockdown",
+                "uaBlock",
+                "bic",
+                "hot",
+                "securityLevel",
+                "rateLimit",
+                "waf",
+              ]),
+              Schema.String,
             ]),
           ),
           Schema.Null,
@@ -1645,6 +1705,7 @@ export interface GetRuleResponse {
     | "allow"
     | "log"
     | "bypass"
+    | (string & {})
     | null;
   /** An informative summary of the firewall rule. */
   description?: string | null;
@@ -1671,6 +1732,7 @@ export interface GetRuleResponse {
         | "securityLevel"
         | "rateLimit"
         | "waf"
+        | (string & {})
       )[]
     | null;
   /** A short reference tag. Allows you to select related firewall rules. */
@@ -1681,14 +1743,17 @@ export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   action: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "block",
-        "challenge",
-        "js_challenge",
-        "managed_challenge",
-        "allow",
-        "log",
-        "bypass",
+      Schema.Union([
+        Schema.Literals([
+          "block",
+          "challenge",
+          "js_challenge",
+          "managed_challenge",
+          "allow",
+          "log",
+          "bypass",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -1721,14 +1786,17 @@ export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   products: Schema.optional(
     Schema.Union([
       Schema.Array(
-        Schema.Literals([
-          "zoneLockdown",
-          "uaBlock",
-          "bic",
-          "hot",
-          "securityLevel",
-          "rateLimit",
-          "waf",
+        Schema.Union([
+          Schema.Literals([
+            "zoneLockdown",
+            "uaBlock",
+            "bic",
+            "hot",
+            "securityLevel",
+            "rateLimit",
+            "waf",
+          ]),
+          Schema.String,
         ]),
       ),
       Schema.Null,
@@ -1788,6 +1856,7 @@ export interface ListRulesResponse {
       | "allow"
       | "log"
       | "bypass"
+      | (string & {})
       | null;
     description?: string | null;
     filter?:
@@ -1811,6 +1880,7 @@ export interface ListRulesResponse {
           | "securityLevel"
           | "rateLimit"
           | "waf"
+          | (string & {})
         )[]
       | null;
     ref?: string | null;
@@ -1829,14 +1899,17 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       action: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "block",
-            "challenge",
-            "js_challenge",
-            "managed_challenge",
-            "allow",
-            "log",
-            "bypass",
+          Schema.Union([
+            Schema.Literals([
+              "block",
+              "challenge",
+              "js_challenge",
+              "managed_challenge",
+              "allow",
+              "log",
+              "bypass",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -1871,14 +1944,17 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       products: Schema.optional(
         Schema.Union([
           Schema.Array(
-            Schema.Literals([
-              "zoneLockdown",
-              "uaBlock",
-              "bic",
-              "hot",
-              "securityLevel",
-              "rateLimit",
-              "waf",
+            Schema.Union([
+              Schema.Literals([
+                "zoneLockdown",
+                "uaBlock",
+                "bic",
+                "hot",
+                "securityLevel",
+                "rateLimit",
+                "waf",
+              ]),
+              Schema.String,
             ]),
           ),
           Schema.Null,
@@ -1939,7 +2015,8 @@ export interface CreateRuleRequest {
       | "ban"
       | "challenge"
       | "js_challenge"
-      | "managed_challenge";
+      | "managed_challenge"
+      | (string & {});
     response?: { body?: string; contentType?: string };
     timeout?: number;
   };
@@ -1956,12 +2033,15 @@ export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   action: Schema.Struct({
     mode: Schema.optional(
-      Schema.Literals([
-        "simulate",
-        "ban",
-        "challenge",
-        "js_challenge",
-        "managed_challenge",
+      Schema.Union([
+        Schema.Literals([
+          "simulate",
+          "ban",
+          "challenge",
+          "js_challenge",
+          "managed_challenge",
+        ]),
+        Schema.String,
       ]),
     ),
     response: Schema.optional(
@@ -1993,6 +2073,7 @@ export interface CreateRuleResponse {
       | "allow"
       | "log"
       | "bypass"
+      | (string & {})
       | null;
     description?: string | null;
     filter?:
@@ -2016,6 +2097,7 @@ export interface CreateRuleResponse {
           | "securityLevel"
           | "rateLimit"
           | "waf"
+          | (string & {})
         )[]
       | null;
     ref?: string | null;
@@ -2028,14 +2110,17 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       action: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "block",
-            "challenge",
-            "js_challenge",
-            "managed_challenge",
-            "allow",
-            "log",
-            "bypass",
+          Schema.Union([
+            Schema.Literals([
+              "block",
+              "challenge",
+              "js_challenge",
+              "managed_challenge",
+              "allow",
+              "log",
+              "bypass",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -2070,14 +2155,17 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       products: Schema.optional(
         Schema.Union([
           Schema.Array(
-            Schema.Literals([
-              "zoneLockdown",
-              "uaBlock",
-              "bic",
-              "hot",
-              "securityLevel",
-              "rateLimit",
-              "waf",
+            Schema.Union([
+              Schema.Literals([
+                "zoneLockdown",
+                "uaBlock",
+                "bic",
+                "hot",
+                "securityLevel",
+                "rateLimit",
+                "waf",
+              ]),
+              Schema.String,
             ]),
           ),
           Schema.Null,
@@ -2116,7 +2204,8 @@ export interface UpdateRuleRequest {
       | "ban"
       | "challenge"
       | "js_challenge"
-      | "managed_challenge";
+      | "managed_challenge"
+      | (string & {});
     response?: { body?: string; contentType?: string };
     timeout?: number;
   };
@@ -2134,12 +2223,15 @@ export const UpdateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   action: Schema.Struct({
     mode: Schema.optional(
-      Schema.Literals([
-        "simulate",
-        "ban",
-        "challenge",
-        "js_challenge",
-        "managed_challenge",
+      Schema.Union([
+        Schema.Literals([
+          "simulate",
+          "ban",
+          "challenge",
+          "js_challenge",
+          "managed_challenge",
+        ]),
+        Schema.String,
       ]),
     ),
     response: Schema.optional(
@@ -2172,6 +2264,7 @@ export interface UpdateRuleResponse {
     | "allow"
     | "log"
     | "bypass"
+    | (string & {})
     | null;
   /** An informative summary of the firewall rule. */
   description?: string | null;
@@ -2198,6 +2291,7 @@ export interface UpdateRuleResponse {
         | "securityLevel"
         | "rateLimit"
         | "waf"
+        | (string & {})
       )[]
     | null;
   /** A short reference tag. Allows you to select related firewall rules. */
@@ -2208,14 +2302,17 @@ export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   action: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "block",
-        "challenge",
-        "js_challenge",
-        "managed_challenge",
-        "allow",
-        "log",
-        "bypass",
+      Schema.Union([
+        Schema.Literals([
+          "block",
+          "challenge",
+          "js_challenge",
+          "managed_challenge",
+          "allow",
+          "log",
+          "bypass",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -2248,14 +2345,17 @@ export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   products: Schema.optional(
     Schema.Union([
       Schema.Array(
-        Schema.Literals([
-          "zoneLockdown",
-          "uaBlock",
-          "bic",
-          "hot",
-          "securityLevel",
-          "rateLimit",
-          "waf",
+        Schema.Union([
+          Schema.Literals([
+            "zoneLockdown",
+            "uaBlock",
+            "bic",
+            "hot",
+            "securityLevel",
+            "rateLimit",
+            "waf",
+          ]),
+          Schema.String,
         ]),
       ),
       Schema.Null,
@@ -2303,6 +2403,7 @@ export interface PatchRuleResponse {
       | "allow"
       | "log"
       | "bypass"
+      | (string & {})
       | null;
     description?: string | null;
     filter?:
@@ -2326,6 +2427,7 @@ export interface PatchRuleResponse {
           | "securityLevel"
           | "rateLimit"
           | "waf"
+          | (string & {})
         )[]
       | null;
     ref?: string | null;
@@ -2338,14 +2440,17 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       action: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "block",
-            "challenge",
-            "js_challenge",
-            "managed_challenge",
-            "allow",
-            "log",
-            "bypass",
+          Schema.Union([
+            Schema.Literals([
+              "block",
+              "challenge",
+              "js_challenge",
+              "managed_challenge",
+              "allow",
+              "log",
+              "bypass",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -2380,14 +2485,17 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       products: Schema.optional(
         Schema.Union([
           Schema.Array(
-            Schema.Literals([
-              "zoneLockdown",
-              "uaBlock",
-              "bic",
-              "hot",
-              "securityLevel",
-              "rateLimit",
-              "waf",
+            Schema.Union([
+              Schema.Literals([
+                "zoneLockdown",
+                "uaBlock",
+                "bic",
+                "hot",
+                "securityLevel",
+                "rateLimit",
+                "waf",
+              ]),
+              Schema.String,
             ]),
           ),
           Schema.Null,
@@ -2443,6 +2551,7 @@ export interface DeleteRuleResponse {
     | "allow"
     | "log"
     | "bypass"
+    | (string & {})
     | null;
   /** An informative summary of the firewall rule. */
   description?: string | null;
@@ -2469,6 +2578,7 @@ export interface DeleteRuleResponse {
         | "securityLevel"
         | "rateLimit"
         | "waf"
+        | (string & {})
       )[]
     | null;
   /** A short reference tag. Allows you to select related firewall rules. */
@@ -2479,14 +2589,17 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   action: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "block",
-        "challenge",
-        "js_challenge",
-        "managed_challenge",
-        "allow",
-        "log",
-        "bypass",
+      Schema.Union([
+        Schema.Literals([
+          "block",
+          "challenge",
+          "js_challenge",
+          "managed_challenge",
+          "allow",
+          "log",
+          "bypass",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -2519,14 +2632,17 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   products: Schema.optional(
     Schema.Union([
       Schema.Array(
-        Schema.Literals([
-          "zoneLockdown",
-          "uaBlock",
-          "bic",
-          "hot",
-          "securityLevel",
-          "rateLimit",
-          "waf",
+        Schema.Union([
+          Schema.Literals([
+            "zoneLockdown",
+            "uaBlock",
+            "bic",
+            "hot",
+            "securityLevel",
+            "rateLimit",
+            "waf",
+          ]),
+          Schema.String,
         ]),
       ),
       Schema.Null,
@@ -2575,6 +2691,7 @@ export interface BulkPatchRulesResponse {
       | "allow"
       | "log"
       | "bypass"
+      | (string & {})
       | null;
     description?: string | null;
     filter?:
@@ -2598,6 +2715,7 @@ export interface BulkPatchRulesResponse {
           | "securityLevel"
           | "rateLimit"
           | "waf"
+          | (string & {})
         )[]
       | null;
     ref?: string | null;
@@ -2611,14 +2729,17 @@ export const BulkPatchRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         action: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "block",
-              "challenge",
-              "js_challenge",
-              "managed_challenge",
-              "allow",
-              "log",
-              "bypass",
+            Schema.Union([
+              Schema.Literals([
+                "block",
+                "challenge",
+                "js_challenge",
+                "managed_challenge",
+                "allow",
+                "log",
+                "bypass",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -2657,14 +2778,17 @@ export const BulkPatchRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         products: Schema.optional(
           Schema.Union([
             Schema.Array(
-              Schema.Literals([
-                "zoneLockdown",
-                "uaBlock",
-                "bic",
-                "hot",
-                "securityLevel",
-                "rateLimit",
-                "waf",
+              Schema.Union([
+                Schema.Literals([
+                  "zoneLockdown",
+                  "uaBlock",
+                  "bic",
+                  "hot",
+                  "securityLevel",
+                  "rateLimit",
+                  "waf",
+                ]),
+                Schema.String,
               ]),
             ),
             Schema.Null,
@@ -2717,6 +2841,7 @@ export interface BulkDeleteRulesResponse {
       | "allow"
       | "log"
       | "bypass"
+      | (string & {})
       | null;
     description?: string | null;
     filter?:
@@ -2740,6 +2865,7 @@ export interface BulkDeleteRulesResponse {
           | "securityLevel"
           | "rateLimit"
           | "waf"
+          | (string & {})
         )[]
       | null;
     ref?: string | null;
@@ -2753,14 +2879,17 @@ export const BulkDeleteRulesResponse =
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         action: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "block",
-              "challenge",
-              "js_challenge",
-              "managed_challenge",
-              "allow",
-              "log",
-              "bypass",
+            Schema.Union([
+              Schema.Literals([
+                "block",
+                "challenge",
+                "js_challenge",
+                "managed_challenge",
+                "allow",
+                "log",
+                "bypass",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -2799,14 +2928,17 @@ export const BulkDeleteRulesResponse =
         products: Schema.optional(
           Schema.Union([
             Schema.Array(
-              Schema.Literals([
-                "zoneLockdown",
-                "uaBlock",
-                "bic",
-                "hot",
-                "securityLevel",
-                "rateLimit",
-                "waf",
+              Schema.Union([
+                Schema.Literals([
+                  "zoneLockdown",
+                  "uaBlock",
+                  "bic",
+                  "hot",
+                  "securityLevel",
+                  "rateLimit",
+                  "waf",
+                ]),
+                Schema.String,
               ]),
             ),
             Schema.Null,
@@ -2862,7 +2994,13 @@ export interface GetUaRuleResponse {
   /** An informative summary of the rule. */
   description?: string | null;
   /** The action to apply to a matched request. */
-  mode?: "block" | "challenge" | "js_challenge" | "managed_challenge" | null;
+  mode?:
+    | "block"
+    | "challenge"
+    | "js_challenge"
+    | "managed_challenge"
+    | (string & {})
+    | null;
   /** When true, indicates that the rule is currently paused. */
   paused?: boolean | null;
 }
@@ -2881,11 +3019,14 @@ export const GetUaRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   mode: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "block",
-        "challenge",
-        "js_challenge",
-        "managed_challenge",
+      Schema.Union([
+        Schema.Literals([
+          "block",
+          "challenge",
+          "js_challenge",
+          "managed_challenge",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -2937,7 +3078,13 @@ export interface ListUaRulesResponse {
     id?: string | null;
     configuration?: { target?: string | null; value?: string | null } | null;
     description?: string | null;
-    mode?: "block" | "challenge" | "js_challenge" | "managed_challenge" | null;
+    mode?:
+      | "block"
+      | "challenge"
+      | "js_challenge"
+      | "managed_challenge"
+      | (string & {})
+      | null;
     paused?: boolean | null;
   }[];
   resultInfo?: {
@@ -2964,11 +3111,14 @@ export const ListUaRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       mode: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "block",
-            "challenge",
-            "js_challenge",
-            "managed_challenge",
+          Schema.Union([
+            Schema.Literals([
+              "block",
+              "challenge",
+              "js_challenge",
+              "managed_challenge",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -3029,7 +3179,8 @@ export interface CreateUaRuleRequest {
     | "challenge"
     | "whitelist"
     | "js_challenge"
-    | "managed_challenge";
+    | "managed_challenge"
+    | (string & {});
   /** Body param: An informative summary of the rule. This value is sanitized and any tags will be removed. */
   description?: string;
   /** Body param: When true, indicates that the rule is currently paused. */
@@ -3042,12 +3193,15 @@ export const CreateUaRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.Literal("ua")),
     value: Schema.optional(Schema.String),
   }),
-  mode: Schema.Literals([
-    "block",
-    "challenge",
-    "whitelist",
-    "js_challenge",
-    "managed_challenge",
+  mode: Schema.Union([
+    Schema.Literals([
+      "block",
+      "challenge",
+      "whitelist",
+      "js_challenge",
+      "managed_challenge",
+    ]),
+    Schema.String,
   ]),
   description: Schema.optional(Schema.String),
   paused: Schema.optional(Schema.Boolean),
@@ -3063,7 +3217,13 @@ export interface CreateUaRuleResponse {
   /** An informative summary of the rule. */
   description?: string | null;
   /** The action to apply to a matched request. */
-  mode?: "block" | "challenge" | "js_challenge" | "managed_challenge" | null;
+  mode?:
+    | "block"
+    | "challenge"
+    | "js_challenge"
+    | "managed_challenge"
+    | (string & {})
+    | null;
   /** When true, indicates that the rule is currently paused. */
   paused?: boolean | null;
 }
@@ -3082,11 +3242,14 @@ export const CreateUaRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   mode: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "block",
-        "challenge",
-        "js_challenge",
-        "managed_challenge",
+      Schema.Union([
+        Schema.Literals([
+          "block",
+          "challenge",
+          "js_challenge",
+          "managed_challenge",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -3126,7 +3289,8 @@ export interface UpdateUaRuleRequest {
     | "challenge"
     | "whitelist"
     | "js_challenge"
-    | "managed_challenge";
+    | "managed_challenge"
+    | (string & {});
   /** Body param: An informative summary of the rule. This value is sanitized and any tags will be removed. */
   description?: string;
   /** Body param: When true, indicates that the rule is currently paused. */
@@ -3158,12 +3322,15 @@ export const UpdateUaRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       value: Schema.optional(Schema.String),
     }),
   ]),
-  mode: Schema.Literals([
-    "block",
-    "challenge",
-    "whitelist",
-    "js_challenge",
-    "managed_challenge",
+  mode: Schema.Union([
+    Schema.Literals([
+      "block",
+      "challenge",
+      "whitelist",
+      "js_challenge",
+      "managed_challenge",
+    ]),
+    Schema.String,
   ]),
   description: Schema.optional(Schema.String),
   paused: Schema.optional(Schema.Boolean),
@@ -3182,7 +3349,13 @@ export interface UpdateUaRuleResponse {
   /** An informative summary of the rule. */
   description?: string | null;
   /** The action to apply to a matched request. */
-  mode?: "block" | "challenge" | "js_challenge" | "managed_challenge" | null;
+  mode?:
+    | "block"
+    | "challenge"
+    | "js_challenge"
+    | "managed_challenge"
+    | (string & {})
+    | null;
   /** When true, indicates that the rule is currently paused. */
   paused?: boolean | null;
 }
@@ -3201,11 +3374,14 @@ export const UpdateUaRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   mode: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "block",
-        "challenge",
-        "js_challenge",
-        "managed_challenge",
+      Schema.Union([
+        Schema.Literals([
+          "block",
+          "challenge",
+          "js_challenge",
+          "managed_challenge",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -3252,7 +3428,13 @@ export interface DeleteUaRuleResponse {
   /** An informative summary of the rule. */
   description?: string | null;
   /** The action to apply to a matched request. */
-  mode?: "block" | "challenge" | "js_challenge" | "managed_challenge" | null;
+  mode?:
+    | "block"
+    | "challenge"
+    | "js_challenge"
+    | "managed_challenge"
+    | (string & {})
+    | null;
   /** When true, indicates that the rule is currently paused. */
   paused?: boolean | null;
 }
@@ -3271,11 +3453,14 @@ export const DeleteUaRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   mode: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "block",
-        "challenge",
-        "js_challenge",
-        "managed_challenge",
+      Schema.Union([
+        Schema.Literals([
+          "block",
+          "challenge",
+          "js_challenge",
+          "managed_challenge",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -3331,22 +3516,45 @@ export interface GetWafOverrideResponse {
   priority?: number | null;
   /** Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object. */
   rewriteAction?: {
-    block?: "challenge" | "block" | "simulate" | "disable" | "default" | null;
+    block?:
+      | "challenge"
+      | "block"
+      | "simulate"
+      | "disable"
+      | "default"
+      | (string & {})
+      | null;
     challenge?:
       | "challenge"
       | "block"
       | "simulate"
       | "disable"
       | "default"
+      | (string & {})
       | null;
-    default?: "challenge" | "block" | "simulate" | "disable" | "default" | null;
-    disable?: "challenge" | "block" | "simulate" | "disable" | "default" | null;
+    default?:
+      | "challenge"
+      | "block"
+      | "simulate"
+      | "disable"
+      | "default"
+      | (string & {})
+      | null;
+    disable?:
+      | "challenge"
+      | "block"
+      | "simulate"
+      | "disable"
+      | "default"
+      | (string & {})
+      | null;
     simulate?:
       | "challenge"
       | "block"
       | "simulate"
       | "disable"
       | "default"
+      | (string & {})
       | null;
   } | null;
   /** An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule */
@@ -3369,60 +3577,75 @@ export const GetWafOverrideResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.Struct({
           block: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "challenge",
-                "block",
-                "simulate",
-                "disable",
-                "default",
+              Schema.Union([
+                Schema.Literals([
+                  "challenge",
+                  "block",
+                  "simulate",
+                  "disable",
+                  "default",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
           ),
           challenge: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "challenge",
-                "block",
-                "simulate",
-                "disable",
-                "default",
+              Schema.Union([
+                Schema.Literals([
+                  "challenge",
+                  "block",
+                  "simulate",
+                  "disable",
+                  "default",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
           ),
           default: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "challenge",
-                "block",
-                "simulate",
-                "disable",
-                "default",
+              Schema.Union([
+                Schema.Literals([
+                  "challenge",
+                  "block",
+                  "simulate",
+                  "disable",
+                  "default",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
           ),
           disable: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "challenge",
-                "block",
-                "simulate",
-                "disable",
-                "default",
+              Schema.Union([
+                Schema.Literals([
+                  "challenge",
+                  "block",
+                  "simulate",
+                  "disable",
+                  "default",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
           ),
           simulate: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "challenge",
-                "block",
-                "simulate",
-                "disable",
-                "default",
+              Schema.Union([
+                Schema.Literals([
+                  "challenge",
+                  "block",
+                  "simulate",
+                  "disable",
+                  "default",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -3492,13 +3715,21 @@ export interface ListWafOverridesResponse {
     paused?: boolean | null;
     priority?: number | null;
     rewriteAction?: {
-      block?: "challenge" | "block" | "simulate" | "disable" | "default" | null;
+      block?:
+        | "challenge"
+        | "block"
+        | "simulate"
+        | "disable"
+        | "default"
+        | (string & {})
+        | null;
       challenge?:
         | "challenge"
         | "block"
         | "simulate"
         | "disable"
         | "default"
+        | (string & {})
         | null;
       default?:
         | "challenge"
@@ -3506,6 +3737,7 @@ export interface ListWafOverridesResponse {
         | "simulate"
         | "disable"
         | "default"
+        | (string & {})
         | null;
       disable?:
         | "challenge"
@@ -3513,6 +3745,7 @@ export interface ListWafOverridesResponse {
         | "simulate"
         | "disable"
         | "default"
+        | (string & {})
         | null;
       simulate?:
         | "challenge"
@@ -3520,6 +3753,7 @@ export interface ListWafOverridesResponse {
         | "simulate"
         | "disable"
         | "default"
+        | (string & {})
         | null;
     } | null;
     rules?: Record<string, unknown> | null;
@@ -3554,60 +3788,75 @@ export const ListWafOverridesResponse =
             Schema.Struct({
               block: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "challenge",
-                    "block",
-                    "simulate",
-                    "disable",
-                    "default",
+                  Schema.Union([
+                    Schema.Literals([
+                      "challenge",
+                      "block",
+                      "simulate",
+                      "disable",
+                      "default",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
               ),
               challenge: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "challenge",
-                    "block",
-                    "simulate",
-                    "disable",
-                    "default",
+                  Schema.Union([
+                    Schema.Literals([
+                      "challenge",
+                      "block",
+                      "simulate",
+                      "disable",
+                      "default",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
               ),
               default: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "challenge",
-                    "block",
-                    "simulate",
-                    "disable",
-                    "default",
+                  Schema.Union([
+                    Schema.Literals([
+                      "challenge",
+                      "block",
+                      "simulate",
+                      "disable",
+                      "default",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
               ),
               disable: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "challenge",
-                    "block",
-                    "simulate",
-                    "disable",
-                    "default",
+                  Schema.Union([
+                    Schema.Literals([
+                      "challenge",
+                      "block",
+                      "simulate",
+                      "disable",
+                      "default",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
               ),
               simulate: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "challenge",
-                    "block",
-                    "simulate",
-                    "disable",
-                    "default",
+                  Schema.Union([
+                    Schema.Literals([
+                      "challenge",
+                      "block",
+                      "simulate",
+                      "disable",
+                      "default",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -3710,22 +3959,45 @@ export interface CreateWafOverrideResponse {
   priority?: number | null;
   /** Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object. */
   rewriteAction?: {
-    block?: "challenge" | "block" | "simulate" | "disable" | "default" | null;
+    block?:
+      | "challenge"
+      | "block"
+      | "simulate"
+      | "disable"
+      | "default"
+      | (string & {})
+      | null;
     challenge?:
       | "challenge"
       | "block"
       | "simulate"
       | "disable"
       | "default"
+      | (string & {})
       | null;
-    default?: "challenge" | "block" | "simulate" | "disable" | "default" | null;
-    disable?: "challenge" | "block" | "simulate" | "disable" | "default" | null;
+    default?:
+      | "challenge"
+      | "block"
+      | "simulate"
+      | "disable"
+      | "default"
+      | (string & {})
+      | null;
+    disable?:
+      | "challenge"
+      | "block"
+      | "simulate"
+      | "disable"
+      | "default"
+      | (string & {})
+      | null;
     simulate?:
       | "challenge"
       | "block"
       | "simulate"
       | "disable"
       | "default"
+      | (string & {})
       | null;
   } | null;
   /** An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule */
@@ -3748,60 +4020,75 @@ export const CreateWafOverrideResponse =
         Schema.Struct({
           block: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "challenge",
-                "block",
-                "simulate",
-                "disable",
-                "default",
+              Schema.Union([
+                Schema.Literals([
+                  "challenge",
+                  "block",
+                  "simulate",
+                  "disable",
+                  "default",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
           ),
           challenge: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "challenge",
-                "block",
-                "simulate",
-                "disable",
-                "default",
+              Schema.Union([
+                Schema.Literals([
+                  "challenge",
+                  "block",
+                  "simulate",
+                  "disable",
+                  "default",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
           ),
           default: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "challenge",
-                "block",
-                "simulate",
-                "disable",
-                "default",
+              Schema.Union([
+                Schema.Literals([
+                  "challenge",
+                  "block",
+                  "simulate",
+                  "disable",
+                  "default",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
           ),
           disable: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "challenge",
-                "block",
-                "simulate",
-                "disable",
-                "default",
+              Schema.Union([
+                Schema.Literals([
+                  "challenge",
+                  "block",
+                  "simulate",
+                  "disable",
+                  "default",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
           ),
           simulate: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "challenge",
-                "block",
-                "simulate",
-                "disable",
-                "default",
+              Schema.Union([
+                Schema.Literals([
+                  "challenge",
+                  "block",
+                  "simulate",
+                  "disable",
+                  "default",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -3854,11 +4141,41 @@ export interface UpdateWafOverrideRequest {
   id: string;
   /** Body param: Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object. */
   rewriteAction: {
-    block?: "challenge" | "block" | "simulate" | "disable" | "default";
-    challenge?: "challenge" | "block" | "simulate" | "disable" | "default";
-    default?: "challenge" | "block" | "simulate" | "disable" | "default";
-    disable?: "challenge" | "block" | "simulate" | "disable" | "default";
-    simulate?: "challenge" | "block" | "simulate" | "disable" | "default";
+    block?:
+      | "challenge"
+      | "block"
+      | "simulate"
+      | "disable"
+      | "default"
+      | (string & {});
+    challenge?:
+      | "challenge"
+      | "block"
+      | "simulate"
+      | "disable"
+      | "default"
+      | (string & {});
+    default?:
+      | "challenge"
+      | "block"
+      | "simulate"
+      | "disable"
+      | "default"
+      | (string & {});
+    disable?:
+      | "challenge"
+      | "block"
+      | "simulate"
+      | "disable"
+      | "default"
+      | (string & {});
+    simulate?:
+      | "challenge"
+      | "block"
+      | "simulate"
+      | "disable"
+      | "default"
+      | (string & {});
   };
   /** Body param: An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disa */
   rules: Record<string, unknown>;
@@ -3873,48 +4190,63 @@ export const UpdateWafOverrideRequest =
     id: Schema.String,
     rewriteAction: Schema.Struct({
       block: Schema.optional(
-        Schema.Literals([
-          "challenge",
-          "block",
-          "simulate",
-          "disable",
-          "default",
+        Schema.Union([
+          Schema.Literals([
+            "challenge",
+            "block",
+            "simulate",
+            "disable",
+            "default",
+          ]),
+          Schema.String,
         ]),
       ),
       challenge: Schema.optional(
-        Schema.Literals([
-          "challenge",
-          "block",
-          "simulate",
-          "disable",
-          "default",
+        Schema.Union([
+          Schema.Literals([
+            "challenge",
+            "block",
+            "simulate",
+            "disable",
+            "default",
+          ]),
+          Schema.String,
         ]),
       ),
       default: Schema.optional(
-        Schema.Literals([
-          "challenge",
-          "block",
-          "simulate",
-          "disable",
-          "default",
+        Schema.Union([
+          Schema.Literals([
+            "challenge",
+            "block",
+            "simulate",
+            "disable",
+            "default",
+          ]),
+          Schema.String,
         ]),
       ),
       disable: Schema.optional(
-        Schema.Literals([
-          "challenge",
-          "block",
-          "simulate",
-          "disable",
-          "default",
+        Schema.Union([
+          Schema.Literals([
+            "challenge",
+            "block",
+            "simulate",
+            "disable",
+            "default",
+          ]),
+          Schema.String,
         ]),
       ),
       simulate: Schema.optional(
-        Schema.Literals([
-          "challenge",
-          "block",
-          "simulate",
-          "disable",
-          "default",
+        Schema.Union([
+          Schema.Literals([
+            "challenge",
+            "block",
+            "simulate",
+            "disable",
+            "default",
+          ]),
+          Schema.String,
         ]),
       ),
     }),
@@ -3946,22 +4278,45 @@ export interface UpdateWafOverrideResponse {
   priority?: number | null;
   /** Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object. */
   rewriteAction?: {
-    block?: "challenge" | "block" | "simulate" | "disable" | "default" | null;
+    block?:
+      | "challenge"
+      | "block"
+      | "simulate"
+      | "disable"
+      | "default"
+      | (string & {})
+      | null;
     challenge?:
       | "challenge"
       | "block"
       | "simulate"
       | "disable"
       | "default"
+      | (string & {})
       | null;
-    default?: "challenge" | "block" | "simulate" | "disable" | "default" | null;
-    disable?: "challenge" | "block" | "simulate" | "disable" | "default" | null;
+    default?:
+      | "challenge"
+      | "block"
+      | "simulate"
+      | "disable"
+      | "default"
+      | (string & {})
+      | null;
+    disable?:
+      | "challenge"
+      | "block"
+      | "simulate"
+      | "disable"
+      | "default"
+      | (string & {})
+      | null;
     simulate?:
       | "challenge"
       | "block"
       | "simulate"
       | "disable"
       | "default"
+      | (string & {})
       | null;
   } | null;
   /** An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule */
@@ -3984,60 +4339,75 @@ export const UpdateWafOverrideResponse =
         Schema.Struct({
           block: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "challenge",
-                "block",
-                "simulate",
-                "disable",
-                "default",
+              Schema.Union([
+                Schema.Literals([
+                  "challenge",
+                  "block",
+                  "simulate",
+                  "disable",
+                  "default",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
           ),
           challenge: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "challenge",
-                "block",
-                "simulate",
-                "disable",
-                "default",
+              Schema.Union([
+                Schema.Literals([
+                  "challenge",
+                  "block",
+                  "simulate",
+                  "disable",
+                  "default",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
           ),
           default: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "challenge",
-                "block",
-                "simulate",
-                "disable",
-                "default",
+              Schema.Union([
+                Schema.Literals([
+                  "challenge",
+                  "block",
+                  "simulate",
+                  "disable",
+                  "default",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
           ),
           disable: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "challenge",
-                "block",
-                "simulate",
-                "disable",
-                "default",
+              Schema.Union([
+                Schema.Literals([
+                  "challenge",
+                  "block",
+                  "simulate",
+                  "disable",
+                  "default",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
           ),
           simulate: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "challenge",
-                "block",
-                "simulate",
-                "disable",
-                "default",
+              Schema.Union([
+                Schema.Literals([
+                  "challenge",
+                  "block",
+                  "simulate",
+                  "disable",
+                  "default",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -4244,9 +4614,9 @@ export interface ListWafPackagesRequest {
   page?: number;
   perPage?: number;
   /** Query param: The direction used to sort returned packages. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match. */
-  match?: "any" | "all";
+  match?: "any" | "all" | (string & {});
   /** Query param: The name of the WAF package. */
   name?: string;
   /** Query param: The field used to sort returned packages. */
@@ -4258,12 +4628,12 @@ export const ListWafPackagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("direction"),
-    ),
-    match: Schema.optional(Schema.Literals(["any", "all"])).pipe(
-      T.HttpQuery("match"),
-    ),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    match: Schema.optional(
+      Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
+    ).pipe(T.HttpQuery("match")),
     name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
     order: Schema.optional(Schema.Literal("name")).pipe(T.HttpQuery("order")),
   },
@@ -4378,15 +4748,15 @@ export interface ListWafPackageGroupsRequest {
   page?: number;
   perPage?: number;
   /** Query param: Defines the direction used to sort returned rule groups. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Defines the condition for search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match. */
-  match?: "any" | "all";
+  match?: "any" | "all" | (string & {});
   /** Query param: Defines the state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable. */
-  mode?: "on" | "off";
+  mode?: "on" | "off" | (string & {});
   /** Query param: Defines the name of the rule group. */
   name?: string;
   /** Query param: Defines the field used to sort returned rule groups. */
-  order?: "mode" | "rules_count";
+  order?: "mode" | "rules_count" | (string & {});
   /** Query param: Defines the number of rules in the current rule group. */
   rulesCount?: number;
 }
@@ -4397,19 +4767,19 @@ export const ListWafPackageGroupsRequest =
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("direction"),
-    ),
-    match: Schema.optional(Schema.Literals(["any", "all"])).pipe(
-      T.HttpQuery("match"),
-    ),
-    mode: Schema.optional(Schema.Literals(["on", "off"])).pipe(
-      T.HttpQuery("mode"),
-    ),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    match: Schema.optional(
+      Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
+    ).pipe(T.HttpQuery("match")),
+    mode: Schema.optional(
+      Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+    ).pipe(T.HttpQuery("mode")),
     name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-    order: Schema.optional(Schema.Literals(["mode", "rules_count"])).pipe(
-      T.HttpQuery("order"),
-    ),
+    order: Schema.optional(
+      Schema.Union([Schema.Literals(["mode", "rules_count"]), Schema.String]),
+    ).pipe(T.HttpQuery("order")),
     rulesCount: Schema.optional(Schema.Number).pipe(T.HttpQuery("rules_count")),
   }).pipe(
     T.Http({
@@ -4422,10 +4792,10 @@ export interface ListWafPackageGroupsResponse {
   result: {
     id: string;
     description: string | null;
-    mode: "on" | "off";
+    mode: "on" | "off" | (string & {});
     name: string;
     rulesCount: number;
-    allowedModes?: ("on" | "off")[] | null;
+    allowedModes?: ("on" | "off" | (string & {}))[] | null;
     modifiedRulesCount?: number | null;
     packageId?: string | null;
   }[];
@@ -4443,12 +4813,14 @@ export const ListWafPackageGroupsResponse =
       Schema.Struct({
         id: Schema.String,
         description: Schema.Union([Schema.String, Schema.Null]),
-        mode: Schema.Literals(["on", "off"]),
+        mode: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
         name: Schema.String,
         rulesCount: Schema.Number,
         allowedModes: Schema.optional(
           Schema.Union([
-            Schema.Array(Schema.Literals(["on", "off"])),
+            Schema.Array(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
             Schema.Null,
           ]),
         ),
@@ -4519,7 +4891,7 @@ export interface PatchWafPackageGroupRequest {
   /** Path param: Defines an identifier of a schema. */
   zoneId: string;
   /** Body param: Defines the state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable. */
-  mode?: "on" | "off";
+  mode?: "on" | "off" | (string & {});
 }
 
 export const PatchWafPackageGroupRequest =
@@ -4527,7 +4899,9 @@ export const PatchWafPackageGroupRequest =
     packageId: Schema.String.pipe(T.HttpPath("packageId")),
     groupId: Schema.String.pipe(T.HttpPath("groupId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    mode: Schema.optional(Schema.Literals(["on", "off"])),
+    mode: Schema.optional(
+      Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4607,15 +4981,15 @@ export interface ListWafPackageRulesRequest {
   /** Query param: Defines the public description of the WAF rule. */
   description?: string;
   /** Query param: Defines the direction used to sort returned rules. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Defines the unique identifier of the rule group. */
   groupId?: string;
   /** Query param: Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match. */
-  match?: "any" | "all";
+  match?: "any" | "all" | (string & {});
   /** Query param: Defines the action/mode a rule has been overridden to perform. */
-  mode?: "DIS" | "CHL" | "BLK" | "SIM";
+  mode?: "DIS" | "CHL" | "BLK" | "SIM" | (string & {});
   /** Query param: Defines the field used to sort returned rules. */
-  order?: "priority" | "group_id" | "description";
+  order?: "priority" | "group_id" | "description" | (string & {});
   /** Query param: Defines the order in which the individual WAF rule is executed within its rule group. */
   priority?: string;
 }
@@ -4629,18 +5003,24 @@ export const ListWafPackageRulesRequest =
     description: Schema.optional(Schema.String).pipe(
       T.HttpQuery("description"),
     ),
-    direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("direction"),
-    ),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
     groupId: Schema.optional(Schema.String).pipe(T.HttpQuery("group_id")),
-    match: Schema.optional(Schema.Literals(["any", "all"])).pipe(
-      T.HttpQuery("match"),
-    ),
-    mode: Schema.optional(Schema.Literals(["DIS", "CHL", "BLK", "SIM"])).pipe(
-      T.HttpQuery("mode"),
-    ),
+    match: Schema.optional(
+      Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
+    ).pipe(T.HttpQuery("match")),
+    mode: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["DIS", "CHL", "BLK", "SIM"]),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("mode")),
     order: Schema.optional(
-      Schema.Literals(["priority", "group_id", "description"]),
+      Schema.Union([
+        Schema.Literals(["priority", "group_id", "description"]),
+        Schema.String,
+      ]),
     ).pipe(T.HttpQuery("order")),
     priority: Schema.optional(Schema.String).pipe(T.HttpQuery("priority")),
   }).pipe(
@@ -4654,10 +5034,10 @@ export interface ListWafPackageRulesResponse {
   result: (
     | {
         id: string;
-        allowedModes: ("on" | "off")[];
+        allowedModes: ("on" | "off" | (string & {}))[];
         description: string;
         group: { id?: string | null; name?: string | null };
-        mode: "on" | "off";
+        mode: "on" | "off" | (string & {});
         packageId: string;
         priority: string;
       }
@@ -4669,11 +5049,23 @@ export interface ListWafPackageRulesResponse {
           | "simulate"
           | "block"
           | "challenge"
+          | (string & {})
         )[];
-        defaultMode: "disable" | "simulate" | "block" | "challenge";
+        defaultMode:
+          | "disable"
+          | "simulate"
+          | "block"
+          | "challenge"
+          | (string & {});
         description: string;
         group: { id?: string | null; name?: string | null };
-        mode: "default" | "disable" | "simulate" | "block" | "challenge";
+        mode:
+          | "default"
+          | "disable"
+          | "simulate"
+          | "block"
+          | "challenge"
+          | (string & {});
         packageId: string;
         priority: string;
       }
@@ -4693,6 +5085,27 @@ export const ListWafPackageRulesResponse =
         Schema.Struct({
           id: Schema.String,
           allowedModes: Schema.Array(
+            Schema.Union([
+              Schema.Literals([
+                "default",
+                "disable",
+                "simulate",
+                "block",
+                "challenge",
+              ]),
+              Schema.String,
+            ]),
+          ),
+          defaultMode: Schema.Union([
+            Schema.Literals(["disable", "simulate", "block", "challenge"]),
+            Schema.String,
+          ]),
+          description: Schema.String,
+          group: Schema.Struct({
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          mode: Schema.Union([
             Schema.Literals([
               "default",
               "disable",
@@ -4700,24 +5113,7 @@ export const ListWafPackageRulesResponse =
               "block",
               "challenge",
             ]),
-          ),
-          defaultMode: Schema.Literals([
-            "disable",
-            "simulate",
-            "block",
-            "challenge",
-          ]),
-          description: Schema.String,
-          group: Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          mode: Schema.Literals([
-            "default",
-            "disable",
-            "simulate",
-            "block",
-            "challenge",
+            Schema.String,
           ]),
           packageId: Schema.String,
           priority: Schema.String,
@@ -4735,13 +5131,15 @@ export const ListWafPackageRulesResponse =
         ),
         Schema.Struct({
           id: Schema.String,
-          allowedModes: Schema.Array(Schema.Literals(["on", "off"])),
+          allowedModes: Schema.Array(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
           description: Schema.String,
           group: Schema.Struct({
             id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           }),
-          mode: Schema.Literals(["on", "off"]),
+          mode: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
           packageId: Schema.String,
           priority: Schema.String,
         }).pipe(
@@ -4814,7 +5212,8 @@ export interface PatchWafPackageRuleRequest {
     | "block"
     | "challenge"
     | "on"
-    | "off";
+    | "off"
+    | (string & {});
 }
 
 export const PatchWafPackageRuleRequest =
@@ -4823,14 +5222,17 @@ export const PatchWafPackageRuleRequest =
     ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     mode: Schema.optional(
-      Schema.Literals([
-        "default",
-        "disable",
-        "simulate",
-        "block",
-        "challenge",
-        "on",
-        "off",
+      Schema.Union([
+        Schema.Literals([
+          "default",
+          "disable",
+          "simulate",
+          "block",
+          "challenge",
+          "on",
+          "off",
+        ]),
+        Schema.String,
       ]),
     ),
   }).pipe(
@@ -4843,10 +5245,10 @@ export const PatchWafPackageRuleRequest =
 export type PatchWafPackageRuleResponse =
   | {
       id: string;
-      allowedModes: ("on" | "off")[];
+      allowedModes: ("on" | "off" | (string & {}))[];
       description: string;
       group: { id?: string | null; name?: string | null };
-      mode: "on" | "off";
+      mode: "on" | "off" | (string & {});
       packageId: string;
       priority: string;
     }
@@ -4858,11 +5260,23 @@ export type PatchWafPackageRuleResponse =
         | "simulate"
         | "block"
         | "challenge"
+        | (string & {})
       )[];
-      defaultMode: "disable" | "simulate" | "block" | "challenge";
+      defaultMode:
+        | "disable"
+        | "simulate"
+        | "block"
+        | "challenge"
+        | (string & {});
       description: string;
       group: { id?: string | null; name?: string | null };
-      mode: "default" | "disable" | "simulate" | "block" | "challenge";
+      mode:
+        | "default"
+        | "disable"
+        | "simulate"
+        | "block"
+        | "challenge"
+        | (string & {});
       packageId: string;
       priority: string;
     };
@@ -4872,6 +5286,27 @@ export const PatchWafPackageRuleResponse =
     Schema.Struct({
       id: Schema.String,
       allowedModes: Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "default",
+            "disable",
+            "simulate",
+            "block",
+            "challenge",
+          ]),
+          Schema.String,
+        ]),
+      ),
+      defaultMode: Schema.Union([
+        Schema.Literals(["disable", "simulate", "block", "challenge"]),
+        Schema.String,
+      ]),
+      description: Schema.String,
+      group: Schema.Struct({
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }),
+      mode: Schema.Union([
         Schema.Literals([
           "default",
           "disable",
@@ -4879,24 +5314,7 @@ export const PatchWafPackageRuleResponse =
           "block",
           "challenge",
         ]),
-      ),
-      defaultMode: Schema.Literals([
-        "disable",
-        "simulate",
-        "block",
-        "challenge",
-      ]),
-      description: Schema.String,
-      group: Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      mode: Schema.Literals([
-        "default",
-        "disable",
-        "simulate",
-        "block",
-        "challenge",
+        Schema.String,
       ]),
       packageId: Schema.String,
       priority: Schema.String,
@@ -4914,13 +5332,15 @@ export const PatchWafPackageRuleResponse =
     ),
     Schema.Struct({
       id: Schema.String,
-      allowedModes: Schema.Array(Schema.Literals(["on", "off"])),
+      allowedModes: Schema.Array(
+        Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+      ),
       description: Schema.String,
       group: Schema.Struct({
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }),
-      mode: Schema.Literals(["on", "off"]),
+      mode: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
       packageId: Schema.String,
       priority: Schema.String,
     }).pipe(

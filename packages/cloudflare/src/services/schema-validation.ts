@@ -404,13 +404,16 @@ export const GetSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GetSettingResponse {
   /** The default mitigation action used  Mitigation actions are as follows:  - `log` - log request when request does not conform to schema - `block` - deny access to the site when request does not conform  */
-  validationDefaultMitigationAction: "none" | "log" | "block";
+  validationDefaultMitigationAction: "none" | "log" | "block" | (string & {});
   /** When not null, this overrides global both zone level and operation level mitigation actions. This can serve as a quick way to disable schema validation for the whole zone.  - `"none"` will skip runnin */
   validationOverrideMitigationAction?: "none" | null;
 }
 
 export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  validationDefaultMitigationAction: Schema.Literals(["none", "log", "block"]),
+  validationDefaultMitigationAction: Schema.Union([
+    Schema.Literals(["none", "log", "block"]),
+    Schema.String,
+  ]),
   validationOverrideMitigationAction: Schema.optional(
     Schema.Union([Schema.Literal("none"), Schema.Null]),
   ),
@@ -443,14 +446,17 @@ export interface PutSettingRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: The default mitigation action used Mitigation actions are as follows:  - `"log"` - log request when request does not conform to schema - `"block"` - deny access to the site when request do */
-  validationDefaultMitigationAction: "none" | "log" | "block";
+  validationDefaultMitigationAction: "none" | "log" | "block" | (string & {});
   /** Body param: When set, this overrides both zone level and operation level mitigation actions.  - `"none"` - skip running schema validation entirely for the request - `null` - clears any existing overri */
   validationOverrideMitigationAction?: "none" | null;
 }
 
 export const PutSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  validationDefaultMitigationAction: Schema.Literals(["none", "log", "block"]),
+  validationDefaultMitigationAction: Schema.Union([
+    Schema.Literals(["none", "log", "block"]),
+    Schema.String,
+  ]),
   validationOverrideMitigationAction: Schema.optional(
     Schema.Union([Schema.Literal("none"), Schema.Null]),
   ),
@@ -467,13 +473,16 @@ export const PutSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PutSettingResponse {
   /** The default mitigation action used  Mitigation actions are as follows:  - `log` - log request when request does not conform to schema - `block` - deny access to the site when request does not conform  */
-  validationDefaultMitigationAction: "none" | "log" | "block";
+  validationDefaultMitigationAction: "none" | "log" | "block" | (string & {});
   /** When not null, this overrides global both zone level and operation level mitigation actions. This can serve as a quick way to disable schema validation for the whole zone.  - `"none"` will skip runnin */
   validationOverrideMitigationAction?: "none" | null;
 }
 
 export const PutSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  validationDefaultMitigationAction: Schema.Literals(["none", "log", "block"]),
+  validationDefaultMitigationAction: Schema.Union([
+    Schema.Literals(["none", "log", "block"]),
+    Schema.String,
+  ]),
   validationOverrideMitigationAction: Schema.optional(
     Schema.Union([Schema.Literal("none"), Schema.Null]),
   ),
@@ -506,7 +515,7 @@ export interface PatchSettingRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: The default mitigation action used Mitigation actions are as follows:  - `"log"` - log request when request does not conform to schema - `"block"` - deny access to the site when request do */
-  validationDefaultMitigationAction?: "none" | "log" | "block";
+  validationDefaultMitigationAction?: "none" | "log" | "block" | (string & {});
   /** Body param: When set, this overrides both zone level and operation level mitigation actions.  - `"none"` - skip running schema validation entirely for the request - `null` - clears any existing overri */
   validationOverrideMitigationAction?: "none" | null;
 }
@@ -514,7 +523,7 @@ export interface PatchSettingRequest {
 export const PatchSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   validationDefaultMitigationAction: Schema.optional(
-    Schema.Literals(["none", "log", "block"]),
+    Schema.Union([Schema.Literals(["none", "log", "block"]), Schema.String]),
   ),
   validationOverrideMitigationAction: Schema.optional(
     Schema.Union([Schema.Literal("none"), Schema.Null]),
@@ -532,13 +541,16 @@ export const PatchSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PatchSettingResponse {
   /** The default mitigation action used  Mitigation actions are as follows:  - `log` - log request when request does not conform to schema - `block` - deny access to the site when request does not conform  */
-  validationDefaultMitigationAction: "none" | "log" | "block";
+  validationDefaultMitigationAction: "none" | "log" | "block" | (string & {});
   /** When not null, this overrides global both zone level and operation level mitigation actions. This can serve as a quick way to disable schema validation for the whole zone.  - `"none"` will skip runnin */
   validationOverrideMitigationAction?: "none" | null;
 }
 
 export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  validationDefaultMitigationAction: Schema.Literals(["none", "log", "block"]),
+  validationDefaultMitigationAction: Schema.Union([
+    Schema.Literals(["none", "log", "block"]),
+    Schema.String,
+  ]),
   validationOverrideMitigationAction: Schema.optional(
     Schema.Union([Schema.Literal("none"), Schema.Null]),
   ),
@@ -590,14 +602,17 @@ export const GetSettingOperationRequest =
 
 export interface GetSettingOperationResponse {
   /** When set, this applies a mitigation action to this operation which supersedes a global schema validation setting just for this operation  - `"log"` - log request when request does not conform to schem */
-  mitigationAction: "log" | "block" | "none";
+  mitigationAction: "log" | "block" | "none" | (string & {});
   /** UUID. */
   operationId: string;
 }
 
 export const GetSettingOperationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    mitigationAction: Schema.Literals(["log", "block", "none"]),
+    mitigationAction: Schema.Union([
+      Schema.Literals(["log", "block", "none"]),
+      Schema.String,
+    ]),
     operationId: Schema.String,
   })
     .pipe(
@@ -643,7 +658,10 @@ export const ListSettingOperationsRequest =
   ) as unknown as Schema.Schema<ListSettingOperationsRequest>;
 
 export interface ListSettingOperationsResponse {
-  result: { mitigationAction: "log" | "block" | "none"; operationId: string }[];
+  result: {
+    mitigationAction: "log" | "block" | "none" | (string & {});
+    operationId: string;
+  }[];
   resultInfo?: {
     count?: number | null;
     page?: number | null;
@@ -656,7 +674,10 @@ export const ListSettingOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
-        mitigationAction: Schema.Literals(["log", "block", "none"]),
+        mitigationAction: Schema.Union([
+          Schema.Literals(["log", "block", "none"]),
+          Schema.String,
+        ]),
         operationId: Schema.String,
       }).pipe(
         Schema.encodeKeys({
@@ -737,14 +758,17 @@ export const PutSettingOperationRequest =
 
 export interface PutSettingOperationResponse {
   /** When set, this applies a mitigation action to this operation which supersedes a global schema validation setting just for this operation  - `"log"` - log request when request does not conform to schem */
-  mitigationAction: "log" | "block" | "none";
+  mitigationAction: "log" | "block" | "none" | (string & {});
   /** UUID. */
   operationId: string;
 }
 
 export const PutSettingOperationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    mitigationAction: Schema.Literals(["log", "block", "none"]),
+    mitigationAction: Schema.Union([
+      Schema.Literals(["log", "block", "none"]),
+      Schema.String,
+    ]),
     operationId: Schema.String,
   })
     .pipe(

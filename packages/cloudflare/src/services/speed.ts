@@ -78,6 +78,7 @@ export interface ListAvailabilitiesResponse {
           | "us-east4"
           | "us-south1"
           | "us-west1"
+          | (string & {})
           | null;
       }[]
     | null;
@@ -108,6 +109,7 @@ export interface ListAvailabilitiesResponse {
             | "us-east4"
             | "us-south1"
             | "us-west1"
+            | (string & {})
             | null;
         }[]
       | null;
@@ -136,6 +138,7 @@ export interface ListAvailabilitiesResponse {
             | "us-east4"
             | "us-south1"
             | "us-west1"
+            | (string & {})
             | null;
         }[]
       | null;
@@ -164,6 +167,7 @@ export interface ListAvailabilitiesResponse {
             | "us-east4"
             | "us-south1"
             | "us-west1"
+            | (string & {})
             | null;
         }[]
       | null;
@@ -192,6 +196,7 @@ export interface ListAvailabilitiesResponse {
             | "us-east4"
             | "us-south1"
             | "us-west1"
+            | (string & {})
             | null;
         }[]
       | null;
@@ -273,28 +278,31 @@ export const ListAvailabilitiesResponse =
             label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             value: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "asia-east1",
-                  "asia-northeast1",
-                  "asia-northeast2",
-                  "asia-south1",
-                  "asia-southeast1",
-                  "australia-southeast1",
-                  "europe-north1",
-                  "europe-southwest1",
-                  "europe-west1",
-                  "europe-west2",
-                  "europe-west3",
-                  "europe-west4",
-                  "europe-west8",
-                  "europe-west9",
-                  "me-west1",
-                  "southamerica-east1",
-                  "us-central1",
-                  "us-east1",
-                  "us-east4",
-                  "us-south1",
-                  "us-west1",
+                Schema.Union([
+                  Schema.Literals([
+                    "asia-east1",
+                    "asia-northeast1",
+                    "asia-northeast2",
+                    "asia-south1",
+                    "asia-southeast1",
+                    "australia-southeast1",
+                    "europe-north1",
+                    "europe-southwest1",
+                    "europe-west1",
+                    "europe-west2",
+                    "europe-west3",
+                    "europe-west4",
+                    "europe-west8",
+                    "europe-west9",
+                    "me-west1",
+                    "southamerica-east1",
+                    "us-central1",
+                    "us-east1",
+                    "us-east4",
+                    "us-south1",
+                    "us-west1",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -316,28 +324,31 @@ export const ListAvailabilitiesResponse =
                   ),
                   value: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "asia-east1",
-                        "asia-northeast1",
-                        "asia-northeast2",
-                        "asia-south1",
-                        "asia-southeast1",
-                        "australia-southeast1",
-                        "europe-north1",
-                        "europe-southwest1",
-                        "europe-west1",
-                        "europe-west2",
-                        "europe-west3",
-                        "europe-west4",
-                        "europe-west8",
-                        "europe-west9",
-                        "me-west1",
-                        "southamerica-east1",
-                        "us-central1",
-                        "us-east1",
-                        "us-east4",
-                        "us-south1",
-                        "us-west1",
+                      Schema.Union([
+                        Schema.Literals([
+                          "asia-east1",
+                          "asia-northeast1",
+                          "asia-northeast2",
+                          "asia-south1",
+                          "asia-southeast1",
+                          "australia-southeast1",
+                          "europe-north1",
+                          "europe-southwest1",
+                          "europe-west1",
+                          "europe-west2",
+                          "europe-west3",
+                          "europe-west4",
+                          "europe-west8",
+                          "europe-west9",
+                          "me-west1",
+                          "southamerica-east1",
+                          "us-central1",
+                          "us-east1",
+                          "us-east4",
+                          "us-south1",
+                          "us-west1",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -356,28 +367,31 @@ export const ListAvailabilitiesResponse =
                   ),
                   value: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "asia-east1",
-                        "asia-northeast1",
-                        "asia-northeast2",
-                        "asia-south1",
-                        "asia-southeast1",
-                        "australia-southeast1",
-                        "europe-north1",
-                        "europe-southwest1",
-                        "europe-west1",
-                        "europe-west2",
-                        "europe-west3",
-                        "europe-west4",
-                        "europe-west8",
-                        "europe-west9",
-                        "me-west1",
-                        "southamerica-east1",
-                        "us-central1",
-                        "us-east1",
-                        "us-east4",
-                        "us-south1",
-                        "us-west1",
+                      Schema.Union([
+                        Schema.Literals([
+                          "asia-east1",
+                          "asia-northeast1",
+                          "asia-northeast2",
+                          "asia-south1",
+                          "asia-southeast1",
+                          "australia-southeast1",
+                          "europe-north1",
+                          "europe-southwest1",
+                          "europe-west1",
+                          "europe-west2",
+                          "europe-west3",
+                          "europe-west4",
+                          "europe-west8",
+                          "europe-west9",
+                          "me-west1",
+                          "southamerica-east1",
+                          "us-central1",
+                          "us-east1",
+                          "us-east4",
+                          "us-south1",
+                          "us-west1",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -396,28 +410,31 @@ export const ListAvailabilitiesResponse =
                   ),
                   value: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "asia-east1",
-                        "asia-northeast1",
-                        "asia-northeast2",
-                        "asia-south1",
-                        "asia-southeast1",
-                        "australia-southeast1",
-                        "europe-north1",
-                        "europe-southwest1",
-                        "europe-west1",
-                        "europe-west2",
-                        "europe-west3",
-                        "europe-west4",
-                        "europe-west8",
-                        "europe-west9",
-                        "me-west1",
-                        "southamerica-east1",
-                        "us-central1",
-                        "us-east1",
-                        "us-east4",
-                        "us-south1",
-                        "us-west1",
+                      Schema.Union([
+                        Schema.Literals([
+                          "asia-east1",
+                          "asia-northeast1",
+                          "asia-northeast2",
+                          "asia-south1",
+                          "asia-southeast1",
+                          "australia-southeast1",
+                          "europe-north1",
+                          "europe-southwest1",
+                          "europe-west1",
+                          "europe-west2",
+                          "europe-west3",
+                          "europe-west4",
+                          "europe-west8",
+                          "europe-west9",
+                          "me-west1",
+                          "southamerica-east1",
+                          "us-central1",
+                          "us-east1",
+                          "us-east4",
+                          "us-south1",
+                          "us-west1",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -436,28 +453,31 @@ export const ListAvailabilitiesResponse =
                   ),
                   value: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "asia-east1",
-                        "asia-northeast1",
-                        "asia-northeast2",
-                        "asia-south1",
-                        "asia-southeast1",
-                        "australia-southeast1",
-                        "europe-north1",
-                        "europe-southwest1",
-                        "europe-west1",
-                        "europe-west2",
-                        "europe-west3",
-                        "europe-west4",
-                        "europe-west8",
-                        "europe-west9",
-                        "me-west1",
-                        "southamerica-east1",
-                        "us-central1",
-                        "us-east1",
-                        "us-east4",
-                        "us-south1",
-                        "us-west1",
+                      Schema.Union([
+                        Schema.Literals([
+                          "asia-east1",
+                          "asia-northeast1",
+                          "asia-northeast2",
+                          "asia-south1",
+                          "asia-southeast1",
+                          "australia-southeast1",
+                          "europe-north1",
+                          "europe-southwest1",
+                          "europe-west1",
+                          "europe-west2",
+                          "europe-west3",
+                          "europe-west4",
+                          "europe-west8",
+                          "europe-west9",
+                          "me-west1",
+                          "southamerica-east1",
+                          "us-central1",
+                          "us-east1",
+                          "us-east4",
+                          "us-south1",
+                          "us-west1",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -529,16 +549,17 @@ export interface ListPagesResponse {
         | "us-east4"
         | "us-south1"
         | "us-west1"
+        | (string & {})
         | null;
     } | null;
-    scheduleFrequency?: "DAILY" | "WEEKLY" | null;
+    scheduleFrequency?: "DAILY" | "WEEKLY" | (string & {}) | null;
     tests?:
       | {
           id?: string | null;
           date?: string | null;
           desktopReport?: {
             cls?: number | null;
-            deviceType?: "DESKTOP" | "MOBILE" | null;
+            deviceType?: "DESKTOP" | "MOBILE" | (string & {}) | null;
             error?: {
               code?:
                 | "NOT_REACHABLE"
@@ -546,6 +567,7 @@ export interface ListPagesResponse {
                 | "NOT_HTML"
                 | "LIGHTHOUSE_TIMEOUT"
                 | "UNKNOWN"
+                | (string & {})
                 | null;
               detail?: string | null;
               finalDisplayedUrl?: string | null;
@@ -555,14 +577,14 @@ export interface ListPagesResponse {
             lcp?: number | null;
             performanceScore?: number | null;
             si?: number | null;
-            state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+            state?: "RUNNING" | "COMPLETE" | "FAILED" | (string & {}) | null;
             tbt?: number | null;
             ttfb?: number | null;
             tti?: number | null;
           } | null;
           mobileReport?: {
             cls?: number | null;
-            deviceType?: "DESKTOP" | "MOBILE" | null;
+            deviceType?: "DESKTOP" | "MOBILE" | (string & {}) | null;
             error?: {
               code?:
                 | "NOT_REACHABLE"
@@ -570,6 +592,7 @@ export interface ListPagesResponse {
                 | "NOT_HTML"
                 | "LIGHTHOUSE_TIMEOUT"
                 | "UNKNOWN"
+                | (string & {})
                 | null;
               detail?: string | null;
               finalDisplayedUrl?: string | null;
@@ -579,7 +602,7 @@ export interface ListPagesResponse {
             lcp?: number | null;
             performanceScore?: number | null;
             si?: number | null;
-            state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+            state?: "RUNNING" | "COMPLETE" | "FAILED" | (string & {}) | null;
             tbt?: number | null;
             ttfb?: number | null;
             tti?: number | null;
@@ -608,9 +631,10 @@ export interface ListPagesResponse {
               | "us-east4"
               | "us-south1"
               | "us-west1"
+              | (string & {})
               | null;
           } | null;
-          scheduleFrequency?: "DAILY" | "WEEKLY" | null;
+          scheduleFrequency?: "DAILY" | "WEEKLY" | (string & {}) | null;
           url?: string | null;
         }[]
       | null;
@@ -627,28 +651,31 @@ export const ListPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             value: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "asia-east1",
-                  "asia-northeast1",
-                  "asia-northeast2",
-                  "asia-south1",
-                  "asia-southeast1",
-                  "australia-southeast1",
-                  "europe-north1",
-                  "europe-southwest1",
-                  "europe-west1",
-                  "europe-west2",
-                  "europe-west3",
-                  "europe-west4",
-                  "europe-west8",
-                  "europe-west9",
-                  "me-west1",
-                  "southamerica-east1",
-                  "us-central1",
-                  "us-east1",
-                  "us-east4",
-                  "us-south1",
-                  "us-west1",
+                Schema.Union([
+                  Schema.Literals([
+                    "asia-east1",
+                    "asia-northeast1",
+                    "asia-northeast2",
+                    "asia-south1",
+                    "asia-southeast1",
+                    "australia-southeast1",
+                    "europe-north1",
+                    "europe-southwest1",
+                    "europe-west1",
+                    "europe-west2",
+                    "europe-west3",
+                    "europe-west4",
+                    "europe-west8",
+                    "europe-west9",
+                    "me-west1",
+                    "southamerica-east1",
+                    "us-central1",
+                    "us-east1",
+                    "us-east4",
+                    "us-south1",
+                    "us-west1",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -658,7 +685,10 @@ export const ListPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       scheduleFrequency: Schema.optional(
-        Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.Null]),
+        Schema.Union([
+          Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
+          Schema.Null,
+        ]),
       ),
       tests: Schema.optional(
         Schema.Union([
@@ -674,7 +704,10 @@ export const ListPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     deviceType: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["DESKTOP", "MOBILE"]),
+                        Schema.Union([
+                          Schema.Literals(["DESKTOP", "MOBILE"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -683,12 +716,15 @@ export const ListPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                         Schema.Struct({
                           code: Schema.optional(
                             Schema.Union([
-                              Schema.Literals([
-                                "NOT_REACHABLE",
-                                "DNS_FAILURE",
-                                "NOT_HTML",
-                                "LIGHTHOUSE_TIMEOUT",
-                                "UNKNOWN",
+                              Schema.Union([
+                                Schema.Literals([
+                                  "NOT_REACHABLE",
+                                  "DNS_FAILURE",
+                                  "NOT_HTML",
+                                  "LIGHTHOUSE_TIMEOUT",
+                                  "UNKNOWN",
+                                ]),
+                                Schema.String,
                               ]),
                               Schema.Null,
                             ]),
@@ -720,7 +756,10 @@ export const ListPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     state: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                        Schema.Union([
+                          Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -745,7 +784,10 @@ export const ListPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     deviceType: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["DESKTOP", "MOBILE"]),
+                        Schema.Union([
+                          Schema.Literals(["DESKTOP", "MOBILE"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -754,12 +796,15 @@ export const ListPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                         Schema.Struct({
                           code: Schema.optional(
                             Schema.Union([
-                              Schema.Literals([
-                                "NOT_REACHABLE",
-                                "DNS_FAILURE",
-                                "NOT_HTML",
-                                "LIGHTHOUSE_TIMEOUT",
-                                "UNKNOWN",
+                              Schema.Union([
+                                Schema.Literals([
+                                  "NOT_REACHABLE",
+                                  "DNS_FAILURE",
+                                  "NOT_HTML",
+                                  "LIGHTHOUSE_TIMEOUT",
+                                  "UNKNOWN",
+                                ]),
+                                Schema.String,
                               ]),
                               Schema.Null,
                             ]),
@@ -791,7 +836,10 @@ export const ListPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     state: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                        Schema.Union([
+                          Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -816,28 +864,31 @@ export const ListPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     value: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "asia-east1",
-                          "asia-northeast1",
-                          "asia-northeast2",
-                          "asia-south1",
-                          "asia-southeast1",
-                          "australia-southeast1",
-                          "europe-north1",
-                          "europe-southwest1",
-                          "europe-west1",
-                          "europe-west2",
-                          "europe-west3",
-                          "europe-west4",
-                          "europe-west8",
-                          "europe-west9",
-                          "me-west1",
-                          "southamerica-east1",
-                          "us-central1",
-                          "us-east1",
-                          "us-east4",
-                          "us-south1",
-                          "us-west1",
+                        Schema.Union([
+                          Schema.Literals([
+                            "asia-east1",
+                            "asia-northeast1",
+                            "asia-northeast2",
+                            "asia-south1",
+                            "asia-southeast1",
+                            "australia-southeast1",
+                            "europe-north1",
+                            "europe-southwest1",
+                            "europe-west1",
+                            "europe-west2",
+                            "europe-west3",
+                            "europe-west4",
+                            "europe-west8",
+                            "europe-west9",
+                            "me-west1",
+                            "southamerica-east1",
+                            "us-central1",
+                            "us-east1",
+                            "us-east4",
+                            "us-south1",
+                            "us-west1",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -848,7 +899,10 @@ export const ListPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               scheduleFrequency: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["DAILY", "WEEKLY"]),
+                  Schema.Union([
+                    Schema.Literals(["DAILY", "WEEKLY"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -885,7 +939,7 @@ export interface TrendPageRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Query param: The type of device. */
-  deviceType: "DESKTOP" | "MOBILE";
+  deviceType: "DESKTOP" | "MOBILE" | (string & {});
   /** Query param: A comma-separated list of metrics to include in the results. */
   metrics: string;
   /** Query param: A test region. */
@@ -910,7 +964,8 @@ export interface TrendPageRequest {
     | "us-east1"
     | "us-east4"
     | "us-south1"
-    | "us-west1";
+    | "us-west1"
+    | (string & {});
   /** Query param */
   start: string;
   /** Query param: The timezone of the start and end timestamps. */
@@ -922,32 +977,36 @@ export interface TrendPageRequest {
 export const TrendPageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpPath("url")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  deviceType: Schema.Literals(["DESKTOP", "MOBILE"]).pipe(
-    T.HttpQuery("deviceType"),
-  ),
+  deviceType: Schema.Union([
+    Schema.Literals(["DESKTOP", "MOBILE"]),
+    Schema.String,
+  ]).pipe(T.HttpQuery("deviceType")),
   metrics: Schema.String.pipe(T.HttpQuery("metrics")),
-  region: Schema.Literals([
-    "asia-east1",
-    "asia-northeast1",
-    "asia-northeast2",
-    "asia-south1",
-    "asia-southeast1",
-    "australia-southeast1",
-    "europe-north1",
-    "europe-southwest1",
-    "europe-west1",
-    "europe-west2",
-    "europe-west3",
-    "europe-west4",
-    "europe-west8",
-    "europe-west9",
-    "me-west1",
-    "southamerica-east1",
-    "us-central1",
-    "us-east1",
-    "us-east4",
-    "us-south1",
-    "us-west1",
+  region: Schema.Union([
+    Schema.Literals([
+      "asia-east1",
+      "asia-northeast1",
+      "asia-northeast2",
+      "asia-south1",
+      "asia-southeast1",
+      "australia-southeast1",
+      "europe-north1",
+      "europe-southwest1",
+      "europe-west1",
+      "europe-west2",
+      "europe-west3",
+      "europe-west4",
+      "europe-west8",
+      "europe-west9",
+      "me-west1",
+      "southamerica-east1",
+      "us-central1",
+      "us-east1",
+      "us-east4",
+      "us-south1",
+      "us-west1",
+    ]),
+    Schema.String,
   ]).pipe(T.HttpQuery("region")),
   start: Schema.String.pipe(T.HttpQuery("start")),
   tz: Schema.String.pipe(T.HttpQuery("tz")),
@@ -1073,7 +1132,7 @@ export interface GetPageTestResponse {
   /** The Lighthouse report. */
   desktopReport?: {
     cls?: number | null;
-    deviceType?: "DESKTOP" | "MOBILE" | null;
+    deviceType?: "DESKTOP" | "MOBILE" | (string & {}) | null;
     error?: {
       code?:
         | "NOT_REACHABLE"
@@ -1081,6 +1140,7 @@ export interface GetPageTestResponse {
         | "NOT_HTML"
         | "LIGHTHOUSE_TIMEOUT"
         | "UNKNOWN"
+        | (string & {})
         | null;
       detail?: string | null;
       finalDisplayedUrl?: string | null;
@@ -1090,7 +1150,7 @@ export interface GetPageTestResponse {
     lcp?: number | null;
     performanceScore?: number | null;
     si?: number | null;
-    state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+    state?: "RUNNING" | "COMPLETE" | "FAILED" | (string & {}) | null;
     tbt?: number | null;
     ttfb?: number | null;
     tti?: number | null;
@@ -1098,7 +1158,7 @@ export interface GetPageTestResponse {
   /** The Lighthouse report. */
   mobileReport?: {
     cls?: number | null;
-    deviceType?: "DESKTOP" | "MOBILE" | null;
+    deviceType?: "DESKTOP" | "MOBILE" | (string & {}) | null;
     error?: {
       code?:
         | "NOT_REACHABLE"
@@ -1106,6 +1166,7 @@ export interface GetPageTestResponse {
         | "NOT_HTML"
         | "LIGHTHOUSE_TIMEOUT"
         | "UNKNOWN"
+        | (string & {})
         | null;
       detail?: string | null;
       finalDisplayedUrl?: string | null;
@@ -1115,7 +1176,7 @@ export interface GetPageTestResponse {
     lcp?: number | null;
     performanceScore?: number | null;
     si?: number | null;
-    state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+    state?: "RUNNING" | "COMPLETE" | "FAILED" | (string & {}) | null;
     tbt?: number | null;
     ttfb?: number | null;
     tti?: number | null;
@@ -1145,10 +1206,11 @@ export interface GetPageTestResponse {
       | "us-east4"
       | "us-south1"
       | "us-west1"
+      | (string & {})
       | null;
   } | null;
   /** The frequency of the test. */
-  scheduleFrequency?: "DAILY" | "WEEKLY" | null;
+  scheduleFrequency?: "DAILY" | "WEEKLY" | (string & {}) | null;
   /** A URL. */
   url?: string | null;
 }
@@ -1161,19 +1223,28 @@ export const GetPageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         deviceType: Schema.optional(
-          Schema.Union([Schema.Literals(["DESKTOP", "MOBILE"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["DESKTOP", "MOBILE"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
         ),
         error: Schema.optional(
           Schema.Union([
             Schema.Struct({
               code: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "NOT_REACHABLE",
-                    "DNS_FAILURE",
-                    "NOT_HTML",
-                    "LIGHTHOUSE_TIMEOUT",
-                    "UNKNOWN",
+                  Schema.Union([
+                    Schema.Literals([
+                      "NOT_REACHABLE",
+                      "DNS_FAILURE",
+                      "NOT_HTML",
+                      "LIGHTHOUSE_TIMEOUT",
+                      "UNKNOWN",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -1199,7 +1270,10 @@ export const GetPageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         state: Schema.optional(
           Schema.Union([
-            Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+            Schema.Union([
+              Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -1215,19 +1289,28 @@ export const GetPageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         deviceType: Schema.optional(
-          Schema.Union([Schema.Literals(["DESKTOP", "MOBILE"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["DESKTOP", "MOBILE"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
         ),
         error: Schema.optional(
           Schema.Union([
             Schema.Struct({
               code: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "NOT_REACHABLE",
-                    "DNS_FAILURE",
-                    "NOT_HTML",
-                    "LIGHTHOUSE_TIMEOUT",
-                    "UNKNOWN",
+                  Schema.Union([
+                    Schema.Literals([
+                      "NOT_REACHABLE",
+                      "DNS_FAILURE",
+                      "NOT_HTML",
+                      "LIGHTHOUSE_TIMEOUT",
+                      "UNKNOWN",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -1253,7 +1336,10 @@ export const GetPageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         state: Schema.optional(
           Schema.Union([
-            Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+            Schema.Union([
+              Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -1270,28 +1356,31 @@ export const GetPageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         value: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "asia-east1",
-              "asia-northeast1",
-              "asia-northeast2",
-              "asia-south1",
-              "asia-southeast1",
-              "australia-southeast1",
-              "europe-north1",
-              "europe-southwest1",
-              "europe-west1",
-              "europe-west2",
-              "europe-west3",
-              "europe-west4",
-              "europe-west8",
-              "europe-west9",
-              "me-west1",
-              "southamerica-east1",
-              "us-central1",
-              "us-east1",
-              "us-east4",
-              "us-south1",
-              "us-west1",
+            Schema.Union([
+              Schema.Literals([
+                "asia-east1",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-south1",
+                "asia-southeast1",
+                "australia-southeast1",
+                "europe-north1",
+                "europe-southwest1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west8",
+                "europe-west9",
+                "me-west1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-south1",
+                "us-west1",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -1301,7 +1390,10 @@ export const GetPageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   scheduleFrequency: Schema.optional(
-    Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.Null]),
+    Schema.Union([
+      Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
+      Schema.Null,
+    ]),
   ),
   url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 }).pipe(
@@ -1349,7 +1441,8 @@ export interface ListPageTestsRequest {
     | "us-east1"
     | "us-east4"
     | "us-south1"
-    | "us-west1";
+    | "us-west1"
+    | (string & {});
 }
 
 export const ListPageTestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1358,28 +1451,31 @@ export const ListPageTestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   region: Schema.optional(
-    Schema.Literals([
-      "asia-east1",
-      "asia-northeast1",
-      "asia-northeast2",
-      "asia-south1",
-      "asia-southeast1",
-      "australia-southeast1",
-      "europe-north1",
-      "europe-southwest1",
-      "europe-west1",
-      "europe-west2",
-      "europe-west3",
-      "europe-west4",
-      "europe-west8",
-      "europe-west9",
-      "me-west1",
-      "southamerica-east1",
-      "us-central1",
-      "us-east1",
-      "us-east4",
-      "us-south1",
-      "us-west1",
+    Schema.Union([
+      Schema.Literals([
+        "asia-east1",
+        "asia-northeast1",
+        "asia-northeast2",
+        "asia-south1",
+        "asia-southeast1",
+        "australia-southeast1",
+        "europe-north1",
+        "europe-southwest1",
+        "europe-west1",
+        "europe-west2",
+        "europe-west3",
+        "europe-west4",
+        "europe-west8",
+        "europe-west9",
+        "me-west1",
+        "southamerica-east1",
+        "us-central1",
+        "us-east1",
+        "us-east4",
+        "us-south1",
+        "us-west1",
+      ]),
+      Schema.String,
     ]),
   ).pipe(T.HttpQuery("region")),
 }).pipe(
@@ -1395,7 +1491,7 @@ export interface ListPageTestsResponse {
     date?: string | null;
     desktopReport?: {
       cls?: number | null;
-      deviceType?: "DESKTOP" | "MOBILE" | null;
+      deviceType?: "DESKTOP" | "MOBILE" | (string & {}) | null;
       error?: {
         code?:
           | "NOT_REACHABLE"
@@ -1403,6 +1499,7 @@ export interface ListPageTestsResponse {
           | "NOT_HTML"
           | "LIGHTHOUSE_TIMEOUT"
           | "UNKNOWN"
+          | (string & {})
           | null;
         detail?: string | null;
         finalDisplayedUrl?: string | null;
@@ -1412,14 +1509,14 @@ export interface ListPageTestsResponse {
       lcp?: number | null;
       performanceScore?: number | null;
       si?: number | null;
-      state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+      state?: "RUNNING" | "COMPLETE" | "FAILED" | (string & {}) | null;
       tbt?: number | null;
       ttfb?: number | null;
       tti?: number | null;
     } | null;
     mobileReport?: {
       cls?: number | null;
-      deviceType?: "DESKTOP" | "MOBILE" | null;
+      deviceType?: "DESKTOP" | "MOBILE" | (string & {}) | null;
       error?: {
         code?:
           | "NOT_REACHABLE"
@@ -1427,6 +1524,7 @@ export interface ListPageTestsResponse {
           | "NOT_HTML"
           | "LIGHTHOUSE_TIMEOUT"
           | "UNKNOWN"
+          | (string & {})
           | null;
         detail?: string | null;
         finalDisplayedUrl?: string | null;
@@ -1436,7 +1534,7 @@ export interface ListPageTestsResponse {
       lcp?: number | null;
       performanceScore?: number | null;
       si?: number | null;
-      state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+      state?: "RUNNING" | "COMPLETE" | "FAILED" | (string & {}) | null;
       tbt?: number | null;
       ttfb?: number | null;
       tti?: number | null;
@@ -1465,9 +1563,10 @@ export interface ListPageTestsResponse {
         | "us-east4"
         | "us-south1"
         | "us-west1"
+        | (string & {})
         | null;
     } | null;
-    scheduleFrequency?: "DAILY" | "WEEKLY" | null;
+    scheduleFrequency?: "DAILY" | "WEEKLY" | (string & {}) | null;
     url?: string | null;
   }[];
   resultInfo?: {
@@ -1489,7 +1588,10 @@ export const ListPageTestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
             deviceType: Schema.optional(
               Schema.Union([
-                Schema.Literals(["DESKTOP", "MOBILE"]),
+                Schema.Union([
+                  Schema.Literals(["DESKTOP", "MOBILE"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -1498,12 +1600,15 @@ export const ListPageTestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Struct({
                   code: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "NOT_REACHABLE",
-                        "DNS_FAILURE",
-                        "NOT_HTML",
-                        "LIGHTHOUSE_TIMEOUT",
-                        "UNKNOWN",
+                      Schema.Union([
+                        Schema.Literals([
+                          "NOT_REACHABLE",
+                          "DNS_FAILURE",
+                          "NOT_HTML",
+                          "LIGHTHOUSE_TIMEOUT",
+                          "UNKNOWN",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -1529,7 +1634,10 @@ export const ListPageTestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
             state: Schema.optional(
               Schema.Union([
-                Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                Schema.Union([
+                  Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -1546,7 +1654,10 @@ export const ListPageTestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
             deviceType: Schema.optional(
               Schema.Union([
-                Schema.Literals(["DESKTOP", "MOBILE"]),
+                Schema.Union([
+                  Schema.Literals(["DESKTOP", "MOBILE"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -1555,12 +1666,15 @@ export const ListPageTestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Struct({
                   code: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "NOT_REACHABLE",
-                        "DNS_FAILURE",
-                        "NOT_HTML",
-                        "LIGHTHOUSE_TIMEOUT",
-                        "UNKNOWN",
+                      Schema.Union([
+                        Schema.Literals([
+                          "NOT_REACHABLE",
+                          "DNS_FAILURE",
+                          "NOT_HTML",
+                          "LIGHTHOUSE_TIMEOUT",
+                          "UNKNOWN",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -1586,7 +1700,10 @@ export const ListPageTestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
             state: Schema.optional(
               Schema.Union([
-                Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                Schema.Union([
+                  Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -1603,28 +1720,31 @@ export const ListPageTestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             value: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "asia-east1",
-                  "asia-northeast1",
-                  "asia-northeast2",
-                  "asia-south1",
-                  "asia-southeast1",
-                  "australia-southeast1",
-                  "europe-north1",
-                  "europe-southwest1",
-                  "europe-west1",
-                  "europe-west2",
-                  "europe-west3",
-                  "europe-west4",
-                  "europe-west8",
-                  "europe-west9",
-                  "me-west1",
-                  "southamerica-east1",
-                  "us-central1",
-                  "us-east1",
-                  "us-east4",
-                  "us-south1",
-                  "us-west1",
+                Schema.Union([
+                  Schema.Literals([
+                    "asia-east1",
+                    "asia-northeast1",
+                    "asia-northeast2",
+                    "asia-south1",
+                    "asia-southeast1",
+                    "australia-southeast1",
+                    "europe-north1",
+                    "europe-southwest1",
+                    "europe-west1",
+                    "europe-west2",
+                    "europe-west3",
+                    "europe-west4",
+                    "europe-west8",
+                    "europe-west9",
+                    "me-west1",
+                    "southamerica-east1",
+                    "us-central1",
+                    "us-east1",
+                    "us-east4",
+                    "us-south1",
+                    "us-west1",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -1634,7 +1754,10 @@ export const ListPageTestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       scheduleFrequency: Schema.optional(
-        Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.Null]),
+        Schema.Union([
+          Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
+          Schema.Null,
+        ]),
       ),
       url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
@@ -1707,35 +1830,39 @@ export interface CreatePageTestRequest {
     | "us-east1"
     | "us-east4"
     | "us-south1"
-    | "us-west1";
+    | "us-west1"
+    | (string & {});
 }
 
 export const CreatePageTestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpPath("url")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   region: Schema.optional(
-    Schema.Literals([
-      "asia-east1",
-      "asia-northeast1",
-      "asia-northeast2",
-      "asia-south1",
-      "asia-southeast1",
-      "australia-southeast1",
-      "europe-north1",
-      "europe-southwest1",
-      "europe-west1",
-      "europe-west2",
-      "europe-west3",
-      "europe-west4",
-      "europe-west8",
-      "europe-west9",
-      "me-west1",
-      "southamerica-east1",
-      "us-central1",
-      "us-east1",
-      "us-east4",
-      "us-south1",
-      "us-west1",
+    Schema.Union([
+      Schema.Literals([
+        "asia-east1",
+        "asia-northeast1",
+        "asia-northeast2",
+        "asia-south1",
+        "asia-southeast1",
+        "australia-southeast1",
+        "europe-north1",
+        "europe-southwest1",
+        "europe-west1",
+        "europe-west2",
+        "europe-west3",
+        "europe-west4",
+        "europe-west8",
+        "europe-west9",
+        "me-west1",
+        "southamerica-east1",
+        "us-central1",
+        "us-east1",
+        "us-east4",
+        "us-south1",
+        "us-west1",
+      ]),
+      Schema.String,
     ]),
   ),
 }).pipe(
@@ -1752,7 +1879,7 @@ export interface CreatePageTestResponse {
   /** The Lighthouse report. */
   desktopReport?: {
     cls?: number | null;
-    deviceType?: "DESKTOP" | "MOBILE" | null;
+    deviceType?: "DESKTOP" | "MOBILE" | (string & {}) | null;
     error?: {
       code?:
         | "NOT_REACHABLE"
@@ -1760,6 +1887,7 @@ export interface CreatePageTestResponse {
         | "NOT_HTML"
         | "LIGHTHOUSE_TIMEOUT"
         | "UNKNOWN"
+        | (string & {})
         | null;
       detail?: string | null;
       finalDisplayedUrl?: string | null;
@@ -1769,7 +1897,7 @@ export interface CreatePageTestResponse {
     lcp?: number | null;
     performanceScore?: number | null;
     si?: number | null;
-    state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+    state?: "RUNNING" | "COMPLETE" | "FAILED" | (string & {}) | null;
     tbt?: number | null;
     ttfb?: number | null;
     tti?: number | null;
@@ -1777,7 +1905,7 @@ export interface CreatePageTestResponse {
   /** The Lighthouse report. */
   mobileReport?: {
     cls?: number | null;
-    deviceType?: "DESKTOP" | "MOBILE" | null;
+    deviceType?: "DESKTOP" | "MOBILE" | (string & {}) | null;
     error?: {
       code?:
         | "NOT_REACHABLE"
@@ -1785,6 +1913,7 @@ export interface CreatePageTestResponse {
         | "NOT_HTML"
         | "LIGHTHOUSE_TIMEOUT"
         | "UNKNOWN"
+        | (string & {})
         | null;
       detail?: string | null;
       finalDisplayedUrl?: string | null;
@@ -1794,7 +1923,7 @@ export interface CreatePageTestResponse {
     lcp?: number | null;
     performanceScore?: number | null;
     si?: number | null;
-    state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+    state?: "RUNNING" | "COMPLETE" | "FAILED" | (string & {}) | null;
     tbt?: number | null;
     ttfb?: number | null;
     tti?: number | null;
@@ -1824,10 +1953,11 @@ export interface CreatePageTestResponse {
       | "us-east4"
       | "us-south1"
       | "us-west1"
+      | (string & {})
       | null;
   } | null;
   /** The frequency of the test. */
-  scheduleFrequency?: "DAILY" | "WEEKLY" | null;
+  scheduleFrequency?: "DAILY" | "WEEKLY" | (string & {}) | null;
   /** A URL. */
   url?: string | null;
 }
@@ -1841,19 +1971,28 @@ export const CreatePageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.Struct({
           cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
           deviceType: Schema.optional(
-            Schema.Union([Schema.Literals(["DESKTOP", "MOBILE"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["DESKTOP", "MOBILE"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
           error: Schema.optional(
             Schema.Union([
               Schema.Struct({
                 code: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "NOT_REACHABLE",
-                      "DNS_FAILURE",
-                      "NOT_HTML",
-                      "LIGHTHOUSE_TIMEOUT",
-                      "UNKNOWN",
+                    Schema.Union([
+                      Schema.Literals([
+                        "NOT_REACHABLE",
+                        "DNS_FAILURE",
+                        "NOT_HTML",
+                        "LIGHTHOUSE_TIMEOUT",
+                        "UNKNOWN",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -1879,7 +2018,10 @@ export const CreatePageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
           state: Schema.optional(
             Schema.Union([
-              Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+              Schema.Union([
+                Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -1895,19 +2037,28 @@ export const CreatePageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.Struct({
           cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
           deviceType: Schema.optional(
-            Schema.Union([Schema.Literals(["DESKTOP", "MOBILE"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["DESKTOP", "MOBILE"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
           error: Schema.optional(
             Schema.Union([
               Schema.Struct({
                 code: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "NOT_REACHABLE",
-                      "DNS_FAILURE",
-                      "NOT_HTML",
-                      "LIGHTHOUSE_TIMEOUT",
-                      "UNKNOWN",
+                    Schema.Union([
+                      Schema.Literals([
+                        "NOT_REACHABLE",
+                        "DNS_FAILURE",
+                        "NOT_HTML",
+                        "LIGHTHOUSE_TIMEOUT",
+                        "UNKNOWN",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -1933,7 +2084,10 @@ export const CreatePageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
           state: Schema.optional(
             Schema.Union([
-              Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+              Schema.Union([
+                Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -1950,28 +2104,31 @@ export const CreatePageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           value: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "asia-east1",
-                "asia-northeast1",
-                "asia-northeast2",
-                "asia-south1",
-                "asia-southeast1",
-                "australia-southeast1",
-                "europe-north1",
-                "europe-southwest1",
-                "europe-west1",
-                "europe-west2",
-                "europe-west3",
-                "europe-west4",
-                "europe-west8",
-                "europe-west9",
-                "me-west1",
-                "southamerica-east1",
-                "us-central1",
-                "us-east1",
-                "us-east4",
-                "us-south1",
-                "us-west1",
+              Schema.Union([
+                Schema.Literals([
+                  "asia-east1",
+                  "asia-northeast1",
+                  "asia-northeast2",
+                  "asia-south1",
+                  "asia-southeast1",
+                  "australia-southeast1",
+                  "europe-north1",
+                  "europe-southwest1",
+                  "europe-west1",
+                  "europe-west2",
+                  "europe-west3",
+                  "europe-west4",
+                  "europe-west8",
+                  "europe-west9",
+                  "me-west1",
+                  "southamerica-east1",
+                  "us-central1",
+                  "us-east1",
+                  "us-east4",
+                  "us-south1",
+                  "us-west1",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -1981,7 +2138,10 @@ export const CreatePageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ]),
     ),
     scheduleFrequency: Schema.optional(
-      Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   },
@@ -2028,35 +2188,39 @@ export interface DeletePageTestRequest {
     | "us-east1"
     | "us-east4"
     | "us-south1"
-    | "us-west1";
+    | "us-west1"
+    | (string & {});
 }
 
 export const DeletePageTestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpPath("url")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   region: Schema.optional(
-    Schema.Literals([
-      "asia-east1",
-      "asia-northeast1",
-      "asia-northeast2",
-      "asia-south1",
-      "asia-southeast1",
-      "australia-southeast1",
-      "europe-north1",
-      "europe-southwest1",
-      "europe-west1",
-      "europe-west2",
-      "europe-west3",
-      "europe-west4",
-      "europe-west8",
-      "europe-west9",
-      "me-west1",
-      "southamerica-east1",
-      "us-central1",
-      "us-east1",
-      "us-east4",
-      "us-south1",
-      "us-west1",
+    Schema.Union([
+      Schema.Literals([
+        "asia-east1",
+        "asia-northeast1",
+        "asia-northeast2",
+        "asia-south1",
+        "asia-southeast1",
+        "australia-southeast1",
+        "europe-north1",
+        "europe-southwest1",
+        "europe-west1",
+        "europe-west2",
+        "europe-west3",
+        "europe-west4",
+        "europe-west8",
+        "europe-west9",
+        "me-west1",
+        "southamerica-east1",
+        "us-central1",
+        "us-east1",
+        "us-east4",
+        "us-south1",
+        "us-west1",
+      ]),
+      Schema.String,
     ]),
   ).pipe(T.HttpQuery("region")),
 }).pipe(
@@ -2122,76 +2286,13 @@ export interface GetScheduleRequest {
     | "us-east1"
     | "us-east4"
     | "us-south1"
-    | "us-west1";
+    | "us-west1"
+    | (string & {});
 }
 
 export const GetScheduleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpPath("url")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  region: Schema.optional(
-    Schema.Literals([
-      "asia-east1",
-      "asia-northeast1",
-      "asia-northeast2",
-      "asia-south1",
-      "asia-southeast1",
-      "australia-southeast1",
-      "europe-north1",
-      "europe-southwest1",
-      "europe-west1",
-      "europe-west2",
-      "europe-west3",
-      "europe-west4",
-      "europe-west8",
-      "europe-west9",
-      "me-west1",
-      "southamerica-east1",
-      "us-central1",
-      "us-east1",
-      "us-east4",
-      "us-south1",
-      "us-west1",
-    ]),
-  ).pipe(T.HttpQuery("region")),
-}).pipe(
-  T.Http({ method: "GET", path: "/zones/{zone_id}/speed_api/schedule/{url}" }),
-) as unknown as Schema.Schema<GetScheduleRequest>;
-
-export interface GetScheduleResponse {
-  /** The frequency of the test. */
-  frequency?: "DAILY" | "WEEKLY" | null;
-  /** A test region. */
-  region?:
-    | "asia-east1"
-    | "asia-northeast1"
-    | "asia-northeast2"
-    | "asia-south1"
-    | "asia-southeast1"
-    | "australia-southeast1"
-    | "europe-north1"
-    | "europe-southwest1"
-    | "europe-west1"
-    | "europe-west2"
-    | "europe-west3"
-    | "europe-west4"
-    | "europe-west8"
-    | "europe-west9"
-    | "me-west1"
-    | "southamerica-east1"
-    | "us-central1"
-    | "us-east1"
-    | "us-east4"
-    | "us-south1"
-    | "us-west1"
-    | null;
-  /** A URL. */
-  url?: string | null;
-}
-
-export const GetScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  frequency: Schema.optional(
-    Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.Null]),
-  ),
   region: Schema.optional(
     Schema.Union([
       Schema.Literals([
@@ -2216,6 +2317,80 @@ export const GetScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         "us-east4",
         "us-south1",
         "us-west1",
+      ]),
+      Schema.String,
+    ]),
+  ).pipe(T.HttpQuery("region")),
+}).pipe(
+  T.Http({ method: "GET", path: "/zones/{zone_id}/speed_api/schedule/{url}" }),
+) as unknown as Schema.Schema<GetScheduleRequest>;
+
+export interface GetScheduleResponse {
+  /** The frequency of the test. */
+  frequency?: "DAILY" | "WEEKLY" | (string & {}) | null;
+  /** A test region. */
+  region?:
+    | "asia-east1"
+    | "asia-northeast1"
+    | "asia-northeast2"
+    | "asia-south1"
+    | "asia-southeast1"
+    | "australia-southeast1"
+    | "europe-north1"
+    | "europe-southwest1"
+    | "europe-west1"
+    | "europe-west2"
+    | "europe-west3"
+    | "europe-west4"
+    | "europe-west8"
+    | "europe-west9"
+    | "me-west1"
+    | "southamerica-east1"
+    | "us-central1"
+    | "us-east1"
+    | "us-east4"
+    | "us-south1"
+    | "us-west1"
+    | (string & {})
+    | null;
+  /** A URL. */
+  url?: string | null;
+}
+
+export const GetScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  frequency: Schema.optional(
+    Schema.Union([
+      Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
+      Schema.Null,
+    ]),
+  ),
+  region: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals([
+          "asia-east1",
+          "asia-northeast1",
+          "asia-northeast2",
+          "asia-south1",
+          "asia-southeast1",
+          "australia-southeast1",
+          "europe-north1",
+          "europe-southwest1",
+          "europe-west1",
+          "europe-west2",
+          "europe-west3",
+          "europe-west4",
+          "europe-west8",
+          "europe-west9",
+          "me-west1",
+          "southamerica-east1",
+          "us-central1",
+          "us-east1",
+          "us-east4",
+          "us-south1",
+          "us-west1",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -2243,7 +2418,7 @@ export interface CreateScheduleRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Query param: The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans. */
-  frequency?: "DAILY" | "WEEKLY";
+  frequency?: "DAILY" | "WEEKLY" | (string & {});
   /** Query param: A test region. */
   region?:
     | "asia-east1"
@@ -2266,38 +2441,42 @@ export interface CreateScheduleRequest {
     | "us-east1"
     | "us-east4"
     | "us-south1"
-    | "us-west1";
+    | "us-west1"
+    | (string & {});
 }
 
 export const CreateScheduleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpPath("url")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  frequency: Schema.optional(Schema.Literals(["DAILY", "WEEKLY"])).pipe(
-    T.HttpQuery("frequency"),
-  ),
+  frequency: Schema.optional(
+    Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
+  ).pipe(T.HttpQuery("frequency")),
   region: Schema.optional(
-    Schema.Literals([
-      "asia-east1",
-      "asia-northeast1",
-      "asia-northeast2",
-      "asia-south1",
-      "asia-southeast1",
-      "australia-southeast1",
-      "europe-north1",
-      "europe-southwest1",
-      "europe-west1",
-      "europe-west2",
-      "europe-west3",
-      "europe-west4",
-      "europe-west8",
-      "europe-west9",
-      "me-west1",
-      "southamerica-east1",
-      "us-central1",
-      "us-east1",
-      "us-east4",
-      "us-south1",
-      "us-west1",
+    Schema.Union([
+      Schema.Literals([
+        "asia-east1",
+        "asia-northeast1",
+        "asia-northeast2",
+        "asia-south1",
+        "asia-southeast1",
+        "australia-southeast1",
+        "europe-north1",
+        "europe-southwest1",
+        "europe-west1",
+        "europe-west2",
+        "europe-west3",
+        "europe-west4",
+        "europe-west8",
+        "europe-west9",
+        "me-west1",
+        "southamerica-east1",
+        "us-central1",
+        "us-east1",
+        "us-east4",
+        "us-south1",
+        "us-west1",
+      ]),
+      Schema.String,
     ]),
   ).pipe(T.HttpQuery("region")),
 }).pipe(
@@ -2307,7 +2486,7 @@ export const CreateScheduleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface CreateScheduleResponse {
   /** The test schedule. */
   schedule?: {
-    frequency?: "DAILY" | "WEEKLY" | null;
+    frequency?: "DAILY" | "WEEKLY" | (string & {}) | null;
     region?:
       | "asia-east1"
       | "asia-northeast1"
@@ -2330,6 +2509,7 @@ export interface CreateScheduleResponse {
       | "us-east4"
       | "us-south1"
       | "us-west1"
+      | (string & {})
       | null;
     url?: string | null;
   } | null;
@@ -2338,7 +2518,7 @@ export interface CreateScheduleResponse {
     date?: string | null;
     desktopReport?: {
       cls?: number | null;
-      deviceType?: "DESKTOP" | "MOBILE" | null;
+      deviceType?: "DESKTOP" | "MOBILE" | (string & {}) | null;
       error?: {
         code?:
           | "NOT_REACHABLE"
@@ -2346,6 +2526,7 @@ export interface CreateScheduleResponse {
           | "NOT_HTML"
           | "LIGHTHOUSE_TIMEOUT"
           | "UNKNOWN"
+          | (string & {})
           | null;
         detail?: string | null;
         finalDisplayedUrl?: string | null;
@@ -2355,14 +2536,14 @@ export interface CreateScheduleResponse {
       lcp?: number | null;
       performanceScore?: number | null;
       si?: number | null;
-      state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+      state?: "RUNNING" | "COMPLETE" | "FAILED" | (string & {}) | null;
       tbt?: number | null;
       ttfb?: number | null;
       tti?: number | null;
     } | null;
     mobileReport?: {
       cls?: number | null;
-      deviceType?: "DESKTOP" | "MOBILE" | null;
+      deviceType?: "DESKTOP" | "MOBILE" | (string & {}) | null;
       error?: {
         code?:
           | "NOT_REACHABLE"
@@ -2370,6 +2551,7 @@ export interface CreateScheduleResponse {
           | "NOT_HTML"
           | "LIGHTHOUSE_TIMEOUT"
           | "UNKNOWN"
+          | (string & {})
           | null;
         detail?: string | null;
         finalDisplayedUrl?: string | null;
@@ -2379,7 +2561,7 @@ export interface CreateScheduleResponse {
       lcp?: number | null;
       performanceScore?: number | null;
       si?: number | null;
-      state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+      state?: "RUNNING" | "COMPLETE" | "FAILED" | (string & {}) | null;
       tbt?: number | null;
       ttfb?: number | null;
       tti?: number | null;
@@ -2408,9 +2590,10 @@ export interface CreateScheduleResponse {
         | "us-east4"
         | "us-south1"
         | "us-west1"
+        | (string & {})
         | null;
     } | null;
-    scheduleFrequency?: "DAILY" | "WEEKLY" | null;
+    scheduleFrequency?: "DAILY" | "WEEKLY" | (string & {}) | null;
     url?: string | null;
   } | null;
 }
@@ -2421,32 +2604,41 @@ export const CreateScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Union([
         Schema.Struct({
           frequency: Schema.optional(
-            Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["DAILY", "WEEKLY"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
           region: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "asia-east1",
-                "asia-northeast1",
-                "asia-northeast2",
-                "asia-south1",
-                "asia-southeast1",
-                "australia-southeast1",
-                "europe-north1",
-                "europe-southwest1",
-                "europe-west1",
-                "europe-west2",
-                "europe-west3",
-                "europe-west4",
-                "europe-west8",
-                "europe-west9",
-                "me-west1",
-                "southamerica-east1",
-                "us-central1",
-                "us-east1",
-                "us-east4",
-                "us-south1",
-                "us-west1",
+              Schema.Union([
+                Schema.Literals([
+                  "asia-east1",
+                  "asia-northeast1",
+                  "asia-northeast2",
+                  "asia-south1",
+                  "asia-southeast1",
+                  "australia-southeast1",
+                  "europe-north1",
+                  "europe-southwest1",
+                  "europe-west1",
+                  "europe-west2",
+                  "europe-west3",
+                  "europe-west4",
+                  "europe-west8",
+                  "europe-west9",
+                  "me-west1",
+                  "southamerica-east1",
+                  "us-central1",
+                  "us-east1",
+                  "us-east4",
+                  "us-south1",
+                  "us-west1",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -2469,7 +2661,10 @@ export const CreateScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
                 deviceType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["DESKTOP", "MOBILE"]),
+                    Schema.Union([
+                      Schema.Literals(["DESKTOP", "MOBILE"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -2478,12 +2673,15 @@ export const CreateScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                     Schema.Struct({
                       code: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "NOT_REACHABLE",
-                            "DNS_FAILURE",
-                            "NOT_HTML",
-                            "LIGHTHOUSE_TIMEOUT",
-                            "UNKNOWN",
+                          Schema.Union([
+                            Schema.Literals([
+                              "NOT_REACHABLE",
+                              "DNS_FAILURE",
+                              "NOT_HTML",
+                              "LIGHTHOUSE_TIMEOUT",
+                              "UNKNOWN",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
@@ -2513,7 +2711,10 @@ export const CreateScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
                 state: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                    Schema.Union([
+                      Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -2538,7 +2739,10 @@ export const CreateScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
                 deviceType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["DESKTOP", "MOBILE"]),
+                    Schema.Union([
+                      Schema.Literals(["DESKTOP", "MOBILE"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -2547,12 +2751,15 @@ export const CreateScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                     Schema.Struct({
                       code: Schema.optional(
                         Schema.Union([
-                          Schema.Literals([
-                            "NOT_REACHABLE",
-                            "DNS_FAILURE",
-                            "NOT_HTML",
-                            "LIGHTHOUSE_TIMEOUT",
-                            "UNKNOWN",
+                          Schema.Union([
+                            Schema.Literals([
+                              "NOT_REACHABLE",
+                              "DNS_FAILURE",
+                              "NOT_HTML",
+                              "LIGHTHOUSE_TIMEOUT",
+                              "UNKNOWN",
+                            ]),
+                            Schema.String,
                           ]),
                           Schema.Null,
                         ]),
@@ -2582,7 +2789,10 @@ export const CreateScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
                 state: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                    Schema.Union([
+                      Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -2607,28 +2817,31 @@ export const CreateScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ),
                 value: Schema.optional(
                   Schema.Union([
-                    Schema.Literals([
-                      "asia-east1",
-                      "asia-northeast1",
-                      "asia-northeast2",
-                      "asia-south1",
-                      "asia-southeast1",
-                      "australia-southeast1",
-                      "europe-north1",
-                      "europe-southwest1",
-                      "europe-west1",
-                      "europe-west2",
-                      "europe-west3",
-                      "europe-west4",
-                      "europe-west8",
-                      "europe-west9",
-                      "me-west1",
-                      "southamerica-east1",
-                      "us-central1",
-                      "us-east1",
-                      "us-east4",
-                      "us-south1",
-                      "us-west1",
+                    Schema.Union([
+                      Schema.Literals([
+                        "asia-east1",
+                        "asia-northeast1",
+                        "asia-northeast2",
+                        "asia-south1",
+                        "asia-southeast1",
+                        "australia-southeast1",
+                        "europe-north1",
+                        "europe-southwest1",
+                        "europe-west1",
+                        "europe-west2",
+                        "europe-west3",
+                        "europe-west4",
+                        "europe-west8",
+                        "europe-west9",
+                        "me-west1",
+                        "southamerica-east1",
+                        "us-central1",
+                        "us-east1",
+                        "us-east4",
+                        "us-south1",
+                        "us-west1",
+                      ]),
+                      Schema.String,
                     ]),
                     Schema.Null,
                   ]),
@@ -2638,7 +2851,13 @@ export const CreateScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           scheduleFrequency: Schema.optional(
-            Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["DAILY", "WEEKLY"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
           url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         }),
@@ -2689,35 +2908,39 @@ export interface DeleteScheduleRequest {
     | "us-east1"
     | "us-east4"
     | "us-south1"
-    | "us-west1";
+    | "us-west1"
+    | (string & {});
 }
 
 export const DeleteScheduleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpPath("url")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   region: Schema.optional(
-    Schema.Literals([
-      "asia-east1",
-      "asia-northeast1",
-      "asia-northeast2",
-      "asia-south1",
-      "asia-southeast1",
-      "australia-southeast1",
-      "europe-north1",
-      "europe-southwest1",
-      "europe-west1",
-      "europe-west2",
-      "europe-west3",
-      "europe-west4",
-      "europe-west8",
-      "europe-west9",
-      "me-west1",
-      "southamerica-east1",
-      "us-central1",
-      "us-east1",
-      "us-east4",
-      "us-south1",
-      "us-west1",
+    Schema.Union([
+      Schema.Literals([
+        "asia-east1",
+        "asia-northeast1",
+        "asia-northeast2",
+        "asia-south1",
+        "asia-southeast1",
+        "australia-southeast1",
+        "europe-north1",
+        "europe-southwest1",
+        "europe-west1",
+        "europe-west2",
+        "europe-west3",
+        "europe-west4",
+        "europe-west8",
+        "europe-west9",
+        "me-west1",
+        "southamerica-east1",
+        "us-central1",
+        "us-east1",
+        "us-east4",
+        "us-south1",
+        "us-west1",
+      ]),
+      Schema.String,
     ]),
   ).pipe(T.HttpQuery("region")),
 }).pipe(

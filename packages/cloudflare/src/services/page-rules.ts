@@ -35,12 +35,24 @@ export interface GetPageRuleResponse {
   /** The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both. */
   actions: (
     | { id?: "always_use_https" | null }
-    | { id?: "automatic_https_rewrites" | null; value?: "on" | "off" | null }
+    | {
+        id?: "automatic_https_rewrites" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | { id?: "browser_cache_ttl" | null; value?: number | null }
-    | { id?: "browser_check" | null; value?: "on" | "off" | null }
+    | {
+        id?: "browser_check" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | { id?: "bypass_cache_on_cookie" | null; value?: string | null }
-    | { id?: "cache_by_device_type" | null; value?: "on" | "off" | null }
-    | { id?: "cache_deception_armor" | null; value?: "on" | "off" | null }
+    | {
+        id?: "cache_by_device_type" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "cache_deception_armor" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "cache_key_fields" | null;
         value?: {
@@ -73,6 +85,7 @@ export interface GetPageRuleResponse {
           | "simplified"
           | "aggressive"
           | "cache_everything"
+          | (string & {})
           | null;
       }
     | { id?: "cache_on_cookie" | null; value?: string | null }
@@ -85,25 +98,52 @@ export interface GetPageRuleResponse {
     | { id?: "disable_security" | null }
     | { id?: "disable_zaraz" | null }
     | { id?: "edge_cache_ttl" | null; value?: number | null }
-    | { id?: "email_obfuscation" | null; value?: "on" | "off" | null }
-    | { id?: "explicit_cache_control" | null; value?: "on" | "off" | null }
+    | {
+        id?: "email_obfuscation" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "explicit_cache_control" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "forwarding_url" | null;
         value?: {
-          statusCode?: "301" | "302" | null;
+          statusCode?: "301" | "302" | (string & {}) | null;
           url?: string | null;
         } | null;
       }
     | { id?: "host_header_override" | null; value?: string | null }
-    | { id?: "ip_geolocation" | null; value?: "on" | "off" | null }
-    | { id?: "mirage" | null; value?: "on" | "off" | null }
-    | { id?: "opportunistic_encryption" | null; value?: "on" | "off" | null }
-    | { id?: "origin_error_page_pass_thru" | null; value?: "on" | "off" | null }
-    | { id?: "polish" | null; value?: "off" | "lossless" | "lossy" | null }
+    | {
+        id?: "ip_geolocation" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | { id?: "mirage" | null; value?: "on" | "off" | (string & {}) | null }
+    | {
+        id?: "opportunistic_encryption" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "origin_error_page_pass_thru" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "polish" | null;
+        value?: "off" | "lossless" | "lossy" | (string & {}) | null;
+      }
     | { id?: "resolve_override" | null; value?: string | null }
-    | { id?: "respect_strong_etag" | null; value?: "on" | "off" | null }
-    | { id?: "response_buffering" | null; value?: "on" | "off" | null }
-    | { id?: "rocket_loader" | null; value?: "on" | "off" | null }
+    | {
+        id?: "respect_strong_etag" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "response_buffering" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "rocket_loader" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "security_level" | null;
         value?:
@@ -113,15 +153,29 @@ export interface GetPageRuleResponse {
           | "medium"
           | "high"
           | "under_attack"
+          | (string & {})
           | null;
       }
-    | { id?: "sort_query_string_for_cache" | null; value?: "on" | "off" | null }
+    | {
+        id?: "sort_query_string_for_cache" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "ssl" | null;
-        value?: "off" | "flexible" | "full" | "strict" | "origin_pull" | null;
+        value?:
+          | "off"
+          | "flexible"
+          | "full"
+          | "strict"
+          | "origin_pull"
+          | (string & {})
+          | null;
       }
-    | { id?: "true_client_ip_header" | null; value?: "on" | "off" | null }
-    | { id?: "waf" | null; value?: "on" | "off" | null }
+    | {
+        id?: "true_client_ip_header" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | { id?: "waf" | null; value?: "on" | "off" | (string & {}) | null }
   )[];
   /** The timestamp of when the Page Rule was created. */
   createdOn: string;
@@ -130,11 +184,17 @@ export interface GetPageRuleResponse {
   /** The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/ `) bu */
   priority: number;
   /** The status of the Page Rule. */
-  status: "active" | "disabled";
+  status: "active" | "disabled" | (string & {});
   /** The rule targets to evaluate on each request. */
   targets: {
     constraint?: {
-      operator: "matches" | "contains" | "equals" | "not_equal" | "not_contain";
+      operator:
+        | "matches"
+        | "contains"
+        | "equals"
+        | "not_equal"
+        | "not_contain"
+        | (string & {});
       value: string;
     } | null;
     target?: "url" | null;
@@ -158,7 +218,10 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -172,7 +235,10 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("browser_check"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -186,7 +252,10 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("cache_by_device_type"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -194,7 +263,10 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("cache_deception_armor"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -320,12 +392,15 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         value: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "bypass",
-              "basic",
-              "simplified",
-              "aggressive",
-              "cache_everything",
+            Schema.Union([
+              Schema.Literals([
+                "bypass",
+                "basic",
+                "simplified",
+                "aggressive",
+                "cache_everything",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -379,7 +454,10 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("email_obfuscation"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -387,7 +465,10 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("explicit_cache_control"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -398,7 +479,13 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Struct({
               statusCode: Schema.optional(
-                Schema.Union([Schema.Literals(["301", "302"]), Schema.Null]),
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["301", "302"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
               ),
               url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             }).pipe(
@@ -419,7 +506,10 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("ip_geolocation"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -427,7 +517,10 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("mirage"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -438,7 +531,10 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -449,7 +545,10 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -458,7 +557,10 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         value: Schema.optional(
           Schema.Union([
-            Schema.Literals(["off", "lossless", "lossy"]),
+            Schema.Union([
+              Schema.Literals(["off", "lossless", "lossy"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -474,7 +576,10 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("respect_strong_etag"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -482,7 +587,10 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("response_buffering"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -490,7 +598,10 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("rocket_loader"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -499,13 +610,16 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         value: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "off",
-              "essentially_off",
-              "low",
-              "medium",
-              "high",
-              "under_attack",
+            Schema.Union([
+              Schema.Literals([
+                "off",
+                "essentially_off",
+                "low",
+                "medium",
+                "high",
+                "under_attack",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -519,19 +633,25 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Union([Schema.Literal("ssl"), Schema.Null])),
         value: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "off",
-              "flexible",
-              "full",
-              "strict",
-              "origin_pull",
+            Schema.Union([
+              Schema.Literals([
+                "off",
+                "flexible",
+                "full",
+                "strict",
+                "origin_pull",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -542,13 +662,19 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("true_client_ip_header"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Union([Schema.Literal("waf"), Schema.Null])),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
     ]),
@@ -556,18 +682,24 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   createdOn: Schema.String,
   modifiedOn: Schema.String,
   priority: Schema.Number,
-  status: Schema.Literals(["active", "disabled"]),
+  status: Schema.Union([
+    Schema.Literals(["active", "disabled"]),
+    Schema.String,
+  ]),
   targets: Schema.Array(
     Schema.Struct({
       constraint: Schema.optional(
         Schema.Union([
           Schema.Struct({
-            operator: Schema.Literals([
-              "matches",
-              "contains",
-              "equals",
-              "not_equal",
-              "not_contain",
+            operator: Schema.Union([
+              Schema.Literals([
+                "matches",
+                "contains",
+                "equals",
+                "not_equal",
+                "not_contain",
+              ]),
+              Schema.String,
             ]),
             value: Schema.String,
           }),
@@ -612,29 +744,29 @@ export interface ListPageRulesRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Query param: The direction used to sort returned Page Rules. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match. */
-  match?: "any" | "all";
+  match?: "any" | "all" | (string & {});
   /** Query param: The field used to sort returned Page Rules. */
-  order?: "status" | "priority";
+  order?: "status" | "priority" | (string & {});
   /** Query param: The status of the Page Rule. */
-  status?: "active" | "disabled";
+  status?: "active" | "disabled" | (string & {});
 }
 
 export const ListPageRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
-  match: Schema.optional(Schema.Literals(["any", "all"])).pipe(
-    T.HttpQuery("match"),
-  ),
-  order: Schema.optional(Schema.Literals(["status", "priority"])).pipe(
-    T.HttpQuery("order"),
-  ),
-  status: Schema.optional(Schema.Literals(["active", "disabled"])).pipe(
-    T.HttpQuery("status"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
+  match: Schema.optional(
+    Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
+  ).pipe(T.HttpQuery("match")),
+  order: Schema.optional(
+    Schema.Union([Schema.Literals(["status", "priority"]), Schema.String]),
+  ).pipe(T.HttpQuery("order")),
+  status: Schema.optional(
+    Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
+  ).pipe(T.HttpQuery("status")),
 }).pipe(
   T.Http({ method: "GET", path: "/zones/{zone_id}/pagerules" }),
 ) as unknown as Schema.Schema<ListPageRulesRequest>;
@@ -643,12 +775,24 @@ export type ListPageRulesResponse = {
   id: string;
   actions: (
     | { id?: "always_use_https" | null }
-    | { id?: "automatic_https_rewrites" | null; value?: "on" | "off" | null }
+    | {
+        id?: "automatic_https_rewrites" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | { id?: "browser_cache_ttl" | null; value?: number | null }
-    | { id?: "browser_check" | null; value?: "on" | "off" | null }
+    | {
+        id?: "browser_check" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | { id?: "bypass_cache_on_cookie" | null; value?: string | null }
-    | { id?: "cache_by_device_type" | null; value?: "on" | "off" | null }
-    | { id?: "cache_deception_armor" | null; value?: "on" | "off" | null }
+    | {
+        id?: "cache_by_device_type" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "cache_deception_armor" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "cache_key_fields" | null;
         value?: {
@@ -681,6 +825,7 @@ export type ListPageRulesResponse = {
           | "simplified"
           | "aggressive"
           | "cache_everything"
+          | (string & {})
           | null;
       }
     | { id?: "cache_on_cookie" | null; value?: string | null }
@@ -693,25 +838,52 @@ export type ListPageRulesResponse = {
     | { id?: "disable_security" | null }
     | { id?: "disable_zaraz" | null }
     | { id?: "edge_cache_ttl" | null; value?: number | null }
-    | { id?: "email_obfuscation" | null; value?: "on" | "off" | null }
-    | { id?: "explicit_cache_control" | null; value?: "on" | "off" | null }
+    | {
+        id?: "email_obfuscation" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "explicit_cache_control" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "forwarding_url" | null;
         value?: {
-          statusCode?: "301" | "302" | null;
+          statusCode?: "301" | "302" | (string & {}) | null;
           url?: string | null;
         } | null;
       }
     | { id?: "host_header_override" | null; value?: string | null }
-    | { id?: "ip_geolocation" | null; value?: "on" | "off" | null }
-    | { id?: "mirage" | null; value?: "on" | "off" | null }
-    | { id?: "opportunistic_encryption" | null; value?: "on" | "off" | null }
-    | { id?: "origin_error_page_pass_thru" | null; value?: "on" | "off" | null }
-    | { id?: "polish" | null; value?: "off" | "lossless" | "lossy" | null }
+    | {
+        id?: "ip_geolocation" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | { id?: "mirage" | null; value?: "on" | "off" | (string & {}) | null }
+    | {
+        id?: "opportunistic_encryption" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "origin_error_page_pass_thru" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "polish" | null;
+        value?: "off" | "lossless" | "lossy" | (string & {}) | null;
+      }
     | { id?: "resolve_override" | null; value?: string | null }
-    | { id?: "respect_strong_etag" | null; value?: "on" | "off" | null }
-    | { id?: "response_buffering" | null; value?: "on" | "off" | null }
-    | { id?: "rocket_loader" | null; value?: "on" | "off" | null }
+    | {
+        id?: "respect_strong_etag" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "response_buffering" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "rocket_loader" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "security_level" | null;
         value?:
@@ -721,23 +893,43 @@ export type ListPageRulesResponse = {
           | "medium"
           | "high"
           | "under_attack"
+          | (string & {})
           | null;
       }
-    | { id?: "sort_query_string_for_cache" | null; value?: "on" | "off" | null }
+    | {
+        id?: "sort_query_string_for_cache" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "ssl" | null;
-        value?: "off" | "flexible" | "full" | "strict" | "origin_pull" | null;
+        value?:
+          | "off"
+          | "flexible"
+          | "full"
+          | "strict"
+          | "origin_pull"
+          | (string & {})
+          | null;
       }
-    | { id?: "true_client_ip_header" | null; value?: "on" | "off" | null }
-    | { id?: "waf" | null; value?: "on" | "off" | null }
+    | {
+        id?: "true_client_ip_header" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | { id?: "waf" | null; value?: "on" | "off" | (string & {}) | null }
   )[];
   createdOn: string;
   modifiedOn: string;
   priority: number;
-  status: "active" | "disabled";
+  status: "active" | "disabled" | (string & {});
   targets: {
     constraint?: {
-      operator: "matches" | "contains" | "equals" | "not_equal" | "not_contain";
+      operator:
+        | "matches"
+        | "contains"
+        | "equals"
+        | "not_equal"
+        | "not_contain"
+        | (string & {});
       value: string;
     } | null;
     target?: "url" | null;
@@ -762,7 +954,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -776,7 +971,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             Schema.Union([Schema.Literal("browser_check"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -793,7 +991,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             Schema.Union([Schema.Literal("cache_by_device_type"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -804,7 +1005,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -945,12 +1149,15 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
           ),
           value: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "bypass",
-                "basic",
-                "simplified",
-                "aggressive",
-                "cache_everything",
+              Schema.Union([
+                Schema.Literals([
+                  "bypass",
+                  "basic",
+                  "simplified",
+                  "aggressive",
+                  "cache_everything",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -1004,7 +1211,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             Schema.Union([Schema.Literal("email_obfuscation"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1015,7 +1225,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1026,7 +1239,13 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             Schema.Union([
               Schema.Struct({
                 statusCode: Schema.optional(
-                  Schema.Union([Schema.Literals(["301", "302"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["301", "302"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
                 url: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
@@ -1049,7 +1268,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             Schema.Union([Schema.Literal("ip_geolocation"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1057,7 +1279,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             Schema.Union([Schema.Literal("mirage"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1068,7 +1293,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1079,7 +1307,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1088,7 +1319,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
           ),
           value: Schema.optional(
             Schema.Union([
-              Schema.Literals(["off", "lossless", "lossy"]),
+              Schema.Union([
+                Schema.Literals(["off", "lossless", "lossy"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -1104,7 +1338,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             Schema.Union([Schema.Literal("respect_strong_etag"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1112,7 +1349,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             Schema.Union([Schema.Literal("response_buffering"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1120,7 +1360,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             Schema.Union([Schema.Literal("rocket_loader"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1129,13 +1372,16 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
           ),
           value: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "off",
-                "essentially_off",
-                "low",
-                "medium",
-                "high",
-                "under_attack",
+              Schema.Union([
+                Schema.Literals([
+                  "off",
+                  "essentially_off",
+                  "low",
+                  "medium",
+                  "high",
+                  "under_attack",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -1149,7 +1395,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1158,12 +1407,15 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
           ),
           value: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "off",
-                "flexible",
-                "full",
-                "strict",
-                "origin_pull",
+              Schema.Union([
+                Schema.Literals([
+                  "off",
+                  "flexible",
+                  "full",
+                  "strict",
+                  "origin_pull",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -1177,7 +1429,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1185,7 +1440,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             Schema.Union([Schema.Literal("waf"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
       ]),
@@ -1193,18 +1451,24 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     createdOn: Schema.String,
     modifiedOn: Schema.String,
     priority: Schema.Number,
-    status: Schema.Literals(["active", "disabled"]),
+    status: Schema.Union([
+      Schema.Literals(["active", "disabled"]),
+      Schema.String,
+    ]),
     targets: Schema.Array(
       Schema.Struct({
         constraint: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              operator: Schema.Literals([
-                "matches",
-                "contains",
-                "equals",
-                "not_equal",
-                "not_contain",
+              operator: Schema.Union([
+                Schema.Literals([
+                  "matches",
+                  "contains",
+                  "equals",
+                  "not_equal",
+                  "not_contain",
+                ]),
+                Schema.String,
               ]),
               value: Schema.String,
             }),
@@ -1250,12 +1514,12 @@ export interface CreatePageRuleRequest {
   /** Body param: The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both. */
   actions: (
     | { id?: "always_use_https" }
-    | { id?: "automatic_https_rewrites"; value?: "on" | "off" }
+    | { id?: "automatic_https_rewrites"; value?: "on" | "off" | (string & {}) }
     | { id?: "browser_cache_ttl"; value?: number }
-    | { id?: "browser_check"; value?: "on" | "off" }
+    | { id?: "browser_check"; value?: "on" | "off" | (string & {}) }
     | { id?: "bypass_cache_on_cookie"; value?: string }
-    | { id?: "cache_by_device_type"; value?: "on" | "off" }
-    | { id?: "cache_deception_armor"; value?: "on" | "off" }
+    | { id?: "cache_by_device_type"; value?: "on" | "off" | (string & {}) }
+    | { id?: "cache_deception_armor"; value?: "on" | "off" | (string & {}) }
     | {
         id?: "cache_key_fields";
         value?: {
@@ -1277,7 +1541,8 @@ export interface CreatePageRuleRequest {
           | "basic"
           | "simplified"
           | "aggressive"
-          | "cache_everything";
+          | "cache_everything"
+          | (string & {});
       }
     | { id?: "cache_on_cookie"; value?: string }
     | { id?: "cache_ttl_by_status"; value?: Record<string, unknown> }
@@ -1286,22 +1551,25 @@ export interface CreatePageRuleRequest {
     | { id?: "disable_security" }
     | { id?: "disable_zaraz" }
     | { id?: "edge_cache_ttl"; value?: number }
-    | { id?: "email_obfuscation"; value?: "on" | "off" }
-    | { id?: "explicit_cache_control"; value?: "on" | "off" }
+    | { id?: "email_obfuscation"; value?: "on" | "off" | (string & {}) }
+    | { id?: "explicit_cache_control"; value?: "on" | "off" | (string & {}) }
     | {
         id?: "forwarding_url";
-        value?: { statusCode?: "301" | "302"; url?: string };
+        value?: { statusCode?: "301" | "302" | (string & {}); url?: string };
       }
     | { id?: "host_header_override"; value?: string }
-    | { id?: "ip_geolocation"; value?: "on" | "off" }
-    | { id?: "mirage"; value?: "on" | "off" }
-    | { id?: "opportunistic_encryption"; value?: "on" | "off" }
-    | { id?: "origin_error_page_pass_thru"; value?: "on" | "off" }
-    | { id?: "polish"; value?: "off" | "lossless" | "lossy" }
+    | { id?: "ip_geolocation"; value?: "on" | "off" | (string & {}) }
+    | { id?: "mirage"; value?: "on" | "off" | (string & {}) }
+    | { id?: "opportunistic_encryption"; value?: "on" | "off" | (string & {}) }
+    | {
+        id?: "origin_error_page_pass_thru";
+        value?: "on" | "off" | (string & {});
+      }
+    | { id?: "polish"; value?: "off" | "lossless" | "lossy" | (string & {}) }
     | { id?: "resolve_override"; value?: string }
-    | { id?: "respect_strong_etag"; value?: "on" | "off" }
-    | { id?: "response_buffering"; value?: "on" | "off" }
-    | { id?: "rocket_loader"; value?: "on" | "off" }
+    | { id?: "respect_strong_etag"; value?: "on" | "off" | (string & {}) }
+    | { id?: "response_buffering"; value?: "on" | "off" | (string & {}) }
+    | { id?: "rocket_loader"; value?: "on" | "off" | (string & {}) }
     | {
         id?: "security_level";
         value?:
@@ -1310,20 +1578,36 @@ export interface CreatePageRuleRequest {
           | "low"
           | "medium"
           | "high"
-          | "under_attack";
+          | "under_attack"
+          | (string & {});
       }
-    | { id?: "sort_query_string_for_cache"; value?: "on" | "off" }
+    | {
+        id?: "sort_query_string_for_cache";
+        value?: "on" | "off" | (string & {});
+      }
     | {
         id?: "ssl";
-        value?: "off" | "flexible" | "full" | "strict" | "origin_pull";
+        value?:
+          | "off"
+          | "flexible"
+          | "full"
+          | "strict"
+          | "origin_pull"
+          | (string & {});
       }
-    | { id?: "true_client_ip_header"; value?: "on" | "off" }
-    | { id?: "waf"; value?: "on" | "off" }
+    | { id?: "true_client_ip_header"; value?: "on" | "off" | (string & {}) }
+    | { id?: "waf"; value?: "on" | "off" | (string & {}) }
   )[];
   /** Body param: The rule targets to evaluate on each request. */
   targets: {
     constraint?: {
-      operator: "matches" | "contains" | "equals" | "not_equal" | "not_contain";
+      operator:
+        | "matches"
+        | "contains"
+        | "equals"
+        | "not_equal"
+        | "not_contain"
+        | (string & {});
       value: string;
     };
     target?: "url";
@@ -1331,7 +1615,7 @@ export interface CreatePageRuleRequest {
   /** Body param: The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/i */
   priority?: number;
   /** Body param: The status of the Page Rule. */
-  status?: "active" | "disabled";
+  status?: "active" | "disabled" | (string & {});
 }
 
 export const CreatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1343,7 +1627,9 @@ export const CreatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("automatic_https_rewrites")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("browser_cache_ttl")),
@@ -1351,7 +1637,9 @@ export const CreatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("browser_check")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("bypass_cache_on_cookie")),
@@ -1359,11 +1647,15 @@ export const CreatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("cache_by_device_type")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("cache_deception_armor")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("cache_key_fields")),
@@ -1441,12 +1733,15 @@ export const CreatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         id: Schema.optional(Schema.Literal("cache_level")),
         value: Schema.optional(
-          Schema.Literals([
-            "bypass",
-            "basic",
-            "simplified",
-            "aggressive",
-            "cache_everything",
+          Schema.Union([
+            Schema.Literals([
+              "bypass",
+              "basic",
+              "simplified",
+              "aggressive",
+              "cache_everything",
+            ]),
+            Schema.String,
           ]),
         ),
       }),
@@ -1476,17 +1771,23 @@ export const CreatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("email_obfuscation")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("explicit_cache_control")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("forwarding_url")),
         value: Schema.optional(
           Schema.Struct({
-            statusCode: Schema.optional(Schema.Literals(["301", "302"])),
+            statusCode: Schema.optional(
+              Schema.Union([Schema.Literals(["301", "302"]), Schema.String]),
+            ),
             url: Schema.optional(Schema.String),
           }).pipe(Schema.encodeKeys({ statusCode: "status_code", url: "url" })),
         ),
@@ -1497,23 +1798,36 @@ export const CreatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("ip_geolocation")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("mirage")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("opportunistic_encryption")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("origin_error_page_pass_thru")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("polish")),
-        value: Schema.optional(Schema.Literals(["off", "lossless", "lossy"])),
+        value: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["off", "lossless", "lossy"]),
+            Schema.String,
+          ]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("resolve_override")),
@@ -1521,46 +1835,70 @@ export const CreatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("respect_strong_etag")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("response_buffering")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("rocket_loader")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("security_level")),
         value: Schema.optional(
-          Schema.Literals([
-            "off",
-            "essentially_off",
-            "low",
-            "medium",
-            "high",
-            "under_attack",
+          Schema.Union([
+            Schema.Literals([
+              "off",
+              "essentially_off",
+              "low",
+              "medium",
+              "high",
+              "under_attack",
+            ]),
+            Schema.String,
           ]),
         ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("sort_query_string_for_cache")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("ssl")),
         value: Schema.optional(
-          Schema.Literals(["off", "flexible", "full", "strict", "origin_pull"]),
+          Schema.Union([
+            Schema.Literals([
+              "off",
+              "flexible",
+              "full",
+              "strict",
+              "origin_pull",
+            ]),
+            Schema.String,
+          ]),
         ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("true_client_ip_header")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("waf")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
     ]),
   ),
@@ -1568,12 +1906,15 @@ export const CreatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       constraint: Schema.optional(
         Schema.Struct({
-          operator: Schema.Literals([
-            "matches",
-            "contains",
-            "equals",
-            "not_equal",
-            "not_contain",
+          operator: Schema.Union([
+            Schema.Literals([
+              "matches",
+              "contains",
+              "equals",
+              "not_equal",
+              "not_contain",
+            ]),
+            Schema.String,
           ]),
           value: Schema.String,
         }),
@@ -1582,7 +1923,9 @@ export const CreatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   priority: Schema.optional(Schema.Number),
-  status: Schema.optional(Schema.Literals(["active", "disabled"])),
+  status: Schema.optional(
+    Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
+  ),
 }).pipe(
   T.Http({ method: "POST", path: "/zones/{zone_id}/pagerules" }),
 ) as unknown as Schema.Schema<CreatePageRuleRequest>;
@@ -1593,12 +1936,24 @@ export interface CreatePageRuleResponse {
   /** The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both. */
   actions: (
     | { id?: "always_use_https" | null }
-    | { id?: "automatic_https_rewrites" | null; value?: "on" | "off" | null }
+    | {
+        id?: "automatic_https_rewrites" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | { id?: "browser_cache_ttl" | null; value?: number | null }
-    | { id?: "browser_check" | null; value?: "on" | "off" | null }
+    | {
+        id?: "browser_check" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | { id?: "bypass_cache_on_cookie" | null; value?: string | null }
-    | { id?: "cache_by_device_type" | null; value?: "on" | "off" | null }
-    | { id?: "cache_deception_armor" | null; value?: "on" | "off" | null }
+    | {
+        id?: "cache_by_device_type" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "cache_deception_armor" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "cache_key_fields" | null;
         value?: {
@@ -1631,6 +1986,7 @@ export interface CreatePageRuleResponse {
           | "simplified"
           | "aggressive"
           | "cache_everything"
+          | (string & {})
           | null;
       }
     | { id?: "cache_on_cookie" | null; value?: string | null }
@@ -1643,25 +1999,52 @@ export interface CreatePageRuleResponse {
     | { id?: "disable_security" | null }
     | { id?: "disable_zaraz" | null }
     | { id?: "edge_cache_ttl" | null; value?: number | null }
-    | { id?: "email_obfuscation" | null; value?: "on" | "off" | null }
-    | { id?: "explicit_cache_control" | null; value?: "on" | "off" | null }
+    | {
+        id?: "email_obfuscation" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "explicit_cache_control" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "forwarding_url" | null;
         value?: {
-          statusCode?: "301" | "302" | null;
+          statusCode?: "301" | "302" | (string & {}) | null;
           url?: string | null;
         } | null;
       }
     | { id?: "host_header_override" | null; value?: string | null }
-    | { id?: "ip_geolocation" | null; value?: "on" | "off" | null }
-    | { id?: "mirage" | null; value?: "on" | "off" | null }
-    | { id?: "opportunistic_encryption" | null; value?: "on" | "off" | null }
-    | { id?: "origin_error_page_pass_thru" | null; value?: "on" | "off" | null }
-    | { id?: "polish" | null; value?: "off" | "lossless" | "lossy" | null }
+    | {
+        id?: "ip_geolocation" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | { id?: "mirage" | null; value?: "on" | "off" | (string & {}) | null }
+    | {
+        id?: "opportunistic_encryption" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "origin_error_page_pass_thru" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "polish" | null;
+        value?: "off" | "lossless" | "lossy" | (string & {}) | null;
+      }
     | { id?: "resolve_override" | null; value?: string | null }
-    | { id?: "respect_strong_etag" | null; value?: "on" | "off" | null }
-    | { id?: "response_buffering" | null; value?: "on" | "off" | null }
-    | { id?: "rocket_loader" | null; value?: "on" | "off" | null }
+    | {
+        id?: "respect_strong_etag" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "response_buffering" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "rocket_loader" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "security_level" | null;
         value?:
@@ -1671,15 +2054,29 @@ export interface CreatePageRuleResponse {
           | "medium"
           | "high"
           | "under_attack"
+          | (string & {})
           | null;
       }
-    | { id?: "sort_query_string_for_cache" | null; value?: "on" | "off" | null }
+    | {
+        id?: "sort_query_string_for_cache" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "ssl" | null;
-        value?: "off" | "flexible" | "full" | "strict" | "origin_pull" | null;
+        value?:
+          | "off"
+          | "flexible"
+          | "full"
+          | "strict"
+          | "origin_pull"
+          | (string & {})
+          | null;
       }
-    | { id?: "true_client_ip_header" | null; value?: "on" | "off" | null }
-    | { id?: "waf" | null; value?: "on" | "off" | null }
+    | {
+        id?: "true_client_ip_header" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | { id?: "waf" | null; value?: "on" | "off" | (string & {}) | null }
   )[];
   /** The timestamp of when the Page Rule was created. */
   createdOn: string;
@@ -1688,11 +2085,17 @@ export interface CreatePageRuleResponse {
   /** The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/ `) bu */
   priority: number;
   /** The status of the Page Rule. */
-  status: "active" | "disabled";
+  status: "active" | "disabled" | (string & {});
   /** The rule targets to evaluate on each request. */
   targets: {
     constraint?: {
-      operator: "matches" | "contains" | "equals" | "not_equal" | "not_contain";
+      operator:
+        | "matches"
+        | "contains"
+        | "equals"
+        | "not_equal"
+        | "not_contain"
+        | (string & {});
       value: string;
     } | null;
     target?: "url" | null;
@@ -1717,7 +2120,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1731,7 +2137,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("browser_check"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1748,7 +2157,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("cache_by_device_type"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1759,7 +2171,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1900,12 +2315,15 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           ),
           value: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "bypass",
-                "basic",
-                "simplified",
-                "aggressive",
-                "cache_everything",
+              Schema.Union([
+                Schema.Literals([
+                  "bypass",
+                  "basic",
+                  "simplified",
+                  "aggressive",
+                  "cache_everything",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -1959,7 +2377,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("email_obfuscation"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1970,7 +2391,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1981,7 +2405,13 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([
               Schema.Struct({
                 statusCode: Schema.optional(
-                  Schema.Union([Schema.Literals(["301", "302"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["301", "302"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
                 url: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
@@ -2004,7 +2434,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("ip_geolocation"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2012,7 +2445,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("mirage"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2023,7 +2459,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2034,7 +2473,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2043,7 +2485,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           ),
           value: Schema.optional(
             Schema.Union([
-              Schema.Literals(["off", "lossless", "lossy"]),
+              Schema.Union([
+                Schema.Literals(["off", "lossless", "lossy"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -2059,7 +2504,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("respect_strong_etag"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2067,7 +2515,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("response_buffering"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2075,7 +2526,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("rocket_loader"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2084,13 +2538,16 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           ),
           value: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "off",
-                "essentially_off",
-                "low",
-                "medium",
-                "high",
-                "under_attack",
+              Schema.Union([
+                Schema.Literals([
+                  "off",
+                  "essentially_off",
+                  "low",
+                  "medium",
+                  "high",
+                  "under_attack",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -2104,7 +2561,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2113,12 +2573,15 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           ),
           value: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "off",
-                "flexible",
-                "full",
-                "strict",
-                "origin_pull",
+              Schema.Union([
+                Schema.Literals([
+                  "off",
+                  "flexible",
+                  "full",
+                  "strict",
+                  "origin_pull",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -2132,7 +2595,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2140,7 +2606,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("waf"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
       ]),
@@ -2148,18 +2617,24 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     createdOn: Schema.String,
     modifiedOn: Schema.String,
     priority: Schema.Number,
-    status: Schema.Literals(["active", "disabled"]),
+    status: Schema.Union([
+      Schema.Literals(["active", "disabled"]),
+      Schema.String,
+    ]),
     targets: Schema.Array(
       Schema.Struct({
         constraint: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              operator: Schema.Literals([
-                "matches",
-                "contains",
-                "equals",
-                "not_equal",
-                "not_contain",
+              operator: Schema.Union([
+                Schema.Literals([
+                  "matches",
+                  "contains",
+                  "equals",
+                  "not_equal",
+                  "not_contain",
+                ]),
+                Schema.String,
               ]),
               value: Schema.String,
             }),
@@ -2208,12 +2683,12 @@ export interface UpdatePageRuleRequest {
   /** Body param: The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both. */
   actions: (
     | { id?: "always_use_https" }
-    | { id?: "automatic_https_rewrites"; value?: "on" | "off" }
+    | { id?: "automatic_https_rewrites"; value?: "on" | "off" | (string & {}) }
     | { id?: "browser_cache_ttl"; value?: number }
-    | { id?: "browser_check"; value?: "on" | "off" }
+    | { id?: "browser_check"; value?: "on" | "off" | (string & {}) }
     | { id?: "bypass_cache_on_cookie"; value?: string }
-    | { id?: "cache_by_device_type"; value?: "on" | "off" }
-    | { id?: "cache_deception_armor"; value?: "on" | "off" }
+    | { id?: "cache_by_device_type"; value?: "on" | "off" | (string & {}) }
+    | { id?: "cache_deception_armor"; value?: "on" | "off" | (string & {}) }
     | {
         id?: "cache_key_fields";
         value?: {
@@ -2235,7 +2710,8 @@ export interface UpdatePageRuleRequest {
           | "basic"
           | "simplified"
           | "aggressive"
-          | "cache_everything";
+          | "cache_everything"
+          | (string & {});
       }
     | { id?: "cache_on_cookie"; value?: string }
     | { id?: "cache_ttl_by_status"; value?: Record<string, unknown> }
@@ -2244,22 +2720,25 @@ export interface UpdatePageRuleRequest {
     | { id?: "disable_security" }
     | { id?: "disable_zaraz" }
     | { id?: "edge_cache_ttl"; value?: number }
-    | { id?: "email_obfuscation"; value?: "on" | "off" }
-    | { id?: "explicit_cache_control"; value?: "on" | "off" }
+    | { id?: "email_obfuscation"; value?: "on" | "off" | (string & {}) }
+    | { id?: "explicit_cache_control"; value?: "on" | "off" | (string & {}) }
     | {
         id?: "forwarding_url";
-        value?: { statusCode?: "301" | "302"; url?: string };
+        value?: { statusCode?: "301" | "302" | (string & {}); url?: string };
       }
     | { id?: "host_header_override"; value?: string }
-    | { id?: "ip_geolocation"; value?: "on" | "off" }
-    | { id?: "mirage"; value?: "on" | "off" }
-    | { id?: "opportunistic_encryption"; value?: "on" | "off" }
-    | { id?: "origin_error_page_pass_thru"; value?: "on" | "off" }
-    | { id?: "polish"; value?: "off" | "lossless" | "lossy" }
+    | { id?: "ip_geolocation"; value?: "on" | "off" | (string & {}) }
+    | { id?: "mirage"; value?: "on" | "off" | (string & {}) }
+    | { id?: "opportunistic_encryption"; value?: "on" | "off" | (string & {}) }
+    | {
+        id?: "origin_error_page_pass_thru";
+        value?: "on" | "off" | (string & {});
+      }
+    | { id?: "polish"; value?: "off" | "lossless" | "lossy" | (string & {}) }
     | { id?: "resolve_override"; value?: string }
-    | { id?: "respect_strong_etag"; value?: "on" | "off" }
-    | { id?: "response_buffering"; value?: "on" | "off" }
-    | { id?: "rocket_loader"; value?: "on" | "off" }
+    | { id?: "respect_strong_etag"; value?: "on" | "off" | (string & {}) }
+    | { id?: "response_buffering"; value?: "on" | "off" | (string & {}) }
+    | { id?: "rocket_loader"; value?: "on" | "off" | (string & {}) }
     | {
         id?: "security_level";
         value?:
@@ -2268,20 +2747,36 @@ export interface UpdatePageRuleRequest {
           | "low"
           | "medium"
           | "high"
-          | "under_attack";
+          | "under_attack"
+          | (string & {});
       }
-    | { id?: "sort_query_string_for_cache"; value?: "on" | "off" }
+    | {
+        id?: "sort_query_string_for_cache";
+        value?: "on" | "off" | (string & {});
+      }
     | {
         id?: "ssl";
-        value?: "off" | "flexible" | "full" | "strict" | "origin_pull";
+        value?:
+          | "off"
+          | "flexible"
+          | "full"
+          | "strict"
+          | "origin_pull"
+          | (string & {});
       }
-    | { id?: "true_client_ip_header"; value?: "on" | "off" }
-    | { id?: "waf"; value?: "on" | "off" }
+    | { id?: "true_client_ip_header"; value?: "on" | "off" | (string & {}) }
+    | { id?: "waf"; value?: "on" | "off" | (string & {}) }
   )[];
   /** Body param: The rule targets to evaluate on each request. */
   targets: {
     constraint?: {
-      operator: "matches" | "contains" | "equals" | "not_equal" | "not_contain";
+      operator:
+        | "matches"
+        | "contains"
+        | "equals"
+        | "not_equal"
+        | "not_contain"
+        | (string & {});
       value: string;
     };
     target?: "url";
@@ -2289,7 +2784,7 @@ export interface UpdatePageRuleRequest {
   /** Body param: The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/i */
   priority?: number;
   /** Body param: The status of the Page Rule. */
-  status?: "active" | "disabled";
+  status?: "active" | "disabled" | (string & {});
 }
 
 export const UpdatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2302,7 +2797,9 @@ export const UpdatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("automatic_https_rewrites")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("browser_cache_ttl")),
@@ -2310,7 +2807,9 @@ export const UpdatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("browser_check")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("bypass_cache_on_cookie")),
@@ -2318,11 +2817,15 @@ export const UpdatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("cache_by_device_type")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("cache_deception_armor")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("cache_key_fields")),
@@ -2400,12 +2903,15 @@ export const UpdatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         id: Schema.optional(Schema.Literal("cache_level")),
         value: Schema.optional(
-          Schema.Literals([
-            "bypass",
-            "basic",
-            "simplified",
-            "aggressive",
-            "cache_everything",
+          Schema.Union([
+            Schema.Literals([
+              "bypass",
+              "basic",
+              "simplified",
+              "aggressive",
+              "cache_everything",
+            ]),
+            Schema.String,
           ]),
         ),
       }),
@@ -2435,17 +2941,23 @@ export const UpdatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("email_obfuscation")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("explicit_cache_control")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("forwarding_url")),
         value: Schema.optional(
           Schema.Struct({
-            statusCode: Schema.optional(Schema.Literals(["301", "302"])),
+            statusCode: Schema.optional(
+              Schema.Union([Schema.Literals(["301", "302"]), Schema.String]),
+            ),
             url: Schema.optional(Schema.String),
           }).pipe(Schema.encodeKeys({ statusCode: "status_code", url: "url" })),
         ),
@@ -2456,23 +2968,36 @@ export const UpdatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("ip_geolocation")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("mirage")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("opportunistic_encryption")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("origin_error_page_pass_thru")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("polish")),
-        value: Schema.optional(Schema.Literals(["off", "lossless", "lossy"])),
+        value: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["off", "lossless", "lossy"]),
+            Schema.String,
+          ]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("resolve_override")),
@@ -2480,46 +3005,70 @@ export const UpdatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("respect_strong_etag")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("response_buffering")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("rocket_loader")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("security_level")),
         value: Schema.optional(
-          Schema.Literals([
-            "off",
-            "essentially_off",
-            "low",
-            "medium",
-            "high",
-            "under_attack",
+          Schema.Union([
+            Schema.Literals([
+              "off",
+              "essentially_off",
+              "low",
+              "medium",
+              "high",
+              "under_attack",
+            ]),
+            Schema.String,
           ]),
         ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("sort_query_string_for_cache")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("ssl")),
         value: Schema.optional(
-          Schema.Literals(["off", "flexible", "full", "strict", "origin_pull"]),
+          Schema.Union([
+            Schema.Literals([
+              "off",
+              "flexible",
+              "full",
+              "strict",
+              "origin_pull",
+            ]),
+            Schema.String,
+          ]),
         ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("true_client_ip_header")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("waf")),
-        value: Schema.optional(Schema.Literals(["on", "off"])),
+        value: Schema.optional(
+          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+        ),
       }),
     ]),
   ),
@@ -2527,12 +3076,15 @@ export const UpdatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       constraint: Schema.optional(
         Schema.Struct({
-          operator: Schema.Literals([
-            "matches",
-            "contains",
-            "equals",
-            "not_equal",
-            "not_contain",
+          operator: Schema.Union([
+            Schema.Literals([
+              "matches",
+              "contains",
+              "equals",
+              "not_equal",
+              "not_contain",
+            ]),
+            Schema.String,
           ]),
           value: Schema.String,
         }),
@@ -2541,7 +3093,9 @@ export const UpdatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   priority: Schema.optional(Schema.Number),
-  status: Schema.optional(Schema.Literals(["active", "disabled"])),
+  status: Schema.optional(
+    Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
+  ),
 }).pipe(
   T.Http({ method: "PUT", path: "/zones/{zone_id}/pagerules/{pageruleId}" }),
 ) as unknown as Schema.Schema<UpdatePageRuleRequest>;
@@ -2552,12 +3106,24 @@ export interface UpdatePageRuleResponse {
   /** The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both. */
   actions: (
     | { id?: "always_use_https" | null }
-    | { id?: "automatic_https_rewrites" | null; value?: "on" | "off" | null }
+    | {
+        id?: "automatic_https_rewrites" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | { id?: "browser_cache_ttl" | null; value?: number | null }
-    | { id?: "browser_check" | null; value?: "on" | "off" | null }
+    | {
+        id?: "browser_check" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | { id?: "bypass_cache_on_cookie" | null; value?: string | null }
-    | { id?: "cache_by_device_type" | null; value?: "on" | "off" | null }
-    | { id?: "cache_deception_armor" | null; value?: "on" | "off" | null }
+    | {
+        id?: "cache_by_device_type" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "cache_deception_armor" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "cache_key_fields" | null;
         value?: {
@@ -2590,6 +3156,7 @@ export interface UpdatePageRuleResponse {
           | "simplified"
           | "aggressive"
           | "cache_everything"
+          | (string & {})
           | null;
       }
     | { id?: "cache_on_cookie" | null; value?: string | null }
@@ -2602,25 +3169,52 @@ export interface UpdatePageRuleResponse {
     | { id?: "disable_security" | null }
     | { id?: "disable_zaraz" | null }
     | { id?: "edge_cache_ttl" | null; value?: number | null }
-    | { id?: "email_obfuscation" | null; value?: "on" | "off" | null }
-    | { id?: "explicit_cache_control" | null; value?: "on" | "off" | null }
+    | {
+        id?: "email_obfuscation" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "explicit_cache_control" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "forwarding_url" | null;
         value?: {
-          statusCode?: "301" | "302" | null;
+          statusCode?: "301" | "302" | (string & {}) | null;
           url?: string | null;
         } | null;
       }
     | { id?: "host_header_override" | null; value?: string | null }
-    | { id?: "ip_geolocation" | null; value?: "on" | "off" | null }
-    | { id?: "mirage" | null; value?: "on" | "off" | null }
-    | { id?: "opportunistic_encryption" | null; value?: "on" | "off" | null }
-    | { id?: "origin_error_page_pass_thru" | null; value?: "on" | "off" | null }
-    | { id?: "polish" | null; value?: "off" | "lossless" | "lossy" | null }
+    | {
+        id?: "ip_geolocation" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | { id?: "mirage" | null; value?: "on" | "off" | (string & {}) | null }
+    | {
+        id?: "opportunistic_encryption" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "origin_error_page_pass_thru" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "polish" | null;
+        value?: "off" | "lossless" | "lossy" | (string & {}) | null;
+      }
     | { id?: "resolve_override" | null; value?: string | null }
-    | { id?: "respect_strong_etag" | null; value?: "on" | "off" | null }
-    | { id?: "response_buffering" | null; value?: "on" | "off" | null }
-    | { id?: "rocket_loader" | null; value?: "on" | "off" | null }
+    | {
+        id?: "respect_strong_etag" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "response_buffering" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "rocket_loader" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "security_level" | null;
         value?:
@@ -2630,15 +3224,29 @@ export interface UpdatePageRuleResponse {
           | "medium"
           | "high"
           | "under_attack"
+          | (string & {})
           | null;
       }
-    | { id?: "sort_query_string_for_cache" | null; value?: "on" | "off" | null }
+    | {
+        id?: "sort_query_string_for_cache" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "ssl" | null;
-        value?: "off" | "flexible" | "full" | "strict" | "origin_pull" | null;
+        value?:
+          | "off"
+          | "flexible"
+          | "full"
+          | "strict"
+          | "origin_pull"
+          | (string & {})
+          | null;
       }
-    | { id?: "true_client_ip_header" | null; value?: "on" | "off" | null }
-    | { id?: "waf" | null; value?: "on" | "off" | null }
+    | {
+        id?: "true_client_ip_header" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | { id?: "waf" | null; value?: "on" | "off" | (string & {}) | null }
   )[];
   /** The timestamp of when the Page Rule was created. */
   createdOn: string;
@@ -2647,11 +3255,17 @@ export interface UpdatePageRuleResponse {
   /** The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/ `) bu */
   priority: number;
   /** The status of the Page Rule. */
-  status: "active" | "disabled";
+  status: "active" | "disabled" | (string & {});
   /** The rule targets to evaluate on each request. */
   targets: {
     constraint?: {
-      operator: "matches" | "contains" | "equals" | "not_equal" | "not_contain";
+      operator:
+        | "matches"
+        | "contains"
+        | "equals"
+        | "not_equal"
+        | "not_contain"
+        | (string & {});
       value: string;
     } | null;
     target?: "url" | null;
@@ -2676,7 +3290,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2690,7 +3307,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("browser_check"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2707,7 +3327,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("cache_by_device_type"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2718,7 +3341,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2859,12 +3485,15 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           ),
           value: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "bypass",
-                "basic",
-                "simplified",
-                "aggressive",
-                "cache_everything",
+              Schema.Union([
+                Schema.Literals([
+                  "bypass",
+                  "basic",
+                  "simplified",
+                  "aggressive",
+                  "cache_everything",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -2918,7 +3547,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("email_obfuscation"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2929,7 +3561,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2940,7 +3575,13 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([
               Schema.Struct({
                 statusCode: Schema.optional(
-                  Schema.Union([Schema.Literals(["301", "302"]), Schema.Null]),
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["301", "302"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
                 ),
                 url: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
@@ -2963,7 +3604,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("ip_geolocation"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2971,7 +3615,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("mirage"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2982,7 +3629,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2993,7 +3643,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -3002,7 +3655,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           ),
           value: Schema.optional(
             Schema.Union([
-              Schema.Literals(["off", "lossless", "lossy"]),
+              Schema.Union([
+                Schema.Literals(["off", "lossless", "lossy"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -3018,7 +3674,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("respect_strong_etag"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -3026,7 +3685,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("response_buffering"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -3034,7 +3696,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("rocket_loader"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -3043,13 +3708,16 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           ),
           value: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "off",
-                "essentially_off",
-                "low",
-                "medium",
-                "high",
-                "under_attack",
+              Schema.Union([
+                Schema.Literals([
+                  "off",
+                  "essentially_off",
+                  "low",
+                  "medium",
+                  "high",
+                  "under_attack",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -3063,7 +3731,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -3072,12 +3743,15 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           ),
           value: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "off",
-                "flexible",
-                "full",
-                "strict",
-                "origin_pull",
+              Schema.Union([
+                Schema.Literals([
+                  "off",
+                  "flexible",
+                  "full",
+                  "strict",
+                  "origin_pull",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -3091,7 +3765,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -3099,7 +3776,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("waf"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }),
       ]),
@@ -3107,18 +3787,24 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     createdOn: Schema.String,
     modifiedOn: Schema.String,
     priority: Schema.Number,
-    status: Schema.Literals(["active", "disabled"]),
+    status: Schema.Union([
+      Schema.Literals(["active", "disabled"]),
+      Schema.String,
+    ]),
     targets: Schema.Array(
       Schema.Struct({
         constraint: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              operator: Schema.Literals([
-                "matches",
-                "contains",
-                "equals",
-                "not_equal",
-                "not_contain",
+              operator: Schema.Union([
+                Schema.Literals([
+                  "matches",
+                  "contains",
+                  "equals",
+                  "not_equal",
+                  "not_contain",
+                ]),
+                Schema.String,
               ]),
               value: Schema.String,
             }),
@@ -3167,12 +3853,12 @@ export interface PatchPageRuleRequest {
   /** Body param: The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both. */
   actions?: (
     | { id?: "always_use_https" }
-    | { id?: "automatic_https_rewrites"; value?: "on" | "off" }
+    | { id?: "automatic_https_rewrites"; value?: "on" | "off" | (string & {}) }
     | { id?: "browser_cache_ttl"; value?: number }
-    | { id?: "browser_check"; value?: "on" | "off" }
+    | { id?: "browser_check"; value?: "on" | "off" | (string & {}) }
     | { id?: "bypass_cache_on_cookie"; value?: string }
-    | { id?: "cache_by_device_type"; value?: "on" | "off" }
-    | { id?: "cache_deception_armor"; value?: "on" | "off" }
+    | { id?: "cache_by_device_type"; value?: "on" | "off" | (string & {}) }
+    | { id?: "cache_deception_armor"; value?: "on" | "off" | (string & {}) }
     | {
         id?: "cache_key_fields";
         value?: {
@@ -3194,7 +3880,8 @@ export interface PatchPageRuleRequest {
           | "basic"
           | "simplified"
           | "aggressive"
-          | "cache_everything";
+          | "cache_everything"
+          | (string & {});
       }
     | { id?: "cache_on_cookie"; value?: string }
     | { id?: "cache_ttl_by_status"; value?: Record<string, unknown> }
@@ -3203,22 +3890,25 @@ export interface PatchPageRuleRequest {
     | { id?: "disable_security" }
     | { id?: "disable_zaraz" }
     | { id?: "edge_cache_ttl"; value?: number }
-    | { id?: "email_obfuscation"; value?: "on" | "off" }
-    | { id?: "explicit_cache_control"; value?: "on" | "off" }
+    | { id?: "email_obfuscation"; value?: "on" | "off" | (string & {}) }
+    | { id?: "explicit_cache_control"; value?: "on" | "off" | (string & {}) }
     | {
         id?: "forwarding_url";
-        value?: { statusCode?: "301" | "302"; url?: string };
+        value?: { statusCode?: "301" | "302" | (string & {}); url?: string };
       }
     | { id?: "host_header_override"; value?: string }
-    | { id?: "ip_geolocation"; value?: "on" | "off" }
-    | { id?: "mirage"; value?: "on" | "off" }
-    | { id?: "opportunistic_encryption"; value?: "on" | "off" }
-    | { id?: "origin_error_page_pass_thru"; value?: "on" | "off" }
-    | { id?: "polish"; value?: "off" | "lossless" | "lossy" }
+    | { id?: "ip_geolocation"; value?: "on" | "off" | (string & {}) }
+    | { id?: "mirage"; value?: "on" | "off" | (string & {}) }
+    | { id?: "opportunistic_encryption"; value?: "on" | "off" | (string & {}) }
+    | {
+        id?: "origin_error_page_pass_thru";
+        value?: "on" | "off" | (string & {});
+      }
+    | { id?: "polish"; value?: "off" | "lossless" | "lossy" | (string & {}) }
     | { id?: "resolve_override"; value?: string }
-    | { id?: "respect_strong_etag"; value?: "on" | "off" }
-    | { id?: "response_buffering"; value?: "on" | "off" }
-    | { id?: "rocket_loader"; value?: "on" | "off" }
+    | { id?: "respect_strong_etag"; value?: "on" | "off" | (string & {}) }
+    | { id?: "response_buffering"; value?: "on" | "off" | (string & {}) }
+    | { id?: "rocket_loader"; value?: "on" | "off" | (string & {}) }
     | {
         id?: "security_level";
         value?:
@@ -3227,24 +3917,40 @@ export interface PatchPageRuleRequest {
           | "low"
           | "medium"
           | "high"
-          | "under_attack";
+          | "under_attack"
+          | (string & {});
       }
-    | { id?: "sort_query_string_for_cache"; value?: "on" | "off" }
+    | {
+        id?: "sort_query_string_for_cache";
+        value?: "on" | "off" | (string & {});
+      }
     | {
         id?: "ssl";
-        value?: "off" | "flexible" | "full" | "strict" | "origin_pull";
+        value?:
+          | "off"
+          | "flexible"
+          | "full"
+          | "strict"
+          | "origin_pull"
+          | (string & {});
       }
-    | { id?: "true_client_ip_header"; value?: "on" | "off" }
-    | { id?: "waf"; value?: "on" | "off" }
+    | { id?: "true_client_ip_header"; value?: "on" | "off" | (string & {}) }
+    | { id?: "waf"; value?: "on" | "off" | (string & {}) }
   )[];
   /** Body param: The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/i */
   priority?: number;
   /** Body param: The status of the Page Rule. */
-  status?: "active" | "disabled";
+  status?: "active" | "disabled" | (string & {});
   /** Body param: The rule targets to evaluate on each request. */
   targets?: {
     constraint?: {
-      operator: "matches" | "contains" | "equals" | "not_equal" | "not_contain";
+      operator:
+        | "matches"
+        | "contains"
+        | "equals"
+        | "not_equal"
+        | "not_contain"
+        | (string & {});
       value: string;
     };
     target?: "url";
@@ -3262,7 +3968,9 @@ export const PatchPageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("automatic_https_rewrites")),
-          value: Schema.optional(Schema.Literals(["on", "off"])),
+          value: Schema.optional(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("browser_cache_ttl")),
@@ -3270,7 +3978,9 @@ export const PatchPageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("browser_check")),
-          value: Schema.optional(Schema.Literals(["on", "off"])),
+          value: Schema.optional(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("bypass_cache_on_cookie")),
@@ -3278,11 +3988,15 @@ export const PatchPageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("cache_by_device_type")),
-          value: Schema.optional(Schema.Literals(["on", "off"])),
+          value: Schema.optional(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("cache_deception_armor")),
-          value: Schema.optional(Schema.Literals(["on", "off"])),
+          value: Schema.optional(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("cache_key_fields")),
@@ -3360,12 +4074,15 @@ export const PatchPageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           id: Schema.optional(Schema.Literal("cache_level")),
           value: Schema.optional(
-            Schema.Literals([
-              "bypass",
-              "basic",
-              "simplified",
-              "aggressive",
-              "cache_everything",
+            Schema.Union([
+              Schema.Literals([
+                "bypass",
+                "basic",
+                "simplified",
+                "aggressive",
+                "cache_everything",
+              ]),
+              Schema.String,
             ]),
           ),
         }),
@@ -3395,17 +4112,23 @@ export const PatchPageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("email_obfuscation")),
-          value: Schema.optional(Schema.Literals(["on", "off"])),
+          value: Schema.optional(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("explicit_cache_control")),
-          value: Schema.optional(Schema.Literals(["on", "off"])),
+          value: Schema.optional(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("forwarding_url")),
           value: Schema.optional(
             Schema.Struct({
-              statusCode: Schema.optional(Schema.Literals(["301", "302"])),
+              statusCode: Schema.optional(
+                Schema.Union([Schema.Literals(["301", "302"]), Schema.String]),
+              ),
               url: Schema.optional(Schema.String),
             }).pipe(
               Schema.encodeKeys({ statusCode: "status_code", url: "url" }),
@@ -3418,23 +4141,36 @@ export const PatchPageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("ip_geolocation")),
-          value: Schema.optional(Schema.Literals(["on", "off"])),
+          value: Schema.optional(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("mirage")),
-          value: Schema.optional(Schema.Literals(["on", "off"])),
+          value: Schema.optional(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("opportunistic_encryption")),
-          value: Schema.optional(Schema.Literals(["on", "off"])),
+          value: Schema.optional(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("origin_error_page_pass_thru")),
-          value: Schema.optional(Schema.Literals(["on", "off"])),
+          value: Schema.optional(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("polish")),
-          value: Schema.optional(Schema.Literals(["off", "lossless", "lossy"])),
+          value: Schema.optional(
+            Schema.Union([
+              Schema.Literals(["off", "lossless", "lossy"]),
+              Schema.String,
+            ]),
+          ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("resolve_override")),
@@ -3442,69 +4178,92 @@ export const PatchPageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("respect_strong_etag")),
-          value: Schema.optional(Schema.Literals(["on", "off"])),
+          value: Schema.optional(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("response_buffering")),
-          value: Schema.optional(Schema.Literals(["on", "off"])),
+          value: Schema.optional(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("rocket_loader")),
-          value: Schema.optional(Schema.Literals(["on", "off"])),
+          value: Schema.optional(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("security_level")),
           value: Schema.optional(
-            Schema.Literals([
-              "off",
-              "essentially_off",
-              "low",
-              "medium",
-              "high",
-              "under_attack",
+            Schema.Union([
+              Schema.Literals([
+                "off",
+                "essentially_off",
+                "low",
+                "medium",
+                "high",
+                "under_attack",
+              ]),
+              Schema.String,
             ]),
           ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("sort_query_string_for_cache")),
-          value: Schema.optional(Schema.Literals(["on", "off"])),
+          value: Schema.optional(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("ssl")),
           value: Schema.optional(
-            Schema.Literals([
-              "off",
-              "flexible",
-              "full",
-              "strict",
-              "origin_pull",
+            Schema.Union([
+              Schema.Literals([
+                "off",
+                "flexible",
+                "full",
+                "strict",
+                "origin_pull",
+              ]),
+              Schema.String,
             ]),
           ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("true_client_ip_header")),
-          value: Schema.optional(Schema.Literals(["on", "off"])),
+          value: Schema.optional(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("waf")),
-          value: Schema.optional(Schema.Literals(["on", "off"])),
+          value: Schema.optional(
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+          ),
         }),
       ]),
     ),
   ),
   priority: Schema.optional(Schema.Number),
-  status: Schema.optional(Schema.Literals(["active", "disabled"])),
+  status: Schema.optional(
+    Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
+  ),
   targets: Schema.optional(
     Schema.Array(
       Schema.Struct({
         constraint: Schema.optional(
           Schema.Struct({
-            operator: Schema.Literals([
-              "matches",
-              "contains",
-              "equals",
-              "not_equal",
-              "not_contain",
+            operator: Schema.Union([
+              Schema.Literals([
+                "matches",
+                "contains",
+                "equals",
+                "not_equal",
+                "not_contain",
+              ]),
+              Schema.String,
             ]),
             value: Schema.String,
           }),
@@ -3523,12 +4282,24 @@ export interface PatchPageRuleResponse {
   /** The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both. */
   actions: (
     | { id?: "always_use_https" | null }
-    | { id?: "automatic_https_rewrites" | null; value?: "on" | "off" | null }
+    | {
+        id?: "automatic_https_rewrites" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | { id?: "browser_cache_ttl" | null; value?: number | null }
-    | { id?: "browser_check" | null; value?: "on" | "off" | null }
+    | {
+        id?: "browser_check" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | { id?: "bypass_cache_on_cookie" | null; value?: string | null }
-    | { id?: "cache_by_device_type" | null; value?: "on" | "off" | null }
-    | { id?: "cache_deception_armor" | null; value?: "on" | "off" | null }
+    | {
+        id?: "cache_by_device_type" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "cache_deception_armor" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "cache_key_fields" | null;
         value?: {
@@ -3561,6 +4332,7 @@ export interface PatchPageRuleResponse {
           | "simplified"
           | "aggressive"
           | "cache_everything"
+          | (string & {})
           | null;
       }
     | { id?: "cache_on_cookie" | null; value?: string | null }
@@ -3573,25 +4345,52 @@ export interface PatchPageRuleResponse {
     | { id?: "disable_security" | null }
     | { id?: "disable_zaraz" | null }
     | { id?: "edge_cache_ttl" | null; value?: number | null }
-    | { id?: "email_obfuscation" | null; value?: "on" | "off" | null }
-    | { id?: "explicit_cache_control" | null; value?: "on" | "off" | null }
+    | {
+        id?: "email_obfuscation" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "explicit_cache_control" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "forwarding_url" | null;
         value?: {
-          statusCode?: "301" | "302" | null;
+          statusCode?: "301" | "302" | (string & {}) | null;
           url?: string | null;
         } | null;
       }
     | { id?: "host_header_override" | null; value?: string | null }
-    | { id?: "ip_geolocation" | null; value?: "on" | "off" | null }
-    | { id?: "mirage" | null; value?: "on" | "off" | null }
-    | { id?: "opportunistic_encryption" | null; value?: "on" | "off" | null }
-    | { id?: "origin_error_page_pass_thru" | null; value?: "on" | "off" | null }
-    | { id?: "polish" | null; value?: "off" | "lossless" | "lossy" | null }
+    | {
+        id?: "ip_geolocation" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | { id?: "mirage" | null; value?: "on" | "off" | (string & {}) | null }
+    | {
+        id?: "opportunistic_encryption" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "origin_error_page_pass_thru" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "polish" | null;
+        value?: "off" | "lossless" | "lossy" | (string & {}) | null;
+      }
     | { id?: "resolve_override" | null; value?: string | null }
-    | { id?: "respect_strong_etag" | null; value?: "on" | "off" | null }
-    | { id?: "response_buffering" | null; value?: "on" | "off" | null }
-    | { id?: "rocket_loader" | null; value?: "on" | "off" | null }
+    | {
+        id?: "respect_strong_etag" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "response_buffering" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | {
+        id?: "rocket_loader" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "security_level" | null;
         value?:
@@ -3601,15 +4400,29 @@ export interface PatchPageRuleResponse {
           | "medium"
           | "high"
           | "under_attack"
+          | (string & {})
           | null;
       }
-    | { id?: "sort_query_string_for_cache" | null; value?: "on" | "off" | null }
+    | {
+        id?: "sort_query_string_for_cache" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
     | {
         id?: "ssl" | null;
-        value?: "off" | "flexible" | "full" | "strict" | "origin_pull" | null;
+        value?:
+          | "off"
+          | "flexible"
+          | "full"
+          | "strict"
+          | "origin_pull"
+          | (string & {})
+          | null;
       }
-    | { id?: "true_client_ip_header" | null; value?: "on" | "off" | null }
-    | { id?: "waf" | null; value?: "on" | "off" | null }
+    | {
+        id?: "true_client_ip_header" | null;
+        value?: "on" | "off" | (string & {}) | null;
+      }
+    | { id?: "waf" | null; value?: "on" | "off" | (string & {}) | null }
   )[];
   /** The timestamp of when the Page Rule was created. */
   createdOn: string;
@@ -3618,11 +4431,17 @@ export interface PatchPageRuleResponse {
   /** The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/ `) bu */
   priority: number;
   /** The status of the Page Rule. */
-  status: "active" | "disabled";
+  status: "active" | "disabled" | (string & {});
   /** The rule targets to evaluate on each request. */
   targets: {
     constraint?: {
-      operator: "matches" | "contains" | "equals" | "not_equal" | "not_contain";
+      operator:
+        | "matches"
+        | "contains"
+        | "equals"
+        | "not_equal"
+        | "not_contain"
+        | (string & {});
       value: string;
     } | null;
     target?: "url" | null;
@@ -3646,7 +4465,10 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -3660,7 +4482,10 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("browser_check"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -3674,7 +4499,10 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("cache_by_device_type"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -3682,7 +4510,10 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("cache_deception_armor"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -3808,12 +4639,15 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         value: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "bypass",
-              "basic",
-              "simplified",
-              "aggressive",
-              "cache_everything",
+            Schema.Union([
+              Schema.Literals([
+                "bypass",
+                "basic",
+                "simplified",
+                "aggressive",
+                "cache_everything",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -3867,7 +4701,10 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("email_obfuscation"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -3875,7 +4712,10 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("explicit_cache_control"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -3886,7 +4726,13 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Struct({
               statusCode: Schema.optional(
-                Schema.Union([Schema.Literals(["301", "302"]), Schema.Null]),
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["301", "302"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
               ),
               url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             }).pipe(
@@ -3907,7 +4753,10 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("ip_geolocation"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -3915,7 +4764,10 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("mirage"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -3926,7 +4778,10 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -3937,7 +4792,10 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -3946,7 +4804,10 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         value: Schema.optional(
           Schema.Union([
-            Schema.Literals(["off", "lossless", "lossy"]),
+            Schema.Union([
+              Schema.Literals(["off", "lossless", "lossy"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -3962,7 +4823,10 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("respect_strong_etag"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -3970,7 +4834,10 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("response_buffering"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -3978,7 +4845,10 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("rocket_loader"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
@@ -3987,13 +4857,16 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         value: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "off",
-              "essentially_off",
-              "low",
-              "medium",
-              "high",
-              "under_attack",
+            Schema.Union([
+              Schema.Literals([
+                "off",
+                "essentially_off",
+                "low",
+                "medium",
+                "high",
+                "under_attack",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -4007,19 +4880,25 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Union([Schema.Literal("ssl"), Schema.Null])),
         value: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "off",
-              "flexible",
-              "full",
-              "strict",
-              "origin_pull",
+            Schema.Union([
+              Schema.Literals([
+                "off",
+                "flexible",
+                "full",
+                "strict",
+                "origin_pull",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -4030,13 +4909,19 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Literal("true_client_ip_header"), Schema.Null]),
         ),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Union([Schema.Literal("waf"), Schema.Null])),
         value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            Schema.Null,
+          ]),
         ),
       }),
     ]),
@@ -4044,18 +4929,24 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   createdOn: Schema.String,
   modifiedOn: Schema.String,
   priority: Schema.Number,
-  status: Schema.Literals(["active", "disabled"]),
+  status: Schema.Union([
+    Schema.Literals(["active", "disabled"]),
+    Schema.String,
+  ]),
   targets: Schema.Array(
     Schema.Struct({
       constraint: Schema.optional(
         Schema.Union([
           Schema.Struct({
-            operator: Schema.Literals([
-              "matches",
-              "contains",
-              "equals",
-              "not_equal",
-              "not_contain",
+            operator: Schema.Union([
+              Schema.Literals([
+                "matches",
+                "contains",
+                "equals",
+                "not_equal",
+                "not_contain",
+              ]),
+              Schema.String,
             ]),
             value: Schema.String,
           }),

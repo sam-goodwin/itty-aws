@@ -17,6 +17,12 @@ import { UploadableSchema } from "../schemas.ts";
 // Errors
 // =============================================================================
 
+export class Gone extends Schema.TaggedErrorClass<Gone>()("Gone", {
+  code: Schema.Number,
+  message: Schema.String,
+}) {}
+T.applyErrorMatchers(Gone, [{ code: 3005 }]);
+
 export class IndexAlreadyExists extends Schema.TaggedErrorClass<IndexAlreadyExists>()(
   "IndexAlreadyExists",
   { code: Schema.Number, message: Schema.String },
@@ -170,7 +176,7 @@ export const GetIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface GetIndexResponse {
   config?: {
     dimensions: number;
-    metric: "cosine" | "euclidean" | "dot-product";
+    metric: "cosine" | "euclidean" | "dot-product" | (string & {});
   } | null;
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
   createdOn?: string | null;
@@ -186,7 +192,10 @@ export const GetIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Struct({
         dimensions: Schema.Number,
-        metric: Schema.Literals(["cosine", "euclidean", "dot-product"]),
+        metric: Schema.Union([
+          Schema.Literals(["cosine", "euclidean", "dot-product"]),
+          Schema.String,
+        ]),
       }),
       Schema.Null,
     ]),
@@ -207,7 +216,7 @@ export const GetIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetIndexResponse>;
 
-export type GetIndexError = DefaultErrors | NotFound;
+export type GetIndexError = DefaultErrors | NotFound | Gone;
 
 export const getIndex: API.OperationMethod<
   GetIndexRequest,
@@ -217,7 +226,7 @@ export const getIndex: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIndexRequest,
   output: GetIndexResponse,
-  errors: [NotFound],
+  errors: [NotFound, Gone],
 }));
 
 export interface ListIndexesRequest {
@@ -238,7 +247,7 @@ export interface ListIndexesResponse {
   result: {
     config?: {
       dimensions: number;
-      metric: "cosine" | "euclidean" | "dot-product";
+      metric: "cosine" | "euclidean" | "dot-product" | (string & {});
     } | null;
     createdOn?: string | null;
     description?: string | null;
@@ -254,7 +263,10 @@ export const ListIndexesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([
           Schema.Struct({
             dimensions: Schema.Number,
-            metric: Schema.Literals(["cosine", "euclidean", "dot-product"]),
+            metric: Schema.Union([
+              Schema.Literals(["cosine", "euclidean", "dot-product"]),
+              Schema.String,
+            ]),
           }),
           Schema.Null,
         ]),
@@ -297,14 +309,18 @@ export interface CreateIndexRequest {
   accountId: string;
   /** Body param: Specifies the type of configuration to use for the index. */
   config:
-    | { dimensions: number; metric: "cosine" | "euclidean" | "dot-product" }
+    | {
+        dimensions: number;
+        metric: "cosine" | "euclidean" | "dot-product" | (string & {});
+      }
     | {
         preset:
           | "@cf/baai/bge-small-en-v1.5"
           | "@cf/baai/bge-base-en-v1.5"
           | "@cf/baai/bge-large-en-v1.5"
           | "openai/text-embedding-ada-002"
-          | "cohere/embed-multilingual-v2.0";
+          | "cohere/embed-multilingual-v2.0"
+          | (string & {});
       };
   /** Body param */
   name: string;
@@ -317,15 +333,21 @@ export const CreateIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   config: Schema.Union([
     Schema.Struct({
       dimensions: Schema.Number,
-      metric: Schema.Literals(["cosine", "euclidean", "dot-product"]),
+      metric: Schema.Union([
+        Schema.Literals(["cosine", "euclidean", "dot-product"]),
+        Schema.String,
+      ]),
     }),
     Schema.Struct({
-      preset: Schema.Literals([
-        "@cf/baai/bge-small-en-v1.5",
-        "@cf/baai/bge-base-en-v1.5",
-        "@cf/baai/bge-large-en-v1.5",
-        "openai/text-embedding-ada-002",
-        "cohere/embed-multilingual-v2.0",
+      preset: Schema.Union([
+        Schema.Literals([
+          "@cf/baai/bge-small-en-v1.5",
+          "@cf/baai/bge-base-en-v1.5",
+          "@cf/baai/bge-large-en-v1.5",
+          "openai/text-embedding-ada-002",
+          "cohere/embed-multilingual-v2.0",
+        ]),
+        Schema.String,
       ]),
     }),
   ]),
@@ -341,7 +363,7 @@ export const CreateIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface CreateIndexResponse {
   config?: {
     dimensions: number;
-    metric: "cosine" | "euclidean" | "dot-product";
+    metric: "cosine" | "euclidean" | "dot-product" | (string & {});
   } | null;
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
   createdOn?: string | null;
@@ -357,7 +379,10 @@ export const CreateIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Struct({
         dimensions: Schema.Number,
-        metric: Schema.Literals(["cosine", "euclidean", "dot-product"]),
+        metric: Schema.Union([
+          Schema.Literals(["cosine", "euclidean", "dot-product"]),
+          Schema.String,
+        ]),
       }),
       Schema.Null,
     ]),
@@ -420,7 +445,7 @@ export const DeleteIndexResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteIndexResponse>;
 
-export type DeleteIndexError = DefaultErrors | NotFound;
+export type DeleteIndexError = DefaultErrors | NotFound | Gone;
 
 export const deleteIndex: API.OperationMethod<
   DeleteIndexRequest,
@@ -430,7 +455,7 @@ export const deleteIndex: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIndexRequest,
   output: DeleteIndexResponse,
-  errors: [NotFound],
+  errors: [NotFound, Gone],
 }));
 
 export interface InfoIndexRequest {
@@ -491,7 +516,7 @@ export interface InsertIndexRequest {
   /** Path param: Identifier */
   accountId: string;
   /** Query param: Behavior for ndjson parse failures. */
-  unparsableBehavior?: "error" | "discard";
+  unparsableBehavior?: "error" | "discard" | (string & {});
   /** Body param: ndjson file containing vectors to insert. */
   body: File | Blob;
 }
@@ -500,7 +525,7 @@ export const InsertIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   indexName: Schema.String.pipe(T.HttpPath("indexName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   unparsableBehavior: Schema.optional(
-    Schema.Literals(["error", "discard"]),
+    Schema.Union([Schema.Literals(["error", "discard"]), Schema.String]),
   ).pipe(T.HttpQuery("unparsable-behavior")),
   body: UploadableSchema.pipe(T.HttpFormDataFile()).pipe(T.HttpBody()),
 }).pipe(
@@ -544,7 +569,7 @@ export interface QueryIndexRequest {
   /** Body param: A metadata filter expression used to limit nearest neighbor results. */
   filter?: unknown;
   /** Body param: Whether to return no metadata, indexed metadata or all metadata associated with the closest vectors. */
-  returnMetadata?: "none" | "indexed" | "all";
+  returnMetadata?: "none" | "indexed" | "all" | (string & {});
   /** Body param: Whether to return the values associated with the closest vectors. */
   returnValues?: boolean;
   /** Body param: The number of nearest neighbors to find. */
@@ -556,7 +581,9 @@ export const QueryIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   vector: Schema.Array(Schema.Number),
   filter: Schema.optional(Schema.Unknown),
-  returnMetadata: Schema.optional(Schema.Literals(["none", "indexed", "all"])),
+  returnMetadata: Schema.optional(
+    Schema.Union([Schema.Literals(["none", "indexed", "all"]), Schema.String]),
+  ),
   returnValues: Schema.optional(Schema.Boolean),
   topK: Schema.optional(Schema.Number),
 }).pipe(
@@ -625,7 +652,7 @@ export interface UpsertIndexRequest {
   /** Path param: Identifier */
   accountId: string;
   /** Query param: Behavior for ndjson parse failures. */
-  unparsableBehavior?: "error" | "discard";
+  unparsableBehavior?: "error" | "discard" | (string & {});
   /** Body param: ndjson file containing vectors to upsert. */
   body: File | Blob;
 }
@@ -634,7 +661,7 @@ export const UpsertIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   indexName: Schema.String.pipe(T.HttpPath("indexName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   unparsableBehavior: Schema.optional(
-    Schema.Literals(["error", "discard"]),
+    Schema.Union([Schema.Literals(["error", "discard"]), Schema.String]),
   ).pipe(T.HttpQuery("unparsable-behavior")),
   body: UploadableSchema.pipe(T.HttpFormDataFile()).pipe(T.HttpBody()),
 }).pipe(
@@ -701,6 +728,7 @@ export interface ListIndexMetadataIndexesResponse {
           | "String"
           | "Number"
           | "Boolean"
+          | (string & {})
           | null;
         propertyName?: string | null;
       }[]
@@ -715,13 +743,16 @@ export const ListIndexMetadataIndexesResponse =
           Schema.Struct({
             indexType: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "string",
-                  "number",
-                  "boolean",
-                  "String",
-                  "Number",
-                  "Boolean",
+                Schema.Union([
+                  Schema.Literals([
+                    "string",
+                    "number",
+                    "boolean",
+                    "String",
+                    "Number",
+                    "Boolean",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -738,7 +769,7 @@ export const ListIndexMetadataIndexesResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ListIndexMetadataIndexesResponse>;
 
-export type ListIndexMetadataIndexesError = DefaultErrors | NotFound;
+export type ListIndexMetadataIndexesError = DefaultErrors | NotFound | Gone;
 
 export const listIndexMetadataIndexes: API.OperationMethod<
   ListIndexMetadataIndexesRequest,
@@ -748,7 +779,7 @@ export const listIndexMetadataIndexes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListIndexMetadataIndexesRequest,
   output: ListIndexMetadataIndexesResponse,
-  errors: [NotFound],
+  errors: [NotFound, Gone],
 }));
 
 export interface CreateIndexMetadataIndexRequest {
@@ -756,7 +787,7 @@ export interface CreateIndexMetadataIndexRequest {
   /** Path param: Identifier */
   accountId: string;
   /** Body param: Specifies the type of metadata property to index. */
-  indexType: "string" | "number" | "boolean";
+  indexType: "string" | "number" | "boolean" | (string & {});
   /** Body param: Specifies the metadata property to index. */
   propertyName: string;
 }
@@ -765,7 +796,10 @@ export const CreateIndexMetadataIndexRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     indexName: Schema.String.pipe(T.HttpPath("indexName")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    indexType: Schema.Literals(["string", "number", "boolean"]),
+    indexType: Schema.Union([
+      Schema.Literals(["string", "number", "boolean"]),
+      Schema.String,
+    ]),
     propertyName: Schema.String,
   }).pipe(
     T.Http({
@@ -838,6 +872,7 @@ export const DeleteIndexMetadataIndexResponse =
 export type DeleteIndexMetadataIndexError =
   | DefaultErrors
   | NotFound
+  | Gone
   | MetadataIndexNotFound;
 
 export const deleteIndexMetadataIndex: API.OperationMethod<
@@ -848,7 +883,7 @@ export const deleteIndexMetadataIndex: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIndexMetadataIndexRequest,
   output: DeleteIndexMetadataIndexResponse,
-  errors: [NotFound, MetadataIndexNotFound],
+  errors: [NotFound, Gone, MetadataIndexNotFound],
 }));
 
 // =============================================================================

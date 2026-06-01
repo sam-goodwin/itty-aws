@@ -538,7 +538,13 @@ export interface GetSsoResponse {
   useFedrampLanguage?: boolean | null;
   verification?: {
     code?: string | null;
-    status?: "awaiting" | "pending" | "failed" | "verified" | null;
+    status?:
+      | "awaiting"
+      | "pending"
+      | "failed"
+      | "verified"
+      | (string & {})
+      | null;
   } | null;
 }
 
@@ -557,7 +563,10 @@ export const GetSsoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         code: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         status: Schema.optional(
           Schema.Union([
-            Schema.Literals(["awaiting", "pending", "failed", "verified"]),
+            Schema.Union([
+              Schema.Literals(["awaiting", "pending", "failed", "verified"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -613,7 +622,13 @@ export interface ListSsosResponse {
     useFedrampLanguage?: boolean | null;
     verification?: {
       code?: string | null;
-      status?: "awaiting" | "pending" | "failed" | "verified" | null;
+      status?:
+        | "awaiting"
+        | "pending"
+        | "failed"
+        | "verified"
+        | (string & {})
+        | null;
     } | null;
   }[];
 }
@@ -635,7 +650,15 @@ export const ListSsosResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             code: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals(["awaiting", "pending", "failed", "verified"]),
+                Schema.Union([
+                  Schema.Literals([
+                    "awaiting",
+                    "pending",
+                    "failed",
+                    "verified",
+                  ]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -712,7 +735,13 @@ export interface CreateSsoResponse {
   useFedrampLanguage?: boolean | null;
   verification?: {
     code?: string | null;
-    status?: "awaiting" | "pending" | "failed" | "verified" | null;
+    status?:
+      | "awaiting"
+      | "pending"
+      | "failed"
+      | "verified"
+      | (string & {})
+      | null;
   } | null;
 }
 
@@ -731,7 +760,10 @@ export const CreateSsoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         code: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         status: Schema.optional(
           Schema.Union([
-            Schema.Literals(["awaiting", "pending", "failed", "verified"]),
+            Schema.Union([
+              Schema.Literals(["awaiting", "pending", "failed", "verified"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -807,7 +839,13 @@ export interface PatchSsoResponse {
   useFedrampLanguage?: boolean | null;
   verification?: {
     code?: string | null;
-    status?: "awaiting" | "pending" | "failed" | "verified" | null;
+    status?:
+      | "awaiting"
+      | "pending"
+      | "failed"
+      | "verified"
+      | (string & {})
+      | null;
   } | null;
 }
 
@@ -826,7 +864,10 @@ export const PatchSsoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         code: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         status: Schema.optional(
           Schema.Union([
-            Schema.Literals(["awaiting", "pending", "failed", "verified"]),
+            Schema.Union([
+              Schema.Literals(["awaiting", "pending", "failed", "verified"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -934,7 +975,7 @@ export interface GetUserGroupResponse {
   policies?:
     | {
         id?: string | null;
-        access?: "allow" | "deny" | null;
+        access?: "allow" | "deny" | (string & {}) | null;
         permissionGroups?:
           | {
               id: string;
@@ -965,7 +1006,10 @@ export const GetUserGroupResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           access: Schema.optional(
-            Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           permissionGroups: Schema.optional(
             Schema.Union([
@@ -1067,7 +1111,7 @@ export interface ListUserGroupsRequest {
   /** Query param: ID of the user group to be fetched. */
   id?: string;
   /** Query param: The sort order of returned user groups by name (ascending or descending). */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: A string used for searching for user groups containing that substring. */
   fuzzyName?: string;
   /** Query param: Name of the user group to be fetched. */
@@ -1079,9 +1123,9 @@ export const ListUserGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
   fuzzyName: Schema.optional(Schema.String).pipe(T.HttpQuery("fuzzyName")),
   name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
 }).pipe(
@@ -1097,7 +1141,7 @@ export interface ListUserGroupsResponse {
     policies?:
       | {
           id?: string | null;
-          access?: "allow" | "deny" | null;
+          access?: "allow" | "deny" | (string & {}) | null;
           permissionGroups?:
             | {
                 id: string;
@@ -1139,7 +1183,10 @@ export const ListUserGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
                 access: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["allow", "deny"]),
+                    Schema.Union([
+                      Schema.Literals(["allow", "deny"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -1270,7 +1317,7 @@ export interface CreateUserGroupRequest {
   name: string;
   /** Body param: Policies attached to the User group */
   policies?: {
-    access: "allow" | "deny";
+    access: "allow" | "deny" | (string & {});
     permissionGroups: { id: string }[];
     resourceGroups: { id: string }[];
   }[];
@@ -1283,7 +1330,10 @@ export const CreateUserGroupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     policies: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          access: Schema.Literals(["allow", "deny"]),
+          access: Schema.Union([
+            Schema.Literals(["allow", "deny"]),
+            Schema.String,
+          ]),
           permissionGroups: Schema.Array(
             Schema.Struct({
               id: Schema.String,
@@ -1321,7 +1371,7 @@ export interface CreateUserGroupResponse {
   policies?:
     | {
         id?: string | null;
-        access?: "allow" | "deny" | null;
+        access?: "allow" | "deny" | (string & {}) | null;
         permissionGroups?:
           | {
               id: string;
@@ -1353,7 +1403,13 @@ export const CreateUserGroupResponse =
           Schema.Struct({
             id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             access: Schema.optional(
-              Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["allow", "deny"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             permissionGroups: Schema.optional(
               Schema.Union([
@@ -1456,7 +1512,7 @@ export interface UpdateUserGroupRequest {
   /** Body param: Policies attached to the User group */
   policies?: {
     id: string;
-    access: "allow" | "deny";
+    access: "allow" | "deny" | (string & {});
     permissionGroups: { id: string }[];
     resourceGroups: { id: string }[];
   }[];
@@ -1471,7 +1527,10 @@ export const UpdateUserGroupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Array(
         Schema.Struct({
           id: Schema.String,
-          access: Schema.Literals(["allow", "deny"]),
+          access: Schema.Union([
+            Schema.Literals(["allow", "deny"]),
+            Schema.String,
+          ]),
           permissionGroups: Schema.Array(
             Schema.Struct({
               id: Schema.String,
@@ -1513,7 +1572,7 @@ export interface UpdateUserGroupResponse {
   policies?:
     | {
         id?: string | null;
-        access?: "allow" | "deny" | null;
+        access?: "allow" | "deny" | (string & {}) | null;
         permissionGroups?:
           | {
               id: string;
@@ -1545,7 +1604,13 @@ export const UpdateUserGroupResponse =
           Schema.Struct({
             id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             access: Schema.optional(
-              Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["allow", "deny"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             permissionGroups: Schema.optional(
               Schema.Union([
@@ -1713,7 +1778,7 @@ export interface GetUserGroupMemberResponse {
   /** The contact email address of the user. */
   email?: string | null;
   /** The member's status in the account. */
-  status?: "accepted" | "pending" | null;
+  status?: "accepted" | "pending" | (string & {}) | null;
   /** Details of the user associated with this membership. */
   user?: {
     id?: string | null;
@@ -1729,7 +1794,10 @@ export const GetUserGroupMemberResponse =
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
-      Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     user: Schema.optional(
       Schema.Union([
@@ -1785,7 +1853,7 @@ export interface ListUserGroupMembersRequest {
   page?: number;
   perPage?: number;
   /** Query param: The sort order of returned user group members by email. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: A string used for filtering members by partial email match. */
   fuzzyEmail?: string;
 }
@@ -1796,9 +1864,9 @@ export const ListUserGroupMembersRequest =
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("direction"),
-    ),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
     fuzzyEmail: Schema.optional(Schema.String).pipe(T.HttpQuery("fuzzyEmail")),
   }).pipe(
     T.Http({
@@ -1811,7 +1879,7 @@ export interface ListUserGroupMembersResponse {
   result: {
     id: string;
     email?: string | null;
-    status?: "accepted" | "pending" | null;
+    status?: "accepted" | "pending" | (string & {}) | null;
   }[];
   resultInfo?: {
     count?: number | null;
@@ -1828,7 +1896,13 @@ export const ListUserGroupMembersResponse =
         id: Schema.String,
         email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         status: Schema.optional(
-          Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["accepted", "pending"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
         ),
       }),
     ),
@@ -1904,7 +1978,7 @@ export interface CreateUserGroupMemberResponse {
   result: {
     id: string;
     email?: string | null;
-    status?: "accepted" | "pending" | null;
+    status?: "accepted" | "pending" | (string & {}) | null;
   }[];
 }
 
@@ -1915,7 +1989,13 @@ export const CreateUserGroupMemberResponse =
         id: Schema.String,
         email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         status: Schema.optional(
-          Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["accepted", "pending"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
         ),
       }),
     ),
@@ -1966,7 +2046,7 @@ export interface UpdateUserGroupMemberResponse {
   result: {
     id: string;
     email?: string | null;
-    status?: "accepted" | "pending" | null;
+    status?: "accepted" | "pending" | (string & {}) | null;
   }[];
 }
 
@@ -1977,7 +2057,13 @@ export const UpdateUserGroupMemberResponse =
         id: Schema.String,
         email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         status: Schema.optional(
-          Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["accepted", "pending"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
         ),
       }),
     ),
@@ -2025,7 +2111,7 @@ export interface DeleteUserGroupMemberResponse {
   /** The contact email address of the user. */
   email?: string | null;
   /** The member's status in the account. */
-  status?: "accepted" | "pending" | null;
+  status?: "accepted" | "pending" | (string & {}) | null;
 }
 
 export const DeleteUserGroupMemberResponse =
@@ -2033,7 +2119,10 @@ export const DeleteUserGroupMemberResponse =
     id: Schema.String,
     email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
-      Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     T.ResponsePath("result"),

@@ -97,16 +97,28 @@ export interface GetProjectResponse {
         commitHash: string;
         commitMessage: string;
       };
-      type: "github:push" | "ad_hoc" | "deploy_hook";
+      type: "github:push" | "ad_hoc" | "deploy_hook" | (string & {});
     };
     envVars: Record<string, unknown> | null;
-    environment: "preview" | "production";
+    environment: "preview" | "production" | (string & {});
     isSkipped: boolean;
     latestStage: {
       endedOn: string | null;
-      name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+      name:
+        | "queued"
+        | "initialize"
+        | "clone_repo"
+        | "build"
+        | "deploy"
+        | (string & {});
       startedOn: string | null;
-      status: "success" | "idle" | "active" | "failure" | "canceled";
+      status:
+        | "success"
+        | "idle"
+        | "active"
+        | "failure"
+        | "canceled"
+        | (string & {});
     };
     modifiedOn: string;
     projectId: string;
@@ -122,19 +134,31 @@ export interface GetProjectResponse {
         prCommentsEnabled: boolean;
         previewBranchExcludes: string[];
         previewBranchIncludes: string[];
-        previewDeploymentSetting: "all" | "none" | "custom";
+        previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
         productionBranch: string;
         productionDeploymentsEnabled: boolean;
         repoId: string;
         repoName: string;
       };
-      type: "github" | "gitlab";
+      type: "github" | "gitlab" | (string & {});
     };
     stages: {
       endedOn: string | null;
-      name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+      name:
+        | "queued"
+        | "initialize"
+        | "clone_repo"
+        | "build"
+        | "deploy"
+        | (string & {});
       startedOn: string | null;
-      status: "success" | "idle" | "active" | "failure" | "canceled";
+      status:
+        | "success"
+        | "idle"
+        | "active"
+        | "failure"
+        | "canceled"
+        | (string & {});
     }[];
     url: string;
     usesFunctions?: boolean | null;
@@ -150,7 +174,7 @@ export interface GetProjectResponse {
       compatibilityFlags: string[];
       envVars: Record<string, unknown> | null;
       failOpen: boolean;
-      usageModel: "standard" | "bundled" | "unbound";
+      usageModel: "standard" | "bundled" | "unbound" | (string & {});
       aiBindings?: Record<string, unknown> | null;
       analyticsEngineDatasets?: Record<string, unknown> | null;
       browsers?: Record<string, unknown> | null;
@@ -174,7 +198,7 @@ export interface GetProjectResponse {
       compatibilityFlags: string[];
       envVars: Record<string, unknown> | null;
       failOpen: boolean;
-      usageModel: "standard" | "bundled" | "unbound";
+      usageModel: "standard" | "bundled" | "unbound" | (string & {});
       aiBindings?: Record<string, unknown> | null;
       analyticsEngineDatasets?: Record<string, unknown> | null;
       browsers?: Record<string, unknown> | null;
@@ -216,16 +240,28 @@ export interface GetProjectResponse {
         commitHash: string;
         commitMessage: string;
       };
-      type: "github:push" | "ad_hoc" | "deploy_hook";
+      type: "github:push" | "ad_hoc" | "deploy_hook" | (string & {});
     };
     envVars: Record<string, unknown> | null;
-    environment: "preview" | "production";
+    environment: "preview" | "production" | (string & {});
     isSkipped: boolean;
     latestStage: {
       endedOn: string | null;
-      name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+      name:
+        | "queued"
+        | "initialize"
+        | "clone_repo"
+        | "build"
+        | "deploy"
+        | (string & {});
       startedOn: string | null;
-      status: "success" | "idle" | "active" | "failure" | "canceled";
+      status:
+        | "success"
+        | "idle"
+        | "active"
+        | "failure"
+        | "canceled"
+        | (string & {});
     };
     modifiedOn: string;
     projectId: string;
@@ -241,19 +277,31 @@ export interface GetProjectResponse {
         prCommentsEnabled: boolean;
         previewBranchExcludes: string[];
         previewBranchIncludes: string[];
-        previewDeploymentSetting: "all" | "none" | "custom";
+        previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
         productionBranch: string;
         productionDeploymentsEnabled: boolean;
         repoId: string;
         repoName: string;
       };
-      type: "github" | "gitlab";
+      type: "github" | "gitlab" | (string & {});
     };
     stages: {
       endedOn: string | null;
-      name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+      name:
+        | "queued"
+        | "initialize"
+        | "clone_repo"
+        | "build"
+        | "deploy"
+        | (string & {});
       startedOn: string | null;
-      status: "success" | "idle" | "active" | "failure" | "canceled";
+      status:
+        | "success"
+        | "idle"
+        | "active"
+        | "failure"
+        | "canceled"
+        | (string & {});
     }[];
     url: string;
     usesFunctions?: boolean | null;
@@ -290,13 +338,13 @@ export interface GetProjectResponse {
       prCommentsEnabled: boolean;
       previewBranchExcludes: string[];
       previewBranchIncludes: string[];
-      previewDeploymentSetting: "all" | "none" | "custom";
+      previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
       productionBranch: string;
       productionDeploymentsEnabled: boolean;
       repoId: string;
       repoName: string;
     };
-    type: "github" | "gitlab";
+    type: "github" | "gitlab" | (string & {});
   } | null;
   /** The Cloudflare subdomain associated with the project. */
   subdomain?: string | null;
@@ -346,30 +394,36 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             commitMessage: "commit_message",
           }),
         ),
-        type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+        type: Schema.Union([
+          Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+          Schema.String,
+        ]),
       }),
       envVars: Schema.Union([
         Schema.Record(Schema.String, Schema.Unknown),
         Schema.Null,
       ]),
-      environment: Schema.Literals(["preview", "production"]),
+      environment: Schema.Union([
+        Schema.Literals(["preview", "production"]),
+        Schema.String,
+      ]),
       isSkipped: Schema.Boolean,
       latestStage: Schema.Struct({
         endedOn: Schema.Union([Schema.String, Schema.Null]),
-        name: Schema.Literals([
-          "queued",
-          "initialize",
-          "clone_repo",
-          "build",
-          "deploy",
+        name: Schema.Union([
+          Schema.Literals([
+            "queued",
+            "initialize",
+            "clone_repo",
+            "build",
+            "deploy",
+          ]),
+          Schema.String,
         ]),
         startedOn: Schema.Union([Schema.String, Schema.Null]),
-        status: Schema.Literals([
-          "success",
-          "idle",
-          "active",
-          "failure",
-          "canceled",
+        status: Schema.Union([
+          Schema.Literals(["success", "idle", "active", "failure", "canceled"]),
+          Schema.String,
         ]),
       }).pipe(
         Schema.encodeKeys({
@@ -393,7 +447,10 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           prCommentsEnabled: Schema.Boolean,
           previewBranchExcludes: Schema.Array(Schema.String),
           previewBranchIncludes: Schema.Array(Schema.String),
-          previewDeploymentSetting: Schema.Literals(["all", "none", "custom"]),
+          previewDeploymentSetting: Schema.Union([
+            Schema.Literals(["all", "none", "custom"]),
+            Schema.String,
+          ]),
           productionBranch: Schema.String,
           productionDeploymentsEnabled: Schema.Boolean,
           repoId: Schema.String,
@@ -415,25 +472,34 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             repoName: "repo_name",
           }),
         ),
-        type: Schema.Literals(["github", "gitlab"]),
+        type: Schema.Union([
+          Schema.Literals(["github", "gitlab"]),
+          Schema.String,
+        ]),
       }),
       stages: Schema.Array(
         Schema.Struct({
           endedOn: Schema.Union([Schema.String, Schema.Null]),
-          name: Schema.Literals([
-            "queued",
-            "initialize",
-            "clone_repo",
-            "build",
-            "deploy",
+          name: Schema.Union([
+            Schema.Literals([
+              "queued",
+              "initialize",
+              "clone_repo",
+              "build",
+              "deploy",
+            ]),
+            Schema.String,
           ]),
           startedOn: Schema.Union([Schema.String, Schema.Null]),
-          status: Schema.Literals([
-            "success",
-            "idle",
-            "active",
-            "failure",
-            "canceled",
+          status: Schema.Union([
+            Schema.Literals([
+              "success",
+              "idle",
+              "active",
+              "failure",
+              "canceled",
+            ]),
+            Schema.String,
           ]),
         }).pipe(
           Schema.encodeKeys({
@@ -483,7 +549,10 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Null,
       ]),
       failOpen: Schema.Boolean,
-      usageModel: Schema.Literals(["standard", "bundled", "unbound"]),
+      usageModel: Schema.Union([
+        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.String,
+      ]),
       aiBindings: Schema.optional(
         Schema.Union([
           Schema.Record(Schema.String, Schema.Unknown),
@@ -612,7 +681,10 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Null,
       ]),
       failOpen: Schema.Boolean,
-      usageModel: Schema.Literals(["standard", "bundled", "unbound"]),
+      usageModel: Schema.Union([
+        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.String,
+      ]),
       aiBindings: Schema.optional(
         Schema.Union([
           Schema.Record(Schema.String, Schema.Unknown),
@@ -776,30 +848,36 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             commitMessage: "commit_message",
           }),
         ),
-        type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+        type: Schema.Union([
+          Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+          Schema.String,
+        ]),
       }),
       envVars: Schema.Union([
         Schema.Record(Schema.String, Schema.Unknown),
         Schema.Null,
       ]),
-      environment: Schema.Literals(["preview", "production"]),
+      environment: Schema.Union([
+        Schema.Literals(["preview", "production"]),
+        Schema.String,
+      ]),
       isSkipped: Schema.Boolean,
       latestStage: Schema.Struct({
         endedOn: Schema.Union([Schema.String, Schema.Null]),
-        name: Schema.Literals([
-          "queued",
-          "initialize",
-          "clone_repo",
-          "build",
-          "deploy",
+        name: Schema.Union([
+          Schema.Literals([
+            "queued",
+            "initialize",
+            "clone_repo",
+            "build",
+            "deploy",
+          ]),
+          Schema.String,
         ]),
         startedOn: Schema.Union([Schema.String, Schema.Null]),
-        status: Schema.Literals([
-          "success",
-          "idle",
-          "active",
-          "failure",
-          "canceled",
+        status: Schema.Union([
+          Schema.Literals(["success", "idle", "active", "failure", "canceled"]),
+          Schema.String,
         ]),
       }).pipe(
         Schema.encodeKeys({
@@ -823,7 +901,10 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           prCommentsEnabled: Schema.Boolean,
           previewBranchExcludes: Schema.Array(Schema.String),
           previewBranchIncludes: Schema.Array(Schema.String),
-          previewDeploymentSetting: Schema.Literals(["all", "none", "custom"]),
+          previewDeploymentSetting: Schema.Union([
+            Schema.Literals(["all", "none", "custom"]),
+            Schema.String,
+          ]),
           productionBranch: Schema.String,
           productionDeploymentsEnabled: Schema.Boolean,
           repoId: Schema.String,
@@ -845,25 +926,34 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             repoName: "repo_name",
           }),
         ),
-        type: Schema.Literals(["github", "gitlab"]),
+        type: Schema.Union([
+          Schema.Literals(["github", "gitlab"]),
+          Schema.String,
+        ]),
       }),
       stages: Schema.Array(
         Schema.Struct({
           endedOn: Schema.Union([Schema.String, Schema.Null]),
-          name: Schema.Literals([
-            "queued",
-            "initialize",
-            "clone_repo",
-            "build",
-            "deploy",
+          name: Schema.Union([
+            Schema.Literals([
+              "queued",
+              "initialize",
+              "clone_repo",
+              "build",
+              "deploy",
+            ]),
+            Schema.String,
           ]),
           startedOn: Schema.Union([Schema.String, Schema.Null]),
-          status: Schema.Literals([
-            "success",
-            "idle",
-            "active",
-            "failure",
-            "canceled",
+          status: Schema.Union([
+            Schema.Literals([
+              "success",
+              "idle",
+              "active",
+              "failure",
+              "canceled",
+            ]),
+            Schema.String,
           ]),
         }).pipe(
           Schema.encodeKeys({
@@ -949,7 +1039,10 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           prCommentsEnabled: Schema.Boolean,
           previewBranchExcludes: Schema.Array(Schema.String),
           previewBranchIncludes: Schema.Array(Schema.String),
-          previewDeploymentSetting: Schema.Literals(["all", "none", "custom"]),
+          previewDeploymentSetting: Schema.Union([
+            Schema.Literals(["all", "none", "custom"]),
+            Schema.String,
+          ]),
           productionBranch: Schema.String,
           productionDeploymentsEnabled: Schema.Boolean,
           repoId: Schema.String,
@@ -971,7 +1064,10 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             repoName: "repo_name",
           }),
         ),
-        type: Schema.Literals(["github", "gitlab"]),
+        type: Schema.Union([
+          Schema.Literals(["github", "gitlab"]),
+          Schema.String,
+        ]),
       }),
       Schema.Null,
     ]),
@@ -1052,16 +1148,28 @@ export interface ListProjectsResponse {
           commitHash: string;
           commitMessage: string;
         };
-        type: "github:push" | "ad_hoc" | "deploy_hook";
+        type: "github:push" | "ad_hoc" | "deploy_hook" | (string & {});
       };
       envVars: Record<string, unknown> | null;
-      environment: "preview" | "production";
+      environment: "preview" | "production" | (string & {});
       isSkipped: boolean;
       latestStage: {
         endedOn: string | null;
-        name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+        name:
+          | "queued"
+          | "initialize"
+          | "clone_repo"
+          | "build"
+          | "deploy"
+          | (string & {});
         startedOn: string | null;
-        status: "success" | "idle" | "active" | "failure" | "canceled";
+        status:
+          | "success"
+          | "idle"
+          | "active"
+          | "failure"
+          | "canceled"
+          | (string & {});
       };
       modifiedOn: string;
       projectId: string;
@@ -1077,19 +1185,31 @@ export interface ListProjectsResponse {
           prCommentsEnabled: boolean;
           previewBranchExcludes: string[];
           previewBranchIncludes: string[];
-          previewDeploymentSetting: "all" | "none" | "custom";
+          previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
           productionBranch: string;
           productionDeploymentsEnabled: boolean;
           repoId: string;
           repoName: string;
         };
-        type: "github" | "gitlab";
+        type: "github" | "gitlab" | (string & {});
       };
       stages: {
         endedOn: string | null;
-        name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+        name:
+          | "queued"
+          | "initialize"
+          | "clone_repo"
+          | "build"
+          | "deploy"
+          | (string & {});
         startedOn: string | null;
-        status: "success" | "idle" | "active" | "failure" | "canceled";
+        status:
+          | "success"
+          | "idle"
+          | "active"
+          | "failure"
+          | "canceled"
+          | (string & {});
       }[];
       url: string;
       usesFunctions?: boolean | null;
@@ -1103,7 +1223,7 @@ export interface ListProjectsResponse {
         compatibilityFlags: string[];
         envVars: Record<string, unknown> | null;
         failOpen: boolean;
-        usageModel: "standard" | "bundled" | "unbound";
+        usageModel: "standard" | "bundled" | "unbound" | (string & {});
         aiBindings?: Record<string, unknown> | null;
         analyticsEngineDatasets?: Record<string, unknown> | null;
         browsers?: Record<string, unknown> | null;
@@ -1127,7 +1247,7 @@ export interface ListProjectsResponse {
         compatibilityFlags: string[];
         envVars: Record<string, unknown> | null;
         failOpen: boolean;
-        usageModel: "standard" | "bundled" | "unbound";
+        usageModel: "standard" | "bundled" | "unbound" | (string & {});
         aiBindings?: Record<string, unknown> | null;
         analyticsEngineDatasets?: Record<string, unknown> | null;
         browsers?: Record<string, unknown> | null;
@@ -1166,16 +1286,28 @@ export interface ListProjectsResponse {
           commitHash: string;
           commitMessage: string;
         };
-        type: "github:push" | "ad_hoc" | "deploy_hook";
+        type: "github:push" | "ad_hoc" | "deploy_hook" | (string & {});
       };
       envVars: Record<string, unknown> | null;
-      environment: "preview" | "production";
+      environment: "preview" | "production" | (string & {});
       isSkipped: boolean;
       latestStage: {
         endedOn: string | null;
-        name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+        name:
+          | "queued"
+          | "initialize"
+          | "clone_repo"
+          | "build"
+          | "deploy"
+          | (string & {});
         startedOn: string | null;
-        status: "success" | "idle" | "active" | "failure" | "canceled";
+        status:
+          | "success"
+          | "idle"
+          | "active"
+          | "failure"
+          | "canceled"
+          | (string & {});
       };
       modifiedOn: string;
       projectId: string;
@@ -1191,19 +1323,31 @@ export interface ListProjectsResponse {
           prCommentsEnabled: boolean;
           previewBranchExcludes: string[];
           previewBranchIncludes: string[];
-          previewDeploymentSetting: "all" | "none" | "custom";
+          previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
           productionBranch: string;
           productionDeploymentsEnabled: boolean;
           repoId: string;
           repoName: string;
         };
-        type: "github" | "gitlab";
+        type: "github" | "gitlab" | (string & {});
       };
       stages: {
         endedOn: string | null;
-        name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+        name:
+          | "queued"
+          | "initialize"
+          | "clone_repo"
+          | "build"
+          | "deploy"
+          | (string & {});
         startedOn: string | null;
-        status: "success" | "idle" | "active" | "failure" | "canceled";
+        status:
+          | "success"
+          | "idle"
+          | "active"
+          | "failure"
+          | "canceled"
+          | (string & {});
       }[];
       url: string;
       usesFunctions?: boolean | null;
@@ -1232,13 +1376,13 @@ export interface ListProjectsResponse {
         prCommentsEnabled: boolean;
         previewBranchExcludes: string[];
         previewBranchIncludes: string[];
-        previewDeploymentSetting: "all" | "none" | "custom";
+        previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
         productionBranch: string;
         productionDeploymentsEnabled: boolean;
         repoId: string;
         repoName: string;
       };
-      type: "github" | "gitlab";
+      type: "github" | "gitlab" | (string & {});
     } | null;
     subdomain?: string | null;
   }[];
@@ -1298,30 +1442,42 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 commitMessage: "commit_message",
               }),
             ),
-            type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+            type: Schema.Union([
+              Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+              Schema.String,
+            ]),
           }),
           envVars: Schema.Union([
             Schema.Record(Schema.String, Schema.Unknown),
             Schema.Null,
           ]),
-          environment: Schema.Literals(["preview", "production"]),
+          environment: Schema.Union([
+            Schema.Literals(["preview", "production"]),
+            Schema.String,
+          ]),
           isSkipped: Schema.Boolean,
           latestStage: Schema.Struct({
             endedOn: Schema.Union([Schema.String, Schema.Null]),
-            name: Schema.Literals([
-              "queued",
-              "initialize",
-              "clone_repo",
-              "build",
-              "deploy",
+            name: Schema.Union([
+              Schema.Literals([
+                "queued",
+                "initialize",
+                "clone_repo",
+                "build",
+                "deploy",
+              ]),
+              Schema.String,
             ]),
             startedOn: Schema.Union([Schema.String, Schema.Null]),
-            status: Schema.Literals([
-              "success",
-              "idle",
-              "active",
-              "failure",
-              "canceled",
+            status: Schema.Union([
+              Schema.Literals([
+                "success",
+                "idle",
+                "active",
+                "failure",
+                "canceled",
+              ]),
+              Schema.String,
             ]),
           }).pipe(
             Schema.encodeKeys({
@@ -1345,10 +1501,9 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               prCommentsEnabled: Schema.Boolean,
               previewBranchExcludes: Schema.Array(Schema.String),
               previewBranchIncludes: Schema.Array(Schema.String),
-              previewDeploymentSetting: Schema.Literals([
-                "all",
-                "none",
-                "custom",
+              previewDeploymentSetting: Schema.Union([
+                Schema.Literals(["all", "none", "custom"]),
+                Schema.String,
               ]),
               productionBranch: Schema.String,
               productionDeploymentsEnabled: Schema.Boolean,
@@ -1371,25 +1526,34 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 repoName: "repo_name",
               }),
             ),
-            type: Schema.Literals(["github", "gitlab"]),
+            type: Schema.Union([
+              Schema.Literals(["github", "gitlab"]),
+              Schema.String,
+            ]),
           }),
           stages: Schema.Array(
             Schema.Struct({
               endedOn: Schema.Union([Schema.String, Schema.Null]),
-              name: Schema.Literals([
-                "queued",
-                "initialize",
-                "clone_repo",
-                "build",
-                "deploy",
+              name: Schema.Union([
+                Schema.Literals([
+                  "queued",
+                  "initialize",
+                  "clone_repo",
+                  "build",
+                  "deploy",
+                ]),
+                Schema.String,
               ]),
               startedOn: Schema.Union([Schema.String, Schema.Null]),
-              status: Schema.Literals([
-                "success",
-                "idle",
-                "active",
-                "failure",
-                "canceled",
+              status: Schema.Union([
+                Schema.Literals([
+                  "success",
+                  "idle",
+                  "active",
+                  "failure",
+                  "canceled",
+                ]),
+                Schema.String,
               ]),
             }).pipe(
               Schema.encodeKeys({
@@ -1439,7 +1603,10 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Null,
           ]),
           failOpen: Schema.Boolean,
-          usageModel: Schema.Literals(["standard", "bundled", "unbound"]),
+          usageModel: Schema.Union([
+            Schema.Literals(["standard", "bundled", "unbound"]),
+            Schema.String,
+          ]),
           aiBindings: Schema.optional(
             Schema.Union([
               Schema.Record(Schema.String, Schema.Unknown),
@@ -1568,7 +1735,10 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Null,
           ]),
           failOpen: Schema.Boolean,
-          usageModel: Schema.Literals(["standard", "bundled", "unbound"]),
+          usageModel: Schema.Union([
+            Schema.Literals(["standard", "bundled", "unbound"]),
+            Schema.String,
+          ]),
           aiBindings: Schema.optional(
             Schema.Union([
               Schema.Record(Schema.String, Schema.Unknown),
@@ -1734,30 +1904,42 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 commitMessage: "commit_message",
               }),
             ),
-            type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+            type: Schema.Union([
+              Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+              Schema.String,
+            ]),
           }),
           envVars: Schema.Union([
             Schema.Record(Schema.String, Schema.Unknown),
             Schema.Null,
           ]),
-          environment: Schema.Literals(["preview", "production"]),
+          environment: Schema.Union([
+            Schema.Literals(["preview", "production"]),
+            Schema.String,
+          ]),
           isSkipped: Schema.Boolean,
           latestStage: Schema.Struct({
             endedOn: Schema.Union([Schema.String, Schema.Null]),
-            name: Schema.Literals([
-              "queued",
-              "initialize",
-              "clone_repo",
-              "build",
-              "deploy",
+            name: Schema.Union([
+              Schema.Literals([
+                "queued",
+                "initialize",
+                "clone_repo",
+                "build",
+                "deploy",
+              ]),
+              Schema.String,
             ]),
             startedOn: Schema.Union([Schema.String, Schema.Null]),
-            status: Schema.Literals([
-              "success",
-              "idle",
-              "active",
-              "failure",
-              "canceled",
+            status: Schema.Union([
+              Schema.Literals([
+                "success",
+                "idle",
+                "active",
+                "failure",
+                "canceled",
+              ]),
+              Schema.String,
             ]),
           }).pipe(
             Schema.encodeKeys({
@@ -1781,10 +1963,9 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               prCommentsEnabled: Schema.Boolean,
               previewBranchExcludes: Schema.Array(Schema.String),
               previewBranchIncludes: Schema.Array(Schema.String),
-              previewDeploymentSetting: Schema.Literals([
-                "all",
-                "none",
-                "custom",
+              previewDeploymentSetting: Schema.Union([
+                Schema.Literals(["all", "none", "custom"]),
+                Schema.String,
               ]),
               productionBranch: Schema.String,
               productionDeploymentsEnabled: Schema.Boolean,
@@ -1807,25 +1988,34 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 repoName: "repo_name",
               }),
             ),
-            type: Schema.Literals(["github", "gitlab"]),
+            type: Schema.Union([
+              Schema.Literals(["github", "gitlab"]),
+              Schema.String,
+            ]),
           }),
           stages: Schema.Array(
             Schema.Struct({
               endedOn: Schema.Union([Schema.String, Schema.Null]),
-              name: Schema.Literals([
-                "queued",
-                "initialize",
-                "clone_repo",
-                "build",
-                "deploy",
+              name: Schema.Union([
+                Schema.Literals([
+                  "queued",
+                  "initialize",
+                  "clone_repo",
+                  "build",
+                  "deploy",
+                ]),
+                Schema.String,
               ]),
               startedOn: Schema.Union([Schema.String, Schema.Null]),
-              status: Schema.Literals([
-                "success",
-                "idle",
-                "active",
-                "failure",
-                "canceled",
+              status: Schema.Union([
+                Schema.Literals([
+                  "success",
+                  "idle",
+                  "active",
+                  "failure",
+                  "canceled",
+                ]),
+                Schema.String,
               ]),
             }).pipe(
               Schema.encodeKeys({
@@ -1913,10 +2103,9 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               prCommentsEnabled: Schema.Boolean,
               previewBranchExcludes: Schema.Array(Schema.String),
               previewBranchIncludes: Schema.Array(Schema.String),
-              previewDeploymentSetting: Schema.Literals([
-                "all",
-                "none",
-                "custom",
+              previewDeploymentSetting: Schema.Union([
+                Schema.Literals(["all", "none", "custom"]),
+                Schema.String,
               ]),
               productionBranch: Schema.String,
               productionDeploymentsEnabled: Schema.Boolean,
@@ -1939,7 +2128,10 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 repoName: "repo_name",
               }),
             ),
-            type: Schema.Literals(["github", "gitlab"]),
+            type: Schema.Union([
+              Schema.Literals(["github", "gitlab"]),
+              Schema.String,
+            ]),
           }),
           Schema.Null,
         ]),
@@ -2046,7 +2238,7 @@ export interface CreateProjectRequest {
       queueProducers?: Record<string, unknown>;
       r2Buckets?: Record<string, unknown>;
       services?: Record<string, unknown>;
-      usageModel?: "standard" | "bundled" | "unbound";
+      usageModel?: "standard" | "bundled" | "unbound" | (string & {});
       vectorizeBindings?: Record<string, unknown>;
       wranglerConfigHash?: string;
     };
@@ -2070,7 +2262,7 @@ export interface CreateProjectRequest {
       queueProducers?: Record<string, unknown>;
       r2Buckets?: Record<string, unknown>;
       services?: Record<string, unknown>;
-      usageModel?: "standard" | "bundled" | "unbound";
+      usageModel?: "standard" | "bundled" | "unbound" | (string & {});
       vectorizeBindings?: Record<string, unknown>;
       wranglerConfigHash?: string;
     };
@@ -2086,13 +2278,13 @@ export interface CreateProjectRequest {
       prCommentsEnabled?: boolean;
       previewBranchExcludes?: string[];
       previewBranchIncludes?: string[];
-      previewDeploymentSetting?: "all" | "none" | "custom";
+      previewDeploymentSetting?: "all" | "none" | "custom" | (string & {});
       productionBranch?: string;
       productionDeploymentsEnabled?: boolean;
       repoId?: string;
       repoName?: string;
     };
-    type: "github" | "gitlab";
+    type: "github" | "gitlab" | (string & {});
   };
 }
 
@@ -2179,7 +2371,10 @@ export const CreateProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Record(Schema.String, Schema.Unknown),
           ),
           usageModel: Schema.optional(
-            Schema.Literals(["standard", "bundled", "unbound"]),
+            Schema.Union([
+              Schema.Literals(["standard", "bundled", "unbound"]),
+              Schema.String,
+            ]),
           ),
           vectorizeBindings: Schema.optional(
             Schema.Record(Schema.String, Schema.Unknown),
@@ -2267,7 +2462,10 @@ export const CreateProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Record(Schema.String, Schema.Unknown),
           ),
           usageModel: Schema.optional(
-            Schema.Literals(["standard", "bundled", "unbound"]),
+            Schema.Union([
+              Schema.Literals(["standard", "bundled", "unbound"]),
+              Schema.String,
+            ]),
           ),
           vectorizeBindings: Schema.optional(
             Schema.Record(Schema.String, Schema.Unknown),
@@ -2315,7 +2513,10 @@ export const CreateProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         previewBranchExcludes: Schema.optional(Schema.Array(Schema.String)),
         previewBranchIncludes: Schema.optional(Schema.Array(Schema.String)),
         previewDeploymentSetting: Schema.optional(
-          Schema.Literals(["all", "none", "custom"]),
+          Schema.Union([
+            Schema.Literals(["all", "none", "custom"]),
+            Schema.String,
+          ]),
         ),
         productionBranch: Schema.optional(Schema.String),
         productionDeploymentsEnabled: Schema.optional(Schema.Boolean),
@@ -2338,7 +2539,10 @@ export const CreateProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           repoName: "repo_name",
         }),
       ),
-      type: Schema.Literals(["github", "gitlab"]),
+      type: Schema.Union([
+        Schema.Literals(["github", "gitlab"]),
+        Schema.String,
+      ]),
     }),
   ),
 }).pipe(
@@ -2375,16 +2579,28 @@ export interface CreateProjectResponse {
         commitHash: string;
         commitMessage: string;
       };
-      type: "github:push" | "ad_hoc" | "deploy_hook";
+      type: "github:push" | "ad_hoc" | "deploy_hook" | (string & {});
     };
     envVars: Record<string, unknown> | null;
-    environment: "preview" | "production";
+    environment: "preview" | "production" | (string & {});
     isSkipped: boolean;
     latestStage: {
       endedOn: string | null;
-      name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+      name:
+        | "queued"
+        | "initialize"
+        | "clone_repo"
+        | "build"
+        | "deploy"
+        | (string & {});
       startedOn: string | null;
-      status: "success" | "idle" | "active" | "failure" | "canceled";
+      status:
+        | "success"
+        | "idle"
+        | "active"
+        | "failure"
+        | "canceled"
+        | (string & {});
     };
     modifiedOn: string;
     projectId: string;
@@ -2400,19 +2616,31 @@ export interface CreateProjectResponse {
         prCommentsEnabled: boolean;
         previewBranchExcludes: string[];
         previewBranchIncludes: string[];
-        previewDeploymentSetting: "all" | "none" | "custom";
+        previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
         productionBranch: string;
         productionDeploymentsEnabled: boolean;
         repoId: string;
         repoName: string;
       };
-      type: "github" | "gitlab";
+      type: "github" | "gitlab" | (string & {});
     };
     stages: {
       endedOn: string | null;
-      name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+      name:
+        | "queued"
+        | "initialize"
+        | "clone_repo"
+        | "build"
+        | "deploy"
+        | (string & {});
       startedOn: string | null;
-      status: "success" | "idle" | "active" | "failure" | "canceled";
+      status:
+        | "success"
+        | "idle"
+        | "active"
+        | "failure"
+        | "canceled"
+        | (string & {});
     }[];
     url: string;
     usesFunctions?: boolean | null;
@@ -2428,7 +2656,7 @@ export interface CreateProjectResponse {
       compatibilityFlags: string[];
       envVars: Record<string, unknown> | null;
       failOpen: boolean;
-      usageModel: "standard" | "bundled" | "unbound";
+      usageModel: "standard" | "bundled" | "unbound" | (string & {});
       aiBindings?: Record<string, unknown> | null;
       analyticsEngineDatasets?: Record<string, unknown> | null;
       browsers?: Record<string, unknown> | null;
@@ -2452,7 +2680,7 @@ export interface CreateProjectResponse {
       compatibilityFlags: string[];
       envVars: Record<string, unknown> | null;
       failOpen: boolean;
-      usageModel: "standard" | "bundled" | "unbound";
+      usageModel: "standard" | "bundled" | "unbound" | (string & {});
       aiBindings?: Record<string, unknown> | null;
       analyticsEngineDatasets?: Record<string, unknown> | null;
       browsers?: Record<string, unknown> | null;
@@ -2494,16 +2722,28 @@ export interface CreateProjectResponse {
         commitHash: string;
         commitMessage: string;
       };
-      type: "github:push" | "ad_hoc" | "deploy_hook";
+      type: "github:push" | "ad_hoc" | "deploy_hook" | (string & {});
     };
     envVars: Record<string, unknown> | null;
-    environment: "preview" | "production";
+    environment: "preview" | "production" | (string & {});
     isSkipped: boolean;
     latestStage: {
       endedOn: string | null;
-      name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+      name:
+        | "queued"
+        | "initialize"
+        | "clone_repo"
+        | "build"
+        | "deploy"
+        | (string & {});
       startedOn: string | null;
-      status: "success" | "idle" | "active" | "failure" | "canceled";
+      status:
+        | "success"
+        | "idle"
+        | "active"
+        | "failure"
+        | "canceled"
+        | (string & {});
     };
     modifiedOn: string;
     projectId: string;
@@ -2519,19 +2759,31 @@ export interface CreateProjectResponse {
         prCommentsEnabled: boolean;
         previewBranchExcludes: string[];
         previewBranchIncludes: string[];
-        previewDeploymentSetting: "all" | "none" | "custom";
+        previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
         productionBranch: string;
         productionDeploymentsEnabled: boolean;
         repoId: string;
         repoName: string;
       };
-      type: "github" | "gitlab";
+      type: "github" | "gitlab" | (string & {});
     };
     stages: {
       endedOn: string | null;
-      name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+      name:
+        | "queued"
+        | "initialize"
+        | "clone_repo"
+        | "build"
+        | "deploy"
+        | (string & {});
       startedOn: string | null;
-      status: "success" | "idle" | "active" | "failure" | "canceled";
+      status:
+        | "success"
+        | "idle"
+        | "active"
+        | "failure"
+        | "canceled"
+        | (string & {});
     }[];
     url: string;
     usesFunctions?: boolean | null;
@@ -2568,13 +2820,13 @@ export interface CreateProjectResponse {
       prCommentsEnabled: boolean;
       previewBranchExcludes: string[];
       previewBranchIncludes: string[];
-      previewDeploymentSetting: "all" | "none" | "custom";
+      previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
       productionBranch: string;
       productionDeploymentsEnabled: boolean;
       repoId: string;
       repoName: string;
     };
-    type: "github" | "gitlab";
+    type: "github" | "gitlab" | (string & {});
   } | null;
   /** The Cloudflare subdomain associated with the project. */
   subdomain?: string | null;
@@ -2624,30 +2876,36 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             commitMessage: "commit_message",
           }),
         ),
-        type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+        type: Schema.Union([
+          Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+          Schema.String,
+        ]),
       }),
       envVars: Schema.Union([
         Schema.Record(Schema.String, Schema.Unknown),
         Schema.Null,
       ]),
-      environment: Schema.Literals(["preview", "production"]),
+      environment: Schema.Union([
+        Schema.Literals(["preview", "production"]),
+        Schema.String,
+      ]),
       isSkipped: Schema.Boolean,
       latestStage: Schema.Struct({
         endedOn: Schema.Union([Schema.String, Schema.Null]),
-        name: Schema.Literals([
-          "queued",
-          "initialize",
-          "clone_repo",
-          "build",
-          "deploy",
+        name: Schema.Union([
+          Schema.Literals([
+            "queued",
+            "initialize",
+            "clone_repo",
+            "build",
+            "deploy",
+          ]),
+          Schema.String,
         ]),
         startedOn: Schema.Union([Schema.String, Schema.Null]),
-        status: Schema.Literals([
-          "success",
-          "idle",
-          "active",
-          "failure",
-          "canceled",
+        status: Schema.Union([
+          Schema.Literals(["success", "idle", "active", "failure", "canceled"]),
+          Schema.String,
         ]),
       }).pipe(
         Schema.encodeKeys({
@@ -2671,7 +2929,10 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           prCommentsEnabled: Schema.Boolean,
           previewBranchExcludes: Schema.Array(Schema.String),
           previewBranchIncludes: Schema.Array(Schema.String),
-          previewDeploymentSetting: Schema.Literals(["all", "none", "custom"]),
+          previewDeploymentSetting: Schema.Union([
+            Schema.Literals(["all", "none", "custom"]),
+            Schema.String,
+          ]),
           productionBranch: Schema.String,
           productionDeploymentsEnabled: Schema.Boolean,
           repoId: Schema.String,
@@ -2693,25 +2954,34 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             repoName: "repo_name",
           }),
         ),
-        type: Schema.Literals(["github", "gitlab"]),
+        type: Schema.Union([
+          Schema.Literals(["github", "gitlab"]),
+          Schema.String,
+        ]),
       }),
       stages: Schema.Array(
         Schema.Struct({
           endedOn: Schema.Union([Schema.String, Schema.Null]),
-          name: Schema.Literals([
-            "queued",
-            "initialize",
-            "clone_repo",
-            "build",
-            "deploy",
+          name: Schema.Union([
+            Schema.Literals([
+              "queued",
+              "initialize",
+              "clone_repo",
+              "build",
+              "deploy",
+            ]),
+            Schema.String,
           ]),
           startedOn: Schema.Union([Schema.String, Schema.Null]),
-          status: Schema.Literals([
-            "success",
-            "idle",
-            "active",
-            "failure",
-            "canceled",
+          status: Schema.Union([
+            Schema.Literals([
+              "success",
+              "idle",
+              "active",
+              "failure",
+              "canceled",
+            ]),
+            Schema.String,
           ]),
         }).pipe(
           Schema.encodeKeys({
@@ -2761,7 +3031,10 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Null,
       ]),
       failOpen: Schema.Boolean,
-      usageModel: Schema.Literals(["standard", "bundled", "unbound"]),
+      usageModel: Schema.Union([
+        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.String,
+      ]),
       aiBindings: Schema.optional(
         Schema.Union([
           Schema.Record(Schema.String, Schema.Unknown),
@@ -2890,7 +3163,10 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Null,
       ]),
       failOpen: Schema.Boolean,
-      usageModel: Schema.Literals(["standard", "bundled", "unbound"]),
+      usageModel: Schema.Union([
+        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.String,
+      ]),
       aiBindings: Schema.optional(
         Schema.Union([
           Schema.Record(Schema.String, Schema.Unknown),
@@ -3054,30 +3330,36 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             commitMessage: "commit_message",
           }),
         ),
-        type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+        type: Schema.Union([
+          Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+          Schema.String,
+        ]),
       }),
       envVars: Schema.Union([
         Schema.Record(Schema.String, Schema.Unknown),
         Schema.Null,
       ]),
-      environment: Schema.Literals(["preview", "production"]),
+      environment: Schema.Union([
+        Schema.Literals(["preview", "production"]),
+        Schema.String,
+      ]),
       isSkipped: Schema.Boolean,
       latestStage: Schema.Struct({
         endedOn: Schema.Union([Schema.String, Schema.Null]),
-        name: Schema.Literals([
-          "queued",
-          "initialize",
-          "clone_repo",
-          "build",
-          "deploy",
+        name: Schema.Union([
+          Schema.Literals([
+            "queued",
+            "initialize",
+            "clone_repo",
+            "build",
+            "deploy",
+          ]),
+          Schema.String,
         ]),
         startedOn: Schema.Union([Schema.String, Schema.Null]),
-        status: Schema.Literals([
-          "success",
-          "idle",
-          "active",
-          "failure",
-          "canceled",
+        status: Schema.Union([
+          Schema.Literals(["success", "idle", "active", "failure", "canceled"]),
+          Schema.String,
         ]),
       }).pipe(
         Schema.encodeKeys({
@@ -3101,7 +3383,10 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           prCommentsEnabled: Schema.Boolean,
           previewBranchExcludes: Schema.Array(Schema.String),
           previewBranchIncludes: Schema.Array(Schema.String),
-          previewDeploymentSetting: Schema.Literals(["all", "none", "custom"]),
+          previewDeploymentSetting: Schema.Union([
+            Schema.Literals(["all", "none", "custom"]),
+            Schema.String,
+          ]),
           productionBranch: Schema.String,
           productionDeploymentsEnabled: Schema.Boolean,
           repoId: Schema.String,
@@ -3123,25 +3408,34 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             repoName: "repo_name",
           }),
         ),
-        type: Schema.Literals(["github", "gitlab"]),
+        type: Schema.Union([
+          Schema.Literals(["github", "gitlab"]),
+          Schema.String,
+        ]),
       }),
       stages: Schema.Array(
         Schema.Struct({
           endedOn: Schema.Union([Schema.String, Schema.Null]),
-          name: Schema.Literals([
-            "queued",
-            "initialize",
-            "clone_repo",
-            "build",
-            "deploy",
+          name: Schema.Union([
+            Schema.Literals([
+              "queued",
+              "initialize",
+              "clone_repo",
+              "build",
+              "deploy",
+            ]),
+            Schema.String,
           ]),
           startedOn: Schema.Union([Schema.String, Schema.Null]),
-          status: Schema.Literals([
-            "success",
-            "idle",
-            "active",
-            "failure",
-            "canceled",
+          status: Schema.Union([
+            Schema.Literals([
+              "success",
+              "idle",
+              "active",
+              "failure",
+              "canceled",
+            ]),
+            Schema.String,
           ]),
         }).pipe(
           Schema.encodeKeys({
@@ -3227,7 +3521,10 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           prCommentsEnabled: Schema.Boolean,
           previewBranchExcludes: Schema.Array(Schema.String),
           previewBranchIncludes: Schema.Array(Schema.String),
-          previewDeploymentSetting: Schema.Literals(["all", "none", "custom"]),
+          previewDeploymentSetting: Schema.Union([
+            Schema.Literals(["all", "none", "custom"]),
+            Schema.String,
+          ]),
           productionBranch: Schema.String,
           productionDeploymentsEnabled: Schema.Boolean,
           repoId: Schema.String,
@@ -3249,7 +3546,10 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             repoName: "repo_name",
           }),
         ),
-        type: Schema.Literals(["github", "gitlab"]),
+        type: Schema.Union([
+          Schema.Literals(["github", "gitlab"]),
+          Schema.String,
+        ]),
       }),
       Schema.Null,
     ]),
@@ -3328,7 +3628,7 @@ export interface PatchProjectRequest {
       queueProducers?: Record<string, unknown>;
       r2Buckets?: Record<string, unknown>;
       services?: Record<string, unknown>;
-      usageModel?: "standard" | "bundled" | "unbound";
+      usageModel?: "standard" | "bundled" | "unbound" | (string & {});
       vectorizeBindings?: Record<string, unknown>;
       wranglerConfigHash?: string;
     };
@@ -3352,7 +3652,7 @@ export interface PatchProjectRequest {
       queueProducers?: Record<string, unknown>;
       r2Buckets?: Record<string, unknown>;
       services?: Record<string, unknown>;
-      usageModel?: "standard" | "bundled" | "unbound";
+      usageModel?: "standard" | "bundled" | "unbound" | (string & {});
       vectorizeBindings?: Record<string, unknown>;
       wranglerConfigHash?: string;
     };
@@ -3372,13 +3672,13 @@ export interface PatchProjectRequest {
       prCommentsEnabled?: boolean;
       previewBranchExcludes?: string[];
       previewBranchIncludes?: string[];
-      previewDeploymentSetting?: "all" | "none" | "custom";
+      previewDeploymentSetting?: "all" | "none" | "custom" | (string & {});
       productionBranch?: string;
       productionDeploymentsEnabled?: boolean;
       repoId?: string;
       repoName?: string;
     };
-    type: "github" | "gitlab";
+    type: "github" | "gitlab" | (string & {});
   };
 }
 
@@ -3464,7 +3764,10 @@ export const PatchProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Record(Schema.String, Schema.Unknown),
           ),
           usageModel: Schema.optional(
-            Schema.Literals(["standard", "bundled", "unbound"]),
+            Schema.Union([
+              Schema.Literals(["standard", "bundled", "unbound"]),
+              Schema.String,
+            ]),
           ),
           vectorizeBindings: Schema.optional(
             Schema.Record(Schema.String, Schema.Unknown),
@@ -3552,7 +3855,10 @@ export const PatchProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Record(Schema.String, Schema.Unknown),
           ),
           usageModel: Schema.optional(
-            Schema.Literals(["standard", "bundled", "unbound"]),
+            Schema.Union([
+              Schema.Literals(["standard", "bundled", "unbound"]),
+              Schema.String,
+            ]),
           ),
           vectorizeBindings: Schema.optional(
             Schema.Record(Schema.String, Schema.Unknown),
@@ -3602,7 +3908,10 @@ export const PatchProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         previewBranchExcludes: Schema.optional(Schema.Array(Schema.String)),
         previewBranchIncludes: Schema.optional(Schema.Array(Schema.String)),
         previewDeploymentSetting: Schema.optional(
-          Schema.Literals(["all", "none", "custom"]),
+          Schema.Union([
+            Schema.Literals(["all", "none", "custom"]),
+            Schema.String,
+          ]),
         ),
         productionBranch: Schema.optional(Schema.String),
         productionDeploymentsEnabled: Schema.optional(Schema.Boolean),
@@ -3625,7 +3934,10 @@ export const PatchProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           repoName: "repo_name",
         }),
       ),
-      type: Schema.Literals(["github", "gitlab"]),
+      type: Schema.Union([
+        Schema.Literals(["github", "gitlab"]),
+        Schema.String,
+      ]),
     }),
   ),
 }).pipe(
@@ -3665,16 +3977,28 @@ export interface PatchProjectResponse {
         commitHash: string;
         commitMessage: string;
       };
-      type: "github:push" | "ad_hoc" | "deploy_hook";
+      type: "github:push" | "ad_hoc" | "deploy_hook" | (string & {});
     };
     envVars: Record<string, unknown> | null;
-    environment: "preview" | "production";
+    environment: "preview" | "production" | (string & {});
     isSkipped: boolean;
     latestStage: {
       endedOn: string | null;
-      name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+      name:
+        | "queued"
+        | "initialize"
+        | "clone_repo"
+        | "build"
+        | "deploy"
+        | (string & {});
       startedOn: string | null;
-      status: "success" | "idle" | "active" | "failure" | "canceled";
+      status:
+        | "success"
+        | "idle"
+        | "active"
+        | "failure"
+        | "canceled"
+        | (string & {});
     };
     modifiedOn: string;
     projectId: string;
@@ -3690,19 +4014,31 @@ export interface PatchProjectResponse {
         prCommentsEnabled: boolean;
         previewBranchExcludes: string[];
         previewBranchIncludes: string[];
-        previewDeploymentSetting: "all" | "none" | "custom";
+        previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
         productionBranch: string;
         productionDeploymentsEnabled: boolean;
         repoId: string;
         repoName: string;
       };
-      type: "github" | "gitlab";
+      type: "github" | "gitlab" | (string & {});
     };
     stages: {
       endedOn: string | null;
-      name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+      name:
+        | "queued"
+        | "initialize"
+        | "clone_repo"
+        | "build"
+        | "deploy"
+        | (string & {});
       startedOn: string | null;
-      status: "success" | "idle" | "active" | "failure" | "canceled";
+      status:
+        | "success"
+        | "idle"
+        | "active"
+        | "failure"
+        | "canceled"
+        | (string & {});
     }[];
     url: string;
     usesFunctions?: boolean | null;
@@ -3718,7 +4054,7 @@ export interface PatchProjectResponse {
       compatibilityFlags: string[];
       envVars: Record<string, unknown> | null;
       failOpen: boolean;
-      usageModel: "standard" | "bundled" | "unbound";
+      usageModel: "standard" | "bundled" | "unbound" | (string & {});
       aiBindings?: Record<string, unknown> | null;
       analyticsEngineDatasets?: Record<string, unknown> | null;
       browsers?: Record<string, unknown> | null;
@@ -3742,7 +4078,7 @@ export interface PatchProjectResponse {
       compatibilityFlags: string[];
       envVars: Record<string, unknown> | null;
       failOpen: boolean;
-      usageModel: "standard" | "bundled" | "unbound";
+      usageModel: "standard" | "bundled" | "unbound" | (string & {});
       aiBindings?: Record<string, unknown> | null;
       analyticsEngineDatasets?: Record<string, unknown> | null;
       browsers?: Record<string, unknown> | null;
@@ -3784,16 +4120,28 @@ export interface PatchProjectResponse {
         commitHash: string;
         commitMessage: string;
       };
-      type: "github:push" | "ad_hoc" | "deploy_hook";
+      type: "github:push" | "ad_hoc" | "deploy_hook" | (string & {});
     };
     envVars: Record<string, unknown> | null;
-    environment: "preview" | "production";
+    environment: "preview" | "production" | (string & {});
     isSkipped: boolean;
     latestStage: {
       endedOn: string | null;
-      name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+      name:
+        | "queued"
+        | "initialize"
+        | "clone_repo"
+        | "build"
+        | "deploy"
+        | (string & {});
       startedOn: string | null;
-      status: "success" | "idle" | "active" | "failure" | "canceled";
+      status:
+        | "success"
+        | "idle"
+        | "active"
+        | "failure"
+        | "canceled"
+        | (string & {});
     };
     modifiedOn: string;
     projectId: string;
@@ -3809,19 +4157,31 @@ export interface PatchProjectResponse {
         prCommentsEnabled: boolean;
         previewBranchExcludes: string[];
         previewBranchIncludes: string[];
-        previewDeploymentSetting: "all" | "none" | "custom";
+        previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
         productionBranch: string;
         productionDeploymentsEnabled: boolean;
         repoId: string;
         repoName: string;
       };
-      type: "github" | "gitlab";
+      type: "github" | "gitlab" | (string & {});
     };
     stages: {
       endedOn: string | null;
-      name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+      name:
+        | "queued"
+        | "initialize"
+        | "clone_repo"
+        | "build"
+        | "deploy"
+        | (string & {});
       startedOn: string | null;
-      status: "success" | "idle" | "active" | "failure" | "canceled";
+      status:
+        | "success"
+        | "idle"
+        | "active"
+        | "failure"
+        | "canceled"
+        | (string & {});
     }[];
     url: string;
     usesFunctions?: boolean | null;
@@ -3858,13 +4218,13 @@ export interface PatchProjectResponse {
       prCommentsEnabled: boolean;
       previewBranchExcludes: string[];
       previewBranchIncludes: string[];
-      previewDeploymentSetting: "all" | "none" | "custom";
+      previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
       productionBranch: string;
       productionDeploymentsEnabled: boolean;
       repoId: string;
       repoName: string;
     };
-    type: "github" | "gitlab";
+    type: "github" | "gitlab" | (string & {});
   } | null;
   /** The Cloudflare subdomain associated with the project. */
   subdomain?: string | null;
@@ -3914,30 +4274,36 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             commitMessage: "commit_message",
           }),
         ),
-        type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+        type: Schema.Union([
+          Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+          Schema.String,
+        ]),
       }),
       envVars: Schema.Union([
         Schema.Record(Schema.String, Schema.Unknown),
         Schema.Null,
       ]),
-      environment: Schema.Literals(["preview", "production"]),
+      environment: Schema.Union([
+        Schema.Literals(["preview", "production"]),
+        Schema.String,
+      ]),
       isSkipped: Schema.Boolean,
       latestStage: Schema.Struct({
         endedOn: Schema.Union([Schema.String, Schema.Null]),
-        name: Schema.Literals([
-          "queued",
-          "initialize",
-          "clone_repo",
-          "build",
-          "deploy",
+        name: Schema.Union([
+          Schema.Literals([
+            "queued",
+            "initialize",
+            "clone_repo",
+            "build",
+            "deploy",
+          ]),
+          Schema.String,
         ]),
         startedOn: Schema.Union([Schema.String, Schema.Null]),
-        status: Schema.Literals([
-          "success",
-          "idle",
-          "active",
-          "failure",
-          "canceled",
+        status: Schema.Union([
+          Schema.Literals(["success", "idle", "active", "failure", "canceled"]),
+          Schema.String,
         ]),
       }).pipe(
         Schema.encodeKeys({
@@ -3961,7 +4327,10 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           prCommentsEnabled: Schema.Boolean,
           previewBranchExcludes: Schema.Array(Schema.String),
           previewBranchIncludes: Schema.Array(Schema.String),
-          previewDeploymentSetting: Schema.Literals(["all", "none", "custom"]),
+          previewDeploymentSetting: Schema.Union([
+            Schema.Literals(["all", "none", "custom"]),
+            Schema.String,
+          ]),
           productionBranch: Schema.String,
           productionDeploymentsEnabled: Schema.Boolean,
           repoId: Schema.String,
@@ -3983,25 +4352,34 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             repoName: "repo_name",
           }),
         ),
-        type: Schema.Literals(["github", "gitlab"]),
+        type: Schema.Union([
+          Schema.Literals(["github", "gitlab"]),
+          Schema.String,
+        ]),
       }),
       stages: Schema.Array(
         Schema.Struct({
           endedOn: Schema.Union([Schema.String, Schema.Null]),
-          name: Schema.Literals([
-            "queued",
-            "initialize",
-            "clone_repo",
-            "build",
-            "deploy",
+          name: Schema.Union([
+            Schema.Literals([
+              "queued",
+              "initialize",
+              "clone_repo",
+              "build",
+              "deploy",
+            ]),
+            Schema.String,
           ]),
           startedOn: Schema.Union([Schema.String, Schema.Null]),
-          status: Schema.Literals([
-            "success",
-            "idle",
-            "active",
-            "failure",
-            "canceled",
+          status: Schema.Union([
+            Schema.Literals([
+              "success",
+              "idle",
+              "active",
+              "failure",
+              "canceled",
+            ]),
+            Schema.String,
           ]),
         }).pipe(
           Schema.encodeKeys({
@@ -4051,7 +4429,10 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Null,
       ]),
       failOpen: Schema.Boolean,
-      usageModel: Schema.Literals(["standard", "bundled", "unbound"]),
+      usageModel: Schema.Union([
+        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.String,
+      ]),
       aiBindings: Schema.optional(
         Schema.Union([
           Schema.Record(Schema.String, Schema.Unknown),
@@ -4180,7 +4561,10 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Null,
       ]),
       failOpen: Schema.Boolean,
-      usageModel: Schema.Literals(["standard", "bundled", "unbound"]),
+      usageModel: Schema.Union([
+        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.String,
+      ]),
       aiBindings: Schema.optional(
         Schema.Union([
           Schema.Record(Schema.String, Schema.Unknown),
@@ -4344,30 +4728,36 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             commitMessage: "commit_message",
           }),
         ),
-        type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+        type: Schema.Union([
+          Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+          Schema.String,
+        ]),
       }),
       envVars: Schema.Union([
         Schema.Record(Schema.String, Schema.Unknown),
         Schema.Null,
       ]),
-      environment: Schema.Literals(["preview", "production"]),
+      environment: Schema.Union([
+        Schema.Literals(["preview", "production"]),
+        Schema.String,
+      ]),
       isSkipped: Schema.Boolean,
       latestStage: Schema.Struct({
         endedOn: Schema.Union([Schema.String, Schema.Null]),
-        name: Schema.Literals([
-          "queued",
-          "initialize",
-          "clone_repo",
-          "build",
-          "deploy",
+        name: Schema.Union([
+          Schema.Literals([
+            "queued",
+            "initialize",
+            "clone_repo",
+            "build",
+            "deploy",
+          ]),
+          Schema.String,
         ]),
         startedOn: Schema.Union([Schema.String, Schema.Null]),
-        status: Schema.Literals([
-          "success",
-          "idle",
-          "active",
-          "failure",
-          "canceled",
+        status: Schema.Union([
+          Schema.Literals(["success", "idle", "active", "failure", "canceled"]),
+          Schema.String,
         ]),
       }).pipe(
         Schema.encodeKeys({
@@ -4391,7 +4781,10 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           prCommentsEnabled: Schema.Boolean,
           previewBranchExcludes: Schema.Array(Schema.String),
           previewBranchIncludes: Schema.Array(Schema.String),
-          previewDeploymentSetting: Schema.Literals(["all", "none", "custom"]),
+          previewDeploymentSetting: Schema.Union([
+            Schema.Literals(["all", "none", "custom"]),
+            Schema.String,
+          ]),
           productionBranch: Schema.String,
           productionDeploymentsEnabled: Schema.Boolean,
           repoId: Schema.String,
@@ -4413,25 +4806,34 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             repoName: "repo_name",
           }),
         ),
-        type: Schema.Literals(["github", "gitlab"]),
+        type: Schema.Union([
+          Schema.Literals(["github", "gitlab"]),
+          Schema.String,
+        ]),
       }),
       stages: Schema.Array(
         Schema.Struct({
           endedOn: Schema.Union([Schema.String, Schema.Null]),
-          name: Schema.Literals([
-            "queued",
-            "initialize",
-            "clone_repo",
-            "build",
-            "deploy",
+          name: Schema.Union([
+            Schema.Literals([
+              "queued",
+              "initialize",
+              "clone_repo",
+              "build",
+              "deploy",
+            ]),
+            Schema.String,
           ]),
           startedOn: Schema.Union([Schema.String, Schema.Null]),
-          status: Schema.Literals([
-            "success",
-            "idle",
-            "active",
-            "failure",
-            "canceled",
+          status: Schema.Union([
+            Schema.Literals([
+              "success",
+              "idle",
+              "active",
+              "failure",
+              "canceled",
+            ]),
+            Schema.String,
           ]),
         }).pipe(
           Schema.encodeKeys({
@@ -4517,7 +4919,10 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           prCommentsEnabled: Schema.Boolean,
           previewBranchExcludes: Schema.Array(Schema.String),
           previewBranchIncludes: Schema.Array(Schema.String),
-          previewDeploymentSetting: Schema.Literals(["all", "none", "custom"]),
+          previewDeploymentSetting: Schema.Union([
+            Schema.Literals(["all", "none", "custom"]),
+            Schema.String,
+          ]),
           productionBranch: Schema.String,
           productionDeploymentsEnabled: Schema.Boolean,
           repoId: Schema.String,
@@ -4539,7 +4944,10 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             repoName: "repo_name",
           }),
         ),
-        type: Schema.Literals(["github", "gitlab"]),
+        type: Schema.Union([
+          Schema.Literals(["github", "gitlab"]),
+          Schema.String,
+        ]),
       }),
       Schema.Null,
     ]),
@@ -4666,20 +5074,32 @@ export interface GetProjectDeploymentResponse {
       commitHash: string;
       commitMessage: string;
     };
-    type: "github:push" | "ad_hoc" | "deploy_hook";
+    type: "github:push" | "ad_hoc" | "deploy_hook" | (string & {});
   };
   /** Environment variables used for builds and Pages Functions. */
   envVars: Record<string, unknown> | null;
   /** Type of deploy. */
-  environment: "preview" | "production";
+  environment: "preview" | "production" | (string & {});
   /** If the deployment has been skipped. */
   isSkipped: boolean;
   /** The status of the deployment. */
   latestStage: {
     endedOn: string | null;
-    name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+    name:
+      | "queued"
+      | "initialize"
+      | "clone_repo"
+      | "build"
+      | "deploy"
+      | (string & {});
     startedOn: string | null;
-    status: "success" | "idle" | "active" | "failure" | "canceled";
+    status:
+      | "success"
+      | "idle"
+      | "active"
+      | "failure"
+      | "canceled"
+      | (string & {});
   };
   /** When the deployment was last modified. */
   modifiedOn: string;
@@ -4700,20 +5120,32 @@ export interface GetProjectDeploymentResponse {
       prCommentsEnabled: boolean;
       previewBranchExcludes: string[];
       previewBranchIncludes: string[];
-      previewDeploymentSetting: "all" | "none" | "custom";
+      previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
       productionBranch: string;
       productionDeploymentsEnabled: boolean;
       repoId: string;
       repoName: string;
     };
-    type: "github" | "gitlab";
+    type: "github" | "gitlab" | (string & {});
   };
   /** List of past stages. */
   stages: {
     endedOn: string | null;
-    name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+    name:
+      | "queued"
+      | "initialize"
+      | "clone_repo"
+      | "build"
+      | "deploy"
+      | (string & {});
     startedOn: string | null;
-    status: "success" | "idle" | "active" | "failure" | "canceled";
+    status:
+      | "success"
+      | "idle"
+      | "active"
+      | "failure"
+      | "canceled"
+      | (string & {});
   }[];
   /** The live URL to view this deployment. */
   url: string;
@@ -4761,30 +5193,36 @@ export const GetProjectDeploymentResponse =
           commitMessage: "commit_message",
         }),
       ),
-      type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+      type: Schema.Union([
+        Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+        Schema.String,
+      ]),
     }),
     envVars: Schema.Union([
       Schema.Record(Schema.String, Schema.Unknown),
       Schema.Null,
     ]),
-    environment: Schema.Literals(["preview", "production"]),
+    environment: Schema.Union([
+      Schema.Literals(["preview", "production"]),
+      Schema.String,
+    ]),
     isSkipped: Schema.Boolean,
     latestStage: Schema.Struct({
       endedOn: Schema.Union([Schema.String, Schema.Null]),
-      name: Schema.Literals([
-        "queued",
-        "initialize",
-        "clone_repo",
-        "build",
-        "deploy",
+      name: Schema.Union([
+        Schema.Literals([
+          "queued",
+          "initialize",
+          "clone_repo",
+          "build",
+          "deploy",
+        ]),
+        Schema.String,
       ]),
       startedOn: Schema.Union([Schema.String, Schema.Null]),
-      status: Schema.Literals([
-        "success",
-        "idle",
-        "active",
-        "failure",
-        "canceled",
+      status: Schema.Union([
+        Schema.Literals(["success", "idle", "active", "failure", "canceled"]),
+        Schema.String,
       ]),
     }).pipe(
       Schema.encodeKeys({
@@ -4808,7 +5246,10 @@ export const GetProjectDeploymentResponse =
         prCommentsEnabled: Schema.Boolean,
         previewBranchExcludes: Schema.Array(Schema.String),
         previewBranchIncludes: Schema.Array(Schema.String),
-        previewDeploymentSetting: Schema.Literals(["all", "none", "custom"]),
+        previewDeploymentSetting: Schema.Union([
+          Schema.Literals(["all", "none", "custom"]),
+          Schema.String,
+        ]),
         productionBranch: Schema.String,
         productionDeploymentsEnabled: Schema.Boolean,
         repoId: Schema.String,
@@ -4830,25 +5271,28 @@ export const GetProjectDeploymentResponse =
           repoName: "repo_name",
         }),
       ),
-      type: Schema.Literals(["github", "gitlab"]),
+      type: Schema.Union([
+        Schema.Literals(["github", "gitlab"]),
+        Schema.String,
+      ]),
     }),
     stages: Schema.Array(
       Schema.Struct({
         endedOn: Schema.Union([Schema.String, Schema.Null]),
-        name: Schema.Literals([
-          "queued",
-          "initialize",
-          "clone_repo",
-          "build",
-          "deploy",
+        name: Schema.Union([
+          Schema.Literals([
+            "queued",
+            "initialize",
+            "clone_repo",
+            "build",
+            "deploy",
+          ]),
+          Schema.String,
         ]),
         startedOn: Schema.Union([Schema.String, Schema.Null]),
-        status: Schema.Literals([
-          "success",
-          "idle",
-          "active",
-          "failure",
-          "canceled",
+        status: Schema.Union([
+          Schema.Literals(["success", "idle", "active", "failure", "canceled"]),
+          Schema.String,
         ]),
       }).pipe(
         Schema.encodeKeys({
@@ -4907,7 +5351,7 @@ export interface ListProjectDeploymentsRequest {
   page?: number;
   perPage?: number;
   /** Query param: What type of deployments to fetch. */
-  env?: "production" | "preview";
+  env?: "production" | "preview" | (string & {});
 }
 
 export const ListProjectDeploymentsRequest =
@@ -4916,9 +5360,9 @@ export const ListProjectDeploymentsRequest =
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    env: Schema.optional(Schema.Literals(["production", "preview"])).pipe(
-      T.HttpQuery("env"),
-    ),
+    env: Schema.optional(
+      Schema.Union([Schema.Literals(["production", "preview"]), Schema.String]),
+    ).pipe(T.HttpQuery("env")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4946,16 +5390,28 @@ export interface ListProjectDeploymentsResponse {
         commitHash: string;
         commitMessage: string;
       };
-      type: "github:push" | "ad_hoc" | "deploy_hook";
+      type: "github:push" | "ad_hoc" | "deploy_hook" | (string & {});
     };
     envVars: Record<string, unknown> | null;
-    environment: "preview" | "production";
+    environment: "preview" | "production" | (string & {});
     isSkipped: boolean;
     latestStage: {
       endedOn: string | null;
-      name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+      name:
+        | "queued"
+        | "initialize"
+        | "clone_repo"
+        | "build"
+        | "deploy"
+        | (string & {});
       startedOn: string | null;
-      status: "success" | "idle" | "active" | "failure" | "canceled";
+      status:
+        | "success"
+        | "idle"
+        | "active"
+        | "failure"
+        | "canceled"
+        | (string & {});
     };
     modifiedOn: string;
     projectId: string;
@@ -4971,19 +5427,31 @@ export interface ListProjectDeploymentsResponse {
         prCommentsEnabled: boolean;
         previewBranchExcludes: string[];
         previewBranchIncludes: string[];
-        previewDeploymentSetting: "all" | "none" | "custom";
+        previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
         productionBranch: string;
         productionDeploymentsEnabled: boolean;
         repoId: string;
         repoName: string;
       };
-      type: "github" | "gitlab";
+      type: "github" | "gitlab" | (string & {});
     };
     stages: {
       endedOn: string | null;
-      name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+      name:
+        | "queued"
+        | "initialize"
+        | "clone_repo"
+        | "build"
+        | "deploy"
+        | (string & {});
       startedOn: string | null;
-      status: "success" | "idle" | "active" | "failure" | "canceled";
+      status:
+        | "success"
+        | "idle"
+        | "active"
+        | "failure"
+        | "canceled"
+        | (string & {});
     }[];
     url: string;
     usesFunctions?: boolean | null;
@@ -5040,30 +5508,42 @@ export const ListProjectDeploymentsResponse =
               commitMessage: "commit_message",
             }),
           ),
-          type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+          type: Schema.Union([
+            Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+            Schema.String,
+          ]),
         }),
         envVars: Schema.Union([
           Schema.Record(Schema.String, Schema.Unknown),
           Schema.Null,
         ]),
-        environment: Schema.Literals(["preview", "production"]),
+        environment: Schema.Union([
+          Schema.Literals(["preview", "production"]),
+          Schema.String,
+        ]),
         isSkipped: Schema.Boolean,
         latestStage: Schema.Struct({
           endedOn: Schema.Union([Schema.String, Schema.Null]),
-          name: Schema.Literals([
-            "queued",
-            "initialize",
-            "clone_repo",
-            "build",
-            "deploy",
+          name: Schema.Union([
+            Schema.Literals([
+              "queued",
+              "initialize",
+              "clone_repo",
+              "build",
+              "deploy",
+            ]),
+            Schema.String,
           ]),
           startedOn: Schema.Union([Schema.String, Schema.Null]),
-          status: Schema.Literals([
-            "success",
-            "idle",
-            "active",
-            "failure",
-            "canceled",
+          status: Schema.Union([
+            Schema.Literals([
+              "success",
+              "idle",
+              "active",
+              "failure",
+              "canceled",
+            ]),
+            Schema.String,
           ]),
         }).pipe(
           Schema.encodeKeys({
@@ -5087,10 +5567,9 @@ export const ListProjectDeploymentsResponse =
             prCommentsEnabled: Schema.Boolean,
             previewBranchExcludes: Schema.Array(Schema.String),
             previewBranchIncludes: Schema.Array(Schema.String),
-            previewDeploymentSetting: Schema.Literals([
-              "all",
-              "none",
-              "custom",
+            previewDeploymentSetting: Schema.Union([
+              Schema.Literals(["all", "none", "custom"]),
+              Schema.String,
             ]),
             productionBranch: Schema.String,
             productionDeploymentsEnabled: Schema.Boolean,
@@ -5113,25 +5592,34 @@ export const ListProjectDeploymentsResponse =
               repoName: "repo_name",
             }),
           ),
-          type: Schema.Literals(["github", "gitlab"]),
+          type: Schema.Union([
+            Schema.Literals(["github", "gitlab"]),
+            Schema.String,
+          ]),
         }),
         stages: Schema.Array(
           Schema.Struct({
             endedOn: Schema.Union([Schema.String, Schema.Null]),
-            name: Schema.Literals([
-              "queued",
-              "initialize",
-              "clone_repo",
-              "build",
-              "deploy",
+            name: Schema.Union([
+              Schema.Literals([
+                "queued",
+                "initialize",
+                "clone_repo",
+                "build",
+                "deploy",
+              ]),
+              Schema.String,
             ]),
             startedOn: Schema.Union([Schema.String, Schema.Null]),
-            status: Schema.Literals([
-              "success",
-              "idle",
-              "active",
-              "failure",
-              "canceled",
+            status: Schema.Union([
+              Schema.Literals([
+                "success",
+                "idle",
+                "active",
+                "failure",
+                "canceled",
+              ]),
+              Schema.String,
             ]),
           }).pipe(
             Schema.encodeKeys({
@@ -5311,20 +5799,32 @@ export interface CreateProjectDeploymentResponse {
       commitHash: string;
       commitMessage: string;
     };
-    type: "github:push" | "ad_hoc" | "deploy_hook";
+    type: "github:push" | "ad_hoc" | "deploy_hook" | (string & {});
   };
   /** Environment variables used for builds and Pages Functions. */
   envVars: Record<string, unknown> | null;
   /** Type of deploy. */
-  environment: "preview" | "production";
+  environment: "preview" | "production" | (string & {});
   /** If the deployment has been skipped. */
   isSkipped: boolean;
   /** The status of the deployment. */
   latestStage: {
     endedOn: string | null;
-    name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+    name:
+      | "queued"
+      | "initialize"
+      | "clone_repo"
+      | "build"
+      | "deploy"
+      | (string & {});
     startedOn: string | null;
-    status: "success" | "idle" | "active" | "failure" | "canceled";
+    status:
+      | "success"
+      | "idle"
+      | "active"
+      | "failure"
+      | "canceled"
+      | (string & {});
   };
   /** When the deployment was last modified. */
   modifiedOn: string;
@@ -5345,20 +5845,32 @@ export interface CreateProjectDeploymentResponse {
       prCommentsEnabled: boolean;
       previewBranchExcludes: string[];
       previewBranchIncludes: string[];
-      previewDeploymentSetting: "all" | "none" | "custom";
+      previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
       productionBranch: string;
       productionDeploymentsEnabled: boolean;
       repoId: string;
       repoName: string;
     };
-    type: "github" | "gitlab";
+    type: "github" | "gitlab" | (string & {});
   };
   /** List of past stages. */
   stages: {
     endedOn: string | null;
-    name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+    name:
+      | "queued"
+      | "initialize"
+      | "clone_repo"
+      | "build"
+      | "deploy"
+      | (string & {});
     startedOn: string | null;
-    status: "success" | "idle" | "active" | "failure" | "canceled";
+    status:
+      | "success"
+      | "idle"
+      | "active"
+      | "failure"
+      | "canceled"
+      | (string & {});
   }[];
   /** The live URL to view this deployment. */
   url: string;
@@ -5406,30 +5918,36 @@ export const CreateProjectDeploymentResponse =
           commitMessage: "commit_message",
         }),
       ),
-      type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+      type: Schema.Union([
+        Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+        Schema.String,
+      ]),
     }),
     envVars: Schema.Union([
       Schema.Record(Schema.String, Schema.Unknown),
       Schema.Null,
     ]),
-    environment: Schema.Literals(["preview", "production"]),
+    environment: Schema.Union([
+      Schema.Literals(["preview", "production"]),
+      Schema.String,
+    ]),
     isSkipped: Schema.Boolean,
     latestStage: Schema.Struct({
       endedOn: Schema.Union([Schema.String, Schema.Null]),
-      name: Schema.Literals([
-        "queued",
-        "initialize",
-        "clone_repo",
-        "build",
-        "deploy",
+      name: Schema.Union([
+        Schema.Literals([
+          "queued",
+          "initialize",
+          "clone_repo",
+          "build",
+          "deploy",
+        ]),
+        Schema.String,
       ]),
       startedOn: Schema.Union([Schema.String, Schema.Null]),
-      status: Schema.Literals([
-        "success",
-        "idle",
-        "active",
-        "failure",
-        "canceled",
+      status: Schema.Union([
+        Schema.Literals(["success", "idle", "active", "failure", "canceled"]),
+        Schema.String,
       ]),
     }).pipe(
       Schema.encodeKeys({
@@ -5453,7 +5971,10 @@ export const CreateProjectDeploymentResponse =
         prCommentsEnabled: Schema.Boolean,
         previewBranchExcludes: Schema.Array(Schema.String),
         previewBranchIncludes: Schema.Array(Schema.String),
-        previewDeploymentSetting: Schema.Literals(["all", "none", "custom"]),
+        previewDeploymentSetting: Schema.Union([
+          Schema.Literals(["all", "none", "custom"]),
+          Schema.String,
+        ]),
         productionBranch: Schema.String,
         productionDeploymentsEnabled: Schema.Boolean,
         repoId: Schema.String,
@@ -5475,25 +5996,28 @@ export const CreateProjectDeploymentResponse =
           repoName: "repo_name",
         }),
       ),
-      type: Schema.Literals(["github", "gitlab"]),
+      type: Schema.Union([
+        Schema.Literals(["github", "gitlab"]),
+        Schema.String,
+      ]),
     }),
     stages: Schema.Array(
       Schema.Struct({
         endedOn: Schema.Union([Schema.String, Schema.Null]),
-        name: Schema.Literals([
-          "queued",
-          "initialize",
-          "clone_repo",
-          "build",
-          "deploy",
+        name: Schema.Union([
+          Schema.Literals([
+            "queued",
+            "initialize",
+            "clone_repo",
+            "build",
+            "deploy",
+          ]),
+          Schema.String,
         ]),
         startedOn: Schema.Union([Schema.String, Schema.Null]),
-        status: Schema.Literals([
-          "success",
-          "idle",
-          "active",
-          "failure",
-          "canceled",
+        status: Schema.Union([
+          Schema.Literals(["success", "idle", "active", "failure", "canceled"]),
+          Schema.String,
         ]),
       }).pipe(
         Schema.encodeKeys({
@@ -5630,20 +6154,32 @@ export interface RetryProjectDeploymentResponse {
       commitHash: string;
       commitMessage: string;
     };
-    type: "github:push" | "ad_hoc" | "deploy_hook";
+    type: "github:push" | "ad_hoc" | "deploy_hook" | (string & {});
   };
   /** Environment variables used for builds and Pages Functions. */
   envVars: Record<string, unknown> | null;
   /** Type of deploy. */
-  environment: "preview" | "production";
+  environment: "preview" | "production" | (string & {});
   /** If the deployment has been skipped. */
   isSkipped: boolean;
   /** The status of the deployment. */
   latestStage: {
     endedOn: string | null;
-    name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+    name:
+      | "queued"
+      | "initialize"
+      | "clone_repo"
+      | "build"
+      | "deploy"
+      | (string & {});
     startedOn: string | null;
-    status: "success" | "idle" | "active" | "failure" | "canceled";
+    status:
+      | "success"
+      | "idle"
+      | "active"
+      | "failure"
+      | "canceled"
+      | (string & {});
   };
   /** When the deployment was last modified. */
   modifiedOn: string;
@@ -5664,20 +6200,32 @@ export interface RetryProjectDeploymentResponse {
       prCommentsEnabled: boolean;
       previewBranchExcludes: string[];
       previewBranchIncludes: string[];
-      previewDeploymentSetting: "all" | "none" | "custom";
+      previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
       productionBranch: string;
       productionDeploymentsEnabled: boolean;
       repoId: string;
       repoName: string;
     };
-    type: "github" | "gitlab";
+    type: "github" | "gitlab" | (string & {});
   };
   /** List of past stages. */
   stages: {
     endedOn: string | null;
-    name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+    name:
+      | "queued"
+      | "initialize"
+      | "clone_repo"
+      | "build"
+      | "deploy"
+      | (string & {});
     startedOn: string | null;
-    status: "success" | "idle" | "active" | "failure" | "canceled";
+    status:
+      | "success"
+      | "idle"
+      | "active"
+      | "failure"
+      | "canceled"
+      | (string & {});
   }[];
   /** The live URL to view this deployment. */
   url: string;
@@ -5725,30 +6273,36 @@ export const RetryProjectDeploymentResponse =
           commitMessage: "commit_message",
         }),
       ),
-      type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+      type: Schema.Union([
+        Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+        Schema.String,
+      ]),
     }),
     envVars: Schema.Union([
       Schema.Record(Schema.String, Schema.Unknown),
       Schema.Null,
     ]),
-    environment: Schema.Literals(["preview", "production"]),
+    environment: Schema.Union([
+      Schema.Literals(["preview", "production"]),
+      Schema.String,
+    ]),
     isSkipped: Schema.Boolean,
     latestStage: Schema.Struct({
       endedOn: Schema.Union([Schema.String, Schema.Null]),
-      name: Schema.Literals([
-        "queued",
-        "initialize",
-        "clone_repo",
-        "build",
-        "deploy",
+      name: Schema.Union([
+        Schema.Literals([
+          "queued",
+          "initialize",
+          "clone_repo",
+          "build",
+          "deploy",
+        ]),
+        Schema.String,
       ]),
       startedOn: Schema.Union([Schema.String, Schema.Null]),
-      status: Schema.Literals([
-        "success",
-        "idle",
-        "active",
-        "failure",
-        "canceled",
+      status: Schema.Union([
+        Schema.Literals(["success", "idle", "active", "failure", "canceled"]),
+        Schema.String,
       ]),
     }).pipe(
       Schema.encodeKeys({
@@ -5772,7 +6326,10 @@ export const RetryProjectDeploymentResponse =
         prCommentsEnabled: Schema.Boolean,
         previewBranchExcludes: Schema.Array(Schema.String),
         previewBranchIncludes: Schema.Array(Schema.String),
-        previewDeploymentSetting: Schema.Literals(["all", "none", "custom"]),
+        previewDeploymentSetting: Schema.Union([
+          Schema.Literals(["all", "none", "custom"]),
+          Schema.String,
+        ]),
         productionBranch: Schema.String,
         productionDeploymentsEnabled: Schema.Boolean,
         repoId: Schema.String,
@@ -5794,25 +6351,28 @@ export const RetryProjectDeploymentResponse =
           repoName: "repo_name",
         }),
       ),
-      type: Schema.Literals(["github", "gitlab"]),
+      type: Schema.Union([
+        Schema.Literals(["github", "gitlab"]),
+        Schema.String,
+      ]),
     }),
     stages: Schema.Array(
       Schema.Struct({
         endedOn: Schema.Union([Schema.String, Schema.Null]),
-        name: Schema.Literals([
-          "queued",
-          "initialize",
-          "clone_repo",
-          "build",
-          "deploy",
+        name: Schema.Union([
+          Schema.Literals([
+            "queued",
+            "initialize",
+            "clone_repo",
+            "build",
+            "deploy",
+          ]),
+          Schema.String,
         ]),
         startedOn: Schema.Union([Schema.String, Schema.Null]),
-        status: Schema.Literals([
-          "success",
-          "idle",
-          "active",
-          "failure",
-          "canceled",
+        status: Schema.Union([
+          Schema.Literals(["success", "idle", "active", "failure", "canceled"]),
+          Schema.String,
         ]),
       }).pipe(
         Schema.encodeKeys({
@@ -5907,20 +6467,32 @@ export interface RollbackProjectDeploymentResponse {
       commitHash: string;
       commitMessage: string;
     };
-    type: "github:push" | "ad_hoc" | "deploy_hook";
+    type: "github:push" | "ad_hoc" | "deploy_hook" | (string & {});
   };
   /** Environment variables used for builds and Pages Functions. */
   envVars: Record<string, unknown> | null;
   /** Type of deploy. */
-  environment: "preview" | "production";
+  environment: "preview" | "production" | (string & {});
   /** If the deployment has been skipped. */
   isSkipped: boolean;
   /** The status of the deployment. */
   latestStage: {
     endedOn: string | null;
-    name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+    name:
+      | "queued"
+      | "initialize"
+      | "clone_repo"
+      | "build"
+      | "deploy"
+      | (string & {});
     startedOn: string | null;
-    status: "success" | "idle" | "active" | "failure" | "canceled";
+    status:
+      | "success"
+      | "idle"
+      | "active"
+      | "failure"
+      | "canceled"
+      | (string & {});
   };
   /** When the deployment was last modified. */
   modifiedOn: string;
@@ -5941,20 +6513,32 @@ export interface RollbackProjectDeploymentResponse {
       prCommentsEnabled: boolean;
       previewBranchExcludes: string[];
       previewBranchIncludes: string[];
-      previewDeploymentSetting: "all" | "none" | "custom";
+      previewDeploymentSetting: "all" | "none" | "custom" | (string & {});
       productionBranch: string;
       productionDeploymentsEnabled: boolean;
       repoId: string;
       repoName: string;
     };
-    type: "github" | "gitlab";
+    type: "github" | "gitlab" | (string & {});
   };
   /** List of past stages. */
   stages: {
     endedOn: string | null;
-    name: "queued" | "initialize" | "clone_repo" | "build" | "deploy";
+    name:
+      | "queued"
+      | "initialize"
+      | "clone_repo"
+      | "build"
+      | "deploy"
+      | (string & {});
     startedOn: string | null;
-    status: "success" | "idle" | "active" | "failure" | "canceled";
+    status:
+      | "success"
+      | "idle"
+      | "active"
+      | "failure"
+      | "canceled"
+      | (string & {});
   }[];
   /** The live URL to view this deployment. */
   url: string;
@@ -6002,30 +6586,36 @@ export const RollbackProjectDeploymentResponse =
           commitMessage: "commit_message",
         }),
       ),
-      type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+      type: Schema.Union([
+        Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
+        Schema.String,
+      ]),
     }),
     envVars: Schema.Union([
       Schema.Record(Schema.String, Schema.Unknown),
       Schema.Null,
     ]),
-    environment: Schema.Literals(["preview", "production"]),
+    environment: Schema.Union([
+      Schema.Literals(["preview", "production"]),
+      Schema.String,
+    ]),
     isSkipped: Schema.Boolean,
     latestStage: Schema.Struct({
       endedOn: Schema.Union([Schema.String, Schema.Null]),
-      name: Schema.Literals([
-        "queued",
-        "initialize",
-        "clone_repo",
-        "build",
-        "deploy",
+      name: Schema.Union([
+        Schema.Literals([
+          "queued",
+          "initialize",
+          "clone_repo",
+          "build",
+          "deploy",
+        ]),
+        Schema.String,
       ]),
       startedOn: Schema.Union([Schema.String, Schema.Null]),
-      status: Schema.Literals([
-        "success",
-        "idle",
-        "active",
-        "failure",
-        "canceled",
+      status: Schema.Union([
+        Schema.Literals(["success", "idle", "active", "failure", "canceled"]),
+        Schema.String,
       ]),
     }).pipe(
       Schema.encodeKeys({
@@ -6049,7 +6639,10 @@ export const RollbackProjectDeploymentResponse =
         prCommentsEnabled: Schema.Boolean,
         previewBranchExcludes: Schema.Array(Schema.String),
         previewBranchIncludes: Schema.Array(Schema.String),
-        previewDeploymentSetting: Schema.Literals(["all", "none", "custom"]),
+        previewDeploymentSetting: Schema.Union([
+          Schema.Literals(["all", "none", "custom"]),
+          Schema.String,
+        ]),
         productionBranch: Schema.String,
         productionDeploymentsEnabled: Schema.Boolean,
         repoId: Schema.String,
@@ -6071,25 +6664,28 @@ export const RollbackProjectDeploymentResponse =
           repoName: "repo_name",
         }),
       ),
-      type: Schema.Literals(["github", "gitlab"]),
+      type: Schema.Union([
+        Schema.Literals(["github", "gitlab"]),
+        Schema.String,
+      ]),
     }),
     stages: Schema.Array(
       Schema.Struct({
         endedOn: Schema.Union([Schema.String, Schema.Null]),
-        name: Schema.Literals([
-          "queued",
-          "initialize",
-          "clone_repo",
-          "build",
-          "deploy",
+        name: Schema.Union([
+          Schema.Literals([
+            "queued",
+            "initialize",
+            "clone_repo",
+            "build",
+            "deploy",
+          ]),
+          Schema.String,
         ]),
         startedOn: Schema.Union([Schema.String, Schema.Null]),
-        status: Schema.Literals([
-          "success",
-          "idle",
-          "active",
-          "failure",
-          "canceled",
+        status: Schema.Union([
+          Schema.Literals(["success", "idle", "active", "failure", "canceled"]),
+          Schema.String,
         ]),
       }).pipe(
         Schema.encodeKeys({
@@ -6230,7 +6826,7 @@ export const GetProjectDomainRequest =
 
 export interface GetProjectDomainResponse {
   id: string;
-  certificateAuthority: "google" | "lets_encrypt";
+  certificateAuthority: "google" | "lets_encrypt" | (string & {});
   createdOn: string;
   domainId: string;
   /** The domain name. */
@@ -6241,16 +6837,29 @@ export interface GetProjectDomainResponse {
     | "active"
     | "deactivated"
     | "blocked"
-    | "error";
+    | "error"
+    | (string & {});
   validationData: {
-    method: "http" | "txt";
-    status: "initializing" | "pending" | "active" | "deactivated" | "error";
+    method: "http" | "txt" | (string & {});
+    status:
+      | "initializing"
+      | "pending"
+      | "active"
+      | "deactivated"
+      | "error"
+      | (string & {});
     errorMessage?: string | null;
     txtName?: string | null;
     txtValue?: string | null;
   };
   verificationData: {
-    status: "pending" | "active" | "deactivated" | "blocked" | "error";
+    status:
+      | "pending"
+      | "active"
+      | "deactivated"
+      | "blocked"
+      | "error"
+      | (string & {});
     errorMessage?: string | null;
   };
   zoneTag: string;
@@ -6259,26 +6868,35 @@ export interface GetProjectDomainResponse {
 export const GetProjectDomainResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    certificateAuthority: Schema.Literals(["google", "lets_encrypt"]),
+    certificateAuthority: Schema.Union([
+      Schema.Literals(["google", "lets_encrypt"]),
+      Schema.String,
+    ]),
     createdOn: Schema.String,
     domainId: Schema.String,
     name: Schema.String,
-    status: Schema.Literals([
-      "initializing",
-      "pending",
-      "active",
-      "deactivated",
-      "blocked",
-      "error",
-    ]),
-    validationData: Schema.Struct({
-      method: Schema.Literals(["http", "txt"]),
-      status: Schema.Literals([
+    status: Schema.Union([
+      Schema.Literals([
         "initializing",
         "pending",
         "active",
         "deactivated",
+        "blocked",
         "error",
+      ]),
+      Schema.String,
+    ]),
+    validationData: Schema.Struct({
+      method: Schema.Union([Schema.Literals(["http", "txt"]), Schema.String]),
+      status: Schema.Union([
+        Schema.Literals([
+          "initializing",
+          "pending",
+          "active",
+          "deactivated",
+          "error",
+        ]),
+        Schema.String,
       ]),
       errorMessage: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       txtName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -6293,12 +6911,15 @@ export const GetProjectDomainResponse =
       }),
     ),
     verificationData: Schema.Struct({
-      status: Schema.Literals([
-        "pending",
-        "active",
-        "deactivated",
-        "blocked",
-        "error",
+      status: Schema.Union([
+        Schema.Literals([
+          "pending",
+          "active",
+          "deactivated",
+          "blocked",
+          "error",
+        ]),
+        Schema.String,
       ]),
       errorMessage: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(
@@ -6356,7 +6977,7 @@ export const ListProjectDomainsRequest =
 export interface ListProjectDomainsResponse {
   result: {
     id: string;
-    certificateAuthority: "google" | "lets_encrypt";
+    certificateAuthority: "google" | "lets_encrypt" | (string & {});
     createdOn: string;
     domainId: string;
     name: string;
@@ -6366,16 +6987,29 @@ export interface ListProjectDomainsResponse {
       | "active"
       | "deactivated"
       | "blocked"
-      | "error";
+      | "error"
+      | (string & {});
     validationData: {
-      method: "http" | "txt";
-      status: "initializing" | "pending" | "active" | "deactivated" | "error";
+      method: "http" | "txt" | (string & {});
+      status:
+        | "initializing"
+        | "pending"
+        | "active"
+        | "deactivated"
+        | "error"
+        | (string & {});
       errorMessage?: string | null;
       txtName?: string | null;
       txtValue?: string | null;
     };
     verificationData: {
-      status: "pending" | "active" | "deactivated" | "blocked" | "error";
+      status:
+        | "pending"
+        | "active"
+        | "deactivated"
+        | "blocked"
+        | "error"
+        | (string & {});
       errorMessage?: string | null;
     };
     zoneTag: string;
@@ -6387,26 +7021,38 @@ export const ListProjectDomainsResponse =
     result: Schema.Array(
       Schema.Struct({
         id: Schema.String,
-        certificateAuthority: Schema.Literals(["google", "lets_encrypt"]),
+        certificateAuthority: Schema.Union([
+          Schema.Literals(["google", "lets_encrypt"]),
+          Schema.String,
+        ]),
         createdOn: Schema.String,
         domainId: Schema.String,
         name: Schema.String,
-        status: Schema.Literals([
-          "initializing",
-          "pending",
-          "active",
-          "deactivated",
-          "blocked",
-          "error",
-        ]),
-        validationData: Schema.Struct({
-          method: Schema.Literals(["http", "txt"]),
-          status: Schema.Literals([
+        status: Schema.Union([
+          Schema.Literals([
             "initializing",
             "pending",
             "active",
             "deactivated",
+            "blocked",
             "error",
+          ]),
+          Schema.String,
+        ]),
+        validationData: Schema.Struct({
+          method: Schema.Union([
+            Schema.Literals(["http", "txt"]),
+            Schema.String,
+          ]),
+          status: Schema.Union([
+            Schema.Literals([
+              "initializing",
+              "pending",
+              "active",
+              "deactivated",
+              "error",
+            ]),
+            Schema.String,
           ]),
           errorMessage: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
@@ -6423,12 +7069,15 @@ export const ListProjectDomainsResponse =
           }),
         ),
         verificationData: Schema.Struct({
-          status: Schema.Literals([
-            "pending",
-            "active",
-            "deactivated",
-            "blocked",
-            "error",
+          status: Schema.Union([
+            Schema.Literals([
+              "pending",
+              "active",
+              "deactivated",
+              "blocked",
+              "error",
+            ]),
+            Schema.String,
           ]),
           errorMessage: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
@@ -6495,7 +7144,7 @@ export const CreateProjectDomainRequest =
 
 export interface CreateProjectDomainResponse {
   id: string;
-  certificateAuthority: "google" | "lets_encrypt";
+  certificateAuthority: "google" | "lets_encrypt" | (string & {});
   createdOn: string;
   domainId: string;
   /** The domain name. */
@@ -6506,16 +7155,29 @@ export interface CreateProjectDomainResponse {
     | "active"
     | "deactivated"
     | "blocked"
-    | "error";
+    | "error"
+    | (string & {});
   validationData: {
-    method: "http" | "txt";
-    status: "initializing" | "pending" | "active" | "deactivated" | "error";
+    method: "http" | "txt" | (string & {});
+    status:
+      | "initializing"
+      | "pending"
+      | "active"
+      | "deactivated"
+      | "error"
+      | (string & {});
     errorMessage?: string | null;
     txtName?: string | null;
     txtValue?: string | null;
   };
   verificationData: {
-    status: "pending" | "active" | "deactivated" | "blocked" | "error";
+    status:
+      | "pending"
+      | "active"
+      | "deactivated"
+      | "blocked"
+      | "error"
+      | (string & {});
     errorMessage?: string | null;
   };
   zoneTag: string;
@@ -6524,26 +7186,35 @@ export interface CreateProjectDomainResponse {
 export const CreateProjectDomainResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    certificateAuthority: Schema.Literals(["google", "lets_encrypt"]),
+    certificateAuthority: Schema.Union([
+      Schema.Literals(["google", "lets_encrypt"]),
+      Schema.String,
+    ]),
     createdOn: Schema.String,
     domainId: Schema.String,
     name: Schema.String,
-    status: Schema.Literals([
-      "initializing",
-      "pending",
-      "active",
-      "deactivated",
-      "blocked",
-      "error",
-    ]),
-    validationData: Schema.Struct({
-      method: Schema.Literals(["http", "txt"]),
-      status: Schema.Literals([
+    status: Schema.Union([
+      Schema.Literals([
         "initializing",
         "pending",
         "active",
         "deactivated",
+        "blocked",
         "error",
+      ]),
+      Schema.String,
+    ]),
+    validationData: Schema.Struct({
+      method: Schema.Union([Schema.Literals(["http", "txt"]), Schema.String]),
+      status: Schema.Union([
+        Schema.Literals([
+          "initializing",
+          "pending",
+          "active",
+          "deactivated",
+          "error",
+        ]),
+        Schema.String,
       ]),
       errorMessage: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       txtName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -6558,12 +7229,15 @@ export const CreateProjectDomainResponse =
       }),
     ),
     verificationData: Schema.Struct({
-      status: Schema.Literals([
-        "pending",
-        "active",
-        "deactivated",
-        "blocked",
-        "error",
+      status: Schema.Union([
+        Schema.Literals([
+          "pending",
+          "active",
+          "deactivated",
+          "blocked",
+          "error",
+        ]),
+        Schema.String,
       ]),
       errorMessage: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(
@@ -6622,7 +7296,7 @@ export const PatchProjectDomainRequest =
 
 export interface PatchProjectDomainResponse {
   id: string;
-  certificateAuthority: "google" | "lets_encrypt";
+  certificateAuthority: "google" | "lets_encrypt" | (string & {});
   createdOn: string;
   domainId: string;
   /** The domain name. */
@@ -6633,16 +7307,29 @@ export interface PatchProjectDomainResponse {
     | "active"
     | "deactivated"
     | "blocked"
-    | "error";
+    | "error"
+    | (string & {});
   validationData: {
-    method: "http" | "txt";
-    status: "initializing" | "pending" | "active" | "deactivated" | "error";
+    method: "http" | "txt" | (string & {});
+    status:
+      | "initializing"
+      | "pending"
+      | "active"
+      | "deactivated"
+      | "error"
+      | (string & {});
     errorMessage?: string | null;
     txtName?: string | null;
     txtValue?: string | null;
   };
   verificationData: {
-    status: "pending" | "active" | "deactivated" | "blocked" | "error";
+    status:
+      | "pending"
+      | "active"
+      | "deactivated"
+      | "blocked"
+      | "error"
+      | (string & {});
     errorMessage?: string | null;
   };
   zoneTag: string;
@@ -6651,26 +7338,35 @@ export interface PatchProjectDomainResponse {
 export const PatchProjectDomainResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    certificateAuthority: Schema.Literals(["google", "lets_encrypt"]),
+    certificateAuthority: Schema.Union([
+      Schema.Literals(["google", "lets_encrypt"]),
+      Schema.String,
+    ]),
     createdOn: Schema.String,
     domainId: Schema.String,
     name: Schema.String,
-    status: Schema.Literals([
-      "initializing",
-      "pending",
-      "active",
-      "deactivated",
-      "blocked",
-      "error",
-    ]),
-    validationData: Schema.Struct({
-      method: Schema.Literals(["http", "txt"]),
-      status: Schema.Literals([
+    status: Schema.Union([
+      Schema.Literals([
         "initializing",
         "pending",
         "active",
         "deactivated",
+        "blocked",
         "error",
+      ]),
+      Schema.String,
+    ]),
+    validationData: Schema.Struct({
+      method: Schema.Union([Schema.Literals(["http", "txt"]), Schema.String]),
+      status: Schema.Union([
+        Schema.Literals([
+          "initializing",
+          "pending",
+          "active",
+          "deactivated",
+          "error",
+        ]),
+        Schema.String,
       ]),
       errorMessage: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       txtName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -6685,12 +7381,15 @@ export const PatchProjectDomainResponse =
       }),
     ),
     verificationData: Schema.Struct({
-      status: Schema.Literals([
-        "pending",
-        "active",
-        "deactivated",
-        "blocked",
-        "error",
+      status: Schema.Union([
+        Schema.Literals([
+          "pending",
+          "active",
+          "deactivated",
+          "blocked",
+          "error",
+        ]),
+        Schema.String,
       ]),
       errorMessage: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(

@@ -59,13 +59,17 @@ export interface GetAiGatewayResponse {
   rateLimitingLimit: number | null;
   authentication?: boolean | null;
   dlp?:
-    | { action: "BLOCK" | "FLAG"; enabled: boolean; profiles: string[] }
+    | {
+        action: "BLOCK" | "FLAG" | (string & {});
+        enabled: boolean;
+        profiles: string[];
+      }
     | {
         enabled: boolean;
         policies: {
           id: string;
-          action: "FLAG" | "BLOCK";
-          check: ("REQUEST" | "RESPONSE")[];
+          action: "FLAG" | "BLOCK" | (string & {});
+          check: ("REQUEST" | "RESPONSE" | (string & {}))[];
           enabled: boolean;
           profiles: string[];
         }[];
@@ -73,36 +77,36 @@ export interface GetAiGatewayResponse {
     | null;
   guardrails?: {
     prompt: {
-      p1?: "FLAG" | "BLOCK" | null;
-      s1?: "FLAG" | "BLOCK" | null;
-      s10?: "FLAG" | "BLOCK" | null;
-      s11?: "FLAG" | "BLOCK" | null;
-      s12?: "FLAG" | "BLOCK" | null;
-      s13?: "FLAG" | "BLOCK" | null;
-      s2?: "FLAG" | "BLOCK" | null;
-      s3?: "FLAG" | "BLOCK" | null;
-      s4?: "FLAG" | "BLOCK" | null;
-      s5?: "FLAG" | "BLOCK" | null;
-      s6?: "FLAG" | "BLOCK" | null;
-      s7?: "FLAG" | "BLOCK" | null;
-      s8?: "FLAG" | "BLOCK" | null;
-      s9?: "FLAG" | "BLOCK" | null;
+      p1?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s1?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s10?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s11?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s12?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s13?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s2?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s3?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s4?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s5?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s6?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s7?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s8?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s9?: "FLAG" | "BLOCK" | (string & {}) | null;
     };
     response: {
-      p1?: "FLAG" | "BLOCK" | null;
-      s1?: "FLAG" | "BLOCK" | null;
-      s10?: "FLAG" | "BLOCK" | null;
-      s11?: "FLAG" | "BLOCK" | null;
-      s12?: "FLAG" | "BLOCK" | null;
-      s13?: "FLAG" | "BLOCK" | null;
-      s2?: "FLAG" | "BLOCK" | null;
-      s3?: "FLAG" | "BLOCK" | null;
-      s4?: "FLAG" | "BLOCK" | null;
-      s5?: "FLAG" | "BLOCK" | null;
-      s6?: "FLAG" | "BLOCK" | null;
-      s7?: "FLAG" | "BLOCK" | null;
-      s8?: "FLAG" | "BLOCK" | null;
-      s9?: "FLAG" | "BLOCK" | null;
+      p1?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s1?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s10?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s11?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s12?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s13?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s2?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s3?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s4?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s5?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s6?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s7?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s8?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s9?: "FLAG" | "BLOCK" | (string & {}) | null;
     };
   } | null;
   isDefault?: boolean | null;
@@ -115,7 +119,7 @@ export interface GetAiGatewayResponse {
         authorization: string;
         headers: Record<string, unknown>;
         url: string;
-        contentType?: "json" | "protobuf" | null;
+        contentType?: "json" | "protobuf" | (string & {}) | null;
       }[]
     | null;
   rateLimitingTechnique?: "fixed" | "sliding" | null;
@@ -146,7 +150,10 @@ export const GetAiGatewayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Union([
         Schema.Struct({
-          action: Schema.Literals(["BLOCK", "FLAG"]),
+          action: Schema.Union([
+            Schema.Literals(["BLOCK", "FLAG"]),
+            Schema.String,
+          ]),
           enabled: Schema.Boolean,
           profiles: Schema.Array(Schema.String),
         }),
@@ -155,8 +162,16 @@ export const GetAiGatewayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           policies: Schema.Array(
             Schema.Struct({
               id: Schema.String,
-              action: Schema.Literals(["FLAG", "BLOCK"]),
-              check: Schema.Array(Schema.Literals(["REQUEST", "RESPONSE"])),
+              action: Schema.Union([
+                Schema.Literals(["FLAG", "BLOCK"]),
+                Schema.String,
+              ]),
+              check: Schema.Array(
+                Schema.Union([
+                  Schema.Literals(["REQUEST", "RESPONSE"]),
+                  Schema.String,
+                ]),
+              ),
               enabled: Schema.Boolean,
               profiles: Schema.Array(Schema.String),
             }),
@@ -171,46 +186,88 @@ export const GetAiGatewayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         prompt: Schema.Struct({
           p1: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s1: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s10: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s11: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s12: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s13: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s2: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s3: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s4: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s5: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s6: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s7: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s8: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s9: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -232,46 +289,88 @@ export const GetAiGatewayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         response: Schema.Struct({
           p1: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s1: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s10: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s11: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s12: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s13: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s2: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s3: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s4: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s5: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s6: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s7: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s8: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           s9: Schema.optional(
-            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -314,7 +413,13 @@ export const GetAiGatewayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           headers: Schema.Record(Schema.String, Schema.Unknown),
           url: Schema.String,
           contentType: Schema.optional(
-            Schema.Union([Schema.Literals(["json", "protobuf"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["json", "protobuf"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
@@ -445,13 +550,17 @@ export interface ListAiGatewaysResponse {
     rateLimitingLimit: number | null;
     authentication?: boolean | null;
     dlp?:
-      | { action: "BLOCK" | "FLAG"; enabled: boolean; profiles: string[] }
+      | {
+          action: "BLOCK" | "FLAG" | (string & {});
+          enabled: boolean;
+          profiles: string[];
+        }
       | {
           enabled: boolean;
           policies: {
             id: string;
-            action: "FLAG" | "BLOCK";
-            check: ("REQUEST" | "RESPONSE")[];
+            action: "FLAG" | "BLOCK" | (string & {});
+            check: ("REQUEST" | "RESPONSE" | (string & {}))[];
             enabled: boolean;
             profiles: string[];
           }[];
@@ -459,36 +568,36 @@ export interface ListAiGatewaysResponse {
       | null;
     guardrails?: {
       prompt: {
-        p1?: "FLAG" | "BLOCK" | null;
-        s1?: "FLAG" | "BLOCK" | null;
-        s10?: "FLAG" | "BLOCK" | null;
-        s11?: "FLAG" | "BLOCK" | null;
-        s12?: "FLAG" | "BLOCK" | null;
-        s13?: "FLAG" | "BLOCK" | null;
-        s2?: "FLAG" | "BLOCK" | null;
-        s3?: "FLAG" | "BLOCK" | null;
-        s4?: "FLAG" | "BLOCK" | null;
-        s5?: "FLAG" | "BLOCK" | null;
-        s6?: "FLAG" | "BLOCK" | null;
-        s7?: "FLAG" | "BLOCK" | null;
-        s8?: "FLAG" | "BLOCK" | null;
-        s9?: "FLAG" | "BLOCK" | null;
+        p1?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s1?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s10?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s11?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s12?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s13?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s2?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s3?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s4?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s5?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s6?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s7?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s8?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s9?: "FLAG" | "BLOCK" | (string & {}) | null;
       };
       response: {
-        p1?: "FLAG" | "BLOCK" | null;
-        s1?: "FLAG" | "BLOCK" | null;
-        s10?: "FLAG" | "BLOCK" | null;
-        s11?: "FLAG" | "BLOCK" | null;
-        s12?: "FLAG" | "BLOCK" | null;
-        s13?: "FLAG" | "BLOCK" | null;
-        s2?: "FLAG" | "BLOCK" | null;
-        s3?: "FLAG" | "BLOCK" | null;
-        s4?: "FLAG" | "BLOCK" | null;
-        s5?: "FLAG" | "BLOCK" | null;
-        s6?: "FLAG" | "BLOCK" | null;
-        s7?: "FLAG" | "BLOCK" | null;
-        s8?: "FLAG" | "BLOCK" | null;
-        s9?: "FLAG" | "BLOCK" | null;
+        p1?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s1?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s10?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s11?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s12?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s13?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s2?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s3?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s4?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s5?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s6?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s7?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s8?: "FLAG" | "BLOCK" | (string & {}) | null;
+        s9?: "FLAG" | "BLOCK" | (string & {}) | null;
       };
     } | null;
     isDefault?: boolean | null;
@@ -501,7 +610,7 @@ export interface ListAiGatewaysResponse {
           authorization: string;
           headers: Record<string, unknown>;
           url: string;
-          contentType?: "json" | "protobuf" | null;
+          contentType?: "json" | "protobuf" | (string & {}) | null;
         }[]
       | null;
     rateLimitingTechnique?: "fixed" | "sliding" | null;
@@ -543,7 +652,10 @@ export const ListAiGatewaysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           Schema.Union([
             Schema.Union([
               Schema.Struct({
-                action: Schema.Literals(["BLOCK", "FLAG"]),
+                action: Schema.Union([
+                  Schema.Literals(["BLOCK", "FLAG"]),
+                  Schema.String,
+                ]),
                 enabled: Schema.Boolean,
                 profiles: Schema.Array(Schema.String),
               }),
@@ -552,9 +664,15 @@ export const ListAiGatewaysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 policies: Schema.Array(
                   Schema.Struct({
                     id: Schema.String,
-                    action: Schema.Literals(["FLAG", "BLOCK"]),
+                    action: Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     check: Schema.Array(
-                      Schema.Literals(["REQUEST", "RESPONSE"]),
+                      Schema.Union([
+                        Schema.Literals(["REQUEST", "RESPONSE"]),
+                        Schema.String,
+                      ]),
                     ),
                     enabled: Schema.Boolean,
                     profiles: Schema.Array(Schema.String),
@@ -571,85 +689,127 @@ export const ListAiGatewaysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
               prompt: Schema.Struct({
                 p1: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s1: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s10: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s11: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s12: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s13: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s2: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s3: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s4: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s5: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s6: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s7: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s8: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s9: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -674,85 +834,127 @@ export const ListAiGatewaysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
               response: Schema.Struct({
                 p1: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s1: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s10: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s11: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s12: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s13: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s2: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s3: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s4: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s5: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s6: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s7: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s8: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
                 s9: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.Union([
+                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -802,7 +1004,10 @@ export const ListAiGatewaysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 url: Schema.String,
                 contentType: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["json", "protobuf"]),
+                    Schema.Union([
+                      Schema.Literals(["json", "protobuf"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -1056,13 +1261,17 @@ export interface CreateAiGatewayResponse {
   rateLimitingLimit: number | null;
   authentication?: boolean | null;
   dlp?:
-    | { action: "BLOCK" | "FLAG"; enabled: boolean; profiles: string[] }
+    | {
+        action: "BLOCK" | "FLAG" | (string & {});
+        enabled: boolean;
+        profiles: string[];
+      }
     | {
         enabled: boolean;
         policies: {
           id: string;
-          action: "FLAG" | "BLOCK";
-          check: ("REQUEST" | "RESPONSE")[];
+          action: "FLAG" | "BLOCK" | (string & {});
+          check: ("REQUEST" | "RESPONSE" | (string & {}))[];
           enabled: boolean;
           profiles: string[];
         }[];
@@ -1070,36 +1279,36 @@ export interface CreateAiGatewayResponse {
     | null;
   guardrails?: {
     prompt: {
-      p1?: "FLAG" | "BLOCK" | null;
-      s1?: "FLAG" | "BLOCK" | null;
-      s10?: "FLAG" | "BLOCK" | null;
-      s11?: "FLAG" | "BLOCK" | null;
-      s12?: "FLAG" | "BLOCK" | null;
-      s13?: "FLAG" | "BLOCK" | null;
-      s2?: "FLAG" | "BLOCK" | null;
-      s3?: "FLAG" | "BLOCK" | null;
-      s4?: "FLAG" | "BLOCK" | null;
-      s5?: "FLAG" | "BLOCK" | null;
-      s6?: "FLAG" | "BLOCK" | null;
-      s7?: "FLAG" | "BLOCK" | null;
-      s8?: "FLAG" | "BLOCK" | null;
-      s9?: "FLAG" | "BLOCK" | null;
+      p1?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s1?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s10?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s11?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s12?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s13?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s2?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s3?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s4?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s5?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s6?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s7?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s8?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s9?: "FLAG" | "BLOCK" | (string & {}) | null;
     };
     response: {
-      p1?: "FLAG" | "BLOCK" | null;
-      s1?: "FLAG" | "BLOCK" | null;
-      s10?: "FLAG" | "BLOCK" | null;
-      s11?: "FLAG" | "BLOCK" | null;
-      s12?: "FLAG" | "BLOCK" | null;
-      s13?: "FLAG" | "BLOCK" | null;
-      s2?: "FLAG" | "BLOCK" | null;
-      s3?: "FLAG" | "BLOCK" | null;
-      s4?: "FLAG" | "BLOCK" | null;
-      s5?: "FLAG" | "BLOCK" | null;
-      s6?: "FLAG" | "BLOCK" | null;
-      s7?: "FLAG" | "BLOCK" | null;
-      s8?: "FLAG" | "BLOCK" | null;
-      s9?: "FLAG" | "BLOCK" | null;
+      p1?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s1?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s10?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s11?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s12?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s13?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s2?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s3?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s4?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s5?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s6?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s7?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s8?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s9?: "FLAG" | "BLOCK" | (string & {}) | null;
     };
   } | null;
   isDefault?: boolean | null;
@@ -1112,7 +1321,7 @@ export interface CreateAiGatewayResponse {
         authorization: string;
         headers: Record<string, unknown>;
         url: string;
-        contentType?: "json" | "protobuf" | null;
+        contentType?: "json" | "protobuf" | (string & {}) | null;
       }[]
     | null;
   rateLimitingTechnique?: "fixed" | "sliding" | null;
@@ -1146,7 +1355,10 @@ export const CreateAiGatewayResponse =
       Schema.Union([
         Schema.Union([
           Schema.Struct({
-            action: Schema.Literals(["BLOCK", "FLAG"]),
+            action: Schema.Union([
+              Schema.Literals(["BLOCK", "FLAG"]),
+              Schema.String,
+            ]),
             enabled: Schema.Boolean,
             profiles: Schema.Array(Schema.String),
           }),
@@ -1155,8 +1367,16 @@ export const CreateAiGatewayResponse =
             policies: Schema.Array(
               Schema.Struct({
                 id: Schema.String,
-                action: Schema.Literals(["FLAG", "BLOCK"]),
-                check: Schema.Array(Schema.Literals(["REQUEST", "RESPONSE"])),
+                action: Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                check: Schema.Array(
+                  Schema.Union([
+                    Schema.Literals(["REQUEST", "RESPONSE"]),
+                    Schema.String,
+                  ]),
+                ),
                 enabled: Schema.Boolean,
                 profiles: Schema.Array(Schema.String),
               }),
@@ -1171,46 +1391,130 @@ export const CreateAiGatewayResponse =
         Schema.Struct({
           prompt: Schema.Struct({
             p1: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s1: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s10: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s11: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s12: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s13: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s2: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s3: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s4: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s5: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s6: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s7: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s8: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s9: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -1232,46 +1536,130 @@ export const CreateAiGatewayResponse =
           ),
           response: Schema.Struct({
             p1: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s1: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s10: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s11: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s12: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s13: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s2: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s3: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s4: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s5: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s6: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s7: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s8: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s9: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -1317,7 +1705,10 @@ export const CreateAiGatewayResponse =
             url: Schema.String,
             contentType: Schema.optional(
               Schema.Union([
-                Schema.Literals(["json", "protobuf"]),
+                Schema.Union([
+                  Schema.Literals(["json", "protobuf"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -1440,13 +1831,17 @@ export interface UpdateAiGatewayRequest {
   authentication?: boolean;
   /** Body param */
   dlp?:
-    | { action: "BLOCK" | "FLAG"; enabled: boolean; profiles: string[] }
+    | {
+        action: "BLOCK" | "FLAG" | (string & {});
+        enabled: boolean;
+        profiles: string[];
+      }
     | {
         enabled: boolean;
         policies: {
           id: string;
-          action: "FLAG" | "BLOCK";
-          check: ("REQUEST" | "RESPONSE")[];
+          action: "FLAG" | "BLOCK" | (string & {});
+          check: ("REQUEST" | "RESPONSE" | (string & {}))[];
           enabled: boolean;
           profiles: string[];
         }[];
@@ -1454,36 +1849,36 @@ export interface UpdateAiGatewayRequest {
   /** Body param */
   guardrails?: {
     prompt: {
-      p1?: "FLAG" | "BLOCK";
-      s1?: "FLAG" | "BLOCK";
-      s10?: "FLAG" | "BLOCK";
-      s11?: "FLAG" | "BLOCK";
-      s12?: "FLAG" | "BLOCK";
-      s13?: "FLAG" | "BLOCK";
-      s2?: "FLAG" | "BLOCK";
-      s3?: "FLAG" | "BLOCK";
-      s4?: "FLAG" | "BLOCK";
-      s5?: "FLAG" | "BLOCK";
-      s6?: "FLAG" | "BLOCK";
-      s7?: "FLAG" | "BLOCK";
-      s8?: "FLAG" | "BLOCK";
-      s9?: "FLAG" | "BLOCK";
+      p1?: "FLAG" | "BLOCK" | (string & {});
+      s1?: "FLAG" | "BLOCK" | (string & {});
+      s10?: "FLAG" | "BLOCK" | (string & {});
+      s11?: "FLAG" | "BLOCK" | (string & {});
+      s12?: "FLAG" | "BLOCK" | (string & {});
+      s13?: "FLAG" | "BLOCK" | (string & {});
+      s2?: "FLAG" | "BLOCK" | (string & {});
+      s3?: "FLAG" | "BLOCK" | (string & {});
+      s4?: "FLAG" | "BLOCK" | (string & {});
+      s5?: "FLAG" | "BLOCK" | (string & {});
+      s6?: "FLAG" | "BLOCK" | (string & {});
+      s7?: "FLAG" | "BLOCK" | (string & {});
+      s8?: "FLAG" | "BLOCK" | (string & {});
+      s9?: "FLAG" | "BLOCK" | (string & {});
     };
     response: {
-      p1?: "FLAG" | "BLOCK";
-      s1?: "FLAG" | "BLOCK";
-      s10?: "FLAG" | "BLOCK";
-      s11?: "FLAG" | "BLOCK";
-      s12?: "FLAG" | "BLOCK";
-      s13?: "FLAG" | "BLOCK";
-      s2?: "FLAG" | "BLOCK";
-      s3?: "FLAG" | "BLOCK";
-      s4?: "FLAG" | "BLOCK";
-      s5?: "FLAG" | "BLOCK";
-      s6?: "FLAG" | "BLOCK";
-      s7?: "FLAG" | "BLOCK";
-      s8?: "FLAG" | "BLOCK";
-      s9?: "FLAG" | "BLOCK";
+      p1?: "FLAG" | "BLOCK" | (string & {});
+      s1?: "FLAG" | "BLOCK" | (string & {});
+      s10?: "FLAG" | "BLOCK" | (string & {});
+      s11?: "FLAG" | "BLOCK" | (string & {});
+      s12?: "FLAG" | "BLOCK" | (string & {});
+      s13?: "FLAG" | "BLOCK" | (string & {});
+      s2?: "FLAG" | "BLOCK" | (string & {});
+      s3?: "FLAG" | "BLOCK" | (string & {});
+      s4?: "FLAG" | "BLOCK" | (string & {});
+      s5?: "FLAG" | "BLOCK" | (string & {});
+      s6?: "FLAG" | "BLOCK" | (string & {});
+      s7?: "FLAG" | "BLOCK" | (string & {});
+      s8?: "FLAG" | "BLOCK" | (string & {});
+      s9?: "FLAG" | "BLOCK" | (string & {});
     };
   } | null;
   /** Body param */
@@ -1500,7 +1895,7 @@ export interface UpdateAiGatewayRequest {
         authorization: string;
         headers: Record<string, unknown>;
         url: string;
-        contentType?: "json" | "protobuf";
+        contentType?: "json" | "protobuf" | (string & {});
       }[]
     | null;
   /** Body param */
@@ -1534,7 +1929,10 @@ export const UpdateAiGatewayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     dlp: Schema.optional(
       Schema.Union([
         Schema.Struct({
-          action: Schema.Literals(["BLOCK", "FLAG"]),
+          action: Schema.Union([
+            Schema.Literals(["BLOCK", "FLAG"]),
+            Schema.String,
+          ]),
           enabled: Schema.Boolean,
           profiles: Schema.Array(Schema.String),
         }),
@@ -1543,8 +1941,16 @@ export const UpdateAiGatewayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           policies: Schema.Array(
             Schema.Struct({
               id: Schema.String,
-              action: Schema.Literals(["FLAG", "BLOCK"]),
-              check: Schema.Array(Schema.Literals(["REQUEST", "RESPONSE"])),
+              action: Schema.Union([
+                Schema.Literals(["FLAG", "BLOCK"]),
+                Schema.String,
+              ]),
+              check: Schema.Array(
+                Schema.Union([
+                  Schema.Literals(["REQUEST", "RESPONSE"]),
+                  Schema.String,
+                ]),
+              ),
               enabled: Schema.Boolean,
               profiles: Schema.Array(Schema.String),
             }),
@@ -1556,20 +1962,48 @@ export const UpdateAiGatewayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Union([
         Schema.Struct({
           prompt: Schema.Struct({
-            p1: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s1: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s10: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s11: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s12: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s13: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s2: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s3: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s4: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s5: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s6: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s7: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s8: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s9: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
+            p1: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s1: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s10: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s11: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s12: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s13: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s2: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s3: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s4: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s5: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s6: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s7: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s8: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s9: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
           }).pipe(
             Schema.encodeKeys({
               p1: "P1",
@@ -1589,20 +2023,48 @@ export const UpdateAiGatewayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             }),
           ),
           response: Schema.Struct({
-            p1: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s1: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s10: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s11: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s12: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s13: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s2: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s3: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s4: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s5: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s6: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s7: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s8: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
-            s9: Schema.optional(Schema.Literals(["FLAG", "BLOCK"])),
+            p1: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s1: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s10: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s11: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s12: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s13: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s2: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s3: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s4: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s5: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s6: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s7: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s8: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
+            s9: Schema.optional(
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+            ),
           }).pipe(
             Schema.encodeKeys({
               p1: "P1",
@@ -1644,7 +2106,12 @@ export const UpdateAiGatewayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             authorization: Schema.String,
             headers: Schema.Record(Schema.String, Schema.Unknown),
             url: Schema.String,
-            contentType: Schema.optional(Schema.Literals(["json", "protobuf"])),
+            contentType: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["json", "protobuf"]),
+                Schema.String,
+              ]),
+            ),
           }).pipe(
             Schema.encodeKeys({
               authorization: "authorization",
@@ -1740,13 +2207,17 @@ export interface UpdateAiGatewayResponse {
   rateLimitingLimit: number | null;
   authentication?: boolean | null;
   dlp?:
-    | { action: "BLOCK" | "FLAG"; enabled: boolean; profiles: string[] }
+    | {
+        action: "BLOCK" | "FLAG" | (string & {});
+        enabled: boolean;
+        profiles: string[];
+      }
     | {
         enabled: boolean;
         policies: {
           id: string;
-          action: "FLAG" | "BLOCK";
-          check: ("REQUEST" | "RESPONSE")[];
+          action: "FLAG" | "BLOCK" | (string & {});
+          check: ("REQUEST" | "RESPONSE" | (string & {}))[];
           enabled: boolean;
           profiles: string[];
         }[];
@@ -1754,36 +2225,36 @@ export interface UpdateAiGatewayResponse {
     | null;
   guardrails?: {
     prompt: {
-      p1?: "FLAG" | "BLOCK" | null;
-      s1?: "FLAG" | "BLOCK" | null;
-      s10?: "FLAG" | "BLOCK" | null;
-      s11?: "FLAG" | "BLOCK" | null;
-      s12?: "FLAG" | "BLOCK" | null;
-      s13?: "FLAG" | "BLOCK" | null;
-      s2?: "FLAG" | "BLOCK" | null;
-      s3?: "FLAG" | "BLOCK" | null;
-      s4?: "FLAG" | "BLOCK" | null;
-      s5?: "FLAG" | "BLOCK" | null;
-      s6?: "FLAG" | "BLOCK" | null;
-      s7?: "FLAG" | "BLOCK" | null;
-      s8?: "FLAG" | "BLOCK" | null;
-      s9?: "FLAG" | "BLOCK" | null;
+      p1?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s1?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s10?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s11?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s12?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s13?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s2?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s3?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s4?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s5?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s6?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s7?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s8?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s9?: "FLAG" | "BLOCK" | (string & {}) | null;
     };
     response: {
-      p1?: "FLAG" | "BLOCK" | null;
-      s1?: "FLAG" | "BLOCK" | null;
-      s10?: "FLAG" | "BLOCK" | null;
-      s11?: "FLAG" | "BLOCK" | null;
-      s12?: "FLAG" | "BLOCK" | null;
-      s13?: "FLAG" | "BLOCK" | null;
-      s2?: "FLAG" | "BLOCK" | null;
-      s3?: "FLAG" | "BLOCK" | null;
-      s4?: "FLAG" | "BLOCK" | null;
-      s5?: "FLAG" | "BLOCK" | null;
-      s6?: "FLAG" | "BLOCK" | null;
-      s7?: "FLAG" | "BLOCK" | null;
-      s8?: "FLAG" | "BLOCK" | null;
-      s9?: "FLAG" | "BLOCK" | null;
+      p1?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s1?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s10?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s11?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s12?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s13?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s2?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s3?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s4?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s5?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s6?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s7?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s8?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s9?: "FLAG" | "BLOCK" | (string & {}) | null;
     };
   } | null;
   isDefault?: boolean | null;
@@ -1796,7 +2267,7 @@ export interface UpdateAiGatewayResponse {
         authorization: string;
         headers: Record<string, unknown>;
         url: string;
-        contentType?: "json" | "protobuf" | null;
+        contentType?: "json" | "protobuf" | (string & {}) | null;
       }[]
     | null;
   rateLimitingTechnique?: "fixed" | "sliding" | null;
@@ -1830,7 +2301,10 @@ export const UpdateAiGatewayResponse =
       Schema.Union([
         Schema.Union([
           Schema.Struct({
-            action: Schema.Literals(["BLOCK", "FLAG"]),
+            action: Schema.Union([
+              Schema.Literals(["BLOCK", "FLAG"]),
+              Schema.String,
+            ]),
             enabled: Schema.Boolean,
             profiles: Schema.Array(Schema.String),
           }),
@@ -1839,8 +2313,16 @@ export const UpdateAiGatewayResponse =
             policies: Schema.Array(
               Schema.Struct({
                 id: Schema.String,
-                action: Schema.Literals(["FLAG", "BLOCK"]),
-                check: Schema.Array(Schema.Literals(["REQUEST", "RESPONSE"])),
+                action: Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                check: Schema.Array(
+                  Schema.Union([
+                    Schema.Literals(["REQUEST", "RESPONSE"]),
+                    Schema.String,
+                  ]),
+                ),
                 enabled: Schema.Boolean,
                 profiles: Schema.Array(Schema.String),
               }),
@@ -1855,46 +2337,130 @@ export const UpdateAiGatewayResponse =
         Schema.Struct({
           prompt: Schema.Struct({
             p1: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s1: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s10: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s11: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s12: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s13: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s2: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s3: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s4: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s5: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s6: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s7: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s8: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s9: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -1916,46 +2482,130 @@ export const UpdateAiGatewayResponse =
           ),
           response: Schema.Struct({
             p1: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s1: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s10: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s11: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s12: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s13: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s2: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s3: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s4: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s5: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s6: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s7: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s8: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s9: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -2001,7 +2651,10 @@ export const UpdateAiGatewayResponse =
             url: Schema.String,
             contentType: Schema.optional(
               Schema.Union([
-                Schema.Literals(["json", "protobuf"]),
+                Schema.Union([
+                  Schema.Literals(["json", "protobuf"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -2135,13 +2788,17 @@ export interface DeleteAiGatewayResponse {
   rateLimitingLimit: number | null;
   authentication?: boolean | null;
   dlp?:
-    | { action: "BLOCK" | "FLAG"; enabled: boolean; profiles: string[] }
+    | {
+        action: "BLOCK" | "FLAG" | (string & {});
+        enabled: boolean;
+        profiles: string[];
+      }
     | {
         enabled: boolean;
         policies: {
           id: string;
-          action: "FLAG" | "BLOCK";
-          check: ("REQUEST" | "RESPONSE")[];
+          action: "FLAG" | "BLOCK" | (string & {});
+          check: ("REQUEST" | "RESPONSE" | (string & {}))[];
           enabled: boolean;
           profiles: string[];
         }[];
@@ -2149,36 +2806,36 @@ export interface DeleteAiGatewayResponse {
     | null;
   guardrails?: {
     prompt: {
-      p1?: "FLAG" | "BLOCK" | null;
-      s1?: "FLAG" | "BLOCK" | null;
-      s10?: "FLAG" | "BLOCK" | null;
-      s11?: "FLAG" | "BLOCK" | null;
-      s12?: "FLAG" | "BLOCK" | null;
-      s13?: "FLAG" | "BLOCK" | null;
-      s2?: "FLAG" | "BLOCK" | null;
-      s3?: "FLAG" | "BLOCK" | null;
-      s4?: "FLAG" | "BLOCK" | null;
-      s5?: "FLAG" | "BLOCK" | null;
-      s6?: "FLAG" | "BLOCK" | null;
-      s7?: "FLAG" | "BLOCK" | null;
-      s8?: "FLAG" | "BLOCK" | null;
-      s9?: "FLAG" | "BLOCK" | null;
+      p1?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s1?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s10?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s11?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s12?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s13?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s2?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s3?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s4?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s5?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s6?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s7?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s8?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s9?: "FLAG" | "BLOCK" | (string & {}) | null;
     };
     response: {
-      p1?: "FLAG" | "BLOCK" | null;
-      s1?: "FLAG" | "BLOCK" | null;
-      s10?: "FLAG" | "BLOCK" | null;
-      s11?: "FLAG" | "BLOCK" | null;
-      s12?: "FLAG" | "BLOCK" | null;
-      s13?: "FLAG" | "BLOCK" | null;
-      s2?: "FLAG" | "BLOCK" | null;
-      s3?: "FLAG" | "BLOCK" | null;
-      s4?: "FLAG" | "BLOCK" | null;
-      s5?: "FLAG" | "BLOCK" | null;
-      s6?: "FLAG" | "BLOCK" | null;
-      s7?: "FLAG" | "BLOCK" | null;
-      s8?: "FLAG" | "BLOCK" | null;
-      s9?: "FLAG" | "BLOCK" | null;
+      p1?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s1?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s10?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s11?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s12?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s13?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s2?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s3?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s4?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s5?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s6?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s7?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s8?: "FLAG" | "BLOCK" | (string & {}) | null;
+      s9?: "FLAG" | "BLOCK" | (string & {}) | null;
     };
   } | null;
   isDefault?: boolean | null;
@@ -2191,7 +2848,7 @@ export interface DeleteAiGatewayResponse {
         authorization: string;
         headers: Record<string, unknown>;
         url: string;
-        contentType?: "json" | "protobuf" | null;
+        contentType?: "json" | "protobuf" | (string & {}) | null;
       }[]
     | null;
   rateLimitingTechnique?: "fixed" | "sliding" | null;
@@ -2225,7 +2882,10 @@ export const DeleteAiGatewayResponse =
       Schema.Union([
         Schema.Union([
           Schema.Struct({
-            action: Schema.Literals(["BLOCK", "FLAG"]),
+            action: Schema.Union([
+              Schema.Literals(["BLOCK", "FLAG"]),
+              Schema.String,
+            ]),
             enabled: Schema.Boolean,
             profiles: Schema.Array(Schema.String),
           }),
@@ -2234,8 +2894,16 @@ export const DeleteAiGatewayResponse =
             policies: Schema.Array(
               Schema.Struct({
                 id: Schema.String,
-                action: Schema.Literals(["FLAG", "BLOCK"]),
-                check: Schema.Array(Schema.Literals(["REQUEST", "RESPONSE"])),
+                action: Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                check: Schema.Array(
+                  Schema.Union([
+                    Schema.Literals(["REQUEST", "RESPONSE"]),
+                    Schema.String,
+                  ]),
+                ),
                 enabled: Schema.Boolean,
                 profiles: Schema.Array(Schema.String),
               }),
@@ -2250,46 +2918,130 @@ export const DeleteAiGatewayResponse =
         Schema.Struct({
           prompt: Schema.Struct({
             p1: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s1: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s10: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s11: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s12: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s13: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s2: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s3: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s4: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s5: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s6: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s7: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s8: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s9: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -2311,46 +3063,130 @@ export const DeleteAiGatewayResponse =
           ),
           response: Schema.Struct({
             p1: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s1: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s10: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s11: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s12: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s13: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s2: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s3: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s4: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s5: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s6: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s7: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s8: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             s9: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -2396,7 +3232,10 @@ export const DeleteAiGatewayResponse =
             url: Schema.String,
             contentType: Schema.optional(
               Schema.Union([
-                Schema.Literals(["json", "protobuf"]),
+                Schema.Union([
+                  Schema.Literals(["json", "protobuf"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
@@ -2641,17 +3480,23 @@ export interface CreateBillingSpendingLimitRequest {
   /** Body param: Spending limit amount in cents (min 100). */
   amount: number;
   /** Body param: Spending limit duration. */
-  duration: "daily" | "weekly" | "monthly";
+  duration: "daily" | "weekly" | "monthly" | (string & {});
   /** Body param: Spending limit strategy. */
-  strategy: "fixed" | "sliding";
+  strategy: "fixed" | "sliding" | (string & {});
 }
 
 export const CreateBillingSpendingLimitRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     amount: Schema.Number,
-    duration: Schema.Literals(["daily", "weekly", "monthly"]),
-    strategy: Schema.Literals(["fixed", "sliding"]),
+    duration: Schema.Union([
+      Schema.Literals(["daily", "weekly", "monthly"]),
+      Schema.String,
+    ]),
+    strategy: Schema.Union([
+      Schema.Literals(["fixed", "sliding"]),
+      Schema.String,
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2804,13 +3649,16 @@ export const StatusBillingTopupRequest =
 
 export interface StatusBillingTopupResponse {
   paymentIntentId: string;
-  status: "completed" | "pending";
+  status: "completed" | "pending" | (string & {});
 }
 
 export const StatusBillingTopupResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     paymentIntentId: Schema.String,
-    status: Schema.Literals(["completed", "pending"]),
+    status: Schema.Union([
+      Schema.Literals(["completed", "pending"]),
+      Schema.String,
+    ]),
   })
     .pipe(
       Schema.encodeKeys({
@@ -3007,8 +3855,9 @@ export interface GetDatasetResponse {
       | "tokens_in"
       | "tokens_out"
       | "duration"
-      | "feedback";
-    operator: "eq" | "contains" | "lt" | "gt";
+      | "feedback"
+      | (string & {});
+    operator: "eq" | "contains" | "lt" | "gt" | (string & {});
     value: (string | number | boolean)[];
   }[];
   /** gateway id */
@@ -3023,22 +3872,28 @@ export const GetDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   enable: Schema.Boolean,
   filters: Schema.Array(
     Schema.Struct({
-      key: Schema.Literals([
-        "created_at",
-        "request_content_type",
-        "response_content_type",
-        "success",
-        "cached",
-        "provider",
-        "model",
-        "cost",
-        "tokens",
-        "tokens_in",
-        "tokens_out",
-        "duration",
-        "feedback",
+      key: Schema.Union([
+        Schema.Literals([
+          "created_at",
+          "request_content_type",
+          "response_content_type",
+          "success",
+          "cached",
+          "provider",
+          "model",
+          "cost",
+          "tokens",
+          "tokens_in",
+          "tokens_out",
+          "duration",
+          "feedback",
+        ]),
+        Schema.String,
       ]),
-      operator: Schema.Literals(["eq", "contains", "lt", "gt"]),
+      operator: Schema.Union([
+        Schema.Literals(["eq", "contains", "lt", "gt"]),
+        Schema.String,
+      ]),
       value: Schema.Array(
         Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
       ),
@@ -3124,8 +3979,9 @@ export interface ListDatasetsResponse {
         | "tokens_in"
         | "tokens_out"
         | "duration"
-        | "feedback";
-      operator: "eq" | "contains" | "lt" | "gt";
+        | "feedback"
+        | (string & {});
+      operator: "eq" | "contains" | "lt" | "gt" | (string & {});
       value: (string | number | boolean)[];
     }[];
     gatewayId: string;
@@ -3148,22 +4004,28 @@ export const ListDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       enable: Schema.Boolean,
       filters: Schema.Array(
         Schema.Struct({
-          key: Schema.Literals([
-            "created_at",
-            "request_content_type",
-            "response_content_type",
-            "success",
-            "cached",
-            "provider",
-            "model",
-            "cost",
-            "tokens",
-            "tokens_in",
-            "tokens_out",
-            "duration",
-            "feedback",
+          key: Schema.Union([
+            Schema.Literals([
+              "created_at",
+              "request_content_type",
+              "response_content_type",
+              "success",
+              "cached",
+              "provider",
+              "model",
+              "cost",
+              "tokens",
+              "tokens_in",
+              "tokens_out",
+              "duration",
+              "feedback",
+            ]),
+            Schema.String,
           ]),
-          operator: Schema.Literals(["eq", "contains", "lt", "gt"]),
+          operator: Schema.Union([
+            Schema.Literals(["eq", "contains", "lt", "gt"]),
+            Schema.String,
+          ]),
           value: Schema.Array(
             Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
           ),
@@ -3247,8 +4109,9 @@ export interface CreateDatasetRequest {
       | "tokens_in"
       | "tokens_out"
       | "duration"
-      | "feedback";
-    operator: "eq" | "contains" | "lt" | "gt";
+      | "feedback"
+      | (string & {});
+    operator: "eq" | "contains" | "lt" | "gt" | (string & {});
     value: (string | number | boolean)[];
   }[];
   /** Body param */
@@ -3261,22 +4124,28 @@ export const CreateDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   enable: Schema.Boolean,
   filters: Schema.Array(
     Schema.Struct({
-      key: Schema.Literals([
-        "created_at",
-        "request_content_type",
-        "response_content_type",
-        "success",
-        "cached",
-        "provider",
-        "model",
-        "cost",
-        "tokens",
-        "tokens_in",
-        "tokens_out",
-        "duration",
-        "feedback",
+      key: Schema.Union([
+        Schema.Literals([
+          "created_at",
+          "request_content_type",
+          "response_content_type",
+          "success",
+          "cached",
+          "provider",
+          "model",
+          "cost",
+          "tokens",
+          "tokens_in",
+          "tokens_out",
+          "duration",
+          "feedback",
+        ]),
+        Schema.String,
       ]),
-      operator: Schema.Literals(["eq", "contains", "lt", "gt"]),
+      operator: Schema.Union([
+        Schema.Literals(["eq", "contains", "lt", "gt"]),
+        Schema.String,
+      ]),
       value: Schema.Array(
         Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
       ),
@@ -3308,8 +4177,9 @@ export interface CreateDatasetResponse {
       | "tokens_in"
       | "tokens_out"
       | "duration"
-      | "feedback";
-    operator: "eq" | "contains" | "lt" | "gt";
+      | "feedback"
+      | (string & {});
+    operator: "eq" | "contains" | "lt" | "gt" | (string & {});
     value: (string | number | boolean)[];
   }[];
   /** gateway id */
@@ -3324,22 +4194,28 @@ export const CreateDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   enable: Schema.Boolean,
   filters: Schema.Array(
     Schema.Struct({
-      key: Schema.Literals([
-        "created_at",
-        "request_content_type",
-        "response_content_type",
-        "success",
-        "cached",
-        "provider",
-        "model",
-        "cost",
-        "tokens",
-        "tokens_in",
-        "tokens_out",
-        "duration",
-        "feedback",
+      key: Schema.Union([
+        Schema.Literals([
+          "created_at",
+          "request_content_type",
+          "response_content_type",
+          "success",
+          "cached",
+          "provider",
+          "model",
+          "cost",
+          "tokens",
+          "tokens_in",
+          "tokens_out",
+          "duration",
+          "feedback",
+        ]),
+        Schema.String,
       ]),
-      operator: Schema.Literals(["eq", "contains", "lt", "gt"]),
+      operator: Schema.Union([
+        Schema.Literals(["eq", "contains", "lt", "gt"]),
+        Schema.String,
+      ]),
       value: Schema.Array(
         Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
       ),
@@ -3399,8 +4275,9 @@ export interface UpdateDatasetRequest {
       | "tokens_in"
       | "tokens_out"
       | "duration"
-      | "feedback";
-    operator: "eq" | "contains" | "lt" | "gt";
+      | "feedback"
+      | (string & {});
+    operator: "eq" | "contains" | "lt" | "gt" | (string & {});
     value: (string | number | boolean)[];
   }[];
   /** Body param */
@@ -3414,22 +4291,28 @@ export const UpdateDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   enable: Schema.Boolean,
   filters: Schema.Array(
     Schema.Struct({
-      key: Schema.Literals([
-        "created_at",
-        "request_content_type",
-        "response_content_type",
-        "success",
-        "cached",
-        "provider",
-        "model",
-        "cost",
-        "tokens",
-        "tokens_in",
-        "tokens_out",
-        "duration",
-        "feedback",
+      key: Schema.Union([
+        Schema.Literals([
+          "created_at",
+          "request_content_type",
+          "response_content_type",
+          "success",
+          "cached",
+          "provider",
+          "model",
+          "cost",
+          "tokens",
+          "tokens_in",
+          "tokens_out",
+          "duration",
+          "feedback",
+        ]),
+        Schema.String,
       ]),
-      operator: Schema.Literals(["eq", "contains", "lt", "gt"]),
+      operator: Schema.Union([
+        Schema.Literals(["eq", "contains", "lt", "gt"]),
+        Schema.String,
+      ]),
       value: Schema.Array(
         Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
       ),
@@ -3461,8 +4344,9 @@ export interface UpdateDatasetResponse {
       | "tokens_in"
       | "tokens_out"
       | "duration"
-      | "feedback";
-    operator: "eq" | "contains" | "lt" | "gt";
+      | "feedback"
+      | (string & {});
+    operator: "eq" | "contains" | "lt" | "gt" | (string & {});
     value: (string | number | boolean)[];
   }[];
   /** gateway id */
@@ -3477,22 +4361,28 @@ export const UpdateDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   enable: Schema.Boolean,
   filters: Schema.Array(
     Schema.Struct({
-      key: Schema.Literals([
-        "created_at",
-        "request_content_type",
-        "response_content_type",
-        "success",
-        "cached",
-        "provider",
-        "model",
-        "cost",
-        "tokens",
-        "tokens_in",
-        "tokens_out",
-        "duration",
-        "feedback",
+      key: Schema.Union([
+        Schema.Literals([
+          "created_at",
+          "request_content_type",
+          "response_content_type",
+          "success",
+          "cached",
+          "provider",
+          "model",
+          "cost",
+          "tokens",
+          "tokens_in",
+          "tokens_out",
+          "duration",
+          "feedback",
+        ]),
+        Schema.String,
       ]),
-      operator: Schema.Literals(["eq", "contains", "lt", "gt"]),
+      operator: Schema.Union([
+        Schema.Literals(["eq", "contains", "lt", "gt"]),
+        Schema.String,
+      ]),
       value: Schema.Array(
         Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
       ),
@@ -3565,8 +4455,9 @@ export interface DeleteDatasetResponse {
       | "tokens_in"
       | "tokens_out"
       | "duration"
-      | "feedback";
-    operator: "eq" | "contains" | "lt" | "gt";
+      | "feedback"
+      | (string & {});
+    operator: "eq" | "contains" | "lt" | "gt" | (string & {});
     value: (string | number | boolean)[];
   }[];
   /** gateway id */
@@ -3581,22 +4472,28 @@ export const DeleteDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   enable: Schema.Boolean,
   filters: Schema.Array(
     Schema.Struct({
-      key: Schema.Literals([
-        "created_at",
-        "request_content_type",
-        "response_content_type",
-        "success",
-        "cached",
-        "provider",
-        "model",
-        "cost",
-        "tokens",
-        "tokens_in",
-        "tokens_out",
-        "duration",
-        "feedback",
+      key: Schema.Union([
+        Schema.Literals([
+          "created_at",
+          "request_content_type",
+          "response_content_type",
+          "success",
+          "cached",
+          "provider",
+          "model",
+          "cost",
+          "tokens",
+          "tokens_in",
+          "tokens_out",
+          "duration",
+          "feedback",
+        ]),
+        Schema.String,
       ]),
-      operator: Schema.Literals(["eq", "contains", "lt", "gt"]),
+      operator: Schema.Union([
+        Schema.Literals(["eq", "contains", "lt", "gt"]),
+        Schema.String,
+      ]),
       value: Schema.Array(
         Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
       ),
@@ -3682,7 +4579,7 @@ export interface CreateDeploymentDynamicRoutingResponse {
         properties: {
           key: string;
           limit: number;
-          limitType: "count" | "cost";
+          limitType: "count" | "cost" | (string & {});
           window: number;
         };
         type: "rate";
@@ -3744,7 +4641,10 @@ export const CreateDeploymentDynamicRoutingResponse =
           properties: Schema.Struct({
             key: Schema.String,
             limit: Schema.Number,
-            limitType: Schema.Literals(["count", "cost"]),
+            limitType: Schema.Union([
+              Schema.Literals(["count", "cost"]),
+              Schema.String,
+            ]),
             window: Schema.Number,
           }),
           type: Schema.Literal("rate"),
@@ -3945,7 +4845,7 @@ export interface GetDynamicRoutingResponse {
         properties: {
           key: string;
           limit: number;
-          limitType: "count" | "cost";
+          limitType: "count" | "cost" | (string & {});
           window: number;
         };
         type: "rate";
@@ -4025,7 +4925,10 @@ export const GetDynamicRoutingResponse =
           properties: Schema.Struct({
             key: Schema.String,
             limit: Schema.Number,
-            limitType: Schema.Literals(["count", "cost"]),
+            limitType: Schema.Union([
+              Schema.Literals(["count", "cost"]),
+              Schema.String,
+            ]),
             window: Schema.Number,
           }),
           type: Schema.Literal("rate"),
@@ -4180,7 +5083,7 @@ export interface ListDynamicRoutingsResponse {
             properties: {
               key: string;
               limit: number;
-              limitType: "count" | "cost";
+              limitType: "count" | "cost" | (string & {});
               window: number;
             };
             type: "rate";
@@ -4271,7 +5174,10 @@ export const ListDynamicRoutingsResponse =
                 properties: Schema.Struct({
                   key: Schema.String,
                   limit: Schema.Number,
-                  limitType: Schema.Literals(["count", "cost"]),
+                  limitType: Schema.Union([
+                    Schema.Literals(["count", "cost"]),
+                    Schema.String,
+                  ]),
                   window: Schema.Number,
                 }),
                 type: Schema.Literal("rate"),
@@ -4397,7 +5303,7 @@ export interface CreateDynamicRoutingRequest {
         properties: {
           key: string;
           limit: number;
-          limitType: "count" | "cost";
+          limitType: "count" | "cost" | (string & {});
           window: number;
         };
         type: "rate";
@@ -4456,7 +5362,10 @@ export const CreateDynamicRoutingRequest =
           properties: Schema.Struct({
             key: Schema.String,
             limit: Schema.Number,
-            limitType: Schema.Literals(["count", "cost"]),
+            limitType: Schema.Union([
+              Schema.Literals(["count", "cost"]),
+              Schema.String,
+            ]),
             window: Schema.Number,
           }),
           type: Schema.Literal("rate"),
@@ -4530,7 +5439,7 @@ export interface CreateDynamicRoutingResponse {
         properties: {
           key: string;
           limit: number;
-          limitType: "count" | "cost";
+          limitType: "count" | "cost" | (string & {});
           window: number;
         };
         type: "rate";
@@ -4610,7 +5519,10 @@ export const CreateDynamicRoutingResponse =
           properties: Schema.Struct({
             key: Schema.String,
             limit: Schema.Number,
-            limitType: Schema.Literals(["count", "cost"]),
+            limitType: Schema.Union([
+              Schema.Literals(["count", "cost"]),
+              Schema.String,
+            ]),
             window: Schema.Number,
           }),
           type: Schema.Literal("rate"),
@@ -4751,7 +5663,7 @@ export interface PatchDynamicRoutingResponse {
           properties: {
             key: string;
             limit: number;
-            limitType: "count" | "cost";
+            limitType: "count" | "cost" | (string & {});
             window: number;
           };
           type: "rate";
@@ -4835,7 +5747,10 @@ export const PatchDynamicRoutingResponse =
             properties: Schema.Struct({
               key: Schema.String,
               limit: Schema.Number,
-              limitType: Schema.Literals(["count", "cost"]),
+              limitType: Schema.Union([
+                Schema.Literals(["count", "cost"]),
+                Schema.String,
+              ]),
               window: Schema.Number,
             }),
             type: Schema.Literal("rate"),
@@ -4965,7 +5880,7 @@ export interface DeleteDynamicRoutingResponse {
         properties: {
           key: string;
           limit: number;
-          limitType: "count" | "cost";
+          limitType: "count" | "cost" | (string & {});
           window: number;
         };
         type: "rate";
@@ -5027,7 +5942,10 @@ export const DeleteDynamicRoutingResponse =
           properties: Schema.Struct({
             key: Schema.String,
             limit: Schema.Number,
-            limitType: Schema.Literals(["count", "cost"]),
+            limitType: Schema.Union([
+              Schema.Literals(["count", "cost"]),
+              Schema.String,
+            ]),
             window: Schema.Number,
           }),
           type: Schema.Literal("rate"),
@@ -5146,8 +6064,9 @@ export interface GetEvaluationResponse {
         | "tokens_in"
         | "tokens_out"
         | "duration"
-        | "feedback";
-      operator: "eq" | "contains" | "lt" | "gt";
+        | "feedback"
+        | (string & {});
+      operator: "eq" | "contains" | "lt" | "gt" | (string & {});
       value: (string | number | boolean)[];
     }[];
     gatewayId: string;
@@ -5185,22 +6104,28 @@ export const GetEvaluationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       enable: Schema.Boolean,
       filters: Schema.Array(
         Schema.Struct({
-          key: Schema.Literals([
-            "created_at",
-            "request_content_type",
-            "response_content_type",
-            "success",
-            "cached",
-            "provider",
-            "model",
-            "cost",
-            "tokens",
-            "tokens_in",
-            "tokens_out",
-            "duration",
-            "feedback",
+          key: Schema.Union([
+            Schema.Literals([
+              "created_at",
+              "request_content_type",
+              "response_content_type",
+              "success",
+              "cached",
+              "provider",
+              "model",
+              "cost",
+              "tokens",
+              "tokens_in",
+              "tokens_out",
+              "duration",
+              "feedback",
+            ]),
+            Schema.String,
           ]),
-          operator: Schema.Literals(["eq", "contains", "lt", "gt"]),
+          operator: Schema.Union([
+            Schema.Literals(["eq", "contains", "lt", "gt"]),
+            Schema.String,
+          ]),
           value: Schema.Array(
             Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
           ),
@@ -5339,8 +6264,9 @@ export interface ListEvaluationsResponse {
           | "tokens_in"
           | "tokens_out"
           | "duration"
-          | "feedback";
-        operator: "eq" | "contains" | "lt" | "gt";
+          | "feedback"
+          | (string & {});
+        operator: "eq" | "contains" | "lt" | "gt" | (string & {});
         value: (string | number | boolean)[];
       }[];
       gatewayId: string;
@@ -5387,22 +6313,28 @@ export const ListEvaluationsResponse =
             enable: Schema.Boolean,
             filters: Schema.Array(
               Schema.Struct({
-                key: Schema.Literals([
-                  "created_at",
-                  "request_content_type",
-                  "response_content_type",
-                  "success",
-                  "cached",
-                  "provider",
-                  "model",
-                  "cost",
-                  "tokens",
-                  "tokens_in",
-                  "tokens_out",
-                  "duration",
-                  "feedback",
+                key: Schema.Union([
+                  Schema.Literals([
+                    "created_at",
+                    "request_content_type",
+                    "response_content_type",
+                    "success",
+                    "cached",
+                    "provider",
+                    "model",
+                    "cost",
+                    "tokens",
+                    "tokens_in",
+                    "tokens_out",
+                    "duration",
+                    "feedback",
+                  ]),
+                  Schema.String,
                 ]),
-                operator: Schema.Literals(["eq", "contains", "lt", "gt"]),
+                operator: Schema.Union([
+                  Schema.Literals(["eq", "contains", "lt", "gt"]),
+                  Schema.String,
+                ]),
                 value: Schema.Array(
                   Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
                 ),
@@ -5567,8 +6499,9 @@ export interface CreateEvaluationResponse {
         | "tokens_in"
         | "tokens_out"
         | "duration"
-        | "feedback";
-      operator: "eq" | "contains" | "lt" | "gt";
+        | "feedback"
+        | (string & {});
+      operator: "eq" | "contains" | "lt" | "gt" | (string & {});
       value: (string | number | boolean)[];
     }[];
     gatewayId: string;
@@ -5607,22 +6540,28 @@ export const CreateEvaluationResponse =
         enable: Schema.Boolean,
         filters: Schema.Array(
           Schema.Struct({
-            key: Schema.Literals([
-              "created_at",
-              "request_content_type",
-              "response_content_type",
-              "success",
-              "cached",
-              "provider",
-              "model",
-              "cost",
-              "tokens",
-              "tokens_in",
-              "tokens_out",
-              "duration",
-              "feedback",
+            key: Schema.Union([
+              Schema.Literals([
+                "created_at",
+                "request_content_type",
+                "response_content_type",
+                "success",
+                "cached",
+                "provider",
+                "model",
+                "cost",
+                "tokens",
+                "tokens_in",
+                "tokens_out",
+                "duration",
+                "feedback",
+              ]),
+              Schema.String,
             ]),
-            operator: Schema.Literals(["eq", "contains", "lt", "gt"]),
+            operator: Schema.Union([
+              Schema.Literals(["eq", "contains", "lt", "gt"]),
+              Schema.String,
+            ]),
             value: Schema.Array(
               Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
             ),
@@ -5747,8 +6686,9 @@ export interface DeleteEvaluationResponse {
         | "tokens_in"
         | "tokens_out"
         | "duration"
-        | "feedback";
-      operator: "eq" | "contains" | "lt" | "gt";
+        | "feedback"
+        | (string & {});
+      operator: "eq" | "contains" | "lt" | "gt" | (string & {});
       value: (string | number | boolean)[];
     }[];
     gatewayId: string;
@@ -5787,22 +6727,28 @@ export const DeleteEvaluationResponse =
         enable: Schema.Boolean,
         filters: Schema.Array(
           Schema.Struct({
-            key: Schema.Literals([
-              "created_at",
-              "request_content_type",
-              "response_content_type",
-              "success",
-              "cached",
-              "provider",
-              "model",
-              "cost",
-              "tokens",
-              "tokens_in",
-              "tokens_out",
-              "duration",
-              "feedback",
+            key: Schema.Union([
+              Schema.Literals([
+                "created_at",
+                "request_content_type",
+                "response_content_type",
+                "success",
+                "cached",
+                "provider",
+                "model",
+                "cost",
+                "tokens",
+                "tokens_in",
+                "tokens_out",
+                "duration",
+                "feedback",
+              ]),
+              Schema.String,
             ]),
-            operator: Schema.Literals(["eq", "contains", "lt", "gt"]),
+            operator: Schema.Union([
+              Schema.Literals(["eq", "contains", "lt", "gt"]),
+              Schema.String,
+            ]),
             value: Schema.Array(
               Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
             ),
@@ -5898,7 +6844,7 @@ export interface ListEvaluationTypesRequest {
   /** Query param */
   orderBy?: string;
   /** Query param */
-  orderByDirection?: "asc" | "desc";
+  orderByDirection?: "asc" | "desc" | (string & {});
 }
 
 export const ListEvaluationTypesRequest =
@@ -5907,9 +6853,9 @@ export const ListEvaluationTypesRequest =
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("order_by")),
-    orderByDirection: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("order_by_direction"),
-    ),
+    orderByDirection: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("order_by_direction")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -6013,15 +6959,15 @@ export interface InvoiceHistoryBillingRequest {
   /** Path param: Cloudflare account ID. */
   accountId: string;
   /** Query param: Filter invoice type: auto, manual, or all. */
-  type?: "auto" | "all" | "manual";
+  type?: "auto" | "all" | "manual" | (string & {});
 }
 
 export const InvoiceHistoryBillingRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    type: Schema.optional(Schema.Literals(["auto", "all", "manual"])).pipe(
-      T.HttpQuery("type"),
-    ),
+    type: Schema.optional(
+      Schema.Union([Schema.Literals(["auto", "all", "manual"]), Schema.String]),
+    ).pipe(T.HttpQuery("type")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -6133,7 +7079,7 @@ export interface UsageHistoryBillingRequest {
   /** Path param: Cloudflare account ID. */
   accountId: string;
   /** Query param: Grouping window for usage data. */
-  valueGroupingWindow: "day" | "hour";
+  valueGroupingWindow: "day" | "hour" | (string & {});
   /** Query param: End time as Unix timestamp in milliseconds. */
   endTime?: number | null;
   /** Query param: Start time as Unix timestamp in milliseconds. */
@@ -6143,9 +7089,10 @@ export interface UsageHistoryBillingRequest {
 export const UsageHistoryBillingRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    valueGroupingWindow: Schema.Literals(["day", "hour"]).pipe(
-      T.HttpQuery("value_grouping_window"),
-    ),
+    valueGroupingWindow: Schema.Union([
+      Schema.Literals(["day", "hour"]),
+      Schema.String,
+    ]).pipe(T.HttpQuery("value_grouping_window")),
     endTime: Schema.optional(Schema.Union([Schema.Number, Schema.Null])).pipe(
       T.HttpQuery("end_time"),
     ),
@@ -6339,11 +7286,11 @@ export interface ListLogsRequest {
   /** @deprecated Query param */
   cached?: boolean;
   /** @deprecated Query param */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** @deprecated Query param */
   endDate?: string;
   /** @deprecated Query param */
-  feedback?: "0" | "1";
+  feedback?: "0" | "1" | (string & {});
   /** Query param */
   filters?: {
     key:
@@ -6369,8 +7316,9 @@ export interface ListLogsRequest {
       | "authentication"
       | "wholesale"
       | "compatibilityMode"
-      | "dlp_action";
-    operator: "eq" | "neq" | "contains" | "lt" | "gt";
+      | "dlp_action"
+      | (string & {});
+    operator: "eq" | "neq" | "contains" | "lt" | "gt" | (string & {});
     value: (string | null | number | boolean)[];
   }[];
   /** @deprecated Query param */
@@ -6406,9 +7354,10 @@ export interface ListLogsRequest {
     | "model"
     | "model_type"
     | "success"
-    | "cached";
+    | "cached"
+    | (string & {});
   /** Query param */
-  orderByDirection?: "asc" | "desc";
+  orderByDirection?: "asc" | "desc" | (string & {});
   /** @deprecated Query param */
   provider?: string;
   /** @deprecated Query param */
@@ -6429,42 +7378,48 @@ export const ListLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   cached: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("cached")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
   endDate: Schema.optional(Schema.String).pipe(T.HttpQuery("end_date")),
-  feedback: Schema.optional(Schema.Literals(["0", "1"])).pipe(
-    T.HttpQuery("feedback"),
-  ),
+  feedback: Schema.optional(
+    Schema.Union([Schema.Literals(["0", "1"]), Schema.String]),
+  ).pipe(T.HttpQuery("feedback")),
   filters: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        key: Schema.Literals([
-          "id",
-          "created_at",
-          "request_content_type",
-          "response_content_type",
-          "request_type",
-          "success",
-          "cached",
-          "provider",
-          "model",
-          "model_type",
-          "cost",
-          "tokens",
-          "tokens_in",
-          "tokens_out",
-          "duration",
-          "feedback",
-          "event_id",
-          "metadata.key",
-          "metadata.value",
-          "authentication",
-          "wholesale",
-          "compatibilityMode",
-          "dlp_action",
+        key: Schema.Union([
+          Schema.Literals([
+            "id",
+            "created_at",
+            "request_content_type",
+            "response_content_type",
+            "request_type",
+            "success",
+            "cached",
+            "provider",
+            "model",
+            "model_type",
+            "cost",
+            "tokens",
+            "tokens_in",
+            "tokens_out",
+            "duration",
+            "feedback",
+            "event_id",
+            "metadata.key",
+            "metadata.value",
+            "authentication",
+            "wholesale",
+            "compatibilityMode",
+            "dlp_action",
+          ]),
+          Schema.String,
         ]),
-        operator: Schema.Literals(["eq", "neq", "contains", "lt", "gt"]),
+        operator: Schema.Union([
+          Schema.Literals(["eq", "neq", "contains", "lt", "gt"]),
+          Schema.String,
+        ]),
         value: Schema.Array(
           Schema.Union([
             Schema.String,
@@ -6502,18 +7457,21 @@ export const ListLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   model: Schema.optional(Schema.String).pipe(T.HttpQuery("model")),
   modelType: Schema.optional(Schema.String).pipe(T.HttpQuery("model_type")),
   orderBy: Schema.optional(
-    Schema.Literals([
-      "created_at",
-      "provider",
-      "model",
-      "model_type",
-      "success",
-      "cached",
+    Schema.Union([
+      Schema.Literals([
+        "created_at",
+        "provider",
+        "model",
+        "model_type",
+        "success",
+        "cached",
+      ]),
+      Schema.String,
     ]),
   ).pipe(T.HttpQuery("order_by")),
-  orderByDirection: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("order_by_direction"),
-  ),
+  orderByDirection: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("order_by_direction")),
   provider: Schema.optional(Schema.String).pipe(T.HttpQuery("provider")),
   requestContentType: Schema.optional(Schema.String).pipe(
     T.HttpQuery("request_content_type"),
@@ -6730,8 +7688,9 @@ export interface DeleteLogRequest {
       | "authentication"
       | "wholesale"
       | "compatibilityMode"
-      | "dlp_action";
-    operator: "eq" | "neq" | "contains" | "lt" | "gt";
+      | "dlp_action"
+      | (string & {});
+    operator: "eq" | "neq" | "contains" | "lt" | "gt" | (string & {});
     value: (string | null | number | boolean)[];
   }[];
   /** Query param */
@@ -6748,9 +7707,10 @@ export interface DeleteLogRequest {
     | "tokens_in"
     | "tokens_out"
     | "duration"
-    | "feedback";
+    | "feedback"
+    | (string & {});
   /** Query param */
-  orderByDirection?: "asc" | "desc";
+  orderByDirection?: "asc" | "desc" | (string & {});
 }
 
 export const DeleteLogRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6759,32 +7719,38 @@ export const DeleteLogRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   filters: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        key: Schema.Literals([
-          "id",
-          "created_at",
-          "request_content_type",
-          "response_content_type",
-          "request_type",
-          "success",
-          "cached",
-          "provider",
-          "model",
-          "model_type",
-          "cost",
-          "tokens",
-          "tokens_in",
-          "tokens_out",
-          "duration",
-          "feedback",
-          "event_id",
-          "metadata.key",
-          "metadata.value",
-          "authentication",
-          "wholesale",
-          "compatibilityMode",
-          "dlp_action",
+        key: Schema.Union([
+          Schema.Literals([
+            "id",
+            "created_at",
+            "request_content_type",
+            "response_content_type",
+            "request_type",
+            "success",
+            "cached",
+            "provider",
+            "model",
+            "model_type",
+            "cost",
+            "tokens",
+            "tokens_in",
+            "tokens_out",
+            "duration",
+            "feedback",
+            "event_id",
+            "metadata.key",
+            "metadata.value",
+            "authentication",
+            "wholesale",
+            "compatibilityMode",
+            "dlp_action",
+          ]),
+          Schema.String,
         ]),
-        operator: Schema.Literals(["eq", "neq", "contains", "lt", "gt"]),
+        operator: Schema.Union([
+          Schema.Literals(["eq", "neq", "contains", "lt", "gt"]),
+          Schema.String,
+        ]),
         value: Schema.Array(
           Schema.Union([
             Schema.String,
@@ -6798,23 +7764,26 @@ export const DeleteLogRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ).pipe(T.HttpQuery("filters")),
   limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
   orderBy: Schema.optional(
-    Schema.Literals([
-      "created_at",
-      "provider",
-      "model",
-      "model_type",
-      "success",
-      "cached",
-      "cost",
-      "tokens_in",
-      "tokens_out",
-      "duration",
-      "feedback",
+    Schema.Union([
+      Schema.Literals([
+        "created_at",
+        "provider",
+        "model",
+        "model_type",
+        "success",
+        "cached",
+        "cost",
+        "tokens_in",
+        "tokens_out",
+        "duration",
+        "feedback",
+      ]),
+      Schema.String,
     ]),
   ).pipe(T.HttpQuery("order_by")),
-  orderByDirection: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("order_by_direction"),
-  ),
+  orderByDirection: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("order_by_direction")),
 }).pipe(
   T.Http({
     method: "DELETE",
@@ -6956,7 +7925,7 @@ export interface InvoicePreviewBillingResponse {
   }[];
   periodEnd: number;
   periodStart: number;
-  status: "draft" | "open" | "paid" | "uncollectible" | "void";
+  status: "draft" | "open" | "paid" | "uncollectible" | "void" | (string & {});
 }
 
 export const InvoicePreviewBillingResponse =
@@ -7019,7 +7988,10 @@ export const InvoicePreviewBillingResponse =
     ),
     periodEnd: Schema.Number,
     periodStart: Schema.Number,
-    status: Schema.Literals(["draft", "open", "paid", "uncollectible", "void"]),
+    status: Schema.Union([
+      Schema.Literals(["draft", "open", "paid", "uncollectible", "void"]),
+      Schema.String,
+    ]),
   })
     .pipe(
       Schema.encodeKeys({
@@ -7366,7 +8338,7 @@ export interface GetVersionDynamicRoutingResponse {
         properties: {
           key: string;
           limit: number;
-          limitType: "count" | "cost";
+          limitType: "count" | "cost" | (string & {});
           window: number;
         };
         type: "rate";
@@ -7432,7 +8404,10 @@ export const GetVersionDynamicRoutingResponse =
           properties: Schema.Struct({
             key: Schema.String,
             limit: Schema.Number,
-            limitType: Schema.Literals(["count", "cost"]),
+            limitType: Schema.Union([
+              Schema.Literals(["count", "cost"]),
+              Schema.String,
+            ]),
             window: Schema.Number,
           }),
           type: Schema.Literal("rate"),
@@ -7537,7 +8512,7 @@ export interface CreateVersionDynamicRoutingRequest {
         properties: {
           key: string;
           limit: number;
-          limitType: "count" | "cost";
+          limitType: "count" | "cost" | (string & {});
           window: number;
         };
         type: "rate";
@@ -7595,7 +8570,10 @@ export const CreateVersionDynamicRoutingRequest =
           properties: Schema.Struct({
             key: Schema.String,
             limit: Schema.Number,
-            limitType: Schema.Literals(["count", "cost"]),
+            limitType: Schema.Union([
+              Schema.Literals(["count", "cost"]),
+              Schema.String,
+            ]),
             window: Schema.Number,
           }),
           type: Schema.Literal("rate"),
@@ -7667,7 +8645,7 @@ export interface CreateVersionDynamicRoutingResponse {
         properties: {
           key: string;
           limit: number;
-          limitType: "count" | "cost";
+          limitType: "count" | "cost" | (string & {});
           window: number;
         };
         type: "rate";
@@ -7729,7 +8707,10 @@ export const CreateVersionDynamicRoutingResponse =
           properties: Schema.Struct({
             key: Schema.String,
             limit: Schema.Number,
-            limitType: Schema.Literals(["count", "cost"]),
+            limitType: Schema.Union([
+              Schema.Literals(["count", "cost"]),
+              Schema.String,
+            ]),
             window: Schema.Number,
           }),
           type: Schema.Literal("rate"),

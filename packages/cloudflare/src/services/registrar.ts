@@ -90,7 +90,7 @@ export interface ListDomainsResponse {
     registryStatuses?: string | null;
     supportedTld?: boolean | null;
     transferIn?: {
-      acceptFoa?: "needed" | "ok" | null;
+      acceptFoa?: "needed" | "ok" | (string & {}) | null;
       approveTransfer?:
         | "needed"
         | "ok"
@@ -98,17 +98,26 @@ export interface ListDomainsResponse {
         | "trying"
         | "rejected"
         | "unknown"
+        | (string & {})
         | null;
       canCancelTransfer?: boolean | null;
-      disablePrivacy?: "needed" | "ok" | "unknown" | null;
+      disablePrivacy?: "needed" | "ok" | "unknown" | (string & {}) | null;
       enterAuthCode?:
         | "needed"
         | "ok"
         | "pending"
         | "trying"
         | "rejected"
+        | (string & {})
         | null;
-      unlockDomain?: "needed" | "ok" | "pending" | "trying" | "unknown" | null;
+      unlockDomain?:
+        | "needed"
+        | "ok"
+        | "pending"
+        | "trying"
+        | "unknown"
+        | (string & {})
+        | null;
     } | null;
     updatedAt?: string | null;
   }[];
@@ -174,17 +183,26 @@ export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([
           Schema.Struct({
             acceptFoa: Schema.optional(
-              Schema.Union([Schema.Literals(["needed", "ok"]), Schema.Null]),
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["needed", "ok"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
             ),
             approveTransfer: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "needed",
-                  "ok",
-                  "pending",
-                  "trying",
-                  "rejected",
-                  "unknown",
+                Schema.Union([
+                  Schema.Literals([
+                    "needed",
+                    "ok",
+                    "pending",
+                    "trying",
+                    "rejected",
+                    "unknown",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -194,30 +212,39 @@ export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
             disablePrivacy: Schema.optional(
               Schema.Union([
-                Schema.Literals(["needed", "ok", "unknown"]),
+                Schema.Union([
+                  Schema.Literals(["needed", "ok", "unknown"]),
+                  Schema.String,
+                ]),
                 Schema.Null,
               ]),
             ),
             enterAuthCode: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "needed",
-                  "ok",
-                  "pending",
-                  "trying",
-                  "rejected",
+                Schema.Union([
+                  Schema.Literals([
+                    "needed",
+                    "ok",
+                    "pending",
+                    "trying",
+                    "rejected",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
             ),
             unlockDomain: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "needed",
-                  "ok",
-                  "pending",
-                  "trying",
-                  "unknown",
+                Schema.Union([
+                  Schema.Literals([
+                    "needed",
+                    "ok",
+                    "pending",
+                    "trying",
+                    "unknown",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -359,8 +386,9 @@ export interface CheckRegistrarResponse {
       | "extension_disallows_registration"
       | "domain_premium"
       | "domain_unavailable"
+      | (string & {})
       | null;
-    tier?: "standard" | "premium" | null;
+    tier?: "standard" | "premium" | (string & {}) | null;
   }[];
 }
 
@@ -388,18 +416,27 @@ export const CheckRegistrarResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         ),
         reason: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "extension_not_supported_via_api",
-              "extension_not_supported",
-              "extension_disallows_registration",
-              "domain_premium",
-              "domain_unavailable",
+            Schema.Union([
+              Schema.Literals([
+                "extension_not_supported_via_api",
+                "extension_not_supported",
+                "extension_disallows_registration",
+                "domain_premium",
+                "domain_unavailable",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
         ),
         tier: Schema.optional(
-          Schema.Union([Schema.Literals(["standard", "premium"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["standard", "premium"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
         ),
       }),
     ),
@@ -464,8 +501,9 @@ export interface SearchRegistrarResponse {
       | "extension_disallows_registration"
       | "domain_premium"
       | "domain_unavailable"
+      | (string & {})
       | null;
-    tier?: "standard" | "premium" | null;
+    tier?: "standard" | "premium" | (string & {}) | null;
   }[];
 }
 
@@ -493,18 +531,27 @@ export const SearchRegistrarResponse =
         ),
         reason: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "extension_not_supported_via_api",
-              "extension_not_supported",
-              "extension_disallows_registration",
-              "domain_premium",
-              "domain_unavailable",
+            Schema.Union([
+              Schema.Literals([
+                "extension_not_supported_via_api",
+                "extension_not_supported",
+                "extension_disallows_registration",
+                "domain_premium",
+                "domain_unavailable",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
         ),
         tier: Schema.optional(
-          Schema.Union([Schema.Literals(["standard", "premium"]), Schema.Null]),
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["standard", "premium"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
         ),
       }),
     ),
@@ -558,7 +605,8 @@ export interface GetRegistrationStatusResponse {
     | "action_required"
     | "blocked"
     | "succeeded"
-    | "failed";
+    | "failed"
+    | (string & {});
   updatedAt: string;
   /** Workflow-specific data for this workflow.  The workflow subject is identified by `context.domain_name` for domain-centric workflows. */
   context?: Record<string, unknown> | null;
@@ -574,13 +622,16 @@ export const GetRegistrationStatusResponse =
       self: Schema.String,
       resource: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
-    state: Schema.Literals([
-      "pending",
-      "in_progress",
-      "action_required",
-      "blocked",
-      "succeeded",
-      "failed",
+    state: Schema.Union([
+      Schema.Literals([
+        "pending",
+        "in_progress",
+        "action_required",
+        "blocked",
+        "succeeded",
+        "failed",
+      ]),
+      Schema.String,
     ]),
     updatedAt: Schema.String,
     context: Schema.optional(
@@ -658,7 +709,8 @@ export interface GetUpdateStatusResponse {
     | "action_required"
     | "blocked"
     | "succeeded"
-    | "failed";
+    | "failed"
+    | (string & {});
   updatedAt: string;
   /** Workflow-specific data for this workflow.  The workflow subject is identified by `context.domain_name` for domain-centric workflows. */
   context?: Record<string, unknown> | null;
@@ -674,13 +726,16 @@ export const GetUpdateStatusResponse =
       self: Schema.String,
       resource: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
-    state: Schema.Literals([
-      "pending",
-      "in_progress",
-      "action_required",
-      "blocked",
-      "succeeded",
-      "failed",
+    state: Schema.Union([
+      Schema.Literals([
+        "pending",
+        "in_progress",
+        "action_required",
+        "blocked",
+        "succeeded",
+        "failed",
+      ]),
+      Schema.String,
     ]),
     updatedAt: Schema.String,
     context: Schema.optional(

@@ -62,7 +62,7 @@ export interface ListByInsightInsightAuditLogResponse {
     changedAt?: string | null;
     changedBy?: string | null;
     currentValue?: string | null;
-    fieldChanged?: "status" | "user_classification" | null;
+    fieldChanged?: "status" | "user_classification" | (string & {}) | null;
     issueId?: string | null;
     previousValue?: string | null;
     rationale?: string | null;
@@ -87,7 +87,10 @@ export const ListByInsightInsightAuditLogResponse =
         ),
         fieldChanged: Schema.optional(
           Schema.Union([
-            Schema.Literals(["status", "user_classification"]),
+            Schema.Union([
+              Schema.Literals(["status", "user_classification"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -227,6 +230,7 @@ export interface ListInsightsResponse {
                   | "insecure_configuration"
                   | "weak_authentication"
                   | "configuration_suggestion"
+                  | (string & {})
                   | null;
                 payload?: {
                   detectionMethod?: string | null;
@@ -234,9 +238,14 @@ export interface ListInsightsResponse {
                 } | null;
                 resolveLink?: string | null;
                 resolveText?: string | null;
-                severity?: "Low" | "Moderate" | "Critical" | null;
+                severity?:
+                  | "Low"
+                  | "Moderate"
+                  | "Critical"
+                  | (string & {})
+                  | null;
                 since?: string | null;
-                status?: "active" | "resolved" | null;
+                status?: "active" | "resolved" | (string & {}) | null;
                 subject?: string | null;
                 timestamp?: string | null;
                 userClassification?:
@@ -284,13 +293,16 @@ export const ListInsightsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     issueType: Schema.optional(
                       Schema.Union([
-                        Schema.Literals([
-                          "compliance_violation",
-                          "email_security",
-                          "exposed_infrastructure",
-                          "insecure_configuration",
-                          "weak_authentication",
-                          "configuration_suggestion",
+                        Schema.Union([
+                          Schema.Literals([
+                            "compliance_violation",
+                            "email_security",
+                            "exposed_infrastructure",
+                            "insecure_configuration",
+                            "weak_authentication",
+                            "configuration_suggestion",
+                          ]),
+                          Schema.String,
                         ]),
                         Schema.Null,
                       ]),
@@ -321,7 +333,10 @@ export const ListInsightsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     severity: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["Low", "Moderate", "Critical"]),
+                        Schema.Union([
+                          Schema.Literals(["Low", "Moderate", "Critical"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -330,7 +345,10 @@ export const ListInsightsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                     status: Schema.optional(
                       Schema.Union([
-                        Schema.Literals(["active", "resolved"]),
+                        Schema.Union([
+                          Schema.Literals(["active", "resolved"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
@@ -635,7 +653,7 @@ export interface ListInsightAuditLogsResponse {
     changedAt?: string | null;
     changedBy?: string | null;
     currentValue?: string | null;
-    fieldChanged?: "status" | "user_classification" | null;
+    fieldChanged?: "status" | "user_classification" | (string & {}) | null;
     issueId?: string | null;
     previousValue?: string | null;
     rationale?: string | null;
@@ -660,7 +678,10 @@ export const ListInsightAuditLogsResponse =
         ),
         fieldChanged: Schema.optional(
           Schema.Union([
-            Schema.Literals(["status", "user_classification"]),
+            Schema.Union([
+              Schema.Literals(["status", "user_classification"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),

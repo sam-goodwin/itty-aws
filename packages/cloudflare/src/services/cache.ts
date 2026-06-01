@@ -107,7 +107,7 @@ export interface GetCacheReserveResponse {
   /** Whether the setting is editable. */
   editable: boolean;
   /** Value of the Cache Reserve zone setting. */
-  value: "on" | "off";
+  value: "on" | "off" | (string & {});
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
@@ -116,7 +116,7 @@ export const GetCacheReserveResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Literal("cache_reserve"),
     editable: Schema.Boolean,
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -148,13 +148,13 @@ export interface PatchCacheReserveRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: Value of the Cache Reserve zone setting. */
-  value: "on" | "off";
+  value: "on" | "off" | (string & {});
 }
 
 export const PatchCacheReserveRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
   }).pipe(
     T.Http({ method: "PATCH", path: "/zones/{zone_id}/cache/cache_reserve" }),
   ) as unknown as Schema.Schema<PatchCacheReserveRequest>;
@@ -165,7 +165,7 @@ export interface PatchCacheReserveResponse {
   /** Whether the setting is editable. */
   editable: boolean;
   /** Value of the Cache Reserve zone setting. */
-  value: "on" | "off";
+  value: "on" | "off" | (string & {});
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
@@ -174,7 +174,7 @@ export const PatchCacheReserveResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Literal("cache_reserve"),
     editable: Schema.Boolean,
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -223,7 +223,7 @@ export interface StatusCacheReserveResponse {
   /** The time that the latest Cache Reserve Clear operation started. */
   startTs: string;
   /** The current state of the Cache Reserve Clear operation. */
-  state: "In-progress" | "Completed";
+  state: "In-progress" | "Completed" | (string & {});
   /** The time that the latest Cache Reserve Clear operation completed. */
   endTs?: string | null;
   /** Last time this setting was modified. */
@@ -234,7 +234,10 @@ export const StatusCacheReserveResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Literal("cache_reserve_clear"),
     startTs: Schema.String,
-    state: Schema.Literals(["In-progress", "Completed"]),
+    state: Schema.Union([
+      Schema.Literals(["In-progress", "Completed"]),
+      Schema.String,
+    ]),
     endTs: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
@@ -288,7 +291,7 @@ export interface ClearCacheReserveResponse {
   /** The time that the latest Cache Reserve Clear operation started. */
   startTs: string;
   /** The current state of the Cache Reserve Clear operation. */
-  state: "In-progress" | "Completed";
+  state: "In-progress" | "Completed" | (string & {});
   /** The time that the latest Cache Reserve Clear operation completed. */
   endTs?: string | null;
   /** Last time this setting was modified. */
@@ -299,7 +302,10 @@ export const ClearCacheReserveResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Literal("cache_reserve_clear"),
     startTs: Schema.String,
-    state: Schema.Literals(["In-progress", "Completed"]),
+    state: Schema.Union([
+      Schema.Literals(["In-progress", "Completed"]),
+      Schema.String,
+    ]),
     endTs: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
@@ -358,7 +364,7 @@ export interface GetOriginCloudRegionResponse {
   value: {
     originIp: string;
     region: string;
-    vendor: "aws" | "azure" | "gcp" | "oci";
+    vendor: "aws" | "azure" | "gcp" | "oci" | (string & {});
     modifiedOn?: string | null;
   };
   /** Time the mapping was last modified. */
@@ -372,7 +378,10 @@ export const GetOriginCloudRegionResponse =
     value: Schema.Struct({
       originIp: Schema.String,
       region: Schema.String,
-      vendor: Schema.Literals(["aws", "azure", "gcp", "oci"]),
+      vendor: Schema.Union([
+        Schema.Literals(["aws", "azure", "gcp", "oci"]),
+        Schema.String,
+      ]),
       modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(
       Schema.encodeKeys({
@@ -431,7 +440,7 @@ export interface ListOriginCloudRegionsResponse {
   value: {
     originIp: string;
     region: string;
-    vendor: "aws" | "azure" | "gcp" | "oci";
+    vendor: "aws" | "azure" | "gcp" | "oci" | (string & {});
     modifiedOn?: string | null;
   }[];
   /** Time the mapping set was last modified. Null when no mappings exist. */
@@ -446,7 +455,10 @@ export const ListOriginCloudRegionsResponse =
       Schema.Struct({
         originIp: Schema.String,
         region: Schema.String,
-        vendor: Schema.Literals(["aws", "azure", "gcp", "oci"]),
+        vendor: Schema.Union([
+          Schema.Literals(["aws", "azure", "gcp", "oci"]),
+          Schema.String,
+        ]),
         modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
@@ -492,7 +504,7 @@ export interface CreateOriginCloudRegionRequest {
   /** Body param: Cloud vendor region identifier. Must be a valid region for the specified vendor as returned by the supported_regions endpoint. */
   region: string;
   /** Body param: Cloud vendor hosting the origin. Must be one of the supported vendors. */
-  vendor: "aws" | "azure" | "gcp" | "oci";
+  vendor: "aws" | "azure" | "gcp" | "oci" | (string & {});
 }
 
 export const CreateOriginCloudRegionRequest =
@@ -500,7 +512,10 @@ export const CreateOriginCloudRegionRequest =
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     ip: Schema.String,
     region: Schema.String,
-    vendor: Schema.Literals(["aws", "azure", "gcp", "oci"]),
+    vendor: Schema.Union([
+      Schema.Literals(["aws", "azure", "gcp", "oci"]),
+      Schema.String,
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
@@ -516,7 +531,7 @@ export interface CreateOriginCloudRegionResponse {
   value: {
     originIp: string;
     region: string;
-    vendor: "aws" | "azure" | "gcp" | "oci";
+    vendor: "aws" | "azure" | "gcp" | "oci" | (string & {});
     modifiedOn?: string | null;
   };
   /** Time the mapping was last modified. */
@@ -530,7 +545,10 @@ export const CreateOriginCloudRegionResponse =
     value: Schema.Struct({
       originIp: Schema.String,
       region: Schema.String,
-      vendor: Schema.Literals(["aws", "azure", "gcp", "oci"]),
+      vendor: Schema.Union([
+        Schema.Literals(["aws", "azure", "gcp", "oci"]),
+        Schema.String,
+      ]),
       modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(
       Schema.encodeKeys({
@@ -575,7 +593,7 @@ export interface PatchOriginCloudRegionRequest {
   /** Body param: Cloud vendor region identifier. Must be a valid region for the specified vendor as returned by the supported_regions endpoint. */
   region: string;
   /** Body param: Cloud vendor hosting the origin. Must be one of the supported vendors. */
-  vendor: "aws" | "azure" | "gcp" | "oci";
+  vendor: "aws" | "azure" | "gcp" | "oci" | (string & {});
 }
 
 export const PatchOriginCloudRegionRequest =
@@ -583,7 +601,10 @@ export const PatchOriginCloudRegionRequest =
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     ip: Schema.String,
     region: Schema.String,
-    vendor: Schema.Literals(["aws", "azure", "gcp", "oci"]),
+    vendor: Schema.Union([
+      Schema.Literals(["aws", "azure", "gcp", "oci"]),
+      Schema.String,
+    ]),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -598,7 +619,7 @@ export interface PatchOriginCloudRegionResponse {
   value: {
     originIp: string;
     region: string;
-    vendor: "aws" | "azure" | "gcp" | "oci";
+    vendor: "aws" | "azure" | "gcp" | "oci" | (string & {});
     modifiedOn?: string | null;
   }[];
   /** Time the mapping set was last modified. Null when no mappings exist. */
@@ -613,7 +634,10 @@ export const PatchOriginCloudRegionResponse =
       Schema.Struct({
         originIp: Schema.String,
         region: Schema.String,
-        vendor: Schema.Literals(["aws", "azure", "gcp", "oci"]),
+        vendor: Schema.Union([
+          Schema.Literals(["aws", "azure", "gcp", "oci"]),
+          Schema.String,
+        ]),
         modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
@@ -676,7 +700,7 @@ export interface DeleteOriginCloudRegionResponse {
   value: {
     originIp: string;
     region: string;
-    vendor: "aws" | "azure" | "gcp" | "oci";
+    vendor: "aws" | "azure" | "gcp" | "oci" | (string & {});
     modifiedOn?: string | null;
   };
   /** Time the mapping was last modified. */
@@ -690,7 +714,10 @@ export const DeleteOriginCloudRegionResponse =
     value: Schema.Struct({
       originIp: Schema.String,
       region: Schema.String,
-      vendor: Schema.Literals(["aws", "azure", "gcp", "oci"]),
+      vendor: Schema.Union([
+        Schema.Literals(["aws", "azure", "gcp", "oci"]),
+        Schema.String,
+      ]),
       modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(
       Schema.encodeKeys({
@@ -734,7 +761,7 @@ export interface BulkPatchOriginCloudRegionsRequest {
   body: {
     ip: string;
     region: string;
-    vendor: "aws" | "azure" | "gcp" | "oci";
+    vendor: "aws" | "azure" | "gcp" | "oci" | (string & {});
   }[];
 }
 
@@ -745,7 +772,10 @@ export const BulkPatchOriginCloudRegionsRequest =
       Schema.Struct({
         ip: Schema.String,
         region: Schema.String,
-        vendor: Schema.Literals(["aws", "azure", "gcp", "oci"]),
+        vendor: Schema.Union([
+          Schema.Literals(["aws", "azure", "gcp", "oci"]),
+          Schema.String,
+        ]),
       }),
     ).pipe(T.HttpBody()),
   }).pipe(
@@ -965,7 +995,7 @@ export interface GetRegionalTieredCacheResponse {
   /** Whether the setting is editable. */
   editable: boolean;
   /** Value of the Regional Tiered Cache zone setting. */
-  value: "on" | "off";
+  value: "on" | "off" | (string & {});
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
@@ -974,7 +1004,7 @@ export const GetRegionalTieredCacheResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Literal("tc_regional"),
     editable: Schema.Boolean,
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -1006,13 +1036,13 @@ export interface PatchRegionalTieredCacheRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: Value of the Regional Tiered Cache zone setting. */
-  value: "on" | "off";
+  value: "on" | "off" | (string & {});
 }
 
 export const PatchRegionalTieredCacheRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1026,7 +1056,7 @@ export interface PatchRegionalTieredCacheResponse {
   /** Whether the setting is editable. */
   editable: boolean;
   /** Value of the Regional Tiered Cache zone setting. */
-  value: "on" | "off";
+  value: "on" | "off" | (string & {});
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
@@ -1035,7 +1065,7 @@ export const PatchRegionalTieredCacheResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Literal("tc_regional"),
     editable: Schema.Boolean,
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -1142,7 +1172,7 @@ export interface GetSmartTieredCacheResponse {
   /** Whether the setting is editable. */
   editable: boolean;
   /** Value of the Smart Tiered Cache zone setting. */
-  value: "on" | "off";
+  value: "on" | "off" | (string & {});
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
@@ -1151,7 +1181,7 @@ export const GetSmartTieredCacheResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Literal("tiered_cache_smart_topology_enable"),
     editable: Schema.Boolean,
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -1183,13 +1213,13 @@ export interface PatchSmartTieredCacheRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: Enable or disable the Smart Tiered Cache. */
-  value: "on" | "off";
+  value: "on" | "off" | (string & {});
 }
 
 export const PatchSmartTieredCacheRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1203,7 +1233,7 @@ export interface PatchSmartTieredCacheResponse {
   /** Whether the setting is editable. */
   editable: boolean;
   /** Value of the Smart Tiered Cache zone setting. */
-  value: "on" | "off";
+  value: "on" | "off" | (string & {});
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
@@ -1212,7 +1242,7 @@ export const PatchSmartTieredCacheResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Literal("tiered_cache_smart_topology_enable"),
     editable: Schema.Boolean,
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(

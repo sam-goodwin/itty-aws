@@ -138,7 +138,7 @@ export interface GetRequestResponse {
   /** Brief description of the request. */
   summary: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
   updated: string;
   completed?: string | null;
   /** Tokens for the request messages. */
@@ -153,6 +153,7 @@ export interface GetRequestResponse {
     | "approved"
     | "completed"
     | "declined"
+    | (string & {})
     | null;
   /** Tokens for the request. */
   tokens?: number | null;
@@ -165,20 +166,26 @@ export const GetRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   priority: Schema.String,
   request: Schema.String,
   summary: Schema.String,
-  tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+  tlp: Schema.Union([
+    Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    Schema.String,
+  ]),
   updated: Schema.String,
   completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   messageTokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "open",
-        "accepted",
-        "reported",
-        "approved",
-        "completed",
-        "declined",
+      Schema.Union([
+        Schema.Literals([
+          "open",
+          "accepted",
+          "reported",
+          "approved",
+          "completed",
+          "declined",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -239,7 +246,7 @@ export interface ListRequestsRequest {
   /** Body param: Field to sort results by. */
   sortBy?: string;
   /** Body param: Sort order (asc or desc). */
-  sortOrder?: "asc" | "desc";
+  sortOrder?: "asc" | "desc" | (string & {});
   /** Body param: Request Status. */
   status?:
     | "open"
@@ -247,7 +254,8 @@ export interface ListRequestsRequest {
     | "reported"
     | "approved"
     | "completed"
-    | "declined";
+    | "declined"
+    | (string & {});
 }
 
 export const ListRequestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -260,15 +268,20 @@ export const ListRequestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   createdBefore: Schema.optional(Schema.String),
   requestType: Schema.optional(Schema.String),
   sortBy: Schema.optional(Schema.String),
-  sortOrder: Schema.optional(Schema.Literals(["asc", "desc"])),
+  sortOrder: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ),
   status: Schema.optional(
-    Schema.Literals([
-      "open",
-      "accepted",
-      "reported",
-      "approved",
-      "completed",
-      "declined",
+    Schema.Union([
+      Schema.Literals([
+        "open",
+        "accepted",
+        "reported",
+        "approved",
+        "completed",
+        "declined",
+      ]),
+      Schema.String,
     ]),
   ),
 }).pipe(
@@ -294,10 +307,10 @@ export interface ListRequestsResponse {
   result: {
     id: string;
     created: string;
-    priority: "routine" | "high" | "urgent";
+    priority: "routine" | "high" | "urgent" | (string & {});
     request: string;
     summary: string;
-    tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+    tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
     updated: string;
     completed?: string | null;
     messageTokens?: number | null;
@@ -309,6 +322,7 @@ export interface ListRequestsResponse {
       | "approved"
       | "completed"
       | "declined"
+      | (string & {})
       | null;
     tokens?: number | null;
   }[];
@@ -319,10 +333,16 @@ export const ListRequestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       id: Schema.String,
       created: Schema.String,
-      priority: Schema.Literals(["routine", "high", "urgent"]),
+      priority: Schema.Union([
+        Schema.Literals(["routine", "high", "urgent"]),
+        Schema.String,
+      ]),
       request: Schema.String,
       summary: Schema.String,
-      tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      tlp: Schema.Union([
+        Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+        Schema.String,
+      ]),
       updated: Schema.String,
       completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       messageTokens: Schema.optional(
@@ -331,13 +351,16 @@ export const ListRequestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       status: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "open",
-            "accepted",
-            "reported",
-            "approved",
-            "completed",
-            "declined",
+          Schema.Union([
+            Schema.Literals([
+              "open",
+              "accepted",
+              "reported",
+              "approved",
+              "completed",
+              "declined",
+            ]),
+            Schema.String,
           ]),
           Schema.Null,
         ]),
@@ -391,7 +414,7 @@ export interface CreateRequestRequest {
   /** Body param: Brief description of the request. */
   summary?: string;
   /** Body param: The CISA defined Traffic Light Protocol (TLP). */
-  tlp?: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp?: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
 }
 
 export const CreateRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -401,7 +424,10 @@ export const CreateRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   requestType: Schema.optional(Schema.String),
   summary: Schema.optional(Schema.String),
   tlp: Schema.optional(
-    Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
   ),
 }).pipe(
   Schema.encodeKeys({
@@ -429,7 +455,7 @@ export interface CreateRequestResponse {
   /** Brief description of the request. */
   summary: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
   updated: string;
   completed?: string | null;
   /** Tokens for the request messages. */
@@ -444,6 +470,7 @@ export interface CreateRequestResponse {
     | "approved"
     | "completed"
     | "declined"
+    | (string & {})
     | null;
   /** Tokens for the request. */
   tokens?: number | null;
@@ -456,20 +483,26 @@ export const CreateRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   priority: Schema.String,
   request: Schema.String,
   summary: Schema.String,
-  tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+  tlp: Schema.Union([
+    Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    Schema.String,
+  ]),
   updated: Schema.String,
   completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   messageTokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "open",
-        "accepted",
-        "reported",
-        "approved",
-        "completed",
-        "declined",
+      Schema.Union([
+        Schema.Literals([
+          "open",
+          "accepted",
+          "reported",
+          "approved",
+          "completed",
+          "declined",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -523,7 +556,7 @@ export interface UpdateRequestRequest {
   /** Body param: Brief description of the request. */
   summary?: string;
   /** Body param: The CISA defined Traffic Light Protocol (TLP). */
-  tlp?: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp?: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
 }
 
 export const UpdateRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -534,7 +567,10 @@ export const UpdateRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   requestType: Schema.optional(Schema.String),
   summary: Schema.optional(Schema.String),
   tlp: Schema.optional(
-    Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
   ),
 }).pipe(
   Schema.encodeKeys({
@@ -562,7 +598,7 @@ export interface UpdateRequestResponse {
   /** Brief description of the request. */
   summary: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
   updated: string;
   completed?: string | null;
   /** Tokens for the request messages. */
@@ -577,6 +613,7 @@ export interface UpdateRequestResponse {
     | "approved"
     | "completed"
     | "declined"
+    | (string & {})
     | null;
   /** Tokens for the request. */
   tokens?: number | null;
@@ -589,20 +626,26 @@ export const UpdateRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   priority: Schema.String,
   request: Schema.String,
   summary: Schema.String,
-  tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+  tlp: Schema.Union([
+    Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    Schema.String,
+  ]),
   updated: Schema.String,
   completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   messageTokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals([
-        "open",
-        "accepted",
-        "reported",
-        "approved",
-        "completed",
-        "declined",
+      Schema.Union([
+        Schema.Literals([
+          "open",
+          "accepted",
+          "reported",
+          "approved",
+          "completed",
+          "declined",
+        ]),
+        Schema.String,
       ]),
       Schema.Null,
     ]),
@@ -761,7 +804,7 @@ export const ConstantsRequestRequest =
   ) as unknown as Schema.Schema<ConstantsRequestRequest>;
 
 export interface ConstantsRequestResponse {
-  priority?: ("routine" | "high" | "urgent")[] | null;
+  priority?: ("routine" | "high" | "urgent" | (string & {}))[] | null;
   status?:
     | (
         | "open"
@@ -770,29 +813,40 @@ export interface ConstantsRequestResponse {
         | "approved"
         | "completed"
         | "declined"
+        | (string & {})
       )[]
     | null;
-  tlp?: ("clear" | "amber" | "amber-strict" | "green" | "red")[] | null;
+  tlp?:
+    | ("clear" | "amber" | "amber-strict" | "green" | "red" | (string & {}))[]
+    | null;
 }
 
 export const ConstantsRequestResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     priority: Schema.optional(
       Schema.Union([
-        Schema.Array(Schema.Literals(["routine", "high", "urgent"])),
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals(["routine", "high", "urgent"]),
+            Schema.String,
+          ]),
+        ),
         Schema.Null,
       ]),
     ),
     status: Schema.optional(
       Schema.Union([
         Schema.Array(
-          Schema.Literals([
-            "open",
-            "accepted",
-            "reported",
-            "approved",
-            "completed",
-            "declined",
+          Schema.Union([
+            Schema.Literals([
+              "open",
+              "accepted",
+              "reported",
+              "approved",
+              "completed",
+              "declined",
+            ]),
+            Schema.String,
           ]),
         ),
         Schema.Null,
@@ -801,7 +855,10 @@ export const ConstantsRequestResponse =
     tlp: Schema.optional(
       Schema.Union([
         Schema.Array(
-          Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+          Schema.Union([
+            Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+            Schema.String,
+          ]),
         ),
         Schema.Null,
       ]),
@@ -1262,7 +1319,7 @@ export interface GetRequestMessageRequest {
   /** Body param: Field to sort results by. */
   sortBy?: string;
   /** Body param: Sort order (asc or desc). */
-  sortOrder?: "asc" | "desc";
+  sortOrder?: "asc" | "desc" | (string & {});
 }
 
 export const GetRequestMessageRequest =
@@ -1274,7 +1331,9 @@ export const GetRequestMessageRequest =
     after: Schema.optional(Schema.String),
     before: Schema.optional(Schema.String),
     sortBy: Schema.optional(Schema.String),
-    sortOrder: Schema.optional(Schema.Literals(["asc", "desc"])),
+    sortOrder: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ),
   }).pipe(
     Schema.encodeKeys({
       page: "page",
@@ -1623,7 +1682,7 @@ export interface GetRequestPriorityResponse {
   /** Brief description of the request. */
   summary: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
   updated: string;
   completed?: string | null;
   /** Tokens for the request messages. */
@@ -1638,6 +1697,7 @@ export interface GetRequestPriorityResponse {
     | "approved"
     | "completed"
     | "declined"
+    | (string & {})
     | null;
   /** Tokens for the request. */
   tokens?: number | null;
@@ -1651,20 +1711,26 @@ export const GetRequestPriorityResponse =
     priority: Schema.String,
     request: Schema.String,
     summary: Schema.String,
-    tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    tlp: Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
     updated: Schema.String,
     completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     messageTokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "open",
-          "accepted",
-          "reported",
-          "approved",
-          "completed",
-          "declined",
+        Schema.Union([
+          Schema.Literals([
+            "open",
+            "accepted",
+            "reported",
+            "approved",
+            "completed",
+            "declined",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -1715,7 +1781,7 @@ export interface CreateRequestPriorityRequest {
   /** Body param: Requirement. */
   requirement: string;
   /** Body param: The CISA defined Traffic Light Protocol (TLP). */
-  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
 }
 
 export const CreateRequestPriorityRequest =
@@ -1724,7 +1790,10 @@ export const CreateRequestPriorityRequest =
     labels: Schema.Array(Schema.String),
     priority: Schema.Number,
     requirement: Schema.String,
-    tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    tlp: Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1744,7 +1813,7 @@ export interface CreateRequestPriorityResponse {
   /** Requirement. */
   requirement: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
   /** Priority last updated time. */
   updated: string;
 }
@@ -1756,7 +1825,10 @@ export const CreateRequestPriorityResponse =
     labels: Schema.Array(Schema.String),
     priority: Schema.Number,
     requirement: Schema.String,
-    tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    tlp: Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
     updated: Schema.String,
   }).pipe(
     T.ResponsePath("result"),
@@ -1786,7 +1858,7 @@ export interface UpdateRequestPriorityRequest {
   /** Body param: Requirement. */
   requirement: string;
   /** Body param: The CISA defined Traffic Light Protocol (TLP). */
-  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
 }
 
 export const UpdateRequestPriorityRequest =
@@ -1796,7 +1868,10 @@ export const UpdateRequestPriorityRequest =
     labels: Schema.Array(Schema.String),
     priority: Schema.Number,
     requirement: Schema.String,
-    tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    tlp: Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1816,7 +1891,7 @@ export interface UpdateRequestPriorityResponse {
   /** Brief description of the request. */
   summary: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
   updated: string;
   completed?: string | null;
   /** Tokens for the request messages. */
@@ -1831,6 +1906,7 @@ export interface UpdateRequestPriorityResponse {
     | "approved"
     | "completed"
     | "declined"
+    | (string & {})
     | null;
   /** Tokens for the request. */
   tokens?: number | null;
@@ -1844,20 +1920,26 @@ export const UpdateRequestPriorityResponse =
     priority: Schema.String,
     request: Schema.String,
     summary: Schema.String,
-    tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+    tlp: Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
     updated: Schema.String,
     completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     messageTokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "open",
-          "accepted",
-          "reported",
-          "approved",
-          "completed",
-          "declined",
+        Schema.Union([
+          Schema.Literals([
+            "open",
+            "accepted",
+            "reported",
+            "approved",
+            "completed",
+            "declined",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -2472,9 +2554,9 @@ export interface ListThreatEventsRequest {
   /** Query param */
   forceRefresh?: boolean;
   /** Query param */
-  format?: "json" | "stix2" | "taxii";
+  format?: "json" | "stix2" | "taxii" | (string & {});
   /** Query param */
-  order?: "asc" | "desc";
+  order?: "asc" | "desc" | (string & {});
   /** Query param */
   orderBy?: string;
   /** Query param: Page number (1-indexed) for offset-based pagination. Limited to offset of 100,000 records. For deep pagination, use cursor-based pagination instead. */
@@ -2496,7 +2578,8 @@ export interface ListThreatEventsRequest {
       | "startsWith"
       | "endsWith"
       | "in"
-      | "find";
+      | "find"
+      | (string & {});
     value?: string | number | (string | number)[];
   }[];
 }
@@ -2511,12 +2594,15 @@ export const ListThreatEventsRequest =
     forceRefresh: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("forceRefresh"),
     ),
-    format: Schema.optional(Schema.Literals(["json", "stix2", "taxii"])).pipe(
-      T.HttpQuery("format"),
-    ),
-    order: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("order"),
-    ),
+    format: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["json", "stix2", "taxii"]),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("format")),
+    order: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("order")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2525,19 +2611,22 @@ export const ListThreatEventsRequest =
         Schema.Struct({
           field: Schema.optional(Schema.String),
           op: Schema.optional(
-            Schema.Literals([
-              "equals",
-              "not",
-              "gt",
-              "gte",
-              "lt",
-              "lte",
-              "like",
-              "contains",
-              "startsWith",
-              "endsWith",
-              "in",
-              "find",
+            Schema.Union([
+              Schema.Literals([
+                "equals",
+                "not",
+                "gt",
+                "gte",
+                "lt",
+                "lte",
+                "like",
+                "contains",
+                "startsWith",
+                "endsWith",
+                "in",
+                "find",
+              ]),
+              Schema.String,
             ]),
           ),
           value: Schema.optional(

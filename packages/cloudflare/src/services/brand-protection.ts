@@ -764,9 +764,14 @@ export interface GetV2LogoMatchRequest {
   /** Query param */
   offset?: string;
   /** Query param: Sort order. Options: 'asc' (ascending) or 'desc' (descending) */
-  order?: "asc" | "desc";
+  order?: "asc" | "desc" | (string & {});
   /** Query param: Column to sort by. Options: 'matchedAt', 'domain', 'similarityScore', or 'registrar' */
-  orderBy?: "matchedAt" | "domain" | "similarityScore" | "registrar";
+  orderBy?:
+    | "matchedAt"
+    | "domain"
+    | "similarityScore"
+    | "registrar"
+    | (string & {});
 }
 
 export const GetV2LogoMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -775,11 +780,14 @@ export const GetV2LogoMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   download: Schema.optional(Schema.String).pipe(T.HttpQuery("download")),
   limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
   offset: Schema.optional(Schema.String).pipe(T.HttpQuery("offset")),
-  order: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("order"),
-  ),
+  order: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("order")),
   orderBy: Schema.optional(
-    Schema.Literals(["matchedAt", "domain", "similarityScore", "registrar"]),
+    Schema.Union([
+      Schema.Literals(["matchedAt", "domain", "similarityScore", "registrar"]),
+      Schema.String,
+    ]),
   ).pipe(T.HttpQuery("orderBy")),
 }).pipe(
   T.Http({
@@ -869,9 +877,9 @@ export interface GetV2MatchRequest {
   /** Query param */
   offset?: string;
   /** Query param: Sort order. Options: 'asc' (ascending) or 'desc' (descending) */
-  order?: "asc" | "desc";
+  order?: "asc" | "desc" | (string & {});
   /** Query param: Column to sort by. Options: 'domain', 'first_seen', or 'registrar' */
-  orderBy?: "domain" | "first_seen" | "registrar";
+  orderBy?: "domain" | "first_seen" | "registrar" | (string & {});
 }
 
 export const GetV2MatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -888,11 +896,14 @@ export const GetV2MatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
   offset: Schema.optional(Schema.String).pipe(T.HttpQuery("offset")),
-  order: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("order"),
-  ),
+  order: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("order")),
   orderBy: Schema.optional(
-    Schema.Literals(["domain", "first_seen", "registrar"]),
+    Schema.Union([
+      Schema.Literals(["domain", "first_seen", "registrar"]),
+      Schema.String,
+    ]),
   ).pipe(T.HttpQuery("orderBy")),
 }).pipe(
   T.Http({

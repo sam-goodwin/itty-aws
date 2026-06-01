@@ -695,9 +695,9 @@ export interface GetV1VariantResponse {
   variant?: {
     id: string;
     options: {
-      fit: "scale-down" | "contain" | "cover" | "crop" | "pad";
+      fit: "scale-down" | "contain" | "cover" | "crop" | "pad" | (string & {});
       height: number;
-      metadata: "keep" | "copyright" | "none";
+      metadata: "keep" | "copyright" | "none" | (string & {});
       width: number;
     };
     neverRequireSignedURLs?: boolean | null;
@@ -710,15 +710,15 @@ export const GetV1VariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         id: Schema.String,
         options: Schema.Struct({
-          fit: Schema.Literals([
-            "scale-down",
-            "contain",
-            "cover",
-            "crop",
-            "pad",
+          fit: Schema.Union([
+            Schema.Literals(["scale-down", "contain", "cover", "crop", "pad"]),
+            Schema.String,
           ]),
           height: Schema.Number,
-          metadata: Schema.Literals(["keep", "copyright", "none"]),
+          metadata: Schema.Union([
+            Schema.Literals(["keep", "copyright", "none"]),
+            Schema.String,
+          ]),
           width: Schema.Number,
         }),
         neverRequireSignedURLs: Schema.optional(
@@ -764,9 +764,9 @@ export interface ListV1VariantsResponse {
   id: string;
   /** Allows you to define image resizing sizes for different use cases. */
   options: {
-    fit: "scale-down" | "contain" | "cover" | "crop" | "pad";
+    fit: "scale-down" | "contain" | "cover" | "crop" | "pad" | (string & {});
     height: number;
-    metadata: "keep" | "copyright" | "none";
+    metadata: "keep" | "copyright" | "none" | (string & {});
     width: number;
   };
   /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
@@ -777,9 +777,15 @@ export const ListV1VariantsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String,
     options: Schema.Struct({
-      fit: Schema.Literals(["scale-down", "contain", "cover", "crop", "pad"]),
+      fit: Schema.Union([
+        Schema.Literals(["scale-down", "contain", "cover", "crop", "pad"]),
+        Schema.String,
+      ]),
       height: Schema.Number,
-      metadata: Schema.Literals(["keep", "copyright", "none"]),
+      metadata: Schema.Union([
+        Schema.Literals(["keep", "copyright", "none"]),
+        Schema.String,
+      ]),
       width: Schema.Number,
     }),
     neverRequireSignedURLs: Schema.optional(
@@ -810,9 +816,9 @@ export interface CreateV1VariantRequest {
   id: string;
   /** Body param: Allows you to define image resizing sizes for different use cases. */
   options: {
-    fit: "scale-down" | "contain" | "cover" | "crop" | "pad";
+    fit: "scale-down" | "contain" | "cover" | "crop" | "pad" | (string & {});
     height: number;
-    metadata: "keep" | "copyright" | "none";
+    metadata: "keep" | "copyright" | "none" | (string & {});
     width: number;
   };
   /** Body param: Indicates whether the variant can access an image without a signature, regardless of image access control. */
@@ -824,9 +830,15 @@ export const CreateV1VariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     id: Schema.String,
     options: Schema.Struct({
-      fit: Schema.Literals(["scale-down", "contain", "cover", "crop", "pad"]),
+      fit: Schema.Union([
+        Schema.Literals(["scale-down", "contain", "cover", "crop", "pad"]),
+        Schema.String,
+      ]),
       height: Schema.Number,
-      metadata: Schema.Literals(["keep", "copyright", "none"]),
+      metadata: Schema.Union([
+        Schema.Literals(["keep", "copyright", "none"]),
+        Schema.String,
+      ]),
       width: Schema.Number,
     }),
     neverRequireSignedURLs: Schema.optional(Schema.Boolean),
@@ -839,9 +851,9 @@ export interface CreateV1VariantResponse {
   variant?: {
     id: string;
     options: {
-      fit: "scale-down" | "contain" | "cover" | "crop" | "pad";
+      fit: "scale-down" | "contain" | "cover" | "crop" | "pad" | (string & {});
       height: number;
-      metadata: "keep" | "copyright" | "none";
+      metadata: "keep" | "copyright" | "none" | (string & {});
       width: number;
     };
     neverRequireSignedURLs?: boolean | null;
@@ -855,15 +867,21 @@ export const CreateV1VariantResponse =
         Schema.Struct({
           id: Schema.String,
           options: Schema.Struct({
-            fit: Schema.Literals([
-              "scale-down",
-              "contain",
-              "cover",
-              "crop",
-              "pad",
+            fit: Schema.Union([
+              Schema.Literals([
+                "scale-down",
+                "contain",
+                "cover",
+                "crop",
+                "pad",
+              ]),
+              Schema.String,
             ]),
             height: Schema.Number,
-            metadata: Schema.Literals(["keep", "copyright", "none"]),
+            metadata: Schema.Union([
+              Schema.Literals(["keep", "copyright", "none"]),
+              Schema.String,
+            ]),
             width: Schema.Number,
           }),
           neverRequireSignedURLs: Schema.optional(
@@ -899,9 +917,9 @@ export interface PatchV1VariantRequest {
   accountId: string;
   /** Body param: Allows you to define image resizing sizes for different use cases. */
   options: {
-    fit: "scale-down" | "contain" | "cover" | "crop" | "pad";
+    fit: "scale-down" | "contain" | "cover" | "crop" | "pad" | (string & {});
     height: number;
-    metadata: "keep" | "copyright" | "none";
+    metadata: "keep" | "copyright" | "none" | (string & {});
     width: number;
   };
   /** Body param: Indicates whether the variant can access an image without a signature, regardless of image access control. */
@@ -912,9 +930,15 @@ export const PatchV1VariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   variantId: Schema.String.pipe(T.HttpPath("variantId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   options: Schema.Struct({
-    fit: Schema.Literals(["scale-down", "contain", "cover", "crop", "pad"]),
+    fit: Schema.Union([
+      Schema.Literals(["scale-down", "contain", "cover", "crop", "pad"]),
+      Schema.String,
+    ]),
     height: Schema.Number,
-    metadata: Schema.Literals(["keep", "copyright", "none"]),
+    metadata: Schema.Union([
+      Schema.Literals(["keep", "copyright", "none"]),
+      Schema.String,
+    ]),
     width: Schema.Number,
   }),
   neverRequireSignedURLs: Schema.optional(Schema.Boolean),
@@ -929,9 +953,9 @@ export interface PatchV1VariantResponse {
   variant?: {
     id: string;
     options: {
-      fit: "scale-down" | "contain" | "cover" | "crop" | "pad";
+      fit: "scale-down" | "contain" | "cover" | "crop" | "pad" | (string & {});
       height: number;
-      metadata: "keep" | "copyright" | "none";
+      metadata: "keep" | "copyright" | "none" | (string & {});
       width: number;
     };
     neverRequireSignedURLs?: boolean | null;
@@ -945,15 +969,21 @@ export const PatchV1VariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.Struct({
           id: Schema.String,
           options: Schema.Struct({
-            fit: Schema.Literals([
-              "scale-down",
-              "contain",
-              "cover",
-              "crop",
-              "pad",
+            fit: Schema.Union([
+              Schema.Literals([
+                "scale-down",
+                "contain",
+                "cover",
+                "crop",
+                "pad",
+              ]),
+              Schema.String,
             ]),
             height: Schema.Number,
-            metadata: Schema.Literals(["keep", "copyright", "none"]),
+            metadata: Schema.Union([
+              Schema.Literals(["keep", "copyright", "none"]),
+              Schema.String,
+            ]),
             width: Schema.Number,
           }),
           neverRequireSignedURLs: Schema.optional(
@@ -1043,7 +1073,7 @@ export interface ListV2sRequest {
   /** Query param: Number of items per page */
   perPage?: number;
   /** Query param: Sorting order by upload time */
-  sortOrder?: "asc" | "desc";
+  sortOrder?: "asc" | "desc" | (string & {});
 }
 
 export const ListV2sRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1060,9 +1090,9 @@ export const ListV2sRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ).pipe(T.HttpQuery("meta")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  sortOrder: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("sort_order"),
-  ),
+  sortOrder: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("sort_order")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/images/v2" }),
 ) as unknown as Schema.Schema<ListV2sRequest>;

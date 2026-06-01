@@ -63,13 +63,16 @@ export interface CreateContentScanningRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
   /** Body param: The status value for Content Scanning. */
-  value: "enabled" | "disabled";
+  value: "enabled" | "disabled" | (string & {});
 }
 
 export const CreateContentScanningRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Literals(["enabled", "disabled"]),
+    value: Schema.Union([
+      Schema.Literals(["enabled", "disabled"]),
+      Schema.String,
+    ]),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -109,13 +112,16 @@ export interface PutContentScanningRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
   /** Body param: The status value for Content Scanning. */
-  value: "enabled" | "disabled";
+  value: "enabled" | "disabled" | (string & {});
 }
 
 export const PutContentScanningRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Literals(["enabled", "disabled"]),
+    value: Schema.Union([
+      Schema.Literals(["enabled", "disabled"]),
+      Schema.String,
+    ]),
   }).pipe(
     T.Http({
       method: "PUT",

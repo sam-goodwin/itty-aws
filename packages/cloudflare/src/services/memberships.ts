@@ -32,7 +32,7 @@ export interface GetMembershipResponse {
   account?: {
     id: string;
     name: string;
-    type: "standard" | "enterprise";
+    type: "standard" | "enterprise" | (string & {});
     createdOn?: string | null;
     managedBy?: {
       parentOrgId?: string | null;
@@ -64,7 +64,7 @@ export interface GetMembershipResponse {
   policies?:
     | {
         id?: string | null;
-        access?: "allow" | "deny" | null;
+        access?: "allow" | "deny" | (string & {}) | null;
         permissionGroups?:
           | {
               id: string;
@@ -85,7 +85,7 @@ export interface GetMembershipResponse {
   /** List of role names the membership has for this account. */
   roles?: string[] | null;
   /** Status of this membership. */
-  status?: "accepted" | "pending" | "rejected" | null;
+  status?: "accepted" | "pending" | "rejected" | (string & {}) | null;
 }
 
 export const GetMembershipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -95,7 +95,10 @@ export const GetMembershipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         id: Schema.String,
         name: Schema.String,
-        type: Schema.Literals(["standard", "enterprise"]),
+        type: Schema.Union([
+          Schema.Literals(["standard", "enterprise"]),
+          Schema.String,
+        ]),
         createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         managedBy: Schema.optional(
           Schema.Union([
@@ -333,7 +336,10 @@ export const GetMembershipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           access: Schema.optional(
-            Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           permissionGroups: Schema.optional(
             Schema.Union([
@@ -414,7 +420,10 @@ export const GetMembershipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals(["accepted", "pending", "rejected"]),
+      Schema.Union([
+        Schema.Literals(["accepted", "pending", "rejected"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -461,7 +470,7 @@ export interface ListMembershipsResponse {
     account?: {
       id: string;
       name: string;
-      type: "standard" | "enterprise";
+      type: "standard" | "enterprise" | (string & {});
       createdOn?: string | null;
       managedBy?: {
         parentOrgId?: string | null;
@@ -488,7 +497,7 @@ export interface ListMembershipsResponse {
       zones?: { read?: boolean | null; write?: boolean | null } | null;
     } | null;
     roles?: string[] | null;
-    status?: "accepted" | "pending" | "rejected" | null;
+    status?: "accepted" | "pending" | "rejected" | (string & {}) | null;
   }[];
   resultInfo?: {
     count?: number | null;
@@ -508,7 +517,10 @@ export const ListMembershipsResponse =
             Schema.Struct({
               id: Schema.String,
               name: Schema.String,
-              type: Schema.Literals(["standard", "enterprise"]),
+              type: Schema.Union([
+                Schema.Literals(["standard", "enterprise"]),
+                Schema.String,
+              ]),
               createdOn: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
@@ -747,7 +759,10 @@ export const ListMembershipsResponse =
         ),
         status: Schema.optional(
           Schema.Union([
-            Schema.Literals(["accepted", "pending", "rejected"]),
+            Schema.Union([
+              Schema.Literals(["accepted", "pending", "rejected"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -809,12 +824,15 @@ export const listMemberships: API.PaginatedOperationMethod<
 export interface PutMembershipRequest {
   membershipId: string;
   /** Whether to accept or reject this account invitation. */
-  status: "accepted" | "rejected";
+  status: "accepted" | "rejected" | (string & {});
 }
 
 export const PutMembershipRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   membershipId: Schema.String.pipe(T.HttpPath("membershipId")),
-  status: Schema.Literals(["accepted", "rejected"]),
+  status: Schema.Union([
+    Schema.Literals(["accepted", "rejected"]),
+    Schema.String,
+  ]),
 }).pipe(
   T.Http({ method: "PUT", path: "/memberships/{membershipId}" }),
 ) as unknown as Schema.Schema<PutMembershipRequest>;
@@ -825,7 +843,7 @@ export interface PutMembershipResponse {
   account?: {
     id: string;
     name: string;
-    type: "standard" | "enterprise";
+    type: "standard" | "enterprise" | (string & {});
     createdOn?: string | null;
     managedBy?: {
       parentOrgId?: string | null;
@@ -857,7 +875,7 @@ export interface PutMembershipResponse {
   policies?:
     | {
         id?: string | null;
-        access?: "allow" | "deny" | null;
+        access?: "allow" | "deny" | (string & {}) | null;
         permissionGroups?:
           | {
               id: string;
@@ -878,7 +896,7 @@ export interface PutMembershipResponse {
   /** List of role names the membership has for this account. */
   roles?: string[] | null;
   /** Status of this membership. */
-  status?: "accepted" | "pending" | "rejected" | null;
+  status?: "accepted" | "pending" | "rejected" | (string & {}) | null;
 }
 
 export const PutMembershipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -888,7 +906,10 @@ export const PutMembershipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         id: Schema.String,
         name: Schema.String,
-        type: Schema.Literals(["standard", "enterprise"]),
+        type: Schema.Union([
+          Schema.Literals(["standard", "enterprise"]),
+          Schema.String,
+        ]),
         createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         managedBy: Schema.optional(
           Schema.Union([
@@ -1126,7 +1147,10 @@ export const PutMembershipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           access: Schema.optional(
-            Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           permissionGroups: Schema.optional(
             Schema.Union([
@@ -1207,7 +1231,10 @@ export const PutMembershipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals(["accepted", "pending", "rejected"]),
+      Schema.Union([
+        Schema.Literals(["accepted", "pending", "rejected"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),

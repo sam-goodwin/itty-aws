@@ -122,30 +122,39 @@ export const GetMaintenanceConfigRequest =
 
 export interface GetMaintenanceConfigResponse {
   /** Shows the credential configuration status. */
-  credentialStatus: "present" | "absent";
+  credentialStatus: "present" | "absent" | (string & {});
   /** Configures maintenance for the catalog. */
   maintenanceConfig: {
     compaction?: {
-      state: "enabled" | "disabled";
-      targetSizeMb: "64" | "128" | "256" | "512";
+      state: "enabled" | "disabled" | (string & {});
+      targetSizeMb: "64" | "128" | "256" | "512" | (string & {});
     } | null;
     snapshotExpiration?: {
       maxSnapshotAge: string;
       minSnapshotsToKeep: number;
-      state: "enabled" | "disabled";
+      state: "enabled" | "disabled" | (string & {});
     } | null;
   };
 }
 
 export const GetMaintenanceConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    credentialStatus: Schema.Literals(["present", "absent"]),
+    credentialStatus: Schema.Union([
+      Schema.Literals(["present", "absent"]),
+      Schema.String,
+    ]),
     maintenanceConfig: Schema.Struct({
       compaction: Schema.optional(
         Schema.Union([
           Schema.Struct({
-            state: Schema.Literals(["enabled", "disabled"]),
-            targetSizeMb: Schema.Literals(["64", "128", "256", "512"]),
+            state: Schema.Union([
+              Schema.Literals(["enabled", "disabled"]),
+              Schema.String,
+            ]),
+            targetSizeMb: Schema.Union([
+              Schema.Literals(["64", "128", "256", "512"]),
+              Schema.String,
+            ]),
           }).pipe(
             Schema.encodeKeys({
               state: "state",
@@ -160,7 +169,10 @@ export const GetMaintenanceConfigResponse =
           Schema.Struct({
             maxSnapshotAge: Schema.String,
             minSnapshotsToKeep: Schema.Number,
-            state: Schema.Literals(["enabled", "disabled"]),
+            state: Schema.Union([
+              Schema.Literals(["enabled", "disabled"]),
+              Schema.String,
+            ]),
           }).pipe(
             Schema.encodeKeys({
               maxSnapshotAge: "max_snapshot_age",
@@ -211,14 +223,14 @@ export interface UpdateMaintenanceConfigRequest {
   accountId: string;
   /** Body param: Updates compaction configuration (all fields optional). */
   compaction?: {
-    state?: "enabled" | "disabled";
-    targetSizeMb?: "64" | "128" | "256" | "512";
+    state?: "enabled" | "disabled" | (string & {});
+    targetSizeMb?: "64" | "128" | "256" | "512" | (string & {});
   };
   /** Body param: Updates snapshot expiration configuration (all fields optional). */
   snapshotExpiration?: {
     maxSnapshotAge?: string;
     minSnapshotsToKeep?: number;
-    state?: "enabled" | "disabled";
+    state?: "enabled" | "disabled" | (string & {});
   };
 }
 
@@ -228,9 +240,17 @@ export const UpdateMaintenanceConfigRequest =
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     compaction: Schema.optional(
       Schema.Struct({
-        state: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+        state: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["enabled", "disabled"]),
+            Schema.String,
+          ]),
+        ),
         targetSizeMb: Schema.optional(
-          Schema.Literals(["64", "128", "256", "512"]),
+          Schema.Union([
+            Schema.Literals(["64", "128", "256", "512"]),
+            Schema.String,
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({ state: "state", targetSizeMb: "target_size_mb" }),
@@ -240,7 +260,12 @@ export const UpdateMaintenanceConfigRequest =
       Schema.Struct({
         maxSnapshotAge: Schema.optional(Schema.String),
         minSnapshotsToKeep: Schema.optional(Schema.Number),
-        state: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+        state: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["enabled", "disabled"]),
+            Schema.String,
+          ]),
+        ),
       }).pipe(
         Schema.encodeKeys({
           maxSnapshotAge: "max_snapshot_age",
@@ -263,14 +288,14 @@ export const UpdateMaintenanceConfigRequest =
 export interface UpdateMaintenanceConfigResponse {
   /** Configures compaction for catalog maintenance. */
   compaction?: {
-    state: "enabled" | "disabled";
-    targetSizeMb: "64" | "128" | "256" | "512";
+    state: "enabled" | "disabled" | (string & {});
+    targetSizeMb: "64" | "128" | "256" | "512" | (string & {});
   } | null;
   /** Configures snapshot expiration settings. */
   snapshotExpiration?: {
     maxSnapshotAge: string;
     minSnapshotsToKeep: number;
-    state: "enabled" | "disabled";
+    state: "enabled" | "disabled" | (string & {});
   } | null;
 }
 
@@ -279,8 +304,14 @@ export const UpdateMaintenanceConfigResponse =
     compaction: Schema.optional(
       Schema.Union([
         Schema.Struct({
-          state: Schema.Literals(["enabled", "disabled"]),
-          targetSizeMb: Schema.Literals(["64", "128", "256", "512"]),
+          state: Schema.Union([
+            Schema.Literals(["enabled", "disabled"]),
+            Schema.String,
+          ]),
+          targetSizeMb: Schema.Union([
+            Schema.Literals(["64", "128", "256", "512"]),
+            Schema.String,
+          ]),
         }).pipe(
           Schema.encodeKeys({ state: "state", targetSizeMb: "target_size_mb" }),
         ),
@@ -292,7 +323,10 @@ export const UpdateMaintenanceConfigResponse =
         Schema.Struct({
           maxSnapshotAge: Schema.String,
           minSnapshotsToKeep: Schema.Number,
-          state: Schema.Literals(["enabled", "disabled"]),
+          state: Schema.Union([
+            Schema.Literals(["enabled", "disabled"]),
+            Schema.String,
+          ]),
         }).pipe(
           Schema.encodeKeys({
             maxSnapshotAge: "max_snapshot_age",
@@ -613,13 +647,13 @@ export interface GetNamespaceTableMaintenanceConfigResponse {
   /** Configures maintenance for the table. */
   maintenanceConfig: {
     compaction?: {
-      state: "enabled" | "disabled";
-      targetSizeMb: "64" | "128" | "256" | "512";
+      state: "enabled" | "disabled" | (string & {});
+      targetSizeMb: "64" | "128" | "256" | "512" | (string & {});
     } | null;
     snapshotExpiration?: {
       maxSnapshotAge: string;
       minSnapshotsToKeep: number;
-      state: "enabled" | "disabled";
+      state: "enabled" | "disabled" | (string & {});
     } | null;
   };
 }
@@ -630,8 +664,14 @@ export const GetNamespaceTableMaintenanceConfigResponse =
       compaction: Schema.optional(
         Schema.Union([
           Schema.Struct({
-            state: Schema.Literals(["enabled", "disabled"]),
-            targetSizeMb: Schema.Literals(["64", "128", "256", "512"]),
+            state: Schema.Union([
+              Schema.Literals(["enabled", "disabled"]),
+              Schema.String,
+            ]),
+            targetSizeMb: Schema.Union([
+              Schema.Literals(["64", "128", "256", "512"]),
+              Schema.String,
+            ]),
           }).pipe(
             Schema.encodeKeys({
               state: "state",
@@ -646,7 +686,10 @@ export const GetNamespaceTableMaintenanceConfigResponse =
           Schema.Struct({
             maxSnapshotAge: Schema.String,
             minSnapshotsToKeep: Schema.Number,
-            state: Schema.Literals(["enabled", "disabled"]),
+            state: Schema.Union([
+              Schema.Literals(["enabled", "disabled"]),
+              Schema.String,
+            ]),
           }).pipe(
             Schema.encodeKeys({
               maxSnapshotAge: "max_snapshot_age",
@@ -694,14 +737,14 @@ export interface UpdateNamespaceTableMaintenanceConfigRequest {
   accountId: string;
   /** Body param: Updates compaction configuration (all fields optional). */
   compaction?: {
-    state?: "enabled" | "disabled";
-    targetSizeMb?: "64" | "128" | "256" | "512";
+    state?: "enabled" | "disabled" | (string & {});
+    targetSizeMb?: "64" | "128" | "256" | "512" | (string & {});
   };
   /** Body param: Updates snapshot expiration configuration (all fields optional). */
   snapshotExpiration?: {
     maxSnapshotAge?: string;
     minSnapshotsToKeep?: number;
-    state?: "enabled" | "disabled";
+    state?: "enabled" | "disabled" | (string & {});
   };
 }
 
@@ -713,9 +756,17 @@ export const UpdateNamespaceTableMaintenanceConfigRequest =
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     compaction: Schema.optional(
       Schema.Struct({
-        state: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+        state: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["enabled", "disabled"]),
+            Schema.String,
+          ]),
+        ),
         targetSizeMb: Schema.optional(
-          Schema.Literals(["64", "128", "256", "512"]),
+          Schema.Union([
+            Schema.Literals(["64", "128", "256", "512"]),
+            Schema.String,
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({ state: "state", targetSizeMb: "target_size_mb" }),
@@ -725,7 +776,12 @@ export const UpdateNamespaceTableMaintenanceConfigRequest =
       Schema.Struct({
         maxSnapshotAge: Schema.optional(Schema.String),
         minSnapshotsToKeep: Schema.optional(Schema.Number),
-        state: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+        state: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["enabled", "disabled"]),
+            Schema.String,
+          ]),
+        ),
       }).pipe(
         Schema.encodeKeys({
           maxSnapshotAge: "max_snapshot_age",
@@ -748,14 +804,14 @@ export const UpdateNamespaceTableMaintenanceConfigRequest =
 export interface UpdateNamespaceTableMaintenanceConfigResponse {
   /** Configures compaction settings for table optimization. */
   compaction?: {
-    state: "enabled" | "disabled";
-    targetSizeMb: "64" | "128" | "256" | "512";
+    state: "enabled" | "disabled" | (string & {});
+    targetSizeMb: "64" | "128" | "256" | "512" | (string & {});
   } | null;
   /** Configures snapshot expiration settings. */
   snapshotExpiration?: {
     maxSnapshotAge: string;
     minSnapshotsToKeep: number;
-    state: "enabled" | "disabled";
+    state: "enabled" | "disabled" | (string & {});
   } | null;
 }
 
@@ -764,8 +820,14 @@ export const UpdateNamespaceTableMaintenanceConfigResponse =
     compaction: Schema.optional(
       Schema.Union([
         Schema.Struct({
-          state: Schema.Literals(["enabled", "disabled"]),
-          targetSizeMb: Schema.Literals(["64", "128", "256", "512"]),
+          state: Schema.Union([
+            Schema.Literals(["enabled", "disabled"]),
+            Schema.String,
+          ]),
+          targetSizeMb: Schema.Union([
+            Schema.Literals(["64", "128", "256", "512"]),
+            Schema.String,
+          ]),
         }).pipe(
           Schema.encodeKeys({ state: "state", targetSizeMb: "target_size_mb" }),
         ),
@@ -777,7 +839,10 @@ export const UpdateNamespaceTableMaintenanceConfigResponse =
         Schema.Struct({
           maxSnapshotAge: Schema.String,
           minSnapshotsToKeep: Schema.Number,
-          state: Schema.Literals(["enabled", "disabled"]),
+          state: Schema.Union([
+            Schema.Literals(["enabled", "disabled"]),
+            Schema.String,
+          ]),
         }).pipe(
           Schema.encodeKeys({
             maxSnapshotAge: "max_snapshot_age",
@@ -845,19 +910,19 @@ export interface GetR2DataCatalogResponse {
   /** Specifies the catalog name (generated from account and bucket name). */
   name: string;
   /** Indicates the status of the catalog. */
-  status: "active" | "inactive";
+  status: "active" | "inactive" | (string & {});
   /** Shows the credential configuration status. */
   credentialStatus?: "present" | "absent" | null;
   /** Configures maintenance for the catalog. */
   maintenanceConfig?: {
     compaction?: {
-      state: "enabled" | "disabled";
-      targetSizeMb: "64" | "128" | "256" | "512";
+      state: "enabled" | "disabled" | (string & {});
+      targetSizeMb: "64" | "128" | "256" | "512" | (string & {});
     } | null;
     snapshotExpiration?: {
       maxSnapshotAge: string;
       minSnapshotsToKeep: number;
-      state: "enabled" | "disabled";
+      state: "enabled" | "disabled" | (string & {});
     } | null;
   } | null;
 }
@@ -867,7 +932,10 @@ export const GetR2DataCatalogResponse =
     id: Schema.String,
     bucket: Schema.String,
     name: Schema.String,
-    status: Schema.Literals(["active", "inactive"]),
+    status: Schema.Union([
+      Schema.Literals(["active", "inactive"]),
+      Schema.String,
+    ]),
     credentialStatus: Schema.optional(
       Schema.Union([
         Schema.Literal("present"),
@@ -881,8 +949,14 @@ export const GetR2DataCatalogResponse =
           compaction: Schema.optional(
             Schema.Union([
               Schema.Struct({
-                state: Schema.Literals(["enabled", "disabled"]),
-                targetSizeMb: Schema.Literals(["64", "128", "256", "512"]),
+                state: Schema.Union([
+                  Schema.Literals(["enabled", "disabled"]),
+                  Schema.String,
+                ]),
+                targetSizeMb: Schema.Union([
+                  Schema.Literals(["64", "128", "256", "512"]),
+                  Schema.String,
+                ]),
               }).pipe(
                 Schema.encodeKeys({
                   state: "state",
@@ -897,7 +971,10 @@ export const GetR2DataCatalogResponse =
               Schema.Struct({
                 maxSnapshotAge: Schema.String,
                 minSnapshotsToKeep: Schema.Number,
-                state: Schema.Literals(["enabled", "disabled"]),
+                state: Schema.Union([
+                  Schema.Literals(["enabled", "disabled"]),
+                  Schema.String,
+                ]),
               }).pipe(
                 Schema.encodeKeys({
                   maxSnapshotAge: "max_snapshot_age",
@@ -963,17 +1040,17 @@ export interface ListR2DataCatalogsResponse {
     id: string;
     bucket: string;
     name: string;
-    status: "active" | "inactive";
+    status: "active" | "inactive" | (string & {});
     credentialStatus?: "present" | "absent" | null;
     maintenanceConfig?: {
       compaction?: {
-        state: "enabled" | "disabled";
-        targetSizeMb: "64" | "128" | "256" | "512";
+        state: "enabled" | "disabled" | (string & {});
+        targetSizeMb: "64" | "128" | "256" | "512" | (string & {});
       } | null;
       snapshotExpiration?: {
         maxSnapshotAge: string;
         minSnapshotsToKeep: number;
-        state: "enabled" | "disabled";
+        state: "enabled" | "disabled" | (string & {});
       } | null;
     } | null;
   }[];
@@ -986,7 +1063,10 @@ export const ListR2DataCatalogsResponse =
         id: Schema.String,
         bucket: Schema.String,
         name: Schema.String,
-        status: Schema.Literals(["active", "inactive"]),
+        status: Schema.Union([
+          Schema.Literals(["active", "inactive"]),
+          Schema.String,
+        ]),
         credentialStatus: Schema.optional(
           Schema.Union([
             Schema.Literal("present"),
@@ -1000,8 +1080,14 @@ export const ListR2DataCatalogsResponse =
               compaction: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    state: Schema.Literals(["enabled", "disabled"]),
-                    targetSizeMb: Schema.Literals(["64", "128", "256", "512"]),
+                    state: Schema.Union([
+                      Schema.Literals(["enabled", "disabled"]),
+                      Schema.String,
+                    ]),
+                    targetSizeMb: Schema.Union([
+                      Schema.Literals(["64", "128", "256", "512"]),
+                      Schema.String,
+                    ]),
                   }).pipe(
                     Schema.encodeKeys({
                       state: "state",
@@ -1016,7 +1102,10 @@ export const ListR2DataCatalogsResponse =
                   Schema.Struct({
                     maxSnapshotAge: Schema.String,
                     minSnapshotsToKeep: Schema.Number,
-                    state: Schema.Literals(["enabled", "disabled"]),
+                    state: Schema.Union([
+                      Schema.Literals(["enabled", "disabled"]),
+                      Schema.String,
+                    ]),
                   }).pipe(
                     Schema.encodeKeys({
                       maxSnapshotAge: "max_snapshot_age",

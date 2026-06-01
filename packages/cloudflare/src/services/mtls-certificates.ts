@@ -103,7 +103,7 @@ export interface GetMtlsCertificateResponse {
   /** The type of hash used for the certificate. */
   signature?: string | null;
   /** The type of the certificate, indicating how it was created and who manages it. */
-  type?: "custom" | "gateway_managed" | "access_managed" | null;
+  type?: "custom" | "gateway_managed" | "access_managed" | (string & {}) | null;
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
 }
@@ -120,7 +120,10 @@ export const GetMtlsCertificateResponse =
     signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     type: Schema.optional(
       Schema.Union([
-        Schema.Literals(["custom", "gateway_managed", "access_managed"]),
+        Schema.Union([
+          Schema.Literals(["custom", "gateway_managed", "access_managed"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -161,7 +164,7 @@ export interface ListMtlsCertificatesRequest {
   /** Path param: Identifier. */
   accountId: string;
   /** Query param: Filters results by certificate type. Multiple types can be comma-separated. */
-  type?: ("custom" | "gateway_managed" | "access_managed")[];
+  type?: ("custom" | "gateway_managed" | "access_managed" | (string & {}))[];
 }
 
 export const ListMtlsCertificatesRequest =
@@ -169,7 +172,10 @@ export const ListMtlsCertificatesRequest =
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     type: Schema.optional(
       Schema.Array(
-        Schema.Literals(["custom", "gateway_managed", "access_managed"]),
+        Schema.Union([
+          Schema.Literals(["custom", "gateway_managed", "access_managed"]),
+          Schema.String,
+        ]),
       ),
     ).pipe(T.HttpQuery("type")),
   }).pipe(
@@ -186,7 +192,12 @@ export interface ListMtlsCertificatesResponse {
     name?: string | null;
     serialNumber?: string | null;
     signature?: string | null;
-    type?: "custom" | "gateway_managed" | "access_managed" | null;
+    type?:
+      | "custom"
+      | "gateway_managed"
+      | "access_managed"
+      | (string & {})
+      | null;
     uploadedOn?: string | null;
   }[];
 }
@@ -209,7 +220,10 @@ export const ListMtlsCertificatesResponse =
         signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         type: Schema.optional(
           Schema.Union([
-            Schema.Literals(["custom", "gateway_managed", "access_managed"]),
+            Schema.Union([
+              Schema.Literals(["custom", "gateway_managed", "access_managed"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -299,7 +313,7 @@ export interface CreateMtlsCertificateResponse {
   /** The type of hash used for the certificate. */
   signature?: string | null;
   /** The type of the certificate, indicating how it was created and who manages it. */
-  type?: "custom" | "gateway_managed" | "access_managed" | null;
+  type?: "custom" | "gateway_managed" | "access_managed" | (string & {}) | null;
   /** This is the time the certificate was updated. */
   updatedAt?: string | null;
   /** This is the time the certificate was uploaded. */
@@ -318,7 +332,10 @@ export const CreateMtlsCertificateResponse =
     signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     type: Schema.optional(
       Schema.Union([
-        Schema.Literals(["custom", "gateway_managed", "access_managed"]),
+        Schema.Union([
+          Schema.Literals(["custom", "gateway_managed", "access_managed"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -392,7 +409,7 @@ export interface DeleteMtlsCertificateResponse {
   /** The type of hash used for the certificate. */
   signature?: string | null;
   /** The type of the certificate, indicating how it was created and who manages it. */
-  type?: "custom" | "gateway_managed" | "access_managed" | null;
+  type?: "custom" | "gateway_managed" | "access_managed" | (string & {}) | null;
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
 }
@@ -409,7 +426,10 @@ export const DeleteMtlsCertificateResponse =
     signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     type: Schema.optional(
       Schema.Union([
-        Schema.Literals(["custom", "gateway_managed", "access_managed"]),
+        Schema.Union([
+          Schema.Literals(["custom", "gateway_managed", "access_managed"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),

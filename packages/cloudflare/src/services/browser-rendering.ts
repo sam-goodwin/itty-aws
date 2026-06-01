@@ -57,6 +57,7 @@ export interface CreateContentRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
   authenticate?: { password: string; username: string };
@@ -71,12 +72,12 @@ export interface CreateContentRequest {
     httpOnly?: boolean;
     partitionKey?: string;
     path?: string;
-    priority?: "Low" | "Medium" | "High";
+    priority?: "Low" | "Medium" | "High" | (string & {});
     sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
+    sameSite?: "Strict" | "Lax" | "None" | (string & {});
     secure?: boolean;
     sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
+    sourceScheme?: "Unset" | "NonSecure" | "Secure" | (string & {});
     url?: string;
   }[];
   /** Body param */
@@ -91,7 +92,13 @@ export interface CreateContentRequest {
       | "domcontentloaded"
       | "networkidle0"
       | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
+      | (
+          | "load"
+          | "domcontentloaded"
+          | "networkidle0"
+          | "networkidle2"
+          | (string & {})
+        )[];
   };
   /** Body param: Block undesired requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   rejectRequestPattern?: string[];
@@ -115,6 +122,7 @@ export interface CreateContentRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param */
   setExtraHTTPHeaders?: Record<string, unknown>;
@@ -170,25 +178,28 @@ export const CreateContentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   allowResourceTypes: Schema.optional(
     Schema.Array(
-      Schema.Literals([
-        "document",
-        "stylesheet",
-        "image",
-        "media",
-        "font",
-        "script",
-        "texttrack",
-        "xhr",
-        "fetch",
-        "prefetch",
-        "eventsource",
-        "websocket",
-        "manifest",
-        "signedexchange",
-        "ping",
-        "cspviolationreport",
-        "preflight",
-        "other",
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
       ]),
     ),
   ),
@@ -209,13 +220,26 @@ export const CreateContentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         httpOnly: Schema.optional(Schema.Boolean),
         partitionKey: Schema.optional(Schema.String),
         path: Schema.optional(Schema.String),
-        priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
+        priority: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Low", "Medium", "High"]),
+            Schema.String,
+          ]),
+        ),
         sameParty: Schema.optional(Schema.Boolean),
-        sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
+        sameSite: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Strict", "Lax", "None"]),
+            Schema.String,
+          ]),
+        ),
         secure: Schema.optional(Schema.Boolean),
         sourcePort: Schema.optional(Schema.Number),
         sourceScheme: Schema.optional(
-          Schema.Literals(["Unset", "NonSecure", "Secure"]),
+          Schema.Union([
+            Schema.Literals(["Unset", "NonSecure", "Secure"]),
+            Schema.String,
+          ]),
         ),
         url: Schema.optional(Schema.String),
       }),
@@ -234,11 +258,14 @@ export const CreateContentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Literal("networkidle0"),
           Schema.Literal("networkidle2"),
           Schema.Array(
-            Schema.Literals([
-              "load",
-              "domcontentloaded",
-              "networkidle0",
-              "networkidle2",
+            Schema.Union([
+              Schema.Literals([
+                "load",
+                "domcontentloaded",
+                "networkidle0",
+                "networkidle2",
+              ]),
+              Schema.String,
             ]),
           ),
         ]),
@@ -248,25 +275,28 @@ export const CreateContentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   rejectResourceTypes: Schema.optional(
     Schema.Array(
-      Schema.Literals([
-        "document",
-        "stylesheet",
-        "image",
-        "media",
-        "font",
-        "script",
-        "texttrack",
-        "xhr",
-        "fetch",
-        "prefetch",
-        "eventsource",
-        "websocket",
-        "manifest",
-        "signedexchange",
-        "ping",
-        "cspviolationreport",
-        "preflight",
-        "other",
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
       ]),
     ),
   ),
@@ -343,7 +373,8 @@ export interface GetCrawlRequest {
     | "completed"
     | "disallowed"
     | "skipped"
-    | "cancelled";
+    | "cancelled"
+    | (string & {});
 }
 
 export const GetCrawlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -353,13 +384,16 @@ export const GetCrawlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   cursor: Schema.optional(Schema.Number).pipe(T.HttpQuery("cursor")),
   limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
   status: Schema.optional(
-    Schema.Literals([
-      "queued",
-      "errored",
-      "completed",
-      "disallowed",
-      "skipped",
-      "cancelled",
+    Schema.Union([
+      Schema.Literals([
+        "queued",
+        "errored",
+        "completed",
+        "disallowed",
+        "skipped",
+        "cancelled",
+      ]),
+      Schema.String,
     ]),
   ).pipe(T.HttpQuery("status")),
 }).pipe(
@@ -385,7 +419,8 @@ export interface GetCrawlResponse {
       | "completed"
       | "disallowed"
       | "skipped"
-      | "cancelled";
+      | "cancelled"
+      | (string & {});
     url: string;
     html?: string | null;
     json?: Record<string, unknown> | null;
@@ -412,13 +447,16 @@ export const GetCrawlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         url: Schema.String,
         title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }),
-      status: Schema.Literals([
-        "queued",
-        "errored",
-        "completed",
-        "disallowed",
-        "skipped",
-        "cancelled",
+      status: Schema.Union([
+        Schema.Literals([
+          "queued",
+          "errored",
+          "completed",
+          "disallowed",
+          "skipped",
+          "cancelled",
+        ]),
+        Schema.String,
       ]),
       url: Schema.String,
       html: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -490,6 +528,7 @@ export interface CreateCrawlRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
   authenticate?: { password: string; username: string };
@@ -504,22 +543,22 @@ export interface CreateCrawlRequest {
     httpOnly?: boolean;
     partitionKey?: string;
     path?: string;
-    priority?: "Low" | "Medium" | "High";
+    priority?: "Low" | "Medium" | "High" | (string & {});
     sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
+    sameSite?: "Strict" | "Lax" | "None" | (string & {});
     secure?: boolean;
     sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
+    sourceScheme?: "Unset" | "NonSecure" | "Secure" | (string & {});
     url?: string;
   }[];
   /** Body param: List of crawl purposes to respect Content-Signal directives in robots.txt. Allowed values: 'search', 'ai-input', 'ai-train'. Learn more: https://contentsignals.org/. Default: ['search', 'a */
-  crawlPurposes?: ("search" | "ai-input" | "ai-train")[];
+  crawlPurposes?: ("search" | "ai-input" | "ai-train" | (string & {}))[];
   /** Body param: Maximum number of levels deep the crawler will traverse from the starting URL. */
   depth?: number;
   /** Body param */
   emulateMediaType?: string;
   /** Body param: Formats to return. Default is `html`. */
-  formats?: ("html" | "markdown" | "json")[];
+  formats?: ("html" | "markdown" | "json" | (string & {}))[];
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
   gotoOptions?: {
     referer?: string;
@@ -530,7 +569,13 @@ export interface CreateCrawlRequest {
       | "domcontentloaded"
       | "networkidle0"
       | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
+      | (
+          | "load"
+          | "domcontentloaded"
+          | "networkidle0"
+          | "networkidle2"
+          | (string & {})
+        )[];
   };
   /** Body param: Options for JSON extraction. */
   jsonOptions?: {
@@ -576,6 +621,7 @@ export interface CreateCrawlRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param: Whether to render the page or fetch static content. True by default. */
   render?: true | false;
@@ -584,7 +630,7 @@ export interface CreateCrawlRequest {
   /** Body param */
   setJavaScriptEnabled?: boolean;
   /** Body param: Source of links to crawl. 'sitemaps' - only crawl URLs from sitemaps, 'links' - only crawl URLs scraped from pages, 'all' - crawl both sitemap and scraped links (default). */
-  source?: "sitemaps" | "links" | "all";
+  source?: "sitemaps" | "links" | "all" | (string & {});
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
   viewport?: {
     height: number;
@@ -631,25 +677,28 @@ export const CreateCrawlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   allowResourceTypes: Schema.optional(
     Schema.Array(
-      Schema.Literals([
-        "document",
-        "stylesheet",
-        "image",
-        "media",
-        "font",
-        "script",
-        "texttrack",
-        "xhr",
-        "fetch",
-        "prefetch",
-        "eventsource",
-        "websocket",
-        "manifest",
-        "signedexchange",
-        "ping",
-        "cspviolationreport",
-        "preflight",
-        "other",
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
       ]),
     ),
   ),
@@ -670,25 +719,48 @@ export const CreateCrawlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         httpOnly: Schema.optional(Schema.Boolean),
         partitionKey: Schema.optional(Schema.String),
         path: Schema.optional(Schema.String),
-        priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
+        priority: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Low", "Medium", "High"]),
+            Schema.String,
+          ]),
+        ),
         sameParty: Schema.optional(Schema.Boolean),
-        sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
+        sameSite: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Strict", "Lax", "None"]),
+            Schema.String,
+          ]),
+        ),
         secure: Schema.optional(Schema.Boolean),
         sourcePort: Schema.optional(Schema.Number),
         sourceScheme: Schema.optional(
-          Schema.Literals(["Unset", "NonSecure", "Secure"]),
+          Schema.Union([
+            Schema.Literals(["Unset", "NonSecure", "Secure"]),
+            Schema.String,
+          ]),
         ),
         url: Schema.optional(Schema.String),
       }),
     ),
   ),
   crawlPurposes: Schema.optional(
-    Schema.Array(Schema.Literals(["search", "ai-input", "ai-train"])),
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals(["search", "ai-input", "ai-train"]),
+        Schema.String,
+      ]),
+    ),
   ),
   depth: Schema.optional(Schema.Number),
   emulateMediaType: Schema.optional(Schema.String),
   formats: Schema.optional(
-    Schema.Array(Schema.Literals(["html", "markdown", "json"])),
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals(["html", "markdown", "json"]),
+        Schema.String,
+      ]),
+    ),
   ),
   gotoOptions: Schema.optional(
     Schema.Struct({
@@ -702,11 +774,14 @@ export const CreateCrawlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Literal("networkidle0"),
           Schema.Literal("networkidle2"),
           Schema.Array(
-            Schema.Literals([
-              "load",
-              "domcontentloaded",
-              "networkidle0",
-              "networkidle2",
+            Schema.Union([
+              Schema.Literals([
+                "load",
+                "domcontentloaded",
+                "networkidle0",
+                "networkidle2",
+              ]),
+              Schema.String,
             ]),
           ),
         ]),
@@ -757,25 +832,28 @@ export const CreateCrawlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   rejectResourceTypes: Schema.optional(
     Schema.Array(
-      Schema.Literals([
-        "document",
-        "stylesheet",
-        "image",
-        "media",
-        "font",
-        "script",
-        "texttrack",
-        "xhr",
-        "fetch",
-        "prefetch",
-        "eventsource",
-        "websocket",
-        "manifest",
-        "signedexchange",
-        "ping",
-        "cspviolationreport",
-        "preflight",
-        "other",
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
       ]),
     ),
   ),
@@ -784,7 +862,12 @@ export const CreateCrawlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Record(Schema.String, Schema.Unknown),
   ),
   setJavaScriptEnabled: Schema.optional(Schema.Boolean),
-  source: Schema.optional(Schema.Literals(["sitemaps", "links", "all"])),
+  source: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["sitemaps", "links", "all"]),
+      Schema.String,
+    ]),
+  ),
   viewport: Schema.optional(
     Schema.Struct({
       height: Schema.Number,
@@ -953,12 +1036,15 @@ export const DeleteDevtoolBrowserRequest =
   ) as unknown as Schema.Schema<DeleteDevtoolBrowserRequest>;
 
 export interface DeleteDevtoolBrowserResponse {
-  status: "closing" | "closed";
+  status: "closing" | "closed" | (string & {});
 }
 
 export const DeleteDevtoolBrowserResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.Literals(["closing", "closed"]),
+    status: Schema.Union([
+      Schema.Literals(["closing", "closed"]),
+      Schema.String,
+    ]),
   }) as unknown as Schema.Schema<DeleteDevtoolBrowserResponse>;
 
 export type DeleteDevtoolBrowserError = DefaultErrors;
@@ -1728,6 +1814,7 @@ export interface CreateJsonRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
   authenticate?: { password: string; username: string };
@@ -1742,12 +1829,12 @@ export interface CreateJsonRequest {
     httpOnly?: boolean;
     partitionKey?: string;
     path?: string;
-    priority?: "Low" | "Medium" | "High";
+    priority?: "Low" | "Medium" | "High" | (string & {});
     sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
+    sameSite?: "Strict" | "Lax" | "None" | (string & {});
     secure?: boolean;
     sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
+    sourceScheme?: "Unset" | "NonSecure" | "Secure" | (string & {});
     url?: string;
   }[];
   /** Body param: Optional list of custom AI models to use for the request. The models will be tried in the order provided, and in case a model returns an error, the next one will be used as fallback. */
@@ -1764,7 +1851,13 @@ export interface CreateJsonRequest {
       | "domcontentloaded"
       | "networkidle0"
       | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
+      | (
+          | "load"
+          | "domcontentloaded"
+          | "networkidle0"
+          | "networkidle2"
+          | (string & {})
+        )[];
   };
   /** Body param */
   prompt?: string;
@@ -1790,6 +1883,7 @@ export interface CreateJsonRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param */
   responseFormat?: {
@@ -1850,25 +1944,28 @@ export const CreateJsonRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   allowResourceTypes: Schema.optional(
     Schema.Array(
-      Schema.Literals([
-        "document",
-        "stylesheet",
-        "image",
-        "media",
-        "font",
-        "script",
-        "texttrack",
-        "xhr",
-        "fetch",
-        "prefetch",
-        "eventsource",
-        "websocket",
-        "manifest",
-        "signedexchange",
-        "ping",
-        "cspviolationreport",
-        "preflight",
-        "other",
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
       ]),
     ),
   ),
@@ -1889,13 +1986,26 @@ export const CreateJsonRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         httpOnly: Schema.optional(Schema.Boolean),
         partitionKey: Schema.optional(Schema.String),
         path: Schema.optional(Schema.String),
-        priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
+        priority: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Low", "Medium", "High"]),
+            Schema.String,
+          ]),
+        ),
         sameParty: Schema.optional(Schema.Boolean),
-        sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
+        sameSite: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Strict", "Lax", "None"]),
+            Schema.String,
+          ]),
+        ),
         secure: Schema.optional(Schema.Boolean),
         sourcePort: Schema.optional(Schema.Number),
         sourceScheme: Schema.optional(
-          Schema.Literals(["Unset", "NonSecure", "Secure"]),
+          Schema.Union([
+            Schema.Literals(["Unset", "NonSecure", "Secure"]),
+            Schema.String,
+          ]),
         ),
         url: Schema.optional(Schema.String),
       }),
@@ -1922,11 +2032,14 @@ export const CreateJsonRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Literal("networkidle0"),
           Schema.Literal("networkidle2"),
           Schema.Array(
-            Schema.Literals([
-              "load",
-              "domcontentloaded",
-              "networkidle0",
-              "networkidle2",
+            Schema.Union([
+              Schema.Literals([
+                "load",
+                "domcontentloaded",
+                "networkidle0",
+                "networkidle2",
+              ]),
+              Schema.String,
             ]),
           ),
         ]),
@@ -1937,25 +2050,28 @@ export const CreateJsonRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   rejectResourceTypes: Schema.optional(
     Schema.Array(
-      Schema.Literals([
-        "document",
-        "stylesheet",
-        "image",
-        "media",
-        "font",
-        "script",
-        "texttrack",
-        "xhr",
-        "fetch",
-        "prefetch",
-        "eventsource",
-        "websocket",
-        "manifest",
-        "signedexchange",
-        "ping",
-        "cspviolationreport",
-        "preflight",
-        "other",
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
       ]),
     ),
   ),
@@ -2093,6 +2209,7 @@ export interface CreateLinkRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
   authenticate?: { password: string; username: string };
@@ -2107,12 +2224,12 @@ export interface CreateLinkRequest {
     httpOnly?: boolean;
     partitionKey?: string;
     path?: string;
-    priority?: "Low" | "Medium" | "High";
+    priority?: "Low" | "Medium" | "High" | (string & {});
     sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
+    sameSite?: "Strict" | "Lax" | "None" | (string & {});
     secure?: boolean;
     sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
+    sourceScheme?: "Unset" | "NonSecure" | "Secure" | (string & {});
     url?: string;
   }[];
   /** Body param */
@@ -2129,7 +2246,13 @@ export interface CreateLinkRequest {
       | "domcontentloaded"
       | "networkidle0"
       | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
+      | (
+          | "load"
+          | "domcontentloaded"
+          | "networkidle0"
+          | "networkidle2"
+          | (string & {})
+        )[];
   };
   /** Body param: Block undesired requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   rejectRequestPattern?: string[];
@@ -2153,6 +2276,7 @@ export interface CreateLinkRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param */
   setExtraHTTPHeaders?: Record<string, unknown>;
@@ -2210,25 +2334,28 @@ export const CreateLinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   allowResourceTypes: Schema.optional(
     Schema.Array(
-      Schema.Literals([
-        "document",
-        "stylesheet",
-        "image",
-        "media",
-        "font",
-        "script",
-        "texttrack",
-        "xhr",
-        "fetch",
-        "prefetch",
-        "eventsource",
-        "websocket",
-        "manifest",
-        "signedexchange",
-        "ping",
-        "cspviolationreport",
-        "preflight",
-        "other",
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
       ]),
     ),
   ),
@@ -2249,13 +2376,26 @@ export const CreateLinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         httpOnly: Schema.optional(Schema.Boolean),
         partitionKey: Schema.optional(Schema.String),
         path: Schema.optional(Schema.String),
-        priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
+        priority: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Low", "Medium", "High"]),
+            Schema.String,
+          ]),
+        ),
         sameParty: Schema.optional(Schema.Boolean),
-        sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
+        sameSite: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Strict", "Lax", "None"]),
+            Schema.String,
+          ]),
+        ),
         secure: Schema.optional(Schema.Boolean),
         sourcePort: Schema.optional(Schema.Number),
         sourceScheme: Schema.optional(
-          Schema.Literals(["Unset", "NonSecure", "Secure"]),
+          Schema.Union([
+            Schema.Literals(["Unset", "NonSecure", "Secure"]),
+            Schema.String,
+          ]),
         ),
         url: Schema.optional(Schema.String),
       }),
@@ -2275,11 +2415,14 @@ export const CreateLinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Literal("networkidle0"),
           Schema.Literal("networkidle2"),
           Schema.Array(
-            Schema.Literals([
-              "load",
-              "domcontentloaded",
-              "networkidle0",
-              "networkidle2",
+            Schema.Union([
+              Schema.Literals([
+                "load",
+                "domcontentloaded",
+                "networkidle0",
+                "networkidle2",
+              ]),
+              Schema.String,
             ]),
           ),
         ]),
@@ -2289,25 +2432,28 @@ export const CreateLinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   rejectResourceTypes: Schema.optional(
     Schema.Array(
-      Schema.Literals([
-        "document",
-        "stylesheet",
-        "image",
-        "media",
-        "font",
-        "script",
-        "texttrack",
-        "xhr",
-        "fetch",
-        "prefetch",
-        "eventsource",
-        "websocket",
-        "manifest",
-        "signedexchange",
-        "ping",
-        "cspviolationreport",
-        "preflight",
-        "other",
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
       ]),
     ),
   ),
@@ -2409,6 +2555,7 @@ export interface CreateMarkdownRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
   authenticate?: { password: string; username: string };
@@ -2423,12 +2570,12 @@ export interface CreateMarkdownRequest {
     httpOnly?: boolean;
     partitionKey?: string;
     path?: string;
-    priority?: "Low" | "Medium" | "High";
+    priority?: "Low" | "Medium" | "High" | (string & {});
     sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
+    sameSite?: "Strict" | "Lax" | "None" | (string & {});
     secure?: boolean;
     sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
+    sourceScheme?: "Unset" | "NonSecure" | "Secure" | (string & {});
     url?: string;
   }[];
   /** Body param */
@@ -2443,7 +2590,13 @@ export interface CreateMarkdownRequest {
       | "domcontentloaded"
       | "networkidle0"
       | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
+      | (
+          | "load"
+          | "domcontentloaded"
+          | "networkidle0"
+          | "networkidle2"
+          | (string & {})
+        )[];
   };
   /** Body param: Block undesired requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   rejectRequestPattern?: string[];
@@ -2467,6 +2620,7 @@ export interface CreateMarkdownRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param */
   setExtraHTTPHeaders?: Record<string, unknown>;
@@ -2522,25 +2676,28 @@ export const CreateMarkdownRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   allowResourceTypes: Schema.optional(
     Schema.Array(
-      Schema.Literals([
-        "document",
-        "stylesheet",
-        "image",
-        "media",
-        "font",
-        "script",
-        "texttrack",
-        "xhr",
-        "fetch",
-        "prefetch",
-        "eventsource",
-        "websocket",
-        "manifest",
-        "signedexchange",
-        "ping",
-        "cspviolationreport",
-        "preflight",
-        "other",
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
       ]),
     ),
   ),
@@ -2561,13 +2718,26 @@ export const CreateMarkdownRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         httpOnly: Schema.optional(Schema.Boolean),
         partitionKey: Schema.optional(Schema.String),
         path: Schema.optional(Schema.String),
-        priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
+        priority: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Low", "Medium", "High"]),
+            Schema.String,
+          ]),
+        ),
         sameParty: Schema.optional(Schema.Boolean),
-        sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
+        sameSite: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Strict", "Lax", "None"]),
+            Schema.String,
+          ]),
+        ),
         secure: Schema.optional(Schema.Boolean),
         sourcePort: Schema.optional(Schema.Number),
         sourceScheme: Schema.optional(
-          Schema.Literals(["Unset", "NonSecure", "Secure"]),
+          Schema.Union([
+            Schema.Literals(["Unset", "NonSecure", "Secure"]),
+            Schema.String,
+          ]),
         ),
         url: Schema.optional(Schema.String),
       }),
@@ -2586,11 +2756,14 @@ export const CreateMarkdownRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Literal("networkidle0"),
           Schema.Literal("networkidle2"),
           Schema.Array(
-            Schema.Literals([
-              "load",
-              "domcontentloaded",
-              "networkidle0",
-              "networkidle2",
+            Schema.Union([
+              Schema.Literals([
+                "load",
+                "domcontentloaded",
+                "networkidle0",
+                "networkidle2",
+              ]),
+              Schema.String,
             ]),
           ),
         ]),
@@ -2600,25 +2773,28 @@ export const CreateMarkdownRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   rejectResourceTypes: Schema.optional(
     Schema.Array(
-      Schema.Literals([
-        "document",
-        "stylesheet",
-        "image",
-        "media",
-        "font",
-        "script",
-        "texttrack",
-        "xhr",
-        "fetch",
-        "prefetch",
-        "eventsource",
-        "websocket",
-        "manifest",
-        "signedexchange",
-        "ping",
-        "cspviolationreport",
-        "preflight",
-        "other",
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
       ]),
     ),
   ),
@@ -2718,6 +2894,7 @@ export interface CreatePdfRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
   authenticate?: { password: string; username: string };
@@ -2732,12 +2909,12 @@ export interface CreatePdfRequest {
     httpOnly?: boolean;
     partitionKey?: string;
     path?: string;
-    priority?: "Low" | "Medium" | "High";
+    priority?: "Low" | "Medium" | "High" | (string & {});
     sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
+    sameSite?: "Strict" | "Lax" | "None" | (string & {});
     secure?: boolean;
     sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
+    sourceScheme?: "Unset" | "NonSecure" | "Secure" | (string & {});
     url?: string;
   }[];
   /** Body param */
@@ -2752,7 +2929,13 @@ export interface CreatePdfRequest {
       | "domcontentloaded"
       | "networkidle0"
       | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
+      | (
+          | "load"
+          | "domcontentloaded"
+          | "networkidle0"
+          | "networkidle2"
+          | (string & {})
+        )[];
   };
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.pdfoptions). */
   pdfOptions?: {
@@ -2769,7 +2952,8 @@ export interface CreatePdfRequest {
       | "a3"
       | "a4"
       | "a5"
-      | "a6";
+      | "a6"
+      | (string & {});
     headerTemplate?: string;
     height?: string | number;
     landscape?: boolean;
@@ -2811,6 +2995,7 @@ export interface CreatePdfRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param */
   setExtraHTTPHeaders?: Record<string, unknown>;
@@ -2866,25 +3051,28 @@ export const CreatePdfRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   allowResourceTypes: Schema.optional(
     Schema.Array(
-      Schema.Literals([
-        "document",
-        "stylesheet",
-        "image",
-        "media",
-        "font",
-        "script",
-        "texttrack",
-        "xhr",
-        "fetch",
-        "prefetch",
-        "eventsource",
-        "websocket",
-        "manifest",
-        "signedexchange",
-        "ping",
-        "cspviolationreport",
-        "preflight",
-        "other",
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
       ]),
     ),
   ),
@@ -2905,13 +3093,26 @@ export const CreatePdfRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         httpOnly: Schema.optional(Schema.Boolean),
         partitionKey: Schema.optional(Schema.String),
         path: Schema.optional(Schema.String),
-        priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
+        priority: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Low", "Medium", "High"]),
+            Schema.String,
+          ]),
+        ),
         sameParty: Schema.optional(Schema.Boolean),
-        sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
+        sameSite: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Strict", "Lax", "None"]),
+            Schema.String,
+          ]),
+        ),
         secure: Schema.optional(Schema.Boolean),
         sourcePort: Schema.optional(Schema.Number),
         sourceScheme: Schema.optional(
-          Schema.Literals(["Unset", "NonSecure", "Secure"]),
+          Schema.Union([
+            Schema.Literals(["Unset", "NonSecure", "Secure"]),
+            Schema.String,
+          ]),
         ),
         url: Schema.optional(Schema.String),
       }),
@@ -2930,11 +3131,14 @@ export const CreatePdfRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Literal("networkidle0"),
           Schema.Literal("networkidle2"),
           Schema.Array(
-            Schema.Literals([
-              "load",
-              "domcontentloaded",
-              "networkidle0",
-              "networkidle2",
+            Schema.Union([
+              Schema.Literals([
+                "load",
+                "domcontentloaded",
+                "networkidle0",
+                "networkidle2",
+              ]),
+              Schema.String,
             ]),
           ),
         ]),
@@ -2946,18 +3150,21 @@ export const CreatePdfRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       displayHeaderFooter: Schema.optional(Schema.Boolean),
       footerTemplate: Schema.optional(Schema.String),
       format: Schema.optional(
-        Schema.Literals([
-          "letter",
-          "legal",
-          "tabloid",
-          "ledger",
-          "a0",
-          "a1",
-          "a2",
-          "a3",
-          "a4",
-          "a5",
-          "a6",
+        Schema.Union([
+          Schema.Literals([
+            "letter",
+            "legal",
+            "tabloid",
+            "ledger",
+            "a0",
+            "a1",
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "a6",
+          ]),
+          Schema.String,
         ]),
       ),
       headerTemplate: Schema.optional(Schema.String),
@@ -2985,25 +3192,28 @@ export const CreatePdfRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   rejectResourceTypes: Schema.optional(
     Schema.Array(
-      Schema.Literals([
-        "document",
-        "stylesheet",
-        "image",
-        "media",
-        "font",
-        "script",
-        "texttrack",
-        "xhr",
-        "fetch",
-        "prefetch",
-        "eventsource",
-        "websocket",
-        "manifest",
-        "signedexchange",
-        "ping",
-        "cspviolationreport",
-        "preflight",
-        "other",
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
       ]),
     ),
   ),
@@ -3103,6 +3313,7 @@ export interface CreateScrapeRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
   authenticate?: { password: string; username: string };
@@ -3117,12 +3328,12 @@ export interface CreateScrapeRequest {
     httpOnly?: boolean;
     partitionKey?: string;
     path?: string;
-    priority?: "Low" | "Medium" | "High";
+    priority?: "Low" | "Medium" | "High" | (string & {});
     sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
+    sameSite?: "Strict" | "Lax" | "None" | (string & {});
     secure?: boolean;
     sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
+    sourceScheme?: "Unset" | "NonSecure" | "Secure" | (string & {});
     url?: string;
   }[];
   /** Body param */
@@ -3137,7 +3348,13 @@ export interface CreateScrapeRequest {
       | "domcontentloaded"
       | "networkidle0"
       | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
+      | (
+          | "load"
+          | "domcontentloaded"
+          | "networkidle0"
+          | "networkidle2"
+          | (string & {})
+        )[];
   };
   /** Body param: Block undesired requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   rejectRequestPattern?: string[];
@@ -3161,6 +3378,7 @@ export interface CreateScrapeRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param */
   setExtraHTTPHeaders?: Record<string, unknown>;
@@ -3221,25 +3439,28 @@ export const CreateScrapeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   allowResourceTypes: Schema.optional(
     Schema.Array(
-      Schema.Literals([
-        "document",
-        "stylesheet",
-        "image",
-        "media",
-        "font",
-        "script",
-        "texttrack",
-        "xhr",
-        "fetch",
-        "prefetch",
-        "eventsource",
-        "websocket",
-        "manifest",
-        "signedexchange",
-        "ping",
-        "cspviolationreport",
-        "preflight",
-        "other",
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
       ]),
     ),
   ),
@@ -3260,13 +3481,26 @@ export const CreateScrapeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         httpOnly: Schema.optional(Schema.Boolean),
         partitionKey: Schema.optional(Schema.String),
         path: Schema.optional(Schema.String),
-        priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
+        priority: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Low", "Medium", "High"]),
+            Schema.String,
+          ]),
+        ),
         sameParty: Schema.optional(Schema.Boolean),
-        sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
+        sameSite: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Strict", "Lax", "None"]),
+            Schema.String,
+          ]),
+        ),
         secure: Schema.optional(Schema.Boolean),
         sourcePort: Schema.optional(Schema.Number),
         sourceScheme: Schema.optional(
-          Schema.Literals(["Unset", "NonSecure", "Secure"]),
+          Schema.Union([
+            Schema.Literals(["Unset", "NonSecure", "Secure"]),
+            Schema.String,
+          ]),
         ),
         url: Schema.optional(Schema.String),
       }),
@@ -3285,11 +3519,14 @@ export const CreateScrapeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Literal("networkidle0"),
           Schema.Literal("networkidle2"),
           Schema.Array(
-            Schema.Literals([
-              "load",
-              "domcontentloaded",
-              "networkidle0",
-              "networkidle2",
+            Schema.Union([
+              Schema.Literals([
+                "load",
+                "domcontentloaded",
+                "networkidle0",
+                "networkidle2",
+              ]),
+              Schema.String,
             ]),
           ),
         ]),
@@ -3299,25 +3536,28 @@ export const CreateScrapeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   rejectResourceTypes: Schema.optional(
     Schema.Array(
-      Schema.Literals([
-        "document",
-        "stylesheet",
-        "image",
-        "media",
-        "font",
-        "script",
-        "texttrack",
-        "xhr",
-        "fetch",
-        "prefetch",
-        "eventsource",
-        "websocket",
-        "manifest",
-        "signedexchange",
-        "ping",
-        "cspviolationreport",
-        "preflight",
-        "other",
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
       ]),
     ),
   ),
@@ -3445,6 +3685,7 @@ export interface CreateScreenshotRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
   authenticate?: { password: string; username: string };
@@ -3459,12 +3700,12 @@ export interface CreateScreenshotRequest {
     httpOnly?: boolean;
     partitionKey?: string;
     path?: string;
-    priority?: "Low" | "Medium" | "High";
+    priority?: "Low" | "Medium" | "High" | (string & {});
     sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
+    sameSite?: "Strict" | "Lax" | "None" | (string & {});
     secure?: boolean;
     sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
+    sourceScheme?: "Unset" | "NonSecure" | "Secure" | (string & {});
     url?: string;
   }[];
   /** Body param */
@@ -3479,7 +3720,13 @@ export interface CreateScreenshotRequest {
       | "domcontentloaded"
       | "networkidle0"
       | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
+      | (
+          | "load"
+          | "domcontentloaded"
+          | "networkidle0"
+          | "networkidle2"
+          | (string & {})
+        )[];
   };
   /** Body param: Block undesired requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   rejectRequestPattern?: string[];
@@ -3503,6 +3750,7 @@ export interface CreateScreenshotRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.screenshotoptions). */
   screenshotOptions?: {
@@ -3514,13 +3762,13 @@ export interface CreateScreenshotRequest {
       y: number;
       scale?: number;
     };
-    encoding?: "binary" | "base64";
+    encoding?: "binary" | "base64" | (string & {});
     fromSurface?: boolean;
     fullPage?: boolean;
     omitBackground?: boolean;
     optimizeForSpeed?: boolean;
     quality?: number;
-    type?: "png" | "jpeg" | "webp";
+    type?: "png" | "jpeg" | "webp" | (string & {});
   };
   /** Body param */
   scrollPage?: boolean;
@@ -3581,25 +3829,28 @@ export const CreateScreenshotRequest =
     allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
     allowResourceTypes: Schema.optional(
       Schema.Array(
-        Schema.Literals([
-          "document",
-          "stylesheet",
-          "image",
-          "media",
-          "font",
-          "script",
-          "texttrack",
-          "xhr",
-          "fetch",
-          "prefetch",
-          "eventsource",
-          "websocket",
-          "manifest",
-          "signedexchange",
-          "ping",
-          "cspviolationreport",
-          "preflight",
-          "other",
+        Schema.Union([
+          Schema.Literals([
+            "document",
+            "stylesheet",
+            "image",
+            "media",
+            "font",
+            "script",
+            "texttrack",
+            "xhr",
+            "fetch",
+            "prefetch",
+            "eventsource",
+            "websocket",
+            "manifest",
+            "signedexchange",
+            "ping",
+            "cspviolationreport",
+            "preflight",
+            "other",
+          ]),
+          Schema.String,
         ]),
       ),
     ),
@@ -3620,13 +3871,26 @@ export const CreateScreenshotRequest =
           httpOnly: Schema.optional(Schema.Boolean),
           partitionKey: Schema.optional(Schema.String),
           path: Schema.optional(Schema.String),
-          priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
+          priority: Schema.optional(
+            Schema.Union([
+              Schema.Literals(["Low", "Medium", "High"]),
+              Schema.String,
+            ]),
+          ),
           sameParty: Schema.optional(Schema.Boolean),
-          sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
+          sameSite: Schema.optional(
+            Schema.Union([
+              Schema.Literals(["Strict", "Lax", "None"]),
+              Schema.String,
+            ]),
+          ),
           secure: Schema.optional(Schema.Boolean),
           sourcePort: Schema.optional(Schema.Number),
           sourceScheme: Schema.optional(
-            Schema.Literals(["Unset", "NonSecure", "Secure"]),
+            Schema.Union([
+              Schema.Literals(["Unset", "NonSecure", "Secure"]),
+              Schema.String,
+            ]),
           ),
           url: Schema.optional(Schema.String),
         }),
@@ -3645,11 +3909,14 @@ export const CreateScreenshotRequest =
             Schema.Literal("networkidle0"),
             Schema.Literal("networkidle2"),
             Schema.Array(
-              Schema.Literals([
-                "load",
-                "domcontentloaded",
-                "networkidle0",
-                "networkidle2",
+              Schema.Union([
+                Schema.Literals([
+                  "load",
+                  "domcontentloaded",
+                  "networkidle0",
+                  "networkidle2",
+                ]),
+                Schema.String,
               ]),
             ),
           ]),
@@ -3659,25 +3926,28 @@ export const CreateScreenshotRequest =
     rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
     rejectResourceTypes: Schema.optional(
       Schema.Array(
-        Schema.Literals([
-          "document",
-          "stylesheet",
-          "image",
-          "media",
-          "font",
-          "script",
-          "texttrack",
-          "xhr",
-          "fetch",
-          "prefetch",
-          "eventsource",
-          "websocket",
-          "manifest",
-          "signedexchange",
-          "ping",
-          "cspviolationreport",
-          "preflight",
-          "other",
+        Schema.Union([
+          Schema.Literals([
+            "document",
+            "stylesheet",
+            "image",
+            "media",
+            "font",
+            "script",
+            "texttrack",
+            "xhr",
+            "fetch",
+            "prefetch",
+            "eventsource",
+            "websocket",
+            "manifest",
+            "signedexchange",
+            "ping",
+            "cspviolationreport",
+            "preflight",
+            "other",
+          ]),
+          Schema.String,
         ]),
       ),
     ),
@@ -3693,13 +3963,20 @@ export const CreateScreenshotRequest =
             scale: Schema.optional(Schema.Number),
           }),
         ),
-        encoding: Schema.optional(Schema.Literals(["binary", "base64"])),
+        encoding: Schema.optional(
+          Schema.Union([Schema.Literals(["binary", "base64"]), Schema.String]),
+        ),
         fromSurface: Schema.optional(Schema.Boolean),
         fullPage: Schema.optional(Schema.Boolean),
         omitBackground: Schema.optional(Schema.Boolean),
         optimizeForSpeed: Schema.optional(Schema.Boolean),
         quality: Schema.optional(Schema.Number),
-        type: Schema.optional(Schema.Literals(["png", "jpeg", "webp"])),
+        type: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["png", "jpeg", "webp"]),
+            Schema.String,
+          ]),
+        ),
       }),
     ),
     scrollPage: Schema.optional(Schema.Boolean),
@@ -3815,6 +4092,7 @@ export interface CreateSnapshotRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
   authenticate?: { password: string; username: string };
@@ -3829,12 +4107,12 @@ export interface CreateSnapshotRequest {
     httpOnly?: boolean;
     partitionKey?: string;
     path?: string;
-    priority?: "Low" | "Medium" | "High";
+    priority?: "Low" | "Medium" | "High" | (string & {});
     sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
+    sameSite?: "Strict" | "Lax" | "None" | (string & {});
     secure?: boolean;
     sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
+    sourceScheme?: "Unset" | "NonSecure" | "Secure" | (string & {});
     url?: string;
   }[];
   /** Body param */
@@ -3849,7 +4127,13 @@ export interface CreateSnapshotRequest {
       | "domcontentloaded"
       | "networkidle0"
       | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
+      | (
+          | "load"
+          | "domcontentloaded"
+          | "networkidle0"
+          | "networkidle2"
+          | (string & {})
+        )[];
   };
   /** Body param: Block undesired requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   rejectRequestPattern?: string[];
@@ -3873,6 +4157,7 @@ export interface CreateSnapshotRequest {
     | "cspviolationreport"
     | "preflight"
     | "other"
+    | (string & {})
   )[];
   /** Body param */
   screenshotOptions?: {
@@ -3889,7 +4174,7 @@ export interface CreateSnapshotRequest {
     omitBackground?: boolean;
     optimizeForSpeed?: boolean;
     quality?: number;
-    type?: "png" | "jpeg" | "webp";
+    type?: "png" | "jpeg" | "webp" | (string & {});
   };
   /** Body param */
   setExtraHTTPHeaders?: Record<string, unknown>;
@@ -3945,25 +4230,28 @@ export const CreateSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   allowResourceTypes: Schema.optional(
     Schema.Array(
-      Schema.Literals([
-        "document",
-        "stylesheet",
-        "image",
-        "media",
-        "font",
-        "script",
-        "texttrack",
-        "xhr",
-        "fetch",
-        "prefetch",
-        "eventsource",
-        "websocket",
-        "manifest",
-        "signedexchange",
-        "ping",
-        "cspviolationreport",
-        "preflight",
-        "other",
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
       ]),
     ),
   ),
@@ -3984,13 +4272,26 @@ export const CreateSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         httpOnly: Schema.optional(Schema.Boolean),
         partitionKey: Schema.optional(Schema.String),
         path: Schema.optional(Schema.String),
-        priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
+        priority: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Low", "Medium", "High"]),
+            Schema.String,
+          ]),
+        ),
         sameParty: Schema.optional(Schema.Boolean),
-        sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
+        sameSite: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Strict", "Lax", "None"]),
+            Schema.String,
+          ]),
+        ),
         secure: Schema.optional(Schema.Boolean),
         sourcePort: Schema.optional(Schema.Number),
         sourceScheme: Schema.optional(
-          Schema.Literals(["Unset", "NonSecure", "Secure"]),
+          Schema.Union([
+            Schema.Literals(["Unset", "NonSecure", "Secure"]),
+            Schema.String,
+          ]),
         ),
         url: Schema.optional(Schema.String),
       }),
@@ -4009,11 +4310,14 @@ export const CreateSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Literal("networkidle0"),
           Schema.Literal("networkidle2"),
           Schema.Array(
-            Schema.Literals([
-              "load",
-              "domcontentloaded",
-              "networkidle0",
-              "networkidle2",
+            Schema.Union([
+              Schema.Literals([
+                "load",
+                "domcontentloaded",
+                "networkidle0",
+                "networkidle2",
+              ]),
+              Schema.String,
             ]),
           ),
         ]),
@@ -4023,25 +4327,28 @@ export const CreateSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   rejectResourceTypes: Schema.optional(
     Schema.Array(
-      Schema.Literals([
-        "document",
-        "stylesheet",
-        "image",
-        "media",
-        "font",
-        "script",
-        "texttrack",
-        "xhr",
-        "fetch",
-        "prefetch",
-        "eventsource",
-        "websocket",
-        "manifest",
-        "signedexchange",
-        "ping",
-        "cspviolationreport",
-        "preflight",
-        "other",
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
       ]),
     ),
   ),
@@ -4062,7 +4369,9 @@ export const CreateSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       omitBackground: Schema.optional(Schema.Boolean),
       optimizeForSpeed: Schema.optional(Schema.Boolean),
       quality: Schema.optional(Schema.Number),
-      type: Schema.optional(Schema.Literals(["png", "jpeg", "webp"])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literals(["png", "jpeg", "webp"]), Schema.String]),
+      ),
     }),
   ),
   setExtraHTTPHeaders: Schema.optional(

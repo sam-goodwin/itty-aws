@@ -263,7 +263,7 @@ export interface GetRayidRequest {
   /** Query param: The `/received` route by default returns a limited set of fields, and allows customers to override the default field set by specifying individual fields. The reasons for this are: 1. Most */
   fields?: string;
   /** Query param: By default, timestamps in responses are returned as Unix nanosecond integers. The `?timestamps=` argument can be set to change the format in which response timestamps are returned. Possib */
-  timestamps?: "unix" | "unixnano" | "rfc3339";
+  timestamps?: "unix" | "unixnano" | "rfc3339" | (string & {});
 }
 
 export const GetRayidRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -271,7 +271,10 @@ export const GetRayidRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   fields: Schema.optional(Schema.String).pipe(T.HttpQuery("fields")),
   timestamps: Schema.optional(
-    Schema.Literals(["unix", "unixnano", "rfc3339"]),
+    Schema.Union([
+      Schema.Literals(["unix", "unixnano", "rfc3339"]),
+      Schema.String,
+    ]),
   ).pipe(T.HttpQuery("timestamps")),
 }).pipe(
   T.Http({ method: "GET", path: "/zones/{zone_id}/logs/rayids/{RayID}" }),
@@ -313,7 +316,7 @@ export interface GetReceivedRequest {
   /** Query param: Sets the (inclusive) beginning of the requested time frame. This can be a unix timestamp (in seconds or nanoseconds), or an absolute timestamp that conforms to RFC 3339. At this point in  */
   start?: string | number;
   /** Query param: By default, timestamps in responses are returned as Unix nanosecond integers. The `?timestamps=` argument can be set to change the format in which response timestamps are returned. Possib */
-  timestamps?: "unix" | "unixnano" | "rfc3339";
+  timestamps?: "unix" | "unixnano" | "rfc3339" | (string & {});
 }
 
 export const GetReceivedRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -326,7 +329,10 @@ export const GetReceivedRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("start"),
   ),
   timestamps: Schema.optional(
-    Schema.Literals(["unix", "unixnano", "rfc3339"]),
+    Schema.Union([
+      Schema.Literals(["unix", "unixnano", "rfc3339"]),
+      Schema.String,
+    ]),
   ).pipe(T.HttpQuery("timestamps")),
 }).pipe(
   T.Http({ method: "GET", path: "/zones/{zone_id}/logs/received" }),

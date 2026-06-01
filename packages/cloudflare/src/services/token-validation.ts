@@ -40,7 +40,14 @@ export interface GetConfigurationResponse {
   credentials: {
     keys: (
       | {
-          alg: "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
+          alg:
+            | "RS256"
+            | "RS384"
+            | "RS512"
+            | "PS256"
+            | "PS384"
+            | "PS512"
+            | (string & {});
           e: string;
           kid: string;
           kty: "RSA";
@@ -95,13 +102,16 @@ export const GetConfigurationResponse =
             y: Schema.String,
           }),
           Schema.Struct({
-            alg: Schema.Literals([
-              "RS256",
-              "RS384",
-              "RS512",
-              "PS256",
-              "PS384",
-              "PS512",
+            alg: Schema.Union([
+              Schema.Literals([
+                "RS256",
+                "RS384",
+                "RS512",
+                "PS256",
+                "PS384",
+                "PS512",
+              ]),
+              Schema.String,
             ]),
             e: Schema.String,
             kid: Schema.String,
@@ -169,7 +179,14 @@ export interface ListConfigurationsResponse {
     credentials: {
       keys: (
         | {
-            alg: "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
+            alg:
+              | "RS256"
+              | "RS384"
+              | "RS512"
+              | "PS256"
+              | "PS384"
+              | "PS512"
+              | (string & {});
             e: string;
             kid: string;
             kty: "RSA";
@@ -233,13 +250,16 @@ export const ListConfigurationsResponse =
                 y: Schema.String,
               }),
               Schema.Struct({
-                alg: Schema.Literals([
-                  "RS256",
-                  "RS384",
-                  "RS512",
-                  "PS256",
-                  "PS384",
-                  "PS512",
+                alg: Schema.Union([
+                  Schema.Literals([
+                    "RS256",
+                    "RS384",
+                    "RS512",
+                    "PS256",
+                    "PS384",
+                    "PS512",
+                  ]),
+                  Schema.String,
                 ]),
                 e: Schema.String,
                 kid: Schema.String,
@@ -318,7 +338,14 @@ export interface CreateConfigurationRequest {
   credentials: {
     keys: (
       | {
-          alg: "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
+          alg:
+            | "RS256"
+            | "RS384"
+            | "RS512"
+            | "PS256"
+            | "PS384"
+            | "PS512"
+            | (string & {});
           e: string;
           kid: string;
           kty: "RSA";
@@ -375,13 +402,16 @@ export const CreateConfigurationRequest =
             y: Schema.String,
           }),
           Schema.Struct({
-            alg: Schema.Literals([
-              "RS256",
-              "RS384",
-              "RS512",
-              "PS256",
-              "PS384",
-              "PS512",
+            alg: Schema.Union([
+              Schema.Literals([
+                "RS256",
+                "RS384",
+                "RS512",
+                "PS256",
+                "PS384",
+                "PS512",
+              ]),
+              Schema.String,
             ]),
             e: Schema.String,
             kid: Schema.String,
@@ -416,7 +446,14 @@ export interface CreateConfigurationResponse {
   credentials: {
     keys: (
       | {
-          alg: "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
+          alg:
+            | "RS256"
+            | "RS384"
+            | "RS512"
+            | "PS256"
+            | "PS384"
+            | "PS512"
+            | (string & {});
           e: string;
           kid: string;
           kty: "RSA";
@@ -471,13 +508,16 @@ export const CreateConfigurationResponse =
             y: Schema.String,
           }),
           Schema.Struct({
-            alg: Schema.Literals([
-              "RS256",
-              "RS384",
-              "RS512",
-              "PS256",
-              "PS384",
-              "PS512",
+            alg: Schema.Union([
+              Schema.Literals([
+                "RS256",
+                "RS384",
+                "RS512",
+                "PS256",
+                "PS384",
+                "PS512",
+              ]),
+              Schema.String,
             ]),
             e: Schema.String,
             kid: Schema.String,
@@ -648,7 +688,14 @@ export interface PutConfigurationCredentialRequest {
   /** Body param */
   keys: (
     | {
-        alg: "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
+        alg:
+          | "RS256"
+          | "RS384"
+          | "RS512"
+          | "PS256"
+          | "PS384"
+          | "PS512"
+          | (string & {});
         e: string;
         kid: string;
         kty: "RSA";
@@ -696,13 +743,16 @@ export const PutConfigurationCredentialRequest =
           y: Schema.String,
         }),
         Schema.Struct({
-          alg: Schema.Literals([
-            "RS256",
-            "RS384",
-            "RS512",
-            "PS256",
-            "PS384",
-            "PS512",
+          alg: Schema.Union([
+            Schema.Literals([
+              "RS256",
+              "RS384",
+              "RS512",
+              "PS256",
+              "PS384",
+              "PS512",
+            ]),
+            Schema.String,
           ]),
           e: Schema.String,
           kid: Schema.String,
@@ -727,7 +777,14 @@ export interface PutConfigurationCredentialResponse {
   }[];
   keys: (
     | {
-        alg: "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
+        alg:
+          | "RS256"
+          | "RS384"
+          | "RS512"
+          | "PS256"
+          | "PS384"
+          | "PS512"
+          | (string & {});
         e: string;
         kid: string;
         kty: "RSA";
@@ -807,13 +864,16 @@ export const PutConfigurationCredentialResponse =
           y: Schema.String,
         }),
         Schema.Struct({
-          alg: Schema.Literals([
-            "RS256",
-            "RS384",
-            "RS512",
-            "PS256",
-            "PS384",
-            "PS512",
+          alg: Schema.Union([
+            Schema.Literals([
+              "RS256",
+              "RS384",
+              "RS512",
+              "PS256",
+              "PS384",
+              "PS512",
+            ]),
+            Schema.String,
           ]),
           e: Schema.String,
           kid: Schema.String,
@@ -886,7 +946,7 @@ export const GetRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GetRuleResponse {
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
-  action: "log" | "block";
+  action: "log" | "block" | (string & {});
   /** A human-readable description that gives more details than `title`. */
   description: string;
   /** Toggle rule on or off. */
@@ -907,7 +967,7 @@ export interface GetRuleResponse {
 }
 
 export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  action: Schema.Literals(["log", "block"]),
+  action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
   description: Schema.String,
   enabled: Schema.Boolean,
   expression: Schema.String,
@@ -978,7 +1038,7 @@ export interface ListRulesRequest {
   /** Query param: Select rules with these IDs. */
   id?: string;
   /** Query param: Action to take on requests that match operations included in `selector` and fail `expression`. */
-  action?: "log" | "block";
+  action?: "log" | "block" | (string & {});
   /** Query param: Toggle rule on or off. */
   enabled?: boolean;
   /** Query param: Select rules with this host in `include`. */
@@ -996,9 +1056,9 @@ export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
-  action: Schema.optional(Schema.Literals(["log", "block"])).pipe(
-    T.HttpQuery("action"),
-  ),
+  action: Schema.optional(
+    Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
+  ).pipe(T.HttpQuery("action")),
   enabled: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("enabled")),
   host: Schema.optional(Schema.String).pipe(T.HttpQuery("host")),
   hostname: Schema.optional(Schema.String).pipe(T.HttpQuery("hostname")),
@@ -1012,7 +1072,7 @@ export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRulesResponse {
   result: {
-    action: "log" | "block";
+    action: "log" | "block" | (string & {});
     description: string;
     enabled: boolean;
     expression: string;
@@ -1036,7 +1096,7 @@ export interface ListRulesResponse {
 export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
-      action: Schema.Literals(["log", "block"]),
+      action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
       description: Schema.String,
       enabled: Schema.Boolean,
       expression: Schema.String,
@@ -1130,7 +1190,7 @@ export interface CreateRuleRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: Action to take on requests that match operations included in `selector` and fail `expression`. */
-  action: "log" | "block";
+  action: "log" | "block" | (string & {});
   /** Body param: A human-readable description that gives more details than `title`. */
   description: string;
   /** Body param: Toggle rule on or off. */
@@ -1148,7 +1208,7 @@ export interface CreateRuleRequest {
 
 export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  action: Schema.Literals(["log", "block"]),
+  action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
   description: Schema.String,
   enabled: Schema.Boolean,
   expression: Schema.String,
@@ -1181,7 +1241,7 @@ export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CreateRuleResponse {
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
-  action: "log" | "block";
+  action: "log" | "block" | (string & {});
   /** A human-readable description that gives more details than `title`. */
   description: string;
   /** Toggle rule on or off. */
@@ -1202,7 +1262,7 @@ export interface CreateRuleResponse {
 }
 
 export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  action: Schema.Literals(["log", "block"]),
+  action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
   description: Schema.String,
   enabled: Schema.Boolean,
   expression: Schema.String,
@@ -1272,7 +1332,7 @@ export interface PatchRuleRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: Action to take on requests that match operations included in `selector` and fail `expression`. */
-  action?: "log" | "block";
+  action?: "log" | "block" | (string & {});
   /** Body param: A human-readable description that gives more details than `title`. */
   description?: string;
   /** Body param: Toggle rule on or off. */
@@ -1293,7 +1353,9 @@ export interface PatchRuleRequest {
 export const PatchRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  action: Schema.optional(Schema.Literals(["log", "block"])),
+  action: Schema.optional(
+    Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
+  ),
   description: Schema.optional(Schema.String),
   enabled: Schema.optional(Schema.Boolean),
   expression: Schema.optional(Schema.String),
@@ -1344,7 +1406,7 @@ export const PatchRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PatchRuleResponse {
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
-  action: "log" | "block";
+  action: "log" | "block" | (string & {});
   /** A human-readable description that gives more details than `title`. */
   description: string;
   /** Toggle rule on or off. */
@@ -1365,7 +1427,7 @@ export interface PatchRuleResponse {
 }
 
 export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  action: Schema.Literals(["log", "block"]),
+  action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
   description: Schema.String,
   enabled: Schema.Boolean,
   expression: Schema.String,
@@ -1471,7 +1533,7 @@ export interface BulkCreateRulesRequest {
   zoneId: string;
   /** Body param */
   body: {
-    action: "log" | "block";
+    action: "log" | "block" | (string & {});
     description: string;
     enabled: boolean;
     expression: string;
@@ -1488,7 +1550,10 @@ export const BulkCreateRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     body: Schema.Array(
       Schema.Struct({
-        action: Schema.Literals(["log", "block"]),
+        action: Schema.Union([
+          Schema.Literals(["log", "block"]),
+          Schema.String,
+        ]),
         description: Schema.String,
         enabled: Schema.Boolean,
         expression: Schema.String,
@@ -1527,7 +1592,7 @@ export const BulkCreateRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface BulkCreateRulesResponse {
   result: {
-    action: "log" | "block";
+    action: "log" | "block" | (string & {});
     description: string;
     enabled: boolean;
     expression: string;
@@ -1546,7 +1611,10 @@ export const BulkCreateRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
-        action: Schema.Literals(["log", "block"]),
+        action: Schema.Union([
+          Schema.Literals(["log", "block"]),
+          Schema.String,
+        ]),
         description: Schema.String,
         enabled: Schema.Boolean,
         expression: Schema.String,
@@ -1621,7 +1689,7 @@ export interface BulkPatchRulesRequest {
   /** Body param */
   body: {
     id: string;
-    action?: "log" | "block";
+    action?: "log" | "block" | (string & {});
     description?: string;
     enabled?: boolean;
     expression?: string;
@@ -1639,7 +1707,9 @@ export const BulkPatchRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   body: Schema.Array(
     Schema.Struct({
       id: Schema.String,
-      action: Schema.optional(Schema.Literals(["log", "block"])),
+      action: Schema.optional(
+        Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
+      ),
       description: Schema.optional(Schema.String),
       enabled: Schema.optional(Schema.Boolean),
       expression: Schema.optional(Schema.String),
@@ -1692,7 +1762,7 @@ export const BulkPatchRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BulkPatchRulesResponse {
   result: {
-    action: "log" | "block";
+    action: "log" | "block" | (string & {});
     description: string;
     enabled: boolean;
     expression: string;
@@ -1711,7 +1781,10 @@ export const BulkPatchRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     result: Schema.Array(
       Schema.Struct({
-        action: Schema.Literals(["log", "block"]),
+        action: Schema.Union([
+          Schema.Literals(["log", "block"]),
+          Schema.String,
+        ]),
         description: Schema.String,
         enabled: Schema.Boolean,
         expression: Schema.String,

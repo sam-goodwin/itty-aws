@@ -38,7 +38,7 @@ export interface GetAudioTrackResponse {
     | {
         default?: boolean | null;
         label?: string | null;
-        status?: "queued" | "ready" | "error" | null;
+        status?: "queued" | "ready" | "error" | (string & {}) | null;
         uid?: string | null;
       }[]
     | null;
@@ -53,7 +53,10 @@ export const GetAudioTrackResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           status: Schema.optional(
             Schema.Union([
-              Schema.Literals(["queued", "ready", "error"]),
+              Schema.Union([
+                Schema.Literals(["queued", "ready", "error"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -112,7 +115,7 @@ export interface PatchAudioTrackResponse {
   /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
   label?: string | null;
   /** Specifies the processing status of the video. */
-  status?: "queued" | "ready" | "error" | null;
+  status?: "queued" | "ready" | "error" | (string & {}) | null;
   /** A Cloudflare-generated unique identifier for a media item. */
   uid?: string | null;
 }
@@ -123,7 +126,10 @@ export const PatchAudioTrackResponse =
     label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals(["queued", "ready", "error"]),
+        Schema.Union([
+          Schema.Literals(["queued", "ready", "error"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -212,7 +218,7 @@ export interface CopyAudioTrackResponse {
   /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
   label?: string | null;
   /** Specifies the processing status of the video. */
-  status?: "queued" | "ready" | "error" | null;
+  status?: "queued" | "ready" | "error" | (string & {}) | null;
   /** A Cloudflare-generated unique identifier for a media item. */
   uid?: string | null;
 }
@@ -223,7 +229,10 @@ export const CopyAudioTrackResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals(["queued", "ready", "error"]),
+        Schema.Union([
+          Schema.Literals(["queued", "ready", "error"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -271,7 +280,7 @@ export interface GetCaptionResponse {
     generated?: boolean | null;
     label?: string | null;
     language?: string | null;
-    status?: "ready" | "inprogress" | "error" | null;
+    status?: "ready" | "inprogress" | "error" | (string & {}) | null;
   }[];
 }
 
@@ -283,7 +292,10 @@ export const GetCaptionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       language: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       status: Schema.optional(
         Schema.Union([
-          Schema.Literals(["ready", "inprogress", "error"]),
+          Schema.Union([
+            Schema.Literals(["ready", "inprogress", "error"]),
+            Schema.String,
+          ]),
           Schema.Null,
         ]),
       ),
@@ -339,7 +351,7 @@ export interface GetCaptionLanguageResponse {
   /** The language tag in BCP 47 format. */
   language?: string | null;
   /** The status of a generated caption. */
-  status?: "ready" | "inprogress" | "error" | null;
+  status?: "ready" | "inprogress" | "error" | (string & {}) | null;
 }
 
 export const GetCaptionLanguageResponse =
@@ -349,7 +361,10 @@ export const GetCaptionLanguageResponse =
     language: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals(["ready", "inprogress", "error"]),
+        Schema.Union([
+          Schema.Literals(["ready", "inprogress", "error"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -397,7 +412,7 @@ export interface CreateCaptionLanguageResponse {
   /** The language tag in BCP 47 format. */
   language?: string | null;
   /** The status of a generated caption. */
-  status?: "ready" | "inprogress" | "error" | null;
+  status?: "ready" | "inprogress" | "error" | (string & {}) | null;
 }
 
 export const CreateCaptionLanguageResponse =
@@ -407,7 +422,10 @@ export const CreateCaptionLanguageResponse =
     language: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals(["ready", "inprogress", "error"]),
+        Schema.Union([
+          Schema.Literals(["ready", "inprogress", "error"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -459,7 +477,7 @@ export interface UpdateCaptionLanguageResponse {
   /** The language tag in BCP 47 format. */
   language?: string | null;
   /** The status of a generated caption. */
-  status?: "ready" | "inprogress" | "error" | null;
+  status?: "ready" | "inprogress" | "error" | (string & {}) | null;
 }
 
 export const UpdateCaptionLanguageResponse =
@@ -469,7 +487,10 @@ export const UpdateCaptionLanguageResponse =
     language: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
       Schema.Union([
-        Schema.Literals(["ready", "inprogress", "error"]),
+        Schema.Union([
+          Schema.Literals(["ready", "inprogress", "error"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -684,6 +705,7 @@ export interface CreateClipResponse {
       | "ready"
       | "error"
       | "live-inprogress"
+      | (string & {})
       | null;
   } | null;
   /** The media item's thumbnail URI. This field is omitted until encoding is complete. */
@@ -790,14 +812,17 @@ export const CreateClipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         state: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "pendingupload",
-              "downloading",
-              "queued",
-              "inprogress",
-              "ready",
-              "error",
-              "live-inprogress",
+            Schema.Union([
+              Schema.Literals([
+                "pendingupload",
+                "downloading",
+                "queued",
+                "inprogress",
+                "ready",
+                "error",
+                "live-inprogress",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -960,6 +985,7 @@ export interface CreateCopyResponse {
       | "ready"
       | "error"
       | "live-inprogress"
+      | (string & {})
       | null;
   } | null;
   /** The media item's thumbnail URI. This field is omitted until encoding is complete. */
@@ -1066,14 +1092,17 @@ export const CreateCopyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         state: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "pendingupload",
-              "downloading",
-              "queued",
-              "inprogress",
-              "ready",
-              "error",
-              "live-inprogress",
+            Schema.Union([
+              Schema.Literals([
+                "pendingupload",
+                "downloading",
+                "queued",
+                "inprogress",
+                "ready",
+                "error",
+                "live-inprogress",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -1271,13 +1300,13 @@ export interface GetDownloadResponse {
   /** The audio-only download. Only present if this download type has been created. */
   audio?: {
     percentComplete: number;
-    status: "ready" | "inprogress" | "error";
+    status: "ready" | "inprogress" | "error" | (string & {});
     url?: string | null;
   } | null;
   /** The default video download. Only present if this download type has been created. */
   default?: {
     percentComplete: number;
-    status: "ready" | "inprogress" | "error";
+    status: "ready" | "inprogress" | "error" | (string & {});
     url?: string | null;
   } | null;
 }
@@ -1287,7 +1316,10 @@ export const GetDownloadResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Struct({
         percentComplete: Schema.Number,
-        status: Schema.Literals(["ready", "inprogress", "error"]),
+        status: Schema.Union([
+          Schema.Literals(["ready", "inprogress", "error"]),
+          Schema.String,
+        ]),
         url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }),
       Schema.Null,
@@ -1297,7 +1329,10 @@ export const GetDownloadResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Struct({
         percentComplete: Schema.Number,
-        status: Schema.Literals(["ready", "inprogress", "error"]),
+        status: Schema.Union([
+          Schema.Literals(["ready", "inprogress", "error"]),
+          Schema.String,
+        ]),
         url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }),
       Schema.Null,
@@ -1340,13 +1375,13 @@ export interface CreateDownloadResponse {
   /** The audio-only download. Only present if this download type has been created. */
   audio?: {
     percentComplete: number;
-    status: "ready" | "inprogress" | "error";
+    status: "ready" | "inprogress" | "error" | (string & {});
     url?: string | null;
   } | null;
   /** The default video download. Only present if this download type has been created. */
   default?: {
     percentComplete: number;
-    status: "ready" | "inprogress" | "error";
+    status: "ready" | "inprogress" | "error" | (string & {});
     url?: string | null;
   } | null;
 }
@@ -1357,7 +1392,10 @@ export const CreateDownloadResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Union([
         Schema.Struct({
           percentComplete: Schema.Number,
-          status: Schema.Literals(["ready", "inprogress", "error"]),
+          status: Schema.Union([
+            Schema.Literals(["ready", "inprogress", "error"]),
+            Schema.String,
+          ]),
           url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         }),
         Schema.Null,
@@ -1367,7 +1405,10 @@ export const CreateDownloadResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Union([
         Schema.Struct({
           percentComplete: Schema.Number,
-          status: Schema.Literals(["ready", "inprogress", "error"]),
+          status: Schema.Union([
+            Schema.Literals(["ready", "inprogress", "error"]),
+            Schema.String,
+          ]),
           url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         }),
         Schema.Null,
@@ -1753,7 +1794,7 @@ export interface CreateLiveInputRequest {
   recording?: {
     allowedOrigins?: string[];
     hideLiveViewerCount?: boolean;
-    mode?: "off" | "automatic";
+    mode?: "off" | "automatic" | (string & {});
     requireSignedURLs?: boolean;
     timeoutSeconds?: number;
   };
@@ -1770,7 +1811,9 @@ export const CreateLiveInputRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Struct({
         allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
         hideLiveViewerCount: Schema.optional(Schema.Boolean),
-        mode: Schema.optional(Schema.Literals(["off", "automatic"])),
+        mode: Schema.optional(
+          Schema.Union([Schema.Literals(["off", "automatic"]), Schema.String]),
+        ),
         requireSignedURLs: Schema.optional(Schema.Boolean),
         timeoutSeconds: Schema.optional(Schema.Number),
       }),
@@ -1838,7 +1881,7 @@ export interface UpdateLiveInputRequest {
   recording?: {
     allowedOrigins?: string[];
     hideLiveViewerCount?: boolean;
-    mode?: "off" | "automatic";
+    mode?: "off" | "automatic" | (string & {});
     requireSignedURLs?: boolean;
     timeoutSeconds?: number;
   };
@@ -1856,7 +1899,9 @@ export const UpdateLiveInputRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Struct({
         allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
         hideLiveViewerCount: Schema.optional(Schema.Boolean),
-        mode: Schema.optional(Schema.Literals(["off", "automatic"])),
+        mode: Schema.optional(
+          Schema.Union([Schema.Literals(["off", "automatic"]), Schema.String]),
+        ),
         requireSignedURLs: Schema.optional(Schema.Boolean),
         timeoutSeconds: Schema.optional(Schema.Number),
       }),
@@ -2232,6 +2277,7 @@ export interface GetStreamResponse {
       | "ready"
       | "error"
       | "live-inprogress"
+      | (string & {})
       | null;
   } | null;
   /** The media item's thumbnail URI. This field is omitted until encoding is complete. */
@@ -2338,14 +2384,17 @@ export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         state: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "pendingupload",
-              "downloading",
-              "queued",
-              "inprogress",
-              "ready",
-              "error",
-              "live-inprogress",
+            Schema.Union([
+              Schema.Literals([
+                "pendingupload",
+                "downloading",
+                "queued",
+                "inprogress",
+                "ready",
+                "error",
+                "live-inprogress",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -2433,7 +2482,8 @@ export interface ListStreamsRequest {
     | "inprogress"
     | "ready"
     | "error"
-    | "live-inprogress";
+    | "live-inprogress"
+    | (string & {});
   /** Query param: Specifies whether the video is `vod` or `live`. */
   type?: string;
   /** Query param: Provides a fast, exact string match on the `name` key in the `meta` field. */
@@ -2459,14 +2509,17 @@ export const ListStreamsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
   start: Schema.optional(Schema.String).pipe(T.HttpQuery("start")),
   status: Schema.optional(
-    Schema.Literals([
-      "pendingupload",
-      "downloading",
-      "queued",
-      "inprogress",
-      "ready",
-      "error",
-      "live-inprogress",
+    Schema.Union([
+      Schema.Literals([
+        "pendingupload",
+        "downloading",
+        "queued",
+        "inprogress",
+        "ready",
+        "error",
+        "live-inprogress",
+      ]),
+      Schema.String,
     ]),
   ).pipe(T.HttpQuery("status")),
   type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
@@ -2514,6 +2567,7 @@ export interface ListStreamsResponse {
         | "ready"
         | "error"
         | "live-inprogress"
+        | (string & {})
         | null;
     } | null;
     thumbnail?: string | null;
@@ -2626,14 +2680,17 @@ export const ListStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
             state: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "pendingupload",
-                  "downloading",
-                  "queued",
-                  "inprogress",
-                  "ready",
-                  "error",
-                  "live-inprogress",
+                Schema.Union([
+                  Schema.Literals([
+                    "pendingupload",
+                    "downloading",
+                    "queued",
+                    "inprogress",
+                    "ready",
+                    "error",
+                    "live-inprogress",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -2901,6 +2958,7 @@ export interface EditStreamResponse {
       | "ready"
       | "error"
       | "live-inprogress"
+      | (string & {})
       | null;
   } | null;
   /** The media item's thumbnail URI. This field is omitted until encoding is complete. */
@@ -3007,14 +3065,17 @@ export const EditStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         state: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "pendingupload",
-              "downloading",
-              "queued",
-              "inprogress",
-              "ready",
-              "error",
-              "live-inprogress",
+            Schema.Union([
+              Schema.Literals([
+                "pendingupload",
+                "downloading",
+                "queued",
+                "inprogress",
+                "ready",
+                "error",
+                "live-inprogress",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -3079,10 +3140,10 @@ export interface CreateTokenRequest {
   id?: string;
   /** Body param: The optional list of access rule constraints on the token. Access can be blocked or allowed based on an IP, IP range, or by country. Access rules are evaluated from first to last. If a rul */
   accessRules?: {
-    action?: "allow" | "block";
+    action?: "allow" | "block" | (string & {});
     country?: string[];
     ip?: string[];
-    type?: "any" | "ip.src" | "ip.geoip.country";
+    type?: "any" | "ip.src" | "ip.geoip.country" | (string & {});
   }[];
   /** Body param: The optional boolean value that enables using signed tokens to access MP4 download links for a video. */
   downloadable?: boolean;
@@ -3103,11 +3164,16 @@ export const CreateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accessRules: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        action: Schema.optional(Schema.Literals(["allow", "block"])),
+        action: Schema.optional(
+          Schema.Union([Schema.Literals(["allow", "block"]), Schema.String]),
+        ),
         country: Schema.optional(Schema.Array(Schema.String)),
         ip: Schema.optional(Schema.Array(Schema.String)),
         type: Schema.optional(
-          Schema.Literals(["any", "ip.src", "ip.geoip.country"]),
+          Schema.Union([
+            Schema.Literals(["any", "ip.src", "ip.geoip.country"]),
+            Schema.String,
+          ]),
         ),
       }),
     ),

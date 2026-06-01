@@ -33,9 +33,21 @@ export interface GetOriginCaCertificateResponse {
   /** Array of hostnames or wildcard names bound to the certificate. Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wil */
   hostnames: string[];
   /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
-  requestType: "origin-rsa" | "origin-ecc" | "keyless-certificate";
+  requestType:
+    | "origin-rsa"
+    | "origin-ecc"
+    | "keyless-certificate"
+    | (string & {});
   /** The number of days for which the certificate should be valid. */
-  requestedValidity: "7" | "30" | "90" | "365" | "730" | "1095" | "5475";
+  requestedValidity:
+    | "7"
+    | "30"
+    | "90"
+    | "365"
+    | "730"
+    | "1095"
+    | "5475"
+    | (string & {});
   /** Identifier. */
   id?: string | null;
   /** The Origin CA certificate. Will be newline-encoded. */
@@ -48,19 +60,13 @@ export const GetOriginCaCertificateResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     csr: Schema.String,
     hostnames: Schema.Array(Schema.String),
-    requestType: Schema.Literals([
-      "origin-rsa",
-      "origin-ecc",
-      "keyless-certificate",
+    requestType: Schema.Union([
+      Schema.Literals(["origin-rsa", "origin-ecc", "keyless-certificate"]),
+      Schema.String,
     ]),
-    requestedValidity: Schema.Literals([
-      "7",
-      "30",
-      "90",
-      "365",
-      "730",
-      "1095",
-      "5475",
+    requestedValidity: Schema.Union([
+      Schema.Literals(["7", "30", "90", "365", "730", "1095", "5475"]),
+      Schema.String,
     ]),
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -120,8 +126,20 @@ export interface ListOriginCaCertificatesResponse {
   result: {
     csr: string;
     hostnames: string[];
-    requestType: "origin-rsa" | "origin-ecc" | "keyless-certificate";
-    requestedValidity: "7" | "30" | "90" | "365" | "730" | "1095" | "5475";
+    requestType:
+      | "origin-rsa"
+      | "origin-ecc"
+      | "keyless-certificate"
+      | (string & {});
+    requestedValidity:
+      | "7"
+      | "30"
+      | "90"
+      | "365"
+      | "730"
+      | "1095"
+      | "5475"
+      | (string & {});
     id?: string | null;
     certificate?: string | null;
     expiresOn?: string | null;
@@ -140,19 +158,13 @@ export const ListOriginCaCertificatesResponse =
       Schema.Struct({
         csr: Schema.String,
         hostnames: Schema.Array(Schema.String),
-        requestType: Schema.Literals([
-          "origin-rsa",
-          "origin-ecc",
-          "keyless-certificate",
+        requestType: Schema.Union([
+          Schema.Literals(["origin-rsa", "origin-ecc", "keyless-certificate"]),
+          Schema.String,
         ]),
-        requestedValidity: Schema.Literals([
-          "7",
-          "30",
-          "90",
-          "365",
-          "730",
-          "1095",
-          "5475",
+        requestedValidity: Schema.Union([
+          Schema.Literals(["7", "30", "90", "365", "730", "1095", "5475"]),
+          Schema.String,
         ]),
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         certificate: Schema.optional(
@@ -221,22 +233,36 @@ export interface CreateOriginCaCertificateRequest {
   /** Array of hostnames or wildcard names bound to the certificate. Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wil */
   hostnames: string[];
   /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
-  requestType: "origin-rsa" | "origin-ecc" | "keyless-certificate";
+  requestType:
+    | "origin-rsa"
+    | "origin-ecc"
+    | "keyless-certificate"
+    | (string & {});
   /** The number of days for which the certificate should be valid. */
-  requestedValidity?: "7" | "30" | "90" | "365" | "730" | "1095" | "5475";
+  requestedValidity?:
+    | "7"
+    | "30"
+    | "90"
+    | "365"
+    | "730"
+    | "1095"
+    | "5475"
+    | (string & {});
 }
 
 export const CreateOriginCaCertificateRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     csr: Schema.String,
     hostnames: Schema.Array(Schema.String),
-    requestType: Schema.Literals([
-      "origin-rsa",
-      "origin-ecc",
-      "keyless-certificate",
+    requestType: Schema.Union([
+      Schema.Literals(["origin-rsa", "origin-ecc", "keyless-certificate"]),
+      Schema.String,
     ]),
     requestedValidity: Schema.optional(
-      Schema.Literals(["7", "30", "90", "365", "730", "1095", "5475"]),
+      Schema.Union([
+        Schema.Literals(["7", "30", "90", "365", "730", "1095", "5475"]),
+        Schema.String,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({
@@ -254,9 +280,21 @@ export interface CreateOriginCaCertificateResponse {
   /** Array of hostnames or wildcard names bound to the certificate. Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wil */
   hostnames: string[];
   /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
-  requestType: "origin-rsa" | "origin-ecc" | "keyless-certificate";
+  requestType:
+    | "origin-rsa"
+    | "origin-ecc"
+    | "keyless-certificate"
+    | (string & {});
   /** The number of days for which the certificate should be valid. */
-  requestedValidity: "7" | "30" | "90" | "365" | "730" | "1095" | "5475";
+  requestedValidity:
+    | "7"
+    | "30"
+    | "90"
+    | "365"
+    | "730"
+    | "1095"
+    | "5475"
+    | (string & {});
   /** Identifier. */
   id?: string | null;
   /** The Origin CA certificate. Will be newline-encoded. */
@@ -269,19 +307,13 @@ export const CreateOriginCaCertificateResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     csr: Schema.String,
     hostnames: Schema.Array(Schema.String),
-    requestType: Schema.Literals([
-      "origin-rsa",
-      "origin-ecc",
-      "keyless-certificate",
+    requestType: Schema.Union([
+      Schema.Literals(["origin-rsa", "origin-ecc", "keyless-certificate"]),
+      Schema.String,
     ]),
-    requestedValidity: Schema.Literals([
-      "7",
-      "30",
-      "90",
-      "365",
-      "730",
-      "1095",
-      "5475",
+    requestedValidity: Schema.Union([
+      Schema.Literals(["7", "30", "90", "365", "730", "1095", "5475"]),
+      Schema.String,
     ]),
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),

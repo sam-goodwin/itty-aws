@@ -17,15 +17,16 @@ import { type DefaultErrors } from "../errors.ts";
 // =============================================================================
 
 export interface GetSettingTlsRequest {
-  settingId: "ciphers" | "min_tls_version" | "http2";
+  settingId: "ciphers" | "min_tls_version" | "http2" | (string & {});
   /** Identifier. */
   zoneId: string;
 }
 
 export const GetSettingTlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  settingId: Schema.Literals(["ciphers", "min_tls_version", "http2"]).pipe(
-    T.HttpPath("settingId"),
-  ),
+  settingId: Schema.Union([
+    Schema.Literals(["ciphers", "min_tls_version", "http2"]),
+    Schema.String,
+  ]).pipe(T.HttpPath("settingId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
   T.Http({
@@ -95,7 +96,7 @@ export const getSettingTls: API.PaginatedOperationMethod<
 }));
 
 export interface PutSettingTlsRequest {
-  settingId: "ciphers" | "min_tls_version" | "http2";
+  settingId: "ciphers" | "min_tls_version" | "http2" | (string & {});
   hostname: string;
   /** Path param: Identifier. */
   zoneId: string;
@@ -104,9 +105,10 @@ export interface PutSettingTlsRequest {
 }
 
 export const PutSettingTlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  settingId: Schema.Literals(["ciphers", "min_tls_version", "http2"]).pipe(
-    T.HttpPath("settingId"),
-  ),
+  settingId: Schema.Union([
+    Schema.Literals(["ciphers", "min_tls_version", "http2"]),
+    Schema.String,
+  ]).pipe(T.HttpPath("settingId")),
   hostname: Schema.String.pipe(T.HttpPath("hostname")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   value: Schema.Union([
@@ -185,7 +187,7 @@ export const putSettingTls: API.OperationMethod<
 }));
 
 export interface DeleteSettingTlsRequest {
-  settingId: "ciphers" | "min_tls_version" | "http2";
+  settingId: "ciphers" | "min_tls_version" | "http2" | (string & {});
   hostname: string;
   /** Identifier. */
   zoneId: string;
@@ -193,9 +195,10 @@ export interface DeleteSettingTlsRequest {
 
 export const DeleteSettingTlsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    settingId: Schema.Literals(["ciphers", "min_tls_version", "http2"]).pipe(
-      T.HttpPath("settingId"),
-    ),
+    settingId: Schema.Union([
+      Schema.Literals(["ciphers", "min_tls_version", "http2"]),
+      Schema.String,
+    ]).pipe(T.HttpPath("settingId")),
     hostname: Schema.String.pipe(T.HttpPath("hostname")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(

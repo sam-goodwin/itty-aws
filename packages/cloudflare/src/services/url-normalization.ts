@@ -30,15 +30,21 @@ export const GetUrlNormalizationRequest =
 
 export interface GetUrlNormalizationResponse {
   /** The scope of the URL normalization. */
-  scope: "incoming" | "both" | "none";
+  scope: "incoming" | "both" | "none" | (string & {});
   /** The type of URL normalization performed by Cloudflare. */
-  type: "cloudflare" | "rfc3986";
+  type: "cloudflare" | "rfc3986" | (string & {});
 }
 
 export const GetUrlNormalizationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scope: Schema.Literals(["incoming", "both", "none"]),
-    type: Schema.Literals(["cloudflare", "rfc3986"]),
+    scope: Schema.Union([
+      Schema.Literals(["incoming", "both", "none"]),
+      Schema.String,
+    ]),
+    type: Schema.Union([
+      Schema.Literals(["cloudflare", "rfc3986"]),
+      Schema.String,
+    ]),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetUrlNormalizationResponse>;
@@ -60,31 +66,43 @@ export interface PutUrlNormalizationRequest {
   /** Path param: The unique ID of the zone. */
   zoneId: string;
   /** Body param: The scope of the URL normalization. */
-  scope: "incoming" | "both" | "none";
+  scope: "incoming" | "both" | "none" | (string & {});
   /** Body param: The type of URL normalization performed by Cloudflare. */
-  type: "cloudflare" | "rfc3986";
+  type: "cloudflare" | "rfc3986" | (string & {});
 }
 
 export const PutUrlNormalizationRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    scope: Schema.Literals(["incoming", "both", "none"]),
-    type: Schema.Literals(["cloudflare", "rfc3986"]),
+    scope: Schema.Union([
+      Schema.Literals(["incoming", "both", "none"]),
+      Schema.String,
+    ]),
+    type: Schema.Union([
+      Schema.Literals(["cloudflare", "rfc3986"]),
+      Schema.String,
+    ]),
   }).pipe(
     T.Http({ method: "PUT", path: "/zones/{zone_id}/url_normalization" }),
   ) as unknown as Schema.Schema<PutUrlNormalizationRequest>;
 
 export interface PutUrlNormalizationResponse {
   /** The scope of the URL normalization. */
-  scope: "incoming" | "both" | "none";
+  scope: "incoming" | "both" | "none" | (string & {});
   /** The type of URL normalization performed by Cloudflare. */
-  type: "cloudflare" | "rfc3986";
+  type: "cloudflare" | "rfc3986" | (string & {});
 }
 
 export const PutUrlNormalizationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scope: Schema.Literals(["incoming", "both", "none"]),
-    type: Schema.Literals(["cloudflare", "rfc3986"]),
+    scope: Schema.Union([
+      Schema.Literals(["incoming", "both", "none"]),
+      Schema.String,
+    ]),
+    type: Schema.Union([
+      Schema.Literals(["cloudflare", "rfc3986"]),
+      Schema.String,
+    ]),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PutUrlNormalizationResponse>;

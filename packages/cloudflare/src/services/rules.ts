@@ -38,7 +38,7 @@ export interface GetListResponse {
   /** The RFC 3339 timestamp of when the list was created. */
   createdOn: string;
   /** The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects). */
-  kind: "ip" | "redirect" | "hostname" | "asn";
+  kind: "ip" | "redirect" | "hostname" | "asn" | (string & {});
   /** The RFC 3339 timestamp of when the list was last modified. */
   modifiedOn: string;
   /** An informative name for the list. Use this name in filter and rule expressions. */
@@ -54,7 +54,10 @@ export interface GetListResponse {
 export const GetListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   createdOn: Schema.String,
-  kind: Schema.Literals(["ip", "redirect", "hostname", "asn"]),
+  kind: Schema.Union([
+    Schema.Literals(["ip", "redirect", "hostname", "asn"]),
+    Schema.String,
+  ]),
   modifiedOn: Schema.String,
   name: Schema.String,
   numItems: Schema.Number,
@@ -103,7 +106,7 @@ export interface ListListsResponse {
   result: {
     id: string;
     createdOn: string;
-    kind: "ip" | "redirect" | "hostname" | "asn";
+    kind: "ip" | "redirect" | "hostname" | "asn" | (string & {});
     modifiedOn: string;
     name: string;
     numItems: number;
@@ -117,7 +120,10 @@ export const ListListsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       id: Schema.String,
       createdOn: Schema.String,
-      kind: Schema.Literals(["ip", "redirect", "hostname", "asn"]),
+      kind: Schema.Union([
+        Schema.Literals(["ip", "redirect", "hostname", "asn"]),
+        Schema.String,
+      ]),
       modifiedOn: Schema.String,
       name: Schema.String,
       numItems: Schema.Number,
@@ -159,7 +165,7 @@ export interface CreateListRequest {
   /** Path param: The Account ID for this resource. */
   accountId: string;
   /** Body param: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects). */
-  kind: "ip" | "redirect" | "hostname" | "asn";
+  kind: "ip" | "redirect" | "hostname" | "asn" | (string & {});
   /** Body param: An informative name for the list. Use this name in filter and rule expressions. */
   name: string;
   /** Body param: An informative summary of the list. */
@@ -168,7 +174,10 @@ export interface CreateListRequest {
 
 export const CreateListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  kind: Schema.Literals(["ip", "redirect", "hostname", "asn"]),
+  kind: Schema.Union([
+    Schema.Literals(["ip", "redirect", "hostname", "asn"]),
+    Schema.String,
+  ]),
   name: Schema.String,
   description: Schema.optional(Schema.String),
 }).pipe(
@@ -181,7 +190,7 @@ export interface CreateListResponse {
   /** The RFC 3339 timestamp of when the list was created. */
   createdOn: string;
   /** The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects). */
-  kind: "ip" | "redirect" | "hostname" | "asn";
+  kind: "ip" | "redirect" | "hostname" | "asn" | (string & {});
   /** The RFC 3339 timestamp of when the list was last modified. */
   modifiedOn: string;
   /** An informative name for the list. Use this name in filter and rule expressions. */
@@ -197,7 +206,10 @@ export interface CreateListResponse {
 export const CreateListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   createdOn: Schema.String,
-  kind: Schema.Literals(["ip", "redirect", "hostname", "asn"]),
+  kind: Schema.Union([
+    Schema.Literals(["ip", "redirect", "hostname", "asn"]),
+    Schema.String,
+  ]),
   modifiedOn: Schema.String,
   name: Schema.String,
   numItems: Schema.Number,
@@ -258,7 +270,7 @@ export interface UpdateListResponse {
   /** The RFC 3339 timestamp of when the list was created. */
   createdOn: string;
   /** The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects). */
-  kind: "ip" | "redirect" | "hostname" | "asn";
+  kind: "ip" | "redirect" | "hostname" | "asn" | (string & {});
   /** The RFC 3339 timestamp of when the list was last modified. */
   modifiedOn: string;
   /** An informative name for the list. Use this name in filter and rule expressions. */
@@ -274,7 +286,10 @@ export interface UpdateListResponse {
 export const UpdateListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   createdOn: Schema.String,
-  kind: Schema.Literals(["ip", "redirect", "hostname", "asn"]),
+  kind: Schema.Union([
+    Schema.Literals(["ip", "redirect", "hostname", "asn"]),
+    Schema.String,
+  ]),
   modifiedOn: Schema.String,
   name: Schema.String,
   numItems: Schema.Number,
@@ -372,7 +387,7 @@ export const GetListBulkOperationRequest =
   ) as unknown as Schema.Schema<GetListBulkOperationRequest>;
 
 export type GetListBulkOperationResponse =
-  | { id: string; status: "pending" | "running" }
+  | { id: string; status: "pending" | "running" | (string & {}) }
   | { id: string; completed: string; status: "completed" }
   | { id: string; completed: string; error: string; status: "failed" };
 
@@ -391,7 +406,10 @@ export const GetListBulkOperationResponse =
     }),
     Schema.Struct({
       id: Schema.String,
-      status: Schema.Literals(["pending", "running"]),
+      status: Schema.Union([
+        Schema.Literals(["pending", "running"]),
+        Schema.String,
+      ]),
     }),
   ]).pipe(
     T.ResponsePath("result"),
@@ -457,7 +475,7 @@ export type GetListItemResponse =
         includeSubdomains?: boolean | null;
         preservePathSuffix?: boolean | null;
         preserveQueryString?: boolean | null;
-        statusCode?: "301" | "302" | "307" | "308" | null;
+        statusCode?: "301" | "302" | "307" | "308" | (string & {}) | null;
         subpathMatching?: boolean | null;
       };
       comment?: string | null;
@@ -529,7 +547,10 @@ export const GetListItemResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       ),
       statusCode: Schema.optional(
         Schema.Union([
-          Schema.Literals(["301", "302", "307", "308"]),
+          Schema.Union([
+            Schema.Literals(["301", "302", "307", "308"]),
+            Schema.String,
+          ]),
           Schema.Null,
         ]),
       ),
@@ -642,7 +663,7 @@ export interface ListListItemsResponse {
           includeSubdomains?: boolean | null;
           preservePathSuffix?: boolean | null;
           preserveQueryString?: boolean | null;
-          statusCode?: "301" | "302" | "307" | "308" | null;
+          statusCode?: "301" | "302" | "307" | "308" | (string & {}) | null;
           subpathMatching?: boolean | null;
         };
         comment?: string | null;
@@ -719,7 +740,10 @@ export const ListListItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           statusCode: Schema.optional(
             Schema.Union([
-              Schema.Literals(["301", "302", "307", "308"]),
+              Schema.Union([
+                Schema.Literals(["301", "302", "307", "308"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -818,7 +842,7 @@ export interface CreateListItemRequest {
           includeSubdomains?: boolean;
           preservePathSuffix?: boolean;
           preserveQueryString?: boolean;
-          statusCode?: "301" | "302" | "307" | "308";
+          statusCode?: "301" | "302" | "307" | "308" | (string & {});
           subpathMatching?: boolean;
         };
         comment?: string;
@@ -848,7 +872,10 @@ export const CreateListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           preservePathSuffix: Schema.optional(Schema.Boolean),
           preserveQueryString: Schema.optional(Schema.Boolean),
           statusCode: Schema.optional(
-            Schema.Literals(["301", "302", "307", "308"]),
+            Schema.Union([
+              Schema.Literals(["301", "302", "307", "308"]),
+              Schema.String,
+            ]),
           ),
           subpathMatching: Schema.optional(Schema.Boolean),
         }).pipe(
@@ -931,7 +958,7 @@ export interface UpdateListItemRequest {
           includeSubdomains?: boolean;
           preservePathSuffix?: boolean;
           preserveQueryString?: boolean;
-          statusCode?: "301" | "302" | "307" | "308";
+          statusCode?: "301" | "302" | "307" | "308" | (string & {});
           subpathMatching?: boolean;
         };
         comment?: string;
@@ -961,7 +988,10 @@ export const UpdateListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           preservePathSuffix: Schema.optional(Schema.Boolean),
           preserveQueryString: Schema.optional(Schema.Boolean),
           statusCode: Schema.optional(
-            Schema.Literals(["301", "302", "307", "308"]),
+            Schema.Union([
+              Schema.Literals(["301", "302", "307", "308"]),
+              Schema.String,
+            ]),
           ),
           subpathMatching: Schema.optional(Schema.Boolean),
         }).pipe(

@@ -352,7 +352,7 @@ export interface GetDispatchNamespaceScriptResponse {
         enabled?: boolean | null;
         headSamplingRate?: number | null;
         persist?: boolean | null;
-        propagationPolicy?: "authenticated" | "accept" | null;
+        propagationPolicy?: "authenticated" | "accept" | (string & {}) | null;
       } | null;
     } | null;
     placement?:
@@ -363,6 +363,7 @@ export interface GetDispatchNamespaceScriptResponse {
             | "SUCCESS"
             | "UNSUPPORTED_APPLICATION"
             | "INSUFFICIENT_INVOCATIONS"
+            | (string & {})
             | null;
         }
       | {
@@ -372,6 +373,7 @@ export interface GetDispatchNamespaceScriptResponse {
             | "SUCCESS"
             | "UNSUPPORTED_APPLICATION"
             | "INSUFFICIENT_INVOCATIONS"
+            | (string & {})
             | null;
         }
       | {
@@ -381,6 +383,7 @@ export interface GetDispatchNamespaceScriptResponse {
             | "SUCCESS"
             | "UNSUPPORTED_APPLICATION"
             | "INSUFFICIENT_INVOCATIONS"
+            | (string & {})
             | null;
         }
       | {
@@ -390,6 +393,7 @@ export interface GetDispatchNamespaceScriptResponse {
             | "SUCCESS"
             | "UNSUPPORTED_APPLICATION"
             | "INSUFFICIENT_INVOCATIONS"
+            | (string & {})
             | null;
         }
       | {
@@ -400,6 +404,7 @@ export interface GetDispatchNamespaceScriptResponse {
             | "SUCCESS"
             | "UNSUPPORTED_APPLICATION"
             | "INSUFFICIENT_INVOCATIONS"
+            | (string & {})
             | null;
         }
       | {
@@ -410,6 +415,7 @@ export interface GetDispatchNamespaceScriptResponse {
             | "SUCCESS"
             | "UNSUPPORTED_APPLICATION"
             | "INSUFFICIENT_INVOCATIONS"
+            | (string & {})
             | null;
         }
       | {
@@ -420,6 +426,7 @@ export interface GetDispatchNamespaceScriptResponse {
             | "SUCCESS"
             | "UNSUPPORTED_APPLICATION"
             | "INSUFFICIENT_INVOCATIONS"
+            | (string & {})
             | null;
         }
       | {
@@ -434,14 +441,16 @@ export interface GetDispatchNamespaceScriptResponse {
             | "SUCCESS"
             | "UNSUPPORTED_APPLICATION"
             | "INSUFFICIENT_INVOCATIONS"
+            | (string & {})
             | null;
         }
       | null;
-    placementMode?: "smart" | "targeted" | null;
+    placementMode?: "smart" | "targeted" | (string & {}) | null;
     placementStatus?:
       | "SUCCESS"
       | "UNSUPPORTED_APPLICATION"
       | "INSUFFICIENT_INVOCATIONS"
+      | (string & {})
       | null;
     tag?: string | null;
     tags?: string[] | null;
@@ -452,7 +461,7 @@ export interface GetDispatchNamespaceScriptResponse {
           namespace?: string | null;
         }[]
       | null;
-    usageModel?: "standard" | "bundled" | "unbound" | null;
+    usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
   } | null;
 }
 
@@ -567,7 +576,10 @@ export const GetDispatchNamespaceScriptResponse =
                       ),
                       propagationPolicy: Schema.optional(
                         Schema.Union([
-                          Schema.Literals(["authenticated", "accept"]),
+                          Schema.Union([
+                            Schema.Literals(["authenticated", "accept"]),
+                            Schema.String,
+                          ]),
                           Schema.Null,
                         ]),
                       ),
@@ -605,10 +617,13 @@ export const GetDispatchNamespaceScriptResponse =
                   ),
                   status: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "SUCCESS",
-                        "UNSUPPORTED_APPLICATION",
-                        "INSUFFICIENT_INVOCATIONS",
+                      Schema.Union([
+                        Schema.Literals([
+                          "SUCCESS",
+                          "UNSUPPORTED_APPLICATION",
+                          "INSUFFICIENT_INVOCATIONS",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -629,10 +644,13 @@ export const GetDispatchNamespaceScriptResponse =
                   ),
                   status: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "SUCCESS",
-                        "UNSUPPORTED_APPLICATION",
-                        "INSUFFICIENT_INVOCATIONS",
+                      Schema.Union([
+                        Schema.Literals([
+                          "SUCCESS",
+                          "UNSUPPORTED_APPLICATION",
+                          "INSUFFICIENT_INVOCATIONS",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -653,10 +671,13 @@ export const GetDispatchNamespaceScriptResponse =
                   ),
                   status: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "SUCCESS",
-                        "UNSUPPORTED_APPLICATION",
-                        "INSUFFICIENT_INVOCATIONS",
+                      Schema.Union([
+                        Schema.Literals([
+                          "SUCCESS",
+                          "UNSUPPORTED_APPLICATION",
+                          "INSUFFICIENT_INVOCATIONS",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -689,10 +710,13 @@ export const GetDispatchNamespaceScriptResponse =
                   ),
                   status: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "SUCCESS",
-                        "UNSUPPORTED_APPLICATION",
-                        "INSUFFICIENT_INVOCATIONS",
+                      Schema.Union([
+                        Schema.Literals([
+                          "SUCCESS",
+                          "UNSUPPORTED_APPLICATION",
+                          "INSUFFICIENT_INVOCATIONS",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -712,10 +736,13 @@ export const GetDispatchNamespaceScriptResponse =
                   ),
                   status: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "SUCCESS",
-                        "UNSUPPORTED_APPLICATION",
-                        "INSUFFICIENT_INVOCATIONS",
+                      Schema.Union([
+                        Schema.Literals([
+                          "SUCCESS",
+                          "UNSUPPORTED_APPLICATION",
+                          "INSUFFICIENT_INVOCATIONS",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -734,10 +761,13 @@ export const GetDispatchNamespaceScriptResponse =
                   ),
                   status: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "SUCCESS",
-                        "UNSUPPORTED_APPLICATION",
-                        "INSUFFICIENT_INVOCATIONS",
+                      Schema.Union([
+                        Schema.Literals([
+                          "SUCCESS",
+                          "UNSUPPORTED_APPLICATION",
+                          "INSUFFICIENT_INVOCATIONS",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -756,10 +786,13 @@ export const GetDispatchNamespaceScriptResponse =
                   ),
                   status: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "SUCCESS",
-                        "UNSUPPORTED_APPLICATION",
-                        "INSUFFICIENT_INVOCATIONS",
+                      Schema.Union([
+                        Schema.Literals([
+                          "SUCCESS",
+                          "UNSUPPORTED_APPLICATION",
+                          "INSUFFICIENT_INVOCATIONS",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -778,10 +811,13 @@ export const GetDispatchNamespaceScriptResponse =
                   ),
                   status: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "SUCCESS",
-                        "UNSUPPORTED_APPLICATION",
-                        "INSUFFICIENT_INVOCATIONS",
+                      Schema.Union([
+                        Schema.Literals([
+                          "SUCCESS",
+                          "UNSUPPORTED_APPLICATION",
+                          "INSUFFICIENT_INVOCATIONS",
+                        ]),
+                        Schema.String,
                       ]),
                       Schema.Null,
                     ]),
@@ -798,14 +834,23 @@ export const GetDispatchNamespaceScriptResponse =
             ]),
           ),
           placementMode: Schema.optional(
-            Schema.Union([Schema.Literals(["smart", "targeted"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["smart", "targeted"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
           placementStatus: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "SUCCESS",
-                "UNSUPPORTED_APPLICATION",
-                "INSUFFICIENT_INVOCATIONS",
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -832,7 +877,10 @@ export const GetDispatchNamespaceScriptResponse =
           ),
           usageModel: Schema.optional(
             Schema.Union([
-              Schema.Literals(["standard", "bundled", "unbound"]),
+              Schema.Union([
+                Schema.Literals(["standard", "bundled", "unbound"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -907,8 +955,13 @@ export interface PutDispatchNamespaceScriptRequest {
           | "auto-trailing-slash"
           | "force-trailing-slash"
           | "drop-trailing-slash"
-          | "none";
-        notFoundHandling?: "none" | "404-page" | "single-page-application";
+          | "none"
+          | (string & {});
+        notFoundHandling?:
+          | "none"
+          | "404-page"
+          | "single-page-application"
+          | (string & {});
         runWorkerFirst?: string[] | boolean;
         serveDirectly?: boolean;
       };
@@ -970,7 +1023,7 @@ export interface PutDispatchNamespaceScriptRequest {
           bucketName: string;
           name: string;
           type: "r2_bucket";
-          jurisdiction?: "eu" | "fedramp" | "fedramp-high";
+          jurisdiction?: "eu" | "fedramp" | "fedramp-high" | (string & {});
         }
       | { name: string; text: string; type: "secret_text" }
       | {
@@ -999,7 +1052,7 @@ export interface PutDispatchNamespaceScriptRequest {
       | { appId: string; name: string; type: "flagship" }
       | {
           algorithm: unknown;
-          format: "raw" | "pkcs8" | "spki" | "jwk";
+          format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
           name: string;
           type: "secret_key";
           usages: (
@@ -1011,6 +1064,7 @@ export interface PutDispatchNamespaceScriptRequest {
             | "deriveBits"
             | "wrapKey"
             | "unwrapKey"
+            | (string & {})
           )[];
           keyBase64?: string;
           keyJwk?: unknown;
@@ -1083,7 +1137,7 @@ export interface PutDispatchNamespaceScriptRequest {
         enabled?: boolean;
         headSamplingRate?: number | null;
         persist?: boolean;
-        propagationPolicy?: "authenticated" | "accept";
+        propagationPolicy?: "authenticated" | "accept" | (string & {});
       } | null;
     };
     placement?:
@@ -1106,7 +1160,7 @@ export interface PutDispatchNamespaceScriptRequest {
     tailConsumers?:
       | { service: string; environment?: string; namespace?: string }[]
       | null;
-    usageModel?: "standard" | "bundled" | "unbound";
+    usageModel?: "standard" | "bundled" | "unbound" | (string & {});
   };
   /** Body param: An array of modules (often JavaScript files) comprising a Worker script. At least one module must be present and referenced in the metadata as `main_module` or `body_part` by filename.<br/ */
   files?: (File | Blob)[];
@@ -1128,18 +1182,24 @@ export const PutDispatchNamespaceScriptRequest =
               headers: Schema.optional(Schema.String),
               redirects: Schema.optional(Schema.String),
               htmlHandling: Schema.optional(
-                Schema.Literals([
-                  "auto-trailing-slash",
-                  "force-trailing-slash",
-                  "drop-trailing-slash",
-                  "none",
+                Schema.Union([
+                  Schema.Literals([
+                    "auto-trailing-slash",
+                    "force-trailing-slash",
+                    "drop-trailing-slash",
+                    "none",
+                  ]),
+                  Schema.String,
                 ]),
               ),
               notFoundHandling: Schema.optional(
-                Schema.Literals([
-                  "none",
-                  "404-page",
-                  "single-page-application",
+                Schema.Union([
+                  Schema.Literals([
+                    "none",
+                    "404-page",
+                    "single-page-application",
+                  ]),
+                  Schema.String,
                 ]),
               ),
               runWorkerFirst: Schema.optional(
@@ -1165,19 +1225,25 @@ export const PutDispatchNamespaceScriptRequest =
           Schema.Union([
             Schema.Struct({
               algorithm: Schema.Unknown,
-              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+              format: Schema.Union([
+                Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                Schema.String,
+              ]),
               name: Schema.String,
               type: Schema.Literal("secret_key"),
               usages: Schema.Array(
-                Schema.Literals([
-                  "encrypt",
-                  "decrypt",
-                  "sign",
-                  "verify",
-                  "deriveKey",
-                  "deriveBits",
-                  "wrapKey",
-                  "unwrapKey",
+                Schema.Union([
+                  Schema.Literals([
+                    "encrypt",
+                    "decrypt",
+                    "sign",
+                    "verify",
+                    "deriveKey",
+                    "deriveBits",
+                    "wrapKey",
+                    "unwrapKey",
+                  ]),
+                  Schema.String,
                 ]),
               ),
               keyBase64: Schema.optional(Schema.String),
@@ -1351,7 +1417,10 @@ export const PutDispatchNamespaceScriptRequest =
               name: Schema.String,
               type: Schema.Literal("r2_bucket"),
               jurisdiction: Schema.optional(
-                Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                Schema.Union([
+                  Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                  Schema.String,
+                ]),
               ),
             }).pipe(
               Schema.encodeKeys({
@@ -1671,7 +1740,10 @@ export const PutDispatchNamespaceScriptRequest =
                 ),
                 persist: Schema.optional(Schema.Boolean),
                 propagationPolicy: Schema.optional(
-                  Schema.Literals(["authenticated", "accept"]),
+                  Schema.Union([
+                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.String,
+                  ]),
                 ),
               }).pipe(
                 Schema.encodeKeys({
@@ -1752,7 +1824,10 @@ export const PutDispatchNamespaceScriptRequest =
         ]),
       ),
       usageModel: Schema.optional(
-        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.Union([
+          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.String,
+        ]),
       ),
     }).pipe(
       Schema.encodeKeys({
@@ -1831,7 +1906,7 @@ export interface PutDispatchNamespaceScriptResponse {
       enabled?: boolean | null;
       headSamplingRate?: number | null;
       persist?: boolean | null;
-      propagationPolicy?: "authenticated" | "accept" | null;
+      propagationPolicy?: "authenticated" | "accept" | (string & {}) | null;
     } | null;
   } | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
@@ -1843,6 +1918,7 @@ export interface PutDispatchNamespaceScriptResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -1852,6 +1928,7 @@ export interface PutDispatchNamespaceScriptResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -1861,6 +1938,7 @@ export interface PutDispatchNamespaceScriptResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -1870,6 +1948,7 @@ export interface PutDispatchNamespaceScriptResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -1880,6 +1959,7 @@ export interface PutDispatchNamespaceScriptResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -1890,6 +1970,7 @@ export interface PutDispatchNamespaceScriptResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -1900,6 +1981,7 @@ export interface PutDispatchNamespaceScriptResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -1914,16 +1996,18 @@ export interface PutDispatchNamespaceScriptResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | null;
   /** @deprecated */
-  placementMode?: "smart" | "targeted" | null;
+  placementMode?: "smart" | "targeted" | (string & {}) | null;
   /** @deprecated */
   placementStatus?:
     | "SUCCESS"
     | "UNSUPPORTED_APPLICATION"
     | "INSUFFICIENT_INVOCATIONS"
+    | (string & {})
     | null;
   /** The immutable ID of the script. */
   tag?: string | null;
@@ -1938,7 +2022,7 @@ export interface PutDispatchNamespaceScriptResponse {
       }[]
     | null;
   /** Usage model for the Worker invocations. */
-  usageModel?: "standard" | "bundled" | "unbound" | null;
+  usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
 
 export const PutDispatchNamespaceScriptResponse =
@@ -2028,7 +2112,10 @@ export const PutDispatchNamespaceScriptResponse =
                 ),
                 propagationPolicy: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.Union([
+                      Schema.Literals(["authenticated", "accept"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -2066,10 +2153,13 @@ export const PutDispatchNamespaceScriptResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -2090,10 +2180,13 @@ export const PutDispatchNamespaceScriptResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -2114,10 +2207,13 @@ export const PutDispatchNamespaceScriptResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -2150,10 +2246,13 @@ export const PutDispatchNamespaceScriptResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -2173,10 +2272,13 @@ export const PutDispatchNamespaceScriptResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -2195,10 +2297,13 @@ export const PutDispatchNamespaceScriptResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -2217,10 +2322,13 @@ export const PutDispatchNamespaceScriptResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -2239,10 +2347,13 @@ export const PutDispatchNamespaceScriptResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -2259,14 +2370,20 @@ export const PutDispatchNamespaceScriptResponse =
       ]),
     ),
     placementMode: Schema.optional(
-      Schema.Union([Schema.Literals(["smart", "targeted"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["smart", "targeted"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     placementStatus: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "SUCCESS",
-          "UNSUPPORTED_APPLICATION",
-          "INSUFFICIENT_INVOCATIONS",
+        Schema.Union([
+          Schema.Literals([
+            "SUCCESS",
+            "UNSUPPORTED_APPLICATION",
+            "INSUFFICIENT_INVOCATIONS",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -2293,7 +2410,10 @@ export const PutDispatchNamespaceScriptResponse =
     ),
     usageModel: Schema.optional(
       Schema.Union([
-        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.Union([
+          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -2529,7 +2649,7 @@ export interface GetDispatchNamespaceScriptBindingResponse {
         bucketName: string;
         name: string;
         type: "r2_bucket";
-        jurisdiction?: "eu" | "fedramp" | "fedramp-high" | null;
+        jurisdiction?: "eu" | "fedramp" | "fedramp-high" | (string & {}) | null;
       }
     | { name: string; type: "secret_text" }
     | {
@@ -2558,7 +2678,7 @@ export interface GetDispatchNamespaceScriptBindingResponse {
     | { appId: string; name: string; type: "flagship" }
     | {
         algorithm: unknown;
-        format: "raw" | "pkcs8" | "spki" | "jwk";
+        format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
         name: string;
         type: "secret_key";
         usages: (
@@ -2570,6 +2690,7 @@ export interface GetDispatchNamespaceScriptBindingResponse {
           | "deriveBits"
           | "wrapKey"
           | "unwrapKey"
+          | (string & {})
         )[];
       }
     | {
@@ -2596,19 +2717,25 @@ export const GetDispatchNamespaceScriptBindingResponse =
       Schema.Union([
         Schema.Struct({
           algorithm: Schema.Unknown,
-          format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+          format: Schema.Union([
+            Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+            Schema.String,
+          ]),
           name: Schema.String,
           type: Schema.Literal("secret_key"),
           usages: Schema.Array(
-            Schema.Literals([
-              "encrypt",
-              "decrypt",
-              "sign",
-              "verify",
-              "deriveKey",
-              "deriveBits",
-              "wrapKey",
-              "unwrapKey",
+            Schema.Union([
+              Schema.Literals([
+                "encrypt",
+                "decrypt",
+                "sign",
+                "verify",
+                "deriveKey",
+                "deriveBits",
+                "wrapKey",
+                "unwrapKey",
+              ]),
+              Schema.String,
             ]),
           ),
         }),
@@ -2790,7 +2917,10 @@ export const GetDispatchNamespaceScriptBindingResponse =
           type: Schema.Literal("r2_bucket"),
           jurisdiction: Schema.optional(
             Schema.Union([
-              Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+              Schema.Union([
+                Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
@@ -3127,7 +3257,7 @@ export interface PutDispatchNamespaceScriptContentResponse {
       enabled?: boolean | null;
       headSamplingRate?: number | null;
       persist?: boolean | null;
-      propagationPolicy?: "authenticated" | "accept" | null;
+      propagationPolicy?: "authenticated" | "accept" | (string & {}) | null;
     } | null;
   } | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
@@ -3139,6 +3269,7 @@ export interface PutDispatchNamespaceScriptContentResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -3148,6 +3279,7 @@ export interface PutDispatchNamespaceScriptContentResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -3157,6 +3289,7 @@ export interface PutDispatchNamespaceScriptContentResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -3166,6 +3299,7 @@ export interface PutDispatchNamespaceScriptContentResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -3176,6 +3310,7 @@ export interface PutDispatchNamespaceScriptContentResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -3186,6 +3321,7 @@ export interface PutDispatchNamespaceScriptContentResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -3196,6 +3332,7 @@ export interface PutDispatchNamespaceScriptContentResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | {
@@ -3210,16 +3347,18 @@ export interface PutDispatchNamespaceScriptContentResponse {
           | "SUCCESS"
           | "UNSUPPORTED_APPLICATION"
           | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
           | null;
       }
     | null;
   /** @deprecated Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
-  placementMode?: "smart" | "targeted" | null;
+  placementMode?: "smart" | "targeted" | (string & {}) | null;
   /** @deprecated Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   placementStatus?:
     | "SUCCESS"
     | "UNSUPPORTED_APPLICATION"
     | "INSUFFICIENT_INVOCATIONS"
+    | (string & {})
     | null;
   /** The immutable ID of the script. */
   tag?: string | null;
@@ -3234,7 +3373,7 @@ export interface PutDispatchNamespaceScriptContentResponse {
       }[]
     | null;
   /** Usage model for the Worker invocations. */
-  usageModel?: "standard" | "bundled" | "unbound" | null;
+  usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
 
 export const PutDispatchNamespaceScriptContentResponse =
@@ -3322,7 +3461,10 @@ export const PutDispatchNamespaceScriptContentResponse =
                 ),
                 propagationPolicy: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.Union([
+                      Schema.Literals(["authenticated", "accept"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -3360,10 +3502,13 @@ export const PutDispatchNamespaceScriptContentResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -3384,10 +3529,13 @@ export const PutDispatchNamespaceScriptContentResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -3408,10 +3556,13 @@ export const PutDispatchNamespaceScriptContentResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -3444,10 +3595,13 @@ export const PutDispatchNamespaceScriptContentResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -3467,10 +3621,13 @@ export const PutDispatchNamespaceScriptContentResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -3489,10 +3646,13 @@ export const PutDispatchNamespaceScriptContentResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -3511,10 +3671,13 @@ export const PutDispatchNamespaceScriptContentResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -3533,10 +3696,13 @@ export const PutDispatchNamespaceScriptContentResponse =
             ),
             status: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "SUCCESS",
-                  "UNSUPPORTED_APPLICATION",
-                  "INSUFFICIENT_INVOCATIONS",
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -3553,14 +3719,20 @@ export const PutDispatchNamespaceScriptContentResponse =
       ]),
     ),
     placementMode: Schema.optional(
-      Schema.Union([Schema.Literals(["smart", "targeted"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["smart", "targeted"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
     placementStatus: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "SUCCESS",
-          "UNSUPPORTED_APPLICATION",
-          "INSUFFICIENT_INVOCATIONS",
+        Schema.Union([
+          Schema.Literals([
+            "SUCCESS",
+            "UNSUPPORTED_APPLICATION",
+            "INSUFFICIENT_INVOCATIONS",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -3587,7 +3759,10 @@ export const PutDispatchNamespaceScriptContentResponse =
     ),
     usageModel: Schema.optional(
       Schema.Union([
-        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.Union([
+          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -3668,7 +3843,7 @@ export type GetDispatchNamespaceScriptSecretResponse =
   | { name: string; type: "secret_text" }
   | {
       algorithm: unknown;
-      format: "raw" | "pkcs8" | "spki" | "jwk";
+      format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
       name: string;
       type: "secret_key";
       usages: (
@@ -3680,6 +3855,7 @@ export type GetDispatchNamespaceScriptSecretResponse =
         | "deriveBits"
         | "wrapKey"
         | "unwrapKey"
+        | (string & {})
       )[];
     };
 
@@ -3687,19 +3863,25 @@ export const GetDispatchNamespaceScriptSecretResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.Struct({
       algorithm: Schema.Unknown,
-      format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+      format: Schema.Union([
+        Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+        Schema.String,
+      ]),
       name: Schema.String,
       type: Schema.Literal("secret_key"),
       usages: Schema.Array(
-        Schema.Literals([
-          "encrypt",
-          "decrypt",
-          "sign",
-          "verify",
-          "deriveKey",
-          "deriveBits",
-          "wrapKey",
-          "unwrapKey",
+        Schema.Union([
+          Schema.Literals([
+            "encrypt",
+            "decrypt",
+            "sign",
+            "verify",
+            "deriveKey",
+            "deriveBits",
+            "wrapKey",
+            "unwrapKey",
+          ]),
+          Schema.String,
         ]),
       ),
     }),
@@ -3748,7 +3930,7 @@ export interface ListDispatchNamespaceScriptSecretsResponse {
     | { name: string; type: "secret_text" }
     | {
         algorithm: unknown;
-        format: "raw" | "pkcs8" | "spki" | "jwk";
+        format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
         name: string;
         type: "secret_key";
         usages: (
@@ -3760,6 +3942,7 @@ export interface ListDispatchNamespaceScriptSecretsResponse {
           | "deriveBits"
           | "wrapKey"
           | "unwrapKey"
+          | (string & {})
         )[];
       }
   )[];
@@ -3771,19 +3954,25 @@ export const ListDispatchNamespaceScriptSecretsResponse =
       Schema.Union([
         Schema.Struct({
           algorithm: Schema.Unknown,
-          format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+          format: Schema.Union([
+            Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+            Schema.String,
+          ]),
           name: Schema.String,
           type: Schema.Literal("secret_key"),
           usages: Schema.Array(
-            Schema.Literals([
-              "encrypt",
-              "decrypt",
-              "sign",
-              "verify",
-              "deriveKey",
-              "deriveBits",
-              "wrapKey",
-              "unwrapKey",
+            Schema.Union([
+              Schema.Literals([
+                "encrypt",
+                "decrypt",
+                "sign",
+                "verify",
+                "deriveKey",
+                "deriveBits",
+                "wrapKey",
+                "unwrapKey",
+              ]),
+              Schema.String,
             ]),
           ),
         }),
@@ -3822,11 +4011,11 @@ export interface PutDispatchNamespaceScriptSecretRequest {
   /** Body param: The secret value to use. */
   text?: string;
   /** Body param: The kind of resource that the binding provides. */
-  type: "secret_text" | "secret_key";
+  type: "secret_text" | "secret_key" | (string & {});
   /** Body param: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
   algorithm?: unknown;
   /** Body param: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?: "raw" | "pkcs8" | "spki" | "jwk";
+  format?: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
   /** Body param: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
   usages?: (
     | "encrypt"
@@ -3837,6 +4026,7 @@ export interface PutDispatchNamespaceScriptSecretRequest {
     | "deriveBits"
     | "wrapKey"
     | "unwrapKey"
+    | (string & {})
   )[];
   /** Body param: Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
   keyBase64?: string;
@@ -3851,20 +4041,31 @@ export const PutDispatchNamespaceScriptSecretRequest =
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     name: Schema.String,
     text: Schema.optional(Schema.String),
-    type: Schema.Literals(["secret_text", "secret_key"]),
+    type: Schema.Union([
+      Schema.Literals(["secret_text", "secret_key"]),
+      Schema.String,
+    ]),
     algorithm: Schema.optional(Schema.Unknown),
-    format: Schema.optional(Schema.Literals(["raw", "pkcs8", "spki", "jwk"])),
+    format: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+        Schema.String,
+      ]),
+    ),
     usages: Schema.optional(
       Schema.Array(
-        Schema.Literals([
-          "encrypt",
-          "decrypt",
-          "sign",
-          "verify",
-          "deriveKey",
-          "deriveBits",
-          "wrapKey",
-          "unwrapKey",
+        Schema.Union([
+          Schema.Literals([
+            "encrypt",
+            "decrypt",
+            "sign",
+            "verify",
+            "deriveKey",
+            "deriveBits",
+            "wrapKey",
+            "unwrapKey",
+          ]),
+          Schema.String,
         ]),
       ),
     ),
@@ -3891,7 +4092,7 @@ export type PutDispatchNamespaceScriptSecretResponse =
   | { name: string; type: "secret_text" }
   | {
       algorithm: unknown;
-      format: "raw" | "pkcs8" | "spki" | "jwk";
+      format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
       name: string;
       type: "secret_key";
       usages: (
@@ -3903,6 +4104,7 @@ export type PutDispatchNamespaceScriptSecretResponse =
         | "deriveBits"
         | "wrapKey"
         | "unwrapKey"
+        | (string & {})
       )[];
     };
 
@@ -3910,19 +4112,25 @@ export const PutDispatchNamespaceScriptSecretResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.Struct({
       algorithm: Schema.Unknown,
-      format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+      format: Schema.Union([
+        Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+        Schema.String,
+      ]),
       name: Schema.String,
       type: Schema.Literal("secret_key"),
       usages: Schema.Array(
-        Schema.Literals([
-          "encrypt",
-          "decrypt",
-          "sign",
-          "verify",
-          "deriveKey",
-          "deriveBits",
-          "wrapKey",
-          "unwrapKey",
+        Schema.Union([
+          Schema.Literals([
+            "encrypt",
+            "decrypt",
+            "sign",
+            "verify",
+            "deriveKey",
+            "deriveBits",
+            "wrapKey",
+            "unwrapKey",
+          ]),
+          Schema.String,
         ]),
       ),
     }),
@@ -4133,7 +4341,12 @@ export interface GetDispatchNamespaceScriptSettingResponse {
             bucketName: string;
             name: string;
             type: "r2_bucket";
-            jurisdiction?: "eu" | "fedramp" | "fedramp-high" | null;
+            jurisdiction?:
+              | "eu"
+              | "fedramp"
+              | "fedramp-high"
+              | (string & {})
+              | null;
           }
         | { name: string; type: "secret_text" }
         | {
@@ -4162,7 +4375,7 @@ export interface GetDispatchNamespaceScriptSettingResponse {
         | { appId: string; name: string; type: "flagship" }
         | {
             algorithm: unknown;
-            format: "raw" | "pkcs8" | "spki" | "jwk";
+            format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
             name: string;
             type: "secret_key";
             usages: (
@@ -4174,6 +4387,7 @@ export interface GetDispatchNamespaceScriptSettingResponse {
               | "deriveBits"
               | "wrapKey"
               | "unwrapKey"
+              | (string & {})
             )[];
           }
         | {
@@ -4217,7 +4431,7 @@ export interface GetDispatchNamespaceScriptSettingResponse {
       enabled?: boolean | null;
       headSamplingRate?: number | null;
       persist?: boolean | null;
-      propagationPolicy?: "authenticated" | "accept" | null;
+      propagationPolicy?: "authenticated" | "accept" | (string & {}) | null;
     } | null;
   } | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
@@ -4249,7 +4463,7 @@ export interface GetDispatchNamespaceScriptSettingResponse {
       }[]
     | null;
   /** Usage model for the Worker invocations. */
-  usageModel?: "standard" | "bundled" | "unbound" | null;
+  usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
 
 export const GetDispatchNamespaceScriptSettingResponse =
@@ -4260,19 +4474,25 @@ export const GetDispatchNamespaceScriptSettingResponse =
           Schema.Union([
             Schema.Struct({
               algorithm: Schema.Unknown,
-              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+              format: Schema.Union([
+                Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                Schema.String,
+              ]),
               name: Schema.String,
               type: Schema.Literal("secret_key"),
               usages: Schema.Array(
-                Schema.Literals([
-                  "encrypt",
-                  "decrypt",
-                  "sign",
-                  "verify",
-                  "deriveKey",
-                  "deriveBits",
-                  "wrapKey",
-                  "unwrapKey",
+                Schema.Union([
+                  Schema.Literals([
+                    "encrypt",
+                    "decrypt",
+                    "sign",
+                    "verify",
+                    "deriveKey",
+                    "deriveBits",
+                    "wrapKey",
+                    "unwrapKey",
+                  ]),
+                  Schema.String,
                 ]),
               ),
             }),
@@ -4454,7 +4674,10 @@ export const GetDispatchNamespaceScriptSettingResponse =
               type: Schema.Literal("r2_bucket"),
               jurisdiction: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                  Schema.Union([
+                    Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -4726,7 +4949,10 @@ export const GetDispatchNamespaceScriptSettingResponse =
                 ),
                 propagationPolicy: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.Union([
+                      Schema.Literals(["authenticated", "accept"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -4821,7 +5047,10 @@ export const GetDispatchNamespaceScriptSettingResponse =
     ),
     usageModel: Schema.optional(
       Schema.Union([
-        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.Union([
+          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -4920,7 +5149,7 @@ export interface PatchDispatchNamespaceScriptSettingRequest {
           bucketName: string;
           name: string;
           type: "r2_bucket";
-          jurisdiction?: "eu" | "fedramp" | "fedramp-high";
+          jurisdiction?: "eu" | "fedramp" | "fedramp-high" | (string & {});
         }
       | { name: string; text: string; type: "secret_text" }
       | {
@@ -4949,7 +5178,7 @@ export interface PatchDispatchNamespaceScriptSettingRequest {
       | { appId: string; name: string; type: "flagship" }
       | {
           algorithm: unknown;
-          format: "raw" | "pkcs8" | "spki" | "jwk";
+          format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
           name: string;
           type: "secret_key";
           usages: (
@@ -4961,6 +5190,7 @@ export interface PatchDispatchNamespaceScriptSettingRequest {
             | "deriveBits"
             | "wrapKey"
             | "unwrapKey"
+            | (string & {})
           )[];
           keyBase64?: string;
           keyJwk?: unknown;
@@ -5029,7 +5259,7 @@ export interface PatchDispatchNamespaceScriptSettingRequest {
         enabled?: boolean;
         headSamplingRate?: number | null;
         persist?: boolean;
-        propagationPolicy?: "authenticated" | "accept";
+        propagationPolicy?: "authenticated" | "accept" | (string & {});
       } | null;
     };
     placement?:
@@ -5052,7 +5282,7 @@ export interface PatchDispatchNamespaceScriptSettingRequest {
     tailConsumers?:
       | { service: string; environment?: string; namespace?: string }[]
       | null;
-    usageModel?: "standard" | "bundled" | "unbound";
+    usageModel?: "standard" | "bundled" | "unbound" | (string & {});
   };
 }
 
@@ -5068,19 +5298,25 @@ export const PatchDispatchNamespaceScriptSettingRequest =
             Schema.Union([
               Schema.Struct({
                 algorithm: Schema.Unknown,
-                format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                format: Schema.Union([
+                  Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                  Schema.String,
+                ]),
                 name: Schema.String,
                 type: Schema.Literal("secret_key"),
                 usages: Schema.Array(
-                  Schema.Literals([
-                    "encrypt",
-                    "decrypt",
-                    "sign",
-                    "verify",
-                    "deriveKey",
-                    "deriveBits",
-                    "wrapKey",
-                    "unwrapKey",
+                  Schema.Union([
+                    Schema.Literals([
+                      "encrypt",
+                      "decrypt",
+                      "sign",
+                      "verify",
+                      "deriveKey",
+                      "deriveBits",
+                      "wrapKey",
+                      "unwrapKey",
+                    ]),
+                    Schema.String,
                   ]),
                 ),
                 keyBase64: Schema.optional(Schema.String),
@@ -5254,7 +5490,10 @@ export const PatchDispatchNamespaceScriptSettingRequest =
                 name: Schema.String,
                 type: Schema.Literal("r2_bucket"),
                 jurisdiction: Schema.optional(
-                  Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                  Schema.Union([
+                    Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                    Schema.String,
+                  ]),
                 ),
               }).pipe(
                 Schema.encodeKeys({
@@ -5572,7 +5811,10 @@ export const PatchDispatchNamespaceScriptSettingRequest =
                   ),
                   persist: Schema.optional(Schema.Boolean),
                   propagationPolicy: Schema.optional(
-                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.Union([
+                      Schema.Literals(["authenticated", "accept"]),
+                      Schema.String,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({
@@ -5655,7 +5897,10 @@ export const PatchDispatchNamespaceScriptSettingRequest =
           ]),
         ),
         usageModel: Schema.optional(
-          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.Union([
+            Schema.Literals(["standard", "bundled", "unbound"]),
+            Schema.String,
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -5749,7 +5994,12 @@ export interface PatchDispatchNamespaceScriptSettingResponse {
             bucketName: string;
             name: string;
             type: "r2_bucket";
-            jurisdiction?: "eu" | "fedramp" | "fedramp-high" | null;
+            jurisdiction?:
+              | "eu"
+              | "fedramp"
+              | "fedramp-high"
+              | (string & {})
+              | null;
           }
         | { name: string; type: "secret_text" }
         | {
@@ -5778,7 +6028,7 @@ export interface PatchDispatchNamespaceScriptSettingResponse {
         | { appId: string; name: string; type: "flagship" }
         | {
             algorithm: unknown;
-            format: "raw" | "pkcs8" | "spki" | "jwk";
+            format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
             name: string;
             type: "secret_key";
             usages: (
@@ -5790,6 +6040,7 @@ export interface PatchDispatchNamespaceScriptSettingResponse {
               | "deriveBits"
               | "wrapKey"
               | "unwrapKey"
+              | (string & {})
             )[];
           }
         | {
@@ -5833,7 +6084,7 @@ export interface PatchDispatchNamespaceScriptSettingResponse {
       enabled?: boolean | null;
       headSamplingRate?: number | null;
       persist?: boolean | null;
-      propagationPolicy?: "authenticated" | "accept" | null;
+      propagationPolicy?: "authenticated" | "accept" | (string & {}) | null;
     } | null;
   } | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
@@ -5865,7 +6116,7 @@ export interface PatchDispatchNamespaceScriptSettingResponse {
       }[]
     | null;
   /** Usage model for the Worker invocations. */
-  usageModel?: "standard" | "bundled" | "unbound" | null;
+  usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
 
 export const PatchDispatchNamespaceScriptSettingResponse =
@@ -5876,19 +6127,25 @@ export const PatchDispatchNamespaceScriptSettingResponse =
           Schema.Union([
             Schema.Struct({
               algorithm: Schema.Unknown,
-              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+              format: Schema.Union([
+                Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+                Schema.String,
+              ]),
               name: Schema.String,
               type: Schema.Literal("secret_key"),
               usages: Schema.Array(
-                Schema.Literals([
-                  "encrypt",
-                  "decrypt",
-                  "sign",
-                  "verify",
-                  "deriveKey",
-                  "deriveBits",
-                  "wrapKey",
-                  "unwrapKey",
+                Schema.Union([
+                  Schema.Literals([
+                    "encrypt",
+                    "decrypt",
+                    "sign",
+                    "verify",
+                    "deriveKey",
+                    "deriveBits",
+                    "wrapKey",
+                    "unwrapKey",
+                  ]),
+                  Schema.String,
                 ]),
               ),
             }),
@@ -6070,7 +6327,10 @@ export const PatchDispatchNamespaceScriptSettingResponse =
               type: Schema.Literal("r2_bucket"),
               jurisdiction: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                  Schema.Union([
+                    Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+                    Schema.String,
+                  ]),
                   Schema.Null,
                 ]),
               ),
@@ -6342,7 +6602,10 @@ export const PatchDispatchNamespaceScriptSettingResponse =
                 ),
                 propagationPolicy: Schema.optional(
                   Schema.Union([
-                    Schema.Literals(["authenticated", "accept"]),
+                    Schema.Union([
+                      Schema.Literals(["authenticated", "accept"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
@@ -6437,7 +6700,10 @@ export const PatchDispatchNamespaceScriptSettingResponse =
     ),
     usageModel: Schema.optional(
       Schema.Union([
-        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.Union([
+          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),

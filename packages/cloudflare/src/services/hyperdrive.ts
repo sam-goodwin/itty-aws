@@ -80,19 +80,19 @@ export interface GetConfigResponse {
         database: string;
         host: string;
         port: number;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         user: string;
       }
     | {
         accessClientId: string;
         database: string;
         host: string;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         user: string;
       }
     | {
         database: string;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         serviceId: string;
         user: string;
       };
@@ -126,14 +126,20 @@ export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       database: Schema.String,
       host: Schema.String,
       port: Schema.Number,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       user: Schema.String,
     }),
     Schema.Struct({
       accessClientId: Schema.String,
       database: Schema.String,
       host: Schema.String,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       user: Schema.String,
     }).pipe(
       Schema.encodeKeys({
@@ -146,7 +152,10 @@ export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
     Schema.Struct({
       database: Schema.String,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       serviceId: Schema.String,
       user: Schema.String,
     }).pipe(
@@ -268,19 +277,19 @@ export interface ListConfigsResponse {
           database: string;
           host: string;
           port: number;
-          scheme: "postgres" | "postgresql" | "mysql";
+          scheme: "postgres" | "postgresql" | "mysql" | (string & {});
           user: string;
         }
       | {
           accessClientId: string;
           database: string;
           host: string;
-          scheme: "postgres" | "postgresql" | "mysql";
+          scheme: "postgres" | "postgresql" | "mysql" | (string & {});
           user: string;
         }
       | {
           database: string;
-          scheme: "postgres" | "postgresql" | "mysql";
+          scheme: "postgres" | "postgresql" | "mysql" | (string & {});
           serviceId: string;
           user: string;
         };
@@ -313,14 +322,20 @@ export const ListConfigsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           database: Schema.String,
           host: Schema.String,
           port: Schema.Number,
-          scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+          scheme: Schema.Union([
+            Schema.Literals(["postgres", "postgresql", "mysql"]),
+            Schema.String,
+          ]),
           user: Schema.String,
         }),
         Schema.Struct({
           accessClientId: Schema.String,
           database: Schema.String,
           host: Schema.String,
-          scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+          scheme: Schema.Union([
+            Schema.Literals(["postgres", "postgresql", "mysql"]),
+            Schema.String,
+          ]),
           user: Schema.String,
         }).pipe(
           Schema.encodeKeys({
@@ -333,7 +348,10 @@ export const ListConfigsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         Schema.Struct({
           database: Schema.String,
-          scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+          scheme: Schema.Union([
+            Schema.Literals(["postgres", "postgresql", "mysql"]),
+            Schema.String,
+          ]),
           serviceId: Schema.String,
           user: Schema.String,
         }).pipe(
@@ -448,7 +466,7 @@ export interface CreateConfigRequest {
         host: string;
         password: string;
         port: number;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         user: string;
       }
     | {
@@ -457,13 +475,13 @@ export interface CreateConfigRequest {
         database: string;
         host: string;
         password: string;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         user: string;
       }
     | {
         database: string;
         password: string;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         serviceId: string;
         user: string;
       };
@@ -491,7 +509,10 @@ export const CreateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       database: Schema.String,
       host: Schema.String,
       password: SensitiveString,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       user: Schema.String,
     }).pipe(
       Schema.encodeKeys({
@@ -509,13 +530,19 @@ export const CreateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       host: Schema.String,
       password: SensitiveString,
       port: Schema.Number,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       user: Schema.String,
     }),
     Schema.Struct({
       database: Schema.String,
       password: SensitiveString,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       serviceId: Schema.String,
       user: Schema.String,
     }).pipe(
@@ -581,19 +608,19 @@ export interface CreateConfigResponse {
         database: string;
         host: string;
         port: number;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         user: string;
       }
     | {
         accessClientId: string;
         database: string;
         host: string;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         user: string;
       }
     | {
         database: string;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         serviceId: string;
         user: string;
       };
@@ -627,14 +654,20 @@ export const CreateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       database: Schema.String,
       host: Schema.String,
       port: Schema.Number,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       user: Schema.String,
     }),
     Schema.Struct({
       accessClientId: Schema.String,
       database: Schema.String,
       host: Schema.String,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       user: Schema.String,
     }).pipe(
       Schema.encodeKeys({
@@ -647,7 +680,10 @@ export const CreateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
     Schema.Struct({
       database: Schema.String,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       serviceId: Schema.String,
       user: Schema.String,
     }).pipe(
@@ -762,7 +798,7 @@ export interface UpdateConfigRequest {
         host: string;
         password: string;
         port: number;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         user: string;
       }
     | {
@@ -771,13 +807,13 @@ export interface UpdateConfigRequest {
         database: string;
         host: string;
         password: string;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         user: string;
       }
     | {
         database: string;
         password: string;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         serviceId: string;
         user: string;
       };
@@ -806,7 +842,10 @@ export const UpdateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       database: Schema.String,
       host: Schema.String,
       password: SensitiveString,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       user: Schema.String,
     }).pipe(
       Schema.encodeKeys({
@@ -824,13 +863,19 @@ export const UpdateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       host: Schema.String,
       password: SensitiveString,
       port: Schema.Number,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       user: Schema.String,
     }),
     Schema.Struct({
       database: Schema.String,
       password: SensitiveString,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       serviceId: Schema.String,
       user: Schema.String,
     }).pipe(
@@ -899,19 +944,19 @@ export interface UpdateConfigResponse {
         database: string;
         host: string;
         port: number;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         user: string;
       }
     | {
         accessClientId: string;
         database: string;
         host: string;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         user: string;
       }
     | {
         database: string;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         serviceId: string;
         user: string;
       };
@@ -945,14 +990,20 @@ export const UpdateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       database: Schema.String,
       host: Schema.String,
       port: Schema.Number,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       user: Schema.String,
     }),
     Schema.Struct({
       accessClientId: Schema.String,
       database: Schema.String,
       host: Schema.String,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       user: Schema.String,
     }).pipe(
       Schema.encodeKeys({
@@ -965,7 +1016,10 @@ export const UpdateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
     Schema.Struct({
       database: Schema.String,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       serviceId: Schema.String,
       user: Schema.String,
     }).pipe(
@@ -1090,7 +1144,7 @@ export interface PatchConfigRequest {
     | {
         database?: string;
         password?: string;
-        scheme?: "postgres" | "postgresql" | "mysql";
+        scheme?: "postgres" | "postgresql" | "mysql" | (string & {});
         user?: string;
       }
     | { host: string; port: number }
@@ -1159,7 +1213,10 @@ export const PatchConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         database: Schema.optional(Schema.String),
         password: Schema.optional(SensitiveString),
         scheme: Schema.optional(
-          Schema.Literals(["postgres", "postgresql", "mysql"]),
+          Schema.Union([
+            Schema.Literals(["postgres", "postgresql", "mysql"]),
+            Schema.String,
+          ]),
         ),
         user: Schema.optional(Schema.String),
       }),
@@ -1190,19 +1247,19 @@ export interface PatchConfigResponse {
         database: string;
         host: string;
         port: number;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         user: string;
       }
     | {
         accessClientId: string;
         database: string;
         host: string;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         user: string;
       }
     | {
         database: string;
-        scheme: "postgres" | "postgresql" | "mysql";
+        scheme: "postgres" | "postgresql" | "mysql" | (string & {});
         serviceId: string;
         user: string;
       };
@@ -1236,14 +1293,20 @@ export const PatchConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       database: Schema.String,
       host: Schema.String,
       port: Schema.Number,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       user: Schema.String,
     }),
     Schema.Struct({
       accessClientId: Schema.String,
       database: Schema.String,
       host: Schema.String,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       user: Schema.String,
     }).pipe(
       Schema.encodeKeys({
@@ -1256,7 +1319,10 @@ export const PatchConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
     Schema.Struct({
       database: Schema.String,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      scheme: Schema.Union([
+        Schema.Literals(["postgres", "postgresql", "mysql"]),
+        Schema.String,
+      ]),
       serviceId: Schema.String,
       user: Schema.String,
     }).pipe(

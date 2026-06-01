@@ -49,7 +49,7 @@ paths:
                         description: Name of the dead letter queue, or empty string if not configured
                       queue_name:
                         type: string
-                      script_name:
+                      script:
                         type: string
                         description: Name of a Worker
                       settings:
@@ -1286,7 +1286,7 @@ paths:
                               description: Name of the dead letter queue, or empty string if not configured
                             queue_name:
                               type: string
-                            script_name:
+                            script:
                               type: string
                               description: Name of a Worker
                             settings:

@@ -1,3 +1,51 @@
+## v0.22.3
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**:
+  - Treat string enums as open in generated schemas &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/314 [<samp>(56667)</samp>](https://github.com/alchemy-run/distilled/commit/56667ca8)
+  - **zones**: Add typed errors for zone CRUD &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/315 [<samp>(31b06)</samp>](https://github.com/alchemy-run/distilled/commit/31b0639c)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.22.2...HEAD)
+
+---
+
+## v0.22.2
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**:
+  - **vectorize**: Add 3005/gone error &nbsp;-&nbsp; by **John Royal** in https://github.com/alchemy-run/distilled/issues/313 [<samp>(e5833)</samp>](https://github.com/alchemy-run/distilled/commit/e58339d1)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.22.1...HEAD)
+
+---
+
+## v0.22.1
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**:
+  - **queues**: Patch script_name/script property to match wire &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(3b6d5)</samp>](https://github.com/alchemy-run/distilled/commit/3b6d5e89)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.22.0...HEAD)
+
+---
+
+## v0.22.0
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **cloudflare**: Update cloudflare spec &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/312 [<samp>(f50ef)</samp>](https://github.com/alchemy-run/distilled/commit/f50ef4ed)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**: Collapse unions containing `unknown` to `unknown` in parser &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/310 [<samp>(cf15f)</samp>](https://github.com/alchemy-run/distilled/commit/cf15f0c0)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.21.6...HEAD)
+
+---
+
 ## v0.21.6
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

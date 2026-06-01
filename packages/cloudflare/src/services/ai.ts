@@ -96,7 +96,7 @@ export interface RunAiRequest {
   /** Body param */
   responseFormat?: {
     jsonSchema?: unknown;
-    type?: "json_object" | "json_schema";
+    type?: "json_object" | "json_schema" | (string & {});
   };
   /** Body param: If true, the response will be streamed back incrementally using SSE, Server Sent Events. */
   stream?: boolean;
@@ -170,7 +170,12 @@ export const RunAiRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   responseFormat: Schema.optional(
     Schema.Struct({
       jsonSchema: Schema.optional(Schema.Unknown),
-      type: Schema.optional(Schema.Literals(["json_object", "json_schema"])),
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["json_object", "json_schema"]),
+          Schema.String,
+        ]),
+      ),
     }).pipe(Schema.encodeKeys({ jsonSchema: "json_schema", type: "type" })),
   ),
   stream: Schema.optional(Schema.Boolean),

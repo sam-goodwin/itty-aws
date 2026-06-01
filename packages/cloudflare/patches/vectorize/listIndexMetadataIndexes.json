@@ -1,11 +1,24 @@
 {
   "errors": {
-    "NotFound": [{ "code": 3000 }]
+    "NotFound": [
+      {
+        "code": 3000
+      }
+    ],
+    "Gone": [
+      {
+        "code": 3005
+      }
+    ]
   },
   "response": {
     "properties": {
       "metadataIndexes[].indexType": {
-        "addValues": ["String", "Number", "Boolean"]
+        "addValues": [
+          "String",
+          "Number",
+          "Boolean"
+        ]
       }
     }
   }

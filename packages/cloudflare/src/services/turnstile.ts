@@ -41,14 +41,19 @@ export interface RotateSecretWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
   botFightMode: boolean;
   /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, this setting can determine the clearance level to be set */
-  clearanceLevel: "no_clearance" | "jschallenge" | "managed" | "interactive";
+  clearanceLevel:
+    | "no_clearance"
+    | "jschallenge"
+    | "managed"
+    | "interactive"
+    | (string & {});
   /** When the widget was created. */
   createdOn: string;
   domains: string[];
   /** Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId: boolean;
   /** Widget Mode */
-  mode: "non-interactive" | "invisible" | "managed";
+  mode: "non-interactive" | "invisible" | "managed" | (string & {});
   /** When the widget was modified. */
   modifiedOn: string;
   /** Human readable widget name. Not unique. Cloudflare suggests that you set this to a meaningful string to make it easier to identify your widget, and where it is used. */
@@ -56,7 +61,7 @@ export interface RotateSecretWidgetResponse {
   /** Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel: boolean;
   /** Region where this widget can be used. This cannot be changed after creation. */
-  region: "world" | "china";
+  region: "world" | "china" | (string & {});
   /** Secret key for this widget. */
   secret: string;
   /** Widget item identifier tag. */
@@ -66,20 +71,26 @@ export interface RotateSecretWidgetResponse {
 export const RotateSecretWidgetResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     botFightMode: Schema.Boolean,
-    clearanceLevel: Schema.Literals([
-      "no_clearance",
-      "jschallenge",
-      "managed",
-      "interactive",
+    clearanceLevel: Schema.Union([
+      Schema.Literals([
+        "no_clearance",
+        "jschallenge",
+        "managed",
+        "interactive",
+      ]),
+      Schema.String,
     ]),
     createdOn: Schema.String,
     domains: Schema.Array(Schema.String),
     ephemeralId: Schema.Boolean,
-    mode: Schema.Literals(["non-interactive", "invisible", "managed"]),
+    mode: Schema.Union([
+      Schema.Literals(["non-interactive", "invisible", "managed"]),
+      Schema.String,
+    ]),
     modifiedOn: Schema.String,
     name: Schema.String,
     offlabel: Schema.Boolean,
-    region: Schema.Literals(["world", "china"]),
+    region: Schema.Union([Schema.Literals(["world", "china"]), Schema.String]),
     secret: Schema.String,
     sitekey: Schema.String,
   })
@@ -140,14 +151,19 @@ export interface GetWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
   botFightMode: boolean;
   /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, this setting can determine the clearance level to be set */
-  clearanceLevel: "no_clearance" | "jschallenge" | "managed" | "interactive";
+  clearanceLevel:
+    | "no_clearance"
+    | "jschallenge"
+    | "managed"
+    | "interactive"
+    | (string & {});
   /** When the widget was created. */
   createdOn: string;
   domains: string[];
   /** Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId: boolean;
   /** Widget Mode */
-  mode: "non-interactive" | "invisible" | "managed";
+  mode: "non-interactive" | "invisible" | "managed" | (string & {});
   /** When the widget was modified. */
   modifiedOn: string;
   /** Human readable widget name. Not unique. Cloudflare suggests that you set this to a meaningful string to make it easier to identify your widget, and where it is used. */
@@ -155,7 +171,7 @@ export interface GetWidgetResponse {
   /** Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel: boolean;
   /** Region where this widget can be used. This cannot be changed after creation. */
-  region: "world" | "china";
+  region: "world" | "china" | (string & {});
   /** Secret key for this widget. */
   secret: string;
   /** Widget item identifier tag. */
@@ -164,20 +180,21 @@ export interface GetWidgetResponse {
 
 export const GetWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   botFightMode: Schema.Boolean,
-  clearanceLevel: Schema.Literals([
-    "no_clearance",
-    "jschallenge",
-    "managed",
-    "interactive",
+  clearanceLevel: Schema.Union([
+    Schema.Literals(["no_clearance", "jschallenge", "managed", "interactive"]),
+    Schema.String,
   ]),
   createdOn: Schema.String,
   domains: Schema.Array(Schema.String),
   ephemeralId: Schema.Boolean,
-  mode: Schema.Literals(["non-interactive", "invisible", "managed"]),
+  mode: Schema.Union([
+    Schema.Literals(["non-interactive", "invisible", "managed"]),
+    Schema.String,
+  ]),
   modifiedOn: Schema.String,
   name: Schema.String,
   offlabel: Schema.Boolean,
-  region: Schema.Literals(["world", "china"]),
+  region: Schema.Union([Schema.Literals(["world", "china"]), Schema.String]),
   secret: Schema.String,
   sitekey: Schema.String,
 })
@@ -220,23 +237,32 @@ export interface ListWidgetsRequest {
   page?: number;
   perPage?: number;
   /** Query param: Direction to order widgets. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Filter widgets by field using case-insensitive substring matching. Format: `field:value`  Supported fields:  - `name` - Filter by widget name (e.g., `filter=name:login-form`) - `sitekey`  */
   filter?: string;
   /** Query param: Field to order widgets by. */
-  order?: "id" | "sitekey" | "name" | "created_on" | "modified_on";
+  order?:
+    | "id"
+    | "sitekey"
+    | "name"
+    | "created_on"
+    | "modified_on"
+    | (string & {});
 }
 
 export const ListWidgetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   order: Schema.optional(
-    Schema.Literals(["id", "sitekey", "name", "created_on", "modified_on"]),
+    Schema.Union([
+      Schema.Literals(["id", "sitekey", "name", "created_on", "modified_on"]),
+      Schema.String,
+    ]),
   ).pipe(T.HttpQuery("order")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/challenges/widgets" }),
@@ -245,15 +271,20 @@ export const ListWidgetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ListWidgetsResponse {
   result: {
     botFightMode: boolean;
-    clearanceLevel: "no_clearance" | "jschallenge" | "managed" | "interactive";
+    clearanceLevel:
+      | "no_clearance"
+      | "jschallenge"
+      | "managed"
+      | "interactive"
+      | (string & {});
     createdOn: string;
     domains: string[];
     ephemeralId: boolean;
-    mode: "non-interactive" | "invisible" | "managed";
+    mode: "non-interactive" | "invisible" | "managed" | (string & {});
     modifiedOn: string;
     name: string;
     offlabel: boolean;
-    region: "world" | "china";
+    region: "world" | "china" | (string & {});
     sitekey: string;
   }[];
   resultInfo?: {
@@ -268,20 +299,29 @@ export const ListWidgetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       botFightMode: Schema.Boolean,
-      clearanceLevel: Schema.Literals([
-        "no_clearance",
-        "jschallenge",
-        "managed",
-        "interactive",
+      clearanceLevel: Schema.Union([
+        Schema.Literals([
+          "no_clearance",
+          "jschallenge",
+          "managed",
+          "interactive",
+        ]),
+        Schema.String,
       ]),
       createdOn: Schema.String,
       domains: Schema.Array(Schema.String),
       ephemeralId: Schema.Boolean,
-      mode: Schema.Literals(["non-interactive", "invisible", "managed"]),
+      mode: Schema.Union([
+        Schema.Literals(["non-interactive", "invisible", "managed"]),
+        Schema.String,
+      ]),
       modifiedOn: Schema.String,
       name: Schema.String,
       offlabel: Schema.Boolean,
-      region: Schema.Literals(["world", "china"]),
+      region: Schema.Union([
+        Schema.Literals(["world", "china"]),
+        Schema.String,
+      ]),
       sitekey: Schema.String,
     }).pipe(
       Schema.encodeKeys({
@@ -345,11 +385,17 @@ export interface CreateWidgetRequest {
   /** Path param: Identifier */
   accountId: string;
   /** Query param: Direction to order widgets. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Filter widgets by field using case-insensitive substring matching. Format: `field:value`  Supported fields:  - `name` - Filter by widget name (e.g., `filter=name:login-form`) - `sitekey`  */
   filter?: string;
   /** Query param: Field to order widgets by. */
-  order?: "id" | "sitekey" | "name" | "created_on" | "modified_on";
+  order?:
+    | "id"
+    | "sitekey"
+    | "name"
+    | "created_on"
+    | "modified_on"
+    | (string & {});
   /** Query param: Page number of paginated results. */
   page?: number;
   /** Query param: Number of items per page. */
@@ -357,42 +403,63 @@ export interface CreateWidgetRequest {
   /** Body param */
   domains: string[];
   /** Body param: Widget Mode */
-  mode: "non-interactive" | "invisible" | "managed";
+  mode: "non-interactive" | "invisible" | "managed" | (string & {});
   /** Body param: Human readable widget name. Not unique. Cloudflare suggests that you set this to a meaningful string to make it easier to identify your widget, and where it is used. */
   name: string;
   /** Body param: If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
   botFightMode?: boolean;
   /** Body param: If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, this setting can determine the clearance level to be set */
-  clearanceLevel?: "no_clearance" | "jschallenge" | "managed" | "interactive";
+  clearanceLevel?:
+    | "no_clearance"
+    | "jschallenge"
+    | "managed"
+    | "interactive"
+    | (string & {});
   /** Body param: Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId?: boolean;
   /** Body param: Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel?: boolean;
   /** Body param: Region where this widget can be used. This cannot be changed after creation. */
-  region?: "world" | "china";
+  region?: "world" | "china" | (string & {});
 }
 
 export const CreateWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   order: Schema.optional(
-    Schema.Literals(["id", "sitekey", "name", "created_on", "modified_on"]),
+    Schema.Union([
+      Schema.Literals(["id", "sitekey", "name", "created_on", "modified_on"]),
+      Schema.String,
+    ]),
   ).pipe(T.HttpQuery("order")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   domains: Schema.Array(Schema.String),
-  mode: Schema.Literals(["non-interactive", "invisible", "managed"]),
+  mode: Schema.Union([
+    Schema.Literals(["non-interactive", "invisible", "managed"]),
+    Schema.String,
+  ]),
   name: Schema.String,
   botFightMode: Schema.optional(Schema.Boolean),
   clearanceLevel: Schema.optional(
-    Schema.Literals(["no_clearance", "jschallenge", "managed", "interactive"]),
+    Schema.Union([
+      Schema.Literals([
+        "no_clearance",
+        "jschallenge",
+        "managed",
+        "interactive",
+      ]),
+      Schema.String,
+    ]),
   ),
   ephemeralId: Schema.optional(Schema.Boolean),
   offlabel: Schema.optional(Schema.Boolean),
-  region: Schema.optional(Schema.Literals(["world", "china"])),
+  region: Schema.optional(
+    Schema.Union([Schema.Literals(["world", "china"]), Schema.String]),
+  ),
 }).pipe(
   Schema.encodeKeys({
     domains: "domains",
@@ -411,14 +478,19 @@ export interface CreateWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
   botFightMode: boolean;
   /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, this setting can determine the clearance level to be set */
-  clearanceLevel: "no_clearance" | "jschallenge" | "managed" | "interactive";
+  clearanceLevel:
+    | "no_clearance"
+    | "jschallenge"
+    | "managed"
+    | "interactive"
+    | (string & {});
   /** When the widget was created. */
   createdOn: string;
   domains: string[];
   /** Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId: boolean;
   /** Widget Mode */
-  mode: "non-interactive" | "invisible" | "managed";
+  mode: "non-interactive" | "invisible" | "managed" | (string & {});
   /** When the widget was modified. */
   modifiedOn: string;
   /** Human readable widget name. Not unique. Cloudflare suggests that you set this to a meaningful string to make it easier to identify your widget, and where it is used. */
@@ -426,7 +498,7 @@ export interface CreateWidgetResponse {
   /** Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel: boolean;
   /** Region where this widget can be used. This cannot be changed after creation. */
-  region: "world" | "china";
+  region: "world" | "china" | (string & {});
   /** Secret key for this widget. */
   secret: string;
   /** Widget item identifier tag. */
@@ -435,20 +507,21 @@ export interface CreateWidgetResponse {
 
 export const CreateWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   botFightMode: Schema.Boolean,
-  clearanceLevel: Schema.Literals([
-    "no_clearance",
-    "jschallenge",
-    "managed",
-    "interactive",
+  clearanceLevel: Schema.Union([
+    Schema.Literals(["no_clearance", "jschallenge", "managed", "interactive"]),
+    Schema.String,
   ]),
   createdOn: Schema.String,
   domains: Schema.Array(Schema.String),
   ephemeralId: Schema.Boolean,
-  mode: Schema.Literals(["non-interactive", "invisible", "managed"]),
+  mode: Schema.Union([
+    Schema.Literals(["non-interactive", "invisible", "managed"]),
+    Schema.String,
+  ]),
   modifiedOn: Schema.String,
   name: Schema.String,
   offlabel: Schema.Boolean,
-  region: Schema.Literals(["world", "china"]),
+  region: Schema.Union([Schema.Literals(["world", "china"]), Schema.String]),
   secret: Schema.String,
   sitekey: Schema.String,
 })
@@ -492,34 +565,52 @@ export interface UpdateWidgetRequest {
   /** Body param */
   domains: string[];
   /** Body param: Widget Mode */
-  mode: "non-interactive" | "invisible" | "managed";
+  mode: "non-interactive" | "invisible" | "managed" | (string & {});
   /** Body param: Human readable widget name. Not unique. Cloudflare suggests that you set this to a meaningful string to make it easier to identify your widget, and where it is used. */
   name: string;
   /** Body param: If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
   botFightMode?: boolean;
   /** Body param: If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, this setting can determine the clearance level to be set */
-  clearanceLevel?: "no_clearance" | "jschallenge" | "managed" | "interactive";
+  clearanceLevel?:
+    | "no_clearance"
+    | "jschallenge"
+    | "managed"
+    | "interactive"
+    | (string & {});
   /** Body param: Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId?: boolean;
   /** Body param: Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel?: boolean;
   /** Body param: Region where this widget can be used. This cannot be changed after creation. */
-  region?: "world" | "china";
+  region?: "world" | "china" | (string & {});
 }
 
 export const UpdateWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   sitekey: Schema.String.pipe(T.HttpPath("sitekey")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   domains: Schema.Array(Schema.String),
-  mode: Schema.Literals(["non-interactive", "invisible", "managed"]),
+  mode: Schema.Union([
+    Schema.Literals(["non-interactive", "invisible", "managed"]),
+    Schema.String,
+  ]),
   name: Schema.String,
   botFightMode: Schema.optional(Schema.Boolean),
   clearanceLevel: Schema.optional(
-    Schema.Literals(["no_clearance", "jschallenge", "managed", "interactive"]),
+    Schema.Union([
+      Schema.Literals([
+        "no_clearance",
+        "jschallenge",
+        "managed",
+        "interactive",
+      ]),
+      Schema.String,
+    ]),
   ),
   ephemeralId: Schema.optional(Schema.Boolean),
   offlabel: Schema.optional(Schema.Boolean),
-  region: Schema.optional(Schema.Literals(["world", "china"])),
+  region: Schema.optional(
+    Schema.Union([Schema.Literals(["world", "china"]), Schema.String]),
+  ),
 }).pipe(
   Schema.encodeKeys({
     domains: "domains",
@@ -541,14 +632,19 @@ export interface UpdateWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
   botFightMode: boolean;
   /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, this setting can determine the clearance level to be set */
-  clearanceLevel: "no_clearance" | "jschallenge" | "managed" | "interactive";
+  clearanceLevel:
+    | "no_clearance"
+    | "jschallenge"
+    | "managed"
+    | "interactive"
+    | (string & {});
   /** When the widget was created. */
   createdOn: string;
   domains: string[];
   /** Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId: boolean;
   /** Widget Mode */
-  mode: "non-interactive" | "invisible" | "managed";
+  mode: "non-interactive" | "invisible" | "managed" | (string & {});
   /** When the widget was modified. */
   modifiedOn: string;
   /** Human readable widget name. Not unique. Cloudflare suggests that you set this to a meaningful string to make it easier to identify your widget, and where it is used. */
@@ -556,7 +652,7 @@ export interface UpdateWidgetResponse {
   /** Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel: boolean;
   /** Region where this widget can be used. This cannot be changed after creation. */
-  region: "world" | "china";
+  region: "world" | "china" | (string & {});
   /** Secret key for this widget. */
   secret: string;
   /** Widget item identifier tag. */
@@ -565,20 +661,21 @@ export interface UpdateWidgetResponse {
 
 export const UpdateWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   botFightMode: Schema.Boolean,
-  clearanceLevel: Schema.Literals([
-    "no_clearance",
-    "jschallenge",
-    "managed",
-    "interactive",
+  clearanceLevel: Schema.Union([
+    Schema.Literals(["no_clearance", "jschallenge", "managed", "interactive"]),
+    Schema.String,
   ]),
   createdOn: Schema.String,
   domains: Schema.Array(Schema.String),
   ephemeralId: Schema.Boolean,
-  mode: Schema.Literals(["non-interactive", "invisible", "managed"]),
+  mode: Schema.Union([
+    Schema.Literals(["non-interactive", "invisible", "managed"]),
+    Schema.String,
+  ]),
   modifiedOn: Schema.String,
   name: Schema.String,
   offlabel: Schema.Boolean,
-  region: Schema.Literals(["world", "china"]),
+  region: Schema.Union([Schema.Literals(["world", "china"]), Schema.String]),
   secret: Schema.String,
   sitekey: Schema.String,
 })
@@ -635,14 +732,19 @@ export interface DeleteWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
   botFightMode: boolean;
   /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, this setting can determine the clearance level to be set */
-  clearanceLevel: "no_clearance" | "jschallenge" | "managed" | "interactive";
+  clearanceLevel:
+    | "no_clearance"
+    | "jschallenge"
+    | "managed"
+    | "interactive"
+    | (string & {});
   /** When the widget was created. */
   createdOn: string;
   domains: string[];
   /** Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId: boolean;
   /** Widget Mode */
-  mode: "non-interactive" | "invisible" | "managed";
+  mode: "non-interactive" | "invisible" | "managed" | (string & {});
   /** When the widget was modified. */
   modifiedOn: string;
   /** Human readable widget name. Not unique. Cloudflare suggests that you set this to a meaningful string to make it easier to identify your widget, and where it is used. */
@@ -650,7 +752,7 @@ export interface DeleteWidgetResponse {
   /** Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel: boolean;
   /** Region where this widget can be used. This cannot be changed after creation. */
-  region: "world" | "china";
+  region: "world" | "china" | (string & {});
   /** Secret key for this widget. */
   secret: string;
   /** Widget item identifier tag. */
@@ -659,20 +761,21 @@ export interface DeleteWidgetResponse {
 
 export const DeleteWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   botFightMode: Schema.Boolean,
-  clearanceLevel: Schema.Literals([
-    "no_clearance",
-    "jschallenge",
-    "managed",
-    "interactive",
+  clearanceLevel: Schema.Union([
+    Schema.Literals(["no_clearance", "jschallenge", "managed", "interactive"]),
+    Schema.String,
   ]),
   createdOn: Schema.String,
   domains: Schema.Array(Schema.String),
   ephemeralId: Schema.Boolean,
-  mode: Schema.Literals(["non-interactive", "invisible", "managed"]),
+  mode: Schema.Union([
+    Schema.Literals(["non-interactive", "invisible", "managed"]),
+    Schema.String,
+  ]),
   modifiedOn: Schema.String,
   name: Schema.String,
   offlabel: Schema.Boolean,
-  region: Schema.Literals(["world", "china"]),
+  region: Schema.Union([Schema.Literals(["world", "china"]), Schema.String]),
   secret: Schema.String,
   sitekey: Schema.String,
 })

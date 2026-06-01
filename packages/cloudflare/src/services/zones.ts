@@ -13,6 +13,42 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class DomainNotRegistered extends Schema.TaggedErrorClass<DomainNotRegistered>()(
+  "DomainNotRegistered",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DomainNotRegistered, [{ code: 1099 }]);
+
+export class InvalidDomain extends Schema.TaggedErrorClass<InvalidDomain>()(
+  "InvalidDomain",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidDomain, [{ code: 1002 }]);
+
+export class InvalidZoneIdentifier extends Schema.TaggedErrorClass<InvalidZoneIdentifier>()(
+  "InvalidZoneIdentifier",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidZoneIdentifier, [
+  { code: 9109, message: { includes: "Invalid zone identifier" } },
+]);
+
+export class SubdomainNotAllowed extends Schema.TaggedErrorClass<SubdomainNotAllowed>()(
+  "SubdomainNotAllowed",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SubdomainNotAllowed, [{ code: 1116 }]);
+
+export class ZoneAlreadyExists extends Schema.TaggedErrorClass<ZoneAlreadyExists>()(
+  "ZoneAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ZoneAlreadyExists, [{ code: 1061 }]);
+
+// =============================================================================
 // ActivationCheck
 // =============================================================================
 
@@ -1025,7 +1061,13 @@ export interface GetPlanResponse {
   /** Indicates whether this plan is managed externally. */
   externallyManaged?: boolean | null;
   /** The frequency at which you will be billed for this plan. */
-  frequency?: "weekly" | "monthly" | "quarterly" | "yearly" | null;
+  frequency?:
+    | "weekly"
+    | "monthly"
+    | "quarterly"
+    | "yearly"
+    | (string & {})
+    | null;
   /** Indicates whether you are currently subscribed to this plan. */
   isSubscribed?: boolean | null;
   /** Indicates whether this plan has a legacy discount applied. */
@@ -1047,7 +1089,10 @@ export const GetPlanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   frequency: Schema.optional(
     Schema.Union([
-      Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+      Schema.Union([
+        Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -1103,7 +1148,13 @@ export interface ListPlansResponse {
     canSubscribe?: boolean | null;
     currency?: string | null;
     externallyManaged?: boolean | null;
-    frequency?: "weekly" | "monthly" | "quarterly" | "yearly" | null;
+    frequency?:
+      | "weekly"
+      | "monthly"
+      | "quarterly"
+      | "yearly"
+      | (string & {})
+      | null;
     isSubscribed?: boolean | null;
     legacyDiscount?: boolean | null;
     legacyId?: string | null;
@@ -1125,7 +1176,10 @@ export const ListPlansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       frequency: Schema.optional(
         Schema.Union([
-          Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+          Schema.Union([
+            Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+            Schema.String,
+          ]),
           Schema.Null,
         ]),
       ),
@@ -1198,13 +1252,20 @@ export interface GetRatePlanResponse {
             | "page_rules"
             | "dedicated_certificates"
             | "dedicated_certificates_custom"
+            | (string & {})
             | null;
           unitPrice?: number | null;
         }[]
       | null;
     currency?: string | null;
     duration?: number | null;
-    frequency?: "weekly" | "monthly" | "quarterly" | "yearly" | null;
+    frequency?:
+      | "weekly"
+      | "monthly"
+      | "quarterly"
+      | "yearly"
+      | (string & {})
+      | null;
     name?: string | null;
   }[];
 }
@@ -1222,11 +1283,14 @@ export const GetRatePlanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ),
               name: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "zones",
-                    "page_rules",
-                    "dedicated_certificates",
-                    "dedicated_certificates_custom",
+                  Schema.Union([
+                    Schema.Literals([
+                      "zones",
+                      "page_rules",
+                      "dedicated_certificates",
+                      "dedicated_certificates_custom",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -1249,7 +1313,10 @@ export const GetRatePlanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       duration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       frequency: Schema.optional(
         Schema.Union([
-          Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+          Schema.Union([
+            Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+            Schema.String,
+          ]),
           Schema.Null,
         ]),
       ),
@@ -1295,13 +1362,13 @@ export const GetSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSettingResponse =
   | {
       id: "0rtt";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "advanced_ddos";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -1312,25 +1379,25 @@ export type GetSettingResponse =
     }
   | {
       id: "always_online";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "always_use_https";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "automatic_https_rewrites";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "brotli";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -1342,13 +1409,13 @@ export type GetSettingResponse =
     }
   | {
       id: "browser_check";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "cache_level";
-      value: "aggressive" | "basic" | "simplified";
+      value: "aggressive" | "basic" | "simplified" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -1368,19 +1435,20 @@ export type GetSettingResponse =
         | "86400"
         | "604800"
         | "2592000"
-        | "31536000";
+        | "31536000"
+        | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "china_network_enabled";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "content_converter";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -1392,20 +1460,20 @@ export type GetSettingResponse =
     }
   | {
       id: "cname_flattening";
-      value: "flatten_at_root" | "flatten_all";
+      value: "flatten_at_root" | "flatten_all" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "development_mode";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
       timeRemaining?: number | null;
     }
   | {
       id: "early_hints";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -1432,55 +1500,56 @@ export type GetSettingResponse =
         | "345600"
         | "432000"
         | "518400"
-        | "604800";
+        | "604800"
+        | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "email_obfuscation";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "h2_prioritization";
-      value: "on" | "off" | "custom";
+      value: "on" | "off" | "custom" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "hotlink_protection";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "http2";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "http3";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "image_resizing";
-      value: "on" | "off" | "open";
+      value: "on" | "off" | "open" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "ip_geolocation";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "ipv6";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -1504,19 +1573,20 @@ export type GetSettingResponse =
         | "450"
         | "475"
         | "500"
-        | "1000";
+        | "1000"
+        | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "min_tls_version";
-      value: "1.0" | "1.1" | "1.2" | "1.3";
+      value: "1.0" | "1.1" | "1.2" | "1.3" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "mirage";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -1528,25 +1598,25 @@ export type GetSettingResponse =
     }
   | {
       id: "opportunistic_encryption";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "opportunistic_onion";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "orange_to_orange";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "origin_error_page_pass_thru";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -1558,23 +1628,23 @@ export type GetSettingResponse =
   | {
       id: "origin_max_http_version";
       modifiedOn?: string | null;
-      value?: "2" | "1" | null;
+      value?: "2" | "1" | (string & {}) | null;
     }
   | {
       id: "polish";
-      value: "off" | "lossless" | "lossy";
+      value: "off" | "lossless" | "lossy" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "prefetch_preload";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "privacy_pass";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -1586,31 +1656,31 @@ export type GetSettingResponse =
     }
   | {
       id: "pseudo_ipv4";
-      value: "off" | "add_header" | "overwrite_header";
+      value: "off" | "add_header" | "overwrite_header" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "redirects_for_ai_training";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "replace_insecure_js";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "response_buffering";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "rocket_loader";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -1629,7 +1699,7 @@ export type GetSettingResponse =
     }
   | {
       id: "search_for_agents";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -1655,56 +1725,57 @@ export type GetSettingResponse =
         | "low"
         | "medium"
         | "high"
-        | "under_attack";
+        | "under_attack"
+        | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "server_side_exclude";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "sha1_support";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "sort_query_string_for_cache";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "ssl";
-      value: "off" | "flexible" | "full" | "strict";
+      value: "off" | "flexible" | "full" | "strict" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | { id?: "ssl_recommender" | null; enabled?: boolean | null }
   | {
       id: "tls_1_2_only";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "tls_1_3";
-      value: "on" | "off" | "zrt";
+      value: "on" | "off" | "zrt" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "tls_client_auth";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "transformations";
-      value: "on" | "off" | "open";
+      value: "on" | "off" | "open" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -1716,25 +1787,25 @@ export type GetSettingResponse =
     }
   | {
       id: "true_client_ip_header";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "waf";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "webp";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "websockets";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     };
@@ -1742,7 +1813,7 @@ export type GetSettingResponse =
 export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.Literal("0rtt"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -1757,7 +1828,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("advanced_ddos"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -1772,7 +1843,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("always_online"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -1787,7 +1858,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("always_use_https"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -1802,7 +1873,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("automatic_https_rewrites"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -1817,7 +1888,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("brotli"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -1847,7 +1918,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("browser_check"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -1862,7 +1933,10 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("cache_level"),
-    value: Schema.Literals(["aggressive", "basic", "simplified"]),
+    value: Schema.Union([
+      Schema.Literals(["aggressive", "basic", "simplified"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -1877,21 +1951,24 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("challenge_ttl"),
-    value: Schema.Literals([
-      "300",
-      "900",
-      "1800",
-      "2700",
-      "3600",
-      "7200",
-      "10800",
-      "14400",
-      "28800",
-      "57600",
-      "86400",
-      "604800",
-      "2592000",
-      "31536000",
+    value: Schema.Union([
+      Schema.Literals([
+        "300",
+        "900",
+        "1800",
+        "2700",
+        "3600",
+        "7200",
+        "10800",
+        "14400",
+        "28800",
+        "57600",
+        "86400",
+        "604800",
+        "2592000",
+        "31536000",
+      ]),
+      Schema.String,
     ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
@@ -1907,7 +1984,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("china_network_enabled"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -1922,7 +1999,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("content_converter"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -1952,7 +2029,10 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("cname_flattening"),
-    value: Schema.Literals(["flatten_at_root", "flatten_all"]),
+    value: Schema.Union([
+      Schema.Literals(["flatten_at_root", "flatten_all"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -1967,7 +2047,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("development_mode"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -1984,7 +2064,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("early_hints"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -1999,28 +2079,31 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("edge_cache_ttl"),
-    value: Schema.Literals([
-      "30",
-      "60",
-      "300",
-      "1200",
-      "1800",
-      "3600",
-      "7200",
-      "10800",
-      "14400",
-      "18000",
-      "28800",
-      "43200",
-      "57600",
-      "72000",
-      "86400",
-      "172800",
-      "259200",
-      "345600",
-      "432000",
-      "518400",
-      "604800",
+    value: Schema.Union([
+      Schema.Literals([
+        "30",
+        "60",
+        "300",
+        "1200",
+        "1800",
+        "3600",
+        "7200",
+        "10800",
+        "14400",
+        "18000",
+        "28800",
+        "43200",
+        "57600",
+        "72000",
+        "86400",
+        "172800",
+        "259200",
+        "345600",
+        "432000",
+        "518400",
+        "604800",
+      ]),
+      Schema.String,
     ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
@@ -2036,7 +2119,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("email_obfuscation"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2051,7 +2134,10 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("h2_prioritization"),
-    value: Schema.Literals(["on", "off", "custom"]),
+    value: Schema.Union([
+      Schema.Literals(["on", "off", "custom"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2066,7 +2152,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("hotlink_protection"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2081,7 +2167,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("http2"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2096,7 +2182,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("http3"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2111,7 +2197,10 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("image_resizing"),
-    value: Schema.Literals(["on", "off", "open"]),
+    value: Schema.Union([
+      Schema.Literals(["on", "off", "open"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2126,7 +2215,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("ip_geolocation"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2141,7 +2230,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("ipv6"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2156,25 +2245,28 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("max_upload"),
-    value: Schema.Literals([
-      "100",
-      "125",
-      "150",
-      "175",
-      "200",
-      "225",
-      "250",
-      "275",
-      "300",
-      "325",
-      "350",
-      "375",
-      "400",
-      "425",
-      "450",
-      "475",
-      "500",
-      "1000",
+    value: Schema.Union([
+      Schema.Literals([
+        "100",
+        "125",
+        "150",
+        "175",
+        "200",
+        "225",
+        "250",
+        "275",
+        "300",
+        "325",
+        "350",
+        "375",
+        "400",
+        "425",
+        "450",
+        "475",
+        "500",
+        "1000",
+      ]),
+      Schema.String,
     ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
@@ -2190,7 +2282,10 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("min_tls_version"),
-    value: Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+    value: Schema.Union([
+      Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2205,7 +2300,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("mirage"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2237,7 +2332,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("opportunistic_encryption"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2252,7 +2347,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("opportunistic_onion"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2267,7 +2362,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("orange_to_orange"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2282,7 +2377,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("origin_error_page_pass_thru"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2297,7 +2392,10 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("polish"),
-    value: Schema.Literals(["off", "lossless", "lossy"]),
+    value: Schema.Union([
+      Schema.Literals(["off", "lossless", "lossy"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2312,7 +2410,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("prefetch_preload"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2327,7 +2425,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("privacy_pass"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2357,7 +2455,10 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("pseudo_ipv4"),
-    value: Schema.Literals(["off", "add_header", "overwrite_header"]),
+    value: Schema.Union([
+      Schema.Literals(["off", "add_header", "overwrite_header"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2372,7 +2473,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("redirects_for_ai_training"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2387,7 +2488,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("replace_insecure_js"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2402,7 +2503,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("response_buffering"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2417,7 +2518,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("rocket_loader"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2463,7 +2564,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("search_for_agents"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2526,13 +2627,16 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("security_level"),
-    value: Schema.Literals([
-      "off",
-      "essentially_off",
-      "low",
-      "medium",
-      "high",
-      "under_attack",
+    value: Schema.Union([
+      Schema.Literals([
+        "off",
+        "essentially_off",
+        "low",
+        "medium",
+        "high",
+        "under_attack",
+      ]),
+      Schema.String,
     ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
@@ -2548,7 +2652,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("server_side_exclude"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2563,7 +2667,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("sha1_support"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2578,7 +2682,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("sort_query_string_for_cache"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2593,7 +2697,10 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("ssl"),
-    value: Schema.Literals(["off", "flexible", "full", "strict"]),
+    value: Schema.Union([
+      Schema.Literals(["off", "flexible", "full", "strict"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2608,7 +2715,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("tls_1_2_only"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2623,7 +2730,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("tls_1_3"),
-    value: Schema.Literals(["on", "off", "zrt"]),
+    value: Schema.Union([Schema.Literals(["on", "off", "zrt"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2638,7 +2745,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("tls_client_auth"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2653,7 +2760,10 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("transformations"),
-    value: Schema.Literals(["on", "off", "open"]),
+    value: Schema.Union([
+      Schema.Literals(["on", "off", "open"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2683,7 +2793,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("true_client_ip_header"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2698,7 +2808,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("waf"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2713,7 +2823,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("webp"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2728,7 +2838,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("websockets"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2767,7 +2877,10 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     id: Schema.Literal("origin_max_http_version"),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     value: Schema.optional(
-      Schema.Union([Schema.Literals(["2", "1"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["2", "1"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
@@ -2817,13 +2930,13 @@ export const PatchSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchSettingResponse =
   | {
       id: "0rtt";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "advanced_ddos";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -2834,25 +2947,25 @@ export type PatchSettingResponse =
     }
   | {
       id: "always_online";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "always_use_https";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "automatic_https_rewrites";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "brotli";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -2864,13 +2977,13 @@ export type PatchSettingResponse =
     }
   | {
       id: "browser_check";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "cache_level";
-      value: "aggressive" | "basic" | "simplified";
+      value: "aggressive" | "basic" | "simplified" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -2890,19 +3003,20 @@ export type PatchSettingResponse =
         | "86400"
         | "604800"
         | "2592000"
-        | "31536000";
+        | "31536000"
+        | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "china_network_enabled";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "content_converter";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -2914,20 +3028,20 @@ export type PatchSettingResponse =
     }
   | {
       id: "cname_flattening";
-      value: "flatten_at_root" | "flatten_all";
+      value: "flatten_at_root" | "flatten_all" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "development_mode";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
       timeRemaining?: number | null;
     }
   | {
       id: "early_hints";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -2954,55 +3068,56 @@ export type PatchSettingResponse =
         | "345600"
         | "432000"
         | "518400"
-        | "604800";
+        | "604800"
+        | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "email_obfuscation";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "h2_prioritization";
-      value: "on" | "off" | "custom";
+      value: "on" | "off" | "custom" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "hotlink_protection";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "http2";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "http3";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "image_resizing";
-      value: "on" | "off" | "open";
+      value: "on" | "off" | "open" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "ip_geolocation";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "ipv6";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -3026,19 +3141,20 @@ export type PatchSettingResponse =
         | "450"
         | "475"
         | "500"
-        | "1000";
+        | "1000"
+        | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "min_tls_version";
-      value: "1.0" | "1.1" | "1.2" | "1.3";
+      value: "1.0" | "1.1" | "1.2" | "1.3" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "mirage";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -3050,25 +3166,25 @@ export type PatchSettingResponse =
     }
   | {
       id: "opportunistic_encryption";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "opportunistic_onion";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "orange_to_orange";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "origin_error_page_pass_thru";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -3080,23 +3196,23 @@ export type PatchSettingResponse =
   | {
       id: "origin_max_http_version";
       modifiedOn?: string | null;
-      value?: "2" | "1" | null;
+      value?: "2" | "1" | (string & {}) | null;
     }
   | {
       id: "polish";
-      value: "off" | "lossless" | "lossy";
+      value: "off" | "lossless" | "lossy" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "prefetch_preload";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "privacy_pass";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -3108,31 +3224,31 @@ export type PatchSettingResponse =
     }
   | {
       id: "pseudo_ipv4";
-      value: "off" | "add_header" | "overwrite_header";
+      value: "off" | "add_header" | "overwrite_header" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "redirects_for_ai_training";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "replace_insecure_js";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "response_buffering";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "rocket_loader";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -3151,7 +3267,7 @@ export type PatchSettingResponse =
     }
   | {
       id: "search_for_agents";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -3177,56 +3293,57 @@ export type PatchSettingResponse =
         | "low"
         | "medium"
         | "high"
-        | "under_attack";
+        | "under_attack"
+        | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "server_side_exclude";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "sha1_support";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "sort_query_string_for_cache";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "ssl";
-      value: "off" | "flexible" | "full" | "strict";
+      value: "off" | "flexible" | "full" | "strict" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | { id?: "ssl_recommender" | null; enabled?: boolean | null }
   | {
       id: "tls_1_2_only";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "tls_1_3";
-      value: "on" | "off" | "zrt";
+      value: "on" | "off" | "zrt" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "tls_client_auth";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "transformations";
-      value: "on" | "off" | "open";
+      value: "on" | "off" | "open" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -3238,25 +3355,25 @@ export type PatchSettingResponse =
     }
   | {
       id: "true_client_ip_header";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "waf";
-      value: "on" | "off";
+      value: "on" | "off" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "webp";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
   | {
       id: "websockets";
-      value: "off" | "on";
+      value: "off" | "on" | (string & {});
       editable?: true | false | null;
       modifiedOn?: string | null;
     };
@@ -3264,7 +3381,7 @@ export type PatchSettingResponse =
 export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.Literal("0rtt"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3279,7 +3396,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("advanced_ddos"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3294,7 +3411,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("always_online"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3309,7 +3426,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("always_use_https"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3324,7 +3441,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("automatic_https_rewrites"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3339,7 +3456,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("brotli"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3369,7 +3486,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("browser_check"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3384,7 +3501,10 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("cache_level"),
-    value: Schema.Literals(["aggressive", "basic", "simplified"]),
+    value: Schema.Union([
+      Schema.Literals(["aggressive", "basic", "simplified"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3399,21 +3519,24 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("challenge_ttl"),
-    value: Schema.Literals([
-      "300",
-      "900",
-      "1800",
-      "2700",
-      "3600",
-      "7200",
-      "10800",
-      "14400",
-      "28800",
-      "57600",
-      "86400",
-      "604800",
-      "2592000",
-      "31536000",
+    value: Schema.Union([
+      Schema.Literals([
+        "300",
+        "900",
+        "1800",
+        "2700",
+        "3600",
+        "7200",
+        "10800",
+        "14400",
+        "28800",
+        "57600",
+        "86400",
+        "604800",
+        "2592000",
+        "31536000",
+      ]),
+      Schema.String,
     ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
@@ -3429,7 +3552,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("china_network_enabled"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3444,7 +3567,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("content_converter"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3474,7 +3597,10 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("cname_flattening"),
-    value: Schema.Literals(["flatten_at_root", "flatten_all"]),
+    value: Schema.Union([
+      Schema.Literals(["flatten_at_root", "flatten_all"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3489,7 +3615,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("development_mode"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3506,7 +3632,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("early_hints"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3521,28 +3647,31 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("edge_cache_ttl"),
-    value: Schema.Literals([
-      "30",
-      "60",
-      "300",
-      "1200",
-      "1800",
-      "3600",
-      "7200",
-      "10800",
-      "14400",
-      "18000",
-      "28800",
-      "43200",
-      "57600",
-      "72000",
-      "86400",
-      "172800",
-      "259200",
-      "345600",
-      "432000",
-      "518400",
-      "604800",
+    value: Schema.Union([
+      Schema.Literals([
+        "30",
+        "60",
+        "300",
+        "1200",
+        "1800",
+        "3600",
+        "7200",
+        "10800",
+        "14400",
+        "18000",
+        "28800",
+        "43200",
+        "57600",
+        "72000",
+        "86400",
+        "172800",
+        "259200",
+        "345600",
+        "432000",
+        "518400",
+        "604800",
+      ]),
+      Schema.String,
     ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
@@ -3558,7 +3687,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("email_obfuscation"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3573,7 +3702,10 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("h2_prioritization"),
-    value: Schema.Literals(["on", "off", "custom"]),
+    value: Schema.Union([
+      Schema.Literals(["on", "off", "custom"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3588,7 +3720,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("hotlink_protection"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3603,7 +3735,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("http2"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3618,7 +3750,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("http3"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3633,7 +3765,10 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("image_resizing"),
-    value: Schema.Literals(["on", "off", "open"]),
+    value: Schema.Union([
+      Schema.Literals(["on", "off", "open"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3648,7 +3783,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("ip_geolocation"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3663,7 +3798,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("ipv6"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3678,25 +3813,28 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("max_upload"),
-    value: Schema.Literals([
-      "100",
-      "125",
-      "150",
-      "175",
-      "200",
-      "225",
-      "250",
-      "275",
-      "300",
-      "325",
-      "350",
-      "375",
-      "400",
-      "425",
-      "450",
-      "475",
-      "500",
-      "1000",
+    value: Schema.Union([
+      Schema.Literals([
+        "100",
+        "125",
+        "150",
+        "175",
+        "200",
+        "225",
+        "250",
+        "275",
+        "300",
+        "325",
+        "350",
+        "375",
+        "400",
+        "425",
+        "450",
+        "475",
+        "500",
+        "1000",
+      ]),
+      Schema.String,
     ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
@@ -3712,7 +3850,10 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("min_tls_version"),
-    value: Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+    value: Schema.Union([
+      Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3727,7 +3868,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("mirage"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3759,7 +3900,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("opportunistic_encryption"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3774,7 +3915,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("opportunistic_onion"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3789,7 +3930,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("orange_to_orange"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3804,7 +3945,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("origin_error_page_pass_thru"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3819,7 +3960,10 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("polish"),
-    value: Schema.Literals(["off", "lossless", "lossy"]),
+    value: Schema.Union([
+      Schema.Literals(["off", "lossless", "lossy"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3834,7 +3978,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("prefetch_preload"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3849,7 +3993,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("privacy_pass"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3879,7 +4023,10 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("pseudo_ipv4"),
-    value: Schema.Literals(["off", "add_header", "overwrite_header"]),
+    value: Schema.Union([
+      Schema.Literals(["off", "add_header", "overwrite_header"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3894,7 +4041,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("redirects_for_ai_training"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3909,7 +4056,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("replace_insecure_js"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3924,7 +4071,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("response_buffering"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3939,7 +4086,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("rocket_loader"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3985,7 +4132,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("search_for_agents"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -4048,13 +4195,16 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("security_level"),
-    value: Schema.Literals([
-      "off",
-      "essentially_off",
-      "low",
-      "medium",
-      "high",
-      "under_attack",
+    value: Schema.Union([
+      Schema.Literals([
+        "off",
+        "essentially_off",
+        "low",
+        "medium",
+        "high",
+        "under_attack",
+      ]),
+      Schema.String,
     ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
@@ -4070,7 +4220,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("server_side_exclude"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -4085,7 +4235,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("sha1_support"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -4100,7 +4250,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("sort_query_string_for_cache"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -4115,7 +4265,10 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("ssl"),
-    value: Schema.Literals(["off", "flexible", "full", "strict"]),
+    value: Schema.Union([
+      Schema.Literals(["off", "flexible", "full", "strict"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -4130,7 +4283,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("tls_1_2_only"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -4145,7 +4298,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("tls_1_3"),
-    value: Schema.Literals(["on", "off", "zrt"]),
+    value: Schema.Union([Schema.Literals(["on", "off", "zrt"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -4160,7 +4313,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("tls_client_auth"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -4175,7 +4328,10 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("transformations"),
-    value: Schema.Literals(["on", "off", "open"]),
+    value: Schema.Union([
+      Schema.Literals(["on", "off", "open"]),
+      Schema.String,
+    ]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -4205,7 +4361,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("true_client_ip_header"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -4220,7 +4376,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("waf"),
-    value: Schema.Literals(["on", "off"]),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -4235,7 +4391,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("webp"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -4250,7 +4406,7 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("websockets"),
-    value: Schema.Literals(["off", "on"]),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -4289,7 +4445,10 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     id: Schema.Literal("origin_max_http_version"),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     value: Schema.optional(
-      Schema.Union([Schema.Literals(["2", "1"]), Schema.Null]),
+      Schema.Union([
+        Schema.Union([Schema.Literals(["2", "1"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
@@ -4350,6 +4509,7 @@ export interface GetSubscriptionResponse {
     | "quarterly"
     | "yearly"
     | "not-applicable"
+    | (string & {})
     | null;
   /** The price of the subscription that will be billed, in US dollars. */
   price?: number | null;
@@ -4366,6 +4526,7 @@ export interface GetSubscriptionResponse {
       | "partners_pro"
       | "partners_business"
       | "partners_enterprise"
+      | (string & {})
       | null;
     currency?: string | null;
     externallyManaged?: boolean | null;
@@ -4383,6 +4544,7 @@ export interface GetSubscriptionResponse {
     | "Cancelled"
     | "Failed"
     | "Expired"
+    | (string & {})
     | null;
 }
 
@@ -4398,12 +4560,15 @@ export const GetSubscriptionResponse =
     ),
     frequency: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "weekly",
-          "monthly",
-          "quarterly",
-          "yearly",
-          "not-applicable",
+        Schema.Union([
+          Schema.Literals([
+            "weekly",
+            "monthly",
+            "quarterly",
+            "yearly",
+            "not-applicable",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -4414,17 +4579,20 @@ export const GetSubscriptionResponse =
         Schema.Struct({
           id: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "free",
-                "lite",
-                "pro",
-                "pro_plus",
-                "business",
-                "enterprise",
-                "partners_free",
-                "partners_pro",
-                "partners_business",
-                "partners_enterprise",
+              Schema.Union([
+                Schema.Literals([
+                  "free",
+                  "lite",
+                  "pro",
+                  "pro_plus",
+                  "business",
+                  "enterprise",
+                  "partners_free",
+                  "partners_pro",
+                  "partners_business",
+                  "partners_enterprise",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -4459,14 +4627,17 @@ export const GetSubscriptionResponse =
     ),
     state: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "Trial",
-          "Provisioned",
-          "Paid",
-          "AwaitingPayment",
-          "Cancelled",
-          "Failed",
-          "Expired",
+        Schema.Union([
+          Schema.Literals([
+            "Trial",
+            "Provisioned",
+            "Paid",
+            "AwaitingPayment",
+            "Cancelled",
+            "Failed",
+            "Expired",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -4505,7 +4676,7 @@ export interface CreateSubscriptionRequest {
   /** Path param: Identifier */
   zoneId: string;
   /** Body param: How often the subscription is renewed automatically. */
-  frequency?: "weekly" | "monthly" | "quarterly" | "yearly";
+  frequency?: "weekly" | "monthly" | "quarterly" | "yearly" | (string & {});
   /** Body param: The rate plan applied to the subscription. */
   ratePlan?: {
     id?:
@@ -4518,7 +4689,8 @@ export interface CreateSubscriptionRequest {
       | "partners_free"
       | "partners_pro"
       | "partners_business"
-      | "partners_enterprise";
+      | "partners_enterprise"
+      | (string & {});
     currency?: string;
     externallyManaged?: boolean;
     isContract?: boolean;
@@ -4532,22 +4704,28 @@ export const CreateSubscriptionRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     frequency: Schema.optional(
-      Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+      Schema.Union([
+        Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+        Schema.String,
+      ]),
     ),
     ratePlan: Schema.optional(
       Schema.Struct({
         id: Schema.optional(
-          Schema.Literals([
-            "free",
-            "lite",
-            "pro",
-            "pro_plus",
-            "business",
-            "enterprise",
-            "partners_free",
-            "partners_pro",
-            "partners_business",
-            "partners_enterprise",
+          Schema.Union([
+            Schema.Literals([
+              "free",
+              "lite",
+              "pro",
+              "pro_plus",
+              "business",
+              "enterprise",
+              "partners_free",
+              "partners_pro",
+              "partners_business",
+              "partners_enterprise",
+            ]),
+            Schema.String,
           ]),
         ),
         currency: Schema.optional(Schema.String),
@@ -4589,6 +4767,7 @@ export interface CreateSubscriptionResponse {
     | "quarterly"
     | "yearly"
     | "not-applicable"
+    | (string & {})
     | null;
   /** The price of the subscription that will be billed, in US dollars. */
   price?: number | null;
@@ -4605,6 +4784,7 @@ export interface CreateSubscriptionResponse {
       | "partners_pro"
       | "partners_business"
       | "partners_enterprise"
+      | (string & {})
       | null;
     currency?: string | null;
     externallyManaged?: boolean | null;
@@ -4622,6 +4802,7 @@ export interface CreateSubscriptionResponse {
     | "Cancelled"
     | "Failed"
     | "Expired"
+    | (string & {})
     | null;
 }
 
@@ -4637,12 +4818,15 @@ export const CreateSubscriptionResponse =
     ),
     frequency: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "weekly",
-          "monthly",
-          "quarterly",
-          "yearly",
-          "not-applicable",
+        Schema.Union([
+          Schema.Literals([
+            "weekly",
+            "monthly",
+            "quarterly",
+            "yearly",
+            "not-applicable",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -4653,17 +4837,20 @@ export const CreateSubscriptionResponse =
         Schema.Struct({
           id: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "free",
-                "lite",
-                "pro",
-                "pro_plus",
-                "business",
-                "enterprise",
-                "partners_free",
-                "partners_pro",
-                "partners_business",
-                "partners_enterprise",
+              Schema.Union([
+                Schema.Literals([
+                  "free",
+                  "lite",
+                  "pro",
+                  "pro_plus",
+                  "business",
+                  "enterprise",
+                  "partners_free",
+                  "partners_pro",
+                  "partners_business",
+                  "partners_enterprise",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -4698,14 +4885,17 @@ export const CreateSubscriptionResponse =
     ),
     state: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "Trial",
-          "Provisioned",
-          "Paid",
-          "AwaitingPayment",
-          "Cancelled",
-          "Failed",
-          "Expired",
+        Schema.Union([
+          Schema.Literals([
+            "Trial",
+            "Provisioned",
+            "Paid",
+            "AwaitingPayment",
+            "Cancelled",
+            "Failed",
+            "Expired",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -4744,7 +4934,7 @@ export interface UpdateSubscriptionRequest {
   /** Path param: Identifier */
   zoneId: string;
   /** Body param: How often the subscription is renewed automatically. */
-  frequency?: "weekly" | "monthly" | "quarterly" | "yearly";
+  frequency?: "weekly" | "monthly" | "quarterly" | "yearly" | (string & {});
   /** Body param: The rate plan applied to the subscription. */
   ratePlan?: {
     id?:
@@ -4757,7 +4947,8 @@ export interface UpdateSubscriptionRequest {
       | "partners_free"
       | "partners_pro"
       | "partners_business"
-      | "partners_enterprise";
+      | "partners_enterprise"
+      | (string & {});
     currency?: string;
     externallyManaged?: boolean;
     isContract?: boolean;
@@ -4771,22 +4962,28 @@ export const UpdateSubscriptionRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     frequency: Schema.optional(
-      Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+      Schema.Union([
+        Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+        Schema.String,
+      ]),
     ),
     ratePlan: Schema.optional(
       Schema.Struct({
         id: Schema.optional(
-          Schema.Literals([
-            "free",
-            "lite",
-            "pro",
-            "pro_plus",
-            "business",
-            "enterprise",
-            "partners_free",
-            "partners_pro",
-            "partners_business",
-            "partners_enterprise",
+          Schema.Union([
+            Schema.Literals([
+              "free",
+              "lite",
+              "pro",
+              "pro_plus",
+              "business",
+              "enterprise",
+              "partners_free",
+              "partners_pro",
+              "partners_business",
+              "partners_enterprise",
+            ]),
+            Schema.String,
           ]),
         ),
         currency: Schema.optional(Schema.String),
@@ -4828,6 +5025,7 @@ export interface UpdateSubscriptionResponse {
     | "quarterly"
     | "yearly"
     | "not-applicable"
+    | (string & {})
     | null;
   /** The price of the subscription that will be billed, in US dollars. */
   price?: number | null;
@@ -4844,6 +5042,7 @@ export interface UpdateSubscriptionResponse {
       | "partners_pro"
       | "partners_business"
       | "partners_enterprise"
+      | (string & {})
       | null;
     currency?: string | null;
     externallyManaged?: boolean | null;
@@ -4861,6 +5060,7 @@ export interface UpdateSubscriptionResponse {
     | "Cancelled"
     | "Failed"
     | "Expired"
+    | (string & {})
     | null;
 }
 
@@ -4876,12 +5076,15 @@ export const UpdateSubscriptionResponse =
     ),
     frequency: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "weekly",
-          "monthly",
-          "quarterly",
-          "yearly",
-          "not-applicable",
+        Schema.Union([
+          Schema.Literals([
+            "weekly",
+            "monthly",
+            "quarterly",
+            "yearly",
+            "not-applicable",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -4892,17 +5095,20 @@ export const UpdateSubscriptionResponse =
         Schema.Struct({
           id: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "free",
-                "lite",
-                "pro",
-                "pro_plus",
-                "business",
-                "enterprise",
-                "partners_free",
-                "partners_pro",
-                "partners_business",
-                "partners_enterprise",
+              Schema.Union([
+                Schema.Literals([
+                  "free",
+                  "lite",
+                  "pro",
+                  "pro_plus",
+                  "business",
+                  "enterprise",
+                  "partners_free",
+                  "partners_pro",
+                  "partners_business",
+                  "partners_enterprise",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -4937,14 +5143,17 @@ export const UpdateSubscriptionResponse =
     ),
     state: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "Trial",
-          "Provisioned",
-          "Paid",
-          "AwaitingPayment",
-          "Cancelled",
-          "Failed",
-          "Expired",
+        Schema.Union([
+          Schema.Literals([
+            "Trial",
+            "Provisioned",
+            "Paid",
+            "AwaitingPayment",
+            "Cancelled",
+            "Failed",
+            "Expired",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -5049,13 +5258,19 @@ export interface GetZoneResponse {
   /** @deprecated This has been replaced by Account memberships. */
   permissions?: string[] | null;
   /** The zone status on Cloudflare. */
-  status?: "initializing" | "pending" | "active" | "moved" | null;
+  status?:
+    | "initializing"
+    | "pending"
+    | "active"
+    | "moved"
+    | (string & {})
+    | null;
   /** The root organizational unit that this zone belongs to (such as a tenant or organization). */
   tenant?: { id?: string | null; name?: string | null } | null;
   /** The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization). */
   tenantUnit?: { id?: string | null } | null;
   /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. */
-  type?: "full" | "partial" | "secondary" | "internal" | null;
+  type?: "full" | "partial" | "secondary" | "internal" | (string & {}) | null;
   /** An array of domains used for custom name servers. This is only available for Business and Enterprise plans. */
   vanityNameServers?: string[] | null;
   /** Verification key for partial zone setup. */
@@ -5141,7 +5356,10 @@ export const GetZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals(["initializing", "pending", "active", "moved"]),
+      Schema.Union([
+        Schema.Literals(["initializing", "pending", "active", "moved"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -5164,7 +5382,10 @@ export const GetZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   type: Schema.optional(
     Schema.Union([
-      Schema.Literals(["full", "partial", "secondary", "internal"]),
+      Schema.Union([
+        Schema.Literals(["full", "partial", "secondary", "internal"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -5202,7 +5423,7 @@ export const GetZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetZoneResponse>;
 
-export type GetZoneError = DefaultErrors;
+export type GetZoneError = DefaultErrors | InvalidZoneIdentifier;
 
 export const getZone: API.OperationMethod<
   GetZoneRequest,
@@ -5212,7 +5433,7 @@ export const getZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetZoneRequest,
   output: GetZoneResponse,
-  errors: [],
+  errors: [InvalidZoneIdentifier],
 }));
 
 export interface ListZonesRequest {}
@@ -5261,10 +5482,16 @@ export interface ListZonesResponse {
     cnameSuffix?: string | null;
     paused?: boolean | null;
     permissions?: string[] | null;
-    status?: "initializing" | "pending" | "active" | "moved" | null;
+    status?:
+      | "initializing"
+      | "pending"
+      | "active"
+      | "moved"
+      | (string & {})
+      | null;
     tenant?: { id?: string | null; name?: string | null } | null;
     tenantUnit?: { id?: string | null } | null;
-    type?: "full" | "partial" | "secondary" | "internal" | null;
+    type?: "full" | "partial" | "secondary" | "internal" | (string & {}) | null;
     vanityNameServers?: string[] | null;
     verificationKey?: string | null;
   }[];
@@ -5368,7 +5595,10 @@ export const ListZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       status: Schema.optional(
         Schema.Union([
-          Schema.Literals(["initializing", "pending", "active", "moved"]),
+          Schema.Union([
+            Schema.Literals(["initializing", "pending", "active", "moved"]),
+            Schema.String,
+          ]),
           Schema.Null,
         ]),
       ),
@@ -5391,7 +5621,10 @@ export const ListZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       type: Schema.optional(
         Schema.Union([
-          Schema.Literals(["full", "partial", "secondary", "internal"]),
+          Schema.Union([
+            Schema.Literals(["full", "partial", "secondary", "internal"]),
+            Schema.String,
+          ]),
           Schema.Null,
         ]),
       ),
@@ -5476,7 +5709,7 @@ export interface CreateZoneRequest {
   /** The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters. */
   name: string;
   /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. */
-  type?: "full" | "partial" | "secondary" | "internal";
+  type?: "full" | "partial" | "secondary" | "internal" | (string & {});
 }
 
 export const CreateZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5485,7 +5718,10 @@ export const CreateZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
   name: Schema.String,
   type: Schema.optional(
-    Schema.Literals(["full", "partial", "secondary", "internal"]),
+    Schema.Union([
+      Schema.Literals(["full", "partial", "secondary", "internal"]),
+      Schema.String,
+    ]),
   ),
 }).pipe(
   T.Http({ method: "POST", path: "/zones" }),
@@ -5546,13 +5782,19 @@ export interface CreateZoneResponse {
   /** @deprecated This has been replaced by Account memberships. */
   permissions?: string[] | null;
   /** The zone status on Cloudflare. */
-  status?: "initializing" | "pending" | "active" | "moved" | null;
+  status?:
+    | "initializing"
+    | "pending"
+    | "active"
+    | "moved"
+    | (string & {})
+    | null;
   /** The root organizational unit that this zone belongs to (such as a tenant or organization). */
   tenant?: { id?: string | null; name?: string | null } | null;
   /** The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization). */
   tenantUnit?: { id?: string | null } | null;
   /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. */
-  type?: "full" | "partial" | "secondary" | "internal" | null;
+  type?: "full" | "partial" | "secondary" | "internal" | (string & {}) | null;
   /** An array of domains used for custom name servers. This is only available for Business and Enterprise plans. */
   vanityNameServers?: string[] | null;
   /** Verification key for partial zone setup. */
@@ -5638,7 +5880,10 @@ export const CreateZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals(["initializing", "pending", "active", "moved"]),
+      Schema.Union([
+        Schema.Literals(["initializing", "pending", "active", "moved"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -5661,7 +5906,10 @@ export const CreateZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   type: Schema.optional(
     Schema.Union([
-      Schema.Literals(["full", "partial", "secondary", "internal"]),
+      Schema.Union([
+        Schema.Literals(["full", "partial", "secondary", "internal"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -5701,7 +5949,12 @@ export const CreateZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateZoneResponse>;
 
-export type CreateZoneError = DefaultErrors;
+export type CreateZoneError =
+  | DefaultErrors
+  | ZoneAlreadyExists
+  | InvalidDomain
+  | DomainNotRegistered
+  | SubdomainNotAllowed;
 
 export const createZone: API.OperationMethod<
   CreateZoneRequest,
@@ -5711,7 +5964,12 @@ export const createZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateZoneRequest,
   output: CreateZoneResponse,
-  errors: [],
+  errors: [
+    ZoneAlreadyExists,
+    InvalidDomain,
+    DomainNotRegistered,
+    SubdomainNotAllowed,
+  ],
 }));
 
 export interface PatchZoneRequest {
@@ -5720,7 +5978,7 @@ export interface PatchZoneRequest {
   /** Body param: Indicates whether the zone is only using Cloudflare DNS services. A true value means the zone will not receive security or performance benefits. */
   paused?: boolean;
   /** Body param: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. This parameter is only available to Enterprise customers or if i */
-  type?: "full" | "partial" | "secondary" | "internal";
+  type?: "full" | "partial" | "secondary" | "internal" | (string & {});
   /** Body param: An array of domains used for custom name servers. This is only available for Business and Enterprise plans. */
   vanityNameServers?: string[];
 }
@@ -5729,7 +5987,10 @@ export const PatchZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   paused: Schema.optional(Schema.Boolean),
   type: Schema.optional(
-    Schema.Literals(["full", "partial", "secondary", "internal"]),
+    Schema.Union([
+      Schema.Literals(["full", "partial", "secondary", "internal"]),
+      Schema.String,
+    ]),
   ),
   vanityNameServers: Schema.optional(Schema.Array(Schema.String)),
 }).pipe(
@@ -5796,13 +6057,19 @@ export interface PatchZoneResponse {
   /** @deprecated This has been replaced by Account memberships. */
   permissions?: string[] | null;
   /** The zone status on Cloudflare. */
-  status?: "initializing" | "pending" | "active" | "moved" | null;
+  status?:
+    | "initializing"
+    | "pending"
+    | "active"
+    | "moved"
+    | (string & {})
+    | null;
   /** The root organizational unit that this zone belongs to (such as a tenant or organization). */
   tenant?: { id?: string | null; name?: string | null } | null;
   /** The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization). */
   tenantUnit?: { id?: string | null } | null;
   /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. */
-  type?: "full" | "partial" | "secondary" | "internal" | null;
+  type?: "full" | "partial" | "secondary" | "internal" | (string & {}) | null;
   /** An array of domains used for custom name servers. This is only available for Business and Enterprise plans. */
   vanityNameServers?: string[] | null;
   /** Verification key for partial zone setup. */
@@ -5888,7 +6155,10 @@ export const PatchZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals(["initializing", "pending", "active", "moved"]),
+      Schema.Union([
+        Schema.Literals(["initializing", "pending", "active", "moved"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -5911,7 +6181,10 @@ export const PatchZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   type: Schema.optional(
     Schema.Union([
-      Schema.Literals(["full", "partial", "secondary", "internal"]),
+      Schema.Union([
+        Schema.Literals(["full", "partial", "secondary", "internal"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -5951,7 +6224,7 @@ export const PatchZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchZoneResponse>;
 
-export type PatchZoneError = DefaultErrors;
+export type PatchZoneError = DefaultErrors | InvalidZoneIdentifier;
 
 export const patchZone: API.OperationMethod<
   PatchZoneRequest,
@@ -5961,7 +6234,7 @@ export const patchZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchZoneRequest,
   output: PatchZoneResponse,
-  errors: [],
+  errors: [InvalidZoneIdentifier],
 }));
 
 export interface DeleteZoneRequest {
@@ -5986,7 +6259,7 @@ export const DeleteZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteZoneResponse>;
 
-export type DeleteZoneError = DefaultErrors;
+export type DeleteZoneError = DefaultErrors | InvalidZoneIdentifier;
 
 export const deleteZone: API.OperationMethod<
   DeleteZoneRequest,
@@ -5996,5 +6269,5 @@ export const deleteZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteZoneRequest,
   output: DeleteZoneResponse,
-  errors: [],
+  errors: [InvalidZoneIdentifier],
 }));

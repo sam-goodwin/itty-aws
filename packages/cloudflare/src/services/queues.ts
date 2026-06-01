@@ -200,7 +200,7 @@ export const GetConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       createdOn: "created_on",
       deadLetterQueue: "dead_letter_queue",
       queueName: "queue_name",
-      scriptName: "script_name",
+      scriptName: "script",
       settings: "settings",
       type: "type",
     }),
@@ -372,7 +372,7 @@ export const ListConsumersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           createdOn: "created_on",
           deadLetterQueue: "dead_letter_queue",
           queueName: "queue_name",
-          scriptName: "script_name",
+          scriptName: "script",
           settings: "settings",
           type: "type",
         }),
@@ -455,7 +455,7 @@ export interface CreateConsumerRequest {
   /** Body param: Name of a Worker */
   scriptName?: string;
   /** Body param */
-  type: "worker" | "http_pull";
+  type: "worker" | "http_pull" | (string & {});
   /** Body param */
   deadLetterQueue?: string;
   /** Body param */
@@ -473,7 +473,7 @@ export const CreateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   scriptName: Schema.optional(Schema.String),
-  type: Schema.Literals(["worker", "http_pull"]),
+  type: Schema.Union([Schema.Literals(["worker", "http_pull"]), Schema.String]),
   deadLetterQueue: Schema.optional(Schema.String),
   settings: Schema.optional(
     Schema.Struct({
@@ -675,7 +675,7 @@ export interface UpdateConsumerRequest {
   /** Body param: Name of a Worker */
   scriptName?: string;
   /** Body param */
-  type: "worker" | "http_pull";
+  type: "worker" | "http_pull" | (string & {});
   /** Body param */
   deadLetterQueue?: string;
   /** Body param */
@@ -694,7 +694,7 @@ export const UpdateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   consumerId: Schema.String.pipe(T.HttpPath("consumerId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   scriptName: Schema.optional(Schema.String),
-  type: Schema.Literals(["worker", "http_pull"]),
+  type: Schema.Union([Schema.Literals(["worker", "http_pull"]), Schema.String]),
   deadLetterQueue: Schema.optional(Schema.String),
   settings: Schema.optional(
     Schema.Struct({
@@ -1232,7 +1232,7 @@ export interface PushMessageRequest {
   /** Body param */
   body?: string;
   /** Body param */
-  contentType?: "text" | "json";
+  contentType?: "text" | "json" | (string & {});
   /** Body param: The number of seconds to wait for attempting to deliver this message to consumers */
   delaySeconds?: number;
 }
@@ -1241,7 +1241,9 @@ export const PushMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   body: Schema.optional(Schema.String),
-  contentType: Schema.optional(Schema.Literals(["text", "json"])),
+  contentType: Schema.optional(
+    Schema.Union([Schema.Literals(["text", "json"]), Schema.String]),
+  ),
   delaySeconds: Schema.optional(Schema.Number),
 }).pipe(
   Schema.encodeKeys({
@@ -1910,7 +1912,7 @@ export const GetQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               createdOn: "created_on",
               deadLetterQueue: "dead_letter_queue",
               queueName: "queue_name",
-              scriptName: "script_name",
+              scriptName: "script",
               settings: "settings",
               type: "type",
             }),
@@ -2185,7 +2187,7 @@ export const ListQueuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   createdOn: "created_on",
                   deadLetterQueue: "dead_letter_queue",
                   queueName: "queue_name",
-                  scriptName: "script_name",
+                  scriptName: "script",
                   settings: "settings",
                   type: "type",
                 }),
@@ -3444,9 +3446,9 @@ export interface ListSubscriptionsRequest {
   page?: number;
   perPage?: number;
   /** Query param: Sort direction */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Field to sort by */
-  order?: "created_at" | "name" | "enabled" | "source";
+  order?: "created_at" | "name" | "enabled" | "source" | (string & {});
 }
 
 export const ListSubscriptionsRequest =
@@ -3454,11 +3456,14 @@ export const ListSubscriptionsRequest =
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-      T.HttpQuery("direction"),
-    ),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
     order: Schema.optional(
-      Schema.Literals(["created_at", "name", "enabled", "source"]),
+      Schema.Union([
+        Schema.Literals(["created_at", "name", "enabled", "source"]),
+        Schema.String,
+      ]),
     ).pipe(T.HttpQuery("order")),
   }).pipe(
     T.Http({

@@ -146,7 +146,7 @@ export interface GetAccountResponse {
   id: string;
   /** Account name */
   name: string;
-  type: "standard" | "enterprise";
+  type: "standard" | "enterprise" | (string & {});
   /** Timestamp for the creation of the account */
   createdOn?: string | null;
   /** Parent container details */
@@ -164,7 +164,10 @@ export interface GetAccountResponse {
 export const GetAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
-  type: Schema.Literals(["standard", "enterprise"]),
+  type: Schema.Union([
+    Schema.Literals(["standard", "enterprise"]),
+    Schema.String,
+  ]),
   createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   managedBy: Schema.optional(
     Schema.Union([
@@ -242,7 +245,7 @@ export interface ListAccountsResponse {
   result: {
     id: string;
     name: string;
-    type: "standard" | "enterprise";
+    type: "standard" | "enterprise" | (string & {});
     createdOn?: string | null;
     managedBy?: {
       parentOrgId?: string | null;
@@ -266,7 +269,10 @@ export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       id: Schema.String,
       name: Schema.String,
-      type: Schema.Literals(["standard", "enterprise"]),
+      type: Schema.Union([
+        Schema.Literals(["standard", "enterprise"]),
+        Schema.String,
+      ]),
       createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       managedBy: Schema.optional(
         Schema.Union([
@@ -360,14 +366,16 @@ export const listAccounts: API.PaginatedOperationMethod<
 export interface CreateAccountRequest {
   /** Account name */
   name: string;
-  type?: "standard" | "enterprise";
+  type?: "standard" | "enterprise" | (string & {});
   /** information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/ */
   unit?: { id?: string };
 }
 
 export const CreateAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
-  type: Schema.optional(Schema.Literals(["standard", "enterprise"])),
+  type: Schema.optional(
+    Schema.Union([Schema.Literals(["standard", "enterprise"]), Schema.String]),
+  ),
   unit: Schema.optional(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -382,7 +390,7 @@ export interface CreateAccountResponse {
   id: string;
   /** Account name */
   name: string;
-  type: "standard" | "enterprise";
+  type: "standard" | "enterprise" | (string & {});
   /** Timestamp for the creation of the account */
   createdOn?: string | null;
   /** Parent container details */
@@ -400,7 +408,10 @@ export interface CreateAccountResponse {
 export const CreateAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
-  type: Schema.Literals(["standard", "enterprise"]),
+  type: Schema.Union([
+    Schema.Literals(["standard", "enterprise"]),
+    Schema.String,
+  ]),
   createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   managedBy: Schema.optional(
     Schema.Union([
@@ -477,7 +488,7 @@ export interface UpdateAccountRequest {
   /** Body param: Account name */
   name: string;
   /** Body param */
-  type?: "standard" | "enterprise";
+  type?: "standard" | "enterprise" | (string & {});
   /** Body param: Parent container details */
   managedBy?: unknown;
   /** Body param: Account settings */
@@ -488,7 +499,9 @@ export const UpdateAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   id: Schema.String,
   name: Schema.String,
-  type: Schema.optional(Schema.Literals(["standard", "enterprise"])),
+  type: Schema.optional(
+    Schema.Union([Schema.Literals(["standard", "enterprise"]), Schema.String]),
+  ),
   managedBy: Schema.optional(Schema.Unknown),
   settings: Schema.optional(
     Schema.Struct({
@@ -517,7 +530,7 @@ export interface UpdateAccountResponse {
   id: string;
   /** Account name */
   name: string;
-  type: "standard" | "enterprise";
+  type: "standard" | "enterprise" | (string & {});
   /** Timestamp for the creation of the account */
   createdOn?: string | null;
   /** Parent container details */
@@ -535,7 +548,10 @@ export interface UpdateAccountResponse {
 export const UpdateAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
-  type: Schema.Literals(["standard", "enterprise"]),
+  type: Schema.Union([
+    Schema.Literals(["standard", "enterprise"]),
+    Schema.String,
+  ]),
   createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   managedBy: Schema.optional(
     Schema.Union([
@@ -668,12 +684,21 @@ export interface ListLogAuditsRequest {
   /** Query param */
   accountName?: { not?: string[] };
   /** Query param */
-  actionResult?: { not?: ("success" | "failure")[] };
+  actionResult?: { not?: ("success" | "failure" | (string & {}))[] };
   /** Query param */
-  actionType?: { not?: ("create" | "delete" | "view" | "update")[] };
+  actionType?: {
+    not?: ("create" | "delete" | "view" | "update" | (string & {}))[];
+  };
   /** Query param */
   actorContext?: {
-    not?: ("api_key" | "api_token" | "dash" | "oauth" | "origin_ca_key")[];
+    not?: (
+      | "api_key"
+      | "api_token"
+      | "dash"
+      | "oauth"
+      | "origin_ca_key"
+      | (string & {})
+    )[];
   };
   /** Query param */
   actorEmail?: { not?: string[] };
@@ -686,11 +711,19 @@ export interface ListLogAuditsRequest {
   /** Query param */
   actorTokenName?: { not?: string[] };
   /** Query param */
-  actorType?: { not?: ("account" | "cloudflare_admin" | "system" | "user")[] };
+  actorType?: {
+    not?: (
+      | "account"
+      | "cloudflare_admin"
+      | "system"
+      | "user"
+      | (string & {})
+    )[];
+  };
   /** Query param */
   auditLogId?: { not?: string[] };
   /** Query param: Sets sorting order. */
-  direction?: "desc" | "asc";
+  direction?: "desc" | "asc" | (string & {});
   /** Query param: The number limits the objects to return. The cursor attribute may be used to iterate over the next batch of objects if there are more than the limit. */
   limit?: number;
   /** Query param */
@@ -706,7 +739,9 @@ export interface ListLogAuditsRequest {
   /** Query param */
   resourceProduct?: { not?: string[] };
   /** Query param */
-  resourceScope?: { not?: ("accounts" | "user" | "zones" | "memberships")[] };
+  resourceScope?: {
+    not?: ("accounts" | "user" | "zones" | "memberships" | (string & {}))[];
+  };
   /** Query param */
   resourceType?: { not?: string[] };
   /** Query param */
@@ -733,14 +768,24 @@ export const ListLogAuditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   actionResult: Schema.optional(
     Schema.Struct({
       not: Schema.optional(
-        Schema.Array(Schema.Literals(["success", "failure"])),
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals(["success", "failure"]),
+            Schema.String,
+          ]),
+        ),
       ),
     }),
   ).pipe(T.HttpQuery("action_result")),
   actionType: Schema.optional(
     Schema.Struct({
       not: Schema.optional(
-        Schema.Array(Schema.Literals(["create", "delete", "view", "update"])),
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals(["create", "delete", "view", "update"]),
+            Schema.String,
+          ]),
+        ),
       ),
     }),
   ).pipe(T.HttpQuery("action_type")),
@@ -748,12 +793,15 @@ export const ListLogAuditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       not: Schema.optional(
         Schema.Array(
-          Schema.Literals([
-            "api_key",
-            "api_token",
-            "dash",
-            "oauth",
-            "origin_ca_key",
+          Schema.Union([
+            Schema.Literals([
+              "api_key",
+              "api_token",
+              "dash",
+              "oauth",
+              "origin_ca_key",
+            ]),
+            Schema.String,
           ]),
         ),
       ),
@@ -788,7 +836,10 @@ export const ListLogAuditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       not: Schema.optional(
         Schema.Array(
-          Schema.Literals(["account", "cloudflare_admin", "system", "user"]),
+          Schema.Union([
+            Schema.Literals(["account", "cloudflare_admin", "system", "user"]),
+            Schema.String,
+          ]),
         ),
       ),
     }),
@@ -798,9 +849,9 @@ export const ListLogAuditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       not: Schema.optional(Schema.Array(Schema.String)),
     }),
   ).pipe(T.HttpQuery("audit_log_id")),
-  direction: Schema.optional(Schema.Literals(["desc", "asc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["desc", "asc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
   limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
   rawCfRayId: Schema.optional(
     Schema.Struct({
@@ -836,7 +887,10 @@ export const ListLogAuditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       not: Schema.optional(
         Schema.Array(
-          Schema.Literals(["accounts", "user", "zones", "memberships"]),
+          Schema.Union([
+            Schema.Literals(["accounts", "user", "zones", "memberships"]),
+            Schema.String,
+          ]),
         ),
       ),
     }),
@@ -878,12 +932,19 @@ export interface ListLogAuditsResponse {
         | "dash"
         | "oauth"
         | "origin_ca_key"
+        | (string & {})
         | null;
       email?: string | null;
       ipAddress?: string | null;
       tokenId?: string | null;
       tokenName?: string | null;
-      type?: "account" | "cloudflare_admin" | "system" | "user" | null;
+      type?:
+        | "account"
+        | "cloudflare_admin"
+        | "system"
+        | "user"
+        | (string & {})
+        | null;
     } | null;
     raw?: {
       cfRayId?: string | null;
@@ -937,12 +998,15 @@ export const ListLogAuditsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             context: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "api_key",
-                  "api_token",
-                  "dash",
-                  "oauth",
-                  "origin_ca_key",
+                Schema.Union([
+                  Schema.Literals([
+                    "api_key",
+                    "api_token",
+                    "dash",
+                    "oauth",
+                    "origin_ca_key",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -959,11 +1023,14 @@ export const ListLogAuditsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
             type: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "account",
-                  "cloudflare_admin",
-                  "system",
-                  "user",
+                Schema.Union([
+                  Schema.Literals([
+                    "account",
+                    "cloudflare_admin",
+                    "system",
+                    "user",
+                  ]),
+                  Schema.String,
                 ]),
                 Schema.Null,
               ]),
@@ -1104,7 +1171,7 @@ export interface GetMemberResponse {
   policies?:
     | {
         id?: string | null;
-        access?: "allow" | "deny" | null;
+        access?: "allow" | "deny" | (string & {}) | null;
         permissionGroups?: { id: string }[] | null;
         resourceGroups?: { id: string }[] | null;
       }[]
@@ -1138,7 +1205,7 @@ export interface GetMemberResponse {
       }[]
     | null;
   /** A member's status in the account. */
-  status?: "accepted" | "pending" | null;
+  status?: "accepted" | "pending" | (string & {}) | null;
   /** Details of the user associated to the membership. */
   user?: {
     email: string;
@@ -1158,7 +1225,10 @@ export const GetMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           access: Schema.optional(
-            Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           permissionGroups: Schema.optional(
             Schema.Union([
@@ -1378,7 +1448,10 @@ export const GetMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   status: Schema.optional(
-    Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null]),
+    Schema.Union([
+      Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.String]),
+      Schema.Null,
+    ]),
   ),
   user: Schema.optional(
     Schema.Union([
@@ -1425,30 +1498,41 @@ export interface ListMembersRequest {
   page?: number;
   perPage?: number;
   /** Query param: Direction to order results. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
   /** Query param: Field to order results by. */
-  order?: "user.first_name" | "user.last_name" | "user.email" | "status";
+  order?:
+    | "user.first_name"
+    | "user.last_name"
+    | "user.email"
+    | "status"
+    | (string & {});
   /** Query param: A member's status in the account. */
-  status?: "accepted" | "pending" | "rejected";
+  status?: "accepted" | "pending" | "rejected" | (string & {});
 }
 
 export const ListMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
   order: Schema.optional(
-    Schema.Literals([
-      "user.first_name",
-      "user.last_name",
-      "user.email",
-      "status",
+    Schema.Union([
+      Schema.Literals([
+        "user.first_name",
+        "user.last_name",
+        "user.email",
+        "status",
+      ]),
+      Schema.String,
     ]),
   ).pipe(T.HttpQuery("order")),
   status: Schema.optional(
-    Schema.Literals(["accepted", "pending", "rejected"]),
+    Schema.Union([
+      Schema.Literals(["accepted", "pending", "rejected"]),
+      Schema.String,
+    ]),
   ).pipe(T.HttpQuery("status")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/members" }),
@@ -1461,7 +1545,7 @@ export interface ListMembersResponse {
     policies?:
       | {
           id?: string | null;
-          access?: "allow" | "deny" | null;
+          access?: "allow" | "deny" | (string & {}) | null;
           permissionGroups?: { id: string }[] | null;
           resourceGroups?: { id: string }[] | null;
         }[]
@@ -1502,7 +1586,7 @@ export interface ListMembersResponse {
           };
         }[]
       | null;
-    status?: "accepted" | "pending" | null;
+    status?: "accepted" | "pending" | (string & {}) | null;
     user?: {
       email: string;
       id?: string | null;
@@ -1530,7 +1614,13 @@ export const ListMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Struct({
               id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
               access: Schema.optional(
-                Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null]),
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["allow", "deny"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
               ),
               permissionGroups: Schema.optional(
                 Schema.Union([
@@ -1750,7 +1840,13 @@ export const ListMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       status: Schema.optional(
-        Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null]),
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["accepted", "pending"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
       ),
       user: Schema.optional(
         Schema.Union([
@@ -1831,10 +1927,10 @@ export interface CreateMemberRequest {
   /** Body param: Array of roles associated with this member. */
   roles?: string[];
   /** Body param: Status of the member invitation. If not provided during creation, defaults to 'pending'. Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Ter */
-  status?: "accepted" | "pending";
+  status?: "accepted" | "pending" | (string & {});
   /** Body param: Array of policies associated with this member. */
   policies?: {
-    access: "allow" | "deny";
+    access: "allow" | "deny" | (string & {});
     permissionGroups: { id: string }[];
     resourceGroups: { id: string }[];
   }[];
@@ -1844,11 +1940,16 @@ export const CreateMemberRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   email: Schema.String,
   roles: Schema.optional(Schema.Array(Schema.String)),
-  status: Schema.optional(Schema.Literals(["accepted", "pending"])),
+  status: Schema.optional(
+    Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.String]),
+  ),
   policies: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        access: Schema.Literals(["allow", "deny"]),
+        access: Schema.Union([
+          Schema.Literals(["allow", "deny"]),
+          Schema.String,
+        ]),
         permissionGroups: Schema.Array(
           Schema.Struct({
             id: Schema.String,
@@ -1881,7 +1982,7 @@ export interface CreateMemberResponse {
   policies?:
     | {
         id?: string | null;
-        access?: "allow" | "deny" | null;
+        access?: "allow" | "deny" | (string & {}) | null;
         permissionGroups?: { id: string }[] | null;
         resourceGroups?: { id: string }[] | null;
       }[]
@@ -1915,7 +2016,7 @@ export interface CreateMemberResponse {
       }[]
     | null;
   /** A member's status in the account. */
-  status?: "accepted" | "pending" | null;
+  status?: "accepted" | "pending" | (string & {}) | null;
   /** Details of the user associated to the membership. */
   user?: {
     email: string;
@@ -1935,7 +2036,10 @@ export const CreateMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           access: Schema.optional(
-            Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           permissionGroups: Schema.optional(
             Schema.Union([
@@ -2155,7 +2259,10 @@ export const CreateMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   status: Schema.optional(
-    Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null]),
+    Schema.Union([
+      Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.String]),
+      Schema.Null,
+    ]),
   ),
   user: Schema.optional(
     Schema.Union([
@@ -2204,7 +2311,7 @@ export interface UpdateMemberRequest {
   roles?: { id: string }[];
   /** Body param: Array of policies associated with this member. */
   policies?: {
-    access: "allow" | "deny";
+    access: "allow" | "deny" | (string & {});
     permissionGroups: { id: string }[];
     resourceGroups: { id: string }[];
   }[];
@@ -2223,7 +2330,10 @@ export const UpdateMemberRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   policies: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        access: Schema.Literals(["allow", "deny"]),
+        access: Schema.Union([
+          Schema.Literals(["allow", "deny"]),
+          Schema.String,
+        ]),
         permissionGroups: Schema.Array(
           Schema.Struct({
             id: Schema.String,
@@ -2256,7 +2366,7 @@ export interface UpdateMemberResponse {
   policies?:
     | {
         id?: string | null;
-        access?: "allow" | "deny" | null;
+        access?: "allow" | "deny" | (string & {}) | null;
         permissionGroups?: { id: string }[] | null;
         resourceGroups?: { id: string }[] | null;
       }[]
@@ -2290,7 +2400,7 @@ export interface UpdateMemberResponse {
       }[]
     | null;
   /** A member's status in the account. */
-  status?: "accepted" | "pending" | null;
+  status?: "accepted" | "pending" | (string & {}) | null;
   /** Details of the user associated to the membership. */
   user?: {
     email: string;
@@ -2310,7 +2420,10 @@ export const UpdateMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           access: Schema.optional(
-            Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null]),
+            Schema.Union([
+              Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
           permissionGroups: Schema.optional(
             Schema.Union([
@@ -2530,7 +2643,10 @@ export const UpdateMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   status: Schema.optional(
-    Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null]),
+    Schema.Union([
+      Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.String]),
+      Schema.Null,
+    ]),
   ),
   user: Schema.optional(
     Schema.Union([
@@ -3089,7 +3205,13 @@ export interface GetSubscriptionResponse {
     currency?: string | null;
     currentPeriodEnd?: string | null;
     currentPeriodStart?: string | null;
-    frequency?: "weekly" | "monthly" | "quarterly" | "yearly" | null;
+    frequency?:
+      | "weekly"
+      | "monthly"
+      | "quarterly"
+      | "yearly"
+      | (string & {})
+      | null;
     price?: number | null;
     ratePlan?: {
       id?:
@@ -3103,6 +3225,7 @@ export interface GetSubscriptionResponse {
         | "partners_pro"
         | "partners_business"
         | "partners_enterprise"
+        | (string & {})
         | null;
       currency?: string | null;
       externallyManaged?: boolean | null;
@@ -3119,6 +3242,7 @@ export interface GetSubscriptionResponse {
       | "Cancelled"
       | "Failed"
       | "Expired"
+      | (string & {})
       | null;
   }[];
 }
@@ -3137,7 +3261,10 @@ export const GetSubscriptionResponse =
         ),
         frequency: Schema.optional(
           Schema.Union([
-            Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+            Schema.Union([
+              Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -3147,17 +3274,20 @@ export const GetSubscriptionResponse =
             Schema.Struct({
               id: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "free",
-                    "lite",
-                    "pro",
-                    "pro_plus",
-                    "business",
-                    "enterprise",
-                    "partners_free",
-                    "partners_pro",
-                    "partners_business",
-                    "partners_enterprise",
+                  Schema.Union([
+                    Schema.Literals([
+                      "free",
+                      "lite",
+                      "pro",
+                      "pro_plus",
+                      "business",
+                      "enterprise",
+                      "partners_free",
+                      "partners_pro",
+                      "partners_business",
+                      "partners_enterprise",
+                    ]),
+                    Schema.String,
                   ]),
                   Schema.Null,
                 ]),
@@ -3196,14 +3326,17 @@ export const GetSubscriptionResponse =
         ),
         state: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "Trial",
-              "Provisioned",
-              "Paid",
-              "AwaitingPayment",
-              "Cancelled",
-              "Failed",
-              "Expired",
+            Schema.Union([
+              Schema.Literals([
+                "Trial",
+                "Provisioned",
+                "Paid",
+                "AwaitingPayment",
+                "Cancelled",
+                "Failed",
+                "Expired",
+              ]),
+              Schema.String,
             ]),
             Schema.Null,
           ]),
@@ -3244,7 +3377,7 @@ export interface CreateSubscriptionRequest {
   /** Path param: Identifier */
   accountId: string;
   /** Body param: How often the subscription is renewed automatically. */
-  frequency?: "weekly" | "monthly" | "quarterly" | "yearly";
+  frequency?: "weekly" | "monthly" | "quarterly" | "yearly" | (string & {});
   /** Body param: The rate plan applied to the subscription. */
   ratePlan?: {
     id?:
@@ -3257,7 +3390,8 @@ export interface CreateSubscriptionRequest {
       | "partners_free"
       | "partners_pro"
       | "partners_business"
-      | "partners_enterprise";
+      | "partners_enterprise"
+      | (string & {});
     currency?: string;
     externallyManaged?: boolean;
     isContract?: boolean;
@@ -3271,22 +3405,28 @@ export const CreateSubscriptionRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     frequency: Schema.optional(
-      Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+      Schema.Union([
+        Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+        Schema.String,
+      ]),
     ),
     ratePlan: Schema.optional(
       Schema.Struct({
         id: Schema.optional(
-          Schema.Literals([
-            "free",
-            "lite",
-            "pro",
-            "pro_plus",
-            "business",
-            "enterprise",
-            "partners_free",
-            "partners_pro",
-            "partners_business",
-            "partners_enterprise",
+          Schema.Union([
+            Schema.Literals([
+              "free",
+              "lite",
+              "pro",
+              "pro_plus",
+              "business",
+              "enterprise",
+              "partners_free",
+              "partners_pro",
+              "partners_business",
+              "partners_enterprise",
+            ]),
+            Schema.String,
           ]),
         ),
         currency: Schema.optional(Schema.String),
@@ -3322,7 +3462,13 @@ export interface CreateSubscriptionResponse {
   /** When the current billing period started. May match initial_period_start if this is the first period. */
   currentPeriodStart?: string | null;
   /** How often the subscription is renewed automatically. */
-  frequency?: "weekly" | "monthly" | "quarterly" | "yearly" | null;
+  frequency?:
+    | "weekly"
+    | "monthly"
+    | "quarterly"
+    | "yearly"
+    | (string & {})
+    | null;
   /** The price of the subscription that will be billed, in US dollars. */
   price?: number | null;
   /** The rate plan applied to the subscription. */
@@ -3338,6 +3484,7 @@ export interface CreateSubscriptionResponse {
       | "partners_pro"
       | "partners_business"
       | "partners_enterprise"
+      | (string & {})
       | null;
     currency?: string | null;
     externallyManaged?: boolean | null;
@@ -3355,6 +3502,7 @@ export interface CreateSubscriptionResponse {
     | "Cancelled"
     | "Failed"
     | "Expired"
+    | (string & {})
     | null;
 }
 
@@ -3370,7 +3518,10 @@ export const CreateSubscriptionResponse =
     ),
     frequency: Schema.optional(
       Schema.Union([
-        Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+        Schema.Union([
+          Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -3380,17 +3531,20 @@ export const CreateSubscriptionResponse =
         Schema.Struct({
           id: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "free",
-                "lite",
-                "pro",
-                "pro_plus",
-                "business",
-                "enterprise",
-                "partners_free",
-                "partners_pro",
-                "partners_business",
-                "partners_enterprise",
+              Schema.Union([
+                Schema.Literals([
+                  "free",
+                  "lite",
+                  "pro",
+                  "pro_plus",
+                  "business",
+                  "enterprise",
+                  "partners_free",
+                  "partners_pro",
+                  "partners_business",
+                  "partners_enterprise",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -3425,14 +3579,17 @@ export const CreateSubscriptionResponse =
     ),
     state: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "Trial",
-          "Provisioned",
-          "Paid",
-          "AwaitingPayment",
-          "Cancelled",
-          "Failed",
-          "Expired",
+        Schema.Union([
+          Schema.Literals([
+            "Trial",
+            "Provisioned",
+            "Paid",
+            "AwaitingPayment",
+            "Cancelled",
+            "Failed",
+            "Expired",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -3475,7 +3632,7 @@ export interface UpdateSubscriptionRequest {
   /** Path param: Identifier */
   accountId: string;
   /** Body param: How often the subscription is renewed automatically. */
-  frequency?: "weekly" | "monthly" | "quarterly" | "yearly";
+  frequency?: "weekly" | "monthly" | "quarterly" | "yearly" | (string & {});
   /** Body param: The rate plan applied to the subscription. */
   ratePlan?: {
     id?:
@@ -3488,7 +3645,8 @@ export interface UpdateSubscriptionRequest {
       | "partners_free"
       | "partners_pro"
       | "partners_business"
-      | "partners_enterprise";
+      | "partners_enterprise"
+      | (string & {});
     currency?: string;
     externallyManaged?: boolean;
     isContract?: boolean;
@@ -3505,22 +3663,28 @@ export const UpdateSubscriptionRequest =
     ),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     frequency: Schema.optional(
-      Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+      Schema.Union([
+        Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+        Schema.String,
+      ]),
     ),
     ratePlan: Schema.optional(
       Schema.Struct({
         id: Schema.optional(
-          Schema.Literals([
-            "free",
-            "lite",
-            "pro",
-            "pro_plus",
-            "business",
-            "enterprise",
-            "partners_free",
-            "partners_pro",
-            "partners_business",
-            "partners_enterprise",
+          Schema.Union([
+            Schema.Literals([
+              "free",
+              "lite",
+              "pro",
+              "pro_plus",
+              "business",
+              "enterprise",
+              "partners_free",
+              "partners_pro",
+              "partners_business",
+              "partners_enterprise",
+            ]),
+            Schema.String,
           ]),
         ),
         currency: Schema.optional(Schema.String),
@@ -3559,7 +3723,13 @@ export interface UpdateSubscriptionResponse {
   /** When the current billing period started. May match initial_period_start if this is the first period. */
   currentPeriodStart?: string | null;
   /** How often the subscription is renewed automatically. */
-  frequency?: "weekly" | "monthly" | "quarterly" | "yearly" | null;
+  frequency?:
+    | "weekly"
+    | "monthly"
+    | "quarterly"
+    | "yearly"
+    | (string & {})
+    | null;
   /** The price of the subscription that will be billed, in US dollars. */
   price?: number | null;
   /** The rate plan applied to the subscription. */
@@ -3575,6 +3745,7 @@ export interface UpdateSubscriptionResponse {
       | "partners_pro"
       | "partners_business"
       | "partners_enterprise"
+      | (string & {})
       | null;
     currency?: string | null;
     externallyManaged?: boolean | null;
@@ -3592,6 +3763,7 @@ export interface UpdateSubscriptionResponse {
     | "Cancelled"
     | "Failed"
     | "Expired"
+    | (string & {})
     | null;
 }
 
@@ -3607,7 +3779,10 @@ export const UpdateSubscriptionResponse =
     ),
     frequency: Schema.optional(
       Schema.Union([
-        Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+        Schema.Union([
+          Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
     ),
@@ -3617,17 +3792,20 @@ export const UpdateSubscriptionResponse =
         Schema.Struct({
           id: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "free",
-                "lite",
-                "pro",
-                "pro_plus",
-                "business",
-                "enterprise",
-                "partners_free",
-                "partners_pro",
-                "partners_business",
-                "partners_enterprise",
+              Schema.Union([
+                Schema.Literals([
+                  "free",
+                  "lite",
+                  "pro",
+                  "pro_plus",
+                  "business",
+                  "enterprise",
+                  "partners_free",
+                  "partners_pro",
+                  "partners_business",
+                  "partners_enterprise",
+                ]),
+                Schema.String,
               ]),
               Schema.Null,
             ]),
@@ -3662,14 +3840,17 @@ export const UpdateSubscriptionResponse =
     ),
     state: Schema.optional(
       Schema.Union([
-        Schema.Literals([
-          "Trial",
-          "Provisioned",
-          "Paid",
-          "AwaitingPayment",
-          "Cancelled",
-          "Failed",
-          "Expired",
+        Schema.Union([
+          Schema.Literals([
+            "Trial",
+            "Provisioned",
+            "Paid",
+            "AwaitingPayment",
+            "Cancelled",
+            "Failed",
+            "Expired",
+          ]),
+          Schema.String,
         ]),
         Schema.Null,
       ]),
@@ -3796,7 +3977,7 @@ export interface GetTokenResponse {
   policies?:
     | {
         id: string;
-        effect: "allow" | "deny";
+        effect: "allow" | "deny" | (string & {});
         permissionGroups: {
           id: string;
           meta?: { key?: string | null; value?: string | null } | null;
@@ -3806,7 +3987,7 @@ export interface GetTokenResponse {
       }[]
     | null;
   /** Status of the token. */
-  status?: "active" | "disabled" | "expired" | null;
+  status?: "active" | "disabled" | "expired" | (string & {}) | null;
 }
 
 export const GetTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3842,7 +4023,10 @@ export const GetTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Array(
         Schema.Struct({
           id: Schema.String,
-          effect: Schema.Literals(["allow", "deny"]),
+          effect: Schema.Union([
+            Schema.Literals(["allow", "deny"]),
+            Schema.String,
+          ]),
           permissionGroups: Schema.Array(
             Schema.Struct({
               id: Schema.String,
@@ -3877,7 +4061,10 @@ export const GetTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals(["active", "disabled", "expired"]),
+      Schema.Union([
+        Schema.Literals(["active", "disabled", "expired"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -3917,16 +4104,16 @@ export interface ListTokensRequest {
   page?: number;
   perPage?: number;
   /** Query param: Direction to order results. */
-  direction?: "asc" | "desc";
+  direction?: "asc" | "desc" | (string & {});
 }
 
 export const ListTokensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/tokens" }),
 ) as unknown as Schema.Schema<ListTokensRequest>;
@@ -3946,7 +4133,7 @@ export interface ListTokensResponse {
     policies?:
       | {
           id: string;
-          effect: "allow" | "deny";
+          effect: "allow" | "deny" | (string & {});
           permissionGroups: {
             id: string;
             meta?: { key?: string | null; value?: string | null } | null;
@@ -3955,7 +4142,7 @@ export interface ListTokensResponse {
           resources: Record<string, unknown>;
         }[]
       | null;
-    status?: "active" | "disabled" | "expired" | null;
+    status?: "active" | "disabled" | "expired" | (string & {}) | null;
   }[];
   resultInfo?: {
     count?: number | null;
@@ -4000,7 +4187,10 @@ export const ListTokensResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Array(
             Schema.Struct({
               id: Schema.String,
-              effect: Schema.Literals(["allow", "deny"]),
+              effect: Schema.Union([
+                Schema.Literals(["allow", "deny"]),
+                Schema.String,
+              ]),
               permissionGroups: Schema.Array(
                 Schema.Struct({
                   id: Schema.String,
@@ -4037,7 +4227,10 @@ export const ListTokensResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       status: Schema.optional(
         Schema.Union([
-          Schema.Literals(["active", "disabled", "expired"]),
+          Schema.Union([
+            Schema.Literals(["active", "disabled", "expired"]),
+            Schema.String,
+          ]),
           Schema.Null,
         ]),
       ),
@@ -4105,7 +4298,7 @@ export interface CreateTokenRequest {
   name: string;
   /** Body param: List of access policies assigned to the token. */
   policies: {
-    effect: "allow" | "deny";
+    effect: "allow" | "deny" | (string & {});
     permissionGroups: { id: string; meta?: { key?: string; value?: string } }[];
     resources: Record<string, unknown>;
   }[];
@@ -4122,7 +4315,7 @@ export const CreateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
   policies: Schema.Array(
     Schema.Struct({
-      effect: Schema.Literals(["allow", "deny"]),
+      effect: Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
       permissionGroups: Schema.Array(
         Schema.Struct({
           id: Schema.String,
@@ -4188,7 +4381,7 @@ export interface CreateTokenResponse {
   policies?:
     | {
         id: string;
-        effect: "allow" | "deny";
+        effect: "allow" | "deny" | (string & {});
         permissionGroups: {
           id: string;
           meta?: { key?: string | null; value?: string | null } | null;
@@ -4198,7 +4391,7 @@ export interface CreateTokenResponse {
       }[]
     | null;
   /** Status of the token. */
-  status?: "active" | "disabled" | "expired" | null;
+  status?: "active" | "disabled" | "expired" | (string & {}) | null;
   /** The token value. */
   value?: string | null;
 }
@@ -4236,7 +4429,10 @@ export const CreateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Array(
         Schema.Struct({
           id: Schema.String,
-          effect: Schema.Literals(["allow", "deny"]),
+          effect: Schema.Union([
+            Schema.Literals(["allow", "deny"]),
+            Schema.String,
+          ]),
           permissionGroups: Schema.Array(
             Schema.Struct({
               id: Schema.String,
@@ -4271,7 +4467,10 @@ export const CreateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals(["active", "disabled", "expired"]),
+      Schema.Union([
+        Schema.Literals(["active", "disabled", "expired"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -4321,7 +4520,7 @@ export interface UpdateTokenRequest {
   name: string;
   /** Body param: List of access policies assigned to the token. */
   policies: {
-    effect: "allow" | "deny";
+    effect: "allow" | "deny" | (string & {});
     permissionGroups: { id: string; meta?: { key?: string; value?: string } }[];
     resources: Record<string, unknown>;
   }[];
@@ -4332,7 +4531,7 @@ export interface UpdateTokenRequest {
   /** Body param: The time before which the token MUST NOT be accepted for processing. */
   notBefore?: string;
   /** Body param: Status of the token. */
-  status?: "active" | "disabled" | "expired";
+  status?: "active" | "disabled" | "expired" | (string & {});
 }
 
 export const UpdateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4341,7 +4540,7 @@ export const UpdateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
   policies: Schema.Array(
     Schema.Struct({
-      effect: Schema.Literals(["allow", "deny"]),
+      effect: Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
       permissionGroups: Schema.Array(
         Schema.Struct({
           id: Schema.String,
@@ -4374,7 +4573,12 @@ export const UpdateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   expiresOn: Schema.optional(Schema.String),
   notBefore: Schema.optional(Schema.String),
-  status: Schema.optional(Schema.Literals(["active", "disabled", "expired"])),
+  status: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["active", "disabled", "expired"]),
+      Schema.String,
+    ]),
+  ),
 }).pipe(
   Schema.encodeKeys({
     name: "name",
@@ -4409,7 +4613,7 @@ export interface UpdateTokenResponse {
   policies?:
     | {
         id: string;
-        effect: "allow" | "deny";
+        effect: "allow" | "deny" | (string & {});
         permissionGroups: {
           id: string;
           meta?: { key?: string | null; value?: string | null } | null;
@@ -4419,7 +4623,7 @@ export interface UpdateTokenResponse {
       }[]
     | null;
   /** Status of the token. */
-  status?: "active" | "disabled" | "expired" | null;
+  status?: "active" | "disabled" | "expired" | (string & {}) | null;
 }
 
 export const UpdateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4455,7 +4659,10 @@ export const UpdateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Array(
         Schema.Struct({
           id: Schema.String,
-          effect: Schema.Literals(["allow", "deny"]),
+          effect: Schema.Union([
+            Schema.Literals(["allow", "deny"]),
+            Schema.String,
+          ]),
           permissionGroups: Schema.Array(
             Schema.Struct({
               id: Schema.String,
@@ -4490,7 +4697,10 @@ export const UpdateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   status: Schema.optional(
     Schema.Union([
-      Schema.Literals(["active", "disabled", "expired"]),
+      Schema.Union([
+        Schema.Literals(["active", "disabled", "expired"]),
+        Schema.String,
+      ]),
       Schema.Null,
     ]),
   ),
@@ -4592,7 +4802,7 @@ export interface VerifyTokenResponse {
   /** Token identifier tag. */
   id: string;
   /** Status of the token. */
-  status: "active" | "disabled" | "expired";
+  status: "active" | "disabled" | "expired" | (string & {});
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
   expiresOn?: string | null;
   /** The time before which the token MUST NOT be accepted for processing. */
@@ -4601,7 +4811,10 @@ export interface VerifyTokenResponse {
 
 export const VerifyTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  status: Schema.Literals(["active", "disabled", "expired"]),
+  status: Schema.Union([
+    Schema.Literals(["active", "disabled", "expired"]),
+    Schema.String,
+  ]),
   expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 })
@@ -4667,6 +4880,7 @@ export type GetTokenPermissionGroupResponse = {
         | "com.cloudflare.api.account.zone"
         | "com.cloudflare.api.user"
         | "com.cloudflare.edge.r2.bucket"
+        | (string & {})
       )[]
     | null;
 }[];
@@ -4679,11 +4893,14 @@ export const GetTokenPermissionGroupResponse =
       scopes: Schema.optional(
         Schema.Union([
           Schema.Array(
-            Schema.Literals([
-              "com.cloudflare.api.account",
-              "com.cloudflare.api.account.zone",
-              "com.cloudflare.api.user",
-              "com.cloudflare.edge.r2.bucket",
+            Schema.Union([
+              Schema.Literals([
+                "com.cloudflare.api.account",
+                "com.cloudflare.api.account.zone",
+                "com.cloudflare.api.user",
+                "com.cloudflare.edge.r2.bucket",
+              ]),
+              Schema.String,
             ]),
           ),
           Schema.Null,
@@ -4738,6 +4955,7 @@ export interface ListTokenPermissionGroupsResponse {
           | "com.cloudflare.api.account.zone"
           | "com.cloudflare.api.user"
           | "com.cloudflare.edge.r2.bucket"
+          | (string & {})
         )[]
       | null;
   }[];
@@ -4752,11 +4970,14 @@ export const ListTokenPermissionGroupsResponse =
         scopes: Schema.optional(
           Schema.Union([
             Schema.Array(
-              Schema.Literals([
-                "com.cloudflare.api.account",
-                "com.cloudflare.api.account.zone",
-                "com.cloudflare.api.user",
-                "com.cloudflare.edge.r2.bucket",
+              Schema.Union([
+                Schema.Literals([
+                  "com.cloudflare.api.account",
+                  "com.cloudflare.api.account.zone",
+                  "com.cloudflare.api.user",
+                  "com.cloudflare.edge.r2.bucket",
+                ]),
+                Schema.String,
               ]),
             ),
             Schema.Null,

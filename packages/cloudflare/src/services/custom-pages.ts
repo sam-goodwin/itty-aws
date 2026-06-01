@@ -514,17 +514,20 @@ export const deleteAssetForZone: API.OperationMethod<
 // =============================================================================
 
 const GetCustomPageBaseFields = {
-  identifier: Schema.Literals([
-    "1000_errors",
-    "500_errors",
-    "basic_challenge",
-    "country_challenge",
-    "ip_block",
-    "managed_challenge",
-    "ratelimit_block",
-    "under_attack",
-    "waf_block",
-    "waf_challenge",
+  identifier: Schema.Union([
+    Schema.Literals([
+      "1000_errors",
+      "500_errors",
+      "basic_challenge",
+      "country_challenge",
+      "ip_block",
+      "managed_challenge",
+      "ratelimit_block",
+      "under_attack",
+      "waf_block",
+      "waf_challenge",
+    ]),
+    Schema.String,
   ]).pipe(T.HttpPath("identifier")),
 } as const;
 
@@ -539,7 +542,8 @@ interface GetCustomPageBaseRequest {
     | "ratelimit_block"
     | "under_attack"
     | "waf_block"
-    | "waf_challenge";
+    | "waf_challenge"
+    | (string & {});
 }
 
 export interface GetCustomPageForAccountRequest extends GetCustomPageBaseRequest {
@@ -582,7 +586,7 @@ export interface GetCustomPageResponse {
   previewTarget?: string | null;
   requiredTokens?: string[] | null;
   /** The custom page state. */
-  state?: "default" | "customized" | null;
+  state?: "default" | "customized" | (string & {}) | null;
   /** The URL associated with the custom page. */
   url?: string | null;
 }
@@ -597,7 +601,10 @@ export const GetCustomPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
   ),
   state: Schema.optional(
-    Schema.Union([Schema.Literals(["default", "customized"]), Schema.Null]),
+    Schema.Union([
+      Schema.Union([Schema.Literals(["default", "customized"]), Schema.String]),
+      Schema.Null,
+    ]),
   ),
   url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 })
@@ -679,7 +686,7 @@ export interface ListCustomPagesResponse {
     modifiedOn?: string | null;
     previewTarget?: string | null;
     requiredTokens?: string[] | null;
-    state?: "default" | "customized" | null;
+    state?: "default" | "customized" | (string & {}) | null;
     url?: string | null;
   }[];
 }
@@ -702,7 +709,10 @@ export const ListCustomPagesResponse =
         ),
         state: Schema.optional(
           Schema.Union([
-            Schema.Literals(["default", "customized"]),
+            Schema.Union([
+              Schema.Literals(["default", "customized"]),
+              Schema.String,
+            ]),
             Schema.Null,
           ]),
         ),
@@ -755,19 +765,25 @@ export const listCustomPagesForZone: API.PaginatedOperationMethod<
 }));
 
 const PutCustomPageBaseFields = {
-  identifier: Schema.Literals([
-    "1000_errors",
-    "500_errors",
-    "basic_challenge",
-    "country_challenge",
-    "ip_block",
-    "managed_challenge",
-    "ratelimit_block",
-    "under_attack",
-    "waf_block",
-    "waf_challenge",
+  identifier: Schema.Union([
+    Schema.Literals([
+      "1000_errors",
+      "500_errors",
+      "basic_challenge",
+      "country_challenge",
+      "ip_block",
+      "managed_challenge",
+      "ratelimit_block",
+      "under_attack",
+      "waf_block",
+      "waf_challenge",
+    ]),
+    Schema.String,
   ]).pipe(T.HttpPath("identifier")),
-  state: Schema.Literals(["default", "customized"]),
+  state: Schema.Union([
+    Schema.Literals(["default", "customized"]),
+    Schema.String,
+  ]),
   url: Schema.String,
 } as const;
 
@@ -782,9 +798,10 @@ interface PutCustomPageBaseRequest {
     | "ratelimit_block"
     | "under_attack"
     | "waf_block"
-    | "waf_challenge";
+    | "waf_challenge"
+    | (string & {});
   /** Body param: The custom page state. */
-  state: "default" | "customized";
+  state: "default" | "customized" | (string & {});
   /** Body param: The URL associated with the custom page. */
   url: string;
 }
@@ -829,7 +846,7 @@ export interface PutCustomPageResponse {
   previewTarget?: string | null;
   requiredTokens?: string[] | null;
   /** The custom page state. */
-  state?: "default" | "customized" | null;
+  state?: "default" | "customized" | (string & {}) | null;
   /** The URL associated with the custom page. */
   url?: string | null;
 }
@@ -844,7 +861,10 @@ export const PutCustomPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
   ),
   state: Schema.optional(
-    Schema.Union([Schema.Literals(["default", "customized"]), Schema.Null]),
+    Schema.Union([
+      Schema.Union([Schema.Literals(["default", "customized"]), Schema.String]),
+      Schema.Null,
+    ]),
   ),
   url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 })

@@ -1,5 +1,10 @@
 {
   "errors": {
     "InvalidRoute": [{ "code": 7003 }]
+  },
+  "response": {
+    "properties": {
+      "result[].consumers[].script_name": { "wireKey": "script" }
+    }
   }
 }
