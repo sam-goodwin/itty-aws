@@ -13,6 +13,42 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class DomainNotRegistered extends Schema.TaggedErrorClass<DomainNotRegistered>()(
+  "DomainNotRegistered",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DomainNotRegistered, [{ code: 1099 }]);
+
+export class InvalidDomain extends Schema.TaggedErrorClass<InvalidDomain>()(
+  "InvalidDomain",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidDomain, [{ code: 1002 }]);
+
+export class InvalidZoneIdentifier extends Schema.TaggedErrorClass<InvalidZoneIdentifier>()(
+  "InvalidZoneIdentifier",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidZoneIdentifier, [
+  { code: 9109, message: { includes: "Invalid zone identifier" } },
+]);
+
+export class SubdomainNotAllowed extends Schema.TaggedErrorClass<SubdomainNotAllowed>()(
+  "SubdomainNotAllowed",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SubdomainNotAllowed, [{ code: 1116 }]);
+
+export class ZoneAlreadyExists extends Schema.TaggedErrorClass<ZoneAlreadyExists>()(
+  "ZoneAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ZoneAlreadyExists, [{ code: 1061 }]);
+
+// =============================================================================
 // ActivationCheck
 // =============================================================================
 
@@ -5384,7 +5420,7 @@ export const GetZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetZoneResponse>;
 
-export type GetZoneError = DefaultErrors;
+export type GetZoneError = DefaultErrors | InvalidZoneIdentifier;
 
 export const getZone: API.OperationMethod<
   GetZoneRequest,
@@ -5394,7 +5430,7 @@ export const getZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetZoneRequest,
   output: GetZoneResponse,
-  errors: [],
+  errors: [InvalidZoneIdentifier],
 }));
 
 export interface ListZonesRequest {}
@@ -5910,7 +5946,12 @@ export const CreateZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateZoneResponse>;
 
-export type CreateZoneError = DefaultErrors;
+export type CreateZoneError =
+  | DefaultErrors
+  | ZoneAlreadyExists
+  | InvalidDomain
+  | DomainNotRegistered
+  | SubdomainNotAllowed;
 
 export const createZone: API.OperationMethod<
   CreateZoneRequest,
@@ -5920,7 +5961,12 @@ export const createZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateZoneRequest,
   output: CreateZoneResponse,
-  errors: [],
+  errors: [
+    ZoneAlreadyExists,
+    InvalidDomain,
+    DomainNotRegistered,
+    SubdomainNotAllowed,
+  ],
 }));
 
 export interface PatchZoneRequest {
@@ -6175,7 +6221,7 @@ export const PatchZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchZoneResponse>;
 
-export type PatchZoneError = DefaultErrors;
+export type PatchZoneError = DefaultErrors | InvalidZoneIdentifier;
 
 export const patchZone: API.OperationMethod<
   PatchZoneRequest,
@@ -6185,7 +6231,7 @@ export const patchZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchZoneRequest,
   output: PatchZoneResponse,
-  errors: [],
+  errors: [InvalidZoneIdentifier],
 }));
 
 export interface DeleteZoneRequest {
@@ -6210,7 +6256,7 @@ export const DeleteZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteZoneResponse>;
 
-export type DeleteZoneError = DefaultErrors;
+export type DeleteZoneError = DefaultErrors | InvalidZoneIdentifier;
 
 export const deleteZone: API.OperationMethod<
   DeleteZoneRequest,
@@ -6220,5 +6266,5 @@ export const deleteZone: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteZoneRequest,
   output: DeleteZoneResponse,
-  errors: [],
+  errors: [InvalidZoneIdentifier],
 }));

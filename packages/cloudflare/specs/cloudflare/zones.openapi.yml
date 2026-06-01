@@ -5407,6 +5407,11 @@ paths:
                   - owner
                   - plan
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidZoneIdentifier:
+          - code: 9109
+            message:
+              includes: Invalid zone identifier
     patch:
       operationId: patchZone
       description: "Edits a zone. Only one zone property can be changed at a
@@ -5667,6 +5672,11 @@ paths:
                   - owner
                   - plan
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidZoneIdentifier:
+          - code: 9109
+            message:
+              includes: Invalid zone identifier
     delete:
       operationId: deleteZone
       description: "Deletes an existing zone.  @example ```ts const zone = await
@@ -5693,6 +5703,11 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidZoneIdentifier:
+          - code: 9109
+            message:
+              includes: Invalid zone identifier
   /zones:
     get:
       operationId: listZones
@@ -6167,3 +6182,12 @@ paths:
                   - owner
                   - plan
       x-distilled-response-path: result
+      x-distilled-errors:
+        ZoneAlreadyExists:
+          - code: 1061
+        InvalidDomain:
+          - code: 1002
+        DomainNotRegistered:
+          - code: 1099
+        SubdomainNotAllowed:
+          - code: 1116
